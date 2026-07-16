@@ -76,7 +76,7 @@ interface PublicDatabase {
   /** Set the user of your origin database. */
   user: string;
 }
-const PublicDatabase = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PublicDatabase = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     database: Schema.String,
     host: Schema.String,
@@ -102,7 +102,7 @@ interface AccessProtectedDatabaseBehindCloudflareTunnel {
   user: string;
 }
 const AccessProtectedDatabaseBehindCloudflareTunnel =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accessClientId: Schema.String,
       database: Schema.String,
@@ -134,7 +134,7 @@ interface DatabaseReachableThroughAWorkersVPC {
   user: string;
 }
 const DatabaseReachableThroughAWorkersVPC =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       database: Schema.String,
       scheme: Schema.Union([
@@ -158,7 +158,7 @@ interface HyperdriveHyperdriveCachingCommon {
   disabled?: boolean | null;
 }
 const HyperdriveHyperdriveCachingCommon =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }),
@@ -173,7 +173,7 @@ interface HyperdriveHyperdriveCachingEnabled {
   staleWhileRevalidate?: number | null;
 }
 const HyperdriveHyperdriveCachingEnabled =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       disabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -197,7 +197,7 @@ interface Mtls {
   /** Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA. */
   sslmode?: string | null;
 }
-const Mtls = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Mtls = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     caCertificateId: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -262,7 +262,7 @@ interface Hyperdrive {
   /** The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.  Maximum allowed: 20 for free tier accounts, 100 for paid tier accounts. If not specified, defaults t */
   originConnectionLimit?: number | null;
 }
-const Hyperdrive = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Hyperdrive = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -314,7 +314,7 @@ interface PublicDatabase2 {
   /** Set the user of your origin database. */
   user: string;
 }
-const PublicDatabase2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PublicDatabase2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     database: Schema.String,
     host: Schema.String,
@@ -345,7 +345,7 @@ interface AccessProtectedDatabaseBehindCloudflareTunnel2 {
   user: string;
 }
 const AccessProtectedDatabaseBehindCloudflareTunnel2 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accessClientId: Schema.String,
       accessClientSecret: SensitiveString,
@@ -383,7 +383,7 @@ interface DatabaseReachableThroughAWorkersVPC2 {
   user: string;
 }
 const DatabaseReachableThroughAWorkersVPC2 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       database: Schema.String,
       password: SensitiveString,
@@ -414,22 +414,21 @@ interface HyperdriveHyperdriveDatabase {
   /** Set the user of your origin database. */
   user?: string | null;
 }
-const HyperdriveHyperdriveDatabase = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      database: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      password: Schema.optional(Schema.Union([SensitiveString, Schema.Null])),
-      scheme: Schema.optional(
+const HyperdriveHyperdriveDatabase = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    database: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    password: Schema.optional(Schema.Union([SensitiveString, Schema.Null])),
+    scheme: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["postgres", "postgresql", "mysql"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["postgres", "postgresql", "mysql"]),
+          Schema.String,
         ]),
-      ),
-      user: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+        Schema.Null,
+      ]),
+    ),
+    user: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<HyperdriveHyperdriveDatabase>;
 
 interface HyperdriveInternetOrigin {
@@ -438,12 +437,11 @@ interface HyperdriveInternetOrigin {
   /** Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified. */
   port: number;
 }
-const HyperdriveInternetOrigin = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      host: Schema.String,
-      port: Schema.Number,
-    }),
+const HyperdriveInternetOrigin = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    host: Schema.String,
+    port: Schema.Number,
+  }),
 ) as unknown as Schema.Codec<HyperdriveInternetOrigin>;
 
 interface HyperdriveOverAccessOrigin {
@@ -454,30 +452,28 @@ interface HyperdriveOverAccessOrigin {
   /** Defines the host (hostname or IP) of your origin database. */
   host: string;
 }
-const HyperdriveOverAccessOrigin = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accessClientId: Schema.String,
-      accessClientSecret: SensitiveString,
-      host: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        accessClientId: "access_client_id",
-        accessClientSecret: "access_client_secret",
-        host: "host",
-      }),
-    ),
+const HyperdriveOverAccessOrigin = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accessClientId: Schema.String,
+    accessClientSecret: SensitiveString,
+    host: Schema.String,
+  }).pipe(
+    Schema.encodeKeys({
+      accessClientId: "access_client_id",
+      accessClientSecret: "access_client_secret",
+      host: "host",
+    }),
+  ),
 ) as unknown as Schema.Codec<HyperdriveOverAccessOrigin>;
 
 interface HyperdriveVPCServiceOrigin {
   /** The identifier of the Workers VPC Service to connect through. Hyperdrive will egress through the specified VPC Service to reach the origin database. */
   serviceId: string;
 }
-const HyperdriveVPCServiceOrigin = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      serviceId: Schema.String,
-    }).pipe(Schema.encodeKeys({ serviceId: "service_id" })),
+const HyperdriveVPCServiceOrigin = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    serviceId: Schema.String,
+  }).pipe(Schema.encodeKeys({ serviceId: "service_id" })),
 ) as unknown as Schema.Codec<HyperdriveVPCServiceOrigin>;
 
 // =============================================================================
@@ -490,7 +486,7 @@ export interface GetConfigRequest {
   accountId: string;
 }
 
-export const GetConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetConfigRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     hyperdriveId: Schema.String.pipe(T.HttpPath("hyperdriveId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -550,45 +546,44 @@ export interface GetConfigResponse {
   originConnectionLimit?: number | null;
 }
 
-export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      origin: Schema.Union([
-        PublicDatabase,
-        AccessProtectedDatabaseBehindCloudflareTunnel,
-        DatabaseReachableThroughAWorkersVPC,
-      ]),
-      caching: Schema.optional(
+export const GetConfigResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    name: Schema.String,
+    origin: Schema.Union([
+      PublicDatabase,
+      AccessProtectedDatabaseBehindCloudflareTunnel,
+      DatabaseReachableThroughAWorkersVPC,
+    ]),
+    caching: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            HyperdriveHyperdriveCachingCommon,
-            HyperdriveHyperdriveCachingEnabled,
-          ]),
-          Schema.Null,
+          HyperdriveHyperdriveCachingCommon,
+          HyperdriveHyperdriveCachingEnabled,
         ]),
-      ),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      mtls: Schema.optional(Schema.Union([Mtls, Schema.Null])),
-      originConnectionLimit: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          name: "name",
-          origin: "origin",
-          caching: "caching",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          mtls: "mtls",
-          originConnectionLimit: "origin_connection_limit",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    mtls: Schema.optional(Schema.Union([Mtls, Schema.Null])),
+    originConnectionLimit: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        name: "name",
+        origin: "origin",
+        caching: "caching",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        mtls: "mtls",
+        originConnectionLimit: "origin_connection_limit",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetConfigResponse>;
 
 export type GetConfigError =
@@ -602,7 +597,7 @@ export const getConfig: API.OperationMethod<
   GetConfigResponse,
   GetConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigRequest,
   output: GetConfigResponse,
   errors: [
@@ -617,16 +612,15 @@ export interface ListConfigsRequest {
   accountId: string;
 }
 
-export const ListConfigsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/hyperdrive/configs",
-      }),
-    ),
+export const ListConfigsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/hyperdrive/configs",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListConfigsRequest>;
 
 export interface ListConfigsResponse {
@@ -673,11 +667,10 @@ export interface ListConfigsResponse {
   }[];
 }
 
-export const ListConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(Hyperdrive),
-    }),
+export const ListConfigsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(Hyperdrive),
+  }),
 ) as unknown as Schema.Codec<ListConfigsResponse>;
 
 export type ListConfigsError =
@@ -690,7 +683,7 @@ export const listConfigs: API.PaginatedOperationMethod<
   ListConfigsResponse,
   ListConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConfigsRequest,
   output: ListConfigsResponse,
   errors: [PrivateHostNotAllowed, InvalidObjectIdentifier],
@@ -745,37 +738,36 @@ export interface CreateConfigRequest {
   originConnectionLimit?: number;
 }
 
-export const CreateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.String,
-      origin: Schema.Union([
-        AccessProtectedDatabaseBehindCloudflareTunnel2,
-        PublicDatabase2,
-        DatabaseReachableThroughAWorkersVPC2,
+export const CreateConfigRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.String,
+    origin: Schema.Union([
+      AccessProtectedDatabaseBehindCloudflareTunnel2,
+      PublicDatabase2,
+      DatabaseReachableThroughAWorkersVPC2,
+    ]),
+    caching: Schema.optional(
+      Schema.Union([
+        HyperdriveHyperdriveCachingCommon,
+        HyperdriveHyperdriveCachingEnabled,
       ]),
-      caching: Schema.optional(
-        Schema.Union([
-          HyperdriveHyperdriveCachingCommon,
-          HyperdriveHyperdriveCachingEnabled,
-        ]),
-      ),
-      mtls: Schema.optional(Mtls),
-      originConnectionLimit: Schema.optional(Schema.Number),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        origin: "origin",
-        caching: "caching",
-        mtls: "mtls",
-        originConnectionLimit: "origin_connection_limit",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/hyperdrive/configs",
-      }),
     ),
+    mtls: Schema.optional(Mtls),
+    originConnectionLimit: Schema.optional(Schema.Number),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      origin: "origin",
+      caching: "caching",
+      mtls: "mtls",
+      originConnectionLimit: "origin_connection_limit",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/hyperdrive/configs",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateConfigRequest>;
 
 export interface CreateConfigResponse {
@@ -826,45 +818,44 @@ export interface CreateConfigResponse {
   originConnectionLimit?: number | null;
 }
 
-export const CreateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      origin: Schema.Union([
-        PublicDatabase,
-        AccessProtectedDatabaseBehindCloudflareTunnel,
-        DatabaseReachableThroughAWorkersVPC,
-      ]),
-      caching: Schema.optional(
+export const CreateConfigResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    name: Schema.String,
+    origin: Schema.Union([
+      PublicDatabase,
+      AccessProtectedDatabaseBehindCloudflareTunnel,
+      DatabaseReachableThroughAWorkersVPC,
+    ]),
+    caching: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            HyperdriveHyperdriveCachingCommon,
-            HyperdriveHyperdriveCachingEnabled,
-          ]),
-          Schema.Null,
+          HyperdriveHyperdriveCachingCommon,
+          HyperdriveHyperdriveCachingEnabled,
         ]),
-      ),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      mtls: Schema.optional(Schema.Union([Mtls, Schema.Null])),
-      originConnectionLimit: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          name: "name",
-          origin: "origin",
-          caching: "caching",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          mtls: "mtls",
-          originConnectionLimit: "origin_connection_limit",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    mtls: Schema.optional(Schema.Union([Mtls, Schema.Null])),
+    originConnectionLimit: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        name: "name",
+        origin: "origin",
+        caching: "caching",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        mtls: "mtls",
+        originConnectionLimit: "origin_connection_limit",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateConfigResponse>;
 
 export type CreateConfigError =
@@ -878,7 +869,7 @@ export const createConfig: API.OperationMethod<
   CreateConfigResponse,
   CreateConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConfigRequest,
   output: CreateConfigResponse,
   errors: [
@@ -934,38 +925,37 @@ export interface UpdateConfigRequest {
   originConnectionLimit?: number;
 }
 
-export const UpdateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      hyperdriveId: Schema.String.pipe(T.HttpPath("hyperdriveId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.String,
-      origin: Schema.Union([
-        AccessProtectedDatabaseBehindCloudflareTunnel2,
-        PublicDatabase2,
-        DatabaseReachableThroughAWorkersVPC2,
+export const UpdateConfigRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    hyperdriveId: Schema.String.pipe(T.HttpPath("hyperdriveId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.String,
+    origin: Schema.Union([
+      AccessProtectedDatabaseBehindCloudflareTunnel2,
+      PublicDatabase2,
+      DatabaseReachableThroughAWorkersVPC2,
+    ]),
+    caching: Schema.optional(
+      Schema.Union([
+        HyperdriveHyperdriveCachingCommon,
+        HyperdriveHyperdriveCachingEnabled,
       ]),
-      caching: Schema.optional(
-        Schema.Union([
-          HyperdriveHyperdriveCachingCommon,
-          HyperdriveHyperdriveCachingEnabled,
-        ]),
-      ),
-      mtls: Schema.optional(Mtls),
-      originConnectionLimit: Schema.optional(Schema.Number),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        origin: "origin",
-        caching: "caching",
-        mtls: "mtls",
-        originConnectionLimit: "origin_connection_limit",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/hyperdrive/configs/{hyperdriveId}",
-      }),
     ),
+    mtls: Schema.optional(Mtls),
+    originConnectionLimit: Schema.optional(Schema.Number),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      origin: "origin",
+      caching: "caching",
+      mtls: "mtls",
+      originConnectionLimit: "origin_connection_limit",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/hyperdrive/configs/{hyperdriveId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateConfigRequest>;
 
 export interface UpdateConfigResponse {
@@ -1016,45 +1006,44 @@ export interface UpdateConfigResponse {
   originConnectionLimit?: number | null;
 }
 
-export const UpdateConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      origin: Schema.Union([
-        PublicDatabase,
-        AccessProtectedDatabaseBehindCloudflareTunnel,
-        DatabaseReachableThroughAWorkersVPC,
-      ]),
-      caching: Schema.optional(
+export const UpdateConfigResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    name: Schema.String,
+    origin: Schema.Union([
+      PublicDatabase,
+      AccessProtectedDatabaseBehindCloudflareTunnel,
+      DatabaseReachableThroughAWorkersVPC,
+    ]),
+    caching: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            HyperdriveHyperdriveCachingCommon,
-            HyperdriveHyperdriveCachingEnabled,
-          ]),
-          Schema.Null,
+          HyperdriveHyperdriveCachingCommon,
+          HyperdriveHyperdriveCachingEnabled,
         ]),
-      ),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      mtls: Schema.optional(Schema.Union([Mtls, Schema.Null])),
-      originConnectionLimit: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          name: "name",
-          origin: "origin",
-          caching: "caching",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          mtls: "mtls",
-          originConnectionLimit: "origin_connection_limit",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    mtls: Schema.optional(Schema.Union([Mtls, Schema.Null])),
+    originConnectionLimit: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        name: "name",
+        origin: "origin",
+        caching: "caching",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        mtls: "mtls",
+        originConnectionLimit: "origin_connection_limit",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateConfigResponse>;
 
 export type UpdateConfigError =
@@ -1069,7 +1058,7 @@ export const updateConfig: API.OperationMethod<
   UpdateConfigResponse,
   UpdateConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConfigRequest,
   output: UpdateConfigResponse,
   errors: [
@@ -1111,41 +1100,40 @@ export interface PatchConfigRequest {
   originConnectionLimit?: number;
 }
 
-export const PatchConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      hyperdriveId: Schema.String.pipe(T.HttpPath("hyperdriveId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      caching: Schema.optional(
-        Schema.Union([
-          HyperdriveHyperdriveCachingCommon,
-          HyperdriveHyperdriveCachingEnabled,
-        ]),
-      ),
-      mtls: Schema.optional(Mtls),
-      name: Schema.optional(Schema.String),
-      origin: Schema.optional(
-        Schema.Union([
-          HyperdriveOverAccessOrigin,
-          HyperdriveInternetOrigin,
-          HyperdriveVPCServiceOrigin,
-          HyperdriveHyperdriveDatabase,
-        ]),
-      ),
-      originConnectionLimit: Schema.optional(Schema.Number),
-    }).pipe(
-      Schema.encodeKeys({
-        caching: "caching",
-        mtls: "mtls",
-        name: "name",
-        origin: "origin",
-        originConnectionLimit: "origin_connection_limit",
-      }),
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/hyperdrive/configs/{hyperdriveId}",
-      }),
+export const PatchConfigRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    hyperdriveId: Schema.String.pipe(T.HttpPath("hyperdriveId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    caching: Schema.optional(
+      Schema.Union([
+        HyperdriveHyperdriveCachingCommon,
+        HyperdriveHyperdriveCachingEnabled,
+      ]),
     ),
+    mtls: Schema.optional(Mtls),
+    name: Schema.optional(Schema.String),
+    origin: Schema.optional(
+      Schema.Union([
+        HyperdriveOverAccessOrigin,
+        HyperdriveInternetOrigin,
+        HyperdriveVPCServiceOrigin,
+        HyperdriveHyperdriveDatabase,
+      ]),
+    ),
+    originConnectionLimit: Schema.optional(Schema.Number),
+  }).pipe(
+    Schema.encodeKeys({
+      caching: "caching",
+      mtls: "mtls",
+      name: "name",
+      origin: "origin",
+      originConnectionLimit: "origin_connection_limit",
+    }),
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/hyperdrive/configs/{hyperdriveId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchConfigRequest>;
 
 export interface PatchConfigResponse {
@@ -1196,45 +1184,44 @@ export interface PatchConfigResponse {
   originConnectionLimit?: number | null;
 }
 
-export const PatchConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      origin: Schema.Union([
-        PublicDatabase,
-        AccessProtectedDatabaseBehindCloudflareTunnel,
-        DatabaseReachableThroughAWorkersVPC,
-      ]),
-      caching: Schema.optional(
+export const PatchConfigResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    name: Schema.String,
+    origin: Schema.Union([
+      PublicDatabase,
+      AccessProtectedDatabaseBehindCloudflareTunnel,
+      DatabaseReachableThroughAWorkersVPC,
+    ]),
+    caching: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            HyperdriveHyperdriveCachingCommon,
-            HyperdriveHyperdriveCachingEnabled,
-          ]),
-          Schema.Null,
+          HyperdriveHyperdriveCachingCommon,
+          HyperdriveHyperdriveCachingEnabled,
         ]),
-      ),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      mtls: Schema.optional(Schema.Union([Mtls, Schema.Null])),
-      originConnectionLimit: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          name: "name",
-          origin: "origin",
-          caching: "caching",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          mtls: "mtls",
-          originConnectionLimit: "origin_connection_limit",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    mtls: Schema.optional(Schema.Union([Mtls, Schema.Null])),
+    originConnectionLimit: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        name: "name",
+        origin: "origin",
+        caching: "caching",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        mtls: "mtls",
+        originConnectionLimit: "origin_connection_limit",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchConfigResponse>;
 
 export type PatchConfigError =
@@ -1249,7 +1236,7 @@ export const patchConfig: API.OperationMethod<
   PatchConfigResponse,
   PatchConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchConfigRequest,
   output: PatchConfigResponse,
   errors: [
@@ -1266,23 +1253,22 @@ export interface DeleteConfigRequest {
   accountId: string;
 }
 
-export const DeleteConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      hyperdriveId: Schema.String.pipe(T.HttpPath("hyperdriveId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/hyperdrive/configs/{hyperdriveId}",
-      }),
-    ),
+export const DeleteConfigRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    hyperdriveId: Schema.String.pipe(T.HttpPath("hyperdriveId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/hyperdrive/configs/{hyperdriveId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteConfigRequest>;
 
 export type DeleteConfigResponse = unknown;
 
-export const DeleteConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+export const DeleteConfigResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteConfigResponse>;
 
 export type DeleteConfigError =
@@ -1297,7 +1283,7 @@ export const deleteConfig: API.OperationMethod<
   DeleteConfigResponse,
   DeleteConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConfigRequest,
   output: DeleteConfigResponse,
   errors: [

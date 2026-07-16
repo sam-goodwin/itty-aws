@@ -11,7 +11,7 @@ export interface DeleteGroupServiceAccountInput {
   pretty?: boolean;
 }
 export const DeleteGroupServiceAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const DeleteGroupServiceAccountInput =
 // Output Schema
 export type DeleteGroupServiceAccountOutput = void;
 export const DeleteGroupServiceAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupServiceAccountOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupServiceAccountOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const DeleteGroupServiceAccountOutput =
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const deleteGroupServiceAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupServiceAccountInput,
-    outputSchema: DeleteGroupServiceAccountOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const deleteGroupServiceAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupServiceAccountInput,
+  outputSchema: DeleteGroupServiceAccountOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

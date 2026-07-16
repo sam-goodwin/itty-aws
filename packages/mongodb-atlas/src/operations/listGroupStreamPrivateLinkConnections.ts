@@ -12,7 +12,7 @@ export interface ListGroupStreamPrivateLinkConnectionsInput {
   pretty?: boolean;
 }
 export const ListGroupStreamPrivateLinkConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     itemsPerPage: Schema.optional(Schema.Number),
@@ -28,7 +28,7 @@ export const ListGroupStreamPrivateLinkConnectionsInput =
 // Output Schema
 export type ListGroupStreamPrivateLinkConnectionsOutput = void;
 export const ListGroupStreamPrivateLinkConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupStreamPrivateLinkConnectionsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupStreamPrivateLinkConnectionsOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const ListGroupStreamPrivateLinkConnectionsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const listGroupStreamPrivateLinkConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupStreamPrivateLinkConnectionsInput,
     outputSchema: ListGroupStreamPrivateLinkConnectionsOutput,
     errors: [Forbidden, NotFound] as const,

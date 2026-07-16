@@ -8,7 +8,7 @@ export interface DeleteV2CoreAccountsAccountIdPersonsIdInput {
   id: string;
 }
 export const DeleteV2CoreAccountsAccountIdPersonsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -24,7 +24,7 @@ export interface DeleteV2CoreAccountsAccountIdPersonsIdOutput {
   object?: string;
 }
 export const DeleteV2CoreAccountsAccountIdPersonsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     object: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DeleteV2CoreAccountsAccountIdPersonsIdOutput>;
@@ -39,7 +39,7 @@ export const DeleteV2CoreAccountsAccountIdPersonsIdOutput =
  * @param id - The ID of the Person to delete.
  */
 export const DeleteV2CoreAccountsAccountIdPersonsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteV2CoreAccountsAccountIdPersonsIdInput,
     outputSchema: DeleteV2CoreAccountsAccountIdPersonsIdOutput,
   }));

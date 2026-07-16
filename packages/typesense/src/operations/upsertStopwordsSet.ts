@@ -10,7 +10,7 @@ export interface UpsertStopwordsSetInput {
   locale?: string;
 }
 export const UpsertStopwordsSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     setId: Schema.String.pipe(T.PathParam()),
     stopwords: Schema.Array(Schema.String),
     locale: Schema.optional(Schema.String),
@@ -25,7 +25,7 @@ export interface UpsertStopwordsSetOutput {
   locale?: string;
 }
 export const UpsertStopwordsSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     stopwords: Schema.Array(Schema.String),
     locale: Schema.optional(Schema.String),
@@ -39,7 +39,7 @@ export const UpsertStopwordsSetOutput =
  *
  * @param setId - The ID of the stopwords set to upsert.
  */
-export const upsertStopwordsSet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const upsertStopwordsSet = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpsertStopwordsSetInput,
   outputSchema: UpsertStopwordsSetOutput,
   errors: [BadRequest] as const,

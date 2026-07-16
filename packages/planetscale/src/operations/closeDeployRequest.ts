@@ -11,7 +11,7 @@ export interface CloseDeployRequestInput {
   state?: "closed";
 }
 export const CloseDeployRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -200,7 +200,7 @@ export interface CloseDeployRequestOutput {
   deployed_at: string | null;
 }
 export const CloseDeployRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     number: Schema.Number,
     actor: Schema.Struct({
@@ -443,7 +443,7 @@ export const CloseDeployRequestOutput =
  * @param number - The number of the deploy request
  * @param state - The deploy request will be updated to this state
  */
-export const closeDeployRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const closeDeployRequest = /*@__PURE__*/ API.make(() => ({
   inputSchema: CloseDeployRequestInput,
   outputSchema: CloseDeployRequestOutput,
   errors: [Forbidden, NotFound] as const,

@@ -11,7 +11,7 @@ export interface AgentApplicationsApprovalsListInput {
   state?: string;
 }
 export const AgentApplicationsApprovalsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
@@ -55,7 +55,7 @@ export interface AgentApplicationsApprovalsListOutput {
   }[];
 }
 export const AgentApplicationsApprovalsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -103,7 +103,7 @@ export const AgentApplicationsApprovalsListOutput =
  * @param state - Filter by approval state. Comma-separated list accepted. Valid values: queued, approving, dispatched, dispatched_failed, rejected, expired. Defaults to all states.
  */
 export const agentApplicationsApprovalsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsApprovalsListInput,
     outputSchema: AgentApplicationsApprovalsListOutput,
   }));

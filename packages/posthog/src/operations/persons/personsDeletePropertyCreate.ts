@@ -11,7 +11,7 @@ export interface PersonsDeletePropertyCreateInput {
   $unset?: string;
 }
 export const PersonsDeletePropertyCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
@@ -26,7 +26,7 @@ export const PersonsDeletePropertyCreateInput =
 // Output Schema
 export type PersonsDeletePropertyCreateOutput = void;
 export const PersonsDeletePropertyCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsDeletePropertyCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsDeletePropertyCreateOutput>;
 
 // The operation
 /**
@@ -35,10 +35,8 @@ export const PersonsDeletePropertyCreateOutput =
  * @param id - A unique value identifying this person. Accepts both numeric ID and UUID.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsDeletePropertyCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsDeletePropertyCreateInput,
-    outputSchema: PersonsDeletePropertyCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsDeletePropertyCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsDeletePropertyCreateInput,
+  outputSchema: PersonsDeletePropertyCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

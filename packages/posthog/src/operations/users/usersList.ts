@@ -12,7 +12,7 @@ export interface UsersListInput {
   limit?: number;
   offset?: number;
 }
-export const UsersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersListInput = /*@__PURE__*/ Schema.Struct({
   email: Schema.optional(Schema.String),
   is_staff: Schema.optional(Schema.Boolean),
   limit: Schema.optional(Schema.Number),
@@ -743,7 +743,7 @@ export interface UsersListOutput {
     requires_credential_review?: boolean;
   }[];
 }
-export const UsersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1578,7 +1578,7 @@ export const UsersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param limit - Number of results to return per page.
  * @param offset - The initial index from which to return the results.
  */
-export const usersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const usersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersListInput,
   outputSchema: UsersListOutput,
   errors: [BadRequest, Forbidden] as const,

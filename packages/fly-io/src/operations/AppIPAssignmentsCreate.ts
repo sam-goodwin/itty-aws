@@ -13,7 +13,7 @@ export interface AppIPAssignmentsCreateInput {
   type?: string;
 }
 export const AppIPAssignmentsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     network: Schema.optional(Schema.String),
     org_slug: Schema.optional(Schema.String),
@@ -33,7 +33,7 @@ export interface AppIPAssignmentsCreateOutput {
   shared?: boolean;
 }
 export const AppIPAssignmentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created_at: Schema.optional(Schema.String),
     ip: Schema.optional(Schema.String),
     region: Schema.optional(Schema.String),
@@ -47,10 +47,8 @@ export const AppIPAssignmentsCreateOutput =
  *
  * @param app_name - Fly App Name
  */
-export const AppIPAssignmentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppIPAssignmentsCreateInput,
-    outputSchema: AppIPAssignmentsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const AppIPAssignmentsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppIPAssignmentsCreateInput,
+  outputSchema: AppIPAssignmentsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

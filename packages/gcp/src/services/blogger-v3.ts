@@ -53,7 +53,7 @@ export interface Comment {
 }
 
 export const Comment: Schema.Codec<Comment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -139,7 +139,7 @@ export interface Post {
 }
 
 export const Post: Schema.Codec<Post> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -222,7 +222,7 @@ export interface Blog {
 }
 
 export const Blog: Schema.Codec<Blog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -276,7 +276,7 @@ export interface BlogPerUserInfo {
 }
 
 export const BlogPerUserInfo: Schema.Codec<BlogPerUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.String),
     blogId: Schema.optional(Schema.String),
@@ -295,7 +295,7 @@ export interface BlogUserInfo {
 }
 
 export const BlogUserInfo: Schema.Codec<BlogUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     blog: Schema.optional(Blog),
     blog_user_info: Schema.optional(BlogPerUserInfo),
@@ -314,7 +314,7 @@ export interface Pageviews {
 }
 
 export const Pageviews: Schema.Codec<Pageviews> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     blogId: Schema.optional(Schema.String),
     counts: Schema.optional(
@@ -362,7 +362,7 @@ export interface Page {
 }
 
 export const Page: Schema.Codec<Page> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -403,7 +403,7 @@ export interface PostPerUserInfo {
 }
 
 export const PostPerUserInfo: Schema.Codec<PostPerUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     userId: Schema.optional(Schema.String),
     blogId: Schema.optional(Schema.String),
@@ -421,7 +421,7 @@ export interface PostUserInfo {
 }
 
 export const PostUserInfo: Schema.Codec<PostUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     post: Schema.optional(Post),
     post_user_info: Schema.optional(PostPerUserInfo),
@@ -449,7 +449,7 @@ export interface User {
 }
 
 export const User: Schema.Codec<User> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     created: Schema.optional(Schema.String),
@@ -479,7 +479,7 @@ export interface BlogList {
 }
 
 export const BlogList: Schema.Codec<BlogList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Blog)),
     blogUserInfos: Schema.optional(Schema.Array(BlogUserInfo)),
@@ -499,7 +499,7 @@ export interface CommentList {
 }
 
 export const CommentList: Schema.Codec<CommentList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
     prevPageToken: Schema.optional(Schema.String),
@@ -519,7 +519,7 @@ export interface PageList {
 }
 
 export const PageList: Schema.Codec<PageList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Page)),
     nextPageToken: Schema.optional(Schema.String),
@@ -540,7 +540,7 @@ export interface PostList {
 }
 
 export const PostList: Schema.Codec<PostList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(Post)),
@@ -558,7 +558,7 @@ export interface PostUserInfosList {
 }
 
 export const PostUserInfosList: Schema.Codec<PostUserInfosList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(PostUserInfo)),
@@ -624,13 +624,11 @@ export interface ApproveCommentsRequest {
   commentId: string;
 }
 
-export const ApproveCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    blogId: Schema.String.pipe(T.HttpPath("blogId")),
-    postId: Schema.String.pipe(T.HttpPath("postId")),
-    commentId: Schema.String.pipe(T.HttpPath("commentId")),
-  },
-).pipe(
+export const ApproveCommentsRequest = /*@__PURE__*/ Schema.Struct({
+  blogId: Schema.String.pipe(T.HttpPath("blogId")),
+  postId: Schema.String.pipe(T.HttpPath("postId")),
+  commentId: Schema.String.pipe(T.HttpPath("commentId")),
+}).pipe(
   T.Http({
     method: "POST",
     path: "v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/approve",
@@ -640,7 +638,7 @@ export const ApproveCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<ApproveCommentsRequest>;
 
 export type ApproveCommentsResponse = Comment;
-export const ApproveCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
+export const ApproveCommentsResponse = /*@__PURE__*/ Comment;
 
 export type ApproveCommentsError =
   | DefaultErrors
@@ -655,7 +653,7 @@ export const approveComments: API.OperationMethod<
   ApproveCommentsResponse,
   ApproveCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApproveCommentsRequest,
   output: ApproveCommentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -667,7 +665,7 @@ export interface DeleteCommentsRequest {
   commentId: string;
 }
 
-export const DeleteCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteCommentsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   postId: Schema.String.pipe(T.HttpPath("postId")),
   commentId: Schema.String.pipe(T.HttpPath("commentId")),
@@ -681,7 +679,7 @@ export const DeleteCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteCommentsResponse {}
 export const DeleteCommentsResponse: Schema.Codec<DeleteCommentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteCommentsResponse>;
 
@@ -698,7 +696,7 @@ export const deleteComments: API.OperationMethod<
   DeleteCommentsResponse,
   DeleteCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCommentsRequest,
   output: DeleteCommentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -716,7 +714,7 @@ export interface GetCommentsRequest {
     | (string & {});
 }
 
-export const GetCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCommentsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   postId: Schema.String.pipe(T.HttpPath("postId")),
   commentId: Schema.String.pipe(T.HttpPath("commentId")),
@@ -730,7 +728,7 @@ export const GetCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetCommentsRequest>;
 
 export type GetCommentsResponse = Comment;
-export const GetCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
+export const GetCommentsResponse = /*@__PURE__*/ Comment;
 
 export type GetCommentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -740,7 +738,7 @@ export const getComments: API.OperationMethod<
   GetCommentsResponse,
   GetCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCommentsRequest,
   output: GetCommentsResponse,
   errors: [NotFound, Forbidden],
@@ -763,7 +761,7 @@ export interface ListCommentsRequest {
   status?: "LIVE" | "EMPTIED" | "PENDING" | "SPAM" | (string & {});
 }
 
-export const ListCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListCommentsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   postId: Schema.String.pipe(T.HttpPath("postId")),
   startDate: Schema.optional(Schema.String).pipe(T.HttpQuery("startDate")),
@@ -779,7 +777,7 @@ export const ListCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListCommentsRequest>;
 
 export type ListCommentsResponse = CommentList;
-export const ListCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ CommentList;
+export const ListCommentsResponse = /*@__PURE__*/ CommentList;
 
 export type ListCommentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -789,7 +787,7 @@ export const listComments: API.PaginatedOperationMethod<
   ListCommentsResponse,
   ListCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCommentsRequest,
   output: ListCommentsResponse,
   errors: [NotFound, Forbidden],
@@ -811,7 +809,7 @@ export interface ListByBlogCommentsRequest {
 }
 
 export const ListByBlogCommentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     blogId: Schema.String.pipe(T.HttpPath("blogId")),
     startDate: Schema.optional(Schema.String).pipe(T.HttpQuery("startDate")),
     endDate: Schema.optional(Schema.String).pipe(T.HttpQuery("endDate")),
@@ -829,8 +827,7 @@ export const ListByBlogCommentsRequest =
   ) as unknown as Schema.Codec<ListByBlogCommentsRequest>;
 
 export type ListByBlogCommentsResponse = CommentList;
-export const ListByBlogCommentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CommentList;
+export const ListByBlogCommentsResponse = /*@__PURE__*/ CommentList;
 
 export type ListByBlogCommentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -840,7 +837,7 @@ export const listByBlogComments: API.PaginatedOperationMethod<
   ListByBlogCommentsResponse,
   ListByBlogCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListByBlogCommentsRequest,
   output: ListByBlogCommentsResponse,
   errors: [NotFound, Forbidden],
@@ -858,7 +855,7 @@ export interface MarkAsSpamCommentsRequest {
 }
 
 export const MarkAsSpamCommentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     blogId: Schema.String.pipe(T.HttpPath("blogId")),
     postId: Schema.String.pipe(T.HttpPath("postId")),
     commentId: Schema.String.pipe(T.HttpPath("commentId")),
@@ -872,7 +869,7 @@ export const MarkAsSpamCommentsRequest =
   ) as unknown as Schema.Codec<MarkAsSpamCommentsRequest>;
 
 export type MarkAsSpamCommentsResponse = Comment;
-export const MarkAsSpamCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
+export const MarkAsSpamCommentsResponse = /*@__PURE__*/ Comment;
 
 export type MarkAsSpamCommentsError =
   | DefaultErrors
@@ -887,7 +884,7 @@ export const markAsSpamComments: API.OperationMethod<
   MarkAsSpamCommentsResponse,
   MarkAsSpamCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MarkAsSpamCommentsRequest,
   output: MarkAsSpamCommentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -900,7 +897,7 @@ export interface RemoveContentCommentsRequest {
 }
 
 export const RemoveContentCommentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     blogId: Schema.String.pipe(T.HttpPath("blogId")),
     postId: Schema.String.pipe(T.HttpPath("postId")),
     commentId: Schema.String.pipe(T.HttpPath("commentId")),
@@ -914,8 +911,7 @@ export const RemoveContentCommentsRequest =
   ) as unknown as Schema.Codec<RemoveContentCommentsRequest>;
 
 export type RemoveContentCommentsResponse = Comment;
-export const RemoveContentCommentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Comment;
+export const RemoveContentCommentsResponse = /*@__PURE__*/ Comment;
 
 export type RemoveContentCommentsError =
   | DefaultErrors
@@ -930,7 +926,7 @@ export const removeContentComments: API.OperationMethod<
   RemoveContentCommentsResponse,
   RemoveContentCommentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveContentCommentsRequest,
   output: RemoveContentCommentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -943,7 +939,7 @@ export interface DeletePagesRequest {
   useTrash?: boolean;
 }
 
-export const DeletePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePagesRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   pageId: Schema.String.pipe(T.HttpPath("pageId")),
   useTrash: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("useTrash")),
@@ -954,9 +950,7 @@ export const DeletePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeletePagesResponse {}
 export const DeletePagesResponse: Schema.Codec<DeletePagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<DeletePagesResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<DeletePagesResponse>;
 
 export type DeletePagesError =
   | DefaultErrors
@@ -971,7 +965,7 @@ export const deletePages: API.OperationMethod<
   DeletePagesResponse,
   DeletePagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePagesRequest,
   output: DeletePagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -988,7 +982,7 @@ export interface GetPagesRequest {
     | (string & {});
 }
 
-export const GetPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPagesRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   pageId: Schema.String.pipe(T.HttpPath("pageId")),
   view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
@@ -998,7 +992,7 @@ export const GetPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetPagesRequest>;
 
 export type GetPagesResponse = Page;
-export const GetPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
+export const GetPagesResponse = /*@__PURE__*/ Page;
 
 export type GetPagesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1008,7 +1002,7 @@ export const getPages: API.OperationMethod<
   GetPagesResponse,
   GetPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPagesRequest,
   output: GetPagesResponse,
   errors: [NotFound, Forbidden],
@@ -1021,7 +1015,7 @@ export interface InsertPagesRequest {
   body?: Page;
 }
 
-export const InsertPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertPagesRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   isDraft: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("isDraft")),
   body: Schema.optional(Page).pipe(T.HttpBody()),
@@ -1031,7 +1025,7 @@ export const InsertPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertPagesRequest>;
 
 export type InsertPagesResponse = Page;
-export const InsertPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
+export const InsertPagesResponse = /*@__PURE__*/ Page;
 
 export type InsertPagesError =
   | DefaultErrors
@@ -1046,7 +1040,7 @@ export const insertPages: API.OperationMethod<
   InsertPagesResponse,
   InsertPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertPagesRequest,
   output: InsertPagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1066,7 +1060,7 @@ export interface ListPagesRequest {
     | (string & {});
 }
 
-export const ListPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPagesRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   fetchBodies: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("fetchBodies")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -1081,7 +1075,7 @@ export const ListPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListPagesRequest>;
 
 export type ListPagesResponse = PageList;
-export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ PageList;
+export const ListPagesResponse = /*@__PURE__*/ PageList;
 
 export type ListPagesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1091,7 +1085,7 @@ export const listPages: API.PaginatedOperationMethod<
   ListPagesResponse,
   ListPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPagesRequest,
   output: ListPagesResponse,
   errors: [NotFound, Forbidden],
@@ -1111,7 +1105,7 @@ export interface PatchPagesRequest {
   body?: Page;
 }
 
-export const PatchPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchPagesRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   pageId: Schema.String.pipe(T.HttpPath("pageId")),
   publish: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("publish")),
@@ -1127,7 +1121,7 @@ export const PatchPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchPagesRequest>;
 
 export type PatchPagesResponse = Page;
-export const PatchPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
+export const PatchPagesResponse = /*@__PURE__*/ Page;
 
 export type PatchPagesError =
   | DefaultErrors
@@ -1142,7 +1136,7 @@ export const patchPages: API.OperationMethod<
   PatchPagesResponse,
   PatchPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPagesRequest,
   output: PatchPagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1153,7 +1147,7 @@ export interface PublishPagesRequest {
   pageId: string;
 }
 
-export const PublishPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishPagesRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   pageId: Schema.String.pipe(T.HttpPath("pageId")),
 }).pipe(
@@ -1166,7 +1160,7 @@ export const PublishPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PublishPagesRequest>;
 
 export type PublishPagesResponse = Page;
-export const PublishPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
+export const PublishPagesResponse = /*@__PURE__*/ Page;
 
 export type PublishPagesError =
   | DefaultErrors
@@ -1181,7 +1175,7 @@ export const publishPages: API.OperationMethod<
   PublishPagesResponse,
   PublishPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishPagesRequest,
   output: PublishPagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1192,7 +1186,7 @@ export interface RevertPagesRequest {
   pageId: string;
 }
 
-export const RevertPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RevertPagesRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   pageId: Schema.String.pipe(T.HttpPath("pageId")),
 }).pipe(
@@ -1205,7 +1199,7 @@ export const RevertPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<RevertPagesRequest>;
 
 export type RevertPagesResponse = Page;
-export const RevertPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
+export const RevertPagesResponse = /*@__PURE__*/ Page;
 
 export type RevertPagesError =
   | DefaultErrors
@@ -1220,7 +1214,7 @@ export const revertPages: API.OperationMethod<
   RevertPagesResponse,
   RevertPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevertPagesRequest,
   output: RevertPagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1235,7 +1229,7 @@ export interface UpdatePagesRequest {
   body?: Page;
 }
 
-export const UpdatePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePagesRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   pageId: Schema.String.pipe(T.HttpPath("pageId")),
   publish: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("publish")),
@@ -1251,7 +1245,7 @@ export const UpdatePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdatePagesRequest>;
 
 export type UpdatePagesResponse = Page;
-export const UpdatePagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
+export const UpdatePagesResponse = /*@__PURE__*/ Page;
 
 export type UpdatePagesError =
   | DefaultErrors
@@ -1266,7 +1260,7 @@ export const updatePages: API.OperationMethod<
   UpdatePagesResponse,
   UpdatePagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePagesRequest,
   output: UpdatePagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1279,7 +1273,7 @@ export interface DeletePostsRequest {
   useTrash?: boolean;
 }
 
-export const DeletePostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePostsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   postId: Schema.String.pipe(T.HttpPath("postId")),
   useTrash: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("useTrash")),
@@ -1290,9 +1284,7 @@ export const DeletePostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeletePostsResponse {}
 export const DeletePostsResponse: Schema.Codec<DeletePostsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<DeletePostsResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<DeletePostsResponse>;
 
 export type DeletePostsError =
   | DefaultErrors
@@ -1307,7 +1299,7 @@ export const deletePosts: API.OperationMethod<
   DeletePostsResponse,
   DeletePostsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePostsRequest,
   output: DeletePostsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1327,7 +1319,7 @@ export interface GetPostsRequest {
     | (string & {});
 }
 
-export const GetPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPostsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   postId: Schema.String.pipe(T.HttpPath("postId")),
   fetchBody: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("fetchBody")),
@@ -1340,7 +1332,7 @@ export const GetPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetPostsRequest>;
 
 export type GetPostsResponse = Post;
-export const GetPostsResponse = /*@__PURE__*/ /*#__PURE__*/ Post;
+export const GetPostsResponse = /*@__PURE__*/ Post;
 
 export type GetPostsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1350,7 +1342,7 @@ export const getPosts: API.OperationMethod<
   GetPostsResponse,
   GetPostsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPostsRequest,
   output: GetPostsResponse,
   errors: [NotFound, Forbidden],
@@ -1368,7 +1360,7 @@ export interface GetByPathPostsRequest {
     | (string & {});
 }
 
-export const GetByPathPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetByPathPostsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   path: Schema.String.pipe(T.HttpQuery("path")),
   maxComments: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxComments")),
@@ -1379,7 +1371,7 @@ export const GetByPathPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetByPathPostsRequest>;
 
 export type GetByPathPostsResponse = Post;
-export const GetByPathPostsResponse = /*@__PURE__*/ /*#__PURE__*/ Post;
+export const GetByPathPostsResponse = /*@__PURE__*/ Post;
 
 export type GetByPathPostsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1389,7 +1381,7 @@ export const getByPathPosts: API.OperationMethod<
   GetByPathPostsResponse,
   GetByPathPostsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetByPathPostsRequest,
   output: GetByPathPostsResponse,
   errors: [NotFound, Forbidden],
@@ -1404,7 +1396,7 @@ export interface InsertPostsRequest {
   body?: Post;
 }
 
-export const InsertPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertPostsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   fetchBody: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("fetchBody")),
   fetchImages: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("fetchImages")),
@@ -1416,7 +1408,7 @@ export const InsertPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertPostsRequest>;
 
 export type InsertPostsResponse = Post;
-export const InsertPostsResponse = /*@__PURE__*/ /*#__PURE__*/ Post;
+export const InsertPostsResponse = /*@__PURE__*/ Post;
 
 export type InsertPostsError =
   | DefaultErrors
@@ -1431,7 +1423,7 @@ export const insertPosts: API.OperationMethod<
   InsertPostsResponse,
   InsertPostsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertPostsRequest,
   output: InsertPostsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1462,7 +1454,7 @@ export interface ListPostsRequest {
     | (string & {});
 }
 
-export const ListPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPostsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   endDate: Schema.optional(Schema.String).pipe(T.HttpQuery("endDate")),
   fetchBodies: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("fetchBodies")),
@@ -1483,7 +1475,7 @@ export const ListPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListPostsRequest>;
 
 export type ListPostsResponse = PostList;
-export const ListPostsResponse = /*@__PURE__*/ /*#__PURE__*/ PostList;
+export const ListPostsResponse = /*@__PURE__*/ PostList;
 
 export type ListPostsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1493,7 +1485,7 @@ export const listPosts: API.PaginatedOperationMethod<
   ListPostsResponse,
   ListPostsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPostsRequest,
   output: ListPostsResponse,
   errors: [NotFound, Forbidden],
@@ -1516,7 +1508,7 @@ export interface PatchPostsRequest {
   body?: Post;
 }
 
-export const PatchPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchPostsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   postId: Schema.String.pipe(T.HttpPath("postId")),
   fetchBody: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("fetchBody")),
@@ -1535,7 +1527,7 @@ export const PatchPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchPostsRequest>;
 
 export type PatchPostsResponse = Post;
-export const PatchPostsResponse = /*@__PURE__*/ /*#__PURE__*/ Post;
+export const PatchPostsResponse = /*@__PURE__*/ Post;
 
 export type PatchPostsError =
   | DefaultErrors
@@ -1550,7 +1542,7 @@ export const patchPosts: API.OperationMethod<
   PatchPostsResponse,
   PatchPostsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPostsRequest,
   output: PatchPostsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1562,7 +1554,7 @@ export interface PublishPostsRequest {
   publishDate?: string;
 }
 
-export const PublishPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishPostsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   postId: Schema.String.pipe(T.HttpPath("postId")),
   publishDate: Schema.optional(Schema.String).pipe(T.HttpQuery("publishDate")),
@@ -1576,7 +1568,7 @@ export const PublishPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PublishPostsRequest>;
 
 export type PublishPostsResponse = Post;
-export const PublishPostsResponse = /*@__PURE__*/ /*#__PURE__*/ Post;
+export const PublishPostsResponse = /*@__PURE__*/ Post;
 
 export type PublishPostsError =
   | DefaultErrors
@@ -1591,7 +1583,7 @@ export const publishPosts: API.OperationMethod<
   PublishPostsResponse,
   PublishPostsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishPostsRequest,
   output: PublishPostsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1602,7 +1594,7 @@ export interface RevertPostsRequest {
   postId: string;
 }
 
-export const RevertPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RevertPostsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   postId: Schema.String.pipe(T.HttpPath("postId")),
 }).pipe(
@@ -1615,7 +1607,7 @@ export const RevertPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<RevertPostsRequest>;
 
 export type RevertPostsResponse = Post;
-export const RevertPostsResponse = /*@__PURE__*/ /*#__PURE__*/ Post;
+export const RevertPostsResponse = /*@__PURE__*/ Post;
 
 export type RevertPostsError =
   | DefaultErrors
@@ -1630,7 +1622,7 @@ export const revertPosts: API.OperationMethod<
   RevertPostsResponse,
   RevertPostsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevertPostsRequest,
   output: RevertPostsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1643,7 +1635,7 @@ export interface SearchPostsRequest {
   orderBy?: "ORDER_BY_UNSPECIFIED" | "PUBLISHED" | "UPDATED" | (string & {});
 }
 
-export const SearchPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SearchPostsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   q: Schema.String.pipe(T.HttpQuery("q")),
   fetchBodies: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("fetchBodies")),
@@ -1654,7 +1646,7 @@ export const SearchPostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<SearchPostsRequest>;
 
 export type SearchPostsResponse = PostList;
-export const SearchPostsResponse = /*@__PURE__*/ /*#__PURE__*/ PostList;
+export const SearchPostsResponse = /*@__PURE__*/ PostList;
 
 export type SearchPostsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1664,7 +1656,7 @@ export const searchPosts: API.OperationMethod<
   SearchPostsResponse,
   SearchPostsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchPostsRequest,
   output: SearchPostsResponse,
   errors: [NotFound, Forbidden],
@@ -1682,7 +1674,7 @@ export interface UpdatePostsRequest {
   body?: Post;
 }
 
-export const UpdatePostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePostsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   postId: Schema.String.pipe(T.HttpPath("postId")),
   fetchBody: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("fetchBody")),
@@ -1701,7 +1693,7 @@ export const UpdatePostsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdatePostsRequest>;
 
 export type UpdatePostsResponse = Post;
-export const UpdatePostsResponse = /*@__PURE__*/ /*#__PURE__*/ Post;
+export const UpdatePostsResponse = /*@__PURE__*/ Post;
 
 export type UpdatePostsError =
   | DefaultErrors
@@ -1716,7 +1708,7 @@ export const updatePosts: API.OperationMethod<
   UpdatePostsResponse,
   UpdatePostsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePostsRequest,
   output: UpdatePostsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1734,7 +1726,7 @@ export interface GetBlogsRequest {
     | (string & {});
 }
 
-export const GetBlogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBlogsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   maxPosts: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxPosts")),
   view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
@@ -1744,7 +1736,7 @@ export const GetBlogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetBlogsRequest>;
 
 export type GetBlogsResponse = Blog;
-export const GetBlogsResponse = /*@__PURE__*/ /*#__PURE__*/ Blog;
+export const GetBlogsResponse = /*@__PURE__*/ Blog;
 
 export type GetBlogsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1754,7 +1746,7 @@ export const getBlogs: API.OperationMethod<
   GetBlogsResponse,
   GetBlogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBlogsRequest,
   output: GetBlogsResponse,
   errors: [NotFound, Forbidden],
@@ -1771,7 +1763,7 @@ export interface GetByUrlBlogsRequest {
     | (string & {});
 }
 
-export const GetByUrlBlogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetByUrlBlogsRequest = /*@__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpQuery("url")),
   view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
 }).pipe(
@@ -1780,7 +1772,7 @@ export const GetByUrlBlogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetByUrlBlogsRequest>;
 
 export type GetByUrlBlogsResponse = Blog;
-export const GetByUrlBlogsResponse = /*@__PURE__*/ /*#__PURE__*/ Blog;
+export const GetByUrlBlogsResponse = /*@__PURE__*/ Blog;
 
 export type GetByUrlBlogsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1790,7 +1782,7 @@ export const getByUrlBlogs: API.OperationMethod<
   GetByUrlBlogsResponse,
   GetByUrlBlogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetByUrlBlogsRequest,
   output: GetByUrlBlogsResponse,
   errors: [NotFound, Forbidden],
@@ -1816,27 +1808,23 @@ export interface ListByUserBlogsRequest {
     | (string & {});
 }
 
-export const ListByUserBlogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    userId: Schema.String.pipe(T.HttpPath("userId")),
-    fetchUserInfo: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("fetchUserInfo"),
-    ),
-    role: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("role"),
-    ),
-    status: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("status"),
-    ),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-  },
-).pipe(
+export const ListByUserBlogsRequest = /*@__PURE__*/ Schema.Struct({
+  userId: Schema.String.pipe(T.HttpPath("userId")),
+  fetchUserInfo: Schema.optional(Schema.Boolean).pipe(
+    T.HttpQuery("fetchUserInfo"),
+  ),
+  role: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("role")),
+  status: Schema.optional(Schema.Array(Schema.String)).pipe(
+    T.HttpQuery("status"),
+  ),
+  view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+}).pipe(
   T.Http({ method: "GET", path: "v3/users/{userId}/blogs" }),
   svc,
 ) as unknown as Schema.Codec<ListByUserBlogsRequest>;
 
 export type ListByUserBlogsResponse = BlogList;
-export const ListByUserBlogsResponse = /*@__PURE__*/ /*#__PURE__*/ BlogList;
+export const ListByUserBlogsResponse = /*@__PURE__*/ BlogList;
 
 export type ListByUserBlogsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1846,7 +1834,7 @@ export const listByUserBlogs: API.OperationMethod<
   ListByUserBlogsResponse,
   ListByUserBlogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListByUserBlogsRequest,
   output: ListByUserBlogsResponse,
   errors: [NotFound, Forbidden],
@@ -1859,7 +1847,7 @@ export interface GetBlogUserInfosRequest {
 }
 
 export const GetBlogUserInfosRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     blogId: Schema.String.pipe(T.HttpPath("blogId")),
     maxPosts: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxPosts")),
@@ -1869,8 +1857,7 @@ export const GetBlogUserInfosRequest =
   ) as unknown as Schema.Codec<GetBlogUserInfosRequest>;
 
 export type GetBlogUserInfosResponse = BlogUserInfo;
-export const GetBlogUserInfosResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BlogUserInfo;
+export const GetBlogUserInfosResponse = /*@__PURE__*/ BlogUserInfo;
 
 export type GetBlogUserInfosError = DefaultErrors | NotFound | Forbidden;
 
@@ -1880,7 +1867,7 @@ export const getBlogUserInfos: API.OperationMethod<
   GetBlogUserInfosResponse,
   GetBlogUserInfosError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBlogUserInfosRequest,
   output: GetBlogUserInfosResponse,
   errors: [NotFound, Forbidden],
@@ -1891,7 +1878,7 @@ export interface GetPageViewsRequest {
   range?: "all" | "30DAYS" | "7DAYS" | (string & {})[];
 }
 
-export const GetPageViewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPageViewsRequest = /*@__PURE__*/ Schema.Struct({
   blogId: Schema.String.pipe(T.HttpPath("blogId")),
   range: Schema.optional(Schema.Array(Schema.String)).pipe(
     T.HttpQuery("range"),
@@ -1902,7 +1889,7 @@ export const GetPageViewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetPageViewsRequest>;
 
 export type GetPageViewsResponse = Pageviews;
-export const GetPageViewsResponse = /*@__PURE__*/ /*#__PURE__*/ Pageviews;
+export const GetPageViewsResponse = /*@__PURE__*/ Pageviews;
 
 export type GetPageViewsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1912,7 +1899,7 @@ export const getPageViews: API.OperationMethod<
   GetPageViewsResponse,
   GetPageViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPageViewsRequest,
   output: GetPageViewsResponse,
   errors: [NotFound, Forbidden],
@@ -1926,7 +1913,7 @@ export interface GetPostUserInfosRequest {
 }
 
 export const GetPostUserInfosRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     blogId: Schema.String.pipe(T.HttpPath("blogId")),
     postId: Schema.String.pipe(T.HttpPath("postId")),
@@ -1942,8 +1929,7 @@ export const GetPostUserInfosRequest =
   ) as unknown as Schema.Codec<GetPostUserInfosRequest>;
 
 export type GetPostUserInfosResponse = PostUserInfo;
-export const GetPostUserInfosResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PostUserInfo;
+export const GetPostUserInfosResponse = /*@__PURE__*/ PostUserInfo;
 
 export type GetPostUserInfosError = DefaultErrors | NotFound | Forbidden;
 
@@ -1953,7 +1939,7 @@ export const getPostUserInfos: API.OperationMethod<
   GetPostUserInfosResponse,
   GetPostUserInfosError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPostUserInfosRequest,
   output: GetPostUserInfosResponse,
   errors: [NotFound, Forbidden],
@@ -1979,7 +1965,7 @@ export interface ListPostUserInfosRequest {
 }
 
 export const ListPostUserInfosRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     blogId: Schema.String.pipe(T.HttpPath("blogId")),
     startDate: Schema.optional(Schema.String).pipe(T.HttpQuery("startDate")),
@@ -2001,8 +1987,7 @@ export const ListPostUserInfosRequest =
   ) as unknown as Schema.Codec<ListPostUserInfosRequest>;
 
 export type ListPostUserInfosResponse = PostUserInfosList;
-export const ListPostUserInfosResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PostUserInfosList;
+export const ListPostUserInfosResponse = /*@__PURE__*/ PostUserInfosList;
 
 export type ListPostUserInfosError = DefaultErrors | NotFound | Forbidden;
 
@@ -2012,7 +1997,7 @@ export const listPostUserInfos: API.PaginatedOperationMethod<
   ListPostUserInfosResponse,
   ListPostUserInfosError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPostUserInfosRequest,
   output: ListPostUserInfosResponse,
   errors: [NotFound, Forbidden],
@@ -2027,7 +2012,7 @@ export interface GetUsersRequest {
   userId: string;
 }
 
-export const GetUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetUsersRequest = /*@__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.HttpPath("userId")),
 }).pipe(
   T.Http({ method: "GET", path: "v3/users/{userId}" }),
@@ -2035,7 +2020,7 @@ export const GetUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetUsersRequest>;
 
 export type GetUsersResponse = User;
-export const GetUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
+export const GetUsersResponse = /*@__PURE__*/ User;
 
 export type GetUsersError = DefaultErrors | NotFound | Forbidden;
 
@@ -2045,7 +2030,7 @@ export const getUsers: API.OperationMethod<
   GetUsersResponse,
   GetUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersRequest,
   output: GetUsersResponse,
   errors: [NotFound, Forbidden],

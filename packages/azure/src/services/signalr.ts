@@ -10,9 +10,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.SignalRService/operations",
@@ -55,7 +53,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -123,7 +121,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -135,7 +133,7 @@ export interface SignalRCheckNameAvailabilityInput {
   name: string;
 }
 export const SignalRCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     type: Schema.String,
@@ -155,7 +153,7 @@ export interface SignalRCheckNameAvailabilityOutput {
   message?: string;
 }
 export const SignalRCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -170,7 +168,7 @@ export const SignalRCheckNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const SignalRCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRCheckNameAvailabilityInput,
     outputSchema: SignalRCheckNameAvailabilityOutput,
   }));
@@ -312,7 +310,7 @@ export interface SignalRCreateOrUpdateInput {
   location: string;
 }
 export const SignalRCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -610,7 +608,7 @@ export interface SignalRCreateOrUpdateOutput {
   };
 }
 export const SignalRCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -639,12 +637,10 @@ export const SignalRCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const SignalRCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalRCreateOrUpdateInput,
-    outputSchema: SignalRCreateOrUpdateOutput,
-  }),
-);
+export const SignalRCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalRCreateOrUpdateInput,
+  outputSchema: SignalRCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface SignalRCustomCertificatesCreateOrUpdateInput {
   subscriptionId: string;
@@ -668,7 +664,7 @@ export interface SignalRCustomCertificatesCreateOrUpdateInput {
   };
 }
 export const SignalRCustomCertificatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -714,7 +710,7 @@ export interface SignalRCustomCertificatesCreateOrUpdateOutput {
   };
 }
 export const SignalRCustomCertificatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -745,7 +741,7 @@ export const SignalRCustomCertificatesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRCustomCertificatesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRCustomCertificatesCreateOrUpdateInput,
     outputSchema: SignalRCustomCertificatesCreateOrUpdateOutput,
   }));
@@ -757,7 +753,7 @@ export interface SignalRCustomCertificatesDeleteInput {
   certificateName: string;
 }
 export const SignalRCustomCertificatesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -773,7 +769,7 @@ export const SignalRCustomCertificatesDeleteInput =
 // Output Schema
 export type SignalRCustomCertificatesDeleteOutput = void;
 export const SignalRCustomCertificatesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRCustomCertificatesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRCustomCertificatesDeleteOutput>;
 
 // The operation
 /**
@@ -786,7 +782,7 @@ export const SignalRCustomCertificatesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRCustomCertificatesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRCustomCertificatesDeleteInput,
     outputSchema: SignalRCustomCertificatesDeleteOutput,
   }));
@@ -798,7 +794,7 @@ export interface SignalRCustomCertificatesGetInput {
   certificateName: string;
 }
 export const SignalRCustomCertificatesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -826,7 +822,7 @@ export interface SignalRCustomCertificatesGetOutput {
   };
 }
 export const SignalRCustomCertificatesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -857,7 +853,7 @@ export const SignalRCustomCertificatesGetOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRCustomCertificatesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRCustomCertificatesGetInput,
     outputSchema: SignalRCustomCertificatesGetOutput,
   }));
@@ -868,7 +864,7 @@ export interface SignalRCustomCertificatesListInput {
   resourceName: string;
 }
 export const SignalRCustomCertificatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -898,7 +894,7 @@ export interface SignalRCustomCertificatesListOutput {
   nextLink?: string;
 }
 export const SignalRCustomCertificatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -945,7 +941,7 @@ export const SignalRCustomCertificatesListOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRCustomCertificatesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRCustomCertificatesListInput,
     outputSchema: SignalRCustomCertificatesListOutput,
   }));
@@ -971,7 +967,7 @@ export interface SignalRCustomDomainsCreateOrUpdateInput {
   };
 }
 export const SignalRCustomDomainsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1018,7 +1014,7 @@ export interface SignalRCustomDomainsCreateOrUpdateOutput {
   };
 }
 export const SignalRCustomDomainsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1049,7 +1045,7 @@ export const SignalRCustomDomainsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRCustomDomainsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRCustomDomainsCreateOrUpdateInput,
     outputSchema: SignalRCustomDomainsCreateOrUpdateOutput,
   }));
@@ -1061,7 +1057,7 @@ export interface SignalRCustomDomainsDeleteInput {
   name: string;
 }
 export const SignalRCustomDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1077,7 +1073,7 @@ export const SignalRCustomDomainsDeleteInput =
 // Output Schema
 export type SignalRCustomDomainsDeleteOutput = void;
 export const SignalRCustomDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRCustomDomainsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRCustomDomainsDeleteOutput>;
 
 // The operation
 /**
@@ -1089,12 +1085,10 @@ export const SignalRCustomDomainsDeleteOutput =
  * @param name - Custom domain name.
  * @param api-version - The API version to use for this operation.
  */
-export const SignalRCustomDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalRCustomDomainsDeleteInput,
-    outputSchema: SignalRCustomDomainsDeleteOutput,
-  }),
-);
+export const SignalRCustomDomainsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalRCustomDomainsDeleteInput,
+  outputSchema: SignalRCustomDomainsDeleteOutput,
+}));
 // Input Schema
 export interface SignalRCustomDomainsGetInput {
   subscriptionId: string;
@@ -1103,7 +1097,7 @@ export interface SignalRCustomDomainsGetInput {
   name: string;
 }
 export const SignalRCustomDomainsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1131,7 +1125,7 @@ export interface SignalRCustomDomainsGetOutput {
   };
 }
 export const SignalRCustomDomainsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1161,12 +1155,10 @@ export const SignalRCustomDomainsGetOutput =
  * @param name - Custom domain name.
  * @param api-version - The API version to use for this operation.
  */
-export const SignalRCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalRCustomDomainsGetInput,
-    outputSchema: SignalRCustomDomainsGetOutput,
-  }),
-);
+export const SignalRCustomDomainsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalRCustomDomainsGetInput,
+  outputSchema: SignalRCustomDomainsGetOutput,
+}));
 // Input Schema
 export interface SignalRCustomDomainsListInput {
   subscriptionId: string;
@@ -1174,7 +1166,7 @@ export interface SignalRCustomDomainsListInput {
   resourceName: string;
 }
 export const SignalRCustomDomainsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1204,7 +1196,7 @@ export interface SignalRCustomDomainsListOutput {
   nextLink?: string;
 }
 export const SignalRCustomDomainsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1250,19 +1242,17 @@ export const SignalRCustomDomainsListOutput =
  * @param resourceName - The name of the resource.
  * @param api-version - The API version to use for this operation.
  */
-export const SignalRCustomDomainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalRCustomDomainsListInput,
-    outputSchema: SignalRCustomDomainsListOutput,
-  }),
-);
+export const SignalRCustomDomainsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalRCustomDomainsListInput,
+  outputSchema: SignalRCustomDomainsListOutput,
+}));
 // Input Schema
 export interface SignalRDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   resourceName: string;
 }
-export const SignalRDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SignalRDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -1277,7 +1267,7 @@ export const SignalRDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SignalRDeleteOutput = void;
 export const SignalRDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRDeleteOutput>;
 
 // The operation
 /**
@@ -1288,7 +1278,7 @@ export const SignalRDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const SignalRDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SignalRDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SignalRDeleteInput,
   outputSchema: SignalRDeleteOutput,
 }));
@@ -1298,7 +1288,7 @@ export interface SignalRGetInput {
   resourceGroupName: string;
   resourceName: string;
 }
-export const SignalRGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SignalRGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -1324,7 +1314,7 @@ export interface SignalRGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SignalRGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SignalRGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1353,7 +1343,7 @@ export const SignalRGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const SignalRGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SignalRGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SignalRGetInput,
   outputSchema: SignalRGetOutput,
 }));
@@ -1363,7 +1353,7 @@ export interface SignalRListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const SignalRListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1392,7 +1382,7 @@ export interface SignalRListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SignalRListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1437,18 +1427,16 @@ export const SignalRListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const SignalRListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalRListByResourceGroupInput,
-    outputSchema: SignalRListByResourceGroupOutput,
-  }),
-);
+export const SignalRListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalRListByResourceGroupInput,
+  outputSchema: SignalRListByResourceGroupOutput,
+}));
 // Input Schema
 export interface SignalRListBySubscriptionInput {
   subscriptionId: string;
 }
 export const SignalRListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1476,7 +1464,7 @@ export interface SignalRListBySubscriptionOutput {
   nextLink?: string;
 }
 export const SignalRListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1520,19 +1508,17 @@ export const SignalRListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const SignalRListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalRListBySubscriptionInput,
-    outputSchema: SignalRListBySubscriptionOutput,
-  }),
-);
+export const SignalRListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalRListBySubscriptionInput,
+  outputSchema: SignalRListBySubscriptionOutput,
+}));
 // Input Schema
 export interface SignalRListKeysInput {
   subscriptionId: string;
   resourceGroupName: string;
   resourceName: string;
 }
-export const SignalRListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SignalRListKeysInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -1551,7 +1537,7 @@ export interface SignalRListKeysOutput {
   primaryConnectionString?: string;
   secondaryConnectionString?: string;
 }
-export const SignalRListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SignalRListKeysOutput = /*@__PURE__*/ Schema.Struct({
   primaryKey: Schema.optional(Schema.String),
   secondaryKey: Schema.optional(Schema.String),
   primaryConnectionString: Schema.optional(Schema.String),
@@ -1567,7 +1553,7 @@ export const SignalRListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const SignalRListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SignalRListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: SignalRListKeysInput,
   outputSchema: SignalRListKeysOutput,
 }));
@@ -1579,7 +1565,7 @@ export interface SignalRListReplicaSkusInput {
   replicaName: string;
 }
 export const SignalRListReplicaSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1614,7 +1600,7 @@ export interface SignalRListReplicaSkusOutput {
   nextLink?: string;
 }
 export const SignalRListReplicaSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1657,19 +1643,17 @@ export const SignalRListReplicaSkusOutput =
  * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
-export const SignalRListReplicaSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalRListReplicaSkusInput,
-    outputSchema: SignalRListReplicaSkusOutput,
-  }),
-);
+export const SignalRListReplicaSkus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalRListReplicaSkusInput,
+  outputSchema: SignalRListReplicaSkusOutput,
+}));
 // Input Schema
 export interface SignalRListSkusInput {
   subscriptionId: string;
   resourceGroupName: string;
   resourceName: string;
 }
-export const SignalRListSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SignalRListSkusInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -1702,7 +1686,7 @@ export interface SignalRListSkusOutput {
   }[];
   nextLink?: string;
 }
-export const SignalRListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SignalRListSkusOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1744,7 +1728,7 @@ export const SignalRListSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const SignalRListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SignalRListSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: SignalRListSkusInput,
   outputSchema: SignalRListSkusOutput,
 }));
@@ -1756,7 +1740,7 @@ export interface SignalRPrivateEndpointConnectionsDeleteInput {
   resourceName: string;
 }
 export const SignalRPrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1772,7 +1756,7 @@ export const SignalRPrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type SignalRPrivateEndpointConnectionsDeleteOutput = void;
 export const SignalRPrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRPrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRPrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1785,7 +1769,7 @@ export const SignalRPrivateEndpointConnectionsDeleteOutput =
  * @param resourceName - The name of the resource.
  */
 export const SignalRPrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRPrivateEndpointConnectionsDeleteInput,
     outputSchema: SignalRPrivateEndpointConnectionsDeleteOutput,
   }));
@@ -1797,7 +1781,7 @@ export interface SignalRPrivateEndpointConnectionsGetInput {
   resourceName: string;
 }
 export const SignalRPrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -1825,7 +1809,7 @@ export interface SignalRPrivateEndpointConnectionsGetOutput {
   };
 }
 export const SignalRPrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1856,7 +1840,7 @@ export const SignalRPrivateEndpointConnectionsGetOutput =
  * @param resourceName - The name of the resource.
  */
 export const SignalRPrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRPrivateEndpointConnectionsGetInput,
     outputSchema: SignalRPrivateEndpointConnectionsGetOutput,
   }));
@@ -1867,7 +1851,7 @@ export interface SignalRPrivateEndpointConnectionsListInput {
   resourceName: string;
 }
 export const SignalRPrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1897,7 +1881,7 @@ export interface SignalRPrivateEndpointConnectionsListOutput {
   nextLink?: string;
 }
 export const SignalRPrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1944,7 +1928,7 @@ export const SignalRPrivateEndpointConnectionsListOutput =
  * @param resourceName - The name of the resource.
  */
 export const SignalRPrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRPrivateEndpointConnectionsListInput,
     outputSchema: SignalRPrivateEndpointConnectionsListOutput,
   }));
@@ -1975,7 +1959,7 @@ export interface SignalRPrivateEndpointConnectionsUpdateInput {
   };
 }
 export const SignalRPrivateEndpointConnectionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -2040,7 +2024,7 @@ export interface SignalRPrivateEndpointConnectionsUpdateOutput {
   };
 }
 export const SignalRPrivateEndpointConnectionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2071,7 +2055,7 @@ export const SignalRPrivateEndpointConnectionsUpdateOutput =
  * @param resourceName - The name of the resource.
  */
 export const SignalRPrivateEndpointConnectionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRPrivateEndpointConnectionsUpdateInput,
     outputSchema: SignalRPrivateEndpointConnectionsUpdateOutput,
   }));
@@ -2082,7 +2066,7 @@ export interface SignalRPrivateLinkResourcesListInput {
   resourceName: string;
 }
 export const SignalRPrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2112,7 +2096,7 @@ export interface SignalRPrivateLinkResourcesListOutput {
   nextLink?: string;
 }
 export const SignalRPrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2159,7 +2143,7 @@ export const SignalRPrivateLinkResourcesListOutput =
  * @param resourceName - The name of the resource.
  */
 export const SignalRPrivateLinkResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRPrivateLinkResourcesListInput,
     outputSchema: SignalRPrivateLinkResourcesListOutput,
   }));
@@ -2171,7 +2155,7 @@ export interface SignalRRegenerateKeyInput {
   keyType?: "Primary" | "Secondary" | "Salt";
 }
 export const SignalRRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2192,7 +2176,7 @@ export interface SignalRRegenerateKeyOutput {
   secondaryConnectionString?: string;
 }
 export const SignalRRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
     primaryConnectionString: Schema.optional(Schema.String),
@@ -2208,12 +2192,10 @@ export const SignalRRegenerateKeyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const SignalRRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalRRegenerateKeyInput,
-    outputSchema: SignalRRegenerateKeyOutput,
-  }),
-);
+export const SignalRRegenerateKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalRRegenerateKeyInput,
+  outputSchema: SignalRRegenerateKeyOutput,
+}));
 // Input Schema
 export interface SignalRReplicasCreateOrUpdateInput {
   subscriptionId: string;
@@ -2245,7 +2227,7 @@ export interface SignalRReplicasCreateOrUpdateInput {
   location: string;
 }
 export const SignalRReplicasCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2305,7 +2287,7 @@ export interface SignalRReplicasCreateOrUpdateOutput {
   };
 }
 export const SignalRReplicasCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2336,7 +2318,7 @@ export const SignalRReplicasCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRReplicasCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRReplicasCreateOrUpdateInput,
     outputSchema: SignalRReplicasCreateOrUpdateOutput,
   }));
@@ -2348,7 +2330,7 @@ export interface SignalRReplicasDeleteInput {
   replicaName: string;
 }
 export const SignalRReplicasDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2364,7 +2346,7 @@ export const SignalRReplicasDeleteInput =
 // Output Schema
 export type SignalRReplicasDeleteOutput = void;
 export const SignalRReplicasDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRReplicasDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRReplicasDeleteOutput>;
 
 // The operation
 /**
@@ -2376,12 +2358,10 @@ export const SignalRReplicasDeleteOutput =
  * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
-export const SignalRReplicasDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalRReplicasDeleteInput,
-    outputSchema: SignalRReplicasDeleteOutput,
-  }),
-);
+export const SignalRReplicasDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalRReplicasDeleteInput,
+  outputSchema: SignalRReplicasDeleteOutput,
+}));
 // Input Schema
 export interface SignalRReplicasGetInput {
   subscriptionId: string;
@@ -2390,7 +2370,7 @@ export interface SignalRReplicasGetInput {
   replicaName: string;
 }
 export const SignalRReplicasGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2418,7 +2398,7 @@ export interface SignalRReplicasGetOutput {
   };
 }
 export const SignalRReplicasGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2448,7 +2428,7 @@ export const SignalRReplicasGetOutput =
  * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
-export const SignalRReplicasGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SignalRReplicasGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SignalRReplicasGetInput,
   outputSchema: SignalRReplicasGetOutput,
 }));
@@ -2477,7 +2457,7 @@ export interface SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput {
   };
 }
 export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2535,7 +2515,7 @@ export interface SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput {
   };
 }
 export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2567,7 +2547,7 @@ export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput,
     outputSchema: SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateOutput,
   }));
@@ -2580,7 +2560,7 @@ export interface SignalRReplicaSharedPrivateLinkResourcesGetInput {
   sharedPrivateLinkResourceName: string;
 }
 export const SignalRReplicaSharedPrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2609,7 +2589,7 @@ export interface SignalRReplicaSharedPrivateLinkResourcesGetOutput {
   };
 }
 export const SignalRReplicaSharedPrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2641,7 +2621,7 @@ export const SignalRReplicaSharedPrivateLinkResourcesGetOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRReplicaSharedPrivateLinkResourcesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRReplicaSharedPrivateLinkResourcesGetInput,
     outputSchema: SignalRReplicaSharedPrivateLinkResourcesGetOutput,
   }));
@@ -2653,7 +2633,7 @@ export interface SignalRReplicaSharedPrivateLinkResourcesListInput {
   replicaName: string;
 }
 export const SignalRReplicaSharedPrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2684,7 +2664,7 @@ export interface SignalRReplicaSharedPrivateLinkResourcesListOutput {
   nextLink?: string;
 }
 export const SignalRReplicaSharedPrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2732,7 +2712,7 @@ export const SignalRReplicaSharedPrivateLinkResourcesListOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SignalRReplicaSharedPrivateLinkResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRReplicaSharedPrivateLinkResourcesListInput,
     outputSchema: SignalRReplicaSharedPrivateLinkResourcesListOutput,
   }));
@@ -2743,7 +2723,7 @@ export interface SignalRReplicasListInput {
   resourceName: string;
 }
 export const SignalRReplicasListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2773,7 +2753,7 @@ export interface SignalRReplicasListOutput {
   nextLink?: string;
 }
 export const SignalRReplicasListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2819,7 +2799,7 @@ export const SignalRReplicasListOutput =
  * @param resourceName - The name of the resource.
  * @param api-version - The API version to use for this operation.
  */
-export const SignalRReplicasList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SignalRReplicasList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SignalRReplicasListInput,
   outputSchema: SignalRReplicasListOutput,
 }));
@@ -2831,7 +2811,7 @@ export interface SignalRReplicasRestartInput {
   replicaName: string;
 }
 export const SignalRReplicasRestartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2847,7 +2827,7 @@ export const SignalRReplicasRestartInput =
 // Output Schema
 export type SignalRReplicasRestartOutput = void;
 export const SignalRReplicasRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRReplicasRestartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRReplicasRestartOutput>;
 
 // The operation
 /**
@@ -2859,12 +2839,10 @@ export const SignalRReplicasRestartOutput =
  * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
-export const SignalRReplicasRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalRReplicasRestartInput,
-    outputSchema: SignalRReplicasRestartOutput,
-  }),
-);
+export const SignalRReplicasRestart = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalRReplicasRestartInput,
+  outputSchema: SignalRReplicasRestartOutput,
+}));
 // Input Schema
 export interface SignalRReplicasUpdateInput {
   subscriptionId: string;
@@ -2896,7 +2874,7 @@ export interface SignalRReplicasUpdateInput {
   location: string;
 }
 export const SignalRReplicasUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2956,7 +2934,7 @@ export interface SignalRReplicasUpdateOutput {
   };
 }
 export const SignalRReplicasUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2986,19 +2964,17 @@ export const SignalRReplicasUpdateOutput =
  * @param replicaName - The name of the replica.
  * @param api-version - The API version to use for this operation.
  */
-export const SignalRReplicasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalRReplicasUpdateInput,
-    outputSchema: SignalRReplicasUpdateOutput,
-  }),
-);
+export const SignalRReplicasUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalRReplicasUpdateInput,
+  outputSchema: SignalRReplicasUpdateOutput,
+}));
 // Input Schema
 export interface SignalRRestartInput {
   subscriptionId: string;
   resourceGroupName: string;
   resourceName: string;
 }
-export const SignalRRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SignalRRestartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -3013,7 +2989,7 @@ export const SignalRRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SignalRRestartOutput = void;
 export const SignalRRestartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRRestartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRRestartOutput>;
 
 // The operation
 /**
@@ -3024,7 +3000,7 @@ export const SignalRRestartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const SignalRRestart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SignalRRestart = /*@__PURE__*/ API.make(() => ({
   inputSchema: SignalRRestartInput,
   outputSchema: SignalRRestartOutput,
 }));
@@ -3052,7 +3028,7 @@ export interface SignalRSharedPrivateLinkResourcesCreateOrUpdateInput {
   };
 }
 export const SignalRSharedPrivateLinkResourcesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3109,7 +3085,7 @@ export interface SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput {
   };
 }
 export const SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3140,7 +3116,7 @@ export const SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput =
  * @param resourceName - The name of the resource.
  */
 export const SignalRSharedPrivateLinkResourcesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRSharedPrivateLinkResourcesCreateOrUpdateInput,
     outputSchema: SignalRSharedPrivateLinkResourcesCreateOrUpdateOutput,
   }));
@@ -3152,7 +3128,7 @@ export interface SignalRSharedPrivateLinkResourcesDeleteInput {
   resourceName: string;
 }
 export const SignalRSharedPrivateLinkResourcesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3168,7 +3144,7 @@ export const SignalRSharedPrivateLinkResourcesDeleteInput =
 // Output Schema
 export type SignalRSharedPrivateLinkResourcesDeleteOutput = void;
 export const SignalRSharedPrivateLinkResourcesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRSharedPrivateLinkResourcesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalRSharedPrivateLinkResourcesDeleteOutput>;
 
 // The operation
 /**
@@ -3181,7 +3157,7 @@ export const SignalRSharedPrivateLinkResourcesDeleteOutput =
  * @param resourceName - The name of the resource.
  */
 export const SignalRSharedPrivateLinkResourcesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRSharedPrivateLinkResourcesDeleteInput,
     outputSchema: SignalRSharedPrivateLinkResourcesDeleteOutput,
   }));
@@ -3193,7 +3169,7 @@ export interface SignalRSharedPrivateLinkResourcesGetInput {
   resourceName: string;
 }
 export const SignalRSharedPrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedPrivateLinkResourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
@@ -3221,7 +3197,7 @@ export interface SignalRSharedPrivateLinkResourcesGetOutput {
   };
 }
 export const SignalRSharedPrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3252,7 +3228,7 @@ export const SignalRSharedPrivateLinkResourcesGetOutput =
  * @param resourceName - The name of the resource.
  */
 export const SignalRSharedPrivateLinkResourcesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRSharedPrivateLinkResourcesGetInput,
     outputSchema: SignalRSharedPrivateLinkResourcesGetOutput,
   }));
@@ -3263,7 +3239,7 @@ export interface SignalRSharedPrivateLinkResourcesListInput {
   resourceName: string;
 }
 export const SignalRSharedPrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3293,7 +3269,7 @@ export interface SignalRSharedPrivateLinkResourcesListOutput {
   nextLink?: string;
 }
 export const SignalRSharedPrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3340,7 +3316,7 @@ export const SignalRSharedPrivateLinkResourcesListOutput =
  * @param resourceName - The name of the resource.
  */
 export const SignalRSharedPrivateLinkResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalRSharedPrivateLinkResourcesListInput,
     outputSchema: SignalRSharedPrivateLinkResourcesListOutput,
   }));
@@ -3481,7 +3457,7 @@ export interface SignalRUpdateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const SignalRUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SignalRUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -3778,7 +3754,7 @@ export interface SignalRUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const SignalRUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SignalRUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3807,7 +3783,7 @@ export const SignalRUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the resource.
  */
-export const SignalRUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SignalRUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SignalRUpdateInput,
   outputSchema: SignalRUpdateOutput,
 }));
@@ -3816,7 +3792,7 @@ export interface UsagesListInput {
   location: string;
   subscriptionId: string;
 }
-export const UsagesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesListInput = /*@__PURE__*/ Schema.Struct({
   location: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -3838,7 +3814,7 @@ export interface UsagesListOutput {
   }[];
   nextLink?: string;
 }
-export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsagesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3866,7 +3842,7 @@ export const UsagesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const UsagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsagesListInput,
   outputSchema: UsagesListOutput,
 }));

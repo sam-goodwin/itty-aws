@@ -12,7 +12,7 @@ export interface ListOauthTokensInput {
   page?: number;
   per_page?: number;
 }
-export const ListOauthTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOauthTokensInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   application_id: Schema.String.pipe(T.PathParam()),
   page: Schema.optional(Schema.Number),
@@ -92,7 +92,7 @@ export interface ListOauthTokensOutput {
     } | null;
   }>;
 }
-export const ListOauthTokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOauthTokensOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -218,16 +218,14 @@ export const ListOauthTokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listOauthTokens = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListOauthTokensInput,
-    outputSchema: ListOauthTokensOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listOauthTokens = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListOauthTokensInput,
+  outputSchema: ListOauthTokensOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

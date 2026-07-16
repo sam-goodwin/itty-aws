@@ -11,7 +11,7 @@ export interface McpServerInstallationsAuthorizeRetrieveInput {
   template_id?: string;
 }
 export const McpServerInstallationsAuthorizeRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     install_source: Schema.optional(
       Schema.Literals(["posthog", "posthog-code"]),
@@ -29,7 +29,7 @@ export const McpServerInstallationsAuthorizeRetrieveInput =
 // Output Schema
 export type McpServerInstallationsAuthorizeRetrieveOutput = void;
 export const McpServerInstallationsAuthorizeRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<McpServerInstallationsAuthorizeRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<McpServerInstallationsAuthorizeRetrieveOutput>;
 
 // The operation
 /**
@@ -43,7 +43,7 @@ export const McpServerInstallationsAuthorizeRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const mcpServerInstallationsAuthorizeRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: McpServerInstallationsAuthorizeRetrieveInput,
     outputSchema: McpServerInstallationsAuthorizeRetrieveOutput,
   }));

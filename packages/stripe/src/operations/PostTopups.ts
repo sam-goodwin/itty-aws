@@ -20,7 +20,7 @@ export interface PostTopupsInput {
   statement_descriptor?: string;
   transfer_group?: string;
 }
-export const PostTopupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTopupsInput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   currency: Schema.String,
   description: Schema.optional(Schema.String),
@@ -151,7 +151,7 @@ export interface PostTopupsOutput {
   status: "canceled" | "failed" | "pending" | "reversed" | "succeeded";
   transfer_group: string | null;
 }
-export const PostTopupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTopupsOutput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   balance_transaction: Schema.NullOr(
     Schema.Union([
@@ -268,7 +268,7 @@ export const PostTopupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>Top up the balance of an account</p>
  */
-export const PostTopups = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTopups = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostTopupsInput,
   outputSchema: PostTopupsOutput,
 }));

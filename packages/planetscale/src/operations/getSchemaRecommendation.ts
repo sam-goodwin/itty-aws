@@ -10,7 +10,7 @@ export interface GetSchemaRecommendationInput {
   number: number;
 }
 export const GetSchemaRecommendationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -53,7 +53,7 @@ export interface GetSchemaRecommendationOutput {
   dismissed_by: { id: string; display_name: string; avatar_url: string } | null;
 }
 export const GetSchemaRecommendationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     html_url: Schema.String,
     title: Schema.String,
@@ -101,10 +101,8 @@ export const GetSchemaRecommendationOutput =
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  * @param number - Schema recommendation sequence number. Example: `42`.
  */
-export const getSchemaRecommendation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetSchemaRecommendationInput,
-    outputSchema: GetSchemaRecommendationOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getSchemaRecommendation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetSchemaRecommendationInput,
+  outputSchema: GetSchemaRecommendationOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

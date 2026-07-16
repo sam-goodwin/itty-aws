@@ -9,7 +9,7 @@ export interface TracingSpansServiceNamesRetrieveInput {
   search?: string;
 }
 export const TracingSpansServiceNamesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     dateRange: Schema.optional(Schema.String),
     search: Schema.optional(Schema.String),
@@ -23,7 +23,7 @@ export const TracingSpansServiceNamesRetrieveInput =
 // Output Schema
 export type TracingSpansServiceNamesRetrieveOutput = void;
 export const TracingSpansServiceNamesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansServiceNamesRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansServiceNamesRetrieveOutput>;
 
 // The operation
 /**
@@ -33,7 +33,7 @@ export const TracingSpansServiceNamesRetrieveOutput =
  * @param search - Search filter for service names.
  */
 export const tracingSpansServiceNamesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TracingSpansServiceNamesRetrieveInput,
     outputSchema: TracingSpansServiceNamesRetrieveOutput,
   }));

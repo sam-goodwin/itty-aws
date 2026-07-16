@@ -7,7 +7,7 @@ export interface ListOrganizationAPITokensInput {
   organizationSlug: string;
 }
 export const ListOrganizationAPITokensInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -29,7 +29,7 @@ export interface ListOrganizationAPITokensOutput {
   }[];
 }
 export const ListOrganizationAPITokensOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tokens: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -62,9 +62,7 @@ export const ListOrganizationAPITokensOutput =
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const listOrganizationAPITokens = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListOrganizationAPITokensInput,
-    outputSchema: ListOrganizationAPITokensOutput,
-  }),
-);
+export const listOrganizationAPITokens = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListOrganizationAPITokensInput,
+  outputSchema: ListOrganizationAPITokensOutput,
+}));

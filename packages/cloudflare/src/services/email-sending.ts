@@ -51,7 +51,7 @@ interface EmailSendingEmailAddressObject {
   name: string;
 }
 const EmailSendingEmailAddressObject =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       address: Schema.String,
       name: Schema.String,
@@ -71,7 +71,7 @@ interface EmailSendingEmailInlineAttachment {
   type: string;
 }
 const EmailSendingEmailInlineAttachment =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       content: Schema.String,
       contentId: Schema.String,
@@ -99,14 +99,13 @@ interface EmailSendingEmailAttachment {
   /** MIME type of the attachment (e.g., 'application/pdf', 'text/plain'). */
   type: string;
 }
-const EmailSendingEmailAttachment = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      content: Schema.String,
-      disposition: Schema.Literal("attachment"),
-      filename: Schema.String,
-      type: Schema.String,
-    }),
+const EmailSendingEmailAttachment = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    content: Schema.String,
+    disposition: Schema.Literal("attachment"),
+    filename: Schema.String,
+    type: Schema.String,
+  }),
 ) as unknown as Schema.Codec<EmailSendingEmailAttachment>;
 
 interface ListSubdomainsResponseResult {
@@ -125,35 +124,34 @@ interface ListSubdomainsResponseResult {
   /** The return-path domain used for bounce handling. */
   returnPathDomain?: string | null;
 }
-const ListSubdomainsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      tag: Schema.String,
-      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      dkimSelector: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      returnPathDomain: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        enabled: "enabled",
-        name: "name",
-        tag: "tag",
-        created: "created",
-        dkimSelector: "dkim_selector",
-        modified: "modified",
-        returnPathDomain: "return_path_domain",
-      }),
+const ListSubdomainsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    tag: Schema.String,
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    dkimSelector: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    returnPathDomain: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      enabled: "enabled",
+      name: "name",
+      tag: "tag",
+      created: "created",
+      dkimSelector: "dkim_selector",
+      modified: "modified",
+      returnPathDomain: "return_path_domain",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSubdomainsResponseResult>;
 
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -165,7 +163,7 @@ interface Error2 {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -215,7 +213,7 @@ interface Dnsrecord {
     | (string & {})
     | null;
 }
-const Dnsrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dnsrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -301,7 +299,7 @@ export interface SendEmailSendingRequest {
 }
 
 export const SendEmailSendingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       from: Schema.Union([EmailSendingEmailAddressObject, Schema.String]),
@@ -361,7 +359,7 @@ export interface SendEmailSendingResponse {
 }
 
 export const SendEmailSendingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       delivered: Schema.Array(Schema.String),
       messageId: Schema.String,
@@ -386,7 +384,7 @@ export const sendEmailSending: API.OperationMethod<
   SendEmailSendingResponse,
   SendEmailSendingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendEmailSendingRequest,
   output: SendEmailSendingResponse,
   errors: [],
@@ -408,7 +406,7 @@ export interface SendRawEmailSendingRequest {
 }
 
 export const SendRawEmailSendingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       from: Schema.String,
@@ -439,7 +437,7 @@ export interface SendRawEmailSendingResponse {
 }
 
 export const SendRawEmailSendingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       delivered: Schema.Array(Schema.String),
       messageId: Schema.String,
@@ -464,7 +462,7 @@ export const sendRawEmailSending: API.OperationMethod<
   SendRawEmailSendingResponse,
   SendRawEmailSendingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendRawEmailSendingRequest,
   output: SendRawEmailSendingResponse,
   errors: [],
@@ -480,17 +478,16 @@ export interface GetSubdomainRequest {
   zoneId: string;
 }
 
-export const GetSubdomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      subdomainId: Schema.String.pipe(T.HttpPath("subdomainId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/email/sending/subdomains/{subdomainId}",
-      }),
-    ),
+export const GetSubdomainRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    subdomainId: Schema.String.pipe(T.HttpPath("subdomainId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/email/sending/subdomains/{subdomainId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetSubdomainRequest>;
 
 export interface GetSubdomainResponse {
@@ -510,31 +507,30 @@ export interface GetSubdomainResponse {
   returnPathDomain?: string | null;
 }
 
-export const GetSubdomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      tag: Schema.String,
-      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      dkimSelector: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      returnPathDomain: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          enabled: "enabled",
-          name: "name",
-          tag: "tag",
-          created: "created",
-          dkimSelector: "dkim_selector",
-          modified: "modified",
-          returnPathDomain: "return_path_domain",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetSubdomainResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    tag: Schema.String,
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    dkimSelector: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    returnPathDomain: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        enabled: "enabled",
+        name: "name",
+        tag: "tag",
+        created: "created",
+        dkimSelector: "dkim_selector",
+        modified: "modified",
+        returnPathDomain: "return_path_domain",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetSubdomainResponse>;
 
 export type GetSubdomainError =
@@ -547,7 +543,7 @@ export const getSubdomain: API.OperationMethod<
   GetSubdomainResponse,
   GetSubdomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubdomainRequest,
   output: GetSubdomainResponse,
   errors: [Forbidden, SendingSubdomainNotFound],
@@ -558,16 +554,15 @@ export interface ListSubdomainsRequest {
   zoneId: string;
 }
 
-export const ListSubdomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/email/sending/subdomains",
-      }),
-    ),
+export const ListSubdomainsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/email/sending/subdomains",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSubdomainsRequest>;
 
 export interface ListSubdomainsResponse {
@@ -583,7 +578,7 @@ export interface ListSubdomainsResponse {
 }
 
 export const ListSubdomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListSubdomainsResponseResult),
     }),
@@ -596,7 +591,7 @@ export const listSubdomains: API.PaginatedOperationMethod<
   ListSubdomainsResponse,
   ListSubdomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubdomainsRequest,
   output: ListSubdomainsResponse,
   errors: [Forbidden],
@@ -614,7 +609,7 @@ export interface CreateSubdomainRequest {
 }
 
 export const CreateSubdomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       name: Schema.String,
@@ -644,7 +639,7 @@ export interface CreateSubdomainResponse {
 }
 
 export const CreateSubdomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       enabled: Schema.Boolean,
       name: Schema.String,
@@ -680,7 +675,7 @@ export const createSubdomain: API.OperationMethod<
   CreateSubdomainResponse,
   CreateSubdomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubdomainRequest,
   output: CreateSubdomainResponse,
   errors: [Forbidden, SendingSubdomainAlreadyExists],
@@ -693,7 +688,7 @@ export interface DeleteSubdomainRequest {
 }
 
 export const DeleteSubdomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       subdomainId: Schema.String.pipe(T.HttpPath("subdomainId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -723,7 +718,7 @@ export interface DeleteSubdomainResponse {
 }
 
 export const DeleteSubdomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -741,7 +736,7 @@ export const deleteSubdomain: API.OperationMethod<
   DeleteSubdomainResponse,
   DeleteSubdomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubdomainRequest,
   output: DeleteSubdomainResponse,
   errors: [Forbidden, SendingSubdomainNotFound],
@@ -758,7 +753,7 @@ export interface GetSubdomainDnsRequest {
 }
 
 export const GetSubdomainDnsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       subdomainId: Schema.String.pipe(T.HttpPath("subdomainId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -801,7 +796,7 @@ export interface GetSubdomainDnsResponse {
 }
 
 export const GetSubdomainDnsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Dnsrecord),
     }),
@@ -814,7 +809,7 @@ export const getSubdomainDns: API.PaginatedOperationMethod<
   GetSubdomainDnsResponse,
   GetSubdomainDnsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSubdomainDnsRequest,
   output: GetSubdomainDnsResponse,
   errors: [],

@@ -9,7 +9,7 @@ export interface RoleExternalReferencesDestroyInput {
   organization_id: string;
 }
 export const RoleExternalReferencesDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const RoleExternalReferencesDestroyInput =
 // Output Schema
 export type RoleExternalReferencesDestroyOutput = void;
 export const RoleExternalReferencesDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RoleExternalReferencesDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RoleExternalReferencesDestroyOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const RoleExternalReferencesDestroyOutput =
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const roleExternalReferencesDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RoleExternalReferencesDestroyInput,
     outputSchema: RoleExternalReferencesDestroyOutput,
     errors: [Forbidden, NotFound] as const,

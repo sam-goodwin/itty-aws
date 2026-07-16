@@ -37,7 +37,7 @@ export interface Author {
 }
 
 export const Author: Schema.Codec<Author> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     profilePhotoUri: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -59,7 +59,7 @@ export interface Answer {
 }
 
 export const Answer: Schema.Codec<Answer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     upvoteCount: Schema.optional(Schema.Number),
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -74,7 +74,7 @@ export interface UpsertAnswerRequest {
 }
 
 export const UpsertAnswerRequest: Schema.Codec<UpsertAnswerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     answer: Schema.optional(Answer),
   }).annotate({ identifier: "UpsertAnswerRequest" });
 
@@ -88,7 +88,7 @@ export interface ListAnswersResponse {
 }
 
 export const ListAnswersResponse: Schema.Codec<ListAnswersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     answers: Schema.optional(Schema.Array(Answer)),
     nextPageToken: Schema.optional(Schema.String),
     totalSize: Schema.optional(Schema.Number),
@@ -97,7 +97,7 @@ export const ListAnswersResponse: Schema.Codec<ListAnswersResponse> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -121,7 +121,7 @@ export interface Question {
 }
 
 export const Question: Schema.Codec<Question> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     author: Schema.optional(Author),
     text: Schema.optional(Schema.String),
@@ -142,7 +142,7 @@ export interface ListQuestionsResponse {
 }
 
 export const ListQuestionsResponse: Schema.Codec<ListQuestionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalSize: Schema.optional(Schema.Number),
     nextPageToken: Schema.optional(Schema.String),
     questions: Schema.optional(Schema.Array(Question)),
@@ -208,7 +208,7 @@ export interface DeleteLocationsQuestionsRequest {
 }
 
 export const DeleteLocationsQuestionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -216,8 +216,7 @@ export const DeleteLocationsQuestionsRequest =
   ) as unknown as Schema.Codec<DeleteLocationsQuestionsRequest>;
 
 export type DeleteLocationsQuestionsResponse = Empty;
-export const DeleteLocationsQuestionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteLocationsQuestionsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteLocationsQuestionsError =
   | DefaultErrors
@@ -232,7 +231,7 @@ export const deleteLocationsQuestions: API.OperationMethod<
   DeleteLocationsQuestionsResponse,
   DeleteLocationsQuestionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocationsQuestionsRequest,
   output: DeleteLocationsQuestionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -254,7 +253,7 @@ export interface ListLocationsQuestionsRequest {
 }
 
 export const ListLocationsQuestionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -270,7 +269,7 @@ export const ListLocationsQuestionsRequest =
 
 export type ListLocationsQuestionsResponse = ListQuestionsResponse;
 export const ListLocationsQuestionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListQuestionsResponse;
+  /*@__PURE__*/ ListQuestionsResponse;
 
 export type ListLocationsQuestionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -280,7 +279,7 @@ export const listLocationsQuestions: API.PaginatedOperationMethod<
   ListLocationsQuestionsResponse,
   ListLocationsQuestionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsQuestionsRequest,
   output: ListLocationsQuestionsResponse,
   errors: [NotFound, Forbidden],
@@ -300,7 +299,7 @@ export interface PatchLocationsQuestionsRequest {
 }
 
 export const PatchLocationsQuestionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Question).pipe(T.HttpBody()),
@@ -310,8 +309,7 @@ export const PatchLocationsQuestionsRequest =
   ) as unknown as Schema.Codec<PatchLocationsQuestionsRequest>;
 
 export type PatchLocationsQuestionsResponse = Question;
-export const PatchLocationsQuestionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Question;
+export const PatchLocationsQuestionsResponse = /*@__PURE__*/ Question;
 
 export type PatchLocationsQuestionsError =
   | DefaultErrors
@@ -326,7 +324,7 @@ export const patchLocationsQuestions: API.OperationMethod<
   PatchLocationsQuestionsResponse,
   PatchLocationsQuestionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchLocationsQuestionsRequest,
   output: PatchLocationsQuestionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -340,7 +338,7 @@ export interface CreateLocationsQuestionsRequest {
 }
 
 export const CreateLocationsQuestionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Question).pipe(T.HttpBody()),
   }).pipe(
@@ -349,8 +347,7 @@ export const CreateLocationsQuestionsRequest =
   ) as unknown as Schema.Codec<CreateLocationsQuestionsRequest>;
 
 export type CreateLocationsQuestionsResponse = Question;
-export const CreateLocationsQuestionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Question;
+export const CreateLocationsQuestionsResponse = /*@__PURE__*/ Question;
 
 export type CreateLocationsQuestionsError =
   | DefaultErrors
@@ -365,7 +362,7 @@ export const createLocationsQuestions: API.OperationMethod<
   CreateLocationsQuestionsResponse,
   CreateLocationsQuestionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationsQuestionsRequest,
   output: CreateLocationsQuestionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -383,7 +380,7 @@ export interface ListLocationsQuestionsAnswersRequest {
 }
 
 export const ListLocationsQuestionsAnswersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -395,7 +392,7 @@ export const ListLocationsQuestionsAnswersRequest =
 
 export type ListLocationsQuestionsAnswersResponse = ListAnswersResponse;
 export const ListLocationsQuestionsAnswersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAnswersResponse;
+  /*@__PURE__*/ ListAnswersResponse;
 
 export type ListLocationsQuestionsAnswersError =
   | DefaultErrors
@@ -408,7 +405,7 @@ export const listLocationsQuestionsAnswers: API.PaginatedOperationMethod<
   ListLocationsQuestionsAnswersResponse,
   ListLocationsQuestionsAnswersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsQuestionsAnswersRequest,
   output: ListLocationsQuestionsAnswersResponse,
   errors: [NotFound, Forbidden],
@@ -426,7 +423,7 @@ export interface UpsertLocationsQuestionsAnswersRequest {
 }
 
 export const UpsertLocationsQuestionsAnswersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(UpsertAnswerRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -439,8 +436,7 @@ export const UpsertLocationsQuestionsAnswersRequest =
   ) as unknown as Schema.Codec<UpsertLocationsQuestionsAnswersRequest>;
 
 export type UpsertLocationsQuestionsAnswersResponse = Answer;
-export const UpsertLocationsQuestionsAnswersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Answer;
+export const UpsertLocationsQuestionsAnswersResponse = /*@__PURE__*/ Answer;
 
 export type UpsertLocationsQuestionsAnswersError =
   | DefaultErrors
@@ -455,7 +451,7 @@ export const upsertLocationsQuestionsAnswers: API.OperationMethod<
   UpsertLocationsQuestionsAnswersResponse,
   UpsertLocationsQuestionsAnswersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpsertLocationsQuestionsAnswersRequest,
   output: UpsertLocationsQuestionsAnswersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -467,7 +463,7 @@ export interface DeleteLocationsQuestionsAnswersRequest {
 }
 
 export const DeleteLocationsQuestionsAnswersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}/answers:delete" }),
@@ -475,8 +471,7 @@ export const DeleteLocationsQuestionsAnswersRequest =
   ) as unknown as Schema.Codec<DeleteLocationsQuestionsAnswersRequest>;
 
 export type DeleteLocationsQuestionsAnswersResponse = Empty;
-export const DeleteLocationsQuestionsAnswersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteLocationsQuestionsAnswersResponse = /*@__PURE__*/ Empty;
 
 export type DeleteLocationsQuestionsAnswersError =
   | DefaultErrors
@@ -491,7 +486,7 @@ export const deleteLocationsQuestionsAnswers: API.OperationMethod<
   DeleteLocationsQuestionsAnswersResponse,
   DeleteLocationsQuestionsAnswersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocationsQuestionsAnswersRequest,
   output: DeleteLocationsQuestionsAnswersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

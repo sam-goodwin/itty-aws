@@ -30,7 +30,7 @@ export interface BucketByActivity {
 }
 
 export const BucketByActivity: Schema.Codec<BucketByActivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minDurationMillis: Schema.optional(Schema.String),
     activityDataSourceId: Schema.optional(Schema.String),
   }).annotate({ identifier: "BucketByActivity" });
@@ -43,7 +43,7 @@ export interface BucketByTimePeriod {
 }
 
 export const BucketByTimePeriod: Schema.Codec<BucketByTimePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     timeZoneId: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
@@ -56,7 +56,7 @@ export interface BucketByTime {
 }
 
 export const BucketByTime: Schema.Codec<BucketByTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     durationMillis: Schema.optional(Schema.String),
     period: Schema.optional(BucketByTimePeriod),
   }).annotate({ identifier: "BucketByTime" });
@@ -67,7 +67,7 @@ export interface BucketBySession {
 }
 
 export const BucketBySession: Schema.Codec<BucketBySession> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minDurationMillis: Schema.optional(Schema.String),
   }).annotate({ identifier: "BucketBySession" });
 
@@ -79,7 +79,7 @@ export interface AggregateBy {
 }
 
 export const AggregateBy: Schema.Codec<AggregateBy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataTypeName: Schema.optional(Schema.String),
     dataSourceId: Schema.optional(Schema.String),
   }).annotate({ identifier: "AggregateBy" });
@@ -116,7 +116,7 @@ export interface AggregateRequest {
 }
 
 export const AggregateRequest: Schema.Codec<AggregateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTimeMillis: Schema.optional(Schema.String),
     endTimeMillis: Schema.optional(Schema.String),
     bucketByActivityType: Schema.optional(BucketByActivity),
@@ -133,7 +133,7 @@ export interface MapValue {
 }
 
 export const MapValue: Schema.Codec<MapValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fpVal: Schema.optional(Schema.Number),
   }).annotate({ identifier: "MapValue" });
 
@@ -143,7 +143,7 @@ export interface ValueMapValEntry {
 }
 
 export const ValueMapValEntry: Schema.Codec<ValueMapValEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(MapValue),
   }).annotate({ identifier: "ValueMapValEntry" });
@@ -165,7 +165,7 @@ export interface DataTypeField {
 }
 
 export const DataTypeField: Schema.Codec<DataTypeField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     format: Schema.optional(Schema.String),
     optional: Schema.optional(Schema.Boolean),
@@ -183,7 +183,7 @@ export interface Value {
 }
 
 export const Value: Schema.Codec<Value> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intVal: Schema.optional(Schema.Number),
     stringVal: Schema.optional(Schema.String),
     mapVal: Schema.optional(Schema.Array(ValueMapValEntry)),
@@ -210,7 +210,7 @@ export interface DataPoint {
 }
 
 export const DataPoint: Schema.Codec<DataPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Array(Value)),
     startTimeNanos: Schema.optional(Schema.String),
     endTimeNanos: Schema.optional(Schema.String),
@@ -233,7 +233,7 @@ export interface ListDataPointChangesResponse {
 }
 
 export const ListDataPointChangesResponse: Schema.Codec<ListDataPointChangesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deletedDataPoint: Schema.optional(Schema.Array(DataPoint)),
     nextPageToken: Schema.optional(Schema.String),
     insertedDataPoint: Schema.optional(Schema.Array(DataPoint)),
@@ -263,7 +263,7 @@ export interface Device {
 }
 
 export const Device: Schema.Codec<Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     model: Schema.optional(Schema.String),
     manufacturer: Schema.optional(Schema.String),
@@ -279,7 +279,7 @@ export interface DataType {
 }
 
 export const DataType: Schema.Codec<DataType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     field: Schema.optional(Schema.Array(DataTypeField)),
   }).annotate({ identifier: "DataType" });
@@ -296,7 +296,7 @@ export interface Application {
 }
 
 export const Application: Schema.Codec<Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
@@ -335,7 +335,7 @@ export interface DataSource {
 }
 
 export const DataSource: Schema.Codec<DataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     device: Schema.optional(Device),
     dataStreamId: Schema.optional(Schema.String),
     dataType: Schema.optional(DataType),
@@ -368,7 +368,7 @@ export interface Session {
 }
 
 export const Session: Schema.Codec<Session> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTimeMillis: Schema.optional(Schema.String),
     modifiedTimeMillis: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
@@ -394,7 +394,7 @@ export interface Dataset {
 }
 
 export const Dataset: Schema.Codec<Dataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     point: Schema.optional(Schema.Array(DataPoint)),
     maxEndTimeNs: Schema.optional(Schema.String),
@@ -424,7 +424,7 @@ export interface AggregateBucket {
 }
 
 export const AggregateBucket: Schema.Codec<AggregateBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     activity: Schema.optional(Schema.Number),
     session: Schema.optional(Session),
@@ -439,7 +439,7 @@ export interface AggregateResponse {
 }
 
 export const AggregateResponse: Schema.Codec<AggregateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.optional(Schema.Array(AggregateBucket)),
   }).annotate({ identifier: "AggregateResponse" });
 
@@ -455,7 +455,7 @@ export interface ListSessionsResponse {
 }
 
 export const ListSessionsResponse: Schema.Codec<ListSessionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.optional(Schema.Array(Session)),
     deletedSession: Schema.optional(Schema.Array(Session)),
     nextPageToken: Schema.optional(Schema.String),
@@ -468,7 +468,7 @@ export interface ListDataSourcesResponse {
 }
 
 export const ListDataSourcesResponse: Schema.Codec<ListDataSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(Schema.Array(DataSource)),
   }).annotate({ identifier: "ListDataSourcesResponse" });
 
@@ -536,7 +536,7 @@ export interface UpdateUsersSessionsRequest {
 }
 
 export const UpdateUsersSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
     body: Schema.optional(Session).pipe(T.HttpBody()),
@@ -550,7 +550,7 @@ export const UpdateUsersSessionsRequest =
   ) as unknown as Schema.Codec<UpdateUsersSessionsRequest>;
 
 export type UpdateUsersSessionsResponse = Session;
-export const UpdateUsersSessionsResponse = /*@__PURE__*/ /*#__PURE__*/ Session;
+export const UpdateUsersSessionsResponse = /*@__PURE__*/ Session;
 
 export type UpdateUsersSessionsError =
   | DefaultErrors
@@ -565,7 +565,7 @@ export const updateUsersSessions: API.OperationMethod<
   UpdateUsersSessionsResponse,
   UpdateUsersSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUsersSessionsRequest,
   output: UpdateUsersSessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -587,7 +587,7 @@ export interface ListUsersSessionsRequest {
 }
 
 export const ListUsersSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
     endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("endTime")),
     activityType: Schema.optional(Schema.Array(Schema.Number)).pipe(
@@ -604,8 +604,7 @@ export const ListUsersSessionsRequest =
   ) as unknown as Schema.Codec<ListUsersSessionsRequest>;
 
 export type ListUsersSessionsResponse = ListSessionsResponse;
-export const ListUsersSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSessionsResponse;
+export const ListUsersSessionsResponse = /*@__PURE__*/ ListSessionsResponse;
 
 export type ListUsersSessionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -615,7 +614,7 @@ export const listUsersSessions: API.PaginatedOperationMethod<
   ListUsersSessionsResponse,
   ListUsersSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSessionsRequest,
   output: ListUsersSessionsResponse,
   errors: [NotFound, Forbidden],
@@ -633,7 +632,7 @@ export interface DeleteUsersSessionsRequest {
 }
 
 export const DeleteUsersSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     sessionId: Schema.String.pipe(T.HttpPath("sessionId")),
   }).pipe(
@@ -643,7 +642,7 @@ export const DeleteUsersSessionsRequest =
 
 export interface DeleteUsersSessionsResponse {}
 export const DeleteUsersSessionsResponse: Schema.Codec<DeleteUsersSessionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteUsersSessionsResponse>;
 
@@ -660,7 +659,7 @@ export const deleteUsersSessions: API.OperationMethod<
   DeleteUsersSessionsResponse,
   DeleteUsersSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsersSessionsRequest,
   output: DeleteUsersSessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -674,7 +673,7 @@ export interface ListUsersDataSourcesRequest {
 }
 
 export const ListUsersDataSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     dataTypeName: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("dataTypeName"),
@@ -686,7 +685,7 @@ export const ListUsersDataSourcesRequest =
 
 export type ListUsersDataSourcesResponse = ListDataSourcesResponse;
 export const ListUsersDataSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDataSourcesResponse;
+  /*@__PURE__*/ ListDataSourcesResponse;
 
 export type ListUsersDataSourcesError = DefaultErrors | NotFound | Forbidden;
 
@@ -696,7 +695,7 @@ export const listUsersDataSources: API.OperationMethod<
   ListUsersDataSourcesResponse,
   ListUsersDataSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListUsersDataSourcesRequest,
   output: ListUsersDataSourcesResponse,
   errors: [NotFound, Forbidden],
@@ -712,7 +711,7 @@ export interface UpdateUsersDataSourcesRequest {
 }
 
 export const UpdateUsersDataSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     dataSourceId: Schema.String.pipe(T.HttpPath("dataSourceId")),
     body: Schema.optional(DataSource).pipe(T.HttpBody()),
@@ -726,8 +725,7 @@ export const UpdateUsersDataSourcesRequest =
   ) as unknown as Schema.Codec<UpdateUsersDataSourcesRequest>;
 
 export type UpdateUsersDataSourcesResponse = DataSource;
-export const UpdateUsersDataSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataSource;
+export const UpdateUsersDataSourcesResponse = /*@__PURE__*/ DataSource;
 
 export type UpdateUsersDataSourcesError =
   | DefaultErrors
@@ -742,7 +740,7 @@ export const updateUsersDataSources: API.OperationMethod<
   UpdateUsersDataSourcesResponse,
   UpdateUsersDataSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUsersDataSourcesRequest,
   output: UpdateUsersDataSourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -756,7 +754,7 @@ export interface GetUsersDataSourcesRequest {
 }
 
 export const GetUsersDataSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     dataSourceId: Schema.String.pipe(T.HttpPath("dataSourceId")),
   }).pipe(
@@ -765,8 +763,7 @@ export const GetUsersDataSourcesRequest =
   ) as unknown as Schema.Codec<GetUsersDataSourcesRequest>;
 
 export type GetUsersDataSourcesResponse = DataSource;
-export const GetUsersDataSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataSource;
+export const GetUsersDataSourcesResponse = /*@__PURE__*/ DataSource;
 
 export type GetUsersDataSourcesError = DefaultErrors | NotFound | Forbidden;
 
@@ -776,7 +773,7 @@ export const getUsersDataSources: API.OperationMethod<
   GetUsersDataSourcesResponse,
   GetUsersDataSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersDataSourcesRequest,
   output: GetUsersDataSourcesResponse,
   errors: [NotFound, Forbidden],
@@ -790,7 +787,7 @@ export interface CreateUsersDataSourcesRequest {
 }
 
 export const CreateUsersDataSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(DataSource).pipe(T.HttpBody()),
   }).pipe(
@@ -799,8 +796,7 @@ export const CreateUsersDataSourcesRequest =
   ) as unknown as Schema.Codec<CreateUsersDataSourcesRequest>;
 
 export type CreateUsersDataSourcesResponse = DataSource;
-export const CreateUsersDataSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataSource;
+export const CreateUsersDataSourcesResponse = /*@__PURE__*/ DataSource;
 
 export type CreateUsersDataSourcesError =
   | DefaultErrors
@@ -815,7 +811,7 @@ export const createUsersDataSources: API.OperationMethod<
   CreateUsersDataSourcesResponse,
   CreateUsersDataSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUsersDataSourcesRequest,
   output: CreateUsersDataSourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -829,7 +825,7 @@ export interface DeleteUsersDataSourcesRequest {
 }
 
 export const DeleteUsersDataSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     dataSourceId: Schema.String.pipe(T.HttpPath("dataSourceId")),
   }).pipe(
@@ -838,8 +834,7 @@ export const DeleteUsersDataSourcesRequest =
   ) as unknown as Schema.Codec<DeleteUsersDataSourcesRequest>;
 
 export type DeleteUsersDataSourcesResponse = DataSource;
-export const DeleteUsersDataSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataSource;
+export const DeleteUsersDataSourcesResponse = /*@__PURE__*/ DataSource;
 
 export type DeleteUsersDataSourcesError =
   | DefaultErrors
@@ -854,7 +849,7 @@ export const deleteUsersDataSources: API.OperationMethod<
   DeleteUsersDataSourcesResponse,
   DeleteUsersDataSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsersDataSourcesRequest,
   output: DeleteUsersDataSourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -872,7 +867,7 @@ export interface PatchUsersDataSourcesDatasetsRequest {
 }
 
 export const PatchUsersDataSourcesDatasetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
     dataSourceId: Schema.String.pipe(T.HttpPath("dataSourceId")),
@@ -887,8 +882,7 @@ export const PatchUsersDataSourcesDatasetsRequest =
   ) as unknown as Schema.Codec<PatchUsersDataSourcesDatasetsRequest>;
 
 export type PatchUsersDataSourcesDatasetsResponse = Dataset;
-export const PatchUsersDataSourcesDatasetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Dataset;
+export const PatchUsersDataSourcesDatasetsResponse = /*@__PURE__*/ Dataset;
 
 export type PatchUsersDataSourcesDatasetsError =
   | DefaultErrors
@@ -903,7 +897,7 @@ export const patchUsersDataSourcesDatasets: API.OperationMethod<
   PatchUsersDataSourcesDatasetsResponse,
   PatchUsersDataSourcesDatasetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchUsersDataSourcesDatasetsRequest,
   output: PatchUsersDataSourcesDatasetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -923,7 +917,7 @@ export interface GetUsersDataSourcesDatasetsRequest {
 }
 
 export const GetUsersDataSourcesDatasetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
     limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
@@ -938,8 +932,7 @@ export const GetUsersDataSourcesDatasetsRequest =
   ) as unknown as Schema.Codec<GetUsersDataSourcesDatasetsRequest>;
 
 export type GetUsersDataSourcesDatasetsResponse = Dataset;
-export const GetUsersDataSourcesDatasetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Dataset;
+export const GetUsersDataSourcesDatasetsResponse = /*@__PURE__*/ Dataset;
 
 export type GetUsersDataSourcesDatasetsError =
   | DefaultErrors
@@ -952,7 +945,7 @@ export const getUsersDataSourcesDatasets: API.PaginatedOperationMethod<
   GetUsersDataSourcesDatasetsResponse,
   GetUsersDataSourcesDatasetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetUsersDataSourcesDatasetsRequest,
   output: GetUsersDataSourcesDatasetsResponse,
   errors: [NotFound, Forbidden],
@@ -972,7 +965,7 @@ export interface DeleteUsersDataSourcesDatasetsRequest {
 }
 
 export const DeleteUsersDataSourcesDatasetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
     dataSourceId: Schema.String.pipe(T.HttpPath("dataSourceId")),
@@ -986,7 +979,7 @@ export const DeleteUsersDataSourcesDatasetsRequest =
 
 export interface DeleteUsersDataSourcesDatasetsResponse {}
 export const DeleteUsersDataSourcesDatasetsResponse: Schema.Codec<DeleteUsersDataSourcesDatasetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteUsersDataSourcesDatasetsResponse>;
 
@@ -1003,7 +996,7 @@ export const deleteUsersDataSourcesDatasets: API.OperationMethod<
   DeleteUsersDataSourcesDatasetsResponse,
   DeleteUsersDataSourcesDatasetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUsersDataSourcesDatasetsRequest,
   output: DeleteUsersDataSourcesDatasetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1021,7 +1014,7 @@ export interface ListUsersDataSourcesDataPointChangesRequest {
 }
 
 export const ListUsersDataSourcesDataPointChangesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataSourceId: Schema.String.pipe(T.HttpPath("dataSourceId")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     userId: Schema.String.pipe(T.HttpPath("userId")),
@@ -1037,7 +1030,7 @@ export const ListUsersDataSourcesDataPointChangesRequest =
 export type ListUsersDataSourcesDataPointChangesResponse =
   ListDataPointChangesResponse;
 export const ListUsersDataSourcesDataPointChangesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDataPointChangesResponse;
+  /*@__PURE__*/ ListDataPointChangesResponse;
 
 export type ListUsersDataSourcesDataPointChangesError =
   | DefaultErrors
@@ -1050,7 +1043,7 @@ export const listUsersDataSourcesDataPointChanges: API.PaginatedOperationMethod<
   ListUsersDataSourcesDataPointChangesResponse,
   ListUsersDataSourcesDataPointChangesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersDataSourcesDataPointChangesRequest,
   output: ListUsersDataSourcesDataPointChangesResponse,
   errors: [NotFound, Forbidden],
@@ -1068,7 +1061,7 @@ export interface AggregateUsersDatasetRequest {
 }
 
 export const AggregateUsersDatasetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.HttpPath("userId")),
     body: Schema.optional(AggregateRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1081,8 +1074,7 @@ export const AggregateUsersDatasetRequest =
   ) as unknown as Schema.Codec<AggregateUsersDatasetRequest>;
 
 export type AggregateUsersDatasetResponse = AggregateResponse;
-export const AggregateUsersDatasetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AggregateResponse;
+export const AggregateUsersDatasetResponse = /*@__PURE__*/ AggregateResponse;
 
 export type AggregateUsersDatasetError =
   | DefaultErrors
@@ -1097,7 +1089,7 @@ export const aggregateUsersDataset: API.OperationMethod<
   AggregateUsersDatasetResponse,
   AggregateUsersDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AggregateUsersDatasetRequest,
   output: AggregateUsersDatasetResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

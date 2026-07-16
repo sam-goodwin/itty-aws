@@ -69,7 +69,7 @@ export interface CreateInternalApiserverV1alpha1StorageVersionInput {
   };
 }
 export const CreateInternalApiserverV1alpha1StorageVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -207,7 +207,7 @@ export interface CreateInternalApiserverV1alpha1StorageVersionOutput {
   };
 }
 export const CreateInternalApiserverV1alpha1StorageVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -290,7 +290,7 @@ export const CreateInternalApiserverV1alpha1StorageVersionOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createInternalApiserverV1alpha1StorageVersion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateInternalApiserverV1alpha1StorageVersionInput,
     outputSchema: CreateInternalApiserverV1alpha1StorageVersionOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -317,7 +317,7 @@ export interface DeleteInternalApiserverV1alpha1CollectionStorageVersionInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteInternalApiserverV1alpha1CollectionStorageVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -375,7 +375,7 @@ export interface DeleteInternalApiserverV1alpha1CollectionStorageVersionOutput {
   status?: string;
 }
 export const DeleteInternalApiserverV1alpha1CollectionStorageVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -477,7 +477,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteInternalApiserverV1alpha1CollectionStorageVersion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteInternalApiserverV1alpha1CollectionStorageVersionInput,
     outputSchema: DeleteInternalApiserverV1alpha1CollectionStorageVersionOutput,
   }));
@@ -495,7 +495,7 @@ export interface DeleteInternalApiserverV1alpha1StorageVersionInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteInternalApiserverV1alpha1StorageVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -545,7 +545,7 @@ export interface DeleteInternalApiserverV1alpha1StorageVersionOutput {
   status?: string;
 }
 export const DeleteInternalApiserverV1alpha1StorageVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -598,7 +598,7 @@ export const DeleteInternalApiserverV1alpha1StorageVersionOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteInternalApiserverV1alpha1StorageVersion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteInternalApiserverV1alpha1StorageVersionInput,
     outputSchema: DeleteInternalApiserverV1alpha1StorageVersionOutput,
     errors: [NotFound, Conflict] as const,
@@ -606,7 +606,7 @@ export const deleteInternalApiserverV1alpha1StorageVersion =
 // Input Schema
 export interface GetInternalApiserverAPIGroupInput {}
 export const GetInternalApiserverAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/internal.apiserver.k8s.io/" }),
   ) as unknown as Schema.Codec<GetInternalApiserverAPIGroupInput>;
 
@@ -620,7 +620,7 @@ export interface GetInternalApiserverAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetInternalApiserverAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -651,14 +651,14 @@ export const GetInternalApiserverAPIGroupOutput =
  * get information of a group
  */
 export const getInternalApiserverAPIGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetInternalApiserverAPIGroupInput,
     outputSchema: GetInternalApiserverAPIGroupOutput,
   }));
 // Input Schema
 export interface GetInternalApiserverV1alpha1APIResourcesInput {}
 export const GetInternalApiserverV1alpha1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/apis/internal.apiserver.k8s.io/v1alpha1/",
@@ -684,7 +684,7 @@ export interface GetInternalApiserverV1alpha1APIResourcesOutput {
   }[];
 }
 export const GetInternalApiserverV1alpha1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -709,7 +709,7 @@ export const GetInternalApiserverV1alpha1APIResourcesOutput =
  * get available resources
  */
 export const getInternalApiserverV1alpha1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetInternalApiserverV1alpha1APIResourcesInput,
     outputSchema: GetInternalApiserverV1alpha1APIResourcesOutput,
   }));
@@ -729,7 +729,7 @@ export interface ListInternalApiserverV1alpha1StorageVersionInput {
   watch?: boolean;
 }
 export const ListInternalApiserverV1alpha1StorageVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -816,7 +816,7 @@ export interface ListInternalApiserverV1alpha1StorageVersionOutput {
   };
 }
 export const ListInternalApiserverV1alpha1StorageVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -969,7 +969,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listInternalApiserverV1alpha1StorageVersion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListInternalApiserverV1alpha1StorageVersionInput,
     outputSchema: ListInternalApiserverV1alpha1StorageVersionOutput,
   }));
@@ -983,7 +983,7 @@ export interface PatchInternalApiserverV1alpha1StorageVersionInput {
   force?: boolean;
 }
 export const PatchInternalApiserverV1alpha1StorageVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1053,7 +1053,7 @@ export interface PatchInternalApiserverV1alpha1StorageVersionOutput {
   };
 }
 export const PatchInternalApiserverV1alpha1StorageVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -1138,7 +1138,7 @@ export const PatchInternalApiserverV1alpha1StorageVersionOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchInternalApiserverV1alpha1StorageVersion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchInternalApiserverV1alpha1StorageVersionInput,
     outputSchema: PatchInternalApiserverV1alpha1StorageVersionOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -1153,7 +1153,7 @@ export interface PatchInternalApiserverV1alpha1StorageVersionStatusInput {
   force?: boolean;
 }
 export const PatchInternalApiserverV1alpha1StorageVersionStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1223,7 +1223,7 @@ export interface PatchInternalApiserverV1alpha1StorageVersionStatusOutput {
   };
 }
 export const PatchInternalApiserverV1alpha1StorageVersionStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -1308,7 +1308,7 @@ export const PatchInternalApiserverV1alpha1StorageVersionStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchInternalApiserverV1alpha1StorageVersionStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchInternalApiserverV1alpha1StorageVersionStatusInput,
     outputSchema: PatchInternalApiserverV1alpha1StorageVersionStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -1319,7 +1319,7 @@ export interface ReadInternalApiserverV1alpha1StorageVersionInput {
   pretty?: string;
 }
 export const ReadInternalApiserverV1alpha1StorageVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -1385,7 +1385,7 @@ export interface ReadInternalApiserverV1alpha1StorageVersionOutput {
   };
 }
 export const ReadInternalApiserverV1alpha1StorageVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -1466,7 +1466,7 @@ export const ReadInternalApiserverV1alpha1StorageVersionOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readInternalApiserverV1alpha1StorageVersion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadInternalApiserverV1alpha1StorageVersionInput,
     outputSchema: ReadInternalApiserverV1alpha1StorageVersionOutput,
     errors: [NotFound] as const,
@@ -1477,7 +1477,7 @@ export interface ReadInternalApiserverV1alpha1StorageVersionStatusInput {
   pretty?: string;
 }
 export const ReadInternalApiserverV1alpha1StorageVersionStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -1543,7 +1543,7 @@ export interface ReadInternalApiserverV1alpha1StorageVersionStatusOutput {
   };
 }
 export const ReadInternalApiserverV1alpha1StorageVersionStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -1624,7 +1624,7 @@ export const ReadInternalApiserverV1alpha1StorageVersionStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readInternalApiserverV1alpha1StorageVersionStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadInternalApiserverV1alpha1StorageVersionStatusInput,
     outputSchema: ReadInternalApiserverV1alpha1StorageVersionStatusOutput,
     errors: [NotFound] as const,
@@ -1690,7 +1690,7 @@ export interface ReplaceInternalApiserverV1alpha1StorageVersionInput {
   };
 }
 export const ReplaceInternalApiserverV1alpha1StorageVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1829,7 +1829,7 @@ export interface ReplaceInternalApiserverV1alpha1StorageVersionOutput {
   };
 }
 export const ReplaceInternalApiserverV1alpha1StorageVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -1913,7 +1913,7 @@ export const ReplaceInternalApiserverV1alpha1StorageVersionOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceInternalApiserverV1alpha1StorageVersion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceInternalApiserverV1alpha1StorageVersionInput,
     outputSchema: ReplaceInternalApiserverV1alpha1StorageVersionOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -1979,7 +1979,7 @@ export interface ReplaceInternalApiserverV1alpha1StorageVersionStatusInput {
   };
 }
 export const ReplaceInternalApiserverV1alpha1StorageVersionStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2118,7 +2118,7 @@ export interface ReplaceInternalApiserverV1alpha1StorageVersionStatusOutput {
   };
 }
 export const ReplaceInternalApiserverV1alpha1StorageVersionStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.Struct({
@@ -2202,7 +2202,7 @@ export const ReplaceInternalApiserverV1alpha1StorageVersionStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceInternalApiserverV1alpha1StorageVersionStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceInternalApiserverV1alpha1StorageVersionStatusInput,
     outputSchema: ReplaceInternalApiserverV1alpha1StorageVersionStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -2224,7 +2224,7 @@ export interface WatchInternalApiserverV1alpha1StorageVersionInput {
   watch?: boolean;
 }
 export const WatchInternalApiserverV1alpha1StorageVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -2251,7 +2251,7 @@ export interface WatchInternalApiserverV1alpha1StorageVersionOutput {
   type: string;
 }
 export const WatchInternalApiserverV1alpha1StorageVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchInternalApiserverV1alpha1StorageVersionOutput>;
@@ -2316,7 +2316,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchInternalApiserverV1alpha1StorageVersion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchInternalApiserverV1alpha1StorageVersionInput,
     outputSchema: WatchInternalApiserverV1alpha1StorageVersionOutput,
   }));
@@ -2336,7 +2336,7 @@ export interface WatchInternalApiserverV1alpha1StorageVersionListInput {
   watch?: boolean;
 }
 export const WatchInternalApiserverV1alpha1StorageVersionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -2362,7 +2362,7 @@ export interface WatchInternalApiserverV1alpha1StorageVersionListOutput {
   type: string;
 }
 export const WatchInternalApiserverV1alpha1StorageVersionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchInternalApiserverV1alpha1StorageVersionListOutput>;
@@ -2426,7 +2426,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchInternalApiserverV1alpha1StorageVersionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchInternalApiserverV1alpha1StorageVersionListInput,
     outputSchema: WatchInternalApiserverV1alpha1StorageVersionListOutput,
   }));

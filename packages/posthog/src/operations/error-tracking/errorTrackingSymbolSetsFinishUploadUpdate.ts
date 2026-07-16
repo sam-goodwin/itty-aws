@@ -10,7 +10,7 @@ export interface ErrorTrackingSymbolSetsFinishUploadUpdateInput {
   content_hash: string;
 }
 export const ErrorTrackingSymbolSetsFinishUploadUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     content_hash: Schema.String,
@@ -24,7 +24,7 @@ export const ErrorTrackingSymbolSetsFinishUploadUpdateInput =
 // Output Schema
 export type ErrorTrackingSymbolSetsFinishUploadUpdateOutput = void;
 export const ErrorTrackingSymbolSetsFinishUploadUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSymbolSetsFinishUploadUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSymbolSetsFinishUploadUpdateOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const ErrorTrackingSymbolSetsFinishUploadUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingSymbolSetsFinishUploadUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingSymbolSetsFinishUploadUpdateInput,
     outputSchema: ErrorTrackingSymbolSetsFinishUploadUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

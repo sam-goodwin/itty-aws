@@ -6,7 +6,7 @@ import * as T from "../../traits.ts";
 export interface QuotaLimitsListInput {
   project_id: string;
 }
-export const QuotaLimitsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QuotaLimitsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/quota_limits/" }),
@@ -16,7 +16,7 @@ export const QuotaLimitsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QuotaLimitsListOutput = {
   limited: Record<string, { limited: boolean }>;
 }[];
-export const QuotaLimitsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const QuotaLimitsListOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     limited: Schema.Record(
       Schema.String,
@@ -35,7 +35,7 @@ export const QuotaLimitsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const quotaLimitsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const quotaLimitsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: QuotaLimitsListInput,
   outputSchema: QuotaLimitsListOutput,
 }));

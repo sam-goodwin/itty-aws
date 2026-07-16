@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface GetProjectJWKSInput {
   project_id: string;
 }
-export const GetProjectJWKSInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProjectJWKSInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/projects/{project_id}/jwks" }),
@@ -26,7 +26,7 @@ export interface GetProjectJWKSOutput {
     role_names?: string[];
   }[];
 }
-export const GetProjectJWKSOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProjectJWKSOutput = /*@__PURE__*/ Schema.Struct({
   jwks: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -50,7 +50,7 @@ export const GetProjectJWKSOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - The Neon project ID
  */
-export const getProjectJWKS = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getProjectJWKS = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetProjectJWKSInput,
   outputSchema: GetProjectJWKSOutput,
 }));

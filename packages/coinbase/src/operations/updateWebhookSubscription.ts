@@ -39,7 +39,7 @@ export interface UpdateWebhookSubscriptionInput {
   labels?: Record<string, string>;
 }
 export const UpdateWebhookSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     description: Schema.optional(Schema.String),
     eventTypes: Schema.Array(
@@ -121,7 +121,7 @@ export interface UpdateWebhookSubscriptionOutput {
   labels?: Record<string, string>;
 }
 export const UpdateWebhookSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createdAt: Schema.String,
     updatedAt: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -182,9 +182,7 @@ export const UpdateWebhookSubscriptionOutput =
  *
  * @param subscriptionId - Unique identifier for the webhook subscription.
  */
-export const updateWebhookSubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateWebhookSubscriptionInput,
-    outputSchema: UpdateWebhookSubscriptionOutput,
-  }),
-);
+export const updateWebhookSubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateWebhookSubscriptionInput,
+  outputSchema: UpdateWebhookSubscriptionOutput,
+}));

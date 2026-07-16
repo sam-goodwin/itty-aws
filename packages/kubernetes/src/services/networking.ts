@@ -59,7 +59,7 @@ export interface CreateNetworkingV1IPAddressInput {
   };
 }
 export const CreateNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -168,7 +168,7 @@ export interface CreateNetworkingV1IPAddressOutput {
   };
 }
 export const CreateNetworkingV1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -234,13 +234,11 @@ export const CreateNetworkingV1IPAddressOutput =
  * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
-export const createNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateNetworkingV1IPAddressInput,
-    outputSchema: CreateNetworkingV1IPAddressOutput,
-    errors: [Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const createNetworkingV1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateNetworkingV1IPAddressInput,
+  outputSchema: CreateNetworkingV1IPAddressOutput,
+  errors: [Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface CreateNetworkingV1IngressClassInput {
   pretty?: string;
@@ -293,7 +291,7 @@ export interface CreateNetworkingV1IngressClassInput {
   };
 }
 export const CreateNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -413,7 +411,7 @@ export interface CreateNetworkingV1IngressClassOutput {
   };
 }
 export const CreateNetworkingV1IngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -486,7 +484,7 @@ export const CreateNetworkingV1IngressClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createNetworkingV1IngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateNetworkingV1IngressClassInput,
     outputSchema: CreateNetworkingV1IngressClassOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -567,7 +565,7 @@ export interface CreateNetworkingV1NamespacedIngressInput {
   };
 }
 export const CreateNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -794,7 +792,7 @@ export interface CreateNetworkingV1NamespacedIngressOutput {
   };
 }
 export const CreateNetworkingV1NamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -951,7 +949,7 @@ export const CreateNetworkingV1NamespacedIngressOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createNetworkingV1NamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateNetworkingV1NamespacedIngressInput,
     outputSchema: CreateNetworkingV1NamespacedIngressOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -1050,7 +1048,7 @@ export interface CreateNetworkingV1NamespacedNetworkPolicyInput {
   };
 }
 export const CreateNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1345,7 +1343,7 @@ export interface CreateNetworkingV1NamespacedNetworkPolicyOutput {
   };
 }
 export const CreateNetworkingV1NamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1552,7 +1550,7 @@ export const CreateNetworkingV1NamespacedNetworkPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createNetworkingV1NamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: CreateNetworkingV1NamespacedNetworkPolicyOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -1610,7 +1608,7 @@ export interface CreateNetworkingV1ServiceCIDRInput {
   };
 }
 export const CreateNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -1735,7 +1733,7 @@ export interface CreateNetworkingV1ServiceCIDROutput {
   };
 }
 export const CreateNetworkingV1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1815,7 +1813,7 @@ export const CreateNetworkingV1ServiceCIDROutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createNetworkingV1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateNetworkingV1ServiceCIDRInput,
     outputSchema: CreateNetworkingV1ServiceCIDROutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -1842,7 +1840,7 @@ export interface DeleteNetworkingV1CollectionIPAddressInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteNetworkingV1CollectionIPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1900,7 +1898,7 @@ export interface DeleteNetworkingV1CollectionIPAddressOutput {
   status?: string;
 }
 export const DeleteNetworkingV1CollectionIPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2002,7 +2000,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteNetworkingV1CollectionIPAddress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1CollectionIPAddressInput,
     outputSchema: DeleteNetworkingV1CollectionIPAddressOutput,
   }));
@@ -2028,7 +2026,7 @@ export interface DeleteNetworkingV1CollectionIngressClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteNetworkingV1CollectionIngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2086,7 +2084,7 @@ export interface DeleteNetworkingV1CollectionIngressClassOutput {
   status?: string;
 }
 export const DeleteNetworkingV1CollectionIngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2188,7 +2186,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteNetworkingV1CollectionIngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1CollectionIngressClassInput,
     outputSchema: DeleteNetworkingV1CollectionIngressClassOutput,
   }));
@@ -2215,7 +2213,7 @@ export interface DeleteNetworkingV1CollectionNamespacedIngressInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteNetworkingV1CollectionNamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -2274,7 +2272,7 @@ export interface DeleteNetworkingV1CollectionNamespacedIngressOutput {
   status?: string;
 }
 export const DeleteNetworkingV1CollectionNamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2377,7 +2375,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteNetworkingV1CollectionNamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1CollectionNamespacedIngressInput,
     outputSchema: DeleteNetworkingV1CollectionNamespacedIngressOutput,
   }));
@@ -2404,7 +2402,7 @@ export interface DeleteNetworkingV1CollectionNamespacedNetworkPolicyInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteNetworkingV1CollectionNamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -2463,7 +2461,7 @@ export interface DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput {
   status?: string;
 }
 export const DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2566,7 +2564,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteNetworkingV1CollectionNamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1CollectionNamespacedNetworkPolicyInput,
     outputSchema: DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput,
   }));
@@ -2592,7 +2590,7 @@ export interface DeleteNetworkingV1CollectionServiceCIDRInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteNetworkingV1CollectionServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2650,7 +2648,7 @@ export interface DeleteNetworkingV1CollectionServiceCIDROutput {
   status?: string;
 }
 export const DeleteNetworkingV1CollectionServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2752,7 +2750,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteNetworkingV1CollectionServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1CollectionServiceCIDRInput,
     outputSchema: DeleteNetworkingV1CollectionServiceCIDROutput,
   }));
@@ -2770,7 +2768,7 @@ export interface DeleteNetworkingV1IPAddressInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2820,7 +2818,7 @@ export interface DeleteNetworkingV1IPAddressOutput {
   status?: string;
 }
 export const DeleteNetworkingV1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2872,13 +2870,11 @@ export const DeleteNetworkingV1IPAddressOutput =
  * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
-export const deleteNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteNetworkingV1IPAddressInput,
-    outputSchema: DeleteNetworkingV1IPAddressOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const deleteNetworkingV1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteNetworkingV1IPAddressInput,
+  outputSchema: DeleteNetworkingV1IPAddressOutput,
+  errors: [NotFound, Conflict] as const,
+}));
 // Input Schema
 export interface DeleteNetworkingV1IngressClassInput {
   name: string;
@@ -2893,7 +2889,7 @@ export interface DeleteNetworkingV1IngressClassInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2943,7 +2939,7 @@ export interface DeleteNetworkingV1IngressClassOutput {
   status?: string;
 }
 export const DeleteNetworkingV1IngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -2996,7 +2992,7 @@ export const DeleteNetworkingV1IngressClassOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteNetworkingV1IngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1IngressClassInput,
     outputSchema: DeleteNetworkingV1IngressClassOutput,
     errors: [NotFound, Conflict] as const,
@@ -3016,7 +3012,7 @@ export interface DeleteNetworkingV1NamespacedIngressInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -3067,7 +3063,7 @@ export interface DeleteNetworkingV1NamespacedIngressOutput {
   status?: string;
 }
 export const DeleteNetworkingV1NamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3121,7 +3117,7 @@ export const DeleteNetworkingV1NamespacedIngressOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteNetworkingV1NamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1NamespacedIngressInput,
     outputSchema: DeleteNetworkingV1NamespacedIngressOutput,
     errors: [NotFound, Conflict] as const,
@@ -3141,7 +3137,7 @@ export interface DeleteNetworkingV1NamespacedNetworkPolicyInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -3192,7 +3188,7 @@ export interface DeleteNetworkingV1NamespacedNetworkPolicyOutput {
   status?: string;
 }
 export const DeleteNetworkingV1NamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3246,7 +3242,7 @@ export const DeleteNetworkingV1NamespacedNetworkPolicyOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteNetworkingV1NamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: DeleteNetworkingV1NamespacedNetworkPolicyOutput,
     errors: [NotFound, Conflict] as const,
@@ -3265,7 +3261,7 @@ export interface DeleteNetworkingV1ServiceCIDRInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -3315,7 +3311,7 @@ export interface DeleteNetworkingV1ServiceCIDROutput {
   status?: string;
 }
 export const DeleteNetworkingV1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -3368,7 +3364,7 @@ export const DeleteNetworkingV1ServiceCIDROutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteNetworkingV1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteNetworkingV1ServiceCIDRInput,
     outputSchema: DeleteNetworkingV1ServiceCIDROutput,
     errors: [NotFound, Conflict] as const,
@@ -3376,7 +3372,7 @@ export const deleteNetworkingV1ServiceCIDR =
 // Input Schema
 export interface GetNetworkingAPIGroupInput {}
 export const GetNetworkingAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/networking.k8s.io/" }),
   ) as unknown as Schema.Codec<GetNetworkingAPIGroupInput>;
 
@@ -3390,7 +3386,7 @@ export interface GetNetworkingAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetNetworkingAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -3420,16 +3416,14 @@ export const GetNetworkingAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getNetworkingAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetNetworkingAPIGroupInput,
-    outputSchema: GetNetworkingAPIGroupOutput,
-  }),
-);
+export const getNetworkingAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetNetworkingAPIGroupInput,
+  outputSchema: GetNetworkingAPIGroupOutput,
+}));
 // Input Schema
 export interface GetNetworkingV1APIResourcesInput {}
 export const GetNetworkingV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/" }),
   ) as unknown as Schema.Codec<GetNetworkingV1APIResourcesInput>;
 
@@ -3452,7 +3446,7 @@ export interface GetNetworkingV1APIResourcesOutput {
   }[];
 }
 export const GetNetworkingV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -3476,12 +3470,10 @@ export const GetNetworkingV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getNetworkingV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetNetworkingV1APIResourcesInput,
-    outputSchema: GetNetworkingV1APIResourcesOutput,
-  }),
-);
+export const getNetworkingV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetNetworkingV1APIResourcesInput,
+  outputSchema: GetNetworkingV1APIResourcesOutput,
+}));
 // Input Schema
 export interface ListNetworkingV1IPAddressInput {
   pretty?: string;
@@ -3498,7 +3490,7 @@ export interface ListNetworkingV1IPAddressInput {
   watch?: boolean;
 }
 export const ListNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -3572,7 +3564,7 @@ export interface ListNetworkingV1IPAddressOutput {
   };
 }
 export const ListNetworkingV1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -3708,12 +3700,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListNetworkingV1IPAddressInput,
-    outputSchema: ListNetworkingV1IPAddressOutput,
-  }),
-);
+export const listNetworkingV1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListNetworkingV1IPAddressInput,
+  outputSchema: ListNetworkingV1IPAddressOutput,
+}));
 // Input Schema
 export interface ListNetworkingV1IngressClassInput {
   pretty?: string;
@@ -3730,7 +3720,7 @@ export interface ListNetworkingV1IngressClassInput {
   watch?: boolean;
 }
 export const ListNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -3809,7 +3799,7 @@ export interface ListNetworkingV1IngressClassOutput {
   };
 }
 export const ListNetworkingV1IngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -3952,7 +3942,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listNetworkingV1IngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListNetworkingV1IngressClassInput,
     outputSchema: ListNetworkingV1IngressClassOutput,
   }));
@@ -3972,7 +3962,7 @@ export interface ListNetworkingV1IngressForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListNetworkingV1IngressForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -4071,7 +4061,7 @@ export interface ListNetworkingV1IngressForAllNamespacesOutput {
   };
 }
 export const ListNetworkingV1IngressForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -4297,7 +4287,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listNetworkingV1IngressForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListNetworkingV1IngressForAllNamespacesInput,
     outputSchema: ListNetworkingV1IngressForAllNamespacesOutput,
   }));
@@ -4318,7 +4308,7 @@ export interface ListNetworkingV1NamespacedIngressInput {
   watch?: boolean;
 }
 export const ListNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -4421,7 +4411,7 @@ export interface ListNetworkingV1NamespacedIngressOutput {
   };
 }
 export const ListNetworkingV1NamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -4648,7 +4638,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listNetworkingV1NamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListNetworkingV1NamespacedIngressInput,
     outputSchema: ListNetworkingV1NamespacedIngressOutput,
   }));
@@ -4669,7 +4659,7 @@ export interface ListNetworkingV1NamespacedNetworkPolicyInput {
   watch?: boolean;
 }
 export const ListNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -4794,7 +4784,7 @@ export interface ListNetworkingV1NamespacedNetworkPolicyOutput {
   };
 }
 export const ListNetworkingV1NamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -5075,7 +5065,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listNetworkingV1NamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: ListNetworkingV1NamespacedNetworkPolicyOutput,
   }));
@@ -5095,7 +5085,7 @@ export interface ListNetworkingV1NetworkPolicyForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListNetworkingV1NetworkPolicyForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -5219,7 +5209,7 @@ export interface ListNetworkingV1NetworkPolicyForAllNamespacesOutput {
   };
 }
 export const ListNetworkingV1NetworkPolicyForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -5499,7 +5489,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listNetworkingV1NetworkPolicyForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListNetworkingV1NetworkPolicyForAllNamespacesInput,
     outputSchema: ListNetworkingV1NetworkPolicyForAllNamespacesOutput,
   }));
@@ -5519,7 +5509,7 @@ export interface ListNetworkingV1ServiceCIDRInput {
   watch?: boolean;
 }
 export const ListNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -5596,7 +5586,7 @@ export interface ListNetworkingV1ServiceCIDROutput {
   };
 }
 export const ListNetworkingV1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -5745,12 +5735,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const listNetworkingV1ServiceCIDR = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListNetworkingV1ServiceCIDRInput,
-    outputSchema: ListNetworkingV1ServiceCIDROutput,
-  }),
-);
+export const listNetworkingV1ServiceCIDR = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListNetworkingV1ServiceCIDRInput,
+  outputSchema: ListNetworkingV1ServiceCIDROutput,
+}));
 // Input Schema
 export interface PatchNetworkingV1IPAddressInput {
   name: string;
@@ -5761,7 +5749,7 @@ export interface PatchNetworkingV1IPAddressInput {
   force?: boolean;
 }
 export const PatchNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -5821,7 +5809,7 @@ export interface PatchNetworkingV1IPAddressOutput {
   };
 }
 export const PatchNetworkingV1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5889,13 +5877,11 @@ export const PatchNetworkingV1IPAddressOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
-export const patchNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchNetworkingV1IPAddressInput,
-    outputSchema: PatchNetworkingV1IPAddressOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const patchNetworkingV1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchNetworkingV1IPAddressInput,
+  outputSchema: PatchNetworkingV1IPAddressOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));
 // Input Schema
 export interface PatchNetworkingV1IngressClassInput {
   name: string;
@@ -5906,7 +5892,7 @@ export interface PatchNetworkingV1IngressClassInput {
   force?: boolean;
 }
 export const PatchNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -5968,7 +5954,7 @@ export interface PatchNetworkingV1IngressClassOutput {
   };
 }
 export const PatchNetworkingV1IngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6043,7 +6029,7 @@ export const PatchNetworkingV1IngressClassOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1IngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1IngressClassInput,
     outputSchema: PatchNetworkingV1IngressClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -6059,7 +6045,7 @@ export interface PatchNetworkingV1NamespacedIngressInput {
   force?: boolean;
 }
 export const PatchNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -6145,7 +6131,7 @@ export interface PatchNetworkingV1NamespacedIngressOutput {
   };
 }
 export const PatchNetworkingV1NamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6304,7 +6290,7 @@ export const PatchNetworkingV1NamespacedIngressOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1NamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1NamespacedIngressInput,
     outputSchema: PatchNetworkingV1NamespacedIngressOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -6320,7 +6306,7 @@ export interface PatchNetworkingV1NamespacedIngressStatusInput {
   force?: boolean;
 }
 export const PatchNetworkingV1NamespacedIngressStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -6406,7 +6392,7 @@ export interface PatchNetworkingV1NamespacedIngressStatusOutput {
   };
 }
 export const PatchNetworkingV1NamespacedIngressStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6565,7 +6551,7 @@ export const PatchNetworkingV1NamespacedIngressStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1NamespacedIngressStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1NamespacedIngressStatusInput,
     outputSchema: PatchNetworkingV1NamespacedIngressStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -6581,7 +6567,7 @@ export interface PatchNetworkingV1NamespacedNetworkPolicyInput {
   force?: boolean;
 }
 export const PatchNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -6685,7 +6671,7 @@ export interface PatchNetworkingV1NamespacedNetworkPolicyOutput {
   };
 }
 export const PatchNetworkingV1NamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -6894,7 +6880,7 @@ export const PatchNetworkingV1NamespacedNetworkPolicyOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1NamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: PatchNetworkingV1NamespacedNetworkPolicyOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -6909,7 +6895,7 @@ export interface PatchNetworkingV1ServiceCIDRInput {
   force?: boolean;
 }
 export const PatchNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -6972,7 +6958,7 @@ export interface PatchNetworkingV1ServiceCIDROutput {
   };
 }
 export const PatchNetworkingV1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7054,7 +7040,7 @@ export const PatchNetworkingV1ServiceCIDROutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1ServiceCIDRInput,
     outputSchema: PatchNetworkingV1ServiceCIDROutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -7069,7 +7055,7 @@ export interface PatchNetworkingV1ServiceCIDRStatusInput {
   force?: boolean;
 }
 export const PatchNetworkingV1ServiceCIDRStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -7132,7 +7118,7 @@ export interface PatchNetworkingV1ServiceCIDRStatusOutput {
   };
 }
 export const PatchNetworkingV1ServiceCIDRStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7214,7 +7200,7 @@ export const PatchNetworkingV1ServiceCIDRStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1ServiceCIDRStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchNetworkingV1ServiceCIDRStatusInput,
     outputSchema: PatchNetworkingV1ServiceCIDRStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -7225,7 +7211,7 @@ export interface ReadNetworkingV1IPAddressInput {
   pretty?: string;
 }
 export const ReadNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -7281,7 +7267,7 @@ export interface ReadNetworkingV1IPAddressOutput {
   };
 }
 export const ReadNetworkingV1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7345,20 +7331,18 @@ export const ReadNetworkingV1IPAddressOutput =
  * @param name - name of the IPAddress
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadNetworkingV1IPAddressInput,
-    outputSchema: ReadNetworkingV1IPAddressOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readNetworkingV1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadNetworkingV1IPAddressInput,
+  outputSchema: ReadNetworkingV1IPAddressOutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadNetworkingV1IngressClassInput {
   name: string;
   pretty?: string;
 }
 export const ReadNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -7416,7 +7400,7 @@ export interface ReadNetworkingV1IngressClassOutput {
   };
 }
 export const ReadNetworkingV1IngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7487,7 +7471,7 @@ export const ReadNetworkingV1IngressClassOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1IngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadNetworkingV1IngressClassInput,
     outputSchema: ReadNetworkingV1IngressClassOutput,
     errors: [NotFound] as const,
@@ -7499,7 +7483,7 @@ export interface ReadNetworkingV1NamespacedIngressInput {
   pretty?: string;
 }
 export const ReadNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -7581,7 +7565,7 @@ export interface ReadNetworkingV1NamespacedIngressOutput {
   };
 }
 export const ReadNetworkingV1NamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7736,7 +7720,7 @@ export const ReadNetworkingV1NamespacedIngressOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1NamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadNetworkingV1NamespacedIngressInput,
     outputSchema: ReadNetworkingV1NamespacedIngressOutput,
     errors: [NotFound] as const,
@@ -7748,7 +7732,7 @@ export interface ReadNetworkingV1NamespacedIngressStatusInput {
   pretty?: string;
 }
 export const ReadNetworkingV1NamespacedIngressStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -7830,7 +7814,7 @@ export interface ReadNetworkingV1NamespacedIngressStatusOutput {
   };
 }
 export const ReadNetworkingV1NamespacedIngressStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7985,7 +7969,7 @@ export const ReadNetworkingV1NamespacedIngressStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1NamespacedIngressStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadNetworkingV1NamespacedIngressStatusInput,
     outputSchema: ReadNetworkingV1NamespacedIngressStatusOutput,
     errors: [NotFound] as const,
@@ -7997,7 +7981,7 @@ export interface ReadNetworkingV1NamespacedNetworkPolicyInput {
   pretty?: string;
 }
 export const ReadNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -8097,7 +8081,7 @@ export interface ReadNetworkingV1NamespacedNetworkPolicyOutput {
   };
 }
 export const ReadNetworkingV1NamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -8302,7 +8286,7 @@ export const ReadNetworkingV1NamespacedNetworkPolicyOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1NamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: ReadNetworkingV1NamespacedNetworkPolicyOutput,
     errors: [NotFound] as const,
@@ -8313,7 +8297,7 @@ export interface ReadNetworkingV1ServiceCIDRInput {
   pretty?: string;
 }
 export const ReadNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -8372,7 +8356,7 @@ export interface ReadNetworkingV1ServiceCIDROutput {
   };
 }
 export const ReadNetworkingV1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -8449,20 +8433,18 @@ export const ReadNetworkingV1ServiceCIDROutput =
  * @param name - name of the ServiceCIDR
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
-export const readNetworkingV1ServiceCIDR = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReadNetworkingV1ServiceCIDRInput,
-    outputSchema: ReadNetworkingV1ServiceCIDROutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const readNetworkingV1ServiceCIDR = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReadNetworkingV1ServiceCIDRInput,
+  outputSchema: ReadNetworkingV1ServiceCIDROutput,
+  errors: [NotFound] as const,
+}));
 // Input Schema
 export interface ReadNetworkingV1ServiceCIDRStatusInput {
   name: string;
   pretty?: string;
 }
 export const ReadNetworkingV1ServiceCIDRStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -8521,7 +8503,7 @@ export interface ReadNetworkingV1ServiceCIDRStatusOutput {
   };
 }
 export const ReadNetworkingV1ServiceCIDRStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -8599,7 +8581,7 @@ export const ReadNetworkingV1ServiceCIDRStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1ServiceCIDRStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadNetworkingV1ServiceCIDRStatusInput,
     outputSchema: ReadNetworkingV1ServiceCIDRStatusOutput,
     errors: [NotFound] as const,
@@ -8655,7 +8637,7 @@ export interface ReplaceNetworkingV1IPAddressInput {
   };
 }
 export const ReplaceNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -8768,7 +8750,7 @@ export interface ReplaceNetworkingV1IPAddressOutput {
   };
 }
 export const ReplaceNetworkingV1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -8836,7 +8818,7 @@ export const ReplaceNetworkingV1IPAddressOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1IPAddress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1IPAddressInput,
     outputSchema: ReplaceNetworkingV1IPAddressOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -8894,7 +8876,7 @@ export interface ReplaceNetworkingV1IngressClassInput {
   };
 }
 export const ReplaceNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -9015,7 +8997,7 @@ export interface ReplaceNetworkingV1IngressClassOutput {
   };
 }
 export const ReplaceNetworkingV1IngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9089,7 +9071,7 @@ export const ReplaceNetworkingV1IngressClassOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1IngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1IngressClassInput,
     outputSchema: ReplaceNetworkingV1IngressClassOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -9171,7 +9153,7 @@ export interface ReplaceNetworkingV1NamespacedIngressInput {
   };
 }
 export const ReplaceNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -9399,7 +9381,7 @@ export interface ReplaceNetworkingV1NamespacedIngressOutput {
   };
 }
 export const ReplaceNetworkingV1NamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -9557,7 +9539,7 @@ export const ReplaceNetworkingV1NamespacedIngressOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1NamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1NamespacedIngressInput,
     outputSchema: ReplaceNetworkingV1NamespacedIngressOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -9639,7 +9621,7 @@ export interface ReplaceNetworkingV1NamespacedIngressStatusInput {
   };
 }
 export const ReplaceNetworkingV1NamespacedIngressStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -9867,7 +9849,7 @@ export interface ReplaceNetworkingV1NamespacedIngressStatusOutput {
   };
 }
 export const ReplaceNetworkingV1NamespacedIngressStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10025,7 +10007,7 @@ export const ReplaceNetworkingV1NamespacedIngressStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1NamespacedIngressStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1NamespacedIngressStatusInput,
     outputSchema: ReplaceNetworkingV1NamespacedIngressStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -10125,7 +10107,7 @@ export interface ReplaceNetworkingV1NamespacedNetworkPolicyInput {
   };
 }
 export const ReplaceNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -10421,7 +10403,7 @@ export interface ReplaceNetworkingV1NamespacedNetworkPolicyOutput {
   };
 }
 export const ReplaceNetworkingV1NamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10629,7 +10611,7 @@ export const ReplaceNetworkingV1NamespacedNetworkPolicyOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1NamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: ReplaceNetworkingV1NamespacedNetworkPolicyOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -10688,7 +10670,7 @@ export interface ReplaceNetworkingV1ServiceCIDRInput {
   };
 }
 export const ReplaceNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -10817,7 +10799,7 @@ export interface ReplaceNetworkingV1ServiceCIDROutput {
   };
 }
 export const ReplaceNetworkingV1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -10898,7 +10880,7 @@ export const ReplaceNetworkingV1ServiceCIDROutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1ServiceCIDRInput,
     outputSchema: ReplaceNetworkingV1ServiceCIDROutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -10957,7 +10939,7 @@ export interface ReplaceNetworkingV1ServiceCIDRStatusInput {
   };
 }
 export const ReplaceNetworkingV1ServiceCIDRStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -11086,7 +11068,7 @@ export interface ReplaceNetworkingV1ServiceCIDRStatusOutput {
   };
 }
 export const ReplaceNetworkingV1ServiceCIDRStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -11167,7 +11149,7 @@ export const ReplaceNetworkingV1ServiceCIDRStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1ServiceCIDRStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceNetworkingV1ServiceCIDRStatusInput,
     outputSchema: ReplaceNetworkingV1ServiceCIDRStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -11189,7 +11171,7 @@ export interface WatchNetworkingV1IPAddressInput {
   watch?: boolean;
 }
 export const WatchNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -11216,7 +11198,7 @@ export interface WatchNetworkingV1IPAddressOutput {
   type: string;
 }
 export const WatchNetworkingV1IPAddressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchNetworkingV1IPAddressOutput>;
@@ -11280,12 +11262,10 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
-export const watchNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WatchNetworkingV1IPAddressInput,
-    outputSchema: WatchNetworkingV1IPAddressOutput,
-  }),
-);
+export const watchNetworkingV1IPAddress = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WatchNetworkingV1IPAddressInput,
+  outputSchema: WatchNetworkingV1IPAddressOutput,
+}));
 // Input Schema
 export interface WatchNetworkingV1IPAddressListInput {
   allowWatchBookmarks?: boolean;
@@ -11302,7 +11282,7 @@ export interface WatchNetworkingV1IPAddressListInput {
   watch?: boolean;
 }
 export const WatchNetworkingV1IPAddressListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -11328,7 +11308,7 @@ export interface WatchNetworkingV1IPAddressListOutput {
   type: string;
 }
 export const WatchNetworkingV1IPAddressListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchNetworkingV1IPAddressListOutput>;
@@ -11392,7 +11372,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1IPAddressList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchNetworkingV1IPAddressListInput,
     outputSchema: WatchNetworkingV1IPAddressListOutput,
   }));
@@ -11413,7 +11393,7 @@ export interface WatchNetworkingV1IngressClassInput {
   watch?: boolean;
 }
 export const WatchNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -11440,7 +11420,7 @@ export interface WatchNetworkingV1IngressClassOutput {
   type: string;
 }
 export const WatchNetworkingV1IngressClassOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchNetworkingV1IngressClassOutput>;
@@ -11505,7 +11485,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1IngressClass =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchNetworkingV1IngressClassInput,
     outputSchema: WatchNetworkingV1IngressClassOutput,
   }));
@@ -11525,7 +11505,7 @@ export interface WatchNetworkingV1IngressClassListInput {
   watch?: boolean;
 }
 export const WatchNetworkingV1IngressClassListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -11551,7 +11531,7 @@ export interface WatchNetworkingV1IngressClassListOutput {
   type: string;
 }
 export const WatchNetworkingV1IngressClassListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchNetworkingV1IngressClassListOutput>;
@@ -11615,7 +11595,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1IngressClassList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchNetworkingV1IngressClassListInput,
     outputSchema: WatchNetworkingV1IngressClassListOutput,
   }));
@@ -11635,7 +11615,7 @@ export interface WatchNetworkingV1IngressListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchNetworkingV1IngressListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -11661,7 +11641,7 @@ export interface WatchNetworkingV1IngressListForAllNamespacesOutput {
   type: string;
 }
 export const WatchNetworkingV1IngressListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchNetworkingV1IngressListForAllNamespacesOutput>;
@@ -11725,7 +11705,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1IngressListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchNetworkingV1IngressListForAllNamespacesInput,
     outputSchema: WatchNetworkingV1IngressListForAllNamespacesOutput,
   }));
@@ -11747,7 +11727,7 @@ export interface WatchNetworkingV1NamespacedIngressInput {
   watch?: boolean;
 }
 export const WatchNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -11775,7 +11755,7 @@ export interface WatchNetworkingV1NamespacedIngressOutput {
   type: string;
 }
 export const WatchNetworkingV1NamespacedIngressOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchNetworkingV1NamespacedIngressOutput>;
@@ -11841,7 +11821,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1NamespacedIngress =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchNetworkingV1NamespacedIngressInput,
     outputSchema: WatchNetworkingV1NamespacedIngressOutput,
   }));
@@ -11862,7 +11842,7 @@ export interface WatchNetworkingV1NamespacedIngressListInput {
   watch?: boolean;
 }
 export const WatchNetworkingV1NamespacedIngressListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -11889,7 +11869,7 @@ export interface WatchNetworkingV1NamespacedIngressListOutput {
   type: string;
 }
 export const WatchNetworkingV1NamespacedIngressListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchNetworkingV1NamespacedIngressListOutput>;
@@ -11954,7 +11934,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1NamespacedIngressList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchNetworkingV1NamespacedIngressListInput,
     outputSchema: WatchNetworkingV1NamespacedIngressListOutput,
   }));
@@ -11976,7 +11956,7 @@ export interface WatchNetworkingV1NamespacedNetworkPolicyInput {
   watch?: boolean;
 }
 export const WatchNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -12004,7 +11984,7 @@ export interface WatchNetworkingV1NamespacedNetworkPolicyOutput {
   type: string;
 }
 export const WatchNetworkingV1NamespacedNetworkPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchNetworkingV1NamespacedNetworkPolicyOutput>;
@@ -12070,7 +12050,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1NamespacedNetworkPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchNetworkingV1NamespacedNetworkPolicyInput,
     outputSchema: WatchNetworkingV1NamespacedNetworkPolicyOutput,
   }));
@@ -12091,7 +12071,7 @@ export interface WatchNetworkingV1NamespacedNetworkPolicyListInput {
   watch?: boolean;
 }
 export const WatchNetworkingV1NamespacedNetworkPolicyListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -12118,7 +12098,7 @@ export interface WatchNetworkingV1NamespacedNetworkPolicyListOutput {
   type: string;
 }
 export const WatchNetworkingV1NamespacedNetworkPolicyListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchNetworkingV1NamespacedNetworkPolicyListOutput>;
@@ -12183,7 +12163,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1NamespacedNetworkPolicyList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchNetworkingV1NamespacedNetworkPolicyListInput,
     outputSchema: WatchNetworkingV1NamespacedNetworkPolicyListOutput,
   }));
@@ -12203,7 +12183,7 @@ export interface WatchNetworkingV1NetworkPolicyListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchNetworkingV1NetworkPolicyListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -12229,7 +12209,7 @@ export interface WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput {
   type: string;
 }
 export const WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput>;
@@ -12293,7 +12273,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1NetworkPolicyListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchNetworkingV1NetworkPolicyListForAllNamespacesInput,
     outputSchema: WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput,
   }));
@@ -12314,7 +12294,7 @@ export interface WatchNetworkingV1ServiceCIDRInput {
   watch?: boolean;
 }
 export const WatchNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -12341,7 +12321,7 @@ export interface WatchNetworkingV1ServiceCIDROutput {
   type: string;
 }
 export const WatchNetworkingV1ServiceCIDROutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchNetworkingV1ServiceCIDROutput>;
@@ -12406,7 +12386,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1ServiceCIDR =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchNetworkingV1ServiceCIDRInput,
     outputSchema: WatchNetworkingV1ServiceCIDROutput,
   }));
@@ -12426,7 +12406,7 @@ export interface WatchNetworkingV1ServiceCIDRListInput {
   watch?: boolean;
 }
 export const WatchNetworkingV1ServiceCIDRListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -12452,7 +12432,7 @@ export interface WatchNetworkingV1ServiceCIDRListOutput {
   type: string;
 }
 export const WatchNetworkingV1ServiceCIDRListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchNetworkingV1ServiceCIDRListOutput>;
@@ -12516,7 +12496,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1ServiceCIDRList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchNetworkingV1ServiceCIDRListInput,
     outputSchema: WatchNetworkingV1ServiceCIDRListOutput,
   }));

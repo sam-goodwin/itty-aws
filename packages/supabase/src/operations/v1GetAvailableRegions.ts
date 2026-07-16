@@ -29,7 +29,7 @@ export interface V1GetAvailableRegionsInput {
     | "48xlarge_high_memory";
 }
 export const V1GetAvailableRegionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_slug: Schema.String,
     continent: Schema.optional(
       Schema.Literals(["NA", "SA", "EU", "AF", "AS", "OC", "AN"]),
@@ -129,7 +129,7 @@ export interface V1GetAvailableRegionsOutput {
   };
 }
 export const V1GetAvailableRegionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recommendations: Schema.Struct({
       smartGroup: Schema.Struct({
         name: Schema.String,
@@ -212,10 +212,8 @@ export const V1GetAvailableRegionsOutput =
  * @param continent - Continent code to determine regional recommendations: NA (North America), SA (South America), EU (Europe), AF (Africa), AS (Asia), OC (Oceania), AN (Antarctica)
  * @param desired_instance_size - Desired instance size. Omit this field to always default to the smallest possible size.
  */
-export const v1GetAvailableRegions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetAvailableRegionsInput,
-    outputSchema: V1GetAvailableRegionsOutput,
-    errors: [Forbidden] as const,
-  }),
-);
+export const v1GetAvailableRegions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetAvailableRegionsInput,
+  outputSchema: V1GetAvailableRegionsOutput,
+  errors: [Forbidden] as const,
+}));

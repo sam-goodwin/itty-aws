@@ -9,7 +9,7 @@ export interface InsightVariablesListInput {
   page?: number;
 }
 export const InsightVariablesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     page: Schema.optional(Schema.Number),
   }).pipe(
@@ -36,7 +36,7 @@ export interface InsightVariablesListOutput {
   }[];
 }
 export const InsightVariablesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -64,10 +64,8 @@ export const InsightVariablesListOutput =
  * @param page - A page number within the paginated result set.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const insightVariablesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InsightVariablesListInput,
-    outputSchema: InsightVariablesListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const insightVariablesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InsightVariablesListInput,
+  outputSchema: InsightVariablesListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

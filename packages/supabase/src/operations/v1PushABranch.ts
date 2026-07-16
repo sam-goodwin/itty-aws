@@ -8,7 +8,7 @@ export interface V1PushABranchInput {
   branch_id_or_ref: string;
   migration_version?: string;
 }
-export const V1PushABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1PushABranchInput = /*@__PURE__*/ Schema.Struct({
   branch_id_or_ref: Schema.String.pipe(T.PathParam()),
   migration_version: Schema.optional(Schema.String),
 }).pipe(
@@ -20,7 +20,7 @@ export interface V1PushABranchOutput {
   workflow_run_id: string;
   message: "ok";
 }
-export const V1PushABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1PushABranchOutput = /*@__PURE__*/ Schema.Struct({
   workflow_run_id: Schema.String,
   message: Schema.Literals(["ok"]),
 }) as unknown as Schema.Codec<V1PushABranchOutput>;
@@ -33,7 +33,7 @@ export const V1PushABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param branch_id_or_ref - Branch ref or deprecated branch ID
  */
-export const v1PushABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1PushABranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1PushABranchInput,
   outputSchema: V1PushABranchOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -39,7 +39,7 @@ export interface PostTerminalLocationsInput {
   phone?: string;
 }
 export const PostTerminalLocationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.optional(
       Schema.Struct({
         city: Schema.optional(Schema.String),
@@ -131,7 +131,7 @@ export interface PostTerminalLocationsOutput {
   phone?: string;
 }
 export const PostTerminalLocationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.Struct({
       city: Schema.NullOr(Schema.String),
       country: Schema.NullOr(Schema.String),
@@ -180,9 +180,7 @@ export const PostTerminalLocationsOutput =
  * <p>Creates a new <code>Location</code> object.
  * For further details, including which address fields are required in each country, see the <a href="/docs/terminal/fleet/locations">Manage locations</a> guide.</p>
  */
-export const PostTerminalLocations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostTerminalLocationsInput,
-    outputSchema: PostTerminalLocationsOutput,
-  }),
-);
+export const PostTerminalLocations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTerminalLocationsInput,
+  outputSchema: PostTerminalLocationsOutput,
+}));

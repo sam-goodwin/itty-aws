@@ -14,7 +14,7 @@ export interface UpdateFieldForDatasetInput {
   unit?: string;
 }
 export const UpdateFieldForDatasetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataset_id: Schema.String.pipe(T.PathParam()),
     field_id: Schema.String.pipe(T.PathParam()),
     description: Schema.optional(Schema.String),
@@ -38,7 +38,7 @@ export interface UpdateFieldForDatasetOutput {
   unit?: string;
 }
 export const UpdateFieldForDatasetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     hidden: Schema.optional(Schema.Boolean),
     name: Schema.String,
@@ -47,10 +47,8 @@ export const UpdateFieldForDatasetOutput =
   }) as unknown as Schema.Codec<UpdateFieldForDatasetOutput>;
 
 // The operation
-export const updateFieldForDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateFieldForDatasetInput,
-    outputSchema: UpdateFieldForDatasetOutput,
-    errors: [NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const updateFieldForDataset = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateFieldForDatasetInput,
+  outputSchema: UpdateFieldForDatasetOutput,
+  errors: [NotFound, UnprocessableEntity] as const,
+}));

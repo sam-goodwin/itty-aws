@@ -14,7 +14,7 @@ export interface SignalsScoutRunsListInput {
   text?: string;
 }
 export const SignalsScoutRunsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     date_from: Schema.optional(Schema.String),
     date_to: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export type SignalsScoutRunsListOutput = {
   edited_report_ids: string[];
 }[];
 export const SignalsScoutRunsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       run_id: Schema.String,
       skill_name: Schema.String,
@@ -88,9 +88,7 @@ export const SignalsScoutRunsListOutput =
  * @param skill_version - Exact-match filter on the skill version. Pair with `skill_name` to pin one version; omit for all.
  * @param text - Case-insensitive substring match on the scout's end-of-run `summary`. Omit to skip the filter.
  */
-export const signalsScoutRunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalsScoutRunsListInput,
-    outputSchema: SignalsScoutRunsListOutput,
-  }),
-);
+export const signalsScoutRunsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalsScoutRunsListInput,
+  outputSchema: SignalsScoutRunsListOutput,
+}));

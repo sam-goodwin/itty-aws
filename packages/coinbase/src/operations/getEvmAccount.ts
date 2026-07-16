@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface GetEvmAccountInput {
   address: string;
 }
-export const GetEvmAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEvmAccountInput = /*@__PURE__*/ Schema.Struct({
   address: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/evm/accounts/{address}" }),
@@ -20,7 +20,7 @@ export interface GetEvmAccountOutput {
   createdAt?: string;
   updatedAt?: string;
 }
-export const GetEvmAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEvmAccountOutput = /*@__PURE__*/ Schema.Struct({
   address: Schema.String,
   name: Schema.optional(Schema.String),
   policies: Schema.optional(Schema.Array(Schema.String)),
@@ -36,7 +36,7 @@ export const GetEvmAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param address - The 0x-prefixed address of the EVM account. The address does not need to be checksummed.
  */
-export const getEvmAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getEvmAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetEvmAccountInput,
   outputSchema: GetEvmAccountOutput,
 }));

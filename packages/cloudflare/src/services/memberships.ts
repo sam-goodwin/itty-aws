@@ -22,7 +22,7 @@ interface ManagedBy {
   /** Name of the parent Organization, if one exists */
   parentOrgName?: string | null;
 }
-const ManagedBy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ManagedBy = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     parentOrgId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     parentOrgName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -40,7 +40,7 @@ interface Settings {
   /** Indicates whether membership in this account requires that Two-Factor Authentication is enabled */
   enforceTwofactor?: boolean | null;
 }
-const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Settings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     abuseContactEmail: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -75,7 +75,7 @@ interface Account {
     enforceTwofactor?: boolean | null;
   } | null;
 }
-const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Account = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -102,7 +102,7 @@ interface PermissionGrant {
   read?: boolean | null;
   write?: boolean | null;
 }
-const PermissionGrant = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PermissionGrant = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -123,7 +123,7 @@ interface Permissions {
   zoneSettings?: { read?: boolean | null; write?: boolean | null } | null;
   zones?: { read?: boolean | null; write?: boolean | null } | null;
 }
-const Permissions = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Permissions = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     analytics: Schema.optional(Schema.Union([PermissionGrant, Schema.Null])),
     billing: Schema.optional(Schema.Union([PermissionGrant, Schema.Null])),
@@ -159,7 +159,7 @@ interface Meta {
   key?: string | null;
   value?: string | null;
 }
-const Meta = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -174,7 +174,7 @@ interface PermissionGroup {
   /** Name of the permission group. */
   name?: string | null;
 }
-const PermissionGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PermissionGroup = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
@@ -186,7 +186,7 @@ interface Object2 {
   /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
-const Object2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Object2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     key: Schema.String,
   }),
@@ -198,7 +198,7 @@ interface Scope {
   /** A list of scope objects for additional context. */
   objects: { key: string }[];
 }
-const Scope = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Scope = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     key: Schema.String,
     objects: Schema.Array(Object2),
@@ -215,7 +215,7 @@ interface ResourceGroup {
   /** Name of the resource group. */
   name?: string | null;
 }
-const ResourceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ResourceGroup = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     scope: Schema.Array(Scope),
@@ -247,7 +247,7 @@ interface Policy {
       }[]
     | null;
 }
-const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Policy = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     access: Schema.optional(
@@ -312,7 +312,7 @@ interface ListMembershipsResponseResult {
   status?: "accepted" | "pending" | "rejected" | (string & {}) | null;
 }
 const ListMembershipsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       account: Schema.optional(Schema.Union([Account, Schema.Null])),
@@ -351,7 +351,7 @@ interface ListMembershipsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListMembershipsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -375,11 +375,10 @@ export interface GetMembershipRequest {
   membershipId: string;
 }
 
-export const GetMembershipRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      membershipId: Schema.String.pipe(T.HttpPath("membershipId")),
-    }).pipe(T.Http({ method: "GET", path: "/memberships/{membershipId}" })),
+export const GetMembershipRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    membershipId: Schema.String.pipe(T.HttpPath("membershipId")),
+  }).pipe(T.Http({ method: "GET", path: "/memberships/{membershipId}" })),
 ) as unknown as Schema.Codec<GetMembershipRequest>;
 
 export interface GetMembershipResponse {
@@ -444,43 +443,42 @@ export interface GetMembershipResponse {
   status?: "accepted" | "pending" | "rejected" | (string & {}) | null;
 }
 
-export const GetMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      account: Schema.optional(Schema.Union([Account, Schema.Null])),
-      apiAccessEnabled: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      permissions: Schema.optional(Schema.Union([Permissions, Schema.Null])),
-      policies: Schema.optional(
-        Schema.Union([Schema.Array(Policy), Schema.Null]),
-      ),
-      roles: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      status: Schema.optional(
+export const GetMembershipResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    account: Schema.optional(Schema.Union([Account, Schema.Null])),
+    apiAccessEnabled: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    permissions: Schema.optional(Schema.Union([Permissions, Schema.Null])),
+    policies: Schema.optional(
+      Schema.Union([Schema.Array(Policy), Schema.Null]),
+    ),
+    roles: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["accepted", "pending", "rejected"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["accepted", "pending", "rejected"]),
+          Schema.String,
         ]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          account: "account",
-          apiAccessEnabled: "api_access_enabled",
-          permissions: "permissions",
-          policies: "policies",
-          roles: "roles",
-          status: "status",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        account: "account",
+        apiAccessEnabled: "api_access_enabled",
+        permissions: "permissions",
+        policies: "policies",
+        roles: "roles",
+        status: "status",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetMembershipResponse>;
 
 export type GetMembershipError = DefaultErrors;
@@ -490,7 +488,7 @@ export const getMembership: API.OperationMethod<
   GetMembershipResponse,
   GetMembershipError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMembershipRequest,
   output: GetMembershipResponse,
   errors: [],
@@ -511,7 +509,7 @@ export interface ListMembershipsRequest {
 }
 
 export const ListMembershipsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
       perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -583,7 +581,7 @@ export interface ListMembershipsResponse {
 }
 
 export const ListMembershipsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListMembershipsResponseResult),
       resultInfo: Schema.optional(
@@ -599,7 +597,7 @@ export const listMemberships: API.PaginatedOperationMethod<
   ListMembershipsResponse,
   ListMembershipsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembershipsRequest,
   output: ListMembershipsResponse,
   errors: [],
@@ -618,15 +616,14 @@ export interface PutMembershipRequest {
   status: "accepted" | "rejected" | (string & {});
 }
 
-export const PutMembershipRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      membershipId: Schema.String.pipe(T.HttpPath("membershipId")),
-      status: Schema.Union([
-        Schema.Literals(["accepted", "rejected"]),
-        Schema.String,
-      ]),
-    }).pipe(T.Http({ method: "PUT", path: "/memberships/{membershipId}" })),
+export const PutMembershipRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    membershipId: Schema.String.pipe(T.HttpPath("membershipId")),
+    status: Schema.Union([
+      Schema.Literals(["accepted", "rejected"]),
+      Schema.String,
+    ]),
+  }).pipe(T.Http({ method: "PUT", path: "/memberships/{membershipId}" })),
 ) as unknown as Schema.Codec<PutMembershipRequest>;
 
 export interface PutMembershipResponse {
@@ -691,43 +688,42 @@ export interface PutMembershipResponse {
   status?: "accepted" | "pending" | "rejected" | (string & {}) | null;
 }
 
-export const PutMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      account: Schema.optional(Schema.Union([Account, Schema.Null])),
-      apiAccessEnabled: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      permissions: Schema.optional(Schema.Union([Permissions, Schema.Null])),
-      policies: Schema.optional(
-        Schema.Union([Schema.Array(Policy), Schema.Null]),
-      ),
-      roles: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      status: Schema.optional(
+export const PutMembershipResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    account: Schema.optional(Schema.Union([Account, Schema.Null])),
+    apiAccessEnabled: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    permissions: Schema.optional(Schema.Union([Permissions, Schema.Null])),
+    policies: Schema.optional(
+      Schema.Union([Schema.Array(Policy), Schema.Null]),
+    ),
+    roles: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["accepted", "pending", "rejected"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["accepted", "pending", "rejected"]),
+          Schema.String,
         ]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          account: "account",
-          apiAccessEnabled: "api_access_enabled",
-          permissions: "permissions",
-          policies: "policies",
-          roles: "roles",
-          status: "status",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        account: "account",
+        apiAccessEnabled: "api_access_enabled",
+        permissions: "permissions",
+        policies: "policies",
+        roles: "roles",
+        status: "status",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutMembershipResponse>;
 
 export type PutMembershipError = DefaultErrors;
@@ -737,7 +733,7 @@ export const putMembership: API.OperationMethod<
   PutMembershipResponse,
   PutMembershipError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMembershipRequest,
   output: PutMembershipResponse,
   errors: [],
@@ -748,7 +744,7 @@ export interface DeleteMembershipRequest {
 }
 
 export const DeleteMembershipRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       membershipId: Schema.String.pipe(T.HttpPath("membershipId")),
     }).pipe(T.Http({ method: "DELETE", path: "/memberships/{membershipId}" })),
@@ -760,7 +756,7 @@ export interface DeleteMembershipResponse {
 }
 
 export const DeleteMembershipResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -773,7 +769,7 @@ export const deleteMembership: API.OperationMethod<
   DeleteMembershipResponse,
   DeleteMembershipError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMembershipRequest,
   output: DeleteMembershipResponse,
   errors: [],

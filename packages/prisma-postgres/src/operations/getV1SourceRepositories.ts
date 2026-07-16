@@ -10,7 +10,7 @@ export interface GetV1SourceRepositoriesInput {
   projectId: string;
 }
 export const GetV1SourceRepositoriesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     projectId: Schema.String,
@@ -38,7 +38,7 @@ export interface GetV1SourceRepositoriesOutput {
   pagination: { nextCursor: string | null; hasMore: boolean };
 }
 export const GetV1SourceRepositoriesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -69,10 +69,8 @@ export const GetV1SourceRepositoriesOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Returns source repositories linked to a project. Requires projectId query parameter.
  */
-export const getV1SourceRepositories = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV1SourceRepositoriesInput,
-    outputSchema: GetV1SourceRepositoriesOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const getV1SourceRepositories = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1SourceRepositoriesInput,
+  outputSchema: GetV1SourceRepositoriesOutput,
+  errors: [NotFound] as const,
+}));

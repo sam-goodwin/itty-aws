@@ -11,7 +11,7 @@ export interface EngineeringAnalyticsPrRunsInput {
   source_id?: string;
 }
 export const EngineeringAnalyticsPrRunsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     pr_number: Schema.Number,
     repo: Schema.String,
@@ -39,7 +39,7 @@ export type EngineeringAnalyticsPrRunsOutput = {
   pr_number: number;
 }[];
 export const EngineeringAnalyticsPrRunsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       repo: Schema.Struct({
         provider: Schema.String,
@@ -69,10 +69,8 @@ export const EngineeringAnalyticsPrRunsOutput =
  * @param repo - 'owner/name' repository the pull request belongs to.
  * @param source_id - Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one.
  */
-export const engineeringAnalyticsPrRuns = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EngineeringAnalyticsPrRunsInput,
-    outputSchema: EngineeringAnalyticsPrRunsOutput,
-    errors: [BadRequest] as const,
-  }),
-);
+export const engineeringAnalyticsPrRuns = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EngineeringAnalyticsPrRunsInput,
+  outputSchema: EngineeringAnalyticsPrRunsOutput,
+  errors: [BadRequest] as const,
+}));

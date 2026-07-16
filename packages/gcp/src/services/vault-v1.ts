@@ -41,7 +41,7 @@ export interface MailExportOptions {
 }
 
 export const MailExportOptions: Schema.Codec<MailExportOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     showConfidentialModeContent: Schema.optional(Schema.Boolean),
     useNewExport: Schema.optional(Schema.Boolean),
     exportLinkedDriveFiles: Schema.optional(Schema.Boolean),
@@ -62,7 +62,7 @@ export interface HeldAccount {
 }
 
 export const HeldAccount: Schema.Codec<HeldAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastName: Schema.optional(Schema.String),
     holdTime: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
@@ -76,7 +76,7 @@ export interface RemoveHeldAccountsRequest {
 }
 
 export const RemoveHeldAccountsRequest: Schema.Codec<RemoveHeldAccountsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "RemoveHeldAccountsRequest" });
 
@@ -88,7 +88,7 @@ export interface HeldDriveQuery {
 }
 
 export const HeldDriveQuery: Schema.Codec<HeldDriveQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeTeamDriveFiles: Schema.optional(Schema.Boolean),
     includeSharedDriveFiles: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "HeldDriveQuery" });
@@ -99,7 +99,7 @@ export interface HeldHangoutsChatQuery {
 }
 
 export const HeldHangoutsChatQuery: Schema.Codec<HeldHangoutsChatQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeRooms: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "HeldHangoutsChatQuery" });
 
@@ -115,14 +115,14 @@ export interface HeldVoiceQuery {
 }
 
 export const HeldVoiceQuery: Schema.Codec<HeldVoiceQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     coveredData: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "HeldVoiceQuery" });
 
 export interface HeldCalendarQuery {}
 
 export const HeldCalendarQuery: Schema.Codec<HeldCalendarQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "HeldCalendarQuery",
   });
 
@@ -136,7 +136,7 @@ export interface HeldMailQuery {
 }
 
 export const HeldMailQuery: Schema.Codec<HeldMailQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     terms: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -152,7 +152,7 @@ export interface HeldGroupsQuery {
 }
 
 export const HeldGroupsQuery: Schema.Codec<HeldGroupsQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     terms: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -161,7 +161,7 @@ export const HeldGroupsQuery: Schema.Codec<HeldGroupsQuery> =
 export interface HeldGeminiQuery {}
 
 export const HeldGeminiQuery: Schema.Codec<HeldGeminiQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "HeldGeminiQuery",
   });
 
@@ -183,7 +183,7 @@ export interface CorpusQuery {
 }
 
 export const CorpusQuery: Schema.Codec<CorpusQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     driveQuery: Schema.optional(HeldDriveQuery),
     hangoutsChatQuery: Schema.optional(HeldHangoutsChatQuery),
     voiceQuery: Schema.optional(HeldVoiceQuery),
@@ -199,7 +199,7 @@ export interface DriveExportOptions {
 }
 
 export const DriveExportOptions: Schema.Codec<DriveExportOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeAccessInfo: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "DriveExportOptions" });
 
@@ -211,7 +211,7 @@ export interface HeldOrgUnit {
 }
 
 export const HeldOrgUnit: Schema.Codec<HeldOrgUnit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     holdTime: Schema.optional(Schema.String),
     orgUnitId: Schema.optional(Schema.String),
   }).annotate({ identifier: "HeldOrgUnit" });
@@ -243,7 +243,7 @@ export interface Hold {
 }
 
 export const Hold: Schema.Codec<Hold> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     query: Schema.optional(CorpusQuery),
     holdId: Schema.optional(Schema.String),
@@ -259,7 +259,7 @@ export interface ListHeldAccountsResponse {
 }
 
 export const ListHeldAccountsResponse: Schema.Codec<ListHeldAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accounts: Schema.optional(Schema.Array(HeldAccount)),
   }).annotate({ identifier: "ListHeldAccountsResponse" });
 
@@ -271,7 +271,7 @@ export interface UserInfo {
 }
 
 export const UserInfo: Schema.Codec<UserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "UserInfo" });
@@ -284,7 +284,7 @@ export interface AccountCount {
 }
 
 export const AccountCount: Schema.Codec<AccountCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.optional(UserInfo),
     count: Schema.optional(Schema.String),
   }).annotate({ identifier: "AccountCount" });
@@ -304,7 +304,7 @@ export interface AccountCountError {
 }
 
 export const AccountCountError: Schema.Codec<AccountCountError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errorType: Schema.optional(Schema.String),
     account: Schema.optional(UserInfo),
   }).annotate({ identifier: "AccountCountError" });
@@ -323,7 +323,7 @@ export interface MailCountResult {
 }
 
 export const MailCountResult: Schema.Codec<MailCountResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountCounts: Schema.optional(Schema.Array(AccountCount)),
     queriedAccountsCount: Schema.optional(Schema.String),
     accountCountErrors: Schema.optional(Schema.Array(AccountCountError)),
@@ -343,14 +343,14 @@ export interface VoiceOptions {
 }
 
 export const VoiceOptions: Schema.Codec<VoiceOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     coveredData: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "VoiceOptions" });
 
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -360,14 +360,14 @@ export interface TeamDriveInfo {
 }
 
 export const TeamDriveInfo: Schema.Codec<TeamDriveInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     teamDriveIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TeamDriveInfo" });
 
 export interface CloseMatterRequest {}
 
 export const CloseMatterRequest: Schema.Codec<CloseMatterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CloseMatterRequest",
   });
 
@@ -383,7 +383,7 @@ export interface CloudStorageFile {
 }
 
 export const CloudStorageFile: Schema.Codec<CloudStorageFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     md5Hash: Schema.optional(Schema.String),
     bucketName: Schema.optional(Schema.String),
     objectName: Schema.optional(Schema.String),
@@ -398,7 +398,7 @@ export interface MatterPermission {
 }
 
 export const MatterPermission: Schema.Codec<MatterPermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
   }).annotate({ identifier: "MatterPermission" });
@@ -409,7 +409,7 @@ export interface OrgUnitInfo {
 }
 
 export const OrgUnitInfo: Schema.Codec<OrgUnitInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgUnitId: Schema.optional(Schema.String),
   }).annotate({ identifier: "OrgUnitInfo" });
 
@@ -419,14 +419,14 @@ export interface HangoutsChatOptions {
 }
 
 export const HangoutsChatOptions: Schema.Codec<HangoutsChatOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeRooms: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "HangoutsChatOptions" });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -440,7 +440,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -456,7 +456,7 @@ export interface AddHeldAccountResult {
 }
 
 export const AddHeldAccountResult: Schema.Codec<AddHeldAccountResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Status),
     account: Schema.optional(HeldAccount),
   }).annotate({ identifier: "AddHeldAccountResult" });
@@ -474,14 +474,14 @@ export interface GeminiExportOptions {
 }
 
 export const GeminiExportOptions: Schema.Codec<GeminiExportOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exportFormat: Schema.optional(Schema.String),
   }).annotate({ identifier: "GeminiExportOptions" });
 
 export interface GeminiOptions {}
 
 export const GeminiOptions: Schema.Codec<GeminiOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GeminiOptions",
   });
 
@@ -498,7 +498,7 @@ export interface HangoutsChatExportOptions {
 }
 
 export const HangoutsChatExportOptions: Schema.Codec<HangoutsChatExportOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exportFormat: Schema.optional(Schema.String),
   }).annotate({ identifier: "HangoutsChatExportOptions" });
 
@@ -508,7 +508,7 @@ export interface SitesUrlInfo {
 }
 
 export const SitesUrlInfo: Schema.Codec<SitesUrlInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     urls: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "SitesUrlInfo" });
 
@@ -518,7 +518,7 @@ export interface DriveDocumentIds {
 }
 
 export const DriveDocumentIds: Schema.Codec<DriveDocumentIds> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ids: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DriveDocumentIds" });
 
@@ -528,7 +528,7 @@ export interface DriveDocumentInfo {
 }
 
 export const DriveDocumentInfo: Schema.Codec<DriveDocumentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentIds: Schema.optional(DriveDocumentIds),
   }).annotate({ identifier: "DriveDocumentInfo" });
 
@@ -556,7 +556,7 @@ export interface DriveOptions {
 }
 
 export const DriveOptions: Schema.Codec<DriveOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versionDate: Schema.optional(Schema.String),
     includeTeamDrives: Schema.optional(Schema.Boolean),
     clientSideEncryptedOption: Schema.optional(Schema.String),
@@ -570,7 +570,7 @@ export interface SharedDriveInfo {
 }
 
 export const SharedDriveInfo: Schema.Codec<SharedDriveInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sharedDriveIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "SharedDriveInfo" });
 
@@ -580,7 +580,7 @@ export interface HangoutsChatInfo {
 }
 
 export const HangoutsChatInfo: Schema.Codec<HangoutsChatInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     roomId: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "HangoutsChatInfo" });
 
@@ -605,7 +605,7 @@ export interface CalendarOptions {
 }
 
 export const CalendarOptions: Schema.Codec<CalendarOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responseStatuses: Schema.optional(Schema.Array(Schema.String)),
     versionDate: Schema.optional(Schema.String),
     locationQuery: Schema.optional(Schema.Array(Schema.String)),
@@ -619,7 +619,7 @@ export interface AccountInfo {
 }
 
 export const AccountInfo: Schema.Codec<AccountInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     emails: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AccountInfo" });
 
@@ -636,7 +636,7 @@ export interface MailOptions {
 }
 
 export const MailOptions: Schema.Codec<MailOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     excludeDrafts: Schema.optional(Schema.Boolean),
     clientSideEncryptedOption: Schema.optional(Schema.String),
   }).annotate({ identifier: "MailOptions" });
@@ -721,7 +721,7 @@ export interface Query {
 }
 
 export const Query: Schema.Codec<Query> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sitesUrlInfo: Schema.optional(SitesUrlInfo),
     endTime: Schema.optional(Schema.String),
     geminiOptions: Schema.optional(GeminiOptions),
@@ -759,7 +759,7 @@ export interface SavedQuery {
 }
 
 export const SavedQuery: Schema.Codec<SavedQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.optional(Schema.String),
     savedQueryId: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -775,7 +775,7 @@ export interface ListSavedQueriesResponse {
 }
 
 export const ListSavedQueriesResponse: Schema.Codec<ListSavedQueriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     savedQueries: Schema.optional(Schema.Array(SavedQuery)),
   }).annotate({ identifier: "ListSavedQueriesResponse" });
@@ -783,7 +783,7 @@ export const ListSavedQueriesResponse: Schema.Codec<ListSavedQueriesResponse> =
 export interface ReopenMatterRequest {}
 
 export const ReopenMatterRequest: Schema.Codec<ReopenMatterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReopenMatterRequest",
   });
 
@@ -800,7 +800,7 @@ export interface VoiceExportOptions {
 }
 
 export const VoiceExportOptions: Schema.Codec<VoiceExportOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exportFormat: Schema.optional(Schema.String),
   }).annotate({ identifier: "VoiceExportOptions" });
 
@@ -818,7 +818,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -838,7 +838,7 @@ export interface CountArtifactsRequest {
 }
 
 export const CountArtifactsRequest: Schema.Codec<CountArtifactsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     query: Schema.optional(Query),
     view: Schema.optional(Schema.String),
   }).annotate({ identifier: "CountArtifactsRequest" });
@@ -851,7 +851,7 @@ export interface ListHoldsResponse {
 }
 
 export const ListHoldsResponse: Schema.Codec<ListHoldsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     holds: Schema.optional(Schema.Array(Hold)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListHoldsResponse" });
@@ -862,7 +862,7 @@ export interface RemoveHeldAccountsResponse {
 }
 
 export const RemoveHeldAccountsResponse: Schema.Codec<RemoveHeldAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statuses: Schema.optional(Schema.Array(Status)),
   }).annotate({ identifier: "RemoveHeldAccountsResponse" });
 
@@ -879,7 +879,7 @@ export interface GroupsExportOptions {
 }
 
 export const GroupsExportOptions: Schema.Codec<GroupsExportOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exportFormat: Schema.optional(Schema.String),
   }).annotate({ identifier: "GroupsExportOptions" });
 
@@ -896,7 +896,7 @@ export interface CalendarExportOptions {
 }
 
 export const CalendarExportOptions: Schema.Codec<CalendarExportOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exportFormat: Schema.optional(Schema.String),
   }).annotate({ identifier: "CalendarExportOptions" });
 
@@ -925,7 +925,7 @@ export interface ExportOptions {
 }
 
 export const ExportOptions: Schema.Codec<ExportOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     driveOptions: Schema.optional(DriveExportOptions),
     hangoutsChatOptions: Schema.optional(HangoutsChatExportOptions),
     groupsOptions: Schema.optional(GroupsExportOptions),
@@ -948,7 +948,7 @@ export interface CountArtifactsMetadata {
 }
 
 export const CountArtifactsMetadata: Schema.Codec<CountArtifactsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     matterId: Schema.optional(Schema.String),
@@ -976,7 +976,7 @@ export interface Matter {
 }
 
 export const Matter: Schema.Codec<Matter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     matterRegion: Schema.optional(Schema.String),
@@ -991,7 +991,7 @@ export interface ReopenMatterResponse {
 }
 
 export const ReopenMatterResponse: Schema.Codec<ReopenMatterResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matter: Schema.optional(Matter),
   }).annotate({ identifier: "ReopenMatterResponse" });
 
@@ -1001,7 +1001,7 @@ export interface CloseMatterResponse {
 }
 
 export const CloseMatterResponse: Schema.Codec<CloseMatterResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matter: Schema.optional(Matter),
   }).annotate({ identifier: "CloseMatterResponse" });
 
@@ -1011,7 +1011,7 @@ export interface CloudStorageSink {
 }
 
 export const CloudStorageSink: Schema.Codec<CloudStorageSink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     files: Schema.optional(Schema.Array(CloudStorageFile)),
   }).annotate({ identifier: "CloudStorageSink" });
 
@@ -1025,7 +1025,7 @@ export interface ExportStats {
 }
 
 export const ExportStats: Schema.Codec<ExportStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalArtifactCount: Schema.optional(Schema.String),
     sizeInBytes: Schema.optional(Schema.String),
     exportedArtifactCount: Schema.optional(Schema.String),
@@ -1062,7 +1062,7 @@ export interface Export {
 }
 
 export const Export: Schema.Codec<Export> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requester: Schema.optional(UserInfo),
     query: Schema.optional(Query),
     status: Schema.optional(Schema.String),
@@ -1090,7 +1090,7 @@ export interface GroupsCountResult {
 }
 
 export const GroupsCountResult: Schema.Codec<GroupsCountResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountCounts: Schema.optional(Schema.Array(AccountCount)),
     queriedAccountsCount: Schema.optional(Schema.String),
     accountCountErrors: Schema.optional(Schema.Array(AccountCountError)),
@@ -1108,7 +1108,7 @@ export interface CountArtifactsResponse {
 }
 
 export const CountArtifactsResponse: Schema.Codec<CountArtifactsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mailCountResult: Schema.optional(MailCountResult),
     groupsCountResult: Schema.optional(GroupsCountResult),
     totalCount: Schema.optional(Schema.String),
@@ -1124,7 +1124,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1138,7 +1138,7 @@ export interface ListExportsResponse {
 }
 
 export const ListExportsResponse: Schema.Codec<ListExportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     exports: Schema.optional(Schema.Array(Export)),
   }).annotate({ identifier: "ListExportsResponse" });
@@ -1153,7 +1153,7 @@ export interface AddMatterPermissionsRequest {
 }
 
 export const AddMatterPermissionsRequest: Schema.Codec<AddMatterPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterPermission: Schema.optional(MatterPermission),
     sendEmails: Schema.optional(Schema.Boolean),
     ccMe: Schema.optional(Schema.Boolean),
@@ -1167,7 +1167,7 @@ export interface ListMattersResponse {
 }
 
 export const ListMattersResponse: Schema.Codec<ListMattersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matters: Schema.optional(Schema.Array(Matter)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListMattersResponse" });
@@ -1180,7 +1180,7 @@ export interface AddHeldAccountsRequest {
 }
 
 export const AddHeldAccountsRequest: Schema.Codec<AddHeldAccountsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     emails: Schema.optional(Schema.Array(Schema.String)),
     accountIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AddHeldAccountsRequest" });
@@ -1191,7 +1191,7 @@ export interface AddHeldAccountsResponse {
 }
 
 export const AddHeldAccountsResponse: Schema.Codec<AddHeldAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responses: Schema.optional(Schema.Array(AddHeldAccountResult)),
   }).annotate({ identifier: "AddHeldAccountsResponse" });
 
@@ -1201,14 +1201,14 @@ export interface RemoveMatterPermissionsRequest {
 }
 
 export const RemoveMatterPermissionsRequest: Schema.Codec<RemoveMatterPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
   }).annotate({ identifier: "RemoveMatterPermissionsRequest" });
 
 export interface UndeleteMatterRequest {}
 
 export const UndeleteMatterRequest: Schema.Codec<UndeleteMatterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteMatterRequest",
   });
 
@@ -1271,7 +1271,7 @@ export interface GetOperationsRequest {
   name: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1279,7 +1279,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1289,7 +1289,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1308,7 +1308,7 @@ export interface ListOperationsRequest {
   pageToken?: string;
 }
 
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsRequest = /*@__PURE__*/ Schema.Struct({
   returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("returnPartialSuccess"),
   ),
@@ -1322,8 +1322,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse_Op = ListOperationsResponse;
-export const ListOperationsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+export const ListOperationsResponse_Op = /*@__PURE__*/ ListOperationsResponse;
 
 export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1333,7 +1332,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsResponse_Op,
   ListOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -1349,7 +1348,7 @@ export interface DeleteOperationsRequest {
 }
 
 export const DeleteOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -1357,7 +1356,7 @@ export const DeleteOperationsRequest =
   ) as unknown as Schema.Codec<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = Empty;
-export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteOperationsError =
   | DefaultErrors
@@ -1372,7 +1371,7 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsResponse,
   DeleteOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1386,7 +1385,7 @@ export interface CancelOperationsRequest {
 }
 
 export const CancelOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1395,7 +1394,7 @@ export const CancelOperationsRequest =
   ) as unknown as Schema.Codec<CancelOperationsRequest>;
 
 export type CancelOperationsResponse = Empty;
-export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelOperationsError =
   | DefaultErrors
@@ -1410,7 +1409,7 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsResponse,
   CancelOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1424,7 +1423,7 @@ export interface AddPermissionsMattersRequest {
 }
 
 export const AddPermissionsMattersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     body: Schema.optional(AddMatterPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1437,8 +1436,7 @@ export const AddPermissionsMattersRequest =
   ) as unknown as Schema.Codec<AddPermissionsMattersRequest>;
 
 export type AddPermissionsMattersResponse = MatterPermission;
-export const AddPermissionsMattersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ MatterPermission;
+export const AddPermissionsMattersResponse = /*@__PURE__*/ MatterPermission;
 
 export type AddPermissionsMattersError =
   | DefaultErrors
@@ -1453,7 +1451,7 @@ export const addPermissionsMatters: API.OperationMethod<
   AddPermissionsMattersResponse,
   AddPermissionsMattersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddPermissionsMattersRequest,
   output: AddPermissionsMattersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1466,7 +1464,7 @@ export interface UpdateMattersRequest {
   body?: Matter;
 }
 
-export const UpdateMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateMattersRequest = /*@__PURE__*/ Schema.Struct({
   matterId: Schema.String.pipe(T.HttpPath("matterId")),
   body: Schema.optional(Matter).pipe(T.HttpBody()),
 }).pipe(
@@ -1475,7 +1473,7 @@ export const UpdateMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdateMattersRequest>;
 
 export type UpdateMattersResponse = Matter;
-export const UpdateMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
+export const UpdateMattersResponse = /*@__PURE__*/ Matter;
 
 export type UpdateMattersError =
   | DefaultErrors
@@ -1490,7 +1488,7 @@ export const updateMatters: API.OperationMethod<
   UpdateMattersResponse,
   UpdateMattersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMattersRequest,
   output: UpdateMattersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1503,7 +1501,7 @@ export interface GetMattersRequest {
   view?: "VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
 }
 
-export const GetMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetMattersRequest = /*@__PURE__*/ Schema.Struct({
   matterId: Schema.String.pipe(T.HttpPath("matterId")),
   view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
 }).pipe(
@@ -1512,7 +1510,7 @@ export const GetMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetMattersRequest>;
 
 export type GetMattersResponse = Matter;
-export const GetMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
+export const GetMattersResponse = /*@__PURE__*/ Matter;
 
 export type GetMattersError = DefaultErrors | NotFound | Forbidden;
 
@@ -1522,7 +1520,7 @@ export const getMatters: API.OperationMethod<
   GetMattersResponse,
   GetMattersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMattersRequest,
   output: GetMattersResponse,
   errors: [NotFound, Forbidden],
@@ -1539,7 +1537,7 @@ export interface ListMattersRequest {
   view?: "VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
 }
 
-export const ListMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListMattersRequest = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   state: Schema.optional(Schema.String).pipe(T.HttpQuery("state")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1550,8 +1548,7 @@ export const ListMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListMattersRequest>;
 
 export type ListMattersResponse_Op = ListMattersResponse;
-export const ListMattersResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListMattersResponse;
+export const ListMattersResponse_Op = /*@__PURE__*/ ListMattersResponse;
 
 export type ListMattersError = DefaultErrors | NotFound | Forbidden;
 
@@ -1561,7 +1558,7 @@ export const listMatters: API.PaginatedOperationMethod<
   ListMattersResponse_Op,
   ListMattersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMattersRequest,
   output: ListMattersResponse_Op,
   errors: [NotFound, Forbidden],
@@ -1578,12 +1575,10 @@ export interface UndeleteMattersRequest {
   body?: UndeleteMatterRequest;
 }
 
-export const UndeleteMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    matterId: Schema.String.pipe(T.HttpPath("matterId")),
-    body: Schema.optional(UndeleteMatterRequest).pipe(T.HttpBody()),
-  },
-).pipe(
+export const UndeleteMattersRequest = /*@__PURE__*/ Schema.Struct({
+  matterId: Schema.String.pipe(T.HttpPath("matterId")),
+  body: Schema.optional(UndeleteMatterRequest).pipe(T.HttpBody()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "v1/matters/{matterId}:undelete",
@@ -1593,7 +1588,7 @@ export const UndeleteMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<UndeleteMattersRequest>;
 
 export type UndeleteMattersResponse = Matter;
-export const UndeleteMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
+export const UndeleteMattersResponse = /*@__PURE__*/ Matter;
 
 export type UndeleteMattersError =
   | DefaultErrors
@@ -1608,7 +1603,7 @@ export const undeleteMatters: API.OperationMethod<
   UndeleteMattersResponse,
   UndeleteMattersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeleteMattersRequest,
   output: UndeleteMattersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1619,7 +1614,7 @@ export interface DeleteMattersRequest {
   matterId: string;
 }
 
-export const DeleteMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteMattersRequest = /*@__PURE__*/ Schema.Struct({
   matterId: Schema.String.pipe(T.HttpPath("matterId")),
 }).pipe(
   T.Http({ method: "DELETE", path: "v1/matters/{matterId}" }),
@@ -1627,7 +1622,7 @@ export const DeleteMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DeleteMattersRequest>;
 
 export type DeleteMattersResponse = Matter;
-export const DeleteMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
+export const DeleteMattersResponse = /*@__PURE__*/ Matter;
 
 export type DeleteMattersError =
   | DefaultErrors
@@ -1642,7 +1637,7 @@ export const deleteMatters: API.OperationMethod<
   DeleteMattersResponse,
   DeleteMattersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMattersRequest,
   output: DeleteMattersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1655,7 +1650,7 @@ export interface CountMattersRequest {
   body?: CountArtifactsRequest;
 }
 
-export const CountMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CountMattersRequest = /*@__PURE__*/ Schema.Struct({
   matterId: Schema.String.pipe(T.HttpPath("matterId")),
   body: Schema.optional(CountArtifactsRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -1668,7 +1663,7 @@ export const CountMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CountMattersRequest>;
 
 export type CountMattersResponse = Operation;
-export const CountMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CountMattersResponse = /*@__PURE__*/ Operation;
 
 export type CountMattersError =
   | DefaultErrors
@@ -1683,7 +1678,7 @@ export const countMatters: API.OperationMethod<
   CountMattersResponse,
   CountMattersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CountMattersRequest,
   output: CountMattersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1696,7 +1691,7 @@ export interface CloseMattersRequest {
   body?: CloseMatterRequest;
 }
 
-export const CloseMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloseMattersRequest = /*@__PURE__*/ Schema.Struct({
   matterId: Schema.String.pipe(T.HttpPath("matterId")),
   body: Schema.optional(CloseMatterRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -1709,8 +1704,7 @@ export const CloseMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CloseMattersRequest>;
 
 export type CloseMattersResponse = CloseMatterResponse;
-export const CloseMattersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CloseMatterResponse;
+export const CloseMattersResponse = /*@__PURE__*/ CloseMatterResponse;
 
 export type CloseMattersError =
   | DefaultErrors
@@ -1725,7 +1719,7 @@ export const closeMatters: API.OperationMethod<
   CloseMattersResponse,
   CloseMattersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CloseMattersRequest,
   output: CloseMattersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1736,7 +1730,7 @@ export interface CreateMattersRequest {
   body?: Matter;
 }
 
-export const CreateMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateMattersRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(Matter).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v1/matters", hasBody: true }),
@@ -1744,7 +1738,7 @@ export const CreateMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CreateMattersRequest>;
 
 export type CreateMattersResponse = Matter;
-export const CreateMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
+export const CreateMattersResponse = /*@__PURE__*/ Matter;
 
 export type CreateMattersError =
   | DefaultErrors
@@ -1759,7 +1753,7 @@ export const createMatters: API.OperationMethod<
   CreateMattersResponse,
   CreateMattersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMattersRequest,
   output: CreateMattersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1772,7 +1766,7 @@ export interface ReopenMattersRequest {
   body?: ReopenMatterRequest;
 }
 
-export const ReopenMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReopenMattersRequest = /*@__PURE__*/ Schema.Struct({
   matterId: Schema.String.pipe(T.HttpPath("matterId")),
   body: Schema.optional(ReopenMatterRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -1785,8 +1779,7 @@ export const ReopenMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ReopenMattersRequest>;
 
 export type ReopenMattersResponse = ReopenMatterResponse;
-export const ReopenMattersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReopenMatterResponse;
+export const ReopenMattersResponse = /*@__PURE__*/ ReopenMatterResponse;
 
 export type ReopenMattersError =
   | DefaultErrors
@@ -1801,7 +1794,7 @@ export const reopenMatters: API.OperationMethod<
   ReopenMattersResponse,
   ReopenMattersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReopenMattersRequest,
   output: ReopenMattersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1815,7 +1808,7 @@ export interface RemovePermissionsMattersRequest {
 }
 
 export const RemovePermissionsMattersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     body: Schema.optional(RemoveMatterPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1828,8 +1821,7 @@ export const RemovePermissionsMattersRequest =
   ) as unknown as Schema.Codec<RemovePermissionsMattersRequest>;
 
 export type RemovePermissionsMattersResponse = Empty;
-export const RemovePermissionsMattersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const RemovePermissionsMattersResponse = /*@__PURE__*/ Empty;
 
 export type RemovePermissionsMattersError =
   | DefaultErrors
@@ -1844,7 +1836,7 @@ export const removePermissionsMatters: API.OperationMethod<
   RemovePermissionsMattersResponse,
   RemovePermissionsMattersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemovePermissionsMattersRequest,
   output: RemovePermissionsMattersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1858,7 +1850,7 @@ export interface DeleteMattersHoldsRequest {
 }
 
 export const DeleteMattersHoldsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     holdId: Schema.String.pipe(T.HttpPath("holdId")),
   }).pipe(
@@ -1867,7 +1859,7 @@ export const DeleteMattersHoldsRequest =
   ) as unknown as Schema.Codec<DeleteMattersHoldsRequest>;
 
 export type DeleteMattersHoldsResponse = Empty;
-export const DeleteMattersHoldsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteMattersHoldsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteMattersHoldsError =
   | DefaultErrors
@@ -1882,7 +1874,7 @@ export const deleteMattersHolds: API.OperationMethod<
   DeleteMattersHoldsResponse,
   DeleteMattersHoldsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMattersHoldsRequest,
   output: DeleteMattersHoldsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1898,7 +1890,7 @@ export interface UpdateMattersHoldsRequest {
 }
 
 export const UpdateMattersHoldsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     holdId: Schema.String.pipe(T.HttpPath("holdId")),
     body: Schema.optional(Hold).pipe(T.HttpBody()),
@@ -1912,7 +1904,7 @@ export const UpdateMattersHoldsRequest =
   ) as unknown as Schema.Codec<UpdateMattersHoldsRequest>;
 
 export type UpdateMattersHoldsResponse = Hold;
-export const UpdateMattersHoldsResponse = /*@__PURE__*/ /*#__PURE__*/ Hold;
+export const UpdateMattersHoldsResponse = /*@__PURE__*/ Hold;
 
 export type UpdateMattersHoldsError =
   | DefaultErrors
@@ -1927,7 +1919,7 @@ export const updateMattersHolds: API.OperationMethod<
   UpdateMattersHoldsResponse,
   UpdateMattersHoldsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMattersHoldsRequest,
   output: UpdateMattersHoldsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1943,7 +1935,7 @@ export interface AddHeldAccountsMattersHoldsRequest {
 }
 
 export const AddHeldAccountsMattersHoldsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     holdId: Schema.String.pipe(T.HttpPath("holdId")),
     body: Schema.optional(AddHeldAccountsRequest).pipe(T.HttpBody()),
@@ -1958,7 +1950,7 @@ export const AddHeldAccountsMattersHoldsRequest =
 
 export type AddHeldAccountsMattersHoldsResponse = AddHeldAccountsResponse;
 export const AddHeldAccountsMattersHoldsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AddHeldAccountsResponse;
+  /*@__PURE__*/ AddHeldAccountsResponse;
 
 export type AddHeldAccountsMattersHoldsError =
   | DefaultErrors
@@ -1973,7 +1965,7 @@ export const addHeldAccountsMattersHolds: API.OperationMethod<
   AddHeldAccountsMattersHoldsResponse,
   AddHeldAccountsMattersHoldsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddHeldAccountsMattersHoldsRequest,
   output: AddHeldAccountsMattersHoldsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1988,19 +1980,17 @@ export interface GetMattersHoldsRequest {
   holdId: string;
 }
 
-export const GetMattersHoldsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    matterId: Schema.String.pipe(T.HttpPath("matterId")),
-    view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
-    holdId: Schema.String.pipe(T.HttpPath("holdId")),
-  },
-).pipe(
+export const GetMattersHoldsRequest = /*@__PURE__*/ Schema.Struct({
+  matterId: Schema.String.pipe(T.HttpPath("matterId")),
+  view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
+  holdId: Schema.String.pipe(T.HttpPath("holdId")),
+}).pipe(
   T.Http({ method: "GET", path: "v1/matters/{matterId}/holds/{holdId}" }),
   svc,
 ) as unknown as Schema.Codec<GetMattersHoldsRequest>;
 
 export type GetMattersHoldsResponse = Hold;
-export const GetMattersHoldsResponse = /*@__PURE__*/ /*#__PURE__*/ Hold;
+export const GetMattersHoldsResponse = /*@__PURE__*/ Hold;
 
 export type GetMattersHoldsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2010,7 +2000,7 @@ export const getMattersHolds: API.OperationMethod<
   GetMattersHoldsResponse,
   GetMattersHoldsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMattersHoldsRequest,
   output: GetMattersHoldsResponse,
   errors: [NotFound, Forbidden],
@@ -2028,7 +2018,7 @@ export interface ListMattersHoldsRequest {
 }
 
 export const ListMattersHoldsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
@@ -2039,8 +2029,7 @@ export const ListMattersHoldsRequest =
   ) as unknown as Schema.Codec<ListMattersHoldsRequest>;
 
 export type ListMattersHoldsResponse = ListHoldsResponse;
-export const ListMattersHoldsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListHoldsResponse;
+export const ListMattersHoldsResponse = /*@__PURE__*/ ListHoldsResponse;
 
 export type ListMattersHoldsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2050,7 +2039,7 @@ export const listMattersHolds: API.PaginatedOperationMethod<
   ListMattersHoldsResponse,
   ListMattersHoldsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMattersHoldsRequest,
   output: ListMattersHoldsResponse,
   errors: [NotFound, Forbidden],
@@ -2068,7 +2057,7 @@ export interface CreateMattersHoldsRequest {
 }
 
 export const CreateMattersHoldsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     body: Schema.optional(Hold).pipe(T.HttpBody()),
   }).pipe(
@@ -2081,7 +2070,7 @@ export const CreateMattersHoldsRequest =
   ) as unknown as Schema.Codec<CreateMattersHoldsRequest>;
 
 export type CreateMattersHoldsResponse = Hold;
-export const CreateMattersHoldsResponse = /*@__PURE__*/ /*#__PURE__*/ Hold;
+export const CreateMattersHoldsResponse = /*@__PURE__*/ Hold;
 
 export type CreateMattersHoldsError =
   | DefaultErrors
@@ -2096,7 +2085,7 @@ export const createMattersHolds: API.OperationMethod<
   CreateMattersHoldsResponse,
   CreateMattersHoldsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMattersHoldsRequest,
   output: CreateMattersHoldsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2112,7 +2101,7 @@ export interface RemoveHeldAccountsMattersHoldsRequest {
 }
 
 export const RemoveHeldAccountsMattersHoldsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     holdId: Schema.String.pipe(T.HttpPath("holdId")),
     body: Schema.optional(RemoveHeldAccountsRequest).pipe(T.HttpBody()),
@@ -2127,7 +2116,7 @@ export const RemoveHeldAccountsMattersHoldsRequest =
 
 export type RemoveHeldAccountsMattersHoldsResponse = RemoveHeldAccountsResponse;
 export const RemoveHeldAccountsMattersHoldsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RemoveHeldAccountsResponse;
+  /*@__PURE__*/ RemoveHeldAccountsResponse;
 
 export type RemoveHeldAccountsMattersHoldsError =
   | DefaultErrors
@@ -2142,7 +2131,7 @@ export const removeHeldAccountsMattersHolds: API.OperationMethod<
   RemoveHeldAccountsMattersHoldsResponse,
   RemoveHeldAccountsMattersHoldsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveHeldAccountsMattersHoldsRequest,
   output: RemoveHeldAccountsMattersHoldsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2158,7 +2147,7 @@ export interface DeleteMattersHoldsAccountsRequest {
 }
 
 export const DeleteMattersHoldsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     holdId: Schema.String.pipe(T.HttpPath("holdId")),
@@ -2171,8 +2160,7 @@ export const DeleteMattersHoldsAccountsRequest =
   ) as unknown as Schema.Codec<DeleteMattersHoldsAccountsRequest>;
 
 export type DeleteMattersHoldsAccountsResponse = Empty;
-export const DeleteMattersHoldsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteMattersHoldsAccountsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteMattersHoldsAccountsError =
   | DefaultErrors
@@ -2187,7 +2175,7 @@ export const deleteMattersHoldsAccounts: API.OperationMethod<
   DeleteMattersHoldsAccountsResponse,
   DeleteMattersHoldsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMattersHoldsAccountsRequest,
   output: DeleteMattersHoldsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2201,7 +2189,7 @@ export interface ListMattersHoldsAccountsRequest {
 }
 
 export const ListMattersHoldsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     holdId: Schema.String.pipe(T.HttpPath("holdId")),
   }).pipe(
@@ -2214,7 +2202,7 @@ export const ListMattersHoldsAccountsRequest =
 
 export type ListMattersHoldsAccountsResponse = ListHeldAccountsResponse;
 export const ListMattersHoldsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListHeldAccountsResponse;
+  /*@__PURE__*/ ListHeldAccountsResponse;
 
 export type ListMattersHoldsAccountsError =
   | DefaultErrors
@@ -2227,7 +2215,7 @@ export const listMattersHoldsAccounts: API.OperationMethod<
   ListMattersHoldsAccountsResponse,
   ListMattersHoldsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListMattersHoldsAccountsRequest,
   output: ListMattersHoldsAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -2243,7 +2231,7 @@ export interface CreateMattersHoldsAccountsRequest {
 }
 
 export const CreateMattersHoldsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     holdId: Schema.String.pipe(T.HttpPath("holdId")),
     body: Schema.optional(HeldAccount).pipe(T.HttpBody()),
@@ -2257,8 +2245,7 @@ export const CreateMattersHoldsAccountsRequest =
   ) as unknown as Schema.Codec<CreateMattersHoldsAccountsRequest>;
 
 export type CreateMattersHoldsAccountsResponse = HeldAccount;
-export const CreateMattersHoldsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HeldAccount;
+export const CreateMattersHoldsAccountsResponse = /*@__PURE__*/ HeldAccount;
 
 export type CreateMattersHoldsAccountsError =
   | DefaultErrors
@@ -2273,7 +2260,7 @@ export const createMattersHoldsAccounts: API.OperationMethod<
   CreateMattersHoldsAccountsResponse,
   CreateMattersHoldsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMattersHoldsAccountsRequest,
   output: CreateMattersHoldsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2287,7 +2274,7 @@ export interface DeleteMattersSavedQueriesRequest {
 }
 
 export const DeleteMattersSavedQueriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     savedQueryId: Schema.String.pipe(T.HttpPath("savedQueryId")),
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
   }).pipe(
@@ -2299,8 +2286,7 @@ export const DeleteMattersSavedQueriesRequest =
   ) as unknown as Schema.Codec<DeleteMattersSavedQueriesRequest>;
 
 export type DeleteMattersSavedQueriesResponse = Empty;
-export const DeleteMattersSavedQueriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteMattersSavedQueriesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteMattersSavedQueriesError =
   | DefaultErrors
@@ -2315,7 +2301,7 @@ export const deleteMattersSavedQueries: API.OperationMethod<
   DeleteMattersSavedQueriesResponse,
   DeleteMattersSavedQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMattersSavedQueriesRequest,
   output: DeleteMattersSavedQueriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2331,7 +2317,7 @@ export interface ListMattersSavedQueriesRequest {
 }
 
 export const ListMattersSavedQueriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2342,7 +2328,7 @@ export const ListMattersSavedQueriesRequest =
 
 export type ListMattersSavedQueriesResponse = ListSavedQueriesResponse;
 export const ListMattersSavedQueriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListSavedQueriesResponse;
+  /*@__PURE__*/ ListSavedQueriesResponse;
 
 export type ListMattersSavedQueriesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2352,7 +2338,7 @@ export const listMattersSavedQueries: API.PaginatedOperationMethod<
   ListMattersSavedQueriesResponse,
   ListMattersSavedQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMattersSavedQueriesRequest,
   output: ListMattersSavedQueriesResponse,
   errors: [NotFound, Forbidden],
@@ -2370,7 +2356,7 @@ export interface GetMattersSavedQueriesRequest {
 }
 
 export const GetMattersSavedQueriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     savedQueryId: Schema.String.pipe(T.HttpPath("savedQueryId")),
   }).pipe(
@@ -2382,8 +2368,7 @@ export const GetMattersSavedQueriesRequest =
   ) as unknown as Schema.Codec<GetMattersSavedQueriesRequest>;
 
 export type GetMattersSavedQueriesResponse = SavedQuery;
-export const GetMattersSavedQueriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
+export const GetMattersSavedQueriesResponse = /*@__PURE__*/ SavedQuery;
 
 export type GetMattersSavedQueriesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2393,7 +2378,7 @@ export const getMattersSavedQueries: API.OperationMethod<
   GetMattersSavedQueriesResponse,
   GetMattersSavedQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMattersSavedQueriesRequest,
   output: GetMattersSavedQueriesResponse,
   errors: [NotFound, Forbidden],
@@ -2407,7 +2392,7 @@ export interface CreateMattersSavedQueriesRequest {
 }
 
 export const CreateMattersSavedQueriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     body: Schema.optional(SavedQuery).pipe(T.HttpBody()),
   }).pipe(
@@ -2420,8 +2405,7 @@ export const CreateMattersSavedQueriesRequest =
   ) as unknown as Schema.Codec<CreateMattersSavedQueriesRequest>;
 
 export type CreateMattersSavedQueriesResponse = SavedQuery;
-export const CreateMattersSavedQueriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
+export const CreateMattersSavedQueriesResponse = /*@__PURE__*/ SavedQuery;
 
 export type CreateMattersSavedQueriesError =
   | DefaultErrors
@@ -2436,7 +2420,7 @@ export const createMattersSavedQueries: API.OperationMethod<
   CreateMattersSavedQueriesResponse,
   CreateMattersSavedQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMattersSavedQueriesRequest,
   output: CreateMattersSavedQueriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2450,7 +2434,7 @@ export interface CreateMattersExportsRequest {
 }
 
 export const CreateMattersExportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     body: Schema.optional(Export).pipe(T.HttpBody()),
   }).pipe(
@@ -2463,7 +2447,7 @@ export const CreateMattersExportsRequest =
   ) as unknown as Schema.Codec<CreateMattersExportsRequest>;
 
 export type CreateMattersExportsResponse = Export;
-export const CreateMattersExportsResponse = /*@__PURE__*/ /*#__PURE__*/ Export;
+export const CreateMattersExportsResponse = /*@__PURE__*/ Export;
 
 export type CreateMattersExportsError =
   | DefaultErrors
@@ -2478,7 +2462,7 @@ export const createMattersExports: API.OperationMethod<
   CreateMattersExportsResponse,
   CreateMattersExportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMattersExportsRequest,
   output: CreateMattersExportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2492,7 +2476,7 @@ export interface GetMattersExportsRequest {
 }
 
 export const GetMattersExportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     exportId: Schema.String.pipe(T.HttpPath("exportId")),
   }).pipe(
@@ -2501,7 +2485,7 @@ export const GetMattersExportsRequest =
   ) as unknown as Schema.Codec<GetMattersExportsRequest>;
 
 export type GetMattersExportsResponse = Export;
-export const GetMattersExportsResponse = /*@__PURE__*/ /*#__PURE__*/ Export;
+export const GetMattersExportsResponse = /*@__PURE__*/ Export;
 
 export type GetMattersExportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2511,7 +2495,7 @@ export const getMattersExports: API.OperationMethod<
   GetMattersExportsResponse,
   GetMattersExportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMattersExportsRequest,
   output: GetMattersExportsResponse,
   errors: [NotFound, Forbidden],
@@ -2525,7 +2509,7 @@ export interface DeleteMattersExportsRequest {
 }
 
 export const DeleteMattersExportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
     exportId: Schema.String.pipe(T.HttpPath("exportId")),
   }).pipe(
@@ -2537,7 +2521,7 @@ export const DeleteMattersExportsRequest =
   ) as unknown as Schema.Codec<DeleteMattersExportsRequest>;
 
 export type DeleteMattersExportsResponse = Empty;
-export const DeleteMattersExportsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteMattersExportsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteMattersExportsError =
   | DefaultErrors
@@ -2552,7 +2536,7 @@ export const deleteMattersExports: API.OperationMethod<
   DeleteMattersExportsResponse,
   DeleteMattersExportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMattersExportsRequest,
   output: DeleteMattersExportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2568,7 +2552,7 @@ export interface ListMattersExportsRequest {
 }
 
 export const ListMattersExportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     matterId: Schema.String.pipe(T.HttpPath("matterId")),
@@ -2578,8 +2562,7 @@ export const ListMattersExportsRequest =
   ) as unknown as Schema.Codec<ListMattersExportsRequest>;
 
 export type ListMattersExportsResponse = ListExportsResponse;
-export const ListMattersExportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListExportsResponse;
+export const ListMattersExportsResponse = /*@__PURE__*/ ListExportsResponse;
 
 export type ListMattersExportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2589,7 +2572,7 @@ export const listMattersExports: API.PaginatedOperationMethod<
   ListMattersExportsResponse,
   ListMattersExportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMattersExportsRequest,
   output: ListMattersExportsResponse,
   errors: [NotFound, Forbidden],

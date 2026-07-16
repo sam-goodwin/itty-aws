@@ -11,7 +11,7 @@ export interface QueueDeployRequestInput {
   instant_ddl?: boolean;
 }
 export const QueueDeployRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -200,7 +200,7 @@ export interface QueueDeployRequestOutput {
   deployed_at: string | null;
 }
 export const QueueDeployRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     number: Schema.Number,
     actor: Schema.Struct({
@@ -443,7 +443,7 @@ export const QueueDeployRequestOutput =
  * @param number - The number of the deploy request
  * @param instant_ddl - Whether or not to deploy the request with instant DDL. Defaults to false.
  */
-export const queueDeployRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const queueDeployRequest = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueueDeployRequestInput,
   outputSchema: QueueDeployRequestOutput,
   errors: [Forbidden, NotFound] as const,

@@ -82,7 +82,7 @@ export interface CreateAuthorizationV1NamespacedLocalSubjectAccessReviewInput {
   };
 }
 export const CreateAuthorizationV1NamespacedLocalSubjectAccessReviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -270,7 +270,7 @@ export interface CreateAuthorizationV1NamespacedLocalSubjectAccessReviewOutput {
   };
 }
 export const CreateAuthorizationV1NamespacedLocalSubjectAccessReviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -391,7 +391,7 @@ export const CreateAuthorizationV1NamespacedLocalSubjectAccessReviewOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const createAuthorizationV1NamespacedLocalSubjectAccessReview =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthorizationV1NamespacedLocalSubjectAccessReviewInput,
     outputSchema: CreateAuthorizationV1NamespacedLocalSubjectAccessReviewOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -464,7 +464,7 @@ export interface CreateAuthorizationV1SelfSubjectAccessReviewInput {
   };
 }
 export const CreateAuthorizationV1SelfSubjectAccessReviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
@@ -641,7 +641,7 @@ export interface CreateAuthorizationV1SelfSubjectAccessReviewOutput {
   };
 }
 export const CreateAuthorizationV1SelfSubjectAccessReviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -755,7 +755,7 @@ export const CreateAuthorizationV1SelfSubjectAccessReviewOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const createAuthorizationV1SelfSubjectAccessReview =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthorizationV1SelfSubjectAccessReviewInput,
     outputSchema: CreateAuthorizationV1SelfSubjectAccessReviewOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -814,7 +814,7 @@ export interface CreateAuthorizationV1SelfSubjectRulesReviewInput {
   };
 }
 export const CreateAuthorizationV1SelfSubjectRulesReviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
@@ -945,7 +945,7 @@ export interface CreateAuthorizationV1SelfSubjectRulesReviewOutput {
   };
 }
 export const CreateAuthorizationV1SelfSubjectRulesReviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1027,7 +1027,7 @@ export const CreateAuthorizationV1SelfSubjectRulesReviewOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const createAuthorizationV1SelfSubjectRulesReview =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthorizationV1SelfSubjectRulesReviewInput,
     outputSchema: CreateAuthorizationV1SelfSubjectRulesReviewOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -1104,7 +1104,7 @@ export interface CreateAuthorizationV1SubjectAccessReviewInput {
   };
 }
 export const CreateAuthorizationV1SubjectAccessReviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
@@ -1291,7 +1291,7 @@ export interface CreateAuthorizationV1SubjectAccessReviewOutput {
   };
 }
 export const CreateAuthorizationV1SubjectAccessReviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1411,7 +1411,7 @@ export const CreateAuthorizationV1SubjectAccessReviewOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const createAuthorizationV1SubjectAccessReview =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthorizationV1SubjectAccessReviewInput,
     outputSchema: CreateAuthorizationV1SubjectAccessReviewOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -1419,7 +1419,7 @@ export const createAuthorizationV1SubjectAccessReview =
 // Input Schema
 export interface GetAuthorizationAPIGroupInput {}
 export const GetAuthorizationAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/authorization.k8s.io/" }),
   ) as unknown as Schema.Codec<GetAuthorizationAPIGroupInput>;
 
@@ -1433,7 +1433,7 @@ export interface GetAuthorizationAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetAuthorizationAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -1463,16 +1463,14 @@ export const GetAuthorizationAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getAuthorizationAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetAuthorizationAPIGroupInput,
-    outputSchema: GetAuthorizationAPIGroupOutput,
-  }),
-);
+export const getAuthorizationAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAuthorizationAPIGroupInput,
+  outputSchema: GetAuthorizationAPIGroupOutput,
+}));
 // Input Schema
 export interface GetAuthorizationV1APIResourcesInput {}
 export const GetAuthorizationV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/authorization.k8s.io/v1/" }),
   ) as unknown as Schema.Codec<GetAuthorizationV1APIResourcesInput>;
 
@@ -1495,7 +1493,7 @@ export interface GetAuthorizationV1APIResourcesOutput {
   }[];
 }
 export const GetAuthorizationV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -1520,7 +1518,7 @@ export const GetAuthorizationV1APIResourcesOutput =
  * get available resources
  */
 export const getAuthorizationV1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAuthorizationV1APIResourcesInput,
     outputSchema: GetAuthorizationV1APIResourcesOutput,
   }));

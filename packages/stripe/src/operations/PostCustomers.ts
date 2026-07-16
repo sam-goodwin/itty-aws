@@ -191,7 +191,7 @@ export interface PostCustomersInput {
   test_clock?: string;
   validate?: boolean;
 }
-export const PostCustomersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostCustomersInput = /*@__PURE__*/ Schema.Struct({
   address: Schema.optional(
     Schema.Union([
       Schema.Struct({
@@ -1521,7 +1521,7 @@ export interface PostCustomersOutput {
       }
     | null;
 }
-export const PostCustomersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostCustomersOutput = /*@__PURE__*/ Schema.Struct({
   address: Schema.optional(
     Schema.NullOr(
       Schema.Struct({
@@ -2668,7 +2668,7 @@ export const PostCustomersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>Creates a new customer object.</p>
  */
-export const PostCustomers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostCustomers = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostCustomersInput,
   outputSchema: PostCustomersOutput,
 }));

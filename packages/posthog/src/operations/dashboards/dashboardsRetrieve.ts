@@ -12,7 +12,7 @@ export interface DashboardsRetrieveInput {
   variables_override?: string;
 }
 export const DashboardsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     filters_override: Schema.optional(Schema.String),
@@ -81,7 +81,7 @@ export interface DashboardsRetrieveOutput {
   _create_in_folder?: string;
 }
 export const DashboardsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.NullOr(Schema.String)),
     description: Schema.optional(Schema.String),
@@ -168,7 +168,7 @@ export const DashboardsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param variables_override - Object (or pre-encoded JSON string) to override dashboard variables for this request only (not persisted). Format: {"<variable_id>": {"code_name": "<code_name>", "variableId": "<variable_id>", "value": <new_value>}}. Each entry must include `code_name` — partial entries are silently dropped. The simplest workflow is to call `dashboard-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token.
  */
-export const dashboardsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const dashboardsRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: DashboardsRetrieveInput,
   outputSchema: DashboardsRetrieveOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

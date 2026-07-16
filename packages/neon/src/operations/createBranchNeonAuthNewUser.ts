@@ -10,7 +10,7 @@ export interface CreateBranchNeonAuthNewUserInput {
   name?: string;
 }
 export const CreateBranchNeonAuthNewUserInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     email: Schema.String,
@@ -27,7 +27,7 @@ export interface CreateBranchNeonAuthNewUserOutput {
   id: string;
 }
 export const CreateBranchNeonAuthNewUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
   }) as unknown as Schema.Codec<CreateBranchNeonAuthNewUserOutput>;
 
@@ -42,9 +42,7 @@ export const CreateBranchNeonAuthNewUserOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const createBranchNeonAuthNewUser = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateBranchNeonAuthNewUserInput,
-    outputSchema: CreateBranchNeonAuthNewUserOutput,
-  }),
-);
+export const createBranchNeonAuthNewUser = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateBranchNeonAuthNewUserInput,
+  outputSchema: CreateBranchNeonAuthNewUserOutput,
+}));

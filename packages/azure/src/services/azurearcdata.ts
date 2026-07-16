@@ -48,7 +48,7 @@ export interface ActiveDirectoryConnectorsCreateInput {
   };
 }
 export const ActiveDirectoryConnectorsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dataControllerName: Schema.String.pipe(T.PathParam()),
@@ -124,7 +124,7 @@ export interface ActiveDirectoryConnectorsCreateOutput {
   };
 }
 export const ActiveDirectoryConnectorsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -156,7 +156,7 @@ export const ActiveDirectoryConnectorsCreateOutput =
  * @param properties - null
  */
 export const ActiveDirectoryConnectorsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ActiveDirectoryConnectorsCreateInput,
     outputSchema: ActiveDirectoryConnectorsCreateOutput,
   }));
@@ -168,7 +168,7 @@ export interface ActiveDirectoryConnectorsDeleteInput {
   activeDirectoryConnectorName: string;
 }
 export const ActiveDirectoryConnectorsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dataControllerName: Schema.String.pipe(T.PathParam()),
@@ -184,7 +184,7 @@ export const ActiveDirectoryConnectorsDeleteInput =
 // Output Schema
 export type ActiveDirectoryConnectorsDeleteOutput = void;
 export const ActiveDirectoryConnectorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ActiveDirectoryConnectorsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ActiveDirectoryConnectorsDeleteOutput>;
 
 // The operation
 /**
@@ -197,7 +197,7 @@ export const ActiveDirectoryConnectorsDeleteOutput =
  * @param api-version - The API version to use for the request
  */
 export const ActiveDirectoryConnectorsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ActiveDirectoryConnectorsDeleteInput,
     outputSchema: ActiveDirectoryConnectorsDeleteOutput,
   }));
@@ -209,7 +209,7 @@ export interface ActiveDirectoryConnectorsGetInput {
   activeDirectoryConnectorName: string;
 }
 export const ActiveDirectoryConnectorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dataControllerName: Schema.String.pipe(T.PathParam()),
@@ -237,7 +237,7 @@ export interface ActiveDirectoryConnectorsGetOutput {
   };
 }
 export const ActiveDirectoryConnectorsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -268,7 +268,7 @@ export const ActiveDirectoryConnectorsGetOutput =
  * @param api-version - The API version to use for the request
  */
 export const ActiveDirectoryConnectorsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ActiveDirectoryConnectorsGetInput,
     outputSchema: ActiveDirectoryConnectorsGetOutput,
   }));
@@ -279,7 +279,7 @@ export interface ActiveDirectoryConnectorsListInput {
   dataControllerName: string;
 }
 export const ActiveDirectoryConnectorsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dataControllerName: Schema.String.pipe(T.PathParam()),
@@ -309,7 +309,7 @@ export interface ActiveDirectoryConnectorsListOutput {
   nextLink?: string;
 }
 export const ActiveDirectoryConnectorsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -356,7 +356,7 @@ export const ActiveDirectoryConnectorsListOutput =
  * @param api-version - The API version to use for the request
  */
 export const ActiveDirectoryConnectorsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ActiveDirectoryConnectorsListInput,
     outputSchema: ActiveDirectoryConnectorsListOutput,
   }));
@@ -367,7 +367,7 @@ export interface DataControllersDeleteDataControllerInput {
   dataControllerName: string;
 }
 export const DataControllersDeleteDataControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dataControllerName: Schema.String.pipe(T.PathParam()),
@@ -382,7 +382,7 @@ export const DataControllersDeleteDataControllerInput =
 // Output Schema
 export type DataControllersDeleteDataControllerOutput = void;
 export const DataControllersDeleteDataControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataControllersDeleteDataControllerOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataControllersDeleteDataControllerOutput>;
 
 // The operation
 /**
@@ -394,7 +394,7 @@ export const DataControllersDeleteDataControllerOutput =
  * @param api-version - The API version to use for the request
  */
 export const DataControllersDeleteDataController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataControllersDeleteDataControllerInput,
     outputSchema: DataControllersDeleteDataControllerOutput,
   }));
@@ -405,7 +405,7 @@ export interface DataControllersGetDataControllerInput {
   dataControllerName: string;
 }
 export const DataControllersGetDataControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dataControllerName: Schema.String.pipe(T.PathParam()),
@@ -432,7 +432,7 @@ export interface DataControllersGetDataControllerOutput {
   };
 }
 export const DataControllersGetDataControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -462,7 +462,7 @@ export const DataControllersGetDataControllerOutput =
  * @param api-version - The API version to use for the request
  */
 export const DataControllersGetDataController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataControllersGetDataControllerInput,
     outputSchema: DataControllersGetDataControllerOutput,
   }));
@@ -472,7 +472,7 @@ export interface DataControllersListInGroupInput {
   resourceGroupName: string;
 }
 export const DataControllersListInGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -501,7 +501,7 @@ export interface DataControllersListInGroupOutput {
   nextLink?: string;
 }
 export const DataControllersListInGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -546,18 +546,16 @@ export const DataControllersListInGroupOutput =
  * @param resourceGroupName - The name of the Azure resource group
  * @param api-version - The API version to use for the request
  */
-export const DataControllersListInGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataControllersListInGroupInput,
-    outputSchema: DataControllersListInGroupOutput,
-  }),
-);
+export const DataControllersListInGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataControllersListInGroupInput,
+  outputSchema: DataControllersListInGroupOutput,
+}));
 // Input Schema
 export interface DataControllersListInSubscriptionInput {
   subscriptionId: string;
 }
 export const DataControllersListInSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -585,7 +583,7 @@ export interface DataControllersListInSubscriptionOutput {
   nextLink?: string;
 }
 export const DataControllersListInSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -630,7 +628,7 @@ export const DataControllersListInSubscriptionOutput =
  * @param api-version - The API version to use for the request
  */
 export const DataControllersListInSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataControllersListInSubscriptionInput,
     outputSchema: DataControllersListInSubscriptionOutput,
   }));
@@ -681,7 +679,7 @@ export interface DataControllersPatchDataControllerInput {
   };
 }
 export const DataControllersPatchDataControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dataControllerName: Schema.String.pipe(T.PathParam()),
@@ -774,7 +772,7 @@ export interface DataControllersPatchDataControllerOutput {
   };
 }
 export const DataControllersPatchDataControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -806,7 +804,7 @@ export const DataControllersPatchDataControllerOutput =
  * @param properties - The data controller's properties
  */
 export const DataControllersPatchDataController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataControllersPatchDataControllerInput,
     outputSchema: DataControllersPatchDataControllerOutput,
   }));
@@ -859,7 +857,7 @@ export interface DataControllersPutDataControllerInput {
   location: string;
 }
 export const DataControllersPutDataControllerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dataControllerName: Schema.String.pipe(T.PathParam()),
@@ -957,7 +955,7 @@ export interface DataControllersPutDataControllerOutput {
   };
 }
 export const DataControllersPutDataControllerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -989,7 +987,7 @@ export const DataControllersPutDataControllerOutput =
  * @param properties - The data controller's properties
  */
 export const DataControllersPutDataController =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataControllersPutDataControllerInput,
     outputSchema: DataControllersPutDataControllerOutput,
   }));
@@ -1019,7 +1017,7 @@ export interface FailoverGroupsCreateInput {
   };
 }
 export const FailoverGroupsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
@@ -1068,7 +1066,7 @@ export interface FailoverGroupsCreateOutput {
   };
 }
 export const FailoverGroupsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1099,12 +1097,10 @@ export const FailoverGroupsCreateOutput =
  * @param api-version - The API version to use for the request
  * @param properties - null
  */
-export const FailoverGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FailoverGroupsCreateInput,
-    outputSchema: FailoverGroupsCreateOutput,
-  }),
-);
+export const FailoverGroupsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FailoverGroupsCreateInput,
+  outputSchema: FailoverGroupsCreateOutput,
+}));
 // Input Schema
 export interface FailoverGroupsDeleteInput {
   subscriptionId: string;
@@ -1113,7 +1109,7 @@ export interface FailoverGroupsDeleteInput {
   failoverGroupName: string;
 }
 export const FailoverGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
@@ -1129,7 +1125,7 @@ export const FailoverGroupsDeleteInput =
 // Output Schema
 export type FailoverGroupsDeleteOutput = void;
 export const FailoverGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FailoverGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FailoverGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -1141,12 +1137,10 @@ export const FailoverGroupsDeleteOutput =
  * @param failoverGroupName - The name of the Failover Group
  * @param api-version - The API version to use for the request
  */
-export const FailoverGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FailoverGroupsDeleteInput,
-    outputSchema: FailoverGroupsDeleteOutput,
-  }),
-);
+export const FailoverGroupsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FailoverGroupsDeleteInput,
+  outputSchema: FailoverGroupsDeleteOutput,
+}));
 // Input Schema
 export interface FailoverGroupsGetInput {
   subscriptionId: string;
@@ -1154,14 +1148,12 @@ export interface FailoverGroupsGetInput {
   sqlManagedInstanceName: string;
   failoverGroupName: string;
 }
-export const FailoverGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
-    failoverGroupName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const FailoverGroupsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
+  failoverGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups/{failoverGroupName}",
@@ -1184,7 +1176,7 @@ export interface FailoverGroupsGetOutput {
   };
 }
 export const FailoverGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1214,7 +1206,7 @@ export const FailoverGroupsGetOutput =
  * @param failoverGroupName - The name of the Failover Group
  * @param api-version - The API version to use for the request
  */
-export const FailoverGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FailoverGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FailoverGroupsGetInput,
   outputSchema: FailoverGroupsGetOutput,
 }));
@@ -1225,7 +1217,7 @@ export interface FailoverGroupsListInput {
   sqlManagedInstanceName: string;
 }
 export const FailoverGroupsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
@@ -1255,7 +1247,7 @@ export interface FailoverGroupsListOutput {
   nextLink?: string;
 }
 export const FailoverGroupsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1301,15 +1293,13 @@ export const FailoverGroupsListOutput =
  * @param sqlManagedInstanceName - Name of SQL Managed Instance
  * @param api-version - The API version to use for the request
  */
-export const FailoverGroupsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FailoverGroupsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FailoverGroupsListInput,
   outputSchema: FailoverGroupsListOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AzureArcData/operations",
@@ -1333,7 +1323,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1361,7 +1351,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for the request
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1393,7 +1383,7 @@ export interface PostgresInstancesCreateInput {
   location: string;
 }
 export const PostgresInstancesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     postgresInstanceName: Schema.String.pipe(T.PathParam()),
@@ -1450,7 +1440,7 @@ export interface PostgresInstancesCreateOutput {
   };
 }
 export const PostgresInstancesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1482,12 +1472,10 @@ export const PostgresInstancesCreateOutput =
  * @param properties - null
  * @param sku - Resource sku.
  */
-export const PostgresInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostgresInstancesCreateInput,
-    outputSchema: PostgresInstancesCreateOutput,
-  }),
-);
+export const PostgresInstancesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostgresInstancesCreateInput,
+  outputSchema: PostgresInstancesCreateOutput,
+}));
 // Input Schema
 export interface PostgresInstancesDeleteInput {
   subscriptionId: string;
@@ -1495,7 +1483,7 @@ export interface PostgresInstancesDeleteInput {
   postgresInstanceName: string;
 }
 export const PostgresInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     postgresInstanceName: Schema.String.pipe(T.PathParam()),
@@ -1510,7 +1498,7 @@ export const PostgresInstancesDeleteInput =
 // Output Schema
 export type PostgresInstancesDeleteOutput = void;
 export const PostgresInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PostgresInstancesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PostgresInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -1521,12 +1509,10 @@ export const PostgresInstancesDeleteOutput =
  * @param postgresInstanceName - Name of Postgres Instance
  * @param api-version - The API version to use for the request
  */
-export const PostgresInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostgresInstancesDeleteInput,
-    outputSchema: PostgresInstancesDeleteOutput,
-  }),
-);
+export const PostgresInstancesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostgresInstancesDeleteInput,
+  outputSchema: PostgresInstancesDeleteOutput,
+}));
 // Input Schema
 export interface PostgresInstancesGetInput {
   subscriptionId: string;
@@ -1534,7 +1520,7 @@ export interface PostgresInstancesGetInput {
   postgresInstanceName: string;
 }
 export const PostgresInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     postgresInstanceName: Schema.String.pipe(T.PathParam()),
@@ -1561,7 +1547,7 @@ export interface PostgresInstancesGetOutput {
   };
 }
 export const PostgresInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1590,18 +1576,16 @@ export const PostgresInstancesGetOutput =
  * @param postgresInstanceName - Name of Postgres Instance
  * @param api-version - The API version to use for the request
  */
-export const PostgresInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostgresInstancesGetInput,
-    outputSchema: PostgresInstancesGetOutput,
-  }),
-);
+export const PostgresInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostgresInstancesGetInput,
+  outputSchema: PostgresInstancesGetOutput,
+}));
 // Input Schema
 export interface PostgresInstancesListInput {
   subscriptionId: string;
 }
 export const PostgresInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1629,7 +1613,7 @@ export interface PostgresInstancesListOutput {
   nextLink?: string;
 }
 export const PostgresInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1673,19 +1657,17 @@ export const PostgresInstancesListOutput =
  * @param subscriptionId - The ID of the Azure subscription
  * @param api-version - The API version to use for the request
  */
-export const PostgresInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostgresInstancesListInput,
-    outputSchema: PostgresInstancesListOutput,
-  }),
-);
+export const PostgresInstancesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostgresInstancesListInput,
+  outputSchema: PostgresInstancesListOutput,
+}));
 // Input Schema
 export interface PostgresInstancesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const PostgresInstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1714,7 +1696,7 @@ export interface PostgresInstancesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const PostgresInstancesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1762,7 +1744,7 @@ export const PostgresInstancesListByResourceGroupOutput =
  * @param api-version - The API version to use for the request
  */
 export const PostgresInstancesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostgresInstancesListByResourceGroupInput,
     outputSchema: PostgresInstancesListByResourceGroupOutput,
   }));
@@ -1785,7 +1767,7 @@ export interface PostgresInstancesUpdateInput {
   };
 }
 export const PostgresInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     postgresInstanceName: Schema.String.pipe(T.PathParam()),
@@ -1828,7 +1810,7 @@ export interface PostgresInstancesUpdateOutput {
   };
 }
 export const PostgresInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1858,12 +1840,10 @@ export const PostgresInstancesUpdateOutput =
  * @param api-version - The API version to use for the request
  * @param tags - Resource tags.
  */
-export const PostgresInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostgresInstancesUpdateInput,
-    outputSchema: PostgresInstancesUpdateOutput,
-  }),
-);
+export const PostgresInstancesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostgresInstancesUpdateInput,
+  outputSchema: PostgresInstancesUpdateOutput,
+}));
 // Input Schema
 export interface SqlManagedInstancesCreateInput {
   subscriptionId: string;
@@ -1932,7 +1912,7 @@ export interface SqlManagedInstancesCreateInput {
   location: string;
 }
 export const SqlManagedInstancesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
@@ -2072,7 +2052,7 @@ export interface SqlManagedInstancesCreateOutput {
   };
 }
 export const SqlManagedInstancesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2104,12 +2084,10 @@ export const SqlManagedInstancesCreateOutput =
  * @param extendedLocation - The complex type of the extended location.
  * @param sku - Resource sku.
  */
-export const SqlManagedInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlManagedInstancesCreateInput,
-    outputSchema: SqlManagedInstancesCreateOutput,
-  }),
-);
+export const SqlManagedInstancesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlManagedInstancesCreateInput,
+  outputSchema: SqlManagedInstancesCreateOutput,
+}));
 // Input Schema
 export interface SqlManagedInstancesDeleteInput {
   subscriptionId: string;
@@ -2117,7 +2095,7 @@ export interface SqlManagedInstancesDeleteInput {
   sqlManagedInstanceName: string;
 }
 export const SqlManagedInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
@@ -2132,7 +2110,7 @@ export const SqlManagedInstancesDeleteInput =
 // Output Schema
 export type SqlManagedInstancesDeleteOutput = void;
 export const SqlManagedInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlManagedInstancesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlManagedInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -2143,12 +2121,10 @@ export const SqlManagedInstancesDeleteOutput =
  * @param sqlManagedInstanceName - Name of SQL Managed Instance
  * @param api-version - The API version to use for the request
  */
-export const SqlManagedInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlManagedInstancesDeleteInput,
-    outputSchema: SqlManagedInstancesDeleteOutput,
-  }),
-);
+export const SqlManagedInstancesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlManagedInstancesDeleteInput,
+  outputSchema: SqlManagedInstancesDeleteOutput,
+}));
 // Input Schema
 export interface SqlManagedInstancesGetInput {
   subscriptionId: string;
@@ -2156,7 +2132,7 @@ export interface SqlManagedInstancesGetInput {
   sqlManagedInstanceName: string;
 }
 export const SqlManagedInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
@@ -2183,7 +2159,7 @@ export interface SqlManagedInstancesGetOutput {
   };
 }
 export const SqlManagedInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2212,18 +2188,16 @@ export const SqlManagedInstancesGetOutput =
  * @param sqlManagedInstanceName - Name of SQL Managed Instance
  * @param api-version - The API version to use for the request
  */
-export const SqlManagedInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlManagedInstancesGetInput,
-    outputSchema: SqlManagedInstancesGetOutput,
-  }),
-);
+export const SqlManagedInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlManagedInstancesGetInput,
+  outputSchema: SqlManagedInstancesGetOutput,
+}));
 // Input Schema
 export interface SqlManagedInstancesListInput {
   subscriptionId: string;
 }
 export const SqlManagedInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2251,7 +2225,7 @@ export interface SqlManagedInstancesListOutput {
   nextLink?: string;
 }
 export const SqlManagedInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2295,19 +2269,17 @@ export const SqlManagedInstancesListOutput =
  * @param subscriptionId - The ID of the Azure subscription
  * @param api-version - The API version to use for the request
  */
-export const SqlManagedInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlManagedInstancesListInput,
-    outputSchema: SqlManagedInstancesListOutput,
-  }),
-);
+export const SqlManagedInstancesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlManagedInstancesListInput,
+  outputSchema: SqlManagedInstancesListOutput,
+}));
 // Input Schema
 export interface SqlManagedInstancesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const SqlManagedInstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2336,7 +2308,7 @@ export interface SqlManagedInstancesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SqlManagedInstancesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2384,7 +2356,7 @@ export const SqlManagedInstancesListByResourceGroupOutput =
  * @param api-version - The API version to use for the request
  */
 export const SqlManagedInstancesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlManagedInstancesListByResourceGroupInput,
     outputSchema: SqlManagedInstancesListByResourceGroupOutput,
   }));
@@ -2396,7 +2368,7 @@ export interface SqlManagedInstancesUpdateInput {
   tags?: Record<string, string>;
 }
 export const SqlManagedInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlManagedInstanceName: Schema.String.pipe(T.PathParam()),
@@ -2424,7 +2396,7 @@ export interface SqlManagedInstancesUpdateOutput {
   };
 }
 export const SqlManagedInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2454,12 +2426,10 @@ export const SqlManagedInstancesUpdateOutput =
  * @param api-version - The API version to use for the request
  * @param tags - Resource tags.
  */
-export const SqlManagedInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlManagedInstancesUpdateInput,
-    outputSchema: SqlManagedInstancesUpdateOutput,
-  }),
-);
+export const SqlManagedInstancesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlManagedInstancesUpdateInput,
+  outputSchema: SqlManagedInstancesUpdateOutput,
+}));
 // Input Schema
 export interface SqlServerAvailabilityGroupsAddDatabasesInput {
   subscriptionId: string;
@@ -2469,7 +2439,7 @@ export interface SqlServerAvailabilityGroupsAddDatabasesInput {
   values?: string[];
 }
 export const SqlServerAvailabilityGroupsAddDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -2498,7 +2468,7 @@ export interface SqlServerAvailabilityGroupsAddDatabasesOutput {
   };
 }
 export const SqlServerAvailabilityGroupsAddDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2529,7 +2499,7 @@ export const SqlServerAvailabilityGroupsAddDatabasesOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsAddDatabases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerAvailabilityGroupsAddDatabasesInput,
     outputSchema: SqlServerAvailabilityGroupsAddDatabasesOutput,
   }));
@@ -2644,7 +2614,7 @@ export interface SqlServerAvailabilityGroupsCreateInput {
   location: string;
 }
 export const SqlServerAvailabilityGroupsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -2838,7 +2808,7 @@ export interface SqlServerAvailabilityGroupsCreateOutput {
   };
 }
 export const SqlServerAvailabilityGroupsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2869,7 +2839,7 @@ export const SqlServerAvailabilityGroupsCreateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerAvailabilityGroupsCreateInput,
     outputSchema: SqlServerAvailabilityGroupsCreateOutput,
   }));
@@ -2926,7 +2896,7 @@ export interface SqlServerAvailabilityGroupsCreateAvailabilityGroupInput {
   };
 }
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3025,7 +2995,7 @@ export interface SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput {
   };
 }
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3055,7 +3025,7 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerAvailabilityGroupsCreateAvailabilityGroupInput,
     outputSchema: SqlServerAvailabilityGroupsCreateAvailabilityGroupOutput,
   }));
@@ -3083,7 +3053,7 @@ export interface SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupIn
   };
 }
 export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3147,7 +3117,7 @@ export interface SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupOu
   };
 }
 export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3177,7 +3147,7 @@ export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupOutput
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupInput,
     outputSchema:
@@ -3258,7 +3228,7 @@ export interface SqlServerAvailabilityGroupsCreateManagedInstanceLinkInput {
   miLinkConfiguration?: { instanceAvailabilityGroupName?: string };
 }
 export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3413,7 +3383,7 @@ export interface SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput {
   };
 }
 export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3443,7 +3413,7 @@ export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsCreateManagedInstanceLink =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerAvailabilityGroupsCreateManagedInstanceLinkInput,
     outputSchema: SqlServerAvailabilityGroupsCreateManagedInstanceLinkOutput,
   }));
@@ -3455,7 +3425,7 @@ export interface SqlServerAvailabilityGroupsDeleteInput {
   availabilityGroupName: string;
 }
 export const SqlServerAvailabilityGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3471,7 +3441,7 @@ export const SqlServerAvailabilityGroupsDeleteInput =
 // Output Schema
 export type SqlServerAvailabilityGroupsDeleteOutput = void;
 export const SqlServerAvailabilityGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerAvailabilityGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerAvailabilityGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -3484,7 +3454,7 @@ export const SqlServerAvailabilityGroupsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerAvailabilityGroupsDeleteInput,
     outputSchema: SqlServerAvailabilityGroupsDeleteOutput,
   }));
@@ -3496,7 +3466,7 @@ export interface SqlServerAvailabilityGroupsDeleteMiLinkInput {
   availabilityGroupName: string;
 }
 export const SqlServerAvailabilityGroupsDeleteMiLinkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3512,7 +3482,7 @@ export const SqlServerAvailabilityGroupsDeleteMiLinkInput =
 // Output Schema
 export type SqlServerAvailabilityGroupsDeleteMiLinkOutput = void;
 export const SqlServerAvailabilityGroupsDeleteMiLinkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerAvailabilityGroupsDeleteMiLinkOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerAvailabilityGroupsDeleteMiLinkOutput>;
 
 // The operation
 /**
@@ -3525,7 +3495,7 @@ export const SqlServerAvailabilityGroupsDeleteMiLinkOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsDeleteMiLink =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerAvailabilityGroupsDeleteMiLinkInput,
     outputSchema: SqlServerAvailabilityGroupsDeleteMiLinkOutput,
   }));
@@ -3537,7 +3507,7 @@ export interface SqlServerAvailabilityGroupsDetailViewInput {
   availabilityGroupName: string;
 }
 export const SqlServerAvailabilityGroupsDetailViewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3565,7 +3535,7 @@ export interface SqlServerAvailabilityGroupsDetailViewOutput {
   };
 }
 export const SqlServerAvailabilityGroupsDetailViewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3596,7 +3566,7 @@ export const SqlServerAvailabilityGroupsDetailViewOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsDetailView =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerAvailabilityGroupsDetailViewInput,
     outputSchema: SqlServerAvailabilityGroupsDetailViewOutput,
   }));
@@ -3608,7 +3578,7 @@ export interface SqlServerAvailabilityGroupsFailoverInput {
   availabilityGroupName: string;
 }
 export const SqlServerAvailabilityGroupsFailoverInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3636,7 +3606,7 @@ export interface SqlServerAvailabilityGroupsFailoverOutput {
   };
 }
 export const SqlServerAvailabilityGroupsFailoverOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3667,7 +3637,7 @@ export const SqlServerAvailabilityGroupsFailoverOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsFailover =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerAvailabilityGroupsFailoverInput,
     outputSchema: SqlServerAvailabilityGroupsFailoverOutput,
   }));
@@ -3681,7 +3651,7 @@ export interface SqlServerAvailabilityGroupsFailoverMiLinkInput {
   force?: boolean;
 }
 export const SqlServerAvailabilityGroupsFailoverMiLinkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3711,7 +3681,7 @@ export interface SqlServerAvailabilityGroupsFailoverMiLinkOutput {
   };
 }
 export const SqlServerAvailabilityGroupsFailoverMiLinkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3742,7 +3712,7 @@ export const SqlServerAvailabilityGroupsFailoverMiLinkOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsFailoverMiLink =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerAvailabilityGroupsFailoverMiLinkInput,
     outputSchema: SqlServerAvailabilityGroupsFailoverMiLinkOutput,
   }));
@@ -3754,7 +3724,7 @@ export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossInput {
   availabilityGroupName: string;
 }
 export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3782,7 +3752,7 @@ export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput {
   };
 }
 export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3813,7 +3783,7 @@ export const SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsForceFailoverAllowDataLoss =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerAvailabilityGroupsForceFailoverAllowDataLossInput,
     outputSchema: SqlServerAvailabilityGroupsForceFailoverAllowDataLossOutput,
   }));
@@ -3825,7 +3795,7 @@ export interface SqlServerAvailabilityGroupsGetInput {
   availabilityGroupName: string;
 }
 export const SqlServerAvailabilityGroupsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3853,7 +3823,7 @@ export interface SqlServerAvailabilityGroupsGetOutput {
   };
 }
 export const SqlServerAvailabilityGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3884,7 +3854,7 @@ export const SqlServerAvailabilityGroupsGetOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerAvailabilityGroupsGetInput,
     outputSchema: SqlServerAvailabilityGroupsGetOutput,
   }));
@@ -3895,7 +3865,7 @@ export interface SqlServerAvailabilityGroupsListInput {
   sqlServerInstanceName: string;
 }
 export const SqlServerAvailabilityGroupsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -3925,7 +3895,7 @@ export interface SqlServerAvailabilityGroupsListOutput {
   nextLink?: string;
 }
 export const SqlServerAvailabilityGroupsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3972,7 +3942,7 @@ export const SqlServerAvailabilityGroupsListOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerAvailabilityGroupsListInput,
     outputSchema: SqlServerAvailabilityGroupsListOutput,
   }));
@@ -3985,7 +3955,7 @@ export interface SqlServerAvailabilityGroupsRemoveDatabasesInput {
   values?: string[];
 }
 export const SqlServerAvailabilityGroupsRemoveDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -4014,7 +3984,7 @@ export interface SqlServerAvailabilityGroupsRemoveDatabasesOutput {
   };
 }
 export const SqlServerAvailabilityGroupsRemoveDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4045,7 +4015,7 @@ export const SqlServerAvailabilityGroupsRemoveDatabasesOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsRemoveDatabases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerAvailabilityGroupsRemoveDatabasesInput,
     outputSchema: SqlServerAvailabilityGroupsRemoveDatabasesOutput,
   }));
@@ -4159,7 +4129,7 @@ export interface SqlServerAvailabilityGroupsUpdateInput {
   };
 }
 export const SqlServerAvailabilityGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -4364,7 +4334,7 @@ export interface SqlServerAvailabilityGroupsUpdateOutput {
   };
 }
 export const SqlServerAvailabilityGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4395,7 +4365,7 @@ export const SqlServerAvailabilityGroupsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerAvailabilityGroupsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerAvailabilityGroupsUpdateInput,
     outputSchema: SqlServerAvailabilityGroupsUpdateOutput,
   }));
@@ -4601,7 +4571,7 @@ export interface SqlServerDatabasesCreateInput {
   location: string;
 }
 export const SqlServerDatabasesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -4926,7 +4896,7 @@ export interface SqlServerDatabasesCreateOutput {
   };
 }
 export const SqlServerDatabasesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4956,12 +4926,10 @@ export const SqlServerDatabasesCreateOutput =
  * @param databaseName - Name of the database
  * @param api-version - The API version to use for the request
  */
-export const SqlServerDatabasesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerDatabasesCreateInput,
-    outputSchema: SqlServerDatabasesCreateOutput,
-  }),
-);
+export const SqlServerDatabasesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerDatabasesCreateInput,
+  outputSchema: SqlServerDatabasesCreateOutput,
+}));
 // Input Schema
 export interface SqlServerDatabasesDeleteInput {
   subscriptionId: string;
@@ -4970,7 +4938,7 @@ export interface SqlServerDatabasesDeleteInput {
   databaseName: string;
 }
 export const SqlServerDatabasesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -4986,7 +4954,7 @@ export const SqlServerDatabasesDeleteInput =
 // Output Schema
 export type SqlServerDatabasesDeleteOutput = void;
 export const SqlServerDatabasesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerDatabasesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerDatabasesDeleteOutput>;
 
 // The operation
 /**
@@ -4998,12 +4966,10 @@ export const SqlServerDatabasesDeleteOutput =
  * @param databaseName - Name of the database
  * @param api-version - The API version to use for the request
  */
-export const SqlServerDatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerDatabasesDeleteInput,
-    outputSchema: SqlServerDatabasesDeleteOutput,
-  }),
-);
+export const SqlServerDatabasesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerDatabasesDeleteInput,
+  outputSchema: SqlServerDatabasesDeleteOutput,
+}));
 // Input Schema
 export interface SqlServerDatabasesGetInput {
   subscriptionId: string;
@@ -5012,7 +4978,7 @@ export interface SqlServerDatabasesGetInput {
   databaseName: string;
 }
 export const SqlServerDatabasesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -5040,7 +5006,7 @@ export interface SqlServerDatabasesGetOutput {
   };
 }
 export const SqlServerDatabasesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5070,12 +5036,10 @@ export const SqlServerDatabasesGetOutput =
  * @param databaseName - Name of the database
  * @param api-version - The API version to use for the request
  */
-export const SqlServerDatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerDatabasesGetInput,
-    outputSchema: SqlServerDatabasesGetOutput,
-  }),
-);
+export const SqlServerDatabasesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerDatabasesGetInput,
+  outputSchema: SqlServerDatabasesGetOutput,
+}));
 // Input Schema
 export interface SqlServerDatabasesListInput {
   subscriptionId: string;
@@ -5083,7 +5047,7 @@ export interface SqlServerDatabasesListInput {
   sqlServerInstanceName: string;
 }
 export const SqlServerDatabasesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -5113,7 +5077,7 @@ export interface SqlServerDatabasesListOutput {
   nextLink?: string;
 }
 export const SqlServerDatabasesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5159,12 +5123,10 @@ export const SqlServerDatabasesListOutput =
  * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for the request
  */
-export const SqlServerDatabasesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerDatabasesListInput,
-    outputSchema: SqlServerDatabasesListOutput,
-  }),
-);
+export const SqlServerDatabasesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerDatabasesListInput,
+  outputSchema: SqlServerDatabasesListOutput,
+}));
 // Input Schema
 export interface SqlServerDatabasesUpdateInput {
   subscriptionId: string;
@@ -5366,7 +5328,7 @@ export interface SqlServerDatabasesUpdateInput {
   };
 }
 export const SqlServerDatabasesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -5704,7 +5666,7 @@ export interface SqlServerDatabasesUpdateOutput {
   };
 }
 export const SqlServerDatabasesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5734,12 +5696,10 @@ export const SqlServerDatabasesUpdateOutput =
  * @param databaseName - Name of the database
  * @param api-version - The API version to use for the request
  */
-export const SqlServerDatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerDatabasesUpdateInput,
-    outputSchema: SqlServerDatabasesUpdateOutput,
-  }),
-);
+export const SqlServerDatabasesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerDatabasesUpdateInput,
+  outputSchema: SqlServerDatabasesUpdateOutput,
+}));
 // Input Schema
 export interface SqlServerEsuLicensesCreateInput {
   subscriptionId: string;
@@ -5760,7 +5720,7 @@ export interface SqlServerEsuLicensesCreateInput {
   location: string;
 }
 export const SqlServerEsuLicensesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerEsuLicenseName: Schema.String.pipe(T.PathParam()),
@@ -5800,7 +5760,7 @@ export interface SqlServerEsuLicensesCreateOutput {
   };
 }
 export const SqlServerEsuLicensesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5829,12 +5789,10 @@ export const SqlServerEsuLicensesCreateOutput =
  * @param sqlServerEsuLicenseName - Name of SQL Server ESU License
  * @param api-version - The API version to use for this operation.
  */
-export const SqlServerEsuLicensesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerEsuLicensesCreateInput,
-    outputSchema: SqlServerEsuLicensesCreateOutput,
-  }),
-);
+export const SqlServerEsuLicensesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerEsuLicensesCreateInput,
+  outputSchema: SqlServerEsuLicensesCreateOutput,
+}));
 // Input Schema
 export interface SqlServerEsuLicensesDeleteInput {
   subscriptionId: string;
@@ -5842,7 +5800,7 @@ export interface SqlServerEsuLicensesDeleteInput {
   sqlServerEsuLicenseName: string;
 }
 export const SqlServerEsuLicensesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerEsuLicenseName: Schema.String.pipe(T.PathParam()),
@@ -5857,7 +5815,7 @@ export const SqlServerEsuLicensesDeleteInput =
 // Output Schema
 export type SqlServerEsuLicensesDeleteOutput = void;
 export const SqlServerEsuLicensesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerEsuLicensesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerEsuLicensesDeleteOutput>;
 
 // The operation
 /**
@@ -5868,12 +5826,10 @@ export const SqlServerEsuLicensesDeleteOutput =
  * @param sqlServerEsuLicenseName - Name of SQL Server ESU License
  * @param api-version - The API version to use for this operation.
  */
-export const SqlServerEsuLicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerEsuLicensesDeleteInput,
-    outputSchema: SqlServerEsuLicensesDeleteOutput,
-  }),
-);
+export const SqlServerEsuLicensesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerEsuLicensesDeleteInput,
+  outputSchema: SqlServerEsuLicensesDeleteOutput,
+}));
 // Input Schema
 export interface SqlServerEsuLicensesGetInput {
   subscriptionId: string;
@@ -5881,7 +5837,7 @@ export interface SqlServerEsuLicensesGetInput {
   sqlServerEsuLicenseName: string;
 }
 export const SqlServerEsuLicensesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerEsuLicenseName: Schema.String.pipe(T.PathParam()),
@@ -5908,7 +5864,7 @@ export interface SqlServerEsuLicensesGetOutput {
   };
 }
 export const SqlServerEsuLicensesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5937,18 +5893,16 @@ export const SqlServerEsuLicensesGetOutput =
  * @param sqlServerEsuLicenseName - Name of SQL Server ESU License
  * @param api-version - The API version to use for this operation.
  */
-export const SqlServerEsuLicensesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerEsuLicensesGetInput,
-    outputSchema: SqlServerEsuLicensesGetOutput,
-  }),
-);
+export const SqlServerEsuLicensesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerEsuLicensesGetInput,
+  outputSchema: SqlServerEsuLicensesGetOutput,
+}));
 // Input Schema
 export interface SqlServerEsuLicensesListInput {
   subscriptionId: string;
 }
 export const SqlServerEsuLicensesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5976,7 +5930,7 @@ export interface SqlServerEsuLicensesListOutput {
   nextLink?: string;
 }
 export const SqlServerEsuLicensesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6020,19 +5974,17 @@ export const SqlServerEsuLicensesListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param api-version - The API version to use for this operation.
  */
-export const SqlServerEsuLicensesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerEsuLicensesListInput,
-    outputSchema: SqlServerEsuLicensesListOutput,
-  }),
-);
+export const SqlServerEsuLicensesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerEsuLicensesListInput,
+  outputSchema: SqlServerEsuLicensesListOutput,
+}));
 // Input Schema
 export interface SqlServerEsuLicensesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const SqlServerEsuLicensesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6061,7 +6013,7 @@ export interface SqlServerEsuLicensesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SqlServerEsuLicensesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6109,7 +6061,7 @@ export const SqlServerEsuLicensesListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerEsuLicensesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerEsuLicensesListByResourceGroupInput,
     outputSchema: SqlServerEsuLicensesListByResourceGroupOutput,
   }));
@@ -6132,7 +6084,7 @@ export interface SqlServerEsuLicensesUpdateInput {
   };
 }
 export const SqlServerEsuLicensesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerEsuLicenseName: Schema.String.pipe(T.PathParam()),
@@ -6179,7 +6131,7 @@ export interface SqlServerEsuLicensesUpdateOutput {
   };
 }
 export const SqlServerEsuLicensesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6208,12 +6160,10 @@ export const SqlServerEsuLicensesUpdateOutput =
  * @param sqlServerEsuLicenseName - Name of SQL Server ESU License
  * @param api-version - The API version to use for this operation.
  */
-export const SqlServerEsuLicensesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerEsuLicensesUpdateInput,
-    outputSchema: SqlServerEsuLicensesUpdateOutput,
-  }),
-);
+export const SqlServerEsuLicensesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerEsuLicensesUpdateInput,
+  outputSchema: SqlServerEsuLicensesUpdateOutput,
+}));
 // Input Schema
 export interface SqlServerInstancesCreateInput {
   subscriptionId: string;
@@ -6554,7 +6504,7 @@ export interface SqlServerInstancesCreateInput {
   location: string;
 }
 export const SqlServerInstancesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -7127,7 +7077,7 @@ export interface SqlServerInstancesCreateOutput {
   };
 }
 export const SqlServerInstancesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7157,12 +7107,10 @@ export const SqlServerInstancesCreateOutput =
  * @param api-version - The API version to use for the request
  * @param properties - null
  */
-export const SqlServerInstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerInstancesCreateInput,
-    outputSchema: SqlServerInstancesCreateOutput,
-  }),
-);
+export const SqlServerInstancesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerInstancesCreateInput,
+  outputSchema: SqlServerInstancesCreateOutput,
+}));
 // Input Schema
 export interface SqlServerInstancesDeleteInput {
   subscriptionId: string;
@@ -7170,7 +7118,7 @@ export interface SqlServerInstancesDeleteInput {
   sqlServerInstanceName: string;
 }
 export const SqlServerInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -7185,7 +7133,7 @@ export const SqlServerInstancesDeleteInput =
 // Output Schema
 export type SqlServerInstancesDeleteOutput = void;
 export const SqlServerInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerInstancesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -7196,12 +7144,10 @@ export const SqlServerInstancesDeleteOutput =
  * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for the request
  */
-export const SqlServerInstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerInstancesDeleteInput,
-    outputSchema: SqlServerInstancesDeleteOutput,
-  }),
-);
+export const SqlServerInstancesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerInstancesDeleteInput,
+  outputSchema: SqlServerInstancesDeleteOutput,
+}));
 // Input Schema
 export interface SqlServerInstancesGetInput {
   subscriptionId: string;
@@ -7209,7 +7155,7 @@ export interface SqlServerInstancesGetInput {
   sqlServerInstanceName: string;
 }
 export const SqlServerInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -7236,7 +7182,7 @@ export interface SqlServerInstancesGetOutput {
   };
 }
 export const SqlServerInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7265,12 +7211,10 @@ export const SqlServerInstancesGetOutput =
  * @param sqlServerInstanceName - Name of SQL Server Instance
  * @param api-version - The API version to use for the request
  */
-export const SqlServerInstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerInstancesGetInput,
-    outputSchema: SqlServerInstancesGetOutput,
-  }),
-);
+export const SqlServerInstancesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerInstancesGetInput,
+  outputSchema: SqlServerInstancesGetOutput,
+}));
 // Input Schema
 export interface SqlServerInstancesGetAllAvailabilityGroupsInput {
   subscriptionId: string;
@@ -7284,7 +7228,7 @@ export interface SqlServerInstancesGetAllAvailabilityGroupsInput {
     | "Unknown";
 }
 export const SqlServerInstancesGetAllAvailabilityGroupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -7325,7 +7269,7 @@ export interface SqlServerInstancesGetAllAvailabilityGroupsOutput {
   nextLink?: string;
 }
 export const SqlServerInstancesGetAllAvailabilityGroupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7372,7 +7316,7 @@ export const SqlServerInstancesGetAllAvailabilityGroupsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerInstancesGetAllAvailabilityGroups =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerInstancesGetAllAvailabilityGroupsInput,
     outputSchema: SqlServerInstancesGetAllAvailabilityGroupsOutput,
   }));
@@ -7386,7 +7330,7 @@ export interface SqlServerInstancesGetBestPracticesAssessmentInput {
   skipToken?: string;
 }
 export const SqlServerInstancesGetBestPracticesAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -7421,7 +7365,7 @@ export interface SqlServerInstancesGetBestPracticesAssessmentOutput {
   nextLink?: string;
 }
 export const SqlServerInstancesGetBestPracticesAssessmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     columns: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -7456,7 +7400,7 @@ export const SqlServerInstancesGetBestPracticesAssessmentOutput =
  * @param skipToken - The opaque token to use to skip to a specific page of the report. If not specified, the first page will be returned.
  */
 export const SqlServerInstancesGetBestPracticesAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerInstancesGetBestPracticesAssessmentInput,
     outputSchema: SqlServerInstancesGetBestPracticesAssessmentOutput,
   }));
@@ -7469,7 +7413,7 @@ export interface SqlServerInstancesGetJobsStatusInput {
   jobType?: string;
 }
 export const SqlServerInstancesGetJobsStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -7523,7 +7467,7 @@ export interface SqlServerInstancesGetJobsStatusOutput {
   }[];
 }
 export const SqlServerInstancesGetJobsStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobsStatus: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7610,7 +7554,7 @@ export const SqlServerInstancesGetJobsStatusOutput =
  * @param jobType - The type of the job to retrieve the status for.
  */
 export const SqlServerInstancesGetJobsStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerInstancesGetJobsStatusInput,
     outputSchema: SqlServerInstancesGetJobsStatusOutput,
   }));
@@ -7627,7 +7571,7 @@ export interface SqlServerInstancesGetTelemetryInput {
   databaseNames?: string[];
 }
 export const SqlServerInstancesGetTelemetryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -7665,7 +7609,7 @@ export interface SqlServerInstancesGetTelemetryOutput {
   nextLink?: string;
 }
 export const SqlServerInstancesGetTelemetryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     columns: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -7703,7 +7647,7 @@ export const SqlServerInstancesGetTelemetryOutput =
  * @param databaseNames - The list of database names to return telemetry for. If not specified, telemetry for all databases will be aggregated and returned.
  */
 export const SqlServerInstancesGetTelemetry =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerInstancesGetTelemetryInput,
     outputSchema: SqlServerInstancesGetTelemetryOutput,
   }));
@@ -7712,7 +7656,7 @@ export interface SqlServerInstancesListInput {
   subscriptionId: string;
 }
 export const SqlServerInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -7740,7 +7684,7 @@ export interface SqlServerInstancesListOutput {
   nextLink?: string;
 }
 export const SqlServerInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7784,19 +7728,17 @@ export const SqlServerInstancesListOutput =
  * @param subscriptionId - The ID of the Azure subscription
  * @param api-version - The API version to use for the request
  */
-export const SqlServerInstancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerInstancesListInput,
-    outputSchema: SqlServerInstancesListOutput,
-  }),
-);
+export const SqlServerInstancesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerInstancesListInput,
+  outputSchema: SqlServerInstancesListOutput,
+}));
 // Input Schema
 export interface SqlServerInstancesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const SqlServerInstancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -7825,7 +7767,7 @@ export interface SqlServerInstancesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SqlServerInstancesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -7873,7 +7815,7 @@ export const SqlServerInstancesListByResourceGroupOutput =
  * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerInstancesListByResourceGroupInput,
     outputSchema: SqlServerInstancesListByResourceGroupOutput,
   }));
@@ -7884,7 +7826,7 @@ export interface SqlServerInstancesPostUpgradeInput {
   sqlServerInstanceName: string;
 }
 export const SqlServerInstancesPostUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -7911,7 +7853,7 @@ export interface SqlServerInstancesPostUpgradeOutput {
   };
 }
 export const SqlServerInstancesPostUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7941,7 +7883,7 @@ export const SqlServerInstancesPostUpgradeOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerInstancesPostUpgrade =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerInstancesPostUpgradeInput,
     outputSchema: SqlServerInstancesPostUpgradeOutput,
   }));
@@ -7952,7 +7894,7 @@ export interface SqlServerInstancesPreUpgradeInput {
   sqlServerInstanceName: string;
 }
 export const SqlServerInstancesPreUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -7979,7 +7921,7 @@ export interface SqlServerInstancesPreUpgradeOutput {
   };
 }
 export const SqlServerInstancesPreUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8009,7 +7951,7 @@ export const SqlServerInstancesPreUpgradeOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SqlServerInstancesPreUpgrade =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerInstancesPreUpgradeInput,
     outputSchema: SqlServerInstancesPreUpgradeOutput,
   }));
@@ -8020,7 +7962,7 @@ export interface SqlServerInstancesRunBestPracticesAssessmentInput {
   sqlServerInstanceName: string;
 }
 export const SqlServerInstancesRunBestPracticesAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -8070,7 +8012,7 @@ export interface SqlServerInstancesRunBestPracticesAssessmentOutput {
   }[];
 }
 export const SqlServerInstancesRunBestPracticesAssessmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     instanceName: Schema.optional(Schema.String),
     jobStatus: Schema.optional(
@@ -8144,7 +8086,7 @@ export const SqlServerInstancesRunBestPracticesAssessmentOutput =
  * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesRunBestPracticesAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerInstancesRunBestPracticesAssessmentInput,
     outputSchema: SqlServerInstancesRunBestPracticesAssessmentOutput,
   }));
@@ -8173,7 +8115,7 @@ export interface SqlServerInstancesRunManagedInstanceLinkAssessmentInput {
   sqlServerIpAddress?: string;
 }
 export const SqlServerInstancesRunManagedInstanceLinkAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -8231,7 +8173,7 @@ export interface SqlServerInstancesRunManagedInstanceLinkAssessmentOutput {
   }[];
 }
 export const SqlServerInstancesRunManagedInstanceLinkAssessmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assessments: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -8278,7 +8220,7 @@ export const SqlServerInstancesRunManagedInstanceLinkAssessmentOutput =
  * @param sqlServerIpAddress - The IP address of the SQL Server instance.
  */
 export const SqlServerInstancesRunManagedInstanceLinkAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerInstancesRunManagedInstanceLinkAssessmentInput,
     outputSchema: SqlServerInstancesRunManagedInstanceLinkAssessmentOutput,
   }));
@@ -8289,7 +8231,7 @@ export interface SqlServerInstancesRunMigrationAssessmentInput {
   sqlServerInstanceName: string;
 }
 export const SqlServerInstancesRunMigrationAssessmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -8339,7 +8281,7 @@ export interface SqlServerInstancesRunMigrationAssessmentOutput {
   }[];
 }
 export const SqlServerInstancesRunMigrationAssessmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     instanceName: Schema.optional(Schema.String),
     jobStatus: Schema.optional(
@@ -8413,7 +8355,7 @@ export const SqlServerInstancesRunMigrationAssessmentOutput =
  * @param api-version - The API version to use for the request
  */
 export const SqlServerInstancesRunMigrationAssessment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerInstancesRunMigrationAssessmentInput,
     outputSchema: SqlServerInstancesRunMigrationAssessmentOutput,
   }));
@@ -8756,7 +8698,7 @@ export interface SqlServerInstancesUpdateInput {
   };
 }
 export const SqlServerInstancesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerInstanceName: Schema.String.pipe(T.PathParam()),
@@ -9328,7 +9270,7 @@ export interface SqlServerInstancesUpdateOutput {
   };
 }
 export const SqlServerInstancesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9359,12 +9301,10 @@ export const SqlServerInstancesUpdateOutput =
  * @param tags - Resource tags.
  * @param properties - null
  */
-export const SqlServerInstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerInstancesUpdateInput,
-    outputSchema: SqlServerInstancesUpdateOutput,
-  }),
-);
+export const SqlServerInstancesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerInstancesUpdateInput,
+  outputSchema: SqlServerInstancesUpdateOutput,
+}));
 // Input Schema
 export interface SqlServerLicensesCreateInput {
   subscriptionId: string;
@@ -9384,7 +9324,7 @@ export interface SqlServerLicensesCreateInput {
   location: string;
 }
 export const SqlServerLicensesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerLicenseName: Schema.String.pipe(T.PathParam()),
@@ -9423,7 +9363,7 @@ export interface SqlServerLicensesCreateOutput {
   };
 }
 export const SqlServerLicensesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9453,12 +9393,10 @@ export const SqlServerLicensesCreateOutput =
  * @param api-version - The API version to use for the request
  * @param properties - SQL Server license properties
  */
-export const SqlServerLicensesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerLicensesCreateInput,
-    outputSchema: SqlServerLicensesCreateOutput,
-  }),
-);
+export const SqlServerLicensesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerLicensesCreateInput,
+  outputSchema: SqlServerLicensesCreateOutput,
+}));
 // Input Schema
 export interface SqlServerLicensesDeleteInput {
   subscriptionId: string;
@@ -9466,7 +9404,7 @@ export interface SqlServerLicensesDeleteInput {
   sqlServerLicenseName: string;
 }
 export const SqlServerLicensesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerLicenseName: Schema.String.pipe(T.PathParam()),
@@ -9481,7 +9419,7 @@ export const SqlServerLicensesDeleteInput =
 // Output Schema
 export type SqlServerLicensesDeleteOutput = void;
 export const SqlServerLicensesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerLicensesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SqlServerLicensesDeleteOutput>;
 
 // The operation
 /**
@@ -9492,12 +9430,10 @@ export const SqlServerLicensesDeleteOutput =
  * @param sqlServerLicenseName - Name of SQL Server License
  * @param api-version - The API version to use for the request
  */
-export const SqlServerLicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerLicensesDeleteInput,
-    outputSchema: SqlServerLicensesDeleteOutput,
-  }),
-);
+export const SqlServerLicensesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerLicensesDeleteInput,
+  outputSchema: SqlServerLicensesDeleteOutput,
+}));
 // Input Schema
 export interface SqlServerLicensesGetInput {
   subscriptionId: string;
@@ -9505,7 +9441,7 @@ export interface SqlServerLicensesGetInput {
   sqlServerLicenseName: string;
 }
 export const SqlServerLicensesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerLicenseName: Schema.String.pipe(T.PathParam()),
@@ -9532,7 +9468,7 @@ export interface SqlServerLicensesGetOutput {
   };
 }
 export const SqlServerLicensesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9561,18 +9497,16 @@ export const SqlServerLicensesGetOutput =
  * @param sqlServerLicenseName - Name of SQL Server License
  * @param api-version - The API version to use for the request
  */
-export const SqlServerLicensesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerLicensesGetInput,
-    outputSchema: SqlServerLicensesGetOutput,
-  }),
-);
+export const SqlServerLicensesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerLicensesGetInput,
+  outputSchema: SqlServerLicensesGetOutput,
+}));
 // Input Schema
 export interface SqlServerLicensesListInput {
   subscriptionId: string;
 }
 export const SqlServerLicensesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -9600,7 +9534,7 @@ export interface SqlServerLicensesListOutput {
   nextLink?: string;
 }
 export const SqlServerLicensesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9644,19 +9578,17 @@ export const SqlServerLicensesListOutput =
  * @param subscriptionId - The ID of the Azure subscription
  * @param api-version - The API version to use for the request
  */
-export const SqlServerLicensesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerLicensesListInput,
-    outputSchema: SqlServerLicensesListOutput,
-  }),
-);
+export const SqlServerLicensesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerLicensesListInput,
+  outputSchema: SqlServerLicensesListOutput,
+}));
 // Input Schema
 export interface SqlServerLicensesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const SqlServerLicensesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -9685,7 +9617,7 @@ export interface SqlServerLicensesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SqlServerLicensesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -9733,7 +9665,7 @@ export const SqlServerLicensesListByResourceGroupOutput =
  * @param api-version - The API version to use for the request
  */
 export const SqlServerLicensesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SqlServerLicensesListByResourceGroupInput,
     outputSchema: SqlServerLicensesListByResourceGroupOutput,
   }));
@@ -9755,7 +9687,7 @@ export interface SqlServerLicensesUpdateInput {
   };
 }
 export const SqlServerLicensesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     sqlServerLicenseName: Schema.String.pipe(T.PathParam()),
@@ -9799,7 +9731,7 @@ export interface SqlServerLicensesUpdateOutput {
   };
 }
 export const SqlServerLicensesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9830,9 +9762,7 @@ export const SqlServerLicensesUpdateOutput =
  * @param tags - Resource tags.
  * @param properties - null
  */
-export const SqlServerLicensesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SqlServerLicensesUpdateInput,
-    outputSchema: SqlServerLicensesUpdateOutput,
-  }),
-);
+export const SqlServerLicensesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SqlServerLicensesUpdateInput,
+  outputSchema: SqlServerLicensesUpdateOutput,
+}));

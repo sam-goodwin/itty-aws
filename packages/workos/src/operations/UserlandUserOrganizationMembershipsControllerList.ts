@@ -14,7 +14,7 @@ export interface UserlandUserOrganizationMembershipsControllerListInput {
   user_id?: string;
 }
 export const UserlandUserOrganizationMembershipsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -65,7 +65,7 @@ export interface UserlandUserOrganizationMembershipsControllerListOutput {
   list_metadata: { before: string | null; after: string | null };
 }
 export const UserlandUserOrganizationMembershipsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     data: Schema.Array(
       Schema.Struct({
@@ -138,7 +138,7 @@ export const UserlandUserOrganizationMembershipsControllerListOutput =
  * @param user_id - The ID of the [user](/reference/authkit/user).
  */
 export const UserlandUserOrganizationMembershipsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserOrganizationMembershipsControllerListInput,
     outputSchema: UserlandUserOrganizationMembershipsControllerListOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

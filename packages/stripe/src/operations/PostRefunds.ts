@@ -22,7 +22,7 @@ export interface PostRefundsInput {
   refund_application_fee?: boolean;
   reverse_transfer?: boolean;
 }
-export const PostRefundsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostRefundsInput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.optional(Schema.Number),
   charge: Schema.optional(Schema.String),
   currency: Schema.optional(Schema.String),
@@ -718,7 +718,7 @@ export interface PostRefundsOutput {
       }
     | null;
 }
-export const PostRefundsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostRefundsOutput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   balance_transaction: Schema.NullOr(
     Schema.Union([
@@ -1072,7 +1072,7 @@ export const PostRefundsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * This method will raise an error when called on an already-refunded charge,
  * or when trying to refund more money than is left on a charge.</p>
  */
-export const PostRefunds = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostRefunds = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostRefundsInput,
   outputSchema: PostRefundsOutput,
 }));

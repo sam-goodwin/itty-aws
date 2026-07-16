@@ -8,7 +8,7 @@ export interface ErrorTrackingFingerprintsRetrieveInput {
   project_id: string;
 }
 export const ErrorTrackingFingerprintsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -26,7 +26,7 @@ export interface ErrorTrackingFingerprintsRetrieveOutput {
   created_at?: string;
 }
 export const ErrorTrackingFingerprintsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     fingerprint: Schema.optional(Schema.String),
     issue_id: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export const ErrorTrackingFingerprintsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingFingerprintsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingFingerprintsRetrieveInput,
     outputSchema: ErrorTrackingFingerprintsRetrieveOutput,
   }));

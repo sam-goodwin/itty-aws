@@ -11,7 +11,7 @@ export interface GetInvoiceLineItemsInput {
   per_page?: number;
 }
 export const GetInvoiceLineItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     page: Schema.optional(Schema.Number),
@@ -49,7 +49,7 @@ export interface GetInvoiceLineItemsOutput {
   }>;
 }
 export const GetInvoiceLineItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -88,7 +88,7 @@ export const GetInvoiceLineItemsOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const getInvoiceLineItems =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: GetInvoiceLineItemsInput,
     outputSchema: GetInvoiceLineItemsOutput,
     errors: [Forbidden, NotFound] as const,

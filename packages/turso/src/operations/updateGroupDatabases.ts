@@ -9,7 +9,7 @@ export interface UpdateGroupDatabasesInput {
   groupName: string;
 }
 export const UpdateGroupDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const UpdateGroupDatabasesInput =
 // Output Schema
 export type UpdateGroupDatabasesOutput = void;
 export const UpdateGroupDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupDatabasesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupDatabasesOutput>;
 
 // The operation
 /**
@@ -33,10 +33,8 @@ export const UpdateGroupDatabasesOutput =
  * @param organizationSlug - The slug of the organization or user account.
  * @param groupName - The name of the group.
  */
-export const updateGroupDatabases = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupDatabasesInput,
-    outputSchema: UpdateGroupDatabasesOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const updateGroupDatabases = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupDatabasesInput,
+  outputSchema: UpdateGroupDatabasesOutput,
+  errors: [NotFound] as const,
+}));

@@ -12,7 +12,7 @@ export interface CreateServiceTokenInput {
   ttl?: number;
 }
 export const CreateServiceTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     ttl: Schema.optional(Schema.Number),
@@ -84,7 +84,7 @@ export interface CreateServiceTokenOutput {
   } | null;
 }
 export const CreateServiceTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.optional(Schema.NullOr(Schema.String)),
     display_name: Schema.String,
@@ -199,7 +199,7 @@ export const CreateServiceTokenOutput =
  * @param name - The name of the service token
  * @param ttl - Time to live (in seconds) for the service token. The token will be invalid when TTL has passed
  */
-export const createServiceToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createServiceToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateServiceTokenInput,
   outputSchema: CreateServiceTokenOutput,
   errors: [Forbidden, NotFound] as const,

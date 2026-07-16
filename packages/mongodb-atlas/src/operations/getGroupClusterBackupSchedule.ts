@@ -11,7 +11,7 @@ export interface GetGroupClusterBackupScheduleInput {
   pretty?: boolean;
 }
 export const GetGroupClusterBackupScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const GetGroupClusterBackupScheduleInput =
 // Output Schema
 export type GetGroupClusterBackupScheduleOutput = void;
 export const GetGroupClusterBackupScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterBackupScheduleOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterBackupScheduleOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const GetGroupClusterBackupScheduleOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  */
 export const getGroupClusterBackupSchedule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupClusterBackupScheduleInput,
     outputSchema: GetGroupClusterBackupScheduleOutput,
     errors: [Forbidden, NotFound] as const,

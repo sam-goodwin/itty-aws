@@ -18,7 +18,7 @@ export interface GetChargesInput {
   starting_after?: string;
   transfer_group?: string;
 }
-export const GetChargesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetChargesInput = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.String),
   customer: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
@@ -1581,7 +1581,7 @@ export interface GetChargesOutput {
   object: "list";
   url: string;
 }
-export const GetChargesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetChargesOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       amount: Schema.Number,
@@ -2350,7 +2350,7 @@ export const GetChargesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param transfer_group - Only return charges for this transfer group, limited to 100.
  */
-export const GetCharges = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetCharges = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetChargesInput,
   outputSchema: GetChargesOutput,
 }));

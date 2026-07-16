@@ -9,7 +9,7 @@ export interface ValidateEndUserAccessTokenInput {
   accessToken: string | Redacted.Redacted<string>;
 }
 export const ValidateEndUserAccessTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessToken: SensitiveString,
   }).pipe(
     T.Http({ method: "POST", path: "/v2/end-users/auth/validate-token" }),
@@ -58,7 +58,7 @@ export interface ValidateEndUserAccessTokenOutput {
   createdAt: string;
 }
 export const ValidateEndUserAccessTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String,
     authenticationMethods: Schema.Array(
       Schema.Union([
@@ -144,9 +144,7 @@ export const ValidateEndUserAccessTokenOutput =
  * Validates the end user's access token and returns the end user's information. Returns an error if the access token is invalid or expired.
  * This API is intended to be used by the developer's own backend, and is authenticated using the developer's CDP API key.
  */
-export const validateEndUserAccessToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ValidateEndUserAccessTokenInput,
-    outputSchema: ValidateEndUserAccessTokenOutput,
-  }),
-);
+export const validateEndUserAccessToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ValidateEndUserAccessTokenInput,
+  outputSchema: ValidateEndUserAccessTokenOutput,
+}));

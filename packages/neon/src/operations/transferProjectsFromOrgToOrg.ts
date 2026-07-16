@@ -10,7 +10,7 @@ export interface TransferProjectsFromOrgToOrgInput {
   project_ids: string[];
 }
 export const TransferProjectsFromOrgToOrgInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source_org_id: Schema.String.pipe(T.PathParam()),
     destination_org_id: Schema.String,
     project_ids: Schema.Array(Schema.String),
@@ -24,7 +24,7 @@ export const TransferProjectsFromOrgToOrgInput =
 // Output Schema
 export interface TransferProjectsFromOrgToOrgOutput {}
 export const TransferProjectsFromOrgToOrgOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as unknown as Schema.Codec<TransferProjectsFromOrgToOrgOutput>;
 
@@ -37,7 +37,7 @@ export const TransferProjectsFromOrgToOrgOutput =
  * @param source_org_id - The Neon organization ID (source org, which currently owns the project)
  */
 export const transferProjectsFromOrgToOrg =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TransferProjectsFromOrgToOrgInput,
     outputSchema: TransferProjectsFromOrgToOrgOutput,
     errors: [UnprocessableEntity] as const,

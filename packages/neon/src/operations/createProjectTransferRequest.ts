@@ -8,7 +8,7 @@ export interface CreateProjectTransferRequestInput {
   ttl_seconds?: number;
 }
 export const CreateProjectTransferRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     ttl_seconds: Schema.optional(Schema.Number),
   }).pipe(
@@ -26,7 +26,7 @@ export interface CreateProjectTransferRequestOutput {
   expires_at: string;
 }
 export const CreateProjectTransferRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     project_id: Schema.String,
     created_at: Schema.String,
@@ -45,7 +45,7 @@ export const CreateProjectTransferRequestOutput =
  * @param project_id - The Neon project ID
  */
 export const createProjectTransferRequest =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateProjectTransferRequestInput,
     outputSchema: CreateProjectTransferRequestOutput,
   }));

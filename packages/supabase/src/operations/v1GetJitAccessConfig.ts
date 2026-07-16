@@ -8,7 +8,7 @@ export interface V1GetJitAccessConfigInput {
   ref: string;
 }
 export const V1GetJitAccessConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/jit-access" }),
@@ -24,7 +24,7 @@ export type V1GetJitAccessConfigOutput =
         | "temporarily_unavailable";
     };
 export const V1GetJitAccessConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       state: Schema.Literals(["enabled", "disabled"]),
       appliedSuccessfully: Schema.optional(Schema.Boolean),
@@ -44,10 +44,8 @@ export const V1GetJitAccessConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetJitAccessConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetJitAccessConfigInput,
-    outputSchema: V1GetJitAccessConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1GetJitAccessConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetJitAccessConfigInput,
+  outputSchema: V1GetJitAccessConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

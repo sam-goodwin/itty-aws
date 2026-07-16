@@ -11,7 +11,7 @@ export interface ListFederationSettingConnectedOrgConfigsInput {
   pageNum?: number;
 }
 export const ListFederationSettingConnectedOrgConfigsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     itemsPerPage: Schema.optional(Schema.Number),
@@ -26,7 +26,7 @@ export const ListFederationSettingConnectedOrgConfigsInput =
 // Output Schema
 export type ListFederationSettingConnectedOrgConfigsOutput = void;
 export const ListFederationSettingConnectedOrgConfigsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListFederationSettingConnectedOrgConfigsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListFederationSettingConnectedOrgConfigsOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ export const ListFederationSettingConnectedOrgConfigsOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  */
 export const listFederationSettingConnectedOrgConfigs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListFederationSettingConnectedOrgConfigsInput,
     outputSchema: ListFederationSettingConnectedOrgConfigsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

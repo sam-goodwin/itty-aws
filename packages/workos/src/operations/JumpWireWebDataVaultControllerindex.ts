@@ -13,7 +13,7 @@ export interface JumpWireWebDataVaultControllerindexInput {
   updatedAfter?: string;
 }
 export const JumpWireWebDataVaultControllerindexInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     limit: Schema.optional(Schema.Number),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -30,7 +30,7 @@ export interface JumpWireWebDataVaultControllerindexOutput {
   list_metadata: { after?: string | null; before?: string | null };
 }
 export const JumpWireWebDataVaultControllerindexOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -58,7 +58,7 @@ export const JumpWireWebDataVaultControllerindexOutput =
  * @param updatedAfter - ISO 8601 timestamp to filter by last modified time.
  */
 export const JumpWireWebDataVaultControllerindex =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: JumpWireWebDataVaultControllerindexInput,
     outputSchema: JumpWireWebDataVaultControllerindexOutput,
     errors: [BadRequest] as const,

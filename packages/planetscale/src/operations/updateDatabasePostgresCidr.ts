@@ -13,7 +13,7 @@ export interface UpdateDatabasePostgresCidrInput {
   cidrs?: ReadonlyArray<string>;
 }
 export const UpdateDatabasePostgresCidrInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
@@ -39,7 +39,7 @@ export interface UpdateDatabasePostgresCidrOutput {
   actor: { id: string; display_name: string; avatar_url: string };
 }
 export const UpdateDatabasePostgresCidrOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     schema: Schema.String,
     role: Schema.String,
@@ -65,10 +65,8 @@ export const UpdateDatabasePostgresCidrOutput =
  * @param role - The PostgreSQL role to restrict access to. Leave empty to allow access for all roles.
  * @param cidrs - List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Only provided fields will be updated.
  */
-export const updateDatabasePostgresCidr = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateDatabasePostgresCidrInput,
-    outputSchema: UpdateDatabasePostgresCidrOutput,
-    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const updateDatabasePostgresCidr = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateDatabasePostgresCidrInput,
+  outputSchema: UpdateDatabasePostgresCidrOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
+}));

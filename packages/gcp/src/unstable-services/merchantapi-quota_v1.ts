@@ -30,7 +30,7 @@ export interface ProductLimit {
 }
 
 export const ProductLimit: Schema.Codec<ProductLimit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProductLimit" });
@@ -43,7 +43,7 @@ export interface AccountLimit {
 }
 
 export const AccountLimit: Schema.Codec<AccountLimit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     products: Schema.optional(ProductLimit),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "AccountLimit" });
@@ -60,7 +60,7 @@ export interface MethodDetails {
 }
 
 export const MethodDetails: Schema.Codec<MethodDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     subapi: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
@@ -81,7 +81,7 @@ export interface QuotaGroup {
 }
 
 export const QuotaGroup: Schema.Codec<QuotaGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quotaUsage: Schema.optional(Schema.String),
     quotaMinuteLimit: Schema.optional(Schema.String),
     quotaLimit: Schema.optional(Schema.String),
@@ -97,7 +97,7 @@ export interface ListQuotaGroupsResponse {
 }
 
 export const ListQuotaGroupsResponse: Schema.Codec<ListQuotaGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     quotaGroups: Schema.optional(Schema.Array(QuotaGroup)),
   }).annotate({ identifier: "ListQuotaGroupsResponse" });
@@ -110,7 +110,7 @@ export interface ListAccountLimitsResponse {
 }
 
 export const ListAccountLimitsResponse: Schema.Codec<ListAccountLimitsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     accountLimits: Schema.optional(Schema.Array(AccountLimit)),
   }).annotate({ identifier: "ListAccountLimitsResponse" });
@@ -148,7 +148,7 @@ export interface ProductChange {
 }
 
 export const ProductChange: Schema.Codec<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
     newValue: Schema.optional(Schema.String),
     oldValue: Schema.optional(Schema.String),
@@ -181,7 +181,7 @@ export interface ProductStatusChangeMessage {
 }
 
 export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(Schema.String),
     changes: Schema.optional(Schema.Array(ProductChange)),
     resource: Schema.optional(Schema.String),
@@ -230,7 +230,7 @@ export interface GetAccountsLimitsRequest {
 }
 
 export const GetAccountsLimitsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "quota/v1/{+name}" }),
@@ -238,8 +238,7 @@ export const GetAccountsLimitsRequest =
   ) as unknown as Schema.Codec<GetAccountsLimitsRequest>;
 
 export type GetAccountsLimitsResponse = AccountLimit;
-export const GetAccountsLimitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccountLimit;
+export const GetAccountsLimitsResponse = /*@__PURE__*/ AccountLimit;
 
 export type GetAccountsLimitsError = DefaultErrors | NotFound | Forbidden;
 
@@ -249,7 +248,7 @@ export const getAccountsLimits: API.OperationMethod<
   GetAccountsLimitsResponse,
   GetAccountsLimitsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsLimitsRequest,
   output: GetAccountsLimitsResponse,
   errors: [NotFound, Forbidden],
@@ -267,7 +266,7 @@ export interface ListAccountsLimitsRequest {
 }
 
 export const ListAccountsLimitsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -279,7 +278,7 @@ export const ListAccountsLimitsRequest =
 
 export type ListAccountsLimitsResponse = ListAccountLimitsResponse;
 export const ListAccountsLimitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAccountLimitsResponse;
+  /*@__PURE__*/ ListAccountLimitsResponse;
 
 export type ListAccountsLimitsError = DefaultErrors | NotFound | Forbidden;
 
@@ -289,7 +288,7 @@ export const listAccountsLimits: API.PaginatedOperationMethod<
   ListAccountsLimitsResponse,
   ListAccountsLimitsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLimitsRequest,
   output: ListAccountsLimitsResponse,
   errors: [NotFound, Forbidden],
@@ -309,7 +308,7 @@ export interface ListAccountsQuotasRequest {
 }
 
 export const ListAccountsQuotasRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -319,8 +318,7 @@ export const ListAccountsQuotasRequest =
   ) as unknown as Schema.Codec<ListAccountsQuotasRequest>;
 
 export type ListAccountsQuotasResponse = ListQuotaGroupsResponse;
-export const ListAccountsQuotasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListQuotaGroupsResponse;
+export const ListAccountsQuotasResponse = /*@__PURE__*/ ListQuotaGroupsResponse;
 
 export type ListAccountsQuotasError = DefaultErrors | NotFound | Forbidden;
 
@@ -330,7 +328,7 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
   ListAccountsQuotasResponse,
   ListAccountsQuotasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsQuotasRequest,
   output: ListAccountsQuotasResponse,
   errors: [NotFound, Forbidden],

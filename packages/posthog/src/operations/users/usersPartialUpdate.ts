@@ -723,7 +723,7 @@ export interface UsersPartialUpdateInput {
   requires_credential_review?: boolean;
 }
 export const UsersPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     date_joined: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -2239,7 +2239,7 @@ export interface UsersPartialUpdateOutput {
   requires_credential_review?: boolean;
 }
 export const UsersPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date_joined: Schema.optional(Schema.String),
     uuid: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -3039,7 +3039,7 @@ export const UsersPartialUpdateOutput =
 /**
  * Update one or more of the authenticated user's profile fields or settings.
  */
-export const usersPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const usersPartialUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersPartialUpdateInput,
   outputSchema: UsersPartialUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

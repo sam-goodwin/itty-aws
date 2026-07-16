@@ -11,7 +11,7 @@ export interface PatchV1DatabasesByDatabaseIdInput {
   branchGitName?: string | null;
 }
 export const PatchV1DatabasesByDatabaseIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     branchId: Schema.optional(Schema.NullOr(Schema.String)),
@@ -57,7 +57,7 @@ export interface PatchV1DatabasesByDatabaseIdOutput {
   };
 }
 export const PatchV1DatabasesByDatabaseIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -154,7 +154,7 @@ export const PatchV1DatabasesByDatabaseIdOutput =
  * Updates the database with the given ID.
  */
 export const patchV1DatabasesByDatabaseId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchV1DatabasesByDatabaseIdInput,
     outputSchema: PatchV1DatabasesByDatabaseIdOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

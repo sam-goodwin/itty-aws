@@ -19,7 +19,7 @@ export interface UpsertAnalyticsRuleInput {
   };
 }
 export const UpsertAnalyticsRuleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ruleName: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     rule_tag: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export interface UpsertAnalyticsRuleOutput {
   };
 }
 export const UpsertAnalyticsRuleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String,
     type: Schema.Literals([
       "popular_queries",
@@ -88,7 +88,7 @@ export const UpsertAnalyticsRuleOutput =
  *
  * @param ruleName - The name of the analytics rule to upsert
  */
-export const upsertAnalyticsRule = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const upsertAnalyticsRule = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpsertAnalyticsRuleInput,
   outputSchema: UpsertAnalyticsRuleOutput,
   errors: [BadRequest] as const,

@@ -10,7 +10,7 @@ export interface PostAccountsAccountCapabilitiesCapabilityInput {
   requested?: boolean;
 }
 export const PostAccountsAccountCapabilitiesCapabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     capability: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -281,7 +281,7 @@ export interface PostAccountsAccountCapabilitiesCapabilityOutput {
   status: "active" | "inactive" | "pending" | "unrequested";
 }
 export const PostAccountsAccountCapabilitiesCapabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.Unknown,
     future_requirements: Schema.optional(
       Schema.Struct({
@@ -569,7 +569,7 @@ export const PostAccountsAccountCapabilitiesCapabilityOutput =
  * <p>Updates an existing Account Capability. Request or remove a capability by updating its <code>requested</code> parameter.</p>
  */
 export const PostAccountsAccountCapabilitiesCapability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostAccountsAccountCapabilitiesCapabilityInput,
     outputSchema: PostAccountsAccountCapabilitiesCapabilityOutput,
   }));

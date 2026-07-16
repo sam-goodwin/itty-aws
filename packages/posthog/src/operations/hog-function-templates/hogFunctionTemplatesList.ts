@@ -13,7 +13,7 @@ export interface HogFunctionTemplatesListInput {
   types?: string;
 }
 export const HogFunctionTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -59,7 +59,7 @@ export interface HogFunctionTemplatesListOutput {
   }[];
 }
 export const HogFunctionTemplatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -112,10 +112,8 @@ export const HogFunctionTemplatesListOutput =
  * @param type - Filter by template type (e.g. destination, email, sms_provider, broadcast). Defaults to destination if neither type nor types is provided.
  * @param types - Comma-separated list of template types to include (e.g. destination,email,sms_provider).
  */
-export const hogFunctionTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HogFunctionTemplatesListInput,
-    outputSchema: HogFunctionTemplatesListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const hogFunctionTemplatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HogFunctionTemplatesListInput,
+  outputSchema: HogFunctionTemplatesListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

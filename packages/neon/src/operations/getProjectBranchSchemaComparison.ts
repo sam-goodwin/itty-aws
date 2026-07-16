@@ -15,7 +15,7 @@ export interface GetProjectBranchSchemaComparisonInput {
   base_timestamp?: string;
 }
 export const GetProjectBranchSchemaComparisonInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     base_branch_id: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export interface GetProjectBranchSchemaComparisonOutput {
   diff?: string;
 }
 export const GetProjectBranchSchemaComparisonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     diff: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<GetProjectBranchSchemaComparisonOutput>;
 
@@ -60,7 +60,7 @@ export const GetProjectBranchSchemaComparisonOutput =
 
  */
 export const getProjectBranchSchemaComparison =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetProjectBranchSchemaComparisonInput,
     outputSchema: GetProjectBranchSchemaComparisonOutput,
     errors: [NotFound] as const,

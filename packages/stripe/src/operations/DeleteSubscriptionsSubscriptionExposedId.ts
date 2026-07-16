@@ -28,7 +28,7 @@ export interface DeleteSubscriptionsSubscriptionExposedIdInput {
   prorate?: boolean;
 }
 export const DeleteSubscriptionsSubscriptionExposedIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription_exposed_id: Schema.String.pipe(T.PathParam()),
     cancellation_details: Schema.optional(
       Schema.Struct({
@@ -1119,7 +1119,7 @@ export interface DeleteSubscriptionsSubscriptionExposedIdOutput {
   trial_start: number | null;
 }
 export const DeleteSubscriptionsSubscriptionExposedIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -1992,7 +1992,7 @@ export const DeleteSubscriptionsSubscriptionExposedIdOutput =
  * <p>By default, upon subscription cancellation, Stripe stops automatic collection of all finalized invoices for the customer. This is intended to prevent unexpected payment attempts after the customer has canceled a subscription. However, you can resume automatic collection of the invoices manually after subscription cancellation to have us proceed. Or, you could check for unpaid invoices before allowing the customer to cancel the subscription at all.</p>
  */
 export const DeleteSubscriptionsSubscriptionExposedId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteSubscriptionsSubscriptionExposedIdInput,
     outputSchema: DeleteSubscriptionsSubscriptionExposedIdOutput,
   }));

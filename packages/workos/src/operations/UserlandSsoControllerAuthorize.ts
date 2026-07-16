@@ -37,7 +37,7 @@ export interface UserlandSsoControllerAuthorizeInput {
   client_id: string;
 }
 export const UserlandSsoControllerAuthorizeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code_challenge_method: Schema.optional(Schema.String),
     code_challenge: Schema.optional(Schema.String),
     domain_hint: Schema.optional(Schema.String),
@@ -79,7 +79,7 @@ export const UserlandSsoControllerAuthorizeInput =
 // Output Schema
 export type UserlandSsoControllerAuthorizeOutput = void;
 export const UserlandSsoControllerAuthorizeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UserlandSsoControllerAuthorizeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UserlandSsoControllerAuthorizeOutput>;
 
 // The operation
 /**
@@ -106,7 +106,7 @@ export const UserlandSsoControllerAuthorizeOutput =
  * @param client_id - The unique identifier of the WorkOS environment client.
  */
 export const UserlandSsoControllerAuthorize =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandSsoControllerAuthorizeInput,
     outputSchema: UserlandSsoControllerAuthorizeOutput,
   }));

@@ -15,7 +15,7 @@ export interface AgentVersionGetInput {
   osType: string;
   version: string;
 }
-export const AgentVersionGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentVersionGetInput = /*@__PURE__*/ Schema.Struct({
   osType: Schema.String.pipe(T.PathParam()),
   version: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -32,7 +32,7 @@ export interface AgentVersionGetOutput {
   downloadLink?: string;
   osType?: string;
 }
-export const AgentVersionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentVersionGetOutput = /*@__PURE__*/ Schema.Struct({
   agentVersion: Schema.optional(Schema.String),
   downloadLink: Schema.optional(Schema.String),
   osType: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export const AgentVersionGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param osType - Defines the os type
  * @param version - Defines the agent version. To get latest, use latest or else a specific agent version.
  */
-export const AgentVersionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AgentVersionGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentVersionGetInput,
   outputSchema: AgentVersionGetOutput,
 }));
@@ -54,7 +54,7 @@ export const AgentVersionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface AgentVersionListInput {
   osType: string;
 }
-export const AgentVersionListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentVersionListInput = /*@__PURE__*/ Schema.Struct({
   osType: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -69,20 +69,18 @@ export interface AgentVersionListOutput {
   value?: { agentVersion?: string; downloadLink?: string; osType?: string }[];
   nextLink?: string;
 }
-export const AgentVersionListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          agentVersion: Schema.optional(Schema.String),
-          downloadLink: Schema.optional(Schema.String),
-          osType: Schema.optional(Schema.String),
-        }),
-      ),
+export const AgentVersionListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        agentVersion: Schema.optional(Schema.String),
+        downloadLink: Schema.optional(Schema.String),
+        osType: Schema.optional(Schema.String),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<AgentVersionListOutput>;
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<AgentVersionListOutput>;
 
 // The operation
 /**
@@ -91,7 +89,7 @@ export const AgentVersionListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - The API version to use for this operation.
  * @param osType - Defines the os type.
  */
-export const AgentVersionList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AgentVersionList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentVersionListInput,
   outputSchema: AgentVersionListOutput,
 }));
@@ -104,7 +102,7 @@ export interface ExtensionMetadataGetInput {
   version: string;
 }
 export const ExtensionMetadataGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     publisher: Schema.String.pipe(T.PathParam()),
@@ -133,7 +131,7 @@ export interface ExtensionMetadataGetOutput {
   };
 }
 export const ExtensionMetadataGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -164,12 +162,10 @@ export const ExtensionMetadataGetOutput =
  * @param extensionType - The extensionType of the Extension being received.
  * @param version - The version of the Extension being received.
  */
-export const ExtensionMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExtensionMetadataGetInput,
-    outputSchema: ExtensionMetadataGetOutput,
-  }),
-);
+export const ExtensionMetadataGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExtensionMetadataGetInput,
+  outputSchema: ExtensionMetadataGetOutput,
+}));
 // Input Schema
 export interface ExtensionMetadataListInput {
   subscriptionId: string;
@@ -178,7 +174,7 @@ export interface ExtensionMetadataListInput {
   extensionType: string;
 }
 export const ExtensionMetadataListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     publisher: Schema.String.pipe(T.PathParam()),
@@ -208,7 +204,7 @@ export interface ExtensionMetadataListOutput {
   }[];
 }
 export const ExtensionMetadataListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -254,12 +250,10 @@ export const ExtensionMetadataListOutput =
  * @param publisher - The publisher of the Extension being received.
  * @param extensionType - The extensionType of the Extension being received.
  */
-export const ExtensionMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExtensionMetadataListInput,
-    outputSchema: ExtensionMetadataListOutput,
-  }),
-);
+export const ExtensionMetadataList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExtensionMetadataListInput,
+  outputSchema: ExtensionMetadataListOutput,
+}));
 // Input Schema
 export interface ExtensionMetadataV2GetInput {
   location: string;
@@ -268,7 +262,7 @@ export interface ExtensionMetadataV2GetInput {
   version: string;
 }
 export const ExtensionMetadataV2GetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     publisher: Schema.String.pipe(T.PathParam()),
     extensionType: Schema.String.pipe(T.PathParam()),
@@ -296,7 +290,7 @@ export interface ExtensionMetadataV2GetOutput {
   };
 }
 export const ExtensionMetadataV2GetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -326,12 +320,10 @@ export const ExtensionMetadataV2GetOutput =
  * @param extensionType - The extensionType of the Extension being received.
  * @param version - The version of the Extension being received.
  */
-export const ExtensionMetadataV2Get = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExtensionMetadataV2GetInput,
-    outputSchema: ExtensionMetadataV2GetOutput,
-  }),
-);
+export const ExtensionMetadataV2Get = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExtensionMetadataV2GetInput,
+  outputSchema: ExtensionMetadataV2GetOutput,
+}));
 // Input Schema
 export interface ExtensionMetadataV2ListInput {
   location: string;
@@ -339,7 +331,7 @@ export interface ExtensionMetadataV2ListInput {
   extensionType: string;
 }
 export const ExtensionMetadataV2ListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     publisher: Schema.String.pipe(T.PathParam()),
     extensionType: Schema.String.pipe(T.PathParam()),
@@ -369,7 +361,7 @@ export interface ExtensionMetadataV2ListOutput {
   nextLink?: string;
 }
 export const ExtensionMetadataV2ListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -415,18 +407,16 @@ export const ExtensionMetadataV2ListOutput =
  * @param publisher - The publisher of the Extension being received.
  * @param extensionType - The extensionType of the Extension being received.
  */
-export const ExtensionMetadataV2List = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExtensionMetadataV2ListInput,
-    outputSchema: ExtensionMetadataV2ListOutput,
-  }),
-);
+export const ExtensionMetadataV2List = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExtensionMetadataV2ListInput,
+  outputSchema: ExtensionMetadataV2ListOutput,
+}));
 // Input Schema
 export interface ExtensionPublisherListInput {
   location: string;
 }
 export const ExtensionPublisherListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -442,7 +432,7 @@ export interface ExtensionPublisherListOutput {
   nextLink?: string;
 }
 export const ExtensionPublisherListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -461,23 +451,19 @@ export const ExtensionPublisherListOutput =
  * @param api-version - The API version to use for this operation.
  * @param location - The name of Azure region.
  */
-export const ExtensionPublisherList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExtensionPublisherListInput,
-    outputSchema: ExtensionPublisherListOutput,
-  }),
-);
+export const ExtensionPublisherList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExtensionPublisherListInput,
+  outputSchema: ExtensionPublisherListOutput,
+}));
 // Input Schema
 export interface ExtensionTypeListInput {
   location: string;
   publisher: string;
 }
-export const ExtensionTypeListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    location: Schema.String.pipe(T.PathParam()),
-    publisher: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ExtensionTypeListInput = /*@__PURE__*/ Schema.Struct({
+  location: Schema.String.pipe(T.PathParam()),
+  publisher: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HybridCompute/locations/{location}/publishers/{publisher}/extensionTypes",
@@ -491,7 +477,7 @@ export interface ExtensionTypeListOutput {
   nextLink?: string;
 }
 export const ExtensionTypeListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -511,7 +497,7 @@ export const ExtensionTypeListOutput =
  * @param location - The name of Azure region.
  * @param publisher - The publisher of the Extension being received.
  */
-export const ExtensionTypeList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExtensionTypeList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExtensionTypeListInput,
   outputSchema: ExtensionTypeListOutput,
 }));
@@ -539,7 +525,7 @@ export interface GatewaysCreateOrUpdateInput {
   location: string;
 }
 export const GatewaysCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     gatewayName: Schema.String.pipe(T.PathParam()),
@@ -588,7 +574,7 @@ export interface GatewaysCreateOrUpdateOutput {
   };
 }
 export const GatewaysCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -617,19 +603,17 @@ export const GatewaysCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param gatewayName - The name of the Gateway.
  */
-export const GatewaysCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewaysCreateOrUpdateInput,
-    outputSchema: GatewaysCreateOrUpdateOutput,
-  }),
-);
+export const GatewaysCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewaysCreateOrUpdateInput,
+  outputSchema: GatewaysCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface GatewaysDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   gatewayName: string;
 }
-export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewaysDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   gatewayName: Schema.String.pipe(T.PathParam()),
@@ -644,7 +628,7 @@ export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GatewaysDeleteOutput = void;
 export const GatewaysDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GatewaysDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GatewaysDeleteOutput>;
 
 // The operation
 /**
@@ -655,7 +639,7 @@ export const GatewaysDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param gatewayName - The name of the Gateway.
  */
-export const GatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GatewaysDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: GatewaysDeleteInput,
   outputSchema: GatewaysDeleteOutput,
 }));
@@ -665,7 +649,7 @@ export interface GatewaysGetInput {
   resourceGroupName: string;
   gatewayName: string;
 }
-export const GatewaysGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewaysGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   gatewayName: Schema.String.pipe(T.PathParam()),
@@ -691,7 +675,7 @@ export interface GatewaysGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const GatewaysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewaysGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -720,7 +704,7 @@ export const GatewaysGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param gatewayName - The name of the Gateway.
  */
-export const GatewaysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GatewaysGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GatewaysGetInput,
   outputSchema: GatewaysGetOutput,
 }));
@@ -730,7 +714,7 @@ export interface GatewaysListByResourceGroupInput {
   subscriptionId: string;
 }
 export const GatewaysListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -759,7 +743,7 @@ export interface GatewaysListByResourceGroupOutput {
   nextLink?: string;
 }
 export const GatewaysListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -802,18 +786,16 @@ export const GatewaysListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const GatewaysListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewaysListByResourceGroupInput,
-    outputSchema: GatewaysListByResourceGroupOutput,
-  }),
-);
+export const GatewaysListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewaysListByResourceGroupInput,
+  outputSchema: GatewaysListByResourceGroupOutput,
+}));
 // Input Schema
 export interface GatewaysListBySubscriptionInput {
   subscriptionId: string;
 }
 export const GatewaysListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -841,7 +823,7 @@ export interface GatewaysListBySubscriptionOutput {
   nextLink?: string;
 }
 export const GatewaysListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -883,12 +865,10 @@ export const GatewaysListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const GatewaysListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GatewaysListBySubscriptionInput,
-    outputSchema: GatewaysListBySubscriptionOutput,
-  }),
-);
+export const GatewaysListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GatewaysListBySubscriptionInput,
+  outputSchema: GatewaysListBySubscriptionOutput,
+}));
 // Input Schema
 export interface GatewaysUpdateInput {
   subscriptionId: string;
@@ -897,7 +877,7 @@ export interface GatewaysUpdateInput {
   properties?: { allowedFeatures?: string[] };
   tags?: Record<string, string>;
 }
-export const GatewaysUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewaysUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   gatewayName: Schema.String.pipe(T.PathParam()),
@@ -929,7 +909,7 @@ export interface GatewaysUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const GatewaysUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GatewaysUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -958,7 +938,7 @@ export const GatewaysUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param gatewayName - The name of the Gateway.
  */
-export const GatewaysUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GatewaysUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: GatewaysUpdateInput,
   outputSchema: GatewaysUpdateOutput,
 }));
@@ -970,7 +950,7 @@ export interface HybridIdentityMetadataGetInput {
   metadataName: string;
 }
 export const HybridIdentityMetadataGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -998,7 +978,7 @@ export interface HybridIdentityMetadataGetOutput {
   };
 }
 export const HybridIdentityMetadataGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1030,12 +1010,10 @@ export const HybridIdentityMetadataGetOutput =
  * @param metadataName - Name of the HybridIdentityMetadata.
  * @param api-version - The API version to use for this operation.
  */
-export const HybridIdentityMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridIdentityMetadataGetInput,
-    outputSchema: HybridIdentityMetadataGetOutput,
-  }),
-);
+export const HybridIdentityMetadataGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridIdentityMetadataGetInput,
+  outputSchema: HybridIdentityMetadataGetOutput,
+}));
 // Input Schema
 export interface HybridIdentityMetadataListByMachinesInput {
   subscriptionId: string;
@@ -1043,7 +1021,7 @@ export interface HybridIdentityMetadataListByMachinesInput {
   machineName: string;
 }
 export const HybridIdentityMetadataListByMachinesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -1073,7 +1051,7 @@ export interface HybridIdentityMetadataListByMachinesOutput {
   }[];
 }
 export const HybridIdentityMetadataListByMachinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -1120,7 +1098,7 @@ export const HybridIdentityMetadataListByMachinesOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const HybridIdentityMetadataListByMachines =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HybridIdentityMetadataListByMachinesInput,
     outputSchema: HybridIdentityMetadataListByMachinesOutput,
   }));
@@ -1204,7 +1182,7 @@ export interface LicenseProfilesCreateOrUpdateInput {
   location: string;
 }
 export const LicenseProfilesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -1378,7 +1356,7 @@ export interface LicenseProfilesCreateOrUpdateOutput {
   };
 }
 export const LicenseProfilesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1409,7 +1387,7 @@ export const LicenseProfilesCreateOrUpdateOutput =
  * @param licenseProfileName - The name of the license profile.
  */
 export const LicenseProfilesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LicenseProfilesCreateOrUpdateInput,
     outputSchema: LicenseProfilesCreateOrUpdateOutput,
   }));
@@ -1421,7 +1399,7 @@ export interface LicenseProfilesDeleteInput {
   licenseProfileName: "default";
 }
 export const LicenseProfilesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -1437,7 +1415,7 @@ export const LicenseProfilesDeleteInput =
 // Output Schema
 export type LicenseProfilesDeleteOutput = void;
 export const LicenseProfilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LicenseProfilesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LicenseProfilesDeleteOutput>;
 
 // The operation
 /**
@@ -1449,12 +1427,10 @@ export const LicenseProfilesDeleteOutput =
  * @param machineName - The name of the hybrid machine.
  * @param licenseProfileName - The name of the license profile.
  */
-export const LicenseProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LicenseProfilesDeleteInput,
-    outputSchema: LicenseProfilesDeleteOutput,
-  }),
-);
+export const LicenseProfilesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LicenseProfilesDeleteInput,
+  outputSchema: LicenseProfilesDeleteOutput,
+}));
 // Input Schema
 export interface LicenseProfilesGetInput {
   subscriptionId: string;
@@ -1463,7 +1439,7 @@ export interface LicenseProfilesGetInput {
   licenseProfileName: "default";
 }
 export const LicenseProfilesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -1491,7 +1467,7 @@ export interface LicenseProfilesGetOutput {
   };
 }
 export const LicenseProfilesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1521,7 +1497,7 @@ export const LicenseProfilesGetOutput =
  * @param machineName - The name of the hybrid machine.
  * @param licenseProfileName - The name of the license profile.
  */
-export const LicenseProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LicenseProfilesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LicenseProfilesGetInput,
   outputSchema: LicenseProfilesGetOutput,
 }));
@@ -1532,7 +1508,7 @@ export interface LicenseProfilesListInput {
   subscriptionId: string;
 }
 export const LicenseProfilesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1562,7 +1538,7 @@ export interface LicenseProfilesListOutput {
   nextLink?: string;
 }
 export const LicenseProfilesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1606,7 +1582,7 @@ export const LicenseProfilesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const LicenseProfilesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LicenseProfilesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LicenseProfilesListInput,
   outputSchema: LicenseProfilesListOutput,
 }));
@@ -1631,7 +1607,7 @@ export interface LicenseProfilesUpdateInput {
   tags?: Record<string, string>;
 }
 export const LicenseProfilesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -1694,7 +1670,7 @@ export interface LicenseProfilesUpdateOutput {
   };
 }
 export const LicenseProfilesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1724,12 +1700,10 @@ export const LicenseProfilesUpdateOutput =
  * @param machineName - The name of the hybrid machine.
  * @param licenseProfileName - The name of the license profile.
  */
-export const LicenseProfilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LicenseProfilesUpdateInput,
-    outputSchema: LicenseProfilesUpdateOutput,
-  }),
-);
+export const LicenseProfilesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LicenseProfilesUpdateInput,
+  outputSchema: LicenseProfilesUpdateOutput,
+}));
 // Input Schema
 export interface LicensesCreateOrUpdateInput {
   subscriptionId: string;
@@ -1765,7 +1739,7 @@ export interface LicensesCreateOrUpdateInput {
   location: string;
 }
 export const LicensesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     licenseName: Schema.String.pipe(T.PathParam()),
@@ -1842,7 +1816,7 @@ export interface LicensesCreateOrUpdateOutput {
   };
 }
 export const LicensesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1871,19 +1845,17 @@ export const LicensesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param licenseName - The name of the license.
  */
-export const LicensesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LicensesCreateOrUpdateInput,
-    outputSchema: LicensesCreateOrUpdateOutput,
-  }),
-);
+export const LicensesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LicensesCreateOrUpdateInput,
+  outputSchema: LicensesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface LicensesDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   licenseName: string;
 }
-export const LicensesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   licenseName: Schema.String.pipe(T.PathParam()),
@@ -1898,7 +1870,7 @@ export const LicensesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type LicensesDeleteOutput = void;
 export const LicensesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LicensesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LicensesDeleteOutput>;
 
 // The operation
 /**
@@ -1909,7 +1881,7 @@ export const LicensesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param licenseName - The name of the license.
  */
-export const LicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LicensesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LicensesDeleteInput,
   outputSchema: LicensesDeleteOutput,
 }));
@@ -1919,7 +1891,7 @@ export interface LicensesGetInput {
   resourceGroupName: string;
   licenseName: string;
 }
-export const LicensesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   licenseName: Schema.String.pipe(T.PathParam()),
@@ -1945,7 +1917,7 @@ export interface LicensesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const LicensesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1974,7 +1946,7 @@ export const LicensesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param licenseName - The name of the license.
  */
-export const LicensesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LicensesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LicensesGetInput,
   outputSchema: LicensesGetOutput,
 }));
@@ -1984,7 +1956,7 @@ export interface LicensesListByResourceGroupInput {
   subscriptionId: string;
 }
 export const LicensesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2013,7 +1985,7 @@ export interface LicensesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const LicensesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2056,18 +2028,16 @@ export const LicensesListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const LicensesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LicensesListByResourceGroupInput,
-    outputSchema: LicensesListByResourceGroupOutput,
-  }),
-);
+export const LicensesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LicensesListByResourceGroupInput,
+  outputSchema: LicensesListByResourceGroupOutput,
+}));
 // Input Schema
 export interface LicensesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const LicensesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2095,7 +2065,7 @@ export interface LicensesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const LicensesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2137,12 +2107,10 @@ export const LicensesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const LicensesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LicensesListBySubscriptionInput,
-    outputSchema: LicensesListBySubscriptionOutput,
-  }),
-);
+export const LicensesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LicensesListBySubscriptionInput,
+  outputSchema: LicensesListBySubscriptionOutput,
+}));
 // Input Schema
 export interface LicensesUpdateInput {
   subscriptionId: string;
@@ -2160,7 +2128,7 @@ export interface LicensesUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const LicensesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   licenseName: Schema.String.pipe(T.PathParam()),
@@ -2203,7 +2171,7 @@ export interface LicensesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const LicensesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2232,7 +2200,7 @@ export const LicensesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param licenseName - The name of the license.
  */
-export const LicensesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LicensesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LicensesUpdateInput,
   outputSchema: LicensesUpdateOutput,
 }));
@@ -2269,7 +2237,7 @@ export interface LicensesValidateLicenseInput {
   location: string;
 }
 export const LicensesValidateLicenseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -2344,7 +2312,7 @@ export interface LicensesValidateLicenseOutput {
   };
 }
 export const LicensesValidateLicenseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2371,12 +2339,10 @@ export const LicensesValidateLicenseOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const LicensesValidateLicense = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LicensesValidateLicenseInput,
-    outputSchema: LicensesValidateLicenseOutput,
-  }),
-);
+export const LicensesValidateLicense = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LicensesValidateLicenseInput,
+  outputSchema: LicensesValidateLicenseOutput,
+}));
 // Input Schema
 export interface MachineExtensionsCreateOrUpdateInput {
   resourceGroupName: string;
@@ -2410,7 +2376,7 @@ export interface MachineExtensionsCreateOrUpdateInput {
   location: string;
 }
 export const MachineExtensionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     extensionName: Schema.String.pipe(T.PathParam()),
@@ -2473,7 +2439,7 @@ export interface MachineExtensionsCreateOrUpdateOutput {
   };
 }
 export const MachineExtensionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2504,7 +2470,7 @@ export const MachineExtensionsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const MachineExtensionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MachineExtensionsCreateOrUpdateInput,
     outputSchema: MachineExtensionsCreateOrUpdateOutput,
   }));
@@ -2516,7 +2482,7 @@ export interface MachineExtensionsDeleteInput {
   subscriptionId: string;
 }
 export const MachineExtensionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     extensionName: Schema.String.pipe(T.PathParam()),
@@ -2532,7 +2498,7 @@ export const MachineExtensionsDeleteInput =
 // Output Schema
 export type MachineExtensionsDeleteOutput = void;
 export const MachineExtensionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachineExtensionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MachineExtensionsDeleteOutput>;
 
 // The operation
 /**
@@ -2544,12 +2510,10 @@ export const MachineExtensionsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const MachineExtensionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachineExtensionsDeleteInput,
-    outputSchema: MachineExtensionsDeleteOutput,
-  }),
-);
+export const MachineExtensionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachineExtensionsDeleteInput,
+  outputSchema: MachineExtensionsDeleteOutput,
+}));
 // Input Schema
 export interface MachineExtensionsGetInput {
   resourceGroupName: string;
@@ -2558,7 +2522,7 @@ export interface MachineExtensionsGetInput {
   subscriptionId: string;
 }
 export const MachineExtensionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     extensionName: Schema.String.pipe(T.PathParam()),
@@ -2586,7 +2550,7 @@ export interface MachineExtensionsGetOutput {
   };
 }
 export const MachineExtensionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2616,12 +2580,10 @@ export const MachineExtensionsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const MachineExtensionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachineExtensionsGetInput,
-    outputSchema: MachineExtensionsGetOutput,
-  }),
-);
+export const MachineExtensionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachineExtensionsGetInput,
+  outputSchema: MachineExtensionsGetOutput,
+}));
 // Input Schema
 export interface MachineExtensionsListInput {
   resourceGroupName: string;
@@ -2630,7 +2592,7 @@ export interface MachineExtensionsListInput {
   $expand?: string;
 }
 export const MachineExtensionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2661,7 +2623,7 @@ export interface MachineExtensionsListOutput {
   nextLink?: string;
 }
 export const MachineExtensionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2708,12 +2670,10 @@ export const MachineExtensionsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const MachineExtensionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachineExtensionsListInput,
-    outputSchema: MachineExtensionsListOutput,
-  }),
-);
+export const MachineExtensionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachineExtensionsListInput,
+  outputSchema: MachineExtensionsListOutput,
+}));
 // Input Schema
 export interface MachineExtensionsUpdateInput {
   resourceGroupName: string;
@@ -2733,7 +2693,7 @@ export interface MachineExtensionsUpdateInput {
   tags?: Record<string, string>;
 }
 export const MachineExtensionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     extensionName: Schema.String.pipe(T.PathParam()),
@@ -2776,7 +2736,7 @@ export interface MachineExtensionsUpdateOutput {
   };
 }
 export const MachineExtensionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2806,12 +2766,10 @@ export const MachineExtensionsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const MachineExtensionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachineExtensionsUpdateInput,
-    outputSchema: MachineExtensionsUpdateOutput,
-  }),
-);
+export const MachineExtensionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachineExtensionsUpdateInput,
+  outputSchema: MachineExtensionsUpdateOutput,
+}));
 // Input Schema
 export interface MachineRunCommandsCreateOrUpdateInput {
   resourceGroupName: string;
@@ -2864,7 +2822,7 @@ export interface MachineRunCommandsCreateOrUpdateInput {
   location: string;
 }
 export const MachineRunCommandsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
@@ -2980,7 +2938,7 @@ export interface MachineRunCommandsCreateOrUpdateOutput {
   };
 }
 export const MachineRunCommandsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3011,7 +2969,7 @@ export const MachineRunCommandsCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const MachineRunCommandsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MachineRunCommandsCreateOrUpdateInput,
     outputSchema: MachineRunCommandsCreateOrUpdateOutput,
   }));
@@ -3023,7 +2981,7 @@ export interface MachineRunCommandsDeleteInput {
   subscriptionId: string;
 }
 export const MachineRunCommandsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
@@ -3039,7 +2997,7 @@ export const MachineRunCommandsDeleteInput =
 // Output Schema
 export type MachineRunCommandsDeleteOutput = void;
 export const MachineRunCommandsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachineRunCommandsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MachineRunCommandsDeleteOutput>;
 
 // The operation
 /**
@@ -3051,12 +3009,10 @@ export const MachineRunCommandsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const MachineRunCommandsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachineRunCommandsDeleteInput,
-    outputSchema: MachineRunCommandsDeleteOutput,
-  }),
-);
+export const MachineRunCommandsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachineRunCommandsDeleteInput,
+  outputSchema: MachineRunCommandsDeleteOutput,
+}));
 // Input Schema
 export interface MachineRunCommandsGetInput {
   resourceGroupName: string;
@@ -3065,7 +3021,7 @@ export interface MachineRunCommandsGetInput {
   subscriptionId: string;
 }
 export const MachineRunCommandsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
@@ -3093,7 +3049,7 @@ export interface MachineRunCommandsGetOutput {
   };
 }
 export const MachineRunCommandsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3123,12 +3079,10 @@ export const MachineRunCommandsGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const MachineRunCommandsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachineRunCommandsGetInput,
-    outputSchema: MachineRunCommandsGetOutput,
-  }),
-);
+export const MachineRunCommandsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachineRunCommandsGetInput,
+  outputSchema: MachineRunCommandsGetOutput,
+}));
 // Input Schema
 export interface MachineRunCommandsListInput {
   resourceGroupName: string;
@@ -3137,7 +3091,7 @@ export interface MachineRunCommandsListInput {
   $expand?: string;
 }
 export const MachineRunCommandsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -3168,7 +3122,7 @@ export interface MachineRunCommandsListOutput {
   nextLink?: string;
 }
 export const MachineRunCommandsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3215,12 +3169,10 @@ export const MachineRunCommandsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const MachineRunCommandsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachineRunCommandsListInput,
-    outputSchema: MachineRunCommandsListOutput,
-  }),
-);
+export const MachineRunCommandsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachineRunCommandsListInput,
+  outputSchema: MachineRunCommandsListOutput,
+}));
 // Input Schema
 export interface MachineRunCommandsUpdateInput {
   resourceGroupName: string;
@@ -3230,7 +3182,7 @@ export interface MachineRunCommandsUpdateInput {
   tags?: Record<string, string>;
 }
 export const MachineRunCommandsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
     runCommandName: Schema.String.pipe(T.PathParam()),
@@ -3259,7 +3211,7 @@ export interface MachineRunCommandsUpdateOutput {
   };
 }
 export const MachineRunCommandsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3289,12 +3241,10 @@ export const MachineRunCommandsUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const MachineRunCommandsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachineRunCommandsUpdateInput,
-    outputSchema: MachineRunCommandsUpdateOutput,
-  }),
-);
+export const MachineRunCommandsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachineRunCommandsUpdateInput,
+  outputSchema: MachineRunCommandsUpdateOutput,
+}));
 // Input Schema
 export interface MachinesAssessPatchesInput {
   subscriptionId: string;
@@ -3302,7 +3252,7 @@ export interface MachinesAssessPatchesInput {
   name: string;
 }
 export const MachinesAssessPatchesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -3355,7 +3305,7 @@ export interface MachinesAssessPatchesOutput {
   };
 }
 export const MachinesAssessPatchesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals([
         "Unknown",
@@ -3431,12 +3381,10 @@ export const MachinesAssessPatchesOutput =
  * @param resourceGroupName - The name of the resource group.
  * @param name - The name of the hybrid machine.
  */
-export const MachinesAssessPatches = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesAssessPatchesInput,
-    outputSchema: MachinesAssessPatchesOutput,
-  }),
-);
+export const MachinesAssessPatches = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesAssessPatchesInput,
+  outputSchema: MachinesAssessPatchesOutput,
+}));
 // Input Schema
 export interface MachinesCreateOrUpdateInput {
   subscriptionId: string;
@@ -3712,7 +3660,7 @@ export interface MachinesCreateOrUpdateInput {
   location: string;
 }
 export const MachinesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -4291,7 +4239,7 @@ export interface MachinesCreateOrUpdateOutput {
   };
 }
 export const MachinesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4321,19 +4269,17 @@ export const MachinesCreateOrUpdateOutput =
  * @param machineName - The name of the hybrid machine.
  * @param $expand - Expands referenced resources.
  */
-export const MachinesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesCreateOrUpdateInput,
-    outputSchema: MachinesCreateOrUpdateOutput,
-  }),
-);
+export const MachinesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesCreateOrUpdateInput,
+  outputSchema: MachinesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface MachinesDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   machineName: string;
 }
-export const MachinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   machineName: Schema.String.pipe(T.PathParam()),
@@ -4348,7 +4294,7 @@ export const MachinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type MachinesDeleteOutput = void;
 export const MachinesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesDeleteOutput>;
 
 // The operation
 /**
@@ -4359,7 +4305,7 @@ export const MachinesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param machineName - The name of the hybrid machine.
  */
-export const MachinesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesDeleteInput,
   outputSchema: MachinesDeleteOutput,
 }));
@@ -4370,7 +4316,7 @@ export interface MachinesGetInput {
   machineName: string;
   $expand?: "instanceView";
 }
-export const MachinesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   machineName: Schema.String.pipe(T.PathParam()),
@@ -4397,7 +4343,7 @@ export interface MachinesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const MachinesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4427,7 +4373,7 @@ export const MachinesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param machineName - The name of the hybrid machine.
  * @param $expand - The expand expression to apply on the operation.
  */
-export const MachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesGetInput,
   outputSchema: MachinesGetOutput,
 }));
@@ -4461,7 +4407,7 @@ export interface MachinesInstallPatchesInput {
   };
 }
 export const MachinesInstallPatchesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -4548,7 +4494,7 @@ export interface MachinesInstallPatchesOutput {
   };
 }
 export const MachinesInstallPatchesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals([
         "Unknown",
@@ -4626,12 +4572,10 @@ export const MachinesInstallPatchesOutput =
  * @param resourceGroupName - The name of the resource group.
  * @param name - The name of the hybrid machine.
  */
-export const MachinesInstallPatches = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesInstallPatchesInput,
-    outputSchema: MachinesInstallPatchesOutput,
-  }),
-);
+export const MachinesInstallPatches = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesInstallPatchesInput,
+  outputSchema: MachinesInstallPatchesOutput,
+}));
 // Input Schema
 export interface MachinesListByResourceGroupInput {
   subscriptionId: string;
@@ -4639,7 +4583,7 @@ export interface MachinesListByResourceGroupInput {
   $expand?: string;
 }
 export const MachinesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
@@ -4669,7 +4613,7 @@ export interface MachinesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const MachinesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4713,18 +4657,16 @@ export const MachinesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param $expand - Expands referenced resources.
  */
-export const MachinesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesListByResourceGroupInput,
-    outputSchema: MachinesListByResourceGroupOutput,
-  }),
-);
+export const MachinesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesListByResourceGroupInput,
+  outputSchema: MachinesListByResourceGroupOutput,
+}));
 // Input Schema
 export interface MachinesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const MachinesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4752,7 +4694,7 @@ export interface MachinesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const MachinesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4794,12 +4736,10 @@ export const MachinesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const MachinesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesListBySubscriptionInput,
-    outputSchema: MachinesListBySubscriptionOutput,
-  }),
-);
+export const MachinesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesListBySubscriptionInput,
+  outputSchema: MachinesListBySubscriptionOutput,
+}));
 // Input Schema
 export interface MachinesUpdateInput {
   subscriptionId: string;
@@ -4902,7 +4842,7 @@ export interface MachinesUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const MachinesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   machineName: Schema.String.pipe(T.PathParam()),
@@ -5114,7 +5054,7 @@ export interface MachinesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5143,7 +5083,7 @@ export const MachinesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param machineName - The name of the hybrid machine.
  */
-export const MachinesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesUpdateInput,
   outputSchema: MachinesUpdateOutput,
 }));
@@ -5172,7 +5112,7 @@ export interface NetworkConfigurationsCreateOrUpdateInput {
   };
 }
 export const NetworkConfigurationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -5225,7 +5165,7 @@ export interface NetworkConfigurationsCreateOrUpdateOutput {
   };
 }
 export const NetworkConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5255,7 +5195,7 @@ export const NetworkConfigurationsCreateOrUpdateOutput =
  * @param machineName - The name of the target machine to get the private link scope validation details for.
  */
 export const NetworkConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkConfigurationsCreateOrUpdateInput,
     outputSchema: NetworkConfigurationsCreateOrUpdateOutput,
   }));
@@ -5266,7 +5206,7 @@ export interface NetworkConfigurationsGetInput {
   machineName: string;
 }
 export const NetworkConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -5293,7 +5233,7 @@ export interface NetworkConfigurationsGetOutput {
   };
 }
 export const NetworkConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5322,12 +5262,10 @@ export const NetworkConfigurationsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param machineName - The name of the target machine to get the private link scope validation details for.
  */
-export const NetworkConfigurationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkConfigurationsGetInput,
-    outputSchema: NetworkConfigurationsGetOutput,
-  }),
-);
+export const NetworkConfigurationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkConfigurationsGetInput,
+  outputSchema: NetworkConfigurationsGetOutput,
+}));
 // Input Schema
 export interface NetworkConfigurationsUpdateInput {
   subscriptionId: string;
@@ -5353,7 +5291,7 @@ export interface NetworkConfigurationsUpdateInput {
   };
 }
 export const NetworkConfigurationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -5406,7 +5344,7 @@ export interface NetworkConfigurationsUpdateOutput {
   };
 }
 export const NetworkConfigurationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5435,25 +5373,21 @@ export const NetworkConfigurationsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param machineName - The name of the target machine to get the private link scope validation details for.
  */
-export const NetworkConfigurationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkConfigurationsUpdateInput,
-    outputSchema: NetworkConfigurationsUpdateOutput,
-  }),
-);
+export const NetworkConfigurationsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkConfigurationsUpdateInput,
+  outputSchema: NetworkConfigurationsUpdateOutput,
+}));
 // Input Schema
 export interface NetworkProfileGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   machineName: string;
 }
-export const NetworkProfileGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    machineName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const NetworkProfileGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  machineName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/networkProfile",
@@ -5475,7 +5409,7 @@ export interface NetworkProfileGetOutput {
   }[];
 }
 export const NetworkProfileGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     networkInterfaces: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5509,7 +5443,7 @@ export const NetworkProfileGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param machineName - The name of the hybrid machine.
  */
-export const NetworkProfileGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkProfileGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkProfileGetInput,
   outputSchema: NetworkProfileGetOutput,
 }));
@@ -5521,7 +5455,7 @@ export interface NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeInpu
   perimeterName: string;
 }
 export const NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     scopeName: Schema.String.pipe(T.PathParam()),
@@ -5586,7 +5520,7 @@ export interface NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeOutp
   };
 }
 export const NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5691,7 +5625,7 @@ export const NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeOutput =
  * @param perimeterName - The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
  */
 export const NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScope =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       NetworkSecurityPerimeterConfigurationsGetByPrivateLinkScopeInput,
     outputSchema:
@@ -5704,7 +5638,7 @@ export interface NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeInp
   scopeName: string;
 }
 export const NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     scopeName: Schema.String.pipe(T.PathParam()),
@@ -5771,7 +5705,7 @@ export interface NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeOut
   nextLink?: string;
 }
 export const NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5884,7 +5818,7 @@ export const NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeOutput 
  * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const NetworkSecurityPerimeterConfigurationsListByPrivateLinkScope =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeInput,
     outputSchema:
@@ -5898,7 +5832,7 @@ export interface NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkSc
   perimeterName: string;
 }
 export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     scopeName: Schema.String.pipe(T.PathParam()),
@@ -5916,7 +5850,7 @@ export interface NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkSc
   location?: string;
 }
 export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeOutput>;
 
@@ -5931,7 +5865,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeO
  * @param perimeterName - The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
  */
 export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScope =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeInput,
     outputSchema:
@@ -5939,9 +5873,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScope 
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HybridCompute/operations",
@@ -5963,7 +5895,7 @@ export interface OperationsListOutput {
     isDataAction?: boolean;
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -5989,7 +5921,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -6019,7 +5951,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     scopeName: Schema.String.pipe(T.PathParam()),
@@ -6079,7 +6011,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6110,7 +6042,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
@@ -6122,7 +6054,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     scopeName: Schema.String.pipe(T.PathParam()),
@@ -6138,7 +6070,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -6151,7 +6083,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -6163,7 +6095,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     scopeName: Schema.String.pipe(T.PathParam()),
@@ -6191,7 +6123,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6222,7 +6154,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -6233,7 +6165,7 @@ export interface PrivateEndpointConnectionsListByPrivateLinkScopeInput {
   scopeName: string;
 }
 export const PrivateEndpointConnectionsListByPrivateLinkScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     scopeName: Schema.String.pipe(T.PathParam()),
@@ -6263,7 +6195,7 @@ export interface PrivateEndpointConnectionsListByPrivateLinkScopeOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListByPrivateLinkScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6310,7 +6242,7 @@ export const PrivateEndpointConnectionsListByPrivateLinkScopeOutput =
  * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateEndpointConnectionsListByPrivateLinkScope =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByPrivateLinkScopeInput,
     outputSchema: PrivateEndpointConnectionsListByPrivateLinkScopeOutput,
   }));
@@ -6322,7 +6254,7 @@ export interface PrivateLinkResourcesGetInput {
   groupName: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     scopeName: Schema.String.pipe(T.PathParam()),
@@ -6350,7 +6282,7 @@ export interface PrivateLinkResourcesGetOutput {
   };
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6380,12 +6312,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  * @param groupName - The name of the private link resource.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListByPrivateLinkScopeInput {
   subscriptionId: string;
@@ -6393,7 +6323,7 @@ export interface PrivateLinkResourcesListByPrivateLinkScopeInput {
   scopeName: string;
 }
 export const PrivateLinkResourcesListByPrivateLinkScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     scopeName: Schema.String.pipe(T.PathParam()),
@@ -6423,7 +6353,7 @@ export interface PrivateLinkResourcesListByPrivateLinkScopeOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListByPrivateLinkScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -6470,7 +6400,7 @@ export const PrivateLinkResourcesListByPrivateLinkScopeOutput =
  * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkResourcesListByPrivateLinkScope =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByPrivateLinkScopeInput,
     outputSchema: PrivateLinkResourcesListByPrivateLinkScopeOutput,
   }));
@@ -6514,7 +6444,7 @@ export interface PrivateLinkScopesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const PrivateLinkScopesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     scopeName: Schema.String.pipe(T.PathParam()),
@@ -6590,7 +6520,7 @@ export interface PrivateLinkScopesCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const PrivateLinkScopesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6608,7 +6538,7 @@ export const PrivateLinkScopesCreateOrUpdateOutput =
  * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkScopesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkScopesCreateOrUpdateInput,
     outputSchema: PrivateLinkScopesCreateOrUpdateOutput,
   }));
@@ -6619,7 +6549,7 @@ export interface PrivateLinkScopesDeleteInput {
   scopeName: string;
 }
 export const PrivateLinkScopesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     scopeName: Schema.String.pipe(T.PathParam()),
@@ -6634,7 +6564,7 @@ export const PrivateLinkScopesDeleteInput =
 // Output Schema
 export type PrivateLinkScopesDeleteOutput = void;
 export const PrivateLinkScopesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkScopesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkScopesDeleteOutput>;
 
 // The operation
 /**
@@ -6645,12 +6575,10 @@ export const PrivateLinkScopesDeleteOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
-export const PrivateLinkScopesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkScopesDeleteInput,
-    outputSchema: PrivateLinkScopesDeleteOutput,
-  }),
-);
+export const PrivateLinkScopesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkScopesDeleteInput,
+  outputSchema: PrivateLinkScopesDeleteOutput,
+}));
 // Input Schema
 export interface PrivateLinkScopesGetInput {
   resourceGroupName: string;
@@ -6658,7 +6586,7 @@ export interface PrivateLinkScopesGetInput {
   scopeName: string;
 }
 export const PrivateLinkScopesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     scopeName: Schema.String.pipe(T.PathParam()),
@@ -6679,7 +6607,7 @@ export interface PrivateLinkScopesGetOutput {
   tags?: Record<string, string>;
 }
 export const PrivateLinkScopesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6696,12 +6624,10 @@ export const PrivateLinkScopesGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
-export const PrivateLinkScopesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkScopesGetInput,
-    outputSchema: PrivateLinkScopesGetOutput,
-  }),
-);
+export const PrivateLinkScopesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkScopesGetInput,
+  outputSchema: PrivateLinkScopesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkScopesGetValidationDetailsInput {
   location: string;
@@ -6709,7 +6635,7 @@ export interface PrivateLinkScopesGetValidationDetailsInput {
   privateLinkScopeId: string;
 }
 export const PrivateLinkScopesGetValidationDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     privateLinkScopeId: Schema.String.pipe(T.PathParam()),
@@ -6734,7 +6660,7 @@ export interface PrivateLinkScopesGetValidationDetailsOutput {
   }[];
 }
 export const PrivateLinkScopesGetValidationDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     publicNetworkAccess: Schema.optional(
       Schema.Literals(["Enabled", "Disabled"]),
@@ -6762,7 +6688,7 @@ export const PrivateLinkScopesGetValidationDetailsOutput =
  * @param privateLinkScopeId - The id (Guid) of the Azure Arc PrivateLinkScope resource.
  */
 export const PrivateLinkScopesGetValidationDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkScopesGetValidationDetailsInput,
     outputSchema: PrivateLinkScopesGetValidationDetailsOutput,
   }));
@@ -6773,7 +6699,7 @@ export interface PrivateLinkScopesGetValidationDetailsForMachineInput {
   machineName: string;
 }
 export const PrivateLinkScopesGetValidationDetailsForMachineInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -6798,7 +6724,7 @@ export interface PrivateLinkScopesGetValidationDetailsForMachineOutput {
   }[];
 }
 export const PrivateLinkScopesGetValidationDetailsForMachineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     publicNetworkAccess: Schema.optional(
       Schema.Literals(["Enabled", "Disabled"]),
@@ -6826,7 +6752,7 @@ export const PrivateLinkScopesGetValidationDetailsForMachineOutput =
  * @param machineName - The name of the target machine to get the private link scope validation details for.
  */
 export const PrivateLinkScopesGetValidationDetailsForMachine =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkScopesGetValidationDetailsForMachineInput,
     outputSchema: PrivateLinkScopesGetValidationDetailsForMachineOutput,
   }));
@@ -6835,7 +6761,7 @@ export interface PrivateLinkScopesListInput {
   subscriptionId: string;
 }
 export const PrivateLinkScopesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -6857,7 +6783,7 @@ export interface PrivateLinkScopesListOutput {
   nextLink?: string;
 }
 export const PrivateLinkScopesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6877,19 +6803,17 @@ export const PrivateLinkScopesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const PrivateLinkScopesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkScopesListInput,
-    outputSchema: PrivateLinkScopesListOutput,
-  }),
-);
+export const PrivateLinkScopesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkScopesListInput,
+  outputSchema: PrivateLinkScopesListOutput,
+}));
 // Input Schema
 export interface PrivateLinkScopesListByResourceGroupInput {
   resourceGroupName: string;
   subscriptionId: string;
 }
 export const PrivateLinkScopesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6912,7 +6836,7 @@ export interface PrivateLinkScopesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const PrivateLinkScopesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6934,7 +6858,7 @@ export const PrivateLinkScopesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const PrivateLinkScopesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkScopesListByResourceGroupInput,
     outputSchema: PrivateLinkScopesListByResourceGroupOutput,
   }));
@@ -6946,7 +6870,7 @@ export interface PrivateLinkScopesUpdateTagsInput {
   tags?: Record<string, string>;
 }
 export const PrivateLinkScopesUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     scopeName: Schema.String.pipe(T.PathParam()),
@@ -6968,7 +6892,7 @@ export interface PrivateLinkScopesUpdateTagsOutput {
   tags?: Record<string, string>;
 }
 export const PrivateLinkScopesUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6985,12 +6909,10 @@ export const PrivateLinkScopesUpdateTagsOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param scopeName - The name of the Azure Arc PrivateLinkScope resource.
  */
-export const PrivateLinkScopesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkScopesUpdateTagsInput,
-    outputSchema: PrivateLinkScopesUpdateTagsOutput,
-  }),
-);
+export const PrivateLinkScopesUpdateTags = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkScopesUpdateTagsInput,
+  outputSchema: PrivateLinkScopesUpdateTagsOutput,
+}));
 // Input Schema
 export interface SettingsGetInput {
   subscriptionId: string;
@@ -7000,7 +6922,7 @@ export interface SettingsGetInput {
   baseResourceName: string;
   settingsResourceName: string;
 }
-export const SettingsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SettingsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   baseProvider: Schema.String.pipe(T.PathParam()),
@@ -7029,7 +6951,7 @@ export interface SettingsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SettingsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SettingsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7061,7 +6983,7 @@ export const SettingsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param baseResourceName - The name of the base resource.
  * @param settingsResourceName - The name of the settings resource.
  */
-export const SettingsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SettingsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SettingsGetInput,
   outputSchema: SettingsGetOutput,
 }));
@@ -7078,7 +7000,7 @@ export interface SettingsPatchInput {
     gatewayProperties?: { gatewayResourceId?: string };
   };
 }
-export const SettingsPatchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SettingsPatchInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   baseProvider: Schema.String.pipe(T.PathParam()),
@@ -7117,7 +7039,7 @@ export interface SettingsPatchOutput {
     lastModifiedAt?: string;
   };
 }
-export const SettingsPatchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SettingsPatchOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7149,7 +7071,7 @@ export const SettingsPatchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param baseResourceName - The name of the base resource.
  * @param settingsResourceName - The name of the settings resource.
  */
-export const SettingsPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SettingsPatch = /*@__PURE__*/ API.make(() => ({
   inputSchema: SettingsPatchInput,
   outputSchema: SettingsPatchOutput,
 }));
@@ -7166,7 +7088,7 @@ export interface SettingsUpdateInput {
     gatewayProperties?: { gatewayResourceId?: string };
   };
 }
-export const SettingsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SettingsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   baseProvider: Schema.String.pipe(T.PathParam()),
@@ -7205,7 +7127,7 @@ export interface SettingsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const SettingsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SettingsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7237,7 +7159,7 @@ export const SettingsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param baseResourceName - The name of the base resource.
  * @param settingsResourceName - The name of the settings resource.
  */
-export const SettingsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SettingsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SettingsUpdateInput,
   outputSchema: SettingsUpdateOutput,
 }));
@@ -7270,7 +7192,7 @@ export interface SetupExtensionsInput {
     };
   }[];
 }
-export const SetupExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SetupExtensionsInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   machineName: Schema.String.pipe(T.PathParam()),
@@ -7343,7 +7265,7 @@ export interface SetupExtensionsOutput {
     };
   }[];
 }
-export const SetupExtensionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SetupExtensionsOutput = /*@__PURE__*/ Schema.Struct({
   extensions: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -7390,7 +7312,7 @@ export const SetupExtensionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param machineName - The name of the hybrid machine.
  */
-export const SetupExtensions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SetupExtensions = /*@__PURE__*/ API.make(() => ({
   inputSchema: SetupExtensionsInput,
   outputSchema: SetupExtensionsOutput,
 }));
@@ -7401,21 +7323,19 @@ export interface UpgradeExtensionsInput {
   machineName: string;
   extensionTargets?: Record<string, { targetVersion?: string }>;
 }
-export const UpgradeExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    machineName: Schema.String.pipe(T.PathParam()),
-    extensionTargets: Schema.optional(
-      Schema.Record(
-        Schema.String,
-        Schema.Struct({
-          targetVersion: Schema.optional(Schema.String),
-        }),
-      ),
+export const UpgradeExtensionsInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  machineName: Schema.String.pipe(T.PathParam()),
+  extensionTargets: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      Schema.Struct({
+        targetVersion: Schema.optional(Schema.String),
+      }),
     ),
-  },
-).pipe(
+  ),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/upgradeExtensions",
@@ -7426,7 +7346,7 @@ export const UpgradeExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type UpgradeExtensionsOutput = void;
 export const UpgradeExtensionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpgradeExtensionsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpgradeExtensionsOutput>;
 
 // The operation
 /**
@@ -7437,7 +7357,7 @@ export const UpgradeExtensionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param machineName - The name of the hybrid machine.
  */
-export const UpgradeExtensions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpgradeExtensions = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpgradeExtensionsInput,
   outputSchema: UpgradeExtensionsOutput,
 }));

@@ -34,7 +34,7 @@ export interface GoogleTypeExpr {
 }
 
 export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -55,7 +55,7 @@ export interface GoogleIamV2DenyRule {
 }
 
 export const GoogleIamV2DenyRule: Schema.Codec<GoogleIamV2DenyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deniedPermissions: Schema.optional(Schema.Array(Schema.String)),
     exceptionPermissions: Schema.optional(Schema.Array(Schema.String)),
     exceptionPrincipals: Schema.optional(Schema.Array(Schema.String)),
@@ -71,7 +71,7 @@ export interface GoogleIamV2PolicyRule {
 }
 
 export const GoogleIamV2PolicyRule: Schema.Codec<GoogleIamV2PolicyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     denyRule: Schema.optional(GoogleIamV2DenyRule),
   }).annotate({ identifier: "GoogleIamV2PolicyRule" });
@@ -100,7 +100,7 @@ export interface GoogleIamV2Policy {
 }
 
 export const GoogleIamV2Policy: Schema.Codec<GoogleIamV2Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     updateTime: Schema.optional(Schema.String),
@@ -131,7 +131,7 @@ export interface GoogleIamV3mainOperationMetadata {
 }
 
 export const GoogleIamV3mainOperationMetadata: Schema.Codec<GoogleIamV3mainOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
     requestedCancellation: Schema.optional(Schema.Boolean),
@@ -159,7 +159,7 @@ export interface GoogleIamV3OperationMetadata {
 }
 
 export const GoogleIamV3OperationMetadata: Schema.Codec<GoogleIamV3OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
     verb: Schema.optional(Schema.String),
@@ -179,7 +179,7 @@ export interface GoogleRpcStatus {
 }
 
 export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -201,7 +201,7 @@ export interface GoogleLongrunningOperation {
 }
 
 export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -212,7 +212,7 @@ export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation
 export interface GoogleIamV1betaWorkloadIdentityPoolOperationMetadata {}
 
 export const GoogleIamV1betaWorkloadIdentityPoolOperationMetadata: Schema.Codec<GoogleIamV1betaWorkloadIdentityPoolOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleIamV1betaWorkloadIdentityPoolOperationMetadata",
   });
 
@@ -224,7 +224,7 @@ export interface GoogleIamAdminV1AuditDataPermissionDelta {
 }
 
 export const GoogleIamAdminV1AuditDataPermissionDelta: Schema.Codec<GoogleIamAdminV1AuditDataPermissionDelta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     addedPermissions: Schema.optional(Schema.Array(Schema.String)),
     removedPermissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamAdminV1AuditDataPermissionDelta" });
@@ -241,7 +241,7 @@ export interface GoogleIamV1BindingDelta {
 }
 
 export const GoogleIamV1BindingDelta: Schema.Codec<GoogleIamV1BindingDelta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     member: Schema.optional(Schema.String),
     action: Schema.optional(Schema.String),
     role: Schema.optional(Schema.String),
@@ -254,7 +254,7 @@ export interface GoogleIamV1PolicyDelta {
 }
 
 export const GoogleIamV1PolicyDelta: Schema.Codec<GoogleIamV1PolicyDelta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bindingDeltas: Schema.optional(Schema.Array(GoogleIamV1BindingDelta)),
   }).annotate({ identifier: "GoogleIamV1PolicyDelta" });
 
@@ -264,7 +264,7 @@ export interface GoogleIamV1LoggingAuditData {
 }
 
 export const GoogleIamV1LoggingAuditData: Schema.Codec<GoogleIamV1LoggingAuditData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyDelta: Schema.optional(GoogleIamV1PolicyDelta),
   }).annotate({ identifier: "GoogleIamV1LoggingAuditData" });
 
@@ -286,7 +286,7 @@ export interface GoogleCloudCommonOperationMetadata {
 }
 
 export const GoogleCloudCommonOperationMetadata: Schema.Codec<GoogleCloudCommonOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
     cancelRequested: Schema.optional(Schema.Boolean),
@@ -304,7 +304,7 @@ export interface GoogleIamV2ListPoliciesResponse {
 }
 
 export const GoogleIamV2ListPoliciesResponse: Schema.Codec<GoogleIamV2ListPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policies: Schema.optional(Schema.Array(GoogleIamV2Policy)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleIamV2ListPoliciesResponse" });
@@ -321,7 +321,7 @@ export interface CloudControl2SharedOperationsReconciliationOperationMetadata {
 }
 
 export const CloudControl2SharedOperationsReconciliationOperationMetadata: Schema.Codec<CloudControl2SharedOperationsReconciliationOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleteResource: Schema.optional(Schema.Boolean),
     exclusiveAction: Schema.optional(Schema.String),
   }).annotate({
@@ -334,7 +334,7 @@ export interface GoogleIamAdminV1AuditData {
 }
 
 export const GoogleIamAdminV1AuditData: Schema.Codec<GoogleIamAdminV1AuditData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissionDelta: Schema.optional(GoogleIamAdminV1AuditDataPermissionDelta),
   }).annotate({ identifier: "GoogleIamAdminV1AuditData" });
 
@@ -356,7 +356,7 @@ export interface GoogleIamV3betaOperationMetadata {
 }
 
 export const GoogleIamV3betaOperationMetadata: Schema.Codec<GoogleIamV3betaOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
     requestedCancellation: Schema.optional(Schema.Boolean),
@@ -384,7 +384,7 @@ export interface GoogleIamV3alphaOperationMetadata {
 }
 
 export const GoogleIamV3alphaOperationMetadata: Schema.Codec<GoogleIamV3alphaOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
@@ -400,7 +400,7 @@ export interface GoogleIamV2PolicyOperationMetadata {
 }
 
 export const GoogleIamV2PolicyOperationMetadata: Schema.Codec<GoogleIamV2PolicyOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleIamV2PolicyOperationMetadata" });
 
@@ -468,7 +468,7 @@ export interface CreatePolicyPoliciesRequest {
 }
 
 export const CreatePolicyPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     policyId: Schema.optional(Schema.String).pipe(T.HttpQuery("policyId")),
     body: Schema.optional(GoogleIamV2Policy).pipe(T.HttpBody()),
@@ -479,7 +479,7 @@ export const CreatePolicyPoliciesRequest =
 
 export type CreatePolicyPoliciesResponse = GoogleLongrunningOperation;
 export const CreatePolicyPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreatePolicyPoliciesError =
   | DefaultErrors
@@ -494,7 +494,7 @@ export const createPolicyPolicies: API.OperationMethod<
   CreatePolicyPoliciesResponse,
   CreatePolicyPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePolicyPoliciesRequest,
   output: CreatePolicyPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -507,7 +507,7 @@ export interface UpdatePoliciesRequest {
   body?: GoogleIamV2Policy;
 }
 
-export const UpdatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePoliciesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(GoogleIamV2Policy).pipe(T.HttpBody()),
 }).pipe(
@@ -516,8 +516,7 @@ export const UpdatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdatePoliciesRequest>;
 
 export type UpdatePoliciesResponse = GoogleLongrunningOperation;
-export const UpdatePoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+export const UpdatePoliciesResponse = /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type UpdatePoliciesError =
   | DefaultErrors
@@ -532,7 +531,7 @@ export const updatePolicies: API.OperationMethod<
   UpdatePoliciesResponse,
   UpdatePoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePoliciesRequest,
   output: UpdatePoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -548,7 +547,7 @@ export interface ListPoliciesPoliciesRequest {
 }
 
 export const ListPoliciesPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -559,7 +558,7 @@ export const ListPoliciesPoliciesRequest =
 
 export type ListPoliciesPoliciesResponse = GoogleIamV2ListPoliciesResponse;
 export const ListPoliciesPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV2ListPoliciesResponse;
+  /*@__PURE__*/ GoogleIamV2ListPoliciesResponse;
 
 export type ListPoliciesPoliciesError = DefaultErrors | NotFound | Forbidden;
 
@@ -569,7 +568,7 @@ export const listPoliciesPolicies: API.PaginatedOperationMethod<
   ListPoliciesPoliciesResponse,
   ListPoliciesPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesPoliciesRequest,
   output: ListPoliciesPoliciesResponse,
   errors: [NotFound, Forbidden],
@@ -584,7 +583,7 @@ export interface GetPoliciesRequest {
   name: string;
 }
 
-export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPoliciesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -592,8 +591,7 @@ export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetPoliciesRequest>;
 
 export type GetPoliciesResponse = GoogleIamV2Policy;
-export const GetPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV2Policy;
+export const GetPoliciesResponse = /*@__PURE__*/ GoogleIamV2Policy;
 
 export type GetPoliciesError = DefaultErrors | NotFound | Forbidden;
 
@@ -603,7 +601,7 @@ export const getPolicies: API.OperationMethod<
   GetPoliciesResponse,
   GetPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPoliciesRequest,
   output: GetPoliciesResponse,
   errors: [NotFound, Forbidden],
@@ -616,7 +614,7 @@ export interface DeletePoliciesRequest {
   name: string;
 }
 
-export const DeletePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePoliciesRequest = /*@__PURE__*/ Schema.Struct({
   etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
@@ -625,8 +623,7 @@ export const DeletePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DeletePoliciesRequest>;
 
 export type DeletePoliciesResponse = GoogleLongrunningOperation;
-export const DeletePoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+export const DeletePoliciesResponse = /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeletePoliciesError =
   | DefaultErrors
@@ -641,7 +638,7 @@ export const deletePolicies: API.OperationMethod<
   DeletePoliciesResponse,
   DeletePoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePoliciesRequest,
   output: DeletePoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -653,7 +650,7 @@ export interface GetPoliciesOperationsRequest {
 }
 
 export const GetPoliciesOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -662,7 +659,7 @@ export const GetPoliciesOperationsRequest =
 
 export type GetPoliciesOperationsResponse = GoogleLongrunningOperation;
 export const GetPoliciesOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetPoliciesOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -672,7 +669,7 @@ export const getPoliciesOperations: API.OperationMethod<
   GetPoliciesOperationsResponse,
   GetPoliciesOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPoliciesOperationsRequest,
   output: GetPoliciesOperationsResponse,
   errors: [NotFound, Forbidden],

@@ -9,7 +9,7 @@ export interface PromoteBranchInput {
   database: string;
   branch: string;
 }
-export const PromoteBranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PromoteBranchInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -76,7 +76,7 @@ export interface PromoteBranchOutput {
   vtgate_options?: Record<string, unknown>;
   cluster_architecture?: string;
 }
-export const PromoteBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PromoteBranchOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   created_at: Schema.String,
@@ -156,7 +156,7 @@ export const PromoteBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param database - The name of the database the branch belongs to
  * @param branch - The name of the branch
  */
-export const promoteBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const promoteBranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: PromoteBranchInput,
   outputSchema: PromoteBranchOutput,
   errors: [Forbidden, NotFound] as const,

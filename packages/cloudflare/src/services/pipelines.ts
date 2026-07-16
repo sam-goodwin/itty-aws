@@ -149,7 +149,7 @@ interface Batch {
   /** Specifies rough maximum number of rows per file. */
   maxRows: number;
 }
-const Batch = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Batch = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     maxBytes: Schema.Number,
     maxDurationS: Schema.Number,
@@ -167,7 +167,7 @@ interface Compression {
   /** Specifies the desired compression algorithm and format. */
   type: "none" | "gzip" | "deflate" | (string & {});
 }
-const Compression = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Compression = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Union([
       Schema.Literals(["none", "gzip", "deflate"]),
@@ -186,7 +186,7 @@ interface Path {
   /** Specifies the base directory within the bucket. */
   prefix?: string | null;
 }
-const Path = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Path = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bucket: Schema.String,
     filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -209,7 +209,7 @@ interface Destination {
   /** Specifies the type of destination. */
   type: "r2";
 }
-const Destination = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Destination = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     batch: Batch,
     compression: Compression,
@@ -223,7 +223,7 @@ interface Cors {
   /** Specifies allowed origins to allow Cross Origin HTTP Requests. */
   origins?: string[] | null;
 }
-const Cors = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Cors = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     origins: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -240,7 +240,7 @@ interface CloudflarePipelinesWorkersPipelinesHTTPSource {
   cors?: { origins?: string[] | null } | null;
 }
 const CloudflarePipelinesWorkersPipelinesHTTPSource =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       format: Schema.Literal("json"),
       type: Schema.String,
@@ -257,7 +257,7 @@ interface CloudflarePipelinesWorkersPipelinesBindingSource {
   type: string;
 }
 const CloudflarePipelinesWorkersPipelinesBindingSource =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       format: Schema.Literal("json"),
       type: Schema.String,
@@ -274,7 +274,7 @@ interface ResultInfo {
   /** Indicates the total number of items. */
   totalCount: number;
 }
-const ResultInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ResultInfo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     count: Schema.Number,
     page: Schema.Number,
@@ -323,7 +323,7 @@ interface Result {
   /** Indicates the version number of last saved configuration. */
   version?: number | null;
 }
-const Result = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Result = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     destination: Schema.optional(Schema.Union([Destination, Schema.Null])),
@@ -352,7 +352,7 @@ interface Batch2 {
   /** Specifies rough maximum number of rows per file. */
   maxRows?: number | null;
 }
-const Batch2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Batch2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     maxBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     maxDurationS: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -370,7 +370,7 @@ interface Compression2 {
   /** Specifies the desired compression algorithm and format. */
   type?: "none" | "gzip" | "deflate" | (string & {}) | null;
 }
-const Compression2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Compression2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.optional(
       Schema.Union([
@@ -392,7 +392,7 @@ interface Credentials2 {
   /** Specifies the R2 Bucket Secret Access Key. */
   secretAccessKey: string;
 }
-const Credentials2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Credentials2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accessKeyId: SensitiveString,
     endpoint: Schema.String,
@@ -429,7 +429,7 @@ interface Destination2 {
   /** Specifies the type of destination. */
   type: "r2";
 }
-const Destination2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Destination2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     batch: Batch2,
     compression: Compression2,
@@ -463,7 +463,7 @@ interface Destination3 {
     secretAccessKey: string;
   } | null;
 }
-const Destination3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Destination3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     batch: Batch2,
     compression: Compression2,
@@ -482,7 +482,7 @@ interface FileNaming {
   /** This will overwrite the default file suffix. i.e .parquet, use with caution */
   suffix?: string | null;
 }
-const FileNaming = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FileNaming = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     strategy: Schema.optional(
@@ -502,7 +502,7 @@ interface Partitioning {
   /** The pattern of the date string */
   timePattern?: string | null;
 }
-const Partitioning = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Partitioning = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     timePattern: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(Schema.encodeKeys({ timePattern: "time_pattern" })),
@@ -516,7 +516,7 @@ interface RollingPolicy {
   /** Number of seconds to wait before rolling over to a new file */
   intervalSeconds?: number | null;
 }
-const RollingPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RollingPolicy = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fileSizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     inactivitySeconds: Schema.optional(
@@ -559,7 +559,7 @@ interface CloudflarePipelinesR2TablePublic {
   } | null;
 }
 const CloudflarePipelinesR2TablePublic =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String,
       bucket: Schema.String,
@@ -600,7 +600,7 @@ interface CloudflarePipelinesR2DataCatalogTablePublic {
   } | null;
 }
 const CloudflarePipelinesR2DataCatalogTablePublic =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String,
       bucket: Schema.String,
@@ -626,7 +626,7 @@ interface Json {
   timestampFormat?: "rfc3339" | "unix_millis" | (string & {}) | null;
   unstructured?: boolean | null;
 }
-const Json = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Json = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("json"),
     decimalEncoding: Schema.optional(
@@ -670,7 +670,7 @@ interface Parquet {
     | null;
   rowGroupBytes?: number | null;
 }
-const Parquet = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Parquet = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("parquet"),
     compression: Schema.optional(
@@ -699,7 +699,7 @@ interface Int32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-const Int32 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Int32 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("int32"),
     metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -724,7 +724,7 @@ interface Int64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-const Int64 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Int64 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("int64"),
     metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -749,7 +749,7 @@ interface Float32 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-const Float32 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Float32 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("float32"),
     metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -774,7 +774,7 @@ interface Float64 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-const Float64 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Float64 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("float64"),
     metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -799,7 +799,7 @@ interface Bool {
   required?: boolean | null;
   sqlName?: string | null;
 }
-const Bool = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Bool = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("bool"),
     metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -824,7 +824,7 @@ interface String2 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-const String2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const String2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("string"),
     metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -849,7 +849,7 @@ interface Binary {
   required?: boolean | null;
   sqlName?: string | null;
 }
-const Binary = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Binary = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("binary"),
     metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -881,7 +881,7 @@ interface Timestamp {
     | (string & {})
     | null;
 }
-const Timestamp = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Timestamp = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("timestamp"),
     metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -921,7 +921,7 @@ interface Json2 {
   required?: boolean | null;
   sqlName?: string | null;
 }
-const Json2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Json2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("json"),
     metadataKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1038,7 +1038,7 @@ interface Schema2 {
     | null;
   inferred?: boolean | null;
 }
-const Schema2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Schema2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fields: Schema.optional(
       Schema.Union([
@@ -1232,7 +1232,7 @@ interface ListSinksResponseResult {
     inferred?: boolean | null;
   } | null;
 }
-const ListSinksResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListSinksResponseResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -1275,21 +1275,20 @@ interface ListSinksResponseResultInfo {
   perPage?: number | null;
   totalCount?: number | null;
 }
-const ListSinksResponseResultInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
-    ),
+const ListSinksResponseResultInfo = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      count: "count",
+      page: "page",
+      perPage: "per_page",
+      totalCount: "total_count",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSinksResponseResultInfo>;
 
 interface Credentials3 {
@@ -1298,7 +1297,7 @@ interface Credentials3 {
   /** Cloudflare Account ID for the bucket */
   secretAccessKey: string;
 }
-const Credentials3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Credentials3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accessKeyId: SensitiveString,
     secretAccessKey: SensitiveString,
@@ -1335,31 +1334,28 @@ interface CloudflarePipelinesR2Table {
     intervalSeconds?: number | null;
   } | null;
 }
-const CloudflarePipelinesR2Table = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String,
-      bucket: Schema.String,
-      credentials: Credentials3,
-      fileNaming: Schema.optional(Schema.Union([FileNaming, Schema.Null])),
-      jurisdiction: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      partitioning: Schema.optional(Schema.Union([Partitioning, Schema.Null])),
-      path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      rollingPolicy: Schema.optional(
-        Schema.Union([RollingPolicy, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        accountId: "account_id",
-        bucket: "bucket",
-        credentials: "credentials",
-        fileNaming: "file_naming",
-        jurisdiction: "jurisdiction",
-        partitioning: "partitioning",
-        path: "path",
-        rollingPolicy: "rolling_policy",
-      }),
-    ),
+const CloudflarePipelinesR2Table = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String,
+    bucket: Schema.String,
+    credentials: Credentials3,
+    fileNaming: Schema.optional(Schema.Union([FileNaming, Schema.Null])),
+    jurisdiction: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    partitioning: Schema.optional(Schema.Union([Partitioning, Schema.Null])),
+    path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    rollingPolicy: Schema.optional(Schema.Union([RollingPolicy, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      accountId: "account_id",
+      bucket: "bucket",
+      credentials: "credentials",
+      fileNaming: "file_naming",
+      jurisdiction: "jurisdiction",
+      partitioning: "partitioning",
+      path: "path",
+      rollingPolicy: "rolling_policy",
+    }),
+  ),
 ) as unknown as Schema.Codec<CloudflarePipelinesR2Table>;
 
 interface CloudflarePipelinesR2DataCatalogTable {
@@ -1381,7 +1377,7 @@ interface CloudflarePipelinesR2DataCatalogTable {
   } | null;
 }
 const CloudflarePipelinesR2DataCatalogTable =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       token: Schema.String,
       accountId: Schema.String,
@@ -1428,31 +1424,28 @@ interface CloudflarePipelinesR2Table2 {
     intervalSeconds?: number | null;
   } | null;
 }
-const CloudflarePipelinesR2Table2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String,
-      bucket: Schema.String,
-      credentials: Schema.optional(Schema.Union([Credentials3, Schema.Null])),
-      fileNaming: Schema.optional(Schema.Union([FileNaming, Schema.Null])),
-      jurisdiction: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      partitioning: Schema.optional(Schema.Union([Partitioning, Schema.Null])),
-      path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      rollingPolicy: Schema.optional(
-        Schema.Union([RollingPolicy, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        accountId: "account_id",
-        bucket: "bucket",
-        credentials: "credentials",
-        fileNaming: "file_naming",
-        jurisdiction: "jurisdiction",
-        partitioning: "partitioning",
-        path: "path",
-        rollingPolicy: "rolling_policy",
-      }),
-    ),
+const CloudflarePipelinesR2Table2 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String,
+    bucket: Schema.String,
+    credentials: Schema.optional(Schema.Union([Credentials3, Schema.Null])),
+    fileNaming: Schema.optional(Schema.Union([FileNaming, Schema.Null])),
+    jurisdiction: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    partitioning: Schema.optional(Schema.Union([Partitioning, Schema.Null])),
+    path: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    rollingPolicy: Schema.optional(Schema.Union([RollingPolicy, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      accountId: "account_id",
+      bucket: "bucket",
+      credentials: "credentials",
+      fileNaming: "file_naming",
+      jurisdiction: "jurisdiction",
+      partitioning: "partitioning",
+      path: "path",
+      rollingPolicy: "rolling_policy",
+    }),
+  ),
 ) as unknown as Schema.Codec<CloudflarePipelinesR2Table2>;
 
 interface Edge {
@@ -1462,7 +1455,7 @@ interface Edge {
   srcId: number;
   valueType: string;
 }
-const Edge = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Edge = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     destId: Schema.Number,
     edgeType: Schema.String,
@@ -1486,7 +1479,7 @@ interface Node {
   operator: string;
   parallelism: number;
 }
-const Node = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Node = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     description: Schema.String,
     nodeId: Schema.Number,
@@ -1517,7 +1510,7 @@ interface Graph {
     parallelism: number;
   }[];
 }
-const Graph = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Graph = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     edges: Schema.Array(Edge),
     nodes: Schema.Array(Node),
@@ -1532,7 +1525,7 @@ interface Http {
   /** Specifies the CORS options for the HTTP endpoint. */
   cors?: { origins?: string[] | null } | null;
 }
-const Http = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Http = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     authentication: Schema.Boolean,
     enabled: Schema.Boolean,
@@ -1544,7 +1537,7 @@ interface WorkerBinding {
   /** Indicates that the worker binding is enabled. */
   enabled: boolean;
 }
-const WorkerBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WorkerBinding = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.Boolean,
   }),
@@ -1687,35 +1680,34 @@ interface ListStreamsResponseResult {
     inferred?: boolean | null;
   } | null;
 }
-const ListStreamsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      http: Http,
-      modifiedAt: Schema.String,
-      name: Schema.String,
-      version: Schema.Number,
-      workerBinding: WorkerBinding,
-      endpoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      format: Schema.optional(
-        Schema.Union([Schema.Union([Json, Parquet]), Schema.Null]),
-      ),
-      schema: Schema.optional(Schema.Union([Schema2, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        http: "http",
-        modifiedAt: "modified_at",
-        name: "name",
-        version: "version",
-        workerBinding: "worker_binding",
-        endpoint: "endpoint",
-        format: "format",
-        schema: "schema",
-      }),
+const ListStreamsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    http: Http,
+    modifiedAt: Schema.String,
+    name: Schema.String,
+    version: Schema.Number,
+    workerBinding: WorkerBinding,
+    endpoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    format: Schema.optional(
+      Schema.Union([Schema.Union([Json, Parquet]), Schema.Null]),
     ),
+    schema: Schema.optional(Schema.Union([Schema2, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      http: "http",
+      modifiedAt: "modified_at",
+      name: "name",
+      version: "version",
+      workerBinding: "worker_binding",
+      endpoint: "endpoint",
+      format: "format",
+      schema: "schema",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListStreamsResponseResult>;
 
 interface Table {
@@ -1730,7 +1722,7 @@ interface Table {
   /** Current version of the connection used by this pipeline. */
   version: number;
 }
-const Table = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Table = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     latest: Schema.Number,
@@ -1752,25 +1744,24 @@ interface ListV1PipelineResponseResult {
   /** Indicates the current status of the Pipeline. */
   status: string;
 }
-const ListV1PipelineResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      modifiedAt: Schema.String,
-      name: Schema.String,
-      sql: Schema.String,
-      status: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        modifiedAt: "modified_at",
-        name: "name",
-        sql: "sql",
-        status: "status",
-      }),
-    ),
+const ListV1PipelineResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    modifiedAt: Schema.String,
+    name: Schema.String,
+    sql: Schema.String,
+    status: Schema.String,
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      modifiedAt: "modified_at",
+      name: "name",
+      sql: "sql",
+      status: "status",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListV1PipelineResponseResult>;
 
 // =============================================================================
@@ -1783,17 +1774,16 @@ export interface GetPipelineRequest {
   accountId: string;
 }
 
-export const GetPipelineRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      pipelineName: Schema.String.pipe(T.HttpPath("pipelineName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/pipelines/{pipelineName}",
-      }),
-    ),
+export const GetPipelineRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pipelineName: Schema.String.pipe(T.HttpPath("pipelineName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/pipelines/{pipelineName}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetPipelineRequest>;
 
 export interface GetPipelineResponse {
@@ -1828,21 +1818,20 @@ export interface GetPipelineResponse {
   version: number;
 }
 
-export const GetPipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      destination: Destination,
-      endpoint: Schema.String,
-      name: Schema.String,
-      source: Schema.Array(
-        Schema.Union([
-          CloudflarePipelinesWorkersPipelinesHTTPSource,
-          CloudflarePipelinesWorkersPipelinesBindingSource,
-        ]),
-      ),
-      version: Schema.Number,
-    }).pipe(T.ResponsePath("result")),
+export const GetPipelineResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    destination: Destination,
+    endpoint: Schema.String,
+    name: Schema.String,
+    source: Schema.Array(
+      Schema.Union([
+        CloudflarePipelinesWorkersPipelinesHTTPSource,
+        CloudflarePipelinesWorkersPipelinesBindingSource,
+      ]),
+    ),
+    version: Schema.Number,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetPipelineResponse>;
 
 export type GetPipelineError = DefaultErrors | PipelineNotExists;
@@ -1852,7 +1841,7 @@ export const getPipeline: API.OperationMethod<
   GetPipelineResponse,
   GetPipelineError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPipelineRequest,
   output: GetPipelineResponse,
   errors: [PipelineNotExists],
@@ -1869,16 +1858,13 @@ export interface ListPipelinesRequest {
   search?: string;
 }
 
-export const ListPipelinesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.String).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.String).pipe(T.HttpQuery("per_page")),
-      search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/pipelines" }),
-    ),
+export const ListPipelinesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.String).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.String).pipe(T.HttpQuery("per_page")),
+    search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/pipelines" })),
 ) as unknown as Schema.Codec<ListPipelinesRequest>;
 
 export interface ListPipelinesResponse {
@@ -1921,19 +1907,18 @@ export interface ListPipelinesResponse {
   success: boolean;
 }
 
-export const ListPipelinesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      resultInfo: Schema.optional(Schema.Union([ResultInfo, Schema.Null])),
-      results: Schema.Array(Result),
-      success: Schema.Boolean,
-    }).pipe(
-      Schema.encodeKeys({
-        resultInfo: "result_info",
-        results: "result",
-        success: "success",
-      }),
-    ),
+export const ListPipelinesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    resultInfo: Schema.optional(Schema.Union([ResultInfo, Schema.Null])),
+    results: Schema.Array(Result),
+    success: Schema.Boolean,
+  }).pipe(
+    Schema.encodeKeys({
+      resultInfo: "result_info",
+      results: "result",
+      success: "success",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListPipelinesResponse>;
 
 export type ListPipelinesError = DefaultErrors;
@@ -1943,7 +1928,7 @@ export const listPipelines: API.OperationMethod<
   ListPipelinesResponse,
   ListPipelinesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListPipelinesRequest,
   output: ListPipelinesResponse,
   errors: [],
@@ -1984,21 +1969,18 @@ export interface CreatePipelineRequest {
   )[];
 }
 
-export const CreatePipelineRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      destination: Destination2,
-      name: Schema.String,
-      source: Schema.Array(
-        Schema.Union([
-          CloudflarePipelinesWorkersPipelinesHTTPSource,
-          CloudflarePipelinesWorkersPipelinesBindingSource,
-        ]),
-      ),
-    }).pipe(
-      T.Http({ method: "POST", path: "/accounts/{account_id}/pipelines" }),
+export const CreatePipelineRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    destination: Destination2,
+    name: Schema.String,
+    source: Schema.Array(
+      Schema.Union([
+        CloudflarePipelinesWorkersPipelinesHTTPSource,
+        CloudflarePipelinesWorkersPipelinesBindingSource,
+      ]),
     ),
+  }).pipe(T.Http({ method: "POST", path: "/accounts/{account_id}/pipelines" })),
 ) as unknown as Schema.Codec<CreatePipelineRequest>;
 
 export interface CreatePipelineResponse {
@@ -2034,7 +2016,7 @@ export interface CreatePipelineResponse {
 }
 
 export const CreatePipelineResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       destination: Destination,
@@ -2057,7 +2039,7 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineResponse,
   CreatePipelineError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePipelineRequest,
   output: CreatePipelineResponse,
   errors: [],
@@ -2099,25 +2081,24 @@ export interface UpdatePipelineRequest {
   )[];
 }
 
-export const UpdatePipelineRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      pipelineName: Schema.String.pipe(T.HttpPath("pipelineName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      destination: Destination3,
-      name: Schema.String,
-      source: Schema.Array(
-        Schema.Union([
-          CloudflarePipelinesWorkersPipelinesHTTPSource,
-          CloudflarePipelinesWorkersPipelinesBindingSource,
-        ]),
-      ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/pipelines/{pipelineName}",
-      }),
+export const UpdatePipelineRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pipelineName: Schema.String.pipe(T.HttpPath("pipelineName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    destination: Destination3,
+    name: Schema.String,
+    source: Schema.Array(
+      Schema.Union([
+        CloudflarePipelinesWorkersPipelinesHTTPSource,
+        CloudflarePipelinesWorkersPipelinesBindingSource,
+      ]),
     ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/pipelines/{pipelineName}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdatePipelineRequest>;
 
 export interface UpdatePipelineResponse {
@@ -2153,7 +2134,7 @@ export interface UpdatePipelineResponse {
 }
 
 export const UpdatePipelineResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       destination: Destination,
@@ -2176,7 +2157,7 @@ export const updatePipeline: API.OperationMethod<
   UpdatePipelineResponse,
   UpdatePipelineError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePipelineRequest,
   output: UpdatePipelineResponse,
   errors: [PipelineNotExists],
@@ -2188,23 +2169,22 @@ export interface DeletePipelineRequest {
   accountId: string;
 }
 
-export const DeletePipelineRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      pipelineName: Schema.String.pipe(T.HttpPath("pipelineName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/pipelines/{pipelineName}",
-      }),
-    ),
+export const DeletePipelineRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pipelineName: Schema.String.pipe(T.HttpPath("pipelineName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/pipelines/{pipelineName}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeletePipelineRequest>;
 
 export type DeletePipelineResponse = unknown;
 
 export const DeletePipelineResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<DeletePipelineResponse>;
 
@@ -2215,7 +2195,7 @@ export const deletePipeline: API.OperationMethod<
   DeletePipelineResponse,
   DeletePipelineError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePipelineRequest,
   output: DeletePipelineResponse,
   errors: [PipelineNotExists],
@@ -2231,7 +2211,7 @@ export interface GetSinkRequest {
   accountId: string;
 }
 
-export const GetSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetSinkRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     sinkId: Schema.String.pipe(T.HttpPath("sinkId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2410,7 +2390,7 @@ export interface GetSinkResponse {
   } | null;
 }
 
-export const GetSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetSinkResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -2456,7 +2436,7 @@ export const getSink: API.OperationMethod<
   GetSinkResponse,
   GetSinkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSinkRequest,
   output: GetSinkResponse,
   errors: [SinkNotFound, InvalidSinkId],
@@ -2473,7 +2453,7 @@ export interface ListSinksRequest {
   pipelineId?: string;
 }
 
-export const ListSinksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListSinksRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -2664,14 +2644,13 @@ export interface ListSinksResponse {
   } | null;
 }
 
-export const ListSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListSinksResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListSinksResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListSinksResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListSinksResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListSinksResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListSinksResponse>;
 
 export type ListSinksError = DefaultErrors;
@@ -2681,7 +2660,7 @@ export const listSinks: API.PaginatedOperationMethod<
   ListSinksResponse,
   ListSinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSinksRequest,
   output: ListSinksResponse,
   errors: [],
@@ -2849,29 +2828,28 @@ export interface CreateSinkRequest {
   };
 }
 
-export const CreateSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.String,
-      type: Schema.Union([
-        Schema.Literals(["r2", "r2_data_catalog"]),
-        Schema.String,
+export const CreateSinkRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.String,
+    type: Schema.Union([
+      Schema.Literals(["r2", "r2_data_catalog"]),
+      Schema.String,
+    ]),
+    config: Schema.optional(
+      Schema.Union([
+        CloudflarePipelinesR2DataCatalogTable,
+        CloudflarePipelinesR2Table,
       ]),
-      config: Schema.optional(
-        Schema.Union([
-          CloudflarePipelinesR2DataCatalogTable,
-          CloudflarePipelinesR2Table,
-        ]),
-      ),
-      format: Schema.optional(Schema.Union([Json, Parquet])),
-      schema: Schema.optional(Schema2),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/pipelines/v1/sinks",
-      }),
     ),
+    format: Schema.optional(Schema.Union([Json, Parquet])),
+    schema: Schema.optional(Schema2),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/pipelines/v1/sinks",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateSinkRequest>;
 
 export interface CreateSinkResponse {
@@ -3043,44 +3021,43 @@ export interface CreateSinkResponse {
   } | null;
 }
 
-export const CreateSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      modifiedAt: Schema.String,
-      name: Schema.String,
-      type: Schema.Union([
-        Schema.Literals(["r2", "r2_data_catalog"]),
-        Schema.String,
-      ]),
-      config: Schema.optional(
+export const CreateSinkResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    modifiedAt: Schema.String,
+    name: Schema.String,
+    type: Schema.Union([
+      Schema.Literals(["r2", "r2_data_catalog"]),
+      Schema.String,
+    ]),
+    config: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            CloudflarePipelinesR2DataCatalogTable,
-            CloudflarePipelinesR2Table2,
-          ]),
-          Schema.Null,
+          CloudflarePipelinesR2DataCatalogTable,
+          CloudflarePipelinesR2Table2,
         ]),
-      ),
-      format: Schema.optional(
-        Schema.Union([Schema.Union([Json, Parquet]), Schema.Null]),
-      ),
-      schema: Schema.optional(Schema.Union([Schema2, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          modifiedAt: "modified_at",
-          name: "name",
-          type: "type",
-          config: "config",
-          format: "format",
-          schema: "schema",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    format: Schema.optional(
+      Schema.Union([Schema.Union([Json, Parquet]), Schema.Null]),
+    ),
+    schema: Schema.optional(Schema.Union([Schema2, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        modifiedAt: "modified_at",
+        name: "name",
+        type: "type",
+        config: "config",
+        format: "format",
+        schema: "schema",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateSinkResponse>;
 
 export type CreateSinkError =
@@ -3094,7 +3071,7 @@ export const createSink: API.OperationMethod<
   CreateSinkResponse,
   CreateSinkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSinkRequest,
   output: CreateSinkResponse,
   errors: [SinkAuthFailed, InvalidSinkConfig, SinkAlreadyExists],
@@ -3108,24 +3085,23 @@ export interface DeleteSinkRequest {
   force?: string;
 }
 
-export const DeleteSinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      sinkId: Schema.String.pipe(T.HttpPath("sinkId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      force: Schema.optional(Schema.String).pipe(T.HttpQuery("force")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/pipelines/v1/sinks/{sinkId}",
-      }),
-    ),
+export const DeleteSinkRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    sinkId: Schema.String.pipe(T.HttpPath("sinkId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    force: Schema.optional(Schema.String).pipe(T.HttpQuery("force")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/pipelines/v1/sinks/{sinkId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteSinkRequest>;
 
 export type DeleteSinkResponse = unknown;
 
-export const DeleteSinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+export const DeleteSinkResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteSinkResponse>;
 
 export type DeleteSinkError =
@@ -3139,7 +3115,7 @@ export const deleteSink: API.OperationMethod<
   DeleteSinkResponse,
   DeleteSinkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSinkRequest,
   output: DeleteSinkResponse,
   errors: [SinkNotFound, InvalidSinkId, SinkInUse],
@@ -3157,7 +3133,7 @@ export interface ValidateSqlPipelineRequest {
 }
 
 export const ValidateSqlPipelineRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       sql: Schema.String,
@@ -3190,7 +3166,7 @@ export interface ValidateSqlPipelineResponse {
 }
 
 export const ValidateSqlPipelineResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tables: Schema.Record(Schema.String, Schema.Unknown),
       graph: Schema.optional(Schema.Union([Graph, Schema.Null])),
@@ -3207,7 +3183,7 @@ export const validateSqlPipeline: API.OperationMethod<
   ValidateSqlPipelineResponse,
   ValidateSqlPipelineError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateSqlPipelineRequest,
   output: ValidateSqlPipelineResponse,
   errors: [TableNotFound, InvalidSql],
@@ -3223,7 +3199,7 @@ export interface GetStreamRequest {
   accountId: string;
 }
 
-export const GetStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetStreamRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     streamId: Schema.String.pipe(T.HttpPath("streamId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3373,37 +3349,36 @@ export interface GetStreamResponse {
   } | null;
 }
 
-export const GetStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      http: Http,
-      modifiedAt: Schema.String,
-      name: Schema.String,
-      version: Schema.Number,
-      workerBinding: WorkerBinding,
-      endpoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      format: Schema.optional(
-        Schema.Union([Schema.Union([Json, Parquet]), Schema.Null]),
-      ),
-      schema: Schema.optional(Schema.Union([Schema2, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          http: "http",
-          modifiedAt: "modified_at",
-          name: "name",
-          version: "version",
-          workerBinding: "worker_binding",
-          endpoint: "endpoint",
-          format: "format",
-          schema: "schema",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetStreamResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    http: Http,
+    modifiedAt: Schema.String,
+    name: Schema.String,
+    version: Schema.Number,
+    workerBinding: WorkerBinding,
+    endpoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    format: Schema.optional(
+      Schema.Union([Schema.Union([Json, Parquet]), Schema.Null]),
+    ),
+    schema: Schema.optional(Schema.Union([Schema2, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        http: "http",
+        modifiedAt: "modified_at",
+        name: "name",
+        version: "version",
+        workerBinding: "worker_binding",
+        endpoint: "endpoint",
+        format: "format",
+        schema: "schema",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetStreamResponse>;
 
 export type GetStreamError = DefaultErrors | StreamNotFound | InvalidStreamId;
@@ -3413,7 +3388,7 @@ export const getStream: API.OperationMethod<
   GetStreamResponse,
   GetStreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStreamRequest,
   output: GetStreamResponse,
   errors: [StreamNotFound, InvalidStreamId],
@@ -3430,22 +3405,19 @@ export interface ListStreamsRequest {
   pipelineId?: string;
 }
 
-export const ListStreamsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-      pipelineId: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("pipeline_id"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/pipelines/v1/streams",
-      }),
-    ),
+export const ListStreamsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+    pipelineId: Schema.optional(Schema.String).pipe(T.HttpQuery("pipeline_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/pipelines/v1/streams",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListStreamsRequest>;
 
 export interface ListStreamsResponse {
@@ -3595,14 +3567,13 @@ export interface ListStreamsResponse {
   } | null;
 }
 
-export const ListStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListStreamsResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListSinksResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListStreamsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListStreamsResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListSinksResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListStreamsResponse>;
 
 export type ListStreamsError = DefaultErrors;
@@ -3612,7 +3583,7 @@ export const listStreams: API.PaginatedOperationMethod<
   ListStreamsResponse,
   ListStreamsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsRequest,
   output: ListStreamsResponse,
   errors: [],
@@ -3754,28 +3725,27 @@ export interface CreateStreamRequest {
   workerBinding?: { enabled: boolean };
 }
 
-export const CreateStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.String,
-      format: Schema.optional(Schema.Union([Json, Parquet])),
-      http: Schema.optional(Http),
-      schema: Schema.optional(Schema2),
-      workerBinding: Schema.optional(WorkerBinding),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        format: "format",
-        http: "http",
-        schema: "schema",
-        workerBinding: "worker_binding",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/pipelines/v1/streams",
-      }),
-    ),
+export const CreateStreamRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.String,
+    format: Schema.optional(Schema.Union([Json, Parquet])),
+    http: Schema.optional(Http),
+    schema: Schema.optional(Schema2),
+    workerBinding: Schema.optional(WorkerBinding),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      format: "format",
+      http: "http",
+      schema: "schema",
+      workerBinding: "worker_binding",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/pipelines/v1/streams",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateStreamRequest>;
 
 export interface CreateStreamResponse {
@@ -3916,37 +3886,36 @@ export interface CreateStreamResponse {
   } | null;
 }
 
-export const CreateStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      http: Http,
-      modifiedAt: Schema.String,
-      name: Schema.String,
-      version: Schema.Number,
-      workerBinding: WorkerBinding,
-      endpoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      format: Schema.optional(
-        Schema.Union([Schema.Union([Json, Parquet]), Schema.Null]),
-      ),
-      schema: Schema.optional(Schema.Union([Schema2, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          http: "http",
-          modifiedAt: "modified_at",
-          name: "name",
-          version: "version",
-          workerBinding: "worker_binding",
-          endpoint: "endpoint",
-          format: "format",
-          schema: "schema",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateStreamResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    http: Http,
+    modifiedAt: Schema.String,
+    name: Schema.String,
+    version: Schema.Number,
+    workerBinding: WorkerBinding,
+    endpoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    format: Schema.optional(
+      Schema.Union([Schema.Union([Json, Parquet]), Schema.Null]),
+    ),
+    schema: Schema.optional(Schema.Union([Schema2, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        http: "http",
+        modifiedAt: "modified_at",
+        name: "name",
+        version: "version",
+        workerBinding: "worker_binding",
+        endpoint: "endpoint",
+        format: "format",
+        schema: "schema",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateStreamResponse>;
 
 export type CreateStreamError =
@@ -3959,7 +3928,7 @@ export const createStream: API.OperationMethod<
   CreateStreamResponse,
   CreateStreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateStreamRequest,
   output: CreateStreamResponse,
   errors: [InvalidStreamName, StreamAlreadyExists],
@@ -3979,20 +3948,19 @@ export interface PatchStreamRequest {
   workerBinding?: { enabled: boolean };
 }
 
-export const PatchStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      streamId: Schema.String.pipe(T.HttpPath("streamId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      http: Schema.optional(Http),
-      workerBinding: Schema.optional(WorkerBinding),
-    }).pipe(
-      Schema.encodeKeys({ http: "http", workerBinding: "worker_binding" }),
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/pipelines/v1/streams/{streamId}",
-      }),
-    ),
+export const PatchStreamRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    streamId: Schema.String.pipe(T.HttpPath("streamId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    http: Schema.optional(Http),
+    workerBinding: Schema.optional(WorkerBinding),
+  }).pipe(
+    Schema.encodeKeys({ http: "http", workerBinding: "worker_binding" }),
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/pipelines/v1/streams/{streamId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchStreamRequest>;
 
 export interface PatchStreamResponse {
@@ -4034,35 +4002,34 @@ export interface PatchStreamResponse {
     | null;
 }
 
-export const PatchStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      http: Http,
-      modifiedAt: Schema.String,
-      name: Schema.String,
-      version: Schema.Number,
-      workerBinding: WorkerBinding,
-      endpoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      format: Schema.optional(
-        Schema.Union([Schema.Union([Json, Parquet]), Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          http: "http",
-          modifiedAt: "modified_at",
-          name: "name",
-          version: "version",
-          workerBinding: "worker_binding",
-          endpoint: "endpoint",
-          format: "format",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PatchStreamResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    http: Http,
+    modifiedAt: Schema.String,
+    name: Schema.String,
+    version: Schema.Number,
+    workerBinding: WorkerBinding,
+    endpoint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    format: Schema.optional(
+      Schema.Union([Schema.Union([Json, Parquet]), Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        http: "http",
+        modifiedAt: "modified_at",
+        name: "name",
+        version: "version",
+        workerBinding: "worker_binding",
+        endpoint: "endpoint",
+        format: "format",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchStreamResponse>;
 
 export type PatchStreamError = DefaultErrors | StreamNotFound;
@@ -4072,7 +4039,7 @@ export const patchStream: API.OperationMethod<
   PatchStreamResponse,
   PatchStreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchStreamRequest,
   output: PatchStreamResponse,
   errors: [StreamNotFound],
@@ -4086,24 +4053,23 @@ export interface DeleteStreamRequest {
   force?: string;
 }
 
-export const DeleteStreamRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      streamId: Schema.String.pipe(T.HttpPath("streamId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      force: Schema.optional(Schema.String).pipe(T.HttpQuery("force")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/pipelines/v1/streams/{streamId}",
-      }),
-    ),
+export const DeleteStreamRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    streamId: Schema.String.pipe(T.HttpPath("streamId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    force: Schema.optional(Schema.String).pipe(T.HttpQuery("force")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/pipelines/v1/streams/{streamId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteStreamRequest>;
 
 export type DeleteStreamResponse = unknown;
 
-export const DeleteStreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+export const DeleteStreamResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Unknown.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteStreamResponse>;
 
 export type DeleteStreamError =
@@ -4118,7 +4084,7 @@ export const deleteStream: API.OperationMethod<
   DeleteStreamResponse,
   DeleteStreamError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteStreamRequest,
   output: DeleteStreamResponse,
   errors: [PipelineNotExists, StreamNotFound, InvalidStreamId, StreamInUse],
@@ -4134,17 +4100,16 @@ export interface GetV1PipelineRequest {
   accountId: string;
 }
 
-export const GetV1PipelineRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      pipelineId: Schema.String.pipe(T.HttpPath("pipelineId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/pipelines/v1/pipelines/{pipelineId}",
-      }),
-    ),
+export const GetV1PipelineRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    pipelineId: Schema.String.pipe(T.HttpPath("pipelineId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/pipelines/v1/pipelines/{pipelineId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetV1PipelineRequest>;
 
 export interface GetV1PipelineResponse {
@@ -4170,33 +4135,30 @@ export interface GetV1PipelineResponse {
   failureReason?: string | null;
 }
 
-export const GetV1PipelineResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      modifiedAt: Schema.String,
-      name: Schema.String,
-      sql: Schema.String,
-      status: Schema.String,
-      tables: Schema.Array(Table),
-      failureReason: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          modifiedAt: "modified_at",
-          name: "name",
-          sql: "sql",
-          status: "status",
-          tables: "tables",
-          failureReason: "failure_reason",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetV1PipelineResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    modifiedAt: Schema.String,
+    name: Schema.String,
+    sql: Schema.String,
+    status: Schema.String,
+    tables: Schema.Array(Table),
+    failureReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        modifiedAt: "modified_at",
+        name: "name",
+        sql: "sql",
+        status: "status",
+        tables: "tables",
+        failureReason: "failure_reason",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetV1PipelineResponse>;
 
 export type GetV1PipelineError = DefaultErrors | PipelineNotExists;
@@ -4206,7 +4168,7 @@ export const getV1Pipeline: API.OperationMethod<
   GetV1PipelineResponse,
   GetV1PipelineError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetV1PipelineRequest,
   output: GetV1PipelineResponse,
   errors: [PipelineNotExists],
@@ -4221,19 +4183,18 @@ export interface ListV1PipelineRequest {
   name?: string;
 }
 
-export const ListV1PipelineRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/pipelines/v1/pipelines",
-      }),
-    ),
+export const ListV1PipelineRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/pipelines/v1/pipelines",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListV1PipelineRequest>;
 
 export interface ListV1PipelineResponse {
@@ -4254,7 +4215,7 @@ export interface ListV1PipelineResponse {
 }
 
 export const ListV1PipelineResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListV1PipelineResponseResult),
       resultInfo: Schema.optional(
@@ -4270,7 +4231,7 @@ export const listV1Pipeline: API.PaginatedOperationMethod<
   ListV1PipelineResponse,
   ListV1PipelineError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListV1PipelineRequest,
   output: ListV1PipelineResponse,
   errors: [],
@@ -4293,7 +4254,7 @@ export interface CreateV1PipelineRequest {
 }
 
 export const CreateV1PipelineRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -4320,7 +4281,7 @@ export interface CreateV1PipelineResponse {
 }
 
 export const CreateV1PipelineResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -4353,7 +4314,7 @@ export const createV1Pipeline: API.OperationMethod<
   CreateV1PipelineResponse,
   CreateV1PipelineError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateV1PipelineRequest,
   output: CreateV1PipelineResponse,
   errors: [TableNotFound, InvalidSql, PipelineAlreadyExists],
@@ -4366,7 +4327,7 @@ export interface DeleteV1PipelineRequest {
 }
 
 export const DeleteV1PipelineRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       pipelineId: Schema.String.pipe(T.HttpPath("pipelineId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4381,7 +4342,7 @@ export const DeleteV1PipelineRequest =
 export type DeleteV1PipelineResponse = unknown;
 
 export const DeleteV1PipelineResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteV1PipelineResponse>;
 
@@ -4392,7 +4353,7 @@ export const deleteV1Pipeline: API.OperationMethod<
   DeleteV1PipelineResponse,
   DeleteV1PipelineError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteV1PipelineRequest,
   output: DeleteV1PipelineResponse,
   errors: [PipelineNotExists],

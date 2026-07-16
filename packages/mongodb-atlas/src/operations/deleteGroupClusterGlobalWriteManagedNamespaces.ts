@@ -13,7 +13,7 @@ export interface DeleteGroupClusterGlobalWriteManagedNamespacesInput {
   collection?: string;
 }
 export const DeleteGroupClusterGlobalWriteManagedNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clusterName: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -30,7 +30,7 @@ export const DeleteGroupClusterGlobalWriteManagedNamespacesInput =
 // Output Schema
 export type DeleteGroupClusterGlobalWriteManagedNamespacesOutput = void;
 export const DeleteGroupClusterGlobalWriteManagedNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterGlobalWriteManagedNamespacesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterGlobalWriteManagedNamespacesOutput>;
 
 // The operation
 /**
@@ -48,7 +48,7 @@ export const DeleteGroupClusterGlobalWriteManagedNamespacesOutput =
  * @param collection - Human-readable label that identifies the collection associated with the managed namespace.
  */
 export const deleteGroupClusterGlobalWriteManagedNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupClusterGlobalWriteManagedNamespacesInput,
     outputSchema: DeleteGroupClusterGlobalWriteManagedNamespacesOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

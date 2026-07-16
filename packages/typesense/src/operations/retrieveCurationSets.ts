@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface RetrieveCurationSetsInput {}
 export const RetrieveCurationSetsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/curation_sets" }),
   ) as unknown as Schema.Codec<RetrieveCurationSetsInput>;
 
@@ -35,7 +35,7 @@ export type RetrieveCurationSetsOutput = {
   name: string;
 }[];
 export const RetrieveCurationSetsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       items: Schema.Array(
         Schema.Struct({
@@ -83,9 +83,7 @@ export const RetrieveCurationSetsOutput =
  *
  * Retrieve all curation sets
  */
-export const retrieveCurationSets = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetrieveCurationSetsInput,
-    outputSchema: RetrieveCurationSetsOutput,
-  }),
-);
+export const retrieveCurationSets = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetrieveCurationSetsInput,
+  outputSchema: RetrieveCurationSetsOutput,
+}));

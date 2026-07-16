@@ -11,7 +11,7 @@ export interface GetGroupUserSecurityLdapVerifyInput {
   pretty?: boolean;
 }
 export const GetGroupUserSecurityLdapVerifyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     requestId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const GetGroupUserSecurityLdapVerifyInput =
 // Output Schema
 export type GetGroupUserSecurityLdapVerifyOutput = void;
 export const GetGroupUserSecurityLdapVerifyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupUserSecurityLdapVerifyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupUserSecurityLdapVerifyOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const GetGroupUserSecurityLdapVerifyOutput =
  * @param requestId - Unique string that identifies the request to verify an Lightweight Directory Access Protocol (LDAP) configuration.
  */
 export const getGroupUserSecurityLdapVerify =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupUserSecurityLdapVerifyInput,
     outputSchema: GetGroupUserSecurityLdapVerifyOutput,
     errors: [Forbidden, NotFound] as const,

@@ -24,7 +24,7 @@ interface PublicIPIPs {
   /** List of Cloudflare IPv6 CIDR addresses. */
   ipv6Cidrs?: string[] | null;
 }
-const PublicIPIPs = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PublicIPIPs = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     etag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     ipv4Cidrs: Schema.optional(
@@ -52,7 +52,7 @@ interface PublicIPIPsJDCloud {
   /** List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used. */
   jdcloudCidrs?: string[] | null;
 }
-const PublicIPIPsJDCloud = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PublicIPIPsJDCloud = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     etag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     ipv4Cidrs: Schema.optional(
@@ -83,7 +83,7 @@ export interface ListIpsRequest {
   networks?: string;
 }
 
-export const ListIpsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListIpsRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     networks: Schema.optional(Schema.String),
   }).pipe(T.Http({ method: "GET", path: "/ips" })),
@@ -102,7 +102,7 @@ export type ListIpsResponse =
       jdcloudCidrs?: string[] | null;
     };
 
-export const ListIpsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListIpsResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Union([PublicIPIPs, PublicIPIPsJDCloud]).pipe(
     T.ResponsePath("result"),
   ),
@@ -115,7 +115,7 @@ export const listIps: API.OperationMethod<
   ListIpsResponse,
   ListIpsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListIpsRequest,
   output: ListIpsResponse,
   errors: [],

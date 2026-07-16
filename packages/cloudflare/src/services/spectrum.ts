@@ -56,7 +56,7 @@ interface CurrentGetResponseItem {
   /** Average duration of connections */
   durationAvg: number;
 }
-const CurrentGetResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CurrentGetResponseItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     appID: Schema.String,
     bytesEgress: Schema.Number,
@@ -70,7 +70,7 @@ interface Data {
   dimensions?: string[] | null;
   metrics?: number[] | number[][] | null;
 }
-const Data = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dimensions: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -116,7 +116,7 @@ interface Query {
   /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string | null;
 }
-const Query = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Query = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dimensions: Schema.optional(
       Schema.Union([
@@ -164,7 +164,7 @@ interface Dns {
   /** The type of DNS record associated with the application. */
   type?: "CNAME" | "ADDRESS" | (string & {}) | null;
 }
-const Dns = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dns = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(
@@ -182,7 +182,7 @@ interface Dynamic {
   /** The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names. */
   type?: "dynamic" | null;
 }
-const Dynamic = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dynamic = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     connectivity: Schema.optional(
       Schema.Union([
@@ -202,7 +202,7 @@ interface Static {
   /** The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names. */
   type?: "static" | null;
 }
-const Static = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Static = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ips: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -221,7 +221,7 @@ interface OriginDNS {
   /** The type of DNS record associated with the origin. "" is used to specify a combination of A/AAAA records. */
   type?: "" | "A" | "AAAA" | "SRV" | (string & {}) | null;
 }
-const OriginDNS = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OriginDNS = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     ttl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -282,7 +282,7 @@ interface SpectrumConfigAppConfig {
   /** Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks. */
   virtualNetworkId?: string | null;
 }
-const SpectrumConfigAppConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SpectrumConfigAppConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdOn: Schema.String,
@@ -366,27 +366,26 @@ interface SpectrumConfigPaygoAppConfig {
   /** List of origin IP addresses. Array may contain multiple IP addresses for load balancing. */
   originDirect?: string[] | null;
 }
-const SpectrumConfigPaygoAppConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.String,
-      dns: Dns,
-      modifiedOn: Schema.String,
-      protocol: Schema.String,
-      originDirect: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdOn: "created_on",
-        dns: "dns",
-        modifiedOn: "modified_on",
-        protocol: "protocol",
-        originDirect: "origin_direct",
-      }),
+const SpectrumConfigPaygoAppConfig = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    dns: Dns,
+    modifiedOn: Schema.String,
+    protocol: Schema.String,
+    originDirect: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdOn: "created_on",
+      dns: "dns",
+      modifiedOn: "modified_on",
+      protocol: "protocol",
+      originDirect: "origin_direct",
+    }),
+  ),
 ) as unknown as Schema.Codec<SpectrumConfigPaygoAppConfig>;
 
 interface ListAppsResponseResultInfo {
@@ -395,21 +394,20 @@ interface ListAppsResponseResultInfo {
   perPage?: number | null;
   totalCount?: number | null;
 }
-const ListAppsResponseResultInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
-    ),
+const ListAppsResponseResultInfo = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      count: "count",
+      page: "page",
+      perPage: "per_page",
+      totalCount: "total_count",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListAppsResponseResultInfo>;
 
 interface Dynamic2 {
@@ -420,7 +418,7 @@ interface Dynamic2 {
   /** The array of customer owned IPs we broadcast via anycast for this hostname and application. */
   ips?: string[] | null;
 }
-const Dynamic2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dynamic2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     connectivity: Schema.optional(
       Schema.Union([
@@ -454,7 +452,7 @@ export interface GetAnalyticAggregateCurrentRequest {
 }
 
 export const GetAnalyticAggregateCurrentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       appID: Schema.optional(Schema.String).pipe(T.HttpQuery("appID")),
@@ -476,7 +474,7 @@ export type GetAnalyticAggregateCurrentResponse = {
 }[];
 
 export const GetAnalyticAggregateCurrentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(CurrentGetResponseItem).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetAnalyticAggregateCurrentResponse>;
 
@@ -487,7 +485,7 @@ export const getAnalyticAggregateCurrent: API.OperationMethod<
   GetAnalyticAggregateCurrentResponse,
   GetAnalyticAggregateCurrentError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnalyticAggregateCurrentRequest,
   output: GetAnalyticAggregateCurrentResponse,
   errors: [],
@@ -535,7 +533,7 @@ export interface GetAnalyticEventBytimeRequest {
 }
 
 export const GetAnalyticEventBytimeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       timeDelta: Schema.Union([
@@ -632,7 +630,7 @@ export interface GetAnalyticEventBytimeResponse {
 }
 
 export const GetAnalyticEventBytimeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.Array(Data),
       dataLag: Schema.Number,
@@ -667,7 +665,7 @@ export const getAnalyticEventBytime: API.OperationMethod<
   GetAnalyticEventBytimeResponse,
   GetAnalyticEventBytimeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnalyticEventBytimeRequest,
   output: GetAnalyticEventBytimeResponse,
   errors: [],
@@ -704,7 +702,7 @@ export interface GetAnalyticEventSummaryRequest {
 }
 
 export const GetAnalyticEventSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       dimensions: Schema.optional(
@@ -788,7 +786,7 @@ export interface GetAnalyticEventSummaryResponse {
 }
 
 export const GetAnalyticEventSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.Array(Data),
       dataLag: Schema.Number,
@@ -823,7 +821,7 @@ export const getAnalyticEventSummary: API.OperationMethod<
   GetAnalyticEventSummaryResponse,
   GetAnalyticEventSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnalyticEventSummaryRequest,
   output: GetAnalyticEventSummaryResponse,
   errors: [],
@@ -839,7 +837,7 @@ export interface GetAppRequest {
   zoneId: string;
 }
 
-export const GetAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetAppRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     appId: Schema.String.pipe(T.HttpPath("appId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -891,7 +889,7 @@ export type GetAppResponse =
       originDirect?: string[] | null;
     };
 
-export const GetAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetAppResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Union([SpectrumConfigAppConfig, SpectrumConfigPaygoAppConfig]).pipe(
     T.ResponsePath("result"),
   ),
@@ -904,7 +902,7 @@ export const getApp: API.OperationMethod<
   GetAppResponse,
   GetAppError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppRequest,
   output: GetAppResponse,
   errors: [SpectrumAppNotFound, Forbidden],
@@ -927,7 +925,7 @@ export interface ListAppsRequest {
     | (string & {});
 }
 
-export const ListAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListAppsRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -1002,7 +1000,7 @@ export interface ListAppsResponse {
   } | null;
 }
 
-export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListAppsResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     result: Schema.Array(
       Schema.Union([SpectrumConfigAppConfig, SpectrumConfigPaygoAppConfig]),
@@ -1020,7 +1018,7 @@ export const listApps: API.PaginatedOperationMethod<
   ListAppsResponse,
   ListAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsRequest,
   output: ListAppsResponse,
   errors: [Forbidden],
@@ -1070,7 +1068,7 @@ export interface CreateAppRequest {
   virtualNetworkId?: string;
 }
 
-export const CreateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const CreateAppRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     dns: Dns,
@@ -1162,11 +1160,10 @@ export type CreateAppResponse =
       originDirect?: string[] | null;
     };
 
-export const CreateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([SpectrumConfigAppConfig, SpectrumConfigPaygoAppConfig]).pipe(
-      T.ResponsePath("result"),
-    ),
+export const CreateAppResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([SpectrumConfigAppConfig, SpectrumConfigPaygoAppConfig]).pipe(
+    T.ResponsePath("result"),
+  ),
 ) as unknown as Schema.Codec<CreateAppResponse>;
 
 export type CreateAppError =
@@ -1179,7 +1176,7 @@ export const createApp: API.OperationMethod<
   CreateAppResponse,
   CreateAppError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppRequest,
   output: CreateAppResponse,
   errors: [SpectrumProtocolNotAvailable, Forbidden],
@@ -1223,7 +1220,7 @@ export interface UpdateAppRequest {
   virtualNetworkId?: string;
 }
 
-export const UpdateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const UpdateAppRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     appId: Schema.String.pipe(T.HttpPath("appId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1316,11 +1313,10 @@ export type UpdateAppResponse =
       originDirect?: string[] | null;
     };
 
-export const UpdateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([SpectrumConfigAppConfig, SpectrumConfigPaygoAppConfig]).pipe(
-      T.ResponsePath("result"),
-    ),
+export const UpdateAppResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([SpectrumConfigAppConfig, SpectrumConfigPaygoAppConfig]).pipe(
+    T.ResponsePath("result"),
+  ),
 ) as unknown as Schema.Codec<UpdateAppResponse>;
 
 export type UpdateAppError =
@@ -1334,7 +1330,7 @@ export const updateApp: API.OperationMethod<
   UpdateAppResponse,
   UpdateAppError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppRequest,
   output: UpdateAppResponse,
   errors: [SpectrumAppNotFound, SpectrumProtocolNotAvailable, Forbidden],
@@ -1346,7 +1342,7 @@ export interface DeleteAppRequest {
   zoneId: string;
 }
 
-export const DeleteAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const DeleteAppRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     appId: Schema.String.pipe(T.HttpPath("appId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1363,11 +1359,10 @@ export interface DeleteAppResponse {
   id: string;
 }
 
-export const DeleteAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-    }).pipe(T.ResponsePath("result")),
+export const DeleteAppResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteAppResponse>;
 
 export type DeleteAppError = DefaultErrors | SpectrumAppNotFound | Forbidden;
@@ -1377,7 +1372,7 @@ export const deleteApp: API.OperationMethod<
   DeleteAppResponse,
   DeleteAppError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppRequest,
   output: DeleteAppResponse,
   errors: [SpectrumAppNotFound, Forbidden],

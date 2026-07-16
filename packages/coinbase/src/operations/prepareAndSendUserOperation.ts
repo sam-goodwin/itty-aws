@@ -26,7 +26,7 @@ export interface PrepareAndSendUserOperationInput {
   paymasterContext?: Record<string, unknown>;
 }
 export const PrepareAndSendUserOperationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
     network: Schema.Literals([
       "base-sepolia",
@@ -97,7 +97,7 @@ export interface PrepareAndSendUserOperationOutput {
   expiresAt?: string;
 }
 export const PrepareAndSendUserOperationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     network: Schema.Literals([
       "base-sepolia",
       "base",
@@ -163,9 +163,7 @@ section of our Authentication docs for more details on how to generate your Wall
 
  * @param address - The address of the EVM Smart Account to execute the user operation from.
  */
-export const prepareAndSendUserOperation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrepareAndSendUserOperationInput,
-    outputSchema: PrepareAndSendUserOperationOutput,
-  }),
-);
+export const prepareAndSendUserOperation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrepareAndSendUserOperationInput,
+  outputSchema: PrepareAndSendUserOperationOutput,
+}));

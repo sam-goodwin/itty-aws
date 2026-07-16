@@ -66,7 +66,7 @@ export interface SubscriptionsPartialUpdateInput {
   summary_prompt_guide?: string;
 }
 export const SubscriptionsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     resource_type: Schema.optional(
@@ -215,7 +215,7 @@ export interface SubscriptionsPartialUpdateOutput {
   summary_prompt_guide?: string;
 }
 export const SubscriptionsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     resource_type: Schema.optional(
       Schema.Literals(["insight", "dashboard", "ai_prompt"]),
@@ -302,10 +302,8 @@ export const SubscriptionsPartialUpdateOutput =
  * @param id - A unique integer value identifying this subscription.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const subscriptionsPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SubscriptionsPartialUpdateInput,
-    outputSchema: SubscriptionsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const subscriptionsPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SubscriptionsPartialUpdateInput,
+  outputSchema: SubscriptionsPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

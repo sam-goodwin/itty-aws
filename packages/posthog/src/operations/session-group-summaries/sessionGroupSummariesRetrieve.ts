@@ -9,7 +9,7 @@ export interface SessionGroupSummariesRetrieveInput {
   project_id: string;
 }
 export const SessionGroupSummariesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -52,7 +52,7 @@ export interface SessionGroupSummariesRetrieveOutput {
   team?: number;
 }
 export const SessionGroupSummariesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     session_ids: Schema.optional(Schema.Array(Schema.String)),
@@ -104,7 +104,7 @@ export const SessionGroupSummariesRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const sessionGroupSummariesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SessionGroupSummariesRetrieveInput,
     outputSchema: SessionGroupSummariesRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

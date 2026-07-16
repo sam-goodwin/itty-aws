@@ -106,7 +106,7 @@ export interface OpenShiftClustersCreateOrUpdateInput {
   location: string;
 }
 export const OpenShiftClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -295,7 +295,7 @@ export interface OpenShiftClustersCreateOrUpdateOutput {
   };
 }
 export const OpenShiftClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -327,7 +327,7 @@ export const OpenShiftClustersCreateOrUpdateOutput =
  * @param resourceName - The name of the OpenShift cluster resource.
  */
 export const OpenShiftClustersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OpenShiftClustersCreateOrUpdateInput,
     outputSchema: OpenShiftClustersCreateOrUpdateOutput,
   }));
@@ -338,7 +338,7 @@ export interface OpenShiftClustersDeleteInput {
   resourceName: string;
 }
 export const OpenShiftClustersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -353,7 +353,7 @@ export const OpenShiftClustersDeleteInput =
 // Output Schema
 export type OpenShiftClustersDeleteOutput = void;
 export const OpenShiftClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OpenShiftClustersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OpenShiftClustersDeleteOutput>;
 
 // The operation
 /**
@@ -366,12 +366,10 @@ export const OpenShiftClustersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the OpenShift cluster resource.
  */
-export const OpenShiftClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenShiftClustersDeleteInput,
-    outputSchema: OpenShiftClustersDeleteOutput,
-  }),
-);
+export const OpenShiftClustersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenShiftClustersDeleteInput,
+  outputSchema: OpenShiftClustersDeleteOutput,
+}));
 // Input Schema
 export interface OpenShiftClustersGetInput {
   subscriptionId: string;
@@ -379,7 +377,7 @@ export interface OpenShiftClustersGetInput {
   resourceName: string;
 }
 export const OpenShiftClustersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -406,7 +404,7 @@ export interface OpenShiftClustersGetOutput {
   };
 }
 export const OpenShiftClustersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -437,18 +435,16 @@ export const OpenShiftClustersGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the OpenShift cluster resource.
  */
-export const OpenShiftClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenShiftClustersGetInput,
-    outputSchema: OpenShiftClustersGetOutput,
-  }),
-);
+export const OpenShiftClustersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenShiftClustersGetInput,
+  outputSchema: OpenShiftClustersGetOutput,
+}));
 // Input Schema
 export interface OpenShiftClustersListInput {
   subscriptionId: string;
 }
 export const OpenShiftClustersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -476,7 +472,7 @@ export interface OpenShiftClustersListOutput {
   nextLink?: string;
 }
 export const OpenShiftClustersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -520,12 +516,10 @@ export const OpenShiftClustersListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const OpenShiftClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenShiftClustersListInput,
-    outputSchema: OpenShiftClustersListOutput,
-  }),
-);
+export const OpenShiftClustersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenShiftClustersListInput,
+  outputSchema: OpenShiftClustersListOutput,
+}));
 // Input Schema
 export interface OpenShiftClustersListAdminCredentialsInput {
   subscriptionId: string;
@@ -533,7 +527,7 @@ export interface OpenShiftClustersListAdminCredentialsInput {
   resourceName: string;
 }
 export const OpenShiftClustersListAdminCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -550,7 +544,7 @@ export interface OpenShiftClustersListAdminCredentialsOutput {
   kubeconfig?: string;
 }
 export const OpenShiftClustersListAdminCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kubeconfig: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<OpenShiftClustersListAdminCredentialsOutput>;
 
@@ -566,7 +560,7 @@ export const OpenShiftClustersListAdminCredentialsOutput =
  * @param resourceName - The name of the OpenShift cluster resource.
  */
 export const OpenShiftClustersListAdminCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OpenShiftClustersListAdminCredentialsInput,
     outputSchema: OpenShiftClustersListAdminCredentialsOutput,
   }));
@@ -576,7 +570,7 @@ export interface OpenShiftClustersListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const OpenShiftClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -605,7 +599,7 @@ export interface OpenShiftClustersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const OpenShiftClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -651,7 +645,7 @@ export const OpenShiftClustersListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const OpenShiftClustersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OpenShiftClustersListByResourceGroupInput,
     outputSchema: OpenShiftClustersListByResourceGroupOutput,
   }));
@@ -662,7 +656,7 @@ export interface OpenShiftClustersListCredentialsInput {
   resourceName: string;
 }
 export const OpenShiftClustersListCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -680,7 +674,7 @@ export interface OpenShiftClustersListCredentialsOutput {
   kubeadminPassword?: Redacted.Redacted<string>;
 }
 export const OpenShiftClustersListCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kubeadminUsername: Schema.optional(Schema.String),
     kubeadminPassword: Schema.optional(SensitiveOutputString),
   }) as unknown as Schema.Codec<OpenShiftClustersListCredentialsOutput>;
@@ -697,7 +691,7 @@ export const OpenShiftClustersListCredentialsOutput =
  * @param resourceName - The name of the OpenShift cluster resource.
  */
 export const OpenShiftClustersListCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OpenShiftClustersListCredentialsInput,
     outputSchema: OpenShiftClustersListCredentialsOutput,
   }));
@@ -796,7 +790,7 @@ export interface OpenShiftClustersUpdateInput {
   };
 }
 export const OpenShiftClustersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -984,7 +978,7 @@ export interface OpenShiftClustersUpdateOutput {
   };
 }
 export const OpenShiftClustersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1015,12 +1009,10 @@ export const OpenShiftClustersUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the OpenShift cluster resource.
  */
-export const OpenShiftClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenShiftClustersUpdateInput,
-    outputSchema: OpenShiftClustersUpdateOutput,
-  }),
-);
+export const OpenShiftClustersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenShiftClustersUpdateInput,
+  outputSchema: OpenShiftClustersUpdateOutput,
+}));
 // Input Schema
 export interface OpenShiftVersionsGetInput {
   subscriptionId: string;
@@ -1028,7 +1020,7 @@ export interface OpenShiftVersionsGetInput {
   openShiftVersion: string;
 }
 export const OpenShiftVersionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     openShiftVersion: Schema.String.pipe(T.PathParam()),
@@ -1055,7 +1047,7 @@ export interface OpenShiftVersionsGetOutput {
   };
 }
 export const OpenShiftVersionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1086,19 +1078,17 @@ export const OpenShiftVersionsGetOutput =
  * @param location - The name of the Azure region.
  * @param openShiftVersion - The desired version value of the OpenShiftVersion resource.
  */
-export const OpenShiftVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenShiftVersionsGetInput,
-    outputSchema: OpenShiftVersionsGetOutput,
-  }),
-);
+export const OpenShiftVersionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenShiftVersionsGetInput,
+  outputSchema: OpenShiftVersionsGetOutput,
+}));
 // Input Schema
 export interface OpenShiftVersionsListInput {
   subscriptionId: string;
   location: string;
 }
 export const OpenShiftVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1127,7 +1117,7 @@ export interface OpenShiftVersionsListOutput {
   nextLink?: string;
 }
 export const OpenShiftVersionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1172,17 +1162,13 @@ export const OpenShiftVersionsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const OpenShiftVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenShiftVersionsListInput,
-    outputSchema: OpenShiftVersionsListOutput,
-  }),
-);
+export const OpenShiftVersionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenShiftVersionsListInput,
+  outputSchema: OpenShiftVersionsListOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.RedHatOpenShift/operations",
@@ -1204,7 +1190,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -1228,7 +1214,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1239,7 +1225,7 @@ export interface PlatformWorkloadIdentityRoleSetGetInput {
   openShiftMinorVersion: string;
 }
 export const PlatformWorkloadIdentityRoleSetGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     openShiftMinorVersion: Schema.String.pipe(T.PathParam()),
@@ -1266,7 +1252,7 @@ export interface PlatformWorkloadIdentityRoleSetGetOutput {
   };
 }
 export const PlatformWorkloadIdentityRoleSetGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1298,7 +1284,7 @@ export const PlatformWorkloadIdentityRoleSetGetOutput =
  * @param openShiftMinorVersion - The desired version value of the PlatformWorkloadIdentityRoleSet resource.
  */
 export const PlatformWorkloadIdentityRoleSetGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PlatformWorkloadIdentityRoleSetGetInput,
     outputSchema: PlatformWorkloadIdentityRoleSetGetOutput,
   }));
@@ -1308,7 +1294,7 @@ export interface PlatformWorkloadIdentityRoleSetsListInput {
   location: string;
 }
 export const PlatformWorkloadIdentityRoleSetsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1337,7 +1323,7 @@ export interface PlatformWorkloadIdentityRoleSetsListOutput {
   nextLink?: string;
 }
 export const PlatformWorkloadIdentityRoleSetsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1383,7 +1369,7 @@ export const PlatformWorkloadIdentityRoleSetsListOutput =
  * @param location - The name of the Azure region.
  */
 export const PlatformWorkloadIdentityRoleSetsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PlatformWorkloadIdentityRoleSetsListInput,
     outputSchema: PlatformWorkloadIdentityRoleSetsListOutput,
   }));

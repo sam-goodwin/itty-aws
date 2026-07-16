@@ -13,7 +13,7 @@ export interface GetIssuingAuthorizationsAuthorizationInput {
   expand?: string;
 }
 export const GetIssuingAuthorizationsAuthorizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorization: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -2065,7 +2065,7 @@ export interface GetIssuingAuthorizationsAuthorizationOutput {
   wallet: string | null;
 }
 export const GetIssuingAuthorizationsAuthorizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.NullOr(
       Schema.Struct({
@@ -4364,7 +4364,7 @@ export const GetIssuingAuthorizationsAuthorizationOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetIssuingAuthorizationsAuthorization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetIssuingAuthorizationsAuthorizationInput,
     outputSchema: GetIssuingAuthorizationsAuthorizationOutput,
   }));

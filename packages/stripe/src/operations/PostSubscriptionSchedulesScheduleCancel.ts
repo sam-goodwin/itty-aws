@@ -15,7 +15,7 @@ export interface PostSubscriptionSchedulesScheduleCancelInput {
   prorate?: boolean;
 }
 export const PostSubscriptionSchedulesScheduleCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schedule: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     invoice_now: Schema.optional(Schema.Boolean),
@@ -1229,7 +1229,7 @@ export interface PostSubscriptionSchedulesScheduleCancelOutput {
     | null;
 }
 export const PostSubscriptionSchedulesScheduleCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -2505,7 +2505,7 @@ export const PostSubscriptionSchedulesScheduleCancelOutput =
  * <p>Cancels a subscription schedule and its associated subscription immediately (if the subscription schedule has an active subscription). A subscription schedule can only be canceled if its status is <code>not_started</code> or <code>active</code>.</p>
  */
 export const PostSubscriptionSchedulesScheduleCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostSubscriptionSchedulesScheduleCancelInput,
     outputSchema: PostSubscriptionSchedulesScheduleCancelOutput,
   }));

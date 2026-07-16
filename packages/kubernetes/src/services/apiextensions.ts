@@ -179,7 +179,7 @@ export interface CreateApiextensionsV1CustomResourceDefinitionInput {
   };
 }
 export const CreateApiextensionsV1CustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
@@ -590,7 +590,7 @@ export interface CreateApiextensionsV1CustomResourceDefinitionOutput {
   };
 }
 export const CreateApiextensionsV1CustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -836,7 +836,7 @@ export const CreateApiextensionsV1CustomResourceDefinitionOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createApiextensionsV1CustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: CreateApiextensionsV1CustomResourceDefinitionOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -863,7 +863,7 @@ export interface DeleteApiextensionsV1CollectionCustomResourceDefinitionInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteApiextensionsV1CollectionCustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -921,7 +921,7 @@ export interface DeleteApiextensionsV1CollectionCustomResourceDefinitionOutput {
   status?: string;
 }
 export const DeleteApiextensionsV1CollectionCustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1023,7 +1023,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteApiextensionsV1CollectionCustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteApiextensionsV1CollectionCustomResourceDefinitionInput,
     outputSchema: DeleteApiextensionsV1CollectionCustomResourceDefinitionOutput,
   }));
@@ -1041,7 +1041,7 @@ export interface DeleteApiextensionsV1CustomResourceDefinitionInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteApiextensionsV1CustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1091,7 +1091,7 @@ export interface DeleteApiextensionsV1CustomResourceDefinitionOutput {
   status?: string;
 }
 export const DeleteApiextensionsV1CustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1144,7 +1144,7 @@ export const DeleteApiextensionsV1CustomResourceDefinitionOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteApiextensionsV1CustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: DeleteApiextensionsV1CustomResourceDefinitionOutput,
     errors: [NotFound, Conflict] as const,
@@ -1152,7 +1152,7 @@ export const deleteApiextensionsV1CustomResourceDefinition =
 // Input Schema
 export interface GetApiextensionsAPIGroupInput {}
 export const GetApiextensionsAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apiextensions.k8s.io/" }),
   ) as unknown as Schema.Codec<GetApiextensionsAPIGroupInput>;
 
@@ -1166,7 +1166,7 @@ export interface GetApiextensionsAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetApiextensionsAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -1196,16 +1196,14 @@ export const GetApiextensionsAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getApiextensionsAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetApiextensionsAPIGroupInput,
-    outputSchema: GetApiextensionsAPIGroupOutput,
-  }),
-);
+export const getApiextensionsAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetApiextensionsAPIGroupInput,
+  outputSchema: GetApiextensionsAPIGroupOutput,
+}));
 // Input Schema
 export interface GetApiextensionsV1APIResourcesInput {}
 export const GetApiextensionsV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apiextensions.k8s.io/v1/" }),
   ) as unknown as Schema.Codec<GetApiextensionsV1APIResourcesInput>;
 
@@ -1228,7 +1226,7 @@ export interface GetApiextensionsV1APIResourcesOutput {
   }[];
 }
 export const GetApiextensionsV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -1253,7 +1251,7 @@ export const GetApiextensionsV1APIResourcesOutput =
  * get available resources
  */
 export const getApiextensionsV1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetApiextensionsV1APIResourcesInput,
     outputSchema: GetApiextensionsV1APIResourcesOutput,
   }));
@@ -1273,7 +1271,7 @@ export interface ListApiextensionsV1CustomResourceDefinitionInput {
   watch?: boolean;
 }
 export const ListApiextensionsV1CustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -1470,7 +1468,7 @@ export interface ListApiextensionsV1CustomResourceDefinitionOutput {
   };
 }
 export const ListApiextensionsV1CustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1788,7 +1786,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listApiextensionsV1CustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: ListApiextensionsV1CustomResourceDefinitionOutput,
   }));
@@ -1802,7 +1800,7 @@ export interface PatchApiextensionsV1CustomResourceDefinitionInput {
   force?: boolean;
 }
 export const PatchApiextensionsV1CustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -1982,7 +1980,7 @@ export interface PatchApiextensionsV1CustomResourceDefinitionOutput {
   };
 }
 export const PatchApiextensionsV1CustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2230,7 +2228,7 @@ export const PatchApiextensionsV1CustomResourceDefinitionOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchApiextensionsV1CustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: PatchApiextensionsV1CustomResourceDefinitionOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -2245,7 +2243,7 @@ export interface PatchApiextensionsV1CustomResourceDefinitionStatusInput {
   force?: boolean;
 }
 export const PatchApiextensionsV1CustomResourceDefinitionStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -2425,7 +2423,7 @@ export interface PatchApiextensionsV1CustomResourceDefinitionStatusOutput {
   };
 }
 export const PatchApiextensionsV1CustomResourceDefinitionStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2673,7 +2671,7 @@ export const PatchApiextensionsV1CustomResourceDefinitionStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchApiextensionsV1CustomResourceDefinitionStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchApiextensionsV1CustomResourceDefinitionStatusInput,
     outputSchema: PatchApiextensionsV1CustomResourceDefinitionStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -2684,7 +2682,7 @@ export interface ReadApiextensionsV1CustomResourceDefinitionInput {
   pretty?: string;
 }
 export const ReadApiextensionsV1CustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -2860,7 +2858,7 @@ export interface ReadApiextensionsV1CustomResourceDefinitionOutput {
   };
 }
 export const ReadApiextensionsV1CustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3104,7 +3102,7 @@ export const ReadApiextensionsV1CustomResourceDefinitionOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readApiextensionsV1CustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: ReadApiextensionsV1CustomResourceDefinitionOutput,
     errors: [NotFound] as const,
@@ -3115,7 +3113,7 @@ export interface ReadApiextensionsV1CustomResourceDefinitionStatusInput {
   pretty?: string;
 }
 export const ReadApiextensionsV1CustomResourceDefinitionStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
   }).pipe(
@@ -3291,7 +3289,7 @@ export interface ReadApiextensionsV1CustomResourceDefinitionStatusOutput {
   };
 }
 export const ReadApiextensionsV1CustomResourceDefinitionStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -3535,7 +3533,7 @@ export const ReadApiextensionsV1CustomResourceDefinitionStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readApiextensionsV1CustomResourceDefinitionStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadApiextensionsV1CustomResourceDefinitionStatusInput,
     outputSchema: ReadApiextensionsV1CustomResourceDefinitionStatusOutput,
     errors: [NotFound] as const,
@@ -3711,7 +3709,7 @@ export interface ReplaceApiextensionsV1CustomResourceDefinitionInput {
   };
 }
 export const ReplaceApiextensionsV1CustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -4123,7 +4121,7 @@ export interface ReplaceApiextensionsV1CustomResourceDefinitionOutput {
   };
 }
 export const ReplaceApiextensionsV1CustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -4370,7 +4368,7 @@ export const ReplaceApiextensionsV1CustomResourceDefinitionOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceApiextensionsV1CustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: ReplaceApiextensionsV1CustomResourceDefinitionOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -4546,7 +4544,7 @@ export interface ReplaceApiextensionsV1CustomResourceDefinitionStatusInput {
   };
 }
 export const ReplaceApiextensionsV1CustomResourceDefinitionStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -4958,7 +4956,7 @@ export interface ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput {
   };
 }
 export const ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -5205,7 +5203,7 @@ export const ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceApiextensionsV1CustomResourceDefinitionStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceApiextensionsV1CustomResourceDefinitionStatusInput,
     outputSchema: ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -5227,7 +5225,7 @@ export interface WatchApiextensionsV1CustomResourceDefinitionInput {
   watch?: boolean;
 }
 export const WatchApiextensionsV1CustomResourceDefinitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -5254,7 +5252,7 @@ export interface WatchApiextensionsV1CustomResourceDefinitionOutput {
   type: string;
 }
 export const WatchApiextensionsV1CustomResourceDefinitionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchApiextensionsV1CustomResourceDefinitionOutput>;
@@ -5319,7 +5317,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchApiextensionsV1CustomResourceDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchApiextensionsV1CustomResourceDefinitionInput,
     outputSchema: WatchApiextensionsV1CustomResourceDefinitionOutput,
   }));
@@ -5339,7 +5337,7 @@ export interface WatchApiextensionsV1CustomResourceDefinitionListInput {
   watch?: boolean;
 }
 export const WatchApiextensionsV1CustomResourceDefinitionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -5365,7 +5363,7 @@ export interface WatchApiextensionsV1CustomResourceDefinitionListOutput {
   type: string;
 }
 export const WatchApiextensionsV1CustomResourceDefinitionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchApiextensionsV1CustomResourceDefinitionListOutput>;
@@ -5429,7 +5427,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchApiextensionsV1CustomResourceDefinitionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchApiextensionsV1CustomResourceDefinitionListInput,
     outputSchema: WatchApiextensionsV1CustomResourceDefinitionListOutput,
   }));

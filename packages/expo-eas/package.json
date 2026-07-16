@@ -80,6 +80,7 @@
     "@types/bun": "catalog:",
     "@types/node": "catalog:",
     "dotenv": "catalog:",
+    "rolldown": "catalog:",
     "vitest": "catalog:"
   },
   "peerDependencies": {

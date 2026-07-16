@@ -41,7 +41,7 @@ export interface PostPaymentMethodsPaymentMethodInput {
   };
 }
 export const PostPaymentMethodsPaymentMethodInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payment_method: Schema.String.pipe(T.PathParam()),
     allow_redisplay: Schema.optional(
       Schema.Literals(["always", "limited", "unspecified"]),
@@ -948,7 +948,7 @@ export interface PostPaymentMethodsPaymentMethodOutput {
   zip?: {};
 }
 export const PostPaymentMethodsPaymentMethodOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acss_debit: Schema.optional(
       Schema.Struct({
         bank_name: Schema.NullOr(Schema.String),
@@ -1735,7 +1735,7 @@ export const PostPaymentMethodsPaymentMethodOutput =
  * <p>Updates a PaymentMethod object. A PaymentMethod must be attached to a customer to be updated.</p>
  */
 export const PostPaymentMethodsPaymentMethod =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentMethodsPaymentMethodInput,
     outputSchema: PostPaymentMethodsPaymentMethodOutput,
   }));

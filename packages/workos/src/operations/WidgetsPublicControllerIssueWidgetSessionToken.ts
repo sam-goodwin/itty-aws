@@ -18,7 +18,7 @@ export interface WidgetsPublicControllerIssueWidgetSessionTokenInput {
   >;
 }
 export const WidgetsPublicControllerIssueWidgetSessionTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.optional(Schema.String),
     user_id: Schema.optional(Schema.String),
     scopes: Schema.optional(
@@ -43,7 +43,7 @@ export interface WidgetsPublicControllerIssueWidgetSessionTokenOutput {
   token?: string;
 }
 export const WidgetsPublicControllerIssueWidgetSessionTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<WidgetsPublicControllerIssueWidgetSessionTokenOutput>;
 
@@ -54,7 +54,7 @@ export const WidgetsPublicControllerIssueWidgetSessionTokenOutput =
  * Generate a widget token scoped to an organization and user with the specified scopes.
  */
 export const WidgetsPublicControllerIssueWidgetSessionToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WidgetsPublicControllerIssueWidgetSessionTokenInput,
     outputSchema: WidgetsPublicControllerIssueWidgetSessionTokenOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

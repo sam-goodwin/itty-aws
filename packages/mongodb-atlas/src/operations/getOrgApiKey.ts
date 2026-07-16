@@ -10,7 +10,7 @@ export interface GetOrgApiKeyInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const GetOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrgApiKeyInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   apiUserId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -25,7 +25,7 @@ export const GetOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetOrgApiKeyOutput = void;
 export const GetOrgApiKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgApiKeyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgApiKeyOutput>;
 
 // The operation
 /**
@@ -38,7 +38,7 @@ export const GetOrgApiKeyOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key that  you want to update.
  */
-export const getOrgApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrgApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgApiKeyInput,
   outputSchema: GetOrgApiKeyOutput,
   errors: [Forbidden, NotFound] as const,

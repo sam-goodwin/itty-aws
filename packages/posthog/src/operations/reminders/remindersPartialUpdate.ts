@@ -44,7 +44,7 @@ export interface RemindersPartialUpdateInput {
   updated_at?: string | null;
 }
 export const RemindersPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization: Schema.optional(Schema.String),
     team: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -148,7 +148,7 @@ export interface RemindersPartialUpdateOutput {
   updated_at: string | null;
 }
 export const RemindersPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     organization: Schema.String,
     team: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -209,9 +209,7 @@ export const RemindersPartialUpdateOutput =
  *
  * @param id - A UUID string identifying this reminder.
  */
-export const remindersPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RemindersPartialUpdateInput,
-    outputSchema: RemindersPartialUpdateOutput,
-  }),
-);
+export const remindersPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RemindersPartialUpdateInput,
+  outputSchema: RemindersPartialUpdateOutput,
+}));

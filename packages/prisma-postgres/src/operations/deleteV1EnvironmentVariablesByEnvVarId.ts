@@ -8,7 +8,7 @@ export interface DeleteV1EnvironmentVariablesByEnvVarIdInput {
   envVarId: string;
 }
 export const DeleteV1EnvironmentVariablesByEnvVarIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     envVarId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/environment-variables/{envVarId}" }),
@@ -17,7 +17,7 @@ export const DeleteV1EnvironmentVariablesByEnvVarIdInput =
 // Output Schema
 export type DeleteV1EnvironmentVariablesByEnvVarIdOutput = void;
 export const DeleteV1EnvironmentVariablesByEnvVarIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1EnvironmentVariablesByEnvVarIdOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1EnvironmentVariablesByEnvVarIdOutput>;
 
 // The operation
 /**
@@ -27,7 +27,7 @@ export const DeleteV1EnvironmentVariablesByEnvVarIdOutput =
  * Removes an environment variable. A second delete of the same variable returns 404.
  */
 export const deleteV1EnvironmentVariablesByEnvVarId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteV1EnvironmentVariablesByEnvVarIdInput,
     outputSchema: DeleteV1EnvironmentVariablesByEnvVarIdOutput,
     errors: [NotFound, UnprocessableEntity] as const,

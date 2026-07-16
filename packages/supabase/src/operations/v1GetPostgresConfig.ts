@@ -8,7 +8,7 @@ export interface V1GetPostgresConfigInput {
   ref: string;
 }
 export const V1GetPostgresConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -57,7 +57,7 @@ export interface V1GetPostgresConfigOutput {
   hot_standby_feedback?: boolean;
 }
 export const V1GetPostgresConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     effective_cache_size: Schema.optional(Schema.String),
     logical_decoding_work_mem: Schema.optional(Schema.String),
     "cron.log_statement": Schema.optional(Schema.Boolean),
@@ -104,7 +104,7 @@ export const V1GetPostgresConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetPostgresConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetPostgresConfig = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetPostgresConfigInput,
   outputSchema: V1GetPostgresConfigOutput,
   errors: [BadRequest, Forbidden] as const,

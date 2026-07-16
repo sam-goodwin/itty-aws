@@ -8,7 +8,7 @@ export interface V1DeactivateVanitySubdomainConfigInput {
   ref: string;
 }
 export const V1DeactivateVanitySubdomainConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/projects/{ref}/vanity-subdomain" }),
@@ -17,7 +17,7 @@ export const V1DeactivateVanitySubdomainConfigInput =
 // Output Schema
 export type V1DeactivateVanitySubdomainConfigOutput = void;
 export const V1DeactivateVanitySubdomainConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeactivateVanitySubdomainConfigOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeactivateVanitySubdomainConfigOutput>;
 
 // The operation
 /**
@@ -26,7 +26,7 @@ export const V1DeactivateVanitySubdomainConfigOutput =
  * @param ref - Project ref
  */
 export const v1DeactivateVanitySubdomainConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1DeactivateVanitySubdomainConfigInput,
     outputSchema: V1DeactivateVanitySubdomainConfigOutput,
     errors: [BadRequest, Forbidden] as const,

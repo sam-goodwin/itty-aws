@@ -10,7 +10,7 @@ export interface DeleteDatabasePostgresCidrInput {
   id: string;
 }
 export const DeleteDatabasePostgresCidrInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
@@ -24,7 +24,7 @@ export const DeleteDatabasePostgresCidrInput =
 // Output Schema
 export type DeleteDatabasePostgresCidrOutput = void;
 export const DeleteDatabasePostgresCidrOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteDatabasePostgresCidrOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteDatabasePostgresCidrOutput>;
 
 // The operation
 /**
@@ -34,10 +34,8 @@ export const DeleteDatabasePostgresCidrOutput =
  * @param database - The name of the database
  * @param id - The ID of the IP restriction entry
  */
-export const deleteDatabasePostgresCidr = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteDatabasePostgresCidrInput,
-    outputSchema: DeleteDatabasePostgresCidrOutput,
-    errors: [Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const deleteDatabasePostgresCidr = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteDatabasePostgresCidrInput,
+  outputSchema: DeleteDatabasePostgresCidrOutput,
+  errors: [Forbidden, NotFound, UnprocessableEntity] as const,
+}));

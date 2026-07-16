@@ -14,7 +14,7 @@ export interface GetAccountsAccountExternalAccountsIdInput {
   expand?: string;
 }
 export const GetAccountsAccountExternalAccountsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -86,7 +86,7 @@ export type GetAccountsAccountExternalAccountsIdOutput =
       tokenization_method: string | null;
     };
 export const GetAccountsAccountExternalAccountsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       account: Schema.optional(Schema.Unknown),
       account_holder_name: Schema.NullOr(Schema.String),
@@ -170,7 +170,7 @@ export const GetAccountsAccountExternalAccountsIdOutput =
  * @param id - Unique identifier for the external account to be retrieved.
  */
 export const GetAccountsAccountExternalAccountsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAccountsAccountExternalAccountsIdInput,
     outputSchema: GetAccountsAccountExternalAccountsIdOutput,
   }));

@@ -8,7 +8,7 @@ export interface ApplicationsControllerDeleteInput {
   id: string;
 }
 export const ApplicationsControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/connect/applications/{id}" }),
@@ -17,7 +17,7 @@ export const ApplicationsControllerDeleteInput =
 // Output Schema
 export type ApplicationsControllerDeleteOutput = void;
 export const ApplicationsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsControllerDeleteOutput>;
 
 // The operation
 /**
@@ -28,7 +28,7 @@ export const ApplicationsControllerDeleteOutput =
  * @param id - The application ID or client ID of the Connect Application.
  */
 export const ApplicationsControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApplicationsControllerDeleteInput,
     outputSchema: ApplicationsControllerDeleteOutput,
     errors: [NotFound] as const,

@@ -8,7 +8,7 @@ export interface GetTerminalLocationsLocationInput {
   expand?: string;
 }
 export const GetTerminalLocationsLocationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -60,7 +60,7 @@ export type GetTerminalLocationsLocationOutput =
     }
   | { deleted: true; id: string; object: "terminal.location" };
 export const GetTerminalLocationsLocationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       address: Schema.Struct({
         city: Schema.NullOr(Schema.String),
@@ -118,7 +118,7 @@ export const GetTerminalLocationsLocationOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetTerminalLocationsLocation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTerminalLocationsLocationInput,
     outputSchema: GetTerminalLocationsLocationOutput,
   }));

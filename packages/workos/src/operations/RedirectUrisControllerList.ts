@@ -10,7 +10,7 @@ export interface RedirectUrisControllerListInput {
   order?: string;
 }
 export const RedirectUrisControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -33,7 +33,7 @@ export interface RedirectUrisControllerListOutput {
   }>;
 }
 export const RedirectUrisControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     list_metadata: Schema.optional(
       Schema.Struct({
@@ -66,9 +66,7 @@ export const RedirectUrisControllerListOutput =
  * @param limit - Upper limit on the number of objects to return, between `1` and `100`.
  * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  */
-export const RedirectUrisControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RedirectUrisControllerListInput,
-    outputSchema: RedirectUrisControllerListOutput,
-  }),
-);
+export const RedirectUrisControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedirectUrisControllerListInput,
+  outputSchema: RedirectUrisControllerListOutput,
+}));

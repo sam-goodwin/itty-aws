@@ -27,7 +27,7 @@ export interface CreateProjectBranchDataAPIInput {
   };
 }
 export const CreateProjectBranchDataAPIInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     database_name: Schema.String.pipe(T.PathParam()),
@@ -63,7 +63,7 @@ export interface CreateProjectBranchDataAPIOutput {
   url: string;
 }
 export const CreateProjectBranchDataAPIOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.String,
   }) as unknown as Schema.Codec<CreateProjectBranchDataAPIOutput>;
 
@@ -78,9 +78,7 @@ export const CreateProjectBranchDataAPIOutput =
  * @param branch_id - The Neon branch ID
  * @param database_name - The database name
  */
-export const createProjectBranchDataAPI = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateProjectBranchDataAPIInput,
-    outputSchema: CreateProjectBranchDataAPIOutput,
-  }),
-);
+export const createProjectBranchDataAPI = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateProjectBranchDataAPIInput,
+  outputSchema: CreateProjectBranchDataAPIOutput,
+}));

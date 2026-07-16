@@ -8,7 +8,7 @@ export interface CohortsUsedInRetrieveInput {
   project_id: string;
 }
 export const CohortsUsedInRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -37,7 +37,7 @@ export interface CohortsUsedInRetrieveOutput {
   };
 }
 export const CohortsUsedInRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     feature_flags: Schema.Struct({
       results: Schema.Array(
         Schema.Struct({
@@ -78,9 +78,7 @@ export const CohortsUsedInRetrieveOutput =
  * @param id - A unique integer value identifying this cohort.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const cohortsUsedInRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CohortsUsedInRetrieveInput,
-    outputSchema: CohortsUsedInRetrieveOutput,
-  }),
-);
+export const cohortsUsedInRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CohortsUsedInRetrieveInput,
+  outputSchema: CohortsUsedInRetrieveOutput,
+}));

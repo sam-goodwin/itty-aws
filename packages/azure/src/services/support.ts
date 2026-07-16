@@ -15,7 +15,7 @@ export interface ChatTranscriptsGetInput {
   chatTranscriptName: string;
 }
 export const ChatTranscriptsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
     chatTranscriptName: Schema.String.pipe(T.PathParam()),
@@ -42,7 +42,7 @@ export interface ChatTranscriptsGetOutput {
   };
 }
 export const ChatTranscriptsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -71,7 +71,7 @@ export const ChatTranscriptsGetOutput =
  * @param supportTicketName - The name of the SupportTicketDetails
  * @param chatTranscriptName - The name of the ChatTranscriptDetails
  */
-export const ChatTranscriptsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ChatTranscriptsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ChatTranscriptsGetInput,
   outputSchema: ChatTranscriptsGetOutput,
 }));
@@ -81,7 +81,7 @@ export interface ChatTranscriptsListInput {
   supportTicketName: string;
 }
 export const ChatTranscriptsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -110,7 +110,7 @@ export interface ChatTranscriptsListOutput {
   }[];
 }
 export const ChatTranscriptsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -155,7 +155,7 @@ export const ChatTranscriptsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param supportTicketName - The name of the SupportTicketDetails
  */
-export const ChatTranscriptsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ChatTranscriptsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ChatTranscriptsListInput,
   outputSchema: ChatTranscriptsListOutput,
 }));
@@ -165,7 +165,7 @@ export interface ChatTranscriptsNoSubscriptionGetInput {
   chatTranscriptName: string;
 }
 export const ChatTranscriptsNoSubscriptionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
     chatTranscriptName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -191,7 +191,7 @@ export interface ChatTranscriptsNoSubscriptionGetOutput {
   };
 }
 export const ChatTranscriptsNoSubscriptionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -220,7 +220,7 @@ export const ChatTranscriptsNoSubscriptionGetOutput =
  * @param chatTranscriptName - The name of the ChatTranscriptDetails
  */
 export const ChatTranscriptsNoSubscriptionGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ChatTranscriptsNoSubscriptionGetInput,
     outputSchema: ChatTranscriptsNoSubscriptionGetOutput,
   }));
@@ -229,7 +229,7 @@ export interface ChatTranscriptsNoSubscriptionListInput {
   supportTicketName: string;
 }
 export const ChatTranscriptsNoSubscriptionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -257,7 +257,7 @@ export interface ChatTranscriptsNoSubscriptionListOutput {
   }[];
 }
 export const ChatTranscriptsNoSubscriptionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -302,7 +302,7 @@ export const ChatTranscriptsNoSubscriptionListOutput =
  * @param supportTicketName - The name of the SupportTicketDetails
  */
 export const ChatTranscriptsNoSubscriptionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ChatTranscriptsNoSubscriptionListInput,
     outputSchema: ChatTranscriptsNoSubscriptionListOutput,
   }));
@@ -314,7 +314,7 @@ export interface CommunicationsCheckNameAvailabilityInput {
   type: "Microsoft.Support/supportTickets" | "Microsoft.Support/communications";
 }
 export const CommunicationsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
@@ -337,7 +337,7 @@ export interface CommunicationsCheckNameAvailabilityOutput {
   message?: string;
 }
 export const CommunicationsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -352,7 +352,7 @@ export const CommunicationsCheckNameAvailabilityOutput =
  * @param supportTicketName - The name of the SupportTicketDetails
  */
 export const CommunicationsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommunicationsCheckNameAvailabilityInput,
     outputSchema: CommunicationsCheckNameAvailabilityOutput,
   }));
@@ -371,7 +371,7 @@ export interface CommunicationsCreateInput {
   };
 }
 export const CommunicationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
     communicationName: Schema.String.pipe(T.PathParam()),
@@ -408,7 +408,7 @@ export interface CommunicationsCreateOutput {
   };
 }
 export const CommunicationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -437,25 +437,21 @@ export const CommunicationsCreateOutput =
  * @param supportTicketName - The name of the SupportTicketDetails
  * @param communicationName - The name of the CommunicationDetails
  */
-export const CommunicationsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CommunicationsCreateInput,
-    outputSchema: CommunicationsCreateOutput,
-  }),
-);
+export const CommunicationsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommunicationsCreateInput,
+  outputSchema: CommunicationsCreateOutput,
+}));
 // Input Schema
 export interface CommunicationsGetInput {
   subscriptionId: string;
   supportTicketName: string;
   communicationName: string;
 }
-export const CommunicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    supportTicketName: Schema.String.pipe(T.PathParam()),
-    communicationName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const CommunicationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  supportTicketName: Schema.String.pipe(T.PathParam()),
+  communicationName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
@@ -478,7 +474,7 @@ export interface CommunicationsGetOutput {
   };
 }
 export const CommunicationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -507,7 +503,7 @@ export const CommunicationsGetOutput =
  * @param supportTicketName - The name of the SupportTicketDetails
  * @param communicationName - The name of the CommunicationDetails
  */
-export const CommunicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CommunicationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CommunicationsGetInput,
   outputSchema: CommunicationsGetOutput,
 }));
@@ -519,7 +515,7 @@ export interface CommunicationsListInput {
   $filter?: string;
 }
 export const CommunicationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -550,7 +546,7 @@ export interface CommunicationsListOutput {
   }[];
 }
 export const CommunicationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -597,7 +593,7 @@ export const CommunicationsListOutput =
  * @param $top - The number of values to return in the collection. Default is 10 and max is 10.
  * @param $filter - The filter to apply on the operation. You can filter by communicationType and createdDate properties. CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators. You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator.
  */
-export const CommunicationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CommunicationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CommunicationsListInput,
   outputSchema: CommunicationsListOutput,
 }));
@@ -608,7 +604,7 @@ export interface CommunicationsNoSubscriptionCheckNameAvailabilityInput {
   type: "Microsoft.Support/supportTickets" | "Microsoft.Support/communications";
 }
 export const CommunicationsNoSubscriptionCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.Literals([
@@ -630,7 +626,7 @@ export interface CommunicationsNoSubscriptionCheckNameAvailabilityOutput {
   message?: string;
 }
 export const CommunicationsNoSubscriptionCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -644,7 +640,7 @@ export const CommunicationsNoSubscriptionCheckNameAvailabilityOutput =
  * @param supportTicketName - The name of the SupportTicketDetails
  */
 export const CommunicationsNoSubscriptionCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommunicationsNoSubscriptionCheckNameAvailabilityInput,
     outputSchema: CommunicationsNoSubscriptionCheckNameAvailabilityOutput,
   }));
@@ -662,7 +658,7 @@ export interface CommunicationsNoSubscriptionCreateInput {
   };
 }
 export const CommunicationsNoSubscriptionCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
     communicationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
@@ -698,7 +694,7 @@ export interface CommunicationsNoSubscriptionCreateOutput {
   };
 }
 export const CommunicationsNoSubscriptionCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -727,7 +723,7 @@ export const CommunicationsNoSubscriptionCreateOutput =
  * @param communicationName - The name of the CommunicationDetails
  */
 export const CommunicationsNoSubscriptionCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommunicationsNoSubscriptionCreateInput,
     outputSchema: CommunicationsNoSubscriptionCreateOutput,
   }));
@@ -737,7 +733,7 @@ export interface CommunicationsNoSubscriptionGetInput {
   communicationName: string;
 }
 export const CommunicationsNoSubscriptionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
     communicationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -763,7 +759,7 @@ export interface CommunicationsNoSubscriptionGetOutput {
   };
 }
 export const CommunicationsNoSubscriptionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -792,7 +788,7 @@ export const CommunicationsNoSubscriptionGetOutput =
  * @param communicationName - The name of the CommunicationDetails
  */
 export const CommunicationsNoSubscriptionGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommunicationsNoSubscriptionGetInput,
     outputSchema: CommunicationsNoSubscriptionGetOutput,
   }));
@@ -803,7 +799,7 @@ export interface CommunicationsNoSubscriptionListInput {
   $filter?: string;
 }
 export const CommunicationsNoSubscriptionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
@@ -833,7 +829,7 @@ export interface CommunicationsNoSubscriptionListOutput {
   }[];
 }
 export const CommunicationsNoSubscriptionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -880,7 +876,7 @@ export const CommunicationsNoSubscriptionListOutput =
  * @param $filter - The filter to apply on the operation. You can filter by communicationType and createdDate properties. CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators. You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator.
  */
 export const CommunicationsNoSubscriptionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CommunicationsNoSubscriptionListInput,
     outputSchema: CommunicationsNoSubscriptionListOutput,
   }));
@@ -896,7 +892,7 @@ export interface FilesCreateInput {
     numberOfChunks?: number;
   };
 }
-export const FilesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   fileWorkspaceName: Schema.String.pipe(T.PathParam()),
   fileName: Schema.String.pipe(T.PathParam()),
@@ -930,7 +926,7 @@ export interface FilesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const FilesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -959,7 +955,7 @@ export const FilesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param fileWorkspaceName - The name of the FileWorkspaceDetails
  * @param fileName - The name of the FileDetails
  */
-export const FilesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FilesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FilesCreateInput,
   outputSchema: FilesCreateOutput,
 }));
@@ -969,7 +965,7 @@ export interface FilesGetInput {
   fileWorkspaceName: string;
   fileName: string;
 }
-export const FilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   fileWorkspaceName: Schema.String.pipe(T.PathParam()),
   fileName: Schema.String.pipe(T.PathParam()),
@@ -995,7 +991,7 @@ export interface FilesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const FilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1024,7 +1020,7 @@ export const FilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param fileWorkspaceName - The name of the FileWorkspaceDetails
  * @param fileName - The name of the FileDetails
  */
-export const FilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FilesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FilesGetInput,
   outputSchema: FilesGetOutput,
 }));
@@ -1033,7 +1029,7 @@ export interface FilesListInput {
   subscriptionId: string;
   fileWorkspaceName: string;
 }
-export const FilesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   fileWorkspaceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1061,7 +1057,7 @@ export interface FilesListOutput {
     };
   }[];
 }
-export const FilesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -1106,7 +1102,7 @@ export const FilesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param fileWorkspaceName - The name of the FileWorkspaceDetails
  */
-export const FilesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FilesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FilesListInput,
   outputSchema: FilesListOutput,
 }));
@@ -1122,7 +1118,7 @@ export interface FilesNoSubscriptionCreateInput {
   };
 }
 export const FilesNoSubscriptionCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
     fileName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1156,7 +1152,7 @@ export interface FilesNoSubscriptionCreateOutput {
   };
 }
 export const FilesNoSubscriptionCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1184,19 +1180,17 @@ export const FilesNoSubscriptionCreateOutput =
  * @param fileWorkspaceName - The name of the FileWorkspaceDetails
  * @param fileName - The name of the FileDetails
  */
-export const FilesNoSubscriptionCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FilesNoSubscriptionCreateInput,
-    outputSchema: FilesNoSubscriptionCreateOutput,
-  }),
-);
+export const FilesNoSubscriptionCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FilesNoSubscriptionCreateInput,
+  outputSchema: FilesNoSubscriptionCreateOutput,
+}));
 // Input Schema
 export interface FilesNoSubscriptionGetInput {
   fileWorkspaceName: string;
   fileName: string;
 }
 export const FilesNoSubscriptionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
     fileName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1222,7 +1216,7 @@ export interface FilesNoSubscriptionGetOutput {
   };
 }
 export const FilesNoSubscriptionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1250,18 +1244,16 @@ export const FilesNoSubscriptionGetOutput =
  * @param fileWorkspaceName - The name of the FileWorkspaceDetails
  * @param fileName - The name of the FileDetails
  */
-export const FilesNoSubscriptionGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FilesNoSubscriptionGetInput,
-    outputSchema: FilesNoSubscriptionGetOutput,
-  }),
-);
+export const FilesNoSubscriptionGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FilesNoSubscriptionGetInput,
+  outputSchema: FilesNoSubscriptionGetOutput,
+}));
 // Input Schema
 export interface FilesNoSubscriptionListInput {
   fileWorkspaceName: string;
 }
 export const FilesNoSubscriptionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1289,7 +1281,7 @@ export interface FilesNoSubscriptionListOutput {
   }[];
 }
 export const FilesNoSubscriptionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1333,12 +1325,10 @@ export const FilesNoSubscriptionListOutput =
  * @param api-version - The API version to use for this operation.
  * @param fileWorkspaceName - The name of the FileWorkspaceDetails
  */
-export const FilesNoSubscriptionList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FilesNoSubscriptionListInput,
-    outputSchema: FilesNoSubscriptionListOutput,
-  }),
-);
+export const FilesNoSubscriptionList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FilesNoSubscriptionListInput,
+  outputSchema: FilesNoSubscriptionListOutput,
+}));
 // Input Schema
 export interface FilesNoSubscriptionUploadInput {
   fileWorkspaceName: string;
@@ -1347,7 +1337,7 @@ export interface FilesNoSubscriptionUploadInput {
   chunkIndex?: number;
 }
 export const FilesNoSubscriptionUploadInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
     fileName: Schema.String.pipe(T.PathParam()),
     content: Schema.optional(Schema.String),
@@ -1363,7 +1353,7 @@ export const FilesNoSubscriptionUploadInput =
 // Output Schema
 export type FilesNoSubscriptionUploadOutput = void;
 export const FilesNoSubscriptionUploadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FilesNoSubscriptionUploadOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FilesNoSubscriptionUploadOutput>;
 
 // The operation
 /**
@@ -1373,12 +1363,10 @@ export const FilesNoSubscriptionUploadOutput =
  * @param fileWorkspaceName - The name of the FileWorkspaceDetails
  * @param fileName - The name of the FileDetails
  */
-export const FilesNoSubscriptionUpload = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FilesNoSubscriptionUploadInput,
-    outputSchema: FilesNoSubscriptionUploadOutput,
-  }),
-);
+export const FilesNoSubscriptionUpload = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FilesNoSubscriptionUploadInput,
+  outputSchema: FilesNoSubscriptionUploadOutput,
+}));
 // Input Schema
 export interface FilesUploadInput {
   subscriptionId: string;
@@ -1387,7 +1375,7 @@ export interface FilesUploadInput {
   content?: string;
   chunkIndex?: number;
 }
-export const FilesUploadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FilesUploadInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   fileWorkspaceName: Schema.String.pipe(T.PathParam()),
   fileName: Schema.String.pipe(T.PathParam()),
@@ -1404,7 +1392,7 @@ export const FilesUploadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type FilesUploadOutput = void;
 export const FilesUploadOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FilesUploadOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FilesUploadOutput>;
 
 // The operation
 /**
@@ -1415,7 +1403,7 @@ export const FilesUploadOutput =
  * @param fileWorkspaceName - The name of the FileWorkspaceDetails
  * @param fileName - The name of the FileDetails
  */
-export const FilesUpload = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FilesUpload = /*@__PURE__*/ API.make(() => ({
   inputSchema: FilesUploadInput,
   outputSchema: FilesUploadOutput,
 }));
@@ -1425,7 +1413,7 @@ export interface FileWorkspacesCreateInput {
   fileWorkspaceName: string;
 }
 export const FileWorkspacesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1451,7 +1439,7 @@ export interface FileWorkspacesCreateOutput {
   };
 }
 export const FileWorkspacesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1479,23 +1467,19 @@ export const FileWorkspacesCreateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param fileWorkspaceName - The name of the FileWorkspaceDetails
  */
-export const FileWorkspacesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FileWorkspacesCreateInput,
-    outputSchema: FileWorkspacesCreateOutput,
-  }),
-);
+export const FileWorkspacesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FileWorkspacesCreateInput,
+  outputSchema: FileWorkspacesCreateOutput,
+}));
 // Input Schema
 export interface FileWorkspacesGetInput {
   subscriptionId: string;
   fileWorkspaceName: string;
 }
-export const FileWorkspacesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    fileWorkspaceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const FileWorkspacesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  fileWorkspaceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
@@ -1518,7 +1502,7 @@ export interface FileWorkspacesGetOutput {
   };
 }
 export const FileWorkspacesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1546,7 +1530,7 @@ export const FileWorkspacesGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param fileWorkspaceName - The name of the FileWorkspaceDetails
  */
-export const FileWorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FileWorkspacesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileWorkspacesGetInput,
   outputSchema: FileWorkspacesGetOutput,
 }));
@@ -1555,7 +1539,7 @@ export interface FileWorkspacesNoSubscriptionCreateInput {
   fileWorkspaceName: string;
 }
 export const FileWorkspacesNoSubscriptionCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1580,7 +1564,7 @@ export interface FileWorkspacesNoSubscriptionCreateOutput {
   };
 }
 export const FileWorkspacesNoSubscriptionCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1608,7 +1592,7 @@ export const FileWorkspacesNoSubscriptionCreateOutput =
  * @param fileWorkspaceName - The name of the FileWorkspaceDetails
  */
 export const FileWorkspacesNoSubscriptionCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FileWorkspacesNoSubscriptionCreateInput,
     outputSchema: FileWorkspacesNoSubscriptionCreateOutput,
   }));
@@ -1617,7 +1601,7 @@ export interface FileWorkspacesNoSubscriptionGetInput {
   fileWorkspaceName: string;
 }
 export const FileWorkspacesNoSubscriptionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileWorkspaceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1642,7 +1626,7 @@ export interface FileWorkspacesNoSubscriptionGetOutput {
   };
 }
 export const FileWorkspacesNoSubscriptionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1670,7 +1654,7 @@ export const FileWorkspacesNoSubscriptionGetOutput =
  * @param fileWorkspaceName - The name of the FileWorkspaceDetails
  */
 export const FileWorkspacesNoSubscriptionGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FileWorkspacesNoSubscriptionGetInput,
     outputSchema: FileWorkspacesNoSubscriptionGetOutput,
   }));
@@ -1680,7 +1664,7 @@ export interface LookUpResourceIdPostInput {
   type?: "Microsoft.Support/supportTickets";
 }
 export const LookUpResourceIdPostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     identifier: Schema.optional(Schema.String),
     type: Schema.optional(
       Schema.Literals(["Microsoft.Support/supportTickets"]),
@@ -1698,7 +1682,7 @@ export interface LookUpResourceIdPostOutput {
   resourceId?: string;
 }
 export const LookUpResourceIdPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<LookUpResourceIdPostOutput>;
 
@@ -1708,17 +1692,13 @@ export const LookUpResourceIdPostOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const LookUpResourceIdPost = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LookUpResourceIdPostInput,
-    outputSchema: LookUpResourceIdPostOutput,
-  }),
-);
+export const LookUpResourceIdPost = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LookUpResourceIdPostInput,
+  outputSchema: LookUpResourceIdPostOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Support/operations",
@@ -1742,7 +1722,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1772,7 +1752,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1784,7 +1764,7 @@ export interface ProblemClassificationsClassifyProblemsInput {
   resourceId?: string;
 }
 export const ProblemClassificationsClassifyProblemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     problemServiceName: Schema.String.pipe(T.PathParam()),
     issueSummary: Schema.String,
@@ -1813,7 +1793,7 @@ export interface ProblemClassificationsClassifyProblemsOutput {
   }[];
 }
 export const ProblemClassificationsClassifyProblemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     problemClassificationResults: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1843,7 +1823,7 @@ export const ProblemClassificationsClassifyProblemsOutput =
  * @param problemServiceName - Name of the Azure service for which the problem classifications need to be retrieved.
  */
 export const ProblemClassificationsClassifyProblems =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProblemClassificationsClassifyProblemsInput,
     outputSchema: ProblemClassificationsClassifyProblemsOutput,
   }));
@@ -1853,7 +1833,7 @@ export interface ProblemClassificationsGetInput {
   problemClassificationName: string;
 }
 export const ProblemClassificationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     problemClassificationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1879,7 +1859,7 @@ export interface ProblemClassificationsGetOutput {
   };
 }
 export const ProblemClassificationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1907,18 +1887,16 @@ export const ProblemClassificationsGetOutput =
  * @param serviceName - Name of the Azure service.
  * @param problemClassificationName - Name of problem classification.
  */
-export const ProblemClassificationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProblemClassificationsGetInput,
-    outputSchema: ProblemClassificationsGetOutput,
-  }),
-);
+export const ProblemClassificationsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProblemClassificationsGetInput,
+  outputSchema: ProblemClassificationsGetOutput,
+}));
 // Input Schema
 export interface ProblemClassificationsListInput {
   serviceName: string;
 }
 export const ProblemClassificationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1946,7 +1924,7 @@ export interface ProblemClassificationsListOutput {
   }[];
 }
 export const ProblemClassificationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1990,12 +1968,10 @@ export const ProblemClassificationsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param serviceName - Name of the Azure service.
  */
-export const ProblemClassificationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProblemClassificationsListInput,
-    outputSchema: ProblemClassificationsListOutput,
-  }),
-);
+export const ProblemClassificationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProblemClassificationsListInput,
+  outputSchema: ProblemClassificationsListOutput,
+}));
 // Input Schema
 export interface ProblemClassificationsNoSubscriptionClassifyProblemsInput {
   problemServiceName: string;
@@ -2003,7 +1979,7 @@ export interface ProblemClassificationsNoSubscriptionClassifyProblemsInput {
   resourceId?: string;
 }
 export const ProblemClassificationsNoSubscriptionClassifyProblemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     problemServiceName: Schema.String.pipe(T.PathParam()),
     issueSummary: Schema.String,
     resourceId: Schema.optional(Schema.String),
@@ -2031,7 +2007,7 @@ export interface ProblemClassificationsNoSubscriptionClassifyProblemsOutput {
   }[];
 }
 export const ProblemClassificationsNoSubscriptionClassifyProblemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     problemClassificationResults: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2060,7 +2036,7 @@ export const ProblemClassificationsNoSubscriptionClassifyProblemsOutput =
  * @param problemServiceName - Name of the Azure service for which the problem classifications need to be retrieved.
  */
 export const ProblemClassificationsNoSubscriptionClassifyProblems =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProblemClassificationsNoSubscriptionClassifyProblemsInput,
     outputSchema: ProblemClassificationsNoSubscriptionClassifyProblemsOutput,
   }));
@@ -2072,7 +2048,7 @@ export interface ServiceClassificationsClassifyServicesInput {
   additionalContext?: string;
 }
 export const ServiceClassificationsClassifyServicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     issueSummary: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
@@ -2094,7 +2070,7 @@ export interface ServiceClassificationsClassifyServicesOutput {
   }[];
 }
 export const ServiceClassificationsClassifyServicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceClassificationResults: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2114,7 +2090,7 @@ export const ServiceClassificationsClassifyServicesOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const ServiceClassificationsClassifyServices =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceClassificationsClassifyServicesInput,
     outputSchema: ServiceClassificationsClassifyServicesOutput,
   }));
@@ -2125,7 +2101,7 @@ export interface ServiceClassificationsNoSubscriptionClassifyServicesInput {
   additionalContext?: string;
 }
 export const ServiceClassificationsNoSubscriptionClassifyServicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     issueSummary: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     additionalContext: Schema.optional(Schema.String),
@@ -2146,7 +2122,7 @@ export interface ServiceClassificationsNoSubscriptionClassifyServicesOutput {
   }[];
 }
 export const ServiceClassificationsNoSubscriptionClassifyServicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceClassificationResults: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2165,7 +2141,7 @@ export const ServiceClassificationsNoSubscriptionClassifyServicesOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ServiceClassificationsNoSubscriptionClassifyServices =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceClassificationsNoSubscriptionClassifyServicesInput,
     outputSchema: ServiceClassificationsNoSubscriptionClassifyServicesOutput,
   }));
@@ -2173,7 +2149,7 @@ export const ServiceClassificationsNoSubscriptionClassifyServices =
 export interface ServicesGetInput {
   serviceName: string;
 }
-export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetInput = /*@__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2197,7 +2173,7 @@ export interface ServicesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2224,15 +2200,13 @@ export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param serviceName - Name of the Azure service.
  */
-export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesGetInput,
   outputSchema: ServicesGetOutput,
 }));
 // Input Schema
 export interface ServicesListInput {}
-export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ServicesListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Support/services",
@@ -2257,7 +2231,7 @@ export interface ServicesListOutput {
     };
   }[];
 }
-export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -2300,7 +2274,7 @@ export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesListInput,
   outputSchema: ServicesListOutput,
 }));
@@ -2311,7 +2285,7 @@ export interface SupportTicketsCheckNameAvailabilityInput {
   type: "Microsoft.Support/supportTickets" | "Microsoft.Support/communications";
 }
 export const SupportTicketsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.Literals([
@@ -2333,7 +2307,7 @@ export interface SupportTicketsCheckNameAvailabilityOutput {
   message?: string;
 }
 export const SupportTicketsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -2347,7 +2321,7 @@ export const SupportTicketsCheckNameAvailabilityOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const SupportTicketsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SupportTicketsCheckNameAvailabilityInput,
     outputSchema: SupportTicketsCheckNameAvailabilityOutput,
   }));
@@ -2422,7 +2396,7 @@ export interface SupportTicketsCreateInput {
   };
 }
 export const SupportTicketsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
@@ -2555,7 +2529,7 @@ export interface SupportTicketsCreateOutput {
   };
 }
 export const SupportTicketsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2583,23 +2557,19 @@ export const SupportTicketsCreateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param supportTicketName - The name of the SupportTicketDetails
  */
-export const SupportTicketsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SupportTicketsCreateInput,
-    outputSchema: SupportTicketsCreateOutput,
-  }),
-);
+export const SupportTicketsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SupportTicketsCreateInput,
+  outputSchema: SupportTicketsCreateOutput,
+}));
 // Input Schema
 export interface SupportTicketsGetInput {
   subscriptionId: string;
   supportTicketName: string;
 }
-export const SupportTicketsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    supportTicketName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const SupportTicketsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  supportTicketName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
@@ -2622,7 +2592,7 @@ export interface SupportTicketsGetOutput {
   };
 }
 export const SupportTicketsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2650,7 +2620,7 @@ export const SupportTicketsGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param supportTicketName - The name of the SupportTicketDetails
  */
-export const SupportTicketsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SupportTicketsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SupportTicketsGetInput,
   outputSchema: SupportTicketsGetOutput,
 }));
@@ -2661,7 +2631,7 @@ export interface SupportTicketsListInput {
   $filter?: string;
 }
 export const SupportTicketsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
@@ -2691,7 +2661,7 @@ export interface SupportTicketsListOutput {
   }[];
 }
 export const SupportTicketsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -2737,7 +2707,7 @@ export const SupportTicketsListOutput =
  * @param $top - The number of values to return in the collection. Default is 25 and max is 100.
  * @param $filter - The filter to apply on the operation. We support 'odata v4.0' filter semantics. [Learn more](https://docs.microsoft.com/odata/concepts/queryoptions-overview). _Status_, _ServiceId_, and _ProblemClassificationId_ filters can only be used with Equals ('eq') operator. For _CreatedDate_ filter, the supported operators are Greater Than ('gt') and Greater Than or Equals ('ge'). When using both filters, combine them using the logical 'AND'.
  */
-export const SupportTicketsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SupportTicketsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SupportTicketsListInput,
   outputSchema: SupportTicketsListOutput,
 }));
@@ -2747,7 +2717,7 @@ export interface SupportTicketsNoSubscriptionCheckNameAvailabilityInput {
   type: "Microsoft.Support/supportTickets" | "Microsoft.Support/communications";
 }
 export const SupportTicketsNoSubscriptionCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String,
     type: Schema.Literals([
       "Microsoft.Support/supportTickets",
@@ -2768,7 +2738,7 @@ export interface SupportTicketsNoSubscriptionCheckNameAvailabilityOutput {
   message?: string;
 }
 export const SupportTicketsNoSubscriptionCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -2781,7 +2751,7 @@ export const SupportTicketsNoSubscriptionCheckNameAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const SupportTicketsNoSubscriptionCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SupportTicketsNoSubscriptionCheckNameAvailabilityInput,
     outputSchema: SupportTicketsNoSubscriptionCheckNameAvailabilityOutput,
   }));
@@ -2855,7 +2825,7 @@ export interface SupportTicketsNoSubscriptionCreateInput {
   };
 }
 export const SupportTicketsNoSubscriptionCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       supportTicketId: Schema.optional(Schema.String),
@@ -2987,7 +2957,7 @@ export interface SupportTicketsNoSubscriptionCreateOutput {
   };
 }
 export const SupportTicketsNoSubscriptionCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3015,7 +2985,7 @@ export const SupportTicketsNoSubscriptionCreateOutput =
  * @param supportTicketName - The name of the SupportTicketDetails
  */
 export const SupportTicketsNoSubscriptionCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SupportTicketsNoSubscriptionCreateInput,
     outputSchema: SupportTicketsNoSubscriptionCreateOutput,
   }));
@@ -3024,7 +2994,7 @@ export interface SupportTicketsNoSubscriptionGetInput {
   supportTicketName: string;
 }
 export const SupportTicketsNoSubscriptionGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -3049,7 +3019,7 @@ export interface SupportTicketsNoSubscriptionGetOutput {
   };
 }
 export const SupportTicketsNoSubscriptionGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3077,7 +3047,7 @@ export const SupportTicketsNoSubscriptionGetOutput =
  * @param supportTicketName - The name of the SupportTicketDetails
  */
 export const SupportTicketsNoSubscriptionGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SupportTicketsNoSubscriptionGetInput,
     outputSchema: SupportTicketsNoSubscriptionGetOutput,
   }));
@@ -3087,7 +3057,7 @@ export interface SupportTicketsNoSubscriptionListInput {
   $filter?: string;
 }
 export const SupportTicketsNoSubscriptionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $top: Schema.optional(Schema.Number),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -3116,7 +3086,7 @@ export interface SupportTicketsNoSubscriptionListOutput {
   }[];
 }
 export const SupportTicketsNoSubscriptionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -3162,7 +3132,7 @@ export const SupportTicketsNoSubscriptionListOutput =
  * @param $filter - The filter to apply on the operation. We support 'odata v4.0' filter semantics. <a target='_blank' href='https://docs.microsoft.com/odata/concepts/queryoptions-overview'>Learn more</a> <br/><i>Status</i> , <i>ServiceId</i>, and <i>ProblemClassificationId</i> filters can only be used with 'eq' operator. For <i>CreatedDate</i> filter, the supported operators are 'gt' and 'ge'. When using both filters, combine them using the logical 'AND'.
  */
 export const SupportTicketsNoSubscriptionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SupportTicketsNoSubscriptionListInput,
     outputSchema: SupportTicketsNoSubscriptionListOutput,
   }));
@@ -3201,7 +3171,7 @@ export interface SupportTicketsNoSubscriptionUpdateInput {
   };
 }
 export const SupportTicketsNoSubscriptionUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportTicketName: Schema.String.pipe(T.PathParam()),
     severity: Schema.optional(
       Schema.Literals([
@@ -3283,7 +3253,7 @@ export interface SupportTicketsNoSubscriptionUpdateOutput {
   };
 }
 export const SupportTicketsNoSubscriptionUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3311,7 +3281,7 @@ export const SupportTicketsNoSubscriptionUpdateOutput =
  * @param supportTicketName - The name of the SupportTicketDetails
  */
 export const SupportTicketsNoSubscriptionUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SupportTicketsNoSubscriptionUpdateInput,
     outputSchema: SupportTicketsNoSubscriptionUpdateOutput,
   }));
@@ -3351,7 +3321,7 @@ export interface SupportTicketsUpdateInput {
   };
 }
 export const SupportTicketsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     supportTicketName: Schema.String.pipe(T.PathParam()),
     severity: Schema.optional(
@@ -3434,7 +3404,7 @@ export interface SupportTicketsUpdateOutput {
   };
 }
 export const SupportTicketsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3462,9 +3432,7 @@ export const SupportTicketsUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param supportTicketName - The name of the SupportTicketDetails
  */
-export const SupportTicketsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SupportTicketsUpdateInput,
-    outputSchema: SupportTicketsUpdateOutput,
-  }),
-);
+export const SupportTicketsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SupportTicketsUpdateInput,
+  outputSchema: SupportTicketsUpdateOutput,
+}));

@@ -14,7 +14,7 @@ export interface PostTestHelpersIssuingTransactionsTransactionRefundInput {
   refund_amount?: number;
 }
 export const PostTestHelpersIssuingTransactionsTransactionRefundInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     refund_amount: Schema.optional(Schema.Number),
@@ -458,7 +458,7 @@ export interface PostTestHelpersIssuingTransactionsTransactionRefundOutput {
   wallet: "apple_pay" | "google_pay" | "samsung_pay" | null;
 }
 export const PostTestHelpersIssuingTransactionsTransactionRefundOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.NullOr(
       Schema.Struct({
@@ -872,7 +872,7 @@ export const PostTestHelpersIssuingTransactionsTransactionRefundOutput =
  * <p>Refund a test-mode Transaction.</p>
  */
 export const PostTestHelpersIssuingTransactionsTransactionRefund =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersIssuingTransactionsTransactionRefundInput,
     outputSchema: PostTestHelpersIssuingTransactionsTransactionRefundOutput,
   }));

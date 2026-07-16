@@ -15,7 +15,7 @@ export interface CreateWorkflowInput {
   on_ddl?: "IGNORE" | "STOP" | "EXEC" | "EXEC_IGNORE";
   tables: ReadonlyArray<string>;
 }
-export const CreateWorkflowInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateWorkflowInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
@@ -121,7 +121,7 @@ export interface CreateWorkflowOutput {
     deleted_at: string | null;
   };
 }
-export const CreateWorkflowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateWorkflowOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   number: Schema.Number,
@@ -263,7 +263,7 @@ export const CreateWorkflowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param on_ddl - The behavior when DDL changes during the workflow
  * @param tables - List of tables to move
  */
-export const createWorkflow = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createWorkflow = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateWorkflowInput,
   outputSchema: CreateWorkflowOutput,
   errors: [Forbidden, NotFound] as const,

@@ -946,7 +946,7 @@ export interface PostIssuingCardholdersInput {
   type?: "company" | "individual";
 }
 export const PostIssuingCardholdersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billing: Schema.Struct({
       address: Schema.Struct({
         city: Schema.String,
@@ -2123,7 +2123,7 @@ export interface PostIssuingCardholdersOutput {
   type: "company" | "individual";
 }
 export const PostIssuingCardholdersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billing: Schema.Struct({
       address: Schema.Struct({
         city: Schema.NullOr(Schema.String),
@@ -2187,9 +2187,7 @@ export const PostIssuingCardholdersOutput =
  *
  * <p>Creates a new Issuing <code>Cardholder</code> object that can be issued cards.</p>
  */
-export const PostIssuingCardholders = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostIssuingCardholdersInput,
-    outputSchema: PostIssuingCardholdersOutput,
-  }),
-);
+export const PostIssuingCardholders = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostIssuingCardholdersInput,
+  outputSchema: PostIssuingCardholdersOutput,
+}));

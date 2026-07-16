@@ -7,7 +7,7 @@ export interface GetOnrampOrderByIdInput {
   orderId: string;
 }
 export const GetOnrampOrderByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orderId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v2/onramp/orders/{orderId}" }),
@@ -44,7 +44,7 @@ export interface GetOnrampOrderByIdOutput {
   };
 }
 export const GetOnrampOrderByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     order: Schema.Struct({
       orderId: Schema.String,
       paymentTotal: Schema.String,
@@ -88,7 +88,7 @@ export const GetOnrampOrderByIdOutput =
  *
  * @param orderId - The ID of the onramp order to retrieve.
  */
-export const getOnrampOrderById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOnrampOrderById = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOnrampOrderByIdInput,
   outputSchema: GetOnrampOrderByIdOutput,
 }));

@@ -14,7 +14,7 @@ export interface ListGroupEncryptionAtRestPrivateEndpointsInput {
   pageNum?: number;
 }
 export const ListGroupEncryptionAtRestPrivateEndpointsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AZURE", "AWS"]).pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const ListGroupEncryptionAtRestPrivateEndpointsInput =
 // Output Schema
 export type ListGroupEncryptionAtRestPrivateEndpointsOutput = void;
 export const ListGroupEncryptionAtRestPrivateEndpointsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupEncryptionAtRestPrivateEndpointsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupEncryptionAtRestPrivateEndpointsOutput>;
 
 // The operation
 /**
@@ -51,7 +51,7 @@ export const ListGroupEncryptionAtRestPrivateEndpointsOutput =
  * @param cloudProvider - Human-readable label that identifies the cloud provider for the private endpoints to return.
  */
 export const listGroupEncryptionAtRestPrivateEndpoints =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupEncryptionAtRestPrivateEndpointsInput,
     outputSchema: ListGroupEncryptionAtRestPrivateEndpointsOutput,
     errors: [Forbidden, NotFound] as const,

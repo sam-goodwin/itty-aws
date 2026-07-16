@@ -8,7 +8,7 @@ export interface PostPaymentMethodDomainsPaymentMethodDomainValidateInput {
   expand?: string[];
 }
 export const PostPaymentMethodDomainsPaymentMethodDomainValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payment_method_domain: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -53,7 +53,7 @@ export interface PostPaymentMethodDomainsPaymentMethodDomainValidateOutput {
   };
 }
 export const PostPaymentMethodDomainsPaymentMethodDomainValidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amazon_pay: Schema.Struct({
       status: Schema.Literals(["active", "inactive"]),
       status_details: Schema.optional(
@@ -120,7 +120,7 @@ export const PostPaymentMethodDomainsPaymentMethodDomainValidateOutput =
  * <p>Related guides: <a href="/docs/payments/payment-methods/pmd-registration">Payment method domains</a>.</p>
  */
 export const PostPaymentMethodDomainsPaymentMethodDomainValidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentMethodDomainsPaymentMethodDomainValidateInput,
     outputSchema: PostPaymentMethodDomainsPaymentMethodDomainValidateOutput,
   }));

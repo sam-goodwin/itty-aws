@@ -10,7 +10,7 @@ export interface ListOrgInvoicePendingInput {
   pretty?: boolean;
 }
 export const ListOrgInvoicePendingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const ListOrgInvoicePendingInput =
 // Output Schema
 export type ListOrgInvoicePendingOutput = void;
 export const ListOrgInvoicePendingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgInvoicePendingOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgInvoicePendingOutput>;
 
 // The operation
 /**
@@ -36,10 +36,8 @@ export const ListOrgInvoicePendingOutput =
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listOrgInvoicePending = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListOrgInvoicePendingInput,
-    outputSchema: ListOrgInvoicePendingOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const listOrgInvoicePending = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListOrgInvoicePendingInput,
+  outputSchema: ListOrgInvoicePendingOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

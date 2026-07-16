@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface DeleteProductsIdInput {
   id: string;
 }
-export const DeleteProductsIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteProductsIdInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -22,13 +22,11 @@ export interface DeleteProductsIdOutput {
   id: string;
   object: "product";
 }
-export const DeleteProductsIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    deleted: Schema.Literals([true]),
-    id: Schema.String,
-    object: Schema.Literals(["product"]),
-  },
-) as unknown as Schema.Codec<DeleteProductsIdOutput>;
+export const DeleteProductsIdOutput = /*@__PURE__*/ Schema.Struct({
+  deleted: Schema.Literals([true]),
+  id: Schema.String,
+  object: Schema.Literals(["product"]),
+}) as unknown as Schema.Codec<DeleteProductsIdOutput>;
 
 // The operation
 /**
@@ -36,7 +34,7 @@ export const DeleteProductsIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  *
  * <p>Delete a product. Deleting a product is only possible if it has no prices associated with it. Additionally, deleting a product with <code>type=good</code> is only possible if it has no SKUs associated with it.</p>
  */
-export const DeleteProductsId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeleteProductsId = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteProductsIdInput,
   outputSchema: DeleteProductsIdOutput,
 }));

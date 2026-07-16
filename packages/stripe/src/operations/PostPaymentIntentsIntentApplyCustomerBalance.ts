@@ -15,7 +15,7 @@ export interface PostPaymentIntentsIntentApplyCustomerBalanceInput {
   expand?: string[];
 }
 export const PostPaymentIntentsIntentApplyCustomerBalanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     amount: Schema.optional(Schema.Number),
     currency: Schema.optional(Schema.String),
@@ -286,7 +286,7 @@ export interface PostPaymentIntentsIntentApplyCustomerBalanceOutput {
   transfer_group: string | null;
 }
 export const PostPaymentIntentsIntentApplyCustomerBalanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -673,7 +673,7 @@ export const PostPaymentIntentsIntentApplyCustomerBalanceOutput =
  * <p>Manually reconcile the remaining amount for a <code>customer_balance</code> PaymentIntent.</p>
  */
 export const PostPaymentIntentsIntentApplyCustomerBalance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentIntentsIntentApplyCustomerBalanceInput,
     outputSchema: PostPaymentIntentsIntentApplyCustomerBalanceOutput,
   }));

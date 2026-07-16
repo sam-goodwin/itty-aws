@@ -9,7 +9,7 @@ export interface ExternalDataSourcesJobsRetrieveInput {
   project_id: string;
 }
 export const ExternalDataSourcesJobsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const ExternalDataSourcesJobsRetrieveInput =
 // Output Schema
 export type ExternalDataSourcesJobsRetrieveOutput = void;
 export const ExternalDataSourcesJobsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesJobsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesJobsRetrieveOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const ExternalDataSourcesJobsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const externalDataSourcesJobsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesJobsRetrieveInput,
     outputSchema: ExternalDataSourcesJobsRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

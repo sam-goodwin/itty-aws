@@ -44,7 +44,7 @@ export interface VisionScannersCreateInput {
   updated_at: string;
 }
 export const VisionScannersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String,
     name: Schema.String,
@@ -149,7 +149,7 @@ export interface VisionScannersCreateOutput {
   updated_at: string;
 }
 export const VisionScannersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     description: Schema.optional(Schema.String),
@@ -213,9 +213,7 @@ export const VisionScannersCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const visionScannersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VisionScannersCreateInput,
-    outputSchema: VisionScannersCreateOutput,
-  }),
-);
+export const visionScannersCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VisionScannersCreateInput,
+  outputSchema: VisionScannersCreateOutput,
+}));

@@ -391,7 +391,7 @@ interface ErrorDetails {
   /** HTTP status code from the server */
   statusCode?: number | null;
 }
-const ErrorDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ErrorDetails = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cause: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     isUpstream: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -417,7 +417,7 @@ interface UpdatedPrompt {
   serverAlias?: string | null;
   serverDescription?: string | null;
 }
-const UpdatedPrompt = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const UpdatedPrompt = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -492,7 +492,7 @@ interface Server {
       }[]
     | null;
 }
-const Server = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Server = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     authType: Schema.Union([
@@ -623,7 +623,7 @@ interface ListAccessAiControlMcpPortalsResponseResult {
   secureWebGateway?: boolean | null;
 }
 const ListAccessAiControlMcpPortalsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       hostname: Schema.String,
@@ -664,7 +664,7 @@ interface ListAccessAiControlMcpPortalsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListAccessAiControlMcpPortalsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -686,7 +686,7 @@ interface UpdatedPrompt2 {
   description?: string | null;
   enabled?: boolean | null;
 }
-const UpdatedPrompt2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const UpdatedPrompt2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     alias: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -717,7 +717,7 @@ interface Server2 {
       }[]
     | null;
 }
-const Server2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Server2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     serverId: Schema.String,
     defaultDisabled: Schema.optional(
@@ -787,7 +787,7 @@ interface ListAccessAiControlMcpServersResponseResult {
     | null;
 }
 const ListAccessAiControlMcpServersResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       authType: Schema.Union([
@@ -879,7 +879,7 @@ interface Corsheaders {
   /** The maximum number of seconds the results of a preflight request can be cached. */
   maxAge?: number | null;
 }
-const Corsheaders = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Corsheaders = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     allowAllHeaders: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -940,7 +940,7 @@ interface PublicDestination {
   /** The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/). */
   uri?: string | null;
 }
-const PublicDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PublicDestination = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.optional(
       Schema.Union([Schema.Literal("public"), Schema.Null]),
@@ -962,7 +962,7 @@ interface PrivateDestination {
   /** The VNET ID to match the destination. When omitted, all VNETs will match. */
   vnetId?: string | null;
 }
-const PrivateDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PrivateDestination = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cidr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -995,7 +995,7 @@ interface ViaMcpServerPortalDestination {
   type?: "via_mcp_server_portal" | null;
 }
 const ViaMcpServerPortalDestination =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mcpServerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       type: Schema.optional(
@@ -1009,7 +1009,7 @@ interface WorkerDestination {
   /** The ID of the Cloudflare Worker to protect with Access. */
   workerId: string;
 }
-const WorkerDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WorkerDestination = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("worker"),
     workerId: Schema.String,
@@ -1021,18 +1021,17 @@ interface PreviewWorkerDestination {
   /** The ID of the Cloudflare Worker whose preview deployments to protect with Access. */
   workerId: string;
 }
-const PreviewWorkerDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      type: Schema.Literal("preview_worker"),
-      workerId: Schema.String,
-    }).pipe(Schema.encodeKeys({ type: "type", workerId: "worker_id" })),
+const PreviewWorkerDestination = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.Literal("preview_worker"),
+    workerId: Schema.String,
+  }).pipe(Schema.encodeKeys({ type: "type", workerId: "worker_id" })),
 ) as unknown as Schema.Codec<PreviewWorkerDestination>;
 
 interface AllWorkersDestination {
   type: "all_workers";
 }
-const AllWorkersDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AllWorkersDestination = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("all_workers"),
   }),
@@ -1041,11 +1040,10 @@ const AllWorkersDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface AllPreviewWorkersDestination {
   type: "all_preview_workers";
 }
-const AllPreviewWorkersDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      type: Schema.Literal("all_preview_workers"),
-    }),
+const AllPreviewWorkersDestination = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.Literal("all_preview_workers"),
+  }),
 ) as unknown as Schema.Codec<AllPreviewWorkersDestination>;
 
 interface MfaConfig {
@@ -1058,7 +1056,7 @@ interface MfaConfig {
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`. */
   sessionDuration?: string | null;
 }
-const MfaConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MfaConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     allowedAuthenticators: Schema.optional(
       Schema.Union([
@@ -1094,27 +1092,26 @@ interface DynamicClientRegistration {
   /** Whether dynamic client registration is enabled. */
   enabled?: boolean | null;
 }
-const DynamicClientRegistration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      allowAnyOnLocalhost: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      allowAnyOnLoopback: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      allowedUris: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        allowAnyOnLocalhost: "allow_any_on_localhost",
-        allowAnyOnLoopback: "allow_any_on_loopback",
-        allowedUris: "allowed_uris",
-        enabled: "enabled",
-      }),
+const DynamicClientRegistration = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    allowAnyOnLocalhost: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
     ),
+    allowAnyOnLoopback: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    allowedUris: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      allowAnyOnLocalhost: "allow_any_on_localhost",
+      allowAnyOnLoopback: "allow_any_on_loopback",
+      allowedUris: "allowed_uris",
+      enabled: "enabled",
+    }),
+  ),
 ) as unknown as Schema.Codec<DynamicClientRegistration>;
 
 interface Grant {
@@ -1123,7 +1120,7 @@ interface Grant {
   /** The duration of the OAuth session. Must be in the format `300ms` or `2h45m`. Valid time units are ns, us (or µs), ms, s, m, h. */
   sessionDuration?: string | null;
 }
-const Grant = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Grant = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accessTokenLifetime: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -1155,7 +1152,7 @@ interface OauthConfiguration {
     sessionDuration?: string | null;
   } | null;
 }
-const OauthConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OauthConfiguration = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dynamicClientRegistration: Schema.optional(
       Schema.Union([DynamicClientRegistration, Schema.Null]),
@@ -1179,7 +1176,7 @@ interface ApprovalGroup {
   /** The UUID of an re-usable email list. */
   emailListUuid?: string | null;
 }
-const ApprovalGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ApprovalGroup = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     approvalsNeeded: Schema.Number,
     emailAddresses: Schema.optional(
@@ -1201,7 +1198,7 @@ interface Rdp {
   /** Clipboard formats allowed when copying from remote RDP session to local machine. */
   allowedClipboardRemoteToLocalFormats?: "text"[] | null;
 }
-const Rdp = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Rdp = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     allowedClipboardLocalToRemoteFormats: Schema.optional(
       Schema.Union([Schema.Array(Schema.Literal("text")), Schema.Null]),
@@ -1226,7 +1223,7 @@ interface ConnectionRules {
     allowedClipboardRemoteToLocalFormats?: "text"[] | null;
   } | null;
 }
-const ConnectionRules = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ConnectionRules = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     rdp: Schema.optional(Schema.Union([Rdp, Schema.Null])),
   }),
@@ -1236,7 +1233,7 @@ interface Group {
   /** The ID of a previously created Access group. */
   id: string;
 }
-const Group = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Group = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
   }),
@@ -1245,7 +1242,7 @@ const Group = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface GroupRule {
   group: { id: string };
 }
-const GroupRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GroupRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     group: Group,
   }),
@@ -1255,13 +1252,12 @@ interface AnyValidServiceTokenRule {
   /** An empty object which matches on all service tokens. */
   anyValidServiceToken: unknown;
 }
-const AnyValidServiceTokenRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      anyValidServiceToken: Schema.Unknown,
-    }).pipe(
-      Schema.encodeKeys({ anyValidServiceToken: "any_valid_service_token" }),
-    ),
+const AnyValidServiceTokenRule = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    anyValidServiceToken: Schema.Unknown,
+  }).pipe(
+    Schema.encodeKeys({ anyValidServiceToken: "any_valid_service_token" }),
+  ),
 ) as unknown as Schema.Codec<AnyValidServiceTokenRule>;
 
 interface AuthContext {
@@ -1272,7 +1268,7 @@ interface AuthContext {
   /** The ID of your Azure identity provider. */
   identityProviderId: string;
 }
-const AuthContext = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AuthContext = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     acId: Schema.String,
@@ -1289,7 +1285,7 @@ const AuthContext = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface AccessAuthContextRule {
   authContext: { id: string; acId: string; identityProviderId: string };
 }
-const AccessAuthContextRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessAuthContextRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     authContext: AuthContext,
   }).pipe(Schema.encodeKeys({ authContext: "auth_context" })),
@@ -1299,7 +1295,7 @@ interface AuthMethod {
   /** The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2. */
   authMethod: string;
 }
-const AuthMethod = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AuthMethod = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     authMethod: Schema.String,
   }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
@@ -1308,11 +1304,10 @@ const AuthMethod = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface AuthenticationMethodRule {
   authMethod: { authMethod: string };
 }
-const AuthenticationMethodRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      authMethod: AuthMethod,
-    }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
+const AuthenticationMethodRule = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    authMethod: AuthMethod,
+  }).pipe(Schema.encodeKeys({ authMethod: "auth_method" })),
 ) as unknown as Schema.Codec<AuthenticationMethodRule>;
 
 interface AzureAD {
@@ -1321,7 +1316,7 @@ interface AzureAD {
   /** The ID of your Azure identity provider. */
   identityProviderId: string;
 }
-const AzureAD = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AzureAD = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     identityProviderId: Schema.String,
@@ -1333,7 +1328,7 @@ const AzureAD = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface AzureGroupRule {
   azureAD: { id: string; identityProviderId: string };
 }
-const AzureGroupRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AzureGroupRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     azureAD: AzureAD,
   }),
@@ -1342,7 +1337,7 @@ const AzureGroupRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface CertificateRule {
   certificate: unknown;
 }
-const CertificateRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CertificateRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     certificate: Schema.Unknown,
   }),
@@ -1352,7 +1347,7 @@ interface CommonName {
   /** The common name to match. */
   commonName: string;
 }
-const CommonName = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CommonName = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     commonName: Schema.String,
   }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
@@ -1361,7 +1356,7 @@ const CommonName = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface AccessCommonNameRule {
   commonName: { commonName: string };
 }
-const AccessCommonNameRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessCommonNameRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     commonName: CommonName,
   }).pipe(Schema.encodeKeys({ commonName: "common_name" })),
@@ -1371,7 +1366,7 @@ interface Geo {
   /** The country code that should be matched. */
   countryCode: string;
 }
-const Geo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Geo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     countryCode: Schema.String,
   }).pipe(Schema.encodeKeys({ countryCode: "country_code" })),
@@ -1380,7 +1375,7 @@ const Geo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface CountryRule {
   geo: { countryCode: string };
 }
-const CountryRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CountryRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     geo: Geo,
   }),
@@ -1390,7 +1385,7 @@ interface DevicePosture {
   /** The ID of a device posture integration. */
   integrationUid: string;
 }
-const DevicePosture = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DevicePosture = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     integrationUid: Schema.String,
   }).pipe(Schema.encodeKeys({ integrationUid: "integration_uid" })),
@@ -1399,7 +1394,7 @@ const DevicePosture = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface AccessDevicePostureRule {
   devicePosture: { integrationUid: string };
 }
-const AccessDevicePostureRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessDevicePostureRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     devicePosture: DevicePosture,
   }).pipe(Schema.encodeKeys({ devicePosture: "device_posture" })),
@@ -1409,7 +1404,7 @@ interface EmailDomain {
   /** The email domain to match. */
   domain: string;
 }
-const EmailDomain = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const EmailDomain = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     domain: Schema.String,
   }),
@@ -1418,7 +1413,7 @@ const EmailDomain = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface DomainRule {
   emailDomain: { domain: string };
 }
-const DomainRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DomainRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     emailDomain: EmailDomain,
   }).pipe(Schema.encodeKeys({ emailDomain: "email_domain" })),
@@ -1427,7 +1422,7 @@ const DomainRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface EmailListRule {
   emailList: { id: string };
 }
-const EmailListRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const EmailListRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     emailList: Group,
   }).pipe(Schema.encodeKeys({ emailList: "email_list" })),
@@ -1437,7 +1432,7 @@ interface Email {
   /** The email of the user. */
   email: string;
 }
-const Email = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Email = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     email: Schema.String,
   }),
@@ -1446,7 +1441,7 @@ const Email = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface EmailRule {
   email: { email: string };
 }
-const EmailRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const EmailRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     email: Email,
   }),
@@ -1456,7 +1451,7 @@ interface EveryoneRule {
   /** An empty object which matches on all users. */
   everyone: unknown;
 }
-const EveryoneRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const EveryoneRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     everyone: Schema.Unknown,
   }),
@@ -1468,7 +1463,7 @@ interface ExternalEvaluation {
   /** The API endpoint containing the key that Access uses to verify that the response came from your API. */
   keysUrl: string;
 }
-const ExternalEvaluation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ExternalEvaluation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     evaluateUrl: Schema.String,
     keysUrl: Schema.String,
@@ -1480,7 +1475,7 @@ const ExternalEvaluation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface ExternalEvaluationRule {
   externalEvaluation: { evaluateUrl: string; keysUrl: string };
 }
-const ExternalEvaluationRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ExternalEvaluationRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     externalEvaluation: ExternalEvaluation,
   }).pipe(Schema.encodeKeys({ externalEvaluation: "external_evaluation" })),
@@ -1494,7 +1489,7 @@ interface GitHubOrganization {
   /** The name of the team */
   team?: string | null;
 }
-const GitHubOrganization = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GitHubOrganization = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     identityProviderId: Schema.String,
     name: Schema.String,
@@ -1515,7 +1510,7 @@ interface GitHubOrganizationRule {
     team?: string | null;
   };
 }
-const GitHubOrganizationRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GitHubOrganizationRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     githubOrganization: GitHubOrganization,
   }).pipe(Schema.encodeKeys({ githubOrganization: "github-organization" })),
@@ -1527,7 +1522,7 @@ interface Gsuite {
   /** The ID of your Google Workspace identity provider. */
   identityProviderId: string;
 }
-const Gsuite = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Gsuite = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     email: Schema.String,
     identityProviderId: Schema.String,
@@ -1542,7 +1537,7 @@ const Gsuite = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface GsuiteGroupRule {
   gsuite: { email: string; identityProviderId: string };
 }
-const GsuiteGroupRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GsuiteGroupRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     gsuite: Gsuite,
   }),
@@ -1551,7 +1546,7 @@ const GsuiteGroupRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface AccessLoginMethodRule {
   loginMethod: { id: string };
 }
-const AccessLoginMethodRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessLoginMethodRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     loginMethod: Group,
   }).pipe(Schema.encodeKeys({ loginMethod: "login_method" })),
@@ -1560,7 +1555,7 @@ const AccessLoginMethodRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface IplistRule {
   ipList: { id: string };
 }
-const IplistRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const IplistRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ipList: Group,
   }).pipe(Schema.encodeKeys({ ipList: "ip_list" })),
@@ -1570,7 +1565,7 @@ interface Ip {
   /** An IPv4 or IPv6 CIDR block. */
   ip: string;
 }
-const Ip = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ip = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ip: Schema.String,
   }),
@@ -1579,7 +1574,7 @@ const Ip = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Iprule {
   ip: { ip: string };
 }
-const Iprule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Iprule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ip: Ip,
   }),
@@ -1591,7 +1586,7 @@ interface Okta {
   /** The name of the Okta group. */
   name: string;
 }
-const Okta = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Okta = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     identityProviderId: Schema.String,
     name: Schema.String,
@@ -1606,7 +1601,7 @@ const Okta = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface OktaGroupRule {
   okta: { identityProviderId: string; name: string };
 }
-const OktaGroupRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OktaGroupRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     okta: Okta,
   }),
@@ -1620,7 +1615,7 @@ interface Saml {
   /** The ID of your SAML identity provider. */
   identityProviderId: string;
 }
-const Saml = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Saml = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     attributeName: Schema.String,
     attributeValue: Schema.String,
@@ -1641,7 +1636,7 @@ interface SamlgroupRule {
     identityProviderId: string;
   };
 }
-const SamlgroupRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SamlgroupRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     saml: Saml,
   }),
@@ -1655,7 +1650,7 @@ interface Oidc {
   /** The ID of your OIDC identity provider. */
   identityProviderId: string;
 }
-const Oidc = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Oidc = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     claimName: Schema.String,
     claimValue: Schema.String,
@@ -1672,7 +1667,7 @@ const Oidc = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface AccessOIDCClaimRule {
   oidc: { claimName: string; claimValue: string; identityProviderId: string };
 }
-const AccessOIDCClaimRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessOIDCClaimRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     oidc: Oidc,
   }),
@@ -1682,7 +1677,7 @@ interface ServiceToken {
   /** The ID of a Service Token. */
   tokenId: string;
 }
-const ServiceToken = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ServiceToken = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     tokenId: Schema.String,
   }).pipe(Schema.encodeKeys({ tokenId: "token_id" })),
@@ -1691,7 +1686,7 @@ const ServiceToken = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface ServiceTokenRule {
   serviceToken: { tokenId: string };
 }
-const ServiceTokenRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ServiceTokenRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     serviceToken: ServiceToken,
   }).pipe(Schema.encodeKeys({ serviceToken: "service_token" })),
@@ -1701,7 +1696,7 @@ interface LinkedAppToken {
   /** The ID of an Access OIDC SaaS application */
   appUid: string;
 }
-const LinkedAppToken = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LinkedAppToken = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     appUid: Schema.String,
   }).pipe(Schema.encodeKeys({ appUid: "app_uid" })),
@@ -1710,18 +1705,17 @@ const LinkedAppToken = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface AccessLinkedAppTokenRule {
   linkedAppToken: { appUid: string };
 }
-const AccessLinkedAppTokenRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      linkedAppToken: LinkedAppToken,
-    }).pipe(Schema.encodeKeys({ linkedAppToken: "linked_app_token" })),
+const AccessLinkedAppTokenRule = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    linkedAppToken: LinkedAppToken,
+  }).pipe(Schema.encodeKeys({ linkedAppToken: "linked_app_token" })),
 ) as unknown as Schema.Codec<AccessLinkedAppTokenRule>;
 
 interface UserRiskScore {
   /** A list of risk score levels to match. Values can be low, medium, high, or unscored. */
   userRiskScore: ("low" | "medium" | "high" | "unscored" | (string & {}))[];
 }
-const UserRiskScore = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const UserRiskScore = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     userRiskScore: Schema.Array(
       Schema.Union([
@@ -1737,7 +1731,7 @@ interface AccessUserRiskScoreRule {
     userRiskScore: ("low" | "medium" | "high" | "unscored" | (string & {}))[];
   };
 }
-const AccessUserRiskScoreRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessUserRiskScoreRule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     userRiskScore: UserRiskScore,
   }).pipe(Schema.encodeKeys({ userRiskScore: "user_risk_score" })),
@@ -1747,7 +1741,7 @@ interface CloudflareAccountMember {
   /** Identifier. */
   accountId?: string | null;
 }
-const CloudflareAccountMember = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CloudflareAccountMember = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(Schema.encodeKeys({ accountId: "account_id" })),
@@ -1757,7 +1751,7 @@ interface AccessCloudflareAccountMemberRule {
   cloudflareAccountMember: { accountId?: string | null };
 }
 const AccessCloudflareAccountMemberRule =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       cloudflareAccountMember: CloudflareAccountMember,
     }).pipe(
@@ -2013,7 +2007,7 @@ interface Policy {
   sessionDuration?: string | null;
   updatedAt?: string | null;
 }
-const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Policy = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     approvalGroups: Schema.optional(
@@ -2188,7 +2182,7 @@ interface ScimconfigAuthenticationHTTPBasic {
   user: string;
 }
 const ScimconfigAuthenticationHTTPBasic =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       password: SensitiveString,
       scheme: Schema.Literal("httpbasic"),
@@ -2203,7 +2197,7 @@ interface ScimconfigAuthenticationOAuthBearerToken {
   scheme: "oauthbearertoken";
 }
 const ScimconfigAuthenticationOAuthBearerToken =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       token: Schema.String,
       scheme: Schema.Literal("oauthbearertoken"),
@@ -2225,7 +2219,7 @@ interface ScimconfigAuthenticationOauth2 {
   scopes?: string[] | null;
 }
 const ScimconfigAuthenticationOauth2 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       authorizationUrl: Schema.String,
       clientId: Schema.String,
@@ -2256,7 +2250,7 @@ interface AccessSCIMConfigAuthenticationAccessServiceToken {
   scheme: "access_service_token";
 }
 const AccessSCIMConfigAuthenticationAccessServiceToken =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clientId: Schema.String,
       clientSecret: SensitiveString,
@@ -2278,7 +2272,7 @@ interface Operations {
   /** Whether or not this mapping applies to update (PATCH/PUT) operations. */
   update?: boolean | null;
 }
-const Operations = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Operations = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     create: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     delete: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -2304,7 +2298,7 @@ interface ScimconfigMapping {
   /** A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application. */
   transformJsonata?: string | null;
 }
-const ScimconfigMapping = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ScimconfigMapping = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     schema: Schema.String,
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -2390,7 +2384,7 @@ interface Scimconfig {
       }[]
     | null;
 }
-const Scimconfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Scimconfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     idpUid: Schema.String,
     remoteUri: Schema.String,
@@ -2857,7 +2851,7 @@ interface SelfHostedApplication {
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browse */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
 }
-const SelfHostedApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SelfHostedApplication = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     domain: Schema.String,
     type: Schema.Union([
@@ -3017,7 +3011,7 @@ interface NameByIdP {
   /** The name of the IdP provided attribute. */
   sourceName?: string | null;
 }
-const NameByIdP = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const NameByIdP = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     idpId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     sourceName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3030,7 +3024,7 @@ interface Source {
   /** A mapping from IdP ID to attribute name. */
   nameByIdp?: { idpId?: string | null; sourceName?: string | null }[] | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     nameByIdp: Schema.optional(
@@ -3058,7 +3052,7 @@ interface CustomAttribute {
     nameByIdp?: { idpId?: string | null; sourceName?: string | null }[] | null;
   } | null;
 }
-const CustomAttribute = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CustomAttribute = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     friendlyName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3129,7 +3123,7 @@ interface SamlsaaSApp {
   /** The endpoint where your SaaS application will send login requests. */
   ssoEndpoint?: string | null;
 }
-const SamlsaaSApp = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SamlsaaSApp = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     authType: Schema.optional(
       Schema.Union([
@@ -3185,7 +3179,7 @@ interface Source2 {
   /** A mapping from IdP ID to claim name. */
   nameByIdp?: Record<string, unknown> | null;
 }
-const Source2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     nameByIdp: Schema.optional(
@@ -3206,7 +3200,7 @@ interface CustomClaim {
     nameByIdp?: Record<string, unknown> | null;
   } | null;
 }
-const CustomClaim = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CustomClaim = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     required: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -3229,30 +3223,29 @@ interface HybridAndImplicitOptions {
   /** If an ID Token should be returned from the OIDC Authorization endpoint */
   returnIdTokenFromAuthorizationEndpoint?: boolean | null;
 }
-const HybridAndImplicitOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      returnAccessTokenFromAuthorizationEndpoint: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      returnIdTokenFromAuthorizationEndpoint: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        returnAccessTokenFromAuthorizationEndpoint:
-          "return_access_token_from_authorization_endpoint",
-        returnIdTokenFromAuthorizationEndpoint:
-          "return_id_token_from_authorization_endpoint",
-      }),
+const HybridAndImplicitOptions = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    returnAccessTokenFromAuthorizationEndpoint: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
     ),
+    returnIdTokenFromAuthorizationEndpoint: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      returnAccessTokenFromAuthorizationEndpoint:
+        "return_access_token_from_authorization_endpoint",
+      returnIdTokenFromAuthorizationEndpoint:
+        "return_id_token_from_authorization_endpoint",
+    }),
+  ),
 ) as unknown as Schema.Codec<HybridAndImplicitOptions>;
 
 interface RefreshTokenOptions {
   /** How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m. */
   lifetime?: string | null;
 }
-const RefreshTokenOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RefreshTokenOptions = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lifetime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -3313,7 +3306,7 @@ interface OidcsaaSApp {
   /** Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled */
   scopes?: ("openid" | "groups" | "email" | "profile" | (string & {}))[] | null;
 }
-const OidcsaaSApp = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OidcsaaSApp = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accessTokenLifetime: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -3799,7 +3792,7 @@ interface SaaSApplication {
     | (string & {})
     | null;
 }
-const SaaSApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SaaSApplication = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     allowedIdps: Schema.optional(
@@ -3876,7 +3869,7 @@ interface FooterLink {
   /** the hyperlink in the footer link. */
   url: string;
 }
-const FooterLink = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FooterLink = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     url: Schema.String,
@@ -3895,7 +3888,7 @@ interface LandingPageDesign {
   /** The title shown on the landing page. */
   title?: string | null;
 }
-const LandingPageDesign = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LandingPageDesign = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     buttonColor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     buttonTextColor: Schema.optional(
@@ -4205,7 +4198,7 @@ interface AppLauncherApplication {
   /** Determines when to skip the App Launcher landing page. */
   skipAppLauncherLoginPage?: boolean | null;
 }
-const AppLauncherApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AppLauncherApplication = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Union([
       Schema.Literals([
@@ -4560,7 +4553,7 @@ interface DeviceEnrollmentPermissionsApplication {
   sessionDuration?: string | null;
 }
 const DeviceEnrollmentPermissionsApplication =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       type: Schema.Union([
         Schema.Literals([
@@ -4891,7 +4884,7 @@ interface BookmarkApplication {
     | (string & {})
     | null;
 }
-const BookmarkApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BookmarkApplication = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     appLauncherVisible: Schema.optional(
@@ -4954,7 +4947,7 @@ interface TargetCriterion {
   /** Contains a map of target attribute keys to target attribute values. */
   targetAttributes: Record<string, unknown>;
 }
-const TargetCriterion = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TargetCriterion = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     port: Schema.Number,
     protocol: Schema.Literal("SSH"),
@@ -4974,7 +4967,7 @@ interface Ssh {
   /** Enables using Identity Provider email alias as SSH username. */
   allowEmailAlias?: boolean | null;
 }
-const Ssh = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ssh = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     usernames: Schema.Array(Schema.String),
     allowEmailAlias: Schema.optional(
@@ -4992,7 +4985,7 @@ interface ConnectionRules2 {
   /** The SSH-specific rules that define how users may connect to the targets secured by your application. */
   ssh?: { usernames: string[]; allowEmailAlias?: boolean | null } | null;
 }
-const ConnectionRules2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ConnectionRules2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ssh: Schema.optional(Schema.Union([Ssh, Schema.Null])),
   }),
@@ -5006,7 +4999,7 @@ interface MfaConfig2 {
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples: `5m` or `24h`. */
   sessionDuration?: string | null;
 }
-const MfaConfig2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MfaConfig2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     allowedAuthenticators: Schema.optional(
       Schema.Union([Schema.Array(Schema.Literal("piv_key")), Schema.Null]),
@@ -5245,7 +5238,7 @@ interface Policy2 {
     | null;
   updatedAt?: string | null;
 }
-const Policy2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Policy2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     connectionRules: Schema.optional(
@@ -5633,45 +5626,44 @@ interface InfrastructureApplication {
       }[]
     | null;
 }
-const InfrastructureApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      targetCriteria: Schema.Array(TargetCriterion),
-      type: Schema.Union([
-        Schema.Literals([
-          "self_hosted",
-          "saas",
-          "ssh",
-          "vnc",
-          "app_launcher",
-          "warp",
-          "biso",
-          "bookmark",
-          "dash_sso",
-          "infrastructure",
-          "rdp",
-          "mcp",
-          "mcp_portal",
-          "proxy_endpoint",
-        ]),
-        Schema.String,
+const InfrastructureApplication = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    targetCriteria: Schema.Array(TargetCriterion),
+    type: Schema.Union([
+      Schema.Literals([
+        "self_hosted",
+        "saas",
+        "ssh",
+        "vnc",
+        "app_launcher",
+        "warp",
+        "biso",
+        "bookmark",
+        "dash_sso",
+        "infrastructure",
+        "rdp",
+        "mcp",
+        "mcp_portal",
+        "proxy_endpoint",
       ]),
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policies: Schema.optional(
-        Schema.Union([Schema.Array(Policy2), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        targetCriteria: "target_criteria",
-        type: "type",
-        id: "id",
-        aud: "aud",
-        name: "name",
-        policies: "policies",
-      }),
+      Schema.String,
+    ]),
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    policies: Schema.optional(
+      Schema.Union([Schema.Array(Policy2), Schema.Null]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      targetCriteria: "target_criteria",
+      type: "type",
+      id: "id",
+      aud: "aud",
+      name: "name",
+      policies: "policies",
+    }),
+  ),
 ) as unknown as Schema.Codec<InfrastructureApplication>;
 
 interface TargetCriterion2 {
@@ -5682,7 +5674,7 @@ interface TargetCriterion2 {
   /** Contains a map of target attribute keys to target attribute values. */
   targetAttributes: Record<string, unknown>;
 }
-const TargetCriterion2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TargetCriterion2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     port: Schema.Number,
     protocol: Schema.Literal("RDP"),
@@ -6126,7 +6118,7 @@ interface BrowserRDPApplication {
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browse */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
 }
-const BrowserRDPApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BrowserRDPApplication = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     domain: Schema.String,
     targetCriteria: Schema.Array(TargetCriterion2),
@@ -6654,7 +6646,7 @@ interface McpServerApplication {
   /** The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
   tags?: string[] | null;
 }
-const McpServerApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const McpServerApplication = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Union([
       Schema.Literals([
@@ -7137,118 +7129,115 @@ interface McpServerPortalApplication {
   /** The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
   tags?: string[] | null;
 }
-const McpServerPortalApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      type: Schema.Union([
-        Schema.Literals([
-          "self_hosted",
-          "saas",
-          "ssh",
-          "vnc",
-          "app_launcher",
-          "warp",
-          "biso",
-          "bookmark",
-          "dash_sso",
-          "infrastructure",
-          "rdp",
-          "mcp",
-          "mcp_portal",
-          "proxy_endpoint",
-        ]),
-        Schema.String,
+const McpServerPortalApplication = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.Union([
+      Schema.Literals([
+        "self_hosted",
+        "saas",
+        "ssh",
+        "vnc",
+        "app_launcher",
+        "warp",
+        "biso",
+        "bookmark",
+        "dash_sso",
+        "infrastructure",
+        "rdp",
+        "mcp",
+        "mcp_portal",
+        "proxy_endpoint",
       ]),
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      allowAuthenticateViaWarp: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      allowedIdps: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      autoRedirectToIdentity: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      customDenyMessage: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      customDenyUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      customNonIdentityDenyUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      customPages: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      destinations: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              WorkerDestination,
-              PreviewWorkerDestination,
-              AllWorkersDestination,
-              AllPreviewWorkersDestination,
-              PublicDestination,
-              PrivateDestination,
-              ViaMcpServerPortalDestination,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      httpOnlyCookieAttribute: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      oauthConfiguration: Schema.optional(
-        Schema.Union([OauthConfiguration, Schema.Null]),
-      ),
-      optionsPreflightBypass: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      policies: Schema.optional(
-        Schema.Union([Schema.Array(Policy), Schema.Null]),
-      ),
-      sameSiteCookieAttribute: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      scimConfig: Schema.optional(Schema.Union([Scimconfig, Schema.Null])),
-      sessionDuration: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      tags: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        type: "type",
-        id: "id",
-        allowAuthenticateViaWarp: "allow_authenticate_via_warp",
-        allowedIdps: "allowed_idps",
-        aud: "aud",
-        autoRedirectToIdentity: "auto_redirect_to_identity",
-        customDenyMessage: "custom_deny_message",
-        customDenyUrl: "custom_deny_url",
-        customNonIdentityDenyUrl: "custom_non_identity_deny_url",
-        customPages: "custom_pages",
-        destinations: "destinations",
-        domain: "domain",
-        httpOnlyCookieAttribute: "http_only_cookie_attribute",
-        logoUrl: "logo_url",
-        name: "name",
-        oauthConfiguration: "oauth_configuration",
-        optionsPreflightBypass: "options_preflight_bypass",
-        policies: "policies",
-        sameSiteCookieAttribute: "same_site_cookie_attribute",
-        scimConfig: "scim_config",
-        sessionDuration: "session_duration",
-        tags: "tags",
-      }),
+      Schema.String,
+    ]),
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    allowAuthenticateViaWarp: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
     ),
+    allowedIdps: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    autoRedirectToIdentity: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    customDenyMessage: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    customDenyUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    customNonIdentityDenyUrl: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    customPages: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    destinations: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            WorkerDestination,
+            PreviewWorkerDestination,
+            AllWorkersDestination,
+            AllPreviewWorkersDestination,
+            PublicDestination,
+            PrivateDestination,
+            ViaMcpServerPortalDestination,
+          ]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    httpOnlyCookieAttribute: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    logoUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    oauthConfiguration: Schema.optional(
+      Schema.Union([OauthConfiguration, Schema.Null]),
+    ),
+    optionsPreflightBypass: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    policies: Schema.optional(
+      Schema.Union([Schema.Array(Policy), Schema.Null]),
+    ),
+    sameSiteCookieAttribute: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    scimConfig: Schema.optional(Schema.Union([Scimconfig, Schema.Null])),
+    sessionDuration: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    tags: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      type: "type",
+      id: "id",
+      allowAuthenticateViaWarp: "allow_authenticate_via_warp",
+      allowedIdps: "allowed_idps",
+      aud: "aud",
+      autoRedirectToIdentity: "auto_redirect_to_identity",
+      customDenyMessage: "custom_deny_message",
+      customDenyUrl: "custom_deny_url",
+      customNonIdentityDenyUrl: "custom_non_identity_deny_url",
+      customPages: "custom_pages",
+      destinations: "destinations",
+      domain: "domain",
+      httpOnlyCookieAttribute: "http_only_cookie_attribute",
+      logoUrl: "logo_url",
+      name: "name",
+      oauthConfiguration: "oauth_configuration",
+      optionsPreflightBypass: "options_preflight_bypass",
+      policies: "policies",
+      sameSiteCookieAttribute: "same_site_cookie_attribute",
+      scimConfig: "scim_config",
+      sessionDuration: "session_duration",
+      tags: "tags",
+    }),
+  ),
 ) as unknown as Schema.Codec<McpServerPortalApplication>;
 
 interface AccessAppPolicyLink {
@@ -7257,7 +7246,7 @@ interface AccessAppPolicyLink {
   /** The order of execution for this policy. Must be unique for each policy within an app. */
   precedence?: number | null;
 }
-const AccessAppPolicyLink = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessAppPolicyLink = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     precedence: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -7304,7 +7293,7 @@ interface CreateAccessApplicationRequestPolicy2 {
   sessionDuration?: string | null;
 }
 const CreateAccessApplicationRequestPolicy2 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       approvalGroups: Schema.optional(
@@ -7549,7 +7538,7 @@ interface Policy3 {
       )[]
     | null;
 }
-const Policy3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Policy3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     decision: Schema.Union([
       Schema.Literals(["allow", "deny", "non_identity", "bypass"]),
@@ -7763,7 +7752,7 @@ interface SamlsaaSAppParam {
   /** Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled */
   scopes?: ("openid" | "groups" | "email" | "profile" | (string & {}))[] | null;
 }
-const SamlsaaSAppParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SamlsaaSAppParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     authType: Schema.optional(
       Schema.Union([
@@ -7886,7 +7875,7 @@ interface ListAccessApplicationCasResponseResult {
   publicKey?: string | null;
 }
 const ListAccessApplicationCasResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -8123,7 +8112,7 @@ interface CreateAccessApplicationPolicyTestRequestPolicy {
   sessionDuration?: string | null;
 }
 const CreateAccessApplicationPolicyTestRequestPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       decision: Schema.Union([
         Schema.Literals(["allow", "deny", "non_identity", "bypass"]),
@@ -8282,7 +8271,7 @@ interface ListAccessApplicationPolicyTestUsersResponseResult {
   status?: "approved" | "blocked" | "error" | (string & {}) | null;
 }
 const ListAccessApplicationPolicyTestUsersResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -8308,7 +8297,7 @@ interface AppState {
   policies?: unknown[] | null;
   status?: string | null;
 }
-const AppState = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AppState = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     appUid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -8333,7 +8322,7 @@ const AppState = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Geo2 {
   country?: string | null;
 }
-const Geo2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Geo2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     country: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -8353,7 +8342,7 @@ interface UserIdentity {
   userUuid?: string | null;
   version?: number | null;
 }
-const UserIdentity = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const UserIdentity = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -8398,7 +8387,7 @@ interface ListAccessBookmarksResponseResult {
   name?: string | null;
 }
 const ListAccessBookmarksResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       appLauncherVisible: Schema.optional(
@@ -8430,7 +8419,7 @@ interface ListAccessCertificatesResponseResult {
   name?: string | null;
 }
 const ListAccessCertificatesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       associatedHostnames: Schema.optional(
@@ -8459,7 +8448,7 @@ interface GetAccessCertificateSettingResponseResult {
   hostname: string;
 }
 const GetAccessCertificateSettingResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       chinaNetwork: Schema.Boolean,
       clientCertificateForwarding: Schema.Boolean,
@@ -8482,7 +8471,7 @@ interface ListAccessCustomPagesResponseResult {
   uid?: string | null;
 }
 const ListAccessCustomPagesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       type: Schema.Union([
@@ -8500,7 +8489,7 @@ interface ListAccessGatewayCasResponseResult {
   publicKey?: string | null;
 }
 const ListAccessGatewayCasResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       publicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -8711,7 +8700,7 @@ interface ListAccessGroupsResponseResult {
     | null;
 }
 const ListAccessGroupsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       exclude: Schema.optional(
@@ -8839,7 +8828,7 @@ interface IdPFederationGrant {
   /** UID of the identity provider being federated. */
   idpId: string;
 }
-const IdPFederationGrant = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const IdPFederationGrant = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     idpId: Schema.String,
@@ -8852,7 +8841,7 @@ interface Ipv4 {
   /** (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used. */
   virtualNetworkId?: string | null;
 }
-const Ipv4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ipv4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ipAddr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     virtualNetworkId: Schema.optional(
@@ -8872,7 +8861,7 @@ interface Ip2 {
   /** The target's IPv6 address */
   ipv6?: { ipAddr?: string | null; virtualNetworkId?: string | null } | null;
 }
-const Ip2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ip2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ipv4: Schema.optional(Schema.Union([Ipv4, Schema.Null])),
     ipv6: Schema.optional(Schema.Union([Ipv4, Schema.Null])),
@@ -8895,7 +8884,7 @@ interface ListAccessInfrastructureTargetsResponseResult {
   modifiedAt: string;
 }
 const ListAccessInfrastructureTargetsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -8932,7 +8921,7 @@ interface AccessRequest {
   /** The email address of the authenticating user. */
   userEmail?: string | null;
 }
-const AccessRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     action: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     allowed: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -8982,7 +8971,7 @@ interface ListAccessLogScimUpdatesResponseResult {
   status?: string | null;
 }
 const ListAccessLogScimUpdatesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       cfResourceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       errorDescription: Schema.optional(
@@ -9270,7 +9259,7 @@ interface ListAccessPoliciesResponseResult {
   updatedAt?: string | null;
 }
 const ListAccessPoliciesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       appCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -9450,7 +9439,7 @@ interface CurrentCertificate {
   /** Unique identifier for the certificate */
   uid: string;
 }
-const CurrentCertificate = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CurrentCertificate = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     isCurrent: Schema.Boolean,
     notAfter: Schema.String,
@@ -9484,7 +9473,7 @@ interface ListAccessSamlCertificatesResponseResult {
   previousCertificate?: unknown | null;
 }
 const ListAccessSamlCertificatesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       uid: Schema.String,
@@ -9518,7 +9507,7 @@ interface ListAccessServiceTokensResponseResult {
   name?: string | null;
 }
 const ListAccessServiceTokensResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -9540,11 +9529,10 @@ interface ListAccessTagsResponseResult {
   /** The name of the tag */
   name: string;
 }
-const ListAccessTagsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-    }),
+const ListAccessTagsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+  }),
 ) as unknown as Schema.Codec<ListAccessTagsResponseResult>;
 
 interface ListAccessUsersResponseResult {
@@ -9570,7 +9558,7 @@ interface ListAccessUsersResponseResult {
   updatedAt?: string | null;
 }
 const ListAccessUsersResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       accessSeat: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -9608,7 +9596,7 @@ interface IdP {
   id?: string | null;
   type?: string | null;
 }
-const IdP = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const IdP = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -9622,7 +9610,7 @@ interface Mtlsauth {
   certPresented?: boolean | null;
   certSerial?: string | null;
 }
-const Mtlsauth = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Mtlsauth = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     authStatus: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certIssuerDn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -9647,7 +9635,7 @@ interface Metadata {
   nonce?: string | null;
   ttl?: number | null;
 }
-const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Metadata = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     apps: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
@@ -9671,7 +9659,7 @@ interface ListAccessUserActiveSessionsResponseResult {
   name?: string | null;
 }
 const ListAccessUserActiveSessionsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       expiration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
@@ -9684,7 +9672,7 @@ interface ListAccessUserFailedLoginsResponseResult {
   metadata?: unknown | null;
 }
 const ListAccessUserFailedLoginsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       expiration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       metadata: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
@@ -9699,7 +9687,7 @@ interface Account {
   /** The name of the enrolled account. */
   name?: string | null;
 }
-const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Account = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     accountType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -9717,7 +9705,7 @@ interface User {
   /** The enrolled device user's name. */
   name?: string | null;
 }
-const User = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const User = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -9777,72 +9765,69 @@ interface ListDevicesResponseResult {
   /** The WARP client version. */
   version?: string | null;
 }
-const ListDevicesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      deleted: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      deviceType: Schema.optional(
+const ListDevicesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    deleted: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    deviceType: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "windows",
-              "mac",
-              "linux",
-              "android",
-              "ios",
-              "chromeos",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "windows",
+            "mac",
+            "linux",
+            "android",
+            "ios",
+            "chromeos",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      lastSeen: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      macAddress: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      manufacturer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      model: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      osDistroName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      osDistroRevision: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      osVersion: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      osVersionExtra: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      revokedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      updated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      user: Schema.optional(Schema.Union([User, Schema.Null])),
-      version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        created: "created",
-        deleted: "deleted",
-        deviceType: "device_type",
-        ip: "ip",
-        key: "key",
-        lastSeen: "last_seen",
-        macAddress: "mac_address",
-        manufacturer: "manufacturer",
-        model: "model",
-        name: "name",
-        osDistroName: "os_distro_name",
-        osDistroRevision: "os_distro_revision",
-        osVersion: "os_version",
-        osVersionExtra: "os_version_extra",
-        revokedAt: "revoked_at",
-        serialNumber: "serial_number",
-        updated: "updated",
-        user: "user",
-        version: "version",
-      }),
+        Schema.Null,
+      ]),
     ),
+    ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastSeen: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    macAddress: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    manufacturer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    model: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    osDistroName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    osDistroRevision: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    osVersion: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    osVersionExtra: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    revokedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    updated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    user: Schema.optional(Schema.Union([User, Schema.Null])),
+    version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      created: "created",
+      deleted: "deleted",
+      deviceType: "device_type",
+      ip: "ip",
+      key: "key",
+      lastSeen: "last_seen",
+      macAddress: "mac_address",
+      manufacturer: "manufacturer",
+      model: "model",
+      name: "name",
+      osDistroName: "os_distro_name",
+      osDistroRevision: "os_distro_revision",
+      osVersion: "os_version",
+      osVersionExtra: "os_version_extra",
+      revokedAt: "revoked_at",
+      serialNumber: "serial_number",
+      updated: "updated",
+      user: "user",
+      version: "version",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListDevicesResponseResult>;
 
 interface VersionConfig {
@@ -9851,7 +9836,7 @@ interface VersionConfig {
   /** The specific client version to deploy. */
   version: string;
 }
-const VersionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const VersionConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     targetEnvironment: Schema.Union([Schema.String, Schema.Null]),
     version: Schema.String,
@@ -9878,7 +9863,7 @@ interface ListDeviceDeploymentGroupsResponseResult {
   policyIds?: string[] | null;
 }
 const ListDeviceDeploymentGroupsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -9912,7 +9897,7 @@ interface Policy4 {
   /** The RFC3339 timestamp of when the device settings profile last changed for the registration. */
   updatedAt: string;
 }
-const Policy4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Policy4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     default: Schema.Boolean,
@@ -9940,7 +9925,7 @@ interface LastSeenRegistration {
     updatedAt: string;
   } | null;
 }
-const LastSeenRegistration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LastSeenRegistration = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     policy: Schema.optional(Schema.Union([Policy4, Schema.Null])),
   }),
@@ -9999,7 +9984,7 @@ interface ListDeviceDevicesResponseResult {
   serialNumber?: string | null;
 }
 const ListDeviceDevicesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       activeRegistrations: Schema.Number,
@@ -10057,7 +10042,7 @@ interface ListDeviceDevicesResponseResultInfo {
   perPage?: number | null;
 }
 const ListDeviceDevicesResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -10079,7 +10064,7 @@ interface Data {
   /** The HTTP request method type. */
   method?: "GET" | null;
 }
-const Data = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     host: Schema.String,
     kind: Schema.Union([
@@ -10098,7 +10083,7 @@ interface TargetPolicy {
   /** The name of the DEX rule. */
   name?: string | null;
 }
-const TargetPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TargetPolicy = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     default: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -10130,7 +10115,7 @@ interface ListDeviceDexTestsResponseResult {
   testId?: string | null;
 }
 const ListDeviceDexTestsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Data,
       enabled: Schema.Boolean,
@@ -10162,7 +10147,7 @@ interface CpupctByApp {
   /** Application name. */
   name?: string | null;
 }
-const CpupctByApp = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CpupctByApp = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cpuPct: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -10175,7 +10160,7 @@ interface Location {
   stateIso?: string | null;
   zip?: string | null;
 }
-const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Location = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     city: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     countryIso: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -10206,7 +10191,7 @@ interface DeviceIPV4 {
   /** IP version (`1` for IPv4, `2` for IPv6, `0` if unknown). */
   version?: number | null;
 }
-const DeviceIPV4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DeviceIPV4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     asn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -10224,7 +10209,7 @@ interface RamUsedPctByApp {
   /** RAM usage percentage, on a scale of 0 to 100. */
   ramUsedPct?: number | null;
 }
-const RamUsedPctByApp = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RamUsedPctByApp = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     ramUsedPct: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -10235,7 +10220,7 @@ interface MinRTTUs {
   downstream?: number | null;
   upstream?: number | null;
 }
-const MinRTTUs = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MinRTTUs = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     downstream: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     upstream: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -10250,7 +10235,7 @@ interface Rtt {
   /** Round-trip time variance in microseconds. */
   rttVarUs?: { downstream?: number | null; upstream?: number | null } | null;
 }
-const Rtt = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Rtt = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     minRttUs: Schema.optional(Schema.Union([MinRTTUs, Schema.Null])),
     rttUs: Schema.optional(Schema.Union([MinRTTUs, Schema.Null])),
@@ -10290,7 +10275,7 @@ interface TunnelStats {
   /** The measurement window duration in milliseconds. */
   statsWindowMs?: number | null;
 }
-const TunnelStats = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TunnelStats = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bytesLost: Schema.optional(Schema.Union([MinRTTUs, Schema.Null])),
     bytesReceived: Schema.optional(Schema.Union([MinRTTUs, Schema.Null])),
@@ -10327,7 +10312,7 @@ interface ListDeviceIpProfilesResponseResult {
   updatedAt: string;
 }
 const ListDeviceIpProfilesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -10359,7 +10344,7 @@ interface Config {
   /** The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the cert */
   sha256?: string | null;
 }
-const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     tlsSockaddr: Schema.String,
     sha256: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -10377,7 +10362,7 @@ interface ListDeviceNetworksResponseResult {
   type?: "tls" | null;
 }
 const ListDeviceNetworksResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       config: Schema.optional(Schema.Union([Config, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -10399,7 +10384,7 @@ interface DnssearchSuffix {
   /** A description of the DNS search suffix. */
   description?: string | null;
 }
-const DnssearchSuffix = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DnssearchSuffix = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     suffix: Schema.String,
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -10413,7 +10398,7 @@ interface TeamsDevicesExcludeSplitTunnelWithAddress {
   description?: string | null;
 }
 const TeamsDevicesExcludeSplitTunnelWithAddress =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       address: Schema.String,
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -10427,7 +10412,7 @@ interface TeamsDevicesExcludeSplitTunnelWithHost {
   description?: string | null;
 }
 const TeamsDevicesExcludeSplitTunnelWithHost =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       host: Schema.String,
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -10442,7 +10427,7 @@ interface FallbackDomain {
   /** A list of IP addresses to handle domain resolution. */
   dnsServer?: string[] | null;
 }
-const FallbackDomain = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FallbackDomain = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     suffix: Schema.String,
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -10468,7 +10453,7 @@ interface GlobalAcceleration {
   /** IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided. */
   wireguardEndpoints: string[];
 }
-const GlobalAcceleration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GlobalAcceleration = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     apiEndpoints: Schema.Array(Schema.String),
     enabled: Schema.Boolean,
@@ -10490,7 +10475,7 @@ interface ServiceModeV2 {
   /** The port number when used with proxy mode. */
   port?: number | null;
 }
-const ServiceModeV2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ServiceModeV2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     mode: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -10503,7 +10488,7 @@ interface TargetTest {
   /** The name of the DEX test targeting this policy. */
   name?: string | null;
 }
-const TargetTest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TargetTest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -10516,7 +10501,7 @@ interface VirtualNetworks {
   /** The default virtual network ID. Must be included in the `allowed` list. */
   default: string;
 }
-const VirtualNetworks = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const VirtualNetworks = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     allowed: Schema.Array(Schema.String),
     default: Schema.String,
@@ -10601,7 +10586,7 @@ interface SettingsPolicy {
   /** Virtual network access settings for the device. */
   virtualNetworks?: { allowed: string[]; default: string } | null;
 }
-const SettingsPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SettingsPolicy = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     allowModeSwitch: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -10721,11 +10706,10 @@ interface DevicePolicyCertificates {
   /** The current status of the device policy certificate provisioning feature for WARP clients. */
   enabled: boolean;
 }
-const DevicePolicyCertificates = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      enabled: Schema.Boolean,
-    }),
+const DevicePolicyCertificates = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.Boolean,
+  }),
 ) as unknown as Schema.Codec<DevicePolicyCertificates>;
 
 interface FileInput {
@@ -10740,7 +10724,7 @@ interface FileInput {
   /** Signing certificate thumbprint. */
   thumbprint?: string | null;
 }
-const FileInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FileInput = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     operatingSystem: Schema.Union([
       Schema.Literals(["windows", "linux", "mac"]),
@@ -10767,7 +10751,7 @@ interface UniqueClientIDInput {
   /** Operating System. */
   operatingSystem: "android" | "ios" | "chromeos" | (string & {});
 }
-const UniqueClientIDInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const UniqueClientIDInput = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     operatingSystem: Schema.Union([
@@ -10783,7 +10767,7 @@ interface DomainJoinedInput {
   /** Domain. */
   domain?: string | null;
 }
-const DomainJoinedInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DomainJoinedInput = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     operatingSystem: Schema.Literal("windows"),
     domain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -10809,7 +10793,7 @@ interface OsversionInput {
   /** Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version. */
   osVersionExtra?: string | null;
 }
-const OsversionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OsversionInput = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     operatingSystem: Schema.Literal("windows"),
     operator: Schema.Union([
@@ -10840,7 +10824,7 @@ interface FirewallInput {
   /** Operating System. */
   operatingSystem: "windows" | "mac" | (string & {});
 }
-const FirewallInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FirewallInput = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.Boolean,
     operatingSystem: Schema.Union([
@@ -10865,7 +10849,7 @@ interface SentineloneInput {
   /** Signing certificate thumbprint. */
   thumbprint?: string | null;
 }
-const SentineloneInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SentineloneInput = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     operatingSystem: Schema.Union([
       Schema.Literals(["windows", "linux", "mac"]),
@@ -10890,7 +10874,7 @@ interface DiskEncryptionInput {
   /** Whether to check all disks for encryption. */
   requireAll?: boolean | null;
 }
-const DiskEncryptionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DiskEncryptionInput = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     checkDisks: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -10905,7 +10889,7 @@ interface ClientCertificateInput {
   /** Common Name that is protected by the certificate. */
   cn: string;
 }
-const ClientCertificateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ClientCertificateInput = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     certificateId: Schema.String,
     cn: Schema.String,
@@ -10918,7 +10902,7 @@ interface Locations {
   /** List of trust stores to check for client certificate. */
   trustStores?: ("system" | "user" | (string & {}))[] | null;
 }
-const Locations = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Locations = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     paths: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -10955,7 +10939,7 @@ interface TeamsDevicesClientCertificateV2InputRequest {
   subjectAlternativeNames?: string[] | null;
 }
 const TeamsDevicesClientCertificateV2InputRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String,
       checkPrivateKey: Schema.Boolean,
@@ -10997,7 +10981,7 @@ interface TeamsDevicesAntivirusInputRequest {
   updateWindowDays?: number | null;
 }
 const TeamsDevicesAntivirusInputRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       updateWindowDays: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -11011,7 +10995,7 @@ interface WorkspaceOneInput {
   /** Posture Integration ID. */
   connectionId: string;
 }
-const WorkspaceOneInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WorkspaceOneInput = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     complianceStatus: Schema.Union([
       Schema.Literals(["compliant", "noncompliant", "unknown"]),
@@ -11046,7 +11030,7 @@ interface CrowdstrikeInput {
   /** Version Operator. */
   versionOperator?: "<" | "<=" | ">" | ">=" | "==" | (string & {}) | null;
 }
-const CrowdstrikeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CrowdstrikeInput = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     connectionId: Schema.String,
     lastSeen: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -11109,7 +11093,7 @@ interface IntuneInput {
   /** Posture Integration ID. */
   connectionId: string;
 }
-const IntuneInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const IntuneInput = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     complianceStatus: Schema.Union([
       Schema.Literals([
@@ -11143,7 +11127,7 @@ interface KolideInput {
   /** The Number of Issues. */
   issueCount?: string | null;
 }
-const KolideInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const KolideInput = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     connectionId: Schema.String,
     authState: Schema.optional(
@@ -11191,7 +11175,7 @@ interface TaniumInput {
   /** For more details on total score, refer to the Tanium documentation. */
   totalScore?: number | null;
 }
-const TaniumInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TaniumInput = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     connectionId: Schema.String,
     eidLastSeen: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -11266,7 +11250,7 @@ interface SentineloneS2sInput {
   /** Operator. */
   operator?: "<" | "<=" | ">" | ">=" | "==" | (string & {}) | null;
 }
-const SentineloneS2sInput = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SentineloneS2sInput = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     connectionId: Schema.String,
     activeThreats: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -11334,7 +11318,7 @@ interface TeamsDevicesCustomS2sInputRequest {
   score: number;
 }
 const TeamsDevicesCustomS2sInputRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       connectionId: Schema.String,
       operator: Schema.Union([
@@ -11362,7 +11346,7 @@ interface DeviceMatch {
     | (string & {})
     | null;
 }
-const DeviceMatch = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DeviceMatch = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     platform: Schema.optional(
       Schema.Union([
@@ -11566,7 +11550,7 @@ interface ListDevicePosturesResponseResult {
     | null;
 }
 const ListDevicePosturesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -11645,7 +11629,7 @@ interface Config2 {
   /** The Workspace One client ID provided in the Workspace One Admin Dashboard. */
   clientId: string;
 }
-const Config2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     apiUrl: Schema.String,
     authUrl: Schema.String,
@@ -11682,7 +11666,7 @@ interface ListDevicePostureIntegrationsResponseResult {
     | null;
 }
 const ListDevicePostureIntegrationsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       config: Schema.optional(Schema.Union([Config2, Schema.Null])),
@@ -11720,7 +11704,7 @@ interface TeamsDevicesWorkspaceOneConfigRequest {
   clientSecret: string;
 }
 const TeamsDevicesWorkspaceOneConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       apiUrl: Schema.String,
       authUrl: Schema.String,
@@ -11747,7 +11731,7 @@ interface TeamsDevicesCrowdstrikeConfigRequest {
   customerId: string;
 }
 const TeamsDevicesCrowdstrikeConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       apiUrl: Schema.String,
       clientId: Schema.String,
@@ -11774,7 +11758,7 @@ interface TeamsDevicesUptycsConfigRequest {
   customerId: string;
 }
 const TeamsDevicesUptycsConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       apiUrl: Schema.String,
       clientKey: Schema.String,
@@ -11799,7 +11783,7 @@ interface TeamsDevicesIntuneConfigRequest {
   customerId: string;
 }
 const TeamsDevicesIntuneConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clientId: Schema.String,
       clientSecret: SensitiveString,
@@ -11820,7 +11804,7 @@ interface TeamsDevicesKolideConfigRequest {
   clientSecret: string;
 }
 const TeamsDevicesKolideConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clientId: Schema.String,
       clientSecret: SensitiveString,
@@ -11843,7 +11827,7 @@ interface TeamsDevicesTaniumConfigRequest {
   accessClientSecret?: string | null;
 }
 const TeamsDevicesTaniumConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       apiUrl: Schema.String,
       clientSecret: SensitiveString,
@@ -11870,7 +11854,7 @@ interface TeamsDevicesSentineloneS2sConfigRequest {
   clientSecret: string;
 }
 const TeamsDevicesSentineloneS2sConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       apiUrl: Schema.String,
       clientSecret: SensitiveString,
@@ -11888,7 +11872,7 @@ interface TeamsDevicesCustomS2sConfigRequest {
   apiUrl: string;
 }
 const TeamsDevicesCustomS2sConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accessClientId: Schema.String,
       accessClientSecret: SensitiveString,
@@ -11910,7 +11894,7 @@ interface Device {
   /** Version of the WARP client. */
   clientVersion?: string | null;
 }
-const Device = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Device = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -11964,7 +11948,7 @@ interface ListDeviceRegistrationsResponseResult {
   virtualIpv6?: string | null;
 }
 const ListDeviceRegistrationsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -12008,13 +11992,12 @@ interface ListDexColosResponseResult {
   /** Country code */
   countryCode: string;
 }
-const ListDexColosResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      airportCode: Schema.String,
-      city: Schema.String,
-      countryCode: Schema.String,
-    }),
+const ListDexColosResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    airportCode: Schema.String,
+    city: Schema.String,
+    countryCode: Schema.String,
+  }),
 ) as unknown as Schema.Codec<ListDexColosResponseResult>;
 
 interface Command {
@@ -12029,7 +12012,7 @@ interface Command {
   type?: string | null;
   userEmail?: string | null;
 }
-const Command = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Command = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     completedDate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -12071,7 +12054,7 @@ interface ListDexCommandsResponseResultItem {
     | null;
 }
 const ListDexCommandsResponseResultItem =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       commands: Schema.optional(
         Schema.Union([Schema.Array(Command), Schema.Null]),
@@ -12099,7 +12082,7 @@ interface ListDexCommandsResponseResult {
     | null;
 }
 const ListDexCommandsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       items: Schema.optional(
         Schema.Union([
@@ -12114,7 +12097,7 @@ interface WarpdiagArgs {
   /** Test an IP address from all included or excluded ranges. Essentially the same as running 'route get <ip>' and collecting the results. This option may increase the time taken to collect the warp-diag. */
   testAllRoutes?: boolean | null;
 }
-const WarpdiagArgs = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WarpdiagArgs = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     testAllRoutes: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   }).pipe(Schema.encodeKeys({ testAllRoutes: "test-all-routes" })),
@@ -12128,7 +12111,7 @@ interface Pcapargs {
   /** Limit on capture duration (in minutes) */
   timeLimitMin?: number | null;
 }
-const Pcapargs = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Pcapargs = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     maxFileSizeMb: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     packetSizeBytes: Schema.optional(
@@ -12148,7 +12131,7 @@ interface SpeedTestArgs {
   /** List of interfaces to run the speed test on */
   interfaces?: ("default" | "tunnel" | (string & {}))[] | null;
 }
-const SpeedTestArgs = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SpeedTestArgs = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     interfaces: Schema.optional(
       Schema.Union([
@@ -12181,7 +12164,7 @@ interface Command2 {
   /** Unique identifier for the device registration. Required for multi-user devices to target the correct user session. */
   registrationId?: string | null;
 }
-const Command2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Command2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     deviceId: Schema.String,
     type: Schema.Union([
@@ -12227,7 +12210,7 @@ interface Command3 {
   /** Type of the command (e.g., "pcap", "speed-test", or "warp-diag") */
   type?: string | null;
 }
-const Command3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Command3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     args: Schema.optional(
@@ -12283,7 +12266,7 @@ interface Device2 {
   /** WARP client version. */
   version?: string | null;
 }
-const Device2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Device2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     deviceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     deviceName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -12318,7 +12301,7 @@ interface ListDexCommandDevicesResponseResultItem {
     | null;
 }
 const ListDexCommandDevicesResponseResultItem =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       devices: Schema.optional(
         Schema.Union([Schema.Array(Device2), Schema.Null]),
@@ -12347,7 +12330,7 @@ interface ListDexCommandDevicesResponseResult {
     | null;
 }
 const ListDexCommandDevicesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       items: Schema.optional(
         Schema.Union([
@@ -12368,7 +12351,7 @@ interface Location2 {
   /** ZIP/postal code. Returned as `"REDACTED"` without PII permission. */
   zip?: string | null;
 }
-const Location2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Location2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     city: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     countryIso: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -12405,7 +12388,7 @@ interface Ip3 {
   /** IP version (`1` for IPv4, `2` for IPv6, `0` if unknown). */
   version?: number | null;
 }
-const Ip3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ip3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     address: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     asn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -12440,7 +12423,7 @@ interface Isp {
     version?: number | null;
   } | null;
 }
-const Isp = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Isp = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     testId: Schema.String,
     testResultId: Schema.String,
@@ -12478,7 +12461,7 @@ interface ListDexDeviceIspsResponseResultItem {
   }[];
 }
 const ListDexDeviceIspsResponseResultItem =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       isps: Schema.Array(Isp),
     }),
@@ -12510,7 +12493,7 @@ interface ListDexDeviceIspsResponseResult {
     | null;
 }
 const ListDexDeviceIspsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       items: Schema.optional(
         Schema.Union([
@@ -12526,7 +12509,7 @@ interface LiveStat {
   uniqueDevicesTotal?: number | null;
   value?: string | null;
 }
-const LiveStat = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LiveStat = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     uniqueDevicesTotal: Schema.optional(
       Schema.Union([Schema.Number, Schema.Null]),
@@ -12554,7 +12537,7 @@ interface DeviceStats {
   /** Number of unique devices */
   uniqueDevicesTotal?: number | null;
 }
-const DeviceStats = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DeviceStats = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     byColo: Schema.optional(
       Schema.Union([Schema.Array(LiveStat), Schema.Null]),
@@ -12747,7 +12730,7 @@ interface ListDexFleetStatusDevicesResponseResult {
   wifiStrengthDbm?: number | null;
 }
 const ListDexFleetStatusDevicesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       colo: Schema.String,
       deviceId: Schema.String,
@@ -12829,7 +12812,7 @@ interface Slot {
   timestamp: string;
   value: number;
 }
-const Slot = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Slot = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     timestamp: Schema.String,
     value: Schema.Number,
@@ -12845,7 +12828,7 @@ interface AvailabilityPct {
   /** lowest observed in the time period. */
   min?: number | null;
 }
-const AvailabilityPct = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AvailabilityPct = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     slots: Schema.Array(Slot),
     avg: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -12861,7 +12844,7 @@ interface HttpstatusCode {
   status500: number;
   timestamp: string;
 }
-const HttpstatusCode = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const HttpstatusCode = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     status200: Schema.Number,
     status300: Schema.Number,
@@ -12906,7 +12889,7 @@ interface Httpstats {
   /** Count of unique devices that have run this test in the given time period. */
   uniqueDevicesTotal: number;
 }
-const Httpstats = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Httpstats = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     availabilityPct: AvailabilityPct,
     dnsResponseTimeMs: AvailabilityPct,
@@ -12953,7 +12936,7 @@ interface HttpstatsByColo {
   /** Count of unique devices that have run this test in the given time period. */
   uniqueDevicesTotal: number;
 }
-const HttpstatsByColo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const HttpstatsByColo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     availabilityPct: AvailabilityPct,
     colo: Schema.String,
@@ -12972,13 +12955,12 @@ interface DigitalExperienceMonitor {
   default: boolean;
   name: string;
 }
-const DigitalExperienceMonitor = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      default: Schema.Boolean,
-      name: Schema.String,
-    }),
+const DigitalExperienceMonitor = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    default: Schema.Boolean,
+    name: Schema.String,
+  }),
 ) as unknown as Schema.Codec<DigitalExperienceMonitor>;
 
 interface Percentiles {
@@ -12991,7 +12973,7 @@ interface Percentiles {
   /** p99 observed in the time period. */
   p99?: number | null;
 }
-const Percentiles = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Percentiles = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     p50: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     p90: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -13011,7 +12993,7 @@ interface TargetedTest {
   name: string;
   testId: string;
 }
-const TargetedTest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TargetedTest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Data,
     enabled: Schema.Boolean,
@@ -13048,7 +13030,7 @@ interface Rule {
     | null;
   updatedAt?: string | null;
 }
-const Rule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Rule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -13097,7 +13079,7 @@ interface ListDexRulesResponseResultItem {
     | null;
 }
 const ListDexRulesResponseResultItem =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       rules: Schema.optional(Schema.Union([Schema.Array(Rule), Schema.Null])),
     }),
@@ -13131,16 +13113,12 @@ interface ListDexRulesResponseResult {
       }[]
     | null;
 }
-const ListDexRulesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      items: Schema.optional(
-        Schema.Union([
-          Schema.Array(ListDexRulesResponseResultItem),
-          Schema.Null,
-        ]),
-      ),
-    }),
+const ListDexRulesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    items: Schema.optional(
+      Schema.Union([Schema.Array(ListDexRulesResponseResultItem), Schema.Null]),
+    ),
+  }),
 ) as unknown as Schema.Codec<ListDexRulesResponseResult>;
 
 interface OverviewMetrics {
@@ -13151,7 +13129,7 @@ interface OverviewMetrics {
   /** percentage availability for all traceroutes results in response. */
   avgTracerouteAvailabilityPct?: number | null;
 }
-const OverviewMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OverviewMetrics = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     testsTotal: Schema.Number,
     avgHttpAvailabilityPct: Schema.optional(
@@ -13167,7 +13145,7 @@ interface AggregateTimePeriod {
   units: "hours" | "days" | "testRuns" | (string & {});
   value: number;
 }
-const AggregateTimePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AggregateTimePeriod = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     units: Schema.Union([
       Schema.Literals(["hours", "days", "testRuns"]),
@@ -13185,7 +13163,7 @@ interface History {
   avgMs?: number | null;
   deltaPct?: number | null;
 }
-const History = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const History = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     timePeriod: AggregateTimePeriod,
     avgMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -13197,7 +13175,7 @@ interface Value {
   avgMs: number;
   timestamp: string;
 }
-const Value = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Value = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     avgMs: Schema.Number,
     timestamp: Schema.String,
@@ -13211,7 +13189,7 @@ interface OverTime {
   };
   values: { avgMs: number; timestamp: string }[];
 }
-const OverTime = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OverTime = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     timePeriod: AggregateTimePeriod,
     values: Schema.Array(Value),
@@ -13236,7 +13214,7 @@ interface ResourceFetchTime {
     values: { avgMs: number; timestamp: string }[];
   } | null;
 }
-const ResourceFetchTime = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ResourceFetchTime = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     history: Schema.Array(History),
     avgMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -13264,7 +13242,7 @@ interface Httpresults {
     } | null;
   };
 }
-const Httpresults = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Httpresults = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     resourceFetchTime: ResourceFetchTime,
   }),
@@ -13292,7 +13270,7 @@ interface HttpresultsByColo {
     } | null;
   };
 }
-const HttpresultsByColo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const HttpresultsByColo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     colo: Schema.String,
     resourceFetchTime: ResourceFetchTime,
@@ -13319,7 +13297,7 @@ interface TracerouteResults {
     } | null;
   };
 }
-const TracerouteResults = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TracerouteResults = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     roundTripTime: ResourceFetchTime,
   }),
@@ -13347,7 +13325,7 @@ interface TracerouteResultsByColo {
     } | null;
   };
 }
-const TracerouteResultsByColo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TracerouteResultsByColo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     colo: Schema.String,
     roundTripTime: ResourceFetchTime,
@@ -13462,7 +13440,7 @@ interface Test {
       }[]
     | null;
 }
-const Test = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Test = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     created: Schema.String,
@@ -13622,7 +13600,7 @@ interface ListDexTestsResponseResultItem {
   }[];
 }
 const ListDexTestsResponseResultItem =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       overviewMetrics: OverviewMetrics,
       tests: Schema.Array(Test),
@@ -13730,16 +13708,12 @@ interface ListDexTestsResponseResult {
       }[]
     | null;
 }
-const ListDexTestsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      items: Schema.optional(
-        Schema.Union([
-          Schema.Array(ListDexTestsResponseResultItem),
-          Schema.Null,
-        ]),
-      ),
-    }),
+const ListDexTestsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    items: Schema.optional(
+      Schema.Union([Schema.Array(ListDexTestsResponseResultItem), Schema.Null]),
+    ),
+  }),
 ) as unknown as Schema.Codec<ListDexTestsResponseResult>;
 
 interface TracerouteStats {
@@ -13770,7 +13744,7 @@ interface TracerouteStats {
   /** Count of unique devices that have run this test in the given time period. */
   uniqueDevicesTotal: number;
 }
-const TracerouteStats = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TracerouteStats = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     availabilityPct: AvailabilityPct,
     hopsCount: AvailabilityPct,
@@ -13809,7 +13783,7 @@ interface TracerouteStatsByColo {
   /** Count of unique devices that have run this test in the given time period. */
   uniqueDevicesTotal: number;
 }
-const TracerouteStatsByColo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TracerouteStatsByColo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     availabilityPct: AvailabilityPct,
     colo: Schema.String,
@@ -13825,7 +13799,7 @@ interface Location3 {
   state?: string | null;
   zip?: string | null;
 }
-const Location3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Location3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     city: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     state: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -13853,7 +13827,7 @@ interface Hop {
   packetLossPct?: number | null;
   rttMs?: number | null;
 }
-const Hop = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Hop = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ttl: Schema.Number,
     asn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -13898,7 +13872,7 @@ interface DigitalExperienceMonitoringWARPToggleChangeEvent {
   userEmail?: string | null;
 }
 const DigitalExperienceMonitoringWARPToggleChangeEvent =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -13943,7 +13917,7 @@ interface From {
   /** The name of the WARP configuration. */
   configName?: string | null;
 }
-const From = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const From = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -13986,7 +13960,7 @@ interface DigitalExperienceMonitoringWARPConfigChangeEvent {
   userEmail?: string | null;
 }
 const DigitalExperienceMonitoringWARPConfigChangeEvent =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deviceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       deviceRegistration: Schema.optional(
@@ -14029,7 +14003,7 @@ interface ListDlpCustomPromptTopicsResponseResult {
   profileId?: string | null;
 }
 const ListDlpCustomPromptTopicsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -14057,7 +14031,7 @@ interface SensitivityLevel {
   groupId: string;
   levelId: string;
 }
-const SensitivityLevel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SensitivityLevel = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     groupId: Schema.String,
     levelId: Schema.String,
@@ -14075,7 +14049,7 @@ interface ListDlpDataClassesResponseResult {
   description?: string | null;
 }
 const ListDlpDataClassesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -14112,7 +14086,7 @@ interface Column {
     | "complete"
     | (string & {});
 }
-const Column = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Column = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     entryId: Schema.String,
     headerName: Schema.String,
@@ -14150,7 +14124,7 @@ interface Upload {
     | (string & {});
   version: number;
 }
-const Upload = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Upload = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     numCells: Schema.Number,
     status: Schema.Union([
@@ -14221,7 +14195,7 @@ interface ListDlpDatasetsResponseResult {
   description?: string | null;
 }
 const ListDlpDatasetsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       columns: Schema.Array(Column),
@@ -14270,7 +14244,7 @@ interface ExistingColumn {
   headerName?: string | null;
   numCells?: number | null;
 }
-const ExistingColumn = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ExistingColumn = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     entryId: Schema.String,
     headerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -14289,7 +14263,7 @@ interface NewColumn {
   headerName?: string | null;
   numCells?: number | null;
 }
-const NewColumn = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const NewColumn = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     entryName: Schema.String,
     headerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -14310,7 +14284,7 @@ interface Tag {
   updatedAt: string;
   description?: string | null;
 }
-const Tag = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Tag = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -14344,7 +14318,7 @@ interface ListDlpDataTagCategoriesResponseResult {
   templateId?: string | null;
 }
 const ListDlpDataTagCategoriesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -14370,7 +14344,7 @@ interface Tag2 {
   name: string;
   description?: string | null;
 }
-const Tag2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Tag2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -14383,7 +14357,7 @@ interface Tag3 {
   description?: string | null;
   name?: string | null;
 }
-const Tag3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Tag3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -14396,7 +14370,7 @@ interface GetDlpEmailAccountMappingResponseAuthRequirements {
   type: "Org";
 }
 const GetDlpEmailAccountMappingResponseAuthRequirements =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       allowedMicrosoftOrganizations: Schema.Array(Schema.String),
       type: Schema.Literal("Org"),
@@ -14411,7 +14385,7 @@ const GetDlpEmailAccountMappingResponseAuthRequirements =
 interface Type {
   type: "NoAuth";
 }
-const Type = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Type = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("NoAuth"),
   }),
@@ -14421,7 +14395,7 @@ interface Action {
   action: "Block";
   message?: string | null;
 }
-const Action = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Action = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     action: Schema.Literal("Block"),
     message: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -14438,7 +14412,7 @@ interface Condition {
   selector: "Recipients" | "Sender" | "DLPProfiles" | (string & {});
   value: string[] | string;
 }
-const Condition = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Condition = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     operator: Schema.Union([
       Schema.Literals(["InList", "NotInList", "MatchRegex", "NotMatchRegex"]),
@@ -14474,7 +14448,7 @@ interface ListDlpEmailRulesResponseResult {
   description?: string | null;
 }
 const ListDlpEmailRulesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       action: Action,
       conditions: Schema.Array(Condition),
@@ -14505,7 +14479,7 @@ interface Pattern {
   /** @deprecated */
   validation?: "luhn" | null;
 }
-const Pattern = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Pattern = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     regex: Schema.String,
     validation: Schema.optional(
@@ -14518,7 +14492,7 @@ interface Profile {
   id: string;
   name: string;
 }
-const Profile = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Profile = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -14548,7 +14522,7 @@ interface GetDlpEntryResponse2 {
     | (string & {})
     | null;
 }
-const GetDlpEntryResponse2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GetDlpEntryResponse2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -14616,7 +14590,7 @@ interface GetDlpEntryResponse1 {
     | (string & {})
     | null;
 }
-const GetDlpEntryResponse1 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GetDlpEntryResponse1 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -14665,7 +14639,7 @@ interface Confidence {
   /** Indicates whether this entry has any form of validation that is not an AI remote service. */
   available: boolean;
 }
-const Confidence = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Confidence = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     aiContextAvailable: Schema.Boolean,
     available: Schema.Boolean,
@@ -14683,22 +14657,21 @@ interface GetDlpEntryResponse2Variant {
   /** A customer-facing explanation of what this predefined AI prompt topic represents. */
   description?: string | null;
 }
-const GetDlpEntryResponse2Variant = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      topicType: Schema.Union([
-        Schema.Literals(["Intent", "Content"]),
-        Schema.String,
-      ]),
-      type: Schema.Literal("PromptTopic"),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        topicType: "topic_type",
-        type: "type",
-        description: "description",
-      }),
-    ),
+const GetDlpEntryResponse2Variant = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    topicType: Schema.Union([
+      Schema.Literals(["Intent", "Content"]),
+      Schema.String,
+    ]),
+    type: Schema.Literal("PromptTopic"),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      topicType: "topic_type",
+      type: "type",
+      description: "description",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetDlpEntryResponse2Variant>;
 
 interface GetDlpEntryResponse2Variant1 {
@@ -14706,12 +14679,11 @@ interface GetDlpEntryResponse2Variant1 {
   /** A customer-facing explanation of what this predefined entry represents. */
   description?: string | null;
 }
-const GetDlpEntryResponse2Variant1 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      type: Schema.Literal("General"),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+const GetDlpEntryResponse2Variant1 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.Literal("General"),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<GetDlpEntryResponse2Variant1>;
 
 interface GetDlpEntryResponse22 {
@@ -14742,7 +14714,7 @@ interface GetDlpEntryResponse22 {
     | { type: "General"; description?: string | null }
     | null;
 }
-const GetDlpEntryResponse22 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GetDlpEntryResponse22 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     confidence: Confidence,
@@ -14812,7 +14784,7 @@ interface GetDlpEntryResponse3 {
     | (string & {})
     | null;
 }
-const GetDlpEntryResponse3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GetDlpEntryResponse3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -14878,7 +14850,7 @@ interface GetDlpEntryResponse4 {
     | (string & {})
     | null;
 }
-const GetDlpEntryResponse4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GetDlpEntryResponse4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     caseSensitive: Schema.Boolean,
@@ -14945,7 +14917,7 @@ interface GetDlpEntryResponse5 {
     | (string & {})
     | null;
 }
-const GetDlpEntryResponse5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GetDlpEntryResponse5 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -15008,7 +14980,7 @@ interface GetDlpEntryResponse6 {
     | (string & {})
     | null;
 }
-const GetDlpEntryResponse6 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GetDlpEntryResponse6 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -15075,48 +15047,47 @@ interface ListDlpEntriesResponseResult {
     | (string & {})
     | null;
 }
-const ListDlpEntriesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      pattern: Pattern,
-      type: Schema.Literal("custom"),
-      updatedAt: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      uploadStatus: Schema.optional(
+const ListDlpEntriesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    pattern: Pattern,
+    type: Schema.Literal("custom"),
+    updatedAt: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    profileId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    uploadStatus: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "empty",
-              "uploading",
-              "pending",
-              "processing",
-              "failed",
-              "complete",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "empty",
+            "uploading",
+            "pending",
+            "processing",
+            "failed",
+            "complete",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        enabled: "enabled",
-        name: "name",
-        pattern: "pattern",
-        type: "type",
-        updatedAt: "updated_at",
-        description: "description",
-        profileId: "profile_id",
-        uploadStatus: "upload_status",
-      }),
+        Schema.Null,
+      ]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      enabled: "enabled",
+      name: "name",
+      pattern: "pattern",
+      type: "type",
+      updatedAt: "updated_at",
+      description: "description",
+      profileId: "profile_id",
+      uploadStatus: "upload_status",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListDlpEntriesResponseResult>;
 
 interface ListDlpEntriesResponseResult1 {
@@ -15140,7 +15111,7 @@ interface ListDlpEntriesResponseResult1 {
     | null;
 }
 const ListDlpEntriesResponseResult1 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -15207,7 +15178,7 @@ interface ListDlpEntriesResponseResult2 {
     | null;
 }
 const ListDlpEntriesResponseResult2 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       confidence: Confidence,
@@ -15273,7 +15244,7 @@ interface ListDlpEntriesResponseResult3 {
     | null;
 }
 const ListDlpEntriesResponseResult3 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -15335,7 +15306,7 @@ interface ListDlpEntriesResponseResult4 {
     | null;
 }
 const ListDlpEntriesResponseResult4 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       caseSensitive: Schema.Boolean,
@@ -15398,7 +15369,7 @@ interface ListDlpEntriesResponseResult5 {
     | null;
 }
 const ListDlpEntriesResponseResult5 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -15457,7 +15428,7 @@ interface ListDlpEntriesResponseResult6 {
     | null;
 }
 const ListDlpEntriesResponseResult6 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -15511,7 +15482,7 @@ interface CustomEntry {
   /** @deprecated */
   profileId?: string | null;
 }
-const CustomEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CustomEntry = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -15548,7 +15519,7 @@ interface CustomPromptTopicEntry {
   /** The optional description of the custom prompt topic entry. */
   description?: string | null;
 }
-const CustomPromptTopicEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CustomPromptTopicEntry = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -15588,7 +15559,7 @@ interface PredefinedEntry {
     | { type: "General"; description?: string | null }
     | null;
 }
-const PredefinedEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PredefinedEntry = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     confidence: Confidence,
@@ -15627,7 +15598,7 @@ interface IntegrationEntry {
   updatedAt: string;
   profileId?: string | null;
 }
-const IntegrationEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const IntegrationEntry = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -15662,7 +15633,7 @@ interface ExactDataEntry {
   /** The optional description of the exact data entry. */
   description?: string | null;
 }
-const ExactDataEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ExactDataEntry = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     caseSensitive: Schema.Boolean,
@@ -15698,27 +15669,26 @@ interface DocumentFingerprintEntry {
   /** The optional description of the document fingerprint entry. */
   description?: string | null;
 }
-const DocumentFingerprintEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      type: Schema.Literal("document_fingerprint"),
-      updatedAt: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        enabled: "enabled",
-        name: "name",
-        type: "type",
-        updatedAt: "updated_at",
-        description: "description",
-      }),
-    ),
+const DocumentFingerprintEntry = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    type: Schema.Literal("document_fingerprint"),
+    updatedAt: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdAt: "created_at",
+      enabled: "enabled",
+      name: "name",
+      type: "type",
+      updatedAt: "updated_at",
+      description: "description",
+    }),
+  ),
 ) as unknown as Schema.Codec<DocumentFingerprintEntry>;
 
 interface WordListEntry {
@@ -15731,7 +15701,7 @@ interface WordListEntry {
   wordList: unknown;
   profileId?: string | null;
 }
-const WordListEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WordListEntry = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -15759,7 +15729,7 @@ interface SkipConfiguration {
   /** If the content type is a file, skip context analysis and return all matches. */
   files: boolean;
 }
-const SkipConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SkipConfiguration = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     files: Schema.Boolean,
   }),
@@ -15771,7 +15741,7 @@ interface ContextAwareness {
   /** Content types to exclude from context analysis and return all matches. */
   skip: { files: boolean };
 }
-const ContextAwareness = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ContextAwareness = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.Boolean,
     skip: SkipConfiguration,
@@ -15969,7 +15939,7 @@ interface CustomProfile {
       )[]
     | null;
 }
-const CustomProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CustomProfile = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     allowedMatchCount: Schema.Number,
@@ -16156,7 +16126,7 @@ interface PredefinedProfile {
   /** Whether this profile can be accessed by anyone. */
   openAccess?: boolean | null;
 }
-const PredefinedProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PredefinedProfile = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     allowedMatchCount: Schema.Number,
@@ -16370,7 +16340,7 @@ interface IntegrationProfile {
   /** The description of the profile. */
   description?: string | null;
 }
-const IntegrationProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const IntegrationProfile = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -16420,7 +16390,7 @@ interface DlpnewCustomEntry {
   pattern: { regex: string; validation?: "luhn" | null };
   description?: string | null;
 }
-const DlpnewCustomEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DlpnewCustomEntry = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.Boolean,
     name: Schema.String,
@@ -16434,7 +16404,7 @@ interface DlpnewWordListEntry {
   name: string;
   words: string[];
 }
-const DlpnewWordListEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DlpnewWordListEntry = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.Boolean,
     name: Schema.String,
@@ -16446,7 +16416,7 @@ interface SharedEntry {
   enabled: boolean;
   entryId: string;
 }
-const SharedEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SharedEntry = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.Boolean,
     entryId: Schema.String,
@@ -16460,7 +16430,7 @@ interface DlpnewCustomEntryWithID {
   pattern: { regex: string; validation?: "luhn" | null };
   description?: string | null;
 }
-const DlpnewCustomEntryWithID = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DlpnewCustomEntryWithID = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.Boolean,
     entryId: Schema.String,
@@ -16482,7 +16452,7 @@ interface Entry {
   id: string;
   enabled: boolean;
 }
-const Entry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Entry = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     enabled: Schema.Boolean,
@@ -16505,7 +16475,7 @@ interface ListDlpSensitivityGroupsResponseResult {
   templateId?: string | null;
 }
 const ListDlpSensitivityGroupsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -16540,7 +16510,7 @@ interface PayloadLogging {
   /** Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled. */
   publicKey?: string | null;
 }
-const PayloadLogging = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PayloadLogging = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     updatedAt: Schema.String,
     maskingLevel: Schema.optional(
@@ -16574,7 +16544,7 @@ interface PayloadLogging2 {
   /** Base64-encoded public key for encrypting payload logs.  - Set to a non-empty base64 string to enable payload logging with the given key. - Set to an empty string to disable payload logging. - Omit or  */
   publicKey?: string | null;
 }
-const PayloadLogging2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PayloadLogging2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     maskingLevel: Schema.optional(
       Schema.Union([
@@ -16602,7 +16572,7 @@ interface Expiration {
   /** Indicates whether the policy is expired. */
   expired?: boolean | null;
 }
-const Expiration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Expiration = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     expiresAt: Schema.String,
     duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -16620,7 +16590,7 @@ interface AuditSSH {
   /** Enable SSH command logging. */
   commandLogging?: boolean | null;
 }
-const AuditSSH = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AuditSSH = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     commandLogging: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -16656,7 +16626,7 @@ interface BisoadminControls {
   /** Specify the watermark ID (UUID) to apply to the isolated browser session. When present, enables watermark rendering in the isolated browser. */
   wmId?: string | null;
 }
-const BisoadminControls = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BisoadminControls = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     copy: Schema.optional(
       Schema.Union([
@@ -16740,7 +16710,7 @@ interface BlockPage {
   /** Specify whether to pass the context information as query parameters. */
   includeContext?: boolean | null;
 }
-const BlockPage = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BlockPage = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     targetUri: Schema.String,
     includeContext: Schema.optional(
@@ -16760,7 +16730,7 @@ interface CheckSession {
   /** Enable session enforcement. */
   enforce?: boolean | null;
 }
-const CheckSession = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CheckSession = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     duration: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     enforce: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -16777,7 +16747,7 @@ interface DnsresolverSettingsV4 {
   /** Specify an optional virtual network for this resolver. Uses default virtual network id if omitted. */
   vnetId?: string | null;
 }
-const DnsresolverSettingsV4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DnsresolverSettingsV4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ip: Schema.String,
     port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -16813,7 +16783,7 @@ interface Dnsresolvers {
       }[]
     | null;
 }
-const Dnsresolvers = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dnsresolvers = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ipv4: Schema.optional(
       Schema.Union([Schema.Array(DnsresolverSettingsV4), Schema.Null]),
@@ -16832,7 +16802,7 @@ interface Egress {
   /** Specify the IPv6 range to use for egress. */
   ipv6?: string | null;
 }
-const Egress = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Egress = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ipv4: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     ipv4Fallback: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -16850,7 +16820,7 @@ interface ForensicCopy {
   /** Enable sending the copy to storage. */
   enabled?: boolean | null;
 }
-const ForensicCopy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ForensicCopy = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   }),
@@ -16862,7 +16832,7 @@ interface L4override {
   /** Defines a port number to use for TCP/UDP overrides. */
   port?: number | null;
 }
-const L4override = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const L4override = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -16879,7 +16849,7 @@ interface NotificationSettings {
   /** Defines an optional URL to direct users to additional information. If unset, the notification opens a block page. */
   supportUrl?: string | null;
 }
-const NotificationSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const NotificationSettings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     includeContext: Schema.optional(
@@ -16918,7 +16888,7 @@ interface Quarantine {
       )[]
     | null;
 }
-const Quarantine = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Quarantine = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fileTypes: Schema.optional(
       Schema.Union([
@@ -16956,7 +16926,7 @@ interface Redirect {
   /** Specify whether to append the path and query parameters from the original request to target_uri. */
   preservePathAndQuery?: boolean | null;
 }
-const Redirect = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Redirect = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     targetUri: Schema.String,
     includeContext: Schema.optional(
@@ -16980,7 +16950,7 @@ interface ResolveDNSInternally {
   /** Specify the internal DNS view identifier to pass to the internal DNS service. */
   viewId?: string | null;
 }
-const ResolveDNSInternally = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ResolveDNSInternally = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fallback: Schema.optional(
       Schema.Union([
@@ -16996,7 +16966,7 @@ interface UntrustedCERT {
   /** Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526. */
   action?: "pass_through" | "block" | "error" | (string & {}) | null;
 }
-const UntrustedCERT = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const UntrustedCERT = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     action: Schema.optional(
       Schema.Union([
@@ -17132,7 +17102,7 @@ interface RuleSetting {
     action?: "pass_through" | "block" | "error" | (string & {}) | null;
   } | null;
 }
-const RuleSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RuleSetting = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     addHeaders: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
@@ -17234,7 +17204,7 @@ interface Schedule {
   /** Specify the time intervals when the rule is active on Wednesdays, in the increasing order from 00:00-24:00. If this parameter omitted, the rule is deactivated on Wednesdays. API returns a formatted ve */
   wed?: string | null;
 }
-const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Schedule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fri: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     mon: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -17267,23 +17237,22 @@ interface ZeroTrustGatewayApplication {
   /** Specify the name of the application or application type. */
   name?: string | null;
 }
-const ZeroTrustGatewayApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      applicationTypeId: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        applicationTypeId: "application_type_id",
-        createdAt: "created_at",
-        name: "name",
-      }),
+const ZeroTrustGatewayApplication = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    applicationTypeId: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
     ),
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      applicationTypeId: "application_type_id",
+      createdAt: "created_at",
+      name: "name",
+    }),
+  ),
 ) as unknown as Schema.Codec<ZeroTrustGatewayApplication>;
 
 interface ZeroTrustGatewayApplicationType {
@@ -17296,7 +17265,7 @@ interface ZeroTrustGatewayApplicationType {
   name?: string | null;
 }
 const ZeroTrustGatewayApplicationType =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -17331,7 +17300,7 @@ interface Subcategory {
   /** Specify the category name. */
   name?: string | null;
 }
-const Subcategory = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Subcategory = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     beta: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -17392,7 +17361,7 @@ interface ListGatewayCategoriesResponseResult {
     | null;
 }
 const ListGatewayCategoriesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       beta: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -17448,7 +17417,7 @@ interface ListGatewayCertificatesResponseResult {
   uploadedOn?: string | null;
 }
 const ListGatewayCertificatesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       bindingStatus: Schema.optional(
@@ -17505,7 +17474,7 @@ interface ActivityLogSettings {
   /** Specify whether to log activity. */
   enabled?: boolean | null;
 }
-const ActivityLogSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActivityLogSettings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   }),
@@ -17526,7 +17495,7 @@ interface AntiVirusSettings {
     supportUrl?: string | null;
   } | null;
 }
-const AntiVirusSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AntiVirusSettings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabledDownloadPhase: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -17580,7 +17549,7 @@ interface BlockPageSettings {
   /** Indicate the version number of the setting. */
   version?: number | null;
 }
-const BlockPageSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BlockPageSettings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     backgroundColor: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -17636,7 +17605,7 @@ interface BodyScanningSettings {
   /** Specify the inspection mode as either `deep` or `shallow`. */
   inspectionMode?: "deep" | "shallow" | (string & {}) | null;
 }
-const BodyScanningSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BodyScanningSettings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     inspectionMode: Schema.optional(
       Schema.Union([
@@ -17653,21 +17622,20 @@ interface BrowserIsolationSettings {
   /** Specify whether to enable Clientless Browser Isolation. */
   urlBrowserIsolationEnabled?: boolean | null;
 }
-const BrowserIsolationSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      nonIdentityEnabled: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      urlBrowserIsolationEnabled: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        nonIdentityEnabled: "non_identity_enabled",
-        urlBrowserIsolationEnabled: "url_browser_isolation_enabled",
-      }),
+const BrowserIsolationSettings = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    nonIdentityEnabled: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
     ),
+    urlBrowserIsolationEnabled: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      nonIdentityEnabled: "non_identity_enabled",
+      urlBrowserIsolationEnabled: "url_browser_isolation_enabled",
+    }),
+  ),
 ) as unknown as Schema.Codec<BrowserIsolationSettings>;
 
 interface CustomCertificateSettings {
@@ -17679,23 +17647,20 @@ interface CustomCertificateSettings {
   bindingStatus?: string | null;
   updatedAt?: string | null;
 }
-const CustomCertificateSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      enabled: Schema.Union([Schema.Boolean, Schema.Null]),
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      bindingStatus: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        enabled: "enabled",
-        id: "id",
-        bindingStatus: "binding_status",
-        updatedAt: "updated_at",
-      }),
-    ),
+const CustomCertificateSettings = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.Union([Schema.Boolean, Schema.Null]),
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    bindingStatus: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      enabled: "enabled",
+      id: "id",
+      bindingStatus: "binding_status",
+      updatedAt: "updated_at",
+    }),
+  ),
 ) as unknown as Schema.Codec<CustomCertificateSettings>;
 
 interface ExtendedEmailMatching {
@@ -17708,7 +17673,7 @@ interface ExtendedEmailMatching {
   /** Indicate the version number of the setting. */
   version?: number | null;
 }
-const ExtendedEmailMatching = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ExtendedEmailMatching = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     readOnly: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -17728,7 +17693,7 @@ interface FipsSettings {
   /** Enforce cipher suites and TLS versions compliant with FIPS 140-2. */
   tls?: boolean | null;
 }
-const FipsSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FipsSettings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     tls: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   }),
@@ -17738,7 +17703,7 @@ interface Inspection {
   /** Define the proxy inspection mode. 1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443). 2. dynamic: Gateway  */
   mode?: "static" | "dynamic" | (string & {}) | null;
 }
-const Inspection = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Inspection = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     mode: Schema.optional(
       Schema.Union([
@@ -17755,7 +17720,7 @@ interface Sandbox {
   /** Specify the action to take when the system cannot scan the file. */
   fallbackAction?: "allow" | "block" | (string & {}) | null;
 }
-const Sandbox = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Sandbox = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     fallbackAction: Schema.optional(
@@ -17846,59 +17811,54 @@ interface GatewayConfigurationSettings {
   /** Specify whether to inspect encrypted HTTP traffic. */
   tlsDecrypt?: { enabled?: boolean | null } | null;
 }
-const GatewayConfigurationSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      activityLog: Schema.optional(
-        Schema.Union([ActivityLogSettings, Schema.Null]),
-      ),
-      antivirus: Schema.optional(
-        Schema.Union([AntiVirusSettings, Schema.Null]),
-      ),
-      blockPage: Schema.optional(
-        Schema.Union([BlockPageSettings, Schema.Null]),
-      ),
-      bodyScanning: Schema.optional(
-        Schema.Union([BodyScanningSettings, Schema.Null]),
-      ),
-      browserIsolation: Schema.optional(
-        Schema.Union([BrowserIsolationSettings, Schema.Null]),
-      ),
-      certificate: Schema.optional(Schema.Union([Group, Schema.Null])),
-      customCertificate: Schema.optional(
-        Schema.Union([CustomCertificateSettings, Schema.Null]),
-      ),
-      extendedEmailMatching: Schema.optional(
-        Schema.Union([ExtendedEmailMatching, Schema.Null]),
-      ),
-      fips: Schema.optional(Schema.Union([FipsSettings, Schema.Null])),
-      hostSelector: Schema.optional(
-        Schema.Union([ActivityLogSettings, Schema.Null]),
-      ),
-      inspection: Schema.optional(Schema.Union([Inspection, Schema.Null])),
-      protocolDetection: Schema.optional(
-        Schema.Union([ActivityLogSettings, Schema.Null]),
-      ),
-      sandbox: Schema.optional(Schema.Union([Sandbox, Schema.Null])),
-      tlsDecrypt: Schema.optional(Schema.Union([ForensicCopy, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        activityLog: "activity_log",
-        antivirus: "antivirus",
-        blockPage: "block_page",
-        bodyScanning: "body_scanning",
-        browserIsolation: "browser_isolation",
-        certificate: "certificate",
-        customCertificate: "custom_certificate",
-        extendedEmailMatching: "extended_email_matching",
-        fips: "fips",
-        hostSelector: "host_selector",
-        inspection: "inspection",
-        protocolDetection: "protocol_detection",
-        sandbox: "sandbox",
-        tlsDecrypt: "tls_decrypt",
-      }),
+const GatewayConfigurationSettings = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    activityLog: Schema.optional(
+      Schema.Union([ActivityLogSettings, Schema.Null]),
     ),
+    antivirus: Schema.optional(Schema.Union([AntiVirusSettings, Schema.Null])),
+    blockPage: Schema.optional(Schema.Union([BlockPageSettings, Schema.Null])),
+    bodyScanning: Schema.optional(
+      Schema.Union([BodyScanningSettings, Schema.Null]),
+    ),
+    browserIsolation: Schema.optional(
+      Schema.Union([BrowserIsolationSettings, Schema.Null]),
+    ),
+    certificate: Schema.optional(Schema.Union([Group, Schema.Null])),
+    customCertificate: Schema.optional(
+      Schema.Union([CustomCertificateSettings, Schema.Null]),
+    ),
+    extendedEmailMatching: Schema.optional(
+      Schema.Union([ExtendedEmailMatching, Schema.Null]),
+    ),
+    fips: Schema.optional(Schema.Union([FipsSettings, Schema.Null])),
+    hostSelector: Schema.optional(
+      Schema.Union([ActivityLogSettings, Schema.Null]),
+    ),
+    inspection: Schema.optional(Schema.Union([Inspection, Schema.Null])),
+    protocolDetection: Schema.optional(
+      Schema.Union([ActivityLogSettings, Schema.Null]),
+    ),
+    sandbox: Schema.optional(Schema.Union([Sandbox, Schema.Null])),
+    tlsDecrypt: Schema.optional(Schema.Union([ForensicCopy, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      activityLog: "activity_log",
+      antivirus: "antivirus",
+      blockPage: "block_page",
+      bodyScanning: "body_scanning",
+      browserIsolation: "browser_isolation",
+      certificate: "certificate",
+      customCertificate: "custom_certificate",
+      extendedEmailMatching: "extended_email_matching",
+      fips: "fips",
+      hostSelector: "host_selector",
+      inspection: "inspection",
+      protocolDetection: "protocol_detection",
+      sandbox: "sandbox",
+      tlsDecrypt: "tls_decrypt",
+    }),
+  ),
 ) as unknown as Schema.Codec<GatewayConfigurationSettings>;
 
 interface BlockPageSettingsParam {
@@ -17927,7 +17887,7 @@ interface BlockPageSettingsParam {
   /** Specify the URI to redirect users to when the mode is redirect_uri. */
   targetUri?: string | null;
 }
-const BlockPageSettingsParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BlockPageSettingsParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     backgroundColor: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -17980,7 +17940,7 @@ interface CustomCertificateSettingsParam {
   id?: string | null;
 }
 const CustomCertificateSettingsParam =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       enabled: Schema.Union([Schema.Boolean, Schema.Null]),
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -18049,7 +18009,7 @@ interface GatewayConfigurationSettingsParam {
   tlsDecrypt?: { enabled?: boolean | null } | null;
 }
 const GatewayConfigurationSettingsParam =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       activityLog: Schema.optional(
         Schema.Union([ActivityLogSettings, Schema.Null]),
@@ -18110,7 +18070,7 @@ interface GatewayItem {
   /** Specify the item value. */
   value?: string | null;
 }
-const GatewayItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GatewayItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -18158,7 +18118,7 @@ interface ListGatewayListsResponseResult {
   updatedAt?: string | null;
 }
 const ListGatewayListsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -18208,7 +18168,7 @@ interface Item {
   /** Specify the item value. */
   value?: string | null;
 }
-const Item = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Item = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -18219,7 +18179,7 @@ interface Ipnetwork {
   /** Specify the IP address or IP CIDR. */
   network: string;
 }
-const Ipnetwork = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ipnetwork = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     network: Schema.String,
   }),
@@ -18233,7 +18193,7 @@ interface Dohendpoint {
   /** Specify whether the DOH endpoint requires user identity authentication. */
   requireToken?: boolean | null;
 }
-const Dohendpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dohendpoint = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     networks: Schema.optional(
@@ -18255,7 +18215,7 @@ interface Dotendpoint {
   /** Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this locat */
   networks?: { network: string }[] | null;
 }
-const Dotendpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dotendpoint = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     networks: Schema.optional(
@@ -18274,7 +18234,7 @@ interface Endpoint {
   ipv4: { enabled?: boolean | null };
   ipv6: { enabled?: boolean | null; networks?: { network: string }[] | null };
 }
-const Endpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Endpoint = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     doh: Dohendpoint,
     dot: Dotendpoint,
@@ -18320,7 +18280,7 @@ interface ListGatewayLocationsResponseResult {
   updatedAt?: string | null;
 }
 const ListGatewayLocationsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientDefault: Schema.optional(
@@ -18374,7 +18334,7 @@ interface Dns {
   /** Specify whether to log only blocking requests to this service. */
   logBlocks?: boolean | null;
 }
-const Dns = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dns = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     logAll: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     logBlocks: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -18389,7 +18349,7 @@ interface SettingsByRuleType {
   /** Configure logging settings for Network firewall. */
   l4?: { logAll?: boolean | null; logBlocks?: boolean | null } | null;
 }
-const SettingsByRuleType = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SettingsByRuleType = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dns: Schema.optional(Schema.Union([Dns, Schema.Null])),
     http: Schema.optional(Schema.Union([Dns, Schema.Null])),
@@ -18411,7 +18371,7 @@ interface ListGatewayPacfilesResponseResult {
   url?: string | null;
 }
 const ListGatewayPacfilesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -18447,7 +18407,7 @@ interface ZeroTrustGatewayProxyEndpointIP {
   updatedAt?: string | null;
 }
 const ZeroTrustGatewayProxyEndpointIP =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ips: Schema.Array(Schema.String),
       name: Schema.String,
@@ -18481,7 +18441,7 @@ interface ZeroTrustGatewayProxyEndpointIdentity {
   updatedAt?: string | null;
 }
 const ZeroTrustGatewayProxyEndpointIdentity =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       kind: Schema.Literal("identity"),
       name: Schema.String,
@@ -18679,7 +18639,7 @@ interface ListGatewayRulesResponseResult {
   warningStatus?: string | null;
 }
 const ListGatewayRulesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       action: Schema.Union([
         Schema.Literals([
@@ -18766,7 +18726,7 @@ interface Expiration2 {
   /** Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule. */
   duration?: number | null;
 }
-const Expiration2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Expiration2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     expiresAt: Schema.String,
     duration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -18791,7 +18751,7 @@ interface Config3 {
   /** Should Cloudflare try to load groups from your account */
   supportGroups?: boolean | null;
 }
-const Config3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     claims: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -18846,37 +18806,36 @@ interface IdentityProviderSCIMConfig {
   /** A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider. */
   userDeprovision?: boolean | null;
 }
-const IdentityProviderSCIMConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      identityUpdateBehavior: Schema.optional(
+const IdentityProviderSCIMConfig = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    identityUpdateBehavior: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["automatic", "reauth", "no_action"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["automatic", "reauth", "no_action"]),
+          Schema.String,
         ]),
-      ),
-      scimBaseUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      seatDeprovision: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      secret: Schema.optional(Schema.Union([SensitiveString, Schema.Null])),
-      userDeprovision: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        enabled: "enabled",
-        identityUpdateBehavior: "identity_update_behavior",
-        scimBaseUrl: "scim_base_url",
-        seatDeprovision: "seat_deprovision",
-        secret: "secret",
-        userDeprovision: "user_deprovision",
-      }),
+        Schema.Null,
+      ]),
     ),
+    scimBaseUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    seatDeprovision: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    secret: Schema.optional(Schema.Union([SensitiveString, Schema.Null])),
+    userDeprovision: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      enabled: "enabled",
+      identityUpdateBehavior: "identity_update_behavior",
+      scimBaseUrl: "scim_base_url",
+      seatDeprovision: "seat_deprovision",
+      secret: "secret",
+      userDeprovision: "user_deprovision",
+    }),
+  ),
 ) as unknown as Schema.Codec<IdentityProviderSCIMConfig>;
 
 interface AzureAD2 {
@@ -18945,7 +18904,7 @@ interface AzureAD2 {
     userDeprovision?: boolean | null;
   } | null;
 }
-const AzureAD2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AzureAD2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Config3,
     name: Schema.String,
@@ -19008,7 +18967,7 @@ interface Config4 {
   /** The claim name for email in the id_token response. */
   emailClaimName?: string | null;
 }
-const Config4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     centrifyAccount: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -19096,7 +19055,7 @@ interface AccessCentrify {
     userDeprovision?: boolean | null;
   } | null;
 }
-const AccessCentrify = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessCentrify = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Config4,
     name: Schema.String,
@@ -19151,7 +19110,7 @@ interface GenericOAuthConfig {
   /** Your OAuth Client Secret */
   clientSecret?: string | null;
 }
-const GenericOAuthConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GenericOAuthConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     clientId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     clientSecret: Schema.optional(Schema.Union([SensitiveString, Schema.Null])),
@@ -19217,7 +19176,7 @@ interface AccessFacebook {
     userDeprovision?: boolean | null;
   } | null;
 }
-const AccessFacebook = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessFacebook = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: GenericOAuthConfig,
     name: Schema.String,
@@ -19276,7 +19235,7 @@ interface Config5 {
   /** The claim name for email in the id_token response. */
   emailClaimName?: string | null;
 }
-const Config5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config5 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     claims: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -19356,7 +19315,7 @@ interface AccessGoogle {
     userDeprovision?: boolean | null;
   } | null;
 }
-const AccessGoogle = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessGoogle = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Config5,
     name: Schema.String,
@@ -19417,7 +19376,7 @@ interface Config6 {
   /** The claim name for email in the id_token response. */
   emailClaimName?: string | null;
 }
-const Config6 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config6 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     appsDomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     claims: Schema.optional(
@@ -19500,7 +19459,7 @@ interface AccessGoogleApps {
     userDeprovision?: boolean | null;
   } | null;
 }
-const AccessGoogleApps = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessGoogleApps = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Config6,
     name: Schema.String,
@@ -19569,7 +19528,7 @@ interface Config7 {
   /** The token_endpoint URL of your IdP */
   tokenUrl?: string | null;
 }
-const Config7 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config7 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     authUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certsUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -19666,7 +19625,7 @@ interface AccessOIDC {
     userDeprovision?: boolean | null;
   } | null;
 }
-const AccessOIDC = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessOIDC = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Config7,
     name: Schema.String,
@@ -19729,7 +19688,7 @@ interface Config8 {
   /** Your okta account url */
   oktaAccount?: string | null;
 }
-const Config8 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config8 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     authorizationServerId: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -19817,7 +19776,7 @@ interface AccessOkta {
     userDeprovision?: boolean | null;
   } | null;
 }
-const AccessOkta = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessOkta = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Config8,
     name: Schema.String,
@@ -19878,7 +19837,7 @@ interface Config9 {
   /** Your OneLogin account url */
   oneloginAccount?: string | null;
 }
-const Config9 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config9 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     claims: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -19963,7 +19922,7 @@ interface AccessOnelogin {
     userDeprovision?: boolean | null;
   } | null;
 }
-const AccessOnelogin = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessOnelogin = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Config9,
     name: Schema.String,
@@ -20024,7 +19983,7 @@ interface Config10 {
   /** Your PingOne environment identifier */
   pingEnvId?: string | null;
 }
-const Config10 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config10 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     claims: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -20107,7 +20066,7 @@ interface AccessPingone {
     userDeprovision?: boolean | null;
   } | null;
 }
-const AccessPingone = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessPingone = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Config10,
     name: Schema.String,
@@ -20162,7 +20121,7 @@ interface HeaderAttribute {
   /** header that will be added on the request to the origin */
   headerName?: string | null;
 }
-const HeaderAttribute = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const HeaderAttribute = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     attributeName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     headerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -20194,7 +20153,7 @@ interface Config11 {
   /** URL to send the SAML authentication requests to */
   ssoTargetUrl?: string | null;
 }
-const Config11 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config11 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     attributes: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -20296,7 +20255,7 @@ interface AccessSAML {
     userDeprovision?: boolean | null;
   } | null;
 }
-const AccessSAML = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessSAML = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Config11,
     name: Schema.String,
@@ -20348,7 +20307,7 @@ const AccessSAML = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Config12 {
   redirectUrl?: string | null;
 }
-const Config12 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config12 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     redirectUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(Schema.encodeKeys({ redirectUrl: "redirect_url" })),
@@ -20411,7 +20370,7 @@ interface AccessOnetimepin {
     userDeprovision?: boolean | null;
   } | null;
 }
-const AccessOnetimepin = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessOnetimepin = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Config12,
     name: Schema.String,
@@ -20465,7 +20424,7 @@ interface Config13 {
   /** When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your */
   restrictToAccountMembers?: boolean | null;
 }
-const Config13 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config13 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     redirectUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     restrictToAccountMembers: Schema.optional(
@@ -20539,7 +20498,7 @@ interface AccessCloudflare {
     userDeprovision?: boolean | null;
   } | null;
 }
-const AccessCloudflare = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessCloudflare = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     config: Config13,
     name: Schema.String,
@@ -20650,7 +20609,7 @@ interface Config14 {
   /** When enabled, only users who are members of your Cloudflare account can authenticate through this identity provider. When disabled, any user with a Cloudflare account can authenticate, subject to your */
   restrictToAccountMembers?: boolean | null;
 }
-const Config14 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config14 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     claims: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -20764,7 +20723,7 @@ interface IdentityProviderSCIMConfigParam {
   userDeprovision?: boolean | null;
 }
 const IdentityProviderSCIMConfigParam =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       identityUpdateBehavior: Schema.optional(
@@ -20798,7 +20757,7 @@ interface Meta {
   /** The timestamp of when the SCIM resource was last modified. */
   lastModified?: string | null;
 }
-const Meta = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     lastModified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -20817,7 +20776,7 @@ interface ZeroTrustGroup {
   /** The list of URIs which indicate the attributes contained within a SCIM resource. */
   schemas?: string[] | null;
 }
-const ZeroTrustGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZeroTrustGroup = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     displayName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -20837,7 +20796,7 @@ interface Email2 {
   /** The email address of the SCIM User resource. */
   value?: string | null;
 }
-const Email2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Email2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     primary: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -20866,7 +20825,7 @@ interface AccessUser {
   /** The list of URIs which indicate the attributes contained within a SCIM resource. */
   schemas?: string[] | null;
 }
-const AccessUser = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AccessUser = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     active: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -20908,7 +20867,7 @@ interface ListNetworkHostnameRoutesResponseResult {
   tunnelName?: string | null;
 }
 const ListNetworkHostnameRoutesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -20980,7 +20939,7 @@ interface ListNetworkRoutesResponseResult {
   virtualNetworkName?: string | null;
 }
 const ListNetworkRoutesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -21046,7 +21005,7 @@ interface Subnet {
   /** The type of subnet. */
   subnetType?: "cloudflare_source" | "warp" | (string & {}) | null;
 }
-const Subnet = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Subnet = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -21095,7 +21054,7 @@ interface ListNetworkVirtualNetworksResponseResult {
   deletedAt?: string | null;
 }
 const ListNetworkVirtualNetworksResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       comment: Schema.String,
@@ -21121,7 +21080,7 @@ interface CustomPages {
   /** The uid of the custom page to use when a user is denied access. */
   identityDenied?: string | null;
 }
-const CustomPages = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CustomPages = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     forbidden: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     identityDenied: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -21145,7 +21104,7 @@ interface LoginDesign {
   /** The text color on your login page. */
   textColor?: string | null;
 }
-const LoginDesign = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LoginDesign = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     backgroundColor: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -21177,7 +21136,7 @@ interface MfaConfig3 {
   /** Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`. */
   sessionDuration?: string | null;
 }
-const MfaConfig3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MfaConfig3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     allowedAuthenticators: Schema.optional(
       Schema.Union([
@@ -21223,7 +21182,7 @@ interface MfaPivKeyRequirements {
   /** Defines when physical touch is required to use the SSH key. Valid values: `never` (no touch required), `always` (touch required for each use), `cached` (touch cached for 15 seconds). */
   touchPolicy?: "never" | "always" | "cached" | (string & {}) | null;
 }
-const MfaPivKeyRequirements = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MfaPivKeyRequirements = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pinPolicy: Schema.optional(
       Schema.Union([
@@ -21292,7 +21251,7 @@ interface Slot2 {
   /** Round trip time in ms of the client to ISP mile */
   clientToIspRttMs?: number | null;
 }
-const Slot2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Slot2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     clientToAppRttMs: Schema.Union([Schema.Number, Schema.Null]),
@@ -21309,7 +21268,7 @@ interface Sampling {
   unit: "hours";
   value: number;
 }
-const Sampling = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Sampling = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     unit: Schema.Literal("hours"),
     value: Schema.Number,
@@ -21328,7 +21287,7 @@ interface NetworkPath {
   /** Specifies the sampling applied, if any, to the slots response. When sampled, results shown represent the first test run to the start of each sampling interval. */
   sampling?: { unit: "hours"; value: number } | null;
 }
-const NetworkPath = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const NetworkPath = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     slots: Schema.Array(Slot2),
     sampling: Schema.optional(Schema.Union([Sampling, Schema.Null])),
@@ -21344,7 +21303,7 @@ interface Body {
     ipv6?: { ipAddr?: string | null; virtualNetworkId?: string | null } | null;
   };
 }
-const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     hostname: Schema.String,
     ip: Ip2,
@@ -21390,7 +21349,7 @@ interface ListResourceLibraryApplicationsResponseResult {
   intelId?: number | null;
 }
 const ListResourceLibraryApplicationsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       applicationConfidenceScore: Schema.Number,
@@ -21452,7 +21411,7 @@ interface ListResourceLibraryCategoriesResponseResult {
   name: string;
 }
 const ListResourceLibraryCategoriesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -21475,7 +21434,7 @@ interface Event {
   timestamp: string;
   eventDetails?: unknown | null;
 }
-const Event = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Event = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -21514,7 +21473,7 @@ interface ListRiskScoringIntegrationsResponseResult {
   wellKnownUrl: string;
 }
 const ListRiskScoringIntegrationsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountTag: Schema.String,
@@ -21546,7 +21505,7 @@ interface User2 {
   name: string;
   userId: string;
 }
-const User2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const User2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     email: Schema.String,
     eventCount: Schema.Number,
@@ -21577,7 +21536,7 @@ interface Body2 {
   /** The unique API identifier for the Zero Trust seat. */
   seatUid: string;
 }
-const Body2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accessSeat: Schema.Boolean,
     gatewaySeat: Schema.Boolean,
@@ -21601,7 +21560,7 @@ interface PatchSeatResponseResult {
   seatUid?: string | null;
   updatedAt?: string | null;
 }
-const PatchSeatResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PatchSeatResponseResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accessSeat: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -21625,7 +21584,7 @@ interface ByMode {
   uniqueDevicesTotal?: number | null;
   value?: string | null;
 }
-const ByMode = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ByMode = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     timestamp: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     uniqueDevicesTotal: Schema.optional(
@@ -21653,7 +21612,7 @@ interface DeviceStats2 {
   /** Number of unique devices */
   uniqueDevicesTotal?: number | null;
 }
-const DeviceStats2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DeviceStats2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     byMode: Schema.optional(Schema.Union([Schema.Array(ByMode), Schema.Null])),
     byStatus: Schema.optional(
@@ -21683,7 +21642,7 @@ interface Connection {
   /** UUID of the Cloudflare Tunnel connection. */
   uuid?: string | null;
 }
-const Connection = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Connection = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     clientId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -21757,7 +21716,7 @@ interface CloudflareTunnel {
     | (string & {})
     | null;
 }
-const CloudflareTunnel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CloudflareTunnel = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -21868,65 +21827,62 @@ interface TunnelWARPConnectorTunnel {
     | (string & {})
     | null;
 }
-const TunnelWARPConnectorTunnel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      connections: Schema.optional(
-        Schema.Union([Schema.Array(Connection), Schema.Null]),
-      ),
-      connsActiveAt: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      connsInactiveAt: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      deletedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      metadata: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["inactive", "degraded", "healthy", "down"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      tunType: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "cfd_tunnel",
-              "warp_connector",
-              "warp",
-              "magic",
-              "ip_sec",
-              "gre",
-              "cni",
-            ]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        accountTag: "account_tag",
-        connections: "connections",
-        connsActiveAt: "conns_active_at",
-        connsInactiveAt: "conns_inactive_at",
-        createdAt: "created_at",
-        deletedAt: "deleted_at",
-        metadata: "metadata",
-        name: "name",
-        status: "status",
-        tunType: "tun_type",
-      }),
+const TunnelWARPConnectorTunnel = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    connections: Schema.optional(
+      Schema.Union([Schema.Array(Connection), Schema.Null]),
     ),
+    connsActiveAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    connsInactiveAt: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    deletedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    metadata: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["inactive", "degraded", "healthy", "down"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    tunType: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals([
+            "cfd_tunnel",
+            "warp_connector",
+            "warp",
+            "magic",
+            "ip_sec",
+            "gre",
+            "cni",
+          ]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      accountTag: "account_tag",
+      connections: "connections",
+      connsActiveAt: "conns_active_at",
+      connsInactiveAt: "conns_inactive_at",
+      createdAt: "created_at",
+      deletedAt: "deleted_at",
+      metadata: "metadata",
+      name: "name",
+      status: "status",
+      tunType: "tun_type",
+    }),
+  ),
 ) as unknown as Schema.Codec<TunnelWARPConnectorTunnel>;
 
 interface Access {
@@ -21936,7 +21892,7 @@ interface Access {
   /** Deny traffic that has not fulfilled Access authorization. */
   required?: boolean | null;
 }
-const Access = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Access = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     audTag: Schema.Array(Schema.String),
     teamName: Schema.String,
@@ -21980,7 +21936,7 @@ interface OriginRequest {
   /** Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server. */
   tlsTimeout?: number | null;
 }
-const OriginRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OriginRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     access: Schema.optional(Schema.Union([Access, Schema.Null])),
     caPool: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -22042,7 +21998,7 @@ interface Ingress {
   /** Requests with this path route to this public hostname. */
   path?: string | null;
 }
-const Ingress = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ingress = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     service: Schema.String,
@@ -22104,7 +22060,7 @@ interface Config15 {
     tlsTimeout?: number | null;
   } | null;
 }
-const Config15 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config15 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ingress: Schema.optional(
       Schema.Union([Schema.Array(Ingress), Schema.Null]),
@@ -22141,7 +22097,7 @@ interface GetTunnelCloudflaredConnectionResponseResult {
   version?: string | null;
 }
 const GetTunnelCloudflaredConnectionResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       arch: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -22173,7 +22129,7 @@ interface TunnelMeshAwsConfig {
   /** Floating Network Resource ID — the secondary ENI that is moved between nodes on failover. */
   fnrId: string;
 }
-const TunnelMeshAwsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TunnelMeshAwsConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     fnrId: Schema.String,
   }).pipe(Schema.encodeKeys({ fnrId: "fnr_id" })),
@@ -22183,7 +22139,7 @@ interface Vip {
   /** Virtual IP address (IPv4 or IPv6). */
   address: string;
 }
-const Vip = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Vip = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     address: Schema.String,
   }),
@@ -22195,7 +22151,7 @@ interface TunnelMeshLocalConfig {
   /** VIPs to clean up on demotion or version drift. */
   vipsPrevious?: { address: string }[] | null;
 }
-const TunnelMeshLocalConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TunnelMeshLocalConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     vips: Schema.Array(Vip),
     vipsPrevious: Schema.optional(
@@ -22218,7 +22174,7 @@ interface Conn {
   /** The public IP address of the host running WARP Connector. */
   originIp?: string | null;
 }
-const Conn = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Conn = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     clientId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -22264,7 +22220,7 @@ interface GetTunnelWarpConnectorConnectionResponseResult {
   version?: string | null;
 }
 const GetTunnelWarpConnectorConnectionResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       arch: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -22310,7 +22266,7 @@ export interface ListAccessAiControlMcpPortalsRequest {
 }
 
 export const ListAccessAiControlMcpPortalsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -22394,7 +22350,7 @@ export interface ListAccessAiControlMcpPortalsResponse {
 }
 
 export const ListAccessAiControlMcpPortalsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessAiControlMcpPortalsResponseResult),
       resultInfo: Schema.optional(
@@ -22413,7 +22369,7 @@ export const listAccessAiControlMcpPortals: API.PaginatedOperationMethod<
   ListAccessAiControlMcpPortalsResponse,
   ListAccessAiControlMcpPortalsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessAiControlMcpPortalsRequest,
   output: ListAccessAiControlMcpPortalsResponse,
   errors: [Forbidden],
@@ -22462,7 +22418,7 @@ export interface CreateAccessAiControlMcpPortalRequest {
 }
 
 export const CreateAccessAiControlMcpPortalRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       id: Schema.String,
@@ -22554,7 +22510,7 @@ export interface CreateAccessAiControlMcpPortalResponse {
 }
 
 export const CreateAccessAiControlMcpPortalResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       hostname: Schema.String,
@@ -22600,7 +22556,7 @@ export const createAccessAiControlMcpPortal: API.OperationMethod<
   CreateAccessAiControlMcpPortalResponse,
   CreateAccessAiControlMcpPortalError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessAiControlMcpPortalRequest,
   output: CreateAccessAiControlMcpPortalResponse,
   errors: [McpPortalHostnameInUse, Forbidden],
@@ -22641,7 +22597,7 @@ export interface UpdateAccessAiControlMcpPortalRequest {
 }
 
 export const UpdateAccessAiControlMcpPortalRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -22732,7 +22688,7 @@ export interface UpdateAccessAiControlMcpPortalResponse {
 }
 
 export const UpdateAccessAiControlMcpPortalResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       hostname: Schema.String,
@@ -22779,7 +22735,7 @@ export const updateAccessAiControlMcpPortal: API.OperationMethod<
   UpdateAccessAiControlMcpPortalResponse,
   UpdateAccessAiControlMcpPortalError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessAiControlMcpPortalRequest,
   output: UpdateAccessAiControlMcpPortalResponse,
   errors: [McpPortalNotFound, McpPortalHostnameInUse, Forbidden],
@@ -22791,7 +22747,7 @@ export interface DeleteAccessAiControlMcpPortalRequest {
 }
 
 export const DeleteAccessAiControlMcpPortalRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -22820,7 +22776,7 @@ export interface DeleteAccessAiControlMcpPortalResponse {
 }
 
 export const DeleteAccessAiControlMcpPortalResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       hostname: Schema.String,
@@ -22864,7 +22820,7 @@ export const deleteAccessAiControlMcpPortal: API.OperationMethod<
   DeleteAccessAiControlMcpPortalResponse,
   DeleteAccessAiControlMcpPortalError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessAiControlMcpPortalRequest,
   output: DeleteAccessAiControlMcpPortalResponse,
   errors: [McpPortalNotFound, Forbidden],
@@ -22876,7 +22832,7 @@ export interface ReadAccessAiControlMcpPortalRequest {
 }
 
 export const ReadAccessAiControlMcpPortalRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -22953,7 +22909,7 @@ export interface ReadAccessAiControlMcpPortalResponse {
 }
 
 export const ReadAccessAiControlMcpPortalResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       hostname: Schema.String,
@@ -22999,7 +22955,7 @@ export const readAccessAiControlMcpPortal: API.OperationMethod<
   ReadAccessAiControlMcpPortalResponse,
   ReadAccessAiControlMcpPortalError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReadAccessAiControlMcpPortalRequest,
   output: ReadAccessAiControlMcpPortalResponse,
   errors: [McpPortalNotFound, Forbidden],
@@ -23019,7 +22975,7 @@ export interface ListAccessAiControlMcpServersRequest {
 }
 
 export const ListAccessAiControlMcpServersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -23085,7 +23041,7 @@ export interface ListAccessAiControlMcpServersResponse {
 }
 
 export const ListAccessAiControlMcpServersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessAiControlMcpServersResponseResult),
       resultInfo: Schema.optional(
@@ -23104,7 +23060,7 @@ export const listAccessAiControlMcpServers: API.PaginatedOperationMethod<
   ListAccessAiControlMcpServersResponse,
   ListAccessAiControlMcpServersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessAiControlMcpServersRequest,
   output: ListAccessAiControlMcpServersResponse,
   errors: [],
@@ -23153,7 +23109,7 @@ export interface CreateAccessAiControlMcpServerRequest {
 }
 
 export const CreateAccessAiControlMcpServerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       id: Schema.String,
@@ -23236,7 +23192,7 @@ export interface CreateAccessAiControlMcpServerResponse {
 }
 
 export const CreateAccessAiControlMcpServerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       authType: Schema.Union([
@@ -23306,7 +23262,7 @@ export const createAccessAiControlMcpServer: API.OperationMethod<
   CreateAccessAiControlMcpServerResponse,
   CreateAccessAiControlMcpServerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessAiControlMcpServerRequest,
   output: CreateAccessAiControlMcpServerResponse,
   errors: [],
@@ -23343,7 +23299,7 @@ export interface UpdateAccessAiControlMcpServerRequest {
 }
 
 export const UpdateAccessAiControlMcpServerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -23418,7 +23374,7 @@ export interface UpdateAccessAiControlMcpServerResponse {
 }
 
 export const UpdateAccessAiControlMcpServerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       authType: Schema.Union([
@@ -23488,7 +23444,7 @@ export const updateAccessAiControlMcpServer: API.OperationMethod<
   UpdateAccessAiControlMcpServerResponse,
   UpdateAccessAiControlMcpServerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessAiControlMcpServerRequest,
   output: UpdateAccessAiControlMcpServerResponse,
   errors: [],
@@ -23500,7 +23456,7 @@ export interface DeleteAccessAiControlMcpServerRequest {
 }
 
 export const DeleteAccessAiControlMcpServerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -23559,7 +23515,7 @@ export interface DeleteAccessAiControlMcpServerResponse {
 }
 
 export const DeleteAccessAiControlMcpServerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       authType: Schema.Union([
@@ -23629,7 +23585,7 @@ export const deleteAccessAiControlMcpServer: API.OperationMethod<
   DeleteAccessAiControlMcpServerResponse,
   DeleteAccessAiControlMcpServerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessAiControlMcpServerRequest,
   output: DeleteAccessAiControlMcpServerResponse,
   errors: [],
@@ -23641,7 +23597,7 @@ export interface ReadAccessAiControlMcpServerRequest {
 }
 
 export const ReadAccessAiControlMcpServerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -23700,7 +23656,7 @@ export interface ReadAccessAiControlMcpServerResponse {
 }
 
 export const ReadAccessAiControlMcpServerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       authType: Schema.Union([
@@ -23770,7 +23726,7 @@ export const readAccessAiControlMcpServer: API.OperationMethod<
   ReadAccessAiControlMcpServerResponse,
   ReadAccessAiControlMcpServerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReadAccessAiControlMcpServerRequest,
   output: ReadAccessAiControlMcpServerResponse,
   errors: [],
@@ -23782,7 +23738,7 @@ export interface SyncAccessAiControlMcpServerRequest {
 }
 
 export const SyncAccessAiControlMcpServerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -23807,7 +23763,7 @@ export interface SyncAccessAiControlMcpServerResponse {
 }
 
 export const SyncAccessAiControlMcpServerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       errorDetails: Schema.optional(Schema.Union([ErrorDetails, Schema.Null])),
@@ -23830,7 +23786,7 @@ export const syncAccessAiControlMcpServer: API.OperationMethod<
   SyncAccessAiControlMcpServerResponse,
   SyncAccessAiControlMcpServerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SyncAccessAiControlMcpServerRequest,
   output: SyncAccessAiControlMcpServerResponse,
   errors: [],
@@ -23859,7 +23815,7 @@ export interface GetAccessApplicationForZoneRequest extends GetAccessApplication
 }
 
 export const GetAccessApplicationForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetAccessApplicationBaseFields,
@@ -23872,7 +23828,7 @@ export const GetAccessApplicationForAccountRequest =
   ) as unknown as Schema.Codec<GetAccessApplicationForAccountRequest>;
 
 export const GetAccessApplicationForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetAccessApplicationBaseFields,
@@ -26958,7 +26914,7 @@ export type GetAccessApplicationResponse =
     };
 
 export const GetAccessApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       BrowserRDPApplication,
       SelfHostedApplication,
@@ -26979,7 +26935,7 @@ export const getAccessApplicationForAccount: API.OperationMethod<
   GetAccessApplicationResponse,
   GetAccessApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessApplicationForAccountRequest,
   output: GetAccessApplicationResponse,
   errors: [],
@@ -26990,7 +26946,7 @@ export const getAccessApplicationForZone: API.OperationMethod<
   GetAccessApplicationResponse,
   GetAccessApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessApplicationForZoneRequest,
   output: GetAccessApplicationResponse,
   errors: [],
@@ -27037,7 +26993,7 @@ export interface ListAccessApplicationsForZoneRequest extends ListAccessApplicat
 }
 
 export const ListAccessApplicationsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListAccessApplicationsBaseFields,
@@ -27047,7 +27003,7 @@ export const ListAccessApplicationsForAccountRequest =
   ) as unknown as Schema.Codec<ListAccessApplicationsForAccountRequest>;
 
 export const ListAccessApplicationsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListAccessApplicationsBaseFields,
@@ -29981,7 +29937,7 @@ export interface ListAccessApplicationsResponse {
 }
 
 export const ListAccessApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -30014,7 +29970,7 @@ export const listAccessApplicationsForAccount: API.PaginatedOperationMethod<
   ListAccessApplicationsResponse,
   ListAccessApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessApplicationsForAccountRequest,
   output: ListAccessApplicationsResponse,
   errors: [AccessReferenceNotFound],
@@ -30032,7 +29988,7 @@ export const listAccessApplicationsForZone: API.PaginatedOperationMethod<
   ListAccessApplicationsResponse,
   ListAccessApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessApplicationsForZoneRequest,
   output: ListAccessApplicationsResponse,
   errors: [AccessReferenceNotFound],
@@ -30644,7 +30600,7 @@ export interface CreateAccessApplicationForZoneRequest extends CreateAccessAppli
 }
 
 export const CreateAccessApplicationForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateAccessApplicationBaseFields,
@@ -30697,7 +30653,7 @@ export const CreateAccessApplicationForAccountRequest =
   ) as unknown as Schema.Codec<CreateAccessApplicationForAccountRequest>;
 
 export const CreateAccessApplicationForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateAccessApplicationBaseFields,
@@ -33826,7 +33782,7 @@ export type CreateAccessApplicationResponse =
     };
 
 export const CreateAccessApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       BrowserRDPApplication,
       SelfHostedApplication,
@@ -33849,7 +33805,7 @@ export const createAccessApplicationForAccount: API.OperationMethod<
   CreateAccessApplicationResponse,
   CreateAccessApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessApplicationForAccountRequest,
   output: CreateAccessApplicationResponse,
   errors: [AccessReferenceNotFound],
@@ -33860,7 +33816,7 @@ export const createAccessApplicationForZone: API.OperationMethod<
   CreateAccessApplicationResponse,
   CreateAccessApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessApplicationForZoneRequest,
   output: CreateAccessApplicationResponse,
   errors: [AccessReferenceNotFound],
@@ -34467,7 +34423,7 @@ export interface UpdateAccessApplicationForZoneRequest extends UpdateAccessAppli
 }
 
 export const UpdateAccessApplicationForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...UpdateAccessApplicationBaseFields,
@@ -34523,7 +34479,7 @@ export const UpdateAccessApplicationForAccountRequest =
   ) as unknown as Schema.Codec<UpdateAccessApplicationForAccountRequest>;
 
 export const UpdateAccessApplicationForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...UpdateAccessApplicationBaseFields,
@@ -37652,7 +37608,7 @@ export type UpdateAccessApplicationResponse =
     };
 
 export const UpdateAccessApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       BrowserRDPApplication,
       SelfHostedApplication,
@@ -37675,7 +37631,7 @@ export const updateAccessApplicationForAccount: API.OperationMethod<
   UpdateAccessApplicationResponse,
   UpdateAccessApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessApplicationForAccountRequest,
   output: UpdateAccessApplicationResponse,
   errors: [AccessReferenceNotFound],
@@ -37686,7 +37642,7 @@ export const updateAccessApplicationForZone: API.OperationMethod<
   UpdateAccessApplicationResponse,
   UpdateAccessApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessApplicationForZoneRequest,
   output: UpdateAccessApplicationResponse,
   errors: [AccessReferenceNotFound],
@@ -37711,7 +37667,7 @@ export interface DeleteAccessApplicationForZoneRequest extends DeleteAccessAppli
 }
 
 export const DeleteAccessApplicationForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DeleteAccessApplicationBaseFields,
@@ -37724,7 +37680,7 @@ export const DeleteAccessApplicationForAccountRequest =
   ) as unknown as Schema.Codec<DeleteAccessApplicationForAccountRequest>;
 
 export const DeleteAccessApplicationForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DeleteAccessApplicationBaseFields,
@@ -37742,7 +37698,7 @@ export interface DeleteAccessApplicationResponse {
 }
 
 export const DeleteAccessApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -37755,7 +37711,7 @@ export const deleteAccessApplicationForAccount: API.OperationMethod<
   DeleteAccessApplicationResponse,
   DeleteAccessApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessApplicationForAccountRequest,
   output: DeleteAccessApplicationResponse,
   errors: [],
@@ -37766,7 +37722,7 @@ export const deleteAccessApplicationForZone: API.OperationMethod<
   DeleteAccessApplicationResponse,
   DeleteAccessApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessApplicationForZoneRequest,
   output: DeleteAccessApplicationResponse,
   errors: [],
@@ -37795,7 +37751,7 @@ export interface GetAccessApplicationCaForZoneRequest extends GetAccessApplicati
 }
 
 export const GetAccessApplicationCaForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetAccessApplicationCaBaseFields,
@@ -37808,7 +37764,7 @@ export const GetAccessApplicationCaForAccountRequest =
   ) as unknown as Schema.Codec<GetAccessApplicationCaForAccountRequest>;
 
 export const GetAccessApplicationCaForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetAccessApplicationCaBaseFields,
@@ -37830,7 +37786,7 @@ export interface GetAccessApplicationCaResponse {
 }
 
 export const GetAccessApplicationCaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -37849,7 +37805,7 @@ export const getAccessApplicationCaForAccount: API.OperationMethod<
   GetAccessApplicationCaResponse,
   GetAccessApplicationCaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessApplicationCaForAccountRequest,
   output: GetAccessApplicationCaResponse,
   errors: [],
@@ -37860,7 +37816,7 @@ export const getAccessApplicationCaForZone: API.OperationMethod<
   GetAccessApplicationCaResponse,
   GetAccessApplicationCaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessApplicationCaForZoneRequest,
   output: GetAccessApplicationCaResponse,
   errors: [],
@@ -37887,7 +37843,7 @@ export interface ListAccessApplicationCasForZoneRequest extends ListAccessApplic
 }
 
 export const ListAccessApplicationCasForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListAccessApplicationCasBaseFields,
@@ -37897,7 +37853,7 @@ export const ListAccessApplicationCasForAccountRequest =
   ) as unknown as Schema.Codec<ListAccessApplicationCasForAccountRequest>;
 
 export const ListAccessApplicationCasForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListAccessApplicationCasBaseFields,
@@ -37919,7 +37875,7 @@ export interface ListAccessApplicationCasResponse {
 }
 
 export const ListAccessApplicationCasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessApplicationCasResponseResult),
       resultInfo: Schema.optional(
@@ -37938,7 +37894,7 @@ export const listAccessApplicationCasForAccount: API.PaginatedOperationMethod<
   ListAccessApplicationCasResponse,
   ListAccessApplicationCasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessApplicationCasForAccountRequest,
   output: ListAccessApplicationCasResponse,
   errors: [],
@@ -37956,7 +37912,7 @@ export const listAccessApplicationCasForZone: API.PaginatedOperationMethod<
   ListAccessApplicationCasResponse,
   ListAccessApplicationCasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessApplicationCasForZoneRequest,
   output: ListAccessApplicationCasResponse,
   errors: [],
@@ -37988,7 +37944,7 @@ export interface CreateAccessApplicationCaForZoneRequest extends CreateAccessApp
 }
 
 export const CreateAccessApplicationCaForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateAccessApplicationCaBaseFields,
@@ -38001,7 +37957,7 @@ export const CreateAccessApplicationCaForAccountRequest =
   ) as unknown as Schema.Codec<CreateAccessApplicationCaForAccountRequest>;
 
 export const CreateAccessApplicationCaForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateAccessApplicationCaBaseFields,
@@ -38023,7 +37979,7 @@ export interface CreateAccessApplicationCaResponse {
 }
 
 export const CreateAccessApplicationCaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       aud: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -38042,7 +37998,7 @@ export const createAccessApplicationCaForAccount: API.OperationMethod<
   CreateAccessApplicationCaResponse,
   CreateAccessApplicationCaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessApplicationCaForAccountRequest,
   output: CreateAccessApplicationCaResponse,
   errors: [],
@@ -38053,7 +38009,7 @@ export const createAccessApplicationCaForZone: API.OperationMethod<
   CreateAccessApplicationCaResponse,
   CreateAccessApplicationCaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessApplicationCaForZoneRequest,
   output: CreateAccessApplicationCaResponse,
   errors: [],
@@ -38078,7 +38034,7 @@ export interface DeleteAccessApplicationCaForZoneRequest extends DeleteAccessApp
 }
 
 export const DeleteAccessApplicationCaForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DeleteAccessApplicationCaBaseFields,
@@ -38091,7 +38047,7 @@ export const DeleteAccessApplicationCaForAccountRequest =
   ) as unknown as Schema.Codec<DeleteAccessApplicationCaForAccountRequest>;
 
 export const DeleteAccessApplicationCaForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DeleteAccessApplicationCaBaseFields,
@@ -38109,7 +38065,7 @@ export interface DeleteAccessApplicationCaResponse {
 }
 
 export const DeleteAccessApplicationCaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -38122,7 +38078,7 @@ export const deleteAccessApplicationCaForAccount: API.OperationMethod<
   DeleteAccessApplicationCaResponse,
   DeleteAccessApplicationCaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessApplicationCaForAccountRequest,
   output: DeleteAccessApplicationCaResponse,
   errors: [],
@@ -38133,7 +38089,7 @@ export const deleteAccessApplicationCaForZone: API.OperationMethod<
   DeleteAccessApplicationCaResponse,
   DeleteAccessApplicationCaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessApplicationCaForZoneRequest,
   output: DeleteAccessApplicationCaResponse,
   errors: [],
@@ -38164,7 +38120,7 @@ export interface GetAccessApplicationPolicyForZoneRequest extends GetAccessAppli
 }
 
 export const GetAccessApplicationPolicyForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetAccessApplicationPolicyBaseFields,
@@ -38177,7 +38133,7 @@ export const GetAccessApplicationPolicyForAccountRequest =
   ) as unknown as Schema.Codec<GetAccessApplicationPolicyForAccountRequest>;
 
 export const GetAccessApplicationPolicyForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetAccessApplicationPolicyBaseFields,
@@ -38437,7 +38393,7 @@ export interface GetAccessApplicationPolicyResponse {
 }
 
 export const GetAccessApplicationPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       approvalGroups: Schema.optional(
@@ -38612,7 +38568,7 @@ export const getAccessApplicationPolicyForAccount: API.OperationMethod<
   GetAccessApplicationPolicyResponse,
   GetAccessApplicationPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessApplicationPolicyForAccountRequest,
   output: GetAccessApplicationPolicyResponse,
   errors: [],
@@ -38623,7 +38579,7 @@ export const getAccessApplicationPolicyForZone: API.OperationMethod<
   GetAccessApplicationPolicyResponse,
   GetAccessApplicationPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessApplicationPolicyForZoneRequest,
   output: GetAccessApplicationPolicyResponse,
   errors: [],
@@ -38652,7 +38608,7 @@ export interface ListAccessApplicationPoliciesForZoneRequest extends ListAccessA
 }
 
 export const ListAccessApplicationPoliciesForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListAccessApplicationPoliciesBaseFields,
@@ -38665,7 +38621,7 @@ export const ListAccessApplicationPoliciesForAccountRequest =
   ) as unknown as Schema.Codec<ListAccessApplicationPoliciesForAccountRequest>;
 
 export const ListAccessApplicationPoliciesForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListAccessApplicationPoliciesBaseFields,
@@ -38918,7 +38874,7 @@ export interface ListAccessApplicationPoliciesResponse {
 }
 
 export const ListAccessApplicationPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Policy),
       resultInfo: Schema.optional(
@@ -38937,7 +38893,7 @@ export const listAccessApplicationPoliciesForAccount: API.PaginatedOperationMeth
   ListAccessApplicationPoliciesResponse,
   ListAccessApplicationPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessApplicationPoliciesForAccountRequest,
   output: ListAccessApplicationPoliciesResponse,
   errors: [],
@@ -38955,7 +38911,7 @@ export const listAccessApplicationPoliciesForZone: API.PaginatedOperationMethod<
   ListAccessApplicationPoliciesResponse,
   ListAccessApplicationPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessApplicationPoliciesForZoneRequest,
   output: ListAccessApplicationPoliciesResponse,
   errors: [],
@@ -39032,7 +38988,7 @@ export interface CreateAccessApplicationPolicyForZoneRequest extends CreateAcces
 }
 
 export const CreateAccessApplicationPolicyForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateAccessApplicationPolicyBaseFields,
@@ -39056,7 +39012,7 @@ export const CreateAccessApplicationPolicyForAccountRequest =
   ) as unknown as Schema.Codec<CreateAccessApplicationPolicyForAccountRequest>;
 
 export const CreateAccessApplicationPolicyForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateAccessApplicationPolicyBaseFields,
@@ -39327,7 +39283,7 @@ export interface CreateAccessApplicationPolicyResponse {
 }
 
 export const CreateAccessApplicationPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       approvalGroups: Schema.optional(
@@ -39502,7 +39458,7 @@ export const createAccessApplicationPolicyForAccount: API.OperationMethod<
   CreateAccessApplicationPolicyResponse,
   CreateAccessApplicationPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessApplicationPolicyForAccountRequest,
   output: CreateAccessApplicationPolicyResponse,
   errors: [],
@@ -39513,7 +39469,7 @@ export const createAccessApplicationPolicyForZone: API.OperationMethod<
   CreateAccessApplicationPolicyResponse,
   CreateAccessApplicationPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessApplicationPolicyForZoneRequest,
   output: CreateAccessApplicationPolicyResponse,
   errors: [],
@@ -39585,7 +39541,7 @@ export interface UpdateAccessApplicationPolicyForZoneRequest extends UpdateAcces
 }
 
 export const UpdateAccessApplicationPolicyForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...UpdateAccessApplicationPolicyBaseFields,
@@ -39609,7 +39565,7 @@ export const UpdateAccessApplicationPolicyForAccountRequest =
   ) as unknown as Schema.Codec<UpdateAccessApplicationPolicyForAccountRequest>;
 
 export const UpdateAccessApplicationPolicyForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...UpdateAccessApplicationPolicyBaseFields,
@@ -39880,7 +39836,7 @@ export interface UpdateAccessApplicationPolicyResponse {
 }
 
 export const UpdateAccessApplicationPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       approvalGroups: Schema.optional(
@@ -40055,7 +40011,7 @@ export const updateAccessApplicationPolicyForAccount: API.OperationMethod<
   UpdateAccessApplicationPolicyResponse,
   UpdateAccessApplicationPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessApplicationPolicyForAccountRequest,
   output: UpdateAccessApplicationPolicyResponse,
   errors: [],
@@ -40066,7 +40022,7 @@ export const updateAccessApplicationPolicyForZone: API.OperationMethod<
   UpdateAccessApplicationPolicyResponse,
   UpdateAccessApplicationPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessApplicationPolicyForZoneRequest,
   output: UpdateAccessApplicationPolicyResponse,
   errors: [],
@@ -40093,7 +40049,7 @@ export interface DeleteAccessApplicationPolicyForZoneRequest extends DeleteAcces
 }
 
 export const DeleteAccessApplicationPolicyForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DeleteAccessApplicationPolicyBaseFields,
@@ -40106,7 +40062,7 @@ export const DeleteAccessApplicationPolicyForAccountRequest =
   ) as unknown as Schema.Codec<DeleteAccessApplicationPolicyForAccountRequest>;
 
 export const DeleteAccessApplicationPolicyForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DeleteAccessApplicationPolicyBaseFields,
@@ -40124,7 +40080,7 @@ export interface DeleteAccessApplicationPolicyResponse {
 }
 
 export const DeleteAccessApplicationPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -40137,7 +40093,7 @@ export const deleteAccessApplicationPolicyForAccount: API.OperationMethod<
   DeleteAccessApplicationPolicyResponse,
   DeleteAccessApplicationPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessApplicationPolicyForAccountRequest,
   output: DeleteAccessApplicationPolicyResponse,
   errors: [],
@@ -40148,7 +40104,7 @@ export const deleteAccessApplicationPolicyForZone: API.OperationMethod<
   DeleteAccessApplicationPolicyResponse,
   DeleteAccessApplicationPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessApplicationPolicyForZoneRequest,
   output: DeleteAccessApplicationPolicyResponse,
   errors: [],
@@ -40165,7 +40121,7 @@ export interface GetAccessApplicationPolicyTestRequest {
 }
 
 export const GetAccessApplicationPolicyTestRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyTestId: Schema.String.pipe(T.HttpPath("policyTestId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -40207,7 +40163,7 @@ export interface GetAccessApplicationPolicyTestResponse {
 }
 
 export const GetAccessApplicationPolicyTestResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       percentApproved: Schema.optional(
@@ -40267,7 +40223,7 @@ export const getAccessApplicationPolicyTest: API.OperationMethod<
   GetAccessApplicationPolicyTestResponse,
   GetAccessApplicationPolicyTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessApplicationPolicyTestRequest,
   output: GetAccessApplicationPolicyTestResponse,
   errors: [],
@@ -40499,7 +40455,7 @@ export interface CreateAccessApplicationPolicyTestRequest {
 }
 
 export const CreateAccessApplicationPolicyTestRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       policies: Schema.optional(
@@ -40526,7 +40482,7 @@ export interface CreateAccessApplicationPolicyTestResponse {
 }
 
 export const CreateAccessApplicationPolicyTestResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       status: Schema.optional(
@@ -40542,7 +40498,7 @@ export const createAccessApplicationPolicyTest: API.OperationMethod<
   CreateAccessApplicationPolicyTestResponse,
   CreateAccessApplicationPolicyTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessApplicationPolicyTestRequest,
   output: CreateAccessApplicationPolicyTestResponse,
   errors: [],
@@ -40563,7 +40519,7 @@ export interface ListAccessApplicationPolicyTestUsersRequest {
 }
 
 export const ListAccessApplicationPolicyTestUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyTestId: Schema.String.pipe(T.HttpPath("policyTestId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -40599,7 +40555,7 @@ export interface ListAccessApplicationPolicyTestUsersResponse {
 }
 
 export const ListAccessApplicationPolicyTestUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessApplicationPolicyTestUsersResponseResult),
       resultInfo: Schema.optional(
@@ -40618,7 +40574,7 @@ export const listAccessApplicationPolicyTestUsers: API.PaginatedOperationMethod<
   ListAccessApplicationPolicyTestUsersResponse,
   ListAccessApplicationPolicyTestUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessApplicationPolicyTestUsersRequest,
   output: ListAccessApplicationPolicyTestUsersResponse,
   errors: [],
@@ -40660,7 +40616,7 @@ export interface PutAccessApplicationSettingForZoneRequest extends PutAccessAppl
 }
 
 export const PutAccessApplicationSettingForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...PutAccessApplicationSettingBaseFields,
@@ -40677,7 +40633,7 @@ export const PutAccessApplicationSettingForAccountRequest =
   ) as unknown as Schema.Codec<PutAccessApplicationSettingForAccountRequest>;
 
 export const PutAccessApplicationSettingForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...PutAccessApplicationSettingBaseFields,
@@ -40701,7 +40657,7 @@ export interface PutAccessApplicationSettingResponse {
 }
 
 export const PutAccessApplicationSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       allowIframe: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       skipInterstitial: Schema.optional(
@@ -40724,7 +40680,7 @@ export const putAccessApplicationSettingForAccount: API.OperationMethod<
   PutAccessApplicationSettingResponse,
   PutAccessApplicationSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAccessApplicationSettingForAccountRequest,
   output: PutAccessApplicationSettingResponse,
   errors: [],
@@ -40735,7 +40691,7 @@ export const putAccessApplicationSettingForZone: API.OperationMethod<
   PutAccessApplicationSettingResponse,
   PutAccessApplicationSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAccessApplicationSettingForZoneRequest,
   output: PutAccessApplicationSettingResponse,
   errors: [],
@@ -40766,7 +40722,7 @@ export interface PatchAccessApplicationSettingForZoneRequest extends PatchAccess
 }
 
 export const PatchAccessApplicationSettingForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...PatchAccessApplicationSettingBaseFields,
@@ -40783,7 +40739,7 @@ export const PatchAccessApplicationSettingForAccountRequest =
   ) as unknown as Schema.Codec<PatchAccessApplicationSettingForAccountRequest>;
 
 export const PatchAccessApplicationSettingForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...PatchAccessApplicationSettingBaseFields,
@@ -40807,7 +40763,7 @@ export interface PatchAccessApplicationSettingResponse {
 }
 
 export const PatchAccessApplicationSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       allowIframe: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       skipInterstitial: Schema.optional(
@@ -40830,7 +40786,7 @@ export const patchAccessApplicationSettingForAccount: API.OperationMethod<
   PatchAccessApplicationSettingResponse,
   PatchAccessApplicationSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccessApplicationSettingForAccountRequest,
   output: PatchAccessApplicationSettingResponse,
   errors: [],
@@ -40841,7 +40797,7 @@ export const patchAccessApplicationSettingForZone: API.OperationMethod<
   PatchAccessApplicationSettingResponse,
   PatchAccessApplicationSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccessApplicationSettingForZoneRequest,
   output: PatchAccessApplicationSettingResponse,
   errors: [],
@@ -40870,7 +40826,7 @@ export interface ListAccessApplicationUserPolicyChecksForZoneRequest extends Lis
 }
 
 export const ListAccessApplicationUserPolicyChecksForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListAccessApplicationUserPolicyChecksBaseFields,
@@ -40883,7 +40839,7 @@ export const ListAccessApplicationUserPolicyChecksForAccountRequest =
   ) as unknown as Schema.Codec<ListAccessApplicationUserPolicyChecksForAccountRequest>;
 
 export const ListAccessApplicationUserPolicyChecksForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListAccessApplicationUserPolicyChecksBaseFields,
@@ -40920,7 +40876,7 @@ export interface ListAccessApplicationUserPolicyChecksResponse {
 }
 
 export const ListAccessApplicationUserPolicyChecksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appState: Schema.optional(Schema.Union([AppState, Schema.Null])),
       userIdentity: Schema.optional(Schema.Union([UserIdentity, Schema.Null])),
@@ -40941,7 +40897,7 @@ export const listAccessApplicationUserPolicyChecksForAccount: API.OperationMetho
   ListAccessApplicationUserPolicyChecksResponse,
   ListAccessApplicationUserPolicyChecksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccessApplicationUserPolicyChecksForAccountRequest,
   output: ListAccessApplicationUserPolicyChecksResponse,
   errors: [],
@@ -40952,7 +40908,7 @@ export const listAccessApplicationUserPolicyChecksForZone: API.OperationMethod<
   ListAccessApplicationUserPolicyChecksResponse,
   ListAccessApplicationUserPolicyChecksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccessApplicationUserPolicyChecksForZoneRequest,
   output: ListAccessApplicationUserPolicyChecksResponse,
   errors: [],
@@ -40968,7 +40924,7 @@ export interface GetAccessBookmarkRequest {
 }
 
 export const GetAccessBookmarkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       bookmarkId: Schema.String.pipe(T.HttpPath("bookmarkId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -40994,7 +40950,7 @@ export interface GetAccessBookmarkResponse {
 }
 
 export const GetAccessBookmarkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       appLauncherVisible: Schema.optional(
@@ -41023,7 +40979,7 @@ export const getAccessBookmark: API.OperationMethod<
   GetAccessBookmarkResponse,
   GetAccessBookmarkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessBookmarkRequest,
   output: GetAccessBookmarkResponse,
   errors: [AccessBookmarkNotFound],
@@ -41034,7 +40990,7 @@ export interface ListAccessBookmarksRequest {
 }
 
 export const ListAccessBookmarksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -41056,7 +41012,7 @@ export interface ListAccessBookmarksResponse {
 }
 
 export const ListAccessBookmarksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessBookmarksResponseResult),
     }),
@@ -41069,7 +41025,7 @@ export const listAccessBookmarks: API.PaginatedOperationMethod<
   ListAccessBookmarksResponse,
   ListAccessBookmarksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessBookmarksRequest,
   output: ListAccessBookmarksResponse,
   errors: [],
@@ -41088,7 +41044,7 @@ export interface CreateAccessBookmarkRequest {
 }
 
 export const CreateAccessBookmarkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       bookmarkId: Schema.String.pipe(T.HttpPath("bookmarkId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -41115,7 +41071,7 @@ export interface CreateAccessBookmarkResponse {
 }
 
 export const CreateAccessBookmarkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       appLauncherVisible: Schema.optional(
@@ -41144,7 +41100,7 @@ export const createAccessBookmark: API.OperationMethod<
   CreateAccessBookmarkResponse,
   CreateAccessBookmarkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessBookmarkRequest,
   output: CreateAccessBookmarkResponse,
   errors: [AccessBookmarkNotFound],
@@ -41159,7 +41115,7 @@ export interface UpdateAccessBookmarkRequest {
 }
 
 export const UpdateAccessBookmarkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       bookmarkId: Schema.String.pipe(T.HttpPath("bookmarkId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -41186,7 +41142,7 @@ export interface UpdateAccessBookmarkResponse {
 }
 
 export const UpdateAccessBookmarkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       appLauncherVisible: Schema.optional(
@@ -41215,7 +41171,7 @@ export const updateAccessBookmark: API.OperationMethod<
   UpdateAccessBookmarkResponse,
   UpdateAccessBookmarkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessBookmarkRequest,
   output: UpdateAccessBookmarkResponse,
   errors: [AccessBookmarkNotFound],
@@ -41227,7 +41183,7 @@ export interface DeleteAccessBookmarkRequest {
 }
 
 export const DeleteAccessBookmarkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       bookmarkId: Schema.String.pipe(T.HttpPath("bookmarkId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -41245,7 +41201,7 @@ export interface DeleteAccessBookmarkResponse {
 }
 
 export const DeleteAccessBookmarkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -41258,7 +41214,7 @@ export const deleteAccessBookmark: API.OperationMethod<
   DeleteAccessBookmarkResponse,
   DeleteAccessBookmarkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessBookmarkRequest,
   output: DeleteAccessBookmarkResponse,
   errors: [AccessBookmarkNotFound],
@@ -41287,7 +41243,7 @@ export interface GetAccessCertificateForZoneRequest extends GetAccessCertificate
 }
 
 export const GetAccessCertificateForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetAccessCertificateBaseFields,
@@ -41300,7 +41256,7 @@ export const GetAccessCertificateForAccountRequest =
   ) as unknown as Schema.Codec<GetAccessCertificateForAccountRequest>;
 
 export const GetAccessCertificateForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetAccessCertificateBaseFields,
@@ -41325,7 +41281,7 @@ export interface GetAccessCertificateResponse {
 }
 
 export const GetAccessCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       associatedHostnames: Schema.optional(
@@ -41356,7 +41312,7 @@ export const getAccessCertificateForAccount: API.OperationMethod<
   GetAccessCertificateResponse,
   GetAccessCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessCertificateForAccountRequest,
   output: GetAccessCertificateResponse,
   errors: [AccessCertificateNotFound],
@@ -41367,7 +41323,7 @@ export const getAccessCertificateForZone: API.OperationMethod<
   GetAccessCertificateResponse,
   GetAccessCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessCertificateForZoneRequest,
   output: GetAccessCertificateResponse,
   errors: [AccessCertificateNotFound],
@@ -41394,7 +41350,7 @@ export interface ListAccessCertificatesForZoneRequest extends ListAccessCertific
 }
 
 export const ListAccessCertificatesForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListAccessCertificatesBaseFields,
@@ -41407,7 +41363,7 @@ export const ListAccessCertificatesForAccountRequest =
   ) as unknown as Schema.Codec<ListAccessCertificatesForAccountRequest>;
 
 export const ListAccessCertificatesForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListAccessCertificatesBaseFields,
@@ -41433,7 +41389,7 @@ export interface ListAccessCertificatesResponse {
 }
 
 export const ListAccessCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessCertificatesResponseResult),
       resultInfo: Schema.optional(
@@ -41452,7 +41408,7 @@ export const listAccessCertificatesForAccount: API.PaginatedOperationMethod<
   ListAccessCertificatesResponse,
   ListAccessCertificatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessCertificatesForAccountRequest,
   output: ListAccessCertificatesResponse,
   errors: [],
@@ -41470,7 +41426,7 @@ export const listAccessCertificatesForZone: API.PaginatedOperationMethod<
   ListAccessCertificatesResponse,
   ListAccessCertificatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessCertificatesForZoneRequest,
   output: ListAccessCertificatesResponse,
   errors: [],
@@ -41509,7 +41465,7 @@ export interface CreateAccessCertificateForZoneRequest extends CreateAccessCerti
 }
 
 export const CreateAccessCertificateForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateAccessCertificateBaseFields,
@@ -41527,7 +41483,7 @@ export const CreateAccessCertificateForAccountRequest =
   ) as unknown as Schema.Codec<CreateAccessCertificateForAccountRequest>;
 
 export const CreateAccessCertificateForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateAccessCertificateBaseFields,
@@ -41554,7 +41510,7 @@ export interface CreateAccessCertificateResponse {
 }
 
 export const CreateAccessCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       associatedHostnames: Schema.optional(
@@ -41585,7 +41541,7 @@ export const createAccessCertificateForAccount: API.OperationMethod<
   CreateAccessCertificateResponse,
   CreateAccessCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessCertificateForAccountRequest,
   output: CreateAccessCertificateResponse,
   errors: [AccessCertificateQuotaExceeded],
@@ -41596,7 +41552,7 @@ export const createAccessCertificateForZone: API.OperationMethod<
   CreateAccessCertificateResponse,
   CreateAccessCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessCertificateForZoneRequest,
   output: CreateAccessCertificateResponse,
   errors: [AccessCertificateQuotaExceeded],
@@ -41627,7 +41583,7 @@ export interface UpdateAccessCertificateForZoneRequest extends UpdateAccessCerti
 }
 
 export const UpdateAccessCertificateForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...UpdateAccessCertificateBaseFields,
@@ -41644,7 +41600,7 @@ export const UpdateAccessCertificateForAccountRequest =
   ) as unknown as Schema.Codec<UpdateAccessCertificateForAccountRequest>;
 
 export const UpdateAccessCertificateForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...UpdateAccessCertificateBaseFields,
@@ -41673,7 +41629,7 @@ export interface UpdateAccessCertificateResponse {
 }
 
 export const UpdateAccessCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       associatedHostnames: Schema.optional(
@@ -41704,7 +41660,7 @@ export const updateAccessCertificateForAccount: API.OperationMethod<
   UpdateAccessCertificateResponse,
   UpdateAccessCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessCertificateForAccountRequest,
   output: UpdateAccessCertificateResponse,
   errors: [AccessCertificateNotFound],
@@ -41715,7 +41671,7 @@ export const updateAccessCertificateForZone: API.OperationMethod<
   UpdateAccessCertificateResponse,
   UpdateAccessCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessCertificateForZoneRequest,
   output: UpdateAccessCertificateResponse,
   errors: [AccessCertificateNotFound],
@@ -41740,7 +41696,7 @@ export interface DeleteAccessCertificateForZoneRequest extends DeleteAccessCerti
 }
 
 export const DeleteAccessCertificateForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DeleteAccessCertificateBaseFields,
@@ -41753,7 +41709,7 @@ export const DeleteAccessCertificateForAccountRequest =
   ) as unknown as Schema.Codec<DeleteAccessCertificateForAccountRequest>;
 
 export const DeleteAccessCertificateForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DeleteAccessCertificateBaseFields,
@@ -41771,7 +41727,7 @@ export interface DeleteAccessCertificateResponse {
 }
 
 export const DeleteAccessCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -41786,7 +41742,7 @@ export const deleteAccessCertificateForAccount: API.OperationMethod<
   DeleteAccessCertificateResponse,
   DeleteAccessCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessCertificateForAccountRequest,
   output: DeleteAccessCertificateResponse,
   errors: [AccessCertificateNotFound],
@@ -41797,7 +41753,7 @@ export const deleteAccessCertificateForZone: API.OperationMethod<
   DeleteAccessCertificateResponse,
   DeleteAccessCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessCertificateForZoneRequest,
   output: DeleteAccessCertificateResponse,
   errors: [AccessCertificateNotFound],
@@ -41822,7 +41778,7 @@ export interface GetAccessCertificateSettingForZoneRequest extends GetAccessCert
 }
 
 export const GetAccessCertificateSettingForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetAccessCertificateSettingBaseFields,
@@ -41835,7 +41791,7 @@ export const GetAccessCertificateSettingForAccountRequest =
   ) as unknown as Schema.Codec<GetAccessCertificateSettingForAccountRequest>;
 
 export const GetAccessCertificateSettingForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetAccessCertificateSettingBaseFields,
@@ -41856,7 +41812,7 @@ export interface GetAccessCertificateSettingResponse {
 }
 
 export const GetAccessCertificateSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(GetAccessCertificateSettingResponseResult),
     }),
@@ -41869,7 +41825,7 @@ export const getAccessCertificateSettingForAccount: API.PaginatedOperationMethod
   GetAccessCertificateSettingResponse,
   GetAccessCertificateSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAccessCertificateSettingForAccountRequest,
   output: GetAccessCertificateSettingResponse,
   errors: [],
@@ -41884,7 +41840,7 @@ export const getAccessCertificateSettingForZone: API.PaginatedOperationMethod<
   GetAccessCertificateSettingResponse,
   GetAccessCertificateSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAccessCertificateSettingForZoneRequest,
   output: GetAccessCertificateSettingResponse,
   errors: [],
@@ -41918,7 +41874,7 @@ export interface PutAccessCertificateSettingForZoneRequest extends PutAccessCert
 }
 
 export const PutAccessCertificateSettingForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...PutAccessCertificateSettingBaseFields,
@@ -41931,7 +41887,7 @@ export const PutAccessCertificateSettingForAccountRequest =
   ) as unknown as Schema.Codec<PutAccessCertificateSettingForAccountRequest>;
 
 export const PutAccessCertificateSettingForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...PutAccessCertificateSettingBaseFields,
@@ -41952,7 +41908,7 @@ export interface PutAccessCertificateSettingResponse {
 }
 
 export const PutAccessCertificateSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(GetAccessCertificateSettingResponseResult),
     }),
@@ -41965,7 +41921,7 @@ export const putAccessCertificateSettingForAccount: API.PaginatedOperationMethod
   PutAccessCertificateSettingResponse,
   PutAccessCertificateSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutAccessCertificateSettingForAccountRequest,
   output: PutAccessCertificateSettingResponse,
   errors: [],
@@ -41980,7 +41936,7 @@ export const putAccessCertificateSettingForZone: API.PaginatedOperationMethod<
   PutAccessCertificateSettingResponse,
   PutAccessCertificateSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutAccessCertificateSettingForZoneRequest,
   output: PutAccessCertificateSettingResponse,
   errors: [],
@@ -42001,7 +41957,7 @@ export interface GetAccessCustomPageRequest {
 }
 
 export const GetAccessCustomPageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customPageId: Schema.String.pipe(T.HttpPath("customPageId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -42025,7 +41981,7 @@ export interface GetAccessCustomPageResponse {
 }
 
 export const GetAccessCustomPageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customHtml: Schema.String,
       name: Schema.String,
@@ -42053,7 +42009,7 @@ export const getAccessCustomPage: API.OperationMethod<
   GetAccessCustomPageResponse,
   GetAccessCustomPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessCustomPageRequest,
   output: GetAccessCustomPageResponse,
   errors: [AccessCustomPageNotFound],
@@ -42067,7 +42023,7 @@ export interface ListAccessCustomPagesRequest {
 }
 
 export const ListAccessCustomPagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -42095,7 +42051,7 @@ export interface ListAccessCustomPagesResponse {
 }
 
 export const ListAccessCustomPagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessCustomPagesResponseResult),
       resultInfo: Schema.optional(
@@ -42114,7 +42070,7 @@ export const listAccessCustomPages: API.PaginatedOperationMethod<
   ListAccessCustomPagesResponse,
   ListAccessCustomPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessCustomPagesRequest,
   output: ListAccessCustomPagesResponse,
   errors: [],
@@ -42139,7 +42095,7 @@ export interface CreateAccessCustomPageRequest {
 }
 
 export const CreateAccessCustomPageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       customHtml: Schema.String,
@@ -42171,7 +42127,7 @@ export interface CreateAccessCustomPageResponse {
 }
 
 export const CreateAccessCustomPageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       type: Schema.Union([
@@ -42191,7 +42147,7 @@ export const createAccessCustomPage: API.OperationMethod<
   CreateAccessCustomPageResponse,
   CreateAccessCustomPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessCustomPageRequest,
   output: CreateAccessCustomPageResponse,
   errors: [AccessCustomPagesNotEntitled],
@@ -42210,7 +42166,7 @@ export interface UpdateAccessCustomPageRequest {
 }
 
 export const UpdateAccessCustomPageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customPageId: Schema.String.pipe(T.HttpPath("customPageId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -42243,7 +42199,7 @@ export interface UpdateAccessCustomPageResponse {
 }
 
 export const UpdateAccessCustomPageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       type: Schema.Union([
@@ -42263,7 +42219,7 @@ export const updateAccessCustomPage: API.OperationMethod<
   UpdateAccessCustomPageResponse,
   UpdateAccessCustomPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessCustomPageRequest,
   output: UpdateAccessCustomPageResponse,
   errors: [AccessCustomPageNotFound],
@@ -42276,7 +42232,7 @@ export interface DeleteAccessCustomPageRequest {
 }
 
 export const DeleteAccessCustomPageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       customPageId: Schema.String.pipe(T.HttpPath("customPageId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -42294,7 +42250,7 @@ export interface DeleteAccessCustomPageResponse {
 }
 
 export const DeleteAccessCustomPageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -42309,7 +42265,7 @@ export const deleteAccessCustomPage: API.OperationMethod<
   DeleteAccessCustomPageResponse,
   DeleteAccessCustomPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessCustomPageRequest,
   output: DeleteAccessCustomPageResponse,
   errors: [AccessCustomPageNotFound],
@@ -42325,7 +42281,7 @@ export interface ListAccessGatewayCasRequest {
 }
 
 export const ListAccessGatewayCasRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -42341,7 +42297,7 @@ export interface ListAccessGatewayCasResponse {
 }
 
 export const ListAccessGatewayCasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessGatewayCasResponseResult),
     }),
@@ -42354,7 +42310,7 @@ export const listAccessGatewayCas: API.PaginatedOperationMethod<
   ListAccessGatewayCasResponse,
   ListAccessGatewayCasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessGatewayCasRequest,
   output: ListAccessGatewayCasResponse,
   errors: [],
@@ -42370,7 +42326,7 @@ export interface CreateAccessGatewayCaRequest {
 }
 
 export const CreateAccessGatewayCaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -42389,7 +42345,7 @@ export interface CreateAccessGatewayCaResponse {
 }
 
 export const CreateAccessGatewayCaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       publicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -42405,7 +42361,7 @@ export const createAccessGatewayCa: API.OperationMethod<
   CreateAccessGatewayCaResponse,
   CreateAccessGatewayCaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessGatewayCaRequest,
   output: CreateAccessGatewayCaResponse,
   errors: [],
@@ -42418,7 +42374,7 @@ export interface DeleteAccessGatewayCaRequest {
 }
 
 export const DeleteAccessGatewayCaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -42436,7 +42392,7 @@ export interface DeleteAccessGatewayCaResponse {
 }
 
 export const DeleteAccessGatewayCaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -42449,7 +42405,7 @@ export const deleteAccessGatewayCa: API.OperationMethod<
   DeleteAccessGatewayCaResponse,
   DeleteAccessGatewayCaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessGatewayCaRequest,
   output: DeleteAccessGatewayCaResponse,
   errors: [],
@@ -42478,7 +42434,7 @@ export interface GetAccessGroupForZoneRequest extends GetAccessGroupBaseRequest 
 }
 
 export const GetAccessGroupForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetAccessGroupBaseFields,
@@ -42491,7 +42447,7 @@ export const GetAccessGroupForAccountRequest =
   ) as unknown as Schema.Codec<GetAccessGroupForAccountRequest>;
 
 export const GetAccessGroupForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetAccessGroupBaseFields,
@@ -42708,7 +42664,7 @@ export interface GetAccessGroupResponse {
 }
 
 export const GetAccessGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       exclude: Schema.optional(
@@ -42839,7 +42795,7 @@ export const getAccessGroupForAccount: API.OperationMethod<
   GetAccessGroupResponse,
   GetAccessGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessGroupForAccountRequest,
   output: GetAccessGroupResponse,
   errors: [AccessGroupNotFound],
@@ -42850,7 +42806,7 @@ export const getAccessGroupForZone: API.OperationMethod<
   GetAccessGroupResponse,
   GetAccessGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessGroupForZoneRequest,
   output: GetAccessGroupResponse,
   errors: [AccessGroupNotFound],
@@ -42883,7 +42839,7 @@ export interface ListAccessGroupsForZoneRequest extends ListAccessGroupsBaseRequ
 }
 
 export const ListAccessGroupsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListAccessGroupsBaseFields,
@@ -42893,7 +42849,7 @@ export const ListAccessGroupsForAccountRequest =
   ) as unknown as Schema.Codec<ListAccessGroupsForAccountRequest>;
 
 export const ListAccessGroupsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListAccessGroupsBaseFields,
@@ -43107,7 +43063,7 @@ export interface ListAccessGroupsResponse {
 }
 
 export const ListAccessGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessGroupsResponseResult),
       resultInfo: Schema.optional(
@@ -43126,7 +43082,7 @@ export const listAccessGroupsForAccount: API.PaginatedOperationMethod<
   ListAccessGroupsResponse,
   ListAccessGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessGroupsForAccountRequest,
   output: ListAccessGroupsResponse,
   errors: [],
@@ -43144,7 +43100,7 @@ export const listAccessGroupsForZone: API.PaginatedOperationMethod<
   ListAccessGroupsResponse,
   ListAccessGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessGroupsForZoneRequest,
   output: ListAccessGroupsResponse,
   errors: [],
@@ -43445,7 +43401,7 @@ export interface CreateAccessGroupForZoneRequest extends CreateAccessGroupBaseRe
 }
 
 export const CreateAccessGroupForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateAccessGroupBaseFields,
@@ -43462,7 +43418,7 @@ export const CreateAccessGroupForAccountRequest =
   ) as unknown as Schema.Codec<CreateAccessGroupForAccountRequest>;
 
 export const CreateAccessGroupForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateAccessGroupBaseFields,
@@ -43683,7 +43639,7 @@ export interface CreateAccessGroupResponse {
 }
 
 export const CreateAccessGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       exclude: Schema.optional(
@@ -43814,7 +43770,7 @@ export const createAccessGroupForAccount: API.OperationMethod<
   CreateAccessGroupResponse,
   CreateAccessGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessGroupForAccountRequest,
   output: CreateAccessGroupResponse,
   errors: [],
@@ -43825,7 +43781,7 @@ export const createAccessGroupForZone: API.OperationMethod<
   CreateAccessGroupResponse,
   CreateAccessGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessGroupForZoneRequest,
   output: CreateAccessGroupResponse,
   errors: [],
@@ -44121,7 +44077,7 @@ export interface UpdateAccessGroupForZoneRequest extends UpdateAccessGroupBaseRe
 }
 
 export const UpdateAccessGroupForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...UpdateAccessGroupBaseFields,
@@ -44141,7 +44097,7 @@ export const UpdateAccessGroupForAccountRequest =
   ) as unknown as Schema.Codec<UpdateAccessGroupForAccountRequest>;
 
 export const UpdateAccessGroupForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...UpdateAccessGroupBaseFields,
@@ -44365,7 +44321,7 @@ export interface UpdateAccessGroupResponse {
 }
 
 export const UpdateAccessGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       exclude: Schema.optional(
@@ -44496,7 +44452,7 @@ export const updateAccessGroupForAccount: API.OperationMethod<
   UpdateAccessGroupResponse,
   UpdateAccessGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessGroupForAccountRequest,
   output: UpdateAccessGroupResponse,
   errors: [],
@@ -44507,7 +44463,7 @@ export const updateAccessGroupForZone: API.OperationMethod<
   UpdateAccessGroupResponse,
   UpdateAccessGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessGroupForZoneRequest,
   output: UpdateAccessGroupResponse,
   errors: [],
@@ -44532,7 +44488,7 @@ export interface DeleteAccessGroupForZoneRequest extends DeleteAccessGroupBaseRe
 }
 
 export const DeleteAccessGroupForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DeleteAccessGroupBaseFields,
@@ -44545,7 +44501,7 @@ export const DeleteAccessGroupForAccountRequest =
   ) as unknown as Schema.Codec<DeleteAccessGroupForAccountRequest>;
 
 export const DeleteAccessGroupForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DeleteAccessGroupBaseFields,
@@ -44563,7 +44519,7 @@ export interface DeleteAccessGroupResponse {
 }
 
 export const DeleteAccessGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -44576,7 +44532,7 @@ export const deleteAccessGroupForAccount: API.OperationMethod<
   DeleteAccessGroupResponse,
   DeleteAccessGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessGroupForAccountRequest,
   output: DeleteAccessGroupResponse,
   errors: [AccessGroupNotFound],
@@ -44587,7 +44543,7 @@ export const deleteAccessGroupForZone: API.OperationMethod<
   DeleteAccessGroupResponse,
   DeleteAccessGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessGroupForZoneRequest,
   output: DeleteAccessGroupResponse,
   errors: [AccessGroupNotFound],
@@ -44604,7 +44560,7 @@ export interface GetAccessIdpFederationGrantRequest {
 }
 
 export const GetAccessIdpFederationGrantRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       grantId: Schema.String.pipe(T.HttpPath("grantId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -44624,7 +44580,7 @@ export interface GetAccessIdpFederationGrantResponse {
 }
 
 export const GetAccessIdpFederationGrantResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       idpId: Schema.String,
@@ -44640,7 +44596,7 @@ export const getAccessIdpFederationGrant: API.OperationMethod<
   GetAccessIdpFederationGrantResponse,
   GetAccessIdpFederationGrantError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessIdpFederationGrantRequest,
   output: GetAccessIdpFederationGrantResponse,
   errors: [],
@@ -44652,7 +44608,7 @@ export interface ListAccessIdpFederationGrantsRequest {
 }
 
 export const ListAccessIdpFederationGrantsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -44669,7 +44625,7 @@ export type ListAccessIdpFederationGrantsResponse = {
 }[];
 
 export const ListAccessIdpFederationGrantsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(IdPFederationGrant).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<ListAccessIdpFederationGrantsResponse>;
 
@@ -44680,7 +44636,7 @@ export const listAccessIdpFederationGrants: API.OperationMethod<
   ListAccessIdpFederationGrantsResponse,
   ListAccessIdpFederationGrantsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccessIdpFederationGrantsRequest,
   output: ListAccessIdpFederationGrantsResponse,
   errors: [],
@@ -44694,7 +44650,7 @@ export interface CreateAccessIdpFederationGrantRequest {
 }
 
 export const CreateAccessIdpFederationGrantRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       idpId: Schema.String,
@@ -44715,7 +44671,7 @@ export interface CreateAccessIdpFederationGrantResponse {
 }
 
 export const CreateAccessIdpFederationGrantResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       idpId: Schema.String,
@@ -44731,7 +44687,7 @@ export const createAccessIdpFederationGrant: API.OperationMethod<
   CreateAccessIdpFederationGrantResponse,
   CreateAccessIdpFederationGrantError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessIdpFederationGrantRequest,
   output: CreateAccessIdpFederationGrantResponse,
   errors: [],
@@ -44744,7 +44700,7 @@ export interface DeleteAccessIdpFederationGrantRequest {
 }
 
 export const DeleteAccessIdpFederationGrantRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       grantId: Schema.String.pipe(T.HttpPath("grantId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -44762,7 +44718,7 @@ export interface DeleteAccessIdpFederationGrantResponse {
 }
 
 export const DeleteAccessIdpFederationGrantResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -44775,7 +44731,7 @@ export const deleteAccessIdpFederationGrant: API.OperationMethod<
   DeleteAccessIdpFederationGrantResponse,
   DeleteAccessIdpFederationGrantError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessIdpFederationGrantRequest,
   output: DeleteAccessIdpFederationGrantResponse,
   errors: [],
@@ -44792,7 +44748,7 @@ export interface GetAccessInfrastructureTargetRequest {
 }
 
 export const GetAccessInfrastructureTargetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       targetId: Schema.String.pipe(T.HttpPath("targetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -44821,7 +44777,7 @@ export interface GetAccessInfrastructureTargetResponse {
 }
 
 export const GetAccessInfrastructureTargetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -44851,7 +44807,7 @@ export const getAccessInfrastructureTarget: API.OperationMethod<
   GetAccessInfrastructureTargetResponse,
   GetAccessInfrastructureTargetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessInfrastructureTargetRequest,
   output: GetAccessInfrastructureTargetResponse,
   errors: [TargetNotFound, Forbidden],
@@ -44901,7 +44857,7 @@ export interface ListAccessInfrastructureTargetsRequest {
 }
 
 export const ListAccessInfrastructureTargetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -44997,7 +44953,7 @@ export interface ListAccessInfrastructureTargetsResponse {
 }
 
 export const ListAccessInfrastructureTargetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessInfrastructureTargetsResponseResult),
       resultInfo: Schema.optional(
@@ -45016,7 +44972,7 @@ export const listAccessInfrastructureTargets: API.PaginatedOperationMethod<
   ListAccessInfrastructureTargetsResponse,
   ListAccessInfrastructureTargetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessInfrastructureTargetsRequest,
   output: ListAccessInfrastructureTargetsResponse,
   errors: [Forbidden],
@@ -45042,7 +44998,7 @@ export interface CreateAccessInfrastructureTargetRequest {
 }
 
 export const CreateAccessInfrastructureTargetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       hostname: Schema.String,
@@ -45072,7 +45028,7 @@ export interface CreateAccessInfrastructureTargetResponse {
 }
 
 export const CreateAccessInfrastructureTargetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -45099,7 +45055,7 @@ export const createAccessInfrastructureTarget: API.OperationMethod<
   CreateAccessInfrastructureTargetResponse,
   CreateAccessInfrastructureTargetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessInfrastructureTargetRequest,
   output: CreateAccessInfrastructureTargetResponse,
   errors: [Forbidden],
@@ -45119,7 +45075,7 @@ export interface UpdateAccessInfrastructureTargetRequest {
 }
 
 export const UpdateAccessInfrastructureTargetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       targetId: Schema.String.pipe(T.HttpPath("targetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -45150,7 +45106,7 @@ export interface UpdateAccessInfrastructureTargetResponse {
 }
 
 export const UpdateAccessInfrastructureTargetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -45180,7 +45136,7 @@ export const updateAccessInfrastructureTarget: API.OperationMethod<
   UpdateAccessInfrastructureTargetResponse,
   UpdateAccessInfrastructureTargetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessInfrastructureTargetRequest,
   output: UpdateAccessInfrastructureTargetResponse,
   errors: [TargetNotFound, Forbidden],
@@ -45193,7 +45149,7 @@ export interface DeleteAccessInfrastructureTargetRequest {
 }
 
 export const DeleteAccessInfrastructureTargetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       targetId: Schema.String.pipe(T.HttpPath("targetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -45208,7 +45164,7 @@ export const DeleteAccessInfrastructureTargetRequest =
 export type DeleteAccessInfrastructureTargetResponse = unknown;
 
 export const DeleteAccessInfrastructureTargetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<DeleteAccessInfrastructureTargetResponse>;
 
@@ -45222,7 +45178,7 @@ export const deleteAccessInfrastructureTarget: API.OperationMethod<
   DeleteAccessInfrastructureTargetResponse,
   DeleteAccessInfrastructureTargetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessInfrastructureTargetRequest,
   output: DeleteAccessInfrastructureTargetResponse,
   errors: [TargetNotFound, Forbidden],
@@ -45234,7 +45190,7 @@ export interface BulkDeleteAccessInfrastructureTargetsRequest {
 }
 
 export const BulkDeleteAccessInfrastructureTargetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -45248,7 +45204,7 @@ export const BulkDeleteAccessInfrastructureTargetsRequest =
 export type BulkDeleteAccessInfrastructureTargetsResponse = unknown;
 
 export const BulkDeleteAccessInfrastructureTargetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<BulkDeleteAccessInfrastructureTargetsResponse>;
 
@@ -45259,7 +45215,7 @@ export const bulkDeleteAccessInfrastructureTargets: API.OperationMethod<
   BulkDeleteAccessInfrastructureTargetsResponse,
   BulkDeleteAccessInfrastructureTargetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteAccessInfrastructureTargetsRequest,
   output: BulkDeleteAccessInfrastructureTargetsResponse,
   errors: [],
@@ -45274,13 +45230,12 @@ export interface GetAccessKeyRequest {
   accountId: string;
 }
 
-export const GetAccessKeyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/access/keys" }),
-    ),
+export const GetAccessKeyRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/access/keys" }),
+  ),
 ) as unknown as Schema.Codec<GetAccessKeyRequest>;
 
 export interface GetAccessKeyResponse {
@@ -45292,27 +45247,26 @@ export interface GetAccessKeyResponse {
   lastKeyRotationAt?: string | null;
 }
 
-export const GetAccessKeyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      daysUntilNextRotation: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      keyRotationIntervalDays: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      lastKeyRotationAt: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          daysUntilNextRotation: "days_until_next_rotation",
-          keyRotationIntervalDays: "key_rotation_interval_days",
-          lastKeyRotationAt: "last_key_rotation_at",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetAccessKeyResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    daysUntilNextRotation: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    keyRotationIntervalDays: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    lastKeyRotationAt: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        daysUntilNextRotation: "days_until_next_rotation",
+        keyRotationIntervalDays: "key_rotation_interval_days",
+        lastKeyRotationAt: "last_key_rotation_at",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetAccessKeyResponse>;
 
 export type GetAccessKeyError = DefaultErrors | Forbidden;
@@ -45322,7 +45276,7 @@ export const getAccessKey: API.OperationMethod<
   GetAccessKeyResponse,
   GetAccessKeyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessKeyRequest,
   output: GetAccessKeyResponse,
   errors: [Forbidden],
@@ -45335,17 +45289,16 @@ export interface PutAccessKeyRequest {
   keyRotationIntervalDays: number;
 }
 
-export const PutAccessKeyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      keyRotationIntervalDays: Schema.Number,
-    }).pipe(
-      Schema.encodeKeys({
-        keyRotationIntervalDays: "key_rotation_interval_days",
-      }),
-      T.Http({ method: "PUT", path: "/accounts/{account_id}/access/keys" }),
-    ),
+export const PutAccessKeyRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    keyRotationIntervalDays: Schema.Number,
+  }).pipe(
+    Schema.encodeKeys({
+      keyRotationIntervalDays: "key_rotation_interval_days",
+    }),
+    T.Http({ method: "PUT", path: "/accounts/{account_id}/access/keys" }),
+  ),
 ) as unknown as Schema.Codec<PutAccessKeyRequest>;
 
 export interface PutAccessKeyResponse {
@@ -45357,27 +45310,26 @@ export interface PutAccessKeyResponse {
   lastKeyRotationAt?: string | null;
 }
 
-export const PutAccessKeyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      daysUntilNextRotation: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      keyRotationIntervalDays: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      lastKeyRotationAt: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          daysUntilNextRotation: "days_until_next_rotation",
-          keyRotationIntervalDays: "key_rotation_interval_days",
-          lastKeyRotationAt: "last_key_rotation_at",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PutAccessKeyResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    daysUntilNextRotation: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    keyRotationIntervalDays: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    lastKeyRotationAt: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        daysUntilNextRotation: "days_until_next_rotation",
+        keyRotationIntervalDays: "key_rotation_interval_days",
+        lastKeyRotationAt: "last_key_rotation_at",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutAccessKeyResponse>;
 
 export type PutAccessKeyError = DefaultErrors | Forbidden;
@@ -45387,7 +45339,7 @@ export const putAccessKey: API.OperationMethod<
   PutAccessKeyResponse,
   PutAccessKeyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAccessKeyRequest,
   output: PutAccessKeyResponse,
   errors: [Forbidden],
@@ -45399,7 +45351,7 @@ export interface RotateAccessKeyRequest {
 }
 
 export const RotateAccessKeyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -45420,7 +45372,7 @@ export interface RotateAccessKeyResponse {
 }
 
 export const RotateAccessKeyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       daysUntilNextRotation: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -45449,7 +45401,7 @@ export const rotateAccessKey: API.OperationMethod<
   RotateAccessKeyResponse,
   RotateAccessKeyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RotateAccessKeyRequest,
   output: RotateAccessKeyResponse,
   errors: [],
@@ -45503,7 +45455,7 @@ export interface ListAccessLogAccessRequestsRequest {
 }
 
 export const ListAccessLogAccessRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       allowedOp: Schema.optional(
@@ -45571,7 +45523,7 @@ export type ListAccessLogAccessRequestsResponse = {
 }[];
 
 export const ListAccessLogAccessRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(AccessRequest).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<ListAccessLogAccessRequestsResponse>;
 
@@ -45582,7 +45534,7 @@ export const listAccessLogAccessRequests: API.OperationMethod<
   ListAccessLogAccessRequestsResponse,
   ListAccessLogAccessRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccessLogAccessRequestsRequest,
   output: ListAccessLogAccessRequestsResponse,
   errors: [],
@@ -45624,7 +45576,7 @@ export interface ListAccessLogScimUpdatesRequest {
 }
 
 export const ListAccessLogScimUpdatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -45700,7 +45652,7 @@ export interface ListAccessLogScimUpdatesResponse {
 }
 
 export const ListAccessLogScimUpdatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessLogScimUpdatesResponseResult),
       resultInfo: Schema.optional(
@@ -45719,7 +45671,7 @@ export const listAccessLogScimUpdates: API.PaginatedOperationMethod<
   ListAccessLogScimUpdatesResponse,
   ListAccessLogScimUpdatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessLogScimUpdatesRequest,
   output: ListAccessLogScimUpdatesResponse,
   errors: [],
@@ -45743,7 +45695,7 @@ export interface GetAccessPolicyRequest {
 }
 
 export const GetAccessPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -46004,7 +45956,7 @@ export interface GetAccessPolicyResponse {
 }
 
 export const GetAccessPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       appCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -46183,7 +46135,7 @@ export const getAccessPolicy: API.OperationMethod<
   GetAccessPolicyResponse,
   GetAccessPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPolicyRequest,
   output: GetAccessPolicyResponse,
   errors: [],
@@ -46197,7 +46149,7 @@ export interface ListAccessPoliciesRequest {
 }
 
 export const ListAccessPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -46449,7 +46401,7 @@ export interface ListAccessPoliciesResponse {
 }
 
 export const ListAccessPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessPoliciesResponseResult),
       resultInfo: Schema.optional(
@@ -46468,7 +46420,7 @@ export const listAccessPolicies: API.PaginatedOperationMethod<
   ListAccessPoliciesResponse,
   ListAccessPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesRequest,
   output: ListAccessPoliciesResponse,
   errors: [],
@@ -46696,7 +46648,7 @@ export interface CreateAccessPolicyRequest {
 }
 
 export const CreateAccessPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       decision: Schema.Union([
@@ -47078,7 +47030,7 @@ export interface CreateAccessPolicyResponse {
 }
 
 export const CreateAccessPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       appCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -47257,7 +47209,7 @@ export const createAccessPolicy: API.OperationMethod<
   CreateAccessPolicyResponse,
   CreateAccessPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessPolicyRequest,
   output: CreateAccessPolicyResponse,
   errors: [],
@@ -47479,7 +47431,7 @@ export interface UpdateAccessPolicyRequest {
 }
 
 export const UpdateAccessPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -47862,7 +47814,7 @@ export interface UpdateAccessPolicyResponse {
 }
 
 export const UpdateAccessPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       appCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -48041,7 +47993,7 @@ export const updateAccessPolicy: API.OperationMethod<
   UpdateAccessPolicyResponse,
   UpdateAccessPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessPolicyRequest,
   output: UpdateAccessPolicyResponse,
   errors: [],
@@ -48054,7 +48006,7 @@ export interface DeleteAccessPolicyRequest {
 }
 
 export const DeleteAccessPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -48072,7 +48024,7 @@ export interface DeleteAccessPolicyResponse {
 }
 
 export const DeleteAccessPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -48085,7 +48037,7 @@ export const deleteAccessPolicy: API.OperationMethod<
   DeleteAccessPolicyResponse,
   DeleteAccessPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessPolicyRequest,
   output: DeleteAccessPolicyResponse,
   errors: [],
@@ -48102,7 +48054,7 @@ export interface GetAccessSamlCertificateRequest {
 }
 
 export const GetAccessSamlCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       samlCERTSetId: Schema.String.pipe(T.HttpPath("samlCERTSetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -48133,7 +48085,7 @@ export interface GetAccessSamlCertificateResponse {
 }
 
 export const GetAccessSamlCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       uid: Schema.String,
@@ -48164,7 +48116,7 @@ export const getAccessSamlCertificate: API.OperationMethod<
   GetAccessSamlCertificateResponse,
   GetAccessSamlCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessSamlCertificateRequest,
   output: GetAccessSamlCertificateResponse,
   errors: [],
@@ -48180,7 +48132,7 @@ export interface ListAccessSamlCertificatesRequest {
 }
 
 export const ListAccessSamlCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -48216,7 +48168,7 @@ export interface ListAccessSamlCertificatesResponse {
 }
 
 export const ListAccessSamlCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessSamlCertificatesResponseResult),
       resultInfo: Schema.optional(
@@ -48235,7 +48187,7 @@ export const listAccessSamlCertificates: API.PaginatedOperationMethod<
   ListAccessSamlCertificatesResponse,
   ListAccessSamlCertificatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessSamlCertificatesRequest,
   output: ListAccessSamlCertificatesResponse,
   errors: [],
@@ -48255,7 +48207,7 @@ export interface RotateAccessSamlCertificateRequest {
 }
 
 export const RotateAccessSamlCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       samlCERTSetId: Schema.String.pipe(T.HttpPath("samlCERTSetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -48286,7 +48238,7 @@ export interface RotateAccessSamlCertificateResponse {
 }
 
 export const RotateAccessSamlCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       uid: Schema.String,
@@ -48317,7 +48269,7 @@ export const rotateAccessSamlCertificate: API.OperationMethod<
   RotateAccessSamlCertificateResponse,
   RotateAccessSamlCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RotateAccessSamlCertificateRequest,
   output: RotateAccessSamlCertificateResponse,
   errors: [],
@@ -48346,7 +48298,7 @@ export interface GetAccessServiceTokenForZoneRequest extends GetAccessServiceTok
 }
 
 export const GetAccessServiceTokenForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetAccessServiceTokenBaseFields,
@@ -48359,7 +48311,7 @@ export const GetAccessServiceTokenForAccountRequest =
   ) as unknown as Schema.Codec<GetAccessServiceTokenForAccountRequest>;
 
 export const GetAccessServiceTokenForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetAccessServiceTokenBaseFields,
@@ -48384,7 +48336,7 @@ export interface GetAccessServiceTokenResponse {
 }
 
 export const GetAccessServiceTokenResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -48413,7 +48365,7 @@ export const getAccessServiceTokenForAccount: API.OperationMethod<
   GetAccessServiceTokenResponse,
   GetAccessServiceTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessServiceTokenForAccountRequest,
   output: GetAccessServiceTokenResponse,
   errors: [AccessServiceTokenNotFound],
@@ -48424,7 +48376,7 @@ export const getAccessServiceTokenForZone: API.OperationMethod<
   GetAccessServiceTokenResponse,
   GetAccessServiceTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessServiceTokenForZoneRequest,
   output: GetAccessServiceTokenResponse,
   errors: [AccessServiceTokenNotFound],
@@ -48457,7 +48409,7 @@ export interface ListAccessServiceTokensForZoneRequest extends ListAccessService
 }
 
 export const ListAccessServiceTokensForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListAccessServiceTokensBaseFields,
@@ -48470,7 +48422,7 @@ export const ListAccessServiceTokensForAccountRequest =
   ) as unknown as Schema.Codec<ListAccessServiceTokensForAccountRequest>;
 
 export const ListAccessServiceTokensForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListAccessServiceTokensBaseFields,
@@ -48496,7 +48448,7 @@ export interface ListAccessServiceTokensResponse {
 }
 
 export const ListAccessServiceTokensResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessServiceTokensResponseResult),
       resultInfo: Schema.optional(
@@ -48515,7 +48467,7 @@ export const listAccessServiceTokensForAccount: API.PaginatedOperationMethod<
   ListAccessServiceTokensResponse,
   ListAccessServiceTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessServiceTokensForAccountRequest,
   output: ListAccessServiceTokensResponse,
   errors: [],
@@ -48533,7 +48485,7 @@ export const listAccessServiceTokensForZone: API.PaginatedOperationMethod<
   ListAccessServiceTokensResponse,
   ListAccessServiceTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessServiceTokensForZoneRequest,
   output: ListAccessServiceTokensResponse,
   errors: [],
@@ -48575,7 +48527,7 @@ export interface CreateAccessServiceTokenForZoneRequest extends CreateAccessServ
 }
 
 export const CreateAccessServiceTokenForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateAccessServiceTokenBaseFields,
@@ -48594,7 +48546,7 @@ export const CreateAccessServiceTokenForAccountRequest =
   ) as unknown as Schema.Codec<CreateAccessServiceTokenForAccountRequest>;
 
 export const CreateAccessServiceTokenForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateAccessServiceTokenBaseFields,
@@ -48626,7 +48578,7 @@ export interface CreateAccessServiceTokenResponse {
 }
 
 export const CreateAccessServiceTokenResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -48653,7 +48605,7 @@ export const createAccessServiceTokenForAccount: API.OperationMethod<
   CreateAccessServiceTokenResponse,
   CreateAccessServiceTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessServiceTokenForAccountRequest,
   output: CreateAccessServiceTokenResponse,
   errors: [],
@@ -48664,7 +48616,7 @@ export const createAccessServiceTokenForZone: API.OperationMethod<
   CreateAccessServiceTokenResponse,
   CreateAccessServiceTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessServiceTokenForZoneRequest,
   output: CreateAccessServiceTokenResponse,
   errors: [],
@@ -48701,7 +48653,7 @@ export interface UpdateAccessServiceTokenForZoneRequest extends UpdateAccessServ
 }
 
 export const UpdateAccessServiceTokenForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...UpdateAccessServiceTokenBaseFields,
@@ -48720,7 +48672,7 @@ export const UpdateAccessServiceTokenForAccountRequest =
   ) as unknown as Schema.Codec<UpdateAccessServiceTokenForAccountRequest>;
 
 export const UpdateAccessServiceTokenForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...UpdateAccessServiceTokenBaseFields,
@@ -48751,7 +48703,7 @@ export interface UpdateAccessServiceTokenResponse {
 }
 
 export const UpdateAccessServiceTokenResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -48778,7 +48730,7 @@ export const updateAccessServiceTokenForAccount: API.OperationMethod<
   UpdateAccessServiceTokenResponse,
   UpdateAccessServiceTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessServiceTokenForAccountRequest,
   output: UpdateAccessServiceTokenResponse,
   errors: [],
@@ -48789,7 +48741,7 @@ export const updateAccessServiceTokenForZone: API.OperationMethod<
   UpdateAccessServiceTokenResponse,
   UpdateAccessServiceTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessServiceTokenForZoneRequest,
   output: UpdateAccessServiceTokenResponse,
   errors: [],
@@ -48814,7 +48766,7 @@ export interface DeleteAccessServiceTokenForZoneRequest extends DeleteAccessServ
 }
 
 export const DeleteAccessServiceTokenForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DeleteAccessServiceTokenBaseFields,
@@ -48827,7 +48779,7 @@ export const DeleteAccessServiceTokenForAccountRequest =
   ) as unknown as Schema.Codec<DeleteAccessServiceTokenForAccountRequest>;
 
 export const DeleteAccessServiceTokenForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DeleteAccessServiceTokenBaseFields,
@@ -48852,7 +48804,7 @@ export interface DeleteAccessServiceTokenResponse {
 }
 
 export const DeleteAccessServiceTokenResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -48881,7 +48833,7 @@ export const deleteAccessServiceTokenForAccount: API.OperationMethod<
   DeleteAccessServiceTokenResponse,
   DeleteAccessServiceTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessServiceTokenForAccountRequest,
   output: DeleteAccessServiceTokenResponse,
   errors: [AccessServiceTokenNotFound],
@@ -48892,7 +48844,7 @@ export const deleteAccessServiceTokenForZone: API.OperationMethod<
   DeleteAccessServiceTokenResponse,
   DeleteAccessServiceTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessServiceTokenForZoneRequest,
   output: DeleteAccessServiceTokenResponse,
   errors: [AccessServiceTokenNotFound],
@@ -48905,7 +48857,7 @@ export interface RefreshAccessServiceTokenRequest {
 }
 
 export const RefreshAccessServiceTokenRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       serviceTokenId: Schema.String.pipe(T.HttpPath("serviceTokenId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -48930,7 +48882,7 @@ export interface RefreshAccessServiceTokenResponse {
 }
 
 export const RefreshAccessServiceTokenResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -48957,7 +48909,7 @@ export const refreshAccessServiceToken: API.OperationMethod<
   RefreshAccessServiceTokenResponse,
   RefreshAccessServiceTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RefreshAccessServiceTokenRequest,
   output: RefreshAccessServiceTokenResponse,
   errors: [],
@@ -48972,7 +48924,7 @@ export interface RotateAccessServiceTokenRequest {
 }
 
 export const RotateAccessServiceTokenRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       serviceTokenId: Schema.String.pipe(T.HttpPath("serviceTokenId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -49002,7 +48954,7 @@ export interface RotateAccessServiceTokenResponse {
 }
 
 export const RotateAccessServiceTokenResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -49029,7 +48981,7 @@ export const rotateAccessServiceToken: API.OperationMethod<
   RotateAccessServiceTokenResponse,
   RotateAccessServiceTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RotateAccessServiceTokenRequest,
   output: RotateAccessServiceTokenResponse,
   errors: [],
@@ -49045,17 +48997,16 @@ export interface GetAccessTagRequest {
   accountId: string;
 }
 
-export const GetAccessTagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      tagName: Schema.String.pipe(T.HttpPath("tagName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/access/tags/{tagName}",
-      }),
-    ),
+export const GetAccessTagRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    tagName: Schema.String.pipe(T.HttpPath("tagName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/access/tags/{tagName}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetAccessTagRequest>;
 
 export interface GetAccessTagResponse {
@@ -49063,11 +49014,10 @@ export interface GetAccessTagResponse {
   name: string;
 }
 
-export const GetAccessTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-    }).pipe(T.ResponsePath("result")),
+export const GetAccessTagResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetAccessTagResponse>;
 
 export type GetAccessTagError = DefaultErrors | AccessTagNotFound;
@@ -49077,7 +49027,7 @@ export const getAccessTag: API.OperationMethod<
   GetAccessTagResponse,
   GetAccessTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessTagRequest,
   output: GetAccessTagResponse,
   errors: [AccessTagNotFound],
@@ -49090,15 +49040,14 @@ export interface ListAccessTagsRequest {
   perPage?: number;
 }
 
-export const ListAccessTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/access/tags" }),
-    ),
+export const ListAccessTagsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/access/tags" }),
+  ),
 ) as unknown as Schema.Codec<ListAccessTagsRequest>;
 
 export interface ListAccessTagsResponse {
@@ -49112,7 +49061,7 @@ export interface ListAccessTagsResponse {
 }
 
 export const ListAccessTagsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessTagsResponseResult),
       resultInfo: Schema.optional(
@@ -49131,7 +49080,7 @@ export const listAccessTags: API.PaginatedOperationMethod<
   ListAccessTagsResponse,
   ListAccessTagsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessTagsRequest,
   output: ListAccessTagsResponse,
   errors: [],
@@ -49152,7 +49101,7 @@ export interface CreateAccessTagRequest {
 }
 
 export const CreateAccessTagRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.optional(Schema.String),
@@ -49167,7 +49116,7 @@ export interface CreateAccessTagResponse {
 }
 
 export const CreateAccessTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -49180,7 +49129,7 @@ export const createAccessTag: API.OperationMethod<
   CreateAccessTagResponse,
   CreateAccessTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessTagRequest,
   output: CreateAccessTagResponse,
   errors: [],
@@ -49195,7 +49144,7 @@ export interface UpdateAccessTagRequest {
 }
 
 export const UpdateAccessTagRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tagName: Schema.String.pipe(T.HttpPath("tagName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -49214,7 +49163,7 @@ export interface UpdateAccessTagResponse {
 }
 
 export const UpdateAccessTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -49227,7 +49176,7 @@ export const updateAccessTag: API.OperationMethod<
   UpdateAccessTagResponse,
   UpdateAccessTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessTagRequest,
   output: UpdateAccessTagResponse,
   errors: [AccessTagNotFound],
@@ -49240,7 +49189,7 @@ export interface DeleteAccessTagRequest {
 }
 
 export const DeleteAccessTagRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tagName: Schema.String.pipe(T.HttpPath("tagName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -49258,7 +49207,7 @@ export interface DeleteAccessTagResponse {
 }
 
 export const DeleteAccessTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -49271,7 +49220,7 @@ export const deleteAccessTag: API.OperationMethod<
   DeleteAccessTagResponse,
   DeleteAccessTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessTagRequest,
   output: DeleteAccessTagResponse,
   errors: [AccessTagNotFound],
@@ -49287,17 +49236,16 @@ export interface GetAccessUserRequest {
   accountId: string;
 }
 
-export const GetAccessUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      userId: Schema.String.pipe(T.HttpPath("userId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/access/users/{userId}",
-      }),
-    ),
+export const GetAccessUserRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    userId: Schema.String.pipe(T.HttpPath("userId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/access/users/{userId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetAccessUserRequest>;
 
 export interface GetAccessUserResponse {
@@ -49323,41 +49271,40 @@ export interface GetAccessUserResponse {
   updatedAt?: string | null;
 }
 
-export const GetAccessUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      accessSeat: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      activeDeviceCount: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      gatewaySeat: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      lastSuccessfulLogin: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      seatUid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          accessSeat: "access_seat",
-          activeDeviceCount: "active_device_count",
-          createdAt: "created_at",
-          email: "email",
-          gatewaySeat: "gateway_seat",
-          lastSuccessfulLogin: "last_successful_login",
-          name: "name",
-          seatUid: "seat_uid",
-          uid: "uid",
-          updatedAt: "updated_at",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetAccessUserResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    accessSeat: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    activeDeviceCount: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    gatewaySeat: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    lastSuccessfulLogin: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    seatUid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    uid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        accessSeat: "access_seat",
+        activeDeviceCount: "active_device_count",
+        createdAt: "created_at",
+        email: "email",
+        gatewaySeat: "gateway_seat",
+        lastSuccessfulLogin: "last_successful_login",
+        name: "name",
+        seatUid: "seat_uid",
+        uid: "uid",
+        updatedAt: "updated_at",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetAccessUserResponse>;
 
 export type GetAccessUserError = DefaultErrors;
@@ -49367,7 +49314,7 @@ export const getAccessUser: API.OperationMethod<
   GetAccessUserResponse,
   GetAccessUserError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessUserRequest,
   output: GetAccessUserResponse,
   errors: [],
@@ -49387,7 +49334,7 @@ export interface ListAccessUsersRequest {
 }
 
 export const ListAccessUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -49423,7 +49370,7 @@ export interface ListAccessUsersResponse {
 }
 
 export const ListAccessUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessUsersResponseResult),
       resultInfo: Schema.optional(
@@ -49442,7 +49389,7 @@ export const listAccessUsers: API.PaginatedOperationMethod<
   ListAccessUsersResponse,
   ListAccessUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessUsersRequest,
   output: ListAccessUsersResponse,
   errors: [],
@@ -49465,7 +49412,7 @@ export interface CreateAccessUserRequest {
 }
 
 export const CreateAccessUserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       email: Schema.String,
@@ -49499,7 +49446,7 @@ export interface CreateAccessUserResponse {
 }
 
 export const CreateAccessUserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       accessSeat: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -49542,7 +49489,7 @@ export const createAccessUser: API.OperationMethod<
   CreateAccessUserResponse,
   CreateAccessUserError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessUserRequest,
   output: CreateAccessUserResponse,
   errors: [],
@@ -49559,7 +49506,7 @@ export interface UpdateAccessUserRequest {
 }
 
 export const UpdateAccessUserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userId: Schema.String.pipe(T.HttpPath("userId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -49597,7 +49544,7 @@ export interface UpdateAccessUserResponse {
 }
 
 export const UpdateAccessUserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       accessSeat: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -49640,7 +49587,7 @@ export const updateAccessUser: API.OperationMethod<
   UpdateAccessUserResponse,
   UpdateAccessUserError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessUserRequest,
   output: UpdateAccessUserResponse,
   errors: [],
@@ -49653,7 +49600,7 @@ export interface DeleteAccessUserRequest {
 }
 
 export const DeleteAccessUserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userId: Schema.String.pipe(T.HttpPath("userId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -49668,7 +49615,7 @@ export const DeleteAccessUserRequest =
 export type DeleteAccessUserResponse = unknown;
 
 export const DeleteAccessUserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteAccessUserResponse>;
 
@@ -49679,7 +49626,7 @@ export const deleteAccessUser: API.OperationMethod<
   DeleteAccessUserResponse,
   DeleteAccessUserError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessUserRequest,
   output: DeleteAccessUserResponse,
   errors: [],
@@ -49697,7 +49644,7 @@ export interface GetAccessUserActiveSessionRequest {
 }
 
 export const GetAccessUserActiveSessionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userId: Schema.String.pipe(T.HttpPath("userId")),
       nonce: Schema.String.pipe(T.HttpPath("nonce")),
@@ -49739,7 +49686,7 @@ export interface GetAccessUserActiveSessionResponse {
 }
 
 export const GetAccessUserActiveSessionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       authStatus: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -49808,7 +49755,7 @@ export const getAccessUserActiveSession: API.OperationMethod<
   GetAccessUserActiveSessionResponse,
   GetAccessUserActiveSessionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessUserActiveSessionRequest,
   output: GetAccessUserActiveSessionResponse,
   errors: [],
@@ -49821,7 +49768,7 @@ export interface ListAccessUserActiveSessionsRequest {
 }
 
 export const ListAccessUserActiveSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userId: Schema.String.pipe(T.HttpPath("userId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -49848,7 +49795,7 @@ export interface ListAccessUserActiveSessionsResponse {
 }
 
 export const ListAccessUserActiveSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessUserActiveSessionsResponseResult),
     }),
@@ -49861,7 +49808,7 @@ export const listAccessUserActiveSessions: API.PaginatedOperationMethod<
   ListAccessUserActiveSessionsResponse,
   ListAccessUserActiveSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessUserActiveSessionsRequest,
   output: ListAccessUserActiveSessionsResponse,
   errors: [],
@@ -49882,7 +49829,7 @@ export interface ListAccessUserFailedLoginsRequest {
 }
 
 export const ListAccessUserFailedLoginsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userId: Schema.String.pipe(T.HttpPath("userId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -49899,7 +49846,7 @@ export interface ListAccessUserFailedLoginsResponse {
 }
 
 export const ListAccessUserFailedLoginsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessUserFailedLoginsResponseResult),
     }),
@@ -49912,7 +49859,7 @@ export const listAccessUserFailedLogins: API.PaginatedOperationMethod<
   ListAccessUserFailedLoginsResponse,
   ListAccessUserFailedLoginsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessUserFailedLoginsRequest,
   output: ListAccessUserFailedLoginsResponse,
   errors: [],
@@ -49933,7 +49880,7 @@ export interface GetAccessUserLastSeenIdentityRequest {
 }
 
 export const GetAccessUserLastSeenIdentityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userId: Schema.String.pipe(T.HttpPath("userId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -49973,7 +49920,7 @@ export interface GetAccessUserLastSeenIdentityResponse {
 }
 
 export const GetAccessUserLastSeenIdentityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       authStatus: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -50040,7 +49987,7 @@ export const getAccessUserLastSeenIdentity: API.OperationMethod<
   GetAccessUserLastSeenIdentityResponse,
   GetAccessUserLastSeenIdentityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessUserLastSeenIdentityRequest,
   output: GetAccessUserLastSeenIdentityResponse,
   errors: [],
@@ -50056,7 +50003,7 @@ export interface GetConnectivitySettingRequest {
 }
 
 export const GetConnectivitySettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -50075,7 +50022,7 @@ export interface GetConnectivitySettingResponse {
 }
 
 export const GetConnectivitySettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       icmpProxyEnabled: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -50100,7 +50047,7 @@ export const getConnectivitySetting: API.OperationMethod<
   GetConnectivitySettingResponse,
   GetConnectivitySettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectivitySettingRequest,
   output: GetConnectivitySettingResponse,
   errors: [],
@@ -50116,7 +50063,7 @@ export interface PatchConnectivitySettingRequest {
 }
 
 export const PatchConnectivitySettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       icmpProxyEnabled: Schema.optional(Schema.Boolean),
@@ -50141,7 +50088,7 @@ export interface PatchConnectivitySettingResponse {
 }
 
 export const PatchConnectivitySettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       icmpProxyEnabled: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -50166,7 +50113,7 @@ export const patchConnectivitySetting: API.OperationMethod<
   PatchConnectivitySettingResponse,
   PatchConnectivitySettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchConnectivitySettingRequest,
   output: PatchConnectivitySettingResponse,
   errors: [],
@@ -50181,7 +50128,7 @@ export interface GetDeviceRequest {
   accountId: string;
 }
 
-export const GetDeviceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetDeviceRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     deviceId: Schema.String.pipe(T.HttpPath("deviceId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -50239,55 +50186,54 @@ export interface GetDeviceResponse {
   version?: string | null;
 }
 
-export const GetDeviceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      account: Schema.optional(Schema.Union([Account, Schema.Null])),
-      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      deleted: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      deviceType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      gatewayDeviceId: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      keyType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      lastSeen: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      macAddress: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      model: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      osVersion: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      tunnelType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      updated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      user: Schema.optional(Schema.Union([User, Schema.Null])),
-      version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          account: "account",
-          created: "created",
-          deleted: "deleted",
-          deviceType: "device_type",
-          gatewayDeviceId: "gateway_device_id",
-          ip: "ip",
-          key: "key",
-          keyType: "key_type",
-          lastSeen: "last_seen",
-          macAddress: "mac_address",
-          model: "model",
-          name: "name",
-          osVersion: "os_version",
-          serialNumber: "serial_number",
-          tunnelType: "tunnel_type",
-          updated: "updated",
-          user: "user",
-          version: "version",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetDeviceResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    account: Schema.optional(Schema.Union([Account, Schema.Null])),
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    deleted: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    deviceType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    gatewayDeviceId: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    keyType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastSeen: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    macAddress: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    model: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    osVersion: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    tunnelType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    updated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    user: Schema.optional(Schema.Union([User, Schema.Null])),
+    version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        account: "account",
+        created: "created",
+        deleted: "deleted",
+        deviceType: "device_type",
+        gatewayDeviceId: "gateway_device_id",
+        ip: "ip",
+        key: "key",
+        keyType: "key_type",
+        lastSeen: "last_seen",
+        macAddress: "mac_address",
+        model: "model",
+        name: "name",
+        osVersion: "os_version",
+        serialNumber: "serial_number",
+        tunnelType: "tunnel_type",
+        updated: "updated",
+        user: "user",
+        version: "version",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetDeviceResponse>;
 
 export type GetDeviceError = DefaultErrors;
@@ -50297,7 +50243,7 @@ export const getDevice: API.OperationMethod<
   GetDeviceResponse,
   GetDeviceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceRequest,
   output: GetDeviceResponse,
   errors: [],
@@ -50307,11 +50253,10 @@ export interface ListDevicesRequest {
   accountId: string;
 }
 
-export const ListDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/devices" })),
+export const ListDevicesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/devices" })),
 ) as unknown as Schema.Codec<ListDevicesRequest>;
 
 export interface ListDevicesResponse {
@@ -50351,11 +50296,10 @@ export interface ListDevicesResponse {
   }[];
 }
 
-export const ListDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListDevicesResponseResult),
-    }),
+export const ListDevicesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListDevicesResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListDevicesResponse>;
 
 export type ListDevicesError = DefaultErrors;
@@ -50365,7 +50309,7 @@ export const listDevices: API.PaginatedOperationMethod<
   ListDevicesResponse,
   ListDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesRequest,
   output: ListDevicesResponse,
   errors: [],
@@ -50385,7 +50329,7 @@ export interface GetDeviceDeploymentGroupRequest {
 }
 
 export const GetDeviceDeploymentGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       groupId: Schema.String.pipe(T.HttpPath("groupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -50413,7 +50357,7 @@ export interface GetDeviceDeploymentGroupResponse {
 }
 
 export const GetDeviceDeploymentGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -50444,7 +50388,7 @@ export const getDeviceDeploymentGroup: API.OperationMethod<
   GetDeviceDeploymentGroupResponse,
   GetDeviceDeploymentGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceDeploymentGroupRequest,
   output: GetDeviceDeploymentGroupResponse,
   errors: [],
@@ -50458,7 +50402,7 @@ export interface ListDeviceDeploymentGroupsRequest {
 }
 
 export const ListDeviceDeploymentGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -50489,7 +50433,7 @@ export interface ListDeviceDeploymentGroupsResponse {
 }
 
 export const ListDeviceDeploymentGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDeviceDeploymentGroupsResponseResult),
       resultInfo: Schema.optional(
@@ -50508,7 +50452,7 @@ export const listDeviceDeploymentGroups: API.PaginatedOperationMethod<
   ListDeviceDeploymentGroupsResponse,
   ListDeviceDeploymentGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceDeploymentGroupsRequest,
   output: ListDeviceDeploymentGroupsResponse,
   errors: [],
@@ -50533,7 +50477,7 @@ export interface CreateDeviceDeploymentGroupRequest {
 }
 
 export const CreateDeviceDeploymentGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -50568,7 +50512,7 @@ export interface CreateDeviceDeploymentGroupResponse {
 }
 
 export const CreateDeviceDeploymentGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -50599,7 +50543,7 @@ export const createDeviceDeploymentGroup: API.OperationMethod<
   CreateDeviceDeploymentGroupResponse,
   CreateDeviceDeploymentGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeviceDeploymentGroupRequest,
   output: CreateDeviceDeploymentGroupResponse,
   errors: [],
@@ -50618,7 +50562,7 @@ export interface PatchDeviceDeploymentGroupRequest {
 }
 
 export const PatchDeviceDeploymentGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       groupId: Schema.String.pipe(T.HttpPath("groupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -50654,7 +50598,7 @@ export interface PatchDeviceDeploymentGroupResponse {
 }
 
 export const PatchDeviceDeploymentGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -50685,7 +50629,7 @@ export const patchDeviceDeploymentGroup: API.OperationMethod<
   PatchDeviceDeploymentGroupResponse,
   PatchDeviceDeploymentGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDeviceDeploymentGroupRequest,
   output: PatchDeviceDeploymentGroupResponse,
   errors: [],
@@ -50697,7 +50641,7 @@ export interface DeleteDeviceDeploymentGroupRequest {
 }
 
 export const DeleteDeviceDeploymentGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       groupId: Schema.String.pipe(T.HttpPath("groupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -50715,7 +50659,7 @@ export interface DeleteDeviceDeploymentGroupResponse {
 }
 
 export const DeleteDeviceDeploymentGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -50728,7 +50672,7 @@ export const deleteDeviceDeploymentGroup: API.OperationMethod<
   DeleteDeviceDeploymentGroupResponse,
   DeleteDeviceDeploymentGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeviceDeploymentGroupRequest,
   output: DeleteDeviceDeploymentGroupResponse,
   errors: [],
@@ -50747,7 +50691,7 @@ export interface GetDeviceDevicesRequest {
 }
 
 export const GetDeviceDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deviceId: Schema.String.pipe(T.HttpPath("deviceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -50814,7 +50758,7 @@ export interface GetDeviceDevicesResponse {
 }
 
 export const GetDeviceDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       activeRegistrations: Schema.Number,
@@ -50875,7 +50819,7 @@ export const getDeviceDevices: API.OperationMethod<
   GetDeviceDevicesResponse,
   GetDeviceDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceDevicesRequest,
   output: GetDeviceDevicesResponse,
   errors: [],
@@ -50915,7 +50859,7 @@ export interface ListDeviceDevicesRequest {
 }
 
 export const ListDeviceDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -51005,7 +50949,7 @@ export interface ListDeviceDevicesResponse {
 }
 
 export const ListDeviceDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDeviceDevicesResponseResult),
       resultInfo: Schema.optional(
@@ -51021,7 +50965,7 @@ export const listDeviceDevices: API.PaginatedOperationMethod<
   ListDeviceDevicesResponse,
   ListDeviceDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceDevicesRequest,
   output: ListDeviceDevicesResponse,
   errors: [],
@@ -51040,7 +50984,7 @@ export interface DeleteDeviceDevicesRequest {
 }
 
 export const DeleteDeviceDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deviceId: Schema.String.pipe(T.HttpPath("deviceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -51055,7 +50999,7 @@ export const DeleteDeviceDevicesRequest =
 export type DeleteDeviceDevicesResponse = unknown;
 
 export const DeleteDeviceDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDeviceDevicesResponse>;
 
@@ -51066,7 +51010,7 @@ export const deleteDeviceDevices: API.OperationMethod<
   DeleteDeviceDevicesResponse,
   DeleteDeviceDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeviceDevicesRequest,
   output: DeleteDeviceDevicesResponse,
   errors: [],
@@ -51078,7 +51022,7 @@ export interface RevokeDeviceDevicesRequest {
 }
 
 export const RevokeDeviceDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deviceId: Schema.String.pipe(T.HttpPath("deviceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -51093,7 +51037,7 @@ export const RevokeDeviceDevicesRequest =
 export type RevokeDeviceDevicesResponse = unknown;
 
 export const RevokeDeviceDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<RevokeDeviceDevicesResponse>;
 
@@ -51104,7 +51048,7 @@ export const revokeDeviceDevices: API.OperationMethod<
   RevokeDeviceDevicesResponse,
   RevokeDeviceDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeDeviceDevicesRequest,
   output: RevokeDeviceDevicesResponse,
   errors: [],
@@ -51121,7 +51065,7 @@ export interface GetDeviceDexTestRequest {
 }
 
 export const GetDeviceDexTestRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dexTestId: Schema.String.pipe(T.HttpPath("dexTestId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -51158,7 +51102,7 @@ export interface GetDeviceDexTestResponse {
 }
 
 export const GetDeviceDexTestResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Data,
       enabled: Schema.Boolean,
@@ -51193,7 +51137,7 @@ export const getDeviceDexTest: API.OperationMethod<
   GetDeviceDexTestResponse,
   GetDeviceDexTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceDexTestRequest,
   output: GetDeviceDexTestResponse,
   errors: [DexTestNotFound, Forbidden],
@@ -51211,7 +51155,7 @@ export interface ListDeviceDexTestsRequest {
 }
 
 export const ListDeviceDexTestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -51254,7 +51198,7 @@ export interface ListDeviceDexTestsResponse {
 }
 
 export const ListDeviceDexTestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDeviceDexTestsResponseResult),
       resultInfo: Schema.optional(
@@ -51273,7 +51217,7 @@ export const listDeviceDexTests: API.PaginatedOperationMethod<
   ListDeviceDexTestsResponse,
   ListDeviceDexTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceDexTestsRequest,
   output: ListDeviceDexTestsResponse,
   errors: [Forbidden],
@@ -51310,7 +51254,7 @@ export interface CreateDeviceDexTestRequest {
 }
 
 export const CreateDeviceDexTestRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       data: Data,
@@ -51362,7 +51306,7 @@ export interface CreateDeviceDexTestResponse {
 }
 
 export const CreateDeviceDexTestResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Data,
       enabled: Schema.Boolean,
@@ -51397,7 +51341,7 @@ export const createDeviceDexTest: API.OperationMethod<
   CreateDeviceDexTestResponse,
   CreateDeviceDexTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeviceDexTestRequest,
   output: CreateDeviceDexTestResponse,
   errors: [Forbidden],
@@ -51428,7 +51372,7 @@ export interface UpdateDeviceDexTestRequest {
 }
 
 export const UpdateDeviceDexTestRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dexTestId: Schema.String.pipe(T.HttpPath("dexTestId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -51481,7 +51425,7 @@ export interface UpdateDeviceDexTestResponse {
 }
 
 export const UpdateDeviceDexTestResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Data,
       enabled: Schema.Boolean,
@@ -51519,7 +51463,7 @@ export const updateDeviceDexTest: API.OperationMethod<
   UpdateDeviceDexTestResponse,
   UpdateDeviceDexTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeviceDexTestRequest,
   output: UpdateDeviceDexTestResponse,
   errors: [DexTestNotFound, Forbidden],
@@ -51532,7 +51476,7 @@ export interface DeleteDeviceDexTestRequest {
 }
 
 export const DeleteDeviceDexTestRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dexTestId: Schema.String.pipe(T.HttpPath("dexTestId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -51566,7 +51510,7 @@ export interface DeleteDeviceDexTestResponse {
 }
 
 export const DeleteDeviceDexTestResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dexTests: Schema.optional(
         Schema.Union([
@@ -51589,7 +51533,7 @@ export const deleteDeviceDexTest: API.OperationMethod<
   DeleteDeviceDexTestResponse,
   DeleteDeviceDexTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeviceDexTestRequest,
   output: DeleteDeviceDexTestResponse,
   errors: [DexTestNotFound, Forbidden],
@@ -51612,7 +51556,7 @@ export interface GetDeviceFleetStatusRequest {
 }
 
 export const GetDeviceFleetStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deviceId: Schema.String.pipe(T.HttpPath("deviceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -51798,7 +51742,7 @@ export interface GetDeviceFleetStatusResponse {
 }
 
 export const GetDeviceFleetStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       colo: Schema.String,
       deviceId: Schema.String,
@@ -51883,7 +51827,7 @@ export const getDeviceFleetStatus: API.OperationMethod<
   GetDeviceFleetStatusResponse,
   GetDeviceFleetStatusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceFleetStatusRequest,
   output: GetDeviceFleetStatusResponse,
   errors: [],
@@ -51899,7 +51843,7 @@ export interface GetDeviceIpProfileRequest {
 }
 
 export const GetDeviceIpProfileRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       profileId: Schema.String.pipe(T.HttpPath("profileId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -51933,7 +51877,7 @@ export interface GetDeviceIpProfileResponse {
 }
 
 export const GetDeviceIpProfileResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -51968,7 +51912,7 @@ export const getDeviceIpProfile: API.OperationMethod<
   GetDeviceIpProfileResponse,
   GetDeviceIpProfileError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceIpProfileRequest,
   output: GetDeviceIpProfileResponse,
   errors: [],
@@ -51982,7 +51926,7 @@ export interface ListDeviceIpProfilesRequest {
 }
 
 export const ListDeviceIpProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -52016,7 +51960,7 @@ export interface ListDeviceIpProfilesResponse {
 }
 
 export const ListDeviceIpProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDeviceIpProfilesResponseResult),
       resultInfo: Schema.optional(
@@ -52035,7 +51979,7 @@ export const listDeviceIpProfiles: API.PaginatedOperationMethod<
   ListDeviceIpProfilesResponse,
   ListDeviceIpProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceIpProfilesRequest,
   output: ListDeviceIpProfilesResponse,
   errors: [],
@@ -52066,7 +52010,7 @@ export interface CreateDeviceIpProfileRequest {
 }
 
 export const CreateDeviceIpProfileRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       match: Schema.String,
@@ -52113,7 +52057,7 @@ export interface CreateDeviceIpProfileResponse {
 }
 
 export const CreateDeviceIpProfileResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -52148,7 +52092,7 @@ export const createDeviceIpProfile: API.OperationMethod<
   CreateDeviceIpProfileResponse,
   CreateDeviceIpProfileError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeviceIpProfileRequest,
   output: CreateDeviceIpProfileResponse,
   errors: [],
@@ -52173,7 +52117,7 @@ export interface PatchDeviceIpProfileRequest {
 }
 
 export const PatchDeviceIpProfileRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       profileId: Schema.String.pipe(T.HttpPath("profileId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -52221,7 +52165,7 @@ export interface PatchDeviceIpProfileResponse {
 }
 
 export const PatchDeviceIpProfileResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -52256,7 +52200,7 @@ export const patchDeviceIpProfile: API.OperationMethod<
   PatchDeviceIpProfileResponse,
   PatchDeviceIpProfileError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDeviceIpProfileRequest,
   output: PatchDeviceIpProfileResponse,
   errors: [],
@@ -52268,7 +52212,7 @@ export interface DeleteDeviceIpProfileRequest {
 }
 
 export const DeleteDeviceIpProfileRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       profileId: Schema.String.pipe(T.HttpPath("profileId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -52286,7 +52230,7 @@ export interface DeleteDeviceIpProfileResponse {
 }
 
 export const DeleteDeviceIpProfileResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -52299,7 +52243,7 @@ export const deleteDeviceIpProfile: API.OperationMethod<
   DeleteDeviceIpProfileResponse,
   DeleteDeviceIpProfileError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeviceIpProfileRequest,
   output: DeleteDeviceIpProfileResponse,
   errors: [],
@@ -52315,7 +52259,7 @@ export interface GetDeviceNetworkRequest {
 }
 
 export const GetDeviceNetworkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       networkId: Schema.String.pipe(T.HttpPath("networkId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -52339,7 +52283,7 @@ export interface GetDeviceNetworkResponse {
 }
 
 export const GetDeviceNetworkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       config: Schema.optional(Schema.Union([Config, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -52367,7 +52311,7 @@ export const getDeviceNetwork: API.OperationMethod<
   GetDeviceNetworkResponse,
   GetDeviceNetworkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceNetworkRequest,
   output: GetDeviceNetworkResponse,
   errors: [DeviceNetworkNotFound, Forbidden],
@@ -52378,7 +52322,7 @@ export interface ListDeviceNetworksRequest {
 }
 
 export const ListDeviceNetworksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -52399,7 +52343,7 @@ export interface ListDeviceNetworksResponse {
 }
 
 export const ListDeviceNetworksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDeviceNetworksResponseResult),
     }),
@@ -52412,7 +52356,7 @@ export const listDeviceNetworks: API.PaginatedOperationMethod<
   ListDeviceNetworksResponse,
   ListDeviceNetworksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceNetworksRequest,
   output: ListDeviceNetworksResponse,
   errors: [Forbidden],
@@ -52434,7 +52378,7 @@ export interface CreateDeviceNetworkRequest {
 }
 
 export const CreateDeviceNetworkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       config: Config,
@@ -52460,7 +52404,7 @@ export interface CreateDeviceNetworkResponse {
 }
 
 export const CreateDeviceNetworkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       config: Schema.optional(Schema.Union([Config, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -52485,7 +52429,7 @@ export const createDeviceNetwork: API.OperationMethod<
   CreateDeviceNetworkResponse,
   CreateDeviceNetworkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeviceNetworkRequest,
   output: CreateDeviceNetworkResponse,
   errors: [Forbidden],
@@ -52504,7 +52448,7 @@ export interface UpdateDeviceNetworkRequest {
 }
 
 export const UpdateDeviceNetworkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       networkId: Schema.String.pipe(T.HttpPath("networkId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -52531,7 +52475,7 @@ export interface UpdateDeviceNetworkResponse {
 }
 
 export const UpdateDeviceNetworkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       config: Schema.optional(Schema.Union([Config, Schema.Null])),
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -52559,7 +52503,7 @@ export const updateDeviceNetwork: API.OperationMethod<
   UpdateDeviceNetworkResponse,
   UpdateDeviceNetworkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDeviceNetworkRequest,
   output: UpdateDeviceNetworkResponse,
   errors: [DeviceNetworkNotFound, Forbidden],
@@ -52571,7 +52515,7 @@ export interface DeleteDeviceNetworkRequest {
 }
 
 export const DeleteDeviceNetworkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       networkId: Schema.String.pipe(T.HttpPath("networkId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -52593,7 +52537,7 @@ export interface DeleteDeviceNetworkResponse {
 }
 
 export const DeleteDeviceNetworkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDeviceNetworksResponseResult),
     }),
@@ -52609,7 +52553,7 @@ export const deleteDeviceNetwork: API.PaginatedOperationMethod<
   DeleteDeviceNetworkResponse,
   DeleteDeviceNetworkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DeleteDeviceNetworkRequest,
   output: DeleteDeviceNetworkResponse,
   errors: [DeviceNetworkNotFound, Forbidden],
@@ -52629,7 +52573,7 @@ export interface GetDeviceOverrideCodeRequest {
 }
 
 export const GetDeviceOverrideCodeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       registrationId: Schema.String.pipe(T.HttpPath("registrationId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -52646,7 +52590,7 @@ export interface GetDeviceOverrideCodeResponse {
 }
 
 export const GetDeviceOverrideCodeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       disableForTime: Schema.optional(
         Schema.Union([
@@ -52666,7 +52610,7 @@ export const getDeviceOverrideCode: API.OperationMethod<
   GetDeviceOverrideCodeResponse,
   GetDeviceOverrideCodeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceOverrideCodeRequest,
   output: GetDeviceOverrideCodeResponse,
   errors: [],
@@ -52678,7 +52622,7 @@ export interface ListDeviceOverrideCodesRequest {
 }
 
 export const ListDeviceOverrideCodesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deviceId: Schema.String.pipe(T.HttpPath("deviceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -52695,7 +52639,7 @@ export interface ListDeviceOverrideCodesResponse {
 }
 
 export const ListDeviceOverrideCodesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Schema.Unknown),
     }),
@@ -52708,7 +52652,7 @@ export const listDeviceOverrideCodes: API.PaginatedOperationMethod<
   ListDeviceOverrideCodesResponse,
   ListDeviceOverrideCodesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceOverrideCodesRequest,
   output: ListDeviceOverrideCodesResponse,
   errors: [],
@@ -52728,7 +52672,7 @@ export interface GetDevicePolicyCustomRequest {
 }
 
 export const GetDevicePolicyCustomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -52795,7 +52739,7 @@ export type GetDevicePolicyCustomResponse = {
 } | null;
 
 export const GetDevicePolicyCustomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([SettingsPolicy, Schema.Null]).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetDevicePolicyCustomResponse>;
 
@@ -52809,7 +52753,7 @@ export const getDevicePolicyCustom: API.OperationMethod<
   GetDevicePolicyCustomResponse,
   GetDevicePolicyCustomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDevicePolicyCustomRequest,
   output: GetDevicePolicyCustomResponse,
   errors: [DevicePolicyNotFound, Forbidden],
@@ -52820,7 +52764,7 @@ export interface ListDevicePolicyCustomsRequest {
 }
 
 export const ListDevicePolicyCustomsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -52890,7 +52834,7 @@ export interface ListDevicePolicyCustomsResponse {
 }
 
 export const ListDevicePolicyCustomsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(SettingsPolicy),
     }),
@@ -52903,7 +52847,7 @@ export const listDevicePolicyCustoms: API.PaginatedOperationMethod<
   ListDevicePolicyCustomsResponse,
   ListDevicePolicyCustomsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicePolicyCustomsRequest,
   output: ListDevicePolicyCustomsResponse,
   errors: [Forbidden],
@@ -52980,7 +52924,7 @@ export interface CreateDevicePolicyCustomRequest {
 }
 
 export const CreateDevicePolicyCustomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       match: Schema.String,
@@ -53113,7 +53057,7 @@ export type CreateDevicePolicyCustomResponse = {
 } | null;
 
 export const CreateDevicePolicyCustomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([SettingsPolicy, Schema.Null]).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<CreateDevicePolicyCustomResponse>;
 
@@ -53124,7 +53068,7 @@ export const createDevicePolicyCustom: API.OperationMethod<
   CreateDevicePolicyCustomResponse,
   CreateDevicePolicyCustomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDevicePolicyCustomRequest,
   output: CreateDevicePolicyCustomResponse,
   errors: [Forbidden],
@@ -53198,7 +53142,7 @@ export interface PatchDevicePolicyCustomRequest {
 }
 
 export const PatchDevicePolicyCustomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -53335,7 +53279,7 @@ export type PatchDevicePolicyCustomResponse = {
 } | null;
 
 export const PatchDevicePolicyCustomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([SettingsPolicy, Schema.Null]).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<PatchDevicePolicyCustomResponse>;
 
@@ -53349,7 +53293,7 @@ export const patchDevicePolicyCustom: API.OperationMethod<
   PatchDevicePolicyCustomResponse,
   PatchDevicePolicyCustomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDevicePolicyCustomRequest,
   output: PatchDevicePolicyCustomResponse,
   errors: [DevicePolicyNotFound, Forbidden],
@@ -53361,7 +53305,7 @@ export interface DeleteDevicePolicyCustomRequest {
 }
 
 export const DeleteDevicePolicyCustomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -53434,7 +53378,7 @@ export interface DeleteDevicePolicyCustomResponse {
 }
 
 export const DeleteDevicePolicyCustomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([Schema.Array(SettingsPolicy), Schema.Null]),
     }),
@@ -53450,7 +53394,7 @@ export const deleteDevicePolicyCustom: API.PaginatedOperationMethod<
   DeleteDevicePolicyCustomResponse,
   DeleteDevicePolicyCustomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: DeleteDevicePolicyCustomRequest,
   output: DeleteDevicePolicyCustomResponse,
   errors: [DevicePolicyNotFound, Forbidden],
@@ -53470,7 +53414,7 @@ export interface GetDevicePolicyCustomExcludeRequest {
 }
 
 export const GetDevicePolicyCustomExcludeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -53492,7 +53436,7 @@ export interface GetDevicePolicyCustomExcludeResponse {
 }
 
 export const GetDevicePolicyCustomExcludeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
         Schema.Array(
@@ -53516,7 +53460,7 @@ export const getDevicePolicyCustomExclude: API.PaginatedOperationMethod<
   GetDevicePolicyCustomExcludeResponse,
   GetDevicePolicyCustomExcludeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDevicePolicyCustomExcludeRequest,
   output: GetDevicePolicyCustomExcludeResponse,
   errors: [DevicePolicyNotFound, Forbidden],
@@ -53538,7 +53482,7 @@ export interface PutDevicePolicyCustomExcludeRequest {
 }
 
 export const PutDevicePolicyCustomExcludeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -53564,7 +53508,7 @@ export interface PutDevicePolicyCustomExcludeResponse {
 }
 
 export const PutDevicePolicyCustomExcludeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -53585,7 +53529,7 @@ export const putDevicePolicyCustomExclude: API.PaginatedOperationMethod<
   PutDevicePolicyCustomExcludeResponse,
   PutDevicePolicyCustomExcludeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutDevicePolicyCustomExcludeRequest,
   output: PutDevicePolicyCustomExcludeResponse,
   errors: [DevicePolicyNotFound, Forbidden],
@@ -53605,7 +53549,7 @@ export interface GetDevicePolicyCustomFallbackDomainRequest {
 }
 
 export const GetDevicePolicyCustomFallbackDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -53628,7 +53572,7 @@ export interface GetDevicePolicyCustomFallbackDomainResponse {
 }
 
 export const GetDevicePolicyCustomFallbackDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([Schema.Array(FallbackDomain), Schema.Null]),
     }),
@@ -53644,7 +53588,7 @@ export const getDevicePolicyCustomFallbackDomain: API.PaginatedOperationMethod<
   GetDevicePolicyCustomFallbackDomainResponse,
   GetDevicePolicyCustomFallbackDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDevicePolicyCustomFallbackDomainRequest,
   output: GetDevicePolicyCustomFallbackDomainResponse,
   errors: [DevicePolicyNotFound, Forbidden],
@@ -53663,7 +53607,7 @@ export interface PutDevicePolicyCustomFallbackDomainRequest {
 }
 
 export const PutDevicePolicyCustomFallbackDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -53685,7 +53629,7 @@ export interface PutDevicePolicyCustomFallbackDomainResponse {
 }
 
 export const PutDevicePolicyCustomFallbackDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(FallbackDomain),
     }),
@@ -53701,7 +53645,7 @@ export const putDevicePolicyCustomFallbackDomain: API.PaginatedOperationMethod<
   PutDevicePolicyCustomFallbackDomainResponse,
   PutDevicePolicyCustomFallbackDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutDevicePolicyCustomFallbackDomainRequest,
   output: PutDevicePolicyCustomFallbackDomainResponse,
   errors: [DevicePolicyNotFound, Forbidden],
@@ -53721,7 +53665,7 @@ export interface GetDevicePolicyCustomIncludeRequest {
 }
 
 export const GetDevicePolicyCustomIncludeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -53743,7 +53687,7 @@ export interface GetDevicePolicyCustomIncludeResponse {
 }
 
 export const GetDevicePolicyCustomIncludeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
         Schema.Array(
@@ -53767,7 +53711,7 @@ export const getDevicePolicyCustomInclude: API.PaginatedOperationMethod<
   GetDevicePolicyCustomIncludeResponse,
   GetDevicePolicyCustomIncludeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDevicePolicyCustomIncludeRequest,
   output: GetDevicePolicyCustomIncludeResponse,
   errors: [DevicePolicyNotFound, Forbidden],
@@ -53789,7 +53733,7 @@ export interface PutDevicePolicyCustomIncludeRequest {
 }
 
 export const PutDevicePolicyCustomIncludeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -53815,7 +53759,7 @@ export interface PutDevicePolicyCustomIncludeResponse {
 }
 
 export const PutDevicePolicyCustomIncludeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -53836,7 +53780,7 @@ export const putDevicePolicyCustomInclude: API.PaginatedOperationMethod<
   PutDevicePolicyCustomIncludeResponse,
   PutDevicePolicyCustomIncludeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutDevicePolicyCustomIncludeRequest,
   output: PutDevicePolicyCustomIncludeResponse,
   errors: [DevicePolicyNotFound, Forbidden],
@@ -53855,7 +53799,7 @@ export interface GetDevicePolicyDefaultRequest {
 }
 
 export const GetDevicePolicyDefaultRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -53930,7 +53874,7 @@ export interface GetDevicePolicyDefaultResponse {
 }
 
 export const GetDevicePolicyDefaultResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       allowModeSwitch: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -54045,7 +53989,7 @@ export const getDevicePolicyDefault: API.OperationMethod<
   GetDevicePolicyDefaultResponse,
   GetDevicePolicyDefaultError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDevicePolicyDefaultRequest,
   output: GetDevicePolicyDefaultResponse,
   errors: [],
@@ -54108,7 +54052,7 @@ export interface PatchDevicePolicyDefaultRequest {
 }
 
 export const PatchDevicePolicyDefaultRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       allowModeSwitch: Schema.optional(Schema.Boolean),
@@ -54246,7 +54190,7 @@ export interface PatchDevicePolicyDefaultResponse {
 }
 
 export const PatchDevicePolicyDefaultResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       allowModeSwitch: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -54361,7 +54305,7 @@ export const patchDevicePolicyDefault: API.OperationMethod<
   PatchDevicePolicyDefaultResponse,
   PatchDevicePolicyDefaultError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDevicePolicyDefaultRequest,
   output: PatchDevicePolicyDefaultResponse,
   errors: [],
@@ -54376,7 +54320,7 @@ export interface GetDevicePolicyDefaultCertificateRequest {
 }
 
 export const GetDevicePolicyDefaultCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -54392,7 +54336,7 @@ export type GetDevicePolicyDefaultCertificateResponse = {
 } | null;
 
 export const GetDevicePolicyDefaultCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([DevicePolicyCertificates, Schema.Null]).pipe(
       T.ResponsePath("result"),
     ),
@@ -54405,7 +54349,7 @@ export const getDevicePolicyDefaultCertificate: API.OperationMethod<
   GetDevicePolicyDefaultCertificateResponse,
   GetDevicePolicyDefaultCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDevicePolicyDefaultCertificateRequest,
   output: GetDevicePolicyDefaultCertificateResponse,
   errors: [],
@@ -54419,7 +54363,7 @@ export interface PatchDevicePolicyDefaultCertificateRequest {
 }
 
 export const PatchDevicePolicyDefaultCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       enabled: Schema.Boolean,
@@ -54436,7 +54380,7 @@ export type PatchDevicePolicyDefaultCertificateResponse = {
 } | null;
 
 export const PatchDevicePolicyDefaultCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([DevicePolicyCertificates, Schema.Null]).pipe(
       T.ResponsePath("result"),
     ),
@@ -54449,7 +54393,7 @@ export const patchDevicePolicyDefaultCertificate: API.OperationMethod<
   PatchDevicePolicyDefaultCertificateResponse,
   PatchDevicePolicyDefaultCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDevicePolicyDefaultCertificateRequest,
   output: PatchDevicePolicyDefaultCertificateResponse,
   errors: [],
@@ -54464,7 +54408,7 @@ export interface GetDevicePolicyDefaultExcludeRequest {
 }
 
 export const GetDevicePolicyDefaultExcludeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -54483,7 +54427,7 @@ export interface GetDevicePolicyDefaultExcludeResponse {
 }
 
 export const GetDevicePolicyDefaultExcludeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -54501,7 +54445,7 @@ export const getDevicePolicyDefaultExclude: API.PaginatedOperationMethod<
   GetDevicePolicyDefaultExcludeResponse,
   GetDevicePolicyDefaultExcludeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDevicePolicyDefaultExcludeRequest,
   output: GetDevicePolicyDefaultExcludeResponse,
   errors: [],
@@ -54522,7 +54466,7 @@ export interface PutDevicePolicyDefaultExcludeRequest {
 }
 
 export const PutDevicePolicyDefaultExcludeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       body: Schema.Array(
@@ -54547,7 +54491,7 @@ export interface PutDevicePolicyDefaultExcludeResponse {
 }
 
 export const PutDevicePolicyDefaultExcludeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -54565,7 +54509,7 @@ export const putDevicePolicyDefaultExclude: API.PaginatedOperationMethod<
   PutDevicePolicyDefaultExcludeResponse,
   PutDevicePolicyDefaultExcludeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutDevicePolicyDefaultExcludeRequest,
   output: PutDevicePolicyDefaultExcludeResponse,
   errors: [],
@@ -54584,7 +54528,7 @@ export interface GetDevicePolicyDefaultFallbackDomainRequest {
 }
 
 export const GetDevicePolicyDefaultFallbackDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -54604,7 +54548,7 @@ export interface GetDevicePolicyDefaultFallbackDomainResponse {
 }
 
 export const GetDevicePolicyDefaultFallbackDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(FallbackDomain),
     }),
@@ -54617,7 +54561,7 @@ export const getDevicePolicyDefaultFallbackDomain: API.PaginatedOperationMethod<
   GetDevicePolicyDefaultFallbackDomainResponse,
   GetDevicePolicyDefaultFallbackDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDevicePolicyDefaultFallbackDomainRequest,
   output: GetDevicePolicyDefaultFallbackDomainResponse,
   errors: [],
@@ -54635,7 +54579,7 @@ export interface PutDevicePolicyDefaultFallbackDomainRequest {
 }
 
 export const PutDevicePolicyDefaultFallbackDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       domains: Schema.Array(FallbackDomain),
@@ -54656,7 +54600,7 @@ export interface PutDevicePolicyDefaultFallbackDomainResponse {
 }
 
 export const PutDevicePolicyDefaultFallbackDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(FallbackDomain),
     }),
@@ -54669,7 +54613,7 @@ export const putDevicePolicyDefaultFallbackDomain: API.PaginatedOperationMethod<
   PutDevicePolicyDefaultFallbackDomainResponse,
   PutDevicePolicyDefaultFallbackDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutDevicePolicyDefaultFallbackDomainRequest,
   output: PutDevicePolicyDefaultFallbackDomainResponse,
   errors: [],
@@ -54688,7 +54632,7 @@ export interface GetDevicePolicyDefaultIncludeRequest {
 }
 
 export const GetDevicePolicyDefaultIncludeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -54707,7 +54651,7 @@ export interface GetDevicePolicyDefaultIncludeResponse {
 }
 
 export const GetDevicePolicyDefaultIncludeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -54725,7 +54669,7 @@ export const getDevicePolicyDefaultInclude: API.PaginatedOperationMethod<
   GetDevicePolicyDefaultIncludeResponse,
   GetDevicePolicyDefaultIncludeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDevicePolicyDefaultIncludeRequest,
   output: GetDevicePolicyDefaultIncludeResponse,
   errors: [],
@@ -54746,7 +54690,7 @@ export interface PutDevicePolicyDefaultIncludeRequest {
 }
 
 export const PutDevicePolicyDefaultIncludeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       body: Schema.Array(
@@ -54771,7 +54715,7 @@ export interface PutDevicePolicyDefaultIncludeResponse {
 }
 
 export const PutDevicePolicyDefaultIncludeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -54789,7 +54733,7 @@ export const putDevicePolicyDefaultInclude: API.PaginatedOperationMethod<
   PutDevicePolicyDefaultIncludeResponse,
   PutDevicePolicyDefaultIncludeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutDevicePolicyDefaultIncludeRequest,
   output: PutDevicePolicyDefaultIncludeResponse,
   errors: [],
@@ -54809,7 +54753,7 @@ export interface GetDevicePostureRequest {
 }
 
 export const GetDevicePostureRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -55005,7 +54949,7 @@ export interface GetDevicePostureResponse {
 }
 
 export const GetDevicePostureResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -55086,7 +55030,7 @@ export const getDevicePosture: API.OperationMethod<
   GetDevicePostureResponse,
   GetDevicePostureError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDevicePostureRequest,
   output: GetDevicePostureResponse,
   errors: [PostureRuleNotFound, Forbidden],
@@ -55097,7 +55041,7 @@ export interface ListDevicePosturesRequest {
 }
 
 export const ListDevicePosturesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -55290,7 +55234,7 @@ export interface ListDevicePosturesResponse {
 }
 
 export const ListDevicePosturesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDevicePosturesResponseResult),
     }),
@@ -55303,7 +55247,7 @@ export const listDevicePostures: API.PaginatedOperationMethod<
   ListDevicePosturesResponse,
   ListDevicePosturesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicePosturesRequest,
   output: ListDevicePosturesResponse,
   errors: [Forbidden],
@@ -55486,7 +55430,7 @@ export interface CreateDevicePostureRequest {
 }
 
 export const CreateDevicePostureRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -55736,7 +55680,7 @@ export interface CreateDevicePostureResponse {
 }
 
 export const CreateDevicePostureResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -55814,7 +55758,7 @@ export const createDevicePosture: API.OperationMethod<
   CreateDevicePostureResponse,
   CreateDevicePostureError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDevicePostureRequest,
   output: CreateDevicePostureResponse,
   errors: [Forbidden],
@@ -55994,7 +55938,7 @@ export interface UpdateDevicePostureRequest {
 }
 
 export const UpdateDevicePostureRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -56245,7 +56189,7 @@ export interface UpdateDevicePostureResponse {
 }
 
 export const UpdateDevicePostureResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -56326,7 +56270,7 @@ export const updateDevicePosture: API.OperationMethod<
   UpdateDevicePostureResponse,
   UpdateDevicePostureError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDevicePostureRequest,
   output: UpdateDevicePostureResponse,
   errors: [PostureRuleNotFound, Forbidden],
@@ -56338,7 +56282,7 @@ export interface DeleteDevicePostureRequest {
 }
 
 export const DeleteDevicePostureRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -56356,7 +56300,7 @@ export interface DeleteDevicePostureResponse {
 }
 
 export const DeleteDevicePostureResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -56372,7 +56316,7 @@ export const deleteDevicePosture: API.OperationMethod<
   DeleteDevicePostureResponse,
   DeleteDevicePostureError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDevicePostureRequest,
   output: DeleteDevicePostureResponse,
   errors: [PostureRuleNotFound, Forbidden],
@@ -56388,7 +56332,7 @@ export interface GetDevicePostureIntegrationRequest {
 }
 
 export const GetDevicePostureIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       integrationId: Schema.String.pipe(T.HttpPath("integrationId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -56424,7 +56368,7 @@ export interface GetDevicePostureIntegrationResponse {
 }
 
 export const GetDevicePostureIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       config: Schema.optional(Schema.Union([Config2, Schema.Null])),
@@ -56461,7 +56405,7 @@ export const getDevicePostureIntegration: API.OperationMethod<
   GetDevicePostureIntegrationResponse,
   GetDevicePostureIntegrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDevicePostureIntegrationRequest,
   output: GetDevicePostureIntegrationResponse,
   errors: [DevicePostureIntegrationNotFound, Forbidden],
@@ -56472,7 +56416,7 @@ export interface ListDevicePostureIntegrationsRequest {
 }
 
 export const ListDevicePostureIntegrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -56504,7 +56448,7 @@ export interface ListDevicePostureIntegrationsResponse {
 }
 
 export const ListDevicePostureIntegrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDevicePostureIntegrationsResponseResult),
     }),
@@ -56517,7 +56461,7 @@ export const listDevicePostureIntegrations: API.PaginatedOperationMethod<
   ListDevicePostureIntegrationsResponse,
   ListDevicePostureIntegrationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDevicePostureIntegrationsRequest,
   output: ListDevicePostureIntegrationsResponse,
   errors: [Forbidden],
@@ -56578,7 +56522,7 @@ export interface CreateDevicePostureIntegrationRequest {
 }
 
 export const CreateDevicePostureIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       config: Schema.Union([
@@ -56638,7 +56582,7 @@ export interface CreateDevicePostureIntegrationResponse {
 }
 
 export const CreateDevicePostureIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       config: Schema.optional(Schema.Union([Config2, Schema.Null])),
@@ -56675,7 +56619,7 @@ export const createDevicePostureIntegration: API.OperationMethod<
   CreateDevicePostureIntegrationResponse,
   CreateDevicePostureIntegrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDevicePostureIntegrationRequest,
   output: CreateDevicePostureIntegrationResponse,
   errors: [InvalidPostureIntegrationConfig, Forbidden],
@@ -56733,7 +56677,7 @@ export interface PatchDevicePostureIntegrationRequest {
 }
 
 export const PatchDevicePostureIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       integrationId: Schema.String.pipe(T.HttpPath("integrationId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -56798,7 +56742,7 @@ export interface PatchDevicePostureIntegrationResponse {
 }
 
 export const PatchDevicePostureIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       config: Schema.optional(Schema.Union([Config2, Schema.Null])),
@@ -56836,7 +56780,7 @@ export const patchDevicePostureIntegration: API.OperationMethod<
   PatchDevicePostureIntegrationResponse,
   PatchDevicePostureIntegrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDevicePostureIntegrationRequest,
   output: PatchDevicePostureIntegrationResponse,
   errors: [
@@ -56852,7 +56796,7 @@ export interface DeleteDevicePostureIntegrationRequest {
 }
 
 export const DeleteDevicePostureIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       integrationId: Schema.String.pipe(T.HttpPath("integrationId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -56867,7 +56811,7 @@ export const DeleteDevicePostureIntegrationRequest =
 export type DeleteDevicePostureIntegrationResponse = unknown;
 
 export const DeleteDevicePostureIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDevicePostureIntegrationResponse>;
 
@@ -56881,7 +56825,7 @@ export const deleteDevicePostureIntegration: API.OperationMethod<
   DeleteDevicePostureIntegrationResponse,
   DeleteDevicePostureIntegrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDevicePostureIntegrationRequest,
   output: DeleteDevicePostureIntegrationResponse,
   errors: [DevicePostureIntegrationNotFound, Forbidden],
@@ -56900,7 +56844,7 @@ export interface GetDeviceRegistrationRequest {
 }
 
 export const GetDeviceRegistrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       registrationId: Schema.String.pipe(T.HttpPath("registrationId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -56954,7 +56898,7 @@ export interface GetDeviceRegistrationResponse {
 }
 
 export const GetDeviceRegistrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -56999,7 +56943,7 @@ export const getDeviceRegistration: API.OperationMethod<
   GetDeviceRegistrationResponse,
   GetDeviceRegistrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceRegistrationRequest,
   output: GetDeviceRegistrationResponse,
   errors: [],
@@ -57039,7 +56983,7 @@ export interface ListDeviceRegistrationsRequest {
 }
 
 export const ListDeviceRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -57125,7 +57069,7 @@ export interface ListDeviceRegistrationsResponse {
 }
 
 export const ListDeviceRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDeviceRegistrationsResponseResult),
       resultInfo: Schema.optional(
@@ -57141,7 +57085,7 @@ export const listDeviceRegistrations: API.PaginatedOperationMethod<
   ListDeviceRegistrationsResponse,
   ListDeviceRegistrationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeviceRegistrationsRequest,
   output: ListDeviceRegistrationsResponse,
   errors: [],
@@ -57160,7 +57104,7 @@ export interface DeleteDeviceRegistrationRequest {
 }
 
 export const DeleteDeviceRegistrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       registrationId: Schema.String.pipe(T.HttpPath("registrationId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -57175,7 +57119,7 @@ export const DeleteDeviceRegistrationRequest =
 export type DeleteDeviceRegistrationResponse = unknown;
 
 export const DeleteDeviceRegistrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDeviceRegistrationResponse>;
 
@@ -57186,7 +57130,7 @@ export const deleteDeviceRegistration: API.OperationMethod<
   DeleteDeviceRegistrationResponse,
   DeleteDeviceRegistrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeviceRegistrationRequest,
   output: DeleteDeviceRegistrationResponse,
   errors: [],
@@ -57200,7 +57144,7 @@ export interface BulkDeleteDeviceRegistrationsRequest {
 }
 
 export const BulkDeleteDeviceRegistrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       id: Schema.Array(Schema.String).pipe(T.HttpQuery("id")),
@@ -57215,7 +57159,7 @@ export const BulkDeleteDeviceRegistrationsRequest =
 export type BulkDeleteDeviceRegistrationsResponse = unknown;
 
 export const BulkDeleteDeviceRegistrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<BulkDeleteDeviceRegistrationsResponse>;
 
@@ -57226,7 +57170,7 @@ export const bulkDeleteDeviceRegistrations: API.OperationMethod<
   BulkDeleteDeviceRegistrationsResponse,
   BulkDeleteDeviceRegistrationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteDeviceRegistrationsRequest,
   output: BulkDeleteDeviceRegistrationsResponse,
   errors: [],
@@ -57240,7 +57184,7 @@ export interface RevokeDeviceRegistrationRequest {
 }
 
 export const RevokeDeviceRegistrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       id: Schema.Array(Schema.String).pipe(T.HttpQuery("id")),
@@ -57255,7 +57199,7 @@ export const RevokeDeviceRegistrationRequest =
 export type RevokeDeviceRegistrationResponse = unknown;
 
 export const RevokeDeviceRegistrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<RevokeDeviceRegistrationResponse>;
 
@@ -57266,7 +57210,7 @@ export const revokeDeviceRegistration: API.OperationMethod<
   RevokeDeviceRegistrationResponse,
   RevokeDeviceRegistrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeDeviceRegistrationRequest,
   output: RevokeDeviceRegistrationResponse,
   errors: [],
@@ -57280,7 +57224,7 @@ export interface UnrevokeDeviceRegistrationRequest {
 }
 
 export const UnrevokeDeviceRegistrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       id: Schema.Array(Schema.String).pipe(T.HttpQuery("id")),
@@ -57295,7 +57239,7 @@ export const UnrevokeDeviceRegistrationRequest =
 export type UnrevokeDeviceRegistrationResponse = unknown;
 
 export const UnrevokeDeviceRegistrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<UnrevokeDeviceRegistrationResponse>;
 
@@ -57306,7 +57250,7 @@ export const unrevokeDeviceRegistration: API.OperationMethod<
   UnrevokeDeviceRegistrationResponse,
   UnrevokeDeviceRegistrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnrevokeDeviceRegistrationRequest,
   output: UnrevokeDeviceRegistrationResponse,
   errors: [],
@@ -57321,7 +57265,7 @@ export interface GetDeviceResilienceGlobalWarpOverrideRequest {
 }
 
 export const GetDeviceResilienceGlobalWarpOverrideRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -57340,7 +57284,7 @@ export interface GetDeviceResilienceGlobalWarpOverrideResponse {
 }
 
 export const GetDeviceResilienceGlobalWarpOverrideResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       disconnect: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       timestamp: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -57354,7 +57298,7 @@ export const getDeviceResilienceGlobalWarpOverride: API.OperationMethod<
   GetDeviceResilienceGlobalWarpOverrideResponse,
   GetDeviceResilienceGlobalWarpOverrideError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceResilienceGlobalWarpOverrideRequest,
   output: GetDeviceResilienceGlobalWarpOverrideResponse,
   errors: [],
@@ -57370,7 +57314,7 @@ export interface CreateDeviceResilienceGlobalWarpOverrideRequest {
 }
 
 export const CreateDeviceResilienceGlobalWarpOverrideRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       disconnect: Schema.Boolean,
@@ -57391,7 +57335,7 @@ export interface CreateDeviceResilienceGlobalWarpOverrideResponse {
 }
 
 export const CreateDeviceResilienceGlobalWarpOverrideResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       disconnect: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       timestamp: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -57405,7 +57349,7 @@ export const createDeviceResilienceGlobalWarpOverride: API.OperationMethod<
   CreateDeviceResilienceGlobalWarpOverrideResponse,
   CreateDeviceResilienceGlobalWarpOverrideError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeviceResilienceGlobalWarpOverrideRequest,
   output: CreateDeviceResilienceGlobalWarpOverrideResponse,
   errors: [],
@@ -57423,7 +57367,7 @@ export interface CreateDeviceRevokeRequest {
 }
 
 export const CreateDeviceRevokeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       body: Schema.Array(Schema.String).pipe(T.HttpBody()),
@@ -57435,7 +57379,7 @@ export const CreateDeviceRevokeRequest =
 export type CreateDeviceRevokeResponse = unknown;
 
 export const CreateDeviceRevokeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<CreateDeviceRevokeResponse>;
 
@@ -57446,7 +57390,7 @@ export const createDeviceRevoke: API.OperationMethod<
   CreateDeviceRevokeResponse,
   CreateDeviceRevokeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeviceRevokeRequest,
   output: CreateDeviceRevokeResponse,
   errors: [],
@@ -57461,7 +57405,7 @@ export interface GetDeviceSettingRequest {
 }
 
 export const GetDeviceSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -57494,7 +57438,7 @@ export interface GetDeviceSettingResponse {
 }
 
 export const GetDeviceSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       disableForTime: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -57549,7 +57493,7 @@ export const getDeviceSetting: API.OperationMethod<
   GetDeviceSettingResponse,
   GetDeviceSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeviceSettingRequest,
   output: GetDeviceSettingResponse,
   errors: [Forbidden],
@@ -57579,7 +57523,7 @@ export interface PutDeviceSettingRequest {
 }
 
 export const PutDeviceSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       disableForTime: Schema.optional(Schema.Number),
@@ -57634,7 +57578,7 @@ export interface PutDeviceSettingResponse {
 }
 
 export const PutDeviceSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       disableForTime: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -57689,7 +57633,7 @@ export const putDeviceSetting: API.OperationMethod<
   PutDeviceSettingResponse,
   PutDeviceSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDeviceSettingRequest,
   output: PutDeviceSettingResponse,
   errors: [Forbidden],
@@ -57719,7 +57663,7 @@ export interface PatchDeviceSettingRequest {
 }
 
 export const PatchDeviceSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       disableForTime: Schema.optional(Schema.Number),
@@ -57774,7 +57718,7 @@ export interface PatchDeviceSettingResponse {
 }
 
 export const PatchDeviceSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       disableForTime: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -57829,7 +57773,7 @@ export const patchDeviceSetting: API.OperationMethod<
   PatchDeviceSettingResponse,
   PatchDeviceSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDeviceSettingRequest,
   output: PatchDeviceSettingResponse,
   errors: [Forbidden],
@@ -57840,7 +57784,7 @@ export interface DeleteDeviceSettingRequest {
 }
 
 export const DeleteDeviceSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -57873,7 +57817,7 @@ export interface DeleteDeviceSettingResponse {
 }
 
 export const DeleteDeviceSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       disableForTime: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -57928,7 +57872,7 @@ export const deleteDeviceSetting: API.OperationMethod<
   DeleteDeviceSettingResponse,
   DeleteDeviceSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDeviceSettingRequest,
   output: DeleteDeviceSettingResponse,
   errors: [Forbidden],
@@ -57946,7 +57890,7 @@ export interface CreateDeviceUnrevokeRequest {
 }
 
 export const CreateDeviceUnrevokeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       body: Schema.Array(Schema.String).pipe(T.HttpBody()),
@@ -57961,7 +57905,7 @@ export const CreateDeviceUnrevokeRequest =
 export type CreateDeviceUnrevokeResponse = unknown;
 
 export const CreateDeviceUnrevokeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<CreateDeviceUnrevokeResponse>;
 
@@ -57972,7 +57916,7 @@ export const createDeviceUnrevoke: API.OperationMethod<
   CreateDeviceUnrevokeResponse,
   CreateDeviceUnrevokeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeviceUnrevokeRequest,
   output: CreateDeviceUnrevokeResponse,
   errors: [],
@@ -57993,32 +57937,28 @@ export interface ListDexColosRequest {
   sortBy?: "fleet-status-usage" | "application-tests-usage" | (string & {});
 }
 
-export const ListDexColosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      from: Schema.String.pipe(T.HttpQuery("from")),
-      to: Schema.String.pipe(T.HttpQuery("to")),
-      sortBy: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["fleet-status-usage", "application-tests-usage"]),
-          Schema.String,
-        ]),
-      ).pipe(T.HttpQuery("sortBy")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/dex/colos" }),
-    ),
+export const ListDexColosRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    from: Schema.String.pipe(T.HttpQuery("from")),
+    to: Schema.String.pipe(T.HttpQuery("to")),
+    sortBy: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["fleet-status-usage", "application-tests-usage"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("sortBy")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/dex/colos" })),
 ) as unknown as Schema.Codec<ListDexColosRequest>;
 
 export interface ListDexColosResponse {
   result: { airportCode: string; city: string; countryCode: string }[];
 }
 
-export const ListDexColosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListDexColosResponseResult),
-    }),
+export const ListDexColosResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListDexColosResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListDexColosResponse>;
 
 export type ListDexColosError = DefaultErrors;
@@ -58028,7 +57968,7 @@ export const listDexColos: API.PaginatedOperationMethod<
   ListDexColosResponse,
   ListDexColosError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDexColosRequest,
   output: ListDexColosResponse,
   errors: [],
@@ -58067,7 +58007,7 @@ export interface ListDexCommandsRequest {
 }
 
 export const ListDexCommandsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -58127,7 +58067,7 @@ export interface ListDexCommandsResponse {
 }
 
 export const ListDexCommandsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: ListDexCommandsResponseResult,
       resultInfo: Schema.optional(
@@ -58146,7 +58086,7 @@ export const listDexCommands: API.PaginatedOperationMethod<
   ListDexCommandsResponse,
   ListDexCommandsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDexCommandsRequest,
   output: ListDexCommandsResponse,
   errors: [],
@@ -58180,7 +58120,7 @@ export interface CreateDexCommandRequest {
 }
 
 export const CreateDexCommandRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       commands: Schema.Array(Command2),
@@ -58210,7 +58150,7 @@ export interface CreateDexCommandResponse {
 }
 
 export const CreateDexCommandResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       commands: Schema.optional(
         Schema.Union([Schema.Array(Command3), Schema.Null]),
@@ -58225,7 +58165,7 @@ export const createDexCommand: API.OperationMethod<
   CreateDexCommandResponse,
   CreateDexCommandError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDexCommandRequest,
   output: CreateDexCommandResponse,
   errors: [],
@@ -58245,7 +58185,7 @@ export interface ListDexCommandDevicesRequest {
 }
 
 export const ListDexCommandDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -58289,7 +58229,7 @@ export interface ListDexCommandDevicesResponse {
 }
 
 export const ListDexCommandDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: ListDexCommandDevicesResponseResult,
       resultInfo: Schema.optional(
@@ -58308,7 +58248,7 @@ export const listDexCommandDevices: API.PaginatedOperationMethod<
   ListDexCommandDevicesResponse,
   ListDexCommandDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDexCommandDevicesRequest,
   output: ListDexCommandDevicesResponse,
   errors: [],
@@ -58333,7 +58273,7 @@ export interface GetDexCommandDownloadRequest {
 }
 
 export const GetDexCommandDownloadRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       commandId: Schema.String.pipe(T.HttpPath("commandId")),
       filename: Schema.String.pipe(T.HttpPath("filename")),
@@ -58349,7 +58289,7 @@ export const GetDexCommandDownloadRequest =
 export type GetDexCommandDownloadResponse = unknown;
 
 export const GetDexCommandDownloadResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<GetDexCommandDownloadResponse>;
 
@@ -58360,7 +58300,7 @@ export const getDexCommandDownload: API.OperationMethod<
   GetDexCommandDownloadResponse,
   GetDexCommandDownloadError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDexCommandDownloadRequest,
   output: GetDexCommandDownloadResponse,
   errors: [],
@@ -58376,7 +58316,7 @@ export interface GetDexCommandQuotaRequest {
 }
 
 export const GetDexCommandQuotaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -58397,7 +58337,7 @@ export interface GetDexCommandQuotaResponse {
 }
 
 export const GetDexCommandQuotaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       quota: Schema.Number,
       quotaUsage: Schema.Number,
@@ -58420,7 +58360,7 @@ export const getDexCommandQuota: API.OperationMethod<
   GetDexCommandQuotaResponse,
   GetDexCommandQuotaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDexCommandQuotaRequest,
   output: GetDexCommandQuotaResponse,
   errors: [],
@@ -58449,7 +58389,7 @@ export interface ListDexDeviceIspsRequest {
 }
 
 export const ListDexDeviceIspsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deviceId: Schema.String.pipe(T.HttpPath("deviceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -58507,7 +58447,7 @@ export interface ListDexDeviceIspsResponse {
 }
 
 export const ListDexDeviceIspsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: ListDexDeviceIspsResponseResult,
       resultInfo: Schema.optional(
@@ -58526,7 +58466,7 @@ export const listDexDeviceIsps: API.PaginatedOperationMethod<
   ListDexDeviceIspsResponse,
   ListDexDeviceIspsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDexDeviceIspsRequest,
   output: ListDexDeviceIspsResponse,
   errors: [],
@@ -58551,7 +58491,7 @@ export interface LiveDexFleetStatusRequest {
 }
 
 export const LiveDexFleetStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       sinceMinutes: Schema.Number.pipe(T.HttpQuery("since_minutes")),
@@ -58585,7 +58525,7 @@ export interface LiveDexFleetStatusResponse {
 }
 
 export const LiveDexFleetStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deviceStats: Schema.optional(Schema.Union([DeviceStats, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -58598,7 +58538,7 @@ export const liveDexFleetStatus: API.OperationMethod<
   LiveDexFleetStatusResponse,
   LiveDexFleetStatusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LiveDexFleetStatusRequest,
   output: LiveDexFleetStatusResponse,
   errors: [],
@@ -58644,7 +58584,7 @@ export interface ListDexFleetStatusDevicesRequest {
 }
 
 export const ListDexFleetStatusDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -58864,7 +58804,7 @@ export interface ListDexFleetStatusDevicesResponse {
 }
 
 export const ListDexFleetStatusDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDexFleetStatusDevicesResponseResult),
       resultInfo: Schema.optional(
@@ -58883,7 +58823,7 @@ export const listDexFleetStatusDevices: API.PaginatedOperationMethod<
   ListDexFleetStatusDevicesResponse,
   ListDexFleetStatusDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDexFleetStatusDevicesRequest,
   output: ListDexFleetStatusDevicesResponse,
   errors: [],
@@ -58916,27 +58856,26 @@ export interface GetDexHttpTestRequest {
   deviceId?: string[];
 }
 
-export const GetDexHttpTestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      testId: Schema.String.pipe(T.HttpPath("testId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      from: Schema.String.pipe(T.HttpQuery("from")),
-      interval: Schema.Union([
-        Schema.Literals(["minute", "hour"]),
-        Schema.String,
-      ]).pipe(T.HttpQuery("interval")),
-      to: Schema.String.pipe(T.HttpQuery("to")),
-      colo: Schema.optional(Schema.String).pipe(T.HttpQuery("colo")),
-      deviceId: Schema.optional(Schema.Array(Schema.String)).pipe(
-        T.HttpQuery("deviceId"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/dex/http-tests/{testId}",
-      }),
+export const GetDexHttpTestRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    testId: Schema.String.pipe(T.HttpPath("testId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    from: Schema.String.pipe(T.HttpQuery("from")),
+    interval: Schema.Union([
+      Schema.Literals(["minute", "hour"]),
+      Schema.String,
+    ]).pipe(T.HttpQuery("interval")),
+    to: Schema.String.pipe(T.HttpQuery("to")),
+    colo: Schema.optional(Schema.String).pipe(T.HttpQuery("colo")),
+    deviceId: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("deviceId"),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/dex/http-tests/{testId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetDexHttpTestRequest>;
 
 export interface GetDexHttpTestResponse {
@@ -59025,7 +58964,7 @@ export interface GetDexHttpTestResponse {
 }
 
 export const GetDexHttpTestResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       httpStats: Schema.optional(Schema.Union([Httpstats, Schema.Null])),
@@ -59066,7 +59005,7 @@ export const getDexHttpTest: API.OperationMethod<
   GetDexHttpTestResponse,
   GetDexHttpTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDexHttpTestRequest,
   output: GetDexHttpTestResponse,
   errors: [],
@@ -59091,7 +59030,7 @@ export interface GetDexHttpTestPercentileRequest {
 }
 
 export const GetDexHttpTestPercentileRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       testId: Schema.String.pipe(T.HttpPath("testId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -59131,7 +59070,7 @@ export interface GetDexHttpTestPercentileResponse {
 }
 
 export const GetDexHttpTestPercentileResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dnsResponseTimeMs: Schema.optional(
         Schema.Union([Percentiles, Schema.Null]),
@@ -59152,7 +59091,7 @@ export const getDexHttpTestPercentile: API.OperationMethod<
   GetDexHttpTestPercentileResponse,
   GetDexHttpTestPercentileError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDexHttpTestPercentileRequest,
   output: GetDexHttpTestPercentileResponse,
   errors: [],
@@ -59168,17 +59107,16 @@ export interface GetDexRuleRequest {
   accountId: string;
 }
 
-export const GetDexRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/dex/rules/{ruleId}",
-      }),
-    ),
+export const GetDexRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/dex/rules/{ruleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetDexRuleRequest>;
 
 export interface GetDexRuleResponse {
@@ -59203,31 +59141,30 @@ export interface GetDexRuleResponse {
   updatedAt?: string | null;
 }
 
-export const GetDexRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      match: Schema.String,
-      name: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      targetedTests: Schema.optional(
-        Schema.Union([Schema.Array(TargetedTest), Schema.Null]),
-      ),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          match: "match",
-          name: "name",
-          description: "description",
-          targetedTests: "targeted_tests",
-          updatedAt: "updated_at",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetDexRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    match: Schema.String,
+    name: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    targetedTests: Schema.optional(
+      Schema.Union([Schema.Array(TargetedTest), Schema.Null]),
+    ),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        match: "match",
+        name: "name",
+        description: "description",
+        targetedTests: "targeted_tests",
+        updatedAt: "updated_at",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetDexRuleResponse>;
 
 export type GetDexRuleError = DefaultErrors;
@@ -59237,7 +59174,7 @@ export const getDexRule: API.OperationMethod<
   GetDexRuleResponse,
   GetDexRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDexRuleRequest,
   output: GetDexRuleResponse,
   errors: [],
@@ -59256,25 +59193,22 @@ export interface ListDexRulesRequest {
   sortOrder?: "ASC" | "DESC" | (string & {});
 }
 
-export const ListDexRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-      sortBy: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["name", "created_at", "updated_at"]),
-          Schema.String,
-        ]),
-      ).pipe(T.HttpQuery("sort_by")),
-      sortOrder: Schema.optional(
-        Schema.Union([Schema.Literals(["ASC", "DESC"]), Schema.String]),
-      ).pipe(T.HttpQuery("sort_order")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/dex/rules" }),
-    ),
+export const ListDexRulesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+    sortBy: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["name", "created_at", "updated_at"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("sort_by")),
+    sortOrder: Schema.optional(
+      Schema.Union([Schema.Literals(["ASC", "DESC"]), Schema.String]),
+    ).pipe(T.HttpQuery("sort_order")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/dex/rules" })),
 ) as unknown as Schema.Codec<ListDexRulesRequest>;
 
 export interface ListDexRulesResponse {
@@ -59314,17 +59248,16 @@ export interface ListDexRulesResponse {
   } | null;
 }
 
-export const ListDexRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: ListDexRulesResponseResult,
-      resultInfo: Schema.optional(
-        Schema.Union([
-          ListAccessAiControlMcpPortalsResponseResultInfo,
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListDexRulesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: ListDexRulesResponseResult,
+    resultInfo: Schema.optional(
+      Schema.Union([
+        ListAccessAiControlMcpPortalsResponseResultInfo,
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListDexRulesResponse>;
 
 export type ListDexRulesError = DefaultErrors;
@@ -59334,7 +59267,7 @@ export const listDexRules: API.PaginatedOperationMethod<
   ListDexRulesResponse,
   ListDexRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDexRulesRequest,
   output: ListDexRulesResponse,
   errors: [],
@@ -59358,16 +59291,13 @@ export interface CreateDexRuleRequest {
   description?: string;
 }
 
-export const CreateDexRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      match: Schema.String,
-      name: Schema.String,
-      description: Schema.optional(Schema.String),
-    }).pipe(
-      T.Http({ method: "POST", path: "/accounts/{account_id}/dex/rules" }),
-    ),
+export const CreateDexRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    match: Schema.String,
+    name: Schema.String,
+    description: Schema.optional(Schema.String),
+  }).pipe(T.Http({ method: "POST", path: "/accounts/{account_id}/dex/rules" })),
 ) as unknown as Schema.Codec<CreateDexRuleRequest>;
 
 export interface CreateDexRuleResponse {
@@ -59392,31 +59322,30 @@ export interface CreateDexRuleResponse {
   updatedAt?: string | null;
 }
 
-export const CreateDexRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      match: Schema.String,
-      name: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      targetedTests: Schema.optional(
-        Schema.Union([Schema.Array(TargetedTest), Schema.Null]),
-      ),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          match: "match",
-          name: "name",
-          description: "description",
-          targetedTests: "targeted_tests",
-          updatedAt: "updated_at",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateDexRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    match: Schema.String,
+    name: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    targetedTests: Schema.optional(
+      Schema.Union([Schema.Array(TargetedTest), Schema.Null]),
+    ),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        match: "match",
+        name: "name",
+        description: "description",
+        targetedTests: "targeted_tests",
+        updatedAt: "updated_at",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateDexRuleResponse>;
 
 export type CreateDexRuleError = DefaultErrors;
@@ -59426,7 +59355,7 @@ export const createDexRule: API.OperationMethod<
   CreateDexRuleResponse,
   CreateDexRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDexRuleRequest,
   output: CreateDexRuleResponse,
   errors: [],
@@ -59444,20 +59373,19 @@ export interface PatchDexRuleRequest {
   name?: string;
 }
 
-export const PatchDexRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      description: Schema.optional(Schema.String),
-      match: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/dex/rules/{ruleId}",
-      }),
-    ),
+export const PatchDexRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    description: Schema.optional(Schema.String),
+    match: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/dex/rules/{ruleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchDexRuleRequest>;
 
 export interface PatchDexRuleResponse {
@@ -59482,31 +59410,30 @@ export interface PatchDexRuleResponse {
   updatedAt?: string | null;
 }
 
-export const PatchDexRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      match: Schema.String,
-      name: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      targetedTests: Schema.optional(
-        Schema.Union([Schema.Array(TargetedTest), Schema.Null]),
-      ),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          match: "match",
-          name: "name",
-          description: "description",
-          targetedTests: "targeted_tests",
-          updatedAt: "updated_at",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PatchDexRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    match: Schema.String,
+    name: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    targetedTests: Schema.optional(
+      Schema.Union([Schema.Array(TargetedTest), Schema.Null]),
+    ),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        match: "match",
+        name: "name",
+        description: "description",
+        targetedTests: "targeted_tests",
+        updatedAt: "updated_at",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchDexRuleResponse>;
 
 export type PatchDexRuleError = DefaultErrors;
@@ -59516,7 +59443,7 @@ export const patchDexRule: API.OperationMethod<
   PatchDexRuleResponse,
   PatchDexRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDexRuleRequest,
   output: PatchDexRuleResponse,
   errors: [],
@@ -59528,24 +59455,22 @@ export interface DeleteDexRuleRequest {
   accountId: string;
 }
 
-export const DeleteDexRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/dex/rules/{ruleId}",
-      }),
-    ),
+export const DeleteDexRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/dex/rules/{ruleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteDexRuleRequest>;
 
 export type DeleteDexRuleResponse = boolean | null;
 
-export const DeleteDexRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([Schema.Boolean, Schema.Null]).pipe(T.ResponsePath("result")),
+export const DeleteDexRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([Schema.Boolean, Schema.Null]).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteDexRuleResponse>;
 
 export type DeleteDexRuleError = DefaultErrors;
@@ -59555,7 +59480,7 @@ export const deleteDexRule: API.OperationMethod<
   DeleteDexRuleResponse,
   DeleteDexRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDexRuleRequest,
   output: DeleteDexRuleResponse,
   errors: [],
@@ -59582,29 +59507,28 @@ export interface ListDexTestsRequest {
   testName?: string;
 }
 
-export const ListDexTestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      colo: Schema.optional(Schema.String).pipe(T.HttpQuery("colo")),
-      deviceId: Schema.optional(Schema.Array(Schema.String)).pipe(
-        T.HttpQuery("deviceId"),
-      ),
-      kind: Schema.optional(
-        Schema.Union([Schema.Literals(["http", "traceroute"]), Schema.String]),
-      ).pipe(T.HttpQuery("kind")),
-      registrationId: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("registration_id"),
-      ),
-      testName: Schema.optional(Schema.String).pipe(T.HttpQuery("testName")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/dex/tests/overview",
-      }),
+export const ListDexTestsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    colo: Schema.optional(Schema.String).pipe(T.HttpQuery("colo")),
+    deviceId: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("deviceId"),
     ),
+    kind: Schema.optional(
+      Schema.Union([Schema.Literals(["http", "traceroute"]), Schema.String]),
+    ).pipe(T.HttpQuery("kind")),
+    registrationId: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("registration_id"),
+    ),
+    testName: Schema.optional(Schema.String).pipe(T.HttpQuery("testName")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/dex/tests/overview",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListDexTestsRequest>;
 
 export interface ListDexTestsResponse {
@@ -59705,17 +59629,16 @@ export interface ListDexTestsResponse {
   } | null;
 }
 
-export const ListDexTestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: ListDexTestsResponseResult,
-      resultInfo: Schema.optional(
-        Schema.Union([
-          ListAccessAiControlMcpPortalsResponseResultInfo,
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListDexTestsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: ListDexTestsResponseResult,
+    resultInfo: Schema.optional(
+      Schema.Union([
+        ListAccessAiControlMcpPortalsResponseResultInfo,
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListDexTestsResponse>;
 
 export type ListDexTestsError = DefaultErrors;
@@ -59725,7 +59648,7 @@ export const listDexTests: API.PaginatedOperationMethod<
   ListDexTestsResponse,
   ListDexTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDexTestsRequest,
   output: ListDexTestsResponse,
   errors: [],
@@ -59752,7 +59675,7 @@ export interface ListDexTestUniqueDevicesRequest {
 }
 
 export const ListDexTestUniqueDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       deviceId: Schema.optional(Schema.Array(Schema.String)).pipe(
@@ -59773,7 +59696,7 @@ export interface ListDexTestUniqueDevicesResponse {
 }
 
 export const ListDexTestUniqueDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       uniqueDevicesTotal: Schema.Number,
     }).pipe(T.ResponsePath("result")),
@@ -59786,7 +59709,7 @@ export const listDexTestUniqueDevices: API.OperationMethod<
   ListDexTestUniqueDevicesResponse,
   ListDexTestUniqueDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDexTestUniqueDevicesRequest,
   output: ListDexTestUniqueDevicesResponse,
   errors: [],
@@ -59813,7 +59736,7 @@ export interface GetDexTracerouteTestRequest {
 }
 
 export const GetDexTracerouteTestRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       testId: Schema.String.pipe(T.HttpPath("testId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -59905,7 +59828,7 @@ export interface GetDexTracerouteTestResponse {
 }
 
 export const GetDexTracerouteTestResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       host: Schema.String,
       interval: Schema.String,
@@ -59944,7 +59867,7 @@ export const getDexTracerouteTest: API.OperationMethod<
   GetDexTracerouteTestResponse,
   GetDexTracerouteTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDexTracerouteTestRequest,
   output: GetDexTracerouteTestResponse,
   errors: [],
@@ -59965,7 +59888,7 @@ export interface PercentilesDexTracerouteTestRequest {
 }
 
 export const PercentilesDexTracerouteTestRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       testId: Schema.String.pipe(T.HttpPath("testId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -60005,7 +59928,7 @@ export interface PercentilesDexTracerouteTestResponse {
 }
 
 export const PercentilesDexTracerouteTestResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       hopsCount: Schema.optional(Schema.Union([Percentiles, Schema.Null])),
       packetLossPct: Schema.optional(Schema.Union([Percentiles, Schema.Null])),
@@ -60022,7 +59945,7 @@ export const percentilesDexTracerouteTest: API.OperationMethod<
   PercentilesDexTracerouteTestResponse,
   PercentilesDexTracerouteTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PercentilesDexTracerouteTestRequest,
   output: PercentilesDexTracerouteTestResponse,
   errors: [],
@@ -60039,7 +59962,7 @@ export interface GetDexTracerouteTestResultNetworkPathRequest {
 }
 
 export const GetDexTracerouteTestResultNetworkPathRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       testResultId: Schema.String.pipe(T.HttpPath("testResultId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -60096,7 +60019,7 @@ export interface GetDexTracerouteTestResultNetworkPathResponse {
 }
 
 export const GetDexTracerouteTestResultNetworkPathResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       hops: Schema.Array(Hop),
       resultId: Schema.String,
@@ -60143,7 +60066,7 @@ export const getDexTracerouteTestResultNetworkPath: API.OperationMethod<
   GetDexTracerouteTestResultNetworkPathResponse,
   GetDexTracerouteTestResultNetworkPathError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDexTracerouteTestResultNetworkPathRequest,
   output: GetDexTracerouteTestResultNetworkPathResponse,
   errors: [],
@@ -60177,7 +60100,7 @@ export interface GetDexWarpChangeEventRequest {
 }
 
 export const GetDexWarpChangeEventRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       from: Schema.String.pipe(T.HttpQuery("from")),
@@ -60242,7 +60165,7 @@ export type GetDexWarpChangeEventResponse = (
 )[];
 
 export const GetDexWarpChangeEventResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(
       Schema.Union([
         DigitalExperienceMonitoringWARPToggleChangeEvent,
@@ -60258,7 +60181,7 @@ export const getDexWarpChangeEvent: API.OperationMethod<
   GetDexWarpChangeEventResponse,
   GetDexWarpChangeEventError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDexWarpChangeEventRequest,
   output: GetDexWarpChangeEventResponse,
   errors: [],
@@ -60274,7 +60197,7 @@ export interface GetDlpCustomPromptTopicRequest {
 }
 
 export const GetDlpCustomPromptTopicRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       entryId: Schema.String.pipe(T.HttpPath("entryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -60300,7 +60223,7 @@ export interface GetDlpCustomPromptTopicResponse {
 }
 
 export const GetDlpCustomPromptTopicResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -60333,7 +60256,7 @@ export const getDlpCustomPromptTopic: API.OperationMethod<
   GetDlpCustomPromptTopicResponse,
   GetDlpCustomPromptTopicError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpCustomPromptTopicRequest,
   output: GetDlpCustomPromptTopicResponse,
   errors: [],
@@ -60344,7 +60267,7 @@ export interface ListDlpCustomPromptTopicsRequest {
 }
 
 export const ListDlpCustomPromptTopicsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -60369,7 +60292,7 @@ export interface ListDlpCustomPromptTopicsResponse {
 }
 
 export const ListDlpCustomPromptTopicsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDlpCustomPromptTopicsResponseResult),
     }),
@@ -60382,7 +60305,7 @@ export const listDlpCustomPromptTopics: API.PaginatedOperationMethod<
   ListDlpCustomPromptTopicsResponse,
   ListDlpCustomPromptTopicsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDlpCustomPromptTopicsRequest,
   output: ListDlpCustomPromptTopicsResponse,
   errors: [],
@@ -60408,7 +60331,7 @@ export interface CreateDlpCustomPromptTopicRequest {
 }
 
 export const CreateDlpCustomPromptTopicRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       enabled: Schema.Boolean,
@@ -60445,7 +60368,7 @@ export interface CreateDlpCustomPromptTopicResponse {
 }
 
 export const CreateDlpCustomPromptTopicResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -60478,7 +60401,7 @@ export const createDlpCustomPromptTopic: API.OperationMethod<
   CreateDlpCustomPromptTopicResponse,
   CreateDlpCustomPromptTopicError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpCustomPromptTopicRequest,
   output: CreateDlpCustomPromptTopicResponse,
   errors: [],
@@ -60499,7 +60422,7 @@ export interface UpdateDlpCustomPromptTopicRequest {
 }
 
 export const UpdateDlpCustomPromptTopicRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       entryId: Schema.String.pipe(T.HttpPath("entryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -60529,7 +60452,7 @@ export interface UpdateDlpCustomPromptTopicResponse {
 }
 
 export const UpdateDlpCustomPromptTopicResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -60562,7 +60485,7 @@ export const updateDlpCustomPromptTopic: API.OperationMethod<
   UpdateDlpCustomPromptTopicResponse,
   UpdateDlpCustomPromptTopicError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDlpCustomPromptTopicRequest,
   output: UpdateDlpCustomPromptTopicResponse,
   errors: [],
@@ -60574,7 +60497,7 @@ export interface DeleteDlpCustomPromptTopicRequest {
 }
 
 export const DeleteDlpCustomPromptTopicRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       entryId: Schema.String.pipe(T.HttpPath("entryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -60589,7 +60512,7 @@ export const DeleteDlpCustomPromptTopicRequest =
 export type DeleteDlpCustomPromptTopicResponse = unknown;
 
 export const DeleteDlpCustomPromptTopicResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDlpCustomPromptTopicResponse>;
 
@@ -60600,7 +60523,7 @@ export const deleteDlpCustomPromptTopic: API.OperationMethod<
   DeleteDlpCustomPromptTopicResponse,
   DeleteDlpCustomPromptTopicError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpCustomPromptTopicRequest,
   output: DeleteDlpCustomPromptTopicResponse,
   errors: [],
@@ -60616,7 +60539,7 @@ export interface GetDlpDataClassRequest {
 }
 
 export const GetDlpDataClassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dataClassId: Schema.String.pipe(T.HttpPath("dataClassId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -60640,7 +60563,7 @@ export interface GetDlpDataClassResponse {
 }
 
 export const GetDlpDataClassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -60673,7 +60596,7 @@ export const getDlpDataClass: API.OperationMethod<
   GetDlpDataClassResponse,
   GetDlpDataClassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpDataClassRequest,
   output: GetDlpDataClassResponse,
   errors: [],
@@ -60684,7 +60607,7 @@ export interface ListDlpDataClassesRequest {
 }
 
 export const ListDlpDataClassesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -60709,7 +60632,7 @@ export interface ListDlpDataClassesResponse {
 }
 
 export const ListDlpDataClassesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDlpDataClassesResponseResult),
     }),
@@ -60722,7 +60645,7 @@ export const listDlpDataClasses: API.PaginatedOperationMethod<
   ListDlpDataClassesResponse,
   ListDlpDataClassesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDlpDataClassesRequest,
   output: ListDlpDataClassesResponse,
   errors: [],
@@ -60748,7 +60671,7 @@ export interface CreateDlpDataClassRequest {
 }
 
 export const CreateDlpDataClassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       dataTags: Schema.Array(Schema.String),
@@ -60783,7 +60706,7 @@ export interface CreateDlpDataClassResponse {
 }
 
 export const CreateDlpDataClassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -60816,7 +60739,7 @@ export const createDlpDataClass: API.OperationMethod<
   CreateDlpDataClassResponse,
   CreateDlpDataClassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpDataClassRequest,
   output: CreateDlpDataClassResponse,
   errors: [],
@@ -60839,7 +60762,7 @@ export interface UpdateDlpDataClassRequest {
 }
 
 export const UpdateDlpDataClassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dataClassId: Schema.String.pipe(T.HttpPath("dataClassId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -60879,7 +60802,7 @@ export interface UpdateDlpDataClassResponse {
 }
 
 export const UpdateDlpDataClassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -60912,7 +60835,7 @@ export const updateDlpDataClass: API.OperationMethod<
   UpdateDlpDataClassResponse,
   UpdateDlpDataClassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDlpDataClassRequest,
   output: UpdateDlpDataClassResponse,
   errors: [],
@@ -60924,7 +60847,7 @@ export interface DeleteDlpDataClassRequest {
 }
 
 export const DeleteDlpDataClassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dataClassId: Schema.String.pipe(T.HttpPath("dataClassId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -60939,7 +60862,7 @@ export const DeleteDlpDataClassRequest =
 export type DeleteDlpDataClassResponse = unknown;
 
 export const DeleteDlpDataClassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDlpDataClassResponse>;
 
@@ -60950,7 +60873,7 @@ export const deleteDlpDataClass: API.OperationMethod<
   DeleteDlpDataClassResponse,
   DeleteDlpDataClassError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpDataClassRequest,
   output: DeleteDlpDataClassResponse,
   errors: [],
@@ -60965,17 +60888,16 @@ export interface GetDlpDatasetRequest {
   accountId: string;
 }
 
-export const GetDlpDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/dlp/datasets/{datasetId}",
-      }),
-    ),
+export const GetDlpDatasetRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/dlp/datasets/{datasetId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetDlpDatasetRequest>;
 
 export interface GetDlpDatasetResponse {
@@ -61025,51 +60947,48 @@ export interface GetDlpDatasetResponse {
   description?: string | null;
 }
 
-export const GetDlpDatasetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      columns: Schema.Array(Column),
-      createdAt: Schema.String,
-      encodingVersion: Schema.Number,
-      name: Schema.String,
-      numCells: Schema.Number,
-      secret: Schema.Boolean,
-      status: Schema.Union([
-        Schema.Literals([
-          "empty",
-          "uploading",
-          "pending",
-          "processing",
-          "failed",
-          "complete",
-        ]),
-        Schema.String,
+export const GetDlpDatasetResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    columns: Schema.Array(Column),
+    createdAt: Schema.String,
+    encodingVersion: Schema.Number,
+    name: Schema.String,
+    numCells: Schema.Number,
+    secret: Schema.Boolean,
+    status: Schema.Union([
+      Schema.Literals([
+        "empty",
+        "uploading",
+        "pending",
+        "processing",
+        "failed",
+        "complete",
       ]),
-      updatedAt: Schema.String,
-      uploads: Schema.Array(Upload),
-      caseSensitive: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          columns: "columns",
-          createdAt: "created_at",
-          encodingVersion: "encoding_version",
-          name: "name",
-          numCells: "num_cells",
-          secret: "secret",
-          status: "status",
-          updatedAt: "updated_at",
-          uploads: "uploads",
-          caseSensitive: "case_sensitive",
-          description: "description",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+      Schema.String,
+    ]),
+    updatedAt: Schema.String,
+    uploads: Schema.Array(Upload),
+    caseSensitive: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        columns: "columns",
+        createdAt: "created_at",
+        encodingVersion: "encoding_version",
+        name: "name",
+        numCells: "num_cells",
+        secret: "secret",
+        status: "status",
+        updatedAt: "updated_at",
+        uploads: "uploads",
+        caseSensitive: "case_sensitive",
+        description: "description",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetDlpDatasetResponse>;
 
 export type GetDlpDatasetError = DefaultErrors;
@@ -61079,7 +60998,7 @@ export const getDlpDataset: API.OperationMethod<
   GetDlpDatasetResponse,
   GetDlpDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpDatasetRequest,
   output: GetDlpDatasetResponse,
   errors: [],
@@ -61090,7 +61009,7 @@ export interface ListDlpDatasetsRequest {
 }
 
 export const ListDlpDatasetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -61146,7 +61065,7 @@ export interface ListDlpDatasetsResponse {
 }
 
 export const ListDlpDatasetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDlpDatasetsResponseResult),
     }),
@@ -61159,7 +61078,7 @@ export const listDlpDatasets: API.PaginatedOperationMethod<
   ListDlpDatasetsResponse,
   ListDlpDatasetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDlpDatasetsRequest,
   output: ListDlpDatasetsResponse,
   errors: [],
@@ -61185,7 +61104,7 @@ export interface CreateDlpDatasetRequest {
 }
 
 export const CreateDlpDatasetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -61260,7 +61179,7 @@ export interface CreateDlpDatasetResponse {
 }
 
 export const CreateDlpDatasetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dataset: ListDlpDatasetsResponseResult,
       encodingVersion: Schema.Number,
@@ -61287,7 +61206,7 @@ export const createDlpDataset: API.OperationMethod<
   CreateDlpDatasetResponse,
   CreateDlpDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpDatasetRequest,
   output: CreateDlpDatasetResponse,
   errors: [],
@@ -61306,7 +61225,7 @@ export interface UpdateDlpDatasetRequest {
 }
 
 export const UpdateDlpDatasetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -61374,7 +61293,7 @@ export interface UpdateDlpDatasetResponse {
 }
 
 export const UpdateDlpDatasetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       columns: Schema.Array(Column),
@@ -61427,7 +61346,7 @@ export const updateDlpDataset: API.OperationMethod<
   UpdateDlpDatasetResponse,
   UpdateDlpDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDlpDatasetRequest,
   output: UpdateDlpDatasetResponse,
   errors: [],
@@ -61439,7 +61358,7 @@ export interface DeleteDlpDatasetRequest {
 }
 
 export const DeleteDlpDatasetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -61454,7 +61373,7 @@ export const DeleteDlpDatasetRequest =
 export type DeleteDlpDatasetResponse = unknown;
 
 export const DeleteDlpDatasetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<DeleteDlpDatasetResponse>;
 
@@ -61465,7 +61384,7 @@ export const deleteDlpDataset: API.OperationMethod<
   DeleteDlpDatasetResponse,
   DeleteDlpDatasetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpDatasetRequest,
   output: DeleteDlpDatasetResponse,
   errors: [],
@@ -61481,7 +61400,7 @@ export interface CreateDlpDatasetUploadRequest {
 }
 
 export const CreateDlpDatasetUploadRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -61517,7 +61436,7 @@ export interface CreateDlpDatasetUploadResponse {
 }
 
 export const CreateDlpDatasetUploadResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       encodingVersion: Schema.Number,
       maxCells: Schema.Number,
@@ -61550,7 +61469,7 @@ export const createDlpDatasetUpload: API.OperationMethod<
   CreateDlpDatasetUploadResponse,
   CreateDlpDatasetUploadError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpDatasetUploadRequest,
   output: CreateDlpDatasetUploadResponse,
   errors: [],
@@ -61564,7 +61483,7 @@ export interface EditDlpDatasetUploadRequest {
 }
 
 export const EditDlpDatasetUploadRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
       version: Schema.Number.pipe(T.HttpPath("version")),
@@ -61625,7 +61544,7 @@ export interface EditDlpDatasetUploadResponse {
 }
 
 export const EditDlpDatasetUploadResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       columns: Schema.Array(Column),
@@ -61678,7 +61597,7 @@ export const editDlpDatasetUpload: API.OperationMethod<
   EditDlpDatasetUploadResponse,
   EditDlpDatasetUploadError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EditDlpDatasetUploadRequest,
   output: EditDlpDatasetUploadResponse,
   errors: [],
@@ -61701,7 +61620,7 @@ export interface CreateDlpDatasetVersionRequest {
 }
 
 export const CreateDlpDatasetVersionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
       version: Schema.Number.pipe(T.HttpPath("version")),
@@ -61734,7 +61653,7 @@ export interface CreateDlpDatasetVersionResponse {
 }
 
 export const CreateDlpDatasetVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Column),
     }),
@@ -61747,7 +61666,7 @@ export const createDlpDatasetVersion: API.PaginatedOperationMethod<
   CreateDlpDatasetVersionResponse,
   CreateDlpDatasetVersionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: CreateDlpDatasetVersionRequest,
   output: CreateDlpDatasetVersionResponse,
   errors: [],
@@ -61770,7 +61689,7 @@ export interface CreateDlpDatasetVersionEntryRequest {
 }
 
 export const CreateDlpDatasetVersionEntryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       datasetId: Schema.String.pipe(T.HttpPath("datasetId")),
       version: Schema.Number.pipe(T.HttpPath("version")),
@@ -61799,7 +61718,7 @@ export interface CreateDlpDatasetVersionEntryResponse {
 }
 
 export const CreateDlpDatasetVersionEntryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       entryId: Schema.String,
       headerName: Schema.String,
@@ -61834,7 +61753,7 @@ export const createDlpDatasetVersionEntry: API.OperationMethod<
   CreateDlpDatasetVersionEntryResponse,
   CreateDlpDatasetVersionEntryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpDatasetVersionEntryRequest,
   output: CreateDlpDatasetVersionEntryResponse,
   errors: [],
@@ -61850,7 +61769,7 @@ export interface GetDlpDataTagCategoryRequest {
 }
 
 export const GetDlpDataTagCategoryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       categoryId: Schema.String.pipe(T.HttpPath("categoryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -61879,7 +61798,7 @@ export interface GetDlpDataTagCategoryResponse {
 }
 
 export const GetDlpDataTagCategoryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -61910,7 +61829,7 @@ export const getDlpDataTagCategory: API.OperationMethod<
   GetDlpDataTagCategoryResponse,
   GetDlpDataTagCategoryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpDataTagCategoryRequest,
   output: GetDlpDataTagCategoryResponse,
   errors: [],
@@ -61921,7 +61840,7 @@ export interface ListDlpDataTagCategoriesRequest {
 }
 
 export const ListDlpDataTagCategoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -61951,7 +61870,7 @@ export interface ListDlpDataTagCategoriesResponse {
 }
 
 export const ListDlpDataTagCategoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDlpDataTagCategoriesResponseResult),
     }),
@@ -61964,7 +61883,7 @@ export const listDlpDataTagCategories: API.PaginatedOperationMethod<
   ListDlpDataTagCategoriesResponse,
   ListDlpDataTagCategoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDlpDataTagCategoriesRequest,
   output: ListDlpDataTagCategoriesResponse,
   errors: [],
@@ -61988,7 +61907,7 @@ export interface CreateDlpDataTagCategoryRequest {
 }
 
 export const CreateDlpDataTagCategoryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -62026,7 +61945,7 @@ export interface CreateDlpDataTagCategoryResponse {
 }
 
 export const CreateDlpDataTagCategoryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -62057,7 +61976,7 @@ export const createDlpDataTagCategory: API.OperationMethod<
   CreateDlpDataTagCategoryResponse,
   CreateDlpDataTagCategoryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpDataTagCategoryRequest,
   output: CreateDlpDataTagCategoryResponse,
   errors: [],
@@ -62082,7 +62001,7 @@ export interface UpdateDlpDataTagCategoryRequest {
 }
 
 export const UpdateDlpDataTagCategoryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       categoryId: Schema.String.pipe(T.HttpPath("categoryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -62114,7 +62033,7 @@ export interface UpdateDlpDataTagCategoryResponse {
 }
 
 export const UpdateDlpDataTagCategoryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -62145,7 +62064,7 @@ export const updateDlpDataTagCategory: API.OperationMethod<
   UpdateDlpDataTagCategoryResponse,
   UpdateDlpDataTagCategoryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDlpDataTagCategoryRequest,
   output: UpdateDlpDataTagCategoryResponse,
   errors: [],
@@ -62157,7 +62076,7 @@ export interface DeleteDlpDataTagCategoryRequest {
 }
 
 export const DeleteDlpDataTagCategoryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       categoryId: Schema.String.pipe(T.HttpPath("categoryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -62172,7 +62091,7 @@ export const DeleteDlpDataTagCategoryRequest =
 export type DeleteDlpDataTagCategoryResponse = unknown;
 
 export const DeleteDlpDataTagCategoryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDlpDataTagCategoryResponse>;
 
@@ -62183,7 +62102,7 @@ export const deleteDlpDataTagCategory: API.OperationMethod<
   DeleteDlpDataTagCategoryResponse,
   DeleteDlpDataTagCategoryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpDataTagCategoryRequest,
   output: DeleteDlpDataTagCategoryResponse,
   errors: [],
@@ -62200,7 +62119,7 @@ export interface GetDlpDataTagCategoryDataTagRequest {
 }
 
 export const GetDlpDataTagCategoryDataTagRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       categoryId: Schema.String.pipe(T.HttpPath("categoryId")),
       tagId: Schema.String.pipe(T.HttpPath("tagId")),
@@ -62222,7 +62141,7 @@ export interface GetDlpDataTagCategoryDataTagResponse {
 }
 
 export const GetDlpDataTagCategoryDataTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -62249,7 +62168,7 @@ export const getDlpDataTagCategoryDataTag: API.OperationMethod<
   GetDlpDataTagCategoryDataTagResponse,
   GetDlpDataTagCategoryDataTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpDataTagCategoryDataTagRequest,
   output: GetDlpDataTagCategoryDataTagResponse,
   errors: [],
@@ -62261,7 +62180,7 @@ export interface ListDlpDataTagCategoryDataTagsRequest {
 }
 
 export const ListDlpDataTagCategoryDataTagsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       categoryId: Schema.String.pipe(T.HttpPath("categoryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -62284,7 +62203,7 @@ export interface ListDlpDataTagCategoryDataTagsResponse {
 }
 
 export const ListDlpDataTagCategoryDataTagsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Tag),
     }),
@@ -62297,7 +62216,7 @@ export const listDlpDataTagCategoryDataTags: API.PaginatedOperationMethod<
   ListDlpDataTagCategoryDataTagsResponse,
   ListDlpDataTagCategoryDataTagsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDlpDataTagCategoryDataTagsRequest,
   output: ListDlpDataTagCategoryDataTagsResponse,
   errors: [],
@@ -62318,7 +62237,7 @@ export interface CreateDlpDataTagCategoryDataTagRequest {
 }
 
 export const CreateDlpDataTagCategoryDataTagRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       categoryId: Schema.String.pipe(T.HttpPath("categoryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -62341,7 +62260,7 @@ export interface CreateDlpDataTagCategoryDataTagResponse {
 }
 
 export const CreateDlpDataTagCategoryDataTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -62368,7 +62287,7 @@ export const createDlpDataTagCategoryDataTag: API.OperationMethod<
   CreateDlpDataTagCategoryDataTagResponse,
   CreateDlpDataTagCategoryDataTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpDataTagCategoryDataTagRequest,
   output: CreateDlpDataTagCategoryDataTagResponse,
   errors: [],
@@ -62386,7 +62305,7 @@ export interface UpdateDlpDataTagCategoryDataTagRequest {
 }
 
 export const UpdateDlpDataTagCategoryDataTagRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       categoryId: Schema.String.pipe(T.HttpPath("categoryId")),
       tagId: Schema.String.pipe(T.HttpPath("tagId")),
@@ -62410,7 +62329,7 @@ export interface UpdateDlpDataTagCategoryDataTagResponse {
 }
 
 export const UpdateDlpDataTagCategoryDataTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -62437,7 +62356,7 @@ export const updateDlpDataTagCategoryDataTag: API.OperationMethod<
   UpdateDlpDataTagCategoryDataTagResponse,
   UpdateDlpDataTagCategoryDataTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDlpDataTagCategoryDataTagRequest,
   output: UpdateDlpDataTagCategoryDataTagResponse,
   errors: [],
@@ -62450,7 +62369,7 @@ export interface DeleteDlpDataTagCategoryDataTagRequest {
 }
 
 export const DeleteDlpDataTagCategoryDataTagRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       categoryId: Schema.String.pipe(T.HttpPath("categoryId")),
       tagId: Schema.String.pipe(T.HttpPath("tagId")),
@@ -62466,7 +62385,7 @@ export const DeleteDlpDataTagCategoryDataTagRequest =
 export type DeleteDlpDataTagCategoryDataTagResponse = unknown;
 
 export const DeleteDlpDataTagCategoryDataTagResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDlpDataTagCategoryDataTagResponse>;
 
@@ -62477,7 +62396,7 @@ export const deleteDlpDataTagCategoryDataTag: API.OperationMethod<
   DeleteDlpDataTagCategoryDataTagResponse,
   DeleteDlpDataTagCategoryDataTagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpDataTagCategoryDataTagRequest,
   output: DeleteDlpDataTagCategoryDataTagResponse,
   errors: [],
@@ -62492,7 +62411,7 @@ export interface GetDlpEmailAccountMappingRequest {
 }
 
 export const GetDlpEmailAccountMappingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -62511,7 +62430,7 @@ export interface GetDlpEmailAccountMappingResponse {
 }
 
 export const GetDlpEmailAccountMappingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       addinIdentifierToken: Schema.String,
       authRequirements: Schema.Union([
@@ -62535,7 +62454,7 @@ export const getDlpEmailAccountMapping: API.OperationMethod<
   GetDlpEmailAccountMappingResponse,
   GetDlpEmailAccountMappingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpEmailAccountMappingRequest,
   output: GetDlpEmailAccountMappingResponse,
   errors: [],
@@ -62551,7 +62470,7 @@ export interface CreateDlpEmailAccountMappingRequest {
 }
 
 export const CreateDlpEmailAccountMappingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       authRequirements: Schema.Union([
@@ -62575,7 +62494,7 @@ export interface CreateDlpEmailAccountMappingResponse {
 }
 
 export const CreateDlpEmailAccountMappingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       addinIdentifierToken: Schema.String,
       authRequirements: Schema.Union([
@@ -62599,7 +62518,7 @@ export const createDlpEmailAccountMapping: API.OperationMethod<
   CreateDlpEmailAccountMappingResponse,
   CreateDlpEmailAccountMappingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpEmailAccountMappingRequest,
   output: CreateDlpEmailAccountMappingResponse,
   errors: [],
@@ -62615,7 +62534,7 @@ export interface GetDlpEmailRuleRequest {
 }
 
 export const GetDlpEmailRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -62650,7 +62569,7 @@ export interface GetDlpEmailRuleResponse {
 }
 
 export const GetDlpEmailRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       action: Action,
       conditions: Schema.Array(Condition),
@@ -62685,7 +62604,7 @@ export const getDlpEmailRule: API.OperationMethod<
   GetDlpEmailRuleResponse,
   GetDlpEmailRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpEmailRuleRequest,
   output: GetDlpEmailRuleResponse,
   errors: [],
@@ -62696,7 +62615,7 @@ export interface ListDlpEmailRulesRequest {
 }
 
 export const ListDlpEmailRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -62728,7 +62647,7 @@ export interface ListDlpEmailRulesResponse {
 }
 
 export const ListDlpEmailRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDlpEmailRulesResponseResult),
     }),
@@ -62741,7 +62660,7 @@ export const listDlpEmailRules: API.PaginatedOperationMethod<
   ListDlpEmailRulesResponse,
   ListDlpEmailRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDlpEmailRulesRequest,
   output: ListDlpEmailRulesResponse,
   errors: [],
@@ -62776,7 +62695,7 @@ export interface CreateDlpEmailRuleRequest {
 }
 
 export const CreateDlpEmailRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       action: Action,
@@ -62815,7 +62734,7 @@ export interface CreateDlpEmailRuleResponse {
 }
 
 export const CreateDlpEmailRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       action: Action,
       conditions: Schema.Array(Condition),
@@ -62850,7 +62769,7 @@ export const createDlpEmailRule: API.OperationMethod<
   CreateDlpEmailRuleResponse,
   CreateDlpEmailRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpEmailRuleRequest,
   output: CreateDlpEmailRuleResponse,
   errors: [],
@@ -62882,7 +62801,7 @@ export interface UpdateDlpEmailRuleRequest {
 }
 
 export const UpdateDlpEmailRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -62922,7 +62841,7 @@ export interface UpdateDlpEmailRuleResponse {
 }
 
 export const UpdateDlpEmailRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       action: Action,
       conditions: Schema.Array(Condition),
@@ -62957,7 +62876,7 @@ export const updateDlpEmailRule: API.OperationMethod<
   UpdateDlpEmailRuleResponse,
   UpdateDlpEmailRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDlpEmailRuleRequest,
   output: UpdateDlpEmailRuleResponse,
   errors: [],
@@ -62969,7 +62888,7 @@ export interface DeleteDlpEmailRuleRequest {
 }
 
 export const DeleteDlpEmailRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -63004,7 +62923,7 @@ export interface DeleteDlpEmailRuleResponse {
 }
 
 export const DeleteDlpEmailRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       action: Action,
       conditions: Schema.Array(Condition),
@@ -63039,7 +62958,7 @@ export const deleteDlpEmailRule: API.OperationMethod<
   DeleteDlpEmailRuleResponse,
   DeleteDlpEmailRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpEmailRuleRequest,
   output: DeleteDlpEmailRuleResponse,
   errors: [],
@@ -63053,7 +62972,7 @@ export interface BulkPatchDlpEmailRulesRequest {
 }
 
 export const BulkPatchDlpEmailRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       newPriorities: Schema.Record(Schema.String, Schema.Unknown),
@@ -63089,7 +63008,7 @@ export interface BulkPatchDlpEmailRulesResponse {
 }
 
 export const BulkPatchDlpEmailRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       action: Action,
       conditions: Schema.Array(Condition),
@@ -63124,7 +63043,7 @@ export const bulkPatchDlpEmailRules: API.OperationMethod<
   BulkPatchDlpEmailRulesResponse,
   BulkPatchDlpEmailRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkPatchDlpEmailRulesRequest,
   output: BulkPatchDlpEmailRulesResponse,
   errors: [],
@@ -63139,17 +63058,16 @@ export interface GetDlpEntryRequest {
   accountId: string;
 }
 
-export const GetDlpEntryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      entryId: Schema.String.pipe(T.HttpPath("entryId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/dlp/entries/{entryId}",
-      }),
-    ),
+export const GetDlpEntryRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    entryId: Schema.String.pipe(T.HttpPath("entryId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/dlp/entries/{entryId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetDlpEntryRequest>;
 
 export type GetDlpEntryResponse =
@@ -63299,17 +63217,16 @@ export type GetDlpEntryResponse =
         | null;
     };
 
-export const GetDlpEntryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([
-      GetDlpEntryResponse4,
-      GetDlpEntryResponse2,
-      GetDlpEntryResponse6,
-      GetDlpEntryResponse1,
-      GetDlpEntryResponse3,
-      GetDlpEntryResponse5,
-      GetDlpEntryResponse22,
-    ]).pipe(T.ResponsePath("result")),
+export const GetDlpEntryResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    GetDlpEntryResponse4,
+    GetDlpEntryResponse2,
+    GetDlpEntryResponse6,
+    GetDlpEntryResponse1,
+    GetDlpEntryResponse3,
+    GetDlpEntryResponse5,
+    GetDlpEntryResponse22,
+  ]).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetDlpEntryResponse>;
 
 export type GetDlpEntryError = DefaultErrors;
@@ -63319,7 +63236,7 @@ export const getDlpEntry: API.OperationMethod<
   GetDlpEntryResponse,
   GetDlpEntryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpEntryRequest,
   output: GetDlpEntryResponse,
   errors: [],
@@ -63329,13 +63246,12 @@ export interface ListDlpEntriesRequest {
   accountId: string;
 }
 
-export const ListDlpEntriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/dlp/entries" }),
-    ),
+export const ListDlpEntriesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/dlp/entries" }),
+  ),
 ) as unknown as Schema.Codec<ListDlpEntriesRequest>;
 
 export interface ListDlpEntriesResponse {
@@ -63482,7 +63398,7 @@ export interface ListDlpEntriesResponse {
 }
 
 export const ListDlpEntriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -63505,7 +63421,7 @@ export const listDlpEntries: API.PaginatedOperationMethod<
   ListDlpEntriesResponse,
   ListDlpEntriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDlpEntriesRequest,
   output: ListDlpEntriesResponse,
   errors: [],
@@ -63530,25 +63446,24 @@ export interface CreateDlpEntryRequest {
   profileId?: string;
 }
 
-export const CreateDlpEntryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      enabled: Schema.Boolean,
-      name: Schema.String,
-      pattern: Pattern,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      profileId: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        enabled: "enabled",
-        name: "name",
-        pattern: "pattern",
-        description: "description",
-        profileId: "profile_id",
-      }),
-      T.Http({ method: "POST", path: "/accounts/{account_id}/dlp/entries" }),
-    ),
+export const CreateDlpEntryRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    enabled: Schema.Boolean,
+    name: Schema.String,
+    pattern: Pattern,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    profileId: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      enabled: "enabled",
+      name: "name",
+      pattern: "pattern",
+      description: "description",
+      profileId: "profile_id",
+    }),
+    T.Http({ method: "POST", path: "/accounts/{account_id}/dlp/entries" }),
+  ),
 ) as unknown as Schema.Codec<CreateDlpEntryRequest>;
 
 export interface CreateDlpEntryResponse {
@@ -63565,7 +63480,7 @@ export interface CreateDlpEntryResponse {
 }
 
 export const CreateDlpEntryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -63598,7 +63513,7 @@ export const createDlpEntry: API.OperationMethod<
   CreateDlpEntryResponse,
   CreateDlpEntryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpEntryRequest,
   output: CreateDlpEntryResponse,
   errors: [],
@@ -63620,25 +63535,24 @@ export interface UpdateDlpEntryRequest {
   enabled?: boolean;
 }
 
-export const UpdateDlpEntryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      entryId: Schema.String.pipe(T.HttpPath("entryId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.optional(Schema.String),
-      pattern: Schema.optional(Pattern),
-      type: Schema.Union([
-        Schema.Literals(["custom", "predefined", "integration"]),
-        Schema.String,
-      ]),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Boolean),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/dlp/entries/{entryId}",
-      }),
-    ),
+export const UpdateDlpEntryRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    entryId: Schema.String.pipe(T.HttpPath("entryId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.optional(Schema.String),
+    pattern: Schema.optional(Pattern),
+    type: Schema.Union([
+      Schema.Literals(["custom", "predefined", "integration"]),
+      Schema.String,
+    ]),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/dlp/entries/{entryId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateDlpEntryRequest>;
 
 export type UpdateDlpEntryResponse =
@@ -63719,7 +63633,7 @@ export type UpdateDlpEntryResponse =
     };
 
 export const UpdateDlpEntryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       ExactDataEntry,
       CustomEntry,
@@ -63738,7 +63652,7 @@ export const updateDlpEntry: API.OperationMethod<
   UpdateDlpEntryResponse,
   UpdateDlpEntryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDlpEntryRequest,
   output: UpdateDlpEntryResponse,
   errors: [],
@@ -63749,23 +63663,22 @@ export interface DeleteDlpEntryRequest {
   accountId: string;
 }
 
-export const DeleteDlpEntryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      entryId: Schema.String.pipe(T.HttpPath("entryId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/dlp/entries/{entryId}",
-      }),
-    ),
+export const DeleteDlpEntryRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    entryId: Schema.String.pipe(T.HttpPath("entryId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/dlp/entries/{entryId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteDlpEntryRequest>;
 
 export type DeleteDlpEntryResponse = unknown;
 
 export const DeleteDlpEntryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDlpEntryResponse>;
 
@@ -63776,7 +63689,7 @@ export const deleteDlpEntry: API.OperationMethod<
   DeleteDlpEntryResponse,
   DeleteDlpEntryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpEntryRequest,
   output: DeleteDlpEntryResponse,
   errors: [],
@@ -63792,7 +63705,7 @@ export interface GetDlpEntryCustomRequest {
 }
 
 export const GetDlpEntryCustomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       entryId: Schema.String.pipe(T.HttpPath("entryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -63952,7 +63865,7 @@ export type GetDlpEntryCustomResponse =
     };
 
 export const GetDlpEntryCustomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       GetDlpEntryResponse4,
       GetDlpEntryResponse2,
@@ -63974,7 +63887,7 @@ export const getDlpEntryCustom: API.OperationMethod<
   GetDlpEntryCustomResponse,
   GetDlpEntryCustomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpEntryCustomRequest,
   output: GetDlpEntryCustomResponse,
   errors: [DlpEntryNotFound, Forbidden],
@@ -63985,7 +63898,7 @@ export interface ListDlpEntryCustomsRequest {
 }
 
 export const ListDlpEntryCustomsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -64137,7 +64050,7 @@ export interface ListDlpEntryCustomsResponse {
 }
 
 export const ListDlpEntryCustomsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -64160,7 +64073,7 @@ export const listDlpEntryCustoms: API.PaginatedOperationMethod<
   ListDlpEntryCustomsResponse,
   ListDlpEntryCustomsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDlpEntryCustomsRequest,
   output: ListDlpEntryCustomsResponse,
   errors: [],
@@ -64186,7 +64099,7 @@ export interface CreateDlpEntryCustomRequest {
 }
 
 export const CreateDlpEntryCustomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       enabled: Schema.Boolean,
@@ -64220,7 +64133,7 @@ export interface CreateDlpEntryCustomResponse {
 }
 
 export const CreateDlpEntryCustomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -64253,7 +64166,7 @@ export const createDlpEntryCustom: API.OperationMethod<
   CreateDlpEntryCustomResponse,
   CreateDlpEntryCustomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpEntryCustomRequest,
   output: CreateDlpEntryCustomResponse,
   errors: [Forbidden],
@@ -64274,7 +64187,7 @@ export interface UpdateDlpEntryCustomRequest {
 }
 
 export const UpdateDlpEntryCustomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       entryId: Schema.String.pipe(T.HttpPath("entryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -64304,7 +64217,7 @@ export interface UpdateDlpEntryCustomResponse {
 }
 
 export const UpdateDlpEntryCustomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -64340,7 +64253,7 @@ export const updateDlpEntryCustom: API.OperationMethod<
   UpdateDlpEntryCustomResponse,
   UpdateDlpEntryCustomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDlpEntryCustomRequest,
   output: UpdateDlpEntryCustomResponse,
   errors: [DlpEntryNotFound, Forbidden],
@@ -64352,7 +64265,7 @@ export interface DeleteDlpEntryCustomRequest {
 }
 
 export const DeleteDlpEntryCustomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       entryId: Schema.String.pipe(T.HttpPath("entryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -64367,7 +64280,7 @@ export const DeleteDlpEntryCustomRequest =
 export type DeleteDlpEntryCustomResponse = unknown;
 
 export const DeleteDlpEntryCustomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDlpEntryCustomResponse>;
 
@@ -64381,7 +64294,7 @@ export const deleteDlpEntryCustom: API.OperationMethod<
   DeleteDlpEntryCustomResponse,
   DeleteDlpEntryCustomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpEntryCustomRequest,
   output: DeleteDlpEntryCustomResponse,
   errors: [DlpEntryNotFound, Forbidden],
@@ -64397,7 +64310,7 @@ export interface GetDlpEntryIntegrationRequest {
 }
 
 export const GetDlpEntryIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       entryId: Schema.String.pipe(T.HttpPath("entryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -64557,7 +64470,7 @@ export type GetDlpEntryIntegrationResponse =
     };
 
 export const GetDlpEntryIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       GetDlpEntryResponse4,
       GetDlpEntryResponse2,
@@ -64576,7 +64489,7 @@ export const getDlpEntryIntegration: API.OperationMethod<
   GetDlpEntryIntegrationResponse,
   GetDlpEntryIntegrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpEntryIntegrationRequest,
   output: GetDlpEntryIntegrationResponse,
   errors: [],
@@ -64587,7 +64500,7 @@ export interface ListDlpEntryIntegrationsRequest {
 }
 
 export const ListDlpEntryIntegrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -64739,7 +64652,7 @@ export interface ListDlpEntryIntegrationsResponse {
 }
 
 export const ListDlpEntryIntegrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -64762,7 +64675,7 @@ export const listDlpEntryIntegrations: API.PaginatedOperationMethod<
   ListDlpEntryIntegrationsResponse,
   ListDlpEntryIntegrationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDlpEntryIntegrationsRequest,
   output: ListDlpEntryIntegrationsResponse,
   errors: [],
@@ -64784,7 +64697,7 @@ export interface CreateDlpEntryIntegrationRequest {
 }
 
 export const CreateDlpEntryIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       enabled: Schema.Boolean,
@@ -64813,7 +64726,7 @@ export interface CreateDlpEntryIntegrationResponse {
 }
 
 export const CreateDlpEntryIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -64842,7 +64755,7 @@ export const createDlpEntryIntegration: API.OperationMethod<
   CreateDlpEntryIntegrationResponse,
   CreateDlpEntryIntegrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpEntryIntegrationRequest,
   output: CreateDlpEntryIntegrationResponse,
   errors: [],
@@ -64857,7 +64770,7 @@ export interface UpdateDlpEntryIntegrationRequest {
 }
 
 export const UpdateDlpEntryIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       entryId: Schema.String.pipe(T.HttpPath("entryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -64880,7 +64793,7 @@ export interface UpdateDlpEntryIntegrationResponse {
 }
 
 export const UpdateDlpEntryIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -64909,7 +64822,7 @@ export const updateDlpEntryIntegration: API.OperationMethod<
   UpdateDlpEntryIntegrationResponse,
   UpdateDlpEntryIntegrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDlpEntryIntegrationRequest,
   output: UpdateDlpEntryIntegrationResponse,
   errors: [],
@@ -64921,7 +64834,7 @@ export interface DeleteDlpEntryIntegrationRequest {
 }
 
 export const DeleteDlpEntryIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       entryId: Schema.String.pipe(T.HttpPath("entryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -64936,7 +64849,7 @@ export const DeleteDlpEntryIntegrationRequest =
 export type DeleteDlpEntryIntegrationResponse = unknown;
 
 export const DeleteDlpEntryIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDlpEntryIntegrationResponse>;
 
@@ -64947,7 +64860,7 @@ export const deleteDlpEntryIntegration: API.OperationMethod<
   DeleteDlpEntryIntegrationResponse,
   DeleteDlpEntryIntegrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpEntryIntegrationRequest,
   output: DeleteDlpEntryIntegrationResponse,
   errors: [],
@@ -64963,7 +64876,7 @@ export interface GetDlpEntryPredefinedRequest {
 }
 
 export const GetDlpEntryPredefinedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       entryId: Schema.String.pipe(T.HttpPath("entryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -65123,7 +65036,7 @@ export type GetDlpEntryPredefinedResponse =
     };
 
 export const GetDlpEntryPredefinedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       GetDlpEntryResponse4,
       GetDlpEntryResponse2,
@@ -65142,7 +65055,7 @@ export const getDlpEntryPredefined: API.OperationMethod<
   GetDlpEntryPredefinedResponse,
   GetDlpEntryPredefinedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpEntryPredefinedRequest,
   output: GetDlpEntryPredefinedResponse,
   errors: [],
@@ -65153,7 +65066,7 @@ export interface ListDlpEntryPredefinedsRequest {
 }
 
 export const ListDlpEntryPredefinedsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -65305,7 +65218,7 @@ export interface ListDlpEntryPredefinedsResponse {
 }
 
 export const ListDlpEntryPredefinedsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -65328,7 +65241,7 @@ export const listDlpEntryPredefineds: API.PaginatedOperationMethod<
   ListDlpEntryPredefinedsResponse,
   ListDlpEntryPredefinedsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDlpEntryPredefinedsRequest,
   output: ListDlpEntryPredefinedsResponse,
   errors: [],
@@ -65350,7 +65263,7 @@ export interface CreateDlpEntryPredefinedRequest {
 }
 
 export const CreateDlpEntryPredefinedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       enabled: Schema.Boolean,
@@ -65388,7 +65301,7 @@ export interface CreateDlpEntryPredefinedResponse {
 }
 
 export const CreateDlpEntryPredefinedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       confidence: Confidence,
@@ -65425,7 +65338,7 @@ export const createDlpEntryPredefined: API.OperationMethod<
   CreateDlpEntryPredefinedResponse,
   CreateDlpEntryPredefinedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpEntryPredefinedRequest,
   output: CreateDlpEntryPredefinedResponse,
   errors: [],
@@ -65440,7 +65353,7 @@ export interface UpdateDlpEntryPredefinedRequest {
 }
 
 export const UpdateDlpEntryPredefinedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       entryId: Schema.String.pipe(T.HttpPath("entryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -65472,7 +65385,7 @@ export interface UpdateDlpEntryPredefinedResponse {
 }
 
 export const UpdateDlpEntryPredefinedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       confidence: Confidence,
@@ -65509,7 +65422,7 @@ export const updateDlpEntryPredefined: API.OperationMethod<
   UpdateDlpEntryPredefinedResponse,
   UpdateDlpEntryPredefinedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDlpEntryPredefinedRequest,
   output: UpdateDlpEntryPredefinedResponse,
   errors: [],
@@ -65521,7 +65434,7 @@ export interface DeleteDlpEntryPredefinedRequest {
 }
 
 export const DeleteDlpEntryPredefinedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       entryId: Schema.String.pipe(T.HttpPath("entryId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -65536,7 +65449,7 @@ export const DeleteDlpEntryPredefinedRequest =
 export type DeleteDlpEntryPredefinedResponse = unknown;
 
 export const DeleteDlpEntryPredefinedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDlpEntryPredefinedResponse>;
 
@@ -65547,7 +65460,7 @@ export const deleteDlpEntryPredefined: API.OperationMethod<
   DeleteDlpEntryPredefinedResponse,
   DeleteDlpEntryPredefinedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpEntryPredefinedRequest,
   output: DeleteDlpEntryPredefinedResponse,
   errors: [],
@@ -65561,13 +65474,10 @@ export interface ListDlpLimitsRequest {
   accountId: string;
 }
 
-export const ListDlpLimitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/dlp/limits" }),
-    ),
+export const ListDlpLimitsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/dlp/limits" })),
 ) as unknown as Schema.Codec<ListDlpLimitsRequest>;
 
 export interface ListDlpLimitsResponse {
@@ -65585,27 +65495,26 @@ export interface ListDlpLimitsResponse {
   usedDocumentFingerprints: number;
 }
 
-export const ListDlpLimitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      maxCustomRegexEntries: Schema.Number,
-      maxDatasetCells: Schema.Number,
-      maxDocumentFingerprints: Schema.Number,
-      usedCustomRegexEntries: Schema.Number,
-      usedDatasetCells: Schema.Number,
-      usedDocumentFingerprints: Schema.Number,
-    })
-      .pipe(
-        Schema.encodeKeys({
-          maxCustomRegexEntries: "max_custom_regex_entries",
-          maxDatasetCells: "max_dataset_cells",
-          maxDocumentFingerprints: "max_document_fingerprints",
-          usedCustomRegexEntries: "used_custom_regex_entries",
-          usedDatasetCells: "used_dataset_cells",
-          usedDocumentFingerprints: "used_document_fingerprints",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const ListDlpLimitsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    maxCustomRegexEntries: Schema.Number,
+    maxDatasetCells: Schema.Number,
+    maxDocumentFingerprints: Schema.Number,
+    usedCustomRegexEntries: Schema.Number,
+    usedDatasetCells: Schema.Number,
+    usedDocumentFingerprints: Schema.Number,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        maxCustomRegexEntries: "max_custom_regex_entries",
+        maxDatasetCells: "max_dataset_cells",
+        maxDocumentFingerprints: "max_document_fingerprints",
+        usedCustomRegexEntries: "used_custom_regex_entries",
+        usedDatasetCells: "used_dataset_cells",
+        usedDocumentFingerprints: "used_document_fingerprints",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ListDlpLimitsResponse>;
 
 export type ListDlpLimitsError = DefaultErrors;
@@ -65615,7 +65524,7 @@ export const listDlpLimits: API.OperationMethod<
   ListDlpLimitsResponse,
   ListDlpLimitsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDlpLimitsRequest,
   output: ListDlpLimitsResponse,
   errors: [],
@@ -65635,7 +65544,7 @@ export interface ValidateDlpPatternRequest {
 }
 
 export const ValidateDlpPatternRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       regex: Schema.String,
@@ -65656,7 +65565,7 @@ export interface ValidateDlpPatternResponse {
 }
 
 export const ValidateDlpPatternResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       valid: Schema.Boolean,
     }).pipe(T.ResponsePath("result")),
@@ -65669,7 +65578,7 @@ export const validateDlpPattern: API.OperationMethod<
   ValidateDlpPatternResponse,
   ValidateDlpPatternError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateDlpPatternRequest,
   output: ValidateDlpPatternResponse,
   errors: [],
@@ -65684,7 +65593,7 @@ export interface GetDlpPayloadLogRequest {
 }
 
 export const GetDlpPayloadLogRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -65707,7 +65616,7 @@ export interface GetDlpPayloadLogResponse {
 }
 
 export const GetDlpPayloadLogResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       updatedAt: Schema.String,
       maskingLevel: Schema.optional(
@@ -65738,7 +65647,7 @@ export const getDlpPayloadLog: API.OperationMethod<
   GetDlpPayloadLogResponse,
   GetDlpPayloadLogError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpPayloadLogRequest,
   output: GetDlpPayloadLogResponse,
   errors: [],
@@ -65754,7 +65663,7 @@ export interface PutDlpPayloadLogRequest {
 }
 
 export const PutDlpPayloadLogRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       maskingLevel: Schema.optional(
@@ -65788,7 +65697,7 @@ export interface PutDlpPayloadLogResponse {
 }
 
 export const PutDlpPayloadLogResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       updatedAt: Schema.String,
       maskingLevel: Schema.optional(
@@ -65819,7 +65728,7 @@ export const putDlpPayloadLog: API.OperationMethod<
   PutDlpPayloadLogResponse,
   PutDlpPayloadLogError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDlpPayloadLogRequest,
   output: PutDlpPayloadLogResponse,
   errors: [],
@@ -65834,17 +65743,16 @@ export interface GetDlpProfileRequest {
   accountId: string;
 }
 
-export const GetDlpProfileRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      profileId: Schema.String.pipe(T.HttpPath("profileId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/dlp/profiles/{profileId}",
-      }),
-    ),
+export const GetDlpProfileRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    profileId: Schema.String.pipe(T.HttpPath("profileId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/dlp/profiles/{profileId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetDlpProfileRequest>;
 
 export type GetDlpProfileResponse =
@@ -66285,11 +66193,10 @@ export type GetDlpProfileResponse =
       description?: string | null;
     };
 
-export const GetDlpProfileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([CustomProfile, IntegrationProfile, PredefinedProfile]).pipe(
-      T.ResponsePath("result"),
-    ),
+export const GetDlpProfileResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([CustomProfile, IntegrationProfile, PredefinedProfile]).pipe(
+    T.ResponsePath("result"),
+  ),
 ) as unknown as Schema.Codec<GetDlpProfileResponse>;
 
 export type GetDlpProfileError = DefaultErrors;
@@ -66299,7 +66206,7 @@ export const getDlpProfile: API.OperationMethod<
   GetDlpProfileResponse,
   GetDlpProfileError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpProfileRequest,
   output: GetDlpProfileResponse,
   errors: [],
@@ -66313,7 +66220,7 @@ export interface ListDlpProfilesRequest {
 }
 
 export const ListDlpProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       all: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("all")),
@@ -66776,7 +66683,7 @@ export interface ListDlpProfilesResponse {
 }
 
 export const ListDlpProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([CustomProfile, IntegrationProfile, PredefinedProfile]),
@@ -66791,7 +66698,7 @@ export const listDlpProfiles: API.PaginatedOperationMethod<
   ListDlpProfilesResponse,
   ListDlpProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDlpProfilesRequest,
   output: ListDlpProfilesResponse,
   errors: [],
@@ -66811,7 +66718,7 @@ export interface GetDlpProfileCustomRequest {
 }
 
 export const GetDlpProfileCustomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       profileId: Schema.String.pipe(T.HttpPath("profileId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -67262,7 +67169,7 @@ export type GetDlpProfileCustomResponse =
     };
 
 export const GetDlpProfileCustomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([CustomProfile, IntegrationProfile, PredefinedProfile]).pipe(
       T.ResponsePath("result"),
     ),
@@ -67278,7 +67185,7 @@ export const getDlpProfileCustom: API.OperationMethod<
   GetDlpProfileCustomResponse,
   GetDlpProfileCustomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpProfileCustomRequest,
   output: GetDlpProfileCustomResponse,
   errors: [DlpProfileNotFound, Forbidden],
@@ -67322,7 +67229,7 @@ export interface CreateDlpProfileCustomRequest {
 }
 
 export const CreateDlpProfileCustomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -67802,7 +67709,7 @@ export type CreateDlpProfileCustomResponse =
     };
 
 export const CreateDlpProfileCustomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([CustomProfile, IntegrationProfile, PredefinedProfile]).pipe(
       T.ResponsePath("result"),
     ),
@@ -67815,7 +67722,7 @@ export const createDlpProfileCustom: API.OperationMethod<
   CreateDlpProfileCustomResponse,
   CreateDlpProfileCustomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpProfileCustomRequest,
   output: CreateDlpProfileCustomResponse,
   errors: [Forbidden],
@@ -67868,7 +67775,7 @@ export interface UpdateDlpProfileCustomRequest {
 }
 
 export const UpdateDlpProfileCustomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       profileId: Schema.String.pipe(T.HttpPath("profileId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -68362,7 +68269,7 @@ export type UpdateDlpProfileCustomResponse =
     };
 
 export const UpdateDlpProfileCustomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([CustomProfile, IntegrationProfile, PredefinedProfile]).pipe(
       T.ResponsePath("result"),
     ),
@@ -68378,7 +68285,7 @@ export const updateDlpProfileCustom: API.OperationMethod<
   UpdateDlpProfileCustomResponse,
   UpdateDlpProfileCustomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDlpProfileCustomRequest,
   output: UpdateDlpProfileCustomResponse,
   errors: [DlpProfileNotFound, Forbidden],
@@ -68390,7 +68297,7 @@ export interface DeleteDlpProfileCustomRequest {
 }
 
 export const DeleteDlpProfileCustomRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       profileId: Schema.String.pipe(T.HttpPath("profileId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -68405,7 +68312,7 @@ export const DeleteDlpProfileCustomRequest =
 export type DeleteDlpProfileCustomResponse = unknown;
 
 export const DeleteDlpProfileCustomResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDlpProfileCustomResponse>;
 
@@ -68419,7 +68326,7 @@ export const deleteDlpProfileCustom: API.OperationMethod<
   DeleteDlpProfileCustomResponse,
   DeleteDlpProfileCustomError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpProfileCustomRequest,
   output: DeleteDlpProfileCustomResponse,
   errors: [DlpProfileNotFound, Forbidden],
@@ -68435,7 +68342,7 @@ export interface GetDlpProfilePredefinedRequest {
 }
 
 export const GetDlpProfilePredefinedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       profileId: Schema.String.pipe(T.HttpPath("profileId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -68541,7 +68448,7 @@ export interface GetDlpProfilePredefinedResponse {
 }
 
 export const GetDlpProfilePredefinedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       allowedMatchCount: Schema.Number,
@@ -68588,7 +68495,7 @@ export const getDlpProfilePredefined: API.OperationMethod<
   GetDlpProfilePredefinedResponse,
   GetDlpProfilePredefinedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpProfilePredefinedRequest,
   output: GetDlpProfilePredefinedResponse,
   errors: [],
@@ -68613,7 +68520,7 @@ export interface PutDlpProfilePredefinedRequest {
 }
 
 export const PutDlpProfilePredefinedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       profileId: Schema.String.pipe(T.HttpPath("profileId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -68739,7 +68646,7 @@ export interface PutDlpProfilePredefinedResponse {
 }
 
 export const PutDlpProfilePredefinedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       allowedMatchCount: Schema.Number,
@@ -68786,7 +68693,7 @@ export const putDlpProfilePredefined: API.OperationMethod<
   PutDlpProfilePredefinedResponse,
   PutDlpProfilePredefinedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDlpProfilePredefinedRequest,
   output: PutDlpProfilePredefinedResponse,
   errors: [],
@@ -68798,7 +68705,7 @@ export interface DeleteDlpProfilePredefinedRequest {
 }
 
 export const DeleteDlpProfilePredefinedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       profileId: Schema.String.pipe(T.HttpPath("profileId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -68813,7 +68720,7 @@ export const DeleteDlpProfilePredefinedRequest =
 export type DeleteDlpProfilePredefinedResponse = unknown;
 
 export const DeleteDlpProfilePredefinedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDlpProfilePredefinedResponse>;
 
@@ -68824,7 +68731,7 @@ export const deleteDlpProfilePredefined: API.OperationMethod<
   DeleteDlpProfilePredefinedResponse,
   DeleteDlpProfilePredefinedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpProfilePredefinedRequest,
   output: DeleteDlpProfilePredefinedResponse,
   errors: [],
@@ -68840,7 +68747,7 @@ export interface GetDlpSensitivityGroupRequest {
 }
 
 export const GetDlpSensitivityGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sensitivityGroupId: Schema.String.pipe(T.HttpPath("sensitivityGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -68869,7 +68776,7 @@ export interface GetDlpSensitivityGroupResponse {
 }
 
 export const GetDlpSensitivityGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -68900,7 +68807,7 @@ export const getDlpSensitivityGroup: API.OperationMethod<
   GetDlpSensitivityGroupResponse,
   GetDlpSensitivityGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpSensitivityGroupRequest,
   output: GetDlpSensitivityGroupResponse,
   errors: [],
@@ -68911,7 +68818,7 @@ export interface ListDlpSensitivityGroupsRequest {
 }
 
 export const ListDlpSensitivityGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -68941,7 +68848,7 @@ export interface ListDlpSensitivityGroupsResponse {
 }
 
 export const ListDlpSensitivityGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDlpSensitivityGroupsResponseResult),
     }),
@@ -68954,7 +68861,7 @@ export const listDlpSensitivityGroups: API.PaginatedOperationMethod<
   ListDlpSensitivityGroupsResponse,
   ListDlpSensitivityGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDlpSensitivityGroupsRequest,
   output: ListDlpSensitivityGroupsResponse,
   errors: [],
@@ -68978,7 +68885,7 @@ export interface CreateDlpSensitivityGroupRequest {
 }
 
 export const CreateDlpSensitivityGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -69016,7 +68923,7 @@ export interface CreateDlpSensitivityGroupResponse {
 }
 
 export const CreateDlpSensitivityGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -69047,7 +68954,7 @@ export const createDlpSensitivityGroup: API.OperationMethod<
   CreateDlpSensitivityGroupResponse,
   CreateDlpSensitivityGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpSensitivityGroupRequest,
   output: CreateDlpSensitivityGroupResponse,
   errors: [],
@@ -69072,7 +68979,7 @@ export interface UpdateDlpSensitivityGroupRequest {
 }
 
 export const UpdateDlpSensitivityGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sensitivityGroupId: Schema.String.pipe(T.HttpPath("sensitivityGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -69104,7 +69011,7 @@ export interface UpdateDlpSensitivityGroupResponse {
 }
 
 export const UpdateDlpSensitivityGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -69135,7 +69042,7 @@ export const updateDlpSensitivityGroup: API.OperationMethod<
   UpdateDlpSensitivityGroupResponse,
   UpdateDlpSensitivityGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDlpSensitivityGroupRequest,
   output: UpdateDlpSensitivityGroupResponse,
   errors: [],
@@ -69147,7 +69054,7 @@ export interface DeleteDlpSensitivityGroupRequest {
 }
 
 export const DeleteDlpSensitivityGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sensitivityGroupId: Schema.String.pipe(T.HttpPath("sensitivityGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -69162,7 +69069,7 @@ export const DeleteDlpSensitivityGroupRequest =
 export type DeleteDlpSensitivityGroupResponse = unknown;
 
 export const DeleteDlpSensitivityGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDlpSensitivityGroupResponse>;
 
@@ -69173,7 +69080,7 @@ export const deleteDlpSensitivityGroup: API.OperationMethod<
   DeleteDlpSensitivityGroupResponse,
   DeleteDlpSensitivityGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpSensitivityGroupRequest,
   output: DeleteDlpSensitivityGroupResponse,
   errors: [],
@@ -69190,7 +69097,7 @@ export interface GetDlpSensitivityGroupLevelRequest {
 }
 
 export const GetDlpSensitivityGroupLevelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sensitivityGroupId: Schema.String.pipe(T.HttpPath("sensitivityGroupId")),
       sensitivityLevelId: Schema.String.pipe(T.HttpPath("sensitivityLevelId")),
@@ -69212,7 +69119,7 @@ export interface GetDlpSensitivityGroupLevelResponse {
 }
 
 export const GetDlpSensitivityGroupLevelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -69239,7 +69146,7 @@ export const getDlpSensitivityGroupLevel: API.OperationMethod<
   GetDlpSensitivityGroupLevelResponse,
   GetDlpSensitivityGroupLevelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpSensitivityGroupLevelRequest,
   output: GetDlpSensitivityGroupLevelResponse,
   errors: [],
@@ -69251,7 +69158,7 @@ export interface ListDlpSensitivityGroupLevelsRequest {
 }
 
 export const ListDlpSensitivityGroupLevelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sensitivityGroupId: Schema.String.pipe(T.HttpPath("sensitivityGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -69274,7 +69181,7 @@ export interface ListDlpSensitivityGroupLevelsResponse {
 }
 
 export const ListDlpSensitivityGroupLevelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Tag),
     }),
@@ -69287,7 +69194,7 @@ export const listDlpSensitivityGroupLevels: API.PaginatedOperationMethod<
   ListDlpSensitivityGroupLevelsResponse,
   ListDlpSensitivityGroupLevelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDlpSensitivityGroupLevelsRequest,
   output: ListDlpSensitivityGroupLevelsResponse,
   errors: [],
@@ -69308,7 +69215,7 @@ export interface CreateDlpSensitivityGroupLevelRequest {
 }
 
 export const CreateDlpSensitivityGroupLevelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sensitivityGroupId: Schema.String.pipe(T.HttpPath("sensitivityGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -69331,7 +69238,7 @@ export interface CreateDlpSensitivityGroupLevelResponse {
 }
 
 export const CreateDlpSensitivityGroupLevelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -69358,7 +69265,7 @@ export const createDlpSensitivityGroupLevel: API.OperationMethod<
   CreateDlpSensitivityGroupLevelResponse,
   CreateDlpSensitivityGroupLevelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDlpSensitivityGroupLevelRequest,
   output: CreateDlpSensitivityGroupLevelResponse,
   errors: [],
@@ -69376,7 +69283,7 @@ export interface UpdateDlpSensitivityGroupLevelRequest {
 }
 
 export const UpdateDlpSensitivityGroupLevelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sensitivityGroupId: Schema.String.pipe(T.HttpPath("sensitivityGroupId")),
       sensitivityLevelId: Schema.String.pipe(T.HttpPath("sensitivityLevelId")),
@@ -69400,7 +69307,7 @@ export interface UpdateDlpSensitivityGroupLevelResponse {
 }
 
 export const UpdateDlpSensitivityGroupLevelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -69427,7 +69334,7 @@ export const updateDlpSensitivityGroupLevel: API.OperationMethod<
   UpdateDlpSensitivityGroupLevelResponse,
   UpdateDlpSensitivityGroupLevelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDlpSensitivityGroupLevelRequest,
   output: UpdateDlpSensitivityGroupLevelResponse,
   errors: [],
@@ -69440,7 +69347,7 @@ export interface DeleteDlpSensitivityGroupLevelRequest {
 }
 
 export const DeleteDlpSensitivityGroupLevelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sensitivityGroupId: Schema.String.pipe(T.HttpPath("sensitivityGroupId")),
       sensitivityLevelId: Schema.String.pipe(T.HttpPath("sensitivityLevelId")),
@@ -69456,7 +69363,7 @@ export const DeleteDlpSensitivityGroupLevelRequest =
 export type DeleteDlpSensitivityGroupLevelResponse = unknown;
 
 export const DeleteDlpSensitivityGroupLevelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDlpSensitivityGroupLevelResponse>;
 
@@ -69467,7 +69374,7 @@ export const deleteDlpSensitivityGroupLevel: API.OperationMethod<
   DeleteDlpSensitivityGroupLevelResponse,
   DeleteDlpSensitivityGroupLevelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpSensitivityGroupLevelRequest,
   output: DeleteDlpSensitivityGroupLevelResponse,
   errors: [],
@@ -69483,7 +69390,7 @@ export interface GetDlpSensitivityGroupLevelOrderRequest {
 }
 
 export const GetDlpSensitivityGroupLevelOrderRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sensitivityGroupId: Schema.String.pipe(T.HttpPath("sensitivityGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -69500,7 +69407,7 @@ export interface GetDlpSensitivityGroupLevelOrderResponse {
 }
 
 export const GetDlpSensitivityGroupLevelOrderResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       levelIds: Schema.Array(Schema.String),
     })
@@ -69515,7 +69422,7 @@ export const getDlpSensitivityGroupLevelOrder: API.OperationMethod<
   GetDlpSensitivityGroupLevelOrderResponse,
   GetDlpSensitivityGroupLevelOrderError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpSensitivityGroupLevelOrderRequest,
   output: GetDlpSensitivityGroupLevelOrderResponse,
   errors: [],
@@ -69530,7 +69437,7 @@ export interface PutDlpSensitivityGroupLevelOrderRequest {
 }
 
 export const PutDlpSensitivityGroupLevelOrderRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sensitivityGroupId: Schema.String.pipe(T.HttpPath("sensitivityGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -69549,7 +69456,7 @@ export interface PutDlpSensitivityGroupLevelOrderResponse {
 }
 
 export const PutDlpSensitivityGroupLevelOrderResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       levelIds: Schema.Array(Schema.String),
     })
@@ -69564,7 +69471,7 @@ export const putDlpSensitivityGroupLevelOrder: API.OperationMethod<
   PutDlpSensitivityGroupLevelOrderResponse,
   PutDlpSensitivityGroupLevelOrderError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDlpSensitivityGroupLevelOrderRequest,
   output: PutDlpSensitivityGroupLevelOrderResponse,
   errors: [],
@@ -69578,13 +69485,12 @@ export interface GetDlpSettingRequest {
   accountId: string;
 }
 
-export const GetDlpSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/dlp/settings" }),
-    ),
+export const GetDlpSettingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/dlp/settings" }),
+  ),
 ) as unknown as Schema.Codec<GetDlpSettingRequest>;
 
 export interface GetDlpSettingResponse {
@@ -69605,21 +69511,20 @@ export interface GetDlpSettingResponse {
   };
 }
 
-export const GetDlpSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      aiContextAnalysis: Schema.Boolean,
-      ocr: Schema.Boolean,
-      payloadLogging: PayloadLogging,
-    })
-      .pipe(
-        Schema.encodeKeys({
-          aiContextAnalysis: "ai_context_analysis",
-          ocr: "ocr",
-          payloadLogging: "payload_logging",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetDlpSettingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    aiContextAnalysis: Schema.Boolean,
+    ocr: Schema.Boolean,
+    payloadLogging: PayloadLogging,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        aiContextAnalysis: "ai_context_analysis",
+        ocr: "ocr",
+        payloadLogging: "payload_logging",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetDlpSettingResponse>;
 
 export type GetDlpSettingError = DefaultErrors;
@@ -69629,7 +69534,7 @@ export const getDlpSetting: API.OperationMethod<
   GetDlpSettingResponse,
   GetDlpSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDlpSettingRequest,
   output: GetDlpSettingResponse,
   errors: [],
@@ -69649,23 +69554,22 @@ export interface PutDlpSettingRequest {
   };
 }
 
-export const PutDlpSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      aiContextAnalysis: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      ocr: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      payloadLogging: Schema.optional(PayloadLogging2),
-    }).pipe(
-      Schema.encodeKeys({
-        aiContextAnalysis: "ai_context_analysis",
-        ocr: "ocr",
-        payloadLogging: "payload_logging",
-      }),
-      T.Http({ method: "PUT", path: "/accounts/{account_id}/dlp/settings" }),
+export const PutDlpSettingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    aiContextAnalysis: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
     ),
+    ocr: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    payloadLogging: Schema.optional(PayloadLogging2),
+  }).pipe(
+    Schema.encodeKeys({
+      aiContextAnalysis: "ai_context_analysis",
+      ocr: "ocr",
+      payloadLogging: "payload_logging",
+    }),
+    T.Http({ method: "PUT", path: "/accounts/{account_id}/dlp/settings" }),
+  ),
 ) as unknown as Schema.Codec<PutDlpSettingRequest>;
 
 export interface PutDlpSettingResponse {
@@ -69686,21 +69590,20 @@ export interface PutDlpSettingResponse {
   };
 }
 
-export const PutDlpSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      aiContextAnalysis: Schema.Boolean,
-      ocr: Schema.Boolean,
-      payloadLogging: PayloadLogging,
-    })
-      .pipe(
-        Schema.encodeKeys({
-          aiContextAnalysis: "ai_context_analysis",
-          ocr: "ocr",
-          payloadLogging: "payload_logging",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PutDlpSettingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    aiContextAnalysis: Schema.Boolean,
+    ocr: Schema.Boolean,
+    payloadLogging: PayloadLogging,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        aiContextAnalysis: "ai_context_analysis",
+        ocr: "ocr",
+        payloadLogging: "payload_logging",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutDlpSettingResponse>;
 
 export type PutDlpSettingError = DefaultErrors;
@@ -69710,7 +69613,7 @@ export const putDlpSetting: API.OperationMethod<
   PutDlpSettingResponse,
   PutDlpSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDlpSettingRequest,
   output: PutDlpSettingResponse,
   errors: [],
@@ -69731,7 +69634,7 @@ export interface PatchDlpSettingRequest {
 }
 
 export const PatchDlpSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       aiContextAnalysis: Schema.optional(
@@ -69768,7 +69671,7 @@ export interface PatchDlpSettingResponse {
 }
 
 export const PatchDlpSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aiContextAnalysis: Schema.Boolean,
       ocr: Schema.Boolean,
@@ -69791,7 +69694,7 @@ export const patchDlpSetting: API.OperationMethod<
   PatchDlpSettingResponse,
   PatchDlpSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDlpSettingRequest,
   output: PatchDlpSettingResponse,
   errors: [],
@@ -69802,7 +69705,7 @@ export interface DeleteDlpSettingRequest {
 }
 
 export const DeleteDlpSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -69829,7 +69732,7 @@ export interface DeleteDlpSettingResponse {
 }
 
 export const DeleteDlpSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aiContextAnalysis: Schema.Boolean,
       ocr: Schema.Boolean,
@@ -69852,7 +69755,7 @@ export const deleteDlpSetting: API.OperationMethod<
   DeleteDlpSettingResponse,
   DeleteDlpSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDlpSettingRequest,
   output: DeleteDlpSettingResponse,
   errors: [],
@@ -69868,7 +69771,7 @@ export interface ResetExpirationGatewayRuleRequest {
 }
 
 export const ResetExpirationGatewayRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -70059,7 +69962,7 @@ export interface ResetExpirationGatewayRuleResponse {
 }
 
 export const ResetExpirationGatewayRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       action: Schema.Union([
         Schema.Literals([
@@ -70149,7 +70052,7 @@ export const resetExpirationGatewayRule: API.OperationMethod<
   ResetExpirationGatewayRuleResponse,
   ResetExpirationGatewayRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetExpirationGatewayRuleRequest,
   output: ResetExpirationGatewayRuleResponse,
   errors: [],
@@ -70163,11 +70066,10 @@ export interface ListGatewaysRequest {
   accountId: string;
 }
 
-export const ListGatewaysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/gateway" })),
+export const ListGatewaysRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/gateway" })),
 ) as unknown as Schema.Codec<ListGatewaysRequest>;
 
 export interface ListGatewaysResponse {
@@ -70179,21 +70081,20 @@ export interface ListGatewaysResponse {
   providerName?: string | null;
 }
 
-export const ListGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      gatewayTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      providerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          gatewayTag: "gateway_tag",
-          providerName: "provider_name",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const ListGatewaysResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    gatewayTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    providerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        gatewayTag: "gateway_tag",
+        providerName: "provider_name",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ListGatewaysResponse>;
 
 export type ListGatewaysError = DefaultErrors;
@@ -70203,7 +70104,7 @@ export const listGateways: API.OperationMethod<
   ListGatewaysResponse,
   ListGatewaysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListGatewaysRequest,
   output: ListGatewaysResponse,
   errors: [],
@@ -70213,11 +70114,10 @@ export interface CreateGatewayRequest {
   accountId: string;
 }
 
-export const CreateGatewayRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(T.Http({ method: "POST", path: "/accounts/{account_id}/gateway" })),
+export const CreateGatewayRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(T.Http({ method: "POST", path: "/accounts/{account_id}/gateway" })),
 ) as unknown as Schema.Codec<CreateGatewayRequest>;
 
 export interface CreateGatewayResponse {
@@ -70229,21 +70129,20 @@ export interface CreateGatewayResponse {
   providerName?: string | null;
 }
 
-export const CreateGatewayResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      gatewayTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      providerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          gatewayTag: "gateway_tag",
-          providerName: "provider_name",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateGatewayResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    gatewayTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    providerName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        gatewayTag: "gateway_tag",
+        providerName: "provider_name",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateGatewayResponse>;
 
 export type CreateGatewayError = DefaultErrors;
@@ -70253,7 +70152,7 @@ export const createGateway: API.OperationMethod<
   CreateGatewayResponse,
   CreateGatewayError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGatewayRequest,
   output: CreateGatewayResponse,
   errors: [],
@@ -70269,7 +70168,7 @@ export interface ListGatewayAppTypesRequest {
 }
 
 export const ListGatewayAppTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -70298,7 +70197,7 @@ export interface ListGatewayAppTypesResponse {
 }
 
 export const ListGatewayAppTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -70316,7 +70215,7 @@ export const listGatewayAppTypes: API.PaginatedOperationMethod<
   ListGatewayAppTypesResponse,
   ListGatewayAppTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayAppTypesRequest,
   output: ListGatewayAppTypesResponse,
   errors: [],
@@ -70335,7 +70234,7 @@ export interface GetGatewayAuditSshSettingRequest {
 }
 
 export const GetGatewayAuditSshSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -70356,7 +70255,7 @@ export interface GetGatewayAuditSshSettingResponse {
 }
 
 export const GetGatewayAuditSshSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       publicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -70381,7 +70280,7 @@ export const getGatewayAuditSshSetting: API.OperationMethod<
   GetGatewayAuditSshSettingResponse,
   GetGatewayAuditSshSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGatewayAuditSshSettingRequest,
   output: GetGatewayAuditSshSettingResponse,
   errors: [],
@@ -70395,7 +70294,7 @@ export interface PutGatewayAuditSshSettingRequest {
 }
 
 export const PutGatewayAuditSshSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       publicKey: Schema.String,
@@ -70418,7 +70317,7 @@ export interface PutGatewayAuditSshSettingResponse {
 }
 
 export const PutGatewayAuditSshSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       publicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -70443,7 +70342,7 @@ export const putGatewayAuditSshSetting: API.OperationMethod<
   PutGatewayAuditSshSettingResponse,
   PutGatewayAuditSshSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutGatewayAuditSshSettingRequest,
   output: PutGatewayAuditSshSettingResponse,
   errors: [],
@@ -70459,7 +70358,7 @@ export interface ListGatewayCategoriesRequest {
 }
 
 export const ListGatewayCategoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -70504,7 +70403,7 @@ export interface ListGatewayCategoriesResponse {
 }
 
 export const ListGatewayCategoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListGatewayCategoriesResponseResult),
     }),
@@ -70517,7 +70416,7 @@ export const listGatewayCategories: API.PaginatedOperationMethod<
   ListGatewayCategoriesResponse,
   ListGatewayCategoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayCategoriesRequest,
   output: ListGatewayCategoriesResponse,
   errors: [],
@@ -70537,7 +70436,7 @@ export interface GetGatewayCertificateRequest {
 }
 
 export const GetGatewayCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -70579,7 +70478,7 @@ export interface GetGatewayCertificateResponse {
 }
 
 export const GetGatewayCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       bindingStatus: Schema.optional(
@@ -70644,7 +70543,7 @@ export const getGatewayCertificate: API.OperationMethod<
   GetGatewayCertificateResponse,
   GetGatewayCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGatewayCertificateRequest,
   output: GetGatewayCertificateResponse,
   errors: [GatewayCertificateNotFound, Forbidden],
@@ -70655,7 +70554,7 @@ export interface ListGatewayCertificatesRequest {
 }
 
 export const ListGatewayCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -70690,7 +70589,7 @@ export interface ListGatewayCertificatesResponse {
 }
 
 export const ListGatewayCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListGatewayCertificatesResponseResult),
     }),
@@ -70703,7 +70602,7 @@ export const listGatewayCertificates: API.PaginatedOperationMethod<
   ListGatewayCertificatesResponse,
   ListGatewayCertificatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayCertificatesRequest,
   output: ListGatewayCertificatesResponse,
   errors: [],
@@ -70721,7 +70620,7 @@ export interface CreateGatewayCertificateRequest {
 }
 
 export const CreateGatewayCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       validityPeriodDays: Schema.optional(Schema.Number),
@@ -70764,7 +70663,7 @@ export interface CreateGatewayCertificateResponse {
 }
 
 export const CreateGatewayCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       bindingStatus: Schema.optional(
@@ -70828,7 +70727,7 @@ export const createGatewayCertificate: API.OperationMethod<
   CreateGatewayCertificateResponse,
   CreateGatewayCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGatewayCertificateRequest,
   output: CreateGatewayCertificateResponse,
   errors: [GatewayCertificateQuotaReached],
@@ -70840,7 +70739,7 @@ export interface DeleteGatewayCertificateRequest {
 }
 
 export const DeleteGatewayCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -70882,7 +70781,7 @@ export interface DeleteGatewayCertificateResponse {
 }
 
 export const DeleteGatewayCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       bindingStatus: Schema.optional(
@@ -70947,7 +70846,7 @@ export const deleteGatewayCertificate: API.OperationMethod<
   DeleteGatewayCertificateResponse,
   DeleteGatewayCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGatewayCertificateRequest,
   output: DeleteGatewayCertificateResponse,
   errors: [GatewayCertificateNotFound, GatewayCertificateInUse],
@@ -70962,7 +70861,7 @@ export interface ActivateGatewayCertificateRequest {
 }
 
 export const ActivateGatewayCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -71005,7 +70904,7 @@ export interface ActivateGatewayCertificateResponse {
 }
 
 export const ActivateGatewayCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       bindingStatus: Schema.optional(
@@ -71069,7 +70968,7 @@ export const activateGatewayCertificate: API.OperationMethod<
   ActivateGatewayCertificateResponse,
   ActivateGatewayCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ActivateGatewayCertificateRequest,
   output: ActivateGatewayCertificateResponse,
   errors: [GatewayCertificateNotFound],
@@ -71084,7 +70983,7 @@ export interface DeactivateGatewayCertificateRequest {
 }
 
 export const DeactivateGatewayCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -71127,7 +71026,7 @@ export interface DeactivateGatewayCertificateResponse {
 }
 
 export const DeactivateGatewayCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       bindingStatus: Schema.optional(
@@ -71192,7 +71091,7 @@ export const deactivateGatewayCertificate: API.OperationMethod<
   DeactivateGatewayCertificateResponse,
   DeactivateGatewayCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeactivateGatewayCertificateRequest,
   output: DeactivateGatewayCertificateResponse,
   errors: [GatewayCertificateNotFound, GatewayCertificateInUse],
@@ -71207,7 +71106,7 @@ export interface GetGatewayConfigurationRequest {
 }
 
 export const GetGatewayConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -71290,7 +71189,7 @@ export interface GetGatewayConfigurationResponse {
 }
 
 export const GetGatewayConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       settings: Schema.optional(
@@ -71315,7 +71214,7 @@ export const getGatewayConfiguration: API.OperationMethod<
   GetGatewayConfigurationResponse,
   GetGatewayConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGatewayConfigurationRequest,
   output: GetGatewayConfigurationResponse,
   errors: [Forbidden],
@@ -71375,7 +71274,7 @@ export interface PutGatewayConfigurationRequest {
 }
 
 export const PutGatewayConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       settings: Schema.optional(GatewayConfigurationSettingsParam),
@@ -71459,7 +71358,7 @@ export interface PutGatewayConfigurationResponse {
 }
 
 export const PutGatewayConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       settings: Schema.optional(
@@ -71484,7 +71383,7 @@ export const putGatewayConfiguration: API.OperationMethod<
   PutGatewayConfigurationResponse,
   PutGatewayConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutGatewayConfigurationRequest,
   output: PutGatewayConfigurationResponse,
   errors: [],
@@ -71544,7 +71443,7 @@ export interface PatchGatewayConfigurationRequest {
 }
 
 export const PatchGatewayConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       settings: Schema.optional(GatewayConfigurationSettingsParam),
@@ -71628,7 +71527,7 @@ export interface PatchGatewayConfigurationResponse {
 }
 
 export const PatchGatewayConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       settings: Schema.optional(
@@ -71653,7 +71552,7 @@ export const patchGatewayConfiguration: API.OperationMethod<
   PatchGatewayConfigurationResponse,
   PatchGatewayConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchGatewayConfigurationRequest,
   output: PatchGatewayConfigurationResponse,
   errors: [Forbidden],
@@ -71668,7 +71567,7 @@ export interface GetGatewayConfigurationCustomCertificateRequest {
 }
 
 export const GetGatewayConfigurationCustomCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -71687,7 +71586,7 @@ export type GetGatewayConfigurationCustomCertificateResponse = {
 } | null;
 
 export const GetGatewayConfigurationCustomCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([CustomCertificateSettings, Schema.Null]),
   ) as unknown as Schema.Codec<GetGatewayConfigurationCustomCertificateResponse>;
 
@@ -71698,7 +71597,7 @@ export const getGatewayConfigurationCustomCertificate: API.OperationMethod<
   GetGatewayConfigurationCustomCertificateResponse,
   GetGatewayConfigurationCustomCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGatewayConfigurationCustomCertificateRequest,
   output: GetGatewayConfigurationCustomCertificateResponse,
   errors: [],
@@ -71713,17 +71612,16 @@ export interface GetGatewayListRequest {
   accountId: string;
 }
 
-export const GetGatewayListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      listId: Schema.String.pipe(T.HttpPath("listId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/gateway/lists/{listId}",
-      }),
-    ),
+export const GetGatewayListRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    listId: Schema.String.pipe(T.HttpPath("listId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/gateway/lists/{listId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetGatewayListRequest>;
 
 export interface GetGatewayListResponse {
@@ -71761,7 +71659,7 @@ export interface GetGatewayListResponse {
 }
 
 export const GetGatewayListResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -71817,7 +71715,7 @@ export const getGatewayList: API.OperationMethod<
   GetGatewayListResponse,
   GetGatewayListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGatewayListRequest,
   output: GetGatewayListResponse,
   errors: [GatewayListNotFound, Forbidden],
@@ -71841,7 +71739,7 @@ export interface ListGatewayListsRequest {
 }
 
 export const ListGatewayListsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       type: Schema.optional(
@@ -71898,7 +71796,7 @@ export interface ListGatewayListsResponse {
 }
 
 export const ListGatewayListsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
         Schema.Array(ListGatewayListsResponseResult),
@@ -71914,7 +71812,7 @@ export const listGatewayLists: API.PaginatedOperationMethod<
   ListGatewayListsResponse,
   ListGatewayListsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayListsRequest,
   output: ListGatewayListsResponse,
   errors: [],
@@ -71948,7 +71846,7 @@ export interface CreateGatewayListRequest {
 }
 
 export const CreateGatewayListRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -72006,7 +71904,7 @@ export interface CreateGatewayListResponse {
 }
 
 export const CreateGatewayListResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -72057,7 +71955,7 @@ export const createGatewayList: API.OperationMethod<
   CreateGatewayListResponse,
   CreateGatewayListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGatewayListRequest,
   output: CreateGatewayListResponse,
   errors: [],
@@ -72076,7 +71974,7 @@ export interface UpdateGatewayListRequest {
 }
 
 export const UpdateGatewayListRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       listId: Schema.String.pipe(T.HttpPath("listId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -72126,7 +72024,7 @@ export interface UpdateGatewayListResponse {
 }
 
 export const UpdateGatewayListResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -72179,7 +72077,7 @@ export const updateGatewayList: API.OperationMethod<
   UpdateGatewayListResponse,
   UpdateGatewayListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGatewayListRequest,
   output: UpdateGatewayListResponse,
   errors: [GatewayListNotFound],
@@ -72196,7 +72094,7 @@ export interface PatchGatewayListRequest {
 }
 
 export const PatchGatewayListRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       listId: Schema.String.pipe(T.HttpPath("listId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -72245,7 +72143,7 @@ export interface PatchGatewayListResponse {
 }
 
 export const PatchGatewayListResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -72298,7 +72196,7 @@ export const patchGatewayList: API.OperationMethod<
   PatchGatewayListResponse,
   PatchGatewayListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchGatewayListRequest,
   output: PatchGatewayListResponse,
   errors: [],
@@ -72310,7 +72208,7 @@ export interface DeleteGatewayListRequest {
 }
 
 export const DeleteGatewayListRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       listId: Schema.String.pipe(T.HttpPath("listId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -72325,7 +72223,7 @@ export const DeleteGatewayListRequest =
 export type DeleteGatewayListResponse = unknown;
 
 export const DeleteGatewayListResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteGatewayListResponse>;
 
@@ -72336,7 +72234,7 @@ export const deleteGatewayList: API.OperationMethod<
   DeleteGatewayListResponse,
   DeleteGatewayListError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGatewayListRequest,
   output: DeleteGatewayListResponse,
   errors: [GatewayListNotFound],
@@ -72352,7 +72250,7 @@ export interface ListGatewayListItemsRequest {
 }
 
 export const ListGatewayListItemsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       listId: Schema.String.pipe(T.HttpPath("listId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -72373,7 +72271,7 @@ export interface ListGatewayListItemsResponse {
 }
 
 export const ListGatewayListItemsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(GatewayItem),
     }),
@@ -72386,7 +72284,7 @@ export const listGatewayListItems: API.PaginatedOperationMethod<
   ListGatewayListItemsResponse,
   ListGatewayListItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayListItemsRequest,
   output: ListGatewayListItemsResponse,
   errors: [GatewayListNotFound],
@@ -72406,7 +72304,7 @@ export interface GetGatewayLocationRequest {
 }
 
 export const GetGatewayLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       locationId: Schema.String.pipe(T.HttpPath("locationId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -72456,7 +72354,7 @@ export interface GetGatewayLocationResponse {
 }
 
 export const GetGatewayLocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientDefault: Schema.optional(
@@ -72516,7 +72414,7 @@ export const getGatewayLocation: API.OperationMethod<
   GetGatewayLocationResponse,
   GetGatewayLocationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGatewayLocationRequest,
   output: GetGatewayLocationResponse,
   errors: [GatewayLocationNotFound, Forbidden],
@@ -72527,7 +72425,7 @@ export interface ListGatewayLocationsRequest {
 }
 
 export const ListGatewayLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -72575,7 +72473,7 @@ export interface ListGatewayLocationsResponse {
 }
 
 export const ListGatewayLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
         Schema.Array(ListGatewayLocationsResponseResult),
@@ -72591,7 +72489,7 @@ export const listGatewayLocations: API.PaginatedOperationMethod<
   ListGatewayLocationsResponse,
   ListGatewayLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayLocationsRequest,
   output: ListGatewayLocationsResponse,
   errors: [],
@@ -72628,7 +72526,7 @@ export interface CreateGatewayLocationRequest {
 }
 
 export const CreateGatewayLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -72693,7 +72591,7 @@ export interface CreateGatewayLocationResponse {
 }
 
 export const CreateGatewayLocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientDefault: Schema.optional(
@@ -72750,7 +72648,7 @@ export const createGatewayLocation: API.OperationMethod<
   CreateGatewayLocationResponse,
   CreateGatewayLocationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGatewayLocationRequest,
   output: CreateGatewayLocationResponse,
   errors: [],
@@ -72784,7 +72682,7 @@ export interface UpdateGatewayLocationRequest {
 }
 
 export const UpdateGatewayLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       locationId: Schema.String.pipe(T.HttpPath("locationId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -72850,7 +72748,7 @@ export interface UpdateGatewayLocationResponse {
 }
 
 export const UpdateGatewayLocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientDefault: Schema.optional(
@@ -72910,7 +72808,7 @@ export const updateGatewayLocation: API.OperationMethod<
   UpdateGatewayLocationResponse,
   UpdateGatewayLocationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGatewayLocationRequest,
   output: UpdateGatewayLocationResponse,
   errors: [GatewayLocationNotFound, CannotDemoteDefaultGatewayLocation],
@@ -72922,7 +72820,7 @@ export interface DeleteGatewayLocationRequest {
 }
 
 export const DeleteGatewayLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       locationId: Schema.String.pipe(T.HttpPath("locationId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -72937,7 +72835,7 @@ export const DeleteGatewayLocationRequest =
 export type DeleteGatewayLocationResponse = unknown;
 
 export const DeleteGatewayLocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteGatewayLocationResponse>;
 
@@ -72952,7 +72850,7 @@ export const deleteGatewayLocation: API.OperationMethod<
   DeleteGatewayLocationResponse,
   DeleteGatewayLocationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGatewayLocationRequest,
   output: DeleteGatewayLocationResponse,
   errors: [
@@ -72971,7 +72869,7 @@ export interface GetGatewayLoggingRequest {
 }
 
 export const GetGatewayLoggingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -72991,7 +72889,7 @@ export interface GetGatewayLoggingResponse {
 }
 
 export const GetGatewayLoggingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       redactPii: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       settingsByRuleType: Schema.optional(
@@ -73014,7 +72912,7 @@ export const getGatewayLogging: API.OperationMethod<
   GetGatewayLoggingResponse,
   GetGatewayLoggingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGatewayLoggingRequest,
   output: GetGatewayLoggingResponse,
   errors: [Forbidden],
@@ -73034,7 +72932,7 @@ export interface PutGatewayLoggingRequest {
 }
 
 export const PutGatewayLoggingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       redactPii: Schema.optional(Schema.Boolean),
@@ -73060,7 +72958,7 @@ export interface PutGatewayLoggingResponse {
 }
 
 export const PutGatewayLoggingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       redactPii: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       settingsByRuleType: Schema.optional(
@@ -73083,7 +72981,7 @@ export const putGatewayLogging: API.OperationMethod<
   PutGatewayLoggingResponse,
   PutGatewayLoggingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutGatewayLoggingRequest,
   output: PutGatewayLoggingResponse,
   errors: [],
@@ -73099,7 +72997,7 @@ export interface GetGatewayPacfileRequest {
 }
 
 export const GetGatewayPacfileRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       pacfileId: Schema.String.pipe(T.HttpPath("pacfileId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -73128,7 +73026,7 @@ export interface GetGatewayPacfileResponse {
 }
 
 export const GetGatewayPacfileResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       contents: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -73161,7 +73059,7 @@ export const getGatewayPacfile: API.OperationMethod<
   GetGatewayPacfileResponse,
   GetGatewayPacfileError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGatewayPacfileRequest,
   output: GetGatewayPacfileResponse,
   errors: [],
@@ -73172,7 +73070,7 @@ export interface ListGatewayPacfilesRequest {
 }
 
 export const ListGatewayPacfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -73196,7 +73094,7 @@ export interface ListGatewayPacfilesResponse {
 }
 
 export const ListGatewayPacfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListGatewayPacfilesResponseResult),
     }),
@@ -73209,7 +73107,7 @@ export const listGatewayPacfiles: API.PaginatedOperationMethod<
   ListGatewayPacfilesResponse,
   ListGatewayPacfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayPacfilesRequest,
   output: ListGatewayPacfilesResponse,
   errors: [],
@@ -73233,7 +73131,7 @@ export interface CreateGatewayPacfileRequest {
 }
 
 export const CreateGatewayPacfileRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       contents: Schema.String,
@@ -73265,7 +73163,7 @@ export interface CreateGatewayPacfileResponse {
 }
 
 export const CreateGatewayPacfileResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       contents: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -73298,7 +73196,7 @@ export const createGatewayPacfile: API.OperationMethod<
   CreateGatewayPacfileResponse,
   CreateGatewayPacfileError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGatewayPacfileRequest,
   output: CreateGatewayPacfileResponse,
   errors: [],
@@ -73317,7 +73215,7 @@ export interface UpdateGatewayPacfileRequest {
 }
 
 export const UpdateGatewayPacfileRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       pacfileId: Schema.String.pipe(T.HttpPath("pacfileId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -73349,7 +73247,7 @@ export interface UpdateGatewayPacfileResponse {
 }
 
 export const UpdateGatewayPacfileResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       contents: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -73382,7 +73280,7 @@ export const updateGatewayPacfile: API.OperationMethod<
   UpdateGatewayPacfileResponse,
   UpdateGatewayPacfileError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGatewayPacfileRequest,
   output: UpdateGatewayPacfileResponse,
   errors: [],
@@ -73394,7 +73292,7 @@ export interface DeleteGatewayPacfileRequest {
 }
 
 export const DeleteGatewayPacfileRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       pacfileId: Schema.String.pipe(T.HttpPath("pacfileId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -73409,7 +73307,7 @@ export const DeleteGatewayPacfileRequest =
 export type DeleteGatewayPacfileResponse = unknown;
 
 export const DeleteGatewayPacfileResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteGatewayPacfileResponse>;
 
@@ -73420,7 +73318,7 @@ export const deleteGatewayPacfile: API.OperationMethod<
   DeleteGatewayPacfileResponse,
   DeleteGatewayPacfileError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGatewayPacfileRequest,
   output: DeleteGatewayPacfileResponse,
   errors: [],
@@ -73436,7 +73334,7 @@ export interface GetGatewayProxyEndpointRequest {
 }
 
 export const GetGatewayProxyEndpointRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       proxyEndpointId: Schema.String.pipe(T.HttpPath("proxyEndpointId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -73468,7 +73366,7 @@ export type GetGatewayProxyEndpointResponse =
     };
 
 export const GetGatewayProxyEndpointResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       ZeroTrustGatewayProxyEndpointIP,
       ZeroTrustGatewayProxyEndpointIdentity,
@@ -73485,7 +73383,7 @@ export const getGatewayProxyEndpoint: API.OperationMethod<
   GetGatewayProxyEndpointResponse,
   GetGatewayProxyEndpointError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGatewayProxyEndpointRequest,
   output: GetGatewayProxyEndpointResponse,
   errors: [ProxyEndpointNotFound, Forbidden],
@@ -73496,7 +73394,7 @@ export interface ListGatewayProxyEndpointsRequest {
 }
 
 export const ListGatewayProxyEndpointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -73532,7 +73430,7 @@ export interface ListGatewayProxyEndpointsResponse {
 }
 
 export const ListGatewayProxyEndpointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
         Schema.Array(
@@ -73553,7 +73451,7 @@ export const listGatewayProxyEndpoints: API.PaginatedOperationMethod<
   ListGatewayProxyEndpointsResponse,
   ListGatewayProxyEndpointsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayProxyEndpointsRequest,
   output: ListGatewayProxyEndpointsResponse,
   errors: [],
@@ -73574,7 +73472,7 @@ export interface CreateGatewayProxyEndpointRequest {
 }
 
 export const CreateGatewayProxyEndpointRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -73610,7 +73508,7 @@ export type CreateGatewayProxyEndpointResponse =
     };
 
 export const CreateGatewayProxyEndpointResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       ZeroTrustGatewayProxyEndpointIP,
       ZeroTrustGatewayProxyEndpointIdentity,
@@ -73627,7 +73525,7 @@ export const createGatewayProxyEndpoint: API.OperationMethod<
   CreateGatewayProxyEndpointResponse,
   CreateGatewayProxyEndpointError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGatewayProxyEndpointRequest,
   output: CreateGatewayProxyEndpointResponse,
   errors: [IpProxyEndpointsRequireEnterprise, Forbidden],
@@ -73644,7 +73542,7 @@ export interface PatchGatewayProxyEndpointRequest {
 }
 
 export const PatchGatewayProxyEndpointRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       proxyEndpointId: Schema.String.pipe(T.HttpPath("proxyEndpointId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -73678,7 +73576,7 @@ export type PatchGatewayProxyEndpointResponse =
     };
 
 export const PatchGatewayProxyEndpointResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       ZeroTrustGatewayProxyEndpointIP,
       ZeroTrustGatewayProxyEndpointIdentity,
@@ -73694,7 +73592,7 @@ export const patchGatewayProxyEndpoint: API.OperationMethod<
   PatchGatewayProxyEndpointResponse,
   PatchGatewayProxyEndpointError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchGatewayProxyEndpointRequest,
   output: PatchGatewayProxyEndpointResponse,
   errors: [ProxyEndpointNotFound],
@@ -73706,7 +73604,7 @@ export interface DeleteGatewayProxyEndpointRequest {
 }
 
 export const DeleteGatewayProxyEndpointRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       proxyEndpointId: Schema.String.pipe(T.HttpPath("proxyEndpointId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -73721,7 +73619,7 @@ export const DeleteGatewayProxyEndpointRequest =
 export type DeleteGatewayProxyEndpointResponse = unknown;
 
 export const DeleteGatewayProxyEndpointResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteGatewayProxyEndpointResponse>;
 
@@ -73734,7 +73632,7 @@ export const deleteGatewayProxyEndpoint: API.OperationMethod<
   DeleteGatewayProxyEndpointResponse,
   DeleteGatewayProxyEndpointError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGatewayProxyEndpointRequest,
   output: DeleteGatewayProxyEndpointResponse,
   errors: [ProxyEndpointNotFound],
@@ -73749,17 +73647,16 @@ export interface GetGatewayRuleRequest {
   accountId: string;
 }
 
-export const GetGatewayRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/gateway/rules/{ruleId}",
-      }),
-    ),
+export const GetGatewayRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/gateway/rules/{ruleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetGatewayRuleRequest>;
 
 export interface GetGatewayRuleResponse {
@@ -73941,7 +73838,7 @@ export interface GetGatewayRuleResponse {
 }
 
 export const GetGatewayRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       action: Schema.Union([
         Schema.Literals([
@@ -74031,7 +73928,7 @@ export const getGatewayRule: API.OperationMethod<
   GetGatewayRuleResponse,
   GetGatewayRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGatewayRuleRequest,
   output: GetGatewayRuleResponse,
   errors: [],
@@ -74042,7 +73939,7 @@ export interface ListGatewayRulesRequest {
 }
 
 export const ListGatewayRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -74217,7 +74114,7 @@ export interface ListGatewayRulesResponse {
 }
 
 export const ListGatewayRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListGatewayRulesResponseResult),
     }),
@@ -74230,7 +74127,7 @@ export const listGatewayRules: API.PaginatedOperationMethod<
   ListGatewayRulesResponse,
   ListGatewayRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGatewayRulesRequest,
   output: ListGatewayRulesResponse,
   errors: [],
@@ -74388,7 +74285,7 @@ export interface CreateGatewayRuleRequest {
 }
 
 export const CreateGatewayRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       action: Schema.Union([
@@ -74628,7 +74525,7 @@ export interface CreateGatewayRuleResponse {
 }
 
 export const CreateGatewayRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       action: Schema.Union([
         Schema.Literals([
@@ -74718,7 +74615,7 @@ export const createGatewayRule: API.OperationMethod<
   CreateGatewayRuleResponse,
   CreateGatewayRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGatewayRuleRequest,
   output: CreateGatewayRuleResponse,
   errors: [],
@@ -74873,7 +74770,7 @@ export interface UpdateGatewayRuleRequest {
 }
 
 export const UpdateGatewayRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -75117,7 +75014,7 @@ export interface UpdateGatewayRuleResponse {
 }
 
 export const UpdateGatewayRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       action: Schema.Union([
         Schema.Literals([
@@ -75207,7 +75104,7 @@ export const updateGatewayRule: API.OperationMethod<
   UpdateGatewayRuleResponse,
   UpdateGatewayRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGatewayRuleRequest,
   output: UpdateGatewayRuleResponse,
   errors: [],
@@ -75219,7 +75116,7 @@ export interface DeleteGatewayRuleRequest {
 }
 
 export const DeleteGatewayRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -75234,7 +75131,7 @@ export const DeleteGatewayRuleRequest =
 export type DeleteGatewayRuleResponse = unknown;
 
 export const DeleteGatewayRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteGatewayRuleResponse>;
 
@@ -75245,7 +75142,7 @@ export const deleteGatewayRule: API.OperationMethod<
   DeleteGatewayRuleResponse,
   DeleteGatewayRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGatewayRuleRequest,
   output: DeleteGatewayRuleResponse,
   errors: [],
@@ -75274,7 +75171,7 @@ export interface GetIdentityProviderForZoneRequest extends GetIdentityProviderBa
 }
 
 export const GetIdentityProviderForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetIdentityProviderBaseFields,
@@ -75287,7 +75184,7 @@ export const GetIdentityProviderForAccountRequest =
   ) as unknown as Schema.Codec<GetIdentityProviderForAccountRequest>;
 
 export const GetIdentityProviderForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetIdentityProviderBaseFields,
@@ -75960,7 +75857,7 @@ export type GetIdentityProviderResponse =
     };
 
 export const GetIdentityProviderResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       AzureAD2,
       AccessCentrify,
@@ -75987,7 +75884,7 @@ export const getIdentityProviderForAccount: API.OperationMethod<
   GetIdentityProviderResponse,
   GetIdentityProviderError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityProviderForAccountRequest,
   output: GetIdentityProviderResponse,
   errors: [AccessIdentityProviderNotFound, Forbidden],
@@ -75998,7 +75895,7 @@ export const getIdentityProviderForZone: API.OperationMethod<
   GetIdentityProviderResponse,
   GetIdentityProviderError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIdentityProviderForZoneRequest,
   output: GetIdentityProviderResponse,
   errors: [AccessIdentityProviderNotFound, Forbidden],
@@ -76028,7 +75925,7 @@ export interface ListIdentityProvidersForZoneRequest extends ListIdentityProvide
 }
 
 export const ListIdentityProvidersForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListIdentityProvidersBaseFields,
@@ -76041,7 +75938,7 @@ export const ListIdentityProvidersForAccountRequest =
   ) as unknown as Schema.Codec<ListIdentityProvidersForAccountRequest>;
 
 export const ListIdentityProvidersForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListIdentityProvidersBaseFields,
@@ -76733,7 +76630,7 @@ export interface ListIdentityProvidersResponse {
 }
 
 export const ListIdentityProvidersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
         Schema.Array(
@@ -76770,7 +76667,7 @@ export const listIdentityProvidersForAccount: API.PaginatedOperationMethod<
   ListIdentityProvidersResponse,
   ListIdentityProvidersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityProvidersForAccountRequest,
   output: ListIdentityProvidersResponse,
   errors: [],
@@ -76788,7 +76685,7 @@ export const listIdentityProvidersForZone: API.PaginatedOperationMethod<
   ListIdentityProvidersResponse,
   ListIdentityProvidersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityProvidersForZoneRequest,
   output: ListIdentityProvidersResponse,
   errors: [],
@@ -76907,7 +76804,7 @@ export interface CreateIdentityProviderForZoneRequest extends CreateIdentityProv
 }
 
 export const CreateIdentityProviderForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateIdentityProviderBaseFields,
@@ -76927,7 +76824,7 @@ export const CreateIdentityProviderForAccountRequest =
   ) as unknown as Schema.Codec<CreateIdentityProviderForAccountRequest>;
 
 export const CreateIdentityProviderForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateIdentityProviderBaseFields,
@@ -77607,7 +77504,7 @@ export type CreateIdentityProviderResponse =
     };
 
 export const CreateIdentityProviderResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       AzureAD2,
       AccessCentrify,
@@ -77631,7 +77528,7 @@ export const createIdentityProviderForAccount: API.OperationMethod<
   CreateIdentityProviderResponse,
   CreateIdentityProviderError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIdentityProviderForAccountRequest,
   output: CreateIdentityProviderResponse,
   errors: [],
@@ -77642,7 +77539,7 @@ export const createIdentityProviderForZone: API.OperationMethod<
   CreateIdentityProviderResponse,
   CreateIdentityProviderError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIdentityProviderForZoneRequest,
   output: CreateIdentityProviderResponse,
   errors: [],
@@ -77756,7 +77653,7 @@ export interface UpdateIdentityProviderForZoneRequest extends UpdateIdentityProv
 }
 
 export const UpdateIdentityProviderForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...UpdateIdentityProviderBaseFields,
@@ -77776,7 +77673,7 @@ export const UpdateIdentityProviderForAccountRequest =
   ) as unknown as Schema.Codec<UpdateIdentityProviderForAccountRequest>;
 
 export const UpdateIdentityProviderForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...UpdateIdentityProviderBaseFields,
@@ -78456,7 +78353,7 @@ export type UpdateIdentityProviderResponse =
     };
 
 export const UpdateIdentityProviderResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       AzureAD2,
       AccessCentrify,
@@ -78482,7 +78379,7 @@ export const updateIdentityProviderForAccount: API.OperationMethod<
   UpdateIdentityProviderResponse,
   UpdateIdentityProviderError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIdentityProviderForAccountRequest,
   output: UpdateIdentityProviderResponse,
   errors: [AccessIdentityProviderNotFound],
@@ -78493,7 +78390,7 @@ export const updateIdentityProviderForZone: API.OperationMethod<
   UpdateIdentityProviderResponse,
   UpdateIdentityProviderError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIdentityProviderForZoneRequest,
   output: UpdateIdentityProviderResponse,
   errors: [AccessIdentityProviderNotFound],
@@ -78518,7 +78415,7 @@ export interface DeleteIdentityProviderForZoneRequest extends DeleteIdentityProv
 }
 
 export const DeleteIdentityProviderForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DeleteIdentityProviderBaseFields,
@@ -78531,7 +78428,7 @@ export const DeleteIdentityProviderForAccountRequest =
   ) as unknown as Schema.Codec<DeleteIdentityProviderForAccountRequest>;
 
 export const DeleteIdentityProviderForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DeleteIdentityProviderBaseFields,
@@ -78549,7 +78446,7 @@ export interface DeleteIdentityProviderResponse {
 }
 
 export const DeleteIdentityProviderResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -78564,7 +78461,7 @@ export const deleteIdentityProviderForAccount: API.OperationMethod<
   DeleteIdentityProviderResponse,
   DeleteIdentityProviderError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentityProviderForAccountRequest,
   output: DeleteIdentityProviderResponse,
   errors: [AccessIdentityProviderNotFound],
@@ -78575,7 +78472,7 @@ export const deleteIdentityProviderForZone: API.OperationMethod<
   DeleteIdentityProviderResponse,
   DeleteIdentityProviderError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentityProviderForZoneRequest,
   output: DeleteIdentityProviderResponse,
   errors: [AccessIdentityProviderNotFound],
@@ -78592,7 +78489,7 @@ export interface CreateIdentityProviderSamlCertificateRequest {
 }
 
 export const CreateIdentityProviderSamlCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       identityProviderId: Schema.String.pipe(T.HttpPath("identityProviderId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -78623,7 +78520,7 @@ export interface CreateIdentityProviderSamlCertificateResponse {
 }
 
 export const CreateIdentityProviderSamlCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       uid: Schema.String,
@@ -78654,7 +78551,7 @@ export const createIdentityProviderSamlCertificate: API.OperationMethod<
   CreateIdentityProviderSamlCertificateResponse,
   CreateIdentityProviderSamlCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIdentityProviderSamlCertificateRequest,
   output: CreateIdentityProviderSamlCertificateResponse,
   errors: [],
@@ -78679,7 +78576,7 @@ export interface ListIdentityProviderScimGroupsRequest {
 }
 
 export const ListIdentityProviderScimGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       identityProviderId: Schema.String.pipe(T.HttpPath("identityProviderId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -78717,7 +78614,7 @@ export interface ListIdentityProviderScimGroupsResponse {
 }
 
 export const ListIdentityProviderScimGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ZeroTrustGroup),
       resultInfo: Schema.optional(
@@ -78736,7 +78633,7 @@ export const listIdentityProviderScimGroups: API.PaginatedOperationMethod<
   ListIdentityProviderScimGroupsResponse,
   ListIdentityProviderScimGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityProviderScimGroupsRequest,
   output: ListIdentityProviderScimGroupsResponse,
   errors: [],
@@ -78772,7 +78669,7 @@ export interface ListIdentityProviderScimUsersRequest {
 }
 
 export const ListIdentityProviderScimUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       identityProviderId: Schema.String.pipe(T.HttpPath("identityProviderId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -78820,7 +78717,7 @@ export interface ListIdentityProviderScimUsersResponse {
 }
 
 export const ListIdentityProviderScimUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(AccessUser),
       resultInfo: Schema.optional(
@@ -78839,7 +78736,7 @@ export const listIdentityProviderScimUsers: API.PaginatedOperationMethod<
   ListIdentityProviderScimUsersResponse,
   ListIdentityProviderScimUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityProviderScimUsersRequest,
   output: ListIdentityProviderScimUsersResponse,
   errors: [],
@@ -78863,7 +78760,7 @@ export interface GetNetworkHostnameRouteRequest {
 }
 
 export const GetNetworkHostnameRouteRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       hostnameRouteId: Schema.String.pipe(T.HttpPath("hostnameRouteId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -78904,7 +78801,7 @@ export interface GetNetworkHostnameRouteResponse {
 }
 
 export const GetNetworkHostnameRouteResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -78956,7 +78853,7 @@ export const getNetworkHostnameRoute: API.OperationMethod<
   GetNetworkHostnameRouteResponse,
   GetNetworkHostnameRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkHostnameRouteRequest,
   output: GetNetworkHostnameRouteResponse,
   errors: [HostnameRouteNotFound, Forbidden],
@@ -78982,7 +78879,7 @@ export interface ListNetworkHostnameRoutesRequest {
 }
 
 export const ListNetworkHostnameRoutesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -79032,7 +78929,7 @@ export interface ListNetworkHostnameRoutesResponse {
 }
 
 export const ListNetworkHostnameRoutesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListNetworkHostnameRoutesResponseResult),
       resultInfo: Schema.optional(
@@ -79051,7 +78948,7 @@ export const listNetworkHostnameRoutes: API.PaginatedOperationMethod<
   ListNetworkHostnameRoutesResponse,
   ListNetworkHostnameRoutesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkHostnameRoutesRequest,
   output: ListNetworkHostnameRoutesResponse,
   errors: [Forbidden],
@@ -79076,7 +78973,7 @@ export interface CreateNetworkHostnameRouteRequest {
 }
 
 export const CreateNetworkHostnameRouteRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       comment: Schema.optional(Schema.String),
@@ -79124,7 +79021,7 @@ export interface CreateNetworkHostnameRouteResponse {
 }
 
 export const CreateNetworkHostnameRouteResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -79176,7 +79073,7 @@ export const createNetworkHostnameRoute: API.OperationMethod<
   CreateNetworkHostnameRouteResponse,
   CreateNetworkHostnameRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkHostnameRouteRequest,
   output: CreateNetworkHostnameRouteResponse,
   errors: [HostnameRouteAlreadyRouted, Forbidden],
@@ -79195,7 +79092,7 @@ export interface PatchNetworkHostnameRouteRequest {
 }
 
 export const PatchNetworkHostnameRouteRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       hostnameRouteId: Schema.String.pipe(T.HttpPath("hostnameRouteId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -79244,7 +79141,7 @@ export interface PatchNetworkHostnameRouteResponse {
 }
 
 export const PatchNetworkHostnameRouteResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -79297,7 +79194,7 @@ export const patchNetworkHostnameRoute: API.OperationMethod<
   PatchNetworkHostnameRouteResponse,
   PatchNetworkHostnameRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchNetworkHostnameRouteRequest,
   output: PatchNetworkHostnameRouteResponse,
   errors: [HostnameRouteNotFound, HostnameRouteAlreadyRouted, Forbidden],
@@ -79310,7 +79207,7 @@ export interface DeleteNetworkHostnameRouteRequest {
 }
 
 export const DeleteNetworkHostnameRouteRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       hostnameRouteId: Schema.String.pipe(T.HttpPath("hostnameRouteId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -79351,7 +79248,7 @@ export interface DeleteNetworkHostnameRouteResponse {
 }
 
 export const DeleteNetworkHostnameRouteResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -79403,7 +79300,7 @@ export const deleteNetworkHostnameRoute: API.OperationMethod<
   DeleteNetworkHostnameRouteResponse,
   DeleteNetworkHostnameRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkHostnameRouteRequest,
   output: DeleteNetworkHostnameRouteResponse,
   errors: [HostnameRouteNotFound, Forbidden],
@@ -79420,7 +79317,7 @@ export interface GetNetworkRouteRequest {
 }
 
 export const GetNetworkRouteRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       routeId: Schema.String.pipe(T.HttpPath("routeId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -79450,7 +79347,7 @@ export interface GetNetworkRouteResponse {
 }
 
 export const GetNetworkRouteResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -79483,7 +79380,7 @@ export const getNetworkRoute: API.OperationMethod<
   GetNetworkRouteResponse,
   GetNetworkRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkRouteRequest,
   output: GetNetworkRouteResponse,
   errors: [],
@@ -79524,7 +79421,7 @@ export interface ListNetworkRoutesRequest {
 }
 
 export const ListNetworkRoutesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -79597,7 +79494,7 @@ export interface ListNetworkRoutesResponse {
 }
 
 export const ListNetworkRoutesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListNetworkRoutesResponseResult),
       resultInfo: Schema.optional(
@@ -79616,7 +79513,7 @@ export const listNetworkRoutes: API.PaginatedOperationMethod<
   ListNetworkRoutesResponse,
   ListNetworkRoutesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkRoutesRequest,
   output: ListNetworkRoutesResponse,
   errors: [],
@@ -79643,7 +79540,7 @@ export interface CreateNetworkRouteRequest {
 }
 
 export const CreateNetworkRouteRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       network: Schema.String,
@@ -79679,7 +79576,7 @@ export interface CreateNetworkRouteResponse {
 }
 
 export const CreateNetworkRouteResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -79712,7 +79609,7 @@ export const createNetworkRoute: API.OperationMethod<
   CreateNetworkRouteResponse,
   CreateNetworkRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkRouteRequest,
   output: CreateNetworkRouteResponse,
   errors: [],
@@ -79733,7 +79630,7 @@ export interface PatchNetworkRouteRequest {
 }
 
 export const PatchNetworkRouteRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       routeId: Schema.String.pipe(T.HttpPath("routeId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -79773,7 +79670,7 @@ export interface PatchNetworkRouteResponse {
 }
 
 export const PatchNetworkRouteResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -79806,7 +79703,7 @@ export const patchNetworkRoute: API.OperationMethod<
   PatchNetworkRouteResponse,
   PatchNetworkRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchNetworkRouteRequest,
   output: PatchNetworkRouteResponse,
   errors: [],
@@ -79819,7 +79716,7 @@ export interface DeleteNetworkRouteRequest {
 }
 
 export const DeleteNetworkRouteRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       routeId: Schema.String.pipe(T.HttpPath("routeId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -79849,7 +79746,7 @@ export interface DeleteNetworkRouteResponse {
 }
 
 export const DeleteNetworkRouteResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -79882,7 +79779,7 @@ export const deleteNetworkRoute: API.OperationMethod<
   DeleteNetworkRouteResponse,
   DeleteNetworkRouteError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkRouteRequest,
   output: DeleteNetworkRouteResponse,
   errors: [],
@@ -79903,7 +79800,7 @@ export interface GetNetworkRouteIpRequest {
 }
 
 export const GetNetworkRouteIpRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ip: Schema.String.pipe(T.HttpPath("ip")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -79954,7 +79851,7 @@ export interface GetNetworkRouteIpResponse {
 }
 
 export const GetNetworkRouteIpResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -80011,7 +79908,7 @@ export const getNetworkRouteIp: API.OperationMethod<
   GetNetworkRouteIpResponse,
   GetNetworkRouteIpError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkRouteIpRequest,
   output: GetNetworkRouteIpResponse,
   errors: [],
@@ -80034,7 +79931,7 @@ export interface CreateNetworkRouteNetworkRequest {
 }
 
 export const CreateNetworkRouteNetworkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ipNetworkEncoded: Schema.String.pipe(T.HttpPath("ipNetworkEncoded")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -80072,7 +79969,7 @@ export interface CreateNetworkRouteNetworkResponse {
 }
 
 export const CreateNetworkRouteNetworkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -80105,7 +80002,7 @@ export const createNetworkRouteNetwork: API.OperationMethod<
   CreateNetworkRouteNetworkResponse,
   CreateNetworkRouteNetworkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkRouteNetworkRequest,
   output: CreateNetworkRouteNetworkResponse,
   errors: [],
@@ -80118,7 +80015,7 @@ export interface PatchNetworkRouteNetworkRequest {
 }
 
 export const PatchNetworkRouteNetworkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ipNetworkEncoded: Schema.String.pipe(T.HttpPath("ipNetworkEncoded")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -80148,7 +80045,7 @@ export interface PatchNetworkRouteNetworkResponse {
 }
 
 export const PatchNetworkRouteNetworkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -80181,7 +80078,7 @@ export const patchNetworkRouteNetwork: API.OperationMethod<
   PatchNetworkRouteNetworkResponse,
   PatchNetworkRouteNetworkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchNetworkRouteNetworkRequest,
   output: PatchNetworkRouteNetworkResponse,
   errors: [],
@@ -80208,7 +80105,7 @@ export interface DeleteNetworkRouteNetworkRequest {
 }
 
 export const DeleteNetworkRouteNetworkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ipNetworkEncoded: Schema.String.pipe(T.HttpPath("ipNetworkEncoded")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -80256,7 +80153,7 @@ export interface DeleteNetworkRouteNetworkResponse {
 }
 
 export const DeleteNetworkRouteNetworkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -80289,7 +80186,7 @@ export const deleteNetworkRouteNetwork: API.OperationMethod<
   DeleteNetworkRouteNetworkResponse,
   DeleteNetworkRouteNetworkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkRouteNetworkRequest,
   output: DeleteNetworkRouteNetworkResponse,
   errors: [],
@@ -80325,7 +80222,7 @@ export interface ListNetworkSubnetsRequest {
 }
 
 export const ListNetworkSubnetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -80380,7 +80277,7 @@ export interface ListNetworkSubnetsResponse {
 }
 
 export const ListNetworkSubnetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Subnet),
       resultInfo: Schema.optional(
@@ -80399,7 +80296,7 @@ export const listNetworkSubnets: API.PaginatedOperationMethod<
   ListNetworkSubnetsResponse,
   ListNetworkSubnetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkSubnetsRequest,
   output: ListNetworkSubnetsResponse,
   errors: [],
@@ -80429,7 +80326,7 @@ export interface PatchNetworkSubnetCloudflareSourceRequest {
 }
 
 export const PatchNetworkSubnetCloudflareSourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       addressFamily: Schema.String.pipe(T.HttpPath("addressFamily")),
@@ -80464,7 +80361,7 @@ export interface PatchNetworkSubnetCloudflareSourceResponse {
 }
 
 export const PatchNetworkSubnetCloudflareSourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -80507,7 +80404,7 @@ export const patchNetworkSubnetCloudflareSource: API.OperationMethod<
   PatchNetworkSubnetCloudflareSourceResponse,
   PatchNetworkSubnetCloudflareSourceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchNetworkSubnetCloudflareSourceRequest,
   output: PatchNetworkSubnetCloudflareSourceResponse,
   errors: [],
@@ -80524,7 +80421,7 @@ export interface GetNetworkSubnetWarpRequest {
 }
 
 export const GetNetworkSubnetWarpRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       subnetId: Schema.String.pipe(T.HttpPath("subnetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -80556,7 +80453,7 @@ export interface GetNetworkSubnetWarpResponse {
 }
 
 export const GetNetworkSubnetWarpResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -80599,7 +80496,7 @@ export const getNetworkSubnetWarp: API.OperationMethod<
   GetNetworkSubnetWarpResponse,
   GetNetworkSubnetWarpError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkSubnetWarpRequest,
   output: GetNetworkSubnetWarpResponse,
   errors: [],
@@ -80619,7 +80516,7 @@ export interface CreateNetworkSubnetWarpRequest {
 }
 
 export const CreateNetworkSubnetWarpRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -80660,7 +80557,7 @@ export interface CreateNetworkSubnetWarpResponse {
 }
 
 export const CreateNetworkSubnetWarpResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -80703,7 +80600,7 @@ export const createNetworkSubnetWarp: API.OperationMethod<
   CreateNetworkSubnetWarpResponse,
   CreateNetworkSubnetWarpError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkSubnetWarpRequest,
   output: CreateNetworkSubnetWarpResponse,
   errors: [],
@@ -80724,7 +80621,7 @@ export interface PatchNetworkSubnetWarpRequest {
 }
 
 export const PatchNetworkSubnetWarpRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       subnetId: Schema.String.pipe(T.HttpPath("subnetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -80766,7 +80663,7 @@ export interface PatchNetworkSubnetWarpResponse {
 }
 
 export const PatchNetworkSubnetWarpResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -80809,7 +80706,7 @@ export const patchNetworkSubnetWarp: API.OperationMethod<
   PatchNetworkSubnetWarpResponse,
   PatchNetworkSubnetWarpError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchNetworkSubnetWarpRequest,
   output: PatchNetworkSubnetWarpResponse,
   errors: [],
@@ -80822,7 +80719,7 @@ export interface DeleteNetworkSubnetWarpRequest {
 }
 
 export const DeleteNetworkSubnetWarpRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       subnetId: Schema.String.pipe(T.HttpPath("subnetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -80854,7 +80751,7 @@ export interface DeleteNetworkSubnetWarpResponse {
 }
 
 export const DeleteNetworkSubnetWarpResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -80897,7 +80794,7 @@ export const deleteNetworkSubnetWarp: API.OperationMethod<
   DeleteNetworkSubnetWarpResponse,
   DeleteNetworkSubnetWarpError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkSubnetWarpRequest,
   output: DeleteNetworkSubnetWarpResponse,
   errors: [],
@@ -80914,7 +80811,7 @@ export interface GetNetworkVirtualNetworkRequest {
 }
 
 export const GetNetworkVirtualNetworkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       virtualNetworkId: Schema.String.pipe(T.HttpPath("virtualNetworkId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -80942,7 +80839,7 @@ export interface GetNetworkVirtualNetworkResponse {
 }
 
 export const GetNetworkVirtualNetworkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       comment: Schema.String,
@@ -80974,7 +80871,7 @@ export const getNetworkVirtualNetwork: API.OperationMethod<
   GetNetworkVirtualNetworkResponse,
   GetNetworkVirtualNetworkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkVirtualNetworkRequest,
   output: GetNetworkVirtualNetworkResponse,
   errors: [VirtualNetworkNotFound, Forbidden],
@@ -80996,7 +80893,7 @@ export interface ListNetworkVirtualNetworksRequest {
 }
 
 export const ListNetworkVirtualNetworksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
@@ -81032,7 +80929,7 @@ export interface ListNetworkVirtualNetworksResponse {
 }
 
 export const ListNetworkVirtualNetworksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
         Schema.Array(ListNetworkVirtualNetworksResponseResult),
@@ -81048,7 +80945,7 @@ export const listNetworkVirtualNetworks: API.PaginatedOperationMethod<
   ListNetworkVirtualNetworksResponse,
   ListNetworkVirtualNetworksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkVirtualNetworksRequest,
   output: ListNetworkVirtualNetworksResponse,
   errors: [],
@@ -81072,7 +80969,7 @@ export interface CreateNetworkVirtualNetworkRequest {
 }
 
 export const CreateNetworkVirtualNetworkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -81109,7 +81006,7 @@ export interface CreateNetworkVirtualNetworkResponse {
 }
 
 export const CreateNetworkVirtualNetworkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       comment: Schema.String,
@@ -81140,7 +81037,7 @@ export const createNetworkVirtualNetwork: API.OperationMethod<
   CreateNetworkVirtualNetworkResponse,
   CreateNetworkVirtualNetworkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkVirtualNetworkRequest,
   output: CreateNetworkVirtualNetworkResponse,
   errors: [VirtualNetworkConflict],
@@ -81159,7 +81056,7 @@ export interface PatchNetworkVirtualNetworkRequest {
 }
 
 export const PatchNetworkVirtualNetworkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       virtualNetworkId: Schema.String.pipe(T.HttpPath("virtualNetworkId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -81195,7 +81092,7 @@ export interface PatchNetworkVirtualNetworkResponse {
 }
 
 export const PatchNetworkVirtualNetworkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       comment: Schema.String,
@@ -81226,7 +81123,7 @@ export const patchNetworkVirtualNetwork: API.OperationMethod<
   PatchNetworkVirtualNetworkResponse,
   PatchNetworkVirtualNetworkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchNetworkVirtualNetworkRequest,
   output: PatchNetworkVirtualNetworkResponse,
   errors: [VirtualNetworkNotFound],
@@ -81239,7 +81136,7 @@ export interface DeleteNetworkVirtualNetworkRequest {
 }
 
 export const DeleteNetworkVirtualNetworkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       virtualNetworkId: Schema.String.pipe(T.HttpPath("virtualNetworkId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -81267,7 +81164,7 @@ export interface DeleteNetworkVirtualNetworkResponse {
 }
 
 export const DeleteNetworkVirtualNetworkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       comment: Schema.String,
@@ -81299,7 +81196,7 @@ export const deleteNetworkVirtualNetwork: API.OperationMethod<
   DeleteNetworkVirtualNetworkResponse,
   DeleteNetworkVirtualNetworkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkVirtualNetworkRequest,
   output: DeleteNetworkVirtualNetworkResponse,
   errors: [VirtualNetworkNotFound, Forbidden],
@@ -81324,7 +81221,7 @@ export interface ListOrganizationsForZoneRequest extends ListOrganizationsBaseRe
 }
 
 export const ListOrganizationsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListOrganizationsBaseFields,
@@ -81337,7 +81234,7 @@ export const ListOrganizationsForAccountRequest =
   ) as unknown as Schema.Codec<ListOrganizationsForAccountRequest>;
 
 export const ListOrganizationsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListOrganizationsBaseFields,
@@ -81404,7 +81301,7 @@ export interface ListOrganizationsResponse {
 }
 
 export const ListOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       allowAuthenticateViaWarp: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -81476,7 +81373,7 @@ export const listOrganizationsForAccount: API.OperationMethod<
   ListOrganizationsResponse,
   ListOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsForAccountRequest,
   output: ListOrganizationsResponse,
   errors: [OrganizationNotFound],
@@ -81487,7 +81384,7 @@ export const listOrganizationsForZone: API.OperationMethod<
   ListOrganizationsResponse,
   ListOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListOrganizationsForZoneRequest,
   output: ListOrganizationsResponse,
   errors: [OrganizationNotFound],
@@ -81588,7 +81485,7 @@ export interface CreateOrganizationForZoneRequest extends CreateOrganizationBase
 }
 
 export const CreateOrganizationForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateOrganizationBaseFields,
@@ -81619,7 +81516,7 @@ export const CreateOrganizationForAccountRequest =
   ) as unknown as Schema.Codec<CreateOrganizationForAccountRequest>;
 
 export const CreateOrganizationForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateOrganizationBaseFields,
@@ -81704,7 +81601,7 @@ export interface CreateOrganizationResponse {
 }
 
 export const CreateOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       allowAuthenticateViaWarp: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -81776,7 +81673,7 @@ export const createOrganizationForAccount: API.OperationMethod<
   CreateOrganizationResponse,
   CreateOrganizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationForAccountRequest,
   output: CreateOrganizationResponse,
   errors: [OrganizationAlreadyExists],
@@ -81787,7 +81684,7 @@ export const createOrganizationForZone: API.OperationMethod<
   CreateOrganizationResponse,
   CreateOrganizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationForZoneRequest,
   output: CreateOrganizationResponse,
   errors: [OrganizationAlreadyExists],
@@ -81891,7 +81788,7 @@ export interface UpdateOrganizationForZoneRequest extends UpdateOrganizationBase
 }
 
 export const UpdateOrganizationForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...UpdateOrganizationBaseFields,
@@ -81923,7 +81820,7 @@ export const UpdateOrganizationForAccountRequest =
   ) as unknown as Schema.Codec<UpdateOrganizationForAccountRequest>;
 
 export const UpdateOrganizationForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...UpdateOrganizationBaseFields,
@@ -82009,7 +81906,7 @@ export interface UpdateOrganizationResponse {
 }
 
 export const UpdateOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       allowAuthenticateViaWarp: Schema.optional(
         Schema.Union([Schema.Boolean, Schema.Null]),
@@ -82081,7 +81978,7 @@ export const updateOrganizationForAccount: API.OperationMethod<
   UpdateOrganizationResponse,
   UpdateOrganizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationForAccountRequest,
   output: UpdateOrganizationResponse,
   errors: [],
@@ -82092,7 +81989,7 @@ export const updateOrganizationForZone: API.OperationMethod<
   UpdateOrganizationResponse,
   UpdateOrganizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationForZoneRequest,
   output: UpdateOrganizationResponse,
   errors: [],
@@ -82108,7 +82005,7 @@ export interface GetOrganizationDohRequest {
 }
 
 export const GetOrganizationDohRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -82134,7 +82031,7 @@ export interface GetOrganizationDohResponse {
 }
 
 export const GetOrganizationDohResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -82165,7 +82062,7 @@ export const getOrganizationDoh: API.OperationMethod<
   GetOrganizationDohResponse,
   GetOrganizationDohError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationDohRequest,
   output: GetOrganizationDohResponse,
   errors: [],
@@ -82181,7 +82078,7 @@ export interface PutOrganizationDohRequest {
 }
 
 export const PutOrganizationDohRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       dohJwtDuration: Schema.optional(Schema.String),
@@ -82213,7 +82110,7 @@ export interface PutOrganizationDohResponse {
 }
 
 export const PutOrganizationDohResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       clientId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -82244,7 +82141,7 @@ export const putOrganizationDoh: API.OperationMethod<
   PutOrganizationDohResponse,
   PutOrganizationDohError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutOrganizationDohRequest,
   output: PutOrganizationDohResponse,
   errors: [],
@@ -82269,7 +82166,7 @@ export interface NetworkPathDexTracerouteTestRequest {
 }
 
 export const NetworkPathDexTracerouteTestRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       testId: Schema.String.pipe(T.HttpPath("testId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -82313,7 +82210,7 @@ export interface NetworkPathDexTracerouteTestResponse {
 }
 
 export const NetworkPathDexTracerouteTestResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       deviceName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -82334,7 +82231,7 @@ export const networkPathDexTracerouteTest: API.OperationMethod<
   NetworkPathDexTracerouteTestResponse,
   NetworkPathDexTracerouteTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: NetworkPathDexTracerouteTestRequest,
   output: NetworkPathDexTracerouteTestResponse,
   errors: [],
@@ -82351,7 +82248,7 @@ export interface GetPemAccessSamlCertificateRequest {
 }
 
 export const GetPemAccessSamlCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       samlCERTSetId: Schema.String.pipe(T.HttpPath("samlCERTSetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -82366,7 +82263,7 @@ export const GetPemAccessSamlCertificateRequest =
 export type GetPemAccessSamlCertificateResponse = unknown;
 
 export const GetPemAccessSamlCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<GetPemAccessSamlCertificateResponse>;
 
@@ -82377,7 +82274,7 @@ export const getPemAccessSamlCertificate: API.OperationMethod<
   GetPemAccessSamlCertificateResponse,
   GetPemAccessSamlCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPemAccessSamlCertificateRequest,
   output: GetPemAccessSamlCertificateResponse,
   errors: [],
@@ -82401,7 +82298,7 @@ export interface BulkPutAccessInfrastructureTargetsRequest {
 }
 
 export const BulkPutAccessInfrastructureTargetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       body: Schema.Array(Body).pipe(T.HttpBody()),
@@ -82433,7 +82330,7 @@ export interface BulkPutAccessInfrastructureTargetsResponse {
 }
 
 export const BulkPutAccessInfrastructureTargetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessInfrastructureTargetsResponseResult),
     }),
@@ -82446,7 +82343,7 @@ export const bulkPutAccessInfrastructureTargets: API.PaginatedOperationMethod<
   BulkPutAccessInfrastructureTargetsResponse,
   BulkPutAccessInfrastructureTargetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkPutAccessInfrastructureTargetsRequest,
   output: BulkPutAccessInfrastructureTargetsResponse,
   errors: [],
@@ -82467,7 +82364,7 @@ export interface GetResourceLibraryApplicationRequest {
 }
 
 export const GetResourceLibraryApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -82519,7 +82416,7 @@ export interface GetResourceLibraryApplicationResponse {
 }
 
 export const GetResourceLibraryApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       applicationConfidenceScore: Schema.Number,
@@ -82579,7 +82476,7 @@ export const getResourceLibraryApplication: API.OperationMethod<
   GetResourceLibraryApplicationResponse,
   GetResourceLibraryApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceLibraryApplicationRequest,
   output: GetResourceLibraryApplicationResponse,
   errors: [],
@@ -82601,7 +82498,7 @@ export interface ListResourceLibraryApplicationsRequest {
 }
 
 export const ListResourceLibraryApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -82641,7 +82538,7 @@ export interface ListResourceLibraryApplicationsResponse {
 }
 
 export const ListResourceLibraryApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListResourceLibraryApplicationsResponseResult),
     }),
@@ -82654,7 +82551,7 @@ export const listResourceLibraryApplications: API.PaginatedOperationMethod<
   ListResourceLibraryApplicationsResponse,
   ListResourceLibraryApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceLibraryApplicationsRequest,
   output: ListResourceLibraryApplicationsResponse,
   errors: [],
@@ -82675,7 +82572,7 @@ export interface GetResourceLibraryCategoryRequest {
 }
 
 export const GetResourceLibraryCategoryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -82699,7 +82596,7 @@ export interface GetResourceLibraryCategoryResponse {
 }
 
 export const GetResourceLibraryCategoryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -82724,7 +82621,7 @@ export const getResourceLibraryCategory: API.OperationMethod<
   GetResourceLibraryCategoryResponse,
   GetResourceLibraryCategoryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceLibraryCategoryRequest,
   output: GetResourceLibraryCategoryResponse,
   errors: [],
@@ -82740,7 +82637,7 @@ export interface ListResourceLibraryCategoriesRequest {
 }
 
 export const ListResourceLibraryCategoriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
@@ -82763,7 +82660,7 @@ export interface ListResourceLibraryCategoriesResponse {
 }
 
 export const ListResourceLibraryCategoriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListResourceLibraryCategoriesResponseResult),
     }),
@@ -82776,7 +82673,7 @@ export const listResourceLibraryCategories: API.PaginatedOperationMethod<
   ListResourceLibraryCategoriesResponse,
   ListResourceLibraryCategoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceLibraryCategoriesRequest,
   output: ListResourceLibraryCategoriesResponse,
   errors: [],
@@ -82795,17 +82692,16 @@ export interface GetRiskScoringRequest {
   accountId: string;
 }
 
-export const GetRiskScoringRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      userId: Schema.String.pipe(T.HttpPath("userId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/zt_risk_scoring/{userId}",
-      }),
-    ),
+export const GetRiskScoringRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    userId: Schema.String.pipe(T.HttpPath("userId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/zt_risk_scoring/{userId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetRiskScoringRequest>;
 
 export interface GetRiskScoringResponse {
@@ -82823,7 +82719,7 @@ export interface GetRiskScoringResponse {
 }
 
 export const GetRiskScoringResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       email: Schema.String,
       events: Schema.Array(Event),
@@ -82860,7 +82756,7 @@ export const getRiskScoring: API.OperationMethod<
   GetRiskScoringResponse,
   GetRiskScoringError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRiskScoringRequest,
   output: GetRiskScoringResponse,
   errors: [],
@@ -82872,7 +82768,7 @@ export interface ResetRiskScoringRequest {
 }
 
 export const ResetRiskScoringRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userId: Schema.String.pipe(T.HttpPath("userId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -82887,7 +82783,7 @@ export const ResetRiskScoringRequest =
 export type ResetRiskScoringResponse = unknown;
 
 export const ResetRiskScoringResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<ResetRiskScoringResponse>;
 
@@ -82898,7 +82794,7 @@ export const resetRiskScoring: API.OperationMethod<
   ResetRiskScoringResponse,
   ResetRiskScoringError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetRiskScoringRequest,
   output: ResetRiskScoringResponse,
   errors: [],
@@ -82913,7 +82809,7 @@ export interface GetRiskScoringBehaviourRequest {
 }
 
 export const GetRiskScoringBehaviourRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -82929,7 +82825,7 @@ export interface GetRiskScoringBehaviourResponse {
 }
 
 export const GetRiskScoringBehaviourResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       behaviors: Schema.Record(Schema.String, Schema.Unknown),
     }).pipe(T.ResponsePath("result")),
@@ -82942,7 +82838,7 @@ export const getRiskScoringBehaviour: API.OperationMethod<
   GetRiskScoringBehaviourResponse,
   GetRiskScoringBehaviourError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRiskScoringBehaviourRequest,
   output: GetRiskScoringBehaviourResponse,
   errors: [],
@@ -82956,7 +82852,7 @@ export interface PutRiskScoringBehaviourRequest {
 }
 
 export const PutRiskScoringBehaviourRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       behaviors: Schema.Record(Schema.String, Schema.Unknown),
@@ -82973,7 +82869,7 @@ export interface PutRiskScoringBehaviourResponse {
 }
 
 export const PutRiskScoringBehaviourResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       behaviors: Schema.Record(Schema.String, Schema.Unknown),
     }).pipe(T.ResponsePath("result")),
@@ -82986,7 +82882,7 @@ export const putRiskScoringBehaviour: API.OperationMethod<
   PutRiskScoringBehaviourResponse,
   PutRiskScoringBehaviourError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRiskScoringBehaviourRequest,
   output: PutRiskScoringBehaviourResponse,
   errors: [],
@@ -83002,7 +82898,7 @@ export interface GetRiskScoringIntegrationRequest {
 }
 
 export const GetRiskScoringIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       integrationId: Schema.String.pipe(T.HttpPath("integrationId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -83033,7 +82929,7 @@ export interface GetRiskScoringIntegrationResponse {
 }
 
 export const GetRiskScoringIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountTag: Schema.String,
@@ -83069,7 +82965,7 @@ export const getRiskScoringIntegration: API.OperationMethod<
   GetRiskScoringIntegrationResponse,
   GetRiskScoringIntegrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRiskScoringIntegrationRequest,
   output: GetRiskScoringIntegrationResponse,
   errors: [RiskScoringIntegrationNotFound, Forbidden],
@@ -83080,7 +82976,7 @@ export interface ListRiskScoringIntegrationsRequest {
 }
 
 export const ListRiskScoringIntegrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -83105,7 +83001,7 @@ export interface ListRiskScoringIntegrationsResponse {
 }
 
 export const ListRiskScoringIntegrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListRiskScoringIntegrationsResponseResult),
     }),
@@ -83118,7 +83014,7 @@ export const listRiskScoringIntegrations: API.PaginatedOperationMethod<
   ListRiskScoringIntegrationsResponse,
   ListRiskScoringIntegrationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRiskScoringIntegrationsRequest,
   output: ListRiskScoringIntegrationsResponse,
   errors: [Forbidden],
@@ -83140,7 +83036,7 @@ export interface CreateRiskScoringIntegrationRequest {
 }
 
 export const CreateRiskScoringIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       integrationType: Schema.Literal("Okta"),
@@ -83178,7 +83074,7 @@ export interface CreateRiskScoringIntegrationResponse {
 }
 
 export const CreateRiskScoringIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountTag: Schema.String,
@@ -83211,7 +83107,7 @@ export const createRiskScoringIntegration: API.OperationMethod<
   CreateRiskScoringIntegrationResponse,
   CreateRiskScoringIntegrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRiskScoringIntegrationRequest,
   output: CreateRiskScoringIntegrationResponse,
   errors: [Forbidden],
@@ -83230,7 +83126,7 @@ export interface UpdateRiskScoringIntegrationRequest {
 }
 
 export const UpdateRiskScoringIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       integrationId: Schema.String.pipe(T.HttpPath("integrationId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -83269,7 +83165,7 @@ export interface UpdateRiskScoringIntegrationResponse {
 }
 
 export const UpdateRiskScoringIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountTag: Schema.String,
@@ -83305,7 +83201,7 @@ export const updateRiskScoringIntegration: API.OperationMethod<
   UpdateRiskScoringIntegrationResponse,
   UpdateRiskScoringIntegrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRiskScoringIntegrationRequest,
   output: UpdateRiskScoringIntegrationResponse,
   errors: [RiskScoringIntegrationNotFound, Forbidden],
@@ -83317,7 +83213,7 @@ export interface DeleteRiskScoringIntegrationRequest {
 }
 
 export const DeleteRiskScoringIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       integrationId: Schema.String.pipe(T.HttpPath("integrationId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -83332,7 +83228,7 @@ export const DeleteRiskScoringIntegrationRequest =
 export type DeleteRiskScoringIntegrationResponse = unknown;
 
 export const DeleteRiskScoringIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteRiskScoringIntegrationResponse>;
 
@@ -83346,7 +83242,7 @@ export const deleteRiskScoringIntegration: API.OperationMethod<
   DeleteRiskScoringIntegrationResponse,
   DeleteRiskScoringIntegrationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRiskScoringIntegrationRequest,
   output: DeleteRiskScoringIntegrationResponse,
   errors: [RiskScoringIntegrationNotFound, Forbidden],
@@ -83362,7 +83258,7 @@ export interface GetRiskScoringIntegrationReferenceRequest {
 }
 
 export const GetRiskScoringIntegrationReferenceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       referenceId: Schema.String.pipe(T.HttpPath("referenceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -83393,7 +83289,7 @@ export interface GetRiskScoringIntegrationReferenceResponse {
 }
 
 export const GetRiskScoringIntegrationReferenceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountTag: Schema.String,
@@ -83426,7 +83322,7 @@ export const getRiskScoringIntegrationReference: API.OperationMethod<
   GetRiskScoringIntegrationReferenceResponse,
   GetRiskScoringIntegrationReferenceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRiskScoringIntegrationReferenceRequest,
   output: GetRiskScoringIntegrationReferenceResponse,
   errors: [],
@@ -83441,7 +83337,7 @@ export interface GetRiskScoringSummaryRequest {
 }
 
 export const GetRiskScoringSummaryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -83464,7 +83360,7 @@ export interface GetRiskScoringSummaryResponse {
 }
 
 export const GetRiskScoringSummaryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       users: Schema.Array(User2),
     }).pipe(T.ResponsePath("result")),
@@ -83477,7 +83373,7 @@ export const getRiskScoringSummary: API.OperationMethod<
   GetRiskScoringSummaryResponse,
   GetRiskScoringSummaryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRiskScoringSummaryRequest,
   output: GetRiskScoringSummaryResponse,
   errors: [],
@@ -83494,7 +83390,7 @@ export interface PatchSeatRequest {
   body: { accessSeat: boolean; gatewaySeat: boolean; seatUid: string }[];
 }
 
-export const PatchSeatRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PatchSeatRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     body: Schema.Array(Body2).pipe(T.HttpBody()),
@@ -83513,11 +83409,10 @@ export interface PatchSeatResponse {
   }[];
 }
 
-export const PatchSeatResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(PatchSeatResponseResult),
-    }),
+export const PatchSeatResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(PatchSeatResponseResult),
+  }),
 ) as unknown as Schema.Codec<PatchSeatResponse>;
 
 export type PatchSeatError = DefaultErrors;
@@ -83527,7 +83422,7 @@ export const patchSeat: API.PaginatedOperationMethod<
   PatchSeatResponse,
   PatchSeatError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PatchSeatRequest,
   output: PatchSeatResponse,
   errors: [],
@@ -83546,7 +83441,7 @@ export interface RotateSeedGatewayAuditSshSettingRequest {
 }
 
 export const RotateSeedGatewayAuditSshSettingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -83567,7 +83462,7 @@ export interface RotateSeedGatewayAuditSshSettingResponse {
 }
 
 export const RotateSeedGatewayAuditSshSettingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       publicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -83592,7 +83487,7 @@ export const rotateSeedGatewayAuditSshSetting: API.OperationMethod<
   RotateSeedGatewayAuditSshSettingResponse,
   RotateSeedGatewayAuditSshSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RotateSeedGatewayAuditSshSettingRequest,
   output: RotateSeedGatewayAuditSshSettingResponse,
   errors: [],
@@ -83607,7 +83502,7 @@ export interface ListTenantGatewayRuleRequest {
 }
 
 export const ListTenantGatewayRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -83785,7 +83680,7 @@ export interface ListTenantGatewayRuleResponse {
 }
 
 export const ListTenantGatewayRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListGatewayRulesResponseResult),
     }),
@@ -83798,7 +83693,7 @@ export const listTenantGatewayRule: API.PaginatedOperationMethod<
   ListTenantGatewayRuleResponse,
   ListTenantGatewayRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTenantGatewayRuleRequest,
   output: ListTenantGatewayRuleResponse,
   errors: [],
@@ -83826,7 +83721,7 @@ export interface OverTimeDexFleetStatusRequest {
 }
 
 export const OverTimeDexFleetStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       from: Schema.String.pipe(T.HttpQuery("from")),
@@ -83862,7 +83757,7 @@ export interface OverTimeDexFleetStatusResponse {
 }
 
 export const OverTimeDexFleetStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deviceStats: Schema.optional(Schema.Union([DeviceStats2, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -83875,7 +83770,7 @@ export const overTimeDexFleetStatus: API.OperationMethod<
   OverTimeDexFleetStatusResponse,
   OverTimeDexFleetStatusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OverTimeDexFleetStatusRequest,
   output: OverTimeDexFleetStatusResponse,
   errors: [],
@@ -83904,7 +83799,7 @@ export interface RevokeTokensAccessApplicationForZoneRequest extends RevokeToken
 }
 
 export const RevokeTokensAccessApplicationForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...RevokeTokensAccessApplicationBaseFields,
@@ -83917,7 +83812,7 @@ export const RevokeTokensAccessApplicationForAccountRequest =
   ) as unknown as Schema.Codec<RevokeTokensAccessApplicationForAccountRequest>;
 
 export const RevokeTokensAccessApplicationForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...RevokeTokensAccessApplicationBaseFields,
@@ -83932,7 +83827,7 @@ export const RevokeTokensAccessApplicationForZoneRequest =
 export type RevokeTokensAccessApplicationResponse = unknown;
 
 export const RevokeTokensAccessApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<RevokeTokensAccessApplicationResponse>;
 
@@ -83943,7 +83838,7 @@ export const revokeTokensAccessApplicationForAccount: API.OperationMethod<
   RevokeTokensAccessApplicationResponse,
   RevokeTokensAccessApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeTokensAccessApplicationForAccountRequest,
   output: RevokeTokensAccessApplicationResponse,
   errors: [],
@@ -83954,7 +83849,7 @@ export const revokeTokensAccessApplicationForZone: API.OperationMethod<
   RevokeTokensAccessApplicationResponse,
   RevokeTokensAccessApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeTokensAccessApplicationForZoneRequest,
   output: RevokeTokensAccessApplicationResponse,
   errors: [],
@@ -84000,53 +83895,50 @@ export interface ListTunnelsRequest {
   wasInactiveAt?: string;
 }
 
-export const ListTunnelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      excludePrefix: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("exclude_prefix"),
-      ),
-      existedAt: Schema.optional(Schema.String).pipe(T.HttpQuery("existed_at")),
-      includePrefix: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("include_prefix"),
-      ),
-      isDeleted: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("is_deleted"),
-      ),
-      name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-      status: Schema.optional(
+export const ListTunnelsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    excludePrefix: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("exclude_prefix"),
+    ),
+    existedAt: Schema.optional(Schema.String).pipe(T.HttpQuery("existed_at")),
+    includePrefix: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("include_prefix"),
+    ),
+    isDeleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("is_deleted")),
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["inactive", "degraded", "healthy", "down"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("status")),
+    tunTypes: Schema.optional(
+      Schema.Array(
         Schema.Union([
-          Schema.Literals(["inactive", "degraded", "healthy", "down"]),
+          Schema.Literals([
+            "cfd_tunnel",
+            "warp_connector",
+            "warp",
+            "magic",
+            "ip_sec",
+            "gre",
+            "cni",
+          ]),
           Schema.String,
         ]),
-      ).pipe(T.HttpQuery("status")),
-      tunTypes: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "cfd_tunnel",
-              "warp_connector",
-              "warp",
-              "magic",
-              "ip_sec",
-              "gre",
-              "cni",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ).pipe(T.HttpQuery("tun_types")),
-      uuid: Schema.optional(Schema.String).pipe(T.HttpQuery("uuid")),
-      wasActiveAt: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("was_active_at"),
       ),
-      wasInactiveAt: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("was_inactive_at"),
-      ),
-    }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/tunnels" })),
+    ).pipe(T.HttpQuery("tun_types")),
+    uuid: Schema.optional(Schema.String).pipe(T.HttpQuery("uuid")),
+    wasActiveAt: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("was_active_at"),
+    ),
+    wasInactiveAt: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("was_inactive_at"),
+    ),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/tunnels" })),
 ) as unknown as Schema.Codec<ListTunnelsRequest>;
 
 export interface ListTunnelsResponse {
@@ -84140,19 +84032,18 @@ export interface ListTunnelsResponse {
   } | null;
 }
 
-export const ListTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(
-        Schema.Union([CloudflareTunnel, TunnelWARPConnectorTunnel]),
-      ),
-      resultInfo: Schema.optional(
-        Schema.Union([
-          ListAccessAiControlMcpPortalsResponseResultInfo,
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListTunnelsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(
+      Schema.Union([CloudflareTunnel, TunnelWARPConnectorTunnel]),
+    ),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        ListAccessAiControlMcpPortalsResponseResultInfo,
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListTunnelsResponse>;
 
 export type ListTunnelsError = DefaultErrors;
@@ -84162,7 +84053,7 @@ export const listTunnels: API.PaginatedOperationMethod<
   ListTunnelsResponse,
   ListTunnelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTunnelsRequest,
   output: ListTunnelsResponse,
   errors: [],
@@ -84186,7 +84077,7 @@ export interface GetTunnelCloudflaredRequest {
 }
 
 export const GetTunnelCloudflaredRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -84248,7 +84139,7 @@ export interface GetTunnelCloudflaredResponse {
 }
 
 export const GetTunnelCloudflaredResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -84331,7 +84222,7 @@ export const getTunnelCloudflared: API.OperationMethod<
   GetTunnelCloudflaredResponse,
   GetTunnelCloudflaredError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTunnelCloudflaredRequest,
   output: GetTunnelCloudflaredResponse,
   errors: [TunnelNotFound],
@@ -84363,7 +84254,7 @@ export interface ListTunnelCloudflaredsRequest {
 }
 
 export const ListTunnelCloudflaredsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -84448,7 +84339,7 @@ export interface ListTunnelCloudflaredsResponse {
 }
 
 export const ListTunnelCloudflaredsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(CloudflareTunnel),
       resultInfo: Schema.optional(
@@ -84467,7 +84358,7 @@ export const listTunnelCloudflareds: API.PaginatedOperationMethod<
   ListTunnelCloudflaredsResponse,
   ListTunnelCloudflaredsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTunnelCloudflaredsRequest,
   output: ListTunnelCloudflaredsResponse,
   errors: [],
@@ -84492,7 +84383,7 @@ export interface CreateTunnelCloudflaredRequest {
 }
 
 export const CreateTunnelCloudflaredRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -84560,7 +84451,7 @@ export interface CreateTunnelCloudflaredResponse {
 }
 
 export const CreateTunnelCloudflaredResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -84643,7 +84534,7 @@ export const createTunnelCloudflared: API.OperationMethod<
   CreateTunnelCloudflaredResponse,
   CreateTunnelCloudflaredError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTunnelCloudflaredRequest,
   output: CreateTunnelCloudflaredResponse,
   errors: [DuplicateTunnelName],
@@ -84660,7 +84551,7 @@ export interface PatchTunnelCloudflaredRequest {
 }
 
 export const PatchTunnelCloudflaredRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -84725,7 +84616,7 @@ export interface PatchTunnelCloudflaredResponse {
 }
 
 export const PatchTunnelCloudflaredResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -84811,7 +84702,7 @@ export const patchTunnelCloudflared: API.OperationMethod<
   PatchTunnelCloudflaredResponse,
   PatchTunnelCloudflaredError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchTunnelCloudflaredRequest,
   output: PatchTunnelCloudflaredResponse,
   errors: [TunnelNotFound, DuplicateTunnelName],
@@ -84824,7 +84715,7 @@ export interface DeleteTunnelCloudflaredRequest {
 }
 
 export const DeleteTunnelCloudflaredRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -84886,7 +84777,7 @@ export interface DeleteTunnelCloudflaredResponse {
 }
 
 export const DeleteTunnelCloudflaredResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -84969,7 +84860,7 @@ export const deleteTunnelCloudflared: API.OperationMethod<
   DeleteTunnelCloudflaredResponse,
   DeleteTunnelCloudflaredError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTunnelCloudflaredRequest,
   output: DeleteTunnelCloudflaredResponse,
   errors: [],
@@ -84986,7 +84877,7 @@ export interface GetTunnelCloudflaredConfigurationRequest {
 }
 
 export const GetTunnelCloudflaredConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -85063,7 +84954,7 @@ export interface GetTunnelCloudflaredConfigurationResponse {
 }
 
 export const GetTunnelCloudflaredConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       config: Schema.optional(Schema.Union([Config15, Schema.Null])),
@@ -85102,7 +84993,7 @@ export const getTunnelCloudflaredConfiguration: API.OperationMethod<
   GetTunnelCloudflaredConfigurationResponse,
   GetTunnelCloudflaredConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTunnelCloudflaredConfigurationRequest,
   output: GetTunnelCloudflaredConfigurationResponse,
   errors: [TunnelConfigurationNotFound],
@@ -85157,7 +85048,7 @@ export interface PutTunnelCloudflaredConfigurationRequest {
 }
 
 export const PutTunnelCloudflaredConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -85235,7 +85126,7 @@ export interface PutTunnelCloudflaredConfigurationResponse {
 }
 
 export const PutTunnelCloudflaredConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       config: Schema.optional(Schema.Union([Config15, Schema.Null])),
@@ -85274,7 +85165,7 @@ export const putTunnelCloudflaredConfiguration: API.OperationMethod<
   PutTunnelCloudflaredConfigurationResponse,
   PutTunnelCloudflaredConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTunnelCloudflaredConfigurationRequest,
   output: PutTunnelCloudflaredConfigurationResponse,
   errors: [TunnelNotFound],
@@ -85291,7 +85182,7 @@ export interface GetTunnelCloudflaredConnectionRequest {
 }
 
 export const GetTunnelCloudflaredConnectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -85327,7 +85218,7 @@ export interface GetTunnelCloudflaredConnectionResponse {
 }
 
 export const GetTunnelCloudflaredConnectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(GetTunnelCloudflaredConnectionResponseResult),
     }),
@@ -85340,7 +85231,7 @@ export const getTunnelCloudflaredConnection: API.PaginatedOperationMethod<
   GetTunnelCloudflaredConnectionResponse,
   GetTunnelCloudflaredConnectionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTunnelCloudflaredConnectionRequest,
   output: GetTunnelCloudflaredConnectionResponse,
   errors: [],
@@ -85359,7 +85250,7 @@ export interface DeleteTunnelCloudflaredConnectionRequest {
 }
 
 export const DeleteTunnelCloudflaredConnectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -85375,7 +85266,7 @@ export const DeleteTunnelCloudflaredConnectionRequest =
 export type DeleteTunnelCloudflaredConnectionResponse = unknown;
 
 export const DeleteTunnelCloudflaredConnectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteTunnelCloudflaredConnectionResponse>;
 
@@ -85386,7 +85277,7 @@ export const deleteTunnelCloudflaredConnection: API.OperationMethod<
   DeleteTunnelCloudflaredConnectionResponse,
   DeleteTunnelCloudflaredConnectionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTunnelCloudflaredConnectionRequest,
   output: DeleteTunnelCloudflaredConnectionResponse,
   errors: [],
@@ -85404,7 +85295,7 @@ export interface GetTunnelCloudflaredConnectorRequest {
 }
 
 export const GetTunnelCloudflaredConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
@@ -85446,7 +85337,7 @@ export interface GetTunnelCloudflaredConnectorResponse {
 }
 
 export const GetTunnelCloudflaredConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       arch: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -85483,7 +85374,7 @@ export const getTunnelCloudflaredConnector: API.OperationMethod<
   GetTunnelCloudflaredConnectorResponse,
   GetTunnelCloudflaredConnectorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTunnelCloudflaredConnectorRequest,
   output: GetTunnelCloudflaredConnectorResponse,
   errors: [],
@@ -85502,7 +85393,7 @@ export interface CreateTunnelCloudflaredManagementRequest {
 }
 
 export const CreateTunnelCloudflaredManagementRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -85518,7 +85409,7 @@ export const CreateTunnelCloudflaredManagementRequest =
 export type CreateTunnelCloudflaredManagementResponse = string;
 
 export const CreateTunnelCloudflaredManagementResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.String.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<CreateTunnelCloudflaredManagementResponse>;
 
@@ -85529,7 +85420,7 @@ export const createTunnelCloudflaredManagement: API.OperationMethod<
   CreateTunnelCloudflaredManagementResponse,
   CreateTunnelCloudflaredManagementError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTunnelCloudflaredManagementRequest,
   output: CreateTunnelCloudflaredManagementResponse,
   errors: [],
@@ -85546,7 +85437,7 @@ export interface GetTunnelCloudflaredTokenRequest {
 }
 
 export const GetTunnelCloudflaredTokenRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -85561,7 +85452,7 @@ export const GetTunnelCloudflaredTokenRequest =
 export type GetTunnelCloudflaredTokenResponse = string;
 
 export const GetTunnelCloudflaredTokenResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.String.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetTunnelCloudflaredTokenResponse>;
 
@@ -85574,7 +85465,7 @@ export const getTunnelCloudflaredToken: API.OperationMethod<
   GetTunnelCloudflaredTokenResponse,
   GetTunnelCloudflaredTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTunnelCloudflaredTokenRequest,
   output: GetTunnelCloudflaredTokenResponse,
   errors: [TunnelTokenNotFound],
@@ -85591,7 +85482,7 @@ export interface GetTunnelWarpConnectorRequest {
 }
 
 export const GetTunnelWarpConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -85649,7 +85540,7 @@ export interface GetTunnelWarpConnectorResponse {
 }
 
 export const GetTunnelWarpConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -85721,7 +85612,7 @@ export const getTunnelWarpConnector: API.OperationMethod<
   GetTunnelWarpConnectorResponse,
   GetTunnelWarpConnectorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTunnelWarpConnectorRequest,
   output: GetTunnelWarpConnectorResponse,
   errors: [TunnelNotFound, Forbidden],
@@ -85753,7 +85644,7 @@ export interface ListTunnelWarpConnectorsRequest {
 }
 
 export const ListTunnelWarpConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -85836,7 +85727,7 @@ export interface ListTunnelWarpConnectorsResponse {
 }
 
 export const ListTunnelWarpConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(TunnelWARPConnectorTunnel),
       resultInfo: Schema.optional(
@@ -85855,7 +85746,7 @@ export const listTunnelWarpConnectors: API.PaginatedOperationMethod<
   ListTunnelWarpConnectorsResponse,
   ListTunnelWarpConnectorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTunnelWarpConnectorsRequest,
   output: ListTunnelWarpConnectorsResponse,
   errors: [Forbidden],
@@ -85878,7 +85769,7 @@ export interface CreateTunnelWarpConnectorRequest {
 }
 
 export const CreateTunnelWarpConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -85934,7 +85825,7 @@ export interface CreateTunnelWarpConnectorResponse {
 }
 
 export const CreateTunnelWarpConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -86006,7 +85897,7 @@ export const createTunnelWarpConnector: API.OperationMethod<
   CreateTunnelWarpConnectorResponse,
   CreateTunnelWarpConnectorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTunnelWarpConnectorRequest,
   output: CreateTunnelWarpConnectorResponse,
   errors: [DuplicateTunnelName, Forbidden],
@@ -86023,7 +85914,7 @@ export interface PatchTunnelWarpConnectorRequest {
 }
 
 export const PatchTunnelWarpConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -86084,7 +85975,7 @@ export interface PatchTunnelWarpConnectorResponse {
 }
 
 export const PatchTunnelWarpConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -86157,7 +86048,7 @@ export const patchTunnelWarpConnector: API.OperationMethod<
   PatchTunnelWarpConnectorResponse,
   PatchTunnelWarpConnectorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchTunnelWarpConnectorRequest,
   output: PatchTunnelWarpConnectorResponse,
   errors: [TunnelNotFound, DuplicateTunnelName, Forbidden],
@@ -86170,7 +86061,7 @@ export interface DeleteTunnelWarpConnectorRequest {
 }
 
 export const DeleteTunnelWarpConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -86228,7 +86119,7 @@ export interface DeleteTunnelWarpConnectorResponse {
 }
 
 export const DeleteTunnelWarpConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -86300,7 +86191,7 @@ export const deleteTunnelWarpConnector: API.OperationMethod<
   DeleteTunnelWarpConnectorResponse,
   DeleteTunnelWarpConnectorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTunnelWarpConnectorRequest,
   output: DeleteTunnelWarpConnectorResponse,
   errors: [TunnelNotFound, Forbidden],
@@ -86317,7 +86208,7 @@ export interface GetTunnelWarpConnectorConfigurationRequest {
 }
 
 export const GetTunnelWarpConnectorConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -86351,7 +86242,7 @@ export interface GetTunnelWarpConnectorConfigurationResponse {
 }
 
 export const GetTunnelWarpConnectorConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       configurationVersion: Schema.Number,
       createdAt: Schema.String,
@@ -86385,7 +86276,7 @@ export const getTunnelWarpConnectorConfiguration: API.OperationMethod<
   GetTunnelWarpConnectorConfigurationResponse,
   GetTunnelWarpConnectorConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTunnelWarpConnectorConfigurationRequest,
   output: GetTunnelWarpConnectorConfigurationResponse,
   errors: [],
@@ -86402,7 +86293,7 @@ export interface PutTunnelWarpConnectorConfigurationRequest {
 }
 
 export const PutTunnelWarpConnectorConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -86442,7 +86333,7 @@ export interface PutTunnelWarpConnectorConfigurationResponse {
 }
 
 export const PutTunnelWarpConnectorConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       configurationVersion: Schema.Number,
       createdAt: Schema.String,
@@ -86476,7 +86367,7 @@ export const putTunnelWarpConnectorConfiguration: API.OperationMethod<
   PutTunnelWarpConnectorConfigurationResponse,
   PutTunnelWarpConnectorConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTunnelWarpConnectorConfigurationRequest,
   output: PutTunnelWarpConnectorConfigurationResponse,
   errors: [],
@@ -86493,7 +86384,7 @@ export interface GetTunnelWarpConnectorConnectionRequest {
 }
 
 export const GetTunnelWarpConnectorConnectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -86527,7 +86418,7 @@ export interface GetTunnelWarpConnectorConnectionResponse {
 }
 
 export const GetTunnelWarpConnectorConnectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(GetTunnelWarpConnectorConnectionResponseResult),
     }),
@@ -86540,7 +86431,7 @@ export const getTunnelWarpConnectorConnection: API.PaginatedOperationMethod<
   GetTunnelWarpConnectorConnectionResponse,
   GetTunnelWarpConnectorConnectionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTunnelWarpConnectorConnectionRequest,
   output: GetTunnelWarpConnectorConnectionResponse,
   errors: [],
@@ -86562,7 +86453,7 @@ export interface GetTunnelWarpConnectorConnectorRequest {
 }
 
 export const GetTunnelWarpConnectorConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       connectorId: Schema.String.pipe(T.HttpPath("connectorId")),
@@ -86602,7 +86493,7 @@ export interface GetTunnelWarpConnectorConnectorResponse {
 }
 
 export const GetTunnelWarpConnectorConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       arch: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -86643,7 +86534,7 @@ export const getTunnelWarpConnectorConnector: API.OperationMethod<
   GetTunnelWarpConnectorConnectorResponse,
   GetTunnelWarpConnectorConnectorError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTunnelWarpConnectorConnectorRequest,
   output: GetTunnelWarpConnectorConnectorResponse,
   errors: [],
@@ -86662,7 +86553,7 @@ export interface PutTunnelWarpConnectorFailoverRequest {
 }
 
 export const PutTunnelWarpConnectorFailoverRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -86679,7 +86570,7 @@ export const PutTunnelWarpConnectorFailoverRequest =
 export type PutTunnelWarpConnectorFailoverResponse = unknown;
 
 export const PutTunnelWarpConnectorFailoverResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<PutTunnelWarpConnectorFailoverResponse>;
 
@@ -86690,7 +86581,7 @@ export const putTunnelWarpConnectorFailover: API.OperationMethod<
   PutTunnelWarpConnectorFailoverResponse,
   PutTunnelWarpConnectorFailoverError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTunnelWarpConnectorFailoverRequest,
   output: PutTunnelWarpConnectorFailoverResponse,
   errors: [],
@@ -86707,7 +86598,7 @@ export interface GetTunnelWarpConnectorTokenRequest {
 }
 
 export const GetTunnelWarpConnectorTokenRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tunnelId: Schema.String.pipe(T.HttpPath("tunnelId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -86722,7 +86613,7 @@ export const GetTunnelWarpConnectorTokenRequest =
 export type GetTunnelWarpConnectorTokenResponse = string;
 
 export const GetTunnelWarpConnectorTokenResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.String.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetTunnelWarpConnectorTokenResponse>;
 
@@ -86736,7 +86627,7 @@ export const getTunnelWarpConnectorToken: API.OperationMethod<
   GetTunnelWarpConnectorTokenResponse,
   GetTunnelWarpConnectorTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTunnelWarpConnectorTokenRequest,
   output: GetTunnelWarpConnectorTokenResponse,
   errors: [TunnelNotFound, Forbidden],
@@ -86780,7 +86671,7 @@ export interface RevokeUsersOrganizationForZoneRequest extends RevokeUsersOrgani
 }
 
 export const RevokeUsersOrganizationForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...RevokeUsersOrganizationBaseFields,
@@ -86799,7 +86690,7 @@ export const RevokeUsersOrganizationForAccountRequest =
   ) as unknown as Schema.Codec<RevokeUsersOrganizationForAccountRequest>;
 
 export const RevokeUsersOrganizationForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...RevokeUsersOrganizationBaseFields,
@@ -86820,7 +86711,7 @@ export const RevokeUsersOrganizationForZoneRequest =
 export type RevokeUsersOrganizationResponse = boolean;
 
 export const RevokeUsersOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Boolean.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<RevokeUsersOrganizationResponse>;
 
@@ -86831,7 +86722,7 @@ export const revokeUsersOrganizationForAccount: API.OperationMethod<
   RevokeUsersOrganizationResponse,
   RevokeUsersOrganizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeUsersOrganizationForAccountRequest,
   output: RevokeUsersOrganizationResponse,
   errors: [],
@@ -86842,7 +86733,7 @@ export const revokeUsersOrganizationForZone: API.OperationMethod<
   RevokeUsersOrganizationResponse,
   RevokeUsersOrganizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RevokeUsersOrganizationForZoneRequest,
   output: RevokeUsersOrganizationResponse,
   errors: [],
@@ -86860,7 +86751,7 @@ export interface BulkDeleteV2AccessInfrastructureTargetsRequest {
 }
 
 export const BulkDeleteV2AccessInfrastructureTargetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       targetIds: Schema.Array(Schema.String),
@@ -86876,7 +86767,7 @@ export const BulkDeleteV2AccessInfrastructureTargetsRequest =
 export type BulkDeleteV2AccessInfrastructureTargetsResponse = unknown;
 
 export const BulkDeleteV2AccessInfrastructureTargetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<BulkDeleteV2AccessInfrastructureTargetsResponse>;
 
@@ -86887,7 +86778,7 @@ export const bulkDeleteV2AccessInfrastructureTargets: API.OperationMethod<
   BulkDeleteV2AccessInfrastructureTargetsResponse,
   BulkDeleteV2AccessInfrastructureTargetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteV2AccessInfrastructureTargetsRequest,
   output: BulkDeleteV2AccessInfrastructureTargetsResponse,
   errors: [],

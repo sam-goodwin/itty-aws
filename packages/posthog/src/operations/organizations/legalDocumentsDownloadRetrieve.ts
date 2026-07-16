@@ -9,7 +9,7 @@ export interface LegalDocumentsDownloadRetrieveInput {
   organization_id: string;
 }
 export const LegalDocumentsDownloadRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const LegalDocumentsDownloadRetrieveInput =
 // Output Schema
 export type LegalDocumentsDownloadRetrieveOutput = void;
 export const LegalDocumentsDownloadRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LegalDocumentsDownloadRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LegalDocumentsDownloadRetrieveOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const LegalDocumentsDownloadRetrieveOutput =
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const legalDocumentsDownloadRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LegalDocumentsDownloadRetrieveInput,
     outputSchema: LegalDocumentsDownloadRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

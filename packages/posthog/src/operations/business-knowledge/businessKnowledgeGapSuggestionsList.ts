@@ -10,7 +10,7 @@ export interface BusinessKnowledgeGapSuggestionsListInput {
   ticket_id?: string;
 }
 export const BusinessKnowledgeGapSuggestionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -40,7 +40,7 @@ export interface BusinessKnowledgeGapSuggestionsListOutput {
   }[];
 }
 export const BusinessKnowledgeGapSuggestionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.Number,
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -73,7 +73,7 @@ export const BusinessKnowledgeGapSuggestionsListOutput =
  * @param ticket_id - When provided, returns per-ticket gap rows instead of aggregated view. Requires `ticket:read` scope in addition to `business_knowledge:read`.
  */
 export const businessKnowledgeGapSuggestionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BusinessKnowledgeGapSuggestionsListInput,
     outputSchema: BusinessKnowledgeGapSuggestionsListOutput,
   }));

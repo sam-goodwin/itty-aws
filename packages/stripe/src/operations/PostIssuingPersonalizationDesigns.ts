@@ -20,7 +20,7 @@ export interface PostIssuingPersonalizationDesignsInput {
   transfer_lookup_key?: boolean;
 }
 export const PostIssuingPersonalizationDesignsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card_logo: Schema.optional(Schema.String),
     carrier_text: Schema.optional(
       Schema.Struct({
@@ -168,7 +168,7 @@ export interface PostIssuingPersonalizationDesignsOutput {
   status: "active" | "inactive" | "rejected" | "review";
 }
 export const PostIssuingPersonalizationDesignsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card_logo: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -308,7 +308,7 @@ export const PostIssuingPersonalizationDesignsOutput =
  * <p>Creates a personalization design object.</p>
  */
 export const PostIssuingPersonalizationDesigns =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostIssuingPersonalizationDesignsInput,
     outputSchema: PostIssuingPersonalizationDesignsOutput,
   }));

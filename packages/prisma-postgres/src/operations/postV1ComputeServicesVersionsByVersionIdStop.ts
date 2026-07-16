@@ -5,7 +5,7 @@ import { Forbidden, NotFound, Conflict } from "../errors.ts";
 
 // Input Schema
 export const PostV1ComputeServicesVersionsByVersionIdStopInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -18,7 +18,7 @@ export type PostV1ComputeServicesVersionsByVersionIdStopInput =
 
 // Output Schema
 export const PostV1ComputeServicesVersionsByVersionIdStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+  /*@__PURE__*/ Schema.Void;
 export type PostV1ComputeServicesVersionsByVersionIdStopOutput =
   typeof PostV1ComputeServicesVersionsByVersionIdStopOutput.Type;
 
@@ -30,7 +30,7 @@ export type PostV1ComputeServicesVersionsByVersionIdStopOutput =
  * Requests VM shutdown for the compute version. The version record and metadata are retained. Poll the status endpoint until `stopped` is reached.
  */
 export const postV1ComputeServicesVersionsByVersionIdStop =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV1ComputeServicesVersionsByVersionIdStopInput,
     outputSchema: PostV1ComputeServicesVersionsByVersionIdStopOutput,
     errors: [Forbidden, NotFound, Conflict] as const,

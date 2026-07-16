@@ -8,7 +8,7 @@ export interface RetrieveSynonymSetItemsInput {
   synonymSetName: string;
 }
 export const RetrieveSynonymSetItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     synonymSetName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/synonym_sets/{synonymSetName}/items" }),
@@ -23,7 +23,7 @@ export type RetrieveSynonymSetItemsOutput = {
   symbols_to_index?: string[];
 }[];
 export const RetrieveSynonymSetItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.String,
       synonyms: Schema.Array(Schema.String),
@@ -41,10 +41,8 @@ export const RetrieveSynonymSetItemsOutput =
  *
  * @param synonymSetName - The name of the synonym set to retrieve items for
  */
-export const retrieveSynonymSetItems = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetrieveSynonymSetItemsInput,
-    outputSchema: RetrieveSynonymSetItemsOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const retrieveSynonymSetItems = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetrieveSynonymSetItemsInput,
+  outputSchema: RetrieveSynonymSetItemsOutput,
+  errors: [NotFound] as const,
+}));

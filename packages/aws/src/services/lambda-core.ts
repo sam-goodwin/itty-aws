@@ -101,19 +101,16 @@ export type MaxHundredListItems = number;
 
 //# Schemas
 export type NetworkConnectorSubnetIds = string[];
-export const NetworkConnectorSubnetIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const NetworkConnectorSubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type NetworkConnectorSecurityGroupIds = string[];
-export const NetworkConnectorSecurityGroupIds =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const NetworkConnectorSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export type NetworkProtocol = "IPv4" | "DualStack" | (string & {});
-export const NetworkProtocol = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkProtocol = /*@__PURE__*/ S.String;
 export type ComputeResourceType = "MicroVm" | (string & {});
-export const ComputeResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ComputeResourceType = /*@__PURE__*/ S.String;
 export type AssociatedComputeResourceTypesList = ComputeResourceType[];
 export const AssociatedComputeResourceTypesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ComputeResourceType);
+  /*@__PURE__*/ S.Array(ComputeResourceType);
 export interface NetworkConnectorVpcEgressConfiguration {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
@@ -121,7 +118,7 @@ export interface NetworkConnectorVpcEgressConfiguration {
   AssociatedComputeResourceTypes?: ComputeResourceType[];
 }
 export const NetworkConnectorVpcEgressConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SubnetIds: S.optional(NetworkConnectorSubnetIds),
       SecurityGroupIds: S.optional(NetworkConnectorSecurityGroupIds),
@@ -137,13 +134,13 @@ export type NetworkConnectorConfiguration = {
   VpcEgressConfiguration: NetworkConnectorVpcEgressConfiguration;
 };
 export const NetworkConnectorConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  /*@__PURE__*/ S.Union([
     S.Struct({
       VpcEgressConfiguration: NetworkConnectorVpcEgressConfiguration,
     }),
   ]);
 export type NetworkConnectorTags = { [key: string]: string | undefined };
-export const NetworkConnectorTags = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const NetworkConnectorTags = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -155,7 +152,7 @@ export interface CreateNetworkConnectorRequest {
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateNetworkConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Name: S.String,
       Configuration: NetworkConnectorConfiguration,
@@ -183,7 +180,7 @@ export type NetworkConnectorState =
   | "DELETING"
   | "DELETE_FAILED"
   | (string & {});
-export const NetworkConnectorState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkConnectorState = /*@__PURE__*/ S.String;
 export interface CreateNetworkConnectorResponse {
   Arn: string;
   Name: string;
@@ -193,7 +190,7 @@ export interface CreateNetworkConnectorResponse {
   State?: NetworkConnectorState;
 }
 export const CreateNetworkConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Arn: S.String,
       Name: S.String,
@@ -213,25 +210,24 @@ export type ThrottleReason =
   | "CallerRateLimitExceeded"
   | "ConcurrentSnapshotCreateLimitExceeded"
   | (string & {});
-export const ThrottleReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ThrottleReason = /*@__PURE__*/ S.String;
 export interface GetNetworkConnectorRequest {
   Identifier: string;
 }
-export const GetNetworkConnectorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/2026-04-04/network-connectors/{Identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetNetworkConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2026-04-04/network-connectors/{Identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetNetworkConnectorRequest",
 }) as any as S.Schema<GetNetworkConnectorRequest>;
@@ -244,15 +240,13 @@ export type NetworkConnectorStateReasonCode =
   | "InvalidSubnet"
   | "SubnetOutOfIPAddresses"
   | (string & {});
-export const NetworkConnectorStateReasonCode =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkConnectorStateReasonCode = /*@__PURE__*/ S.String;
 export type NetworkConnectorLastUpdateStatus =
   | "Successful"
   | "Failed"
   | "InProgress"
   | (string & {});
-export const NetworkConnectorLastUpdateStatus =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkConnectorLastUpdateStatus = /*@__PURE__*/ S.String;
 export type NetworkConnectorLastUpdateStatusReasonCode =
   | "DisallowedByVpcEncryptionControl"
   | "Ec2RequestLimitExceeded"
@@ -263,7 +257,7 @@ export type NetworkConnectorLastUpdateStatusReasonCode =
   | "SubnetOutOfIPAddresses"
   | (string & {});
 export const NetworkConnectorLastUpdateStatusReasonCode =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+  /*@__PURE__*/ S.String;
 export interface GetNetworkConnectorResponse {
   Arn: string;
   Name: string;
@@ -280,7 +274,7 @@ export interface GetNetworkConnectorResponse {
   LastModified?: Date;
 }
 export const GetNetworkConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Arn: S.String,
       Name: S.String,
@@ -310,7 +304,7 @@ export interface UpdateNetworkConnectorRequest {
   ClientToken?: string;
 }
 export const UpdateNetworkConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Identifier: S.String.pipe(T.HttpLabel("Identifier")),
       Configuration: S.optional(NetworkConnectorConfiguration),
@@ -344,7 +338,7 @@ export interface UpdateNetworkConnectorResponse {
   LastModified?: Date;
 }
 export const UpdateNetworkConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Arn: S.String,
       Name: S.String,
@@ -365,7 +359,7 @@ export interface DeleteNetworkConnectorRequest {
   Identifier: string;
 }
 export const DeleteNetworkConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
       T.all(
         T.Http({
@@ -391,7 +385,7 @@ export interface DeleteNetworkConnectorResponse {
   State?: NetworkConnectorState;
 }
 export const DeleteNetworkConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Arn: S.String,
       Name: S.String,
@@ -409,7 +403,7 @@ export interface ListNetworkConnectorsRequest {
   MaxItems?: number;
 }
 export const ListNetworkConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       State: S.optional(NetworkConnectorState).pipe(T.HttpQuery("State")),
       Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
@@ -428,7 +422,7 @@ export const ListNetworkConnectorsRequest =
     identifier: "ListNetworkConnectorsRequest",
   }) as any as S.Schema<ListNetworkConnectorsRequest>;
 export type NetworkConnectorType = "VPC_EGRESS" | (string & {});
-export const NetworkConnectorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkConnectorType = /*@__PURE__*/ S.String;
 export interface NetworkConnectorSummary {
   Arn: string;
   Name: string;
@@ -437,23 +431,22 @@ export interface NetworkConnectorSummary {
   State?: NetworkConnectorState;
   LastModified?: Date;
 }
-export const NetworkConnectorSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Arn: S.String,
-      Name: S.String,
-      Id: S.String,
-      Type: NetworkConnectorType,
-      State: S.optional(NetworkConnectorState),
-      LastModified: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const NetworkConnectorSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Name: S.String,
+    Id: S.String,
+    Type: NetworkConnectorType,
+    State: S.optional(NetworkConnectorState),
+    LastModified: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "NetworkConnectorSummary",
 }) as any as S.Schema<NetworkConnectorSummary>;
 export type NetworkConnectorsList = NetworkConnectorSummary[];
-export const NetworkConnectorsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const NetworkConnectorsList = /*@__PURE__*/ S.Array(
   NetworkConnectorSummary,
 );
 export interface ListNetworkConnectorsResponse {
@@ -461,7 +454,7 @@ export interface ListNetworkConnectorsResponse {
   NextMarker?: string;
 }
 export const ListNetworkConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NetworkConnectors: NetworkConnectorsList,
       NextMarker: S.optional(S.String),
@@ -521,7 +514,7 @@ export const createNetworkConnector: API.OperationMethod<
   CreateNetworkConnectorResponse,
   CreateNetworkConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkConnectorRequest,
   output: CreateNetworkConnectorResponse,
   errors: [
@@ -549,7 +542,7 @@ export const getNetworkConnector: API.OperationMethod<
   GetNetworkConnectorResponse,
   GetNetworkConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkConnectorRequest,
   output: GetNetworkConnectorResponse,
   errors: [
@@ -577,7 +570,7 @@ export const updateNetworkConnector: API.OperationMethod<
   UpdateNetworkConnectorResponse,
   UpdateNetworkConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNetworkConnectorRequest,
   output: UpdateNetworkConnectorResponse,
   errors: [
@@ -606,7 +599,7 @@ export const deleteNetworkConnector: API.OperationMethod<
   DeleteNetworkConnectorResponse,
   DeleteNetworkConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkConnectorRequest,
   output: DeleteNetworkConnectorResponse,
   errors: [
@@ -648,7 +641,7 @@ export const listNetworkConnectors: API.OperationMethod<
     ListNetworkConnectorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkConnectorsRequest,
   output: ListNetworkConnectorsResponse,
   errors: [

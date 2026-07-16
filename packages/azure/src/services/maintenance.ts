@@ -17,7 +17,7 @@ export interface ApplyUpdatesCreateOrUpdateInput {
   resourceName: string;
 }
 export const ApplyUpdatesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -46,7 +46,7 @@ export interface ApplyUpdatesCreateOrUpdateOutput {
   };
 }
 export const ApplyUpdatesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -79,12 +79,10 @@ export const ApplyUpdatesCreateOrUpdateOutput =
  * @param resourceName - Resource identifier
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ApplyUpdatesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplyUpdatesCreateOrUpdateInput,
-    outputSchema: ApplyUpdatesCreateOrUpdateOutput,
-  }),
-);
+export const ApplyUpdatesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplyUpdatesCreateOrUpdateInput,
+  outputSchema: ApplyUpdatesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ApplyUpdatesCreateOrUpdateParentInput {
   subscriptionId: string;
@@ -96,7 +94,7 @@ export interface ApplyUpdatesCreateOrUpdateParentInput {
   resourceName: string;
 }
 export const ApplyUpdatesCreateOrUpdateParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -127,7 +125,7 @@ export interface ApplyUpdatesCreateOrUpdateParentOutput {
   };
 }
 export const ApplyUpdatesCreateOrUpdateParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -163,7 +161,7 @@ export const ApplyUpdatesCreateOrUpdateParentOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ApplyUpdatesCreateOrUpdateParent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApplyUpdatesCreateOrUpdateParentInput,
     outputSchema: ApplyUpdatesCreateOrUpdateParentOutput,
   }));
@@ -176,7 +174,7 @@ export interface ApplyUpdatesGetInput {
   resourceName: string;
   applyUpdateName: string;
 }
-export const ApplyUpdatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApplyUpdatesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   providerName: Schema.String.pipe(T.PathParam()),
@@ -205,7 +203,7 @@ export interface ApplyUpdatesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ApplyUpdatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApplyUpdatesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -239,7 +237,7 @@ export const ApplyUpdatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param applyUpdateName - applyUpdate Id
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ApplyUpdatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplyUpdatesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplyUpdatesGetInput,
   outputSchema: ApplyUpdatesGetOutput,
 }));
@@ -255,7 +253,7 @@ export interface ApplyUpdatesGetParentInput {
   applyUpdateName: string;
 }
 export const ApplyUpdatesGetParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -287,7 +285,7 @@ export interface ApplyUpdatesGetParentOutput {
   };
 }
 export const ApplyUpdatesGetParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -323,12 +321,10 @@ export const ApplyUpdatesGetParentOutput =
  * @param applyUpdateName - applyUpdate Id
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ApplyUpdatesGetParent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplyUpdatesGetParentInput,
-    outputSchema: ApplyUpdatesGetParentOutput,
-  }),
-);
+export const ApplyUpdatesGetParent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplyUpdatesGetParentInput,
+  outputSchema: ApplyUpdatesGetParentOutput,
+}));
 // Input Schema
 export interface ConfigurationAssignmentsCreateOrUpdateInput {
   subscriptionId: string;
@@ -365,7 +361,7 @@ export interface ConfigurationAssignmentsCreateOrUpdateInput {
   };
 }
 export const ConfigurationAssignmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -437,7 +433,7 @@ export interface ConfigurationAssignmentsCreateOrUpdateOutput {
   };
 }
 export const ConfigurationAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -472,7 +468,7 @@ export const ConfigurationAssignmentsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsCreateOrUpdateInput,
     outputSchema: ConfigurationAssignmentsCreateOrUpdateOutput,
   }));
@@ -514,7 +510,7 @@ export interface ConfigurationAssignmentsCreateOrUpdateParentInput {
   };
 }
 export const ConfigurationAssignmentsCreateOrUpdateParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -588,7 +584,7 @@ export interface ConfigurationAssignmentsCreateOrUpdateParentOutput {
   };
 }
 export const ConfigurationAssignmentsCreateOrUpdateParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -625,7 +621,7 @@ export const ConfigurationAssignmentsCreateOrUpdateParentOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsCreateOrUpdateParent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsCreateOrUpdateParentInput,
     outputSchema: ConfigurationAssignmentsCreateOrUpdateParentOutput,
   }));
@@ -639,7 +635,7 @@ export interface ConfigurationAssignmentsDeleteInput {
   configurationAssignmentName: string;
 }
 export const ConfigurationAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -669,7 +665,7 @@ export interface ConfigurationAssignmentsDeleteOutput {
   };
 }
 export const ConfigurationAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -704,7 +700,7 @@ export const ConfigurationAssignmentsDeleteOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsDeleteInput,
     outputSchema: ConfigurationAssignmentsDeleteOutput,
   }));
@@ -720,7 +716,7 @@ export interface ConfigurationAssignmentsDeleteParentInput {
   configurationAssignmentName: string;
 }
 export const ConfigurationAssignmentsDeleteParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -752,7 +748,7 @@ export interface ConfigurationAssignmentsDeleteParentOutput {
   };
 }
 export const ConfigurationAssignmentsDeleteParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -789,7 +785,7 @@ export const ConfigurationAssignmentsDeleteParentOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsDeleteParent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsDeleteParentInput,
     outputSchema: ConfigurationAssignmentsDeleteParentOutput,
   }));
@@ -826,7 +822,7 @@ export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput {
   };
 }
 export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -895,7 +891,7 @@ export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput {
   };
 }
 export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -927,7 +923,7 @@ export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForResourceGroupCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForResourceGroupCreateOrUpdateInput,
     outputSchema: ConfigurationAssignmentsForResourceGroupCreateOrUpdateOutput,
   }));
@@ -938,7 +934,7 @@ export interface ConfigurationAssignmentsForResourceGroupDeleteInput {
   configurationAssignmentName: string;
 }
 export const ConfigurationAssignmentsForResourceGroupDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -965,7 +961,7 @@ export interface ConfigurationAssignmentsForResourceGroupDeleteOutput {
   };
 }
 export const ConfigurationAssignmentsForResourceGroupDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -997,7 +993,7 @@ export const ConfigurationAssignmentsForResourceGroupDeleteOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForResourceGroupDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForResourceGroupDeleteInput,
     outputSchema: ConfigurationAssignmentsForResourceGroupDeleteOutput,
   }));
@@ -1008,7 +1004,7 @@ export interface ConfigurationAssignmentsForResourceGroupGetInput {
   configurationAssignmentName: string;
 }
 export const ConfigurationAssignmentsForResourceGroupGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -1035,7 +1031,7 @@ export interface ConfigurationAssignmentsForResourceGroupGetOutput {
   };
 }
 export const ConfigurationAssignmentsForResourceGroupGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1067,7 +1063,7 @@ export const ConfigurationAssignmentsForResourceGroupGetOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForResourceGroupGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForResourceGroupGetInput,
     outputSchema: ConfigurationAssignmentsForResourceGroupGetOutput,
   }));
@@ -1104,7 +1100,7 @@ export interface ConfigurationAssignmentsForResourceGroupUpdateInput {
   };
 }
 export const ConfigurationAssignmentsForResourceGroupUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
@@ -1173,7 +1169,7 @@ export interface ConfigurationAssignmentsForResourceGroupUpdateOutput {
   };
 }
 export const ConfigurationAssignmentsForResourceGroupUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1205,7 +1201,7 @@ export const ConfigurationAssignmentsForResourceGroupUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForResourceGroupUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForResourceGroupUpdateInput,
     outputSchema: ConfigurationAssignmentsForResourceGroupUpdateOutput,
   }));
@@ -1241,7 +1237,7 @@ export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput {
   };
 }
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
@@ -1309,7 +1305,7 @@ export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput {
   };
 }
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1340,7 +1336,7 @@ export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForSubscriptionsCreateOrUpdateInput,
     outputSchema: ConfigurationAssignmentsForSubscriptionsCreateOrUpdateOutput,
   }));
@@ -1350,7 +1346,7 @@ export interface ConfigurationAssignmentsForSubscriptionsDeleteInput {
   configurationAssignmentName: string;
 }
 export const ConfigurationAssignmentsForSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1376,7 +1372,7 @@ export interface ConfigurationAssignmentsForSubscriptionsDeleteOutput {
   };
 }
 export const ConfigurationAssignmentsForSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1407,7 +1403,7 @@ export const ConfigurationAssignmentsForSubscriptionsDeleteOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForSubscriptionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForSubscriptionsDeleteInput,
     outputSchema: ConfigurationAssignmentsForSubscriptionsDeleteOutput,
   }));
@@ -1417,7 +1413,7 @@ export interface ConfigurationAssignmentsForSubscriptionsGetInput {
   configurationAssignmentName: string;
 }
 export const ConfigurationAssignmentsForSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1443,7 +1439,7 @@ export interface ConfigurationAssignmentsForSubscriptionsGetOutput {
   };
 }
 export const ConfigurationAssignmentsForSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1474,7 +1470,7 @@ export const ConfigurationAssignmentsForSubscriptionsGetOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForSubscriptionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForSubscriptionsGetInput,
     outputSchema: ConfigurationAssignmentsForSubscriptionsGetOutput,
   }));
@@ -1510,7 +1506,7 @@ export interface ConfigurationAssignmentsForSubscriptionsUpdateInput {
   };
 }
 export const ConfigurationAssignmentsForSubscriptionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationAssignmentName: Schema.String.pipe(T.PathParam()),
     location: Schema.optional(Schema.String),
@@ -1578,7 +1574,7 @@ export interface ConfigurationAssignmentsForSubscriptionsUpdateOutput {
   };
 }
 export const ConfigurationAssignmentsForSubscriptionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1609,7 +1605,7 @@ export const ConfigurationAssignmentsForSubscriptionsUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsForSubscriptionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsForSubscriptionsUpdateInput,
     outputSchema: ConfigurationAssignmentsForSubscriptionsUpdateOutput,
   }));
@@ -1623,7 +1619,7 @@ export interface ConfigurationAssignmentsGetInput {
   configurationAssignmentName: string;
 }
 export const ConfigurationAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -1653,7 +1649,7 @@ export interface ConfigurationAssignmentsGetOutput {
   };
 }
 export const ConfigurationAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1687,12 +1683,10 @@ export const ConfigurationAssignmentsGetOutput =
  * @param configurationAssignmentName - Configuration assignment name
  * @param api-version - Version of the API to be used with the client request.
  */
-export const ConfigurationAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConfigurationAssignmentsGetInput,
-    outputSchema: ConfigurationAssignmentsGetOutput,
-  }),
-);
+export const ConfigurationAssignmentsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConfigurationAssignmentsGetInput,
+  outputSchema: ConfigurationAssignmentsGetOutput,
+}));
 // Input Schema
 export interface ConfigurationAssignmentsGetParentInput {
   subscriptionId: string;
@@ -1705,7 +1699,7 @@ export interface ConfigurationAssignmentsGetParentInput {
   configurationAssignmentName: string;
 }
 export const ConfigurationAssignmentsGetParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -1737,7 +1731,7 @@ export interface ConfigurationAssignmentsGetParentOutput {
   };
 }
 export const ConfigurationAssignmentsGetParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1774,7 +1768,7 @@ export const ConfigurationAssignmentsGetParentOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsGetParent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsGetParentInput,
     outputSchema: ConfigurationAssignmentsGetParentOutput,
   }));
@@ -1787,7 +1781,7 @@ export interface ConfigurationAssignmentsListInput {
   resourceName: string;
 }
 export const ConfigurationAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -1818,7 +1812,7 @@ export interface ConfigurationAssignmentsListOutput {
   }[];
 }
 export const ConfigurationAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1868,7 +1862,7 @@ export const ConfigurationAssignmentsListOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsListInput,
     outputSchema: ConfigurationAssignmentsListOutput,
   }));
@@ -1883,7 +1877,7 @@ export interface ConfigurationAssignmentsListParentInput {
   resourceName: string;
 }
 export const ConfigurationAssignmentsListParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     providerName: Schema.String.pipe(T.PathParam()),
@@ -1916,7 +1910,7 @@ export interface ConfigurationAssignmentsListParentOutput {
   }[];
 }
 export const ConfigurationAssignmentsListParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1968,7 +1962,7 @@ export const ConfigurationAssignmentsListParentOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsListParent =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsListParentInput,
     outputSchema: ConfigurationAssignmentsListParentOutput,
   }));
@@ -1977,7 +1971,7 @@ export interface ConfigurationAssignmentsWithinSubscriptionListInput {
   subscriptionId: string;
 }
 export const ConfigurationAssignmentsWithinSubscriptionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2004,7 +1998,7 @@ export interface ConfigurationAssignmentsWithinSubscriptionListOutput {
   }[];
 }
 export const ConfigurationAssignmentsWithinSubscriptionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2048,7 +2042,7 @@ export const ConfigurationAssignmentsWithinSubscriptionListOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const ConfigurationAssignmentsWithinSubscriptionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationAssignmentsWithinSubscriptionListInput,
     outputSchema: ConfigurationAssignmentsWithinSubscriptionListOutput,
   }));
@@ -2106,7 +2100,7 @@ export interface MaintenanceConfigurationsCreateOrUpdateInput {
   };
 }
 export const MaintenanceConfigurationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2215,7 +2209,7 @@ export interface MaintenanceConfigurationsCreateOrUpdateOutput {
   };
 }
 export const MaintenanceConfigurationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2245,7 +2239,7 @@ export const MaintenanceConfigurationsCreateOrUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MaintenanceConfigurationsCreateOrUpdateInput,
     outputSchema: MaintenanceConfigurationsCreateOrUpdateOutput,
   }));
@@ -2256,7 +2250,7 @@ export interface MaintenanceConfigurationsDeleteInput {
   resourceName: string;
 }
 export const MaintenanceConfigurationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2283,7 +2277,7 @@ export interface MaintenanceConfigurationsDeleteOutput {
   };
 }
 export const MaintenanceConfigurationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2313,7 +2307,7 @@ export const MaintenanceConfigurationsDeleteOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MaintenanceConfigurationsDeleteInput,
     outputSchema: MaintenanceConfigurationsDeleteOutput,
   }));
@@ -2323,7 +2317,7 @@ export interface MaintenanceConfigurationsForResourceGroupListInput {
   resourceGroupName: string;
 }
 export const MaintenanceConfigurationsForResourceGroupListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2351,7 +2345,7 @@ export interface MaintenanceConfigurationsForResourceGroupListOutput {
   }[];
 }
 export const MaintenanceConfigurationsForResourceGroupListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2396,7 +2390,7 @@ export const MaintenanceConfigurationsForResourceGroupListOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsForResourceGroupList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MaintenanceConfigurationsForResourceGroupListInput,
     outputSchema: MaintenanceConfigurationsForResourceGroupListOutput,
   }));
@@ -2407,7 +2401,7 @@ export interface MaintenanceConfigurationsGetInput {
   resourceName: string;
 }
 export const MaintenanceConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2434,7 +2428,7 @@ export interface MaintenanceConfigurationsGetOutput {
   };
 }
 export const MaintenanceConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2464,7 +2458,7 @@ export const MaintenanceConfigurationsGetOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MaintenanceConfigurationsGetInput,
     outputSchema: MaintenanceConfigurationsGetOutput,
   }));
@@ -2473,7 +2467,7 @@ export interface MaintenanceConfigurationsListInput {
   subscriptionId: string;
 }
 export const MaintenanceConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2500,7 +2494,7 @@ export interface MaintenanceConfigurationsListOutput {
   }[];
 }
 export const MaintenanceConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2544,7 +2538,7 @@ export const MaintenanceConfigurationsListOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MaintenanceConfigurationsListInput,
     outputSchema: MaintenanceConfigurationsListOutput,
   }));
@@ -2602,7 +2596,7 @@ export interface MaintenanceConfigurationsUpdateInput {
   };
 }
 export const MaintenanceConfigurationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2711,7 +2705,7 @@ export interface MaintenanceConfigurationsUpdateOutput {
   };
 }
 export const MaintenanceConfigurationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2741,15 +2735,13 @@ export const MaintenanceConfigurationsUpdateOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const MaintenanceConfigurationsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MaintenanceConfigurationsUpdateInput,
     outputSchema: MaintenanceConfigurationsUpdateOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Maintenance/operations",
@@ -2772,7 +2764,7 @@ export interface OperationsListOutput {
     isDataAction?: boolean;
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2801,7 +2793,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - Version of the API to be used with the client request.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2811,7 +2803,7 @@ export interface PublicMaintenanceConfigurationsGetInput {
   resourceName: string;
 }
 export const PublicMaintenanceConfigurationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2837,7 +2829,7 @@ export interface PublicMaintenanceConfigurationsGetOutput {
   };
 }
 export const PublicMaintenanceConfigurationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2866,7 +2858,7 @@ export const PublicMaintenanceConfigurationsGetOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PublicMaintenanceConfigurationsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PublicMaintenanceConfigurationsGetInput,
     outputSchema: PublicMaintenanceConfigurationsGetOutput,
   }));
@@ -2875,7 +2867,7 @@ export interface PublicMaintenanceConfigurationsListInput {
   subscriptionId: string;
 }
 export const PublicMaintenanceConfigurationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2902,7 +2894,7 @@ export interface PublicMaintenanceConfigurationsListOutput {
   }[];
 }
 export const PublicMaintenanceConfigurationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2946,7 +2938,7 @@ export const PublicMaintenanceConfigurationsListOutput =
  * @param api-version - Version of the API to be used with the client request.
  */
 export const PublicMaintenanceConfigurationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PublicMaintenanceConfigurationsListInput,
     outputSchema: PublicMaintenanceConfigurationsListOutput,
   }));
@@ -2958,7 +2950,7 @@ export interface UpdatesListInput {
   resourceType: string;
   resourceName: string;
 }
-export const UpdatesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   providerName: Schema.String.pipe(T.PathParam()),
@@ -2990,7 +2982,7 @@ export interface UpdatesListOutput {
     properties?: { resourceId?: string };
   }[];
 }
-export const UpdatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3042,7 +3034,7 @@ export const UpdatesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceName - Resource identifier
  * @param api-version - Version of the API to be used with the client request.
  */
-export const UpdatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdatesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdatesListInput,
   outputSchema: UpdatesListOutput,
 }));
@@ -3056,17 +3048,15 @@ export interface UpdatesListParentInput {
   resourceType: string;
   resourceName: string;
 }
-export const UpdatesListParentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    providerName: Schema.String.pipe(T.PathParam()),
-    resourceParentType: Schema.String.pipe(T.PathParam()),
-    resourceParentName: Schema.String.pipe(T.PathParam()),
-    resourceType: Schema.String.pipe(T.PathParam()),
-    resourceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const UpdatesListParentInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  providerName: Schema.String.pipe(T.PathParam()),
+  resourceParentType: Schema.String.pipe(T.PathParam()),
+  resourceParentName: Schema.String.pipe(T.PathParam()),
+  resourceType: Schema.String.pipe(T.PathParam()),
+  resourceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/updates",
@@ -3093,7 +3083,7 @@ export interface UpdatesListParentOutput {
   }[];
 }
 export const UpdatesListParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3147,7 +3137,7 @@ export const UpdatesListParentOutput =
  * @param resourceName - Resource identifier
  * @param api-version - Version of the API to be used with the client request.
  */
-export const UpdatesListParent = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UpdatesListParent = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdatesListParentInput,
   outputSchema: UpdatesListParentOutput,
 }));

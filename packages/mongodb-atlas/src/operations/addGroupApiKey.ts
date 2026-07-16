@@ -10,7 +10,7 @@ export interface AddGroupApiKeyInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const AddGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddGroupApiKeyInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   apiUserId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -25,7 +25,7 @@ export const AddGroupApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AddGroupApiKeyOutput = void;
 export const AddGroupApiKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddGroupApiKeyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AddGroupApiKeyOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ export const AddGroupApiKeyOutput =
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key that you want to assign to one project.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const addGroupApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const addGroupApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddGroupApiKeyInput,
   outputSchema: AddGroupApiKeyOutput,
   errors: [Forbidden, NotFound] as const,

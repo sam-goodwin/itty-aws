@@ -10,7 +10,7 @@ export interface AddBranchNeonAuthTrustedDomainInput {
   auth_provider: "mock" | "stack" | "better_auth";
 }
 export const AddBranchNeonAuthTrustedDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     domain: Schema.String,
@@ -25,7 +25,7 @@ export const AddBranchNeonAuthTrustedDomainInput =
 // Output Schema
 export type AddBranchNeonAuthTrustedDomainOutput = void;
 export const AddBranchNeonAuthTrustedDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddBranchNeonAuthTrustedDomainOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AddBranchNeonAuthTrustedDomainOutput>;
 
 // The operation
 /**
@@ -38,7 +38,7 @@ export const AddBranchNeonAuthTrustedDomainOutput =
  * @param branch_id - The Neon branch ID
  */
 export const addBranchNeonAuthTrustedDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddBranchNeonAuthTrustedDomainInput,
     outputSchema: AddBranchNeonAuthTrustedDomainOutput,
   }));

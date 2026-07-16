@@ -9,7 +9,7 @@ export interface ListAlertConfigMatcherFieldNamesInput {
   pretty?: boolean;
 }
 export const ListAlertConfigMatcherFieldNamesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -22,7 +22,7 @@ export const ListAlertConfigMatcherFieldNamesInput =
 // Output Schema
 export type ListAlertConfigMatcherFieldNamesOutput = void;
 export const ListAlertConfigMatcherFieldNamesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListAlertConfigMatcherFieldNamesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListAlertConfigMatcherFieldNamesOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const ListAlertConfigMatcherFieldNamesOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const listAlertConfigMatcherFieldNames =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAlertConfigMatcherFieldNamesInput,
     outputSchema: ListAlertConfigMatcherFieldNamesOutput,
     errors: [Forbidden] as const,

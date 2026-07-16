@@ -59,7 +59,7 @@ export interface CreateAuthenticationV1SelfSubjectReviewInput {
   };
 }
 export const CreateAuthenticationV1SelfSubjectReviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
@@ -177,7 +177,7 @@ export interface CreateAuthenticationV1SelfSubjectReviewOutput {
   };
 }
 export const CreateAuthenticationV1SelfSubjectReviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -250,7 +250,7 @@ export const CreateAuthenticationV1SelfSubjectReviewOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const createAuthenticationV1SelfSubjectReview =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthenticationV1SelfSubjectReviewInput,
     outputSchema: CreateAuthenticationV1SelfSubjectReviewOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -309,7 +309,7 @@ export interface CreateAuthenticationV1TokenReviewInput {
   };
 }
 export const CreateAuthenticationV1TokenReviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
@@ -438,7 +438,7 @@ export interface CreateAuthenticationV1TokenReviewOutput {
   };
 }
 export const CreateAuthenticationV1TokenReviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -518,7 +518,7 @@ export const CreateAuthenticationV1TokenReviewOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const createAuthenticationV1TokenReview =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAuthenticationV1TokenReviewInput,
     outputSchema: CreateAuthenticationV1TokenReviewOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -526,7 +526,7 @@ export const createAuthenticationV1TokenReview =
 // Input Schema
 export interface GetAuthenticationAPIGroupInput {}
 export const GetAuthenticationAPIGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/authentication.k8s.io/" }),
   ) as unknown as Schema.Codec<GetAuthenticationAPIGroupInput>;
 
@@ -540,7 +540,7 @@ export interface GetAuthenticationAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetAuthenticationAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -570,16 +570,14 @@ export const GetAuthenticationAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getAuthenticationAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetAuthenticationAPIGroupInput,
-    outputSchema: GetAuthenticationAPIGroupOutput,
-  }),
-);
+export const getAuthenticationAPIGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAuthenticationAPIGroupInput,
+  outputSchema: GetAuthenticationAPIGroupOutput,
+}));
 // Input Schema
 export interface GetAuthenticationV1APIResourcesInput {}
 export const GetAuthenticationV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/authentication.k8s.io/v1/" }),
   ) as unknown as Schema.Codec<GetAuthenticationV1APIResourcesInput>;
 
@@ -602,7 +600,7 @@ export interface GetAuthenticationV1APIResourcesOutput {
   }[];
 }
 export const GetAuthenticationV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -627,7 +625,7 @@ export const GetAuthenticationV1APIResourcesOutput =
  * get available resources
  */
 export const getAuthenticationV1APIResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAuthenticationV1APIResourcesInput,
     outputSchema: GetAuthenticationV1APIResourcesOutput,
   }));

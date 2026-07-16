@@ -9,7 +9,7 @@ export interface WizardSessionsStreamRetrieveInput {
   workflow_id: string;
 }
 export const WizardSessionsStreamRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     skill_id: Schema.optional(Schema.String),
     workflow_id: Schema.String,
@@ -23,7 +23,7 @@ export const WizardSessionsStreamRetrieveInput =
 // Output Schema
 export type WizardSessionsStreamRetrieveOutput = void;
 export const WizardSessionsStreamRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WizardSessionsStreamRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WizardSessionsStreamRetrieveOutput>;
 
 // The operation
 /**
@@ -33,7 +33,7 @@ export const WizardSessionsStreamRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const wizardSessionsStreamRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WizardSessionsStreamRetrieveInput,
     outputSchema: WizardSessionsStreamRetrieveOutput,
   }));

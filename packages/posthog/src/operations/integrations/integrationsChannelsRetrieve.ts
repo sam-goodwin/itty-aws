@@ -12,7 +12,7 @@ export interface IntegrationsChannelsRetrieveInput {
   search?: string;
 }
 export const IntegrationsChannelsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
@@ -39,7 +39,7 @@ export interface IntegrationsChannelsRetrieveOutput {
   has_more?: boolean;
 }
 export const IntegrationsChannelsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channels: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -64,7 +64,7 @@ export const IntegrationsChannelsRetrieveOutput =
  * @param search - Optional case-insensitive channel name or ID search query.
  */
 export const integrationsChannelsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsChannelsRetrieveInput,
     outputSchema: IntegrationsChannelsRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

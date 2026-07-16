@@ -139,7 +139,7 @@ export interface AssociateAdminAccountRequest {
   AdminAccount: string;
 }
 export const AssociateAdminAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ AdminAccount: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -148,19 +148,19 @@ export const AssociateAdminAccountRequest =
   }) as any as S.Schema<AssociateAdminAccountRequest>;
 export interface AssociateAdminAccountResponse {}
 export const AssociateAdminAccountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateAdminAccountResponse",
   }) as any as S.Schema<AssociateAdminAccountResponse>;
 export type ThirdPartyFirewall =
   | "PALO_ALTO_NETWORKS_CLOUD_NGFW"
   | "FORTIGATE_CLOUD_NATIVE_FIREWALL"
   | (string & {});
-export const ThirdPartyFirewall = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ThirdPartyFirewall = /*@__PURE__*/ S.String;
 export interface AssociateThirdPartyFirewallRequest {
   ThirdPartyFirewall: ThirdPartyFirewall;
 }
 export const AssociateThirdPartyFirewallRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ThirdPartyFirewall: ThirdPartyFirewall }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -174,13 +174,12 @@ export type ThirdPartyFirewallAssociationStatus =
   | "OFFBOARD_COMPLETE"
   | "NOT_EXIST"
   | (string & {});
-export const ThirdPartyFirewallAssociationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ThirdPartyFirewallAssociationStatus = /*@__PURE__*/ S.String;
 export interface AssociateThirdPartyFirewallResponse {
   ThirdPartyFirewallStatus?: ThirdPartyFirewallAssociationStatus;
 }
 export const AssociateThirdPartyFirewallResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ThirdPartyFirewallStatus: S.optional(ThirdPartyFirewallAssociationStatus),
     }),
@@ -188,13 +187,13 @@ export const AssociateThirdPartyFirewallResponse =
     identifier: "AssociateThirdPartyFirewallResponse",
   }) as any as S.Schema<AssociateThirdPartyFirewallResponse>;
 export type IdentifierList = string[];
-export const IdentifierList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const IdentifierList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchAssociateResourceRequest {
   ResourceSetIdentifier: string;
   Items: string[];
 }
 export const BatchAssociateResourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ResourceSetIdentifier: S.String, Items: IdentifierList }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -209,22 +208,22 @@ export type FailedItemReason =
   | "NOT_VALID_RESOURCE_TYPE"
   | "NOT_VALID_ACCOUNT_ID"
   | (string & {});
-export const FailedItemReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FailedItemReason = /*@__PURE__*/ S.String;
 export interface FailedItem {
   URI?: string;
   Reason?: FailedItemReason;
 }
-export const FailedItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FailedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ URI: S.optional(S.String), Reason: S.optional(FailedItemReason) }),
 ).annotate({ identifier: "FailedItem" }) as any as S.Schema<FailedItem>;
 export type FailedItemList = FailedItem[];
-export const FailedItemList = /*@__PURE__*/ /*#__PURE__*/ S.Array(FailedItem);
+export const FailedItemList = /*@__PURE__*/ S.Array(FailedItem);
 export interface BatchAssociateResourceResponse {
   ResourceSetIdentifier: string;
   FailedItems: FailedItem[];
 }
 export const BatchAssociateResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ResourceSetIdentifier: S.String, FailedItems: FailedItemList }),
   ).annotate({
     identifier: "BatchAssociateResourceResponse",
@@ -234,7 +233,7 @@ export interface BatchDisassociateResourceRequest {
   Items: string[];
 }
 export const BatchDisassociateResourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ResourceSetIdentifier: S.String, Items: IdentifierList }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -246,7 +245,7 @@ export interface BatchDisassociateResourceResponse {
   FailedItems: FailedItem[];
 }
 export const BatchDisassociateResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ResourceSetIdentifier: S.String, FailedItems: FailedItemList }),
   ).annotate({
     identifier: "BatchDisassociateResourceResponse",
@@ -254,7 +253,7 @@ export const BatchDisassociateResourceResponse =
 export interface DeleteAppsListRequest {
   ListId: string;
 }
-export const DeleteAppsListRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteAppsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ListId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -262,14 +261,14 @@ export const DeleteAppsListRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteAppsListRequest",
 }) as any as S.Schema<DeleteAppsListRequest>;
 export interface DeleteAppsListResponse {}
-export const DeleteAppsListResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteAppsListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteAppsListResponse",
 }) as any as S.Schema<DeleteAppsListResponse>;
 export interface DeleteNotificationChannelRequest {}
 export const DeleteNotificationChannelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -278,14 +277,14 @@ export const DeleteNotificationChannelRequest =
   }) as any as S.Schema<DeleteNotificationChannelRequest>;
 export interface DeleteNotificationChannelResponse {}
 export const DeleteNotificationChannelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteNotificationChannelResponse",
   }) as any as S.Schema<DeleteNotificationChannelResponse>;
 export interface DeletePolicyRequest {
   PolicyId: string;
   DeleteAllPolicyResources?: boolean;
 }
-export const DeletePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PolicyId: S.String,
     DeleteAllPolicyResources: S.optional(S.Boolean),
@@ -296,7 +295,7 @@ export const DeletePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeletePolicyRequest",
 }) as any as S.Schema<DeletePolicyRequest>;
 export interface DeletePolicyResponse {}
-export const DeletePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeletePolicyResponse",
@@ -304,39 +303,37 @@ export const DeletePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteProtocolsListRequest {
   ListId: string;
 }
-export const DeleteProtocolsListRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ListId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DeleteProtocolsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ListId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DeleteProtocolsListRequest",
 }) as any as S.Schema<DeleteProtocolsListRequest>;
 export interface DeleteProtocolsListResponse {}
 export const DeleteProtocolsListResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteProtocolsListResponse",
   }) as any as S.Schema<DeleteProtocolsListResponse>;
 export interface DeleteResourceSetRequest {
   Identifier: string;
 }
-export const DeleteResourceSetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Identifier: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DeleteResourceSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DeleteResourceSetRequest",
 }) as any as S.Schema<DeleteResourceSetRequest>;
 export interface DeleteResourceSetResponse {}
-export const DeleteResourceSetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteResourceSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteResourceSetResponse",
 }) as any as S.Schema<DeleteResourceSetResponse>;
 export interface DisassociateAdminAccountRequest {}
 export const DisassociateAdminAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -345,14 +342,14 @@ export const DisassociateAdminAccountRequest =
   }) as any as S.Schema<DisassociateAdminAccountRequest>;
 export interface DisassociateAdminAccountResponse {}
 export const DisassociateAdminAccountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DisassociateAdminAccountResponse",
   }) as any as S.Schema<DisassociateAdminAccountResponse>;
 export interface DisassociateThirdPartyFirewallRequest {
   ThirdPartyFirewall: ThirdPartyFirewall;
 }
 export const DisassociateThirdPartyFirewallRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ThirdPartyFirewall: ThirdPartyFirewall }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -363,7 +360,7 @@ export interface DisassociateThirdPartyFirewallResponse {
   ThirdPartyFirewallStatus?: ThirdPartyFirewallAssociationStatus;
 }
 export const DisassociateThirdPartyFirewallResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ThirdPartyFirewallStatus: S.optional(ThirdPartyFirewallAssociationStatus),
     }),
@@ -371,11 +368,10 @@ export const DisassociateThirdPartyFirewallResponse =
     identifier: "DisassociateThirdPartyFirewallResponse",
   }) as any as S.Schema<DisassociateThirdPartyFirewallResponse>;
 export interface GetAdminAccountRequest {}
-export const GetAdminAccountRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetAdminAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetAdminAccountRequest",
 }) as any as S.Schema<GetAdminAccountRequest>;
@@ -386,24 +382,23 @@ export type AccountRoleStatus =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const AccountRoleStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccountRoleStatus = /*@__PURE__*/ S.String;
 export interface GetAdminAccountResponse {
   AdminAccount?: string;
   RoleStatus?: AccountRoleStatus;
 }
-export const GetAdminAccountResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AdminAccount: S.optional(S.String),
-      RoleStatus: S.optional(AccountRoleStatus),
-    }),
+export const GetAdminAccountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AdminAccount: S.optional(S.String),
+    RoleStatus: S.optional(AccountRoleStatus),
+  }),
 ).annotate({
   identifier: "GetAdminAccountResponse",
 }) as any as S.Schema<GetAdminAccountResponse>;
 export interface GetAdminScopeRequest {
   AdminAccount: string;
 }
-export const GetAdminScopeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAdminScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AdminAccount: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -411,13 +406,13 @@ export const GetAdminScopeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetAdminScopeRequest",
 }) as any as S.Schema<GetAdminScopeRequest>;
 export type AccountIdList = string[];
-export const AccountIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
 export interface AccountScope {
   Accounts?: string[];
   AllAccountsEnabled?: boolean;
   ExcludeSpecifiedAccounts?: boolean;
 }
-export const AccountScope = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AccountScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Accounts: S.optional(AccountIdList),
     AllAccountsEnabled: S.optional(S.Boolean),
@@ -425,31 +420,28 @@ export const AccountScope = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountScope" }) as any as S.Schema<AccountScope>;
 export type OrganizationalUnitIdList = string[];
-export const OrganizationalUnitIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const OrganizationalUnitIdList = /*@__PURE__*/ S.Array(S.String);
 export interface OrganizationalUnitScope {
   OrganizationalUnits?: string[];
   AllOrganizationalUnitsEnabled?: boolean;
   ExcludeSpecifiedOrganizationalUnits?: boolean;
 }
-export const OrganizationalUnitScope = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      OrganizationalUnits: S.optional(OrganizationalUnitIdList),
-      AllOrganizationalUnitsEnabled: S.optional(S.Boolean),
-      ExcludeSpecifiedOrganizationalUnits: S.optional(S.Boolean),
-    }),
+export const OrganizationalUnitScope = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OrganizationalUnits: S.optional(OrganizationalUnitIdList),
+    AllOrganizationalUnitsEnabled: S.optional(S.Boolean),
+    ExcludeSpecifiedOrganizationalUnits: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "OrganizationalUnitScope",
 }) as any as S.Schema<OrganizationalUnitScope>;
 export type AWSRegionList = string[];
-export const AWSRegionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AWSRegionList = /*@__PURE__*/ S.Array(S.String);
 export interface RegionScope {
   Regions?: string[];
   AllRegionsEnabled?: boolean;
 }
-export const RegionScope = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RegionScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Regions: S.optional(AWSRegionList),
     AllRegionsEnabled: S.optional(S.Boolean),
@@ -468,15 +460,15 @@ export type SecurityServiceType =
   | "IMPORT_NETWORK_FIREWALL"
   | "NETWORK_ACL_COMMON"
   | (string & {});
-export const SecurityServiceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SecurityServiceType = /*@__PURE__*/ S.String;
 export type SecurityServiceTypeList = SecurityServiceType[];
 export const SecurityServiceTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SecurityServiceType);
+  /*@__PURE__*/ S.Array(SecurityServiceType);
 export interface PolicyTypeScope {
   PolicyTypes?: SecurityServiceType[];
   AllPolicyTypesEnabled?: boolean;
 }
-export const PolicyTypeScope = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PolicyTypeScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PolicyTypes: S.optional(SecurityServiceTypeList),
     AllPolicyTypesEnabled: S.optional(S.Boolean),
@@ -490,7 +482,7 @@ export interface AdminScope {
   RegionScope?: RegionScope;
   PolicyTypeScope?: PolicyTypeScope;
 }
-export const AdminScope = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AdminScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountScope: S.optional(AccountScope),
     OrganizationalUnitScope: S.optional(OrganizationalUnitScope),
@@ -504,12 +496,12 @@ export type OrganizationStatus =
   | "OFFBOARDING"
   | "OFFBOARDING_COMPLETE"
   | (string & {});
-export const OrganizationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OrganizationStatus = /*@__PURE__*/ S.String;
 export interface GetAdminScopeResponse {
   AdminScope?: AdminScope;
   Status?: OrganizationStatus;
 }
-export const GetAdminScopeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAdminScopeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AdminScope: S.optional(AdminScope),
     Status: S.optional(OrganizationStatus),
@@ -521,7 +513,7 @@ export interface GetAppsListRequest {
   ListId: string;
   DefaultList?: boolean;
 }
-export const GetAppsListRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAppsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ListId: S.String, DefaultList: S.optional(S.Boolean) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -533,13 +525,13 @@ export interface App {
   Protocol: string;
   Port: number;
 }
-export const App = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const App = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AppName: S.String, Protocol: S.String, Port: S.Number }),
 ).annotate({ identifier: "App" }) as any as S.Schema<App>;
 export type AppsList = App[];
-export const AppsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(App);
+export const AppsList = /*@__PURE__*/ S.Array(App);
 export type PreviousAppsList = { [key: string]: App[] | undefined };
-export const PreviousAppsList = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const PreviousAppsList = /*@__PURE__*/ S.Record(
   S.String,
   AppsList.pipe(S.optional),
 );
@@ -552,7 +544,7 @@ export interface AppsListData {
   AppsList: App[];
   PreviousAppsList?: { [key: string]: App[] | undefined };
 }
-export const AppsListData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AppsListData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ListId: S.optional(S.String),
     ListName: S.String,
@@ -567,7 +559,7 @@ export interface GetAppsListResponse {
   AppsList?: AppsListData;
   AppsListArn?: string;
 }
-export const GetAppsListResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAppsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AppsList: S.optional(AppsListData),
     AppsListArn: S.optional(S.String),
@@ -579,11 +571,10 @@ export interface GetComplianceDetailRequest {
   PolicyId: string;
   MemberAccount: string;
 }
-export const GetComplianceDetailRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ PolicyId: S.String, MemberAccount: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetComplianceDetailRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PolicyId: S.String, MemberAccount: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetComplianceDetailRequest",
 }) as any as S.Schema<GetComplianceDetailRequest>;
@@ -619,9 +610,9 @@ export type ViolationReason =
   | "INVALID_NETWORK_ACL_ENTRY"
   | "WEB_ACL_CONFIGURATION_OR_SCOPE_OF_USE"
   | (string & {});
-export const ViolationReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ViolationReason = /*@__PURE__*/ S.String;
 export type ComplianceViolatorMetadata = { [key: string]: string | undefined };
-export const ComplianceViolatorMetadata = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ComplianceViolatorMetadata = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -631,7 +622,7 @@ export interface ComplianceViolator {
   ResourceType?: string;
   Metadata?: { [key: string]: string | undefined };
 }
-export const ComplianceViolator = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ComplianceViolator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceId: S.optional(S.String),
     ViolationReason: S.optional(ViolationReason),
@@ -642,17 +633,16 @@ export const ComplianceViolator = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ComplianceViolator",
 }) as any as S.Schema<ComplianceViolator>;
 export type ComplianceViolators = ComplianceViolator[];
-export const ComplianceViolators =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ComplianceViolator);
+export const ComplianceViolators = /*@__PURE__*/ S.Array(ComplianceViolator);
 export type DependentServiceName =
   | "AWSCONFIG"
   | "AWSWAF"
   | "AWSSHIELD_ADVANCED"
   | "AWSVPC"
   | (string & {});
-export const DependentServiceName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DependentServiceName = /*@__PURE__*/ S.String;
 export type IssueInfoMap = { [key in DependentServiceName]?: string };
-export const IssueInfoMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const IssueInfoMap = /*@__PURE__*/ S.Record(
   DependentServiceName,
   S.String.pipe(S.optional),
 );
@@ -665,17 +655,16 @@ export interface PolicyComplianceDetail {
   ExpiredAt?: Date;
   IssueInfoMap?: { [key: string]: string | undefined };
 }
-export const PolicyComplianceDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PolicyOwner: S.optional(S.String),
-      PolicyId: S.optional(S.String),
-      MemberAccount: S.optional(S.String),
-      Violators: S.optional(ComplianceViolators),
-      EvaluationLimitExceeded: S.optional(S.Boolean),
-      ExpiredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      IssueInfoMap: S.optional(IssueInfoMap),
-    }),
+export const PolicyComplianceDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PolicyOwner: S.optional(S.String),
+    PolicyId: S.optional(S.String),
+    MemberAccount: S.optional(S.String),
+    Violators: S.optional(ComplianceViolators),
+    EvaluationLimitExceeded: S.optional(S.Boolean),
+    ExpiredAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    IssueInfoMap: S.optional(IssueInfoMap),
+  }),
 ).annotate({
   identifier: "PolicyComplianceDetail",
 }) as any as S.Schema<PolicyComplianceDetail>;
@@ -683,14 +672,14 @@ export interface GetComplianceDetailResponse {
   PolicyComplianceDetail?: PolicyComplianceDetail;
 }
 export const GetComplianceDetailResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ PolicyComplianceDetail: S.optional(PolicyComplianceDetail) }),
   ).annotate({
     identifier: "GetComplianceDetailResponse",
   }) as any as S.Schema<GetComplianceDetailResponse>;
 export interface GetNotificationChannelRequest {}
 export const GetNotificationChannelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -702,7 +691,7 @@ export interface GetNotificationChannelResponse {
   SnsRoleName?: string;
 }
 export const GetNotificationChannelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SnsTopicArn: S.optional(S.String),
       SnsRoleName: S.optional(S.String),
@@ -713,7 +702,7 @@ export const GetNotificationChannelResponse =
 export interface GetPolicyRequest {
   PolicyId: string;
 }
-export const GetPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PolicyId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -724,11 +713,11 @@ export type FirewallDeploymentModel =
   | "CENTRALIZED"
   | "DISTRIBUTED"
   | (string & {});
-export const FirewallDeploymentModel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FirewallDeploymentModel = /*@__PURE__*/ S.String;
 export interface NetworkFirewallPolicy {
   FirewallDeploymentModel?: FirewallDeploymentModel;
 }
-export const NetworkFirewallPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NetworkFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FirewallDeploymentModel: S.optional(FirewallDeploymentModel) }),
 ).annotate({
   identifier: "NetworkFirewallPolicy",
@@ -736,9 +725,8 @@ export const NetworkFirewallPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ThirdPartyFirewallPolicy {
   FirewallDeploymentModel?: FirewallDeploymentModel;
 }
-export const ThirdPartyFirewallPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ FirewallDeploymentModel: S.optional(FirewallDeploymentModel) }),
+export const ThirdPartyFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ FirewallDeploymentModel: S.optional(FirewallDeploymentModel) }),
 ).annotate({
   identifier: "ThirdPartyFirewallPolicy",
 }) as any as S.Schema<ThirdPartyFirewallPolicy>;
@@ -746,8 +734,8 @@ export interface NetworkAclIcmpTypeCode {
   Code?: number;
   Type?: number;
 }
-export const NetworkAclIcmpTypeCode = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Code: S.optional(S.Number), Type: S.optional(S.Number) }),
+export const NetworkAclIcmpTypeCode = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Code: S.optional(S.Number), Type: S.optional(S.Number) }),
 ).annotate({
   identifier: "NetworkAclIcmpTypeCode",
 }) as any as S.Schema<NetworkAclIcmpTypeCode>;
@@ -755,13 +743,13 @@ export interface NetworkAclPortRange {
   From?: number;
   To?: number;
 }
-export const NetworkAclPortRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NetworkAclPortRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ From: S.optional(S.Number), To: S.optional(S.Number) }),
 ).annotate({
   identifier: "NetworkAclPortRange",
 }) as any as S.Schema<NetworkAclPortRange>;
 export type NetworkAclRuleAction = "allow" | "deny" | (string & {});
-export const NetworkAclRuleAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkAclRuleAction = /*@__PURE__*/ S.String;
 export interface NetworkAclEntry {
   IcmpTypeCode?: NetworkAclIcmpTypeCode;
   Protocol: string;
@@ -771,7 +759,7 @@ export interface NetworkAclEntry {
   RuleAction: NetworkAclRuleAction;
   Egress: boolean;
 }
-export const NetworkAclEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NetworkAclEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IcmpTypeCode: S.optional(NetworkAclIcmpTypeCode),
     Protocol: S.String,
@@ -785,15 +773,14 @@ export const NetworkAclEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "NetworkAclEntry",
 }) as any as S.Schema<NetworkAclEntry>;
 export type NetworkAclEntries = NetworkAclEntry[];
-export const NetworkAclEntries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkAclEntry);
+export const NetworkAclEntries = /*@__PURE__*/ S.Array(NetworkAclEntry);
 export interface NetworkAclEntrySet {
   FirstEntries?: NetworkAclEntry[];
   ForceRemediateForFirstEntries: boolean;
   LastEntries?: NetworkAclEntry[];
   ForceRemediateForLastEntries: boolean;
 }
-export const NetworkAclEntrySet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NetworkAclEntrySet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FirstEntries: S.optional(NetworkAclEntries),
     ForceRemediateForFirstEntries: S.Boolean,
@@ -806,8 +793,8 @@ export const NetworkAclEntrySet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface NetworkAclCommonPolicy {
   NetworkAclEntrySet: NetworkAclEntrySet;
 }
-export const NetworkAclCommonPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ NetworkAclEntrySet: NetworkAclEntrySet }),
+export const NetworkAclCommonPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ NetworkAclEntrySet: NetworkAclEntrySet }),
 ).annotate({
   identifier: "NetworkAclCommonPolicy",
 }) as any as S.Schema<NetworkAclCommonPolicy>;
@@ -816,7 +803,7 @@ export interface PolicyOption {
   ThirdPartyFirewallPolicy?: ThirdPartyFirewallPolicy;
   NetworkAclCommonPolicy?: NetworkAclCommonPolicy;
 }
-export const PolicyOption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PolicyOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkFirewallPolicy: S.optional(NetworkFirewallPolicy),
     ThirdPartyFirewallPolicy: S.optional(ThirdPartyFirewallPolicy),
@@ -828,49 +815,46 @@ export interface SecurityServicePolicyData {
   ManagedServiceData?: string;
   PolicyOption?: PolicyOption;
 }
-export const SecurityServicePolicyData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Type: SecurityServiceType,
-      ManagedServiceData: S.optional(S.String),
-      PolicyOption: S.optional(PolicyOption),
-    }),
+export const SecurityServicePolicyData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Type: SecurityServiceType,
+    ManagedServiceData: S.optional(S.String),
+    PolicyOption: S.optional(PolicyOption),
+  }),
 ).annotate({
   identifier: "SecurityServicePolicyData",
 }) as any as S.Schema<SecurityServicePolicyData>;
 export type ResourceTypeList = string[];
-export const ResourceTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ResourceTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface ResourceTag {
   Key: string;
   Value?: string;
 }
-export const ResourceTag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.String, Value: S.optional(S.String) }),
 ).annotate({ identifier: "ResourceTag" }) as any as S.Schema<ResourceTag>;
 export type ResourceTags = ResourceTag[];
-export const ResourceTags = /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceTag);
+export const ResourceTags = /*@__PURE__*/ S.Array(ResourceTag);
 export type CustomerPolicyScopeIdType = "ACCOUNT" | "ORG_UNIT" | (string & {});
-export const CustomerPolicyScopeIdType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CustomerPolicyScopeIdType = /*@__PURE__*/ S.String;
 export type CustomerPolicyScopeIdList = string[];
-export const CustomerPolicyScopeIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const CustomerPolicyScopeIdList = /*@__PURE__*/ S.Array(S.String);
 export type CustomerPolicyScopeMap = {
   [key in CustomerPolicyScopeIdType]?: string[];
 };
-export const CustomerPolicyScopeMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const CustomerPolicyScopeMap = /*@__PURE__*/ S.Record(
   CustomerPolicyScopeIdType,
   CustomerPolicyScopeIdList.pipe(S.optional),
 );
 export type ResourceSetIds = string[];
-export const ResourceSetIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ResourceSetIds = /*@__PURE__*/ S.Array(S.String);
 export type CustomerPolicyStatus =
   | "ACTIVE"
   | "OUT_OF_ADMIN_SCOPE"
   | (string & {});
-export const CustomerPolicyStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CustomerPolicyStatus = /*@__PURE__*/ S.String;
 export type ResourceTagLogicalOperator = "AND" | "OR" | (string & {});
-export const ResourceTagLogicalOperator = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceTagLogicalOperator = /*@__PURE__*/ S.String;
 export interface Policy {
   PolicyId?: string;
   PolicyName: string;
@@ -889,7 +873,7 @@ export interface Policy {
   PolicyStatus?: CustomerPolicyStatus;
   ResourceTagLogicalOperator?: ResourceTagLogicalOperator;
 }
-export const Policy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PolicyId: S.optional(S.String),
     PolicyName: S.String,
@@ -913,7 +897,7 @@ export interface GetPolicyResponse {
   Policy?: Policy;
   PolicyArn?: string;
 }
-export const GetPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Policy: S.optional(Policy), PolicyArn: S.optional(S.String) }),
 ).annotate({
   identifier: "GetPolicyResponse",
@@ -926,18 +910,17 @@ export interface GetProtectionStatusRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const GetProtectionStatusRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PolicyId: S.String,
-      MemberAccountId: S.optional(S.String),
-      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetProtectionStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PolicyId: S.String,
+    MemberAccountId: S.optional(S.String),
+    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetProtectionStatusRequest",
 }) as any as S.Schema<GetProtectionStatusRequest>;
@@ -948,7 +931,7 @@ export interface GetProtectionStatusResponse {
   NextToken?: string;
 }
 export const GetProtectionStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AdminAccountId: S.optional(S.String),
       ServiceType: S.optional(SecurityServiceType),
@@ -962,18 +945,17 @@ export interface GetProtocolsListRequest {
   ListId: string;
   DefaultList?: boolean;
 }
-export const GetProtocolsListRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ListId: S.String, DefaultList: S.optional(S.Boolean) }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetProtocolsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ListId: S.String, DefaultList: S.optional(S.Boolean) }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetProtocolsListRequest",
 }) as any as S.Schema<GetProtocolsListRequest>;
 export type ProtocolsList = string[];
-export const ProtocolsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ProtocolsList = /*@__PURE__*/ S.Array(S.String);
 export type PreviousProtocolsList = { [key: string]: string[] | undefined };
-export const PreviousProtocolsList = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const PreviousProtocolsList = /*@__PURE__*/ S.Record(
   S.String,
   ProtocolsList.pipe(S.optional),
 );
@@ -986,7 +968,7 @@ export interface ProtocolsListData {
   ProtocolsList: string[];
   PreviousProtocolsList?: { [key: string]: string[] | undefined };
 }
-export const ProtocolsListData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ProtocolsListData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ListId: S.optional(S.String),
     ListName: S.String,
@@ -1003,19 +985,18 @@ export interface GetProtocolsListResponse {
   ProtocolsList?: ProtocolsListData;
   ProtocolsListArn?: string;
 }
-export const GetProtocolsListResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProtocolsList: S.optional(ProtocolsListData),
-      ProtocolsListArn: S.optional(S.String),
-    }),
+export const GetProtocolsListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProtocolsList: S.optional(ProtocolsListData),
+    ProtocolsListArn: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetProtocolsListResponse",
 }) as any as S.Schema<GetProtocolsListResponse>;
 export interface GetResourceSetRequest {
   Identifier: string;
 }
-export const GetResourceSetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetResourceSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1023,7 +1004,7 @@ export const GetResourceSetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetResourceSetRequest",
 }) as any as S.Schema<GetResourceSetRequest>;
 export type ResourceSetStatus = "ACTIVE" | "OUT_OF_ADMIN_SCOPE" | (string & {});
-export const ResourceSetStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceSetStatus = /*@__PURE__*/ S.String;
 export interface ResourceSet {
   Id?: string;
   Name: string;
@@ -1033,7 +1014,7 @@ export interface ResourceSet {
   LastUpdateTime?: Date;
   ResourceSetStatus?: ResourceSetStatus;
 }
-export const ResourceSet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Name: S.String,
@@ -1048,8 +1029,8 @@ export interface GetResourceSetResponse {
   ResourceSet: ResourceSet;
   ResourceSetArn: string;
 }
-export const GetResourceSetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ResourceSet: ResourceSet, ResourceSetArn: S.String }),
+export const GetResourceSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceSet: ResourceSet, ResourceSetArn: S.String }),
 ).annotate({
   identifier: "GetResourceSetResponse",
 }) as any as S.Schema<GetResourceSetResponse>;
@@ -1057,7 +1038,7 @@ export interface GetThirdPartyFirewallAssociationStatusRequest {
   ThirdPartyFirewall: ThirdPartyFirewall;
 }
 export const GetThirdPartyFirewallAssociationStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ThirdPartyFirewall: ThirdPartyFirewall }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1069,14 +1050,13 @@ export type MarketplaceSubscriptionOnboardingStatus =
   | "NOT_COMPLETE"
   | "COMPLETE"
   | (string & {});
-export const MarketplaceSubscriptionOnboardingStatus =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MarketplaceSubscriptionOnboardingStatus = /*@__PURE__*/ S.String;
 export interface GetThirdPartyFirewallAssociationStatusResponse {
   ThirdPartyFirewallStatus?: ThirdPartyFirewallAssociationStatus;
   MarketplaceOnboardingStatus?: MarketplaceSubscriptionOnboardingStatus;
 }
 export const GetThirdPartyFirewallAssociationStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ThirdPartyFirewallStatus: S.optional(ThirdPartyFirewallAssociationStatus),
       MarketplaceOnboardingStatus: S.optional(
@@ -1092,37 +1072,34 @@ export interface GetViolationDetailsRequest {
   ResourceId: string;
   ResourceType: string;
 }
-export const GetViolationDetailsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PolicyId: S.String,
-      MemberAccount: S.String,
-      ResourceId: S.String,
-      ResourceType: S.String,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetViolationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PolicyId: S.String,
+    MemberAccount: S.String,
+    ResourceId: S.String,
+    ResourceType: S.String,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetViolationDetailsRequest",
 }) as any as S.Schema<GetViolationDetailsRequest>;
 export type TargetViolationReasons = string[];
-export const TargetViolationReasons = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const TargetViolationReasons = /*@__PURE__*/ S.Array(S.String);
 export interface PartialMatch {
   Reference?: string;
   TargetViolationReasons?: string[];
 }
-export const PartialMatch = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PartialMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Reference: S.optional(S.String),
     TargetViolationReasons: S.optional(TargetViolationReasons),
   }),
 ).annotate({ identifier: "PartialMatch" }) as any as S.Schema<PartialMatch>;
 export type PartialMatches = PartialMatch[];
-export const PartialMatches = /*@__PURE__*/ /*#__PURE__*/ S.Array(PartialMatch);
+export const PartialMatches = /*@__PURE__*/ S.Array(PartialMatch);
 export type RemediationActionType = "REMOVE" | "MODIFY" | (string & {});
-export const RemediationActionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RemediationActionType = /*@__PURE__*/ S.String;
 export interface SecurityGroupRuleDescription {
   IPV4Range?: string;
   IPV6Range?: string;
@@ -1132,7 +1109,7 @@ export interface SecurityGroupRuleDescription {
   ToPort?: number;
 }
 export const SecurityGroupRuleDescription =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       IPV4Range: S.optional(S.String),
       IPV6Range: S.optional(S.String),
@@ -1151,7 +1128,7 @@ export interface SecurityGroupRemediationAction {
   IsDefaultAction?: boolean;
 }
 export const SecurityGroupRemediationAction =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       RemediationActionType: S.optional(RemediationActionType),
       Description: S.optional(S.String),
@@ -1163,7 +1140,7 @@ export const SecurityGroupRemediationAction =
   }) as any as S.Schema<SecurityGroupRemediationAction>;
 export type SecurityGroupRemediationActions = SecurityGroupRemediationAction[];
 export const SecurityGroupRemediationActions =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SecurityGroupRemediationAction);
+  /*@__PURE__*/ S.Array(SecurityGroupRemediationAction);
 export interface AwsVPCSecurityGroupViolation {
   ViolationTarget?: string;
   ViolationTargetDescription?: string;
@@ -1171,7 +1148,7 @@ export interface AwsVPCSecurityGroupViolation {
   PossibleSecurityGroupRemediationActions?: SecurityGroupRemediationAction[];
 }
 export const AwsVPCSecurityGroupViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ViolationTarget: S.optional(S.String),
       ViolationTargetDescription: S.optional(S.String),
@@ -1184,13 +1161,13 @@ export const AwsVPCSecurityGroupViolation =
     identifier: "AwsVPCSecurityGroupViolation",
   }) as any as S.Schema<AwsVPCSecurityGroupViolation>;
 export type ResourceIdList = string[];
-export const ResourceIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ResourceIdList = /*@__PURE__*/ S.Array(S.String);
 export interface AwsEc2NetworkInterfaceViolation {
   ViolationTarget?: string;
   ViolatingSecurityGroups?: string[];
 }
 export const AwsEc2NetworkInterfaceViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ViolationTarget: S.optional(S.String),
       ViolatingSecurityGroups: S.optional(ResourceIdList),
@@ -1201,19 +1178,18 @@ export const AwsEc2NetworkInterfaceViolation =
 export type AwsEc2NetworkInterfaceViolations =
   AwsEc2NetworkInterfaceViolation[];
 export const AwsEc2NetworkInterfaceViolations =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AwsEc2NetworkInterfaceViolation);
+  /*@__PURE__*/ S.Array(AwsEc2NetworkInterfaceViolation);
 export interface AwsEc2InstanceViolation {
   ViolationTarget?: string;
   AwsEc2NetworkInterfaceViolations?: AwsEc2NetworkInterfaceViolation[];
 }
-export const AwsEc2InstanceViolation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ViolationTarget: S.optional(S.String),
-      AwsEc2NetworkInterfaceViolations: S.optional(
-        AwsEc2NetworkInterfaceViolations,
-      ),
-    }),
+export const AwsEc2InstanceViolation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ViolationTarget: S.optional(S.String),
+    AwsEc2NetworkInterfaceViolations: S.optional(
+      AwsEc2NetworkInterfaceViolations,
+    ),
+  }),
 ).annotate({
   identifier: "AwsEc2InstanceViolation",
 }) as any as S.Schema<AwsEc2InstanceViolation>;
@@ -1224,7 +1200,7 @@ export interface NetworkFirewallMissingFirewallViolation {
   TargetViolationReason?: string;
 }
 export const NetworkFirewallMissingFirewallViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ViolationTarget: S.optional(S.String),
       VPC: S.optional(S.String),
@@ -1241,7 +1217,7 @@ export interface NetworkFirewallMissingSubnetViolation {
   TargetViolationReason?: string;
 }
 export const NetworkFirewallMissingSubnetViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ViolationTarget: S.optional(S.String),
       VPC: S.optional(S.String),
@@ -1259,7 +1235,7 @@ export interface NetworkFirewallMissingExpectedRTViolation {
   ExpectedRouteTable?: string;
 }
 export const NetworkFirewallMissingExpectedRTViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ViolationTarget: S.optional(S.String),
       VPC: S.optional(S.String),
@@ -1275,7 +1251,7 @@ export interface StatelessRuleGroup {
   ResourceId?: string;
   Priority?: number;
 }
-export const StatelessRuleGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StatelessRuleGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RuleGroupName: S.optional(S.String),
     ResourceId: S.optional(S.String),
@@ -1285,20 +1261,16 @@ export const StatelessRuleGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "StatelessRuleGroup",
 }) as any as S.Schema<StatelessRuleGroup>;
 export type StatelessRuleGroupList = StatelessRuleGroup[];
-export const StatelessRuleGroupList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(StatelessRuleGroup);
+export const StatelessRuleGroupList = /*@__PURE__*/ S.Array(StatelessRuleGroup);
 export type NetworkFirewallActionList = string[];
-export const NetworkFirewallActionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const NetworkFirewallActionList = /*@__PURE__*/ S.Array(S.String);
 export type NetworkFirewallOverrideAction = "DROP_TO_ALERT" | (string & {});
-export const NetworkFirewallOverrideAction =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkFirewallOverrideAction = /*@__PURE__*/ S.String;
 export interface NetworkFirewallStatefulRuleGroupOverride {
   Action?: NetworkFirewallOverrideAction;
 }
 export const NetworkFirewallStatefulRuleGroupOverride =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Action: S.optional(NetworkFirewallOverrideAction) }),
   ).annotate({
     identifier: "NetworkFirewallStatefulRuleGroupOverride",
@@ -1309,7 +1281,7 @@ export interface StatefulRuleGroup {
   Priority?: number;
   Override?: NetworkFirewallStatefulRuleGroupOverride;
 }
-export const StatefulRuleGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StatefulRuleGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RuleGroupName: S.optional(S.String),
     ResourceId: S.optional(S.String),
@@ -1320,22 +1292,21 @@ export const StatefulRuleGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "StatefulRuleGroup",
 }) as any as S.Schema<StatefulRuleGroup>;
 export type StatefulRuleGroupList = StatefulRuleGroup[];
-export const StatefulRuleGroupList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(StatefulRuleGroup);
+export const StatefulRuleGroupList = /*@__PURE__*/ S.Array(StatefulRuleGroup);
 export type RuleOrder = "STRICT_ORDER" | "DEFAULT_ACTION_ORDER" | (string & {});
-export const RuleOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RuleOrder = /*@__PURE__*/ S.String;
 export type StreamExceptionPolicy =
   | "DROP"
   | "CONTINUE"
   | "REJECT"
   | "FMS_IGNORE"
   | (string & {});
-export const StreamExceptionPolicy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StreamExceptionPolicy = /*@__PURE__*/ S.String;
 export interface StatefulEngineOptions {
   RuleOrder?: RuleOrder;
   StreamExceptionPolicy?: StreamExceptionPolicy;
 }
-export const StatefulEngineOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StatefulEngineOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RuleOrder: S.optional(RuleOrder),
     StreamExceptionPolicy: S.optional(StreamExceptionPolicy),
@@ -1353,7 +1324,7 @@ export interface NetworkFirewallPolicyDescription {
   StatefulEngineOptions?: StatefulEngineOptions;
 }
 export const NetworkFirewallPolicyDescription =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       StatelessRuleGroups: S.optional(StatelessRuleGroupList),
       StatelessDefaultActions: S.optional(NetworkFirewallActionList),
@@ -1372,7 +1343,7 @@ export interface NetworkFirewallPolicyModifiedViolation {
   ExpectedPolicyDescription?: NetworkFirewallPolicyDescription;
 }
 export const NetworkFirewallPolicyModifiedViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ViolationTarget: S.optional(S.String),
       CurrentPolicyDescription: S.optional(NetworkFirewallPolicyDescription),
@@ -1382,7 +1353,7 @@ export const NetworkFirewallPolicyModifiedViolation =
     identifier: "NetworkFirewallPolicyModifiedViolation",
   }) as any as S.Schema<NetworkFirewallPolicyModifiedViolation>;
 export type DestinationType = "IPV4" | "IPV6" | "PREFIX_LIST" | (string & {});
-export const DestinationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DestinationType = /*@__PURE__*/ S.String;
 export type TargetType =
   | "GATEWAY"
   | "CARRIER_GATEWAY"
@@ -1395,14 +1366,14 @@ export type TargetType =
   | "EGRESS_ONLY_INTERNET_GATEWAY"
   | "TRANSIT_GATEWAY"
   | (string & {});
-export const TargetType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TargetType = /*@__PURE__*/ S.String;
 export interface Route {
   DestinationType?: DestinationType;
   TargetType?: TargetType;
   Destination?: string;
   Target?: string;
 }
-export const Route = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Route = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DestinationType: S.optional(DestinationType),
     TargetType: S.optional(TargetType),
@@ -1411,11 +1382,9 @@ export const Route = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Route" }) as any as S.Schema<Route>;
 export type Routes = Route[];
-export const Routes = /*@__PURE__*/ /*#__PURE__*/ S.Array(Route);
+export const Routes = /*@__PURE__*/ S.Array(Route);
 export type LengthBoundedStringList = string[];
-export const LengthBoundedStringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const LengthBoundedStringList = /*@__PURE__*/ S.Array(S.String);
 export interface ExpectedRoute {
   IpV4Cidr?: string;
   PrefixListId?: string;
@@ -1424,7 +1393,7 @@ export interface ExpectedRoute {
   AllowedTargets?: string[];
   RouteTableId?: string;
 }
-export const ExpectedRoute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExpectedRoute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IpV4Cidr: S.optional(S.String),
     PrefixListId: S.optional(S.String),
@@ -1435,8 +1404,7 @@ export const ExpectedRoute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExpectedRoute" }) as any as S.Schema<ExpectedRoute>;
 export type ExpectedRoutes = ExpectedRoute[];
-export const ExpectedRoutes =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ExpectedRoute);
+export const ExpectedRoutes = /*@__PURE__*/ S.Array(ExpectedRoute);
 export interface NetworkFirewallInternetTrafficNotInspectedViolation {
   SubnetId?: string;
   SubnetAvailabilityZone?: string;
@@ -1455,7 +1423,7 @@ export interface NetworkFirewallInternetTrafficNotInspectedViolation {
   VpcId?: string;
 }
 export const NetworkFirewallInternetTrafficNotInspectedViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SubnetId: S.optional(S.String),
       SubnetAvailabilityZone: S.optional(S.String),
@@ -1495,7 +1463,7 @@ export interface NetworkFirewallInvalidRouteConfigurationViolation {
   VpcId?: string;
 }
 export const NetworkFirewallInvalidRouteConfigurationViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AffectedSubnets: S.optional(ResourceIdList),
       RouteTableId: S.optional(S.String),
@@ -1524,7 +1492,7 @@ export interface NetworkFirewallBlackHoleRouteDetectedViolation {
   ViolatingRoutes?: Route[];
 }
 export const NetworkFirewallBlackHoleRouteDetectedViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ViolationTarget: S.optional(S.String),
       RouteTableId: S.optional(S.String),
@@ -1542,7 +1510,7 @@ export interface NetworkFirewallUnexpectedFirewallRoutesViolation {
   VpcId?: string;
 }
 export const NetworkFirewallUnexpectedFirewallRoutesViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       FirewallSubnetId: S.optional(S.String),
       ViolatingRoutes: S.optional(Routes),
@@ -1560,7 +1528,7 @@ export interface NetworkFirewallUnexpectedGatewayRoutesViolation {
   VpcId?: string;
 }
 export const NetworkFirewallUnexpectedGatewayRoutesViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       GatewayId: S.optional(S.String),
       ViolatingRoutes: S.optional(Routes),
@@ -1576,7 +1544,7 @@ export interface NetworkFirewallMissingExpectedRoutesViolation {
   VpcId?: string;
 }
 export const NetworkFirewallMissingExpectedRoutesViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ViolationTarget: S.optional(S.String),
       ExpectedRoutes: S.optional(ExpectedRoutes),
@@ -1586,9 +1554,7 @@ export const NetworkFirewallMissingExpectedRoutesViolation =
     identifier: "NetworkFirewallMissingExpectedRoutesViolation",
   }) as any as S.Schema<NetworkFirewallMissingExpectedRoutesViolation>;
 export type DnsRuleGroupPriorities = number[];
-export const DnsRuleGroupPriorities = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.Number,
-);
+export const DnsRuleGroupPriorities = /*@__PURE__*/ S.Array(S.Number);
 export interface DnsRuleGroupPriorityConflictViolation {
   ViolationTarget?: string;
   ViolationTargetDescription?: string;
@@ -1597,7 +1563,7 @@ export interface DnsRuleGroupPriorityConflictViolation {
   UnavailablePriorities?: number[];
 }
 export const DnsRuleGroupPriorityConflictViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ViolationTarget: S.optional(S.String),
       ViolationTargetDescription: S.optional(S.String),
@@ -1613,7 +1579,7 @@ export interface DnsDuplicateRuleGroupViolation {
   ViolationTargetDescription?: string;
 }
 export const DnsDuplicateRuleGroupViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ViolationTarget: S.optional(S.String),
       ViolationTargetDescription: S.optional(S.String),
@@ -1627,7 +1593,7 @@ export interface DnsRuleGroupLimitExceededViolation {
   NumberOfRuleGroupsAlreadyAssociated?: number;
 }
 export const DnsRuleGroupLimitExceededViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ViolationTarget: S.optional(S.String),
       ViolationTargetDescription: S.optional(S.String),
@@ -1644,7 +1610,7 @@ export interface FirewallSubnetIsOutOfScopeViolation {
   VpcEndpointId?: string;
 }
 export const FirewallSubnetIsOutOfScopeViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       FirewallSubnetId: S.optional(S.String),
       VpcId: S.optional(S.String),
@@ -1670,7 +1636,7 @@ export interface RouteHasOutOfScopeEndpointViolation {
   InternetGatewayRoutes?: Route[];
 }
 export const RouteHasOutOfScopeEndpointViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SubnetId: S.optional(S.String),
       VpcId: S.optional(S.String),
@@ -1695,7 +1661,7 @@ export interface ThirdPartyFirewallMissingFirewallViolation {
   TargetViolationReason?: string;
 }
 export const ThirdPartyFirewallMissingFirewallViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ViolationTarget: S.optional(S.String),
       VPC: S.optional(S.String),
@@ -1712,7 +1678,7 @@ export interface ThirdPartyFirewallMissingSubnetViolation {
   TargetViolationReason?: string;
 }
 export const ThirdPartyFirewallMissingSubnetViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ViolationTarget: S.optional(S.String),
       VPC: S.optional(S.String),
@@ -1730,7 +1696,7 @@ export interface ThirdPartyFirewallMissingExpectedRouteTableViolation {
   ExpectedRouteTable?: string;
 }
 export const ThirdPartyFirewallMissingExpectedRouteTableViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ViolationTarget: S.optional(S.String),
       VPC: S.optional(S.String),
@@ -1748,7 +1714,7 @@ export interface FirewallSubnetMissingVPCEndpointViolation {
   SubnetAvailabilityZoneId?: string;
 }
 export const FirewallSubnetMissingVPCEndpointViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       FirewallSubnetId: S.optional(S.String),
       VpcId: S.optional(S.String),
@@ -1763,13 +1729,13 @@ export type EntryType =
   | "FMS_MANAGED_LAST_ENTRY"
   | "CUSTOM_ENTRY"
   | (string & {});
-export const EntryType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EntryType = /*@__PURE__*/ S.String;
 export interface EntryDescription {
   EntryDetail?: NetworkAclEntry;
   EntryRuleNumber?: number;
   EntryType?: EntryType;
 }
-export const EntryDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EntryDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EntryDetail: S.optional(NetworkAclEntry),
     EntryRuleNumber: S.optional(S.Number),
@@ -1779,17 +1745,16 @@ export const EntryDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "EntryDescription",
 }) as any as S.Schema<EntryDescription>;
 export type EntriesWithConflicts = EntryDescription[];
-export const EntriesWithConflicts =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EntryDescription);
+export const EntriesWithConflicts = /*@__PURE__*/ S.Array(EntryDescription);
 export type EntryViolationReason =
   | "MISSING_EXPECTED_ENTRY"
   | "INCORRECT_ENTRY_ORDER"
   | "ENTRY_CONFLICT"
   | (string & {});
-export const EntryViolationReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EntryViolationReason = /*@__PURE__*/ S.String;
 export type EntryViolationReasons = EntryViolationReason[];
 export const EntryViolationReasons =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EntryViolationReason);
+  /*@__PURE__*/ S.Array(EntryViolationReason);
 export interface EntryViolation {
   ExpectedEntry?: EntryDescription;
   ExpectedEvaluationOrder?: string;
@@ -1798,7 +1763,7 @@ export interface EntryViolation {
   EntriesWithConflicts?: EntryDescription[];
   EntryViolationReasons?: EntryViolationReason[];
 }
-export const EntryViolation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EntryViolation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ExpectedEntry: S.optional(EntryDescription),
     ExpectedEvaluationOrder: S.optional(S.String),
@@ -1809,8 +1774,7 @@ export const EntryViolation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntryViolation" }) as any as S.Schema<EntryViolation>;
 export type EntryViolations = EntryViolation[];
-export const EntryViolations =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EntryViolation);
+export const EntryViolations = /*@__PURE__*/ S.Array(EntryViolation);
 export interface InvalidNetworkAclEntriesViolation {
   Vpc?: string;
   Subnet?: string;
@@ -1819,7 +1783,7 @@ export interface InvalidNetworkAclEntriesViolation {
   EntryViolations?: EntryViolation[];
 }
 export const InvalidNetworkAclEntriesViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Vpc: S.optional(S.String),
       Subnet: S.optional(S.String),
@@ -1834,7 +1798,7 @@ export interface ActionTarget {
   ResourceId?: string;
   Description?: string;
 }
-export const ActionTarget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceId: S.optional(S.String),
     Description: S.optional(S.String),
@@ -1849,7 +1813,7 @@ export interface EC2CreateRouteAction {
   GatewayId?: ActionTarget;
   RouteTableId: ActionTarget;
 }
-export const EC2CreateRouteAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EC2CreateRouteAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Description: S.optional(S.String),
     DestinationCidrBlock: S.optional(S.String),
@@ -1870,7 +1834,7 @@ export interface EC2ReplaceRouteAction {
   GatewayId?: ActionTarget;
   RouteTableId: ActionTarget;
 }
-export const EC2ReplaceRouteAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EC2ReplaceRouteAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Description: S.optional(S.String),
     DestinationCidrBlock: S.optional(S.String),
@@ -1889,7 +1853,7 @@ export interface EC2DeleteRouteAction {
   DestinationIpv6CidrBlock?: string;
   RouteTableId: ActionTarget;
 }
-export const EC2DeleteRouteAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EC2DeleteRouteAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Description: S.optional(S.String),
     DestinationCidrBlock: S.optional(S.String),
@@ -1905,13 +1869,12 @@ export interface EC2CopyRouteTableAction {
   VpcId: ActionTarget;
   RouteTableId: ActionTarget;
 }
-export const EC2CopyRouteTableAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Description: S.optional(S.String),
-      VpcId: ActionTarget,
-      RouteTableId: ActionTarget,
-    }),
+export const EC2CopyRouteTableAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Description: S.optional(S.String),
+    VpcId: ActionTarget,
+    RouteTableId: ActionTarget,
+  }),
 ).annotate({
   identifier: "EC2CopyRouteTableAction",
 }) as any as S.Schema<EC2CopyRouteTableAction>;
@@ -1921,7 +1884,7 @@ export interface EC2ReplaceRouteTableAssociationAction {
   RouteTableId: ActionTarget;
 }
 export const EC2ReplaceRouteTableAssociationAction =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Description: S.optional(S.String),
       AssociationId: ActionTarget,
@@ -1937,7 +1900,7 @@ export interface EC2AssociateRouteTableAction {
   GatewayId?: ActionTarget;
 }
 export const EC2AssociateRouteTableAction =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Description: S.optional(S.String),
       RouteTableId: ActionTarget,
@@ -1951,8 +1914,8 @@ export interface EC2CreateRouteTableAction {
   Description?: string;
   VpcId: ActionTarget;
 }
-export const EC2CreateRouteTableAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Description: S.optional(S.String), VpcId: ActionTarget }),
+export const EC2CreateRouteTableAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Description: S.optional(S.String), VpcId: ActionTarget }),
 ).annotate({
   identifier: "EC2CreateRouteTableAction",
 }) as any as S.Schema<EC2CreateRouteTableAction>;
@@ -1961,7 +1924,7 @@ export interface FMSPolicyUpdateFirewallCreationConfigAction {
   FirewallCreationConfig?: string;
 }
 export const FMSPolicyUpdateFirewallCreationConfigAction =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Description: S.optional(S.String),
       FirewallCreationConfig: S.optional(S.String),
@@ -1974,13 +1937,12 @@ export interface CreateNetworkAclAction {
   Vpc?: ActionTarget;
   FMSCanRemediate?: boolean;
 }
-export const CreateNetworkAclAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Description: S.optional(S.String),
-      Vpc: S.optional(ActionTarget),
-      FMSCanRemediate: S.optional(S.Boolean),
-    }),
+export const CreateNetworkAclAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Description: S.optional(S.String),
+    Vpc: S.optional(ActionTarget),
+    FMSCanRemediate: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "CreateNetworkAclAction",
 }) as any as S.Schema<CreateNetworkAclAction>;
@@ -1991,7 +1953,7 @@ export interface ReplaceNetworkAclAssociationAction {
   FMSCanRemediate?: boolean;
 }
 export const ReplaceNetworkAclAssociationAction =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Description: S.optional(S.String),
       AssociationId: S.optional(ActionTarget),
@@ -2002,8 +1964,7 @@ export const ReplaceNetworkAclAssociationAction =
     identifier: "ReplaceNetworkAclAssociationAction",
   }) as any as S.Schema<ReplaceNetworkAclAssociationAction>;
 export type EntriesDescription = EntryDescription[];
-export const EntriesDescription =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EntryDescription);
+export const EntriesDescription = /*@__PURE__*/ S.Array(EntryDescription);
 export interface CreateNetworkAclEntriesAction {
   Description?: string;
   NetworkAclId?: ActionTarget;
@@ -2011,7 +1972,7 @@ export interface CreateNetworkAclEntriesAction {
   FMSCanRemediate?: boolean;
 }
 export const CreateNetworkAclEntriesAction =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Description: S.optional(S.String),
       NetworkAclId: S.optional(ActionTarget),
@@ -2028,7 +1989,7 @@ export interface DeleteNetworkAclEntriesAction {
   FMSCanRemediate?: boolean;
 }
 export const DeleteNetworkAclEntriesAction =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Description: S.optional(S.String),
       NetworkAclId: S.optional(ActionTarget),
@@ -2053,7 +2014,7 @@ export interface RemediationAction {
   CreateNetworkAclEntriesAction?: CreateNetworkAclEntriesAction;
   DeleteNetworkAclEntriesAction?: DeleteNetworkAclEntriesAction;
 }
-export const RemediationAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RemediationAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Description: S.optional(S.String),
     EC2CreateRouteAction: S.optional(EC2CreateRouteAction),
@@ -2082,17 +2043,16 @@ export interface RemediationActionWithOrder {
   RemediationAction?: RemediationAction;
   Order?: number;
 }
-export const RemediationActionWithOrder = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      RemediationAction: S.optional(RemediationAction),
-      Order: S.optional(S.Number),
-    }),
+export const RemediationActionWithOrder = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RemediationAction: S.optional(RemediationAction),
+    Order: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "RemediationActionWithOrder",
 }) as any as S.Schema<RemediationActionWithOrder>;
 export type OrderedRemediationActions = RemediationActionWithOrder[];
-export const OrderedRemediationActions = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const OrderedRemediationActions = /*@__PURE__*/ S.Array(
   RemediationActionWithOrder,
 );
 export interface PossibleRemediationAction {
@@ -2100,29 +2060,27 @@ export interface PossibleRemediationAction {
   OrderedRemediationActions: RemediationActionWithOrder[];
   IsDefaultAction?: boolean;
 }
-export const PossibleRemediationAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Description: S.optional(S.String),
-      OrderedRemediationActions: OrderedRemediationActions,
-      IsDefaultAction: S.optional(S.Boolean),
-    }),
+export const PossibleRemediationAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Description: S.optional(S.String),
+    OrderedRemediationActions: OrderedRemediationActions,
+    IsDefaultAction: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "PossibleRemediationAction",
 }) as any as S.Schema<PossibleRemediationAction>;
 export type PossibleRemediationActionList = PossibleRemediationAction[];
 export const PossibleRemediationActionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PossibleRemediationAction);
+  /*@__PURE__*/ S.Array(PossibleRemediationAction);
 export interface PossibleRemediationActions {
   Description?: string;
   Actions?: PossibleRemediationAction[];
 }
-export const PossibleRemediationActions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Description: S.optional(S.String),
-      Actions: S.optional(PossibleRemediationActionList),
-    }),
+export const PossibleRemediationActions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Description: S.optional(S.String),
+    Actions: S.optional(PossibleRemediationActionList),
+  }),
 ).annotate({
   identifier: "PossibleRemediationActions",
 }) as any as S.Schema<PossibleRemediationActions>;
@@ -2131,7 +2089,7 @@ export interface WebACLHasIncompatibleConfigurationViolation {
   Description?: string;
 }
 export const WebACLHasIncompatibleConfigurationViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       WebACLArn: S.optional(S.String),
       Description: S.optional(S.String),
@@ -2140,13 +2098,13 @@ export const WebACLHasIncompatibleConfigurationViolation =
     identifier: "WebACLHasIncompatibleConfigurationViolation",
   }) as any as S.Schema<WebACLHasIncompatibleConfigurationViolation>;
 export type ResourceArnList = string[];
-export const ResourceArnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ResourceArnList = /*@__PURE__*/ S.Array(S.String);
 export interface WebACLHasOutOfScopeResourcesViolation {
   WebACLArn?: string;
   OutOfScopeResourceList?: string[];
 }
 export const WebACLHasOutOfScopeResourcesViolation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       WebACLArn: S.optional(S.String),
       OutOfScopeResourceList: S.optional(ResourceArnList),
@@ -2182,7 +2140,7 @@ export interface ResourceViolation {
   WebACLHasIncompatibleConfigurationViolation?: WebACLHasIncompatibleConfigurationViolation;
   WebACLHasOutOfScopeResourcesViolation?: WebACLHasOutOfScopeResourcesViolation;
 }
-export const ResourceViolation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceViolation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AwsVPCSecurityGroupViolation: S.optional(AwsVPCSecurityGroupViolation),
     AwsEc2NetworkInterfaceViolation: S.optional(
@@ -2259,17 +2217,16 @@ export const ResourceViolation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ResourceViolation",
 }) as any as S.Schema<ResourceViolation>;
 export type ResourceViolations = ResourceViolation[];
-export const ResourceViolations =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceViolation);
+export const ResourceViolations = /*@__PURE__*/ S.Array(ResourceViolation);
 export interface Tag {
   Key: string;
   Value: string;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.String, Value: S.String }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface ViolationDetail {
   PolicyId: string;
   MemberAccount: string;
@@ -2279,7 +2236,7 @@ export interface ViolationDetail {
   ResourceTags?: Tag[];
   ResourceDescription?: string;
 }
-export const ViolationDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ViolationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PolicyId: S.String,
     MemberAccount: S.String,
@@ -2296,7 +2253,7 @@ export interface GetViolationDetailsResponse {
   ViolationDetail?: ViolationDetail;
 }
 export const GetViolationDetailsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ViolationDetail: S.optional(ViolationDetail) }),
   ).annotate({
     identifier: "GetViolationDetailsResponse",
@@ -2306,7 +2263,7 @@ export interface ListAdminAccountsForOrganizationRequest {
   MaxResults?: number;
 }
 export const ListAdminAccountsForOrganizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextToken: S.optional(S.String),
       MaxResults: S.optional(S.Number),
@@ -2321,7 +2278,7 @@ export interface AdminAccountSummary {
   DefaultAdmin?: boolean;
   Status?: OrganizationStatus;
 }
-export const AdminAccountSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AdminAccountSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AdminAccount: S.optional(S.String),
     DefaultAdmin: S.optional(S.Boolean),
@@ -2332,13 +2289,13 @@ export const AdminAccountSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdminAccountSummary>;
 export type AdminAccountSummaryList = AdminAccountSummary[];
 export const AdminAccountSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AdminAccountSummary);
+  /*@__PURE__*/ S.Array(AdminAccountSummary);
 export interface ListAdminAccountsForOrganizationResponse {
   AdminAccounts?: AdminAccountSummary[];
   NextToken?: string;
 }
 export const ListAdminAccountsForOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AdminAccounts: S.optional(AdminAccountSummaryList),
       NextToken: S.optional(S.String),
@@ -2351,7 +2308,7 @@ export interface ListAdminsManagingAccountRequest {
   MaxResults?: number;
 }
 export const ListAdminsManagingAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextToken: S.optional(S.String),
       MaxResults: S.optional(S.Number),
@@ -2366,7 +2323,7 @@ export interface ListAdminsManagingAccountResponse {
   NextToken?: string;
 }
 export const ListAdminsManagingAccountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AdminAccounts: S.optional(AccountIdList),
       NextToken: S.optional(S.String),
@@ -2379,7 +2336,7 @@ export interface ListAppsListsRequest {
   NextToken?: string;
   MaxResults: number;
 }
-export const ListAppsListsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAppsListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DefaultLists: S.optional(S.Boolean),
     NextToken: S.optional(S.String),
@@ -2396,7 +2353,7 @@ export interface AppsListDataSummary {
   ListName?: string;
   AppsList?: App[];
 }
-export const AppsListDataSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AppsListDataSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ListArn: S.optional(S.String),
     ListId: S.optional(S.String),
@@ -2407,13 +2364,12 @@ export const AppsListDataSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AppsListDataSummary",
 }) as any as S.Schema<AppsListDataSummary>;
 export type AppsListsData = AppsListDataSummary[];
-export const AppsListsData =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AppsListDataSummary);
+export const AppsListsData = /*@__PURE__*/ S.Array(AppsListDataSummary);
 export interface ListAppsListsResponse {
   AppsLists?: AppsListDataSummary[];
   NextToken?: string;
 }
-export const ListAppsListsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAppsListsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AppsLists: S.optional(AppsListsData),
     NextToken: S.optional(S.String),
@@ -2427,7 +2383,7 @@ export interface ListComplianceStatusRequest {
   MaxResults?: number;
 }
 export const ListComplianceStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       PolicyId: S.String,
       NextToken: S.optional(S.String),
@@ -2442,13 +2398,13 @@ export type PolicyComplianceStatusType =
   | "COMPLIANT"
   | "NON_COMPLIANT"
   | (string & {});
-export const PolicyComplianceStatusType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PolicyComplianceStatusType = /*@__PURE__*/ S.String;
 export interface EvaluationResult {
   ComplianceStatus?: PolicyComplianceStatusType;
   ViolatorCount?: number;
   EvaluationLimitExceeded?: boolean;
 }
-export const EvaluationResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EvaluationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ComplianceStatus: S.optional(PolicyComplianceStatusType),
     ViolatorCount: S.optional(S.Number),
@@ -2458,8 +2414,7 @@ export const EvaluationResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "EvaluationResult",
 }) as any as S.Schema<EvaluationResult>;
 export type EvaluationResults = EvaluationResult[];
-export const EvaluationResults =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EvaluationResult);
+export const EvaluationResults = /*@__PURE__*/ S.Array(EvaluationResult);
 export interface PolicyComplianceStatus {
   PolicyOwner?: string;
   PolicyId?: string;
@@ -2469,22 +2424,21 @@ export interface PolicyComplianceStatus {
   LastUpdated?: Date;
   IssueInfoMap?: { [key: string]: string | undefined };
 }
-export const PolicyComplianceStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PolicyOwner: S.optional(S.String),
-      PolicyId: S.optional(S.String),
-      PolicyName: S.optional(S.String),
-      MemberAccount: S.optional(S.String),
-      EvaluationResults: S.optional(EvaluationResults),
-      LastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      IssueInfoMap: S.optional(IssueInfoMap),
-    }),
+export const PolicyComplianceStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PolicyOwner: S.optional(S.String),
+    PolicyId: S.optional(S.String),
+    PolicyName: S.optional(S.String),
+    MemberAccount: S.optional(S.String),
+    EvaluationResults: S.optional(EvaluationResults),
+    LastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    IssueInfoMap: S.optional(IssueInfoMap),
+  }),
 ).annotate({
   identifier: "PolicyComplianceStatus",
 }) as any as S.Schema<PolicyComplianceStatus>;
 export type PolicyComplianceStatusList = PolicyComplianceStatus[];
-export const PolicyComplianceStatusList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const PolicyComplianceStatusList = /*@__PURE__*/ S.Array(
   PolicyComplianceStatus,
 );
 export interface ListComplianceStatusResponse {
@@ -2492,7 +2446,7 @@ export interface ListComplianceStatusResponse {
   NextToken?: string;
 }
 export const ListComplianceStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       PolicyComplianceStatusList: S.optional(PolicyComplianceStatusList),
       NextToken: S.optional(S.String),
@@ -2501,7 +2455,7 @@ export const ListComplianceStatusResponse =
     identifier: "ListComplianceStatusResponse",
   }) as any as S.Schema<ListComplianceStatusResponse>;
 export type AWSAccountIdList = string[];
-export const AWSAccountIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AWSAccountIdList = /*@__PURE__*/ S.Array(S.String);
 export interface ListDiscoveredResourcesRequest {
   MemberAccountIds: string[];
   ResourceType: string;
@@ -2509,7 +2463,7 @@ export interface ListDiscoveredResourcesRequest {
   NextToken?: string;
 }
 export const ListDiscoveredResourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       MemberAccountIds: AWSAccountIdList,
       ResourceType: S.String,
@@ -2527,7 +2481,7 @@ export interface DiscoveredResource {
   Type?: string;
   Name?: string;
 }
-export const DiscoveredResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DiscoveredResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     URI: S.optional(S.String),
     AccountId: S.optional(S.String),
@@ -2538,14 +2492,13 @@ export const DiscoveredResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DiscoveredResource",
 }) as any as S.Schema<DiscoveredResource>;
 export type DiscoveredResourceList = DiscoveredResource[];
-export const DiscoveredResourceList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DiscoveredResource);
+export const DiscoveredResourceList = /*@__PURE__*/ S.Array(DiscoveredResource);
 export interface ListDiscoveredResourcesResponse {
   Items?: DiscoveredResource[];
   NextToken?: string;
 }
 export const ListDiscoveredResourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Items: S.optional(DiscoveredResourceList),
       NextToken: S.optional(S.String),
@@ -2557,29 +2510,27 @@ export interface ListMemberAccountsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListMemberAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListMemberAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListMemberAccountsRequest",
 }) as any as S.Schema<ListMemberAccountsRequest>;
 export type MemberAccounts = string[];
-export const MemberAccounts = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const MemberAccounts = /*@__PURE__*/ S.Array(S.String);
 export interface ListMemberAccountsResponse {
   MemberAccounts?: string[];
   NextToken?: string;
 }
-export const ListMemberAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MemberAccounts: S.optional(MemberAccounts),
-      NextToken: S.optional(S.String),
-    }),
+export const ListMemberAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MemberAccounts: S.optional(MemberAccounts),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListMemberAccountsResponse",
 }) as any as S.Schema<ListMemberAccountsResponse>;
@@ -2587,7 +2538,7 @@ export interface ListPoliciesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -2607,7 +2558,7 @@ export interface PolicySummary {
   DeleteUnusedFMManagedResources?: boolean;
   PolicyStatus?: CustomerPolicyStatus;
 }
-export const PolicySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PolicySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PolicyArn: S.optional(S.String),
     PolicyId: S.optional(S.String),
@@ -2620,13 +2571,12 @@ export const PolicySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicySummary" }) as any as S.Schema<PolicySummary>;
 export type PolicySummaryList = PolicySummary[];
-export const PolicySummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PolicySummary);
+export const PolicySummaryList = /*@__PURE__*/ S.Array(PolicySummary);
 export interface ListPoliciesResponse {
   PolicyList?: PolicySummary[];
   NextToken?: string;
 }
-export const ListPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PolicyList: S.optional(PolicySummaryList),
     NextToken: S.optional(S.String),
@@ -2639,15 +2589,14 @@ export interface ListProtocolsListsRequest {
   NextToken?: string;
   MaxResults: number;
 }
-export const ListProtocolsListsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DefaultLists: S.optional(S.Boolean),
-      NextToken: S.optional(S.String),
-      MaxResults: S.Number,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListProtocolsListsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DefaultLists: S.optional(S.Boolean),
+    NextToken: S.optional(S.String),
+    MaxResults: S.Number,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListProtocolsListsRequest",
 }) as any as S.Schema<ListProtocolsListsRequest>;
@@ -2657,31 +2606,29 @@ export interface ProtocolsListDataSummary {
   ListName?: string;
   ProtocolsList?: string[];
 }
-export const ProtocolsListDataSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ListArn: S.optional(S.String),
-      ListId: S.optional(S.String),
-      ListName: S.optional(S.String),
-      ProtocolsList: S.optional(ProtocolsList),
-    }),
+export const ProtocolsListDataSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ListArn: S.optional(S.String),
+    ListId: S.optional(S.String),
+    ListName: S.optional(S.String),
+    ProtocolsList: S.optional(ProtocolsList),
+  }),
 ).annotate({
   identifier: "ProtocolsListDataSummary",
 }) as any as S.Schema<ProtocolsListDataSummary>;
 export type ProtocolsListsData = ProtocolsListDataSummary[];
-export const ProtocolsListsData = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ProtocolsListsData = /*@__PURE__*/ S.Array(
   ProtocolsListDataSummary,
 );
 export interface ListProtocolsListsResponse {
   ProtocolsLists?: ProtocolsListDataSummary[];
   NextToken?: string;
 }
-export const ListProtocolsListsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProtocolsLists: S.optional(ProtocolsListsData),
-      NextToken: S.optional(S.String),
-    }),
+export const ListProtocolsListsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProtocolsLists: S.optional(ProtocolsListsData),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListProtocolsListsResponse",
 }) as any as S.Schema<ListProtocolsListsResponse>;
@@ -2691,7 +2638,7 @@ export interface ListResourceSetResourcesRequest {
   NextToken?: string;
 }
 export const ListResourceSetResourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Identifier: S.String,
       MaxResults: S.optional(S.Number),
@@ -2706,17 +2653,17 @@ export interface Resource {
   URI: string;
   AccountId?: string;
 }
-export const Resource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ URI: S.String, AccountId: S.optional(S.String) }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 export type ResourceList = Resource[];
-export const ResourceList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Resource);
+export const ResourceList = /*@__PURE__*/ S.Array(Resource);
 export interface ListResourceSetResourcesResponse {
   Items: Resource[];
   NextToken?: string;
 }
 export const ListResourceSetResourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Items: ResourceList, NextToken: S.optional(S.String) }),
   ).annotate({
     identifier: "ListResourceSetResourcesResponse",
@@ -2725,14 +2672,13 @@ export interface ListResourceSetsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListResourceSetsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListResourceSetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListResourceSetsRequest",
 }) as any as S.Schema<ListResourceSetsRequest>;
@@ -2743,7 +2689,7 @@ export interface ResourceSetSummary {
   LastUpdateTime?: Date;
   ResourceSetStatus?: ResourceSetStatus;
 }
-export const ResourceSetSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceSetSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Name: S.optional(S.String),
@@ -2755,29 +2701,26 @@ export const ResourceSetSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ResourceSetSummary",
 }) as any as S.Schema<ResourceSetSummary>;
 export type ResourceSetSummaryList = ResourceSetSummary[];
-export const ResourceSetSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceSetSummary);
+export const ResourceSetSummaryList = /*@__PURE__*/ S.Array(ResourceSetSummary);
 export interface ListResourceSetsResponse {
   ResourceSets?: ResourceSetSummary[];
   NextToken?: string;
 }
-export const ListResourceSetsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ResourceSets: S.optional(ResourceSetSummaryList),
-      NextToken: S.optional(S.String),
-    }),
+export const ListResourceSetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceSets: S.optional(ResourceSetSummaryList),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListResourceSetsResponse",
 }) as any as S.Schema<ListResourceSetsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -2785,7 +2728,7 @@ export interface ListTagsForResourceResponse {
   TagList?: Tag[];
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ TagList: S.optional(TagList) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -2796,7 +2739,7 @@ export interface ListThirdPartyFirewallFirewallPoliciesRequest {
   MaxResults: number;
 }
 export const ListThirdPartyFirewallFirewallPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ThirdPartyFirewall: ThirdPartyFirewall,
       NextToken: S.optional(S.String),
@@ -2812,7 +2755,7 @@ export interface ThirdPartyFirewallFirewallPolicy {
   FirewallPolicyName?: string;
 }
 export const ThirdPartyFirewallFirewallPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       FirewallPolicyId: S.optional(S.String),
       FirewallPolicyName: S.optional(S.String),
@@ -2823,13 +2766,13 @@ export const ThirdPartyFirewallFirewallPolicy =
 export type ThirdPartyFirewallFirewallPolicies =
   ThirdPartyFirewallFirewallPolicy[];
 export const ThirdPartyFirewallFirewallPolicies =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ThirdPartyFirewallFirewallPolicy);
+  /*@__PURE__*/ S.Array(ThirdPartyFirewallFirewallPolicy);
 export interface ListThirdPartyFirewallFirewallPoliciesResponse {
   ThirdPartyFirewallFirewallPolicies?: ThirdPartyFirewallFirewallPolicy[];
   NextToken?: string;
 }
 export const ListThirdPartyFirewallFirewallPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ThirdPartyFirewallFirewallPolicies: S.optional(
         ThirdPartyFirewallFirewallPolicies,
@@ -2843,20 +2786,19 @@ export interface PutAdminAccountRequest {
   AdminAccount: string;
   AdminScope?: AdminScope;
 }
-export const PutAdminAccountRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AdminAccount: S.String,
-      AdminScope: S.optional(AdminScope),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const PutAdminAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AdminAccount: S.String,
+    AdminScope: S.optional(AdminScope),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "PutAdminAccountRequest",
 }) as any as S.Schema<PutAdminAccountRequest>;
 export interface PutAdminAccountResponse {}
-export const PutAdminAccountResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const PutAdminAccountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "PutAdminAccountResponse",
 }) as any as S.Schema<PutAdminAccountResponse>;
@@ -2864,7 +2806,7 @@ export interface PutAppsListRequest {
   AppsList: AppsListData;
   TagList?: Tag[];
 }
-export const PutAppsListRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutAppsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AppsList: AppsListData, TagList: S.optional(TagList) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2875,7 +2817,7 @@ export interface PutAppsListResponse {
   AppsList?: AppsListData;
   AppsListArn?: string;
 }
-export const PutAppsListResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutAppsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AppsList: S.optional(AppsListData),
     AppsListArn: S.optional(S.String),
@@ -2888,7 +2830,7 @@ export interface PutNotificationChannelRequest {
   SnsRoleName: string;
 }
 export const PutNotificationChannelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ SnsTopicArn: S.String, SnsRoleName: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -2897,14 +2839,14 @@ export const PutNotificationChannelRequest =
   }) as any as S.Schema<PutNotificationChannelRequest>;
 export interface PutNotificationChannelResponse {}
 export const PutNotificationChannelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutNotificationChannelResponse",
   }) as any as S.Schema<PutNotificationChannelResponse>;
 export interface PutPolicyRequest {
   Policy: Policy;
   TagList?: Tag[];
 }
-export const PutPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Policy: Policy, TagList: S.optional(TagList) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2915,7 +2857,7 @@ export interface PutPolicyResponse {
   Policy?: Policy;
   PolicyArn?: string;
 }
-export const PutPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Policy: S.optional(Policy), PolicyArn: S.optional(S.String) }),
 ).annotate({
   identifier: "PutPolicyResponse",
@@ -2924,14 +2866,13 @@ export interface PutProtocolsListRequest {
   ProtocolsList: ProtocolsListData;
   TagList?: Tag[];
 }
-export const PutProtocolsListRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProtocolsList: ProtocolsListData,
-      TagList: S.optional(TagList),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const PutProtocolsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProtocolsList: ProtocolsListData,
+    TagList: S.optional(TagList),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "PutProtocolsListRequest",
 }) as any as S.Schema<PutProtocolsListRequest>;
@@ -2939,12 +2880,11 @@ export interface PutProtocolsListResponse {
   ProtocolsList?: ProtocolsListData;
   ProtocolsListArn?: string;
 }
-export const PutProtocolsListResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProtocolsList: S.optional(ProtocolsListData),
-      ProtocolsListArn: S.optional(S.String),
-    }),
+export const PutProtocolsListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProtocolsList: S.optional(ProtocolsListData),
+    ProtocolsListArn: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "PutProtocolsListResponse",
 }) as any as S.Schema<PutProtocolsListResponse>;
@@ -2952,7 +2892,7 @@ export interface PutResourceSetRequest {
   ResourceSet: ResourceSet;
   TagList?: Tag[];
 }
-export const PutResourceSetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutResourceSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceSet: ResourceSet, TagList: S.optional(TagList) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2963,8 +2903,8 @@ export interface PutResourceSetResponse {
   ResourceSet: ResourceSet;
   ResourceSetArn: string;
 }
-export const PutResourceSetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ResourceSet: ResourceSet, ResourceSetArn: S.String }),
+export const PutResourceSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceSet: ResourceSet, ResourceSetArn: S.String }),
 ).annotate({
   identifier: "PutResourceSetResponse",
 }) as any as S.Schema<PutResourceSetResponse>;
@@ -2972,7 +2912,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   TagList: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String, TagList: TagList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2980,18 +2920,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2999,7 +2939,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -3049,7 +2989,7 @@ export const associateAdminAccount: API.OperationMethod<
   AssociateAdminAccountResponse,
   AssociateAdminAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateAdminAccountRequest,
   output: AssociateAdminAccountResponse,
   errors: [
@@ -3075,7 +3015,7 @@ export const associateThirdPartyFirewall: API.OperationMethod<
   AssociateThirdPartyFirewallResponse,
   AssociateThirdPartyFirewallError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateThirdPartyFirewallRequest,
   output: AssociateThirdPartyFirewallResponse,
   errors: [
@@ -3101,7 +3041,7 @@ export const batchAssociateResource: API.OperationMethod<
   BatchAssociateResourceResponse,
   BatchAssociateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchAssociateResourceRequest,
   output: BatchAssociateResourceResponse,
   errors: [
@@ -3127,7 +3067,7 @@ export const batchDisassociateResource: API.OperationMethod<
   BatchDisassociateResourceResponse,
   BatchDisassociateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDisassociateResourceRequest,
   output: BatchDisassociateResourceResponse,
   errors: [
@@ -3151,7 +3091,7 @@ export const deleteAppsList: API.OperationMethod<
   DeleteAppsListResponse,
   DeleteAppsListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppsListRequest,
   output: DeleteAppsListResponse,
   errors: [
@@ -3175,7 +3115,7 @@ export const deleteNotificationChannel: API.OperationMethod<
   DeleteNotificationChannelResponse,
   DeleteNotificationChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNotificationChannelRequest,
   output: DeleteNotificationChannelResponse,
   errors: [
@@ -3200,7 +3140,7 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyResponse,
   DeletePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePolicyRequest,
   output: DeletePolicyResponse,
   errors: [
@@ -3225,7 +3165,7 @@ export const deleteProtocolsList: API.OperationMethod<
   DeleteProtocolsListResponse,
   DeleteProtocolsListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProtocolsListRequest,
   output: DeleteProtocolsListResponse,
   errors: [
@@ -3249,7 +3189,7 @@ export const deleteResourceSet: API.OperationMethod<
   DeleteResourceSetResponse,
   DeleteResourceSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceSetRequest,
   output: DeleteResourceSetResponse,
   errors: [
@@ -3275,7 +3215,7 @@ export const disassociateAdminAccount: API.OperationMethod<
   DisassociateAdminAccountResponse,
   DisassociateAdminAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateAdminAccountRequest,
   output: DisassociateAdminAccountResponse,
   errors: [
@@ -3299,7 +3239,7 @@ export const disassociateThirdPartyFirewall: API.OperationMethod<
   DisassociateThirdPartyFirewallResponse,
   DisassociateThirdPartyFirewallError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateThirdPartyFirewallRequest,
   output: DisassociateThirdPartyFirewallResponse,
   errors: [
@@ -3324,7 +3264,7 @@ export const getAdminAccount: API.OperationMethod<
   GetAdminAccountResponse,
   GetAdminAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdminAccountRequest,
   output: GetAdminAccountResponse,
   errors: [
@@ -3349,7 +3289,7 @@ export const getAdminScope: API.OperationMethod<
   GetAdminScopeResponse,
   GetAdminScopeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAdminScopeRequest,
   output: GetAdminScopeResponse,
   errors: [
@@ -3374,7 +3314,7 @@ export const getAppsList: API.OperationMethod<
   GetAppsListResponse,
   GetAppsListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppsListRequest,
   output: GetAppsListResponse,
   errors: [
@@ -3401,7 +3341,7 @@ export const getComplianceDetail: API.OperationMethod<
   GetComplianceDetailResponse,
   GetComplianceDetailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComplianceDetailRequest,
   output: GetComplianceDetailResponse,
   errors: [
@@ -3427,7 +3367,7 @@ export const getNotificationChannel: API.OperationMethod<
   GetNotificationChannelResponse,
   GetNotificationChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationChannelRequest,
   output: GetNotificationChannelResponse,
   errors: [
@@ -3451,7 +3391,7 @@ export const getPolicy: API.OperationMethod<
   GetPolicyResponse,
   GetPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyRequest,
   output: GetPolicyResponse,
   errors: [
@@ -3476,7 +3416,7 @@ export const getProtectionStatus: API.OperationMethod<
   GetProtectionStatusResponse,
   GetProtectionStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProtectionStatusRequest,
   output: GetProtectionStatusResponse,
   errors: [
@@ -3499,7 +3439,7 @@ export const getProtocolsList: API.OperationMethod<
   GetProtocolsListResponse,
   GetProtocolsListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProtocolsListRequest,
   output: GetProtocolsListResponse,
   errors: [
@@ -3523,7 +3463,7 @@ export const getResourceSet: API.OperationMethod<
   GetResourceSetResponse,
   GetResourceSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceSetRequest,
   output: GetResourceSetResponse,
   errors: [
@@ -3548,7 +3488,7 @@ export const getThirdPartyFirewallAssociationStatus: API.OperationMethod<
   GetThirdPartyFirewallAssociationStatusResponse,
   GetThirdPartyFirewallAssociationStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetThirdPartyFirewallAssociationStatusRequest,
   output: GetThirdPartyFirewallAssociationStatusResponse,
   errors: [
@@ -3572,7 +3512,7 @@ export const getViolationDetails: API.OperationMethod<
   GetViolationDetailsResponse,
   GetViolationDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetViolationDetailsRequest,
   output: GetViolationDetailsResponse,
   errors: [
@@ -3613,7 +3553,7 @@ export const listAdminAccountsForOrganization: API.OperationMethod<
     ListAdminAccountsForOrganizationError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdminAccountsForOrganizationRequest,
   output: ListAdminAccountsForOrganizationResponse,
   errors: [
@@ -3658,7 +3598,7 @@ export const listAdminsManagingAccount: API.OperationMethod<
     ListAdminsManagingAccountError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdminsManagingAccountRequest,
   output: ListAdminsManagingAccountResponse,
   errors: [
@@ -3703,7 +3643,7 @@ export const listAppsLists: API.OperationMethod<
     ListAppsListsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsListsRequest,
   output: ListAppsListsResponse,
   errors: [
@@ -3749,7 +3689,7 @@ export const listComplianceStatus: API.OperationMethod<
     ListComplianceStatusError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComplianceStatusRequest,
   output: ListComplianceStatusResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
@@ -3774,7 +3714,7 @@ export const listDiscoveredResources: API.OperationMethod<
   ListDiscoveredResourcesResponse,
   ListDiscoveredResourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListDiscoveredResourcesRequest,
   output: ListDiscoveredResourcesResponse,
   errors: [
@@ -3814,7 +3754,7 @@ export const listMemberAccounts: API.OperationMethod<
     ListMemberAccountsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMemberAccountsRequest,
   output: ListMemberAccountsResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
@@ -3855,7 +3795,7 @@ export const listPolicies: API.OperationMethod<
     ListPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [
@@ -3900,7 +3840,7 @@ export const listProtocolsLists: API.OperationMethod<
     ListProtocolsListsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProtocolsListsRequest,
   output: ListProtocolsListsResponse,
   errors: [
@@ -3930,7 +3870,7 @@ export const listResourceSetResources: API.OperationMethod<
   ListResourceSetResourcesResponse,
   ListResourceSetResourcesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListResourceSetResourcesRequest,
   output: ListResourceSetResourcesResponse,
   errors: [
@@ -3954,7 +3894,7 @@ export const listResourceSets: API.OperationMethod<
   ListResourceSetsResponse,
   ListResourceSetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListResourceSetsRequest,
   output: ListResourceSetsResponse,
   errors: [
@@ -3978,7 +3918,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -4018,7 +3958,7 @@ export const listThirdPartyFirewallFirewallPolicies: API.OperationMethod<
     ListThirdPartyFirewallFirewallPoliciesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThirdPartyFirewallFirewallPoliciesRequest,
   output: ListThirdPartyFirewallFirewallPoliciesResponse,
   errors: [
@@ -4050,7 +3990,7 @@ export const putAdminAccount: API.OperationMethod<
   PutAdminAccountResponse,
   PutAdminAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAdminAccountRequest,
   output: PutAdminAccountResponse,
   errors: [
@@ -4076,7 +4016,7 @@ export const putAppsList: API.OperationMethod<
   PutAppsListResponse,
   PutAppsListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAppsListRequest,
   output: PutAppsListResponse,
   errors: [
@@ -4105,7 +4045,7 @@ export const putNotificationChannel: API.OperationMethod<
   PutNotificationChannelResponse,
   PutNotificationChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutNotificationChannelRequest,
   output: PutNotificationChannelResponse,
   errors: [
@@ -4168,7 +4108,7 @@ export const putPolicy: API.OperationMethod<
   PutPolicyResponse,
   PutPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutPolicyRequest,
   output: PutPolicyResponse,
   errors: [
@@ -4196,7 +4136,7 @@ export const putProtocolsList: API.OperationMethod<
   PutProtocolsListResponse,
   PutProtocolsListError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutProtocolsListRequest,
   output: PutProtocolsListResponse,
   errors: [
@@ -4224,7 +4164,7 @@ export const putResourceSet: API.OperationMethod<
   PutResourceSetResponse,
   PutResourceSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourceSetRequest,
   output: PutResourceSetResponse,
   errors: [
@@ -4250,7 +4190,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -4276,7 +4216,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [

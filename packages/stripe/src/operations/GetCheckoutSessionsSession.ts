@@ -13,7 +13,7 @@ export interface GetCheckoutSessionsSessionInput {
   expand?: string;
 }
 export const GetCheckoutSessionsSessionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -1362,7 +1362,7 @@ export interface GetCheckoutSessionsSessionOutput {
   wallet_options: { link?: { display?: "auto" | "never" } } | null;
 }
 export const GetCheckoutSessionsSessionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adaptive_pricing: Schema.NullOr(
       Schema.Struct({
         enabled: Schema.Boolean,
@@ -3050,9 +3050,7 @@ export const GetCheckoutSessionsSessionOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetCheckoutSessionsSession = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetCheckoutSessionsSessionInput,
-    outputSchema: GetCheckoutSessionsSessionOutput,
-  }),
-);
+export const GetCheckoutSessionsSession = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCheckoutSessionsSessionInput,
+  outputSchema: GetCheckoutSessionsSessionOutput,
+}));

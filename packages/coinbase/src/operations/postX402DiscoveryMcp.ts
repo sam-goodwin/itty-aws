@@ -10,7 +10,7 @@ export interface PostX402DiscoveryMcpInput {
   params?: Record<string, unknown>;
 }
 export const PostX402DiscoveryMcpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jsonrpc: Schema.Literals(["2.0"]),
     id: Schema.optional(Schema.Union([Schema.String, Schema.Number])),
     method: Schema.String,
@@ -27,7 +27,7 @@ export interface PostX402DiscoveryMcpOutput {
   error?: { code: number; message: string; data?: Record<string, unknown> };
 }
 export const PostX402DiscoveryMcpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jsonrpc: Schema.Literals(["2.0"]),
     id: Schema.optional(
       Schema.NullOr(Schema.Union([Schema.String, Schema.Number])),
@@ -48,9 +48,7 @@ export const PostX402DiscoveryMcpOutput =
  *
  * Handles JSON-RPC requests for the Model Context Protocol (MCP). Supports MCP methods for discovering x402 payment resources and tools.
  */
-export const postX402DiscoveryMcp = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostX402DiscoveryMcpInput,
-    outputSchema: PostX402DiscoveryMcpOutput,
-  }),
-);
+export const postX402DiscoveryMcp = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostX402DiscoveryMcpInput,
+  outputSchema: PostX402DiscoveryMcpOutput,
+}));

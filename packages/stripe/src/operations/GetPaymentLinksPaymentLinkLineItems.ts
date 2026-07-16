@@ -11,7 +11,7 @@ export interface GetPaymentLinksPaymentLinkLineItemsInput {
   starting_after?: string;
 }
 export const GetPaymentLinksPaymentLinkLineItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payment_link: Schema.String.pipe(T.PathParam()),
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -271,7 +271,7 @@ export interface GetPaymentLinksPaymentLinkLineItemsOutput {
   url: string;
 }
 export const GetPaymentLinksPaymentLinkLineItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         adjustable_quantity: Schema.NullOr(
@@ -495,7 +495,7 @@ export const GetPaymentLinksPaymentLinkLineItemsOutput =
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
 export const GetPaymentLinksPaymentLinkLineItems =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetPaymentLinksPaymentLinkLineItemsInput,
     outputSchema: GetPaymentLinksPaymentLinkLineItemsOutput,
   }));

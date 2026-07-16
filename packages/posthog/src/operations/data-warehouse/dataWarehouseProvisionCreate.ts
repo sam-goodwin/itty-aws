@@ -9,7 +9,7 @@ export interface DataWarehouseProvisionCreateInput {
   table_name: string;
 }
 export const DataWarehouseProvisionCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     database_name: Schema.String,
     table_name: Schema.String,
@@ -23,7 +23,7 @@ export const DataWarehouseProvisionCreateInput =
 // Output Schema
 export type DataWarehouseProvisionCreateOutput = void;
 export const DataWarehouseProvisionCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataWarehouseProvisionCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataWarehouseProvisionCreateOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const DataWarehouseProvisionCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const dataWarehouseProvisionCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataWarehouseProvisionCreateInput,
     outputSchema: DataWarehouseProvisionCreateOutput,
   }));

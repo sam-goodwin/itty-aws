@@ -8,7 +8,7 @@ export interface ListOrganizationInvoicesInput {
   type?: "all" | "upcoming" | "issued";
 }
 export const ListOrganizationInvoicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     type: Schema.optional(Schema.Literals(["all", "upcoming", "issued"])),
   }).pipe(
@@ -30,7 +30,7 @@ export interface ListOrganizationInvoicesOutput {
   }[];
 }
 export const ListOrganizationInvoicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoices: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -54,9 +54,7 @@ export const ListOrganizationInvoicesOutput =
  * @param organizationSlug - The slug of the organization or user account.
  * @param type - The type of invoice to retrieve.
  */
-export const listOrganizationInvoices = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListOrganizationInvoicesInput,
-    outputSchema: ListOrganizationInvoicesOutput,
-  }),
-);
+export const listOrganizationInvoices = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListOrganizationInvoicesInput,
+  outputSchema: ListOrganizationInvoicesOutput,
+}));

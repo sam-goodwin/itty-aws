@@ -9,7 +9,7 @@ export interface PostRadarValueListItemsInput {
   value_list: string;
 }
 export const PostRadarValueListItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     value: Schema.String,
     value_list: Schema.String,
@@ -32,7 +32,7 @@ export interface PostRadarValueListItemsOutput {
   value_list: string;
 }
 export const PostRadarValueListItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     created_by: Schema.String,
     id: Schema.String,
@@ -48,9 +48,7 @@ export const PostRadarValueListItemsOutput =
  *
  * <p>Creates a new <code>ValueListItem</code> object, which is added to the specified parent value list.</p>
  */
-export const PostRadarValueListItems = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostRadarValueListItemsInput,
-    outputSchema: PostRadarValueListItemsOutput,
-  }),
-);
+export const PostRadarValueListItems = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostRadarValueListItemsInput,
+  outputSchema: PostRadarValueListItemsOutput,
+}));

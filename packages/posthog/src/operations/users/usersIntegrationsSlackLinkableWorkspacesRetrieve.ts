@@ -7,7 +7,7 @@ export interface UsersIntegrationsSlackLinkableWorkspacesRetrieveInput {
   uuid: string;
 }
 export const UsersIntegrationsSlackLinkableWorkspacesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -27,7 +27,7 @@ export interface UsersIntegrationsSlackLinkableWorkspacesRetrieveOutput {
   }[];
 }
 export const UsersIntegrationsSlackLinkableWorkspacesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         posthog_team_id: Schema.Number,
@@ -49,7 +49,7 @@ export const UsersIntegrationsSlackLinkableWorkspacesRetrieveOutput =
  * offer in the picker when several are connectable.
  */
 export const usersIntegrationsSlackLinkableWorkspacesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersIntegrationsSlackLinkableWorkspacesRetrieveInput,
     outputSchema: UsersIntegrationsSlackLinkableWorkspacesRetrieveOutput,
   }));

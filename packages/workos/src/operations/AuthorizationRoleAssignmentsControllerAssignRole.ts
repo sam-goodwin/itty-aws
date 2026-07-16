@@ -9,7 +9,7 @@ export interface AuthorizationRoleAssignmentsControllerAssignRoleInput {
   role_slug: string;
 }
 export const AuthorizationRoleAssignmentsControllerAssignRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
     role_slug: Schema.String,
   }).pipe(
@@ -31,7 +31,7 @@ export interface AuthorizationRoleAssignmentsControllerAssignRoleOutput {
   updated_at: string;
 }
 export const AuthorizationRoleAssignmentsControllerAssignRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     organization_membership_id: Schema.String,
@@ -60,7 +60,7 @@ export const AuthorizationRoleAssignmentsControllerAssignRoleOutput =
  * @param organization_membership_id - The ID of the organization membership.
  */
 export const AuthorizationRoleAssignmentsControllerAssignRole =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationRoleAssignmentsControllerAssignRoleInput,
     outputSchema: AuthorizationRoleAssignmentsControllerAssignRoleOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

@@ -34,7 +34,7 @@ export interface GoogleTypeExpr {
 }
 
 export const GoogleTypeExpr: Schema.Codec<GoogleTypeExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export interface GoogleIdentityStsV1betaAccessBoundaryRule {
 }
 
 export const GoogleIdentityStsV1betaAccessBoundaryRule: Schema.Codec<GoogleIdentityStsV1betaAccessBoundaryRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     availableResource: Schema.optional(Schema.String),
     availabilityCondition: Schema.optional(GoogleTypeExpr),
     availablePermissions: Schema.optional(Schema.Array(Schema.String)),
@@ -63,7 +63,7 @@ export interface GoogleIdentityStsV1betaAccessBoundary {
 }
 
 export const GoogleIdentityStsV1betaAccessBoundary: Schema.Codec<GoogleIdentityStsV1betaAccessBoundary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessBoundaryRules: Schema.optional(
       Schema.Array(GoogleIdentityStsV1betaAccessBoundaryRule),
     ),
@@ -77,7 +77,7 @@ export interface GoogleIdentityStsV1betaOptions {
 }
 
 export const GoogleIdentityStsV1betaOptions: Schema.Codec<GoogleIdentityStsV1betaOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessBoundary: Schema.optional(GoogleIdentityStsV1betaAccessBoundary),
     userProject: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleIdentityStsV1betaOptions" });
@@ -92,7 +92,7 @@ export interface GoogleIamV1Binding {
 }
 
 export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
     condition: Schema.optional(GoogleTypeExpr),
@@ -112,7 +112,7 @@ export interface GoogleIdentityStsV1ExchangeTokenResponse {
 }
 
 export const GoogleIdentityStsV1ExchangeTokenResponse: Schema.Codec<GoogleIdentityStsV1ExchangeTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token_type: Schema.optional(Schema.String),
     expires_in: Schema.optional(Schema.Number),
     access_boundary_session_key: Schema.optional(Schema.String),
@@ -130,7 +130,7 @@ export interface GoogleIdentityStsV1AccessBoundaryRule {
 }
 
 export const GoogleIdentityStsV1AccessBoundaryRule: Schema.Codec<GoogleIdentityStsV1AccessBoundaryRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     availablePermissions: Schema.optional(Schema.Array(Schema.String)),
     availableResource: Schema.optional(Schema.String),
     availabilityCondition: Schema.optional(GoogleTypeExpr),
@@ -142,7 +142,7 @@ export interface GoogleIdentityStsV1AccessBoundary {
 }
 
 export const GoogleIdentityStsV1AccessBoundary: Schema.Codec<GoogleIdentityStsV1AccessBoundary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessBoundaryRules: Schema.optional(
       Schema.Array(GoogleIdentityStsV1AccessBoundaryRule),
     ),
@@ -158,7 +158,7 @@ export interface GoogleIdentityStsV1Options {
 }
 
 export const GoogleIdentityStsV1Options: Schema.Codec<GoogleIdentityStsV1Options> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessBoundary: Schema.optional(GoogleIdentityStsV1AccessBoundary),
     userProject: Schema.optional(Schema.String),
     bindCertFingerprint: Schema.optional(Schema.String),
@@ -178,7 +178,7 @@ export interface GoogleIdentityStsV1Jwk {
 }
 
 export const GoogleIdentityStsV1Jwk: Schema.Codec<GoogleIdentityStsV1Jwk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kid: Schema.optional(Schema.String),
     n: Schema.optional(Schema.String),
     kty: Schema.optional(Schema.String),
@@ -192,7 +192,7 @@ export interface GoogleIdentityStsV1Jwks {
 }
 
 export const GoogleIdentityStsV1Jwks: Schema.Codec<GoogleIdentityStsV1Jwks> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keys: Schema.optional(Schema.Array(GoogleIdentityStsV1Jwk)),
   }).annotate({ identifier: "GoogleIdentityStsV1Jwks" });
 
@@ -214,7 +214,7 @@ export interface GoogleIdentityStsV1OpenIdProviderConfig {
 }
 
 export const GoogleIdentityStsV1OpenIdProviderConfig: Schema.Codec<GoogleIdentityStsV1OpenIdProviderConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorization_endpoint: Schema.optional(Schema.String),
     subject_types_supported: Schema.optional(Schema.Array(Schema.String)),
     id_token_signing_alg_values_supported: Schema.optional(
@@ -244,7 +244,7 @@ export interface GoogleIdentityStsV1ExchangeTokenRequest {
 }
 
 export const GoogleIdentityStsV1ExchangeTokenRequest: Schema.Codec<GoogleIdentityStsV1ExchangeTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     grantType: Schema.optional(Schema.String),
     requestedTokenType: Schema.optional(Schema.String),
     subjectTokenType: Schema.optional(Schema.String),
@@ -313,7 +313,7 @@ export interface TokenV1Request {
   body?: GoogleIdentityStsV1ExchangeTokenRequest;
 }
 
-export const TokenV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TokenV1Request = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(GoogleIdentityStsV1ExchangeTokenRequest).pipe(
     T.HttpBody(),
   ),
@@ -324,7 +324,7 @@ export const TokenV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type TokenV1Response = GoogleIdentityStsV1ExchangeTokenResponse;
 export const TokenV1Response =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIdentityStsV1ExchangeTokenResponse;
+  /*@__PURE__*/ GoogleIdentityStsV1ExchangeTokenResponse;
 
 export type TokenV1Error =
   | DefaultErrors
@@ -339,7 +339,7 @@ export const tokenV1: API.OperationMethod<
   TokenV1Response,
   TokenV1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TokenV1Request,
   output: TokenV1Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -351,7 +351,7 @@ export interface GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest {
 }
 
 export const GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/openid/jwks" }),
@@ -361,7 +361,7 @@ export const GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest =
 export type GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidResponse =
   GoogleIdentityStsV1Jwks;
 export const GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIdentityStsV1Jwks;
+  /*@__PURE__*/ GoogleIdentityStsV1Jwks;
 
 export type GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidError =
   | DefaultErrors
@@ -374,7 +374,7 @@ export const getJwksProjectsLocationsWorkloadIdentityPoolsOpenid: API.OperationM
   GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidResponse,
   GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest,
   output: GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidResponse,
   errors: [NotFound, Forbidden],
@@ -386,7 +386,7 @@ export interface GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWe
 }
 
 export const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({
@@ -399,7 +399,7 @@ export const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_k
 export type GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownResponse =
   GoogleIdentityStsV1OpenIdProviderConfig;
 export const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIdentityStsV1OpenIdProviderConfig;
+  /*@__PURE__*/ GoogleIdentityStsV1OpenIdProviderConfig;
 
 export type GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownError =
   | DefaultErrors
@@ -412,7 +412,7 @@ export const getOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_k
   GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownResponse,
   GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest,
   output:
@@ -426,7 +426,7 @@ export interface GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest
 }
 
 export const GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/openid/jwks" }),
@@ -436,7 +436,7 @@ export const GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest =
 export type GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidResponse =
   GoogleIdentityStsV1Jwks;
 export const GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIdentityStsV1Jwks;
+  /*@__PURE__*/ GoogleIdentityStsV1Jwks;
 
 export type GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidError =
   | DefaultErrors
@@ -449,7 +449,7 @@ export const getJwksOrganizationsLocationsWorkloadIdentityPoolsOpenid: API.Opera
   GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidResponse,
   GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest,
   output: GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidResponse,
   errors: [NotFound, Forbidden],
@@ -461,7 +461,7 @@ export interface GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPo
 }
 
 export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({
@@ -474,7 +474,7 @@ export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsW
 export type GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownResponse =
   GoogleIdentityStsV1OpenIdProviderConfig;
 export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIdentityStsV1OpenIdProviderConfig;
+  /*@__PURE__*/ GoogleIdentityStsV1OpenIdProviderConfig;
 
 export type GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownError =
   | DefaultErrors
@@ -487,7 +487,7 @@ export const getOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsW
   GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownResponse,
   GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest,
   output:

@@ -8,7 +8,7 @@ export interface AdvancedActivityLogsAvailableFiltersRetrieveInput {
   project_id: string;
 }
 export const AdvancedActivityLogsAvailableFiltersRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -28,7 +28,7 @@ export interface AdvancedActivityLogsAvailableFiltersRetrieveOutput {
   detail_fields?: Record<string, unknown>;
 }
 export const AdvancedActivityLogsAvailableFiltersRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     static_filters: Schema.optional(
       Schema.Struct({
         users: Schema.optional(
@@ -56,7 +56,7 @@ export const AdvancedActivityLogsAvailableFiltersRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const advancedActivityLogsAvailableFiltersRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AdvancedActivityLogsAvailableFiltersRetrieveInput,
     outputSchema: AdvancedActivityLogsAvailableFiltersRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

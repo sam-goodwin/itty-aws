@@ -9,7 +9,7 @@ export interface ErrorTrackingSymbolSetsBulkDeleteCreateInput {
   ids: string[];
 }
 export const ErrorTrackingSymbolSetsBulkDeleteCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     ids: Schema.Array(Schema.String),
   }).pipe(
@@ -22,7 +22,7 @@ export const ErrorTrackingSymbolSetsBulkDeleteCreateInput =
 // Output Schema
 export type ErrorTrackingSymbolSetsBulkDeleteCreateOutput = void;
 export const ErrorTrackingSymbolSetsBulkDeleteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSymbolSetsBulkDeleteCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSymbolSetsBulkDeleteCreateOutput>;
 
 // The operation
 /**
@@ -30,7 +30,7 @@ export const ErrorTrackingSymbolSetsBulkDeleteCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingSymbolSetsBulkDeleteCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingSymbolSetsBulkDeleteCreateInput,
     outputSchema: ErrorTrackingSymbolSetsBulkDeleteCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -12,7 +12,7 @@ export interface HealthIssuesListInput {
   severity?: string;
   status?: string;
 }
-export const HealthIssuesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HealthIssuesListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   dismissed: Schema.optional(Schema.Boolean),
   kind: Schema.optional(Schema.String),
@@ -41,32 +41,28 @@ export interface HealthIssuesListOutput {
     resolved_at?: string | null;
   }[];
 }
-export const HealthIssuesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    count: Schema.optional(Schema.Number),
-    next: Schema.optional(Schema.NullOr(Schema.String)),
-    previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          kind: Schema.optional(Schema.String),
-          severity: Schema.optional(
-            Schema.Literals(["critical", "warning", "info"]),
-          ),
-          status: Schema.optional(Schema.Literals(["active", "resolved"])),
-          dismissed: Schema.optional(Schema.Boolean),
-          payload: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-          resolved_at: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+export const HealthIssuesListOutput = /*@__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Number),
+  next: Schema.optional(Schema.NullOr(Schema.String)),
+  previous: Schema.optional(Schema.NullOr(Schema.String)),
+  results: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        kind: Schema.optional(Schema.String),
+        severity: Schema.optional(
+          Schema.Literals(["critical", "warning", "info"]),
+        ),
+        status: Schema.optional(Schema.Literals(["active", "resolved"])),
+        dismissed: Schema.optional(Schema.Boolean),
+        payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+        created_at: Schema.optional(Schema.String),
+        updated_at: Schema.optional(Schema.String),
+        resolved_at: Schema.optional(Schema.NullOr(Schema.String)),
+      }),
     ),
-  },
-) as unknown as Schema.Codec<HealthIssuesListOutput>;
+  ),
+}) as unknown as Schema.Codec<HealthIssuesListOutput>;
 
 // The operation
 /**
@@ -82,7 +78,7 @@ export const HealthIssuesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param severity - Only return issues with this severity. One of: 'critical', 'warning', 'info'.
  * @param status - Only return issues with this status. One of: 'active', 'resolved'.
  */
-export const healthIssuesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const healthIssuesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: HealthIssuesListInput,
   outputSchema: HealthIssuesListOutput,
 }));

@@ -11,7 +11,7 @@ export interface CreateGroupEncryptionAtRestPrivateEndpointInput {
   pretty?: boolean;
 }
 export const CreateGroupEncryptionAtRestPrivateEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     cloudProvider: Schema.Literals(["AZURE", "AWS"]).pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const CreateGroupEncryptionAtRestPrivateEndpointInput =
 // Output Schema
 export type CreateGroupEncryptionAtRestPrivateEndpointOutput = void;
 export const CreateGroupEncryptionAtRestPrivateEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupEncryptionAtRestPrivateEndpointOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupEncryptionAtRestPrivateEndpointOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const CreateGroupEncryptionAtRestPrivateEndpointOutput =
  * @param cloudProvider - Human-readable label that identifies the cloud provider for the private endpoint to create.
  */
 export const createGroupEncryptionAtRestPrivateEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupEncryptionAtRestPrivateEndpointInput,
     outputSchema: CreateGroupEncryptionAtRestPrivateEndpointOutput,
     errors: [Forbidden, NotFound] as const,

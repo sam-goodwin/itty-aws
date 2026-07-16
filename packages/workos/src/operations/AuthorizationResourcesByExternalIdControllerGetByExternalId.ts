@@ -10,7 +10,7 @@ export interface AuthorizationResourcesByExternalIdControllerGetByExternalIdInpu
   external_id: string;
 }
 export const AuthorizationResourcesByExternalIdControllerGetByExternalIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     resource_type_slug: Schema.String.pipe(T.PathParam()),
     external_id: Schema.String.pipe(T.PathParam()),
@@ -35,7 +35,7 @@ export interface AuthorizationResourcesByExternalIdControllerGetByExternalIdOutp
   updated_at?: string;
 }
 export const AuthorizationResourcesByExternalIdControllerGetByExternalIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -59,7 +59,7 @@ export const AuthorizationResourcesByExternalIdControllerGetByExternalIdOutput =
  * @param external_id - An identifier you provide to reference the resource in your system.
  */
 export const AuthorizationResourcesByExternalIdControllerGetByExternalId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationResourcesByExternalIdControllerGetByExternalIdInput,
     outputSchema:

@@ -7,7 +7,7 @@ export interface GetFilesFileInput {
   file: string;
   expand?: string;
 }
-export const GetFilesFileInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFilesFileInput = /*@__PURE__*/ Schema.Struct({
   file: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -108,7 +108,7 @@ export interface GetFilesFileOutput {
   type: string | null;
   url: string | null;
 }
-export const GetFilesFileOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetFilesFileOutput = /*@__PURE__*/ Schema.Struct({
   created: Schema.Number,
   expires_at: Schema.NullOr(Schema.Number),
   filename: Schema.NullOr(Schema.String),
@@ -219,7 +219,7 @@ export const GetFilesFileOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetFilesFile = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetFilesFile = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetFilesFileInput,
   outputSchema: GetFilesFileOutput,
 }));

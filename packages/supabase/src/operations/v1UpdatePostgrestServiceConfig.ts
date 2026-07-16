@@ -12,7 +12,7 @@ export interface V1UpdatePostgrestServiceConfigInput {
   db_pool?: number;
 }
 export const V1UpdatePostgrestServiceConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     db_extra_search_path: Schema.optional(Schema.String),
     db_schema: Schema.optional(Schema.String),
@@ -30,7 +30,7 @@ export interface V1UpdatePostgrestServiceConfigOutput {
   db_pool: number | null;
 }
 export const V1UpdatePostgrestServiceConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     db_schema: Schema.String,
     max_rows: Schema.Number,
     db_extra_search_path: Schema.String,
@@ -44,7 +44,7 @@ export const V1UpdatePostgrestServiceConfigOutput =
  * @param ref - Project ref
  */
 export const v1UpdatePostgrestServiceConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1UpdatePostgrestServiceConfigInput,
     outputSchema: V1UpdatePostgrestServiceConfigOutput,
     errors: [BadRequest, Forbidden] as const,

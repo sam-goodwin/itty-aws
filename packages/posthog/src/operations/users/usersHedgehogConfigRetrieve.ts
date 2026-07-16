@@ -8,7 +8,7 @@ export interface UsersHedgehogConfigRetrieveInput {
   uuid: string;
 }
 export const UsersHedgehogConfigRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/api/users/{uuid}/hedgehog_config/" }),
@@ -17,13 +17,11 @@ export const UsersHedgehogConfigRetrieveInput =
 // Output Schema
 export type UsersHedgehogConfigRetrieveOutput = void;
 export const UsersHedgehogConfigRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersHedgehogConfigRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersHedgehogConfigRetrieveOutput>;
 
 // The operation
-export const usersHedgehogConfigRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsersHedgehogConfigRetrieveInput,
-    outputSchema: UsersHedgehogConfigRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const usersHedgehogConfigRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersHedgehogConfigRetrieveInput,
+  outputSchema: UsersHedgehogConfigRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

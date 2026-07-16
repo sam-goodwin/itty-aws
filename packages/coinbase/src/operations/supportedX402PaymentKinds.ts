@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface SupportedX402PaymentKindsInput {}
 export const SupportedX402PaymentKindsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/v2/x402/supported" }),
   ) as unknown as Schema.Codec<SupportedX402PaymentKindsInput>;
 
@@ -33,7 +33,7 @@ export interface SupportedX402PaymentKindsOutput {
   signers: Record<string, string[]>;
 }
 export const SupportedX402PaymentKindsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kinds: Schema.Array(
       Schema.Struct({
         x402Version: Schema.Literals([1, 2]),
@@ -65,9 +65,7 @@ export const SupportedX402PaymentKindsOutput =
  *
  * Get the supported x402 protocol payment schemes and networks that the facilitator is able to verify and settle payments for.
  */
-export const supportedX402PaymentKinds = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SupportedX402PaymentKindsInput,
-    outputSchema: SupportedX402PaymentKindsOutput,
-  }),
-);
+export const supportedX402PaymentKinds = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SupportedX402PaymentKindsInput,
+  outputSchema: SupportedX402PaymentKindsOutput,
+}));

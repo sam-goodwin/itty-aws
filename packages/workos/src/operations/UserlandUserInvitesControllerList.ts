@@ -13,7 +13,7 @@ export interface UserlandUserInvitesControllerListInput {
   email?: string;
 }
 export const UserlandUserInvitesControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -47,7 +47,7 @@ export interface UserlandUserInvitesControllerListOutput {
   list_metadata: { before: string | null; after: string | null };
 }
 export const UserlandUserInvitesControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     data: Schema.Array(
       Schema.Struct({
@@ -90,7 +90,7 @@ export const UserlandUserInvitesControllerListOutput =
  * @param email - The email address of the recipient.
  */
 export const UserlandUserInvitesControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserInvitesControllerListInput,
     outputSchema: UserlandUserInvitesControllerListOutput,
     errors: [UnprocessableEntity] as const,

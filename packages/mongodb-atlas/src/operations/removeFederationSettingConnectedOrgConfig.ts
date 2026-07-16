@@ -10,7 +10,7 @@ export interface RemoveFederationSettingConnectedOrgConfigInput {
   envelope?: boolean;
 }
 export const RemoveFederationSettingConnectedOrgConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
     orgId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const RemoveFederationSettingConnectedOrgConfigInput =
 // Output Schema
 export type RemoveFederationSettingConnectedOrgConfigOutput = void;
 export const RemoveFederationSettingConnectedOrgConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveFederationSettingConnectedOrgConfigOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveFederationSettingConnectedOrgConfigOutput>;
 
 // The operation
 /**
@@ -37,7 +37,7 @@ export const RemoveFederationSettingConnectedOrgConfigOutput =
  * @param orgId - Unique 24-hexadecimal digit string that identifies the connected organization configuration to remove.
  */
 export const removeFederationSettingConnectedOrgConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RemoveFederationSettingConnectedOrgConfigInput,
     outputSchema: RemoveFederationSettingConnectedOrgConfigOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

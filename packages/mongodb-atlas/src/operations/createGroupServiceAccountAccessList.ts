@@ -14,7 +14,7 @@ export interface CreateGroupServiceAccountAccessListInput {
   pretty?: boolean;
 }
 export const CreateGroupServiceAccountAccessListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clientId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const CreateGroupServiceAccountAccessListInput =
 // Output Schema
 export type CreateGroupServiceAccountAccessListOutput = void;
 export const CreateGroupServiceAccountAccessListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupServiceAccountAccessListOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupServiceAccountAccessListOutput>;
 
 // The operation
 /**
@@ -51,7 +51,7 @@ export const CreateGroupServiceAccountAccessListOutput =
  * @param clientId - The Client ID of the Service Account.
  */
 export const createGroupServiceAccountAccessList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupServiceAccountAccessListInput,
     outputSchema: CreateGroupServiceAccountAccessListOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

@@ -46,7 +46,7 @@ export interface PostChargesInput {
   };
   transfer_group?: string;
 }
-export const PostChargesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostChargesInput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.optional(Schema.Number),
   application_fee: Schema.optional(Schema.Number),
   application_fee_amount: Schema.optional(Schema.Number),
@@ -1685,7 +1685,7 @@ export interface PostChargesOutput {
   transfer_data: { amount: number | null; destination: unknown } | null;
   transfer_group: string | null;
 }
-export const PostChargesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostChargesOutput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   amount_captured: Schema.Number,
   amount_refunded: Schema.Number,
@@ -2426,7 +2426,7 @@ export const PostChargesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * to initiate a new payment instead. Confirmation of the PaymentIntent creates the <code>Charge</code>
  * object used to request payment.</p>
  */
-export const PostCharges = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostCharges = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostChargesInput,
   outputSchema: PostChargesOutput,
 }));

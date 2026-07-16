@@ -9,7 +9,7 @@ export interface UserInterviewTopicsPreviewInviteCreateInput {
   interviewee_identifier?: string;
 }
 export const UserInterviewTopicsPreviewInviteCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     interviewee_identifier: Schema.optional(Schema.String),
@@ -32,7 +32,7 @@ export interface UserInterviewTopicsPreviewInviteCreateOutput {
   is_preview_link: boolean;
 }
 export const UserInterviewTopicsPreviewInviteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interviewee_identifier: Schema.String,
     user_name: Schema.String,
     email: Schema.NullOr(Schema.String),
@@ -51,7 +51,7 @@ export const UserInterviewTopicsPreviewInviteCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const userInterviewTopicsPreviewInviteCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserInterviewTopicsPreviewInviteCreateInput,
     outputSchema: UserInterviewTopicsPreviewInviteCreateOutput,
   }));

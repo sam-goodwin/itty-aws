@@ -10,7 +10,7 @@ export interface BusinessKnowledgeDocumentsSearchListInput {
   rerank?: boolean;
 }
 export const BusinessKnowledgeDocumentsSearchListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     query: Schema.String,
@@ -35,7 +35,7 @@ export type BusinessKnowledgeDocumentsSearchListOutput = {
   content: string;
 }[];
 export const BusinessKnowledgeDocumentsSearchListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       chunk_id: Schema.String,
       document_id: Schema.String,
@@ -61,7 +61,7 @@ export const BusinessKnowledgeDocumentsSearchListOutput =
  * @param rerank - When true, rerank search results with a listwise LLM pass for better relevance. Defaults to false (RRF order only). Falls back to RRF order on rerank failure.
  */
 export const businessKnowledgeDocumentsSearchList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BusinessKnowledgeDocumentsSearchListInput,
     outputSchema: BusinessKnowledgeDocumentsSearchListOutput,
   }));

@@ -10,7 +10,7 @@ export interface GetGroupDataFederationInput {
   envelope?: boolean;
 }
 export const GetGroupDataFederationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const GetGroupDataFederationInput =
 // Output Schema
 export type GetGroupDataFederationOutput = void;
 export const GetGroupDataFederationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupDataFederationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupDataFederationOutput>;
 
 // The operation
 /**
@@ -38,10 +38,8 @@ export const GetGroupDataFederationOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param tenantName - Human-readable label that identifies the Federated Database to return.
  */
-export const getGroupDataFederation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupDataFederationInput,
-    outputSchema: GetGroupDataFederationOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupDataFederation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupDataFederationInput,
+  outputSchema: GetGroupDataFederationOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

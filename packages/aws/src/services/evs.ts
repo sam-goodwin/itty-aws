@@ -121,7 +121,7 @@ export type NetworkInterfaceId = string;
 
 //# Schemas
 export interface GetVersionsRequest {}
-export const GetVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -133,19 +133,18 @@ export type VcfVersion =
   | "VCF-5.2.2"
   | "SELF_DEPLOYED"
   | (string & {});
-export const VcfVersion = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const VcfVersion = /*@__PURE__*/ S.String;
 export type InstanceType = "i4i.metal" | "i7i.metal-24xl" | (string & {});
-export const InstanceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const InstanceType = /*@__PURE__*/ S.String;
 export type InstanceTypeList = InstanceType[];
-export const InstanceTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(InstanceType);
+export const InstanceTypeList = /*@__PURE__*/ S.Array(InstanceType);
 export interface VcfVersionInfo {
   vcfVersion: VcfVersion;
   status: string;
   defaultEsxVersion: string;
   instanceTypes: InstanceType[];
 }
-export const VcfVersionInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VcfVersionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vcfVersion: VcfVersion,
     status: S.String,
@@ -154,29 +153,28 @@ export const VcfVersionInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VcfVersionInfo" }) as any as S.Schema<VcfVersionInfo>;
 export type VcfVersionList = VcfVersionInfo[];
-export const VcfVersionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(VcfVersionInfo);
+export const VcfVersionList = /*@__PURE__*/ S.Array(VcfVersionInfo);
 export type EsxVersionList = string[];
-export const EsxVersionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const EsxVersionList = /*@__PURE__*/ S.Array(S.String);
 export interface InstanceTypeEsxVersionsInfo {
   instanceType: InstanceType;
   esxVersions: string[];
 }
 export const InstanceTypeEsxVersionsInfo =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ instanceType: InstanceType, esxVersions: EsxVersionList }),
   ).annotate({
     identifier: "InstanceTypeEsxVersionsInfo",
   }) as any as S.Schema<InstanceTypeEsxVersionsInfo>;
 export type InstanceTypeEsxVersionsList = InstanceTypeEsxVersionsInfo[];
-export const InstanceTypeEsxVersionsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const InstanceTypeEsxVersionsList = /*@__PURE__*/ S.Array(
   InstanceTypeEsxVersionsInfo,
 );
 export interface GetVersionsResponse {
   vcfVersions: VcfVersionInfo[];
   instanceTypeEsxVersions: InstanceTypeEsxVersionsInfo[];
 }
-export const GetVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vcfVersions: VcfVersionList,
     instanceTypeEsxVersions: InstanceTypeEsxVersionsList,
@@ -187,16 +185,15 @@ export const GetVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type ResponseTagMap = { [key: string]: string | undefined };
-export const ResponseTagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ResponseTagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -204,13 +201,13 @@ export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ tags: S.optional(ResponseTagMap) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
   }) as any as S.Schema<ListTagsForResourceResponse>;
 export type RequestTagMap = { [key: string]: string | undefined };
-export const RequestTagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const RequestTagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -218,7 +215,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tags: RequestTagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -226,18 +223,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tagKeys: TagKeys }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -245,18 +242,18 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
 export type SecurityGroups = string[];
-export const SecurityGroups = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SecurityGroups = /*@__PURE__*/ S.Array(S.String);
 export interface ServiceAccessSecurityGroups {
   securityGroups?: string[];
 }
 export const ServiceAccessSecurityGroups =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ securityGroups: S.optional(SecurityGroups) }),
   ).annotate({
     identifier: "ServiceAccessSecurityGroups",
@@ -264,7 +261,7 @@ export const ServiceAccessSecurityGroups =
 export interface InitialVlanInfo {
   cidr: string;
 }
-export const InitialVlanInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InitialVlanInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cidr: S.String }),
 ).annotate({
   identifier: "InitialVlanInfo",
@@ -283,7 +280,7 @@ export interface InitialVlans {
   isHcxPublic?: boolean;
   hcxNetworkAclId?: string;
 }
-export const InitialVlans = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InitialVlans = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmkManagement: InitialVlanInfo,
     vmManagement: InitialVlanInfo,
@@ -300,13 +297,11 @@ export const InitialVlans = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InitialVlans" }) as any as S.Schema<InitialVlans>;
 export type RouteServerPeeringList = string[];
-export const RouteServerPeeringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const RouteServerPeeringList = /*@__PURE__*/ S.Array(S.String);
 export interface ConnectivityInfo {
   privateRouteServerPeerings: string[];
 }
-export const ConnectivityInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConnectivityInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ privateRouteServerPeerings: RouteServerPeeringList }),
 ).annotate({
   identifier: "ConnectivityInfo",
@@ -315,11 +310,11 @@ export interface LicenseInfo {
   solutionKey: string | redacted.Redacted<string>;
   vsanKey: string | redacted.Redacted<string>;
 }
-export const LicenseInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LicenseInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ solutionKey: SensitiveString, vsanKey: SensitiveString }),
 ).annotate({ identifier: "LicenseInfo" }) as any as S.Schema<LicenseInfo>;
 export type LicenseInfoList = LicenseInfo[];
-export const LicenseInfoList = /*@__PURE__*/ /*#__PURE__*/ S.Array(LicenseInfo);
+export const LicenseInfoList = /*@__PURE__*/ S.Array(LicenseInfo);
 export interface HostInfoForCreate {
   hostName: string;
   keyName: string;
@@ -327,7 +322,7 @@ export interface HostInfoForCreate {
   placementGroupId?: string;
   dedicatedHostId?: string;
 }
-export const HostInfoForCreate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HostInfoForCreate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostName: S.String,
     keyName: S.String,
@@ -339,8 +334,7 @@ export const HostInfoForCreate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "HostInfoForCreate",
 }) as any as S.Schema<HostInfoForCreate>;
 export type HostInfoForCreateList = HostInfoForCreate[];
-export const HostInfoForCreateList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(HostInfoForCreate);
+export const HostInfoForCreateList = /*@__PURE__*/ S.Array(HostInfoForCreate);
 export interface VcfHostnames {
   vCenter: string;
   nsx: string;
@@ -352,7 +346,7 @@ export interface VcfHostnames {
   sddcManager: string;
   cloudBuilder: string;
 }
-export const VcfHostnames = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VcfHostnames = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vCenter: S.String,
     nsx: S.String,
@@ -382,27 +376,26 @@ export interface CreateEnvironmentRequest {
   vcfHostnames?: VcfHostnames;
   siteId?: string;
 }
-export const CreateEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      environmentName: S.optional(S.String),
-      kmsKeyId: S.optional(S.String),
-      tags: S.optional(RequestTagMap),
-      serviceAccessSecurityGroups: S.optional(ServiceAccessSecurityGroups),
-      vpcId: S.String,
-      serviceAccessSubnetId: S.String,
-      vcfVersion: VcfVersion,
-      termsAccepted: S.Boolean,
-      initialVlans: InitialVlans,
-      connectivityInfo: S.optional(ConnectivityInfo),
-      licenseInfo: S.optional(LicenseInfoList),
-      hosts: S.optional(HostInfoForCreateList),
-      vcfHostnames: S.optional(VcfHostnames),
-      siteId: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    environmentName: S.optional(S.String),
+    kmsKeyId: S.optional(S.String),
+    tags: S.optional(RequestTagMap),
+    serviceAccessSecurityGroups: S.optional(ServiceAccessSecurityGroups),
+    vpcId: S.String,
+    serviceAccessSubnetId: S.String,
+    vcfVersion: VcfVersion,
+    termsAccepted: S.Boolean,
+    initialVlans: InitialVlans,
+    connectivityInfo: S.optional(ConnectivityInfo),
+    licenseInfo: S.optional(LicenseInfoList),
+    hosts: S.optional(HostInfoForCreateList),
+    vcfHostnames: S.optional(VcfHostnames),
+    siteId: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "CreateEnvironmentRequest",
 }) as any as S.Schema<CreateEnvironmentRequest>;
@@ -413,9 +406,9 @@ export type EnvironmentState =
   | "DELETED"
   | "CREATE_FAILED"
   | (string & {});
-export const EnvironmentState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EnvironmentState = /*@__PURE__*/ S.String;
 export type CheckResult = "PASSED" | "FAILED" | "UNKNOWN" | (string & {});
-export const CheckResult = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CheckResult = /*@__PURE__*/ S.String;
 export type CheckType =
   | "KEY_REUSE"
   | "KEY_COVERAGE"
@@ -431,14 +424,14 @@ export type CheckType =
   | "SDDC_MANAGER_KEY_REUSE"
   | "CONNECTOR_HEALTH"
   | (string & {});
-export const CheckType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CheckType = /*@__PURE__*/ S.String;
 export interface Check {
   type?: CheckType;
   id?: string;
   result?: CheckResult;
   impairedSince?: Date;
 }
-export const Check = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Check = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(CheckType),
     id: S.optional(S.String),
@@ -447,15 +440,15 @@ export const Check = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Check" }) as any as S.Schema<Check>;
 export type ChecksList = Check[];
-export const ChecksList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Check);
+export const ChecksList = /*@__PURE__*/ S.Array(Check);
 export interface Secret {
   secretArn?: string;
 }
-export const Secret = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Secret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ secretArn: S.optional(S.String) }),
 ).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
 export type SecretList = Secret[];
-export const SecretList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Secret);
+export const SecretList = /*@__PURE__*/ S.Array(Secret);
 export interface Environment {
   environmentId?: string;
   environmentState?: EnvironmentState;
@@ -478,7 +471,7 @@ export interface Environment {
   serviceAccessSecurityGroups?: ServiceAccessSecurityGroups;
   credentials?: Secret[];
 }
-export const Environment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
     environmentState: S.optional(EnvironmentState),
@@ -505,8 +498,8 @@ export const Environment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateEnvironmentResponse {
   environment?: Environment;
 }
-export const CreateEnvironmentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ environment: S.optional(Environment) }),
+export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ environment: S.optional(Environment) }),
 ).annotate({
   identifier: "CreateEnvironmentResponse",
 }) as any as S.Schema<CreateEnvironmentResponse>;
@@ -516,24 +509,24 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ name: S.String, message: S.String }),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export interface GetEnvironmentRequest {
   environmentId: string;
 }
-export const GetEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ environmentId: S.String.pipe(T.HttpLabel("environmentId")) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -543,8 +536,8 @@ export const GetEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetEnvironmentResponse {
   environment?: Environment;
 }
-export const GetEnvironmentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ environment: S.optional(Environment) }),
+export const GetEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ environment: S.optional(Environment) }),
 ).annotate({
   identifier: "GetEnvironmentResponse",
 }) as any as S.Schema<GetEnvironmentResponse>;
@@ -552,42 +545,39 @@ export interface DeleteEnvironmentRequest {
   clientToken?: string;
   environmentId: string;
 }
-export const DeleteEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DeleteEnvironmentRequest",
 }) as any as S.Schema<DeleteEnvironmentRequest>;
 export interface DeleteEnvironmentResponse {
   environment?: Environment;
 }
-export const DeleteEnvironmentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ environment: S.optional(Environment) }),
+export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ environment: S.optional(Environment) }),
 ).annotate({
   identifier: "DeleteEnvironmentResponse",
 }) as any as S.Schema<DeleteEnvironmentResponse>;
 export type EnvironmentStateList = EnvironmentState[];
-export const EnvironmentStateList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EnvironmentState);
+export const EnvironmentStateList = /*@__PURE__*/ S.Array(EnvironmentState);
 export interface ListEnvironmentsRequest {
   nextToken?: string;
   maxResults?: number;
   state?: EnvironmentState[];
 }
-export const ListEnvironmentsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      state: S.optional(EnvironmentStateList).pipe(T.HttpQuery("state")),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    state: S.optional(EnvironmentStateList).pipe(T.HttpQuery("state")),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListEnvironmentsRequest",
 }) as any as S.Schema<ListEnvironmentsRequest>;
@@ -601,7 +591,7 @@ export interface EnvironmentSummary {
   modifiedAt?: Date;
   environmentArn?: string;
 }
-export const EnvironmentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -616,18 +606,16 @@ export const EnvironmentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentSummary",
 }) as any as S.Schema<EnvironmentSummary>;
 export type EnvironmentSummaryList = EnvironmentSummary[];
-export const EnvironmentSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EnvironmentSummary);
+export const EnvironmentSummaryList = /*@__PURE__*/ S.Array(EnvironmentSummary);
 export interface ListEnvironmentsResponse {
   nextToken?: string;
   environmentSummaries?: EnvironmentSummary[];
 }
-export const ListEnvironmentsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      environmentSummaries: S.optional(EnvironmentSummaryList),
-    }),
+export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    environmentSummaries: S.optional(EnvironmentSummaryList),
+  }),
 ).annotate({
   identifier: "ListEnvironmentsResponse",
 }) as any as S.Schema<ListEnvironmentsResponse>;
@@ -637,16 +625,15 @@ export interface AssociateEipToVlanRequest {
   vlanName: string;
   allocationId: string;
 }
-export const AssociateEipToVlanRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      environmentId: S.String,
-      vlanName: S.String,
-      allocationId: S.String,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const AssociateEipToVlanRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    environmentId: S.String,
+    vlanName: S.String,
+    allocationId: S.String,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "AssociateEipToVlanRequest",
 }) as any as S.Schema<AssociateEipToVlanRequest>;
@@ -657,13 +644,13 @@ export type VlanState =
   | "DELETED"
   | "CREATE_FAILED"
   | (string & {});
-export const VlanState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const VlanState = /*@__PURE__*/ S.String;
 export interface EipAssociation {
   associationId?: string;
   allocationId?: string;
   ipAddress?: string;
 }
-export const EipAssociation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EipAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     associationId: S.optional(S.String),
     allocationId: S.optional(S.String),
@@ -671,8 +658,7 @@ export const EipAssociation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EipAssociation" }) as any as S.Schema<EipAssociation>;
 export type EipAssociationList = EipAssociation[];
-export const EipAssociationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EipAssociation);
+export const EipAssociationList = /*@__PURE__*/ S.Array(EipAssociation);
 export interface Vlan {
   vlanId?: number;
   cidr?: string;
@@ -687,7 +673,7 @@ export interface Vlan {
   isPublic?: boolean;
   networkAclId?: string;
 }
-export const Vlan = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Vlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vlanId: S.optional(S.Number),
     cidr: S.optional(S.String),
@@ -706,15 +692,15 @@ export const Vlan = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface AssociateEipToVlanResponse {
   vlan?: Vlan;
 }
-export const AssociateEipToVlanResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ vlan: S.optional(Vlan) }),
+export const AssociateEipToVlanResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ vlan: S.optional(Vlan) }),
 ).annotate({
   identifier: "AssociateEipToVlanResponse",
 }) as any as S.Schema<AssociateEipToVlanResponse>;
 export type EntitlementType = "WINDOWS_SERVER" | (string & {});
-export const EntitlementType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EntitlementType = /*@__PURE__*/ S.String;
 export type VmIdList = string[];
-export const VmIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const VmIdList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateEntitlementRequest {
   clientToken?: string;
   environmentId: string;
@@ -722,17 +708,16 @@ export interface CreateEntitlementRequest {
   entitlementType: EntitlementType;
   vmIds: string[];
 }
-export const CreateEntitlementRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      environmentId: S.String,
-      connectorId: S.String,
-      entitlementType: EntitlementType,
-      vmIds: VmIdList,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const CreateEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    environmentId: S.String,
+    connectorId: S.String,
+    entitlementType: EntitlementType,
+    vmIds: VmIdList,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "CreateEntitlementRequest",
 }) as any as S.Schema<CreateEntitlementRequest>;
@@ -744,12 +729,12 @@ export type EntitlementStatus =
   | "ENTITLEMENT_REMOVED"
   | "CREATE_FAILED"
   | (string & {});
-export const EntitlementStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EntitlementStatus = /*@__PURE__*/ S.String;
 export interface ErrorDetail {
   errorCode: string;
   errorMessage: string;
 }
-export const ErrorDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ errorCode: S.String, errorMessage: S.String }),
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 export interface VmEntitlement {
@@ -764,7 +749,7 @@ export interface VmEntitlement {
   stoppedAt?: Date;
   errorDetail?: ErrorDetail;
 }
-export const VmEntitlement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VmEntitlement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmId: S.optional(S.String),
     environmentId: S.optional(S.String),
@@ -779,13 +764,12 @@ export const VmEntitlement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VmEntitlement" }) as any as S.Schema<VmEntitlement>;
 export type VmEntitlementList = VmEntitlement[];
-export const VmEntitlementList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(VmEntitlement);
+export const VmEntitlementList = /*@__PURE__*/ S.Array(VmEntitlement);
 export interface CreateEntitlementResponse {
   entitlements?: VmEntitlement[];
 }
-export const CreateEntitlementResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ entitlements: S.optional(VmEntitlementList) }),
+export const CreateEntitlementResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ entitlements: S.optional(VmEntitlementList) }),
 ).annotate({
   identifier: "CreateEntitlementResponse",
 }) as any as S.Schema<CreateEntitlementResponse>;
@@ -794,7 +778,7 @@ export type ConnectorType =
   | "SDDC_MANAGER"
   | "VCENTER"
   | (string & {});
-export const ConnectorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConnectorType = /*@__PURE__*/ S.String;
 export interface CreateEnvironmentConnectorRequest {
   clientToken?: string;
   environmentId: string;
@@ -803,7 +787,7 @@ export interface CreateEnvironmentConnectorRequest {
   secretIdentifier: string;
 }
 export const CreateEnvironmentConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -825,14 +809,14 @@ export type ConnectorState =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const ConnectorState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConnectorState = /*@__PURE__*/ S.String;
 export interface ConnectorCheck {
   type?: CheckType;
   result?: CheckResult;
   lastCheckAttempt?: Date;
   impairedSince?: Date;
 }
-export const ConnectorCheck = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConnectorCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(CheckType),
     result: S.optional(CheckResult),
@@ -843,8 +827,7 @@ export const ConnectorCheck = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConnectorCheck" }) as any as S.Schema<ConnectorCheck>;
 export type ConnectorsChecksList = ConnectorCheck[];
-export const ConnectorsChecksList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ConnectorCheck);
+export const ConnectorsChecksList = /*@__PURE__*/ S.Array(ConnectorCheck);
 export interface Connector {
   environmentId?: string;
   connectorId?: string;
@@ -858,7 +841,7 @@ export interface Connector {
   createdAt?: Date;
   modifiedAt?: Date;
 }
-export const Connector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Connector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
     connectorId: S.optional(S.String),
@@ -877,7 +860,7 @@ export interface CreateEnvironmentConnectorResponse {
   connector?: Connector;
 }
 export const CreateEnvironmentConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ connector: S.optional(Connector) }),
   ).annotate({
     identifier: "CreateEnvironmentConnectorResponse",
@@ -889,7 +872,7 @@ export interface CreateEnvironmentHostRequest {
   esxVersion?: string;
 }
 export const CreateEnvironmentHostRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       environmentId: S.String,
@@ -910,18 +893,17 @@ export type HostState =
   | "CREATE_FAILED"
   | "UPDATE_FAILED"
   | (string & {});
-export const HostState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const HostState = /*@__PURE__*/ S.String;
 export interface NetworkInterface {
   networkInterfaceId?: string;
 }
-export const NetworkInterface = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ networkInterfaceId: S.optional(S.String) }),
 ).annotate({
   identifier: "NetworkInterface",
 }) as any as S.Schema<NetworkInterface>;
 export type NetworkInterfaceList = NetworkInterface[];
-export const NetworkInterfaceList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkInterface);
+export const NetworkInterfaceList = /*@__PURE__*/ S.Array(NetworkInterface);
 export interface Host {
   hostName?: string;
   ipAddress?: string;
@@ -936,7 +918,7 @@ export interface Host {
   ec2InstanceId?: string;
   networkInterfaces?: NetworkInterface[];
 }
-export const Host = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Host = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostName: S.optional(S.String),
     ipAddress: S.optional(S.String),
@@ -957,7 +939,7 @@ export interface CreateEnvironmentHostResponse {
   host?: Host;
 }
 export const CreateEnvironmentHostResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       environmentSummary: S.optional(EnvironmentSummary),
       host: S.optional(Host),
@@ -972,25 +954,24 @@ export interface DeleteEntitlementRequest {
   entitlementType: EntitlementType;
   vmIds: string[];
 }
-export const DeleteEntitlementRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      environmentId: S.String,
-      connectorId: S.String,
-      entitlementType: EntitlementType,
-      vmIds: VmIdList,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DeleteEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    environmentId: S.String,
+    connectorId: S.String,
+    entitlementType: EntitlementType,
+    vmIds: VmIdList,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DeleteEntitlementRequest",
 }) as any as S.Schema<DeleteEntitlementRequest>;
 export interface DeleteEntitlementResponse {
   entitlements?: VmEntitlement[];
 }
-export const DeleteEntitlementResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ entitlements: S.optional(VmEntitlementList) }),
+export const DeleteEntitlementResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ entitlements: S.optional(VmEntitlementList) }),
 ).annotate({
   identifier: "DeleteEntitlementResponse",
 }) as any as S.Schema<DeleteEntitlementResponse>;
@@ -1000,7 +981,7 @@ export interface DeleteEnvironmentConnectorRequest {
   connectorId: string;
 }
 export const DeleteEnvironmentConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -1016,7 +997,7 @@ export interface DeleteEnvironmentConnectorResponse {
   environmentSummary?: EnvironmentSummary;
 }
 export const DeleteEnvironmentConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       connector: S.optional(Connector),
       environmentSummary: S.optional(EnvironmentSummary),
@@ -1030,7 +1011,7 @@ export interface DeleteEnvironmentHostRequest {
   hostName: string;
 }
 export const DeleteEnvironmentHostRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       environmentId: S.String,
@@ -1046,7 +1027,7 @@ export interface DeleteEnvironmentHostResponse {
   host?: Host;
 }
 export const DeleteEnvironmentHostResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       environmentSummary: S.optional(EnvironmentSummary),
       host: S.optional(Host),
@@ -1061,7 +1042,7 @@ export interface DisassociateEipFromVlanRequest {
   associationId: string;
 }
 export const DisassociateEipFromVlanRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       environmentId: S.String,
@@ -1077,16 +1058,14 @@ export interface DisassociateEipFromVlanResponse {
   vlan?: Vlan;
 }
 export const DisassociateEipFromVlanResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ vlan: S.optional(Vlan) }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ vlan: S.optional(Vlan) })).annotate({
     identifier: "DisassociateEipFromVlanResponse",
   }) as any as S.Schema<DisassociateEipFromVlanResponse>;
 export interface GetDepotUrlRequest {
   environmentId: string;
   rotate?: boolean;
 }
-export const GetDepotUrlRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDepotUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.String.pipe(T.HttpLabel("environmentId")),
     rotate: S.optional(S.Boolean),
@@ -1100,7 +1079,7 @@ export interface GetDepotUrlResponse {
   depotUrl: string;
   token: string;
 }
-export const GetDepotUrlResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDepotUrlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ depotUrl: S.String, token: S.String }),
 ).annotate({
   identifier: "GetDepotUrlResponse",
@@ -1111,7 +1090,7 @@ export interface ListEnvironmentConnectorsRequest {
   environmentId: string;
 }
 export const ListEnvironmentConnectorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1123,13 +1102,13 @@ export const ListEnvironmentConnectorsRequest =
     identifier: "ListEnvironmentConnectorsRequest",
   }) as any as S.Schema<ListEnvironmentConnectorsRequest>;
 export type ConnectorList = Connector[];
-export const ConnectorList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Connector);
+export const ConnectorList = /*@__PURE__*/ S.Array(Connector);
 export interface ListEnvironmentConnectorsResponse {
   nextToken?: string;
   connectors?: Connector[];
 }
 export const ListEnvironmentConnectorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       connectors: S.optional(ConnectorList),
@@ -1143,7 +1122,7 @@ export interface ListEnvironmentHostsRequest {
   environmentId: string;
 }
 export const ListEnvironmentHostsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1155,13 +1134,13 @@ export const ListEnvironmentHostsRequest =
     identifier: "ListEnvironmentHostsRequest",
   }) as any as S.Schema<ListEnvironmentHostsRequest>;
 export type HostList = Host[];
-export const HostList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Host);
+export const HostList = /*@__PURE__*/ S.Array(Host);
 export interface ListEnvironmentHostsResponse {
   nextToken?: string;
   environmentHosts?: Host[];
 }
 export const ListEnvironmentHostsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       environmentHosts: S.optional(HostList),
@@ -1175,7 +1154,7 @@ export interface ListEnvironmentVlansRequest {
   environmentId: string;
 }
 export const ListEnvironmentVlansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1187,13 +1166,13 @@ export const ListEnvironmentVlansRequest =
     identifier: "ListEnvironmentVlansRequest",
   }) as any as S.Schema<ListEnvironmentVlansRequest>;
 export type VlanList = Vlan[];
-export const VlanList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Vlan);
+export const VlanList = /*@__PURE__*/ S.Array(Vlan);
 export interface ListEnvironmentVlansResponse {
   nextToken?: string;
   environmentVlans?: Vlan[];
 }
 export const ListEnvironmentVlansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       environmentVlans: S.optional(VlanList),
@@ -1208,17 +1187,16 @@ export interface ListVmEntitlementsRequest {
   connectorId: string;
   entitlementType: EntitlementType;
 }
-export const ListVmEntitlementsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      environmentId: S.String,
-      connectorId: S.String,
-      entitlementType: EntitlementType,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListVmEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    environmentId: S.String,
+    connectorId: S.String,
+    entitlementType: EntitlementType,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListVmEntitlementsRequest",
 }) as any as S.Schema<ListVmEntitlementsRequest>;
@@ -1226,12 +1204,11 @@ export interface ListVmEntitlementsResponse {
   nextToken?: string;
   entitlements?: VmEntitlement[];
 }
-export const ListVmEntitlementsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      entitlements: S.optional(VmEntitlementList),
-    }),
+export const ListVmEntitlementsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    entitlements: S.optional(VmEntitlementList),
+  }),
 ).annotate({
   identifier: "ListVmEntitlementsResponse",
 }) as any as S.Schema<ListVmEntitlementsResponse>;
@@ -1243,7 +1220,7 @@ export interface UpdateEnvironmentConnectorRequest {
   secretIdentifier?: string;
 }
 export const UpdateEnvironmentConnectorRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -1260,7 +1237,7 @@ export interface UpdateEnvironmentConnectorResponse {
   connector?: Connector;
 }
 export const UpdateEnvironmentConnectorResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ connector: S.optional(Connector) }),
   ).annotate({
     identifier: "UpdateEnvironmentConnectorResponse",
@@ -1318,7 +1295,7 @@ export const getVersions: API.OperationMethod<
   GetVersionsResponse,
   GetVersionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVersionsRequest,
   output: GetVersionsResponse,
   errors: [InternalServerException, ThrottlingException],
@@ -1333,7 +1310,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
@@ -1353,7 +1330,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1376,7 +1353,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, TagPolicyException],
@@ -1399,7 +1376,7 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentResponse,
   CreateEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentRequest,
   output: CreateEnvironmentResponse,
   errors: [ValidationException],
@@ -1417,7 +1394,7 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentResponse,
   GetEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnvironmentRequest,
   output: GetEnvironmentResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1439,7 +1416,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentResponse,
   DeleteEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1469,7 +1446,7 @@ export const listEnvironments: API.OperationMethod<
     ListEnvironmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [ValidationException],
@@ -1494,7 +1471,7 @@ export const associateEipToVlan: API.OperationMethod<
   AssociateEipToVlanResponse,
   AssociateEipToVlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateEipToVlanRequest,
   output: AssociateEipToVlanResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -1513,7 +1490,7 @@ export const createEntitlement: API.OperationMethod<
   CreateEntitlementResponse,
   CreateEntitlementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEntitlementRequest,
   output: CreateEntitlementResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -1536,7 +1513,7 @@ export const createEnvironmentConnector: API.OperationMethod<
   CreateEnvironmentConnectorResponse,
   CreateEnvironmentConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentConnectorRequest,
   output: CreateEnvironmentConnectorResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -1564,7 +1541,7 @@ export const createEnvironmentHost: API.OperationMethod<
   CreateEnvironmentHostResponse,
   CreateEnvironmentHostError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentHostRequest,
   output: CreateEnvironmentHostResponse,
   errors: [ThrottlingException, ValidationException],
@@ -1583,7 +1560,7 @@ export const deleteEntitlement: API.OperationMethod<
   DeleteEntitlementResponse,
   DeleteEntitlementError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEntitlementRequest,
   output: DeleteEntitlementResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -1604,7 +1581,7 @@ export const deleteEnvironmentConnector: API.OperationMethod<
   DeleteEnvironmentConnectorResponse,
   DeleteEnvironmentConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentConnectorRequest,
   output: DeleteEnvironmentConnectorResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -1624,7 +1601,7 @@ export const deleteEnvironmentHost: API.OperationMethod<
   DeleteEnvironmentHostResponse,
   DeleteEnvironmentHostError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentHostRequest,
   output: DeleteEnvironmentHostResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1643,7 +1620,7 @@ export const disassociateEipFromVlan: API.OperationMethod<
   DisassociateEipFromVlanResponse,
   DisassociateEipFromVlanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateEipFromVlanRequest,
   output: DisassociateEipFromVlanResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -1664,7 +1641,7 @@ export const getDepotUrl: API.OperationMethod<
   GetDepotUrlResponse,
   GetDepotUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDepotUrlRequest,
   output: GetDepotUrlResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
@@ -1697,7 +1674,7 @@ export const listEnvironmentConnectors: API.OperationMethod<
     ListEnvironmentConnectorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentConnectorsRequest,
   output: ListEnvironmentConnectorsResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1736,7 +1713,7 @@ export const listEnvironmentHosts: API.OperationMethod<
     ListEnvironmentHostsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentHostsRequest,
   output: ListEnvironmentHostsResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1775,7 +1752,7 @@ export const listEnvironmentVlans: API.OperationMethod<
     ListEnvironmentVlansError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentVlansRequest,
   output: ListEnvironmentVlansResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1814,7 +1791,7 @@ export const listVmEntitlements: API.OperationMethod<
     ListVmEntitlementsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVmEntitlementsRequest,
   output: ListVmEntitlementsResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -1841,7 +1818,7 @@ export const updateEnvironmentConnector: API.OperationMethod<
   UpdateEnvironmentConnectorResponse,
   UpdateEnvironmentConnectorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentConnectorRequest,
   output: UpdateEnvironmentConnectorResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],

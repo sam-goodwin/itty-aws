@@ -8,7 +8,7 @@ export interface V1ListAllSsoProviderInput {
   ref: string;
 }
 export const V1ListAllSsoProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -54,7 +54,7 @@ export interface V1ListAllSsoProviderOutput {
   }[];
 }
 export const V1ListAllSsoProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -116,10 +116,8 @@ export const V1ListAllSsoProviderOutput =
  *
  * @param ref - Project ref
  */
-export const v1ListAllSsoProvider = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1ListAllSsoProviderInput,
-    outputSchema: V1ListAllSsoProviderOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const v1ListAllSsoProvider = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1ListAllSsoProviderInput,
+  outputSchema: V1ListAllSsoProviderOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

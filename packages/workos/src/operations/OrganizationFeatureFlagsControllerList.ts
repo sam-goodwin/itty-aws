@@ -12,7 +12,7 @@ export interface OrganizationFeatureFlagsControllerListInput {
   order?: string;
 }
 export const OrganizationFeatureFlagsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export interface OrganizationFeatureFlagsControllerListOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const OrganizationFeatureFlagsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -96,7 +96,7 @@ export const OrganizationFeatureFlagsControllerListOutput =
  * @param order - Order the results by the creation time.
  */
 export const OrganizationFeatureFlagsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationFeatureFlagsControllerListInput,
     outputSchema: OrganizationFeatureFlagsControllerListOutput,
     errors: [NotFound] as const,

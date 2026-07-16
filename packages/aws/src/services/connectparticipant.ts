@@ -138,7 +138,7 @@ export interface CancelParticipantAuthenticationRequest {
   ConnectionToken: string;
 }
 export const CancelParticipantAuthenticationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SessionId: S.String,
       ConnectionToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
@@ -157,18 +157,18 @@ export const CancelParticipantAuthenticationRequest =
   }) as any as S.Schema<CancelParticipantAuthenticationRequest>;
 export interface CancelParticipantAuthenticationResponse {}
 export const CancelParticipantAuthenticationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "CancelParticipantAuthenticationResponse",
   }) as any as S.Schema<CancelParticipantAuthenticationResponse>;
 export type AttachmentIdList = string[];
-export const AttachmentIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AttachmentIdList = /*@__PURE__*/ S.Array(S.String);
 export interface CompleteAttachmentUploadRequest {
   AttachmentIds: string[];
   ClientToken: string;
   ConnectionToken: string;
 }
 export const CompleteAttachmentUploadRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AttachmentIds: AttachmentIdList,
       ClientToken: S.String.pipe(T.IdempotencyToken()),
@@ -191,7 +191,7 @@ export const CompleteAttachmentUploadRequest =
   }) as any as S.Schema<CompleteAttachmentUploadRequest>;
 export interface CompleteAttachmentUploadResponse {}
 export const CompleteAttachmentUploadResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "CompleteAttachmentUploadResponse",
   }) as any as S.Schema<CompleteAttachmentUploadResponse>;
 export type ConnectionType =
@@ -199,17 +199,16 @@ export type ConnectionType =
   | "CONNECTION_CREDENTIALS"
   | "WEBRTC_CONNECTION"
   | (string & {});
-export const ConnectionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConnectionType = /*@__PURE__*/ S.String;
 export type ConnectionTypeList = ConnectionType[];
-export const ConnectionTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ConnectionType);
+export const ConnectionTypeList = /*@__PURE__*/ S.Array(ConnectionType);
 export interface CreateParticipantConnectionRequest {
   Type?: ConnectionType[];
   ParticipantToken: string;
   ConnectParticipant?: boolean;
 }
 export const CreateParticipantConnectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Type: S.optional(ConnectionTypeList),
       ParticipantToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
@@ -231,7 +230,7 @@ export interface Websocket {
   Url?: string;
   ConnectionExpiry?: string;
 }
-export const Websocket = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Websocket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Url: S.optional(S.String),
     ConnectionExpiry: S.optional(S.String),
@@ -241,7 +240,7 @@ export interface ConnectionCredentials {
   ConnectionToken?: string;
   Expiry?: string;
 }
-export const ConnectionCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConnectionCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConnectionToken: S.optional(S.String),
     Expiry: S.optional(S.String),
@@ -253,7 +252,7 @@ export interface Attendee {
   AttendeeId?: string;
   JoinToken?: string | redacted.Redacted<string>;
 }
-export const Attendee = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Attendee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AttendeeId: S.optional(S.String),
     JoinToken: S.optional(SensitiveString),
@@ -265,7 +264,7 @@ export interface WebRTCMediaPlacement {
   SignalingUrl?: string;
   EventIngestionUrl?: string;
 }
-export const WebRTCMediaPlacement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const WebRTCMediaPlacement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AudioHostUrl: S.optional(S.String),
     AudioFallbackUrl: S.optional(S.String),
@@ -276,18 +275,18 @@ export const WebRTCMediaPlacement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "WebRTCMediaPlacement",
 }) as any as S.Schema<WebRTCMediaPlacement>;
 export type MeetingFeatureStatus = "AVAILABLE" | "UNAVAILABLE" | (string & {});
-export const MeetingFeatureStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MeetingFeatureStatus = /*@__PURE__*/ S.String;
 export interface AudioFeatures {
   EchoReduction?: MeetingFeatureStatus;
 }
-export const AudioFeatures = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AudioFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EchoReduction: S.optional(MeetingFeatureStatus) }),
 ).annotate({ identifier: "AudioFeatures" }) as any as S.Schema<AudioFeatures>;
 export interface MeetingFeaturesConfiguration {
   Audio?: AudioFeatures;
 }
 export const MeetingFeaturesConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Audio: S.optional(AudioFeatures) }),
   ).annotate({
     identifier: "MeetingFeaturesConfiguration",
@@ -297,7 +296,7 @@ export interface WebRTCMeeting {
   MeetingFeatures?: MeetingFeaturesConfiguration;
   MeetingId?: string;
 }
-export const WebRTCMeeting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const WebRTCMeeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MediaPlacement: S.optional(WebRTCMediaPlacement),
     MeetingFeatures: S.optional(MeetingFeaturesConfiguration),
@@ -308,7 +307,7 @@ export interface WebRTCConnection {
   Attendee?: Attendee;
   Meeting?: WebRTCMeeting;
 }
-export const WebRTCConnection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const WebRTCConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Attendee: S.optional(Attendee),
     Meeting: S.optional(WebRTCMeeting),
@@ -322,7 +321,7 @@ export interface CreateParticipantConnectionResponse {
   WebRTCConnection?: WebRTCConnection;
 }
 export const CreateParticipantConnectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Websocket: S.optional(Websocket),
       ConnectionCredentials: S.optional(ConnectionCredentials),
@@ -335,7 +334,7 @@ export interface DescribeViewRequest {
   ViewToken: string;
   ConnectionToken: string;
 }
-export const DescribeViewRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ViewToken: S.String.pipe(T.HttpLabel("ViewToken")),
     ConnectionToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
@@ -353,13 +352,13 @@ export const DescribeViewRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DescribeViewRequest",
 }) as any as S.Schema<DescribeViewRequest>;
 export type ViewActions = string | redacted.Redacted<string>[];
-export const ViewActions = /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+export const ViewActions = /*@__PURE__*/ S.Array(SensitiveString);
 export interface ViewContent {
   InputSchema?: string | redacted.Redacted<string>;
   Template?: string | redacted.Redacted<string>;
   Actions?: string | redacted.Redacted<string>[];
 }
-export const ViewContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ViewContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InputSchema: S.optional(SensitiveString),
     Template: S.optional(SensitiveString),
@@ -373,7 +372,7 @@ export interface View {
   Version?: number;
   Content?: ViewContent;
 }
-export const View = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const View = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Arn: S.optional(S.String),
@@ -385,7 +384,7 @@ export const View = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DescribeViewResponse {
   View?: View;
 }
-export const DescribeViewResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeViewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ View: S.optional(View) }),
 ).annotate({
   identifier: "DescribeViewResponse",
@@ -400,13 +399,13 @@ export type ResourceType =
   | "USER"
   | "PHONE_NUMBER"
   | (string & {});
-export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceType = /*@__PURE__*/ S.String;
 export interface DisconnectParticipantRequest {
   ClientToken?: string;
   ConnectionToken: string;
 }
 export const DisconnectParticipantRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       ConnectionToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
@@ -425,7 +424,7 @@ export const DisconnectParticipantRequest =
   }) as any as S.Schema<DisconnectParticipantRequest>;
 export interface DisconnectParticipantResponse {}
 export const DisconnectParticipantResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DisconnectParticipantResponse",
   }) as any as S.Schema<DisconnectParticipantResponse>;
 export interface GetAttachmentRequest {
@@ -433,7 +432,7 @@ export interface GetAttachmentRequest {
   ConnectionToken: string;
   UrlExpiryInSeconds?: number;
 }
-export const GetAttachmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AttachmentId: S.String,
     ConnectionToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
@@ -456,7 +455,7 @@ export interface GetAttachmentResponse {
   UrlExpiry?: string;
   AttachmentSizeInBytes: number;
 }
-export const GetAttachmentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Url: S.optional(S.String),
     UrlExpiry: S.optional(S.String),
@@ -471,7 +470,7 @@ export interface GetAuthenticationUrlRequest {
   ConnectionToken: string;
 }
 export const GetAuthenticationUrlRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       SessionId: S.String,
       RedirectUri: S.String,
@@ -493,21 +492,21 @@ export interface GetAuthenticationUrlResponse {
   AuthenticationUrl?: string;
 }
 export const GetAuthenticationUrlResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ AuthenticationUrl: S.optional(S.String) }),
   ).annotate({
     identifier: "GetAuthenticationUrlResponse",
   }) as any as S.Schema<GetAuthenticationUrlResponse>;
 export type ScanDirection = "FORWARD" | "BACKWARD" | (string & {});
-export const ScanDirection = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ScanDirection = /*@__PURE__*/ S.String;
 export type SortKey = "DESCENDING" | "ASCENDING" | (string & {});
-export const SortKey = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SortKey = /*@__PURE__*/ S.String;
 export interface StartPosition {
   Id?: string;
   AbsoluteTime?: string;
   MostRecent?: number;
 }
-export const StartPosition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     AbsoluteTime: S.optional(S.String),
@@ -523,7 +522,7 @@ export interface GetTranscriptRequest {
   StartPosition?: StartPosition;
   ConnectionToken: string;
 }
-export const GetTranscriptRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetTranscriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContactId: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -559,7 +558,7 @@ export type ChatItemType =
   | "MESSAGE_DELIVERED"
   | "MESSAGE_READ"
   | (string & {});
-export const ChatItemType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ChatItemType = /*@__PURE__*/ S.String;
 export type ParticipantRole =
   | "AGENT"
   | "CUSTOMER"
@@ -567,20 +566,20 @@ export type ParticipantRole =
   | "CUSTOM_BOT"
   | "SUPERVISOR"
   | (string & {});
-export const ParticipantRole = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ParticipantRole = /*@__PURE__*/ S.String;
 export type ArtifactStatus =
   | "APPROVED"
   | "REJECTED"
   | "IN_PROGRESS"
   | (string & {});
-export const ArtifactStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ArtifactStatus = /*@__PURE__*/ S.String;
 export interface AttachmentItem {
   ContentType?: string;
   AttachmentId?: string;
   AttachmentName?: string;
   Status?: ArtifactStatus;
 }
-export const AttachmentItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AttachmentItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentType: S.optional(S.String),
     AttachmentId: S.optional(S.String),
@@ -589,13 +588,13 @@ export const AttachmentItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AttachmentItem" }) as any as S.Schema<AttachmentItem>;
 export type Attachments = AttachmentItem[];
-export const Attachments = /*@__PURE__*/ /*#__PURE__*/ S.Array(AttachmentItem);
+export const Attachments = /*@__PURE__*/ S.Array(AttachmentItem);
 export interface Receipt {
   DeliveredTimestamp?: string;
   ReadTimestamp?: string;
   RecipientParticipantId?: string;
 }
-export const Receipt = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Receipt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DeliveredTimestamp: S.optional(S.String),
     ReadTimestamp: S.optional(S.String),
@@ -603,19 +602,19 @@ export const Receipt = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Receipt" }) as any as S.Schema<Receipt>;
 export type Receipts = Receipt[];
-export const Receipts = /*@__PURE__*/ /*#__PURE__*/ S.Array(Receipt);
+export const Receipts = /*@__PURE__*/ S.Array(Receipt);
 export type MessageProcessingStatus =
   | "PROCESSING"
   | "FAILED"
   | "REJECTED"
   | (string & {});
-export const MessageProcessingStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MessageProcessingStatus = /*@__PURE__*/ S.String;
 export interface MessageMetadata {
   MessageId?: string;
   Receipts?: Receipt[];
   MessageProcessingStatus?: MessageProcessingStatus;
 }
-export const MessageMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MessageMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MessageId: S.optional(S.String),
     Receipts: S.optional(Receipts),
@@ -638,7 +637,7 @@ export interface Item {
   RelatedContactId?: string;
   ContactId?: string;
 }
-export const Item = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AbsoluteTime: S.optional(S.String),
     Content: S.optional(S.String),
@@ -655,13 +654,13 @@ export const Item = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 export type Transcript = Item[];
-export const Transcript = /*@__PURE__*/ /*#__PURE__*/ S.Array(Item);
+export const Transcript = /*@__PURE__*/ S.Array(Item);
 export interface GetTranscriptResponse {
   InitialContactId?: string;
   Transcript?: Item[];
   NextToken?: string;
 }
-export const GetTranscriptResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetTranscriptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InitialContactId: S.optional(S.String),
     Transcript: S.optional(Transcript),
@@ -676,7 +675,7 @@ export interface SendEventRequest {
   ClientToken?: string;
   ConnectionToken: string;
 }
-export const SendEventRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SendEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentType: S.String,
     Content: S.optional(S.String),
@@ -699,7 +698,7 @@ export interface SendEventResponse {
   Id?: string;
   AbsoluteTime?: string;
 }
-export const SendEventResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SendEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.optional(S.String), AbsoluteTime: S.optional(S.String) }),
 ).annotate({
   identifier: "SendEventResponse",
@@ -710,7 +709,7 @@ export interface SendMessageRequest {
   ClientToken?: string;
   ConnectionToken: string;
 }
-export const SendMessageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SendMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentType: S.String,
     Content: S.String,
@@ -732,9 +731,8 @@ export const SendMessageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface MessageProcessingMetadata {
   MessageProcessingStatus?: MessageProcessingStatus;
 }
-export const MessageProcessingMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ MessageProcessingStatus: S.optional(MessageProcessingStatus) }),
+export const MessageProcessingMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MessageProcessingStatus: S.optional(MessageProcessingStatus) }),
 ).annotate({
   identifier: "MessageProcessingMetadata",
 }) as any as S.Schema<MessageProcessingMetadata>;
@@ -743,7 +741,7 @@ export interface SendMessageResponse {
   AbsoluteTime?: string;
   MessageMetadata?: MessageProcessingMetadata;
 }
-export const SendMessageResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SendMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     AbsoluteTime: S.optional(S.String),
@@ -760,7 +758,7 @@ export interface StartAttachmentUploadRequest {
   ConnectionToken: string;
 }
 export const StartAttachmentUploadRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ContentType: S.String,
       AttachmentSizeInBytes: S.Number,
@@ -781,7 +779,7 @@ export const StartAttachmentUploadRequest =
     identifier: "StartAttachmentUploadRequest",
   }) as any as S.Schema<StartAttachmentUploadRequest>;
 export type UploadMetadataSignedHeaders = { [key: string]: string | undefined };
-export const UploadMetadataSignedHeaders = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const UploadMetadataSignedHeaders = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -790,7 +788,7 @@ export interface UploadMetadata {
   UrlExpiry?: string;
   HeadersToInclude?: { [key: string]: string | undefined };
 }
-export const UploadMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UploadMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Url: S.optional(S.String),
     UrlExpiry: S.optional(S.String),
@@ -802,7 +800,7 @@ export interface StartAttachmentUploadResponse {
   UploadMetadata?: UploadMetadata;
 }
 export const StartAttachmentUploadResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AttachmentId: S.optional(S.String),
       UploadMetadata: S.optional(UploadMetadata),
@@ -870,7 +868,7 @@ export const cancelParticipantAuthentication: API.OperationMethod<
   CancelParticipantAuthenticationResponse,
   CancelParticipantAuthenticationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelParticipantAuthenticationRequest,
   output: CancelParticipantAuthenticationResponse,
   errors: [
@@ -907,7 +905,7 @@ export const completeAttachmentUpload: API.OperationMethod<
   CompleteAttachmentUploadResponse,
   CompleteAttachmentUploadError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompleteAttachmentUploadRequest,
   output: CompleteAttachmentUploadResponse,
   errors: [
@@ -997,7 +995,7 @@ export const createParticipantConnection: API.OperationMethod<
   CreateParticipantConnectionResponse,
   CreateParticipantConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateParticipantConnectionRequest,
   output: CreateParticipantConnectionResponse,
   errors: [
@@ -1025,7 +1023,7 @@ export const describeView: API.OperationMethod<
   DescribeViewResponse,
   DescribeViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeViewRequest,
   output: DescribeViewResponse,
   errors: [
@@ -1059,7 +1057,7 @@ export const disconnectParticipant: API.OperationMethod<
   DisconnectParticipantResponse,
   DisconnectParticipantError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisconnectParticipantRequest,
   output: DisconnectParticipantResponse,
   errors: [
@@ -1098,7 +1096,7 @@ export const getAttachment: API.OperationMethod<
   GetAttachmentResponse,
   GetAttachmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAttachmentRequest,
   output: GetAttachmentResponse,
   errors: [
@@ -1138,7 +1136,7 @@ export const getAuthenticationUrl: API.OperationMethod<
   GetAuthenticationUrlResponse,
   GetAuthenticationUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAuthenticationUrlRequest,
   output: GetAuthenticationUrlResponse,
   errors: [
@@ -1204,7 +1202,7 @@ export const getTranscript: API.OperationMethod<
     GetTranscriptError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTranscriptRequest,
   output: GetTranscriptResponse,
   errors: [
@@ -1250,7 +1248,7 @@ export const sendEvent: API.OperationMethod<
   SendEventResponse,
   SendEventError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendEventRequest,
   output: SendEventResponse,
   errors: [
@@ -1284,7 +1282,7 @@ export const sendMessage: API.OperationMethod<
   SendMessageResponse,
   SendMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendMessageRequest,
   output: SendMessageResponse,
   errors: [
@@ -1319,7 +1317,7 @@ export const startAttachmentUpload: API.OperationMethod<
   StartAttachmentUploadResponse,
   StartAttachmentUploadError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartAttachmentUploadRequest,
   output: StartAttachmentUploadResponse,
   errors: [

@@ -12,7 +12,7 @@ export interface GroupsDeletePropertyCreateInput {
   created_at?: string;
 }
 export const GroupsDeletePropertyCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     group_key: Schema.String,
     group_type_index: Schema.Number,
@@ -28,7 +28,7 @@ export const GroupsDeletePropertyCreateInput =
 // Output Schema
 export type GroupsDeletePropertyCreateOutput = void;
 export const GroupsDeletePropertyCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsDeletePropertyCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsDeletePropertyCreateOutput>;
 
 // The operation
 /**
@@ -37,10 +37,8 @@ export const GroupsDeletePropertyCreateOutput =
  * @param group_type_index - Specify the group type to find
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const groupsDeletePropertyCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupsDeletePropertyCreateInput,
-    outputSchema: GroupsDeletePropertyCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const groupsDeletePropertyCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupsDeletePropertyCreateInput,
+  outputSchema: GroupsDeletePropertyCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

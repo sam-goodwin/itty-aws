@@ -11,7 +11,7 @@ export interface ExternalDataSourcesConnectionsListInput {
   search?: string;
 }
 export const ExternalDataSourcesConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -35,7 +35,7 @@ export interface ExternalDataSourcesConnectionsListOutput {
   }[];
 }
 export const ExternalDataSourcesConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -62,7 +62,7 @@ export const ExternalDataSourcesConnectionsListOutput =
  * @param search - A search term.
  */
 export const externalDataSourcesConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesConnectionsListInput,
     outputSchema: ExternalDataSourcesConnectionsListOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

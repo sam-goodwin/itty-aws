@@ -30,7 +30,7 @@ export interface LatLng {
 }
 
 export const LatLng: Schema.Codec<LatLng> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     longitude: Schema.optional(Schema.Number),
     latitude: Schema.optional(Schema.Number),
   }).annotate({ identifier: "LatLng" });
@@ -41,7 +41,7 @@ export interface ArrayValue {
 }
 
 export const ArrayValue: Schema.Codec<ArrayValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       values: Schema.optional(Schema.Array(Value)),
     }),
@@ -55,7 +55,7 @@ export interface PartitionId {
 }
 
 export const PartitionId: Schema.Codec<PartitionId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.optional(Schema.String),
     namespaceId: Schema.optional(Schema.String),
   }).annotate({ identifier: "PartitionId" });
@@ -70,7 +70,7 @@ export interface PathElement {
 }
 
 export const PathElement: Schema.Codec<PathElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -83,12 +83,10 @@ export interface Key {
   path?: ReadonlyArray<PathElement>;
 }
 
-export const Key: Schema.Codec<Key> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    partitionId: Schema.optional(PartitionId),
-    path: Schema.optional(Schema.Array(PathElement)),
-  },
-).annotate({ identifier: "Key" });
+export const Key: Schema.Codec<Key> = /*@__PURE__*/ Schema.Struct({
+  partitionId: Schema.optional(PartitionId),
+  path: Schema.optional(Schema.Array(PathElement)),
+}).annotate({ identifier: "Key" });
 
 export interface Entity {
   /** The entity's properties. The map's keys are property names. A property name matching regex `__.*__` is reserved. A reserved property name is forbidden in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty. */
@@ -98,7 +96,7 @@ export interface Entity {
 }
 
 export const Entity: Schema.Codec<Entity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       properties: Schema.optional(Schema.Record(Schema.String, Value)),
       key: Schema.optional(Key),
@@ -135,7 +133,7 @@ export interface Value {
 }
 
 export const Value: Schema.Codec<Value> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       integerValue: Schema.optional(Schema.String),
       timestampValue: Schema.optional(Schema.String),
@@ -161,7 +159,7 @@ export interface GqlQueryParameter {
 }
 
 export const GqlQueryParameter: Schema.Codec<GqlQueryParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
     value: Schema.optional(Value),
   }).annotate({ identifier: "GqlQueryParameter" });
@@ -188,7 +186,7 @@ export interface GoogleDatastoreAdminV1DatastoreFirestoreMigrationMetadata {
 }
 
 export const GoogleDatastoreAdminV1DatastoreFirestoreMigrationMetadata: Schema.Codec<GoogleDatastoreAdminV1DatastoreFirestoreMigrationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     migrationState: Schema.optional(Schema.String),
     migrationStep: Schema.optional(Schema.String),
   }).annotate({
@@ -209,7 +207,7 @@ export interface EntityResult {
 }
 
 export const EntityResult: Schema.Codec<EntityResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -248,7 +246,7 @@ export interface QueryResultBatch {
 }
 
 export const QueryResultBatch: Schema.Codec<QueryResultBatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skippedResults: Schema.optional(Schema.Number),
     endCursor: Schema.optional(Schema.String),
     readTime: Schema.optional(Schema.String),
@@ -265,7 +263,7 @@ export interface PropertyReference {
 }
 
 export const PropertyReference: Schema.Codec<PropertyReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "PropertyReference" });
 
@@ -275,7 +273,7 @@ export interface Projection {
 }
 
 export const Projection: Schema.Codec<Projection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.optional(PropertyReference),
   }).annotate({ identifier: "Projection" });
 
@@ -287,7 +285,7 @@ export interface CompositeFilter {
 }
 
 export const CompositeFilter: Schema.Codec<CompositeFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       op: Schema.optional(Schema.String),
       filters: Schema.optional(Schema.Array(Filter)),
@@ -317,7 +315,7 @@ export interface PropertyFilter {
 }
 
 export const PropertyFilter: Schema.Codec<PropertyFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     op: Schema.optional(Schema.String),
     property: Schema.optional(PropertyReference),
     value: Schema.optional(Value),
@@ -331,7 +329,7 @@ export interface Filter {
 }
 
 export const Filter: Schema.Codec<Filter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       compositeFilter: Schema.optional(CompositeFilter),
       propertyFilter: Schema.optional(PropertyFilter),
@@ -350,7 +348,7 @@ export interface PropertyOrder {
 }
 
 export const PropertyOrder: Schema.Codec<PropertyOrder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.optional(PropertyReference),
     direction: Schema.optional(Schema.String),
   }).annotate({ identifier: "PropertyOrder" });
@@ -361,7 +359,7 @@ export interface KindExpression {
 }
 
 export const KindExpression: Schema.Codec<KindExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "KindExpression" });
 
@@ -386,7 +384,7 @@ export interface FindNearest {
 }
 
 export const FindNearest: Schema.Codec<FindNearest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     distanceMeasure: Schema.optional(Schema.String),
     distanceResultProperty: Schema.optional(Schema.String),
     vectorProperty: Schema.optional(PropertyReference),
@@ -419,7 +417,7 @@ export interface Query {
 }
 
 export const Query: Schema.Codec<Query> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projection: Schema.optional(Schema.Array(Projection)),
     filter: Schema.optional(Filter),
     endCursor: Schema.optional(Schema.String),
@@ -438,7 +436,7 @@ export interface PlanSummary {
 }
 
 export const PlanSummary: Schema.Codec<PlanSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     indexesUsed: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -456,7 +454,7 @@ export interface ExecutionStats {
 }
 
 export const ExecutionStats: Schema.Codec<ExecutionStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resultsReturned: Schema.optional(Schema.String),
     readOperations: Schema.optional(Schema.String),
     executionDuration: Schema.optional(Schema.String),
@@ -471,7 +469,7 @@ export interface ExplainMetrics {
 }
 
 export const ExplainMetrics: Schema.Codec<ExplainMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     planSummary: Schema.optional(PlanSummary),
     executionStats: Schema.optional(ExecutionStats),
   }).annotate({ identifier: "ExplainMetrics" });
@@ -486,7 +484,7 @@ export interface RunQueryResponse {
 }
 
 export const RunQueryResponse: Schema.Codec<RunQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     batch: Schema.optional(QueryResultBatch),
     query: Schema.optional(Query),
     explainMetrics: Schema.optional(ExplainMetrics),
@@ -500,7 +498,7 @@ export interface GoogleDatastoreAdminV1Progress {
 }
 
 export const GoogleDatastoreAdminV1Progress: Schema.Codec<GoogleDatastoreAdminV1Progress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workEstimated: Schema.optional(Schema.String),
     workCompleted: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleDatastoreAdminV1Progress" });
@@ -511,7 +509,7 @@ export interface AggregationResult {
 }
 
 export const AggregationResult: Schema.Codec<AggregationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aggregateProperties: Schema.optional(Schema.Record(Schema.String, Value)),
   }).annotate({ identifier: "AggregationResult" });
 
@@ -531,7 +529,7 @@ export interface AggregationResultBatch {
 }
 
 export const AggregationResultBatch: Schema.Codec<AggregationResultBatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aggregationResults: Schema.optional(Schema.Array(AggregationResult)),
     moreResults: Schema.optional(Schema.String),
     readTime: Schema.optional(Schema.String),
@@ -545,7 +543,7 @@ export interface GoogleDatastoreAdminV1EntityFilter {
 }
 
 export const GoogleDatastoreAdminV1EntityFilter: Schema.Codec<GoogleDatastoreAdminV1EntityFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kinds: Schema.optional(Schema.Array(Schema.String)),
     namespaceIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleDatastoreAdminV1EntityFilter" });
@@ -556,7 +554,7 @@ export interface ReadOnly {
 }
 
 export const ReadOnly: Schema.Codec<ReadOnly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     readTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReadOnly" });
 
@@ -571,7 +569,7 @@ export interface GoogleDatastoreAdminV1RedirectWritesStepDetails {
 }
 
 export const GoogleDatastoreAdminV1RedirectWritesStepDetails: Schema.Codec<GoogleDatastoreAdminV1RedirectWritesStepDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     concurrencyMode: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleDatastoreAdminV1RedirectWritesStepDetails",
@@ -604,7 +602,7 @@ export interface GoogleDatastoreAdminV1beta1CommonMetadata {
 }
 
 export const GoogleDatastoreAdminV1beta1CommonMetadata: Schema.Codec<GoogleDatastoreAdminV1beta1CommonMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     operationType: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -620,7 +618,7 @@ export interface GoogleDatastoreAdminV1beta1EntityFilter {
 }
 
 export const GoogleDatastoreAdminV1beta1EntityFilter: Schema.Codec<GoogleDatastoreAdminV1beta1EntityFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespaceIds: Schema.optional(Schema.Array(Schema.String)),
     kinds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleDatastoreAdminV1beta1EntityFilter" });
@@ -633,7 +631,7 @@ export interface GoogleDatastoreAdminV1beta1Progress {
 }
 
 export const GoogleDatastoreAdminV1beta1Progress: Schema.Codec<GoogleDatastoreAdminV1beta1Progress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     workEstimated: Schema.optional(Schema.String),
     workCompleted: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleDatastoreAdminV1beta1Progress" });
@@ -652,7 +650,7 @@ export interface GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
 }
 
 export const GoogleDatastoreAdminV1beta1ExportEntitiesMetadata: Schema.Codec<GoogleDatastoreAdminV1beta1ExportEntitiesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(GoogleDatastoreAdminV1beta1CommonMetadata),
     entityFilter: Schema.optional(GoogleDatastoreAdminV1beta1EntityFilter),
     progressEntities: Schema.optional(GoogleDatastoreAdminV1beta1Progress),
@@ -673,7 +671,7 @@ export interface GoogleDatastoreAdminV1PrepareStepDetails {
 }
 
 export const GoogleDatastoreAdminV1PrepareStepDetails: Schema.Codec<GoogleDatastoreAdminV1PrepareStepDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     concurrencyMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleDatastoreAdminV1PrepareStepDetails" });
 
@@ -696,7 +694,7 @@ export interface GoogleDatastoreAdminV1MigrationProgressEvent {
 }
 
 export const GoogleDatastoreAdminV1MigrationProgressEvent: Schema.Codec<GoogleDatastoreAdminV1MigrationProgressEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     step: Schema.optional(Schema.String),
     prepareStepDetails: Schema.optional(
       GoogleDatastoreAdminV1PrepareStepDetails,
@@ -714,7 +712,7 @@ export interface ReserveIdsRequest {
 }
 
 export const ReserveIdsRequest: Schema.Codec<ReserveIdsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databaseId: Schema.optional(Schema.String),
     keys: Schema.optional(Schema.Array(Key)),
   }).annotate({ identifier: "ReserveIdsRequest" });
@@ -740,7 +738,7 @@ export interface PropertyTransform {
 }
 
 export const PropertyTransform: Schema.Codec<PropertyTransform> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minimum: Schema.optional(Value),
     appendMissingElements: Schema.optional(ArrayValue),
     removeAllFromArray: Schema.optional(ArrayValue),
@@ -756,7 +754,7 @@ export interface Count {
 }
 
 export const Count: Schema.Codec<Count> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     upTo: Schema.optional(Schema.String),
   }).annotate({ identifier: "Count" });
 
@@ -765,22 +763,18 @@ export interface Sum {
   property?: PropertyReference;
 }
 
-export const Sum: Schema.Codec<Sum> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    property: Schema.optional(PropertyReference),
-  },
-).annotate({ identifier: "Sum" });
+export const Sum: Schema.Codec<Sum> = /*@__PURE__*/ Schema.Struct({
+  property: Schema.optional(PropertyReference),
+}).annotate({ identifier: "Sum" });
 
 export interface Avg {
   /** The property to aggregate on. */
   property?: PropertyReference;
 }
 
-export const Avg: Schema.Codec<Avg> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    property: Schema.optional(PropertyReference),
-  },
-).annotate({ identifier: "Avg" });
+export const Avg: Schema.Codec<Avg> = /*@__PURE__*/ Schema.Struct({
+  property: Schema.optional(PropertyReference),
+}).annotate({ identifier: "Avg" });
 
 export interface Aggregation {
   /** Count aggregator. */
@@ -794,7 +788,7 @@ export interface Aggregation {
 }
 
 export const Aggregation: Schema.Codec<Aggregation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Count),
     sum: Schema.optional(Sum),
     avg: Schema.optional(Avg),
@@ -807,7 +801,7 @@ export interface ExplainOptions {
 }
 
 export const ExplainOptions: Schema.Codec<ExplainOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyze: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ExplainOptions" });
 
@@ -822,7 +816,7 @@ export interface GoogleDatastoreAdminV1MigrationStateEvent {
 }
 
 export const GoogleDatastoreAdminV1MigrationStateEvent: Schema.Codec<GoogleDatastoreAdminV1MigrationStateEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleDatastoreAdminV1MigrationStateEvent" });
 
@@ -834,7 +828,7 @@ export interface AggregationQuery {
 }
 
 export const AggregationQuery: Schema.Codec<AggregationQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nestedQuery: Schema.optional(Query),
     aggregations: Schema.optional(Schema.Array(Aggregation)),
   }).annotate({ identifier: "AggregationQuery" });
@@ -849,7 +843,7 @@ export interface RunAggregationQueryResponse {
 }
 
 export const RunAggregationQueryResponse: Schema.Codec<RunAggregationQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     batch: Schema.optional(AggregationResultBatch),
     query: Schema.optional(AggregationQuery),
     explainMetrics: Schema.optional(ExplainMetrics),
@@ -861,7 +855,7 @@ export interface GoogleDatastoreAdminV1ExportEntitiesResponse {
 }
 
 export const GoogleDatastoreAdminV1ExportEntitiesResponse: Schema.Codec<GoogleDatastoreAdminV1ExportEntitiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputUrl: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleDatastoreAdminV1ExportEntitiesResponse" });
 
@@ -871,7 +865,7 @@ export interface PropertyMask {
 }
 
 export const PropertyMask: Schema.Codec<PropertyMask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     paths: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PropertyMask" });
 
@@ -901,7 +895,7 @@ export interface Mutation {
 }
 
 export const Mutation: Schema.Codec<Mutation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     propertyTransforms: Schema.optional(Schema.Array(PropertyTransform)),
     insert: Schema.optional(Entity),
@@ -927,7 +921,7 @@ export interface CommitRequest {
 }
 
 export const CommitRequest: Schema.Codec<CommitRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mutations: Schema.optional(Schema.Array(Mutation)),
     mode: Schema.optional(Schema.String),
     transaction: Schema.optional(Schema.String),
@@ -947,7 +941,7 @@ export interface GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
 }
 
 export const GoogleDatastoreAdminV1beta1ImportEntitiesMetadata: Schema.Codec<GoogleDatastoreAdminV1beta1ImportEntitiesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     progressBytes: Schema.optional(GoogleDatastoreAdminV1beta1Progress),
     progressEntities: Schema.optional(GoogleDatastoreAdminV1beta1Progress),
     inputUrl: Schema.optional(Schema.String),
@@ -960,7 +954,7 @@ export const GoogleDatastoreAdminV1beta1ImportEntitiesMetadata: Schema.Codec<Goo
 export interface RollbackResponse {}
 
 export const RollbackResponse: Schema.Codec<RollbackResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RollbackResponse",
   });
 
@@ -970,7 +964,7 @@ export interface ReadWrite {
 }
 
 export const ReadWrite: Schema.Codec<ReadWrite> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     previousTransaction: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReadWrite" });
 
@@ -982,7 +976,7 @@ export interface TransactionOptions {
 }
 
 export const TransactionOptions: Schema.Codec<TransactionOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     readWrite: Schema.optional(ReadWrite),
     readOnly: Schema.optional(ReadOnly),
   }).annotate({ identifier: "TransactionOptions" });
@@ -993,7 +987,7 @@ export interface BeginTransactionResponse {
 }
 
 export const BeginTransactionResponse: Schema.Codec<BeginTransactionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String),
   }).annotate({ identifier: "BeginTransactionResponse" });
 
@@ -1011,7 +1005,7 @@ export interface ReadOptions {
 }
 
 export const ReadOptions: Schema.Codec<ReadOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String),
     readTime: Schema.optional(Schema.String),
     readConsistency: Schema.optional(Schema.String),
@@ -1027,7 +1021,7 @@ export interface LookupRequest {
 }
 
 export const LookupRequest: Schema.Codec<LookupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     readOptions: Schema.optional(ReadOptions),
     keys: Schema.optional(Schema.Array(Key)),
     propertyMask: Schema.optional(PropertyMask),
@@ -1062,7 +1056,7 @@ export interface GoogleDatastoreAdminV1CommonMetadata {
 }
 
 export const GoogleDatastoreAdminV1CommonMetadata: Schema.Codec<GoogleDatastoreAdminV1CommonMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
     operationType: Schema.optional(Schema.String),
@@ -1084,7 +1078,7 @@ export interface GoogleDatastoreAdminV1ImportEntitiesMetadata {
 }
 
 export const GoogleDatastoreAdminV1ImportEntitiesMetadata: Schema.Codec<GoogleDatastoreAdminV1ImportEntitiesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     progressEntities: Schema.optional(GoogleDatastoreAdminV1Progress),
     inputUrl: Schema.optional(Schema.String),
     progressBytes: Schema.optional(GoogleDatastoreAdminV1Progress),
@@ -1104,7 +1098,7 @@ export interface GqlQuery {
 }
 
 export const GqlQuery: Schema.Codec<GqlQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queryString: Schema.optional(Schema.String),
     namedBindings: Schema.optional(
       Schema.Record(Schema.String, GqlQueryParameter),
@@ -1127,7 +1121,7 @@ export interface RunAggregationQueryRequest {
 }
 
 export const RunAggregationQueryRequest: Schema.Codec<RunAggregationQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     explainOptions: Schema.optional(ExplainOptions),
     partitionId: Schema.optional(PartitionId),
     aggregationQuery: Schema.optional(AggregationQuery),
@@ -1149,7 +1143,7 @@ export interface GoogleDatastoreAdminV1ExportEntitiesMetadata {
 }
 
 export const GoogleDatastoreAdminV1ExportEntitiesMetadata: Schema.Codec<GoogleDatastoreAdminV1ExportEntitiesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputUrlPrefix: Schema.optional(Schema.String),
     progressEntities: Schema.optional(GoogleDatastoreAdminV1Progress),
     progressBytes: Schema.optional(GoogleDatastoreAdminV1Progress),
@@ -1169,7 +1163,7 @@ export interface LookupResponse {
 }
 
 export const LookupResponse: Schema.Codec<LookupResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deferred: Schema.optional(Schema.Array(Key)),
     readTime: Schema.optional(Schema.String),
     found: Schema.optional(Schema.Array(EntityResult)),
@@ -1192,7 +1186,7 @@ export interface MutationResult {
 }
 
 export const MutationResult: Schema.Codec<MutationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     conflictDetected: Schema.optional(Schema.Boolean),
     transformResults: Schema.optional(Schema.Array(Value)),
@@ -1211,7 +1205,7 @@ export interface CommitResponse {
 }
 
 export const CommitResponse: Schema.Codec<CommitResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mutationResults: Schema.optional(Schema.Array(MutationResult)),
     indexUpdates: Schema.optional(Schema.Number),
     commitTime: Schema.optional(Schema.String),
@@ -1223,14 +1217,14 @@ export interface BeginTransactionRequest {
 }
 
 export const BeginTransactionRequest: Schema.Codec<BeginTransactionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transactionOptions: Schema.optional(TransactionOptions),
   }).annotate({ identifier: "BeginTransactionRequest" });
 
 export interface ReserveIdsResponse {}
 
 export const ReserveIdsResponse: Schema.Codec<ReserveIdsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReserveIdsResponse",
   });
 
@@ -1250,7 +1244,7 @@ export interface RunQueryRequest {
 }
 
 export const RunQueryRequest: Schema.Codec<RunQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partitionId: Schema.optional(PartitionId),
     query: Schema.optional(Query),
     propertyMask: Schema.optional(PropertyMask),
@@ -1265,7 +1259,7 @@ export interface AllocateIdsResponse {
 }
 
 export const AllocateIdsResponse: Schema.Codec<AllocateIdsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keys: Schema.optional(Schema.Array(Key)),
   }).annotate({ identifier: "AllocateIdsResponse" });
 
@@ -1275,7 +1269,7 @@ export interface GoogleDatastoreAdminV1beta1ExportEntitiesResponse {
 }
 
 export const GoogleDatastoreAdminV1beta1ExportEntitiesResponse: Schema.Codec<GoogleDatastoreAdminV1beta1ExportEntitiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputUrl: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleDatastoreAdminV1beta1ExportEntitiesResponse",
@@ -1287,7 +1281,7 @@ export interface AllocateIdsRequest {
 }
 
 export const AllocateIdsRequest: Schema.Codec<AllocateIdsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keys: Schema.optional(Schema.Array(Key)),
   }).annotate({ identifier: "AllocateIdsRequest" });
 
@@ -1301,7 +1295,7 @@ export interface GoogleDatastoreAdminV1IndexOperationMetadata {
 }
 
 export const GoogleDatastoreAdminV1IndexOperationMetadata: Schema.Codec<GoogleDatastoreAdminV1IndexOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     indexId: Schema.optional(Schema.String),
     common: Schema.optional(GoogleDatastoreAdminV1CommonMetadata),
     progressEntities: Schema.optional(GoogleDatastoreAdminV1Progress),
@@ -1313,7 +1307,7 @@ export interface RollbackRequest {
 }
 
 export const RollbackRequest: Schema.Codec<RollbackRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.optional(Schema.String),
   }).annotate({ identifier: "RollbackRequest" });
 
@@ -1378,7 +1372,7 @@ export interface LookupProjectsRequest {
   body?: LookupRequest;
 }
 
-export const LookupProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LookupProjectsRequest = /*@__PURE__*/ Schema.Struct({
   projectId: Schema.String.pipe(T.HttpPath("projectId")),
   body: Schema.optional(LookupRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -1391,8 +1385,7 @@ export const LookupProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<LookupProjectsRequest>;
 
 export type LookupProjectsResponse = LookupResponse;
-export const LookupProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ LookupResponse;
+export const LookupProjectsResponse = /*@__PURE__*/ LookupResponse;
 
 export type LookupProjectsError =
   | DefaultErrors
@@ -1407,7 +1400,7 @@ export const lookupProjects: API.OperationMethod<
   LookupProjectsResponse,
   LookupProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LookupProjectsRequest,
   output: LookupProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1421,7 +1414,7 @@ export interface RunAggregationQueryProjectsRequest {
 }
 
 export const RunAggregationQueryProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(RunAggregationQueryRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1435,7 +1428,7 @@ export const RunAggregationQueryProjectsRequest =
 
 export type RunAggregationQueryProjectsResponse = RunAggregationQueryResponse;
 export const RunAggregationQueryProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RunAggregationQueryResponse;
+  /*@__PURE__*/ RunAggregationQueryResponse;
 
 export type RunAggregationQueryProjectsError =
   | DefaultErrors
@@ -1450,7 +1443,7 @@ export const runAggregationQueryProjects: API.OperationMethod<
   RunAggregationQueryProjectsResponse,
   RunAggregationQueryProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunAggregationQueryProjectsRequest,
   output: RunAggregationQueryProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1464,7 +1457,7 @@ export interface RollbackProjectsRequest {
 }
 
 export const RollbackProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(RollbackRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1477,8 +1470,7 @@ export const RollbackProjectsRequest =
   ) as unknown as Schema.Codec<RollbackProjectsRequest>;
 
 export type RollbackProjectsResponse = RollbackResponse;
-export const RollbackProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RollbackResponse;
+export const RollbackProjectsResponse = /*@__PURE__*/ RollbackResponse;
 
 export type RollbackProjectsError =
   | DefaultErrors
@@ -1493,7 +1485,7 @@ export const rollbackProjects: API.OperationMethod<
   RollbackProjectsResponse,
   RollbackProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RollbackProjectsRequest,
   output: RollbackProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1507,7 +1499,7 @@ export interface ReserveIdsProjectsRequest {
 }
 
 export const ReserveIdsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(ReserveIdsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1520,8 +1512,7 @@ export const ReserveIdsProjectsRequest =
   ) as unknown as Schema.Codec<ReserveIdsProjectsRequest>;
 
 export type ReserveIdsProjectsResponse = ReserveIdsResponse;
-export const ReserveIdsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReserveIdsResponse;
+export const ReserveIdsProjectsResponse = /*@__PURE__*/ ReserveIdsResponse;
 
 export type ReserveIdsProjectsError =
   | DefaultErrors
@@ -1536,7 +1527,7 @@ export const reserveIdsProjects: API.OperationMethod<
   ReserveIdsProjectsResponse,
   ReserveIdsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReserveIdsProjectsRequest,
   output: ReserveIdsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1550,7 +1541,7 @@ export interface BeginTransactionProjectsRequest {
 }
 
 export const BeginTransactionProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(BeginTransactionRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1564,7 +1555,7 @@ export const BeginTransactionProjectsRequest =
 
 export type BeginTransactionProjectsResponse = BeginTransactionResponse;
 export const BeginTransactionProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BeginTransactionResponse;
+  /*@__PURE__*/ BeginTransactionResponse;
 
 export type BeginTransactionProjectsError =
   | DefaultErrors
@@ -1579,7 +1570,7 @@ export const beginTransactionProjects: API.OperationMethod<
   BeginTransactionProjectsResponse,
   BeginTransactionProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BeginTransactionProjectsRequest,
   output: BeginTransactionProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1592,7 +1583,7 @@ export interface CommitProjectsRequest {
   body?: CommitRequest;
 }
 
-export const CommitProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CommitProjectsRequest = /*@__PURE__*/ Schema.Struct({
   projectId: Schema.String.pipe(T.HttpPath("projectId")),
   body: Schema.optional(CommitRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -1605,8 +1596,7 @@ export const CommitProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CommitProjectsRequest>;
 
 export type CommitProjectsResponse = CommitResponse;
-export const CommitProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CommitResponse;
+export const CommitProjectsResponse = /*@__PURE__*/ CommitResponse;
 
 export type CommitProjectsError =
   | DefaultErrors
@@ -1621,7 +1611,7 @@ export const commitProjects: API.OperationMethod<
   CommitProjectsResponse,
   CommitProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CommitProjectsRequest,
   output: CommitProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1635,7 +1625,7 @@ export interface AllocateIdsProjectsRequest {
 }
 
 export const AllocateIdsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(AllocateIdsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1648,8 +1638,7 @@ export const AllocateIdsProjectsRequest =
   ) as unknown as Schema.Codec<AllocateIdsProjectsRequest>;
 
 export type AllocateIdsProjectsResponse = AllocateIdsResponse;
-export const AllocateIdsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AllocateIdsResponse;
+export const AllocateIdsProjectsResponse = /*@__PURE__*/ AllocateIdsResponse;
 
 export type AllocateIdsProjectsError =
   | DefaultErrors
@@ -1664,7 +1653,7 @@ export const allocateIdsProjects: API.OperationMethod<
   AllocateIdsProjectsResponse,
   AllocateIdsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AllocateIdsProjectsRequest,
   output: AllocateIdsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1678,7 +1667,7 @@ export interface RunQueryProjectsRequest {
 }
 
 export const RunQueryProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(RunQueryRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1691,8 +1680,7 @@ export const RunQueryProjectsRequest =
   ) as unknown as Schema.Codec<RunQueryProjectsRequest>;
 
 export type RunQueryProjectsResponse = RunQueryResponse;
-export const RunQueryProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RunQueryResponse;
+export const RunQueryProjectsResponse = /*@__PURE__*/ RunQueryResponse;
 
 export type RunQueryProjectsError =
   | DefaultErrors
@@ -1707,7 +1695,7 @@ export const runQueryProjects: API.OperationMethod<
   RunQueryProjectsResponse,
   RunQueryProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunQueryProjectsRequest,
   output: RunQueryProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

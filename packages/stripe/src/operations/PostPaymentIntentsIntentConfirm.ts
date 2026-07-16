@@ -888,7 +888,7 @@ export interface PostPaymentIntentsIntentConfirmInput {
   use_stripe_sdk?: boolean;
 }
 export const PostPaymentIntentsIntentConfirmInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     amount_details: Schema.optional(
       Schema.Union([
@@ -2760,7 +2760,7 @@ export interface PostPaymentIntentsIntentConfirmOutput {
   transfer_group: string | null;
 }
 export const PostPaymentIntentsIntentConfirmOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -3171,7 +3171,7 @@ export const PostPaymentIntentsIntentConfirmOutput =
  * transition the PaymentIntent to the <code>canceled</code> state.</p>
  */
 export const PostPaymentIntentsIntentConfirm =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentIntentsIntentConfirmInput,
     outputSchema: PostPaymentIntentsIntentConfirmOutput,
   }));

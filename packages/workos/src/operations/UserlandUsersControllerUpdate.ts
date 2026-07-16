@@ -5,7 +5,7 @@ import { BadRequest, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const UserlandUsersControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     email: Schema.optional(Schema.String),
     first_name: Schema.optional(Schema.String),
@@ -22,7 +22,7 @@ export type UserlandUsersControllerUpdateInput =
 
 // Output Schema
 export const UserlandUsersControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -49,7 +49,7 @@ export type UserlandUsersControllerUpdateOutput =
  * @param id - The unique ID of the user.
  */
 export const UserlandUsersControllerUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerUpdateInput,
     outputSchema: UserlandUsersControllerUpdateOutput,
     errors: [BadRequest, UnprocessableEntity] as const,

@@ -32,7 +32,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -54,7 +54,7 @@ export interface HttpUpdate {
 }
 
 export const HttpUpdate: Schema.Codec<HttpUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     desired: Schema.optional(Schema.String),
     discovered: Schema.optional(Schema.String),
     lastCheckTime: Schema.optional(Schema.String),
@@ -81,7 +81,7 @@ export interface DnsRecord {
 }
 
 export const DnsRecord: Schema.Codec<DnsRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domainName: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     rdata: Schema.optional(Schema.String),
@@ -98,7 +98,7 @@ export interface DnsRecordSet {
 }
 
 export const DnsRecordSet: Schema.Codec<DnsRecordSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     checkError: Schema.optional(Status),
     domainName: Schema.optional(Schema.String),
     records: Schema.optional(Schema.Array(DnsRecord)),
@@ -114,7 +114,7 @@ export interface DnsUpdates {
 }
 
 export const DnsUpdates: Schema.Codec<DnsUpdates> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     checkTime: Schema.optional(Schema.String),
     discovered: Schema.optional(Schema.Array(DnsRecordSet)),
     desired: Schema.optional(Schema.Array(DnsRecordSet)),
@@ -128,7 +128,7 @@ export interface CertVerification {
 }
 
 export const CertVerification: Schema.Codec<CertVerification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     http: Schema.optional(HttpUpdate),
     dns: Schema.optional(DnsUpdates),
   }).annotate({ identifier: "CertVerification" });
@@ -152,7 +152,7 @@ export interface LiveMigrationStep {
 }
 
 export const LiveMigrationStep: Schema.Codec<LiveMigrationStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dnsUpdates: Schema.optional(DnsUpdates),
     issues: Schema.optional(Schema.Array(Status)),
     certVerification: Schema.optional(CertVerification),
@@ -162,7 +162,7 @@ export const LiveMigrationStep: Schema.Codec<LiveMigrationStep> =
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -180,7 +180,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -191,7 +191,7 @@ export const Operation: Schema.Codec<Operation> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -234,7 +234,7 @@ export interface CustomDomainMetadata {
 }
 
 export const CustomDomainMetadata: Schema.Codec<CustomDomainMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hostState: Schema.optional(Schema.String),
     issues: Schema.optional(Schema.Array(Status)),
     quickSetupUpdates: Schema.optional(DnsUpdates),
@@ -253,7 +253,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -326,7 +326,7 @@ export interface ListOperationsRequest {
   pageSize?: number;
 }
 
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsRequest = /*@__PURE__*/ Schema.Struct({
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   name: Schema.String.pipe(T.HttpPath("name")),
@@ -340,8 +340,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse_Op = ListOperationsResponse;
-export const ListOperationsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+export const ListOperationsResponse_Op = /*@__PURE__*/ ListOperationsResponse;
 
 export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -351,7 +350,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsResponse_Op,
   ListOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -369,7 +368,7 @@ export interface CancelOperationsRequest {
 }
 
 export const CancelOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -378,7 +377,7 @@ export const CancelOperationsRequest =
   ) as unknown as Schema.Codec<CancelOperationsRequest>;
 
 export type CancelOperationsResponse = Empty;
-export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelOperationsError =
   | DefaultErrors
@@ -393,7 +392,7 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsResponse,
   CancelOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -405,7 +404,7 @@ export interface DeleteOperationsRequest {
 }
 
 export const DeleteOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -413,7 +412,7 @@ export const DeleteOperationsRequest =
   ) as unknown as Schema.Codec<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = Empty;
-export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteOperationsError =
   | DefaultErrors
@@ -428,7 +427,7 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsResponse,
   DeleteOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -440,7 +439,7 @@ export interface DeleteProjectsSitesCustomDomainsOperationsRequest {
 }
 
 export const DeleteProjectsSitesCustomDomainsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -449,7 +448,7 @@ export const DeleteProjectsSitesCustomDomainsOperationsRequest =
 
 export type DeleteProjectsSitesCustomDomainsOperationsResponse = Empty;
 export const DeleteProjectsSitesCustomDomainsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteProjectsSitesCustomDomainsOperationsError =
   | DefaultErrors
@@ -464,7 +463,7 @@ export const deleteProjectsSitesCustomDomainsOperations: API.OperationMethod<
   DeleteProjectsSitesCustomDomainsOperationsResponse,
   DeleteProjectsSitesCustomDomainsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsSitesCustomDomainsOperationsRequest,
   output: DeleteProjectsSitesCustomDomainsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -478,7 +477,7 @@ export interface CancelProjectsSitesCustomDomainsOperationsRequest {
 }
 
 export const CancelProjectsSitesCustomDomainsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -488,7 +487,7 @@ export const CancelProjectsSitesCustomDomainsOperationsRequest =
 
 export type CancelProjectsSitesCustomDomainsOperationsResponse = Empty;
 export const CancelProjectsSitesCustomDomainsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type CancelProjectsSitesCustomDomainsOperationsError =
   | DefaultErrors
@@ -503,7 +502,7 @@ export const cancelProjectsSitesCustomDomainsOperations: API.OperationMethod<
   CancelProjectsSitesCustomDomainsOperationsResponse,
   CancelProjectsSitesCustomDomainsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsSitesCustomDomainsOperationsRequest,
   output: CancelProjectsSitesCustomDomainsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

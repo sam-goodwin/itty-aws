@@ -14,7 +14,7 @@ export interface PostTopupsTopupInput {
   expand?: string[];
   metadata?: Record<string, string> | "";
 }
-export const PostTopupsTopupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTopupsTopupInput = /*@__PURE__*/ Schema.Struct({
   topup: Schema.String.pipe(T.PathParam()),
   description: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.Array(Schema.String)),
@@ -131,7 +131,7 @@ export interface PostTopupsTopupOutput {
   status: "canceled" | "failed" | "pending" | "reversed" | "succeeded";
   transfer_group: string | null;
 }
-export const PostTopupsTopupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTopupsTopupOutput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   balance_transaction: Schema.NullOr(
     Schema.Union([
@@ -248,7 +248,7 @@ export const PostTopupsTopupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>Updates the metadata of a top-up. Other top-up details are not editable by design.</p>
  */
-export const PostTopupsTopup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTopupsTopup = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostTopupsTopupInput,
   outputSchema: PostTopupsTopupOutput,
 }));

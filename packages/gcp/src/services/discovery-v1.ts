@@ -45,7 +45,7 @@ export interface DirectoryList {
 }
 
 export const DirectoryList: Schema.Codec<DirectoryList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     discoveryVersion: Schema.optional(Schema.String),
     items: Schema.optional(
       Schema.Array(
@@ -124,7 +124,7 @@ export interface JsonSchema {
 }
 
 export const JsonSchema: Schema.Codec<JsonSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       $ref: Schema.optional(Schema.String),
       enumDeprecated: Schema.optional(Schema.Array(Schema.Boolean)),
@@ -214,7 +214,7 @@ export interface RestMethod {
 }
 
 export const RestMethod: Schema.Codec<RestMethod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportsMediaUpload: Schema.optional(Schema.Boolean),
     useMediaDownloadService: Schema.optional(Schema.Boolean),
     apiVersion: Schema.optional(Schema.String),
@@ -273,7 +273,7 @@ export interface RestResource {
 }
 
 export const RestResource: Schema.Codec<RestResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       deprecated: Schema.optional(Schema.Boolean),
       resources: Schema.optional(Schema.Record(Schema.String, RestResource)),
@@ -353,7 +353,7 @@ export interface RestDescription {
 }
 
 export const RestDescription: Schema.Codec<RestDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     canonicalName: Schema.optional(Schema.String),
     rootUrl: Schema.optional(Schema.String),
@@ -452,7 +452,7 @@ export interface GetRestApisRequest {
   version: string;
 }
 
-export const GetRestApisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRestApisRequest = /*@__PURE__*/ Schema.Struct({
   api: Schema.String.pipe(T.HttpPath("api")),
   version: Schema.String.pipe(T.HttpPath("version")),
 }).pipe(
@@ -461,7 +461,7 @@ export const GetRestApisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetRestApisRequest>;
 
 export type GetRestApisResponse = RestDescription;
-export const GetRestApisResponse = /*@__PURE__*/ /*#__PURE__*/ RestDescription;
+export const GetRestApisResponse = /*@__PURE__*/ RestDescription;
 
 export type GetRestApisError = DefaultErrors | NotFound | Forbidden;
 
@@ -471,7 +471,7 @@ export const getRestApis: API.OperationMethod<
   GetRestApisResponse,
   GetRestApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRestApisRequest,
   output: GetRestApisResponse,
   errors: [NotFound, Forbidden],
@@ -484,7 +484,7 @@ export interface ListApisRequest {
   preferred?: boolean;
 }
 
-export const ListApisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListApisRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
   preferred: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("preferred")),
 }).pipe(
@@ -493,7 +493,7 @@ export const ListApisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListApisRequest>;
 
 export type ListApisResponse = DirectoryList;
-export const ListApisResponse = /*@__PURE__*/ /*#__PURE__*/ DirectoryList;
+export const ListApisResponse = /*@__PURE__*/ DirectoryList;
 
 export type ListApisError = DefaultErrors | NotFound | Forbidden;
 
@@ -503,7 +503,7 @@ export const listApis: API.OperationMethod<
   ListApisResponse,
   ListApisError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListApisRequest,
   output: ListApisResponse,
   errors: [NotFound, Forbidden],

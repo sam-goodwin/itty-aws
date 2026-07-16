@@ -18,7 +18,7 @@ export interface PostPaymentIntentsIntentCancelInput {
   expand?: string[];
 }
 export const PostPaymentIntentsIntentCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     cancellation_reason: Schema.optional(
       Schema.Literals([
@@ -295,7 +295,7 @@ export interface PostPaymentIntentsIntentCancelOutput {
   transfer_group: string | null;
 }
 export const PostPaymentIntentsIntentCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -684,7 +684,7 @@ export const PostPaymentIntentsIntentCancelOutput =
  * <p>You can directly cancel the PaymentIntent for a Checkout Session only when the PaymentIntent has a status of <code>requires_capture</code>. Otherwise, you must <a href="/docs/api/checkout/sessions/expire">expire the Checkout Session</a>.</p>
  */
 export const PostPaymentIntentsIntentCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentIntentsIntentCancelInput,
     outputSchema: PostPaymentIntentsIntentCancelOutput,
   }));

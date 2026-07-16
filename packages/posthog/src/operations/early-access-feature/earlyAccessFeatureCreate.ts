@@ -37,7 +37,7 @@ export interface EarlyAccessFeatureCreateInput {
   _create_in_folder?: string;
 }
 export const EarlyAccessFeatureCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -129,7 +129,7 @@ export interface EarlyAccessFeatureCreateOutput {
   _create_in_folder?: string;
 }
 export const EarlyAccessFeatureCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -187,10 +187,8 @@ export const EarlyAccessFeatureCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const earlyAccessFeatureCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EarlyAccessFeatureCreateInput,
-    outputSchema: EarlyAccessFeatureCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const earlyAccessFeatureCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EarlyAccessFeatureCreateInput,
+  outputSchema: EarlyAccessFeatureCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

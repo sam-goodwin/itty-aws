@@ -10,7 +10,7 @@ export interface ListWebhookSubscriptionsInput {
   pageToken?: string;
 }
 export const ListWebhookSubscriptionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     pageToken: Schema.optional(Schema.String),
   }).pipe(
@@ -58,7 +58,7 @@ export interface ListWebhookSubscriptionsOutput {
   nextPageToken?: string;
 }
 export const ListWebhookSubscriptionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptions: Schema.Array(
       Schema.Struct({
         createdAt: Schema.String,
@@ -124,9 +124,7 @@ export const ListWebhookSubscriptionsOutput =
  * @param pageSize - The number of subscriptions to return per page.
  * @param pageToken - The token for the next page of subscriptions, if any.
  */
-export const listWebhookSubscriptions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListWebhookSubscriptionsInput,
-    outputSchema: ListWebhookSubscriptionsOutput,
-  }),
-);
+export const listWebhookSubscriptions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListWebhookSubscriptionsInput,
+  outputSchema: ListWebhookSubscriptionsOutput,
+}));

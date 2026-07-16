@@ -41,7 +41,7 @@ export interface LlmPromptsNameArchiveCreateInput {
   outline?: { level?: number; text?: string }[];
 }
 export const LlmPromptsNameArchiveCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     prompt_name: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
@@ -140,7 +140,7 @@ export interface LlmPromptsNameArchiveCreateOutput {
   outline?: { level?: number; text?: string }[];
 }
 export const LlmPromptsNameArchiveCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     prompt: Schema.optional(Schema.Unknown),
@@ -200,9 +200,7 @@ export const LlmPromptsNameArchiveCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const llmPromptsNameArchiveCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LlmPromptsNameArchiveCreateInput,
-    outputSchema: LlmPromptsNameArchiveCreateOutput,
-  }),
-);
+export const llmPromptsNameArchiveCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LlmPromptsNameArchiveCreateInput,
+  outputSchema: LlmPromptsNameArchiveCreateOutput,
+}));

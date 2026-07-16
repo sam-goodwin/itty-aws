@@ -11,7 +11,7 @@ export interface GetQueryPatternsReportStatusInput {
   id: string;
 }
 export const GetQueryPatternsReportStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -34,7 +34,7 @@ export interface GetQueryPatternsReportStatusOutput {
   actor: { id: string; display_name: string; avatar_url: string };
 }
 export const GetQueryPatternsReportStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     state: Schema.Literals(["pending", "completed", "failed"]),
     created_at: Schema.String,
@@ -58,7 +58,7 @@ export const GetQueryPatternsReportStatusOutput =
  * @param id - The ID of the query patterns report
  */
 export const getQueryPatternsReportStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetQueryPatternsReportStatusInput,
     outputSchema: GetQueryPatternsReportStatusOutput,
     errors: [Forbidden, NotFound] as const,

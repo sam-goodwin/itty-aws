@@ -83,7 +83,7 @@ interface GetContainerApplicationResponseConstraints {
   tier?: number | null;
 }
 const GetContainerApplicationResponseConstraints =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }),
@@ -93,7 +93,7 @@ interface GetContainerApplicationResponseAffinities {
   colocation?: "datacenter" | null;
 }
 const GetContainerApplicationResponseAffinities =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       colocation: Schema.optional(
         Schema.Union([Schema.Literal("datacenter"), Schema.Null]),
@@ -105,7 +105,7 @@ interface GetContainerApplicationResponseConfigurationObservabilityLogs {
   enabled: boolean;
 }
 const GetContainerApplicationResponseConfigurationObservabilityLogs =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       enabled: Schema.Boolean,
     }),
@@ -115,7 +115,7 @@ interface GetContainerApplicationResponseConfigurationObservability {
   logs?: { enabled: boolean } | null;
 }
 const GetContainerApplicationResponseConfigurationObservability =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       logs: Schema.optional(
         Schema.Union([
@@ -132,7 +132,7 @@ interface GetContainerApplicationResponseConfigurationSecret {
   secret: string;
 }
 const GetContainerApplicationResponseConfigurationSecret =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       type: Schema.Literal("env"),
@@ -144,7 +144,7 @@ interface GetContainerApplicationResponseConfigurationDisk {
   size: string;
 }
 const GetContainerApplicationResponseConfigurationDisk =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       size: Schema.String,
     }),
@@ -155,7 +155,7 @@ interface GetContainerApplicationResponseConfigurationEnvironmentVariable {
   value: string;
 }
 const GetContainerApplicationResponseConfigurationEnvironmentVariable =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       value: Schema.String,
@@ -168,7 +168,7 @@ interface GetContainerApplicationResponseConfigurationNetwork {
   mode?: "public" | "private" | (string & {}) | null;
 }
 const GetContainerApplicationResponseConfigurationNetwork =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       assignIpv4: Schema.optional(
         Schema.Union([
@@ -208,7 +208,7 @@ interface GetContainerApplicationResponseConfigurationDns {
   searches?: string[] | null;
 }
 const GetContainerApplicationResponseConfigurationDns =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       servers: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -224,7 +224,7 @@ interface GetContainerApplicationResponseConfigurationPort {
   port?: number | null;
 }
 const GetContainerApplicationResponseConfigurationPort =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -247,7 +247,7 @@ interface GetContainerApplicationResponseConfigurationCheckHttp {
   headers?: unknown | null;
 }
 const GetContainerApplicationResponseConfigurationCheckHttp =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       method: Schema.optional(
         Schema.Union([
@@ -298,7 +298,7 @@ interface GetContainerApplicationResponseConfigurationCheck {
   kind: "health" | "ready" | (string & {});
 }
 const GetContainerApplicationResponseConfigurationCheck =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       type: Schema.Union([Schema.Literals(["http", "tcp"]), Schema.String]),
@@ -376,7 +376,7 @@ interface GetContainerApplicationResponseConfiguration {
     | null;
 }
 const GetContainerApplicationResponseConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       image: Schema.String,
       instanceType: Schema.optional(
@@ -492,7 +492,7 @@ interface GetContainerApplicationResponseDurableObjects {
   namespaceId: string;
 }
 const GetContainerApplicationResponseDurableObjects =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       namespaceId: Schema.String,
     }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
@@ -502,7 +502,7 @@ interface GetContainerApplicationResponseHealth {
   instances: unknown;
 }
 const GetContainerApplicationResponseHealth =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       instances: Schema.Unknown,
     }),
@@ -588,7 +588,7 @@ interface ListContainerApplicationsResponse2 {
   health: { instances: unknown };
 }
 const ListContainerApplicationsResponse2 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -682,7 +682,7 @@ interface UpdateContainerApplicationRequestConstraints {
     | null;
 }
 const UpdateContainerApplicationRequestConstraints =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       region: Schema.optional(
@@ -756,7 +756,7 @@ interface CreateContainerApplicationRolloutResponseHealthInstances {
   scheduling: number;
 }
 const CreateContainerApplicationRolloutResponseHealthInstances =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       healthy: Schema.Number,
       failed: Schema.Number,
@@ -774,7 +774,7 @@ interface CreateContainerApplicationRolloutResponseHealth {
   };
 }
 const CreateContainerApplicationRolloutResponseHealth =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       instances: CreateContainerApplicationRolloutResponseHealthInstances,
     }),
@@ -785,7 +785,7 @@ interface CreateContainerApplicationRolloutResponseCurrentConfiguration {
   observability?: { logs?: { enabled: boolean } | null } | null;
 }
 const CreateContainerApplicationRolloutResponseCurrentConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       image: Schema.String,
       observability: Schema.optional(
@@ -801,7 +801,7 @@ interface CreateContainerApplicationRolloutResponseStepStepSize {
   percentage: number;
 }
 const CreateContainerApplicationRolloutResponseStepStepSize =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       percentage: Schema.Number,
     }),
@@ -815,7 +815,7 @@ interface CreateContainerApplicationRolloutResponseStep {
   startedAt?: string | null;
 }
 const CreateContainerApplicationRolloutResponseStep =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Number,
       status: Schema.Union([
@@ -843,7 +843,7 @@ interface CreateContainerApplicationRolloutResponseProgress {
   totalInstances: number;
 }
 const CreateContainerApplicationRolloutResponseProgress =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       totalSteps: Schema.Number,
       currentStep: Schema.Number,
@@ -875,7 +875,7 @@ interface GetContainerIdentityResponseLimits {
   totalMemory: string;
 }
 const GetContainerIdentityResponseLimits =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String,
       vcpuPerDeployment: Schema.Number,
@@ -916,7 +916,7 @@ interface GetContainerIdentityResponseDefaults {
   diskMb: number;
 }
 const GetContainerIdentityResponseDefaults =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       vcpus: Schema.Number,
       memoryMib: Schema.Number,
@@ -942,7 +942,7 @@ export interface GetContainerApplicationRequest {
 }
 
 export const GetContainerApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       applicationId: Schema.String.pipe(T.HttpPath("application_id")),
@@ -1035,7 +1035,7 @@ export interface GetContainerApplicationResponse {
 }
 
 export const GetContainerApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -1097,7 +1097,7 @@ export const getContainerApplication: API.OperationMethod<
   GetContainerApplicationResponse,
   GetContainerApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerApplicationRequest,
   output: GetContainerApplicationResponse,
   errors: [InvalidRoute, ContainerApplicationNotFound],
@@ -1108,7 +1108,7 @@ export interface ListContainerApplicationsRequest {
 }
 
 export const ListContainerApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -1200,7 +1200,7 @@ export type ListContainerApplicationsResponse = {
 }[];
 
 export const ListContainerApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(ListContainerApplicationsResponse2).pipe(
       T.ResponsePath("result"),
     ),
@@ -1213,7 +1213,7 @@ export const listContainerApplications: API.OperationMethod<
   ListContainerApplicationsResponse,
   ListContainerApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListContainerApplicationsRequest,
   output: ListContainerApplicationsResponse,
   errors: [InvalidRoute],
@@ -1291,7 +1291,7 @@ export interface CreateContainerApplicationRequest {
 }
 
 export const CreateContainerApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -1414,7 +1414,7 @@ export interface CreateContainerApplicationResponse {
 }
 
 export const CreateContainerApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -1478,7 +1478,7 @@ export const createContainerApplication: API.OperationMethod<
   CreateContainerApplicationResponse,
   CreateContainerApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContainerApplicationRequest,
   output: CreateContainerApplicationResponse,
   errors: [
@@ -1597,7 +1597,7 @@ export interface UpdateContainerApplicationRequest {
 }
 
 export const UpdateContainerApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       applicationId: Schema.String.pipe(T.HttpPath("application_id")),
@@ -1719,7 +1719,7 @@ export interface UpdateContainerApplicationResponse {
 }
 
 export const UpdateContainerApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -1781,7 +1781,7 @@ export const updateContainerApplication: API.OperationMethod<
   UpdateContainerApplicationResponse,
   UpdateContainerApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateContainerApplicationRequest,
   output: UpdateContainerApplicationResponse,
   errors: [InvalidRoute, ContainerApplicationNotFound],
@@ -1793,7 +1793,7 @@ export interface DeleteContainerApplicationRequest {
 }
 
 export const DeleteContainerApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       applicationId: Schema.String.pipe(T.HttpPath("application_id")),
@@ -1808,7 +1808,7 @@ export const DeleteContainerApplicationRequest =
 export type DeleteContainerApplicationResponse = unknown;
 
 export const DeleteContainerApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteContainerApplicationResponse>;
 
@@ -1822,7 +1822,7 @@ export const deleteContainerApplication: API.OperationMethod<
   DeleteContainerApplicationResponse,
   DeleteContainerApplicationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteContainerApplicationRequest,
   output: DeleteContainerApplicationResponse,
   errors: [InvalidRoute, ContainerApplicationNotFound],
@@ -1896,7 +1896,7 @@ export interface CreateContainerApplicationRolloutRequest {
 }
 
 export const CreateContainerApplicationRolloutRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       applicationId: Schema.String.pipe(T.HttpPath("application_id")),
@@ -2016,7 +2016,7 @@ export interface CreateContainerApplicationRolloutResponse {
 }
 
 export const CreateContainerApplicationRolloutResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -2068,7 +2068,7 @@ export const createContainerApplicationRollout: API.OperationMethod<
   CreateContainerApplicationRolloutResponse,
   CreateContainerApplicationRolloutError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContainerApplicationRolloutRequest,
   output: CreateContainerApplicationRolloutResponse,
   errors: [InvalidRoute, ContainerApplicationNotFound],
@@ -2083,7 +2083,7 @@ export interface GetContainerIdentityRequest {
 }
 
 export const GetContainerIdentityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -2121,7 +2121,7 @@ export interface GetContainerIdentityResponse {
 }
 
 export const GetContainerIdentityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       externalAccountId: Schema.String,
@@ -2154,7 +2154,7 @@ export const getContainerIdentity: API.OperationMethod<
   GetContainerIdentityResponse,
   GetContainerIdentityError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContainerIdentityRequest,
   output: GetContainerIdentityResponse,
   errors: [InvalidRoute],
@@ -2172,7 +2172,7 @@ export interface CreateContainerRegistryCredentialsRequest {
 }
 
 export const CreateContainerRegistryCredentialsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       registryId: Schema.String.pipe(T.HttpPath("registry_id")),
@@ -2199,7 +2199,7 @@ export interface CreateContainerRegistryCredentialsResponse {
 }
 
 export const CreateContainerRegistryCredentialsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       user: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       username: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2216,7 +2216,7 @@ export const createContainerRegistryCredentials: API.OperationMethod<
   CreateContainerRegistryCredentialsResponse,
   CreateContainerRegistryCredentialsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateContainerRegistryCredentialsRequest,
   output: CreateContainerRegistryCredentialsResponse,
   errors: [InvalidRoute],

@@ -16,7 +16,7 @@ export interface LiveDebuggerBreakpointsUpdateInput {
   updated_at?: string;
 }
 export const LiveDebuggerBreakpointsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     repository: Schema.optional(Schema.NullOr(Schema.String)),
@@ -45,7 +45,7 @@ export interface LiveDebuggerBreakpointsUpdateOutput {
   updated_at?: string;
 }
 export const LiveDebuggerBreakpointsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     repository: Schema.optional(Schema.NullOr(Schema.String)),
     filename: Schema.optional(Schema.String),
@@ -64,7 +64,7 @@ export const LiveDebuggerBreakpointsUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const liveDebuggerBreakpointsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LiveDebuggerBreakpointsUpdateInput,
     outputSchema: LiveDebuggerBreakpointsUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

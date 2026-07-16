@@ -13,7 +13,7 @@ export interface ListGeneratedQueryPatternsReportsInput {
   limit?: number;
 }
 export const ListGeneratedQueryPatternsReportsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -45,7 +45,7 @@ export interface ListGeneratedQueryPatternsReportsOutput {
   }>;
 }
 export const ListGeneratedQueryPatternsReportsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     has_next: Schema.Boolean,
     has_prev: Schema.Boolean,
@@ -80,7 +80,7 @@ export const ListGeneratedQueryPatternsReportsOutput =
  * @param limit - If provided, specifies the number of returned results (max 100)
  */
 export const listGeneratedQueryPatternsReports =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGeneratedQueryPatternsReportsInput,
     outputSchema: ListGeneratedQueryPatternsReportsOutput,
     errors: [Forbidden, NotFound] as const,

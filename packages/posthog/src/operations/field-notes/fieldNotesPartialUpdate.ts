@@ -43,7 +43,7 @@ export interface FieldNotesPartialUpdateInput {
   };
 }
 export const FieldNotesPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     comment: Schema.optional(Schema.String),
@@ -149,7 +149,7 @@ export interface FieldNotesPartialUpdateOutput {
   };
 }
 export const FieldNotesPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     comment: Schema.String,
     field_note_status: Schema.optional(
@@ -215,9 +215,7 @@ export const FieldNotesPartialUpdateOutput =
  * @param id - A UUID string identifying this field note.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const fieldNotesPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FieldNotesPartialUpdateInput,
-    outputSchema: FieldNotesPartialUpdateOutput,
-  }),
-);
+export const fieldNotesPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FieldNotesPartialUpdateInput,
+  outputSchema: FieldNotesPartialUpdateOutput,
+}));

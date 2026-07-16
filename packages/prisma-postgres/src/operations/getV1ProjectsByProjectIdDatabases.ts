@@ -10,7 +10,7 @@ export interface GetV1ProjectsByProjectIdDatabasesInput {
   limit?: number;
 }
 export const GetV1ProjectsByProjectIdDatabasesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -56,7 +56,7 @@ export interface GetV1ProjectsByProjectIdDatabasesOutput {
   pagination: { nextCursor: string | null; hasMore: boolean };
 }
 export const GetV1ProjectsByProjectIdDatabasesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -159,7 +159,7 @@ export const GetV1ProjectsByProjectIdDatabasesOutput =
  * Returns databases for the given project.
  */
 export const getV1ProjectsByProjectIdDatabases =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV1ProjectsByProjectIdDatabasesInput,
     outputSchema: GetV1ProjectsByProjectIdDatabasesOutput,
     errors: [NotFound, UnprocessableEntity] as const,

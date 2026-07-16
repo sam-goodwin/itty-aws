@@ -34,7 +34,7 @@ export interface GetUrlNormalizationRequest {
 }
 
 export const GetUrlNormalizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -50,7 +50,7 @@ export interface GetUrlNormalizationResponse {
 }
 
 export const GetUrlNormalizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       scope: Schema.Union([
         Schema.Literals(["incoming", "both", "none"]),
@@ -70,7 +70,7 @@ export const getUrlNormalization: API.OperationMethod<
   GetUrlNormalizationResponse,
   GetUrlNormalizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUrlNormalizationRequest,
   output: GetUrlNormalizationResponse,
   errors: [Forbidden],
@@ -86,7 +86,7 @@ export interface PutUrlNormalizationRequest {
 }
 
 export const PutUrlNormalizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       scope: Schema.Union([
@@ -110,7 +110,7 @@ export interface PutUrlNormalizationResponse {
 }
 
 export const PutUrlNormalizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       scope: Schema.Union([
         Schema.Literals(["incoming", "both", "none"]),
@@ -130,7 +130,7 @@ export const putUrlNormalization: API.OperationMethod<
   PutUrlNormalizationResponse,
   PutUrlNormalizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutUrlNormalizationRequest,
   output: PutUrlNormalizationResponse,
   errors: [Forbidden],
@@ -142,7 +142,7 @@ export interface DeleteUrlNormalizationRequest {
 }
 
 export const DeleteUrlNormalizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -153,7 +153,7 @@ export const DeleteUrlNormalizationRequest =
 export type DeleteUrlNormalizationResponse = unknown;
 
 export const DeleteUrlNormalizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<DeleteUrlNormalizationResponse>;
 
@@ -164,7 +164,7 @@ export const deleteUrlNormalization: API.OperationMethod<
   DeleteUrlNormalizationResponse,
   DeleteUrlNormalizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUrlNormalizationRequest,
   output: DeleteUrlNormalizationResponse,
   errors: [Forbidden],

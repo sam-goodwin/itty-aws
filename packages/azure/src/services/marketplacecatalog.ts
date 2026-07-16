@@ -13,7 +13,7 @@ export interface CreateApiKeyPostInput {
   apiKeyAlias: string;
   subscriptionId: string;
 }
-export const CreateApiKeyPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateApiKeyPostInput = /*@__PURE__*/ Schema.Struct({
   apiKeyAlias: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -29,12 +29,10 @@ export interface CreateApiKeyPostOutput {
   keyAlias?: string;
   key?: string;
 }
-export const CreateApiKeyPostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    keyAlias: Schema.optional(Schema.String),
-    key: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<CreateApiKeyPostOutput>;
+export const CreateApiKeyPostOutput = /*@__PURE__*/ Schema.Struct({
+  keyAlias: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<CreateApiKeyPostOutput>;
 
 // The operation
 /**
@@ -45,7 +43,7 @@ export const CreateApiKeyPostOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const CreateApiKeyPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CreateApiKeyPost = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateApiKeyPostInput,
   outputSchema: CreateApiKeyPostOutput,
 }));
@@ -60,7 +58,7 @@ export interface EdgeZonesProductsListInput {
   $skipToken?: string;
 }
 export const EdgeZonesProductsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     edgeZone: Schema.String.pipe(T.PathParam()),
@@ -674,7 +672,7 @@ export interface EdgeZonesProductsListOutput {
     | null;
 }
 export const EdgeZonesProductsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageLink: Schema.optional(Schema.NullOr(Schema.String)),
     count: Schema.optional(Schema.NullOr(Schema.Number)),
     items: Schema.optional(
@@ -1977,17 +1975,15 @@ export const EdgeZonesProductsListOutput =
  * @param $skipToken - The optional page continuation token that is used in the event of paginated result.
  * @param api-version - The API version to use for the request.
  */
-export const EdgeZonesProductsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EdgeZonesProductsListInput,
-    outputSchema: EdgeZonesProductsListOutput,
-  }),
-);
+export const EdgeZonesProductsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EdgeZonesProductsListInput,
+  outputSchema: EdgeZonesProductsListOutput,
+}));
 // Input Schema
 export interface GetApiKeysListInput {
   subscriptionId: string;
 }
-export const GetApiKeysListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetApiKeysListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2002,7 +1998,7 @@ export interface GetApiKeysListOutput {
   value?: { keyAlias?: string; key?: string }[];
   nextLink?: string;
 }
-export const GetApiKeysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetApiKeysListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2022,15 +2018,13 @@ export const GetApiKeysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const GetApiKeysList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetApiKeysList = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetApiKeysListInput,
   outputSchema: GetApiKeysListOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Marketplace/operations",
@@ -2054,7 +2048,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2084,7 +2078,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2100,7 +2094,7 @@ export interface ProductGetGetByBillingAccountInput {
   skuId?: string;
 }
 export const ProductGetGetByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
@@ -2380,7 +2374,7 @@ export interface ProductGetGetByBillingAccountOutput {
   hasAddOns?: boolean;
 }
 export const ProductGetGetByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     popularity: Schema.optional(Schema.Number),
     categoryIds: Schema.optional(Schema.Array(Schema.String)),
@@ -2848,7 +2842,7 @@ export const ProductGetGetByBillingAccountOutput =
  * @param skuId - Optional to pass the sku id to filter to a specific sku within the product. If not specified, the response will include all skus of the product.
  */
 export const ProductGetGetByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductGetGetByBillingAccountInput,
     outputSchema: ProductGetGetByBillingAccountOutput,
   }));
@@ -2865,7 +2859,7 @@ export interface ProductGetGetByBillingProfileInput {
   skuId?: string;
 }
 export const ProductGetGetByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
@@ -3146,7 +3140,7 @@ export interface ProductGetGetByBillingProfileOutput {
   hasAddOns?: boolean;
 }
 export const ProductGetGetByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     popularity: Schema.optional(Schema.Number),
     categoryIds: Schema.optional(Schema.Array(Schema.String)),
@@ -3615,7 +3609,7 @@ export const ProductGetGetByBillingProfileOutput =
  * @param skuId - Optional to pass the sku id to filter to a specific sku within the product. If not specified, the response will include all skus of the product.
  */
 export const ProductGetGetByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductGetGetByBillingProfileInput,
     outputSchema: ProductGetGetByBillingProfileOutput,
   }));
@@ -3632,7 +3626,7 @@ export interface ProductGetGetBySubscriptionInput {
   lookUpOfferInTenantLevel?: boolean;
 }
 export const ProductGetGetBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     productId: Schema.String.pipe(T.PathParam()),
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
@@ -3913,7 +3907,7 @@ export interface ProductGetGetBySubscriptionOutput {
   hasAddOns?: boolean;
 }
 export const ProductGetGetBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     popularity: Schema.optional(Schema.Number),
     categoryIds: Schema.optional(Schema.Array(Schema.String)),
@@ -4381,12 +4375,10 @@ export const ProductGetGetBySubscriptionOutput =
  * @param skuId - Optional to pass the sku id to filter to a specific sku within the product. If not specified, the response will include all skus of the product.
  * @param lookUpOfferInTenantLevel - Indicates whether to use the tenant in context to fetch the product. By default, lookUpOfferInTenantLevel is set to FALSE.
  */
-export const ProductGetGetBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductGetGetBySubscriptionInput,
-    outputSchema: ProductGetGetBySubscriptionOutput,
-  }),
-);
+export const ProductGetGetBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductGetGetBySubscriptionInput,
+  outputSchema: ProductGetGetBySubscriptionOutput,
+}));
 // Input Schema
 export interface ProductGetGetByTenantInput {
   productId: string;
@@ -4400,7 +4392,7 @@ export interface ProductGetGetByTenantInput {
   skuId?: string;
 }
 export const ProductGetGetByTenantInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productId: Schema.String.pipe(T.PathParam()),
     market: Schema.String,
     includeStopSoldPlans: Schema.optional(Schema.Boolean),
@@ -4681,7 +4673,7 @@ export interface ProductGetGetByTenantOutput {
   hasAddOns?: boolean;
 }
 export const ProductGetGetByTenantOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     popularity: Schema.optional(Schema.Number),
     categoryIds: Schema.optional(Schema.Array(Schema.String)),
@@ -5149,12 +5141,10 @@ export const ProductGetGetByTenantOutput =
  * @param planId - Optional to pass the plan id to filter to a specific plan within the product. If not specified, the response will include all plans of the product.
  * @param skuId - Optional to pass the sku id to filter to a specific sku within the product. If not specified, the response will include all skus of the product.
  */
-export const ProductGetGetByTenant = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductGetGetByTenantInput,
-    outputSchema: ProductGetGetByTenantOutput,
-  }),
-);
+export const ProductGetGetByTenant = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductGetGetByTenantInput,
+  outputSchema: ProductGetGetByTenantOutput,
+}));
 // Input Schema
 export interface ProductListListByBillingAccountInput {
   billingAccountId: string;
@@ -5168,7 +5158,7 @@ export interface ProductListListByBillingAccountInput {
   $search?: string;
 }
 export const ProductListListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     language: Schema.optional(Schema.String),
     excludePublicOffersAndPublicPlans: Schema.optional(Schema.Boolean),
@@ -5250,7 +5240,7 @@ export interface ProductListListByBillingAccountOutput {
   nextLink?: string;
 }
 export const ProductListListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         displayName: Schema.optional(Schema.String),
@@ -5383,7 +5373,7 @@ export const ProductListListByBillingAccountOutput =
  * @param $search - Optional search by display name, publisher display name, or keywords. Example $search=Microsoft
  */
 export const ProductListListByBillingAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductListListByBillingAccountInput,
     outputSchema: ProductListListByBillingAccountOutput,
   }));
@@ -5401,7 +5391,7 @@ export interface ProductListListByBillingProfileInput {
   $search?: string;
 }
 export const ProductListListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
     language: Schema.optional(Schema.String),
@@ -5484,7 +5474,7 @@ export interface ProductListListByBillingProfileOutput {
   nextLink?: string;
 }
 export const ProductListListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         displayName: Schema.optional(Schema.String),
@@ -5618,7 +5608,7 @@ export const ProductListListByBillingProfileOutput =
  * @param $search - Optional search by display name, publisher display name, or keywords. Example $search=Microsoft
  */
 export const ProductListListByBillingProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductListListByBillingProfileInput,
     outputSchema: ProductListListByBillingProfileOutput,
   }));
@@ -5634,7 +5624,7 @@ export interface ProductListListBySubscriptionInput {
   $search?: string;
 }
 export const ProductListListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     language: Schema.optional(Schema.String),
     excludePublicOffersAndPublicPlans: Schema.optional(Schema.Boolean),
@@ -5715,7 +5705,7 @@ export interface ProductListListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ProductListListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         displayName: Schema.optional(Schema.String),
@@ -5847,7 +5837,7 @@ export const ProductListListBySubscriptionOutput =
  * @param $search - Optional search by display name, publisher display name, or keywords. Example $search=Microsoft
  */
 export const ProductListListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductListListBySubscriptionInput,
     outputSchema: ProductListListBySubscriptionOutput,
   }));
@@ -5863,7 +5853,7 @@ export interface ProductListListByTenantInput {
   $search?: string;
 }
 export const ProductListListByTenantInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     market: Schema.optional(Schema.String),
     language: Schema.optional(Schema.String),
     excludePublicOffersAndPublicPlans: Schema.optional(Schema.Boolean),
@@ -5944,7 +5934,7 @@ export interface ProductListListByTenantOutput {
   nextLink?: string;
 }
 export const ProductListListByTenantOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         displayName: Schema.optional(Schema.String),
@@ -6076,18 +6066,16 @@ Possible values can be found at https://docs.microsoft.com/en-us/azure/marketpla
 - `publisherId`'
  * @param $search - Optional search by display name, publisher display name, or keywords. Example $search=Microsoft
  */
-export const ProductListListByTenant = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductListListByTenantInput,
-    outputSchema: ProductListListByTenantOutput,
-  }),
-);
+export const ProductListListByTenant = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductListListByTenantInput,
+  outputSchema: ProductListListByTenantOutput,
+}));
 // Input Schema
 export interface RevokeApiKeyPostInput {
   apiKeyAlias: string;
   subscriptionId: string;
 }
-export const RevokeApiKeyPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RevokeApiKeyPostInput = /*@__PURE__*/ Schema.Struct({
   apiKeyAlias: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -6101,7 +6089,7 @@ export const RevokeApiKeyPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RevokeApiKeyPostOutput = void;
 export const RevokeApiKeyPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RevokeApiKeyPostOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RevokeApiKeyPostOutput>;
 
 // The operation
 /**
@@ -6112,7 +6100,7 @@ export const RevokeApiKeyPostOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const RevokeApiKeyPost = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RevokeApiKeyPost = /*@__PURE__*/ API.make(() => ({
   inputSchema: RevokeApiKeyPostInput,
   outputSchema: RevokeApiKeyPostOutput,
 }));
@@ -6149,7 +6137,7 @@ export interface SearchPostArmInput {
   azurePortalCategories?: string[];
   facets?: string[];
 }
-export const SearchPostArmInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SearchPostArmInput = /*@__PURE__*/ Schema.Struct({
   searchQuery: Schema.optional(Schema.String),
   publisherName: Schema.optional(Schema.String),
   skip: Schema.optional(Schema.Number),
@@ -6253,7 +6241,7 @@ export interface SearchPostArmOutput {
   }[];
   totalCount?: number;
 }
-export const SearchPostArmOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SearchPostArmOutput = /*@__PURE__*/ Schema.Struct({
   facets: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -6343,7 +6331,7 @@ export const SearchPostArmOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const SearchPostArm = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SearchPostArm = /*@__PURE__*/ API.make(() => ({
   inputSchema: SearchPostArmInput,
   outputSchema: SearchPostArmOutput,
 }));
@@ -6356,7 +6344,7 @@ export interface SkusGetByBillingAccountInput {
   includeFutureAvailabilities?: boolean;
 }
 export const SkusGetByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     skuId: Schema.String.pipe(T.PathParam()),
     language: Schema.optional(Schema.String),
@@ -6444,7 +6432,7 @@ export interface SkusGetByBillingAccountOutput {
   categoryIds?: string[];
 }
 export const SkusGetByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productId: Schema.String,
     productDisplayName: Schema.optional(Schema.String),
     productDescription: Schema.optional(Schema.String),
@@ -6560,12 +6548,10 @@ export const SkusGetByBillingAccountOutput =
  * @param includeStopSold - Include stop-sold SKUs in the response. Default is false.
  * @param includeFutureAvailabilities - Include availabilities whose start date is in the future. Default is false.
  */
-export const SkusGetByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SkusGetByBillingAccountInput,
-    outputSchema: SkusGetByBillingAccountOutput,
-  }),
-);
+export const SkusGetByBillingAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SkusGetByBillingAccountInput,
+  outputSchema: SkusGetByBillingAccountOutput,
+}));
 // Input Schema
 export interface SkusGetByBillingProfileInput {
   billingAccountId: string;
@@ -6576,7 +6562,7 @@ export interface SkusGetByBillingProfileInput {
   includeFutureAvailabilities?: boolean;
 }
 export const SkusGetByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
     skuId: Schema.String.pipe(T.PathParam()),
@@ -6665,7 +6651,7 @@ export interface SkusGetByBillingProfileOutput {
   categoryIds?: string[];
 }
 export const SkusGetByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productId: Schema.String,
     productDisplayName: Schema.optional(Schema.String),
     productDescription: Schema.optional(Schema.String),
@@ -6781,12 +6767,10 @@ export const SkusGetByBillingProfileOutput =
  * @param includeStopSold - Include stop-sold SKUs in the response. Default is false.
  * @param includeFutureAvailabilities - Include availabilities whose start date is in the future. Default is false.
  */
-export const SkusGetByBillingProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SkusGetByBillingProfileInput,
-    outputSchema: SkusGetByBillingProfileOutput,
-  }),
-);
+export const SkusGetByBillingProfile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SkusGetByBillingProfileInput,
+  outputSchema: SkusGetByBillingProfileOutput,
+}));
 // Input Schema
 export interface SkusListByBillingAccountInput {
   billingAccountId: string;
@@ -6800,7 +6784,7 @@ export interface SkusListByBillingAccountInput {
   $orderBy?: string;
 }
 export const SkusListByBillingAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     serviceFamily: Schema.String,
     service: Schema.String,
@@ -6895,7 +6879,7 @@ export interface SkusListByBillingAccountOutput {
   nextLink?: string;
 }
 export const SkusListByBillingAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         productId: Schema.String,
@@ -7034,12 +7018,10 @@ export const SkusListByBillingAccountOutput =
 - `serviceFamily`
 - `service`
  */
-export const SkusListByBillingAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SkusListByBillingAccountInput,
-    outputSchema: SkusListByBillingAccountOutput,
-  }),
-);
+export const SkusListByBillingAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SkusListByBillingAccountInput,
+  outputSchema: SkusListByBillingAccountOutput,
+}));
 // Input Schema
 export interface SkusListByBillingProfileInput {
   billingAccountId: string;
@@ -7054,7 +7036,7 @@ export interface SkusListByBillingProfileInput {
   $orderBy?: string;
 }
 export const SkusListByBillingProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountId: Schema.String.pipe(T.PathParam()),
     billingProfileId: Schema.String.pipe(T.PathParam()),
     serviceFamily: Schema.String,
@@ -7150,7 +7132,7 @@ export interface SkusListByBillingProfileOutput {
   nextLink?: string;
 }
 export const SkusListByBillingProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         productId: Schema.String,
@@ -7290,9 +7272,7 @@ export const SkusListByBillingProfileOutput =
 - `serviceFamily`
 - `service`
  */
-export const SkusListByBillingProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SkusListByBillingProfileInput,
-    outputSchema: SkusListByBillingProfileOutput,
-  }),
-);
+export const SkusListByBillingProfile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SkusListByBillingProfileInput,
+  outputSchema: SkusListByBillingProfileOutput,
+}));

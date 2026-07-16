@@ -15,7 +15,7 @@ export interface VisualReviewRunsListInput {
   search?: string;
 }
 export const VisualReviewRunsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch: Schema.optional(Schema.String),
     commit_sha: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export interface VisualReviewRunsListOutput {
   }[];
 }
 export const VisualReviewRunsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -131,10 +131,8 @@ export const VisualReviewRunsListOutput =
  * @param review_state - Filter by review state
  * @param search - Free-text search over branch, commit SHA, run type, and PR number
  */
-export const visualReviewRunsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VisualReviewRunsListInput,
-    outputSchema: VisualReviewRunsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const visualReviewRunsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VisualReviewRunsListInput,
+  outputSchema: VisualReviewRunsListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

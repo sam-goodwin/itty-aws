@@ -9,7 +9,7 @@ export interface GroupsControllerGetInput {
   groupId: string;
 }
 export const GroupsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -30,7 +30,7 @@ export interface GroupsControllerGetOutput {
   updated_at?: string;
 }
 export const GroupsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
@@ -49,7 +49,7 @@ export const GroupsControllerGetOutput =
  * @param organizationId - The ID of the organization.
  * @param groupId - The ID of the group.
  */
-export const GroupsControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroupsControllerGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroupsControllerGetInput,
   outputSchema: GroupsControllerGetOutput,
   errors: [Forbidden, NotFound] as const,

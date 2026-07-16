@@ -8,7 +8,7 @@ export interface CommentsCompleteCreateInput {
   project_id: string;
 }
 export const CommentsCompleteCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -78,7 +78,7 @@ export interface CommentsCompleteCreateOutput {
   source_comment?: string | null;
 }
 export const CommentsCompleteCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     created_by: Schema.optional(
       Schema.NullOr(
@@ -168,9 +168,7 @@ export const CommentsCompleteCreateOutput =
  * @param id - A UUID string identifying this comment.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const commentsCompleteCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CommentsCompleteCreateInput,
-    outputSchema: CommentsCompleteCreateOutput,
-  }),
-);
+export const commentsCompleteCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CommentsCompleteCreateInput,
+  outputSchema: CommentsCompleteCreateOutput,
+}));

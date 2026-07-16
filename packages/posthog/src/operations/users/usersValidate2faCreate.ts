@@ -723,7 +723,7 @@ export interface UsersValidate2faCreateInput {
   requires_credential_review?: boolean;
 }
 export const UsersValidate2faCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     date_joined: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1524,13 +1524,11 @@ export const UsersValidate2faCreateInput =
 // Output Schema
 export type UsersValidate2faCreateOutput = void;
 export const UsersValidate2faCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersValidate2faCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersValidate2faCreateOutput>;
 
 // The operation
-export const usersValidate2faCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsersValidate2faCreateInput,
-    outputSchema: UsersValidate2faCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const usersValidate2faCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersValidate2faCreateInput,
+  outputSchema: UsersValidate2faCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

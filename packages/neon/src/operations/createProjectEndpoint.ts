@@ -30,7 +30,7 @@ export interface CreateProjectEndpointInput {
   };
 }
 export const CreateProjectEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     endpoint: Schema.Struct({
       branch_id: Schema.String,
@@ -159,7 +159,7 @@ export interface CreateProjectEndpointOutput {
   }[];
 }
 export const CreateProjectEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoint: Schema.Struct({
       host: Schema.String,
       id: Schema.String,
@@ -276,10 +276,8 @@ export const CreateProjectEndpointOutput =
  *
  * @param project_id - The Neon project ID
  */
-export const createProjectEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateProjectEndpointInput,
-    outputSchema: CreateProjectEndpointOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const createProjectEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateProjectEndpointInput,
+  outputSchema: CreateProjectEndpointOutput,
+  errors: [NotFound, Conflict] as const,
+}));

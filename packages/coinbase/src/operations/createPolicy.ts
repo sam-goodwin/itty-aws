@@ -8,7 +8,7 @@ export interface CreatePolicyInput {
   description?: string;
   rules: unknown[];
 }
-export const CreatePolicyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePolicyInput = /*@__PURE__*/ Schema.Struct({
   scope: Schema.Literals(["project", "account"]),
   description: Schema.optional(Schema.String),
   rules: Schema.Array(Schema.Unknown),
@@ -25,7 +25,7 @@ export interface CreatePolicyOutput {
   createdAt: string;
   updatedAt: string;
 }
-export const CreatePolicyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePolicyOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   description: Schema.optional(Schema.String),
   scope: Schema.Literals(["project", "account"]),
@@ -45,7 +45,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const createPolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createPolicy = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreatePolicyInput,
   outputSchema: CreatePolicyOutput,
 }));

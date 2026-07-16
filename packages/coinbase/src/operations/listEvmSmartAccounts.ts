@@ -8,7 +8,7 @@ export interface ListEvmSmartAccountsInput {
   pageToken?: string;
 }
 export const ListEvmSmartAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     pageToken: Schema.optional(Schema.String),
   }).pipe(
@@ -28,7 +28,7 @@ export interface ListEvmSmartAccountsOutput {
   nextPageToken?: string;
 }
 export const ListEvmSmartAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accounts: Schema.Array(
       Schema.Struct({
         address: Schema.String,
@@ -52,9 +52,7 @@ export const ListEvmSmartAccountsOutput =
  * @param pageSize - The number of resources to return per page.
  * @param pageToken - The token for the next page of resources, if any.
  */
-export const listEvmSmartAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListEvmSmartAccountsInput,
-    outputSchema: ListEvmSmartAccountsOutput,
-  }),
-);
+export const listEvmSmartAccounts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListEvmSmartAccountsInput,
+  outputSchema: ListEvmSmartAccountsOutput,
+}));

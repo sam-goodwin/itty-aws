@@ -168,7 +168,7 @@ export interface PostTaxCalculationsInput {
   tax_date?: number;
 }
 export const PostTaxCalculationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currency: Schema.String,
     customer: Schema.optional(Schema.String),
     customer_details: Schema.optional(
@@ -703,7 +703,7 @@ export interface PostTaxCalculationsOutput {
   tax_date: number;
 }
 export const PostTaxCalculationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount_total: Schema.Number,
     currency: Schema.String,
     customer: Schema.NullOr(Schema.String),
@@ -1090,7 +1090,7 @@ export const PostTaxCalculationsOutput =
  *
  * <p>Calculates tax based on the input and returns a Tax <code>Calculation</code> object.</p>
  */
-export const PostTaxCalculations = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTaxCalculations = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostTaxCalculationsInput,
   outputSchema: PostTaxCalculationsOutput,
 }));

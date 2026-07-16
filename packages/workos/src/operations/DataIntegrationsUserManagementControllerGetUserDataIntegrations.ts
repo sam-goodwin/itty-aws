@@ -9,7 +9,7 @@ export interface DataIntegrationsUserManagementControllerGetUserDataIntegrations
   organization_id?: string;
 }
 export const DataIntegrationsUserManagementControllerGetUserDataIntegrationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user_id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.optional(Schema.String),
   }).pipe(
@@ -58,7 +58,7 @@ export interface DataIntegrationsUserManagementControllerGetUserDataIntegrations
   }>;
 }
 export const DataIntegrationsUserManagementControllerGetUserDataIntegrationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -120,7 +120,7 @@ export const DataIntegrationsUserManagementControllerGetUserDataIntegrationsOutp
  * @param organization_id - An [Organization](/reference/organization) identifier. Optional parameter to filter connections for a specific organization.
  */
 export const DataIntegrationsUserManagementControllerGetUserDataIntegrations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DataIntegrationsUserManagementControllerGetUserDataIntegrationsInput,
     outputSchema:

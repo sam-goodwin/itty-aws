@@ -9,7 +9,7 @@ export interface DeleteProjectBranchDataAPIInput {
   database_name: string;
 }
 export const DeleteProjectBranchDataAPIInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     database_name: Schema.String.pipe(T.PathParam()),
@@ -23,7 +23,7 @@ export const DeleteProjectBranchDataAPIInput =
 // Output Schema
 export interface DeleteProjectBranchDataAPIOutput {}
 export const DeleteProjectBranchDataAPIOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as unknown as Schema.Codec<DeleteProjectBranchDataAPIOutput>;
 
@@ -38,9 +38,7 @@ export const DeleteProjectBranchDataAPIOutput =
  * @param branch_id - The Neon branch ID
  * @param database_name - The database name
  */
-export const deleteProjectBranchDataAPI = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteProjectBranchDataAPIInput,
-    outputSchema: DeleteProjectBranchDataAPIOutput,
-  }),
-);
+export const deleteProjectBranchDataAPI = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteProjectBranchDataAPIInput,
+  outputSchema: DeleteProjectBranchDataAPIOutput,
+}));

@@ -15,7 +15,7 @@ export interface OperationResultsGetInput {
   operationResultId: string;
 }
 export const OperationResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     locationName: Schema.String.pipe(T.PathParam()),
     operationResultId: Schema.String.pipe(T.PathParam()),
@@ -36,7 +36,7 @@ export interface OperationResultsGetOutput {
   properties?: unknown;
 }
 export const OperationResultsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(
@@ -61,15 +61,13 @@ export const OperationResultsGetOutput =
  * @param locationName - The location of the operation.
  * @param operationResultId - The ID of the operation result to get.
  */
-export const OperationResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationResultsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationResultsGetInput,
   outputSchema: OperationResultsGetOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.SecurityAndCompliance/operations",
@@ -92,7 +90,7 @@ export interface OperationsListOutput {
     };
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -119,7 +117,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - Client Api Version.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -151,7 +149,7 @@ export interface PrivateEndpointConnectionsAdtAPICreateOrUpdateInput {
   type?: string;
 }
 export const PrivateEndpointConnectionsAdtAPICreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -207,7 +205,7 @@ export interface PrivateEndpointConnectionsAdtAPICreateOrUpdateOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsAdtAPICreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -226,7 +224,7 @@ export const PrivateEndpointConnectionsAdtAPICreateOrUpdateOutput =
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsAdtAPICreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsAdtAPICreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsAdtAPICreateOrUpdateOutput,
   }));
@@ -238,7 +236,7 @@ export interface PrivateEndpointConnectionsAdtAPIDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsAdtAPIDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -254,7 +252,7 @@ export const PrivateEndpointConnectionsAdtAPIDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsAdtAPIDeleteOutput = void;
 export const PrivateEndpointConnectionsAdtAPIDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsAdtAPIDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsAdtAPIDeleteOutput>;
 
 // The operation
 /**
@@ -267,7 +265,7 @@ export const PrivateEndpointConnectionsAdtAPIDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsAdtAPIDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsAdtAPIDeleteInput,
     outputSchema: PrivateEndpointConnectionsAdtAPIDeleteOutput,
   }));
@@ -279,7 +277,7 @@ export interface PrivateEndpointConnectionsAdtAPIGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsAdtAPIGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -299,7 +297,7 @@ export interface PrivateEndpointConnectionsAdtAPIGetOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsAdtAPIGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -316,7 +314,7 @@ export const PrivateEndpointConnectionsAdtAPIGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsAdtAPIGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsAdtAPIGetInput,
     outputSchema: PrivateEndpointConnectionsAdtAPIGetOutput,
   }));
@@ -327,7 +325,7 @@ export interface PrivateEndpointConnectionsAdtAPIListByServiceInput {
   resourceName: string;
 }
 export const PrivateEndpointConnectionsAdtAPIListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -345,7 +343,7 @@ export interface PrivateEndpointConnectionsAdtAPIListByServiceOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsAdtAPIListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -368,7 +366,7 @@ export const PrivateEndpointConnectionsAdtAPIListByServiceOutput =
  * @param api-version - Client Api Version.
  */
 export const PrivateEndpointConnectionsAdtAPIListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsAdtAPIListByServiceInput,
     outputSchema: PrivateEndpointConnectionsAdtAPIListByServiceOutput,
   }));
@@ -400,7 +398,7 @@ export interface PrivateEndpointConnectionsCompCreateOrUpdateInput {
   type?: string;
 }
 export const PrivateEndpointConnectionsCompCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -456,7 +454,7 @@ export interface PrivateEndpointConnectionsCompCreateOrUpdateOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsCompCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -475,7 +473,7 @@ export const PrivateEndpointConnectionsCompCreateOrUpdateOutput =
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsCompCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCompCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCompCreateOrUpdateOutput,
   }));
@@ -487,7 +485,7 @@ export interface PrivateEndpointConnectionsCompDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsCompDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -503,7 +501,7 @@ export const PrivateEndpointConnectionsCompDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsCompDeleteOutput = void;
 export const PrivateEndpointConnectionsCompDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsCompDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsCompDeleteOutput>;
 
 // The operation
 /**
@@ -516,7 +514,7 @@ export const PrivateEndpointConnectionsCompDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsCompDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCompDeleteInput,
     outputSchema: PrivateEndpointConnectionsCompDeleteOutput,
   }));
@@ -528,7 +526,7 @@ export interface PrivateEndpointConnectionsCompGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsCompGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -548,7 +546,7 @@ export interface PrivateEndpointConnectionsCompGetOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsCompGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -565,7 +563,7 @@ export const PrivateEndpointConnectionsCompGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsCompGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCompGetInput,
     outputSchema: PrivateEndpointConnectionsCompGetOutput,
   }));
@@ -576,7 +574,7 @@ export interface PrivateEndpointConnectionsCompListByServiceInput {
   resourceName: string;
 }
 export const PrivateEndpointConnectionsCompListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -594,7 +592,7 @@ export interface PrivateEndpointConnectionsCompListByServiceOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsCompListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -617,7 +615,7 @@ export const PrivateEndpointConnectionsCompListByServiceOutput =
  * @param api-version - Client Api Version.
  */
 export const PrivateEndpointConnectionsCompListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCompListByServiceInput,
     outputSchema: PrivateEndpointConnectionsCompListByServiceOutput,
   }));
@@ -649,7 +647,7 @@ export interface PrivateEndpointConnectionsForEDMCreateOrUpdateInput {
   type?: string;
 }
 export const PrivateEndpointConnectionsForEDMCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -705,7 +703,7 @@ export interface PrivateEndpointConnectionsForEDMCreateOrUpdateOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsForEDMCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -724,7 +722,7 @@ export const PrivateEndpointConnectionsForEDMCreateOrUpdateOutput =
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsForEDMCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsForEDMCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsForEDMCreateOrUpdateOutput,
   }));
@@ -736,7 +734,7 @@ export interface PrivateEndpointConnectionsForEDMDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsForEDMDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -752,7 +750,7 @@ export const PrivateEndpointConnectionsForEDMDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsForEDMDeleteOutput = void;
 export const PrivateEndpointConnectionsForEDMDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsForEDMDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsForEDMDeleteOutput>;
 
 // The operation
 /**
@@ -765,7 +763,7 @@ export const PrivateEndpointConnectionsForEDMDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsForEDMDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsForEDMDeleteInput,
     outputSchema: PrivateEndpointConnectionsForEDMDeleteOutput,
   }));
@@ -777,7 +775,7 @@ export interface PrivateEndpointConnectionsForEDMGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsForEDMGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -797,7 +795,7 @@ export interface PrivateEndpointConnectionsForEDMGetOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsForEDMGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -814,7 +812,7 @@ export const PrivateEndpointConnectionsForEDMGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsForEDMGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsForEDMGetInput,
     outputSchema: PrivateEndpointConnectionsForEDMGetOutput,
   }));
@@ -825,7 +823,7 @@ export interface PrivateEndpointConnectionsForEDMListByServiceInput {
   resourceName: string;
 }
 export const PrivateEndpointConnectionsForEDMListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -843,7 +841,7 @@ export interface PrivateEndpointConnectionsForEDMListByServiceOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsForEDMListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -866,7 +864,7 @@ export const PrivateEndpointConnectionsForEDMListByServiceOutput =
  * @param api-version - Client Api Version.
  */
 export const PrivateEndpointConnectionsForEDMListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsForEDMListByServiceInput,
     outputSchema: PrivateEndpointConnectionsForEDMListByServiceOutput,
   }));
@@ -898,7 +896,7 @@ export interface PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateInput {
   type?: string;
 }
 export const PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -954,7 +952,7 @@ export interface PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateOutput 
   type?: string;
 }
 export const PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -973,7 +971,7 @@ export const PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateOutput =
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateInput,
     outputSchema:
       PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateOutput,
@@ -986,7 +984,7 @@ export interface PrivateEndpointConnectionsForMIPPolicySyncDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsForMIPPolicySyncDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1002,7 +1000,7 @@ export const PrivateEndpointConnectionsForMIPPolicySyncDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput = void;
 export const PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput>;
 
 // The operation
 /**
@@ -1015,7 +1013,7 @@ export const PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsForMIPPolicySyncDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsForMIPPolicySyncDeleteInput,
     outputSchema: PrivateEndpointConnectionsForMIPPolicySyncDeleteOutput,
   }));
@@ -1027,7 +1025,7 @@ export interface PrivateEndpointConnectionsForMIPPolicySyncGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsForMIPPolicySyncGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1047,7 +1045,7 @@ export interface PrivateEndpointConnectionsForMIPPolicySyncGetOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsForMIPPolicySyncGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1064,7 +1062,7 @@ export const PrivateEndpointConnectionsForMIPPolicySyncGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsForMIPPolicySyncGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsForMIPPolicySyncGetInput,
     outputSchema: PrivateEndpointConnectionsForMIPPolicySyncGetOutput,
   }));
@@ -1075,7 +1073,7 @@ export interface PrivateEndpointConnectionsForMIPPolicySyncListByServiceInput {
   resourceName: string;
 }
 export const PrivateEndpointConnectionsForMIPPolicySyncListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1093,7 +1091,7 @@ export interface PrivateEndpointConnectionsForMIPPolicySyncListByServiceOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsForMIPPolicySyncListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1116,7 +1114,7 @@ export const PrivateEndpointConnectionsForMIPPolicySyncListByServiceOutput =
  * @param api-version - Client Api Version.
  */
 export const PrivateEndpointConnectionsForMIPPolicySyncListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsForMIPPolicySyncListByServiceInput,
     outputSchema: PrivateEndpointConnectionsForMIPPolicySyncListByServiceOutput,
   }));
@@ -1148,7 +1146,7 @@ export interface PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateInput {
   type?: string;
 }
 export const PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1204,7 +1202,7 @@ export interface PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateOutput 
   type?: string;
 }
 export const PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1223,7 +1221,7 @@ export const PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateOutput =
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsForSCCPowershellCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateInput,
     outputSchema:
       PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateOutput,
@@ -1236,7 +1234,7 @@ export interface PrivateEndpointConnectionsForSCCPowershellDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsForSCCPowershellDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1252,7 +1250,7 @@ export const PrivateEndpointConnectionsForSCCPowershellDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsForSCCPowershellDeleteOutput = void;
 export const PrivateEndpointConnectionsForSCCPowershellDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsForSCCPowershellDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsForSCCPowershellDeleteOutput>;
 
 // The operation
 /**
@@ -1265,7 +1263,7 @@ export const PrivateEndpointConnectionsForSCCPowershellDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsForSCCPowershellDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsForSCCPowershellDeleteInput,
     outputSchema: PrivateEndpointConnectionsForSCCPowershellDeleteOutput,
   }));
@@ -1277,7 +1275,7 @@ export interface PrivateEndpointConnectionsForSCCPowershellGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsForSCCPowershellGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1297,7 +1295,7 @@ export interface PrivateEndpointConnectionsForSCCPowershellGetOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsForSCCPowershellGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1314,7 +1312,7 @@ export const PrivateEndpointConnectionsForSCCPowershellGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsForSCCPowershellGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsForSCCPowershellGetInput,
     outputSchema: PrivateEndpointConnectionsForSCCPowershellGetOutput,
   }));
@@ -1325,7 +1323,7 @@ export interface PrivateEndpointConnectionsForSCCPowershellListByServiceInput {
   resourceName: string;
 }
 export const PrivateEndpointConnectionsForSCCPowershellListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1343,7 +1341,7 @@ export interface PrivateEndpointConnectionsForSCCPowershellListByServiceOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsForSCCPowershellListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1366,7 +1364,7 @@ export const PrivateEndpointConnectionsForSCCPowershellListByServiceOutput =
  * @param api-version - Client Api Version.
  */
 export const PrivateEndpointConnectionsForSCCPowershellListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsForSCCPowershellListByServiceInput,
     outputSchema: PrivateEndpointConnectionsForSCCPowershellListByServiceOutput,
   }));
@@ -1398,7 +1396,7 @@ export interface PrivateEndpointConnectionsSecCreateOrUpdateInput {
   type?: string;
 }
 export const PrivateEndpointConnectionsSecCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1454,7 +1452,7 @@ export interface PrivateEndpointConnectionsSecCreateOrUpdateOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsSecCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1473,7 +1471,7 @@ export const PrivateEndpointConnectionsSecCreateOrUpdateOutput =
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsSecCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsSecCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsSecCreateOrUpdateOutput,
   }));
@@ -1485,7 +1483,7 @@ export interface PrivateEndpointConnectionsSecDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsSecDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1501,7 +1499,7 @@ export const PrivateEndpointConnectionsSecDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsSecDeleteOutput = void;
 export const PrivateEndpointConnectionsSecDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsSecDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsSecDeleteOutput>;
 
 // The operation
 /**
@@ -1514,7 +1512,7 @@ export const PrivateEndpointConnectionsSecDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsSecDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsSecDeleteInput,
     outputSchema: PrivateEndpointConnectionsSecDeleteOutput,
   }));
@@ -1526,7 +1524,7 @@ export interface PrivateEndpointConnectionsSecGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsSecGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1546,7 +1544,7 @@ export interface PrivateEndpointConnectionsSecGetOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsSecGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1563,7 +1561,7 @@ export const PrivateEndpointConnectionsSecGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsSecGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsSecGetInput,
     outputSchema: PrivateEndpointConnectionsSecGetOutput,
   }));
@@ -1574,7 +1572,7 @@ export interface PrivateEndpointConnectionsSecListByServiceInput {
   resourceName: string;
 }
 export const PrivateEndpointConnectionsSecListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1592,7 +1590,7 @@ export interface PrivateEndpointConnectionsSecListByServiceOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsSecListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1615,7 +1613,7 @@ export const PrivateEndpointConnectionsSecListByServiceOutput =
  * @param api-version - Client Api Version.
  */
 export const PrivateEndpointConnectionsSecListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsSecListByServiceInput,
     outputSchema: PrivateEndpointConnectionsSecListByServiceOutput,
   }));
@@ -1627,7 +1625,7 @@ export interface PrivateLinkResourcesAdtAPIGetInput {
   groupName: string;
 }
 export const PrivateLinkResourcesAdtAPIGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1647,7 +1645,7 @@ export interface PrivateLinkResourcesAdtAPIGetOutput {
   type?: string;
 }
 export const PrivateLinkResourcesAdtAPIGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1664,7 +1662,7 @@ export const PrivateLinkResourcesAdtAPIGetOutput =
  * @param groupName - The name of the private link resource group.
  */
 export const PrivateLinkResourcesAdtAPIGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesAdtAPIGetInput,
     outputSchema: PrivateLinkResourcesAdtAPIGetOutput,
   }));
@@ -1675,7 +1673,7 @@ export interface PrivateLinkResourcesAdtAPIListByServiceInput {
   resourceName: string;
 }
 export const PrivateLinkResourcesAdtAPIListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1693,7 +1691,7 @@ export interface PrivateLinkResourcesAdtAPIListByServiceOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesAdtAPIListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1716,7 +1714,7 @@ export const PrivateLinkResourcesAdtAPIListByServiceOutput =
  * @param api-version - Client Api Version.
  */
 export const PrivateLinkResourcesAdtAPIListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesAdtAPIListByServiceInput,
     outputSchema: PrivateLinkResourcesAdtAPIListByServiceOutput,
   }));
@@ -1728,7 +1726,7 @@ export interface PrivateLinkResourcesCompGetInput {
   groupName: string;
 }
 export const PrivateLinkResourcesCompGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1748,7 +1746,7 @@ export interface PrivateLinkResourcesCompGetOutput {
   type?: string;
 }
 export const PrivateLinkResourcesCompGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1764,12 +1762,10 @@ export const PrivateLinkResourcesCompGetOutput =
  * @param api-version - Client Api Version.
  * @param groupName - The name of the private link resource group.
  */
-export const PrivateLinkResourcesCompGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesCompGetInput,
-    outputSchema: PrivateLinkResourcesCompGetOutput,
-  }),
-);
+export const PrivateLinkResourcesCompGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesCompGetInput,
+  outputSchema: PrivateLinkResourcesCompGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesCompListByServiceInput {
   subscriptionId: string;
@@ -1777,7 +1773,7 @@ export interface PrivateLinkResourcesCompListByServiceInput {
   resourceName: string;
 }
 export const PrivateLinkResourcesCompListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1795,7 +1791,7 @@ export interface PrivateLinkResourcesCompListByServiceOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesCompListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1818,7 +1814,7 @@ export const PrivateLinkResourcesCompListByServiceOutput =
  * @param api-version - Client Api Version.
  */
 export const PrivateLinkResourcesCompListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesCompListByServiceInput,
     outputSchema: PrivateLinkResourcesCompListByServiceOutput,
   }));
@@ -1830,7 +1826,7 @@ export interface PrivateLinkResourcesForMIPPolicySyncGetInput {
   groupName: string;
 }
 export const PrivateLinkResourcesForMIPPolicySyncGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1850,7 +1846,7 @@ export interface PrivateLinkResourcesForMIPPolicySyncGetOutput {
   type?: string;
 }
 export const PrivateLinkResourcesForMIPPolicySyncGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1867,7 +1863,7 @@ export const PrivateLinkResourcesForMIPPolicySyncGetOutput =
  * @param groupName - The name of the private link resource group.
  */
 export const PrivateLinkResourcesForMIPPolicySyncGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesForMIPPolicySyncGetInput,
     outputSchema: PrivateLinkResourcesForMIPPolicySyncGetOutput,
   }));
@@ -1878,7 +1874,7 @@ export interface PrivateLinkResourcesForMIPPolicySyncListByServiceInput {
   resourceName: string;
 }
 export const PrivateLinkResourcesForMIPPolicySyncListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1896,7 +1892,7 @@ export interface PrivateLinkResourcesForMIPPolicySyncListByServiceOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesForMIPPolicySyncListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1919,7 +1915,7 @@ export const PrivateLinkResourcesForMIPPolicySyncListByServiceOutput =
  * @param api-version - Client Api Version.
  */
 export const PrivateLinkResourcesForMIPPolicySyncListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesForMIPPolicySyncListByServiceInput,
     outputSchema: PrivateLinkResourcesForMIPPolicySyncListByServiceOutput,
   }));
@@ -1931,7 +1927,7 @@ export interface PrivateLinkResourcesForSCCPowershellGetInput {
   groupName: string;
 }
 export const PrivateLinkResourcesForSCCPowershellGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1951,7 +1947,7 @@ export interface PrivateLinkResourcesForSCCPowershellGetOutput {
   type?: string;
 }
 export const PrivateLinkResourcesForSCCPowershellGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1968,7 +1964,7 @@ export const PrivateLinkResourcesForSCCPowershellGetOutput =
  * @param groupName - The name of the private link resource group.
  */
 export const PrivateLinkResourcesForSCCPowershellGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesForSCCPowershellGetInput,
     outputSchema: PrivateLinkResourcesForSCCPowershellGetOutput,
   }));
@@ -1979,7 +1975,7 @@ export interface PrivateLinkResourcesForSCCPowershellListByServiceInput {
   resourceName: string;
 }
 export const PrivateLinkResourcesForSCCPowershellListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1997,7 +1993,7 @@ export interface PrivateLinkResourcesForSCCPowershellListByServiceOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesForSCCPowershellListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2020,7 +2016,7 @@ export const PrivateLinkResourcesForSCCPowershellListByServiceOutput =
  * @param api-version - Client Api Version.
  */
 export const PrivateLinkResourcesForSCCPowershellListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesForSCCPowershellListByServiceInput,
     outputSchema: PrivateLinkResourcesForSCCPowershellListByServiceOutput,
   }));
@@ -2032,7 +2028,7 @@ export interface PrivateLinkResourcesGetInput {
   groupName: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2052,7 +2048,7 @@ export interface PrivateLinkResourcesGetOutput {
   type?: string;
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2068,12 +2064,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param api-version - Client Api Version.
  * @param groupName - The name of the private link resource group.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListByServiceInput {
   subscriptionId: string;
@@ -2081,7 +2075,7 @@ export interface PrivateLinkResourcesListByServiceInput {
   resourceName: string;
 }
 export const PrivateLinkResourcesListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2099,7 +2093,7 @@ export interface PrivateLinkResourcesListByServiceOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2122,7 +2116,7 @@ export const PrivateLinkResourcesListByServiceOutput =
  * @param api-version - Client Api Version.
  */
 export const PrivateLinkResourcesListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByServiceInput,
     outputSchema: PrivateLinkResourcesListByServiceOutput,
   }));
@@ -2134,7 +2128,7 @@ export interface PrivateLinkResourcesSecGetInput {
   groupName: string;
 }
 export const PrivateLinkResourcesSecGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2154,7 +2148,7 @@ export interface PrivateLinkResourcesSecGetOutput {
   type?: string;
 }
 export const PrivateLinkResourcesSecGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2170,12 +2164,10 @@ export const PrivateLinkResourcesSecGetOutput =
  * @param api-version - Client Api Version.
  * @param groupName - The name of the private link resource group.
  */
-export const PrivateLinkResourcesSecGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesSecGetInput,
-    outputSchema: PrivateLinkResourcesSecGetOutput,
-  }),
-);
+export const PrivateLinkResourcesSecGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesSecGetInput,
+  outputSchema: PrivateLinkResourcesSecGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesSecListByServiceInput {
   subscriptionId: string;
@@ -2183,7 +2175,7 @@ export interface PrivateLinkResourcesSecListByServiceInput {
   resourceName: string;
 }
 export const PrivateLinkResourcesSecListByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2201,7 +2193,7 @@ export interface PrivateLinkResourcesSecListByServiceOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesSecListByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2224,7 +2216,7 @@ export const PrivateLinkResourcesSecListByServiceOutput =
  * @param api-version - Client Api Version.
  */
 export const PrivateLinkResourcesSecListByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesSecListByServiceInput,
     outputSchema: PrivateLinkResourcesSecListByServiceOutput,
   }));
@@ -2291,7 +2283,7 @@ export interface PrivateLinkServicesForEDMUploadCreateOrUpdateInput {
   };
 }
 export const PrivateLinkServicesForEDMUploadCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2418,7 +2410,7 @@ export interface PrivateLinkServicesForEDMUploadCreateOrUpdateOutput {
   };
 }
 export const PrivateLinkServicesForEDMUploadCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2459,7 +2451,7 @@ export const PrivateLinkServicesForEDMUploadCreateOrUpdateOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForEDMUploadCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForEDMUploadCreateOrUpdateInput,
     outputSchema: PrivateLinkServicesForEDMUploadCreateOrUpdateOutput,
   }));
@@ -2470,7 +2462,7 @@ export interface PrivateLinkServicesForEDMUploadGetInput {
   resourceName: string;
 }
 export const PrivateLinkServicesForEDMUploadGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2506,7 +2498,7 @@ export interface PrivateLinkServicesForEDMUploadGetOutput {
   };
 }
 export const PrivateLinkServicesForEDMUploadGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2547,7 +2539,7 @@ export const PrivateLinkServicesForEDMUploadGetOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForEDMUploadGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForEDMUploadGetInput,
     outputSchema: PrivateLinkServicesForEDMUploadGetOutput,
   }));
@@ -2556,7 +2548,7 @@ export interface PrivateLinkServicesForEDMUploadListInput {
   subscriptionId: string;
 }
 export const PrivateLinkServicesForEDMUploadListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2593,7 +2585,7 @@ export interface PrivateLinkServicesForEDMUploadListOutput {
   }[];
 }
 export const PrivateLinkServicesForEDMUploadListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -2651,7 +2643,7 @@ export const PrivateLinkServicesForEDMUploadListOutput =
  * @param subscriptionId - The subscription identifier.
  */
 export const privateLinkServicesForEDMUploadList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForEDMUploadListInput,
     outputSchema: PrivateLinkServicesForEDMUploadListOutput,
   }));
@@ -2661,7 +2653,7 @@ export interface PrivateLinkServicesForEDMUploadListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const PrivateLinkServicesForEDMUploadListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2699,7 +2691,7 @@ export interface PrivateLinkServicesForEDMUploadListByResourceGroupOutput {
   }[];
 }
 export const PrivateLinkServicesForEDMUploadListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -2758,7 +2750,7 @@ export const PrivateLinkServicesForEDMUploadListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group that contains the service instance.
  */
 export const privateLinkServicesForEDMUploadListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForEDMUploadListByResourceGroupInput,
     outputSchema: PrivateLinkServicesForEDMUploadListByResourceGroupOutput,
   }));
@@ -2771,7 +2763,7 @@ export interface PrivateLinkServicesForEDMUploadUpdateInput {
   properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
 }
 export const PrivateLinkServicesForEDMUploadUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2815,7 +2807,7 @@ export interface PrivateLinkServicesForEDMUploadUpdateOutput {
   };
 }
 export const PrivateLinkServicesForEDMUploadUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2858,7 +2850,7 @@ export const PrivateLinkServicesForEDMUploadUpdateOutput =
  * @param properties - The properties for updating a service instance.
  */
 export const privateLinkServicesForEDMUploadUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForEDMUploadUpdateInput,
     outputSchema: PrivateLinkServicesForEDMUploadUpdateOutput,
   }));
@@ -2925,7 +2917,7 @@ export interface PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateInput {
   };
 }
 export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3052,7 +3044,7 @@ export interface PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateOutput 
   };
 }
 export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3093,7 +3085,7 @@ export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForM365ComplianceCenterCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateInput,
     outputSchema:
       PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateOutput,
@@ -3105,7 +3097,7 @@ export interface PrivateLinkServicesForM365ComplianceCenterDeleteInput {
   resourceName: string;
 }
 export const PrivateLinkServicesForM365ComplianceCenterDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3120,7 +3112,7 @@ export const PrivateLinkServicesForM365ComplianceCenterDeleteInput =
 // Output Schema
 export type PrivateLinkServicesForM365ComplianceCenterDeleteOutput = void;
 export const PrivateLinkServicesForM365ComplianceCenterDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForM365ComplianceCenterDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForM365ComplianceCenterDeleteOutput>;
 
 // The operation
 /**
@@ -3132,7 +3124,7 @@ export const PrivateLinkServicesForM365ComplianceCenterDeleteOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForM365ComplianceCenterDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForM365ComplianceCenterDeleteInput,
     outputSchema: PrivateLinkServicesForM365ComplianceCenterDeleteOutput,
   }));
@@ -3143,7 +3135,7 @@ export interface PrivateLinkServicesForM365ComplianceCenterGetInput {
   resourceName: string;
 }
 export const PrivateLinkServicesForM365ComplianceCenterGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3179,7 +3171,7 @@ export interface PrivateLinkServicesForM365ComplianceCenterGetOutput {
   };
 }
 export const PrivateLinkServicesForM365ComplianceCenterGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3220,7 +3212,7 @@ export const PrivateLinkServicesForM365ComplianceCenterGetOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForM365ComplianceCenterGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForM365ComplianceCenterGetInput,
     outputSchema: PrivateLinkServicesForM365ComplianceCenterGetOutput,
   }));
@@ -3229,7 +3221,7 @@ export interface PrivateLinkServicesForM365ComplianceCenterListInput {
   subscriptionId: string;
 }
 export const PrivateLinkServicesForM365ComplianceCenterListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -3266,7 +3258,7 @@ export interface PrivateLinkServicesForM365ComplianceCenterListOutput {
   }[];
 }
 export const PrivateLinkServicesForM365ComplianceCenterListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -3324,7 +3316,7 @@ export const PrivateLinkServicesForM365ComplianceCenterListOutput =
  * @param subscriptionId - The subscription identifier.
  */
 export const privateLinkServicesForM365ComplianceCenterList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForM365ComplianceCenterListInput,
     outputSchema: PrivateLinkServicesForM365ComplianceCenterListOutput,
   }));
@@ -3334,7 +3326,7 @@ export interface PrivateLinkServicesForM365ComplianceCenterListByResourceGroupIn
   resourceGroupName: string;
 }
 export const PrivateLinkServicesForM365ComplianceCenterListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -3372,7 +3364,7 @@ export interface PrivateLinkServicesForM365ComplianceCenterListByResourceGroupOu
   }[];
 }
 export const PrivateLinkServicesForM365ComplianceCenterListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -3431,7 +3423,7 @@ export const PrivateLinkServicesForM365ComplianceCenterListByResourceGroupOutput
  * @param resourceGroupName - The name of the resource group that contains the service instance.
  */
 export const privateLinkServicesForM365ComplianceCenterListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PrivateLinkServicesForM365ComplianceCenterListByResourceGroupInput,
     outputSchema:
@@ -3446,7 +3438,7 @@ export interface PrivateLinkServicesForM365ComplianceCenterUpdateInput {
   properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
 }
 export const PrivateLinkServicesForM365ComplianceCenterUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3490,7 +3482,7 @@ export interface PrivateLinkServicesForM365ComplianceCenterUpdateOutput {
   };
 }
 export const PrivateLinkServicesForM365ComplianceCenterUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3533,7 +3525,7 @@ export const PrivateLinkServicesForM365ComplianceCenterUpdateOutput =
  * @param properties - The properties for updating a service instance.
  */
 export const privateLinkServicesForM365ComplianceCenterUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForM365ComplianceCenterUpdateInput,
     outputSchema: PrivateLinkServicesForM365ComplianceCenterUpdateOutput,
   }));
@@ -3600,7 +3592,7 @@ export interface PrivateLinkServicesForM365SecurityCenterCreateOrUpdateInput {
   };
 }
 export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3727,7 +3719,7 @@ export interface PrivateLinkServicesForM365SecurityCenterCreateOrUpdateOutput {
   };
 }
 export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3768,7 +3760,7 @@ export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForM365SecurityCenterCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForM365SecurityCenterCreateOrUpdateInput,
     outputSchema: PrivateLinkServicesForM365SecurityCenterCreateOrUpdateOutput,
   }));
@@ -3779,7 +3771,7 @@ export interface PrivateLinkServicesForM365SecurityCenterDeleteInput {
   resourceName: string;
 }
 export const PrivateLinkServicesForM365SecurityCenterDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3794,7 +3786,7 @@ export const PrivateLinkServicesForM365SecurityCenterDeleteInput =
 // Output Schema
 export type PrivateLinkServicesForM365SecurityCenterDeleteOutput = void;
 export const PrivateLinkServicesForM365SecurityCenterDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForM365SecurityCenterDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForM365SecurityCenterDeleteOutput>;
 
 // The operation
 /**
@@ -3806,7 +3798,7 @@ export const PrivateLinkServicesForM365SecurityCenterDeleteOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForM365SecurityCenterDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForM365SecurityCenterDeleteInput,
     outputSchema: PrivateLinkServicesForM365SecurityCenterDeleteOutput,
   }));
@@ -3817,7 +3809,7 @@ export interface PrivateLinkServicesForM365SecurityCenterGetInput {
   resourceName: string;
 }
 export const PrivateLinkServicesForM365SecurityCenterGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -3853,7 +3845,7 @@ export interface PrivateLinkServicesForM365SecurityCenterGetOutput {
   };
 }
 export const PrivateLinkServicesForM365SecurityCenterGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3894,7 +3886,7 @@ export const PrivateLinkServicesForM365SecurityCenterGetOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForM365SecurityCenterGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForM365SecurityCenterGetInput,
     outputSchema: PrivateLinkServicesForM365SecurityCenterGetOutput,
   }));
@@ -3903,7 +3895,7 @@ export interface PrivateLinkServicesForM365SecurityCenterListInput {
   subscriptionId: string;
 }
 export const PrivateLinkServicesForM365SecurityCenterListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -3940,7 +3932,7 @@ export interface PrivateLinkServicesForM365SecurityCenterListOutput {
   }[];
 }
 export const PrivateLinkServicesForM365SecurityCenterListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -3998,7 +3990,7 @@ export const PrivateLinkServicesForM365SecurityCenterListOutput =
  * @param subscriptionId - The subscription identifier.
  */
 export const privateLinkServicesForM365SecurityCenterList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForM365SecurityCenterListInput,
     outputSchema: PrivateLinkServicesForM365SecurityCenterListOutput,
   }));
@@ -4008,7 +4000,7 @@ export interface PrivateLinkServicesForM365SecurityCenterListByResourceGroupInpu
   resourceGroupName: string;
 }
 export const PrivateLinkServicesForM365SecurityCenterListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4046,7 +4038,7 @@ export interface PrivateLinkServicesForM365SecurityCenterListByResourceGroupOutp
   }[];
 }
 export const PrivateLinkServicesForM365SecurityCenterListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -4105,7 +4097,7 @@ export const PrivateLinkServicesForM365SecurityCenterListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group that contains the service instance.
  */
 export const privateLinkServicesForM365SecurityCenterListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PrivateLinkServicesForM365SecurityCenterListByResourceGroupInput,
     outputSchema:
@@ -4120,7 +4112,7 @@ export interface PrivateLinkServicesForM365SecurityCenterUpdateInput {
   properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
 }
 export const PrivateLinkServicesForM365SecurityCenterUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4164,7 +4156,7 @@ export interface PrivateLinkServicesForM365SecurityCenterUpdateOutput {
   };
 }
 export const PrivateLinkServicesForM365SecurityCenterUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4207,7 +4199,7 @@ export const PrivateLinkServicesForM365SecurityCenterUpdateOutput =
  * @param properties - The properties for updating a service instance.
  */
 export const privateLinkServicesForM365SecurityCenterUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForM365SecurityCenterUpdateInput,
     outputSchema: PrivateLinkServicesForM365SecurityCenterUpdateOutput,
   }));
@@ -4274,7 +4266,7 @@ export interface PrivateLinkServicesForMIPPolicySyncCreateOrUpdateInput {
   };
 }
 export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4401,7 +4393,7 @@ export interface PrivateLinkServicesForMIPPolicySyncCreateOrUpdateOutput {
   };
 }
 export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4442,7 +4434,7 @@ export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForMIPPolicySyncCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForMIPPolicySyncCreateOrUpdateInput,
     outputSchema: PrivateLinkServicesForMIPPolicySyncCreateOrUpdateOutput,
   }));
@@ -4453,7 +4445,7 @@ export interface PrivateLinkServicesForMIPPolicySyncDeleteInput {
   resourceName: string;
 }
 export const PrivateLinkServicesForMIPPolicySyncDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4468,7 +4460,7 @@ export const PrivateLinkServicesForMIPPolicySyncDeleteInput =
 // Output Schema
 export type PrivateLinkServicesForMIPPolicySyncDeleteOutput = void;
 export const PrivateLinkServicesForMIPPolicySyncDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForMIPPolicySyncDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForMIPPolicySyncDeleteOutput>;
 
 // The operation
 /**
@@ -4480,7 +4472,7 @@ export const PrivateLinkServicesForMIPPolicySyncDeleteOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForMIPPolicySyncDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForMIPPolicySyncDeleteInput,
     outputSchema: PrivateLinkServicesForMIPPolicySyncDeleteOutput,
   }));
@@ -4491,7 +4483,7 @@ export interface PrivateLinkServicesForMIPPolicySyncGetInput {
   resourceName: string;
 }
 export const PrivateLinkServicesForMIPPolicySyncGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4527,7 +4519,7 @@ export interface PrivateLinkServicesForMIPPolicySyncGetOutput {
   };
 }
 export const PrivateLinkServicesForMIPPolicySyncGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4568,7 +4560,7 @@ export const PrivateLinkServicesForMIPPolicySyncGetOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForMIPPolicySyncGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForMIPPolicySyncGetInput,
     outputSchema: PrivateLinkServicesForMIPPolicySyncGetOutput,
   }));
@@ -4577,7 +4569,7 @@ export interface PrivateLinkServicesForMIPPolicySyncListInput {
   subscriptionId: string;
 }
 export const PrivateLinkServicesForMIPPolicySyncListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4614,7 +4606,7 @@ export interface PrivateLinkServicesForMIPPolicySyncListOutput {
   }[];
 }
 export const PrivateLinkServicesForMIPPolicySyncListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -4672,7 +4664,7 @@ export const PrivateLinkServicesForMIPPolicySyncListOutput =
  * @param subscriptionId - The subscription identifier.
  */
 export const privateLinkServicesForMIPPolicySyncList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForMIPPolicySyncListInput,
     outputSchema: PrivateLinkServicesForMIPPolicySyncListOutput,
   }));
@@ -4682,7 +4674,7 @@ export interface PrivateLinkServicesForMIPPolicySyncListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const PrivateLinkServicesForMIPPolicySyncListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4720,7 +4712,7 @@ export interface PrivateLinkServicesForMIPPolicySyncListByResourceGroupOutput {
   }[];
 }
 export const PrivateLinkServicesForMIPPolicySyncListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -4779,7 +4771,7 @@ export const PrivateLinkServicesForMIPPolicySyncListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group that contains the service instance.
  */
 export const privateLinkServicesForMIPPolicySyncListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForMIPPolicySyncListByResourceGroupInput,
     outputSchema: PrivateLinkServicesForMIPPolicySyncListByResourceGroupOutput,
   }));
@@ -4792,7 +4784,7 @@ export interface PrivateLinkServicesForMIPPolicySyncUpdateInput {
   properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
 }
 export const PrivateLinkServicesForMIPPolicySyncUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -4836,7 +4828,7 @@ export interface PrivateLinkServicesForMIPPolicySyncUpdateOutput {
   };
 }
 export const PrivateLinkServicesForMIPPolicySyncUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4879,7 +4871,7 @@ export const PrivateLinkServicesForMIPPolicySyncUpdateOutput =
  * @param properties - The properties for updating a service instance.
  */
 export const privateLinkServicesForMIPPolicySyncUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForMIPPolicySyncUpdateInput,
     outputSchema: PrivateLinkServicesForMIPPolicySyncUpdateOutput,
   }));
@@ -4946,7 +4938,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateIn
   };
 }
 export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5073,7 +5065,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateOu
   };
 }
 export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5114,7 +5106,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateOutput
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForO365ManagementActivityAPICreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateInput,
     outputSchema:
@@ -5127,7 +5119,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPIDeleteInput {
   resourceName: string;
 }
 export const PrivateLinkServicesForO365ManagementActivityAPIDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5142,7 +5134,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIDeleteInput =
 // Output Schema
 export type PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput = void;
 export const PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput>;
 
 // The operation
 /**
@@ -5154,7 +5146,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForO365ManagementActivityAPIDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForO365ManagementActivityAPIDeleteInput,
     outputSchema: PrivateLinkServicesForO365ManagementActivityAPIDeleteOutput,
   }));
@@ -5165,7 +5157,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPIGetInput {
   resourceName: string;
 }
 export const PrivateLinkServicesForO365ManagementActivityAPIGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5201,7 +5193,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPIGetOutput {
   };
 }
 export const PrivateLinkServicesForO365ManagementActivityAPIGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5242,7 +5234,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIGetOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForO365ManagementActivityAPIGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForO365ManagementActivityAPIGetInput,
     outputSchema: PrivateLinkServicesForO365ManagementActivityAPIGetOutput,
   }));
@@ -5251,7 +5243,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPIListInput {
   subscriptionId: string;
 }
 export const PrivateLinkServicesForO365ManagementActivityAPIListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5288,7 +5280,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPIListOutput {
   }[];
 }
 export const PrivateLinkServicesForO365ManagementActivityAPIListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -5346,7 +5338,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIListOutput =
  * @param subscriptionId - The subscription identifier.
  */
 export const privateLinkServicesForO365ManagementActivityAPIList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForO365ManagementActivityAPIListInput,
     outputSchema: PrivateLinkServicesForO365ManagementActivityAPIListOutput,
   }));
@@ -5356,7 +5348,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPIListByResourceGr
   resourceGroupName: string;
 }
 export const PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5394,7 +5386,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPIListByResourceGr
   }[];
 }
 export const PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -5453,7 +5445,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupO
  * @param resourceGroupName - The name of the resource group that contains the service instance.
  */
 export const privateLinkServicesForO365ManagementActivityAPIListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PrivateLinkServicesForO365ManagementActivityAPIListByResourceGroupInput,
     outputSchema:
@@ -5468,7 +5460,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPIUpdateInput {
   properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
 }
 export const PrivateLinkServicesForO365ManagementActivityAPIUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5512,7 +5504,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPIUpdateOutput {
   };
 }
 export const PrivateLinkServicesForO365ManagementActivityAPIUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5555,7 +5547,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIUpdateOutput =
  * @param properties - The properties for updating a service instance.
  */
 export const privateLinkServicesForO365ManagementActivityAPIUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForO365ManagementActivityAPIUpdateInput,
     outputSchema: PrivateLinkServicesForO365ManagementActivityAPIUpdateOutput,
   }));
@@ -5622,7 +5614,7 @@ export interface PrivateLinkServicesForSCCPowershellCreateOrUpdateInput {
   };
 }
 export const PrivateLinkServicesForSCCPowershellCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5749,7 +5741,7 @@ export interface PrivateLinkServicesForSCCPowershellCreateOrUpdateOutput {
   };
 }
 export const PrivateLinkServicesForSCCPowershellCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5790,7 +5782,7 @@ export const PrivateLinkServicesForSCCPowershellCreateOrUpdateOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForSCCPowershellCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForSCCPowershellCreateOrUpdateInput,
     outputSchema: PrivateLinkServicesForSCCPowershellCreateOrUpdateOutput,
   }));
@@ -5801,7 +5793,7 @@ export interface PrivateLinkServicesForSCCPowershellDeleteInput {
   resourceName: string;
 }
 export const PrivateLinkServicesForSCCPowershellDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5816,7 +5808,7 @@ export const PrivateLinkServicesForSCCPowershellDeleteInput =
 // Output Schema
 export type PrivateLinkServicesForSCCPowershellDeleteOutput = void;
 export const PrivateLinkServicesForSCCPowershellDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForSCCPowershellDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinkServicesForSCCPowershellDeleteOutput>;
 
 // The operation
 /**
@@ -5828,7 +5820,7 @@ export const PrivateLinkServicesForSCCPowershellDeleteOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForSCCPowershellDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForSCCPowershellDeleteInput,
     outputSchema: PrivateLinkServicesForSCCPowershellDeleteOutput,
   }));
@@ -5839,7 +5831,7 @@ export interface PrivateLinkServicesForSCCPowershellGetInput {
   resourceName: string;
 }
 export const PrivateLinkServicesForSCCPowershellGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -5875,7 +5867,7 @@ export interface PrivateLinkServicesForSCCPowershellGetOutput {
   };
 }
 export const PrivateLinkServicesForSCCPowershellGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5916,7 +5908,7 @@ export const PrivateLinkServicesForSCCPowershellGetOutput =
  * @param resourceName - The name of the service instance.
  */
 export const privateLinkServicesForSCCPowershellGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForSCCPowershellGetInput,
     outputSchema: PrivateLinkServicesForSCCPowershellGetOutput,
   }));
@@ -5925,7 +5917,7 @@ export interface PrivateLinkServicesForSCCPowershellListInput {
   subscriptionId: string;
 }
 export const PrivateLinkServicesForSCCPowershellListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5962,7 +5954,7 @@ export interface PrivateLinkServicesForSCCPowershellListOutput {
   }[];
 }
 export const PrivateLinkServicesForSCCPowershellListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -6020,7 +6012,7 @@ export const PrivateLinkServicesForSCCPowershellListOutput =
  * @param subscriptionId - The subscription identifier.
  */
 export const privateLinkServicesForSCCPowershellList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForSCCPowershellListInput,
     outputSchema: PrivateLinkServicesForSCCPowershellListOutput,
   }));
@@ -6030,7 +6022,7 @@ export interface PrivateLinkServicesForSCCPowershellListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const PrivateLinkServicesForSCCPowershellListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6068,7 +6060,7 @@ export interface PrivateLinkServicesForSCCPowershellListByResourceGroupOutput {
   }[];
 }
 export const PrivateLinkServicesForSCCPowershellListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -6127,7 +6119,7 @@ export const PrivateLinkServicesForSCCPowershellListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group that contains the service instance.
  */
 export const privateLinkServicesForSCCPowershellListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForSCCPowershellListByResourceGroupInput,
     outputSchema: PrivateLinkServicesForSCCPowershellListByResourceGroupOutput,
   }));
@@ -6140,7 +6132,7 @@ export interface PrivateLinkServicesForSCCPowershellUpdateInput {
   properties?: { publicNetworkAccess?: "Enabled" | "Disabled" };
 }
 export const PrivateLinkServicesForSCCPowershellUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -6184,7 +6176,7 @@ export interface PrivateLinkServicesForSCCPowershellUpdateOutput {
   };
 }
 export const PrivateLinkServicesForSCCPowershellUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6227,7 +6219,7 @@ export const PrivateLinkServicesForSCCPowershellUpdateOutput =
  * @param properties - The properties for updating a service instance.
  */
 export const privateLinkServicesForSCCPowershellUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkServicesForSCCPowershellUpdateInput,
     outputSchema: PrivateLinkServicesForSCCPowershellUpdateOutput,
   }));
@@ -6237,7 +6229,7 @@ export interface ServicesDeleteInput {
   resourceGroupName: string;
   resourceName: string;
 }
-export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -6252,7 +6244,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ServicesDeleteOutput = void;
 export const ServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
 
 // The operation
 /**
@@ -6263,7 +6255,7 @@ export const ServicesDeleteOutput =
  * @param resourceGroupName - The name of the resource group that contains the service instance.
  * @param resourceName - The name of the service instance.
  */
-export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesDeleteInput,
   outputSchema: ServicesDeleteOutput,
 }));

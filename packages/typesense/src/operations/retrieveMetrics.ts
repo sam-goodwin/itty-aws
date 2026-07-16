@@ -4,16 +4,14 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface RetrieveMetricsInput {}
-export const RetrieveMetricsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const RetrieveMetricsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/metrics.json" }),
 ) as unknown as Schema.Codec<RetrieveMetricsInput>;
 
 // Output Schema
 export type RetrieveMetricsOutput = unknown;
 export const RetrieveMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<RetrieveMetricsOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<RetrieveMetricsOutput>;
 
 // The operation
 /**
@@ -21,7 +19,7 @@ export const RetrieveMetricsOutput =
  *
  * Retrieve the metrics.
  */
-export const retrieveMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const retrieveMetrics = /*@__PURE__*/ API.make(() => ({
   inputSchema: RetrieveMetricsInput,
   outputSchema: RetrieveMetricsOutput,
 }));

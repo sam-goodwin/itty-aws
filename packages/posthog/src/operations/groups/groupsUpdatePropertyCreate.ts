@@ -12,7 +12,7 @@ export interface GroupsUpdatePropertyCreateInput {
   created_at?: string;
 }
 export const GroupsUpdatePropertyCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     group_key: Schema.String,
     group_type_index: Schema.Number,
@@ -28,7 +28,7 @@ export const GroupsUpdatePropertyCreateInput =
 // Output Schema
 export type GroupsUpdatePropertyCreateOutput = void;
 export const GroupsUpdatePropertyCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsUpdatePropertyCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsUpdatePropertyCreateOutput>;
 
 // The operation
 /**
@@ -37,10 +37,8 @@ export const GroupsUpdatePropertyCreateOutput =
  * @param group_type_index - Specify the group type to find
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const groupsUpdatePropertyCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupsUpdatePropertyCreateInput,
-    outputSchema: GroupsUpdatePropertyCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const groupsUpdatePropertyCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupsUpdatePropertyCreateInput,
+  outputSchema: GroupsUpdatePropertyCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

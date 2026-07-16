@@ -14,7 +14,7 @@ export interface GetPaymentIntentsIntentInput {
   expand?: string;
 }
 export const GetPaymentIntentsIntentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     client_secret: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -284,7 +284,7 @@ export interface GetPaymentIntentsIntentOutput {
   transfer_group: string | null;
 }
 export const GetPaymentIntentsIntentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -675,9 +675,7 @@ export const GetPaymentIntentsIntentOutput =
  * @param client_secret - The client secret of the PaymentIntent. We require it if you use a publishable key to retrieve the source.
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetPaymentIntentsIntent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetPaymentIntentsIntentInput,
-    outputSchema: GetPaymentIntentsIntentOutput,
-  }),
-);
+export const GetPaymentIntentsIntent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetPaymentIntentsIntentInput,
+  outputSchema: GetPaymentIntentsIntentOutput,
+}));

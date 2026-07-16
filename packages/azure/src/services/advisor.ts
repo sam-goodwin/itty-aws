@@ -13,7 +13,7 @@ export interface AdvisorScoresGetInput {
   subscriptionId: string;
   name: string;
 }
-export const AdvisorScoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AdvisorScoresGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -38,27 +38,25 @@ export interface AdvisorScoresGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AdvisorScoresGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<AdvisorScoresGetOutput>;
+export const AdvisorScoresGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<AdvisorScoresGetOutput>;
 
 // The operation
 /**
@@ -68,7 +66,7 @@ export const AdvisorScoresGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param name - The scope of Advisor score entity.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const AdvisorScoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AdvisorScoresGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AdvisorScoresGetInput,
   outputSchema: AdvisorScoresGetOutput,
 }));
@@ -76,11 +74,9 @@ export const AdvisorScoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface AdvisorScoresListInput {
   subscriptionId: string;
 }
-export const AdvisorScoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const AdvisorScoresListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/advisorScore",
@@ -105,7 +101,7 @@ export interface AdvisorScoresListOutput {
   }[];
 }
 export const AdvisorScoresListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -148,7 +144,7 @@ export const AdvisorScoresListOutput =
  * @param subscriptionId - The Azure subscription ID.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const AdvisorScoresList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AdvisorScoresList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AdvisorScoresListInput,
   outputSchema: AdvisorScoresListOutput,
 }));
@@ -189,7 +185,7 @@ export interface ConfigurationsCreateInResourceGroupInput {
   };
 }
 export const ConfigurationsCreateInResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.Literals(["default"]).pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
@@ -266,7 +262,7 @@ export interface ConfigurationsCreateInResourceGroupOutput {
   };
 }
 export const ConfigurationsCreateInResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -296,7 +292,7 @@ export const ConfigurationsCreateInResourceGroupOutput =
  * @param resourceGroup - The name of the Azure resource group.
  */
 export const ConfigurationsCreateInResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationsCreateInResourceGroupInput,
     outputSchema: ConfigurationsCreateInResourceGroupOutput,
   }));
@@ -336,7 +332,7 @@ export interface ConfigurationsCreateInSubscriptionInput {
   };
 }
 export const ConfigurationsCreateInSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     configurationName: Schema.Literals(["default"]).pipe(T.PathParam()),
     properties: Schema.optional(
@@ -412,7 +408,7 @@ export interface ConfigurationsCreateInSubscriptionOutput {
   };
 }
 export const ConfigurationsCreateInSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -443,7 +439,7 @@ export const ConfigurationsCreateInSubscriptionOutput =
  * @param configurationName - Advisor configuration name. Value must be 'default'
  */
 export const ConfigurationsCreateInSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationsCreateInSubscriptionInput,
     outputSchema: ConfigurationsCreateInSubscriptionOutput,
   }));
@@ -453,7 +449,7 @@ export interface ConfigurationsListByResourceGroupInput {
   resourceGroup: string;
 }
 export const ConfigurationsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -482,7 +478,7 @@ export interface ConfigurationsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ConfigurationsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -528,7 +524,7 @@ export const ConfigurationsListByResourceGroupOutput =
  * @param resourceGroup - The name of the Azure resource group.
  */
 export const ConfigurationsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationsListByResourceGroupInput,
     outputSchema: ConfigurationsListByResourceGroupOutput,
   }));
@@ -537,7 +533,7 @@ export interface ConfigurationsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const ConfigurationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -565,7 +561,7 @@ export interface ConfigurationsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ConfigurationsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -612,15 +608,13 @@ export const ConfigurationsListBySubscriptionOutput =
  * @param subscriptionId - The Azure subscription ID.
  */
 export const ConfigurationsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationsListBySubscriptionInput,
     outputSchema: ConfigurationsListBySubscriptionOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Advisor/operations",
@@ -641,7 +635,7 @@ export interface OperationsListOutput {
     };
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -666,7 +660,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The version of the API to be used with the client request.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -678,7 +672,7 @@ export interface PredictInput {
     extendedProperties?: unknown;
   };
 }
-export const PredictInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PredictInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
@@ -713,7 +707,7 @@ export interface PredictOutput {
     shortDescription?: { problem?: string; solution?: string };
   };
 }
-export const PredictOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PredictOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
       extendedProperties: Schema.optional(Schema.Unknown),
@@ -749,7 +743,7 @@ export const PredictOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The Azure subscription ID.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const Predict = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const Predict = /*@__PURE__*/ API.make(() => ({
   inputSchema: PredictInput,
   outputSchema: PredictOutput,
 }));
@@ -758,7 +752,7 @@ export interface RecommendationMetadataGetInput {
   name: string;
 }
 export const RecommendationMetadataGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -781,7 +775,7 @@ export interface RecommendationMetadataGetOutput {
   };
 }
 export const RecommendationMetadataGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -811,18 +805,16 @@ export const RecommendationMetadataGetOutput =
  * @param name - Name of metadata entity.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const RecommendationMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecommendationMetadataGetInput,
-    outputSchema: RecommendationMetadataGetOutput,
-  }),
-);
+export const RecommendationMetadataGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecommendationMetadataGetInput,
+  outputSchema: RecommendationMetadataGetOutput,
+}));
 // Input Schema
 export interface RecommendationMetadataListInput {
   $filter?: string;
 }
 export const RecommendationMetadataListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -848,7 +840,7 @@ export interface RecommendationMetadataListOutput {
   nextLink?: string;
 }
 export const RecommendationMetadataListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -885,18 +877,16 @@ export const RecommendationMetadataListOutput =
  * @param api-version - The version of the API to be used with the client request.
  * @param $filter - The filter to apply to the recommendation metadata.<br>Filter can be applied to properties ['[recommendationCategory](#category)', '[recommendationSubCategory](#recommendationSubCategory)', 'RetirementDate'] with operators ['eq', 'and', 'le', 'ge']<br>The filter can also be applied to property ['[TrackingIds]']<br><br>⚠ **Note:** `recommendationControl` is a legacy filter property and will be deprecated in the future. Please use `recommendationSubCategory` for filtering recommendation subcategory.<br><br>Valid options for recommendationSubCategory: ['BusinessContinuity', 'DisasterRecovery', 'HighAvailability', 'MonitoringAndAlerting', 'Other', 'Personalized', 'PrioritizedRecommendations', 'Scalability', 'ServiceUpgradeAndRetirement', 'Validation']<br><br>Example:<br>- $filter=recommendationCategory eq 'HighAvailability' and recommendationSubCategory eq 'ServiceUpgradeAndRetirement' and retirementDate ge '2024-01-01' and retirementDate le '2028-01-01'. Filter can be applied on trackingIds as well.<br>- $filter=trackingIds/any(t: t eq 'some-guid')<br><br>⚠ **Note:** `trackingIDs` filter can be used for filtering one value at a time. The support to filter multiple values is not currently available. Also the support to add other filters along with `trackingIDs` is not available.
  */
-export const RecommendationMetadataList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecommendationMetadataListInput,
-    outputSchema: RecommendationMetadataListOutput,
-  }),
-);
+export const RecommendationMetadataList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecommendationMetadataListInput,
+  outputSchema: RecommendationMetadataListOutput,
+}));
 // Input Schema
 export interface RecommendationsGenerateInput {
   subscriptionId: string;
 }
 export const RecommendationsGenerateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -909,7 +899,7 @@ export const RecommendationsGenerateInput =
 // Output Schema
 export type RecommendationsGenerateOutput = void;
 export const RecommendationsGenerateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RecommendationsGenerateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RecommendationsGenerateOutput>;
 
 // The operation
 /**
@@ -918,19 +908,17 @@ export const RecommendationsGenerateOutput =
  * @param subscriptionId - The Azure subscription ID.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const RecommendationsGenerate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RecommendationsGenerateInput,
-    outputSchema: RecommendationsGenerateOutput,
-  }),
-);
+export const RecommendationsGenerate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RecommendationsGenerateInput,
+  outputSchema: RecommendationsGenerateOutput,
+}));
 // Input Schema
 export interface RecommendationsGetInput {
   resourceUri: string;
   recommendationId: string;
 }
 export const RecommendationsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     recommendationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -956,7 +944,7 @@ export interface RecommendationsGetOutput {
   };
 }
 export const RecommendationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -984,7 +972,7 @@ export const RecommendationsGetOutput =
  * @param recommendationId - The recommendation ID.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const RecommendationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RecommendationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecommendationsGetInput,
   outputSchema: RecommendationsGetOutput,
 }));
@@ -994,7 +982,7 @@ export interface RecommendationsGetGenerateStatusInput {
   operationId: string;
 }
 export const RecommendationsGetGenerateStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1008,7 +996,7 @@ export const RecommendationsGetGenerateStatusInput =
 // Output Schema
 export type RecommendationsGetGenerateStatusOutput = void;
 export const RecommendationsGetGenerateStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RecommendationsGetGenerateStatusOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RecommendationsGetGenerateStatusOutput>;
 
 // The operation
 /**
@@ -1019,7 +1007,7 @@ export const RecommendationsGetGenerateStatusOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const RecommendationsGetGenerateStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RecommendationsGetGenerateStatusInput,
     outputSchema: RecommendationsGetGenerateStatusOutput,
   }));
@@ -1031,7 +1019,7 @@ export interface RecommendationsListInput {
   $skipToken?: string;
 }
 export const RecommendationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -1062,7 +1050,7 @@ export interface RecommendationsListOutput {
   }[];
 }
 export const RecommendationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1109,7 +1097,7 @@ export const RecommendationsListOutput =
  * @param $top - The number of recommendations per page if a paged version of this API is being used.
  * @param $skipToken - The page-continuation token to use with a paged version of this API.
  */
-export const RecommendationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RecommendationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RecommendationsListInput,
   outputSchema: RecommendationsListOutput,
 }));
@@ -1135,7 +1123,7 @@ export interface SuppressionsCreateInput {
   };
 }
 export const SuppressionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     recommendationId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1185,7 +1173,7 @@ export interface SuppressionsCreateOutput {
   };
 }
 export const SuppressionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1214,7 +1202,7 @@ export const SuppressionsCreateOutput =
  * @param name - The name of the suppression.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const SuppressionsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SuppressionsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SuppressionsCreateInput,
   outputSchema: SuppressionsCreateOutput,
 }));
@@ -1225,7 +1213,7 @@ export interface SuppressionsDeleteInput {
   name: string;
 }
 export const SuppressionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     recommendationId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1240,7 +1228,7 @@ export const SuppressionsDeleteInput =
 // Output Schema
 export type SuppressionsDeleteOutput = void;
 export const SuppressionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SuppressionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SuppressionsDeleteOutput>;
 
 // The operation
 /**
@@ -1251,7 +1239,7 @@ export const SuppressionsDeleteOutput =
  * @param name - The name of the suppression.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const SuppressionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SuppressionsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SuppressionsDeleteInput,
   outputSchema: SuppressionsDeleteOutput,
 }));
@@ -1261,7 +1249,7 @@ export interface SuppressionsGetInput {
   recommendationId: string;
   name: string;
 }
-export const SuppressionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SuppressionsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   recommendationId: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -1287,7 +1275,7 @@ export interface SuppressionsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SuppressionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SuppressionsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1316,7 +1304,7 @@ export const SuppressionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the suppression.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const SuppressionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SuppressionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SuppressionsGetInput,
   outputSchema: SuppressionsGetOutput,
 }));
@@ -1326,7 +1314,7 @@ export interface SuppressionsListInput {
   $top?: number;
   $skipToken?: string;
 }
-export const SuppressionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SuppressionsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
   $skipToken: Schema.optional(Schema.String),
@@ -1355,44 +1343,42 @@ export interface SuppressionsListOutput {
     };
   }[];
 }
-export const SuppressionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(
-                Schema.Literals([
-                  "User",
-                  "Application",
-                  "ManagedIdentity",
-                  "Key",
-                ]),
-              ),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const SuppressionsListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(
+              Schema.Literals([
+                "User",
+                "Application",
+                "ManagedIdentity",
+                "Key",
+              ]),
+            ),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-  },
-) as unknown as Schema.Codec<SuppressionsListOutput>;
+  ),
+}) as unknown as Schema.Codec<SuppressionsListOutput>;
 
 // The operation
 /**
@@ -1403,7 +1389,7 @@ export const SuppressionsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param $top - The number of suppressions per page if a paged version of this API is being used.
  * @param $skipToken - The page-continuation token to use with a paged version of this API.
  */
-export const SuppressionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SuppressionsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SuppressionsListInput,
   outputSchema: SuppressionsListOutput,
 }));

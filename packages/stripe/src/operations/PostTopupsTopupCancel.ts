@@ -13,7 +13,7 @@ export interface PostTopupsTopupCancelInput {
   expand?: string[];
 }
 export const PostTopupsTopupCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topup: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -124,7 +124,7 @@ export interface PostTopupsTopupCancelOutput {
   transfer_group: string | null;
 }
 export const PostTopupsTopupCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transaction: Schema.NullOr(
       Schema.Union([
@@ -241,9 +241,7 @@ export const PostTopupsTopupCancelOutput =
  *
  * <p>Cancels a top-up. Only pending top-ups can be canceled.</p>
  */
-export const PostTopupsTopupCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostTopupsTopupCancelInput,
-    outputSchema: PostTopupsTopupCancelOutput,
-  }),
-);
+export const PostTopupsTopupCancel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTopupsTopupCancelInput,
+  outputSchema: PostTopupsTopupCancelOutput,
+}));

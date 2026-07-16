@@ -7,7 +7,7 @@ export interface MarketingAnalyticsConversionGoalsRetrieveInput {
   project_id: string;
 }
 export const MarketingAnalyticsConversionGoalsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -39,7 +39,7 @@ export interface MarketingAnalyticsConversionGoalsRetrieveOutput {
   has_misconfigured: boolean;
 }
 export const MarketingAnalyticsConversionGoalsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     goals: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -72,7 +72,7 @@ export const MarketingAnalyticsConversionGoalsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const marketingAnalyticsConversionGoalsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketingAnalyticsConversionGoalsRetrieveInput,
     outputSchema: MarketingAnalyticsConversionGoalsRetrieveOutput,
   }));

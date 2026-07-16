@@ -29,7 +29,7 @@ export interface GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableContinuousRun: Schema.optional(Schema.Boolean),
     enablePredeploymentRun: Schema.optional(Schema.Boolean),
     testCases: Schema.optional(Schema.Array(Schema.String)),
@@ -42,7 +42,7 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources {
 }
 
 export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources: Schema.Codec<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instructionIndexes: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources",
@@ -56,7 +56,7 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateChe
 }
 
 export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion: Schema.Codec<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestionIndex: Schema.optional(Schema.Number),
     sources: Schema.optional(
       GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources,
@@ -73,7 +73,7 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateChe
 }
 
 export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult: Schema.Codec<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duplicateSuggestions: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2beta1AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion,
@@ -91,7 +91,7 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleRespon
 }
 
 export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse: Schema.Codec<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSampleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sources: Schema.optional(
       GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources,
     ),
@@ -111,7 +111,7 @@ export interface GoogleCloudDialogflowCxV3beta1VersionVariantsVariant {
 }
 
 export const GoogleCloudDialogflowCxV3beta1VersionVariantsVariant: Schema.Codec<GoogleCloudDialogflowCxV3beta1VersionVariantsVariant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trafficAllocation: Schema.optional(Schema.Number),
     version: Schema.optional(Schema.String),
     isControlGroup: Schema.optional(Schema.Boolean),
@@ -124,7 +124,7 @@ export interface GoogleCloudDialogflowCxV3beta1VersionVariants {
 }
 
 export const GoogleCloudDialogflowCxV3beta1VersionVariants: Schema.Codec<GoogleCloudDialogflowCxV3beta1VersionVariants> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     variants: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1VersionVariantsVariant),
     ),
@@ -136,7 +136,7 @@ export interface GoogleCloudDialogflowCxV3beta1VariantsHistory {
 }
 
 export const GoogleCloudDialogflowCxV3beta1VariantsHistory: Schema.Codec<GoogleCloudDialogflowCxV3beta1VariantsHistory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versionVariants: Schema.optional(
       GoogleCloudDialogflowCxV3beta1VersionVariants,
     ),
@@ -149,7 +149,7 @@ export interface GoogleCloudDialogflowCxV3beta1IntentCoverageIntent {
 }
 
 export const GoogleCloudDialogflowCxV3beta1IntentCoverageIntent: Schema.Codec<GoogleCloudDialogflowCxV3beta1IntentCoverageIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     covered: Schema.optional(Schema.Boolean),
     intent: Schema.optional(Schema.String),
   }).annotate({
@@ -162,7 +162,7 @@ export interface GoogleCloudDialogflowCxV3beta1IntentCoverage {
 }
 
 export const GoogleCloudDialogflowCxV3beta1IntentCoverage: Schema.Codec<GoogleCloudDialogflowCxV3beta1IntentCoverage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intents: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1IntentCoverageIntent),
     ),
@@ -175,7 +175,7 @@ export interface GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction: Schema.Codec<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameter: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Unknown),
   }).annotate({
@@ -189,7 +189,7 @@ export interface GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment 
 }
 
 export const GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment: Schema.Codec<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     allowPlaybackInterruption: Schema.optional(Schema.Boolean),
     audio: Schema.optional(Schema.String),
@@ -203,7 +203,7 @@ export interface GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio: Schema.Codec<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     segments: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment,
@@ -219,7 +219,7 @@ export interface GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio: Schema.Codec<GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audioUri: Schema.optional(Schema.String),
     allowPlaybackInterruption: Schema.optional(Schema.Boolean),
   }).annotate({
@@ -232,7 +232,7 @@ export interface GoogleCloudDialogflowCxV3beta1ResponseMessageText {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ResponseMessageText: Schema.Codec<GoogleCloudDialogflowCxV3beta1ResponseMessageText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowPlaybackInterruption: Schema.optional(Schema.Boolean),
     text: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -246,7 +246,7 @@ export interface GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText: Schema.Codec<GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ssml: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
     allowPlaybackInterruption: Schema.optional(Schema.Boolean),
@@ -259,7 +259,7 @@ export interface GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferC
 }
 
 export const GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall: Schema.Codec<GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -271,7 +271,7 @@ export interface GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSucces
 }
 
 export const GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess: Schema.Codec<GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({
     identifier:
@@ -283,7 +283,7 @@ export interface GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff: Schema.Codec<GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff",
@@ -296,7 +296,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolCall {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolCall: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputParameters: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
@@ -307,14 +307,14 @@ export const GoogleCloudDialogflowCxV3beta1ToolCall: Schema.Codec<GoogleCloudDia
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction {}
 
 export const GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction: Schema.Codec<GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction",
   });
 
 export interface GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard {}
 
 export const GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard: Schema.Codec<GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard",
   });
@@ -335,7 +335,7 @@ export interface GoogleCloudDialogflowCxV3beta1ResponseMessage {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ResponseMessage: Schema.Codec<GoogleCloudDialogflowCxV3beta1ResponseMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channel: Schema.optional(Schema.String),
     mixedAudio: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio,
@@ -372,7 +372,7 @@ export interface GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCa
 }
 
 export const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent: Schema.Codec<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       message: Schema.optional(GoogleCloudDialogflowCxV3beta1ResponseMessage),
       additionalCases: Schema.optional(
@@ -390,7 +390,7 @@ export interface GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase: Schema.Codec<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       condition: Schema.optional(Schema.String),
       caseContent: Schema.optional(
@@ -408,7 +408,7 @@ export interface GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases: Schema.Codec<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       cases: Schema.optional(
         Schema.Array(
@@ -425,7 +425,7 @@ export interface GoogleCloudDialogflowCxV3beta1GcsDestination {
 }
 
 export const GoogleCloudDialogflowCxV3beta1GcsDestination: Schema.Codec<GoogleCloudDialogflowCxV3beta1GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1GcsDestination" });
 
@@ -437,7 +437,7 @@ export interface GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointerSensitivity: Schema.optional(Schema.Number),
     useTimeoutBasedEndpointing: Schema.optional(Schema.Boolean),
     models: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -455,7 +455,7 @@ export interface GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     endpointingTimeoutDuration: Schema.optional(Schema.String),
     maxDigits: Schema.optional(Schema.Number),
@@ -472,7 +472,7 @@ export interface GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableStackdriverLogging: Schema.optional(Schema.Boolean),
     enableInteractionLogging: Schema.optional(Schema.Boolean),
     enableConsentBasedRedaction: Schema.optional(Schema.Boolean),
@@ -488,7 +488,7 @@ export interface GoogleCloudDialogflowCxV3beta1AdvancedSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1AdvancedSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1AdvancedSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audioExportGcsDestination: Schema.optional(
       GoogleCloudDialogflowCxV3beta1GcsDestination,
     ),
@@ -510,7 +510,7 @@ export interface GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1FulfillmentGeneratorSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     generator: Schema.optional(Schema.String),
     inputParameters: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -533,7 +533,7 @@ export interface GoogleCloudDialogflowCxV3beta1Fulfillment {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Fulfillment: Schema.Codec<GoogleCloudDialogflowCxV3beta1Fulfillment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     setParameterActions: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction),
     ),
@@ -566,7 +566,7 @@ export interface GoogleCloudDialogflowCxV3beta1TransitionRoute {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TransitionRoute: Schema.Codec<GoogleCloudDialogflowCxV3beta1TransitionRoute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     intent: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -585,7 +585,7 @@ export interface GoogleCloudDialogflowCxV3beta1TransitionRouteGroup {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TransitionRouteGroup: Schema.Codec<GoogleCloudDialogflowCxV3beta1TransitionRouteGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     transitionRoutes: Schema.optional(
@@ -601,7 +601,7 @@ export interface GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCover
 }
 
 export const GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransition: Schema.Codec<GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverageTransition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transitionRoute: Schema.optional(
       GoogleCloudDialogflowCxV3beta1TransitionRoute,
     ),
@@ -618,7 +618,7 @@ export interface GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCover
 }
 
 export const GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverage: Schema.Codec<GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverageCoverage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     routeGroup: Schema.optional(
       GoogleCloudDialogflowCxV3beta1TransitionRouteGroup,
     ),
@@ -639,7 +639,7 @@ export interface GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverage {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverage: Schema.Codec<GoogleCloudDialogflowCxV3beta1TransitionRouteGroupCoverage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     coverageScore: Schema.optional(Schema.Number),
     coverages: Schema.optional(
       Schema.Array(
@@ -660,7 +660,7 @@ export interface GoogleCloudDialogflowCxV3beta1EventHandler {
 }
 
 export const GoogleCloudDialogflowCxV3beta1EventHandler: Schema.Codec<GoogleCloudDialogflowCxV3beta1EventHandler> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetFlow: Schema.optional(Schema.String),
     targetPlaybook: Schema.optional(Schema.String),
     event: Schema.optional(Schema.String),
@@ -677,7 +677,7 @@ export interface GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior: Schema.Codec<GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repromptEventHandlers: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1EventHandler),
     ),
@@ -700,7 +700,7 @@ export interface GoogleCloudDialogflowCxV3beta1FormParameter {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FormParameter: Schema.Codec<GoogleCloudDialogflowCxV3beta1FormParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     required: Schema.optional(Schema.Boolean),
     defaultValue: Schema.optional(Schema.Unknown),
     entityType: Schema.optional(Schema.String),
@@ -720,7 +720,7 @@ export interface GoogleCloudDialogflowCxV3beta1Form {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Form: Schema.Codec<GoogleCloudDialogflowCxV3beta1Form> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameters: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1FormParameter),
     ),
@@ -742,7 +742,7 @@ export interface GoogleCloudDialogflowCxV3beta1DataStoreConnection {
 }
 
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnection: Schema.Codec<GoogleCloudDialogflowCxV3beta1DataStoreConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataStoreType: Schema.optional(Schema.String),
     dataStore: Schema.optional(Schema.String),
     documentProcessingMode: Schema.optional(Schema.String),
@@ -759,7 +759,7 @@ export interface GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     triggerFulfillment: Schema.optional(
       GoogleCloudDialogflowCxV3beta1Fulfillment,
     ),
@@ -787,7 +787,7 @@ export interface GoogleCloudDialogflowCxV3beta1Page {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Page: Schema.Codec<GoogleCloudDialogflowCxV3beta1Page> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventHandlers: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1EventHandler),
     ),
@@ -822,7 +822,7 @@ export interface GoogleCloudDialogflowCxV3beta1InlineSchema {
 }
 
 export const GoogleCloudDialogflowCxV3beta1InlineSchema: Schema.Codec<GoogleCloudDialogflowCxV3beta1InlineSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       type: Schema.optional(Schema.String),
       items: Schema.optional(GoogleCloudDialogflowCxV3beta1TypeSchema),
@@ -837,7 +837,7 @@ export interface GoogleCloudDialogflowCxV3beta1TypeSchemaSchemaReference {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TypeSchemaSchemaReference: Schema.Codec<GoogleCloudDialogflowCxV3beta1TypeSchemaSchemaReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tool: Schema.optional(Schema.String),
     schema: Schema.optional(Schema.String),
   }).annotate({
@@ -850,7 +850,7 @@ export interface GoogleCloudDialogflowCxV3beta1TypeSchema {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TypeSchema: Schema.Codec<GoogleCloudDialogflowCxV3beta1TypeSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       inlineSchema: Schema.optional(GoogleCloudDialogflowCxV3beta1InlineSchema),
       schemaReference: Schema.optional(
@@ -877,7 +877,7 @@ export interface GoogleCloudDialogflowCxV3beta1ParameterDefinition {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ParameterDefinition: Schema.Codec<GoogleCloudDialogflowCxV3beta1ParameterDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     typeSchema: Schema.optional(GoogleCloudDialogflowCxV3beta1TypeSchema),
@@ -892,7 +892,7 @@ export interface GoogleCloudDialogflowCxV3beta1FlowMultiLanguageSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FlowMultiLanguageSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1FlowMultiLanguageSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportedResponseLanguageCodes: Schema.optional(
       Schema.Array(Schema.String),
     ),
@@ -916,7 +916,7 @@ export interface GoogleCloudDialogflowCxV3beta1NluSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1NluSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1NluSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     modelTrainingMode: Schema.optional(Schema.String),
     modelType: Schema.optional(Schema.String),
     classificationThreshold: Schema.optional(Schema.Number),
@@ -939,7 +939,7 @@ export interface GoogleCloudDialogflowCxV3beta1Flow {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Flow: Schema.Codec<GoogleCloudDialogflowCxV3beta1Flow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     transitionRoutes: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1TransitionRoute),
@@ -975,7 +975,7 @@ export interface GoogleCloudDialogflowCxV3beta1TransitionCoverageTransitionNode 
 }
 
 export const GoogleCloudDialogflowCxV3beta1TransitionCoverageTransitionNode: Schema.Codec<GoogleCloudDialogflowCxV3beta1TransitionCoverageTransitionNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     page: Schema.optional(GoogleCloudDialogflowCxV3beta1Page),
     flow: Schema.optional(GoogleCloudDialogflowCxV3beta1Flow),
   }).annotate({
@@ -993,7 +993,7 @@ export interface GoogleCloudDialogflowCxV3beta1TransitionCoverageTransition {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TransitionCoverageTransition: Schema.Codec<GoogleCloudDialogflowCxV3beta1TransitionCoverageTransition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     covered: Schema.optional(Schema.Boolean),
     source: Schema.optional(
       GoogleCloudDialogflowCxV3beta1TransitionCoverageTransitionNode,
@@ -1016,7 +1016,7 @@ export interface GoogleCloudDialogflowCxV3beta1TransitionCoverage {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TransitionCoverage: Schema.Codec<GoogleCloudDialogflowCxV3beta1TransitionCoverage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     coverageScore: Schema.optional(Schema.Number),
     transitions: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1TransitionCoverageTransition),
@@ -1033,7 +1033,7 @@ export interface GoogleCloudDialogflowCxV3beta1CalculateCoverageResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1CalculateCoverageResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1CalculateCoverageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agent: Schema.optional(Schema.String),
     intentCoverage: Schema.optional(
       GoogleCloudDialogflowCxV3beta1IntentCoverage,
@@ -1053,7 +1053,7 @@ export interface GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse",
@@ -1065,7 +1065,7 @@ export interface GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingReason {
 }
 
 export const GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingReason: Schema.Codec<GoogleCloudDialogflowCxV3beta1AnswerFeedbackRatingReason> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reasonLabels: Schema.optional(Schema.Array(Schema.String)),
     feedback: Schema.optional(Schema.String),
   }).annotate({
@@ -1079,7 +1079,7 @@ export interface GoogleCloudDialogflowCxV3beta1AnswerFeedback {
 }
 
 export const GoogleCloudDialogflowCxV3beta1AnswerFeedback: Schema.Codec<GoogleCloudDialogflowCxV3beta1AnswerFeedback> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rating: Schema.optional(Schema.String),
     customRating: Schema.optional(Schema.String),
     ratingReason: Schema.optional(
@@ -1094,7 +1094,7 @@ export interface GoogleCloudDialogflowCxV3beta1SubmitAnswerFeedbackRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1SubmitAnswerFeedbackRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1SubmitAnswerFeedbackRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responseId: Schema.optional(Schema.String),
     updateMask: Schema.optional(Schema.String),
     answerFeedback: Schema.optional(
@@ -1109,7 +1109,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolEndUserAuthConfigOauth2AuthCo
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolEndUserAuthConfigOauth2AuthCodeConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolEndUserAuthConfigOauth2AuthCodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oauthToken: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1123,7 +1123,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolEndUserAuthConfigOauth2JwtBea
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolEndUserAuthConfigOauth2JwtBearerConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolEndUserAuthConfigOauth2JwtBearerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     issuer: Schema.optional(Schema.String),
     subject: Schema.optional(Schema.String),
     clientKey: Schema.optional(Schema.String),
@@ -1138,7 +1138,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolEndUserAuthConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolEndUserAuthConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolEndUserAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oauth2AuthCodeConfig: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ToolEndUserAuthConfigOauth2AuthCodeConfig,
     ),
@@ -1156,7 +1156,7 @@ export interface GoogleRpcStatus {
 }
 
 export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -1171,7 +1171,7 @@ export interface GoogleCloudDialogflowCxV3TestError {
 }
 
 export const GoogleCloudDialogflowCxV3TestError: Schema.Codec<GoogleCloudDialogflowCxV3TestError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(GoogleRpcStatus),
     testTime: Schema.optional(Schema.String),
     testCase: Schema.optional(Schema.String),
@@ -1182,7 +1182,7 @@ export interface GoogleCloudDialogflowCxV3DeployFlowMetadata {
 }
 
 export const GoogleCloudDialogflowCxV3DeployFlowMetadata: Schema.Codec<GoogleCloudDialogflowCxV3DeployFlowMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     testErrors: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3TestError),
     ),
@@ -1196,7 +1196,7 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGene
 }
 
 export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet: Schema.Codec<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -1211,7 +1211,7 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGene
 }
 
 export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource: Schema.Codec<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     snippets: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet,
@@ -1228,7 +1228,7 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEven
 }
 
 export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource: Schema.Codec<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerEventSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     snippets: Schema.optional(
       GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource,
     ),
@@ -1247,7 +1247,7 @@ export interface GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings {
 }
 
 export const GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings: Schema.Codec<GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     endpointingTimeoutDuration: Schema.optional(Schema.String),
     maxDigits: Schema.optional(Schema.Number),
@@ -1264,7 +1264,7 @@ export interface GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
 }
 
 export const GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings: Schema.Codec<GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableStackdriverLogging: Schema.optional(Schema.Boolean),
     enableInteractionLogging: Schema.optional(Schema.Boolean),
     enableConsentBasedRedaction: Schema.optional(Schema.Boolean),
@@ -1277,7 +1277,7 @@ export interface GoogleCloudDialogflowCxV3GcsDestination {
 }
 
 export const GoogleCloudDialogflowCxV3GcsDestination: Schema.Codec<GoogleCloudDialogflowCxV3GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3GcsDestination" });
 
@@ -1289,7 +1289,7 @@ export interface GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings {
 }
 
 export const GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings: Schema.Codec<GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointerSensitivity: Schema.optional(Schema.Number),
     useTimeoutBasedEndpointing: Schema.optional(Schema.Boolean),
     models: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1306,7 +1306,7 @@ export interface GoogleCloudDialogflowCxV3AdvancedSettings {
 }
 
 export const GoogleCloudDialogflowCxV3AdvancedSettings: Schema.Codec<GoogleCloudDialogflowCxV3AdvancedSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dtmfSettings: Schema.optional(
       GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings,
     ),
@@ -1328,7 +1328,7 @@ export interface GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings {
 }
 
 export const GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings: Schema.Codec<GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputParameter: Schema.optional(Schema.String),
     inputParameters: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -1344,7 +1344,7 @@ export interface GoogleCloudDialogflowCxV3FulfillmentSetParameterAction {
 }
 
 export const GoogleCloudDialogflowCxV3FulfillmentSetParameterAction: Schema.Codec<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameter: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Unknown),
   }).annotate({
@@ -1358,7 +1358,7 @@ export interface GoogleCloudDialogflowCxV3ToolCall {
 }
 
 export const GoogleCloudDialogflowCxV3ToolCall: Schema.Codec<GoogleCloudDialogflowCxV3ToolCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     tool: Schema.optional(Schema.String),
     inputParameters: Schema.optional(
@@ -1369,7 +1369,7 @@ export const GoogleCloudDialogflowCxV3ToolCall: Schema.Codec<GoogleCloudDialogfl
 export interface GoogleCloudDialogflowCxV3ResponseMessageEndInteraction {}
 
 export const GoogleCloudDialogflowCxV3ResponseMessageEndInteraction: Schema.Codec<GoogleCloudDialogflowCxV3ResponseMessageEndInteraction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ResponseMessageEndInteraction",
   });
 
@@ -1378,7 +1378,7 @@ export interface GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess {
 }
 
 export const GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess: Schema.Codec<GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess",
@@ -1390,7 +1390,7 @@ export interface GoogleCloudDialogflowCxV3ResponseMessagePlayAudio {
 }
 
 export const GoogleCloudDialogflowCxV3ResponseMessagePlayAudio: Schema.Codec<GoogleCloudDialogflowCxV3ResponseMessagePlayAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowPlaybackInterruption: Schema.optional(Schema.Boolean),
     audioUri: Schema.optional(Schema.String),
   }).annotate({
@@ -1403,7 +1403,7 @@ export interface GoogleCloudDialogflowCxV3ResponseMessageText {
 }
 
 export const GoogleCloudDialogflowCxV3ResponseMessageText: Schema.Codec<GoogleCloudDialogflowCxV3ResponseMessageText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.Array(Schema.String)),
     allowPlaybackInterruption: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3ResponseMessageText" });
@@ -1415,7 +1415,7 @@ export interface GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText {
 }
 
 export const GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText: Schema.Codec<GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ssml: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
     allowPlaybackInterruption: Schema.optional(Schema.Boolean),
@@ -1428,7 +1428,7 @@ export interface GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall {
 }
 
 export const GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall: Schema.Codec<GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall",
@@ -1439,7 +1439,7 @@ export interface GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff {
 }
 
 export const GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff: Schema.Codec<GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff",
@@ -1448,7 +1448,7 @@ export const GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff: Schema.Co
 export interface GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard {}
 
 export const GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard: Schema.Codec<GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard",
   });
 
@@ -1459,7 +1459,7 @@ export interface GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment {
 }
 
 export const GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment: Schema.Codec<GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audio: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     allowPlaybackInterruption: Schema.optional(Schema.Boolean),
@@ -1472,7 +1472,7 @@ export interface GoogleCloudDialogflowCxV3ResponseMessageMixedAudio {
 }
 
 export const GoogleCloudDialogflowCxV3ResponseMessageMixedAudio: Schema.Codec<GoogleCloudDialogflowCxV3ResponseMessageMixedAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     segments: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment),
     ),
@@ -1502,7 +1502,7 @@ export interface GoogleCloudDialogflowCxV3ResponseMessage {
 }
 
 export const GoogleCloudDialogflowCxV3ResponseMessage: Schema.Codec<GoogleCloudDialogflowCxV3ResponseMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     toolCall: Schema.optional(GoogleCloudDialogflowCxV3ToolCall),
     endInteraction: Schema.optional(
       GoogleCloudDialogflowCxV3ResponseMessageEndInteraction,
@@ -1540,7 +1540,7 @@ export interface GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseCon
 }
 
 export const GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent: Schema.Codec<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       message: Schema.optional(GoogleCloudDialogflowCxV3ResponseMessage),
       additionalCases: Schema.optional(
@@ -1558,7 +1558,7 @@ export interface GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase {
 }
 
 export const GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase: Schema.Codec<GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       caseContent: Schema.optional(
         Schema.Array(
@@ -1576,7 +1576,7 @@ export interface GoogleCloudDialogflowCxV3FulfillmentConditionalCases {
 }
 
 export const GoogleCloudDialogflowCxV3FulfillmentConditionalCases: Schema.Codec<GoogleCloudDialogflowCxV3FulfillmentConditionalCases> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       cases: Schema.optional(
         Schema.Array(GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase),
@@ -1599,7 +1599,7 @@ export interface GoogleCloudDialogflowCxV3Fulfillment {
 }
 
 export const GoogleCloudDialogflowCxV3Fulfillment: Schema.Codec<GoogleCloudDialogflowCxV3Fulfillment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableGenerativeFallback: Schema.optional(Schema.Boolean),
     generators: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings),
@@ -1631,7 +1631,7 @@ export interface GoogleCloudDialogflowCxV3EventHandler {
 }
 
 export const GoogleCloudDialogflowCxV3EventHandler: Schema.Codec<GoogleCloudDialogflowCxV3EventHandler> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetFlow: Schema.optional(Schema.String),
     targetPlaybook: Schema.optional(Schema.String),
     event: Schema.optional(Schema.String),
@@ -1651,7 +1651,7 @@ export interface GoogleCloudDialogflowCxV3TransitionRoute {
 }
 
 export const GoogleCloudDialogflowCxV3TransitionRoute: Schema.Codec<GoogleCloudDialogflowCxV3TransitionRoute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     condition: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     triggerFulfillment: Schema.optional(GoogleCloudDialogflowCxV3Fulfillment),
@@ -1677,7 +1677,7 @@ export interface GoogleCloudDialogflowCxV3DataStoreConnection {
 }
 
 export const GoogleCloudDialogflowCxV3DataStoreConnection: Schema.Codec<GoogleCloudDialogflowCxV3DataStoreConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataStoreType: Schema.optional(Schema.String),
     dataStore: Schema.optional(Schema.String),
     documentProcessingMode: Schema.optional(Schema.String),
@@ -1692,7 +1692,7 @@ export interface GoogleCloudDialogflowCxV3KnowledgeConnectorSettings {
 }
 
 export const GoogleCloudDialogflowCxV3KnowledgeConnectorSettings: Schema.Codec<GoogleCloudDialogflowCxV3KnowledgeConnectorSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetFlow: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
     triggerFulfillment: Schema.optional(GoogleCloudDialogflowCxV3Fulfillment),
@@ -1710,7 +1710,7 @@ export interface GoogleCloudDialogflowCxV3FormParameterFillBehavior {
 }
 
 export const GoogleCloudDialogflowCxV3FormParameterFillBehavior: Schema.Codec<GoogleCloudDialogflowCxV3FormParameterFillBehavior> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     initialPromptFulfillment: Schema.optional(
       GoogleCloudDialogflowCxV3Fulfillment,
     ),
@@ -1733,7 +1733,7 @@ export interface GoogleCloudDialogflowCxV3FormParameter {
 }
 
 export const GoogleCloudDialogflowCxV3FormParameter: Schema.Codec<GoogleCloudDialogflowCxV3FormParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     advancedSettings: Schema.optional(
       GoogleCloudDialogflowCxV3AdvancedSettings,
     ),
@@ -1753,7 +1753,7 @@ export interface GoogleCloudDialogflowCxV3Form {
 }
 
 export const GoogleCloudDialogflowCxV3Form: Schema.Codec<GoogleCloudDialogflowCxV3Form> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameters: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3FormParameter),
     ),
@@ -1773,7 +1773,7 @@ export interface GoogleCloudDialogflowCxV3Page {
 }
 
 export const GoogleCloudDialogflowCxV3Page: Schema.Codec<GoogleCloudDialogflowCxV3Page> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     advancedSettings: Schema.optional(
       GoogleCloudDialogflowCxV3AdvancedSettings,
     ),
@@ -1800,7 +1800,7 @@ export interface GoogleCloudDialogflowCxV3IntentTrainingPhrasePart {
 }
 
 export const GoogleCloudDialogflowCxV3IntentTrainingPhrasePart: Schema.Codec<GoogleCloudDialogflowCxV3IntentTrainingPhrasePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     parameterId: Schema.optional(Schema.String),
   }).annotate({
@@ -1814,7 +1814,7 @@ export interface GoogleCloudDialogflowCxV3IntentTrainingPhrase {
 }
 
 export const GoogleCloudDialogflowCxV3IntentTrainingPhrase: Schema.Codec<GoogleCloudDialogflowCxV3IntentTrainingPhrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repeatCount: Schema.optional(Schema.Number),
     id: Schema.optional(Schema.String),
     parts: Schema.optional(
@@ -1830,7 +1830,7 @@ export interface GoogleCloudDialogflowCxV3IntentParameter {
 }
 
 export const GoogleCloudDialogflowCxV3IntentParameter: Schema.Codec<GoogleCloudDialogflowCxV3IntentParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityType: Schema.optional(Schema.String),
     redact: Schema.optional(Schema.Boolean),
     id: Schema.optional(Schema.String),
@@ -1850,7 +1850,7 @@ export interface GoogleCloudDialogflowCxV3Intent {
 }
 
 export const GoogleCloudDialogflowCxV3Intent: Schema.Codec<GoogleCloudDialogflowCxV3Intent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isFallback: Schema.optional(Schema.Boolean),
     description: Schema.optional(Schema.String),
     trainingPhrases: Schema.optional(
@@ -1879,7 +1879,7 @@ export interface GoogleCloudDialogflowCxV3TestRunDifference {
 }
 
 export const GoogleCloudDialogflowCxV3TestRunDifference: Schema.Codec<GoogleCloudDialogflowCxV3TestRunDifference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3TestRunDifference" });
@@ -1895,7 +1895,7 @@ export interface GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
 }
 
 export const GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput: Schema.Codec<GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sessionParameters: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
@@ -1920,7 +1920,7 @@ export interface GoogleCloudDialogflowCxV3TextInput {
 }
 
 export const GoogleCloudDialogflowCxV3TextInput: Schema.Codec<GoogleCloudDialogflowCxV3TextInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3TextInput" });
 
@@ -1929,7 +1929,7 @@ export interface GoogleCloudDialogflowCxV3IntentInput {
 }
 
 export const GoogleCloudDialogflowCxV3IntentInput: Schema.Codec<GoogleCloudDialogflowCxV3IntentInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3IntentInput" });
 
@@ -1938,7 +1938,7 @@ export interface GoogleCloudDialogflowCxV3EventInput {
 }
 
 export const GoogleCloudDialogflowCxV3EventInput: Schema.Codec<GoogleCloudDialogflowCxV3EventInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     event: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3EventInput" });
 
@@ -1948,7 +1948,7 @@ export interface GoogleCloudDialogflowCxV3DtmfInput {
 }
 
 export const GoogleCloudDialogflowCxV3DtmfInput: Schema.Codec<GoogleCloudDialogflowCxV3DtmfInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finishDigit: Schema.optional(Schema.String),
     digits: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3DtmfInput" });
@@ -1958,7 +1958,7 @@ export interface GoogleCloudDialogflowCxV3ToolCallResultError {
 }
 
 export const GoogleCloudDialogflowCxV3ToolCallResultError: Schema.Codec<GoogleCloudDialogflowCxV3ToolCallResultError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3ToolCallResultError" });
 
@@ -1970,7 +1970,7 @@ export interface GoogleCloudDialogflowCxV3ToolCallResult {
 }
 
 export const GoogleCloudDialogflowCxV3ToolCallResult: Schema.Codec<GoogleCloudDialogflowCxV3ToolCallResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputParameters: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
@@ -1985,7 +1985,7 @@ export interface GoogleCloudDialogflowCxV3BargeInConfig {
 }
 
 export const GoogleCloudDialogflowCxV3BargeInConfig: Schema.Codec<GoogleCloudDialogflowCxV3BargeInConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     noBargeInDuration: Schema.optional(Schema.String),
     totalDuration: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3BargeInConfig" });
@@ -2018,7 +2018,7 @@ export interface GoogleCloudDialogflowCxV3InputAudioConfig {
 }
 
 export const GoogleCloudDialogflowCxV3InputAudioConfig: Schema.Codec<GoogleCloudDialogflowCxV3InputAudioConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sampleRateHertz: Schema.optional(Schema.Number),
     singleUtterance: Schema.optional(Schema.Boolean),
     bargeInConfig: Schema.optional(GoogleCloudDialogflowCxV3BargeInConfig),
@@ -2036,7 +2036,7 @@ export interface GoogleCloudDialogflowCxV3AudioInput {
 }
 
 export const GoogleCloudDialogflowCxV3AudioInput: Schema.Codec<GoogleCloudDialogflowCxV3AudioInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audio: Schema.optional(Schema.String),
     config: Schema.optional(GoogleCloudDialogflowCxV3InputAudioConfig),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3AudioInput" });
@@ -2052,7 +2052,7 @@ export interface GoogleCloudDialogflowCxV3QueryInput {
 }
 
 export const GoogleCloudDialogflowCxV3QueryInput: Schema.Codec<GoogleCloudDialogflowCxV3QueryInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(GoogleCloudDialogflowCxV3TextInput),
     intent: Schema.optional(GoogleCloudDialogflowCxV3IntentInput),
     event: Schema.optional(GoogleCloudDialogflowCxV3EventInput),
@@ -2070,7 +2070,7 @@ export interface GoogleCloudDialogflowCxV3ConversationTurnUserInput {
 }
 
 export const GoogleCloudDialogflowCxV3ConversationTurnUserInput: Schema.Codec<GoogleCloudDialogflowCxV3ConversationTurnUserInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     input: Schema.optional(GoogleCloudDialogflowCxV3QueryInput),
     injectedParameters: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -2087,7 +2087,7 @@ export interface GoogleCloudDialogflowCxV3ConversationTurn {
 }
 
 export const GoogleCloudDialogflowCxV3ConversationTurn: Schema.Codec<GoogleCloudDialogflowCxV3ConversationTurn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     virtualAgentOutput: Schema.optional(
       GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput,
     ),
@@ -2103,7 +2103,7 @@ export interface GoogleCloudDialogflowCxV3TestConfig {
 }
 
 export const GoogleCloudDialogflowCxV3TestConfig: Schema.Codec<GoogleCloudDialogflowCxV3TestConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     page: Schema.optional(Schema.String),
     trackingParameters: Schema.optional(Schema.Array(Schema.String)),
     flow: Schema.optional(Schema.String),
@@ -2118,7 +2118,7 @@ export interface GoogleCloudDialogflowCxV3TestCaseResult {
 }
 
 export const GoogleCloudDialogflowCxV3TestCaseResult: Schema.Codec<GoogleCloudDialogflowCxV3TestCaseResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversationTurns: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3ConversationTurn),
     ),
@@ -2140,7 +2140,7 @@ export interface GoogleCloudDialogflowCxV3TestCase {
 }
 
 export const GoogleCloudDialogflowCxV3TestCase: Schema.Codec<GoogleCloudDialogflowCxV3TestCase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notes: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -2159,7 +2159,7 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearc
 }
 
 export const GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext: Schema.Codec<GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuerySearchContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({
@@ -2175,7 +2175,7 @@ export interface GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency {
 }
 
 export const GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency: Schema.Codec<GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     step: Schema.optional(Schema.String),
     latencyMs: Schema.optional(Schema.Number),
     completeTime: Schema.optional(Schema.String),
@@ -2192,7 +2192,7 @@ export interface GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatenc
 }
 
 export const GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency: Schema.Codec<GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latencyMs: Schema.optional(Schema.Number),
     completeTime: Schema.optional(Schema.String),
     step: Schema.optional(Schema.String),
@@ -2207,7 +2207,7 @@ export interface GoogleCloudDialogflowV2beta1ServiceLatency {
 }
 
 export const GoogleCloudDialogflowV2beta1ServiceLatency: Schema.Codec<GoogleCloudDialogflowV2beta1ServiceLatency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     internalServiceLatencies: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2beta1ServiceLatencyInternalServiceLatency,
@@ -2218,7 +2218,7 @@ export const GoogleCloudDialogflowV2beta1ServiceLatency: Schema.Codec<GoogleClou
 export interface GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest {}
 
 export const GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest",
   });
 
@@ -2229,7 +2229,7 @@ export interface GoogleCloudDialogflowV2UndeployConversationModelOperationMetada
 }
 
 export const GoogleCloudDialogflowV2UndeployConversationModelOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2UndeployConversationModelOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     conversationModel: Schema.optional(Schema.String),
     doneTime: Schema.optional(Schema.String),
@@ -2243,7 +2243,7 @@ export interface GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionH
 }
 
 export const GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue: Schema.Codec<GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     secretVersion: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -2255,7 +2255,7 @@ export interface GoogleCloudDialogflowV2beta1FreeFormSuggestion {
 }
 
 export const GoogleCloudDialogflowV2beta1FreeFormSuggestion: Schema.Codec<GoogleCloudDialogflowV2beta1FreeFormSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1FreeFormSuggestion" });
 
@@ -2278,7 +2278,7 @@ export interface GoogleCloudDialogflowV2beta1ToolCall {
 }
 
 export const GoogleCloudDialogflowV2beta1ToolCall: Schema.Codec<GoogleCloudDialogflowV2beta1ToolCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tool: Schema.optional(Schema.String),
     cesToolset: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -2299,7 +2299,7 @@ export interface GoogleCloudDialogflowV2beta1ToolCallResultError {
 }
 
 export const GoogleCloudDialogflowV2beta1ToolCallResultError: Schema.Codec<GoogleCloudDialogflowV2beta1ToolCallResultError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1ToolCallResultError",
@@ -2319,7 +2319,7 @@ export interface GoogleCloudDialogflowV2beta1ToolCallResult {
 }
 
 export const GoogleCloudDialogflowV2beta1ToolCallResult: Schema.Codec<GoogleCloudDialogflowV2beta1ToolCallResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
     tool: Schema.optional(Schema.String),
@@ -2338,7 +2338,7 @@ export interface GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo {
 }
 
 export const GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo: Schema.Codec<GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     toolCall: Schema.optional(GoogleCloudDialogflowV2beta1ToolCall),
     toolCallResult: Schema.optional(GoogleCloudDialogflowV2beta1ToolCallResult),
   }).annotate({
@@ -2351,7 +2351,7 @@ export interface GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection {
 }
 
 export const GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection: Schema.Codec<GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     summary: Schema.optional(Schema.String),
     section: Schema.optional(Schema.String),
   }).annotate({
@@ -2363,7 +2363,7 @@ export interface GoogleCloudDialogflowV2beta1SummarySuggestion {
 }
 
 export const GoogleCloudDialogflowV2beta1SummarySuggestion: Schema.Codec<GoogleCloudDialogflowV2beta1SummarySuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     summarySections: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1SummarySuggestionSummarySection),
     ),
@@ -2376,7 +2376,7 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCh
 }
 
 export const GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion: Schema.Codec<GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestionIndex: Schema.optional(Schema.Number),
     answerRecord: Schema.optional(Schema.String),
     similarityScore: Schema.optional(Schema.Number),
@@ -2390,7 +2390,7 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCh
 }
 
 export const GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult: Schema.Codec<GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duplicateSuggestions: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2beta1AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion,
@@ -2419,7 +2419,7 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingInstruction {
 }
 
 export const GoogleCloudDialogflowV2beta1AgentCoachingInstruction: Schema.Codec<GoogleCloudDialogflowV2beta1AgentCoachingInstruction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayDetails: Schema.optional(Schema.String),
     systemAction: Schema.optional(Schema.String),
     triggeringEvent: Schema.optional(Schema.String),
@@ -2440,7 +2440,7 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionS
 }
 
 export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion: Schema.Codec<GoogleCloudDialogflowV2beta1AgentCoachingSuggestionAgentActionSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sources: Schema.optional(
       GoogleCloudDialogflowV2beta1AgentCoachingSuggestionSources,
     ),
@@ -2460,7 +2460,7 @@ export interface GoogleCloudDialogflowV2beta1AgentCoachingSuggestion {
 }
 
 export const GoogleCloudDialogflowV2beta1AgentCoachingSuggestion: Schema.Codec<GoogleCloudDialogflowV2beta1AgentCoachingSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applicableInstructions: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1AgentCoachingInstruction),
     ),
@@ -2486,7 +2486,7 @@ export interface GoogleCloudDialogflowV2beta1GeneratorSuggestion {
 }
 
 export const GoogleCloudDialogflowV2beta1GeneratorSuggestion: Schema.Codec<GoogleCloudDialogflowV2beta1GeneratorSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     freeFormSuggestion: Schema.optional(
       GoogleCloudDialogflowV2beta1FreeFormSuggestion,
     ),
@@ -2510,7 +2510,7 @@ export interface GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGenerato
 }
 
 export const GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer: Schema.Codec<GoogleCloudDialogflowV2beta1GenerateSuggestionsResponseGeneratorSuggestionAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     answerRecord: Schema.optional(Schema.String),
     generatorSuggestion: Schema.optional(
       GoogleCloudDialogflowV2beta1GeneratorSuggestion,
@@ -2527,7 +2527,7 @@ export interface GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse {
 }
 
 export const GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse: Schema.Codec<GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latestMessage: Schema.optional(Schema.String),
     generatorSuggestionAnswers: Schema.optional(
       Schema.Array(
@@ -2546,7 +2546,7 @@ export interface GoogleCloudDialogflowCxV3beta1IntentParameter {
 }
 
 export const GoogleCloudDialogflowCxV3beta1IntentParameter: Schema.Codec<GoogleCloudDialogflowCxV3beta1IntentParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     isList: Schema.optional(Schema.Boolean),
     entityType: Schema.optional(Schema.String),
@@ -2559,7 +2559,7 @@ export interface GoogleCloudDialogflowCxV3beta1EntityTypeEntity {
 }
 
 export const GoogleCloudDialogflowCxV3beta1EntityTypeEntity: Schema.Codec<GoogleCloudDialogflowCxV3beta1EntityTypeEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     synonyms: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1EntityTypeEntity" });
@@ -2575,7 +2575,7 @@ export interface GoogleCloudDialogflowCxV3beta1SessionEntityType {
 }
 
 export const GoogleCloudDialogflowCxV3beta1SessionEntityType: Schema.Codec<GoogleCloudDialogflowCxV3beta1SessionEntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     entityOverrideMode: Schema.optional(Schema.String),
     entities: Schema.optional(
@@ -2591,7 +2591,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListSessionEntityTypesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListSessionEntityTypesResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListSessionEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sessionEntityTypes: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1SessionEntityType),
     ),
@@ -2607,7 +2607,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileUri: Schema.optional(Schema.String),
     thumbnailUri: Schema.optional(Schema.String),
     height: Schema.optional(Schema.String),
@@ -2622,7 +2622,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     postbackData: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
   }).annotate({
@@ -2634,7 +2634,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmS
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -2644,7 +2644,7 @@ export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSugge
 export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation {}
 
 export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation",
   });
@@ -2654,7 +2654,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmS
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -2670,7 +2670,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dial: Schema.optional(
       GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial,
     ),
@@ -2692,7 +2692,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reply: Schema.optional(
       GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply,
     ),
@@ -2711,7 +2711,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     media: Schema.optional(
       GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia,
     ),
@@ -2730,7 +2730,7 @@ export interface GoogleCloudDialogflowV2beta1Sentiment {
 }
 
 export const GoogleCloudDialogflowV2beta1Sentiment: Schema.Codec<GoogleCloudDialogflowV2beta1Sentiment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     magnitude: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1Sentiment" });
@@ -2740,7 +2740,7 @@ export interface GoogleCloudDialogflowV2beta1SentimentAnalysisResult {
 }
 
 export const GoogleCloudDialogflowV2beta1SentimentAnalysisResult: Schema.Codec<GoogleCloudDialogflowV2beta1SentimentAnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queryTextSentiment: Schema.optional(GoogleCloudDialogflowV2beta1Sentiment),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1SentimentAnalysisResult",
@@ -2749,7 +2749,7 @@ export const GoogleCloudDialogflowV2beta1SentimentAnalysisResult: Schema.Codec<G
 export interface GoogleCloudDialogflowCxV3RunTestCaseMetadata {}
 
 export const GoogleCloudDialogflowCxV3RunTestCaseMetadata: Schema.Codec<GoogleCloudDialogflowCxV3RunTestCaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3RunTestCaseMetadata",
   });
 
@@ -2759,7 +2759,7 @@ export interface GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo: Schema.Codec<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     followupIntentName: Schema.optional(Schema.String),
     parentFollowupIntentName: Schema.optional(Schema.String),
   }).annotate({
@@ -2778,7 +2778,7 @@ export interface GoogleCloudDialogflowV2beta1IntentParameter {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentParameter: Schema.Codec<GoogleCloudDialogflowV2beta1IntentParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityTypeDisplayName: Schema.optional(Schema.String),
     mandatory: Schema.optional(Schema.Boolean),
     defaultValue: Schema.optional(Schema.String),
@@ -2795,7 +2795,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpe
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ssml: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
   }).annotate({
@@ -2813,7 +2813,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrow
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     url: Schema.optional(Schema.String),
     urlTypeHint: Schema.optional(Schema.String),
   }).annotate({
@@ -2827,7 +2827,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageImage {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageImage: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageUri: Schema.optional(Schema.String),
     accessibilityText: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1IntentMessageImage" });
@@ -2841,7 +2841,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrow
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     footer: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -2866,7 +2866,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem,
@@ -2882,7 +2882,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUri
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -2895,7 +2895,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     openUriAction: Schema.optional(
       GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction,
     ),
@@ -2913,7 +2913,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageBasicCard: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageBasicCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     buttons: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton),
     ),
@@ -2930,7 +2930,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageTableCardCell {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageTableCardCell: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageTableCardCell",
@@ -2942,7 +2942,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageTableCardRow: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageTableCardRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cells: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageTableCardCell),
     ),
@@ -2962,7 +2962,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageColumnProperties {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageColumnProperties: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageColumnProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     header: Schema.optional(Schema.String),
     horizontalAlignment: Schema.optional(Schema.String),
   }).annotate({
@@ -2979,7 +2979,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageTableCard {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageTableCard: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageTableCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rows: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageTableCardRow),
     ),
@@ -3002,7 +3002,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     synonyms: Schema.optional(Schema.Array(Schema.String)),
     key: Schema.optional(Schema.String),
   }).annotate({
@@ -3017,7 +3017,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageListSelectItem: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageListSelectItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     info: Schema.optional(
       GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo,
     ),
@@ -3035,7 +3035,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageListSelect {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageListSelect: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageListSelect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     subtitle: Schema.optional(Schema.String),
     items: Schema.optional(
@@ -3053,7 +3053,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     image: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
     description: Schema.optional(Schema.String),
     info: Schema.optional(
@@ -3069,7 +3069,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem),
     ),
@@ -3086,7 +3086,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMe
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     largeImage: Schema.optional(GoogleCloudDialogflowV2beta1IntentMessageImage),
@@ -3103,7 +3103,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageMediaContent: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageMediaContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mediaObjects: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject,
@@ -3120,7 +3120,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destinationName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
   }).annotate({
@@ -3132,7 +3132,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageText {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageText: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1IntentMessageText" });
 
@@ -3142,7 +3142,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageCardButton {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageCardButton: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageCardButton> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     postback: Schema.optional(Schema.String),
   }).annotate({
@@ -3157,7 +3157,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageCard {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageCard: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageUri: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     subtitle: Schema.optional(Schema.String),
@@ -3171,7 +3171,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall 
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -3184,7 +3184,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cardWidth: Schema.optional(Schema.String),
     cardContents: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent),
@@ -3199,7 +3199,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageQuickReplies {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageQuickReplies: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageQuickReplies> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quickReplies: Schema.optional(Schema.Array(Schema.String)),
     title: Schema.optional(Schema.String),
   }).annotate({
@@ -3213,7 +3213,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ssml: Schema.optional(Schema.String),
     displayText: Schema.optional(Schema.String),
     textToSpeech: Schema.optional(Schema.String),
@@ -3226,7 +3226,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     simpleResponses: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse),
     ),
@@ -3249,7 +3249,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cardOrientation: Schema.optional(Schema.String),
     thumbnailImageAlignment: Schema.optional(Schema.String),
     cardContent: Schema.optional(
@@ -3264,7 +3264,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageSuggestion {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageSuggestion: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageSuggestion",
@@ -3275,7 +3275,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageSuggestions {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageSuggestions: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageSuggestions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestions: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageSuggestion),
     ),
@@ -3288,7 +3288,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audioUri: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio",
@@ -3300,7 +3300,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessageRbmText {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessageRbmText: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessageRbmText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     rbmSuggestion: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion),
@@ -3346,7 +3346,7 @@ export interface GoogleCloudDialogflowV2beta1IntentMessage {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentMessage: Schema.Codec<GoogleCloudDialogflowV2beta1IntentMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     telephonySynthesizeSpeech: Schema.optional(
       GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech,
     ),
@@ -3407,7 +3407,7 @@ export interface GoogleCloudDialogflowV2beta1Context {
 }
 
 export const GoogleCloudDialogflowV2beta1Context: Schema.Codec<GoogleCloudDialogflowV2beta1Context> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
     lifespanCount: Schema.optional(Schema.Number),
@@ -3421,7 +3421,7 @@ export interface GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart: Schema.Codec<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alias: Schema.optional(Schema.String),
     userDefined: Schema.optional(Schema.Boolean),
     text: Schema.optional(Schema.String),
@@ -3438,7 +3438,7 @@ export interface GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentTrainingPhrase: Schema.Codec<GoogleCloudDialogflowV2beta1IntentTrainingPhrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parts: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart),
     ),
@@ -3491,7 +3491,7 @@ export interface GoogleCloudDialogflowV2beta1Intent {
 }
 
 export const GoogleCloudDialogflowV2beta1Intent: Schema.Codec<GoogleCloudDialogflowV2beta1Intent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endInteraction: Schema.optional(Schema.Boolean),
     followupIntentInfo: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo),
@@ -3539,7 +3539,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     matchConfidence: Schema.optional(Schema.Number),
     faqQuestion: Schema.optional(Schema.String),
@@ -3554,7 +3554,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAnswers {
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAnswers: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeAnswers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     answers: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer),
     ),
@@ -3581,7 +3581,7 @@ export interface GoogleCloudDialogflowV2beta1QueryResult {
 }
 
 export const GoogleCloudDialogflowV2beta1QueryResult: Schema.Codec<GoogleCloudDialogflowV2beta1QueryResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.optional(GoogleCloudDialogflowV2beta1Intent),
     allRequiredParamsPresent: Schema.optional(Schema.Boolean),
     webhookSource: Schema.optional(Schema.String),
@@ -3620,7 +3620,7 @@ export interface GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
 }
 
 export const GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest: Schema.Codec<GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
     payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -3637,7 +3637,7 @@ export interface GoogleCloudDialogflowV2beta1WebhookRequest {
 }
 
 export const GoogleCloudDialogflowV2beta1WebhookRequest: Schema.Codec<GoogleCloudDialogflowV2beta1WebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responseId: Schema.optional(Schema.String),
     queryResult: Schema.optional(GoogleCloudDialogflowV2beta1QueryResult),
     session: Schema.optional(Schema.String),
@@ -3665,7 +3665,7 @@ export interface GoogleCloudDialogflowCxV3beta1FlowInvocation {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FlowInvocation: Schema.Codec<GoogleCloudDialogflowCxV3beta1FlowInvocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flow: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     outputActionParameters: Schema.optional(
@@ -3683,7 +3683,7 @@ export interface GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParamete
 }
 
 export const GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue: Schema.Codec<GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originalValue: Schema.optional(Schema.String),
     resolvedValue: Schema.optional(Schema.Unknown),
   }).annotate({
@@ -3702,7 +3702,7 @@ export interface GoogleCloudDialogflowCxV3WebhookRequestIntentInfo {
 }
 
 export const GoogleCloudDialogflowCxV3WebhookRequestIntentInfo: Schema.Codec<GoogleCloudDialogflowCxV3WebhookRequestIntentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     lastMatchedIntent: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -3722,7 +3722,7 @@ export interface GoogleCloudDialogflowV2IntentMessageImage {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageImage: Schema.Codec<GoogleCloudDialogflowV2IntentMessageImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageUri: Schema.optional(Schema.String),
     accessibilityText: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2IntentMessageImage" });
@@ -3732,7 +3732,7 @@ export interface GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActio
 }
 
 export const GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction: Schema.Codec<GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -3745,7 +3745,7 @@ export interface GoogleCloudDialogflowV2IntentMessageBasicCardButton {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageBasicCardButton: Schema.Codec<GoogleCloudDialogflowV2IntentMessageBasicCardButton> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     openUriAction: Schema.optional(
       GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction,
@@ -3763,7 +3763,7 @@ export interface GoogleCloudDialogflowV2IntentMessageBasicCard {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageBasicCard: Schema.Codec<GoogleCloudDialogflowV2IntentMessageBasicCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     subtitle: Schema.optional(Schema.String),
     image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
@@ -3782,7 +3782,7 @@ export interface GoogleCloudDialogflowV2beta1ArticleAnswer {
 }
 
 export const GoogleCloudDialogflowV2beta1ArticleAnswer: Schema.Codec<GoogleCloudDialogflowV2beta1ArticleAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     answerRecord: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -3795,7 +3795,7 @@ export interface GoogleCloudDialogflowCxV3beta1SafetySettingsPromptSecuritySetti
 }
 
 export const GoogleCloudDialogflowCxV3beta1SafetySettingsPromptSecuritySettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1SafetySettingsPromptSecuritySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enablePromptSecurity: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier:
@@ -3808,7 +3808,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuerySearchContext: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuerySearchContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({
@@ -3822,7 +3822,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queryText: Schema.optional(Schema.String),
     searchContexts: Schema.optional(
       Schema.Array(
@@ -3840,7 +3840,7 @@ export interface GoogleCloudDialogflowV2beta1EncryptionSpec {
 }
 
 export const GoogleCloudDialogflowV2beta1EncryptionSpec: Schema.Codec<GoogleCloudDialogflowV2beta1EncryptionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     kmsKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1EncryptionSpec" });
@@ -3853,7 +3853,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterva
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     confidenceLevel: Schema.optional(Schema.Number),
     lowerBound: Schema.optional(Schema.Number),
     ratio: Schema.optional(Schema.Number),
@@ -3884,7 +3884,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExperimentResultMetric {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExperimentResultMetric: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExperimentResultMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     ratio: Schema.optional(Schema.Number),
     count: Schema.optional(Schema.Number),
@@ -3903,7 +3903,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metrics: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1ExperimentResultMetric),
     ),
@@ -3916,7 +3916,7 @@ export const GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics: Schem
 export interface GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata {}
 
 export const GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata",
   });
 
@@ -3937,7 +3937,7 @@ export interface GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsGroundi
 }
 
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsGroundingSignals: Schema.Codec<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsGroundingSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     decision: Schema.optional(Schema.String),
     score: Schema.optional(Schema.String),
   }).annotate({
@@ -3953,7 +3953,7 @@ export interface GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSearchS
 }
 
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSearchSnippet: Schema.Codec<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSearchSnippet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     documentTitle: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     documentUri: Schema.optional(Schema.String),
@@ -3970,7 +3970,7 @@ export interface GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsRewrite
 }
 
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsRewriterModelCallSignals: Schema.Codec<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsRewriterModelCallSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     renderedPrompt: Schema.optional(Schema.String),
     model: Schema.optional(Schema.String),
     modelOutput: Schema.optional(Schema.String),
@@ -3986,7 +3986,7 @@ export interface GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsAnswerG
 }
 
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsAnswerGenerationModelCallSignals: Schema.Codec<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsAnswerGenerationModelCallSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     renderedPrompt: Schema.optional(Schema.String),
     model: Schema.optional(Schema.String),
     modelOutput: Schema.optional(Schema.String),
@@ -4011,7 +4011,7 @@ export interface GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSafetyS
 }
 
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSafetySignals: Schema.Codec<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSafetySignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matchedBannedPhrase: Schema.optional(Schema.String),
     decision: Schema.optional(Schema.String),
     bannedPhraseMatch: Schema.optional(Schema.String),
@@ -4026,7 +4026,7 @@ export interface GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsAnswerP
 }
 
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsAnswerPart: Schema.Codec<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsAnswerPart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportingIndices: Schema.optional(Schema.Array(Schema.Number)),
     text: Schema.optional(Schema.String),
   }).annotate({
@@ -4040,7 +4040,7 @@ export interface GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsCitedSn
 }
 
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsCitedSnippet: Schema.Codec<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsCitedSnippet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     searchSnippet: Schema.optional(
       GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsSearchSnippet,
     ),
@@ -4063,7 +4063,7 @@ export interface GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignals {
 }
 
 export const GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignals: Schema.Codec<GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groundingSignals: Schema.optional(
       GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsGroundingSignals,
     ),
@@ -4102,7 +4102,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolUseDataStoreToolTrace {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolUseDataStoreToolTrace: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolUseDataStoreToolTrace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataStoreConnectionSignals: Schema.optional(
       GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignals,
     ),
@@ -4115,7 +4115,7 @@ export interface GoogleCloudDialogflowCxV3beta1TextInput {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TextInput: Schema.Codec<GoogleCloudDialogflowCxV3beta1TextInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1TextInput" });
 
@@ -4126,7 +4126,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExportTestCasesRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExportTestCasesRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportTestCasesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String),
     dataFormat: Schema.optional(Schema.String),
     gcsUri: Schema.optional(Schema.String),
@@ -4143,7 +4143,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConf
 }
 
 export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scopes: Schema.optional(Schema.Array(Schema.String)),
     clientId: Schema.optional(Schema.String),
     tokenEndpoint: Schema.optional(Schema.String),
@@ -4161,7 +4161,7 @@ export interface GoogleCloudDialogflowV2IntentMessageSimpleResponse {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageSimpleResponse: Schema.Codec<GoogleCloudDialogflowV2IntentMessageSimpleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ssml: Schema.optional(Schema.String),
     textToSpeech: Schema.optional(Schema.String),
     displayText: Schema.optional(Schema.String),
@@ -4174,7 +4174,7 @@ export interface GoogleCloudDialogflowV2IntentMessageSimpleResponses {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageSimpleResponses: Schema.Codec<GoogleCloudDialogflowV2IntentMessageSimpleResponses> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     simpleResponses: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2IntentMessageSimpleResponse),
     ),
@@ -4185,7 +4185,7 @@ export const GoogleCloudDialogflowV2IntentMessageSimpleResponses: Schema.Codec<G
 export interface GoogleCloudDialogflowCxV3ExportTestCasesMetadata {}
 
 export const GoogleCloudDialogflowCxV3ExportTestCasesMetadata: Schema.Codec<GoogleCloudDialogflowCxV3ExportTestCasesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ExportTestCasesMetadata",
   });
 
@@ -4201,7 +4201,7 @@ export interface GoogleCloudDialogflowCxV3ContinuousTestResult {
 }
 
 export const GoogleCloudDialogflowCxV3ContinuousTestResult: Schema.Codec<GoogleCloudDialogflowCxV3ContinuousTestResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.String),
     testCaseResults: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -4214,7 +4214,7 @@ export interface GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart {
 }
 
 export const GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart: Schema.Codec<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     parameterId: Schema.optional(Schema.String),
   }).annotate({
@@ -4228,7 +4228,7 @@ export interface GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase {
 }
 
 export const GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase: Schema.Codec<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     parts: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart),
@@ -4251,7 +4251,7 @@ export interface GoogleCloudDialogflowCxV3beta1Intent {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Intent: Schema.Codec<GoogleCloudDialogflowCxV3beta1Intent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     parameters: Schema.optional(
@@ -4280,7 +4280,7 @@ export interface GoogleCloudDialogflowCxV3beta1TestRunDifference {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TestRunDifference: Schema.Codec<GoogleCloudDialogflowCxV3beta1TestRunDifference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
   }).annotate({
@@ -4298,7 +4298,7 @@ export interface GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutpu
 }
 
 export const GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput: Schema.Codec<GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     triggeredIntent: Schema.optional(GoogleCloudDialogflowCxV3beta1Intent),
     status: Schema.optional(GoogleRpcStatus),
     differences: Schema.optional(
@@ -4325,7 +4325,7 @@ export interface GoogleCloudDialogflowCxV3beta1BargeInConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1BargeInConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1BargeInConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     noBargeInDuration: Schema.optional(Schema.String),
     totalDuration: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1BargeInConfig" });
@@ -4358,7 +4358,7 @@ export interface GoogleCloudDialogflowCxV3beta1InputAudioConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1InputAudioConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1InputAudioConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     model: Schema.optional(Schema.String),
     enableWordInfo: Schema.optional(Schema.Boolean),
     singleUtterance: Schema.optional(Schema.Boolean),
@@ -4376,7 +4376,7 @@ export interface GoogleCloudDialogflowCxV3beta1AudioInput {
 }
 
 export const GoogleCloudDialogflowCxV3beta1AudioInput: Schema.Codec<GoogleCloudDialogflowCxV3beta1AudioInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     config: Schema.optional(GoogleCloudDialogflowCxV3beta1InputAudioConfig),
     audio: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1AudioInput" });
@@ -4386,7 +4386,7 @@ export interface GoogleCloudDialogflowCxV3beta1EventInput {
 }
 
 export const GoogleCloudDialogflowCxV3beta1EventInput: Schema.Codec<GoogleCloudDialogflowCxV3beta1EventInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     event: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1EventInput" });
 
@@ -4395,7 +4395,7 @@ export interface GoogleCloudDialogflowCxV3beta1IntentInput {
 }
 
 export const GoogleCloudDialogflowCxV3beta1IntentInput: Schema.Codec<GoogleCloudDialogflowCxV3beta1IntentInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1IntentInput" });
 
@@ -4405,7 +4405,7 @@ export interface GoogleCloudDialogflowCxV3beta1DtmfInput {
 }
 
 export const GoogleCloudDialogflowCxV3beta1DtmfInput: Schema.Codec<GoogleCloudDialogflowCxV3beta1DtmfInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finishDigit: Schema.optional(Schema.String),
     digits: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1DtmfInput" });
@@ -4415,7 +4415,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolCallResultError {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolCallResultError: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolCallResultError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ToolCallResultError",
@@ -4429,7 +4429,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolCallResult {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolCallResult: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolCallResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputParameters: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
@@ -4449,7 +4449,7 @@ export interface GoogleCloudDialogflowCxV3beta1QueryInput {
 }
 
 export const GoogleCloudDialogflowCxV3beta1QueryInput: Schema.Codec<GoogleCloudDialogflowCxV3beta1QueryInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audio: Schema.optional(GoogleCloudDialogflowCxV3beta1AudioInput),
     event: Schema.optional(GoogleCloudDialogflowCxV3beta1EventInput),
     text: Schema.optional(GoogleCloudDialogflowCxV3beta1TextInput),
@@ -4469,7 +4469,7 @@ export interface GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput: Schema.Codec<GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isWebhookEnabled: Schema.optional(Schema.Boolean),
     input: Schema.optional(GoogleCloudDialogflowCxV3beta1QueryInput),
     injectedParameters: Schema.optional(
@@ -4486,7 +4486,7 @@ export interface GoogleCloudDialogflowCxV3beta1ConversationTurn {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ConversationTurn: Schema.Codec<GoogleCloudDialogflowCxV3beta1ConversationTurn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     virtualAgentOutput: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput,
     ),
@@ -4503,7 +4503,7 @@ export interface GoogleCloudDialogflowCxV3beta1ActionIntentMatchMatchedIntent {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ActionIntentMatchMatchedIntent: Schema.Codec<GoogleCloudDialogflowCxV3beta1ActionIntentMatchMatchedIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intentId: Schema.optional(Schema.String),
     score: Schema.optional(Schema.Number),
     generativeFallback: Schema.optional(
@@ -4519,7 +4519,7 @@ export interface GoogleCloudDialogflowCxV3beta1ActionIntentMatch {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ActionIntentMatch: Schema.Codec<GoogleCloudDialogflowCxV3beta1ActionIntentMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matchedIntents: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowCxV3beta1ActionIntentMatchMatchedIntent,
@@ -4541,7 +4541,7 @@ export interface GoogleCloudDialogflowCxV3beta1FlowImportStrategy {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FlowImportStrategy: Schema.Codec<GoogleCloudDialogflowCxV3beta1FlowImportStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     globalImportStrategy: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1FlowImportStrategy",
@@ -4559,7 +4559,7 @@ export interface GoogleCloudDialogflowCxV3beta1ImportFlowRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportFlowRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1ImportFlowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flowUri: Schema.optional(Schema.String),
     flowContent: Schema.optional(Schema.String),
     importOption: Schema.optional(Schema.String),
@@ -4579,7 +4579,7 @@ export interface GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig {
 }
 
 export const GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig: Schema.Codec<GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientSecret: Schema.optional(Schema.String),
     secretVersionForClientSecret: Schema.optional(Schema.String),
     clientId: Schema.optional(Schema.String),
@@ -4594,7 +4594,7 @@ export interface GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccount
 }
 
 export const GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig: Schema.Codec<GoogleCloudDialogflowCxV3WebhookGenericWebServiceServiceAccountAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceAccount: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -4640,7 +4640,7 @@ export interface GoogleCloudDialogflowCxV3WebhookGenericWebService {
 }
 
 export const GoogleCloudDialogflowCxV3WebhookGenericWebService: Schema.Codec<GoogleCloudDialogflowCxV3WebhookGenericWebService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     httpMethod: Schema.optional(Schema.String),
     parameterMapping: Schema.optional(
@@ -4678,7 +4678,7 @@ export interface GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig {
 }
 
 export const GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig: Schema.Codec<GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     genericWebService: Schema.optional(
       GoogleCloudDialogflowCxV3WebhookGenericWebService,
@@ -4697,7 +4697,7 @@ export interface GoogleCloudDialogflowCxV3Webhook {
 }
 
 export const GoogleCloudDialogflowCxV3Webhook: Schema.Codec<GoogleCloudDialogflowCxV3Webhook> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceDirectory: Schema.optional(
       GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig,
     ),
@@ -4716,7 +4716,7 @@ export interface GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingR
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources: Schema.Codec<GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intentDisplayNames: Schema.optional(Schema.Array(Schema.String)),
     entityDisplayNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -4730,7 +4730,7 @@ export interface GoogleCloudDialogflowCxV3beta1ImportIntentsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportIntentsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ImportIntentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intents: Schema.optional(Schema.Array(Schema.String)),
     conflictingResources: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources,
@@ -4744,7 +4744,7 @@ export interface GoogleCloudDialogflowV2beta1ImportDocumentsResponse {
 }
 
 export const GoogleCloudDialogflowV2beta1ImportDocumentsResponse: Schema.Codec<GoogleCloudDialogflowV2beta1ImportDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     warnings: Schema.optional(Schema.Array(GoogleRpcStatus)),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1ImportDocumentsResponse",
@@ -4756,7 +4756,7 @@ export interface GoogleCloudDialogflowV2IntentMessageQuickReplies {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageQuickReplies: Schema.Codec<GoogleCloudDialogflowV2IntentMessageQuickReplies> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quickReplies: Schema.optional(Schema.Array(Schema.String)),
     title: Schema.optional(Schema.String),
   }).annotate({
@@ -4769,7 +4769,7 @@ export interface GoogleCloudDialogflowV2IntentMessageCardButton {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageCardButton: Schema.Codec<GoogleCloudDialogflowV2IntentMessageCardButton> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     postback: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2IntentMessageCardButton" });
@@ -4782,7 +4782,7 @@ export interface GoogleCloudDialogflowV2IntentMessageCard {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageCard: Schema.Codec<GoogleCloudDialogflowV2IntentMessageCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     subtitle: Schema.optional(Schema.String),
     buttons: Schema.optional(
@@ -4799,7 +4799,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswe
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -4814,7 +4814,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswe
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     snippets: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet,
@@ -4831,7 +4831,7 @@ export interface GoogleCloudDialogflowV2EncryptionSpec {
 }
 
 export const GoogleCloudDialogflowV2EncryptionSpec: Schema.Codec<GoogleCloudDialogflowV2EncryptionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kmsKey: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2EncryptionSpec" });
@@ -4841,7 +4841,7 @@ export interface GoogleCloudDialogflowV2InitializeEncryptionSpecRequest {
 }
 
 export const GoogleCloudDialogflowV2InitializeEncryptionSpecRequest: Schema.Codec<GoogleCloudDialogflowV2InitializeEncryptionSpecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     encryptionSpec: Schema.optional(GoogleCloudDialogflowV2EncryptionSpec),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2InitializeEncryptionSpecRequest",
@@ -4852,7 +4852,7 @@ export interface GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata {
 }
 
 export const GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata: Schema.Codec<GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudDialogflowV2InitializeEncryptionSpecRequest,
     ),
@@ -4878,7 +4878,7 @@ export interface GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategory
 }
 
 export const GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilter: Schema.Codec<GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     category: Schema.optional(Schema.String),
     filterLevel: Schema.optional(Schema.String),
   }).annotate({
@@ -4892,7 +4892,7 @@ export interface GoogleCloudDialogflowCxV3beta1ResourceName {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ResourceName: Schema.Codec<GoogleCloudDialogflowCxV3beta1ResourceName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1ResourceName" });
@@ -4927,7 +4927,7 @@ export interface GoogleCloudDialogflowCxV3beta1ValidationMessage {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ValidationMessage: Schema.Codec<GoogleCloudDialogflowCxV3beta1ValidationMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resources: Schema.optional(Schema.Array(Schema.String)),
     resourceNames: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1ResourceName),
@@ -4944,7 +4944,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExceptionDetail {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExceptionDetail: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExceptionDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errorMessage: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1ExceptionDetail" });
 
@@ -4953,7 +4953,7 @@ export interface GoogleCloudDialogflowV2GcsDestination {
 }
 
 export const GoogleCloudDialogflowV2GcsDestination: Schema.Codec<GoogleCloudDialogflowV2GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2GcsDestination" });
 
@@ -4965,7 +4965,7 @@ export interface GoogleCloudDialogflowV2beta1SpeechWordInfo {
 }
 
 export const GoogleCloudDialogflowV2beta1SpeechWordInfo: Schema.Codec<GoogleCloudDialogflowV2beta1SpeechWordInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startOffset: Schema.optional(Schema.String),
     word: Schema.optional(Schema.String),
     endOffset: Schema.optional(Schema.String),
@@ -4996,7 +4996,7 @@ export interface GoogleCloudDialogflowV2beta1TelephonyDtmfEvents {
 }
 
 export const GoogleCloudDialogflowV2beta1TelephonyDtmfEvents: Schema.Codec<GoogleCloudDialogflowV2beta1TelephonyDtmfEvents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dtmfEvents: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1TelephonyDtmfEvents",
@@ -5021,7 +5021,7 @@ export interface GoogleCloudDialogflowV2beta1StreamingRecognitionResult {
 }
 
 export const GoogleCloudDialogflowV2beta1StreamingRecognitionResult: Schema.Codec<GoogleCloudDialogflowV2beta1StreamingRecognitionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messageType: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
     speechWordInfo: Schema.optional(
@@ -5044,7 +5044,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVer
 }
 
 export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue: Schema.Codec<GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceSecretVersionHeaderValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     secretVersion: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -5056,7 +5056,7 @@ export interface GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest {
 }
 
 export const GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest: Schema.Codec<GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     encryptionSpec: Schema.optional(GoogleCloudDialogflowV2beta1EncryptionSpec),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest",
@@ -5067,7 +5067,7 @@ export interface GoogleCloudDialogflowCxV3beta1ImportFlowResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportFlowResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ImportFlowResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flow: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ImportFlowResponse",
@@ -5087,7 +5087,7 @@ export interface GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngeste
 }
 
 export const GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo: Schema.Codec<GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameter: Schema.optional(Schema.String),
     ingestionStatus: Schema.optional(Schema.String),
   }).annotate({
@@ -5102,7 +5102,7 @@ export interface GoogleCloudDialogflowV2DeleteConversationModelOperationMetadata
 }
 
 export const GoogleCloudDialogflowV2DeleteConversationModelOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2DeleteConversationModelOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     conversationModel: Schema.optional(Schema.String),
     doneTime: Schema.optional(Schema.String),
@@ -5118,7 +5118,7 @@ export interface GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSetting
 }
 
 export const GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPromptTemplate: Schema.Codec<GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPromptTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     frozen: Schema.optional(Schema.Boolean),
     promptText: Schema.optional(Schema.String),
@@ -5133,7 +5133,7 @@ export interface GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSetting
 }
 
 export const GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selectedPrompt: Schema.optional(Schema.String),
     promptTemplates: Schema.optional(
       Schema.Array(
@@ -5159,7 +5159,7 @@ export interface GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIn
 }
 
 export const GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo: Schema.Codec<GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfoIngestedParameterDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameter: Schema.optional(Schema.String),
     ingestionStatus: Schema.optional(Schema.String),
   }).annotate({
@@ -5180,7 +5180,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolConnectorToolActionEntityOper
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolConnectorToolActionEntityOperation: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolConnectorToolActionEntityOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityId: Schema.optional(Schema.String),
     operation: Schema.optional(Schema.String),
   }).annotate({
@@ -5196,7 +5196,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolConnectorToolAction {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolConnectorToolAction: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolConnectorToolAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityOperation: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ToolConnectorToolActionEntityOperation,
     ),
@@ -5214,7 +5214,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolConnectorTool {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolConnectorTool: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolConnectorTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     actions: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1ToolConnectorToolAction),
     ),
@@ -5234,7 +5234,7 @@ export interface GoogleCloudDialogflowV2SpeechWordInfo {
 }
 
 export const GoogleCloudDialogflowV2SpeechWordInfo: Schema.Codec<GoogleCloudDialogflowV2SpeechWordInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     word: Schema.optional(Schema.String),
     endOffset: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -5256,7 +5256,7 @@ export interface GoogleCloudDialogflowV2StreamingRecognitionResult {
 }
 
 export const GoogleCloudDialogflowV2StreamingRecognitionResult: Schema.Codec<GoogleCloudDialogflowV2StreamingRecognitionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isFinal: Schema.optional(Schema.Boolean),
     languageCode: Schema.optional(Schema.String),
     messageType: Schema.optional(Schema.String),
@@ -5275,7 +5275,7 @@ export interface GoogleCloudDialogflowV2AgentCoachingSuggestionSources {
 }
 
 export const GoogleCloudDialogflowV2AgentCoachingSuggestionSources: Schema.Codec<GoogleCloudDialogflowV2AgentCoachingSuggestionSources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instructionIndexes: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2AgentCoachingSuggestionSources",
@@ -5289,7 +5289,7 @@ export interface GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckRes
 }
 
 export const GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion: Schema.Codec<GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sources: Schema.optional(
       GoogleCloudDialogflowV2AgentCoachingSuggestionSources,
     ),
@@ -5308,7 +5308,7 @@ export interface GoogleCloudDialogflowV2beta1IntentSuggestion {
 }
 
 export const GoogleCloudDialogflowV2beta1IntentSuggestion: Schema.Codec<GoogleCloudDialogflowV2beta1IntentSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     intentV2: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -5321,7 +5321,7 @@ export interface GoogleCloudDialogflowV2beta1DialogflowAssistAnswer {
 }
 
 export const GoogleCloudDialogflowV2beta1DialogflowAssistAnswer: Schema.Codec<GoogleCloudDialogflowV2beta1DialogflowAssistAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intentSuggestion: Schema.optional(
       GoogleCloudDialogflowV2beta1IntentSuggestion,
     ),
@@ -5338,7 +5338,7 @@ export interface GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse {
 }
 
 export const GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse: Schema.Codec<GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contextSize: Schema.optional(Schema.Number),
     dialogflowAssistAnswers: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1DialogflowAssistAnswer),
@@ -5365,7 +5365,7 @@ export interface GoogleCloudDialogflowCxV3beta1LlmModelSettingsParameters {
 }
 
 export const GoogleCloudDialogflowCxV3beta1LlmModelSettingsParameters: Schema.Codec<GoogleCloudDialogflowCxV3beta1LlmModelSettingsParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputTokenLimit: Schema.optional(Schema.String),
     temperature: Schema.optional(Schema.Number),
     outputTokenLimit: Schema.optional(Schema.String),
@@ -5380,7 +5380,7 @@ export interface GoogleCloudDialogflowCxV3beta1LlmModelSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1LlmModelSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1LlmModelSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     promptText: Schema.optional(Schema.String),
     parameters: Schema.optional(
       GoogleCloudDialogflowCxV3beta1LlmModelSettingsParameters,
@@ -5395,7 +5395,7 @@ export interface GoogleCloudDialogflowV2EventInput {
 }
 
 export const GoogleCloudDialogflowV2EventInput: Schema.Codec<GoogleCloudDialogflowV2EventInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     languageCode: Schema.optional(Schema.String),
@@ -5407,7 +5407,7 @@ export interface GoogleCloudDialogflowCxV3beta1DeploymentResult {
 }
 
 export const GoogleCloudDialogflowCxV3beta1DeploymentResult: Schema.Codec<GoogleCloudDialogflowCxV3beta1DeploymentResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deploymentTestResults: Schema.optional(Schema.Array(Schema.String)),
     experiment: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1DeploymentResult" });
@@ -5427,7 +5427,7 @@ export interface GoogleCloudDialogflowCxV3beta1Deployment {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Deployment: Schema.Codec<GoogleCloudDialogflowCxV3beta1Deployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     flowVersion: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -5442,7 +5442,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListDeploymentsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListDeploymentsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deployments: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1Deployment),
     ),
@@ -5457,7 +5457,7 @@ export interface GoogleCloudDialogflowV2Sentiment {
 }
 
 export const GoogleCloudDialogflowV2Sentiment: Schema.Codec<GoogleCloudDialogflowV2Sentiment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     magnitude: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleCloudDialogflowV2Sentiment" });
@@ -5467,7 +5467,7 @@ export interface GoogleCloudDialogflowV2SentimentAnalysisResult {
 }
 
 export const GoogleCloudDialogflowV2SentimentAnalysisResult: Schema.Codec<GoogleCloudDialogflowV2SentimentAnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queryTextSentiment: Schema.optional(GoogleCloudDialogflowV2Sentiment),
   }).annotate({ identifier: "GoogleCloudDialogflowV2SentimentAnalysisResult" });
 
@@ -5476,7 +5476,7 @@ export interface GoogleCloudDialogflowV2InputDataset {
 }
 
 export const GoogleCloudDialogflowV2InputDataset: Schema.Codec<GoogleCloudDialogflowV2InputDataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataset: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2InputDataset" });
 
@@ -5489,7 +5489,7 @@ export interface GoogleCloudDialogflowV2SmartReplyModelMetadata {
 }
 
 export const GoogleCloudDialogflowV2SmartReplyModelMetadata: Schema.Codec<GoogleCloudDialogflowV2SmartReplyModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trainingModelType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2SmartReplyModelMetadata" });
 
@@ -5502,7 +5502,7 @@ export interface GoogleCloudDialogflowV2ArticleSuggestionModelMetadata {
 }
 
 export const GoogleCloudDialogflowV2ArticleSuggestionModelMetadata: Schema.Codec<GoogleCloudDialogflowV2ArticleSuggestionModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trainingModelType: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2ArticleSuggestionModelMetadata",
@@ -5532,7 +5532,7 @@ export interface GoogleCloudDialogflowV2ConversationModel {
 }
 
 export const GoogleCloudDialogflowV2ConversationModel: Schema.Codec<GoogleCloudDialogflowV2ConversationModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     datasets: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2InputDataset),
     ),
@@ -5570,7 +5570,7 @@ export interface GoogleCloudDialogflowCxV3TurnSignals {
 }
 
 export const GoogleCloudDialogflowCxV3TurnSignals: Schema.Codec<GoogleCloudDialogflowCxV3TurnSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userEscalated: Schema.optional(Schema.Boolean),
     noUserInput: Schema.optional(Schema.Boolean),
     failureReasons: Schema.optional(Schema.Array(Schema.String)),
@@ -5588,7 +5588,7 @@ export interface GoogleCloudDialogflowCxV3ConversationSignals {
 }
 
 export const GoogleCloudDialogflowCxV3ConversationSignals: Schema.Codec<GoogleCloudDialogflowCxV3ConversationSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     turnSignals: Schema.optional(GoogleCloudDialogflowCxV3TurnSignals),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3ConversationSignals" });
 
@@ -5605,7 +5605,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExportIntentsRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExportIntentsRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportIntentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intentsUri: Schema.optional(Schema.String),
     dataFormat: Schema.optional(Schema.String),
     intents: Schema.optional(Schema.Array(Schema.String)),
@@ -5620,7 +5620,7 @@ export interface GoogleCloudDialogflowCxV3beta1PlaybookStep {
 }
 
 export const GoogleCloudDialogflowCxV3beta1PlaybookStep: Schema.Codec<GoogleCloudDialogflowCxV3beta1PlaybookStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       text: Schema.optional(Schema.String),
       steps: Schema.optional(
@@ -5637,7 +5637,7 @@ export interface GoogleCloudDialogflowCxV3beta1PlaybookInstruction {
 }
 
 export const GoogleCloudDialogflowCxV3beta1PlaybookInstruction: Schema.Codec<GoogleCloudDialogflowCxV3beta1PlaybookInstruction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     steps: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1PlaybookStep),
     ),
@@ -5653,7 +5653,7 @@ export interface GoogleCloudDialogflowCxV3beta1HandlerEventHandler {
 }
 
 export const GoogleCloudDialogflowCxV3beta1HandlerEventHandler: Schema.Codec<GoogleCloudDialogflowCxV3beta1HandlerEventHandler> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     event: Schema.optional(Schema.String),
     fulfillment: Schema.optional(GoogleCloudDialogflowCxV3beta1Fulfillment),
     condition: Schema.optional(Schema.String),
@@ -5668,7 +5668,7 @@ export interface GoogleCloudDialogflowCxV3beta1HandlerLifecycleHandler {
 }
 
 export const GoogleCloudDialogflowCxV3beta1HandlerLifecycleHandler: Schema.Codec<GoogleCloudDialogflowCxV3beta1HandlerLifecycleHandler> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     condition: Schema.optional(Schema.String),
     fulfillment: Schema.optional(GoogleCloudDialogflowCxV3beta1Fulfillment),
     lifecycleStage: Schema.optional(Schema.String),
@@ -5682,7 +5682,7 @@ export interface GoogleCloudDialogflowCxV3beta1Handler {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Handler: Schema.Codec<GoogleCloudDialogflowCxV3beta1Handler> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventHandler: Schema.optional(
       GoogleCloudDialogflowCxV3beta1HandlerEventHandler,
     ),
@@ -5696,7 +5696,7 @@ export interface GoogleCloudDialogflowCxV3beta1CodeBlock {
 }
 
 export const GoogleCloudDialogflowCxV3beta1CodeBlock: Schema.Codec<GoogleCloudDialogflowCxV3beta1CodeBlock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1CodeBlock" });
 
@@ -5726,7 +5726,7 @@ export interface GoogleCloudDialogflowCxV3beta1Playbook {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Playbook: Schema.Codec<GoogleCloudDialogflowCxV3beta1Playbook> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instruction: Schema.optional(
       GoogleCloudDialogflowCxV3beta1PlaybookInstruction,
     ),
@@ -5765,7 +5765,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListPlaybooksResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListPlaybooksResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListPlaybooksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     playbooks: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1Playbook),
@@ -5780,7 +5780,7 @@ export interface GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase {
 }
 
 export const GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase: Schema.Codec<GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
   }).annotate({
@@ -5798,7 +5798,7 @@ export interface GoogleCloudDialogflowV2IntentMessageColumnProperties {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageColumnProperties: Schema.Codec<GoogleCloudDialogflowV2IntentMessageColumnProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     header: Schema.optional(Schema.String),
     horizontalAlignment: Schema.optional(Schema.String),
   }).annotate({
@@ -5810,7 +5810,7 @@ export interface GoogleCloudDialogflowV2IntentMessageTableCardCell {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageTableCardCell: Schema.Codec<GoogleCloudDialogflowV2IntentMessageTableCardCell> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2IntentMessageTableCardCell",
@@ -5822,7 +5822,7 @@ export interface GoogleCloudDialogflowV2IntentMessageTableCardRow {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageTableCardRow: Schema.Codec<GoogleCloudDialogflowV2IntentMessageTableCardRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cells: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2IntentMessageTableCardCell),
     ),
@@ -5841,7 +5841,7 @@ export interface GoogleCloudDialogflowV2IntentMessageTableCard {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageTableCard: Schema.Codec<GoogleCloudDialogflowV2IntentMessageTableCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     subtitle: Schema.optional(Schema.String),
     columnProperties: Schema.optional(
@@ -5862,7 +5862,7 @@ export interface GoogleCloudDialogflowCxV3beta1BigQueryExportSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1BigQueryExportSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1BigQueryExportSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     bigqueryTable: Schema.optional(Schema.String),
   }).annotate({
@@ -5875,7 +5875,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolFunctionTool {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolFunctionTool: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolFunctionTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputSchema: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     outputSchema: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1ToolFunctionTool" });
@@ -5887,7 +5887,7 @@ export interface GoogleCloudDialogflowV2AnnotatedMessagePart {
 }
 
 export const GoogleCloudDialogflowV2AnnotatedMessagePart: Schema.Codec<GoogleCloudDialogflowV2AnnotatedMessagePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     entityType: Schema.optional(Schema.String),
     formattedValue: Schema.optional(Schema.Unknown),
@@ -5899,7 +5899,7 @@ export interface GoogleCloudDialogflowV2MessageAnnotation {
 }
 
 export const GoogleCloudDialogflowV2MessageAnnotation: Schema.Codec<GoogleCloudDialogflowV2MessageAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parts: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2AnnotatedMessagePart),
     ),
@@ -5924,7 +5924,7 @@ export interface GoogleCloudDialogflowV2Message {
 }
 
 export const GoogleCloudDialogflowV2Message: Schema.Codec<GoogleCloudDialogflowV2Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messageAnnotation: Schema.optional(
       GoogleCloudDialogflowV2MessageAnnotation,
     ),
@@ -5957,7 +5957,7 @@ export interface GoogleCloudDialogflowV2ConversationEvent {
 }
 
 export const GoogleCloudDialogflowV2ConversationEvent: Schema.Codec<GoogleCloudDialogflowV2ConversationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     newRecognitionResultPayload: Schema.optional(
       GoogleCloudDialogflowV2StreamingRecognitionResult,
@@ -5972,7 +5972,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAccountA
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAccountAuthConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAccountAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceAccount: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -5992,7 +5992,7 @@ export interface GoogleCloudDialogflowCxV3beta1PlaybookOutput {
 }
 
 export const GoogleCloudDialogflowCxV3beta1PlaybookOutput: Schema.Codec<GoogleCloudDialogflowCxV3beta1PlaybookOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     executionSummary: Schema.optional(Schema.String),
     actionParameters: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -6006,7 +6006,7 @@ export interface GoogleCloudDialogflowCxV3beta1PlaybookInput {
 }
 
 export const GoogleCloudDialogflowCxV3beta1PlaybookInput: Schema.Codec<GoogleCloudDialogflowCxV3beta1PlaybookInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     precedingConversationSummary: Schema.optional(Schema.String),
     actionParameters: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -6018,7 +6018,7 @@ export interface GoogleCloudDialogflowCxV3beta1Status {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Status: Schema.Codec<GoogleCloudDialogflowCxV3beta1Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exception: Schema.optional(GoogleCloudDialogflowCxV3beta1ExceptionDetail),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1Status" });
 
@@ -6029,7 +6029,7 @@ export interface GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdatePageState {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdatePageState: Schema.Codec<GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdatePageState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     page: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -6042,7 +6042,7 @@ export interface GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdateFunctionCall
 }
 
 export const GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdateFunctionCall: Schema.Codec<GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdateFunctionCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -6058,7 +6058,7 @@ export interface GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdate {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdate: Schema.Codec<GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageState: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ActionFlowStateUpdatePageState,
     ),
@@ -6080,7 +6080,7 @@ export interface GoogleCloudDialogflowCxV3beta1Event {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Event: Schema.Codec<GoogleCloudDialogflowCxV3beta1Event> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     event: Schema.optional(Schema.String),
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1Event" });
@@ -6088,7 +6088,7 @@ export const GoogleCloudDialogflowCxV3beta1Event: Schema.Codec<GoogleCloudDialog
 export interface GoogleCloudDialogflowCxV3beta1ActionTTS {}
 
 export const GoogleCloudDialogflowCxV3beta1ActionTTS: Schema.Codec<GoogleCloudDialogflowCxV3beta1ActionTTS> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ActionTTS",
   });
 
@@ -6108,7 +6108,7 @@ export interface GoogleCloudDialogflowCxV3beta1PlaybookInvocation {
 }
 
 export const GoogleCloudDialogflowCxV3beta1PlaybookInvocation: Schema.Codec<GoogleCloudDialogflowCxV3beta1PlaybookInvocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     playbookOutput: Schema.optional(
       GoogleCloudDialogflowCxV3beta1PlaybookOutput,
@@ -6133,7 +6133,7 @@ export interface GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExample {
 }
 
 export const GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExample: Schema.Codec<GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExample> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exampleId: Schema.optional(Schema.String),
     retrievalStrategy: Schema.optional(Schema.String),
     matchedRetrievalLabel: Schema.optional(Schema.String),
@@ -6150,7 +6150,7 @@ export interface GoogleCloudDialogflowCxV3beta1LlmCallTokenCount {
 }
 
 export const GoogleCloudDialogflowCxV3beta1LlmCallTokenCount: Schema.Codec<GoogleCloudDialogflowCxV3beta1LlmCallTokenCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     totalOutputTokenCount: Schema.optional(Schema.String),
     conversationContextTokenCount: Schema.optional(Schema.String),
     exampleTokenCount: Schema.optional(Schema.String),
@@ -6167,7 +6167,7 @@ export interface GoogleCloudDialogflowCxV3beta1LlmCall {
 }
 
 export const GoogleCloudDialogflowCxV3beta1LlmCall: Schema.Codec<GoogleCloudDialogflowCxV3beta1LlmCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     retrievedExamples: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1LlmCallRetrievedExample),
     ),
@@ -6185,7 +6185,7 @@ export interface GoogleCloudDialogflowCxV3beta1NamedMetric {
 }
 
 export const GoogleCloudDialogflowCxV3beta1NamedMetric: Schema.Codec<GoogleCloudDialogflowCxV3beta1NamedMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Unknown),
     name: Schema.optional(Schema.String),
     unit: Schema.optional(Schema.String),
@@ -6200,7 +6200,7 @@ export interface GoogleCloudDialogflowCxV3beta1Span {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Span: Schema.Codec<GoogleCloudDialogflowCxV3beta1Span> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Array(Schema.String)),
     completeTime: Schema.optional(Schema.String),
@@ -6217,7 +6217,7 @@ export interface GoogleCloudDialogflowCxV3beta1UserUtterance {
 }
 
 export const GoogleCloudDialogflowCxV3beta1UserUtterance: Schema.Codec<GoogleCloudDialogflowCxV3beta1UserUtterance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audioTokens: Schema.optional(Schema.Array(Schema.Number)),
     text: Schema.optional(Schema.String),
     audio: Schema.optional(Schema.String),
@@ -6229,7 +6229,7 @@ export interface GoogleCloudDialogflowCxV3beta1AgentUtterance {
 }
 
 export const GoogleCloudDialogflowCxV3beta1AgentUtterance: Schema.Codec<GoogleCloudDialogflowCxV3beta1AgentUtterance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     requireGeneration: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1AgentUtterance" });
@@ -6237,7 +6237,7 @@ export const GoogleCloudDialogflowCxV3beta1AgentUtterance: Schema.Codec<GoogleCl
 export interface GoogleCloudDialogflowCxV3beta1ActionSTT {}
 
 export const GoogleCloudDialogflowCxV3beta1ActionSTT: Schema.Codec<GoogleCloudDialogflowCxV3beta1ActionSTT> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ActionSTT",
   });
 
@@ -6248,7 +6248,7 @@ export interface GoogleCloudDialogflowCxV3beta1PlaybookTransition {
 }
 
 export const GoogleCloudDialogflowCxV3beta1PlaybookTransition: Schema.Codec<GoogleCloudDialogflowCxV3beta1PlaybookTransition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     playbook: Schema.optional(Schema.String),
     inputActionParameters: Schema.optional(
@@ -6264,7 +6264,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolUseWebhookToolTrace {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolUseWebhookToolTrace: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolUseWebhookToolTrace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webhookTag: Schema.optional(Schema.String),
     webhookUri: Schema.optional(Schema.String),
   }).annotate({
@@ -6282,7 +6282,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolUse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolUse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolUse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputActionParameters: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
@@ -6307,7 +6307,7 @@ export interface GoogleCloudDialogflowCxV3beta1FlowTransition {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FlowTransition: Schema.Codec<GoogleCloudDialogflowCxV3beta1FlowTransition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flow: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     inputActionParameters: Schema.optional(
@@ -6337,7 +6337,7 @@ export interface GoogleCloudDialogflowCxV3beta1Action {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Action: Schema.Codec<GoogleCloudDialogflowCxV3beta1Action> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(GoogleCloudDialogflowCxV3beta1Status),
     completeTime: Schema.optional(Schema.String),
     flowStateUpdate: Schema.optional(
@@ -6396,7 +6396,7 @@ export interface GoogleCloudDialogflowCxV3beta1Example {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Example: Schema.Codec<GoogleCloudDialogflowCxV3beta1Example> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -6420,7 +6420,7 @@ export interface GoogleCloudDialogflowCxV3beta1GenerativeInfo {
 }
 
 export const GoogleCloudDialogflowCxV3beta1GenerativeInfo: Schema.Codec<GoogleCloudDialogflowCxV3beta1GenerativeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentPlaybooks: Schema.optional(Schema.Array(Schema.String)),
     actionTracingInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1Example),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1GenerativeInfo" });
@@ -6432,7 +6432,7 @@ export interface GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig {
 }
 
 export const GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig: Schema.Codec<GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableContinuousRun: Schema.optional(Schema.Boolean),
     testCases: Schema.optional(Schema.Array(Schema.String)),
     enablePredeploymentRun: Schema.optional(Schema.Boolean),
@@ -6445,7 +6445,7 @@ export interface GoogleCloudDialogflowV2ExportOperationMetadata {
 }
 
 export const GoogleCloudDialogflowV2ExportOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2ExportOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exportedGcsDestination: Schema.optional(
       GoogleCloudDialogflowV2GcsDestination,
     ),
@@ -6459,7 +6459,7 @@ export interface GoogleCloudDialogflowV2KnowledgeOperationMetadata {
 }
 
 export const GoogleCloudDialogflowV2KnowledgeOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2KnowledgeOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     exportOperationMetadata: Schema.optional(
       GoogleCloudDialogflowV2ExportOperationMetadata,
@@ -6473,7 +6473,7 @@ export const GoogleCloudDialogflowV2KnowledgeOperationMetadata: Schema.Codec<Goo
 export interface GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction {}
 
 export const GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction: Schema.Codec<GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction",
   });
 
@@ -6486,7 +6486,7 @@ export interface GoogleCloudDialogflowCxV3beta1TestCaseResult {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TestCaseResult: Schema.Codec<GoogleCloudDialogflowCxV3beta1TestCaseResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     conversationTurns: Schema.optional(
@@ -6509,7 +6509,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolAuthenticationOAuthConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolAuthenticationOAuthConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolAuthenticationOAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oauthGrantType: Schema.optional(Schema.String),
     clientSecret: Schema.optional(Schema.String),
     secretVersionForClientSecret: Schema.optional(Schema.String),
@@ -6527,7 +6527,7 @@ export interface GoogleCloudDialogflowV2ImportConversationDataOperationMetadata 
 }
 
 export const GoogleCloudDialogflowV2ImportConversationDataOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2ImportConversationDataOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partialFailures: Schema.optional(Schema.Array(GoogleRpcStatus)),
     createTime: Schema.optional(Schema.String),
     conversationDataset: Schema.optional(Schema.String),
@@ -6542,7 +6542,7 @@ export interface GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetric
 }
 
 export const GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetrics: Schema.Codec<GoogleCloudDialogflowCxV3beta1ConversationInteractionStepMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     latency: Schema.optional(Schema.String),
   }).annotate({
@@ -6555,7 +6555,7 @@ export interface GoogleCloudDialogflowCxV3EnvironmentWebhookConfig {
 }
 
 export const GoogleCloudDialogflowCxV3EnvironmentWebhookConfig: Schema.Codec<GoogleCloudDialogflowCxV3EnvironmentWebhookConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webhookOverrides: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3Webhook),
     ),
@@ -6568,7 +6568,7 @@ export interface GoogleCloudDialogflowCxV3beta1RestoreAgentRequestGitSource {
 }
 
 export const GoogleCloudDialogflowCxV3beta1RestoreAgentRequestGitSource: Schema.Codec<GoogleCloudDialogflowCxV3beta1RestoreAgentRequestGitSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trackingBranch: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1RestoreAgentRequestGitSource",
@@ -6581,7 +6581,7 @@ export interface GoogleCloudDialogflowCxV3beta1TestConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TestConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1TestConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trackingParameters: Schema.optional(Schema.Array(Schema.String)),
     page: Schema.optional(Schema.String),
     flow: Schema.optional(Schema.String),
@@ -6599,7 +6599,7 @@ export interface GoogleCloudDialogflowCxV3beta1TestCase {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TestCase: Schema.Codec<GoogleCloudDialogflowCxV3beta1TestCase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Schema.String)),
     lastTestResult: Schema.optional(
       GoogleCloudDialogflowCxV3beta1TestCaseResult,
@@ -6620,7 +6620,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListTestCasesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListTestCasesResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     testCases: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1TestCase),
@@ -6634,7 +6634,7 @@ export interface GoogleCloudDialogflowV2beta1GcsDestination {
 }
 
 export const GoogleCloudDialogflowV2beta1GcsDestination: Schema.Codec<GoogleCloudDialogflowV2beta1GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1GcsDestination" });
 
@@ -6644,7 +6644,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExperimentDefinition {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExperimentDefinition: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExperimentDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     condition: Schema.optional(Schema.String),
     versionVariants: Schema.optional(
       GoogleCloudDialogflowCxV3beta1VersionVariants,
@@ -6660,7 +6660,7 @@ export interface GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep {
 }
 
 export const GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep: Schema.Codec<GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trafficPercent: Schema.optional(Schema.Number),
     displayName: Schema.optional(Schema.String),
     minDuration: Schema.optional(Schema.String),
@@ -6675,7 +6675,7 @@ export interface GoogleCloudDialogflowCxV3beta1RolloutConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1RolloutConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1RolloutConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     failureCondition: Schema.optional(Schema.String),
     rolloutSteps: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep),
@@ -6689,7 +6689,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExperimentResult {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExperimentResult: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExperimentResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastUpdateTime: Schema.optional(Schema.String),
     versionMetrics: Schema.optional(
       Schema.Array(
@@ -6705,7 +6705,7 @@ export interface GoogleCloudDialogflowCxV3beta1RolloutState {
 }
 
 export const GoogleCloudDialogflowCxV3beta1RolloutState: Schema.Codec<GoogleCloudDialogflowCxV3beta1RolloutState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     step: Schema.optional(Schema.String),
     stepIndex: Schema.optional(Schema.Number),
     startTime: Schema.optional(Schema.String),
@@ -6736,7 +6736,7 @@ export interface GoogleCloudDialogflowCxV3beta1Experiment {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Experiment: Schema.Codec<GoogleCloudDialogflowCxV3beta1Experiment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     definition: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ExperimentDefinition,
@@ -6764,7 +6764,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListExperimentsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListExperimentsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListExperimentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     experiments: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1Experiment),
     ),
@@ -6778,7 +6778,7 @@ export interface GoogleCloudDialogflowCxV3beta1SpeechProcessingMetadata {
 }
 
 export const GoogleCloudDialogflowCxV3beta1SpeechProcessingMetadata: Schema.Codec<GoogleCloudDialogflowCxV3beta1SpeechProcessingMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1SpeechProcessingMetadata",
@@ -6789,7 +6789,7 @@ export interface GoogleCloudDialogflowCxV3beta1ValidateFlowRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ValidateFlowRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1ValidateFlowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ValidateFlowRequest",
@@ -6801,7 +6801,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExportAgentRequestGitDestination 
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExportAgentRequestGitDestination: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportAgentRequestGitDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trackingBranch: Schema.optional(Schema.String),
     commitMessage: Schema.optional(Schema.String),
   }).annotate({
@@ -6815,7 +6815,7 @@ export interface GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostC
 }
 
 export const GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpecControlPoint: Schema.Codec<GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpecControlPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attributeValue: Schema.optional(Schema.String),
     boostAmount: Schema.optional(Schema.Number),
   }).annotate({
@@ -6828,7 +6828,7 @@ export interface GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     categoryFilters: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowCxV3beta1SafetySettingsRaiSettingsCategoryFilter,
@@ -6851,7 +6851,7 @@ export interface GoogleCloudDialogflowCxV3beta1SafetySettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1SafetySettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1SafetySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultBannedPhraseMatchStrategy: Schema.optional(Schema.String),
     bannedPhrases: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase),
@@ -6872,7 +6872,7 @@ export interface GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckRes
 }
 
 export const GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult: Schema.Codec<GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duplicateSuggestions: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion,
@@ -6890,7 +6890,7 @@ export interface GoogleCloudDialogflowV2beta1SmartReplyAnswer {
 }
 
 export const GoogleCloudDialogflowV2beta1SmartReplyAnswer: Schema.Codec<GoogleCloudDialogflowV2beta1SmartReplyAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reply: Schema.optional(Schema.String),
     answerRecord: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -6899,7 +6899,7 @@ export const GoogleCloudDialogflowV2beta1SmartReplyAnswer: Schema.Codec<GoogleCl
 export interface GoogleCloudDialogflowCxV3beta1RestoreToolVersionRequest {}
 
 export const GoogleCloudDialogflowCxV3beta1RestoreToolVersionRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1RestoreToolVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1RestoreToolVersionRequest",
   });
 
@@ -6910,7 +6910,7 @@ export interface GoogleCloudDialogflowCxV3beta1FlowValidationResult {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FlowValidationResult: Schema.Codec<GoogleCloudDialogflowCxV3beta1FlowValidationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     validationMessages: Schema.optional(
@@ -6926,7 +6926,7 @@ export interface GoogleCloudDialogflowCxV3beta1AgentValidationResult {
 }
 
 export const GoogleCloudDialogflowCxV3beta1AgentValidationResult: Schema.Codec<GoogleCloudDialogflowCxV3beta1AgentValidationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flowValidationResults: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1FlowValidationResult),
     ),
@@ -6941,7 +6941,7 @@ export interface GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageSelectItemInfo: Schema.Codec<GoogleCloudDialogflowV2IntentMessageSelectItemInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     synonyms: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -6956,7 +6956,7 @@ export interface GoogleCloudDialogflowV2IntentMessageListSelectItem {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageListSelectItem: Schema.Codec<GoogleCloudDialogflowV2IntentMessageListSelectItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     info: Schema.optional(GoogleCloudDialogflowV2IntentMessageSelectItemInfo),
     title: Schema.optional(Schema.String),
     image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
@@ -6971,7 +6971,7 @@ export interface GoogleTypeLatLng {
 }
 
 export const GoogleTypeLatLng: Schema.Codec<GoogleTypeLatLng> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleTypeLatLng" });
@@ -6991,7 +6991,7 @@ export interface GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostC
 }
 
 export const GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpec: Schema.Codec<GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interpolationType: Schema.optional(Schema.String),
     fieldName: Schema.optional(Schema.String),
     attributeType: Schema.optional(Schema.String),
@@ -7012,7 +7012,7 @@ export interface GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec {
 }
 
 export const GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec: Schema.Codec<GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     condition: Schema.optional(Schema.String),
     boostControlSpec: Schema.optional(
       GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpecBoostControlSpec,
@@ -7027,7 +7027,7 @@ export interface GoogleCloudDialogflowCxV3beta1BoostSpec {
 }
 
 export const GoogleCloudDialogflowCxV3beta1BoostSpec: Schema.Codec<GoogleCloudDialogflowCxV3beta1BoostSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conditionBoostSpecs: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1BoostSpecConditionBoostSpec),
     ),
@@ -7039,7 +7039,7 @@ export interface GoogleCloudDialogflowCxV3beta1BoostSpecs {
 }
 
 export const GoogleCloudDialogflowCxV3beta1BoostSpecs: Schema.Codec<GoogleCloudDialogflowCxV3beta1BoostSpecs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataStores: Schema.optional(Schema.Array(Schema.String)),
     spec: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1BoostSpec),
@@ -7052,7 +7052,7 @@ export interface GoogleCloudDialogflowCxV3beta1FilterSpecs {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FilterSpecs: Schema.Codec<GoogleCloudDialogflowCxV3beta1FilterSpecs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataStores: Schema.optional(Schema.Array(Schema.String)),
     filter: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1FilterSpecs" });
@@ -7063,7 +7063,7 @@ export interface GoogleCloudDialogflowCxV3beta1SearchConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1SearchConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1SearchConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boostSpecs: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1BoostSpecs),
     ),
@@ -7094,7 +7094,7 @@ export interface GoogleCloudDialogflowCxV3beta1QueryParameters {
 }
 
 export const GoogleCloudDialogflowCxV3beta1QueryParameters: Schema.Codec<GoogleCloudDialogflowCxV3beta1QueryParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentPlaybook: Schema.optional(Schema.String),
     sessionTtl: Schema.optional(Schema.String),
     payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -7130,7 +7130,7 @@ export interface GoogleCloudDialogflowV2Context {
 }
 
 export const GoogleCloudDialogflowV2Context: Schema.Codec<GoogleCloudDialogflowV2Context> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lifespanCount: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -7141,7 +7141,7 @@ export interface GoogleCloudDialogflowCxV3beta1ValidateAgentRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ValidateAgentRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1ValidateAgentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ValidateAgentRequest",
@@ -7158,7 +7158,7 @@ export interface GoogleCloudDialogflowCxV3beta1VoiceSelectionParams {
 }
 
 export const GoogleCloudDialogflowCxV3beta1VoiceSelectionParams: Schema.Codec<GoogleCloudDialogflowCxV3beta1VoiceSelectionParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     ssmlGender: Schema.optional(Schema.String),
   }).annotate({
@@ -7174,7 +7174,7 @@ export interface GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     speakingRate: Schema.optional(Schema.Number),
     voice: Schema.optional(GoogleCloudDialogflowCxV3beta1VoiceSelectionParams),
     volumeGainDb: Schema.optional(Schema.Number),
@@ -7199,7 +7199,7 @@ export interface GoogleCloudDialogflowCxV3beta1OutputAudioConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1OutputAudioConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1OutputAudioConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audioEncoding: Schema.optional(Schema.String),
     synthesizeSpeechConfig: Schema.optional(
       GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig,
@@ -7216,7 +7216,7 @@ export interface GoogleCloudDialogflowCxV3beta1MatchIntentRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1MatchIntentRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1MatchIntentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queryInput: Schema.optional(GoogleCloudDialogflowCxV3beta1QueryInput),
     persistParameterChanges: Schema.optional(Schema.Boolean),
     queryParams: Schema.optional(GoogleCloudDialogflowCxV3beta1QueryParameters),
@@ -7244,7 +7244,7 @@ export interface GoogleCloudDialogflowCxV3beta1Match {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Match: Schema.Codec<GoogleCloudDialogflowCxV3beta1Match> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     intent: Schema.optional(GoogleCloudDialogflowCxV3beta1Intent),
     event: Schema.optional(Schema.String),
@@ -7260,7 +7260,7 @@ export interface GoogleCloudDialogflowCxV3beta1FulfillIntentRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FulfillIntentRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1FulfillIntentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputAudioConfig: Schema.optional(
       GoogleCloudDialogflowCxV3beta1OutputAudioConfig,
     ),
@@ -7277,7 +7277,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo {
 }
 
 export const GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo: Schema.Codec<GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo",
@@ -7288,7 +7288,7 @@ export interface GoogleCloudDialogflowCxV3beta1InlineDestination {
 }
 
 export const GoogleCloudDialogflowCxV3beta1InlineDestination: Schema.Codec<GoogleCloudDialogflowCxV3beta1InlineDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1InlineDestination",
@@ -7299,7 +7299,7 @@ export interface GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableAnswerFeedback: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings",
@@ -7314,7 +7314,7 @@ export interface GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGitCon
 }
 
 export const GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGitConnectionSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGitConnectionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repositoryUri: Schema.optional(Schema.String),
     trackingBranch: Schema.optional(Schema.String),
     branches: Schema.optional(Schema.Array(Schema.String)),
@@ -7334,7 +7334,7 @@ export interface GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithub
 }
 
 export const GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     accessToken: Schema.optional(Schema.String),
     repositoryUri: Schema.optional(Schema.String),
@@ -7351,7 +7351,7 @@ export interface GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gitConnectionSettings: Schema.optional(
       GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGitConnectionSettings,
     ),
@@ -7369,7 +7369,7 @@ export interface GoogleCloudDialogflowCxV3beta1AgentClientCertificateSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1AgentClientCertificateSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1AgentClientCertificateSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateKey: Schema.optional(Schema.String),
     passphrase: Schema.optional(Schema.String),
     sslCertificate: Schema.optional(Schema.String),
@@ -7382,7 +7382,7 @@ export interface GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     engine: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings",
@@ -7393,7 +7393,7 @@ export interface GoogleCloudDialogflowCxV3beta1SpeechToTextSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1SpeechToTextSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1SpeechToTextSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableSpeechAdaptation: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1SpeechToTextSettings",
@@ -7404,7 +7404,7 @@ export interface GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultEndUserMetadata: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
@@ -7420,7 +7420,7 @@ export interface GoogleCloudDialogflowCxV3beta1TextToSpeechSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TextToSpeechSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1TextToSpeechSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     synthesizeSpeechConfigs: Schema.optional(
       Schema.Record(
         Schema.String,
@@ -7460,7 +7460,7 @@ export interface GoogleCloudDialogflowCxV3beta1Agent {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Agent: Schema.Codec<GoogleCloudDialogflowCxV3beta1Agent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableSpellCorrection: Schema.optional(Schema.Boolean),
     answerFeedbackSettings: Schema.optional(
       GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings,
@@ -7512,7 +7512,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListAgentsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListAgentsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListAgentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agents: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3beta1Agent)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({
@@ -7525,7 +7525,7 @@ export interface GoogleCloudDialogflowCxV3beta1SessionInfo {
 }
 
 export const GoogleCloudDialogflowCxV3beta1SessionInfo: Schema.Codec<GoogleCloudDialogflowCxV3beta1SessionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1SessionInfo" });
@@ -7540,7 +7540,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentRespons
 }
 
 export const GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messages: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1ResponseMessage),
     ),
@@ -7564,7 +7564,7 @@ export interface GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo {
 }
 
 export const GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo: Schema.Codec<GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     justCollected: Schema.optional(Schema.Boolean),
     required: Schema.optional(Schema.Boolean),
     value: Schema.optional(Schema.Unknown),
@@ -7579,7 +7579,7 @@ export interface GoogleCloudDialogflowCxV3beta1PageInfoFormInfo {
 }
 
 export const GoogleCloudDialogflowCxV3beta1PageInfoFormInfo: Schema.Codec<GoogleCloudDialogflowCxV3beta1PageInfoFormInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameterInfo: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo),
     ),
@@ -7592,7 +7592,7 @@ export interface GoogleCloudDialogflowCxV3beta1PageInfo {
 }
 
 export const GoogleCloudDialogflowCxV3beta1PageInfo: Schema.Codec<GoogleCloudDialogflowCxV3beta1PageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     formInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1PageInfoFormInfo),
     currentPage: Schema.optional(Schema.String),
@@ -7608,7 +7608,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1WebhookResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1WebhookResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     targetPage: Schema.optional(Schema.String),
     sessionInfo: Schema.optional(GoogleCloudDialogflowCxV3beta1SessionInfo),
@@ -7624,7 +7624,7 @@ export interface GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse {
 }
 
 export const GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse: Schema.Codec<GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intents: Schema.optional(Schema.Array(GoogleCloudDialogflowV2beta1Intent)),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse",
@@ -7635,7 +7635,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswe
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     question: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -7645,7 +7645,7 @@ export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaq
 export interface GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata {}
 
 export const GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata",
   });
 
@@ -7659,7 +7659,7 @@ export interface GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse {
 }
 
 export const GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse: Schema.Codec<GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messages: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3ResponseMessage),
     ),
@@ -7677,7 +7677,7 @@ export interface GoogleLongrunningOperation {
 }
 
 export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -7692,7 +7692,7 @@ export interface GoogleLongrunningListOperationsResponse {
 }
 
 export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -7710,7 +7710,7 @@ export interface GoogleCloudDialogflowCxV3beta1Changelog {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Changelog: Schema.Codec<GoogleCloudDialogflowCxV3beta1Changelog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -7727,7 +7727,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListChangelogsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListChangelogsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListChangelogsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     changelogs: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1Changelog),
@@ -7742,7 +7742,7 @@ export interface GoogleCloudDialogflowCxV3beta1ImportTestCasesRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportTestCasesRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1ImportTestCasesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsUri: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
   }).annotate({
@@ -7755,7 +7755,7 @@ export interface GoogleCloudDialogflowV2EntityTypeEntity {
 }
 
 export const GoogleCloudDialogflowV2EntityTypeEntity: Schema.Codec<GoogleCloudDialogflowV2EntityTypeEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     synonyms: Schema.optional(Schema.Array(Schema.String)),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2EntityTypeEntity" });
@@ -7771,7 +7771,7 @@ export interface GoogleCloudDialogflowV2SessionEntityType {
 }
 
 export const GoogleCloudDialogflowV2SessionEntityType: Schema.Codec<GoogleCloudDialogflowV2SessionEntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     entityOverrideMode: Schema.optional(Schema.String),
     entities: Schema.optional(
@@ -7784,7 +7784,7 @@ export interface GoogleCloudDialogflowV2IntentMessageText {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageText: Schema.Codec<GoogleCloudDialogflowV2IntentMessageText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleCloudDialogflowV2IntentMessageText" });
 
@@ -7793,7 +7793,7 @@ export interface GoogleCloudDialogflowV2IntentMessageSuggestion {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageSuggestion: Schema.Codec<GoogleCloudDialogflowV2IntentMessageSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2IntentMessageSuggestion" });
 
@@ -7802,7 +7802,7 @@ export interface GoogleCloudDialogflowV2IntentMessageSuggestions {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageSuggestions: Schema.Codec<GoogleCloudDialogflowV2IntentMessageSuggestions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestions: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2IntentMessageSuggestion),
     ),
@@ -7817,7 +7817,7 @@ export interface GoogleCloudDialogflowV2IntentMessageListSelect {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageListSelect: Schema.Codec<GoogleCloudDialogflowV2IntentMessageListSelect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2IntentMessageListSelectItem),
     ),
@@ -7835,7 +7835,7 @@ export interface GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCar
 }
 
 export const GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction: Schema.Codec<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     urlTypeHint: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
   }).annotate({
@@ -7852,7 +7852,7 @@ export interface GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCar
 }
 
 export const GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem: Schema.Codec<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     image: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
     title: Schema.optional(Schema.String),
     openUriAction: Schema.optional(
@@ -7877,7 +7877,7 @@ export interface GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard: Schema.Codec<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem,
@@ -7894,7 +7894,7 @@ export interface GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion: Schema.Codec<GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destinationName: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
   }).annotate({
@@ -7910,7 +7910,7 @@ export interface GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaOb
 }
 
 export const GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject: Schema.Codec<GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     largeImage: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
     icon: Schema.optional(GoogleCloudDialogflowV2IntentMessageImage),
@@ -7927,7 +7927,7 @@ export interface GoogleCloudDialogflowV2IntentMessageMediaContent {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageMediaContent: Schema.Codec<GoogleCloudDialogflowV2IntentMessageMediaContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mediaObjects: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject,
@@ -7946,7 +7946,7 @@ export interface GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageCarouselSelectItem: Schema.Codec<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     info: Schema.optional(GoogleCloudDialogflowV2IntentMessageSelectItemInfo),
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -7960,7 +7960,7 @@ export interface GoogleCloudDialogflowV2IntentMessageCarouselSelect {
 }
 
 export const GoogleCloudDialogflowV2IntentMessageCarouselSelect: Schema.Codec<GoogleCloudDialogflowV2IntentMessageCarouselSelect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2IntentMessageCarouselSelectItem),
     ),
@@ -7998,7 +7998,7 @@ export interface GoogleCloudDialogflowV2IntentMessage {
 }
 
 export const GoogleCloudDialogflowV2IntentMessage: Schema.Codec<GoogleCloudDialogflowV2IntentMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(GoogleCloudDialogflowV2IntentMessageText),
     card: Schema.optional(GoogleCloudDialogflowV2IntentMessageCard),
     payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -8041,7 +8041,7 @@ export interface GoogleCloudDialogflowV2WebhookResponse {
 }
 
 export const GoogleCloudDialogflowV2WebhookResponse: Schema.Codec<GoogleCloudDialogflowV2WebhookResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sessionEntityTypes: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2SessionEntityType),
     ),
@@ -8064,7 +8064,7 @@ export interface GoogleCloudDialogflowV2beta1AnnotatedMessagePart {
 }
 
 export const GoogleCloudDialogflowV2beta1AnnotatedMessagePart: Schema.Codec<GoogleCloudDialogflowV2beta1AnnotatedMessagePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     formattedValue: Schema.optional(Schema.Unknown),
     text: Schema.optional(Schema.String),
     entityType: Schema.optional(Schema.String),
@@ -8078,7 +8078,7 @@ export interface GoogleCloudDialogflowV2beta1MessageAnnotation {
 }
 
 export const GoogleCloudDialogflowV2beta1MessageAnnotation: Schema.Codec<GoogleCloudDialogflowV2beta1MessageAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parts: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1AnnotatedMessagePart),
     ),
@@ -8090,7 +8090,7 @@ export interface GoogleCloudDialogflowV2beta1ResponseMessageText {
 }
 
 export const GoogleCloudDialogflowV2beta1ResponseMessageText: Schema.Codec<GoogleCloudDialogflowV2beta1ResponseMessageText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1ResponseMessageText",
@@ -8103,7 +8103,7 @@ export interface GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment {
 }
 
 export const GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment: Schema.Codec<GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audio: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
     allowPlaybackInterruption: Schema.optional(Schema.Boolean),
@@ -8116,7 +8116,7 @@ export interface GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio {
 }
 
 export const GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio: Schema.Codec<GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     segments: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment,
@@ -8132,7 +8132,7 @@ export interface GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCal
 }
 
 export const GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall: Schema.Codec<GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phoneNumber: Schema.optional(Schema.String),
     sipUri: Schema.optional(Schema.String),
   }).annotate({
@@ -8145,7 +8145,7 @@ export interface GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff {
 }
 
 export const GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff: Schema.Codec<GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff",
@@ -8161,7 +8161,7 @@ export interface GoogleCloudDialogflowV2beta1ResponseMessage {
 }
 
 export const GoogleCloudDialogflowV2beta1ResponseMessage: Schema.Codec<GoogleCloudDialogflowV2beta1ResponseMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(GoogleCloudDialogflowV2beta1ResponseMessageText),
     mixedAudio: Schema.optional(
       GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio,
@@ -8197,7 +8197,7 @@ export interface GoogleCloudDialogflowV2beta1Message {
 }
 
 export const GoogleCloudDialogflowV2beta1Message: Schema.Codec<GoogleCloudDialogflowV2beta1Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     participant: Schema.optional(Schema.String),
     sentimentAnalysis: Schema.optional(
       GoogleCloudDialogflowV2beta1SentimentAnalysisResult,
@@ -8221,7 +8221,7 @@ export interface GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo {
 }
 
 export const GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo: Schema.Codec<GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo",
@@ -8230,14 +8230,14 @@ export const GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo: Schema.Code
 export interface GoogleCloudDialogflowCxV3ExportIntentsMetadata {}
 
 export const GoogleCloudDialogflowCxV3ExportIntentsMetadata: Schema.Codec<GoogleCloudDialogflowCxV3ExportIntentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ExportIntentsMetadata",
   });
 
 export interface GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata {}
 
 export const GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDialogflowV2DeleteConversationDatasetOperationMetadata",
   });
@@ -8254,7 +8254,7 @@ export interface GoogleCloudDialogflowCxV3beta1ContinuousTestResult {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ContinuousTestResult: Schema.Codec<GoogleCloudDialogflowCxV3beta1ContinuousTestResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.String),
     testCaseResults: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -8269,7 +8269,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListContinuousTestResultsResponse
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListContinuousTestResultsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListContinuousTestResultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     continuousTestResults: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1ContinuousTestResult),
     ),
@@ -8285,7 +8285,7 @@ export interface GoogleCloudDialogflowCxV3TestCaseError {
 }
 
 export const GoogleCloudDialogflowCxV3TestCaseError: Schema.Codec<GoogleCloudDialogflowCxV3TestCaseError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     testCase: Schema.optional(GoogleCloudDialogflowCxV3TestCase),
     status: Schema.optional(GoogleRpcStatus),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3TestCaseError" });
@@ -8297,7 +8297,7 @@ export interface GoogleCloudDialogflowCxV3beta1TestError {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TestError: Schema.Codec<GoogleCloudDialogflowCxV3beta1TestError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     testCase: Schema.optional(Schema.String),
     status: Schema.optional(GoogleRpcStatus),
     testTime: Schema.optional(Schema.String),
@@ -8310,7 +8310,7 @@ export interface GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse {
 }
 
 export const GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse: Schema.Codec<GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responseText: Schema.optional(Schema.String),
     sources: Schema.optional(
       GoogleCloudDialogflowV2AgentCoachingSuggestionSources,
@@ -8329,7 +8329,7 @@ export interface GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckRe
 }
 
 export const GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion: Schema.Codec<GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestionIndex: Schema.optional(Schema.Number),
     answerRecord: Schema.optional(Schema.String),
     similarityScore: Schema.optional(Schema.Number),
@@ -8343,7 +8343,7 @@ export interface GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckRe
 }
 
 export const GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult: Schema.Codec<GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duplicateSuggestions: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion,
@@ -8372,7 +8372,7 @@ export interface GoogleCloudDialogflowV2AgentCoachingInstruction {
 }
 
 export const GoogleCloudDialogflowV2AgentCoachingInstruction: Schema.Codec<GoogleCloudDialogflowV2AgentCoachingInstruction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     condition: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     agentAction: Schema.optional(Schema.String),
@@ -8393,7 +8393,7 @@ export interface GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSugges
 }
 
 export const GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion: Schema.Codec<GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sources: Schema.optional(
       GoogleCloudDialogflowV2AgentCoachingSuggestionSources,
     ),
@@ -8413,7 +8413,7 @@ export interface GoogleCloudDialogflowV2AgentCoachingSuggestion {
 }
 
 export const GoogleCloudDialogflowV2AgentCoachingSuggestion: Schema.Codec<GoogleCloudDialogflowV2AgentCoachingSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sampleResponses: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse,
@@ -8435,7 +8435,7 @@ export interface GoogleCloudDialogflowV2SummarySuggestionSummarySection {
 }
 
 export const GoogleCloudDialogflowV2SummarySuggestionSummarySection: Schema.Codec<GoogleCloudDialogflowV2SummarySuggestionSummarySection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     summary: Schema.optional(Schema.String),
     section: Schema.optional(Schema.String),
   }).annotate({
@@ -8447,7 +8447,7 @@ export interface GoogleCloudDialogflowV2SummarySuggestion {
 }
 
 export const GoogleCloudDialogflowV2SummarySuggestion: Schema.Codec<GoogleCloudDialogflowV2SummarySuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     summarySections: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2SummarySuggestionSummarySection),
     ),
@@ -8472,7 +8472,7 @@ export interface GoogleCloudDialogflowV2ToolCall {
 }
 
 export const GoogleCloudDialogflowV2ToolCall: Schema.Codec<GoogleCloudDialogflowV2ToolCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     tool: Schema.optional(Schema.String),
     cesToolset: Schema.optional(Schema.String),
@@ -8493,7 +8493,7 @@ export interface GoogleCloudDialogflowV2ToolCallResultError {
 }
 
 export const GoogleCloudDialogflowV2ToolCallResultError: Schema.Codec<GoogleCloudDialogflowV2ToolCallResultError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2ToolCallResultError" });
 
@@ -8511,7 +8511,7 @@ export interface GoogleCloudDialogflowV2ToolCallResult {
 }
 
 export const GoogleCloudDialogflowV2ToolCallResult: Schema.Codec<GoogleCloudDialogflowV2ToolCallResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cesTool: Schema.optional(Schema.String),
     answerRecord: Schema.optional(Schema.String),
     action: Schema.optional(Schema.String),
@@ -8530,7 +8530,7 @@ export interface GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo {
 }
 
 export const GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo: Schema.Codec<GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     toolCall: Schema.optional(GoogleCloudDialogflowV2ToolCall),
     toolCallResult: Schema.optional(GoogleCloudDialogflowV2ToolCallResult),
   }).annotate({
@@ -8542,7 +8542,7 @@ export interface GoogleCloudDialogflowV2FreeFormSuggestion {
 }
 
 export const GoogleCloudDialogflowV2FreeFormSuggestion: Schema.Codec<GoogleCloudDialogflowV2FreeFormSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2FreeFormSuggestion" });
 
@@ -8554,7 +8554,7 @@ export interface GoogleCloudDialogflowV2GeneratorSuggestion {
 }
 
 export const GoogleCloudDialogflowV2GeneratorSuggestion: Schema.Codec<GoogleCloudDialogflowV2GeneratorSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agentCoachingSuggestion: Schema.optional(
       GoogleCloudDialogflowV2AgentCoachingSuggestion,
     ),
@@ -8576,7 +8576,7 @@ export interface GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSugg
 }
 
 export const GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer: Schema.Codec<GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     generatorSuggestion: Schema.optional(
       GoogleCloudDialogflowV2GeneratorSuggestion,
     ),
@@ -8593,7 +8593,7 @@ export interface GoogleCloudDialogflowV2GenerateSuggestionsResponse {
 }
 
 export const GoogleCloudDialogflowV2GenerateSuggestionsResponse: Schema.Codec<GoogleCloudDialogflowV2GenerateSuggestionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     generatorSuggestionAnswers: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer,
@@ -8610,7 +8610,7 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery {
 }
 
 export const GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery: Schema.Codec<GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queryText: Schema.optional(Schema.String),
     searchContexts: Schema.optional(
       Schema.Array(
@@ -8626,7 +8626,7 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqS
 }
 
 export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource: Schema.Codec<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     question: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -8642,7 +8642,7 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer {
 }
 
 export const GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer: Schema.Codec<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     generativeSource: Schema.optional(
       GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource,
     ),
@@ -8665,7 +8665,7 @@ export interface GoogleCloudDialogflowV2ServiceLatency {
 }
 
 export const GoogleCloudDialogflowV2ServiceLatency: Schema.Codec<GoogleCloudDialogflowV2ServiceLatency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     internalServiceLatencies: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency),
     ),
@@ -8692,7 +8692,7 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistB
 }
 
 export const GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior: Schema.Codec<GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endUserMetadataIncluded: Schema.optional(Schema.Boolean),
     useTranslatedMessage: Schema.optional(Schema.Boolean),
     thirdPartyConnectorAllowed: Schema.optional(Schema.Boolean),
@@ -8722,7 +8722,7 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationD
 }
 
 export const GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo: Schema.Codec<GoogleCloudDialogflowV2KnowledgeAssistDebugInfoQueryGenerationDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     candidatesTokenCount: Schema.optional(Schema.Number),
     promptTokenCount: Schema.optional(Schema.Number),
     totalTokenCount: Schema.optional(Schema.Number),
@@ -8738,7 +8738,7 @@ export interface GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo {
 }
 
 export const GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo: Schema.Codec<GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contextReferenceRetrieved: Schema.optional(Schema.Boolean),
     projectNotAllowlisted: Schema.optional(Schema.Boolean),
     ingestedParametersDebugInfo: Schema.optional(
@@ -8790,7 +8790,7 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistDebugInfo {
 }
 
 export const GoogleCloudDialogflowV2KnowledgeAssistDebugInfo: Schema.Codec<GoogleCloudDialogflowV2KnowledgeAssistDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceLatency: Schema.optional(GoogleCloudDialogflowV2ServiceLatency),
     queryGenerationFailureReason: Schema.optional(Schema.String),
     datastoreResponseReason: Schema.optional(Schema.String),
@@ -8817,7 +8817,7 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistAnswer {
 }
 
 export const GoogleCloudDialogflowV2KnowledgeAssistAnswer: Schema.Codec<GoogleCloudDialogflowV2KnowledgeAssistAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestedQuery: Schema.optional(
       GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery,
     ),
@@ -8836,7 +8836,7 @@ export interface GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggested
 }
 
 export const GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult: Schema.Codec<GoogleCloudDialogflowV2KnowledgeAssistAnswerAdditionalSuggestedQueryResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestedQuery: Schema.optional(
       GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery,
     ),
@@ -8854,7 +8854,7 @@ export interface GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse {
 }
 
 export const GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse: Schema.Codec<GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     knowledgeAssistAnswer: Schema.optional(
       GoogleCloudDialogflowV2KnowledgeAssistAnswer,
     ),
@@ -8879,7 +8879,7 @@ export interface GoogleCloudDialogflowV2FaqAnswer {
 }
 
 export const GoogleCloudDialogflowV2FaqAnswer: Schema.Codec<GoogleCloudDialogflowV2FaqAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     answer: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -8895,7 +8895,7 @@ export interface GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
 }
 
 export const GoogleCloudDialogflowV2SuggestFaqAnswersResponse: Schema.Codec<GoogleCloudDialogflowV2SuggestFaqAnswersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latestMessage: Schema.optional(Schema.String),
     faqAnswers: Schema.optional(Schema.Array(GoogleCloudDialogflowV2FaqAnswer)),
     contextSize: Schema.optional(Schema.Number),
@@ -8910,7 +8910,7 @@ export interface GoogleCloudDialogflowV2SmartReplyAnswer {
 }
 
 export const GoogleCloudDialogflowV2SmartReplyAnswer: Schema.Codec<GoogleCloudDialogflowV2SmartReplyAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reply: Schema.optional(Schema.String),
     answerRecord: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
@@ -8923,7 +8923,7 @@ export interface GoogleCloudDialogflowV2SuggestSmartRepliesResponse {
 }
 
 export const GoogleCloudDialogflowV2SuggestSmartRepliesResponse: Schema.Codec<GoogleCloudDialogflowV2SuggestSmartRepliesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latestMessage: Schema.optional(Schema.String),
     smartReplyAnswers: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2SmartReplyAnswer),
@@ -8943,7 +8943,7 @@ export interface GoogleCloudDialogflowV2ArticleAnswer {
 }
 
 export const GoogleCloudDialogflowV2ArticleAnswer: Schema.Codec<GoogleCloudDialogflowV2ArticleAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     snippets: Schema.optional(Schema.Array(Schema.String)),
     confidence: Schema.optional(Schema.Number),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -8959,7 +8959,7 @@ export interface GoogleCloudDialogflowV2SuggestArticlesResponse {
 }
 
 export const GoogleCloudDialogflowV2SuggestArticlesResponse: Schema.Codec<GoogleCloudDialogflowV2SuggestArticlesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     articleAnswers: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2ArticleAnswer),
     ),
@@ -8977,7 +8977,7 @@ export interface GoogleCloudDialogflowV2SuggestionResult {
 }
 
 export const GoogleCloudDialogflowV2SuggestionResult: Schema.Codec<GoogleCloudDialogflowV2SuggestionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     generateSuggestionsResponse: Schema.optional(
       GoogleCloudDialogflowV2GenerateSuggestionsResponse,
     ),
@@ -9001,7 +9001,7 @@ export interface GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig",
@@ -9012,7 +9012,7 @@ export interface GoogleCloudDialogflowCxV3EnvironmentVersionConfig {
 }
 
 export const GoogleCloudDialogflowCxV3EnvironmentVersionConfig: Schema.Codec<GoogleCloudDialogflowCxV3EnvironmentVersionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3EnvironmentVersionConfig",
@@ -9024,7 +9024,7 @@ export interface GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflict
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources: Schema.Codec<GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityDisplayNames: Schema.optional(Schema.Array(Schema.String)),
     entityTypeDisplayNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -9038,7 +9038,7 @@ export interface GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityTypes: Schema.optional(Schema.Array(Schema.String)),
     conflictingResources: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources,
@@ -9052,7 +9052,7 @@ export interface GoogleCloudDialogflowCxV3InlineDestination {
 }
 
 export const GoogleCloudDialogflowCxV3InlineDestination: Schema.Codec<GoogleCloudDialogflowCxV3InlineDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3InlineDestination" });
 
@@ -9062,7 +9062,7 @@ export interface GoogleCloudDialogflowCxV3ExportEntityTypesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3ExportEntityTypesResponse: Schema.Codec<GoogleCloudDialogflowCxV3ExportEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityTypesUri: Schema.optional(Schema.String),
     entityTypesContent: Schema.optional(
       GoogleCloudDialogflowCxV3InlineDestination,
@@ -9074,7 +9074,7 @@ export const GoogleCloudDialogflowCxV3ExportEntityTypesResponse: Schema.Codec<Go
 export interface GoogleCloudDialogflowCxV3beta1ToolDataStoreToolFallbackPrompt {}
 
 export const GoogleCloudDialogflowCxV3beta1ToolDataStoreToolFallbackPrompt: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolDataStoreToolFallbackPrompt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ToolDataStoreToolFallbackPrompt",
   });
 
@@ -9084,7 +9084,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolDataStoreTool {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolDataStoreTool: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolDataStoreTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataStoreConnections: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1DataStoreConnection),
     ),
@@ -9100,7 +9100,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolServiceDirectoryConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolServiceDirectoryConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ToolServiceDirectoryConfig",
@@ -9118,7 +9118,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolAuthenticationApiKeyConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolAuthenticationApiKeyConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolAuthenticationApiKeyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyName: Schema.optional(Schema.String),
     apiKey: Schema.optional(Schema.String),
     secretVersionForApiKey: Schema.optional(Schema.String),
@@ -9136,7 +9136,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAgentAut
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAgentAuthConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAgentAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceAgentAuth: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -9149,7 +9149,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolAuthenticationBearerTokenConf
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolAuthenticationBearerTokenConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolAuthenticationBearerTokenConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
     secretVersionForToken: Schema.optional(Schema.String),
   }).annotate({
@@ -9166,7 +9166,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolAuthentication {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolAuthentication: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolAuthentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceAccountAuthConfig: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ToolAuthenticationServiceAccountAuthConfig,
     ),
@@ -9192,7 +9192,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolTLSConfigCACert {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolTLSConfigCACert: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolTLSConfigCACert> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     cert: Schema.optional(Schema.String),
   }).annotate({
@@ -9204,7 +9204,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolTLSConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolTLSConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolTLSConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     caCerts: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1ToolTLSConfigCACert),
     ),
@@ -9218,7 +9218,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolOpenApiTool {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolOpenApiTool: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolOpenApiTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceDirectoryConfig: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ToolServiceDirectoryConfig,
     ),
@@ -9234,7 +9234,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolExtensionTool {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolExtensionTool: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolExtensionTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ToolExtensionTool",
@@ -9257,7 +9257,7 @@ export interface GoogleCloudDialogflowCxV3beta1Tool {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Tool: Schema.Codec<GoogleCloudDialogflowCxV3beta1Tool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     dataStoreSpec: Schema.optional(
@@ -9283,7 +9283,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListToolsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListToolsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListToolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     tools: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3beta1Tool)),
   }).annotate({
@@ -9295,7 +9295,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAc
 }
 
 export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAccountAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceAccount: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -9341,7 +9341,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookGenericWebService {
 }
 
 export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebService: Schema.Codec<GoogleCloudDialogflowCxV3beta1WebhookGenericWebService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     httpMethod: Schema.optional(Schema.String),
     parameterMapping: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -9379,7 +9379,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     genericWebService: Schema.optional(
       GoogleCloudDialogflowCxV3beta1WebhookGenericWebService,
     ),
@@ -9398,7 +9398,7 @@ export interface GoogleCloudDialogflowCxV3beta1Webhook {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Webhook: Schema.Codec<GoogleCloudDialogflowCxV3beta1Webhook> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timeout: Schema.optional(Schema.String),
     serviceDirectory: Schema.optional(
       GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig,
@@ -9416,7 +9416,7 @@ export interface GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig {
 }
 
 export const GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig: Schema.Codec<GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webhookOverrides: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1Webhook),
     ),
@@ -9435,7 +9435,7 @@ export interface GoogleCloudDialogflowCxV3beta1Environment {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Environment: Schema.Codec<GoogleCloudDialogflowCxV3beta1Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     testCasesConfig: Schema.optional(
       GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig,
     ),
@@ -9465,7 +9465,7 @@ export interface GoogleCloudDialogflowCxV3beta1DetectIntentRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1DetectIntentRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1DetectIntentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputAudioConfig: Schema.optional(
       GoogleCloudDialogflowCxV3beta1OutputAudioConfig,
     ),
@@ -9483,7 +9483,7 @@ export interface GoogleCloudDialogflowCxV3beta1ConversationInteractionMissingTra
 }
 
 export const GoogleCloudDialogflowCxV3beta1ConversationInteractionMissingTransition: Schema.Codec<GoogleCloudDialogflowCxV3beta1ConversationInteractionMissingTransition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     intentDisplayName: Schema.optional(Schema.String),
   }).annotate({
@@ -9497,7 +9497,7 @@ export interface GoogleCloudDialogflowCxV3beta1PlaybookTraceMetadata {
 }
 
 export const GoogleCloudDialogflowCxV3beta1PlaybookTraceMetadata: Schema.Codec<GoogleCloudDialogflowCxV3beta1PlaybookTraceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     playbook: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({
@@ -9510,7 +9510,7 @@ export interface GoogleCloudDialogflowCxV3beta1FlowTraceMetadata {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FlowTraceMetadata: Schema.Codec<GoogleCloudDialogflowCxV3beta1FlowTraceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flow: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({
@@ -9537,7 +9537,7 @@ export interface GoogleCloudDialogflowCxV3beta1TraceBlock {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TraceBlock: Schema.Codec<GoogleCloudDialogflowCxV3beta1TraceBlock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     playbookTraceMetadata: Schema.optional(
       GoogleCloudDialogflowCxV3beta1PlaybookTraceMetadata,
     ),
@@ -9567,7 +9567,7 @@ export interface GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult {
 }
 
 export const GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult: Schema.Codec<GoogleCloudDialogflowCxV3beta1SentimentAnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     magnitude: Schema.optional(Schema.Number),
   }).annotate({
@@ -9604,7 +9604,7 @@ export interface GoogleCloudDialogflowCxV3beta1QueryResult {
 }
 
 export const GoogleCloudDialogflowCxV3beta1QueryResult: Schema.Codec<GoogleCloudDialogflowCxV3beta1QueryResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webhookTags: Schema.optional(Schema.Array(Schema.String)),
     webhookLatencies: Schema.optional(Schema.Array(Schema.String)),
     dtmf: Schema.optional(GoogleCloudDialogflowCxV3beta1DtmfInput),
@@ -9663,7 +9663,7 @@ export interface GoogleCloudDialogflowCxV3beta1DetectIntentResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1DetectIntentResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1DetectIntentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     outputAudioConfig: Schema.optional(
       GoogleCloudDialogflowCxV3beta1OutputAudioConfig,
     ),
@@ -9689,7 +9689,7 @@ export interface GoogleCloudDialogflowCxV3beta1ConversationInteraction {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ConversationInteraction: Schema.Codec<GoogleCloudDialogflowCxV3beta1ConversationInteraction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestUtterances: Schema.optional(Schema.String),
     stepMetrics: Schema.optional(
       Schema.Array(
@@ -9726,7 +9726,7 @@ export interface GoogleCloudDialogflowCxV3beta1ConversationMetricsMatchTypeCount
 }
 
 export const GoogleCloudDialogflowCxV3beta1ConversationMetricsMatchTypeCount: Schema.Codec<GoogleCloudDialogflowCxV3beta1ConversationMetricsMatchTypeCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameterFillingCount: Schema.optional(Schema.Number),
     noMatchCount: Schema.optional(Schema.Number),
     unspecifiedCount: Schema.optional(Schema.Number),
@@ -9748,7 +9748,7 @@ export interface GoogleCloudDialogflowCxV3beta1ConversationMetricsQueryInputCoun
 }
 
 export const GoogleCloudDialogflowCxV3beta1ConversationMetricsQueryInputCount: Schema.Codec<GoogleCloudDialogflowCxV3beta1ConversationMetricsQueryInputCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textCount: Schema.optional(Schema.Number),
     dtmfCount: Schema.optional(Schema.Number),
     audioCount: Schema.optional(Schema.Number),
@@ -9772,7 +9772,7 @@ export interface GoogleCloudDialogflowCxV3beta1ConversationMetrics {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ConversationMetrics: Schema.Codec<GoogleCloudDialogflowCxV3beta1ConversationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hasLiveAgentHandoff: Schema.optional(Schema.Boolean),
     outputAudioDuration: Schema.optional(Schema.String),
     maxWebhookLatency: Schema.optional(Schema.String),
@@ -9806,7 +9806,7 @@ export interface GoogleCloudDialogflowCxV3beta1Conversation {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Conversation: Schema.Codec<GoogleCloudDialogflowCxV3beta1Conversation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
     flows: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3beta1Flow)),
     name: Schema.optional(Schema.String),
@@ -9830,7 +9830,7 @@ export interface GoogleCloudDialogflowCxV3beta1RestoreToolVersionResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1RestoreToolVersionResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1RestoreToolVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tool: Schema.optional(GoogleCloudDialogflowCxV3beta1Tool),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1RestoreToolVersionResponse",
@@ -9842,7 +9842,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityTypesUri: Schema.optional(Schema.String),
     entityTypesContent: Schema.optional(
       GoogleCloudDialogflowCxV3beta1InlineDestination,
@@ -9858,7 +9858,7 @@ export interface GoogleCloudDialogflowV2beta1EventInput {
 }
 
 export const GoogleCloudDialogflowV2beta1EventInput: Schema.Codec<GoogleCloudDialogflowV2beta1EventInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     languageCode: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -9870,7 +9870,7 @@ export interface GoogleCloudDialogflowV2beta1EntityTypeEntity {
 }
 
 export const GoogleCloudDialogflowV2beta1EntityTypeEntity: Schema.Codec<GoogleCloudDialogflowV2beta1EntityTypeEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     synonyms: Schema.optional(Schema.Array(Schema.String)),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2beta1EntityTypeEntity" });
@@ -9886,7 +9886,7 @@ export interface GoogleCloudDialogflowV2beta1SessionEntityType {
 }
 
 export const GoogleCloudDialogflowV2beta1SessionEntityType: Schema.Codec<GoogleCloudDialogflowV2beta1SessionEntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     entityOverrideMode: Schema.optional(Schema.String),
     entities: Schema.optional(
@@ -9907,7 +9907,7 @@ export interface GoogleCloudDialogflowV2beta1WebhookResponse {
 }
 
 export const GoogleCloudDialogflowV2beta1WebhookResponse: Schema.Codec<GoogleCloudDialogflowV2beta1WebhookResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     followupEventInput: Schema.optional(GoogleCloudDialogflowV2beta1EventInput),
     endInteraction: Schema.optional(Schema.Boolean),
@@ -9939,7 +9939,7 @@ export interface GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo {
 }
 
 export const GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo: Schema.Codec<GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     justCollected: Schema.optional(Schema.Boolean),
     required: Schema.optional(Schema.Boolean),
     value: Schema.optional(Schema.Unknown),
@@ -9954,7 +9954,7 @@ export interface GoogleCloudDialogflowCxV3PageInfoFormInfo {
 }
 
 export const GoogleCloudDialogflowCxV3PageInfoFormInfo: Schema.Codec<GoogleCloudDialogflowCxV3PageInfoFormInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameterInfo: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo),
     ),
@@ -9974,7 +9974,7 @@ export interface GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettin
 }
 
 export const GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audioExportPattern: Schema.optional(Schema.String),
     enableAudioRedaction: Schema.optional(Schema.Boolean),
     gcsBucket: Schema.optional(Schema.String),
@@ -9992,7 +9992,7 @@ export interface GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo {
 }
 
 export const GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo: Schema.Codec<GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectNotAllowlisted: Schema.optional(Schema.Boolean),
     ingestedParametersDebugInfo: Schema.optional(
       Schema.Array(
@@ -10007,7 +10007,7 @@ export const GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo: Sche
 export interface GoogleCloudDialogflowCxV3ImportIntentsMetadata {}
 
 export const GoogleCloudDialogflowCxV3ImportIntentsMetadata: Schema.Codec<GoogleCloudDialogflowCxV3ImportIntentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ImportIntentsMetadata",
   });
 
@@ -10026,7 +10026,7 @@ export interface GoogleCloudDialogflowV2CreateConversationModelEvaluationOperati
 }
 
 export const GoogleCloudDialogflowV2CreateConversationModelEvaluationOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2CreateConversationModelEvaluationOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     conversationModel: Schema.optional(Schema.String),
@@ -10041,7 +10041,7 @@ export interface GoogleCloudDialogflowCxV3beta1Phrase {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Phrase: Schema.Codec<GoogleCloudDialogflowCxV3beta1Phrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1Phrase" });
 
@@ -10051,7 +10051,7 @@ export interface GoogleCloudDialogflowCxV3beta1GeneratorPlaceholder {
 }
 
 export const GoogleCloudDialogflowCxV3beta1GeneratorPlaceholder: Schema.Codec<GoogleCloudDialogflowCxV3beta1GeneratorPlaceholder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   }).annotate({
@@ -10066,7 +10066,7 @@ export interface GoogleCloudDialogflowCxV3beta1GeneratorModelParameter {
 }
 
 export const GoogleCloudDialogflowCxV3beta1GeneratorModelParameter: Schema.Codec<GoogleCloudDialogflowCxV3beta1GeneratorModelParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxDecodeSteps: Schema.optional(Schema.Number),
     topP: Schema.optional(Schema.Number),
     temperature: Schema.optional(Schema.Number),
@@ -10085,7 +10085,7 @@ export interface GoogleCloudDialogflowCxV3beta1Generator {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Generator: Schema.Codec<GoogleCloudDialogflowCxV3beta1Generator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     llmModelSettings: Schema.optional(
@@ -10106,7 +10106,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListGeneratorsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListGeneratorsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListGeneratorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     generators: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1Generator),
     ),
@@ -10121,7 +10121,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentPar
 }
 
 export const GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue: Schema.Codec<GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originalValue: Schema.optional(Schema.String),
     resolvedValue: Schema.optional(Schema.Unknown),
   }).annotate({
@@ -10134,7 +10134,7 @@ export interface GoogleCloudDialogflowCxV3beta1BatchDeleteTestCasesRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1BatchDeleteTestCasesRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1BatchDeleteTestCasesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1BatchDeleteTestCasesRequest",
@@ -10157,7 +10157,7 @@ export interface GoogleCloudDialogflowV2beta1ConversationEvent {
 }
 
 export const GoogleCloudDialogflowV2beta1ConversationEvent: Schema.Codec<GoogleCloudDialogflowV2beta1ConversationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errorStatus: Schema.optional(GoogleRpcStatus),
     conversation: Schema.optional(Schema.String),
     newMessagePayload: Schema.optional(GoogleCloudDialogflowV2beta1Message),
@@ -10172,7 +10172,7 @@ export interface GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata {
 }
 
 export const GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata: Schema.Codec<GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1TestError),
     ),
@@ -10186,7 +10186,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     playbookUri: Schema.optional(Schema.String),
     dataFormat: Schema.optional(Schema.String),
   }).annotate({
@@ -10199,7 +10199,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswe
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerEventSource: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerEventSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     event: Schema.optional(Schema.String),
     snippets: Schema.optional(
       GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource,
@@ -10222,7 +10222,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExportEntityTypesRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExportEntityTypesRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportEntityTypesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityTypes: Schema.optional(Schema.Array(Schema.String)),
     dataFormat: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -10238,7 +10238,7 @@ export interface GoogleCloudDialogflowCxV3ExportFlowResponse {
 }
 
 export const GoogleCloudDialogflowCxV3ExportFlowResponse: Schema.Codec<GoogleCloudDialogflowCxV3ExportFlowResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flowUri: Schema.optional(Schema.String),
     flowContent: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3ExportFlowResponse" });
@@ -10250,7 +10250,7 @@ export interface GoogleCloudDialogflowCxV3beta1LanguageInfo {
 }
 
 export const GoogleCloudDialogflowCxV3beta1LanguageInfo: Schema.Codec<GoogleCloudDialogflowCxV3beta1LanguageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputLanguageCode: Schema.optional(Schema.String),
     resolvedLanguageCode: Schema.optional(Schema.String),
     confidenceScore: Schema.optional(Schema.Number),
@@ -10261,7 +10261,7 @@ export interface GoogleCloudDialogflowCxV3ImportTestCasesMetadata {
 }
 
 export const GoogleCloudDialogflowCxV3ImportTestCasesMetadata: Schema.Codec<GoogleCloudDialogflowCxV3ImportTestCasesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3TestCaseError),
     ),
@@ -10279,7 +10279,7 @@ export interface GoogleCloudDialogflowCxV3beta1GenerativeSettingsKnowledgeConnec
 }
 
 export const GoogleCloudDialogflowCxV3beta1GenerativeSettingsKnowledgeConnectorSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1GenerativeSettingsKnowledgeConnectorSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agent: Schema.optional(Schema.String),
     agentScope: Schema.optional(Schema.String),
     business: Schema.optional(Schema.String),
@@ -10296,7 +10296,7 @@ export interface GoogleCloudDialogflowCxV3ImportTestCasesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3ImportTestCasesResponse: Schema.Codec<GoogleCloudDialogflowCxV3ImportTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3ImportTestCasesResponse",
@@ -10307,7 +10307,7 @@ export interface GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase {
 }
 
 export const GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase: Schema.Codec<GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase",
@@ -10323,7 +10323,7 @@ export interface GoogleCloudDialogflowCxV3beta1MatchIntentResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1MatchIntentResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1MatchIntentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     matches: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3beta1Match)),
     currentPage: Schema.optional(GoogleCloudDialogflowCxV3beta1Page),
@@ -10340,7 +10340,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExportFlowResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExportFlowResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportFlowResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flowUri: Schema.optional(Schema.String),
     flowContent: Schema.optional(Schema.String),
   }).annotate({
@@ -10352,7 +10352,7 @@ export interface GoogleCloudDialogflowCxV3beta1InlineSource {
 }
 
 export const GoogleCloudDialogflowCxV3beta1InlineSource: Schema.Codec<GoogleCloudDialogflowCxV3beta1InlineSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1InlineSource" });
 
@@ -10371,7 +10371,7 @@ export interface GoogleCloudDialogflowCxV3beta1ImportIntentsRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportIntentsRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1ImportIntentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intentsContent: Schema.optional(GoogleCloudDialogflowCxV3beta1InlineSource),
     intentsUri: Schema.optional(Schema.String),
     mergeOption: Schema.optional(Schema.String),
@@ -10394,7 +10394,7 @@ export interface GoogleCloudDialogflowCxV3beta1Version {
 }
 
 export const GoogleCloudDialogflowCxV3beta1Version: Schema.Codec<GoogleCloudDialogflowCxV3beta1Version> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nluSettings: Schema.optional(GoogleCloudDialogflowCxV3beta1NluSettings),
     createTime: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -10409,7 +10409,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListVersionsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListVersionsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     versions: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1Version),
     ),
@@ -10424,7 +10424,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSugg
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSuggestedQueryResult: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSuggestedQueryResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestedQuery: Schema.optional(
       GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery,
     ),
@@ -10443,7 +10443,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswe
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventSource: Schema.optional(
       GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerEventSource,
     ),
@@ -10483,7 +10483,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAs
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAssistBehavior: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAssistBehavior> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appendedSearchContextCount: Schema.optional(Schema.Number),
     endUserMetadataIncluded: Schema.optional(Schema.Boolean),
     useTranslatedMessage: Schema.optional(Schema.Boolean),
@@ -10513,7 +10513,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenera
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoQueryGenerationDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     candidatesTokenCount: Schema.optional(Schema.Number),
     promptTokenCount: Schema.optional(Schema.Number),
     totalTokenCount: Schema.optional(Schema.Number),
@@ -10562,7 +10562,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo {
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceLatency: Schema.optional(GoogleCloudDialogflowV2beta1ServiceLatency),
     knowledgeAssistBehavior: Schema.optional(
       GoogleCloudDialogflowV2beta1KnowledgeAssistDebugInfoKnowledgeAssistBehavior,
@@ -10589,7 +10589,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer {
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestedQuery: Schema.optional(
       GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery,
     ),
@@ -10612,7 +10612,7 @@ export interface GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse {
 }
 
 export const GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse: Schema.Codec<GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     additionalSuggestedQueryResults: Schema.optional(
       Schema.Array(
         GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerAdditionalSuggestedQueryResult,
@@ -10633,7 +10633,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListWebhooksResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListWebhooksResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListWebhooksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webhooks: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1Webhook),
     ),
@@ -10648,7 +10648,7 @@ export interface GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingRe
 }
 
 export const GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources: Schema.Codec<GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityTypeDisplayNames: Schema.optional(Schema.Array(Schema.String)),
     entityDisplayNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -10663,7 +10663,7 @@ export interface GoogleCloudDialogflowV2OriginalDetectIntentRequest {
 }
 
 export const GoogleCloudDialogflowV2OriginalDetectIntentRequest: Schema.Codec<GoogleCloudDialogflowV2OriginalDetectIntentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
     payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -10676,7 +10676,7 @@ export interface GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     playbook: Schema.optional(GoogleCloudDialogflowCxV3beta1Playbook),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse",
@@ -10687,7 +10687,7 @@ export interface GoogleCloudDialogflowCxV3ImportFlowResponse {
 }
 
 export const GoogleCloudDialogflowCxV3ImportFlowResponse: Schema.Codec<GoogleCloudDialogflowCxV3ImportFlowResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flow: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3ImportFlowResponse" });
 
@@ -10697,7 +10697,7 @@ export interface GoogleCloudDialogflowCxV3ImportEntityTypesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3ImportEntityTypesResponse: Schema.Codec<GoogleCloudDialogflowCxV3ImportEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityTypes: Schema.optional(Schema.Array(Schema.String)),
     conflictingResources: Schema.optional(
       GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources,
@@ -10709,7 +10709,7 @@ export const GoogleCloudDialogflowCxV3ImportEntityTypesResponse: Schema.Codec<Go
 export interface GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata {}
 
 export const GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata: Schema.Codec<GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata",
   });
 
@@ -10720,7 +10720,7 @@ export interface GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse {
 }
 
 export const GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse: Schema.Codec<GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latestMessage: Schema.optional(Schema.String),
     contextSize: Schema.optional(Schema.Number),
     smartReplyAnswers: Schema.optional(
@@ -10735,7 +10735,7 @@ export interface GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     continuousTestResult: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ContinuousTestResult,
     ),
@@ -10753,7 +10753,7 @@ export interface GoogleCloudDialogflowV2beta1FaqAnswer {
 }
 
 export const GoogleCloudDialogflowV2beta1FaqAnswer: Schema.Codec<GoogleCloudDialogflowV2beta1FaqAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     answer: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.Number),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -10767,7 +10767,7 @@ export interface GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata {
 }
 
 export const GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata: Schema.Codec<GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     request: Schema.optional(
       GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest,
     ),
@@ -10778,7 +10778,7 @@ export const GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata: Schem
 export interface GoogleCloudDialogflowCxV3beta1RunContinuousTestRequest {}
 
 export const GoogleCloudDialogflowCxV3beta1RunContinuousTestRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1RunContinuousTestRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1RunContinuousTestRequest",
   });
 
@@ -10803,7 +10803,7 @@ export interface GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMet
 }
 
 export const GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2ClearSuggestionFeatureConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversationProfile: Schema.optional(Schema.String),
     participantRole: Schema.optional(Schema.String),
     suggestionFeatureType: Schema.optional(Schema.String),
@@ -10820,7 +10820,7 @@ export interface GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse {
 }
 
 export const GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse: Schema.Codec<GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latestMessage: Schema.optional(Schema.String),
     faqAnswers: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1FaqAnswer),
@@ -10837,7 +10837,7 @@ export interface GoogleCloudDialogflowV2beta1SuggestArticlesResponse {
 }
 
 export const GoogleCloudDialogflowV2beta1SuggestArticlesResponse: Schema.Codec<GoogleCloudDialogflowV2beta1SuggestArticlesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     articleAnswers: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1ArticleAnswer),
     ),
@@ -10859,7 +10859,7 @@ export interface GoogleCloudDialogflowV2beta1SuggestionResult {
 }
 
 export const GoogleCloudDialogflowV2beta1SuggestionResult: Schema.Codec<GoogleCloudDialogflowV2beta1SuggestionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     suggestDialogflowAssistsResponse: Schema.optional(
       GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse,
     ),
@@ -10890,7 +10890,7 @@ export interface GoogleCloudDialogflowCxV3SessionInfo {
 }
 
 export const GoogleCloudDialogflowCxV3SessionInfo: Schema.Codec<GoogleCloudDialogflowCxV3SessionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3SessionInfo" });
@@ -10900,7 +10900,7 @@ export interface GoogleCloudDialogflowCxV3CreateVersionOperationMetadata {
 }
 
 export const GoogleCloudDialogflowCxV3CreateVersionOperationMetadata: Schema.Codec<GoogleCloudDialogflowCxV3CreateVersionOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3CreateVersionOperationMetadata",
@@ -10913,7 +10913,7 @@ export interface GoogleCloudDialogflowCxV3PageInfo {
 }
 
 export const GoogleCloudDialogflowCxV3PageInfo: Schema.Codec<GoogleCloudDialogflowCxV3PageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentPage: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     formInfo: Schema.optional(GoogleCloudDialogflowCxV3PageInfoFormInfo),
@@ -10929,7 +10929,7 @@ export interface GoogleCloudDialogflowCxV3WebhookResponse {
 }
 
 export const GoogleCloudDialogflowCxV3WebhookResponse: Schema.Codec<GoogleCloudDialogflowCxV3WebhookResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetFlow: Schema.optional(Schema.String),
     fulfillmentResponse: Schema.optional(
       GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse,
@@ -10960,7 +10960,7 @@ export interface GoogleCloudDialogflowV3alpha1TurnSignals {
 }
 
 export const GoogleCloudDialogflowV3alpha1TurnSignals: Schema.Codec<GoogleCloudDialogflowV3alpha1TurnSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dtmfUsed: Schema.optional(Schema.Boolean),
     webhookStatuses: Schema.optional(Schema.Array(Schema.String)),
     noMatch: Schema.optional(Schema.Boolean),
@@ -10979,7 +10979,7 @@ export interface GoogleCloudDialogflowV3alpha1ConversationSignals {
 }
 
 export const GoogleCloudDialogflowV3alpha1ConversationSignals: Schema.Codec<GoogleCloudDialogflowV3alpha1ConversationSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     turnSignals: Schema.optional(GoogleCloudDialogflowV3alpha1TurnSignals),
   }).annotate({
     identifier: "GoogleCloudDialogflowV3alpha1ConversationSignals",
@@ -10990,7 +10990,7 @@ export interface GoogleCloudDialogflowCxV3RunContinuousTestResponse {
 }
 
 export const GoogleCloudDialogflowCxV3RunContinuousTestResponse: Schema.Codec<GoogleCloudDialogflowCxV3RunContinuousTestResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     continuousTestResult: Schema.optional(
       GoogleCloudDialogflowCxV3ContinuousTestResult,
     ),
@@ -11003,7 +11003,7 @@ export interface GoogleCloudDialogflowCxV3beta1LoadVersionRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1LoadVersionRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1LoadVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowOverrideAgentResources: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1LoadVersionRequest",
@@ -11012,7 +11012,7 @@ export const GoogleCloudDialogflowCxV3beta1LoadVersionRequest: Schema.Codec<Goog
 export interface GoogleCloudDialogflowCxV3beta1TrainFlowRequest {}
 
 export const GoogleCloudDialogflowCxV3beta1TrainFlowRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1TrainFlowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1TrainFlowRequest",
   });
 
@@ -11022,7 +11022,7 @@ export interface GoogleCloudDialogflowV2ImportConversationDataOperationResponse 
 }
 
 export const GoogleCloudDialogflowV2ImportConversationDataOperationResponse: Schema.Codec<GoogleCloudDialogflowV2ImportConversationDataOperationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversationDataset: Schema.optional(Schema.String),
     importCount: Schema.optional(Schema.Number),
   }).annotate({
@@ -11058,7 +11058,7 @@ export interface GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy {
 }
 
 export const GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy: Schema.Codec<GoogleCloudDialogflowCxV3beta1PlaybookImportStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mainPlaybookImportStrategy: Schema.optional(Schema.String),
     nestedResourceImportStrategy: Schema.optional(Schema.String),
     toolImportStrategy: Schema.optional(Schema.String),
@@ -11071,7 +11071,7 @@ export interface GoogleCloudDialogflowCxV3beta1DeployFlowMetadata {
 }
 
 export const GoogleCloudDialogflowCxV3beta1DeployFlowMetadata: Schema.Codec<GoogleCloudDialogflowCxV3beta1DeployFlowMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     testErrors: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1TestError),
     ),
@@ -11085,7 +11085,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExportIntentsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExportIntentsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportIntentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intentsContent: Schema.optional(
       GoogleCloudDialogflowCxV3beta1InlineDestination,
     ),
@@ -11115,7 +11115,7 @@ export interface GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetad
 }
 
 export const GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversationProfile: Schema.optional(Schema.String),
     participantRole: Schema.optional(Schema.String),
     suggestionFeatureType: Schema.optional(Schema.String),
@@ -11128,7 +11128,7 @@ export const GoogleCloudDialogflowV2SetSuggestionFeatureConfigOperationMetadata:
 export interface GoogleCloudDialogflowCxV3beta1StopExperimentRequest {}
 
 export const GoogleCloudDialogflowCxV3beta1StopExperimentRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1StopExperimentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1StopExperimentRequest",
   });
 
@@ -11141,7 +11141,7 @@ export interface GoogleCloudDialogflowCxV3beta1PlaybookVersion {
 }
 
 export const GoogleCloudDialogflowCxV3beta1PlaybookVersion: Schema.Codec<GoogleCloudDialogflowCxV3beta1PlaybookVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     playbook: Schema.optional(GoogleCloudDialogflowCxV3beta1Playbook),
     updateTime: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -11158,7 +11158,7 @@ export interface GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     playbookContent: Schema.optional(Schema.String),
     playbookUri: Schema.optional(Schema.String),
     importStrategy: Schema.optional(
@@ -11174,7 +11174,7 @@ export interface GoogleCloudDialogflowCxV3beta1BatchRunTestCasesRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1BatchRunTestCasesRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1BatchRunTestCasesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.optional(Schema.String),
     testCases: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -11199,7 +11199,7 @@ export interface GoogleCloudDialogflowV2EntityType {
 }
 
 export const GoogleCloudDialogflowV2EntityType: Schema.Codec<GoogleCloudDialogflowV2EntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     autoExpansionMode: Schema.optional(Schema.String),
     entities: Schema.optional(
@@ -11216,7 +11216,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListConversationsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListConversationsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversations: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1Conversation),
     ),
@@ -11231,7 +11231,7 @@ export interface GoogleCloudDialogflowV2beta1ExportAgentResponse {
 }
 
 export const GoogleCloudDialogflowV2beta1ExportAgentResponse: Schema.Codec<GoogleCloudDialogflowV2beta1ExportAgentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agentUri: Schema.optional(Schema.String),
     agentContent: Schema.optional(Schema.String),
   }).annotate({
@@ -11245,7 +11245,7 @@ export interface GoogleCloudDialogflowCxV3LanguageInfo {
 }
 
 export const GoogleCloudDialogflowCxV3LanguageInfo: Schema.Codec<GoogleCloudDialogflowCxV3LanguageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputLanguageCode: Schema.optional(Schema.String),
     resolvedLanguageCode: Schema.optional(Schema.String),
     confidenceScore: Schema.optional(Schema.Number),
@@ -11257,7 +11257,7 @@ export interface GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult 
 }
 
 export const GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult: Schema.Codec<GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     magnitude: Schema.optional(Schema.Number),
   }).annotate({
@@ -11284,7 +11284,7 @@ export interface GoogleCloudDialogflowCxV3WebhookRequest {
 }
 
 export const GoogleCloudDialogflowCxV3WebhookRequest: Schema.Codec<GoogleCloudDialogflowCxV3WebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     intentInfo: Schema.optional(
       GoogleCloudDialogflowCxV3WebhookRequestIntentInfo,
@@ -11316,7 +11316,7 @@ export interface GoogleCloudDialogflowV2ExportAgentResponse {
 }
 
 export const GoogleCloudDialogflowV2ExportAgentResponse: Schema.Codec<GoogleCloudDialogflowV2ExportAgentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agentUri: Schema.optional(Schema.String),
     agentContent: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowV2ExportAgentResponse" });
@@ -11333,7 +11333,7 @@ export interface GoogleCloudDialogflowV2IntentParameter {
 }
 
 export const GoogleCloudDialogflowV2IntentParameter: Schema.Codec<GoogleCloudDialogflowV2IntentParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     isList: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -11349,7 +11349,7 @@ export interface GoogleCloudDialogflowCxV3RunTestCaseResponse {
 }
 
 export const GoogleCloudDialogflowCxV3RunTestCaseResponse: Schema.Codec<GoogleCloudDialogflowCxV3RunTestCaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(GoogleCloudDialogflowCxV3TestCaseResult),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3RunTestCaseResponse" });
 
@@ -11358,7 +11358,7 @@ export interface GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSet
 }
 
 export const GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableInsightsExport: Schema.optional(Schema.Boolean),
   }).annotate({
     identifier:
@@ -11368,7 +11368,7 @@ export const GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSetting
 export interface GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata {}
 
 export const GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata: Schema.Codec<GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata",
   });
 
@@ -11378,7 +11378,7 @@ export interface GoogleCloudDialogflowV2IntentFollowupIntentInfo {
 }
 
 export const GoogleCloudDialogflowV2IntentFollowupIntentInfo: Schema.Codec<GoogleCloudDialogflowV2IntentFollowupIntentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     followupIntentName: Schema.optional(Schema.String),
     parentFollowupIntentName: Schema.optional(Schema.String),
   }).annotate({
@@ -11393,7 +11393,7 @@ export interface GoogleCloudDialogflowV2IntentTrainingPhrasePart {
 }
 
 export const GoogleCloudDialogflowV2IntentTrainingPhrasePart: Schema.Codec<GoogleCloudDialogflowV2IntentTrainingPhrasePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     entityType: Schema.optional(Schema.String),
     userDefined: Schema.optional(Schema.Boolean),
@@ -11410,7 +11410,7 @@ export interface GoogleCloudDialogflowV2IntentTrainingPhrase {
 }
 
 export const GoogleCloudDialogflowV2IntentTrainingPhrase: Schema.Codec<GoogleCloudDialogflowV2IntentTrainingPhrase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     parts: Schema.optional(
@@ -11459,7 +11459,7 @@ export interface GoogleCloudDialogflowV2Intent {
 }
 
 export const GoogleCloudDialogflowV2Intent: Schema.Codec<GoogleCloudDialogflowV2Intent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resetContexts: Schema.optional(Schema.Boolean),
     endInteraction: Schema.optional(Schema.Boolean),
     followupIntentInfo: Schema.optional(
@@ -11512,7 +11512,7 @@ export interface GoogleCloudDialogflowV2QueryResult {
 }
 
 export const GoogleCloudDialogflowV2QueryResult: Schema.Codec<GoogleCloudDialogflowV2QueryResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     sentimentAnalysisResult: Schema.optional(
       GoogleCloudDialogflowV2SentimentAnalysisResult,
@@ -11549,7 +11549,7 @@ export interface GoogleCloudDialogflowV2WebhookRequest {
 }
 
 export const GoogleCloudDialogflowV2WebhookRequest: Schema.Codec<GoogleCloudDialogflowV2WebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responseId: Schema.optional(Schema.String),
     queryResult: Schema.optional(GoogleCloudDialogflowV2QueryResult),
     session: Schema.optional(Schema.String),
@@ -11567,7 +11567,7 @@ export interface GoogleCloudLocationLocation {
 }
 
 export const GoogleCloudLocationLocation: Schema.Codec<GoogleCloudLocationLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
     locationId: Schema.optional(Schema.String),
@@ -11581,7 +11581,7 @@ export interface GoogleCloudDialogflowCxV3ExportIntentsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3ExportIntentsResponse: Schema.Codec<GoogleCloudDialogflowCxV3ExportIntentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intentsUri: Schema.optional(Schema.String),
     intentsContent: Schema.optional(GoogleCloudDialogflowCxV3InlineDestination),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3ExportIntentsResponse" });
@@ -11605,7 +11605,7 @@ export interface GoogleCloudDialogflowCxV3beta1TurnSignals {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TurnSignals: Schema.Codec<GoogleCloudDialogflowCxV3beta1TurnSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webhookStatuses: Schema.optional(Schema.Array(Schema.String)),
     dtmfUsed: Schema.optional(Schema.Boolean),
     sentimentMagnitude: Schema.optional(Schema.Number),
@@ -11623,7 +11623,7 @@ export interface GoogleCloudDialogflowCxV3BatchRunTestCasesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3BatchRunTestCasesResponse: Schema.Codec<GoogleCloudDialogflowCxV3BatchRunTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3TestCaseResult),
     ),
@@ -11640,7 +11640,7 @@ export interface GoogleCloudDialogflowCxV3beta1ToolVersion {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ToolVersion: Schema.Codec<GoogleCloudDialogflowCxV3beta1ToolVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -11661,7 +11661,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExportAgentRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExportAgentRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportAgentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agentUri: Schema.optional(Schema.String),
     dataFormat: Schema.optional(Schema.String),
     environment: Schema.optional(Schema.String),
@@ -11679,7 +11679,7 @@ export interface GoogleCloudDialogflowCxV3beta1LookupEnvironmentHistoryResponse 
 }
 
 export const GoogleCloudDialogflowCxV3beta1LookupEnvironmentHistoryResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1LookupEnvironmentHistoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environments: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1Environment),
     ),
@@ -11694,7 +11694,7 @@ export interface GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata {
 }
 
 export const GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata: Schema.Codec<GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata",
@@ -11706,7 +11706,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListToolVersionsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListToolVersionsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListToolVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     toolVersions: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1ToolVersion),
     ),
@@ -11733,7 +11733,7 @@ export interface GoogleCloudDialogflowV2beta1EntityType {
 }
 
 export const GoogleCloudDialogflowV2beta1EntityType: Schema.Codec<GoogleCloudDialogflowV2beta1EntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     autoExpansionMode: Schema.optional(Schema.String),
     enableFuzzyExtraction: Schema.optional(Schema.Boolean),
@@ -11749,7 +11749,7 @@ export interface GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1TestCaseResult),
     ),
@@ -11773,7 +11773,7 @@ export interface GoogleCloudDialogflowV2CreateConversationModelOperationMetadata
 }
 
 export const GoogleCloudDialogflowV2CreateConversationModelOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2CreateConversationModelOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     conversationModel: Schema.optional(Schema.String),
@@ -11789,7 +11789,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListExamplesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListExamplesResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListExamplesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     examples: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1Example),
     ),
@@ -11804,7 +11804,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListIntentsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListIntentsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListIntentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intents: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1Intent),
     ),
@@ -11819,7 +11819,7 @@ export interface GoogleCloudLocationListLocationsResponse {
 }
 
 export const GoogleCloudLocationListLocationsResponse: Schema.Codec<GoogleCloudLocationListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudLocationListLocationsResponse" });
@@ -11830,7 +11830,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListPagesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListPagesResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListPagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pages: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3beta1Page)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({
@@ -11843,7 +11843,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExportFlowRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExportFlowRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportFlowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeReferencedFlows: Schema.optional(Schema.Boolean),
     flowUri: Schema.optional(Schema.String),
   }).annotate({
@@ -11860,7 +11860,7 @@ export interface GoogleCloudDialogflowCxV3beta1GenerativeSettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1GenerativeSettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1GenerativeSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     generativeSafetySettings: Schema.optional(
       GoogleCloudDialogflowCxV3beta1SafetySettings,
     ),
@@ -11884,7 +11884,7 @@ export interface GoogleCloudDialogflowCxV3RunContinuousTestMetadata {
 }
 
 export const GoogleCloudDialogflowCxV3RunContinuousTestMetadata: Schema.Codec<GoogleCloudDialogflowCxV3RunContinuousTestMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3TestError)),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3RunContinuousTestMetadata",
@@ -11916,7 +11916,7 @@ export interface GoogleCloudDialogflowCxV3beta1SecuritySettings {
 }
 
 export const GoogleCloudDialogflowCxV3beta1SecuritySettings: Schema.Codec<GoogleCloudDialogflowCxV3beta1SecuritySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     redactionScope: Schema.optional(Schema.String),
@@ -11945,7 +11945,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo {
 }
 
 export const GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo: Schema.Codec<GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.Number),
     parameters: Schema.optional(
       Schema.Record(
@@ -11965,7 +11965,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsUri: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
   }).annotate({
@@ -11984,7 +11984,7 @@ export interface GoogleCloudDialogflowCxV3beta1RestoreAgentRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1RestoreAgentRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1RestoreAgentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agentContent: Schema.optional(Schema.String),
     gitSource: Schema.optional(
       GoogleCloudDialogflowCxV3beta1RestoreAgentRequestGitSource,
@@ -12015,7 +12015,7 @@ export interface GoogleCloudDialogflowCxV3beta1EntityType {
 }
 
 export const GoogleCloudDialogflowCxV3beta1EntityType: Schema.Codec<GoogleCloudDialogflowCxV3beta1EntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entities: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1EntityTypeEntity),
     ),
@@ -12041,7 +12041,7 @@ export interface GoogleCloudDialogflowCxV3Environment {
 }
 
 export const GoogleCloudDialogflowCxV3Environment: Schema.Codec<GoogleCloudDialogflowCxV3Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -12063,7 +12063,7 @@ export interface GoogleCloudDialogflowCxV3ExportTestCasesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3ExportTestCasesResponse: Schema.Codec<GoogleCloudDialogflowCxV3ExportTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsUri: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
   }).annotate({
@@ -12076,7 +12076,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisRe
 }
 
 export const GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult: Schema.Codec<GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     magnitude: Schema.optional(Schema.Number),
   }).annotate({
@@ -12103,7 +12103,7 @@ export interface GoogleCloudDialogflowCxV3beta1WebhookRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1WebhookRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1WebhookRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messages: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1ResponseMessage),
     ),
@@ -12134,7 +12134,7 @@ export interface GoogleCloudDialogflowV2beta1ExportOperationMetadata {
 }
 
 export const GoogleCloudDialogflowV2beta1ExportOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2beta1ExportOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exportedGcsDestination: Schema.optional(
       GoogleCloudDialogflowV2beta1GcsDestination,
     ),
@@ -12145,7 +12145,7 @@ export const GoogleCloudDialogflowV2beta1ExportOperationMetadata: Schema.Codec<G
 export interface GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata {}
 
 export const GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata: Schema.Codec<GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata",
   });
 
@@ -12157,7 +12157,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExportToolsRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExportToolsRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportToolsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     toolsUri: Schema.optional(Schema.String),
     toolsContentInline: Schema.optional(Schema.Boolean),
     tools: Schema.optional(Schema.Array(Schema.String)),
@@ -12171,7 +12171,7 @@ export interface GoogleCloudDialogflowCxV3beta1DeployFlowRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1DeployFlowRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1DeployFlowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flowVersion: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1DeployFlowRequest",
@@ -12184,7 +12184,7 @@ export interface GoogleCloudDialogflowCxV3ExportAgentResponse {
 }
 
 export const GoogleCloudDialogflowCxV3ExportAgentResponse: Schema.Codec<GoogleCloudDialogflowCxV3ExportAgentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     commitSha: Schema.optional(Schema.String),
     agentContent: Schema.optional(Schema.String),
     agentUri: Schema.optional(Schema.String),
@@ -12193,7 +12193,7 @@ export const GoogleCloudDialogflowCxV3ExportAgentResponse: Schema.Codec<GoogleCl
 export interface GoogleProtobufEmpty {}
 
 export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
 
@@ -12202,7 +12202,7 @@ export interface GoogleCloudDialogflowV2BatchUpdateIntentsResponse {
 }
 
 export const GoogleCloudDialogflowV2BatchUpdateIntentsResponse: Schema.Codec<GoogleCloudDialogflowV2BatchUpdateIntentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intents: Schema.optional(Schema.Array(GoogleCloudDialogflowV2Intent)),
   }).annotate({
     identifier: "GoogleCloudDialogflowV2BatchUpdateIntentsResponse",
@@ -12211,7 +12211,7 @@ export const GoogleCloudDialogflowV2BatchUpdateIntentsResponse: Schema.Codec<Goo
 export interface GoogleCloudDialogflowCxV3ExportEntityTypesMetadata {}
 
 export const GoogleCloudDialogflowCxV3ExportEntityTypesMetadata: Schema.Codec<GoogleCloudDialogflowCxV3ExportEntityTypesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ExportEntityTypesMetadata",
   });
 
@@ -12220,7 +12220,7 @@ export interface GoogleCloudDialogflowCxV3beta1RunTestCaseResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1RunTestCaseResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1RunTestCaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(GoogleCloudDialogflowCxV3beta1TestCaseResult),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1RunTestCaseResponse",
@@ -12232,7 +12232,7 @@ export interface GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResour
 }
 
 export const GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources: Schema.Codec<GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intentDisplayNames: Schema.optional(Schema.Array(Schema.String)),
     entityDisplayNames: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
@@ -12246,7 +12246,7 @@ export interface GoogleCloudDialogflowCxV3ImportIntentsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3ImportIntentsResponse: Schema.Codec<GoogleCloudDialogflowCxV3ImportIntentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conflictingResources: Schema.optional(
       GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources,
     ),
@@ -12256,7 +12256,7 @@ export const GoogleCloudDialogflowCxV3ImportIntentsResponse: Schema.Codec<Google
 export interface GoogleCloudDialogflowCxV3beta1StartExperimentRequest {}
 
 export const GoogleCloudDialogflowCxV3beta1StartExperimentRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1StartExperimentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1StartExperimentRequest",
   });
 
@@ -12265,7 +12265,7 @@ export interface GoogleCloudDialogflowV2ImportDocumentsResponse {
 }
 
 export const GoogleCloudDialogflowV2ImportDocumentsResponse: Schema.Codec<GoogleCloudDialogflowV2ImportDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     warnings: Schema.optional(Schema.Array(GoogleRpcStatus)),
   }).annotate({ identifier: "GoogleCloudDialogflowV2ImportDocumentsResponse" });
 
@@ -12275,7 +12275,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListFlowsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListFlowsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListFlowsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flows: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3beta1Flow)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({
@@ -12285,7 +12285,7 @@ export const GoogleCloudDialogflowCxV3beta1ListFlowsResponse: Schema.Codec<Googl
 export interface GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata {}
 
 export const GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata",
   });
 
@@ -12295,7 +12295,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListSecuritySettingsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListSecuritySettingsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListSecuritySettingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     securitySettings: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1SecuritySettings),
     ),
@@ -12307,7 +12307,7 @@ export const GoogleCloudDialogflowCxV3beta1ListSecuritySettingsResponse: Schema.
 export interface GoogleCloudDialogflowCxV3ImportEntityTypesMetadata {}
 
 export const GoogleCloudDialogflowCxV3ImportEntityTypesMetadata: Schema.Codec<GoogleCloudDialogflowCxV3ImportEntityTypesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDialogflowCxV3ImportEntityTypesMetadata",
   });
 
@@ -12317,7 +12317,7 @@ export interface GoogleCloudDialogflowCxV3DeployFlowResponse {
 }
 
 export const GoogleCloudDialogflowCxV3DeployFlowResponse: Schema.Codec<GoogleCloudDialogflowCxV3DeployFlowResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.optional(GoogleCloudDialogflowCxV3Environment),
     deployment: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3DeployFlowResponse" });
@@ -12328,7 +12328,7 @@ export interface GoogleCloudDialogflowCxV3beta1TestCaseError {
 }
 
 export const GoogleCloudDialogflowCxV3beta1TestCaseError: Schema.Codec<GoogleCloudDialogflowCxV3beta1TestCaseError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     testCase: Schema.optional(GoogleCloudDialogflowCxV3beta1TestCase),
     status: Schema.optional(GoogleRpcStatus),
   }).annotate({ identifier: "GoogleCloudDialogflowCxV3beta1TestCaseError" });
@@ -12338,7 +12338,7 @@ export interface GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata: Schema.Codec<GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1TestCaseError),
     ),
@@ -12354,7 +12354,7 @@ export interface GoogleCloudDialogflowCxV3beta1FulfillIntentResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1FulfillIntentResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1FulfillIntentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responseId: Schema.optional(Schema.String),
     queryResult: Schema.optional(GoogleCloudDialogflowCxV3beta1QueryResult),
     outputAudioConfig: Schema.optional(
@@ -12370,7 +12370,7 @@ export interface GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata {
 }
 
 export const GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata: Schema.Codec<GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1TestError),
     ),
@@ -12383,7 +12383,7 @@ export interface GoogleCloudDialogflowCxV3beta1RunTestCaseRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1RunTestCaseRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1RunTestCaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1RunTestCaseRequest",
@@ -12396,7 +12396,7 @@ export interface GoogleCloudDialogflowCxV3beta1ExportAgentResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ExportAgentResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ExportAgentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agentUri: Schema.optional(Schema.String),
     commitSha: Schema.optional(Schema.String),
     agentContent: Schema.optional(Schema.String),
@@ -12410,7 +12410,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListTransitionRouteGroupsResponse
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListTransitionRouteGroupsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListTransitionRouteGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transitionRouteGroups: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1TransitionRouteGroup),
     ),
@@ -12426,7 +12426,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListEntityTypesResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListEntityTypesResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     entityTypes: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1EntityType),
@@ -12450,7 +12450,7 @@ export interface GoogleCloudDialogflowCxV3beta1ImportEntityTypesRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ImportEntityTypesRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1ImportEntityTypesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityTypesUri: Schema.optional(Schema.String),
     mergeOption: Schema.optional(Schema.String),
     targetEntityType: Schema.optional(Schema.String),
@@ -12483,7 +12483,7 @@ export interface GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigOperation
 }
 
 export const GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2beta1SetSuggestionFeatureConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversationProfile: Schema.optional(Schema.String),
     participantRole: Schema.optional(Schema.String),
     suggestionFeatureType: Schema.optional(Schema.String),
@@ -12498,7 +12498,7 @@ export interface GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata {
 }
 
 export const GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata: Schema.Codec<GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Array(GoogleCloudDialogflowCxV3TestError)),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata",
@@ -12509,7 +12509,7 @@ export interface GoogleCloudDialogflowV2CreateConversationDatasetOperationMetada
 }
 
 export const GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2CreateConversationDatasetOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversationDataset: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -12522,7 +12522,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListTestCaseResultsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListTestCaseResultsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListTestCaseResultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     testCaseResults: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1TestCaseResult),
@@ -12536,7 +12536,7 @@ export interface GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse {
 }
 
 export const GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse: Schema.Codec<GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityTypes: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1EntityType),
     ),
@@ -12550,7 +12550,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListEnvironmentsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListEnvironmentsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListEnvironmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     environments: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1Environment),
@@ -12564,7 +12564,7 @@ export interface GoogleCloudDialogflowCxV3beta1ConversationSignals {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ConversationSignals: Schema.Codec<GoogleCloudDialogflowCxV3beta1ConversationSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     turnSignals: Schema.optional(GoogleCloudDialogflowCxV3beta1TurnSignals),
   }).annotate({
     identifier: "GoogleCloudDialogflowCxV3beta1ConversationSignals",
@@ -12576,7 +12576,7 @@ export interface GoogleCloudDialogflowCxV3beta1ListPlaybookVersionsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1ListPlaybookVersionsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1ListPlaybookVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     playbookVersions: Schema.optional(
       Schema.Array(GoogleCloudDialogflowCxV3beta1PlaybookVersion),
@@ -12607,7 +12607,7 @@ export interface GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigOperati
 }
 
 export const GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2beta1ClearSuggestionFeatureConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversationProfile: Schema.optional(Schema.String),
     suggestionFeatureType: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -12624,7 +12624,7 @@ export interface GoogleCloudDialogflowCxV3beta1CompareVersionsResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1CompareVersionsResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1CompareVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     baseVersionContentJson: Schema.optional(Schema.String),
     targetVersionContentJson: Schema.optional(Schema.String),
     compareTime: Schema.optional(Schema.String),
@@ -12640,7 +12640,7 @@ export interface GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata {
 }
 
 export const GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     exportOperationMetadata: Schema.optional(
       GoogleCloudDialogflowV2beta1ExportOperationMetadata,
     ),
@@ -12656,7 +12656,7 @@ export interface GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse {
 }
 
 export const GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse: Schema.Codec<GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entityTypes: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2EntityType),
     ),
@@ -12670,7 +12670,7 @@ export interface GoogleCloudDialogflowCxV3beta1CompareVersionsRequest {
 }
 
 export const GoogleCloudDialogflowCxV3beta1CompareVersionsRequest: Schema.Codec<GoogleCloudDialogflowCxV3beta1CompareVersionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetVersion: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
   }).annotate({
@@ -12684,7 +12684,7 @@ export interface GoogleCloudDialogflowV2HumanAgentAssistantEvent {
 }
 
 export const GoogleCloudDialogflowV2HumanAgentAssistantEvent: Schema.Codec<GoogleCloudDialogflowV2HumanAgentAssistantEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversation: Schema.optional(Schema.String),
     suggestionResults: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2SuggestionResult),
@@ -12701,7 +12701,7 @@ export interface GoogleCloudDialogflowV2DeployConversationModelOperationMetadata
 }
 
 export const GoogleCloudDialogflowV2DeployConversationModelOperationMetadata: Schema.Codec<GoogleCloudDialogflowV2DeployConversationModelOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversationModel: Schema.optional(Schema.String),
     doneTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -12717,7 +12717,7 @@ export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent {
 }
 
 export const GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent: Schema.Codec<GoogleCloudDialogflowV2beta1HumanAgentAssistantEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversation: Schema.optional(Schema.String),
     suggestionResults: Schema.optional(
       Schema.Array(GoogleCloudDialogflowV2beta1SuggestionResult),
@@ -12733,7 +12733,7 @@ export interface GoogleCloudDialogflowCxV3beta1DeployFlowResponse {
 }
 
 export const GoogleCloudDialogflowCxV3beta1DeployFlowResponse: Schema.Codec<GoogleCloudDialogflowCxV3beta1DeployFlowResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.optional(GoogleCloudDialogflowCxV3beta1Environment),
     deployment: Schema.optional(Schema.String),
   }).annotate({
@@ -12803,7 +12803,7 @@ export interface ListProjectsOperationsRequest {
 }
 
 export const ListProjectsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnPartialSuccess"),
@@ -12819,7 +12819,7 @@ export const ListProjectsOperationsRequest =
 export type ListProjectsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
 export const ListProjectsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+  /*@__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -12828,7 +12828,7 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   ListProjectsOperationsResponse,
   ListProjectsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOperationsRequest,
   output: ListProjectsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -12843,7 +12843,7 @@ export interface GetProjectsOperationsRequest {
 }
 
 export const GetProjectsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -12852,7 +12852,7 @@ export const GetProjectsOperationsRequest =
 
 export type GetProjectsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -12861,7 +12861,7 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsResponse,
   GetProjectsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -12872,7 +12872,7 @@ export interface CancelProjectsOperationsRequest {
 }
 
 export const CancelProjectsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "POST", path: "v3beta1/{+name}:cancel", hasBody: true }),
@@ -12881,7 +12881,7 @@ export const CancelProjectsOperationsRequest =
 
 export type CancelProjectsOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsOperationsError =
   | DefaultErrors
@@ -12895,7 +12895,7 @@ export const cancelProjectsOperations: API.OperationMethod<
   CancelProjectsOperationsResponse,
   CancelProjectsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsOperationsRequest,
   output: CancelProjectsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -12910,7 +12910,7 @@ export interface ListProjectsLocationsRequest {
 }
 
 export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     name: Schema.String.pipe(T.HttpPath("name")),
@@ -12926,7 +12926,7 @@ export const ListProjectsLocationsRequest =
 export type ListProjectsLocationsResponse =
   GoogleCloudLocationListLocationsResponse;
 export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
+  /*@__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -12935,7 +12935,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsResponse,
   ListProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -12950,7 +12950,7 @@ export interface GetProjectsLocationsRequest {
 }
 
 export const GetProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -12959,7 +12959,7 @@ export const GetProjectsLocationsRequest =
 
 export type GetProjectsLocationsResponse = GoogleCloudLocationLocation;
 export const GetProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationLocation;
+  /*@__PURE__*/ GoogleCloudLocationLocation;
 
 export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -12968,7 +12968,7 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsResponse,
   GetProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -12979,7 +12979,7 @@ export interface GetProjectsLocationsOperationsRequest {
 }
 
 export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -12988,7 +12988,7 @@ export const GetProjectsLocationsOperationsRequest =
 
 export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsOperationsError =
   | DefaultErrors
@@ -13000,7 +13000,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsResponse,
   GetProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -13011,7 +13011,7 @@ export interface CancelProjectsLocationsOperationsRequest {
 }
 
 export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "POST", path: "v3beta1/{+name}:cancel", hasBody: true }),
@@ -13020,7 +13020,7 @@ export const CancelProjectsLocationsOperationsRequest =
 
 export type CancelProjectsLocationsOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsOperationsError =
   | DefaultErrors
@@ -13034,7 +13034,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsResponse,
   CancelProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13049,7 +13049,7 @@ export interface ListProjectsLocationsOperationsRequest {
 }
 
 export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnPartialSuccess"),
@@ -13065,7 +13065,7 @@ export const ListProjectsLocationsOperationsRequest =
 export type ListProjectsLocationsOperationsResponse =
   GoogleLongrunningListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+  /*@__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsOperationsError =
   | DefaultErrors
@@ -13077,7 +13077,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsResponse,
   ListProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -13092,7 +13092,7 @@ export interface GetProjectsLocationsSecuritySettingsRequest {
 }
 
 export const GetProjectsLocationsSecuritySettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -13102,7 +13102,7 @@ export const GetProjectsLocationsSecuritySettingsRequest =
 export type GetProjectsLocationsSecuritySettingsResponse =
   GoogleCloudDialogflowCxV3beta1SecuritySettings;
 export const GetProjectsLocationsSecuritySettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1SecuritySettings;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1SecuritySettings;
 
 export type GetProjectsLocationsSecuritySettingsError =
   | DefaultErrors
@@ -13114,7 +13114,7 @@ export const getProjectsLocationsSecuritySettings: API.OperationMethod<
   GetProjectsLocationsSecuritySettingsResponse,
   GetProjectsLocationsSecuritySettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSecuritySettingsRequest,
   output: GetProjectsLocationsSecuritySettingsResponse,
   errors: [NotFound, Forbidden],
@@ -13125,7 +13125,7 @@ export interface DeleteProjectsLocationsSecuritySettingsRequest {
 }
 
 export const DeleteProjectsLocationsSecuritySettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
@@ -13135,7 +13135,7 @@ export const DeleteProjectsLocationsSecuritySettingsRequest =
 export type DeleteProjectsLocationsSecuritySettingsResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsSecuritySettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsSecuritySettingsError =
   | DefaultErrors
@@ -13149,7 +13149,7 @@ export const deleteProjectsLocationsSecuritySettings: API.OperationMethod<
   DeleteProjectsLocationsSecuritySettingsResponse,
   DeleteProjectsLocationsSecuritySettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSecuritySettingsRequest,
   output: DeleteProjectsLocationsSecuritySettingsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13163,7 +13163,7 @@ export interface PatchProjectsLocationsSecuritySettingsRequest {
 }
 
 export const PatchProjectsLocationsSecuritySettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1SecuritySettings).pipe(
@@ -13177,7 +13177,7 @@ export const PatchProjectsLocationsSecuritySettingsRequest =
 export type PatchProjectsLocationsSecuritySettingsResponse =
   GoogleCloudDialogflowCxV3beta1SecuritySettings;
 export const PatchProjectsLocationsSecuritySettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1SecuritySettings;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1SecuritySettings;
 
 export type PatchProjectsLocationsSecuritySettingsError =
   | DefaultErrors
@@ -13191,7 +13191,7 @@ export const patchProjectsLocationsSecuritySettings: API.OperationMethod<
   PatchProjectsLocationsSecuritySettingsResponse,
   PatchProjectsLocationsSecuritySettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsSecuritySettingsRequest,
   output: PatchProjectsLocationsSecuritySettingsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13204,7 +13204,7 @@ export interface CreateProjectsLocationsSecuritySettingsRequest {
 }
 
 export const CreateProjectsLocationsSecuritySettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1SecuritySettings).pipe(
       T.HttpBody(),
@@ -13221,7 +13221,7 @@ export const CreateProjectsLocationsSecuritySettingsRequest =
 export type CreateProjectsLocationsSecuritySettingsResponse =
   GoogleCloudDialogflowCxV3beta1SecuritySettings;
 export const CreateProjectsLocationsSecuritySettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1SecuritySettings;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1SecuritySettings;
 
 export type CreateProjectsLocationsSecuritySettingsError =
   | DefaultErrors
@@ -13235,7 +13235,7 @@ export const createProjectsLocationsSecuritySettings: API.OperationMethod<
   CreateProjectsLocationsSecuritySettingsResponse,
   CreateProjectsLocationsSecuritySettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSecuritySettingsRequest,
   output: CreateProjectsLocationsSecuritySettingsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13248,7 +13248,7 @@ export interface ListProjectsLocationsSecuritySettingsRequest {
 }
 
 export const ListProjectsLocationsSecuritySettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -13260,7 +13260,7 @@ export const ListProjectsLocationsSecuritySettingsRequest =
 export type ListProjectsLocationsSecuritySettingsResponse =
   GoogleCloudDialogflowCxV3beta1ListSecuritySettingsResponse;
 export const ListProjectsLocationsSecuritySettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListSecuritySettingsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListSecuritySettingsResponse;
 
 export type ListProjectsLocationsSecuritySettingsError =
   | DefaultErrors
@@ -13272,7 +13272,7 @@ export const listProjectsLocationsSecuritySettings: API.PaginatedOperationMethod
   ListProjectsLocationsSecuritySettingsResponse,
   ListProjectsLocationsSecuritySettingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSecuritySettingsRequest,
   output: ListProjectsLocationsSecuritySettingsResponse,
   errors: [NotFound, Forbidden],
@@ -13289,7 +13289,7 @@ export interface CreateProjectsLocationsAgentsRequest {
 }
 
 export const CreateProjectsLocationsAgentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Agent).pipe(
       T.HttpBody(),
@@ -13302,7 +13302,7 @@ export const CreateProjectsLocationsAgentsRequest =
 export type CreateProjectsLocationsAgentsResponse =
   GoogleCloudDialogflowCxV3beta1Agent;
 export const CreateProjectsLocationsAgentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Agent;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Agent;
 
 export type CreateProjectsLocationsAgentsError =
   | DefaultErrors
@@ -13316,7 +13316,7 @@ export const createProjectsLocationsAgents: API.OperationMethod<
   CreateProjectsLocationsAgentsResponse,
   CreateProjectsLocationsAgentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsRequest,
   output: CreateProjectsLocationsAgentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13329,7 +13329,7 @@ export interface ListProjectsLocationsAgentsRequest {
 }
 
 export const ListProjectsLocationsAgentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -13341,7 +13341,7 @@ export const ListProjectsLocationsAgentsRequest =
 export type ListProjectsLocationsAgentsResponse =
   GoogleCloudDialogflowCxV3beta1ListAgentsResponse;
 export const ListProjectsLocationsAgentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListAgentsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListAgentsResponse;
 
 export type ListProjectsLocationsAgentsError =
   | DefaultErrors
@@ -13353,7 +13353,7 @@ export const listProjectsLocationsAgents: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsResponse,
   ListProjectsLocationsAgentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsRequest,
   output: ListProjectsLocationsAgentsResponse,
   errors: [NotFound, Forbidden],
@@ -13371,7 +13371,7 @@ export interface PatchProjectsLocationsAgentsRequest {
 }
 
 export const PatchProjectsLocationsAgentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Agent).pipe(
@@ -13385,7 +13385,7 @@ export const PatchProjectsLocationsAgentsRequest =
 export type PatchProjectsLocationsAgentsResponse =
   GoogleCloudDialogflowCxV3beta1Agent;
 export const PatchProjectsLocationsAgentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Agent;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Agent;
 
 export type PatchProjectsLocationsAgentsError =
   | DefaultErrors
@@ -13399,7 +13399,7 @@ export const patchProjectsLocationsAgents: API.OperationMethod<
   PatchProjectsLocationsAgentsResponse,
   PatchProjectsLocationsAgentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsRequest,
   output: PatchProjectsLocationsAgentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13412,7 +13412,7 @@ export interface RestoreProjectsLocationsAgentsRequest {
 }
 
 export const RestoreProjectsLocationsAgentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1RestoreAgentRequest,
@@ -13424,7 +13424,7 @@ export const RestoreProjectsLocationsAgentsRequest =
 
 export type RestoreProjectsLocationsAgentsResponse = GoogleLongrunningOperation;
 export const RestoreProjectsLocationsAgentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type RestoreProjectsLocationsAgentsError =
   | DefaultErrors
@@ -13438,7 +13438,7 @@ export const restoreProjectsLocationsAgents: API.OperationMethod<
   RestoreProjectsLocationsAgentsResponse,
   RestoreProjectsLocationsAgentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreProjectsLocationsAgentsRequest,
   output: RestoreProjectsLocationsAgentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13450,7 +13450,7 @@ export interface GetValidationResultProjectsLocationsAgentsRequest {
 }
 
 export const GetValidationResultProjectsLocationsAgentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -13463,7 +13463,7 @@ export const GetValidationResultProjectsLocationsAgentsRequest =
 export type GetValidationResultProjectsLocationsAgentsResponse =
   GoogleCloudDialogflowCxV3beta1AgentValidationResult;
 export const GetValidationResultProjectsLocationsAgentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1AgentValidationResult;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1AgentValidationResult;
 
 export type GetValidationResultProjectsLocationsAgentsError =
   | DefaultErrors
@@ -13475,7 +13475,7 @@ export const getValidationResultProjectsLocationsAgents: API.OperationMethod<
   GetValidationResultProjectsLocationsAgentsResponse,
   GetValidationResultProjectsLocationsAgentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetValidationResultProjectsLocationsAgentsRequest,
   output: GetValidationResultProjectsLocationsAgentsResponse,
   errors: [NotFound, Forbidden],
@@ -13486,7 +13486,7 @@ export interface GetProjectsLocationsAgentsRequest {
 }
 
 export const GetProjectsLocationsAgentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -13496,7 +13496,7 @@ export const GetProjectsLocationsAgentsRequest =
 export type GetProjectsLocationsAgentsResponse =
   GoogleCloudDialogflowCxV3beta1Agent;
 export const GetProjectsLocationsAgentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Agent;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Agent;
 
 export type GetProjectsLocationsAgentsError =
   | DefaultErrors
@@ -13508,7 +13508,7 @@ export const getProjectsLocationsAgents: API.OperationMethod<
   GetProjectsLocationsAgentsResponse,
   GetProjectsLocationsAgentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsRequest,
   output: GetProjectsLocationsAgentsResponse,
   errors: [NotFound, Forbidden],
@@ -13521,7 +13521,7 @@ export interface ValidateProjectsLocationsAgentsRequest {
 }
 
 export const ValidateProjectsLocationsAgentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ValidateAgentRequest,
@@ -13534,7 +13534,7 @@ export const ValidateProjectsLocationsAgentsRequest =
 export type ValidateProjectsLocationsAgentsResponse =
   GoogleCloudDialogflowCxV3beta1AgentValidationResult;
 export const ValidateProjectsLocationsAgentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1AgentValidationResult;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1AgentValidationResult;
 
 export type ValidateProjectsLocationsAgentsError =
   | DefaultErrors
@@ -13548,7 +13548,7 @@ export const validateProjectsLocationsAgents: API.OperationMethod<
   ValidateProjectsLocationsAgentsResponse,
   ValidateProjectsLocationsAgentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateProjectsLocationsAgentsRequest,
   output: ValidateProjectsLocationsAgentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13559,7 +13559,7 @@ export interface DeleteProjectsLocationsAgentsRequest {
 }
 
 export const DeleteProjectsLocationsAgentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
@@ -13568,7 +13568,7 @@ export const DeleteProjectsLocationsAgentsRequest =
 
 export type DeleteProjectsLocationsAgentsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsError =
   | DefaultErrors
@@ -13582,7 +13582,7 @@ export const deleteProjectsLocationsAgents: API.OperationMethod<
   DeleteProjectsLocationsAgentsResponse,
   DeleteProjectsLocationsAgentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsRequest,
   output: DeleteProjectsLocationsAgentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13596,7 +13596,7 @@ export interface UpdateGenerativeSettingsProjectsLocationsAgentsRequest {
 }
 
 export const UpdateGenerativeSettingsProjectsLocationsAgentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
@@ -13610,7 +13610,7 @@ export const UpdateGenerativeSettingsProjectsLocationsAgentsRequest =
 export type UpdateGenerativeSettingsProjectsLocationsAgentsResponse =
   GoogleCloudDialogflowCxV3beta1GenerativeSettings;
 export const UpdateGenerativeSettingsProjectsLocationsAgentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1GenerativeSettings;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1GenerativeSettings;
 
 export type UpdateGenerativeSettingsProjectsLocationsAgentsError =
   | DefaultErrors
@@ -13624,7 +13624,7 @@ export const updateGenerativeSettingsProjectsLocationsAgents: API.OperationMetho
   UpdateGenerativeSettingsProjectsLocationsAgentsResponse,
   UpdateGenerativeSettingsProjectsLocationsAgentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGenerativeSettingsProjectsLocationsAgentsRequest,
   output: UpdateGenerativeSettingsProjectsLocationsAgentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13636,7 +13636,7 @@ export interface GetGenerativeSettingsProjectsLocationsAgentsRequest {
 }
 
 export const GetGenerativeSettingsProjectsLocationsAgentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -13649,7 +13649,7 @@ export const GetGenerativeSettingsProjectsLocationsAgentsRequest =
 export type GetGenerativeSettingsProjectsLocationsAgentsResponse =
   GoogleCloudDialogflowCxV3beta1GenerativeSettings;
 export const GetGenerativeSettingsProjectsLocationsAgentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1GenerativeSettings;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1GenerativeSettings;
 
 export type GetGenerativeSettingsProjectsLocationsAgentsError =
   | DefaultErrors
@@ -13661,7 +13661,7 @@ export const getGenerativeSettingsProjectsLocationsAgents: API.OperationMethod<
   GetGenerativeSettingsProjectsLocationsAgentsResponse,
   GetGenerativeSettingsProjectsLocationsAgentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGenerativeSettingsProjectsLocationsAgentsRequest,
   output: GetGenerativeSettingsProjectsLocationsAgentsResponse,
   errors: [NotFound, Forbidden],
@@ -13674,7 +13674,7 @@ export interface ExportProjectsLocationsAgentsRequest {
 }
 
 export const ExportProjectsLocationsAgentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ExportAgentRequest,
@@ -13686,7 +13686,7 @@ export const ExportProjectsLocationsAgentsRequest =
 
 export type ExportProjectsLocationsAgentsResponse = GoogleLongrunningOperation;
 export const ExportProjectsLocationsAgentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ExportProjectsLocationsAgentsError =
   | DefaultErrors
@@ -13700,7 +13700,7 @@ export const exportProjectsLocationsAgents: API.OperationMethod<
   ExportProjectsLocationsAgentsResponse,
   ExportProjectsLocationsAgentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsAgentsRequest,
   output: ExportProjectsLocationsAgentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13712,7 +13712,7 @@ export interface DeleteProjectsLocationsAgentsToolsRequest {
 }
 
 export const DeleteProjectsLocationsAgentsToolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -13722,7 +13722,7 @@ export const DeleteProjectsLocationsAgentsToolsRequest =
 
 export type DeleteProjectsLocationsAgentsToolsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsToolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsToolsError =
   | DefaultErrors
@@ -13736,7 +13736,7 @@ export const deleteProjectsLocationsAgentsTools: API.OperationMethod<
   DeleteProjectsLocationsAgentsToolsResponse,
   DeleteProjectsLocationsAgentsToolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsToolsRequest,
   output: DeleteProjectsLocationsAgentsToolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13750,7 +13750,7 @@ export interface PatchProjectsLocationsAgentsToolsRequest {
 }
 
 export const PatchProjectsLocationsAgentsToolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Tool).pipe(
@@ -13764,7 +13764,7 @@ export const PatchProjectsLocationsAgentsToolsRequest =
 export type PatchProjectsLocationsAgentsToolsResponse =
   GoogleCloudDialogflowCxV3beta1Tool;
 export const PatchProjectsLocationsAgentsToolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Tool;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Tool;
 
 export type PatchProjectsLocationsAgentsToolsError =
   | DefaultErrors
@@ -13778,7 +13778,7 @@ export const patchProjectsLocationsAgentsTools: API.OperationMethod<
   PatchProjectsLocationsAgentsToolsResponse,
   PatchProjectsLocationsAgentsToolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsToolsRequest,
   output: PatchProjectsLocationsAgentsToolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13791,7 +13791,7 @@ export interface ExportProjectsLocationsAgentsToolsRequest {
 }
 
 export const ExportProjectsLocationsAgentsToolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ExportToolsRequest,
@@ -13808,7 +13808,7 @@ export const ExportProjectsLocationsAgentsToolsRequest =
 export type ExportProjectsLocationsAgentsToolsResponse =
   GoogleLongrunningOperation;
 export const ExportProjectsLocationsAgentsToolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ExportProjectsLocationsAgentsToolsError =
   | DefaultErrors
@@ -13822,7 +13822,7 @@ export const exportProjectsLocationsAgentsTools: API.OperationMethod<
   ExportProjectsLocationsAgentsToolsResponse,
   ExportProjectsLocationsAgentsToolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsAgentsToolsRequest,
   output: ExportProjectsLocationsAgentsToolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13833,7 +13833,7 @@ export interface GetProjectsLocationsAgentsToolsRequest {
 }
 
 export const GetProjectsLocationsAgentsToolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -13843,7 +13843,7 @@ export const GetProjectsLocationsAgentsToolsRequest =
 export type GetProjectsLocationsAgentsToolsResponse =
   GoogleCloudDialogflowCxV3beta1Tool;
 export const GetProjectsLocationsAgentsToolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Tool;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Tool;
 
 export type GetProjectsLocationsAgentsToolsError =
   | DefaultErrors
@@ -13855,7 +13855,7 @@ export const getProjectsLocationsAgentsTools: API.OperationMethod<
   GetProjectsLocationsAgentsToolsResponse,
   GetProjectsLocationsAgentsToolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsToolsRequest,
   output: GetProjectsLocationsAgentsToolsResponse,
   errors: [NotFound, Forbidden],
@@ -13868,7 +13868,7 @@ export interface CreateProjectsLocationsAgentsToolsRequest {
 }
 
 export const CreateProjectsLocationsAgentsToolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Tool).pipe(
       T.HttpBody(),
@@ -13881,7 +13881,7 @@ export const CreateProjectsLocationsAgentsToolsRequest =
 export type CreateProjectsLocationsAgentsToolsResponse =
   GoogleCloudDialogflowCxV3beta1Tool;
 export const CreateProjectsLocationsAgentsToolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Tool;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Tool;
 
 export type CreateProjectsLocationsAgentsToolsError =
   | DefaultErrors
@@ -13895,7 +13895,7 @@ export const createProjectsLocationsAgentsTools: API.OperationMethod<
   CreateProjectsLocationsAgentsToolsResponse,
   CreateProjectsLocationsAgentsToolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsToolsRequest,
   output: CreateProjectsLocationsAgentsToolsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13908,7 +13908,7 @@ export interface ListProjectsLocationsAgentsToolsRequest {
 }
 
 export const ListProjectsLocationsAgentsToolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -13920,7 +13920,7 @@ export const ListProjectsLocationsAgentsToolsRequest =
 export type ListProjectsLocationsAgentsToolsResponse =
   GoogleCloudDialogflowCxV3beta1ListToolsResponse;
 export const ListProjectsLocationsAgentsToolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListToolsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListToolsResponse;
 
 export type ListProjectsLocationsAgentsToolsError =
   | DefaultErrors
@@ -13932,7 +13932,7 @@ export const listProjectsLocationsAgentsTools: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsToolsResponse,
   ListProjectsLocationsAgentsToolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsToolsRequest,
   output: ListProjectsLocationsAgentsToolsResponse,
   errors: [NotFound, Forbidden],
@@ -13949,7 +13949,7 @@ export interface RestoreProjectsLocationsAgentsToolsVersionsRequest {
 }
 
 export const RestoreProjectsLocationsAgentsToolsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1RestoreToolVersionRequest,
@@ -13962,7 +13962,7 @@ export const RestoreProjectsLocationsAgentsToolsVersionsRequest =
 export type RestoreProjectsLocationsAgentsToolsVersionsResponse =
   GoogleCloudDialogflowCxV3beta1RestoreToolVersionResponse;
 export const RestoreProjectsLocationsAgentsToolsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1RestoreToolVersionResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1RestoreToolVersionResponse;
 
 export type RestoreProjectsLocationsAgentsToolsVersionsError =
   | DefaultErrors
@@ -13976,7 +13976,7 @@ export const restoreProjectsLocationsAgentsToolsVersions: API.OperationMethod<
   RestoreProjectsLocationsAgentsToolsVersionsResponse,
   RestoreProjectsLocationsAgentsToolsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreProjectsLocationsAgentsToolsVersionsRequest,
   output: RestoreProjectsLocationsAgentsToolsVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -13988,7 +13988,7 @@ export interface DeleteProjectsLocationsAgentsToolsVersionsRequest {
 }
 
 export const DeleteProjectsLocationsAgentsToolsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -13999,7 +13999,7 @@ export const DeleteProjectsLocationsAgentsToolsVersionsRequest =
 export type DeleteProjectsLocationsAgentsToolsVersionsResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsToolsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsToolsVersionsError =
   | DefaultErrors
@@ -14013,7 +14013,7 @@ export const deleteProjectsLocationsAgentsToolsVersions: API.OperationMethod<
   DeleteProjectsLocationsAgentsToolsVersionsResponse,
   DeleteProjectsLocationsAgentsToolsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsToolsVersionsRequest,
   output: DeleteProjectsLocationsAgentsToolsVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14024,7 +14024,7 @@ export interface GetProjectsLocationsAgentsToolsVersionsRequest {
 }
 
 export const GetProjectsLocationsAgentsToolsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -14034,7 +14034,7 @@ export const GetProjectsLocationsAgentsToolsVersionsRequest =
 export type GetProjectsLocationsAgentsToolsVersionsResponse =
   GoogleCloudDialogflowCxV3beta1ToolVersion;
 export const GetProjectsLocationsAgentsToolsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ToolVersion;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ToolVersion;
 
 export type GetProjectsLocationsAgentsToolsVersionsError =
   | DefaultErrors
@@ -14046,7 +14046,7 @@ export const getProjectsLocationsAgentsToolsVersions: API.OperationMethod<
   GetProjectsLocationsAgentsToolsVersionsResponse,
   GetProjectsLocationsAgentsToolsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsToolsVersionsRequest,
   output: GetProjectsLocationsAgentsToolsVersionsResponse,
   errors: [NotFound, Forbidden],
@@ -14059,7 +14059,7 @@ export interface ListProjectsLocationsAgentsToolsVersionsRequest {
 }
 
 export const ListProjectsLocationsAgentsToolsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -14071,7 +14071,7 @@ export const ListProjectsLocationsAgentsToolsVersionsRequest =
 export type ListProjectsLocationsAgentsToolsVersionsResponse =
   GoogleCloudDialogflowCxV3beta1ListToolVersionsResponse;
 export const ListProjectsLocationsAgentsToolsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListToolVersionsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListToolVersionsResponse;
 
 export type ListProjectsLocationsAgentsToolsVersionsError =
   | DefaultErrors
@@ -14083,7 +14083,7 @@ export const listProjectsLocationsAgentsToolsVersions: API.PaginatedOperationMet
   ListProjectsLocationsAgentsToolsVersionsResponse,
   ListProjectsLocationsAgentsToolsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsToolsVersionsRequest,
   output: ListProjectsLocationsAgentsToolsVersionsResponse,
   errors: [NotFound, Forbidden],
@@ -14100,7 +14100,7 @@ export interface CreateProjectsLocationsAgentsToolsVersionsRequest {
 }
 
 export const CreateProjectsLocationsAgentsToolsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1ToolVersion).pipe(
       T.HttpBody(),
@@ -14117,7 +14117,7 @@ export const CreateProjectsLocationsAgentsToolsVersionsRequest =
 export type CreateProjectsLocationsAgentsToolsVersionsResponse =
   GoogleCloudDialogflowCxV3beta1ToolVersion;
 export const CreateProjectsLocationsAgentsToolsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ToolVersion;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ToolVersion;
 
 export type CreateProjectsLocationsAgentsToolsVersionsError =
   | DefaultErrors
@@ -14131,7 +14131,7 @@ export const createProjectsLocationsAgentsToolsVersions: API.OperationMethod<
   CreateProjectsLocationsAgentsToolsVersionsResponse,
   CreateProjectsLocationsAgentsToolsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsToolsVersionsRequest,
   output: CreateProjectsLocationsAgentsToolsVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14145,7 +14145,7 @@ export interface CreateProjectsLocationsAgentsEntityTypesRequest {
 }
 
 export const CreateProjectsLocationsAgentsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -14165,7 +14165,7 @@ export const CreateProjectsLocationsAgentsEntityTypesRequest =
 export type CreateProjectsLocationsAgentsEntityTypesResponse =
   GoogleCloudDialogflowCxV3beta1EntityType;
 export const CreateProjectsLocationsAgentsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1EntityType;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1EntityType;
 
 export type CreateProjectsLocationsAgentsEntityTypesError =
   | DefaultErrors
@@ -14179,7 +14179,7 @@ export const createProjectsLocationsAgentsEntityTypes: API.OperationMethod<
   CreateProjectsLocationsAgentsEntityTypesResponse,
   CreateProjectsLocationsAgentsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsEntityTypesRequest,
   output: CreateProjectsLocationsAgentsEntityTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14193,7 +14193,7 @@ export interface ListProjectsLocationsAgentsEntityTypesRequest {
 }
 
 export const ListProjectsLocationsAgentsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
     ),
@@ -14208,7 +14208,7 @@ export const ListProjectsLocationsAgentsEntityTypesRequest =
 export type ListProjectsLocationsAgentsEntityTypesResponse =
   GoogleCloudDialogflowCxV3beta1ListEntityTypesResponse;
 export const ListProjectsLocationsAgentsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListEntityTypesResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListEntityTypesResponse;
 
 export type ListProjectsLocationsAgentsEntityTypesError =
   | DefaultErrors
@@ -14220,7 +14220,7 @@ export const listProjectsLocationsAgentsEntityTypes: API.PaginatedOperationMetho
   ListProjectsLocationsAgentsEntityTypesResponse,
   ListProjectsLocationsAgentsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEntityTypesRequest,
   output: ListProjectsLocationsAgentsEntityTypesResponse,
   errors: [NotFound, Forbidden],
@@ -14237,7 +14237,7 @@ export interface ImportProjectsLocationsAgentsEntityTypesRequest {
 }
 
 export const ImportProjectsLocationsAgentsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ImportEntityTypesRequest,
@@ -14254,7 +14254,7 @@ export const ImportProjectsLocationsAgentsEntityTypesRequest =
 export type ImportProjectsLocationsAgentsEntityTypesResponse =
   GoogleLongrunningOperation;
 export const ImportProjectsLocationsAgentsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsAgentsEntityTypesError =
   | DefaultErrors
@@ -14268,7 +14268,7 @@ export const importProjectsLocationsAgentsEntityTypes: API.OperationMethod<
   ImportProjectsLocationsAgentsEntityTypesResponse,
   ImportProjectsLocationsAgentsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsAgentsEntityTypesRequest,
   output: ImportProjectsLocationsAgentsEntityTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14280,7 +14280,7 @@ export interface DeleteProjectsLocationsAgentsEntityTypesRequest {
 }
 
 export const DeleteProjectsLocationsAgentsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -14291,7 +14291,7 @@ export const DeleteProjectsLocationsAgentsEntityTypesRequest =
 export type DeleteProjectsLocationsAgentsEntityTypesResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsEntityTypesError =
   | DefaultErrors
@@ -14305,7 +14305,7 @@ export const deleteProjectsLocationsAgentsEntityTypes: API.OperationMethod<
   DeleteProjectsLocationsAgentsEntityTypesResponse,
   DeleteProjectsLocationsAgentsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsEntityTypesRequest,
   output: DeleteProjectsLocationsAgentsEntityTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14320,7 +14320,7 @@ export interface PatchProjectsLocationsAgentsEntityTypesRequest {
 }
 
 export const PatchProjectsLocationsAgentsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -14337,7 +14337,7 @@ export const PatchProjectsLocationsAgentsEntityTypesRequest =
 export type PatchProjectsLocationsAgentsEntityTypesResponse =
   GoogleCloudDialogflowCxV3beta1EntityType;
 export const PatchProjectsLocationsAgentsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1EntityType;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1EntityType;
 
 export type PatchProjectsLocationsAgentsEntityTypesError =
   | DefaultErrors
@@ -14351,7 +14351,7 @@ export const patchProjectsLocationsAgentsEntityTypes: API.OperationMethod<
   PatchProjectsLocationsAgentsEntityTypesResponse,
   PatchProjectsLocationsAgentsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsEntityTypesRequest,
   output: PatchProjectsLocationsAgentsEntityTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14363,7 +14363,7 @@ export interface GetProjectsLocationsAgentsEntityTypesRequest {
 }
 
 export const GetProjectsLocationsAgentsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -14376,7 +14376,7 @@ export const GetProjectsLocationsAgentsEntityTypesRequest =
 export type GetProjectsLocationsAgentsEntityTypesResponse =
   GoogleCloudDialogflowCxV3beta1EntityType;
 export const GetProjectsLocationsAgentsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1EntityType;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1EntityType;
 
 export type GetProjectsLocationsAgentsEntityTypesError =
   | DefaultErrors
@@ -14388,7 +14388,7 @@ export const getProjectsLocationsAgentsEntityTypes: API.OperationMethod<
   GetProjectsLocationsAgentsEntityTypesResponse,
   GetProjectsLocationsAgentsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsEntityTypesRequest,
   output: GetProjectsLocationsAgentsEntityTypesResponse,
   errors: [NotFound, Forbidden],
@@ -14401,7 +14401,7 @@ export interface ExportProjectsLocationsAgentsEntityTypesRequest {
 }
 
 export const ExportProjectsLocationsAgentsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ExportEntityTypesRequest,
@@ -14418,7 +14418,7 @@ export const ExportProjectsLocationsAgentsEntityTypesRequest =
 export type ExportProjectsLocationsAgentsEntityTypesResponse =
   GoogleLongrunningOperation;
 export const ExportProjectsLocationsAgentsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ExportProjectsLocationsAgentsEntityTypesError =
   | DefaultErrors
@@ -14432,7 +14432,7 @@ export const exportProjectsLocationsAgentsEntityTypes: API.OperationMethod<
   ExportProjectsLocationsAgentsEntityTypesResponse,
   ExportProjectsLocationsAgentsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsAgentsEntityTypesRequest,
   output: ExportProjectsLocationsAgentsEntityTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14444,7 +14444,7 @@ export interface GetProjectsLocationsAgentsIntentsRequest {
 }
 
 export const GetProjectsLocationsAgentsIntentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -14457,7 +14457,7 @@ export const GetProjectsLocationsAgentsIntentsRequest =
 export type GetProjectsLocationsAgentsIntentsResponse =
   GoogleCloudDialogflowCxV3beta1Intent;
 export const GetProjectsLocationsAgentsIntentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Intent;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Intent;
 
 export type GetProjectsLocationsAgentsIntentsError =
   | DefaultErrors
@@ -14469,7 +14469,7 @@ export const getProjectsLocationsAgentsIntents: API.OperationMethod<
   GetProjectsLocationsAgentsIntentsResponse,
   GetProjectsLocationsAgentsIntentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsIntentsRequest,
   output: GetProjectsLocationsAgentsIntentsResponse,
   errors: [NotFound, Forbidden],
@@ -14482,7 +14482,7 @@ export interface ExportProjectsLocationsAgentsIntentsRequest {
 }
 
 export const ExportProjectsLocationsAgentsIntentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ExportIntentsRequest,
@@ -14499,7 +14499,7 @@ export const ExportProjectsLocationsAgentsIntentsRequest =
 export type ExportProjectsLocationsAgentsIntentsResponse =
   GoogleLongrunningOperation;
 export const ExportProjectsLocationsAgentsIntentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ExportProjectsLocationsAgentsIntentsError =
   | DefaultErrors
@@ -14513,7 +14513,7 @@ export const exportProjectsLocationsAgentsIntents: API.OperationMethod<
   ExportProjectsLocationsAgentsIntentsResponse,
   ExportProjectsLocationsAgentsIntentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsAgentsIntentsRequest,
   output: ExportProjectsLocationsAgentsIntentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14528,7 +14528,7 @@ export interface PatchProjectsLocationsAgentsIntentsRequest {
 }
 
 export const PatchProjectsLocationsAgentsIntentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -14545,7 +14545,7 @@ export const PatchProjectsLocationsAgentsIntentsRequest =
 export type PatchProjectsLocationsAgentsIntentsResponse =
   GoogleCloudDialogflowCxV3beta1Intent;
 export const PatchProjectsLocationsAgentsIntentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Intent;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Intent;
 
 export type PatchProjectsLocationsAgentsIntentsError =
   | DefaultErrors
@@ -14559,7 +14559,7 @@ export const patchProjectsLocationsAgentsIntents: API.OperationMethod<
   PatchProjectsLocationsAgentsIntentsResponse,
   PatchProjectsLocationsAgentsIntentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsIntentsRequest,
   output: PatchProjectsLocationsAgentsIntentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14570,7 +14570,7 @@ export interface DeleteProjectsLocationsAgentsIntentsRequest {
 }
 
 export const DeleteProjectsLocationsAgentsIntentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
@@ -14579,7 +14579,7 @@ export const DeleteProjectsLocationsAgentsIntentsRequest =
 
 export type DeleteProjectsLocationsAgentsIntentsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsIntentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsIntentsError =
   | DefaultErrors
@@ -14593,7 +14593,7 @@ export const deleteProjectsLocationsAgentsIntents: API.OperationMethod<
   DeleteProjectsLocationsAgentsIntentsResponse,
   DeleteProjectsLocationsAgentsIntentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsIntentsRequest,
   output: DeleteProjectsLocationsAgentsIntentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14606,7 +14606,7 @@ export interface ImportProjectsLocationsAgentsIntentsRequest {
 }
 
 export const ImportProjectsLocationsAgentsIntentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ImportIntentsRequest,
@@ -14623,7 +14623,7 @@ export const ImportProjectsLocationsAgentsIntentsRequest =
 export type ImportProjectsLocationsAgentsIntentsResponse =
   GoogleLongrunningOperation;
 export const ImportProjectsLocationsAgentsIntentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsAgentsIntentsError =
   | DefaultErrors
@@ -14637,7 +14637,7 @@ export const importProjectsLocationsAgentsIntents: API.OperationMethod<
   ImportProjectsLocationsAgentsIntentsResponse,
   ImportProjectsLocationsAgentsIntentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsAgentsIntentsRequest,
   output: ImportProjectsLocationsAgentsIntentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14656,7 +14656,7 @@ export interface ListProjectsLocationsAgentsIntentsRequest {
 }
 
 export const ListProjectsLocationsAgentsIntentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     intentView: Schema.optional(Schema.String).pipe(T.HttpQuery("intentView")),
     languageCode: Schema.optional(Schema.String).pipe(
@@ -14672,7 +14672,7 @@ export const ListProjectsLocationsAgentsIntentsRequest =
 export type ListProjectsLocationsAgentsIntentsResponse =
   GoogleCloudDialogflowCxV3beta1ListIntentsResponse;
 export const ListProjectsLocationsAgentsIntentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListIntentsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListIntentsResponse;
 
 export type ListProjectsLocationsAgentsIntentsError =
   | DefaultErrors
@@ -14684,7 +14684,7 @@ export const listProjectsLocationsAgentsIntents: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsIntentsResponse,
   ListProjectsLocationsAgentsIntentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsIntentsRequest,
   output: ListProjectsLocationsAgentsIntentsResponse,
   errors: [NotFound, Forbidden],
@@ -14702,7 +14702,7 @@ export interface CreateProjectsLocationsAgentsIntentsRequest {
 }
 
 export const CreateProjectsLocationsAgentsIntentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -14722,7 +14722,7 @@ export const CreateProjectsLocationsAgentsIntentsRequest =
 export type CreateProjectsLocationsAgentsIntentsResponse =
   GoogleCloudDialogflowCxV3beta1Intent;
 export const CreateProjectsLocationsAgentsIntentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Intent;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Intent;
 
 export type CreateProjectsLocationsAgentsIntentsError =
   | DefaultErrors
@@ -14736,7 +14736,7 @@ export const createProjectsLocationsAgentsIntents: API.OperationMethod<
   CreateProjectsLocationsAgentsIntentsResponse,
   CreateProjectsLocationsAgentsIntentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsIntentsRequest,
   output: CreateProjectsLocationsAgentsIntentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14750,7 +14750,7 @@ export interface ListProjectsLocationsAgentsChangelogsRequest {
 }
 
 export const ListProjectsLocationsAgentsChangelogsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -14763,7 +14763,7 @@ export const ListProjectsLocationsAgentsChangelogsRequest =
 export type ListProjectsLocationsAgentsChangelogsResponse =
   GoogleCloudDialogflowCxV3beta1ListChangelogsResponse;
 export const ListProjectsLocationsAgentsChangelogsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListChangelogsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListChangelogsResponse;
 
 export type ListProjectsLocationsAgentsChangelogsError =
   | DefaultErrors
@@ -14775,7 +14775,7 @@ export const listProjectsLocationsAgentsChangelogs: API.PaginatedOperationMethod
   ListProjectsLocationsAgentsChangelogsResponse,
   ListProjectsLocationsAgentsChangelogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsChangelogsRequest,
   output: ListProjectsLocationsAgentsChangelogsResponse,
   errors: [NotFound, Forbidden],
@@ -14790,7 +14790,7 @@ export interface GetProjectsLocationsAgentsChangelogsRequest {
 }
 
 export const GetProjectsLocationsAgentsChangelogsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -14800,7 +14800,7 @@ export const GetProjectsLocationsAgentsChangelogsRequest =
 export type GetProjectsLocationsAgentsChangelogsResponse =
   GoogleCloudDialogflowCxV3beta1Changelog;
 export const GetProjectsLocationsAgentsChangelogsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Changelog;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Changelog;
 
 export type GetProjectsLocationsAgentsChangelogsError =
   | DefaultErrors
@@ -14812,7 +14812,7 @@ export const getProjectsLocationsAgentsChangelogs: API.OperationMethod<
   GetProjectsLocationsAgentsChangelogsResponse,
   GetProjectsLocationsAgentsChangelogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsChangelogsRequest,
   output: GetProjectsLocationsAgentsChangelogsResponse,
   errors: [NotFound, Forbidden],
@@ -14825,7 +14825,7 @@ export interface CreateProjectsLocationsAgentsEnvironmentsRequest {
 }
 
 export const CreateProjectsLocationsAgentsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Environment).pipe(
       T.HttpBody(),
@@ -14842,7 +14842,7 @@ export const CreateProjectsLocationsAgentsEnvironmentsRequest =
 export type CreateProjectsLocationsAgentsEnvironmentsResponse =
   GoogleLongrunningOperation;
 export const CreateProjectsLocationsAgentsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsAgentsEnvironmentsError =
   | DefaultErrors
@@ -14856,7 +14856,7 @@ export const createProjectsLocationsAgentsEnvironments: API.OperationMethod<
   CreateProjectsLocationsAgentsEnvironmentsResponse,
   CreateProjectsLocationsAgentsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsEnvironmentsRequest,
   output: CreateProjectsLocationsAgentsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14869,7 +14869,7 @@ export interface DeployFlowProjectsLocationsAgentsEnvironmentsRequest {
 }
 
 export const DeployFlowProjectsLocationsAgentsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.String.pipe(T.HttpPath("environment")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1DeployFlowRequest).pipe(
       T.HttpBody(),
@@ -14886,7 +14886,7 @@ export const DeployFlowProjectsLocationsAgentsEnvironmentsRequest =
 export type DeployFlowProjectsLocationsAgentsEnvironmentsResponse =
   GoogleLongrunningOperation;
 export const DeployFlowProjectsLocationsAgentsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeployFlowProjectsLocationsAgentsEnvironmentsError =
   | DefaultErrors
@@ -14900,7 +14900,7 @@ export const deployFlowProjectsLocationsAgentsEnvironments: API.OperationMethod<
   DeployFlowProjectsLocationsAgentsEnvironmentsResponse,
   DeployFlowProjectsLocationsAgentsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeployFlowProjectsLocationsAgentsEnvironmentsRequest,
   output: DeployFlowProjectsLocationsAgentsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -14913,7 +14913,7 @@ export interface ListProjectsLocationsAgentsEnvironmentsRequest {
 }
 
 export const ListProjectsLocationsAgentsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -14925,7 +14925,7 @@ export const ListProjectsLocationsAgentsEnvironmentsRequest =
 export type ListProjectsLocationsAgentsEnvironmentsResponse =
   GoogleCloudDialogflowCxV3beta1ListEnvironmentsResponse;
 export const ListProjectsLocationsAgentsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListEnvironmentsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListEnvironmentsResponse;
 
 export type ListProjectsLocationsAgentsEnvironmentsError =
   | DefaultErrors
@@ -14937,7 +14937,7 @@ export const listProjectsLocationsAgentsEnvironments: API.PaginatedOperationMeth
   ListProjectsLocationsAgentsEnvironmentsResponse,
   ListProjectsLocationsAgentsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsRequest,
   output: ListProjectsLocationsAgentsEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -14952,7 +14952,7 @@ export interface GetProjectsLocationsAgentsEnvironmentsRequest {
 }
 
 export const GetProjectsLocationsAgentsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -14962,7 +14962,7 @@ export const GetProjectsLocationsAgentsEnvironmentsRequest =
 export type GetProjectsLocationsAgentsEnvironmentsResponse =
   GoogleCloudDialogflowCxV3beta1Environment;
 export const GetProjectsLocationsAgentsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Environment;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Environment;
 
 export type GetProjectsLocationsAgentsEnvironmentsError =
   | DefaultErrors
@@ -14974,7 +14974,7 @@ export const getProjectsLocationsAgentsEnvironments: API.OperationMethod<
   GetProjectsLocationsAgentsEnvironmentsResponse,
   GetProjectsLocationsAgentsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsEnvironmentsRequest,
   output: GetProjectsLocationsAgentsEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -14987,7 +14987,7 @@ export interface LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsRequ
 }
 
 export const LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -14999,7 +14999,7 @@ export const LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsRequest 
 export type LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsResponse =
   GoogleCloudDialogflowCxV3beta1LookupEnvironmentHistoryResponse;
 export const LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1LookupEnvironmentHistoryResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1LookupEnvironmentHistoryResponse;
 
 export type LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsError =
   | DefaultErrors
@@ -15011,7 +15011,7 @@ export const lookupEnvironmentHistoryProjectsLocationsAgentsEnvironments: API.Pa
   LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsResponse,
   LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsRequest,
   output: LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -15026,7 +15026,7 @@ export interface DeleteProjectsLocationsAgentsEnvironmentsRequest {
 }
 
 export const DeleteProjectsLocationsAgentsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
@@ -15036,7 +15036,7 @@ export const DeleteProjectsLocationsAgentsEnvironmentsRequest =
 export type DeleteProjectsLocationsAgentsEnvironmentsResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsEnvironmentsError =
   | DefaultErrors
@@ -15050,7 +15050,7 @@ export const deleteProjectsLocationsAgentsEnvironments: API.OperationMethod<
   DeleteProjectsLocationsAgentsEnvironmentsResponse,
   DeleteProjectsLocationsAgentsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsEnvironmentsRequest,
   output: DeleteProjectsLocationsAgentsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15064,7 +15064,7 @@ export interface PatchProjectsLocationsAgentsEnvironmentsRequest {
 }
 
 export const PatchProjectsLocationsAgentsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Environment).pipe(
@@ -15078,7 +15078,7 @@ export const PatchProjectsLocationsAgentsEnvironmentsRequest =
 export type PatchProjectsLocationsAgentsEnvironmentsResponse =
   GoogleLongrunningOperation;
 export const PatchProjectsLocationsAgentsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchProjectsLocationsAgentsEnvironmentsError =
   | DefaultErrors
@@ -15092,7 +15092,7 @@ export const patchProjectsLocationsAgentsEnvironments: API.OperationMethod<
   PatchProjectsLocationsAgentsEnvironmentsResponse,
   PatchProjectsLocationsAgentsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsEnvironmentsRequest,
   output: PatchProjectsLocationsAgentsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15105,7 +15105,7 @@ export interface RunContinuousTestProjectsLocationsAgentsEnvironmentsRequest {
 }
 
 export const RunContinuousTestProjectsLocationsAgentsEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.String.pipe(T.HttpPath("environment")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1RunContinuousTestRequest,
@@ -15122,7 +15122,7 @@ export const RunContinuousTestProjectsLocationsAgentsEnvironmentsRequest =
 export type RunContinuousTestProjectsLocationsAgentsEnvironmentsResponse =
   GoogleLongrunningOperation;
 export const RunContinuousTestProjectsLocationsAgentsEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type RunContinuousTestProjectsLocationsAgentsEnvironmentsError =
   | DefaultErrors
@@ -15136,7 +15136,7 @@ export const runContinuousTestProjectsLocationsAgentsEnvironments: API.Operation
   RunContinuousTestProjectsLocationsAgentsEnvironmentsResponse,
   RunContinuousTestProjectsLocationsAgentsEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunContinuousTestProjectsLocationsAgentsEnvironmentsRequest,
   output: RunContinuousTestProjectsLocationsAgentsEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15149,7 +15149,7 @@ export interface ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsReq
 }
 
 export const ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -15161,7 +15161,7 @@ export const ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsRequest
 export type ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsResponse =
   GoogleCloudDialogflowCxV3beta1ListContinuousTestResultsResponse;
 export const ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListContinuousTestResultsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListContinuousTestResultsResponse;
 
 export type ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsError =
   | DefaultErrors
@@ -15173,7 +15173,7 @@ export const listProjectsLocationsAgentsEnvironmentsContinuousTestResults: API.P
   ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsResponse,
   ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsRequest,
   output: ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsResponse,
   errors: [NotFound, Forbidden],
@@ -15190,7 +15190,7 @@ export interface DetectIntentProjectsLocationsAgentsEnvironmentsSessionsRequest 
 }
 
 export const DetectIntentProjectsLocationsAgentsEnvironmentsSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1DetectIntentRequest,
@@ -15207,7 +15207,7 @@ export const DetectIntentProjectsLocationsAgentsEnvironmentsSessionsRequest =
 export type DetectIntentProjectsLocationsAgentsEnvironmentsSessionsResponse =
   GoogleCloudDialogflowCxV3beta1DetectIntentResponse;
 export const DetectIntentProjectsLocationsAgentsEnvironmentsSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1DetectIntentResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1DetectIntentResponse;
 
 export type DetectIntentProjectsLocationsAgentsEnvironmentsSessionsError =
   | DefaultErrors
@@ -15221,7 +15221,7 @@ export const detectIntentProjectsLocationsAgentsEnvironmentsSessions: API.Operat
   DetectIntentProjectsLocationsAgentsEnvironmentsSessionsResponse,
   DetectIntentProjectsLocationsAgentsEnvironmentsSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectIntentProjectsLocationsAgentsEnvironmentsSessionsRequest,
   output: DetectIntentProjectsLocationsAgentsEnvironmentsSessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15234,7 +15234,7 @@ export interface MatchIntentProjectsLocationsAgentsEnvironmentsSessionsRequest {
 }
 
 export const MatchIntentProjectsLocationsAgentsEnvironmentsSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1MatchIntentRequest,
@@ -15251,7 +15251,7 @@ export const MatchIntentProjectsLocationsAgentsEnvironmentsSessionsRequest =
 export type MatchIntentProjectsLocationsAgentsEnvironmentsSessionsResponse =
   GoogleCloudDialogflowCxV3beta1MatchIntentResponse;
 export const MatchIntentProjectsLocationsAgentsEnvironmentsSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1MatchIntentResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1MatchIntentResponse;
 
 export type MatchIntentProjectsLocationsAgentsEnvironmentsSessionsError =
   | DefaultErrors
@@ -15265,7 +15265,7 @@ export const matchIntentProjectsLocationsAgentsEnvironmentsSessions: API.Operati
   MatchIntentProjectsLocationsAgentsEnvironmentsSessionsResponse,
   MatchIntentProjectsLocationsAgentsEnvironmentsSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MatchIntentProjectsLocationsAgentsEnvironmentsSessionsRequest,
   output: MatchIntentProjectsLocationsAgentsEnvironmentsSessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15278,7 +15278,7 @@ export interface FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsRequest
 }
 
 export const FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1FulfillIntentRequest,
@@ -15295,7 +15295,7 @@ export const FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsRequest =
 export type FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsResponse =
   GoogleCloudDialogflowCxV3beta1FulfillIntentResponse;
 export const FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1FulfillIntentResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1FulfillIntentResponse;
 
 export type FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsError =
   | DefaultErrors
@@ -15309,7 +15309,7 @@ export const fulfillIntentProjectsLocationsAgentsEnvironmentsSessions: API.Opera
   FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsResponse,
   FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsRequest,
   output: FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15322,7 +15322,7 @@ export interface ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsS
 }
 
 export const ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1DetectIntentRequest,
@@ -15339,7 +15339,7 @@ export const ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessi
 export type ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessionsResponse =
   GoogleCloudDialogflowCxV3beta1DetectIntentResponse;
 export const ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1DetectIntentResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1DetectIntentResponse;
 
 export type ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessionsError =
   | DefaultErrors
@@ -15353,7 +15353,7 @@ export const serverStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessi
   ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessionsResponse,
   ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input:
     ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessionsRequest,
   output:
@@ -15368,7 +15368,7 @@ export interface CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesReq
 }
 
 export const CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1SessionEntityType).pipe(
       T.HttpBody(),
@@ -15385,7 +15385,7 @@ export const CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest
 export type CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse =
   GoogleCloudDialogflowCxV3beta1SessionEntityType;
 export const CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1SessionEntityType;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1SessionEntityType;
 
 export type CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError =
   | DefaultErrors
@@ -15399,7 +15399,7 @@ export const createProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.O
   CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
   CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
   output: CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15412,7 +15412,7 @@ export interface ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesReque
 }
 
 export const ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -15424,7 +15424,7 @@ export const ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest =
 export type ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse =
   GoogleCloudDialogflowCxV3beta1ListSessionEntityTypesResponse;
 export const ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListSessionEntityTypesResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListSessionEntityTypesResponse;
 
 export type ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError =
   | DefaultErrors
@@ -15436,7 +15436,7 @@ export const listProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.Pag
   ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
   ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
   output: ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
   errors: [NotFound, Forbidden],
@@ -15451,7 +15451,7 @@ export interface DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesReq
 }
 
 export const DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
@@ -15461,7 +15461,7 @@ export const DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest
 export type DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError =
   | DefaultErrors
@@ -15475,7 +15475,7 @@ export const deleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.O
   DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
   DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
   output: DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15489,7 +15489,7 @@ export interface PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequ
 }
 
 export const PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1SessionEntityType).pipe(
@@ -15503,7 +15503,7 @@ export const PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest 
 export type PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse =
   GoogleCloudDialogflowCxV3beta1SessionEntityType;
 export const PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1SessionEntityType;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1SessionEntityType;
 
 export type PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError =
   | DefaultErrors
@@ -15517,7 +15517,7 @@ export const patchProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.Op
   PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
   PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
   output: PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15528,7 +15528,7 @@ export interface GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesReques
 }
 
 export const GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -15538,7 +15538,7 @@ export const GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest =
 export type GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse =
   GoogleCloudDialogflowCxV3beta1SessionEntityType;
 export const GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1SessionEntityType;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1SessionEntityType;
 
 export type GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError =
   | DefaultErrors
@@ -15550,7 +15550,7 @@ export const getProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.Oper
   GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
   GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
   output: GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
   errors: [NotFound, Forbidden],
@@ -15563,7 +15563,7 @@ export interface ListProjectsLocationsAgentsEnvironmentsDeploymentsRequest {
 }
 
 export const ListProjectsLocationsAgentsEnvironmentsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -15575,7 +15575,7 @@ export const ListProjectsLocationsAgentsEnvironmentsDeploymentsRequest =
 export type ListProjectsLocationsAgentsEnvironmentsDeploymentsResponse =
   GoogleCloudDialogflowCxV3beta1ListDeploymentsResponse;
 export const ListProjectsLocationsAgentsEnvironmentsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListDeploymentsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListDeploymentsResponse;
 
 export type ListProjectsLocationsAgentsEnvironmentsDeploymentsError =
   | DefaultErrors
@@ -15587,7 +15587,7 @@ export const listProjectsLocationsAgentsEnvironmentsDeployments: API.PaginatedOp
   ListProjectsLocationsAgentsEnvironmentsDeploymentsResponse,
   ListProjectsLocationsAgentsEnvironmentsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsDeploymentsRequest,
   output: ListProjectsLocationsAgentsEnvironmentsDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -15602,7 +15602,7 @@ export interface GetProjectsLocationsAgentsEnvironmentsDeploymentsRequest {
 }
 
 export const GetProjectsLocationsAgentsEnvironmentsDeploymentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -15612,7 +15612,7 @@ export const GetProjectsLocationsAgentsEnvironmentsDeploymentsRequest =
 export type GetProjectsLocationsAgentsEnvironmentsDeploymentsResponse =
   GoogleCloudDialogflowCxV3beta1Deployment;
 export const GetProjectsLocationsAgentsEnvironmentsDeploymentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Deployment;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Deployment;
 
 export type GetProjectsLocationsAgentsEnvironmentsDeploymentsError =
   | DefaultErrors
@@ -15624,7 +15624,7 @@ export const getProjectsLocationsAgentsEnvironmentsDeployments: API.OperationMet
   GetProjectsLocationsAgentsEnvironmentsDeploymentsResponse,
   GetProjectsLocationsAgentsEnvironmentsDeploymentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsEnvironmentsDeploymentsRequest,
   output: GetProjectsLocationsAgentsEnvironmentsDeploymentsResponse,
   errors: [NotFound, Forbidden],
@@ -15635,7 +15635,7 @@ export interface GetProjectsLocationsAgentsEnvironmentsExperimentsRequest {
 }
 
 export const GetProjectsLocationsAgentsEnvironmentsExperimentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -15645,7 +15645,7 @@ export const GetProjectsLocationsAgentsEnvironmentsExperimentsRequest =
 export type GetProjectsLocationsAgentsEnvironmentsExperimentsResponse =
   GoogleCloudDialogflowCxV3beta1Experiment;
 export const GetProjectsLocationsAgentsEnvironmentsExperimentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Experiment;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Experiment;
 
 export type GetProjectsLocationsAgentsEnvironmentsExperimentsError =
   | DefaultErrors
@@ -15657,7 +15657,7 @@ export const getProjectsLocationsAgentsEnvironmentsExperiments: API.OperationMet
   GetProjectsLocationsAgentsEnvironmentsExperimentsResponse,
   GetProjectsLocationsAgentsEnvironmentsExperimentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: GetProjectsLocationsAgentsEnvironmentsExperimentsResponse,
   errors: [NotFound, Forbidden],
@@ -15668,7 +15668,7 @@ export interface DeleteProjectsLocationsAgentsEnvironmentsExperimentsRequest {
 }
 
 export const DeleteProjectsLocationsAgentsEnvironmentsExperimentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
@@ -15678,7 +15678,7 @@ export const DeleteProjectsLocationsAgentsEnvironmentsExperimentsRequest =
 export type DeleteProjectsLocationsAgentsEnvironmentsExperimentsResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsEnvironmentsExperimentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsEnvironmentsExperimentsError =
   | DefaultErrors
@@ -15692,7 +15692,7 @@ export const deleteProjectsLocationsAgentsEnvironmentsExperiments: API.Operation
   DeleteProjectsLocationsAgentsEnvironmentsExperimentsResponse,
   DeleteProjectsLocationsAgentsEnvironmentsExperimentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: DeleteProjectsLocationsAgentsEnvironmentsExperimentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15705,7 +15705,7 @@ export interface StartProjectsLocationsAgentsEnvironmentsExperimentsRequest {
 }
 
 export const StartProjectsLocationsAgentsEnvironmentsExperimentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1StartExperimentRequest,
@@ -15718,7 +15718,7 @@ export const StartProjectsLocationsAgentsEnvironmentsExperimentsRequest =
 export type StartProjectsLocationsAgentsEnvironmentsExperimentsResponse =
   GoogleCloudDialogflowCxV3beta1Experiment;
 export const StartProjectsLocationsAgentsEnvironmentsExperimentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Experiment;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Experiment;
 
 export type StartProjectsLocationsAgentsEnvironmentsExperimentsError =
   | DefaultErrors
@@ -15732,7 +15732,7 @@ export const startProjectsLocationsAgentsEnvironmentsExperiments: API.OperationM
   StartProjectsLocationsAgentsEnvironmentsExperimentsResponse,
   StartProjectsLocationsAgentsEnvironmentsExperimentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: StartProjectsLocationsAgentsEnvironmentsExperimentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15746,7 +15746,7 @@ export interface PatchProjectsLocationsAgentsEnvironmentsExperimentsRequest {
 }
 
 export const PatchProjectsLocationsAgentsEnvironmentsExperimentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Experiment).pipe(
@@ -15760,7 +15760,7 @@ export const PatchProjectsLocationsAgentsEnvironmentsExperimentsRequest =
 export type PatchProjectsLocationsAgentsEnvironmentsExperimentsResponse =
   GoogleCloudDialogflowCxV3beta1Experiment;
 export const PatchProjectsLocationsAgentsEnvironmentsExperimentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Experiment;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Experiment;
 
 export type PatchProjectsLocationsAgentsEnvironmentsExperimentsError =
   | DefaultErrors
@@ -15774,7 +15774,7 @@ export const patchProjectsLocationsAgentsEnvironmentsExperiments: API.OperationM
   PatchProjectsLocationsAgentsEnvironmentsExperimentsResponse,
   PatchProjectsLocationsAgentsEnvironmentsExperimentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: PatchProjectsLocationsAgentsEnvironmentsExperimentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15787,7 +15787,7 @@ export interface StopProjectsLocationsAgentsEnvironmentsExperimentsRequest {
 }
 
 export const StopProjectsLocationsAgentsEnvironmentsExperimentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1StopExperimentRequest,
@@ -15800,7 +15800,7 @@ export const StopProjectsLocationsAgentsEnvironmentsExperimentsRequest =
 export type StopProjectsLocationsAgentsEnvironmentsExperimentsResponse =
   GoogleCloudDialogflowCxV3beta1Experiment;
 export const StopProjectsLocationsAgentsEnvironmentsExperimentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Experiment;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Experiment;
 
 export type StopProjectsLocationsAgentsEnvironmentsExperimentsError =
   | DefaultErrors
@@ -15814,7 +15814,7 @@ export const stopProjectsLocationsAgentsEnvironmentsExperiments: API.OperationMe
   StopProjectsLocationsAgentsEnvironmentsExperimentsResponse,
   StopProjectsLocationsAgentsEnvironmentsExperimentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: StopProjectsLocationsAgentsEnvironmentsExperimentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15827,7 +15827,7 @@ export interface CreateProjectsLocationsAgentsEnvironmentsExperimentsRequest {
 }
 
 export const CreateProjectsLocationsAgentsEnvironmentsExperimentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Experiment).pipe(
       T.HttpBody(),
@@ -15844,7 +15844,7 @@ export const CreateProjectsLocationsAgentsEnvironmentsExperimentsRequest =
 export type CreateProjectsLocationsAgentsEnvironmentsExperimentsResponse =
   GoogleCloudDialogflowCxV3beta1Experiment;
 export const CreateProjectsLocationsAgentsEnvironmentsExperimentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Experiment;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Experiment;
 
 export type CreateProjectsLocationsAgentsEnvironmentsExperimentsError =
   | DefaultErrors
@@ -15858,7 +15858,7 @@ export const createProjectsLocationsAgentsEnvironmentsExperiments: API.Operation
   CreateProjectsLocationsAgentsEnvironmentsExperimentsResponse,
   CreateProjectsLocationsAgentsEnvironmentsExperimentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: CreateProjectsLocationsAgentsEnvironmentsExperimentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15871,7 +15871,7 @@ export interface ListProjectsLocationsAgentsEnvironmentsExperimentsRequest {
 }
 
 export const ListProjectsLocationsAgentsEnvironmentsExperimentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -15883,7 +15883,7 @@ export const ListProjectsLocationsAgentsEnvironmentsExperimentsRequest =
 export type ListProjectsLocationsAgentsEnvironmentsExperimentsResponse =
   GoogleCloudDialogflowCxV3beta1ListExperimentsResponse;
 export const ListProjectsLocationsAgentsEnvironmentsExperimentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListExperimentsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListExperimentsResponse;
 
 export type ListProjectsLocationsAgentsEnvironmentsExperimentsError =
   | DefaultErrors
@@ -15895,7 +15895,7 @@ export const listProjectsLocationsAgentsEnvironmentsExperiments: API.PaginatedOp
   ListProjectsLocationsAgentsEnvironmentsExperimentsResponse,
   ListProjectsLocationsAgentsEnvironmentsExperimentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: ListProjectsLocationsAgentsEnvironmentsExperimentsResponse,
   errors: [NotFound, Forbidden],
@@ -15912,7 +15912,7 @@ export interface ServerStreamingDetectIntentProjectsLocationsAgentsSessionsReque
 }
 
 export const ServerStreamingDetectIntentProjectsLocationsAgentsSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1DetectIntentRequest,
@@ -15929,7 +15929,7 @@ export const ServerStreamingDetectIntentProjectsLocationsAgentsSessionsRequest =
 export type ServerStreamingDetectIntentProjectsLocationsAgentsSessionsResponse =
   GoogleCloudDialogflowCxV3beta1DetectIntentResponse;
 export const ServerStreamingDetectIntentProjectsLocationsAgentsSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1DetectIntentResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1DetectIntentResponse;
 
 export type ServerStreamingDetectIntentProjectsLocationsAgentsSessionsError =
   | DefaultErrors
@@ -15943,7 +15943,7 @@ export const serverStreamingDetectIntentProjectsLocationsAgentsSessions: API.Ope
   ServerStreamingDetectIntentProjectsLocationsAgentsSessionsResponse,
   ServerStreamingDetectIntentProjectsLocationsAgentsSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ServerStreamingDetectIntentProjectsLocationsAgentsSessionsRequest,
   output: ServerStreamingDetectIntentProjectsLocationsAgentsSessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -15956,7 +15956,7 @@ export interface FulfillIntentProjectsLocationsAgentsSessionsRequest {
 }
 
 export const FulfillIntentProjectsLocationsAgentsSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1FulfillIntentRequest,
@@ -15973,7 +15973,7 @@ export const FulfillIntentProjectsLocationsAgentsSessionsRequest =
 export type FulfillIntentProjectsLocationsAgentsSessionsResponse =
   GoogleCloudDialogflowCxV3beta1FulfillIntentResponse;
 export const FulfillIntentProjectsLocationsAgentsSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1FulfillIntentResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1FulfillIntentResponse;
 
 export type FulfillIntentProjectsLocationsAgentsSessionsError =
   | DefaultErrors
@@ -15987,7 +15987,7 @@ export const fulfillIntentProjectsLocationsAgentsSessions: API.OperationMethod<
   FulfillIntentProjectsLocationsAgentsSessionsResponse,
   FulfillIntentProjectsLocationsAgentsSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FulfillIntentProjectsLocationsAgentsSessionsRequest,
   output: FulfillIntentProjectsLocationsAgentsSessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16000,7 +16000,7 @@ export interface DetectIntentProjectsLocationsAgentsSessionsRequest {
 }
 
 export const DetectIntentProjectsLocationsAgentsSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1DetectIntentRequest,
@@ -16017,7 +16017,7 @@ export const DetectIntentProjectsLocationsAgentsSessionsRequest =
 export type DetectIntentProjectsLocationsAgentsSessionsResponse =
   GoogleCloudDialogflowCxV3beta1DetectIntentResponse;
 export const DetectIntentProjectsLocationsAgentsSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1DetectIntentResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1DetectIntentResponse;
 
 export type DetectIntentProjectsLocationsAgentsSessionsError =
   | DefaultErrors
@@ -16031,7 +16031,7 @@ export const detectIntentProjectsLocationsAgentsSessions: API.OperationMethod<
   DetectIntentProjectsLocationsAgentsSessionsResponse,
   DetectIntentProjectsLocationsAgentsSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DetectIntentProjectsLocationsAgentsSessionsRequest,
   output: DetectIntentProjectsLocationsAgentsSessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16044,7 +16044,7 @@ export interface SubmitAnswerFeedbackProjectsLocationsAgentsSessionsRequest {
 }
 
 export const SubmitAnswerFeedbackProjectsLocationsAgentsSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1SubmitAnswerFeedbackRequest,
@@ -16061,7 +16061,7 @@ export const SubmitAnswerFeedbackProjectsLocationsAgentsSessionsRequest =
 export type SubmitAnswerFeedbackProjectsLocationsAgentsSessionsResponse =
   GoogleCloudDialogflowCxV3beta1AnswerFeedback;
 export const SubmitAnswerFeedbackProjectsLocationsAgentsSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1AnswerFeedback;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1AnswerFeedback;
 
 export type SubmitAnswerFeedbackProjectsLocationsAgentsSessionsError =
   | DefaultErrors
@@ -16075,7 +16075,7 @@ export const submitAnswerFeedbackProjectsLocationsAgentsSessions: API.OperationM
   SubmitAnswerFeedbackProjectsLocationsAgentsSessionsResponse,
   SubmitAnswerFeedbackProjectsLocationsAgentsSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SubmitAnswerFeedbackProjectsLocationsAgentsSessionsRequest,
   output: SubmitAnswerFeedbackProjectsLocationsAgentsSessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16088,7 +16088,7 @@ export interface MatchIntentProjectsLocationsAgentsSessionsRequest {
 }
 
 export const MatchIntentProjectsLocationsAgentsSessionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1MatchIntentRequest,
@@ -16105,7 +16105,7 @@ export const MatchIntentProjectsLocationsAgentsSessionsRequest =
 export type MatchIntentProjectsLocationsAgentsSessionsResponse =
   GoogleCloudDialogflowCxV3beta1MatchIntentResponse;
 export const MatchIntentProjectsLocationsAgentsSessionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1MatchIntentResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1MatchIntentResponse;
 
 export type MatchIntentProjectsLocationsAgentsSessionsError =
   | DefaultErrors
@@ -16119,7 +16119,7 @@ export const matchIntentProjectsLocationsAgentsSessions: API.OperationMethod<
   MatchIntentProjectsLocationsAgentsSessionsResponse,
   MatchIntentProjectsLocationsAgentsSessionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MatchIntentProjectsLocationsAgentsSessionsRequest,
   output: MatchIntentProjectsLocationsAgentsSessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16130,7 +16130,7 @@ export interface DeleteProjectsLocationsAgentsSessionsEntityTypesRequest {
 }
 
 export const DeleteProjectsLocationsAgentsSessionsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
@@ -16140,7 +16140,7 @@ export const DeleteProjectsLocationsAgentsSessionsEntityTypesRequest =
 export type DeleteProjectsLocationsAgentsSessionsEntityTypesResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsSessionsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsSessionsEntityTypesError =
   | DefaultErrors
@@ -16154,7 +16154,7 @@ export const deleteProjectsLocationsAgentsSessionsEntityTypes: API.OperationMeth
   DeleteProjectsLocationsAgentsSessionsEntityTypesResponse,
   DeleteProjectsLocationsAgentsSessionsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsSessionsEntityTypesRequest,
   output: DeleteProjectsLocationsAgentsSessionsEntityTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16168,7 +16168,7 @@ export interface PatchProjectsLocationsAgentsSessionsEntityTypesRequest {
 }
 
 export const PatchProjectsLocationsAgentsSessionsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1SessionEntityType).pipe(
@@ -16182,7 +16182,7 @@ export const PatchProjectsLocationsAgentsSessionsEntityTypesRequest =
 export type PatchProjectsLocationsAgentsSessionsEntityTypesResponse =
   GoogleCloudDialogflowCxV3beta1SessionEntityType;
 export const PatchProjectsLocationsAgentsSessionsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1SessionEntityType;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1SessionEntityType;
 
 export type PatchProjectsLocationsAgentsSessionsEntityTypesError =
   | DefaultErrors
@@ -16196,7 +16196,7 @@ export const patchProjectsLocationsAgentsSessionsEntityTypes: API.OperationMetho
   PatchProjectsLocationsAgentsSessionsEntityTypesResponse,
   PatchProjectsLocationsAgentsSessionsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsSessionsEntityTypesRequest,
   output: PatchProjectsLocationsAgentsSessionsEntityTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16207,7 +16207,7 @@ export interface GetProjectsLocationsAgentsSessionsEntityTypesRequest {
 }
 
 export const GetProjectsLocationsAgentsSessionsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -16217,7 +16217,7 @@ export const GetProjectsLocationsAgentsSessionsEntityTypesRequest =
 export type GetProjectsLocationsAgentsSessionsEntityTypesResponse =
   GoogleCloudDialogflowCxV3beta1SessionEntityType;
 export const GetProjectsLocationsAgentsSessionsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1SessionEntityType;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1SessionEntityType;
 
 export type GetProjectsLocationsAgentsSessionsEntityTypesError =
   | DefaultErrors
@@ -16229,7 +16229,7 @@ export const getProjectsLocationsAgentsSessionsEntityTypes: API.OperationMethod<
   GetProjectsLocationsAgentsSessionsEntityTypesResponse,
   GetProjectsLocationsAgentsSessionsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsSessionsEntityTypesRequest,
   output: GetProjectsLocationsAgentsSessionsEntityTypesResponse,
   errors: [NotFound, Forbidden],
@@ -16242,7 +16242,7 @@ export interface CreateProjectsLocationsAgentsSessionsEntityTypesRequest {
 }
 
 export const CreateProjectsLocationsAgentsSessionsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1SessionEntityType).pipe(
       T.HttpBody(),
@@ -16259,7 +16259,7 @@ export const CreateProjectsLocationsAgentsSessionsEntityTypesRequest =
 export type CreateProjectsLocationsAgentsSessionsEntityTypesResponse =
   GoogleCloudDialogflowCxV3beta1SessionEntityType;
 export const CreateProjectsLocationsAgentsSessionsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1SessionEntityType;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1SessionEntityType;
 
 export type CreateProjectsLocationsAgentsSessionsEntityTypesError =
   | DefaultErrors
@@ -16273,7 +16273,7 @@ export const createProjectsLocationsAgentsSessionsEntityTypes: API.OperationMeth
   CreateProjectsLocationsAgentsSessionsEntityTypesResponse,
   CreateProjectsLocationsAgentsSessionsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsSessionsEntityTypesRequest,
   output: CreateProjectsLocationsAgentsSessionsEntityTypesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16286,7 +16286,7 @@ export interface ListProjectsLocationsAgentsSessionsEntityTypesRequest {
 }
 
 export const ListProjectsLocationsAgentsSessionsEntityTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -16298,7 +16298,7 @@ export const ListProjectsLocationsAgentsSessionsEntityTypesRequest =
 export type ListProjectsLocationsAgentsSessionsEntityTypesResponse =
   GoogleCloudDialogflowCxV3beta1ListSessionEntityTypesResponse;
 export const ListProjectsLocationsAgentsSessionsEntityTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListSessionEntityTypesResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListSessionEntityTypesResponse;
 
 export type ListProjectsLocationsAgentsSessionsEntityTypesError =
   | DefaultErrors
@@ -16310,7 +16310,7 @@ export const listProjectsLocationsAgentsSessionsEntityTypes: API.PaginatedOperat
   ListProjectsLocationsAgentsSessionsEntityTypesResponse,
   ListProjectsLocationsAgentsSessionsEntityTypesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsSessionsEntityTypesRequest,
   output: ListProjectsLocationsAgentsSessionsEntityTypesResponse,
   errors: [NotFound, Forbidden],
@@ -16327,7 +16327,7 @@ export interface ValidateProjectsLocationsAgentsFlowsRequest {
 }
 
 export const ValidateProjectsLocationsAgentsFlowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ValidateFlowRequest,
@@ -16340,7 +16340,7 @@ export const ValidateProjectsLocationsAgentsFlowsRequest =
 export type ValidateProjectsLocationsAgentsFlowsResponse =
   GoogleCloudDialogflowCxV3beta1FlowValidationResult;
 export const ValidateProjectsLocationsAgentsFlowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1FlowValidationResult;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1FlowValidationResult;
 
 export type ValidateProjectsLocationsAgentsFlowsError =
   | DefaultErrors
@@ -16354,7 +16354,7 @@ export const validateProjectsLocationsAgentsFlows: API.OperationMethod<
   ValidateProjectsLocationsAgentsFlowsResponse,
   ValidateProjectsLocationsAgentsFlowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateProjectsLocationsAgentsFlowsRequest,
   output: ValidateProjectsLocationsAgentsFlowsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16367,7 +16367,7 @@ export interface ImportProjectsLocationsAgentsFlowsRequest {
 }
 
 export const ImportProjectsLocationsAgentsFlowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1ImportFlowRequest).pipe(
       T.HttpBody(),
@@ -16384,7 +16384,7 @@ export const ImportProjectsLocationsAgentsFlowsRequest =
 export type ImportProjectsLocationsAgentsFlowsResponse =
   GoogleLongrunningOperation;
 export const ImportProjectsLocationsAgentsFlowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsAgentsFlowsError =
   | DefaultErrors
@@ -16398,7 +16398,7 @@ export const importProjectsLocationsAgentsFlows: API.OperationMethod<
   ImportProjectsLocationsAgentsFlowsResponse,
   ImportProjectsLocationsAgentsFlowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsAgentsFlowsRequest,
   output: ImportProjectsLocationsAgentsFlowsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16410,7 +16410,7 @@ export interface DeleteProjectsLocationsAgentsFlowsRequest {
 }
 
 export const DeleteProjectsLocationsAgentsFlowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -16420,7 +16420,7 @@ export const DeleteProjectsLocationsAgentsFlowsRequest =
 
 export type DeleteProjectsLocationsAgentsFlowsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsFlowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsFlowsError =
   | DefaultErrors
@@ -16434,7 +16434,7 @@ export const deleteProjectsLocationsAgentsFlows: API.OperationMethod<
   DeleteProjectsLocationsAgentsFlowsResponse,
   DeleteProjectsLocationsAgentsFlowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsFlowsRequest,
   output: DeleteProjectsLocationsAgentsFlowsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16447,7 +16447,7 @@ export interface ExportProjectsLocationsAgentsFlowsRequest {
 }
 
 export const ExportProjectsLocationsAgentsFlowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1ExportFlowRequest).pipe(
       T.HttpBody(),
@@ -16460,7 +16460,7 @@ export const ExportProjectsLocationsAgentsFlowsRequest =
 export type ExportProjectsLocationsAgentsFlowsResponse =
   GoogleLongrunningOperation;
 export const ExportProjectsLocationsAgentsFlowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ExportProjectsLocationsAgentsFlowsError =
   | DefaultErrors
@@ -16474,7 +16474,7 @@ export const exportProjectsLocationsAgentsFlows: API.OperationMethod<
   ExportProjectsLocationsAgentsFlowsResponse,
   ExportProjectsLocationsAgentsFlowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsAgentsFlowsRequest,
   output: ExportProjectsLocationsAgentsFlowsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16488,7 +16488,7 @@ export interface CreateProjectsLocationsAgentsFlowsRequest {
 }
 
 export const CreateProjectsLocationsAgentsFlowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -16504,7 +16504,7 @@ export const CreateProjectsLocationsAgentsFlowsRequest =
 export type CreateProjectsLocationsAgentsFlowsResponse =
   GoogleCloudDialogflowCxV3beta1Flow;
 export const CreateProjectsLocationsAgentsFlowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Flow;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Flow;
 
 export type CreateProjectsLocationsAgentsFlowsError =
   | DefaultErrors
@@ -16518,7 +16518,7 @@ export const createProjectsLocationsAgentsFlows: API.OperationMethod<
   CreateProjectsLocationsAgentsFlowsResponse,
   CreateProjectsLocationsAgentsFlowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsFlowsRequest,
   output: CreateProjectsLocationsAgentsFlowsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16532,7 +16532,7 @@ export interface ListProjectsLocationsAgentsFlowsRequest {
 }
 
 export const ListProjectsLocationsAgentsFlowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
     ),
@@ -16547,7 +16547,7 @@ export const ListProjectsLocationsAgentsFlowsRequest =
 export type ListProjectsLocationsAgentsFlowsResponse =
   GoogleCloudDialogflowCxV3beta1ListFlowsResponse;
 export const ListProjectsLocationsAgentsFlowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListFlowsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListFlowsResponse;
 
 export type ListProjectsLocationsAgentsFlowsError =
   | DefaultErrors
@@ -16559,7 +16559,7 @@ export const listProjectsLocationsAgentsFlows: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsFlowsResponse,
   ListProjectsLocationsAgentsFlowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsFlowsRequest,
   output: ListProjectsLocationsAgentsFlowsResponse,
   errors: [NotFound, Forbidden],
@@ -16578,7 +16578,7 @@ export interface PatchProjectsLocationsAgentsFlowsRequest {
 }
 
 export const PatchProjectsLocationsAgentsFlowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     languageCode: Schema.optional(Schema.String).pipe(
@@ -16595,7 +16595,7 @@ export const PatchProjectsLocationsAgentsFlowsRequest =
 export type PatchProjectsLocationsAgentsFlowsResponse =
   GoogleCloudDialogflowCxV3beta1Flow;
 export const PatchProjectsLocationsAgentsFlowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Flow;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Flow;
 
 export type PatchProjectsLocationsAgentsFlowsError =
   | DefaultErrors
@@ -16609,7 +16609,7 @@ export const patchProjectsLocationsAgentsFlows: API.OperationMethod<
   PatchProjectsLocationsAgentsFlowsResponse,
   PatchProjectsLocationsAgentsFlowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsFlowsRequest,
   output: PatchProjectsLocationsAgentsFlowsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16622,7 +16622,7 @@ export interface TrainProjectsLocationsAgentsFlowsRequest {
 }
 
 export const TrainProjectsLocationsAgentsFlowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1TrainFlowRequest).pipe(
       T.HttpBody(),
@@ -16635,7 +16635,7 @@ export const TrainProjectsLocationsAgentsFlowsRequest =
 export type TrainProjectsLocationsAgentsFlowsResponse =
   GoogleLongrunningOperation;
 export const TrainProjectsLocationsAgentsFlowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type TrainProjectsLocationsAgentsFlowsError =
   | DefaultErrors
@@ -16649,7 +16649,7 @@ export const trainProjectsLocationsAgentsFlows: API.OperationMethod<
   TrainProjectsLocationsAgentsFlowsResponse,
   TrainProjectsLocationsAgentsFlowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TrainProjectsLocationsAgentsFlowsRequest,
   output: TrainProjectsLocationsAgentsFlowsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16661,7 +16661,7 @@ export interface GetValidationResultProjectsLocationsAgentsFlowsRequest {
 }
 
 export const GetValidationResultProjectsLocationsAgentsFlowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
     ),
@@ -16674,7 +16674,7 @@ export const GetValidationResultProjectsLocationsAgentsFlowsRequest =
 export type GetValidationResultProjectsLocationsAgentsFlowsResponse =
   GoogleCloudDialogflowCxV3beta1FlowValidationResult;
 export const GetValidationResultProjectsLocationsAgentsFlowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1FlowValidationResult;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1FlowValidationResult;
 
 export type GetValidationResultProjectsLocationsAgentsFlowsError =
   | DefaultErrors
@@ -16686,7 +16686,7 @@ export const getValidationResultProjectsLocationsAgentsFlows: API.OperationMetho
   GetValidationResultProjectsLocationsAgentsFlowsResponse,
   GetValidationResultProjectsLocationsAgentsFlowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetValidationResultProjectsLocationsAgentsFlowsRequest,
   output: GetValidationResultProjectsLocationsAgentsFlowsResponse,
   errors: [NotFound, Forbidden],
@@ -16698,7 +16698,7 @@ export interface GetProjectsLocationsAgentsFlowsRequest {
 }
 
 export const GetProjectsLocationsAgentsFlowsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
     ),
@@ -16711,7 +16711,7 @@ export const GetProjectsLocationsAgentsFlowsRequest =
 export type GetProjectsLocationsAgentsFlowsResponse =
   GoogleCloudDialogflowCxV3beta1Flow;
 export const GetProjectsLocationsAgentsFlowsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Flow;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Flow;
 
 export type GetProjectsLocationsAgentsFlowsError =
   | DefaultErrors
@@ -16723,7 +16723,7 @@ export const getProjectsLocationsAgentsFlows: API.OperationMethod<
   GetProjectsLocationsAgentsFlowsResponse,
   GetProjectsLocationsAgentsFlowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsFlowsRequest,
   output: GetProjectsLocationsAgentsFlowsResponse,
   errors: [NotFound, Forbidden],
@@ -16735,7 +16735,7 @@ export interface DeleteProjectsLocationsAgentsFlowsPagesRequest {
 }
 
 export const DeleteProjectsLocationsAgentsFlowsPagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -16746,7 +16746,7 @@ export const DeleteProjectsLocationsAgentsFlowsPagesRequest =
 export type DeleteProjectsLocationsAgentsFlowsPagesResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsFlowsPagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsFlowsPagesError =
   | DefaultErrors
@@ -16760,7 +16760,7 @@ export const deleteProjectsLocationsAgentsFlowsPages: API.OperationMethod<
   DeleteProjectsLocationsAgentsFlowsPagesResponse,
   DeleteProjectsLocationsAgentsFlowsPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsFlowsPagesRequest,
   output: DeleteProjectsLocationsAgentsFlowsPagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16775,7 +16775,7 @@ export interface PatchProjectsLocationsAgentsFlowsPagesRequest {
 }
 
 export const PatchProjectsLocationsAgentsFlowsPagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -16792,7 +16792,7 @@ export const PatchProjectsLocationsAgentsFlowsPagesRequest =
 export type PatchProjectsLocationsAgentsFlowsPagesResponse =
   GoogleCloudDialogflowCxV3beta1Page;
 export const PatchProjectsLocationsAgentsFlowsPagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Page;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Page;
 
 export type PatchProjectsLocationsAgentsFlowsPagesError =
   | DefaultErrors
@@ -16806,7 +16806,7 @@ export const patchProjectsLocationsAgentsFlowsPages: API.OperationMethod<
   PatchProjectsLocationsAgentsFlowsPagesResponse,
   PatchProjectsLocationsAgentsFlowsPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsFlowsPagesRequest,
   output: PatchProjectsLocationsAgentsFlowsPagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16818,7 +16818,7 @@ export interface GetProjectsLocationsAgentsFlowsPagesRequest {
 }
 
 export const GetProjectsLocationsAgentsFlowsPagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -16831,7 +16831,7 @@ export const GetProjectsLocationsAgentsFlowsPagesRequest =
 export type GetProjectsLocationsAgentsFlowsPagesResponse =
   GoogleCloudDialogflowCxV3beta1Page;
 export const GetProjectsLocationsAgentsFlowsPagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Page;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Page;
 
 export type GetProjectsLocationsAgentsFlowsPagesError =
   | DefaultErrors
@@ -16843,7 +16843,7 @@ export const getProjectsLocationsAgentsFlowsPages: API.OperationMethod<
   GetProjectsLocationsAgentsFlowsPagesResponse,
   GetProjectsLocationsAgentsFlowsPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsFlowsPagesRequest,
   output: GetProjectsLocationsAgentsFlowsPagesResponse,
   errors: [NotFound, Forbidden],
@@ -16857,7 +16857,7 @@ export interface CreateProjectsLocationsAgentsFlowsPagesRequest {
 }
 
 export const CreateProjectsLocationsAgentsFlowsPagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -16873,7 +16873,7 @@ export const CreateProjectsLocationsAgentsFlowsPagesRequest =
 export type CreateProjectsLocationsAgentsFlowsPagesResponse =
   GoogleCloudDialogflowCxV3beta1Page;
 export const CreateProjectsLocationsAgentsFlowsPagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Page;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Page;
 
 export type CreateProjectsLocationsAgentsFlowsPagesError =
   | DefaultErrors
@@ -16887,7 +16887,7 @@ export const createProjectsLocationsAgentsFlowsPages: API.OperationMethod<
   CreateProjectsLocationsAgentsFlowsPagesResponse,
   CreateProjectsLocationsAgentsFlowsPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsFlowsPagesRequest,
   output: CreateProjectsLocationsAgentsFlowsPagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16901,7 +16901,7 @@ export interface ListProjectsLocationsAgentsFlowsPagesRequest {
 }
 
 export const ListProjectsLocationsAgentsFlowsPagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -16916,7 +16916,7 @@ export const ListProjectsLocationsAgentsFlowsPagesRequest =
 export type ListProjectsLocationsAgentsFlowsPagesResponse =
   GoogleCloudDialogflowCxV3beta1ListPagesResponse;
 export const ListProjectsLocationsAgentsFlowsPagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListPagesResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListPagesResponse;
 
 export type ListProjectsLocationsAgentsFlowsPagesError =
   | DefaultErrors
@@ -16928,7 +16928,7 @@ export const listProjectsLocationsAgentsFlowsPages: API.PaginatedOperationMethod
   ListProjectsLocationsAgentsFlowsPagesResponse,
   ListProjectsLocationsAgentsFlowsPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsFlowsPagesRequest,
   output: ListProjectsLocationsAgentsFlowsPagesResponse,
   errors: [NotFound, Forbidden],
@@ -16946,7 +16946,7 @@ export interface CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest 
 }
 
 export const CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -16966,7 +16966,7 @@ export const CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest =
 export type CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
   GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
 export const CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
 
 export type CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsError =
   | DefaultErrors
@@ -16980,7 +16980,7 @@ export const createProjectsLocationsAgentsFlowsTransitionRouteGroups: API.Operat
   CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
   CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
   output: CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -16994,7 +16994,7 @@ export interface ListProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest {
 }
 
 export const ListProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
     ),
@@ -17009,7 +17009,7 @@ export const ListProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest =
 export type ListProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
   GoogleCloudDialogflowCxV3beta1ListTransitionRouteGroupsResponse;
 export const ListProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListTransitionRouteGroupsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListTransitionRouteGroupsResponse;
 
 export type ListProjectsLocationsAgentsFlowsTransitionRouteGroupsError =
   | DefaultErrors
@@ -17021,7 +17021,7 @@ export const listProjectsLocationsAgentsFlowsTransitionRouteGroups: API.Paginate
   ListProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
   ListProjectsLocationsAgentsFlowsTransitionRouteGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
   output: ListProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
   errors: [NotFound, Forbidden],
@@ -17037,7 +17037,7 @@ export interface DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest 
 }
 
 export const DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -17048,7 +17048,7 @@ export const DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest =
 export type DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsError =
   | DefaultErrors
@@ -17062,7 +17062,7 @@ export const deleteProjectsLocationsAgentsFlowsTransitionRouteGroups: API.Operat
   DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
   DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
   output: DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17077,7 +17077,7 @@ export interface PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest {
 }
 
 export const PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -17094,7 +17094,7 @@ export const PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest =
 export type PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
   GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
 export const PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
 
 export type PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsError =
   | DefaultErrors
@@ -17108,7 +17108,7 @@ export const patchProjectsLocationsAgentsFlowsTransitionRouteGroups: API.Operati
   PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
   PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
   output: PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17120,7 +17120,7 @@ export interface GetProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest {
 }
 
 export const GetProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -17133,7 +17133,7 @@ export const GetProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest =
 export type GetProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
   GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
 export const GetProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
 
 export type GetProjectsLocationsAgentsFlowsTransitionRouteGroupsError =
   | DefaultErrors
@@ -17145,7 +17145,7 @@ export const getProjectsLocationsAgentsFlowsTransitionRouteGroups: API.Operation
   GetProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
   GetProjectsLocationsAgentsFlowsTransitionRouteGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
   output: GetProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
   errors: [NotFound, Forbidden],
@@ -17156,7 +17156,7 @@ export interface DeleteProjectsLocationsAgentsFlowsVersionsRequest {
 }
 
 export const DeleteProjectsLocationsAgentsFlowsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
@@ -17166,7 +17166,7 @@ export const DeleteProjectsLocationsAgentsFlowsVersionsRequest =
 export type DeleteProjectsLocationsAgentsFlowsVersionsResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsFlowsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsFlowsVersionsError =
   | DefaultErrors
@@ -17180,7 +17180,7 @@ export const deleteProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
   DeleteProjectsLocationsAgentsFlowsVersionsResponse,
   DeleteProjectsLocationsAgentsFlowsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsFlowsVersionsRequest,
   output: DeleteProjectsLocationsAgentsFlowsVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17194,7 +17194,7 @@ export interface PatchProjectsLocationsAgentsFlowsVersionsRequest {
 }
 
 export const PatchProjectsLocationsAgentsFlowsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Version).pipe(
@@ -17208,7 +17208,7 @@ export const PatchProjectsLocationsAgentsFlowsVersionsRequest =
 export type PatchProjectsLocationsAgentsFlowsVersionsResponse =
   GoogleCloudDialogflowCxV3beta1Version;
 export const PatchProjectsLocationsAgentsFlowsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Version;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Version;
 
 export type PatchProjectsLocationsAgentsFlowsVersionsError =
   | DefaultErrors
@@ -17222,7 +17222,7 @@ export const patchProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
   PatchProjectsLocationsAgentsFlowsVersionsResponse,
   PatchProjectsLocationsAgentsFlowsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsFlowsVersionsRequest,
   output: PatchProjectsLocationsAgentsFlowsVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17235,7 +17235,7 @@ export interface LoadProjectsLocationsAgentsFlowsVersionsRequest {
 }
 
 export const LoadProjectsLocationsAgentsFlowsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1LoadVersionRequest,
@@ -17248,7 +17248,7 @@ export const LoadProjectsLocationsAgentsFlowsVersionsRequest =
 export type LoadProjectsLocationsAgentsFlowsVersionsResponse =
   GoogleLongrunningOperation;
 export const LoadProjectsLocationsAgentsFlowsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type LoadProjectsLocationsAgentsFlowsVersionsError =
   | DefaultErrors
@@ -17262,7 +17262,7 @@ export const loadProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
   LoadProjectsLocationsAgentsFlowsVersionsResponse,
   LoadProjectsLocationsAgentsFlowsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LoadProjectsLocationsAgentsFlowsVersionsRequest,
   output: LoadProjectsLocationsAgentsFlowsVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17273,7 +17273,7 @@ export interface GetProjectsLocationsAgentsFlowsVersionsRequest {
 }
 
 export const GetProjectsLocationsAgentsFlowsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -17283,7 +17283,7 @@ export const GetProjectsLocationsAgentsFlowsVersionsRequest =
 export type GetProjectsLocationsAgentsFlowsVersionsResponse =
   GoogleCloudDialogflowCxV3beta1Version;
 export const GetProjectsLocationsAgentsFlowsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Version;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Version;
 
 export type GetProjectsLocationsAgentsFlowsVersionsError =
   | DefaultErrors
@@ -17295,7 +17295,7 @@ export const getProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
   GetProjectsLocationsAgentsFlowsVersionsResponse,
   GetProjectsLocationsAgentsFlowsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsFlowsVersionsRequest,
   output: GetProjectsLocationsAgentsFlowsVersionsResponse,
   errors: [NotFound, Forbidden],
@@ -17308,7 +17308,7 @@ export interface CreateProjectsLocationsAgentsFlowsVersionsRequest {
 }
 
 export const CreateProjectsLocationsAgentsFlowsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Version).pipe(
       T.HttpBody(),
@@ -17325,7 +17325,7 @@ export const CreateProjectsLocationsAgentsFlowsVersionsRequest =
 export type CreateProjectsLocationsAgentsFlowsVersionsResponse =
   GoogleLongrunningOperation;
 export const CreateProjectsLocationsAgentsFlowsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsAgentsFlowsVersionsError =
   | DefaultErrors
@@ -17339,7 +17339,7 @@ export const createProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
   CreateProjectsLocationsAgentsFlowsVersionsResponse,
   CreateProjectsLocationsAgentsFlowsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsFlowsVersionsRequest,
   output: CreateProjectsLocationsAgentsFlowsVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17352,7 +17352,7 @@ export interface ListProjectsLocationsAgentsFlowsVersionsRequest {
 }
 
 export const ListProjectsLocationsAgentsFlowsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -17364,7 +17364,7 @@ export const ListProjectsLocationsAgentsFlowsVersionsRequest =
 export type ListProjectsLocationsAgentsFlowsVersionsResponse =
   GoogleCloudDialogflowCxV3beta1ListVersionsResponse;
 export const ListProjectsLocationsAgentsFlowsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListVersionsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListVersionsResponse;
 
 export type ListProjectsLocationsAgentsFlowsVersionsError =
   | DefaultErrors
@@ -17376,7 +17376,7 @@ export const listProjectsLocationsAgentsFlowsVersions: API.PaginatedOperationMet
   ListProjectsLocationsAgentsFlowsVersionsResponse,
   ListProjectsLocationsAgentsFlowsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsFlowsVersionsRequest,
   output: ListProjectsLocationsAgentsFlowsVersionsResponse,
   errors: [NotFound, Forbidden],
@@ -17393,7 +17393,7 @@ export interface CompareVersionsProjectsLocationsAgentsFlowsVersionsRequest {
 }
 
 export const CompareVersionsProjectsLocationsAgentsFlowsVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     baseVersion: Schema.String.pipe(T.HttpPath("baseVersion")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1CompareVersionsRequest,
@@ -17410,7 +17410,7 @@ export const CompareVersionsProjectsLocationsAgentsFlowsVersionsRequest =
 export type CompareVersionsProjectsLocationsAgentsFlowsVersionsResponse =
   GoogleCloudDialogflowCxV3beta1CompareVersionsResponse;
 export const CompareVersionsProjectsLocationsAgentsFlowsVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1CompareVersionsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1CompareVersionsResponse;
 
 export type CompareVersionsProjectsLocationsAgentsFlowsVersionsError =
   | DefaultErrors
@@ -17424,7 +17424,7 @@ export const compareVersionsProjectsLocationsAgentsFlowsVersions: API.OperationM
   CompareVersionsProjectsLocationsAgentsFlowsVersionsResponse,
   CompareVersionsProjectsLocationsAgentsFlowsVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompareVersionsProjectsLocationsAgentsFlowsVersionsRequest,
   output: CompareVersionsProjectsLocationsAgentsFlowsVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17435,7 +17435,7 @@ export interface GetProjectsLocationsAgentsConversationsRequest {
 }
 
 export const GetProjectsLocationsAgentsConversationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -17445,7 +17445,7 @@ export const GetProjectsLocationsAgentsConversationsRequest =
 export type GetProjectsLocationsAgentsConversationsResponse =
   GoogleCloudDialogflowCxV3beta1Conversation;
 export const GetProjectsLocationsAgentsConversationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Conversation;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Conversation;
 
 export type GetProjectsLocationsAgentsConversationsError =
   | DefaultErrors
@@ -17457,7 +17457,7 @@ export const getProjectsLocationsAgentsConversations: API.OperationMethod<
   GetProjectsLocationsAgentsConversationsResponse,
   GetProjectsLocationsAgentsConversationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsConversationsRequest,
   output: GetProjectsLocationsAgentsConversationsResponse,
   errors: [NotFound, Forbidden],
@@ -17468,7 +17468,7 @@ export interface DeleteProjectsLocationsAgentsConversationsRequest {
 }
 
 export const DeleteProjectsLocationsAgentsConversationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
@@ -17478,7 +17478,7 @@ export const DeleteProjectsLocationsAgentsConversationsRequest =
 export type DeleteProjectsLocationsAgentsConversationsResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsConversationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsConversationsError =
   | DefaultErrors
@@ -17492,7 +17492,7 @@ export const deleteProjectsLocationsAgentsConversations: API.OperationMethod<
   DeleteProjectsLocationsAgentsConversationsResponse,
   DeleteProjectsLocationsAgentsConversationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsConversationsRequest,
   output: DeleteProjectsLocationsAgentsConversationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17506,7 +17506,7 @@ export interface ListProjectsLocationsAgentsConversationsRequest {
 }
 
 export const ListProjectsLocationsAgentsConversationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -17519,7 +17519,7 @@ export const ListProjectsLocationsAgentsConversationsRequest =
 export type ListProjectsLocationsAgentsConversationsResponse =
   GoogleCloudDialogflowCxV3beta1ListConversationsResponse;
 export const ListProjectsLocationsAgentsConversationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListConversationsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListConversationsResponse;
 
 export type ListProjectsLocationsAgentsConversationsError =
   | DefaultErrors
@@ -17531,7 +17531,7 @@ export const listProjectsLocationsAgentsConversations: API.PaginatedOperationMet
   ListProjectsLocationsAgentsConversationsResponse,
   ListProjectsLocationsAgentsConversationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsConversationsRequest,
   output: ListProjectsLocationsAgentsConversationsResponse,
   errors: [NotFound, Forbidden],
@@ -17548,7 +17548,7 @@ export interface CreateProjectsLocationsAgentsPlaybooksRequest {
 }
 
 export const CreateProjectsLocationsAgentsPlaybooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Playbook).pipe(
       T.HttpBody(),
@@ -17565,7 +17565,7 @@ export const CreateProjectsLocationsAgentsPlaybooksRequest =
 export type CreateProjectsLocationsAgentsPlaybooksResponse =
   GoogleCloudDialogflowCxV3beta1Playbook;
 export const CreateProjectsLocationsAgentsPlaybooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Playbook;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Playbook;
 
 export type CreateProjectsLocationsAgentsPlaybooksError =
   | DefaultErrors
@@ -17579,7 +17579,7 @@ export const createProjectsLocationsAgentsPlaybooks: API.OperationMethod<
   CreateProjectsLocationsAgentsPlaybooksResponse,
   CreateProjectsLocationsAgentsPlaybooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsPlaybooksRequest,
   output: CreateProjectsLocationsAgentsPlaybooksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17592,7 +17592,7 @@ export interface ListProjectsLocationsAgentsPlaybooksRequest {
 }
 
 export const ListProjectsLocationsAgentsPlaybooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -17604,7 +17604,7 @@ export const ListProjectsLocationsAgentsPlaybooksRequest =
 export type ListProjectsLocationsAgentsPlaybooksResponse =
   GoogleCloudDialogflowCxV3beta1ListPlaybooksResponse;
 export const ListProjectsLocationsAgentsPlaybooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListPlaybooksResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListPlaybooksResponse;
 
 export type ListProjectsLocationsAgentsPlaybooksError =
   | DefaultErrors
@@ -17616,7 +17616,7 @@ export const listProjectsLocationsAgentsPlaybooks: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsPlaybooksResponse,
   ListProjectsLocationsAgentsPlaybooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsPlaybooksRequest,
   output: ListProjectsLocationsAgentsPlaybooksResponse,
   errors: [NotFound, Forbidden],
@@ -17633,7 +17633,7 @@ export interface ImportProjectsLocationsAgentsPlaybooksRequest {
 }
 
 export const ImportProjectsLocationsAgentsPlaybooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ImportPlaybookRequest,
@@ -17650,7 +17650,7 @@ export const ImportProjectsLocationsAgentsPlaybooksRequest =
 export type ImportProjectsLocationsAgentsPlaybooksResponse =
   GoogleLongrunningOperation;
 export const ImportProjectsLocationsAgentsPlaybooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsAgentsPlaybooksError =
   | DefaultErrors
@@ -17664,7 +17664,7 @@ export const importProjectsLocationsAgentsPlaybooks: API.OperationMethod<
   ImportProjectsLocationsAgentsPlaybooksResponse,
   ImportProjectsLocationsAgentsPlaybooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsAgentsPlaybooksRequest,
   output: ImportProjectsLocationsAgentsPlaybooksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17675,7 +17675,7 @@ export interface DeleteProjectsLocationsAgentsPlaybooksRequest {
 }
 
 export const DeleteProjectsLocationsAgentsPlaybooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
@@ -17685,7 +17685,7 @@ export const DeleteProjectsLocationsAgentsPlaybooksRequest =
 export type DeleteProjectsLocationsAgentsPlaybooksResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsPlaybooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsPlaybooksError =
   | DefaultErrors
@@ -17699,7 +17699,7 @@ export const deleteProjectsLocationsAgentsPlaybooks: API.OperationMethod<
   DeleteProjectsLocationsAgentsPlaybooksResponse,
   DeleteProjectsLocationsAgentsPlaybooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsPlaybooksRequest,
   output: DeleteProjectsLocationsAgentsPlaybooksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17713,7 +17713,7 @@ export interface PatchProjectsLocationsAgentsPlaybooksRequest {
 }
 
 export const PatchProjectsLocationsAgentsPlaybooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Playbook).pipe(
@@ -17727,7 +17727,7 @@ export const PatchProjectsLocationsAgentsPlaybooksRequest =
 export type PatchProjectsLocationsAgentsPlaybooksResponse =
   GoogleCloudDialogflowCxV3beta1Playbook;
 export const PatchProjectsLocationsAgentsPlaybooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Playbook;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Playbook;
 
 export type PatchProjectsLocationsAgentsPlaybooksError =
   | DefaultErrors
@@ -17741,7 +17741,7 @@ export const patchProjectsLocationsAgentsPlaybooks: API.OperationMethod<
   PatchProjectsLocationsAgentsPlaybooksResponse,
   PatchProjectsLocationsAgentsPlaybooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsPlaybooksRequest,
   output: PatchProjectsLocationsAgentsPlaybooksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17752,7 +17752,7 @@ export interface GetProjectsLocationsAgentsPlaybooksRequest {
 }
 
 export const GetProjectsLocationsAgentsPlaybooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -17762,7 +17762,7 @@ export const GetProjectsLocationsAgentsPlaybooksRequest =
 export type GetProjectsLocationsAgentsPlaybooksResponse =
   GoogleCloudDialogflowCxV3beta1Playbook;
 export const GetProjectsLocationsAgentsPlaybooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Playbook;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Playbook;
 
 export type GetProjectsLocationsAgentsPlaybooksError =
   | DefaultErrors
@@ -17774,7 +17774,7 @@ export const getProjectsLocationsAgentsPlaybooks: API.OperationMethod<
   GetProjectsLocationsAgentsPlaybooksResponse,
   GetProjectsLocationsAgentsPlaybooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsPlaybooksRequest,
   output: GetProjectsLocationsAgentsPlaybooksResponse,
   errors: [NotFound, Forbidden],
@@ -17787,7 +17787,7 @@ export interface ExportProjectsLocationsAgentsPlaybooksRequest {
 }
 
 export const ExportProjectsLocationsAgentsPlaybooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ExportPlaybookRequest,
@@ -17800,7 +17800,7 @@ export const ExportProjectsLocationsAgentsPlaybooksRequest =
 export type ExportProjectsLocationsAgentsPlaybooksResponse =
   GoogleLongrunningOperation;
 export const ExportProjectsLocationsAgentsPlaybooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ExportProjectsLocationsAgentsPlaybooksError =
   | DefaultErrors
@@ -17814,7 +17814,7 @@ export const exportProjectsLocationsAgentsPlaybooks: API.OperationMethod<
   ExportProjectsLocationsAgentsPlaybooksResponse,
   ExportProjectsLocationsAgentsPlaybooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsAgentsPlaybooksRequest,
   output: ExportProjectsLocationsAgentsPlaybooksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17828,7 +17828,7 @@ export interface PatchProjectsLocationsAgentsPlaybooksExamplesRequest {
 }
 
 export const PatchProjectsLocationsAgentsPlaybooksExamplesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Example).pipe(
@@ -17842,7 +17842,7 @@ export const PatchProjectsLocationsAgentsPlaybooksExamplesRequest =
 export type PatchProjectsLocationsAgentsPlaybooksExamplesResponse =
   GoogleCloudDialogflowCxV3beta1Example;
 export const PatchProjectsLocationsAgentsPlaybooksExamplesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Example;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Example;
 
 export type PatchProjectsLocationsAgentsPlaybooksExamplesError =
   | DefaultErrors
@@ -17856,7 +17856,7 @@ export const patchProjectsLocationsAgentsPlaybooksExamples: API.OperationMethod<
   PatchProjectsLocationsAgentsPlaybooksExamplesResponse,
   PatchProjectsLocationsAgentsPlaybooksExamplesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsPlaybooksExamplesRequest,
   output: PatchProjectsLocationsAgentsPlaybooksExamplesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17867,7 +17867,7 @@ export interface DeleteProjectsLocationsAgentsPlaybooksExamplesRequest {
 }
 
 export const DeleteProjectsLocationsAgentsPlaybooksExamplesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
@@ -17877,7 +17877,7 @@ export const DeleteProjectsLocationsAgentsPlaybooksExamplesRequest =
 export type DeleteProjectsLocationsAgentsPlaybooksExamplesResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsPlaybooksExamplesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsPlaybooksExamplesError =
   | DefaultErrors
@@ -17891,7 +17891,7 @@ export const deleteProjectsLocationsAgentsPlaybooksExamples: API.OperationMethod
   DeleteProjectsLocationsAgentsPlaybooksExamplesResponse,
   DeleteProjectsLocationsAgentsPlaybooksExamplesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsPlaybooksExamplesRequest,
   output: DeleteProjectsLocationsAgentsPlaybooksExamplesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -17902,7 +17902,7 @@ export interface GetProjectsLocationsAgentsPlaybooksExamplesRequest {
 }
 
 export const GetProjectsLocationsAgentsPlaybooksExamplesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -17912,7 +17912,7 @@ export const GetProjectsLocationsAgentsPlaybooksExamplesRequest =
 export type GetProjectsLocationsAgentsPlaybooksExamplesResponse =
   GoogleCloudDialogflowCxV3beta1Example;
 export const GetProjectsLocationsAgentsPlaybooksExamplesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Example;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Example;
 
 export type GetProjectsLocationsAgentsPlaybooksExamplesError =
   | DefaultErrors
@@ -17924,7 +17924,7 @@ export const getProjectsLocationsAgentsPlaybooksExamples: API.OperationMethod<
   GetProjectsLocationsAgentsPlaybooksExamplesResponse,
   GetProjectsLocationsAgentsPlaybooksExamplesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsPlaybooksExamplesRequest,
   output: GetProjectsLocationsAgentsPlaybooksExamplesResponse,
   errors: [NotFound, Forbidden],
@@ -17938,7 +17938,7 @@ export interface ListProjectsLocationsAgentsPlaybooksExamplesRequest {
 }
 
 export const ListProjectsLocationsAgentsPlaybooksExamplesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
     ),
@@ -17953,7 +17953,7 @@ export const ListProjectsLocationsAgentsPlaybooksExamplesRequest =
 export type ListProjectsLocationsAgentsPlaybooksExamplesResponse =
   GoogleCloudDialogflowCxV3beta1ListExamplesResponse;
 export const ListProjectsLocationsAgentsPlaybooksExamplesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListExamplesResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListExamplesResponse;
 
 export type ListProjectsLocationsAgentsPlaybooksExamplesError =
   | DefaultErrors
@@ -17965,7 +17965,7 @@ export const listProjectsLocationsAgentsPlaybooksExamples: API.PaginatedOperatio
   ListProjectsLocationsAgentsPlaybooksExamplesResponse,
   ListProjectsLocationsAgentsPlaybooksExamplesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsPlaybooksExamplesRequest,
   output: ListProjectsLocationsAgentsPlaybooksExamplesResponse,
   errors: [NotFound, Forbidden],
@@ -17982,7 +17982,7 @@ export interface CreateProjectsLocationsAgentsPlaybooksExamplesRequest {
 }
 
 export const CreateProjectsLocationsAgentsPlaybooksExamplesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Example).pipe(
       T.HttpBody(),
@@ -17999,7 +17999,7 @@ export const CreateProjectsLocationsAgentsPlaybooksExamplesRequest =
 export type CreateProjectsLocationsAgentsPlaybooksExamplesResponse =
   GoogleCloudDialogflowCxV3beta1Example;
 export const CreateProjectsLocationsAgentsPlaybooksExamplesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Example;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Example;
 
 export type CreateProjectsLocationsAgentsPlaybooksExamplesError =
   | DefaultErrors
@@ -18013,7 +18013,7 @@ export const createProjectsLocationsAgentsPlaybooksExamples: API.OperationMethod
   CreateProjectsLocationsAgentsPlaybooksExamplesResponse,
   CreateProjectsLocationsAgentsPlaybooksExamplesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsPlaybooksExamplesRequest,
   output: CreateProjectsLocationsAgentsPlaybooksExamplesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18026,7 +18026,7 @@ export interface CreateProjectsLocationsAgentsPlaybooksVersionsRequest {
 }
 
 export const CreateProjectsLocationsAgentsPlaybooksVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1PlaybookVersion).pipe(
       T.HttpBody(),
@@ -18043,7 +18043,7 @@ export const CreateProjectsLocationsAgentsPlaybooksVersionsRequest =
 export type CreateProjectsLocationsAgentsPlaybooksVersionsResponse =
   GoogleCloudDialogflowCxV3beta1PlaybookVersion;
 export const CreateProjectsLocationsAgentsPlaybooksVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1PlaybookVersion;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1PlaybookVersion;
 
 export type CreateProjectsLocationsAgentsPlaybooksVersionsError =
   | DefaultErrors
@@ -18057,7 +18057,7 @@ export const createProjectsLocationsAgentsPlaybooksVersions: API.OperationMethod
   CreateProjectsLocationsAgentsPlaybooksVersionsResponse,
   CreateProjectsLocationsAgentsPlaybooksVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsPlaybooksVersionsRequest,
   output: CreateProjectsLocationsAgentsPlaybooksVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18070,7 +18070,7 @@ export interface ListProjectsLocationsAgentsPlaybooksVersionsRequest {
 }
 
 export const ListProjectsLocationsAgentsPlaybooksVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -18082,7 +18082,7 @@ export const ListProjectsLocationsAgentsPlaybooksVersionsRequest =
 export type ListProjectsLocationsAgentsPlaybooksVersionsResponse =
   GoogleCloudDialogflowCxV3beta1ListPlaybookVersionsResponse;
 export const ListProjectsLocationsAgentsPlaybooksVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListPlaybookVersionsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListPlaybookVersionsResponse;
 
 export type ListProjectsLocationsAgentsPlaybooksVersionsError =
   | DefaultErrors
@@ -18094,7 +18094,7 @@ export const listProjectsLocationsAgentsPlaybooksVersions: API.PaginatedOperatio
   ListProjectsLocationsAgentsPlaybooksVersionsResponse,
   ListProjectsLocationsAgentsPlaybooksVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsPlaybooksVersionsRequest,
   output: ListProjectsLocationsAgentsPlaybooksVersionsResponse,
   errors: [NotFound, Forbidden],
@@ -18109,7 +18109,7 @@ export interface DeleteProjectsLocationsAgentsPlaybooksVersionsRequest {
 }
 
 export const DeleteProjectsLocationsAgentsPlaybooksVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v3beta1/{+name}" }),
@@ -18119,7 +18119,7 @@ export const DeleteProjectsLocationsAgentsPlaybooksVersionsRequest =
 export type DeleteProjectsLocationsAgentsPlaybooksVersionsResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsPlaybooksVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsPlaybooksVersionsError =
   | DefaultErrors
@@ -18133,7 +18133,7 @@ export const deleteProjectsLocationsAgentsPlaybooksVersions: API.OperationMethod
   DeleteProjectsLocationsAgentsPlaybooksVersionsResponse,
   DeleteProjectsLocationsAgentsPlaybooksVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsPlaybooksVersionsRequest,
   output: DeleteProjectsLocationsAgentsPlaybooksVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18146,7 +18146,7 @@ export interface RestoreProjectsLocationsAgentsPlaybooksVersionsRequest {
 }
 
 export const RestoreProjectsLocationsAgentsPlaybooksVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionRequest,
@@ -18159,7 +18159,7 @@ export const RestoreProjectsLocationsAgentsPlaybooksVersionsRequest =
 export type RestoreProjectsLocationsAgentsPlaybooksVersionsResponse =
   GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse;
 export const RestoreProjectsLocationsAgentsPlaybooksVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1RestorePlaybookVersionResponse;
 
 export type RestoreProjectsLocationsAgentsPlaybooksVersionsError =
   | DefaultErrors
@@ -18173,7 +18173,7 @@ export const restoreProjectsLocationsAgentsPlaybooksVersions: API.OperationMetho
   RestoreProjectsLocationsAgentsPlaybooksVersionsResponse,
   RestoreProjectsLocationsAgentsPlaybooksVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreProjectsLocationsAgentsPlaybooksVersionsRequest,
   output: RestoreProjectsLocationsAgentsPlaybooksVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18184,7 +18184,7 @@ export interface GetProjectsLocationsAgentsPlaybooksVersionsRequest {
 }
 
 export const GetProjectsLocationsAgentsPlaybooksVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -18194,7 +18194,7 @@ export const GetProjectsLocationsAgentsPlaybooksVersionsRequest =
 export type GetProjectsLocationsAgentsPlaybooksVersionsResponse =
   GoogleCloudDialogflowCxV3beta1PlaybookVersion;
 export const GetProjectsLocationsAgentsPlaybooksVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1PlaybookVersion;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1PlaybookVersion;
 
 export type GetProjectsLocationsAgentsPlaybooksVersionsError =
   | DefaultErrors
@@ -18206,7 +18206,7 @@ export const getProjectsLocationsAgentsPlaybooksVersions: API.OperationMethod<
   GetProjectsLocationsAgentsPlaybooksVersionsResponse,
   GetProjectsLocationsAgentsPlaybooksVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsPlaybooksVersionsRequest,
   output: GetProjectsLocationsAgentsPlaybooksVersionsResponse,
   errors: [NotFound, Forbidden],
@@ -18220,7 +18220,7 @@ export interface CreateProjectsLocationsAgentsGeneratorsRequest {
 }
 
 export const CreateProjectsLocationsAgentsGeneratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -18240,7 +18240,7 @@ export const CreateProjectsLocationsAgentsGeneratorsRequest =
 export type CreateProjectsLocationsAgentsGeneratorsResponse =
   GoogleCloudDialogflowCxV3beta1Generator;
 export const CreateProjectsLocationsAgentsGeneratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Generator;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Generator;
 
 export type CreateProjectsLocationsAgentsGeneratorsError =
   | DefaultErrors
@@ -18254,7 +18254,7 @@ export const createProjectsLocationsAgentsGenerators: API.OperationMethod<
   CreateProjectsLocationsAgentsGeneratorsResponse,
   CreateProjectsLocationsAgentsGeneratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsGeneratorsRequest,
   output: CreateProjectsLocationsAgentsGeneratorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18268,7 +18268,7 @@ export interface ListProjectsLocationsAgentsGeneratorsRequest {
 }
 
 export const ListProjectsLocationsAgentsGeneratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
     ),
@@ -18283,7 +18283,7 @@ export const ListProjectsLocationsAgentsGeneratorsRequest =
 export type ListProjectsLocationsAgentsGeneratorsResponse =
   GoogleCloudDialogflowCxV3beta1ListGeneratorsResponse;
 export const ListProjectsLocationsAgentsGeneratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListGeneratorsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListGeneratorsResponse;
 
 export type ListProjectsLocationsAgentsGeneratorsError =
   | DefaultErrors
@@ -18295,7 +18295,7 @@ export const listProjectsLocationsAgentsGenerators: API.PaginatedOperationMethod
   ListProjectsLocationsAgentsGeneratorsResponse,
   ListProjectsLocationsAgentsGeneratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsGeneratorsRequest,
   output: ListProjectsLocationsAgentsGeneratorsResponse,
   errors: [NotFound, Forbidden],
@@ -18311,7 +18311,7 @@ export interface DeleteProjectsLocationsAgentsGeneratorsRequest {
 }
 
 export const DeleteProjectsLocationsAgentsGeneratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -18322,7 +18322,7 @@ export const DeleteProjectsLocationsAgentsGeneratorsRequest =
 export type DeleteProjectsLocationsAgentsGeneratorsResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsGeneratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsGeneratorsError =
   | DefaultErrors
@@ -18336,7 +18336,7 @@ export const deleteProjectsLocationsAgentsGenerators: API.OperationMethod<
   DeleteProjectsLocationsAgentsGeneratorsResponse,
   DeleteProjectsLocationsAgentsGeneratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsGeneratorsRequest,
   output: DeleteProjectsLocationsAgentsGeneratorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18351,7 +18351,7 @@ export interface PatchProjectsLocationsAgentsGeneratorsRequest {
 }
 
 export const PatchProjectsLocationsAgentsGeneratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
     ),
@@ -18368,7 +18368,7 @@ export const PatchProjectsLocationsAgentsGeneratorsRequest =
 export type PatchProjectsLocationsAgentsGeneratorsResponse =
   GoogleCloudDialogflowCxV3beta1Generator;
 export const PatchProjectsLocationsAgentsGeneratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Generator;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Generator;
 
 export type PatchProjectsLocationsAgentsGeneratorsError =
   | DefaultErrors
@@ -18382,7 +18382,7 @@ export const patchProjectsLocationsAgentsGenerators: API.OperationMethod<
   PatchProjectsLocationsAgentsGeneratorsResponse,
   PatchProjectsLocationsAgentsGeneratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsGeneratorsRequest,
   output: PatchProjectsLocationsAgentsGeneratorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18394,7 +18394,7 @@ export interface GetProjectsLocationsAgentsGeneratorsRequest {
 }
 
 export const GetProjectsLocationsAgentsGeneratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -18407,7 +18407,7 @@ export const GetProjectsLocationsAgentsGeneratorsRequest =
 export type GetProjectsLocationsAgentsGeneratorsResponse =
   GoogleCloudDialogflowCxV3beta1Generator;
 export const GetProjectsLocationsAgentsGeneratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Generator;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Generator;
 
 export type GetProjectsLocationsAgentsGeneratorsError =
   | DefaultErrors
@@ -18419,7 +18419,7 @@ export const getProjectsLocationsAgentsGenerators: API.OperationMethod<
   GetProjectsLocationsAgentsGeneratorsResponse,
   GetProjectsLocationsAgentsGeneratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsGeneratorsRequest,
   output: GetProjectsLocationsAgentsGeneratorsResponse,
   errors: [NotFound, Forbidden],
@@ -18432,7 +18432,7 @@ export interface BatchRunProjectsLocationsAgentsTestCasesRequest {
 }
 
 export const BatchRunProjectsLocationsAgentsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1BatchRunTestCasesRequest,
@@ -18449,7 +18449,7 @@ export const BatchRunProjectsLocationsAgentsTestCasesRequest =
 export type BatchRunProjectsLocationsAgentsTestCasesResponse =
   GoogleLongrunningOperation;
 export const BatchRunProjectsLocationsAgentsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type BatchRunProjectsLocationsAgentsTestCasesError =
   | DefaultErrors
@@ -18463,7 +18463,7 @@ export const batchRunProjectsLocationsAgentsTestCases: API.OperationMethod<
   BatchRunProjectsLocationsAgentsTestCasesResponse,
   BatchRunProjectsLocationsAgentsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchRunProjectsLocationsAgentsTestCasesRequest,
   output: BatchRunProjectsLocationsAgentsTestCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18476,7 +18476,7 @@ export interface ImportProjectsLocationsAgentsTestCasesRequest {
 }
 
 export const ImportProjectsLocationsAgentsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ImportTestCasesRequest,
@@ -18493,7 +18493,7 @@ export const ImportProjectsLocationsAgentsTestCasesRequest =
 export type ImportProjectsLocationsAgentsTestCasesResponse =
   GoogleLongrunningOperation;
 export const ImportProjectsLocationsAgentsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsAgentsTestCasesError =
   | DefaultErrors
@@ -18507,7 +18507,7 @@ export const importProjectsLocationsAgentsTestCases: API.OperationMethod<
   ImportProjectsLocationsAgentsTestCasesResponse,
   ImportProjectsLocationsAgentsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsAgentsTestCasesRequest,
   output: ImportProjectsLocationsAgentsTestCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18520,7 +18520,7 @@ export interface BatchDeleteProjectsLocationsAgentsTestCasesRequest {
 }
 
 export const BatchDeleteProjectsLocationsAgentsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1BatchDeleteTestCasesRequest,
@@ -18537,7 +18537,7 @@ export const BatchDeleteProjectsLocationsAgentsTestCasesRequest =
 export type BatchDeleteProjectsLocationsAgentsTestCasesResponse =
   GoogleProtobufEmpty;
 export const BatchDeleteProjectsLocationsAgentsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type BatchDeleteProjectsLocationsAgentsTestCasesError =
   | DefaultErrors
@@ -18551,7 +18551,7 @@ export const batchDeleteProjectsLocationsAgentsTestCases: API.OperationMethod<
   BatchDeleteProjectsLocationsAgentsTestCasesResponse,
   BatchDeleteProjectsLocationsAgentsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteProjectsLocationsAgentsTestCasesRequest,
   output: BatchDeleteProjectsLocationsAgentsTestCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18564,7 +18564,7 @@ export interface ExportProjectsLocationsAgentsTestCasesRequest {
 }
 
 export const ExportProjectsLocationsAgentsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1ExportTestCasesRequest,
@@ -18581,7 +18581,7 @@ export const ExportProjectsLocationsAgentsTestCasesRequest =
 export type ExportProjectsLocationsAgentsTestCasesResponse =
   GoogleLongrunningOperation;
 export const ExportProjectsLocationsAgentsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ExportProjectsLocationsAgentsTestCasesError =
   | DefaultErrors
@@ -18595,7 +18595,7 @@ export const exportProjectsLocationsAgentsTestCases: API.OperationMethod<
   ExportProjectsLocationsAgentsTestCasesResponse,
   ExportProjectsLocationsAgentsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsAgentsTestCasesRequest,
   output: ExportProjectsLocationsAgentsTestCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18608,7 +18608,7 @@ export interface RunProjectsLocationsAgentsTestCasesRequest {
 }
 
 export const RunProjectsLocationsAgentsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudDialogflowCxV3beta1RunTestCaseRequest,
@@ -18621,7 +18621,7 @@ export const RunProjectsLocationsAgentsTestCasesRequest =
 export type RunProjectsLocationsAgentsTestCasesResponse =
   GoogleLongrunningOperation;
 export const RunProjectsLocationsAgentsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type RunProjectsLocationsAgentsTestCasesError =
   | DefaultErrors
@@ -18635,7 +18635,7 @@ export const runProjectsLocationsAgentsTestCases: API.OperationMethod<
   RunProjectsLocationsAgentsTestCasesResponse,
   RunProjectsLocationsAgentsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunProjectsLocationsAgentsTestCasesRequest,
   output: RunProjectsLocationsAgentsTestCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18652,7 +18652,7 @@ export interface CalculateCoverageProjectsLocationsAgentsTestCasesRequest {
 }
 
 export const CalculateCoverageProjectsLocationsAgentsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agent: Schema.String.pipe(T.HttpPath("agent")),
     type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
   }).pipe(
@@ -18666,7 +18666,7 @@ export const CalculateCoverageProjectsLocationsAgentsTestCasesRequest =
 export type CalculateCoverageProjectsLocationsAgentsTestCasesResponse =
   GoogleCloudDialogflowCxV3beta1CalculateCoverageResponse;
 export const CalculateCoverageProjectsLocationsAgentsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1CalculateCoverageResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1CalculateCoverageResponse;
 
 export type CalculateCoverageProjectsLocationsAgentsTestCasesError =
   | DefaultErrors
@@ -18678,7 +18678,7 @@ export const calculateCoverageProjectsLocationsAgentsTestCases: API.OperationMet
   CalculateCoverageProjectsLocationsAgentsTestCasesResponse,
   CalculateCoverageProjectsLocationsAgentsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CalculateCoverageProjectsLocationsAgentsTestCasesRequest,
   output: CalculateCoverageProjectsLocationsAgentsTestCasesResponse,
   errors: [NotFound, Forbidden],
@@ -18692,7 +18692,7 @@ export interface ListProjectsLocationsAgentsTestCasesRequest {
 }
 
 export const ListProjectsLocationsAgentsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -18705,7 +18705,7 @@ export const ListProjectsLocationsAgentsTestCasesRequest =
 export type ListProjectsLocationsAgentsTestCasesResponse =
   GoogleCloudDialogflowCxV3beta1ListTestCasesResponse;
 export const ListProjectsLocationsAgentsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListTestCasesResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListTestCasesResponse;
 
 export type ListProjectsLocationsAgentsTestCasesError =
   | DefaultErrors
@@ -18717,7 +18717,7 @@ export const listProjectsLocationsAgentsTestCases: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsTestCasesResponse,
   ListProjectsLocationsAgentsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsTestCasesRequest,
   output: ListProjectsLocationsAgentsTestCasesResponse,
   errors: [NotFound, Forbidden],
@@ -18734,7 +18734,7 @@ export interface CreateProjectsLocationsAgentsTestCasesRequest {
 }
 
 export const CreateProjectsLocationsAgentsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1TestCase).pipe(
       T.HttpBody(),
@@ -18751,7 +18751,7 @@ export const CreateProjectsLocationsAgentsTestCasesRequest =
 export type CreateProjectsLocationsAgentsTestCasesResponse =
   GoogleCloudDialogflowCxV3beta1TestCase;
 export const CreateProjectsLocationsAgentsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1TestCase;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1TestCase;
 
 export type CreateProjectsLocationsAgentsTestCasesError =
   | DefaultErrors
@@ -18765,7 +18765,7 @@ export const createProjectsLocationsAgentsTestCases: API.OperationMethod<
   CreateProjectsLocationsAgentsTestCasesResponse,
   CreateProjectsLocationsAgentsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsTestCasesRequest,
   output: CreateProjectsLocationsAgentsTestCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18776,7 +18776,7 @@ export interface GetProjectsLocationsAgentsTestCasesRequest {
 }
 
 export const GetProjectsLocationsAgentsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -18786,7 +18786,7 @@ export const GetProjectsLocationsAgentsTestCasesRequest =
 export type GetProjectsLocationsAgentsTestCasesResponse =
   GoogleCloudDialogflowCxV3beta1TestCase;
 export const GetProjectsLocationsAgentsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1TestCase;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1TestCase;
 
 export type GetProjectsLocationsAgentsTestCasesError =
   | DefaultErrors
@@ -18798,7 +18798,7 @@ export const getProjectsLocationsAgentsTestCases: API.OperationMethod<
   GetProjectsLocationsAgentsTestCasesResponse,
   GetProjectsLocationsAgentsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsTestCasesRequest,
   output: GetProjectsLocationsAgentsTestCasesResponse,
   errors: [NotFound, Forbidden],
@@ -18812,7 +18812,7 @@ export interface PatchProjectsLocationsAgentsTestCasesRequest {
 }
 
 export const PatchProjectsLocationsAgentsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1TestCase).pipe(
@@ -18826,7 +18826,7 @@ export const PatchProjectsLocationsAgentsTestCasesRequest =
 export type PatchProjectsLocationsAgentsTestCasesResponse =
   GoogleCloudDialogflowCxV3beta1TestCase;
 export const PatchProjectsLocationsAgentsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1TestCase;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1TestCase;
 
 export type PatchProjectsLocationsAgentsTestCasesError =
   | DefaultErrors
@@ -18840,7 +18840,7 @@ export const patchProjectsLocationsAgentsTestCases: API.OperationMethod<
   PatchProjectsLocationsAgentsTestCasesResponse,
   PatchProjectsLocationsAgentsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsTestCasesRequest,
   output: PatchProjectsLocationsAgentsTestCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18854,7 +18854,7 @@ export interface ListProjectsLocationsAgentsTestCasesResultsRequest {
 }
 
 export const ListProjectsLocationsAgentsTestCasesResultsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -18867,7 +18867,7 @@ export const ListProjectsLocationsAgentsTestCasesResultsRequest =
 export type ListProjectsLocationsAgentsTestCasesResultsResponse =
   GoogleCloudDialogflowCxV3beta1ListTestCaseResultsResponse;
 export const ListProjectsLocationsAgentsTestCasesResultsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListTestCaseResultsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListTestCaseResultsResponse;
 
 export type ListProjectsLocationsAgentsTestCasesResultsError =
   | DefaultErrors
@@ -18879,7 +18879,7 @@ export const listProjectsLocationsAgentsTestCasesResults: API.PaginatedOperation
   ListProjectsLocationsAgentsTestCasesResultsResponse,
   ListProjectsLocationsAgentsTestCasesResultsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsTestCasesResultsRequest,
   output: ListProjectsLocationsAgentsTestCasesResultsResponse,
   errors: [NotFound, Forbidden],
@@ -18894,7 +18894,7 @@ export interface GetProjectsLocationsAgentsTestCasesResultsRequest {
 }
 
 export const GetProjectsLocationsAgentsTestCasesResultsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -18904,7 +18904,7 @@ export const GetProjectsLocationsAgentsTestCasesResultsRequest =
 export type GetProjectsLocationsAgentsTestCasesResultsResponse =
   GoogleCloudDialogflowCxV3beta1TestCaseResult;
 export const GetProjectsLocationsAgentsTestCasesResultsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1TestCaseResult;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1TestCaseResult;
 
 export type GetProjectsLocationsAgentsTestCasesResultsError =
   | DefaultErrors
@@ -18916,7 +18916,7 @@ export const getProjectsLocationsAgentsTestCasesResults: API.OperationMethod<
   GetProjectsLocationsAgentsTestCasesResultsResponse,
   GetProjectsLocationsAgentsTestCasesResultsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsTestCasesResultsRequest,
   output: GetProjectsLocationsAgentsTestCasesResultsResponse,
   errors: [NotFound, Forbidden],
@@ -18930,7 +18930,7 @@ export interface CreateProjectsLocationsAgentsTransitionRouteGroupsRequest {
 }
 
 export const CreateProjectsLocationsAgentsTransitionRouteGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -18950,7 +18950,7 @@ export const CreateProjectsLocationsAgentsTransitionRouteGroupsRequest =
 export type CreateProjectsLocationsAgentsTransitionRouteGroupsResponse =
   GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
 export const CreateProjectsLocationsAgentsTransitionRouteGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
 
 export type CreateProjectsLocationsAgentsTransitionRouteGroupsError =
   | DefaultErrors
@@ -18964,7 +18964,7 @@ export const createProjectsLocationsAgentsTransitionRouteGroups: API.OperationMe
   CreateProjectsLocationsAgentsTransitionRouteGroupsResponse,
   CreateProjectsLocationsAgentsTransitionRouteGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsTransitionRouteGroupsRequest,
   output: CreateProjectsLocationsAgentsTransitionRouteGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -18978,7 +18978,7 @@ export interface ListProjectsLocationsAgentsTransitionRouteGroupsRequest {
 }
 
 export const ListProjectsLocationsAgentsTransitionRouteGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
     ),
@@ -18993,7 +18993,7 @@ export const ListProjectsLocationsAgentsTransitionRouteGroupsRequest =
 export type ListProjectsLocationsAgentsTransitionRouteGroupsResponse =
   GoogleCloudDialogflowCxV3beta1ListTransitionRouteGroupsResponse;
 export const ListProjectsLocationsAgentsTransitionRouteGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListTransitionRouteGroupsResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListTransitionRouteGroupsResponse;
 
 export type ListProjectsLocationsAgentsTransitionRouteGroupsError =
   | DefaultErrors
@@ -19005,7 +19005,7 @@ export const listProjectsLocationsAgentsTransitionRouteGroups: API.PaginatedOper
   ListProjectsLocationsAgentsTransitionRouteGroupsResponse,
   ListProjectsLocationsAgentsTransitionRouteGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsTransitionRouteGroupsRequest,
   output: ListProjectsLocationsAgentsTransitionRouteGroupsResponse,
   errors: [NotFound, Forbidden],
@@ -19021,7 +19021,7 @@ export interface DeleteProjectsLocationsAgentsTransitionRouteGroupsRequest {
 }
 
 export const DeleteProjectsLocationsAgentsTransitionRouteGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -19032,7 +19032,7 @@ export const DeleteProjectsLocationsAgentsTransitionRouteGroupsRequest =
 export type DeleteProjectsLocationsAgentsTransitionRouteGroupsResponse =
   GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsTransitionRouteGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsTransitionRouteGroupsError =
   | DefaultErrors
@@ -19046,7 +19046,7 @@ export const deleteProjectsLocationsAgentsTransitionRouteGroups: API.OperationMe
   DeleteProjectsLocationsAgentsTransitionRouteGroupsResponse,
   DeleteProjectsLocationsAgentsTransitionRouteGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsTransitionRouteGroupsRequest,
   output: DeleteProjectsLocationsAgentsTransitionRouteGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19061,7 +19061,7 @@ export interface PatchProjectsLocationsAgentsTransitionRouteGroupsRequest {
 }
 
 export const PatchProjectsLocationsAgentsTransitionRouteGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -19078,7 +19078,7 @@ export const PatchProjectsLocationsAgentsTransitionRouteGroupsRequest =
 export type PatchProjectsLocationsAgentsTransitionRouteGroupsResponse =
   GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
 export const PatchProjectsLocationsAgentsTransitionRouteGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
 
 export type PatchProjectsLocationsAgentsTransitionRouteGroupsError =
   | DefaultErrors
@@ -19092,7 +19092,7 @@ export const patchProjectsLocationsAgentsTransitionRouteGroups: API.OperationMet
   PatchProjectsLocationsAgentsTransitionRouteGroupsResponse,
   PatchProjectsLocationsAgentsTransitionRouteGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsTransitionRouteGroupsRequest,
   output: PatchProjectsLocationsAgentsTransitionRouteGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19104,7 +19104,7 @@ export interface GetProjectsLocationsAgentsTransitionRouteGroupsRequest {
 }
 
 export const GetProjectsLocationsAgentsTransitionRouteGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
     ),
@@ -19117,7 +19117,7 @@ export const GetProjectsLocationsAgentsTransitionRouteGroupsRequest =
 export type GetProjectsLocationsAgentsTransitionRouteGroupsResponse =
   GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
 export const GetProjectsLocationsAgentsTransitionRouteGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1TransitionRouteGroup;
 
 export type GetProjectsLocationsAgentsTransitionRouteGroupsError =
   | DefaultErrors
@@ -19129,7 +19129,7 @@ export const getProjectsLocationsAgentsTransitionRouteGroups: API.OperationMetho
   GetProjectsLocationsAgentsTransitionRouteGroupsResponse,
   GetProjectsLocationsAgentsTransitionRouteGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsTransitionRouteGroupsRequest,
   output: GetProjectsLocationsAgentsTransitionRouteGroupsResponse,
   errors: [NotFound, Forbidden],
@@ -19142,7 +19142,7 @@ export interface ListProjectsLocationsAgentsWebhooksRequest {
 }
 
 export const ListProjectsLocationsAgentsWebhooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -19154,7 +19154,7 @@ export const ListProjectsLocationsAgentsWebhooksRequest =
 export type ListProjectsLocationsAgentsWebhooksResponse =
   GoogleCloudDialogflowCxV3beta1ListWebhooksResponse;
 export const ListProjectsLocationsAgentsWebhooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1ListWebhooksResponse;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1ListWebhooksResponse;
 
 export type ListProjectsLocationsAgentsWebhooksError =
   | DefaultErrors
@@ -19166,7 +19166,7 @@ export const listProjectsLocationsAgentsWebhooks: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsWebhooksResponse,
   ListProjectsLocationsAgentsWebhooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsWebhooksRequest,
   output: ListProjectsLocationsAgentsWebhooksResponse,
   errors: [NotFound, Forbidden],
@@ -19183,7 +19183,7 @@ export interface CreateProjectsLocationsAgentsWebhooksRequest {
 }
 
 export const CreateProjectsLocationsAgentsWebhooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Webhook).pipe(
       T.HttpBody(),
@@ -19200,7 +19200,7 @@ export const CreateProjectsLocationsAgentsWebhooksRequest =
 export type CreateProjectsLocationsAgentsWebhooksResponse =
   GoogleCloudDialogflowCxV3beta1Webhook;
 export const CreateProjectsLocationsAgentsWebhooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Webhook;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Webhook;
 
 export type CreateProjectsLocationsAgentsWebhooksError =
   | DefaultErrors
@@ -19214,7 +19214,7 @@ export const createProjectsLocationsAgentsWebhooks: API.OperationMethod<
   CreateProjectsLocationsAgentsWebhooksResponse,
   CreateProjectsLocationsAgentsWebhooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsWebhooksRequest,
   output: CreateProjectsLocationsAgentsWebhooksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19228,7 +19228,7 @@ export interface PatchProjectsLocationsAgentsWebhooksRequest {
 }
 
 export const PatchProjectsLocationsAgentsWebhooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDialogflowCxV3beta1Webhook).pipe(
@@ -19242,7 +19242,7 @@ export const PatchProjectsLocationsAgentsWebhooksRequest =
 export type PatchProjectsLocationsAgentsWebhooksResponse =
   GoogleCloudDialogflowCxV3beta1Webhook;
 export const PatchProjectsLocationsAgentsWebhooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Webhook;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Webhook;
 
 export type PatchProjectsLocationsAgentsWebhooksError =
   | DefaultErrors
@@ -19256,7 +19256,7 @@ export const patchProjectsLocationsAgentsWebhooks: API.OperationMethod<
   PatchProjectsLocationsAgentsWebhooksResponse,
   PatchProjectsLocationsAgentsWebhooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsWebhooksRequest,
   output: PatchProjectsLocationsAgentsWebhooksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19268,7 +19268,7 @@ export interface DeleteProjectsLocationsAgentsWebhooksRequest {
 }
 
 export const DeleteProjectsLocationsAgentsWebhooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
@@ -19278,7 +19278,7 @@ export const DeleteProjectsLocationsAgentsWebhooksRequest =
 
 export type DeleteProjectsLocationsAgentsWebhooksResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsWebhooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsWebhooksError =
   | DefaultErrors
@@ -19292,7 +19292,7 @@ export const deleteProjectsLocationsAgentsWebhooks: API.OperationMethod<
   DeleteProjectsLocationsAgentsWebhooksResponse,
   DeleteProjectsLocationsAgentsWebhooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsWebhooksRequest,
   output: DeleteProjectsLocationsAgentsWebhooksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -19303,7 +19303,7 @@ export interface GetProjectsLocationsAgentsWebhooksRequest {
 }
 
 export const GetProjectsLocationsAgentsWebhooksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v3beta1/{+name}" }),
@@ -19313,7 +19313,7 @@ export const GetProjectsLocationsAgentsWebhooksRequest =
 export type GetProjectsLocationsAgentsWebhooksResponse =
   GoogleCloudDialogflowCxV3beta1Webhook;
 export const GetProjectsLocationsAgentsWebhooksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3beta1Webhook;
+  /*@__PURE__*/ GoogleCloudDialogflowCxV3beta1Webhook;
 
 export type GetProjectsLocationsAgentsWebhooksError =
   | DefaultErrors
@@ -19325,7 +19325,7 @@ export const getProjectsLocationsAgentsWebhooks: API.OperationMethod<
   GetProjectsLocationsAgentsWebhooksResponse,
   GetProjectsLocationsAgentsWebhooksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsWebhooksRequest,
   output: GetProjectsLocationsAgentsWebhooksResponse,
   errors: [NotFound, Forbidden],

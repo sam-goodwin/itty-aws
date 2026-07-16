@@ -24,7 +24,7 @@ export interface UpdateGroupIntegrationInput {
   pretty?: boolean;
 }
 export const UpdateGroupIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     integrationType: Schema.Literals([
       "PAGER_DUTY",
       "SLACK",
@@ -53,7 +53,7 @@ export const UpdateGroupIntegrationInput =
 // Output Schema
 export type UpdateGroupIntegrationOutput = void;
 export const UpdateGroupIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupIntegrationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupIntegrationOutput>;
 
 // The operation
 /**
@@ -71,10 +71,8 @@ export const UpdateGroupIntegrationOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const updateGroupIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupIntegrationInput,
-    outputSchema: UpdateGroupIntegrationOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const updateGroupIntegration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupIntegrationInput,
+  outputSchema: UpdateGroupIntegrationOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -78,7 +78,7 @@ export interface ChangeRequestsApproveCreateInput {
   user_decision?: string | null;
 }
 export const ChangeRequestsApproveCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     action_key: Schema.optional(Schema.String),
@@ -264,7 +264,7 @@ export interface ChangeRequestsApproveCreateOutput {
   user_decision?: string | null;
 }
 export const ChangeRequestsApproveCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     action_key: Schema.optional(Schema.String),
     action_version: Schema.optional(Schema.Number),
@@ -377,9 +377,7 @@ export const ChangeRequestsApproveCreateOutput =
  * @param id - A UUID string identifying this change request.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const changeRequestsApproveCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ChangeRequestsApproveCreateInput,
-    outputSchema: ChangeRequestsApproveCreateOutput,
-  }),
-);
+export const changeRequestsApproveCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ChangeRequestsApproveCreateInput,
+  outputSchema: ChangeRequestsApproveCreateOutput,
+}));

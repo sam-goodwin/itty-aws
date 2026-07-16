@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface DeleteDashboardInput {
   uid: string;
 }
-export const DeleteDashboardInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteDashboardInput = /*@__PURE__*/ Schema.Struct({
   uid: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/v2/dashboards/uid/{uid}" }),
@@ -16,7 +16,7 @@ export const DeleteDashboardInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteDashboardOutput = void;
 export const DeleteDashboardOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteDashboardOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteDashboardOutput>;
 
 // The operation
 /**
@@ -24,7 +24,7 @@ export const DeleteDashboardOutput =
  *
  * Delete a dashboard by UID.
  */
-export const deleteDashboard = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteDashboard = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteDashboardInput,
   outputSchema: DeleteDashboardOutput,
   errors: [NotFound] as const,

@@ -11,7 +11,7 @@ export interface UpdateGroupClusterInput {
   pretty?: boolean;
 }
 export const UpdateGroupClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const UpdateGroupClusterInput =
 // Output Schema
 export type UpdateGroupClusterOutput = void;
 export const UpdateGroupClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterOutput>;
 
 // The operation
 /**
@@ -43,7 +43,7 @@ export const UpdateGroupClusterOutput =
  * @param Use-Effective-Instance-Fields - Controls how hardware specification fields are returned in the response after cluster updates. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Note: When using this header with autoscaling enabled, MongoDB ignores `replicationSpecs` changes during updates. To intentionally override the `replicationSpecs`, disable this header.
  * @param Use-Effective-Fields-Replication-Specs - Controls how `replicationSpecs` fields are returned in the response. When set to `true`, stores the client's view of `replicationSpecs` and returns it in `replicationSpecs`, while the actual cluster state (including auto-scaled hardware and auto-added shards) is returned in `effectiveReplicationSpecs`. When `false` (default), `replicationSpecs` contains the actual cluster state.
  */
-export const updateGroupCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateGroupCluster = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateGroupClusterInput,
   outputSchema: UpdateGroupClusterOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

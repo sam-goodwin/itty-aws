@@ -15,7 +15,7 @@ export interface V1OauthAuthorizeProjectClaimInput {
   code_challenge_method?: "plain" | "sha256" | "S256";
 }
 export const V1OauthAuthorizeProjectClaimInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_ref: Schema.String,
     client_id: Schema.String,
     response_type: Schema.Literals(["code", "token", "id_token token"]),
@@ -33,7 +33,7 @@ export const V1OauthAuthorizeProjectClaimInput =
 // Output Schema
 export type V1OauthAuthorizeProjectClaimOutput = void;
 export const V1OauthAuthorizeProjectClaimOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1OauthAuthorizeProjectClaimOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1OauthAuthorizeProjectClaimOutput>;
 
 // The operation
 /**
@@ -44,7 +44,7 @@ export const V1OauthAuthorizeProjectClaimOutput =
  * @param project_ref - Project ref
  */
 export const v1OauthAuthorizeProjectClaim =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1OauthAuthorizeProjectClaimInput,
     outputSchema: V1OauthAuthorizeProjectClaimOutput,
     errors: [Forbidden] as const,

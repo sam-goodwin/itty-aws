@@ -7,7 +7,7 @@ export interface DataWarehouseWarehouseStatusRetrieveInput {
   project_id: string;
 }
 export const DataWarehouseWarehouseStatusRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -43,7 +43,7 @@ export interface DataWarehouseWarehouseStatusRetrieveOutput {
   table_suffix: string | null;
 }
 export const DataWarehouseWarehouseStatusRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String,
     state: Schema.Literals([
       "pending",
@@ -81,7 +81,7 @@ export const DataWarehouseWarehouseStatusRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const dataWarehouseWarehouseStatusRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataWarehouseWarehouseStatusRetrieveInput,
     outputSchema: DataWarehouseWarehouseStatusRetrieveOutput,
   }));

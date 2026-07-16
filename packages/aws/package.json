@@ -103,6 +103,7 @@
     "dedent": "catalog:",
     "dotenv": "catalog:",
     "pathe": "catalog:",
+    "rolldown": "catalog:",
     "vitest": "catalog:"
   },
   "peerDependencies": {

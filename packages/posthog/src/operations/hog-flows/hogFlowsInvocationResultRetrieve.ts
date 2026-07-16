@@ -9,7 +9,7 @@ export interface HogFlowsInvocationResultRetrieveInput {
   project_id: string;
 }
 export const HogFlowsInvocationResultRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     invocation_id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -37,7 +37,7 @@ export interface HogFlowsInvocationResultRetrieveOutput {
   is_retry: boolean;
 }
 export const HogFlowsInvocationResultRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invocation_globals: Schema.Record(Schema.String, Schema.Unknown),
     invocation_id: Schema.String,
     status: Schema.String,
@@ -60,7 +60,7 @@ export const HogFlowsInvocationResultRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const hogFlowsInvocationResultRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HogFlowsInvocationResultRetrieveInput,
     outputSchema: HogFlowsInvocationResultRetrieveOutput,
   }));

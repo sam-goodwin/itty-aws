@@ -14,7 +14,7 @@ export interface UpdateVirtualFieldInput {
   unit?: string;
 }
 export const UpdateVirtualFieldInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     dataset: Schema.String,
     description: Schema.optional(Schema.String),
@@ -37,7 +37,7 @@ export interface UpdateVirtualFieldOutput {
   id: string;
 }
 export const UpdateVirtualFieldOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataset: Schema.String,
     description: Schema.optional(Schema.String),
     expression: Schema.String,
@@ -48,7 +48,7 @@ export const UpdateVirtualFieldOutput =
   }) as unknown as Schema.Codec<UpdateVirtualFieldOutput>;
 
 // The operation
-export const updateVirtualField = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateVirtualField = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateVirtualFieldInput,
   outputSchema: UpdateVirtualFieldOutput,
   errors: [NotFound, UnprocessableEntity] as const,

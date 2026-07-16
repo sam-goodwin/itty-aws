@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface GetCurrentUserOrganizationsInput {}
 export const GetCurrentUserOrganizationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/users/me/organizations" }),
   ) as unknown as Schema.Codec<GetCurrentUserOrganizationsInput>;
 
@@ -24,7 +24,7 @@ export interface GetCurrentUserOrganizationsOutput {
   }[];
 }
 export const GetCurrentUserOrganizationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizations: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -46,9 +46,7 @@ export const GetCurrentUserOrganizationsOutput =
  *
  * Retrieves the organizations that the currently authenticated user belongs to.
  */
-export const getCurrentUserOrganizations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetCurrentUserOrganizationsInput,
-    outputSchema: GetCurrentUserOrganizationsOutput,
-  }),
-);
+export const getCurrentUserOrganizations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCurrentUserOrganizationsInput,
+  outputSchema: GetCurrentUserOrganizationsOutput,
+}));

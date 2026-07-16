@@ -10,7 +10,7 @@ export interface PersonsActivityRetrieveInput {
   format?: "csv" | "json";
 }
 export const PersonsActivityRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
@@ -24,7 +24,7 @@ export const PersonsActivityRetrieveInput =
 // Output Schema
 export type PersonsActivityRetrieveOutput = void;
 export const PersonsActivityRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsActivityRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsActivityRetrieveOutput>;
 
 // The operation
 /**
@@ -33,10 +33,8 @@ export const PersonsActivityRetrieveOutput =
  * @param id - A unique integer value identifying this person.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsActivityRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PersonsActivityRetrieveInput,
-    outputSchema: PersonsActivityRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const personsActivityRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PersonsActivityRetrieveInput,
+  outputSchema: PersonsActivityRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

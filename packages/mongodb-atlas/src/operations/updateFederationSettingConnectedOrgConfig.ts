@@ -10,7 +10,7 @@ export interface UpdateFederationSettingConnectedOrgConfigInput {
   envelope?: boolean;
 }
 export const UpdateFederationSettingConnectedOrgConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
     orgId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const UpdateFederationSettingConnectedOrgConfigInput =
 // Output Schema
 export type UpdateFederationSettingConnectedOrgConfigOutput = void;
 export const UpdateFederationSettingConnectedOrgConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateFederationSettingConnectedOrgConfigOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateFederationSettingConnectedOrgConfigOutput>;
 
 // The operation
 /**
@@ -41,7 +41,7 @@ export const UpdateFederationSettingConnectedOrgConfigOutput =
  * @param orgId - Unique 24-hexadecimal digit string that identifies the connected organization configuration to update.
  */
 export const updateFederationSettingConnectedOrgConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateFederationSettingConnectedOrgConfigInput,
     outputSchema: UpdateFederationSettingConnectedOrgConfigOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

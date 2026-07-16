@@ -10,7 +10,7 @@ export interface CheckDeployRequestStorageInput {
   number: number;
 }
 export const CheckDeployRequestStorageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -42,7 +42,7 @@ export interface CheckDeployRequestStorageOutput {
   >;
 }
 export const CheckDeployRequestStorageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enough_storage: Schema.Boolean,
     upgradeable: Schema.Boolean,
     storage_bytes_needed: Schema.Number,
@@ -72,10 +72,8 @@ export const CheckDeployRequestStorageOutput =
  * @param database - The name of the deploy request's database
  * @param number - The number of the deploy request
  */
-export const checkDeployRequestStorage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CheckDeployRequestStorageInput,
-    outputSchema: CheckDeployRequestStorageOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const checkDeployRequestStorage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CheckDeployRequestStorageInput,
+  outputSchema: CheckDeployRequestStorageOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

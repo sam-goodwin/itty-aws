@@ -10,7 +10,7 @@ export interface ListDataTokenBalancesInput {
   pageToken?: string;
 }
 export const ListDataTokenBalancesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
     network: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
@@ -36,7 +36,7 @@ export interface ListDataTokenBalancesOutput {
   nextPageToken?: string;
 }
 export const ListDataTokenBalancesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     balances: Schema.Array(
       Schema.Struct({
         amount: Schema.Struct({
@@ -66,9 +66,7 @@ export const ListDataTokenBalancesOutput =
  * @param pageSize - The number of resources to return per page.
  * @param pageToken - The token for the next page of resources, if any.
  */
-export const listDataTokenBalances = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListDataTokenBalancesInput,
-    outputSchema: ListDataTokenBalancesOutput,
-  }),
-);
+export const listDataTokenBalances = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListDataTokenBalancesInput,
+  outputSchema: ListDataTokenBalancesOutput,
+}));

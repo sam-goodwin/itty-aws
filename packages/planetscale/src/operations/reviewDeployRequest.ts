@@ -12,7 +12,7 @@ export interface ReviewDeployRequestInput {
   body?: string;
 }
 export const ReviewDeployRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -36,7 +36,7 @@ export interface ReviewDeployRequestOutput {
   actor: { id: string; display_name: string; avatar_url: string };
 }
 export const ReviewDeployRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     body: Schema.String,
     html_body: Schema.String,
@@ -62,7 +62,7 @@ export const ReviewDeployRequestOutput =
  * @param state - Whether the review is a comment or approval. Service tokens must have corresponding access (either `approve_deploy_request` or `review_deploy_request`)
  * @param body - Deploy request review comments
  */
-export const reviewDeployRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const reviewDeployRequest = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReviewDeployRequestInput,
   outputSchema: ReviewDeployRequestOutput,
   errors: [Forbidden, NotFound] as const,

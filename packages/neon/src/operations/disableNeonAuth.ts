@@ -8,7 +8,7 @@ export interface DisableNeonAuthInput {
   branch_id: string;
   delete_data?: boolean;
 }
-export const DisableNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisableNeonAuthInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   branch_id: Schema.String.pipe(T.PathParam()),
   delete_data: Schema.optional(Schema.Boolean),
@@ -22,7 +22,7 @@ export const DisableNeonAuthInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DisableNeonAuthOutput = void;
 export const DisableNeonAuthOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisableNeonAuthOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DisableNeonAuthOutput>;
 
 // The operation
 /**
@@ -37,7 +37,7 @@ export const DisableNeonAuthOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const disableNeonAuth = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const disableNeonAuth = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisableNeonAuthInput,
   outputSchema: DisableNeonAuthOutput,
 }));

@@ -12,7 +12,7 @@ export interface ListDeployOperationsInput {
   per_page?: number;
 }
 export const ListDeployOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     number: Schema.Number.pipe(T.PathParam()),
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
@@ -62,7 +62,7 @@ export interface ListDeployOperationsOutput {
   }>;
 }
 export const ListDeployOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -114,7 +114,7 @@ export const ListDeployOperationsOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listDeployOperations =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListDeployOperationsInput,
     outputSchema: ListDeployOperationsOutput,
     errors: [Forbidden, NotFound] as const,

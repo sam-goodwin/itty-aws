@@ -16,7 +16,7 @@ export interface CreateGroupFlexClusterInput {
   pretty?: boolean;
 }
 export const CreateGroupFlexClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -30,7 +30,7 @@ export const CreateGroupFlexClusterInput =
 // Output Schema
 export type CreateGroupFlexClusterOutput = void;
 export const CreateGroupFlexClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupFlexClusterOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupFlexClusterOutput>;
 
 // The operation
 /**
@@ -44,16 +44,8 @@ export const CreateGroupFlexClusterOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupFlexCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupFlexClusterInput,
-    outputSchema: CreateGroupFlexClusterOutput,
-    errors: [
-      BadRequest,
-      PaymentRequired,
-      Forbidden,
-      NotFound,
-      Conflict,
-    ] as const,
-  }),
-);
+export const createGroupFlexCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupFlexClusterInput,
+  outputSchema: CreateGroupFlexClusterOutput,
+  errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict] as const,
+}));

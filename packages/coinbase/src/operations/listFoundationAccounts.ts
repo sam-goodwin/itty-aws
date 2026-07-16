@@ -9,7 +9,7 @@ export interface ListFoundationAccountsInput {
   type?: string;
 }
 export const ListFoundationAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     pageToken: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -30,7 +30,7 @@ export interface ListFoundationAccountsOutput {
   nextPageToken?: string;
 }
 export const ListFoundationAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accounts: Schema.Array(
       Schema.Struct({
         accountId: Schema.String,
@@ -54,9 +54,7 @@ export const ListFoundationAccountsOutput =
  * @param pageToken - The token for the next page of resources, if any.
  * @param type - Filter accounts by account type. When omitted, accounts of any type are returned. Combined with `owner` using AND.
  */
-export const listFoundationAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListFoundationAccountsInput,
-    outputSchema: ListFoundationAccountsOutput,
-  }),
-);
+export const listFoundationAccounts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListFoundationAccountsInput,
+  outputSchema: ListFoundationAccountsOutput,
+}));

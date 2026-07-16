@@ -52,7 +52,7 @@ export interface RegenerateAPITokenInput {
   newTokenExpiresAt?: string | null;
 }
 export const RegenerateAPITokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     existingTokenExpiresAt: Schema.String,
     newToken: Schema.optional(
@@ -225,7 +225,7 @@ export interface RegenerateAPITokenOutput {
   token?: string;
 }
 export const RegenerateAPITokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     datasetCapabilities: Schema.Record(
       Schema.String,
       Schema.Struct({
@@ -313,7 +313,7 @@ export const RegenerateAPITokenOutput =
 /**
  * Regenerate API token
  */
-export const regenerateAPIToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const regenerateAPIToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: RegenerateAPITokenInput,
   outputSchema: RegenerateAPITokenOutput,
   errors: [NotFound, UnprocessableEntity] as const,

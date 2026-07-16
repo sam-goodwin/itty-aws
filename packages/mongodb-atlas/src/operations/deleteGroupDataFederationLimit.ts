@@ -15,7 +15,7 @@ export interface DeleteGroupDataFederationLimitInput {
   envelope?: boolean;
 }
 export const DeleteGroupDataFederationLimitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     limitName: Schema.Literals([
@@ -35,7 +35,7 @@ export const DeleteGroupDataFederationLimitInput =
 // Output Schema
 export type DeleteGroupDataFederationLimitOutput = void;
 export const DeleteGroupDataFederationLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupDataFederationLimitOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupDataFederationLimitOutput>;
 
 // The operation
 /**
@@ -59,7 +59,7 @@ export const DeleteGroupDataFederationLimitOutput =
 
  */
 export const deleteGroupDataFederationLimit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupDataFederationLimitInput,
     outputSchema: DeleteGroupDataFederationLimitOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

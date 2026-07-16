@@ -16,7 +16,7 @@ export interface GetConsumptionHistoryPerBranchV2Input {
   metrics: string;
 }
 export const GetConsumptionHistoryPerBranchV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     project_ids: Schema.String,
@@ -50,7 +50,7 @@ export interface GetConsumptionHistoryPerBranchV2Output {
   pagination?: { cursor: string };
 }
 export const GetConsumptionHistoryPerBranchV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     branches: Schema.Array(
       Schema.Struct({
         project_id: Schema.String,
@@ -163,7 +163,7 @@ Pass multiple values as repeated query parameters or a comma-separated list:
 
  */
 export const getConsumptionHistoryPerBranchV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: GetConsumptionHistoryPerBranchV2Input,
     outputSchema: GetConsumptionHistoryPerBranchV2Output,
     errors: [Forbidden, NotFound] as const,

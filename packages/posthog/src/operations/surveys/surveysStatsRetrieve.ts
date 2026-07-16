@@ -12,7 +12,7 @@ export interface SurveysStatsRetrieveInput {
   include_per_question_stats?: boolean;
 }
 export const SurveysStatsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     date_from: Schema.optional(Schema.String),
@@ -35,7 +35,7 @@ export interface SurveysStatsRetrieveOutput {
   per_question_stats?: unknown[];
 }
 export const SurveysStatsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     survey_id: Schema.optional(Schema.String),
     start_date: Schema.optional(Schema.NullOr(Schema.String)),
     end_date: Schema.optional(Schema.NullOr(Schema.String)),
@@ -61,10 +61,8 @@ export const SurveysStatsRetrieveOutput =
  * @param include_per_question_stats - When true, also return per-question response counts and answer distributions. Adds one extra HogQL query per question, so leave off unless you need the breakdown.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const surveysStatsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SurveysStatsRetrieveInput,
-    outputSchema: SurveysStatsRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const surveysStatsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SurveysStatsRetrieveInput,
+  outputSchema: SurveysStatsRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

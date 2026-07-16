@@ -92,7 +92,7 @@ export interface EventDefinitionsUpdateInput {
   media_preview_urls?: string[];
 }
 export const EventDefinitionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -309,7 +309,7 @@ export interface EventDefinitionsUpdateOutput {
   media_preview_urls?: string[];
 }
 export const EventDefinitionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     owner: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -438,10 +438,8 @@ export const EventDefinitionsUpdateOutput =
  * @param id - A UUID string identifying this event definition.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const eventDefinitionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventDefinitionsUpdateInput,
-    outputSchema: EventDefinitionsUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const eventDefinitionsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventDefinitionsUpdateInput,
+  outputSchema: EventDefinitionsUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

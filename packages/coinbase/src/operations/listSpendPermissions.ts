@@ -9,7 +9,7 @@ export interface ListSpendPermissionsInput {
   pageToken?: string;
 }
 export const ListSpendPermissionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
     pageSize: Schema.optional(Schema.Number),
     pageToken: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export interface ListSpendPermissionsOutput {
   nextPageToken?: string;
 }
 export const ListSpendPermissionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spendPermissions: Schema.Array(
       Schema.Struct({
         permission: Schema.Struct({
@@ -94,9 +94,7 @@ export const ListSpendPermissionsOutput =
  * @param pageSize - The number of spend permissions to return per page.
  * @param pageToken - The token for the next page of spend permissions. Will be empty if there are no more spend permissions to fetch.
  */
-export const listSpendPermissions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListSpendPermissionsInput,
-    outputSchema: ListSpendPermissionsOutput,
-  }),
-);
+export const listSpendPermissions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListSpendPermissionsInput,
+  outputSchema: ListSpendPermissionsOutput,
+}));

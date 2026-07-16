@@ -10,7 +10,7 @@ export interface GetV1DatabasesByDatabaseIdConnectionsInput {
   limit?: number;
 }
 export const GetV1DatabasesByDatabaseIdConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databaseId: Schema.String.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -38,7 +38,7 @@ export interface GetV1DatabasesByDatabaseIdConnectionsOutput {
   pagination: { nextCursor: string | null; hasMore: boolean };
 }
 export const GetV1DatabasesByDatabaseIdConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -96,7 +96,7 @@ export const GetV1DatabasesByDatabaseIdConnectionsOutput =
  * Returns all connections for the given database.
  */
 export const getV1DatabasesByDatabaseIdConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV1DatabasesByDatabaseIdConnectionsInput,
     outputSchema: GetV1DatabasesByDatabaseIdConnectionsOutput,
     errors: [UnprocessableEntity] as const,

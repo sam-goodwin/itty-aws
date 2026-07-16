@@ -83,7 +83,7 @@ export interface ErrorTrackingQueryIssuesListCreateInput {
   filePath?: string;
 }
 export const ErrorTrackingQueryIssuesListCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     dateRange: Schema.optional(
       Schema.Struct({
@@ -243,7 +243,7 @@ export interface ErrorTrackingQueryIssuesListCreateOutput {
   nextOffset?: number;
 }
 export const ErrorTrackingQueryIssuesListCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -299,7 +299,7 @@ export const ErrorTrackingQueryIssuesListCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingQueryIssuesListCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingQueryIssuesListCreateInput,
     outputSchema: ErrorTrackingQueryIssuesListCreateOutput,
   }));

@@ -60,7 +60,7 @@ export interface AzureMonitorWorkspacesCreateOrUpdateInput {
   location: string;
 }
 export const AzureMonitorWorkspacesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -176,7 +176,7 @@ export interface AzureMonitorWorkspacesCreateOrUpdateOutput {
   };
 }
 export const AzureMonitorWorkspacesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -206,7 +206,7 @@ export const AzureMonitorWorkspacesCreateOrUpdateOutput =
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  */
 export const AzureMonitorWorkspacesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureMonitorWorkspacesCreateOrUpdateInput,
     outputSchema: AzureMonitorWorkspacesCreateOrUpdateOutput,
   }));
@@ -217,7 +217,7 @@ export interface AzureMonitorWorkspacesDeleteInput {
   azureMonitorWorkspaceName: string;
 }
 export const AzureMonitorWorkspacesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -232,7 +232,7 @@ export const AzureMonitorWorkspacesDeleteInput =
 // Output Schema
 export type AzureMonitorWorkspacesDeleteOutput = void;
 export const AzureMonitorWorkspacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AzureMonitorWorkspacesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AzureMonitorWorkspacesDeleteOutput>;
 
 // The operation
 /**
@@ -244,7 +244,7 @@ export const AzureMonitorWorkspacesDeleteOutput =
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  */
 export const AzureMonitorWorkspacesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureMonitorWorkspacesDeleteInput,
     outputSchema: AzureMonitorWorkspacesDeleteOutput,
   }));
@@ -255,7 +255,7 @@ export interface AzureMonitorWorkspacesGetInput {
   azureMonitorWorkspaceName: string;
 }
 export const AzureMonitorWorkspacesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -282,7 +282,7 @@ export interface AzureMonitorWorkspacesGetOutput {
   };
 }
 export const AzureMonitorWorkspacesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -311,19 +311,17 @@ export const AzureMonitorWorkspacesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  */
-export const AzureMonitorWorkspacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AzureMonitorWorkspacesGetInput,
-    outputSchema: AzureMonitorWorkspacesGetOutput,
-  }),
-);
+export const AzureMonitorWorkspacesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AzureMonitorWorkspacesGetInput,
+  outputSchema: AzureMonitorWorkspacesGetOutput,
+}));
 // Input Schema
 export interface AzureMonitorWorkspacesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const AzureMonitorWorkspacesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -352,7 +350,7 @@ export interface AzureMonitorWorkspacesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AzureMonitorWorkspacesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -396,7 +394,7 @@ export const AzureMonitorWorkspacesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AzureMonitorWorkspacesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureMonitorWorkspacesListByResourceGroupInput,
     outputSchema: AzureMonitorWorkspacesListByResourceGroupOutput,
   }));
@@ -405,7 +403,7 @@ export interface AzureMonitorWorkspacesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AzureMonitorWorkspacesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -433,7 +431,7 @@ export interface AzureMonitorWorkspacesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const AzureMonitorWorkspacesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -476,7 +474,7 @@ export const AzureMonitorWorkspacesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const AzureMonitorWorkspacesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureMonitorWorkspacesListBySubscriptionInput,
     outputSchema: AzureMonitorWorkspacesListBySubscriptionOutput,
   }));
@@ -530,7 +528,7 @@ export interface AzureMonitorWorkspacesUpdateInput {
   };
 }
 export const AzureMonitorWorkspacesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -644,7 +642,7 @@ export interface AzureMonitorWorkspacesUpdateOutput {
   };
 }
 export const AzureMonitorWorkspacesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -674,7 +672,7 @@ export const AzureMonitorWorkspacesUpdateOutput =
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  */
 export const AzureMonitorWorkspacesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AzureMonitorWorkspacesUpdateInput,
     outputSchema: AzureMonitorWorkspacesUpdateOutput,
   }));
@@ -691,7 +689,7 @@ export interface IssueAddInvestigationResultInput {
   result: string;
 }
 export const IssueAddInvestigationResultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -723,7 +721,7 @@ export interface IssueAddInvestigationResultOutput {
   result: string;
 }
 export const IssueAddInvestigationResultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     origin: Schema.optional(
       Schema.Struct({
@@ -746,12 +744,10 @@ export const IssueAddInvestigationResultOutput =
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  * @param issueName - The name of the IssueResource
  */
-export const IssueAddInvestigationResult = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IssueAddInvestigationResultInput,
-    outputSchema: IssueAddInvestigationResultOutput,
-  }),
-);
+export const IssueAddInvestigationResult = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IssueAddInvestigationResultInput,
+  outputSchema: IssueAddInvestigationResultOutput,
+}));
 // Input Schema
 export interface IssueAddOrUpdateAlertsInput {
   subscriptionId: string;
@@ -767,7 +763,7 @@ export interface IssueAddOrUpdateAlertsInput {
   }[];
 }
 export const IssueAddOrUpdateAlertsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -803,7 +799,7 @@ export interface IssueAddOrUpdateAlertsOutput {
   }[];
 }
 export const IssueAddOrUpdateAlertsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -828,12 +824,10 @@ export const IssueAddOrUpdateAlertsOutput =
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  * @param issueName - The name of the IssueResource
  */
-export const IssueAddOrUpdateAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IssueAddOrUpdateAlertsInput,
-    outputSchema: IssueAddOrUpdateAlertsOutput,
-  }),
-);
+export const IssueAddOrUpdateAlerts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IssueAddOrUpdateAlertsInput,
+  outputSchema: IssueAddOrUpdateAlertsOutput,
+}));
 // Input Schema
 export interface IssueAddOrUpdateResourcesInput {
   subscriptionId: string;
@@ -849,7 +843,7 @@ export interface IssueAddOrUpdateResourcesInput {
   }[];
 }
 export const IssueAddOrUpdateResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -885,7 +879,7 @@ export interface IssueAddOrUpdateResourcesOutput {
   }[];
 }
 export const IssueAddOrUpdateResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -910,12 +904,10 @@ export const IssueAddOrUpdateResourcesOutput =
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  * @param issueName - The name of the IssueResource
  */
-export const IssueAddOrUpdateResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IssueAddOrUpdateResourcesInput,
-    outputSchema: IssueAddOrUpdateResourcesOutput,
-  }),
-);
+export const IssueAddOrUpdateResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IssueAddOrUpdateResourcesInput,
+  outputSchema: IssueAddOrUpdateResourcesOutput,
+}));
 // Input Schema
 export interface IssueCreateInput {
   subscriptionId: string;
@@ -945,7 +937,7 @@ export interface IssueCreateInput {
     provisioningState?: "Succeeded" | "Failed" | "Canceled";
   };
 }
-export const IssueCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IssueCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1028,7 +1020,7 @@ export interface IssueCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const IssueCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IssueCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1059,7 +1051,7 @@ export const IssueCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param issueName - The name of the IssueResource
  * @param related - Related resource or alert that is to be added to the issue (default: empty - the issue will be created without any related resources or alerts)
  */
-export const IssueCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IssueCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: IssueCreateInput,
   outputSchema: IssueCreateOutput,
 }));
@@ -1070,7 +1062,7 @@ export interface IssueDeleteInput {
   azureMonitorWorkspaceName: string;
   issueName: string;
 }
-export const IssueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IssueDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1086,7 +1078,7 @@ export const IssueDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type IssueDeleteOutput = void;
 export const IssueDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IssueDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IssueDeleteOutput>;
 
 // The operation
 /**
@@ -1098,7 +1090,7 @@ export const IssueDeleteOutput =
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  * @param issueName - The name of the IssueResource
  */
-export const IssueDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IssueDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: IssueDeleteInput,
   outputSchema: IssueDeleteOutput,
 }));
@@ -1110,7 +1102,7 @@ export interface IssueFetchBackgroundVisualizationInput {
   issueName: string;
 }
 export const IssueFetchBackgroundVisualizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1129,7 +1121,7 @@ export interface IssueFetchBackgroundVisualizationOutput {
   origin: { addedBy: string; addedByType: "Manual" | "Automatic" };
 }
 export const IssueFetchBackgroundVisualizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     visualization: Schema.String,
     origin: Schema.Struct({
       addedBy: Schema.String,
@@ -1148,7 +1140,7 @@ export const IssueFetchBackgroundVisualizationOutput =
  * @param issueName - The name of the IssueResource
  */
 export const IssueFetchBackgroundVisualization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IssueFetchBackgroundVisualizationInput,
     outputSchema: IssueFetchBackgroundVisualizationOutput,
   }));
@@ -1161,7 +1153,7 @@ export interface IssueFetchInvestigationResultInput {
   investigationId: string;
 }
 export const IssueFetchInvestigationResultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1184,7 +1176,7 @@ export interface IssueFetchInvestigationResultOutput {
   result: string;
 }
 export const IssueFetchInvestigationResultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     origin: Schema.optional(
       Schema.Struct({
@@ -1208,7 +1200,7 @@ export const IssueFetchInvestigationResultOutput =
  * @param issueName - The name of the IssueResource
  */
 export const IssueFetchInvestigationResult =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IssueFetchInvestigationResultInput,
     outputSchema: IssueFetchInvestigationResultOutput,
   }));
@@ -1219,7 +1211,7 @@ export interface IssueGetInput {
   azureMonitorWorkspaceName: string;
   issueName: string;
 }
-export const IssueGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IssueGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1246,7 +1238,7 @@ export interface IssueGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const IssueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IssueGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1276,7 +1268,7 @@ export const IssueGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  * @param issueName - The name of the IssueResource
  */
-export const IssueGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IssueGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IssueGetInput,
   outputSchema: IssueGetOutput,
 }));
@@ -1286,7 +1278,7 @@ export interface IssueListInput {
   resourceGroupName: string;
   azureMonitorWorkspaceName: string;
 }
-export const IssueListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IssueListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1315,7 +1307,7 @@ export interface IssueListOutput {
   }[];
   nextLink?: string;
 }
-export const IssueListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IssueListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1349,7 +1341,7 @@ export const IssueListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  */
-export const IssueList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IssueList = /*@__PURE__*/ API.make(() => ({
   inputSchema: IssueListInput,
   outputSchema: IssueListOutput,
 }));
@@ -1361,7 +1353,7 @@ export interface IssueListAlertsInput {
   issueName: string;
   filter?: string;
 }
-export const IssueListAlertsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IssueListAlertsInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1386,7 +1378,7 @@ export interface IssueListAlertsOutput {
   }[];
   nextLink?: string;
 }
-export const IssueListAlertsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IssueListAlertsOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -1412,7 +1404,7 @@ export const IssueListAlertsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  * @param issueName - The name of the IssueResource
  */
-export const IssueListAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IssueListAlerts = /*@__PURE__*/ API.make(() => ({
   inputSchema: IssueListAlertsInput,
   outputSchema: IssueListAlertsOutput,
 }));
@@ -1425,7 +1417,7 @@ export interface IssueListResourcesInput {
   filter?: string;
 }
 export const IssueListResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1451,7 +1443,7 @@ export interface IssueListResourcesOutput {
   nextLink?: string;
 }
 export const IssueListResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -1477,7 +1469,7 @@ export const IssueListResourcesOutput =
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  * @param issueName - The name of the IssueResource
  */
-export const IssueListResources = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IssueListResources = /*@__PURE__*/ API.make(() => ({
   inputSchema: IssueListResourcesInput,
   outputSchema: IssueListResourcesOutput,
 }));
@@ -1491,7 +1483,7 @@ export interface IssueSetBackgroundVisualizationInput {
   origin: { addedBy: string; addedByType: "Manual" | "Automatic" };
 }
 export const IssueSetBackgroundVisualizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1512,7 +1504,7 @@ export const IssueSetBackgroundVisualizationInput =
 // Output Schema
 export type IssueSetBackgroundVisualizationOutput = void;
 export const IssueSetBackgroundVisualizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IssueSetBackgroundVisualizationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IssueSetBackgroundVisualizationOutput>;
 
 // The operation
 /**
@@ -1525,7 +1517,7 @@ export const IssueSetBackgroundVisualizationOutput =
  * @param issueName - The name of the IssueResource
  */
 export const IssueSetBackgroundVisualization =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IssueSetBackgroundVisualizationInput,
     outputSchema: IssueSetBackgroundVisualizationOutput,
   }));
@@ -1554,7 +1546,7 @@ export interface IssueUpdateInput {
     };
   };
 }
-export const IssueUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IssueUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1628,7 +1620,7 @@ export interface IssueUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const IssueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IssueUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1658,7 +1650,7 @@ export const IssueUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  * @param issueName - The name of the IssueResource
  */
-export const IssueUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IssueUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: IssueUpdateInput,
   outputSchema: IssueUpdateOutput,
 }));
@@ -1674,7 +1666,7 @@ export interface MetricsContainersCreateOrUpdateInput {
   };
 }
 export const MetricsContainersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1710,7 +1702,7 @@ export interface MetricsContainersCreateOrUpdateOutput {
   };
 }
 export const MetricsContainersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1741,7 +1733,7 @@ export const MetricsContainersCreateOrUpdateOutput =
  * @param metricsContainerName - The name of the MetricsContainer
  */
 export const MetricsContainersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MetricsContainersCreateOrUpdateInput,
     outputSchema: MetricsContainersCreateOrUpdateOutput,
   }));
@@ -1753,7 +1745,7 @@ export interface MetricsContainersGetInput {
   metricsContainerName: string;
 }
 export const MetricsContainersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1781,7 +1773,7 @@ export interface MetricsContainersGetOutput {
   };
 }
 export const MetricsContainersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1811,12 +1803,10 @@ export const MetricsContainersGetOutput =
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  * @param metricsContainerName - The name of the MetricsContainer
  */
-export const MetricsContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MetricsContainersGetInput,
-    outputSchema: MetricsContainersGetOutput,
-  }),
-);
+export const MetricsContainersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MetricsContainersGetInput,
+  outputSchema: MetricsContainersGetOutput,
+}));
 // Input Schema
 export interface MetricsContainersListByAzureMonitorWorkspaceInput {
   subscriptionId: string;
@@ -1824,7 +1814,7 @@ export interface MetricsContainersListByAzureMonitorWorkspaceInput {
   azureMonitorWorkspaceName: string;
 }
 export const MetricsContainersListByAzureMonitorWorkspaceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     azureMonitorWorkspaceName: Schema.String.pipe(T.PathParam()),
@@ -1854,7 +1844,7 @@ export interface MetricsContainersListByAzureMonitorWorkspaceOutput {
   nextLink?: string;
 }
 export const MetricsContainersListByAzureMonitorWorkspaceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1899,15 +1889,13 @@ export const MetricsContainersListByAzureMonitorWorkspaceOutput =
  * @param azureMonitorWorkspaceName - The name of the Azure Monitor Workspace. The name is case insensitive
  */
 export const MetricsContainersListByAzureMonitorWorkspace =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MetricsContainersListByAzureMonitorWorkspaceInput,
     outputSchema: MetricsContainersListByAzureMonitorWorkspaceOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Monitor/operations",
@@ -1931,7 +1919,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1961,7 +1949,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2069,7 +2057,7 @@ export interface PipelineGroupsCreateOrUpdateInput {
   location: string;
 }
 export const PipelineGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineGroupName: Schema.String.pipe(T.PathParam()),
@@ -2294,7 +2282,7 @@ export interface PipelineGroupsCreateOrUpdateOutput {
   };
 }
 export const PipelineGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2324,7 +2312,7 @@ export const PipelineGroupsCreateOrUpdateOutput =
  * @param pipelineGroupName - The name of pipeline group. The name is case insensitive.
  */
 export const PipelineGroupsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PipelineGroupsCreateOrUpdateInput,
     outputSchema: PipelineGroupsCreateOrUpdateOutput,
   }));
@@ -2335,7 +2323,7 @@ export interface PipelineGroupsDeleteInput {
   pipelineGroupName: string;
 }
 export const PipelineGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineGroupName: Schema.String.pipe(T.PathParam()),
@@ -2350,7 +2338,7 @@ export const PipelineGroupsDeleteInput =
 // Output Schema
 export type PipelineGroupsDeleteOutput = void;
 export const PipelineGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PipelineGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PipelineGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -2361,25 +2349,21 @@ export const PipelineGroupsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param pipelineGroupName - The name of pipeline group. The name is case insensitive.
  */
-export const PipelineGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PipelineGroupsDeleteInput,
-    outputSchema: PipelineGroupsDeleteOutput,
-  }),
-);
+export const PipelineGroupsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PipelineGroupsDeleteInput,
+  outputSchema: PipelineGroupsDeleteOutput,
+}));
 // Input Schema
 export interface PipelineGroupsGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   pipelineGroupName: string;
 }
-export const PipelineGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    pipelineGroupName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const PipelineGroupsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  pipelineGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}",
@@ -2402,7 +2386,7 @@ export interface PipelineGroupsGetOutput {
   };
 }
 export const PipelineGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2431,7 +2415,7 @@ export const PipelineGroupsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param pipelineGroupName - The name of pipeline group. The name is case insensitive.
  */
-export const PipelineGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PipelineGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PipelineGroupsGetInput,
   outputSchema: PipelineGroupsGetOutput,
 }));
@@ -2441,7 +2425,7 @@ export interface PipelineGroupsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const PipelineGroupsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2470,7 +2454,7 @@ export interface PipelineGroupsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const PipelineGroupsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2514,7 +2498,7 @@ export const PipelineGroupsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const PipelineGroupsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PipelineGroupsListByResourceGroupInput,
     outputSchema: PipelineGroupsListByResourceGroupOutput,
   }));
@@ -2523,7 +2507,7 @@ export interface PipelineGroupsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const PipelineGroupsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2551,7 +2535,7 @@ export interface PipelineGroupsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const PipelineGroupsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2594,7 +2578,7 @@ export const PipelineGroupsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const PipelineGroupsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PipelineGroupsListBySubscriptionInput,
     outputSchema: PipelineGroupsListBySubscriptionOutput,
   }));
@@ -2694,7 +2678,7 @@ export interface PipelineGroupsUpdateInput {
   tags?: Record<string, string>;
 }
 export const PipelineGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     pipelineGroupName: Schema.String.pipe(T.PathParam()),
@@ -2913,7 +2897,7 @@ export interface PipelineGroupsUpdateOutput {
   };
 }
 export const PipelineGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2942,9 +2926,7 @@ export const PipelineGroupsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param pipelineGroupName - The name of pipeline group. The name is case insensitive.
  */
-export const PipelineGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PipelineGroupsUpdateInput,
-    outputSchema: PipelineGroupsUpdateOutput,
-  }),
-);
+export const PipelineGroupsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PipelineGroupsUpdateInput,
+  outputSchema: PipelineGroupsUpdateOutput,
+}));

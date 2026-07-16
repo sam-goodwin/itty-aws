@@ -11,7 +11,7 @@ export interface InsightsSharingListInput {
   project_id: string;
 }
 export const InsightsSharingListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     insight_id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -37,7 +37,7 @@ export type InsightsSharingListOutput = {
   }[];
 }[];
 export const InsightsSharingListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       created_at: Schema.optional(Schema.String),
       enabled: Schema.optional(Schema.Boolean),
@@ -63,7 +63,7 @@ export const InsightsSharingListOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const insightsSharingList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const insightsSharingList = /*@__PURE__*/ API.make(() => ({
   inputSchema: InsightsSharingListInput,
   outputSchema: InsightsSharingListOutput,
   errors: [Forbidden, NotFound] as const,

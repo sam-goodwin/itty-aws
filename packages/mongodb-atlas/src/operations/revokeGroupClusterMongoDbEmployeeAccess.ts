@@ -11,7 +11,7 @@ export interface RevokeGroupClusterMongoDbEmployeeAccessInput {
   pretty?: boolean;
 }
 export const RevokeGroupClusterMongoDbEmployeeAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const RevokeGroupClusterMongoDbEmployeeAccessInput =
 // Output Schema
 export type RevokeGroupClusterMongoDbEmployeeAccessOutput = void;
 export const RevokeGroupClusterMongoDbEmployeeAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RevokeGroupClusterMongoDbEmployeeAccessOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RevokeGroupClusterMongoDbEmployeeAccessOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const RevokeGroupClusterMongoDbEmployeeAccessOutput =
  * @param clusterName - Human-readable label that identifies this cluster.
  */
 export const revokeGroupClusterMongoDbEmployeeAccess =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RevokeGroupClusterMongoDbEmployeeAccessInput,
     outputSchema: RevokeGroupClusterMongoDbEmployeeAccessOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

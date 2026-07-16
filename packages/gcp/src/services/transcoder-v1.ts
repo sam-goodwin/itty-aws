@@ -25,7 +25,7 @@ const svc = T.Service({
 export interface H265ColorFormatHLG {}
 
 export const H265ColorFormatHLG: Schema.Codec<H265ColorFormatHLG> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "H265ColorFormatHLG",
   });
 
@@ -39,7 +39,7 @@ export interface Color {
 }
 
 export const Color: Schema.Codec<Color> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contrast: Schema.optional(Schema.Number),
     saturation: Schema.optional(Schema.Number),
     brightness: Schema.optional(Schema.Number),
@@ -53,7 +53,7 @@ export interface SegmentSettings {
 }
 
 export const SegmentSettings: Schema.Codec<SegmentSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     segmentDuration: Schema.optional(Schema.String),
     individualSegments: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "SegmentSettings" });
@@ -66,7 +66,7 @@ export interface NormalizedCoordinate {
 }
 
 export const NormalizedCoordinate: Schema.Codec<NormalizedCoordinate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     y: Schema.optional(Schema.Number),
     x: Schema.optional(Schema.Number),
   }).annotate({ identifier: "NormalizedCoordinate" });
@@ -83,7 +83,7 @@ export interface AnimationFade {
 }
 
 export const AnimationFade: Schema.Codec<AnimationFade> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     xy: Schema.optional(NormalizedCoordinate),
     endTimeOffset: Schema.optional(Schema.String),
     fadeType: Schema.optional(Schema.String),
@@ -98,7 +98,7 @@ export interface Deblock {
 }
 
 export const Deblock: Schema.Codec<Deblock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     strength: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Deblock" });
@@ -106,7 +106,7 @@ export const Deblock: Schema.Codec<Deblock> =
 export interface H264ColorFormatHLG {}
 
 export const H264ColorFormatHLG: Schema.Codec<H264ColorFormatHLG> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "H264ColorFormatHLG",
   });
 
@@ -126,7 +126,7 @@ export interface AudioMapping {
 }
 
 export const AudioMapping: Schema.Codec<AudioMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     atomKey: Schema.optional(Schema.String),
     inputChannel: Schema.optional(Schema.Number),
     outputChannel: Schema.optional(Schema.Number),
@@ -138,7 +138,7 @@ export const AudioMapping: Schema.Codec<AudioMapping> =
 export interface Playready {}
 
 export const Playready: Schema.Codec<Playready> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Playready",
   });
 
@@ -152,7 +152,7 @@ export interface TextMapping {
 }
 
 export const TextMapping: Schema.Codec<TextMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     atomKey: Schema.optional(Schema.String),
     inputTrack: Schema.optional(Schema.Number),
     inputKey: Schema.optional(Schema.String),
@@ -170,7 +170,7 @@ export interface TextStream {
 }
 
 export const TextStream: Schema.Codec<TextStream> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     mapping: Schema.optional(Schema.Array(TextMapping)),
     codec: Schema.optional(Schema.String),
@@ -197,7 +197,7 @@ export interface AudioStream {
 }
 
 export const AudioStream: Schema.Codec<AudioStream> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mapping: Schema.optional(Schema.Array(AudioMapping)),
     channelLayout: Schema.optional(Schema.Array(Schema.String)),
     codec: Schema.optional(Schema.String),
@@ -211,7 +211,7 @@ export const AudioStream: Schema.Codec<AudioStream> =
 export interface H264ColorFormatSDR {}
 
 export const H264ColorFormatSDR: Schema.Codec<H264ColorFormatSDR> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "H264ColorFormatSDR",
   });
 
@@ -269,7 +269,7 @@ export interface H264CodecSettings {
 }
 
 export const H264CodecSettings: Schema.Codec<H264CodecSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sdr: Schema.optional(H264ColorFormatSDR),
     frameRateConversionStrategy: Schema.optional(Schema.String),
     bFrameCount: Schema.optional(Schema.Number),
@@ -298,14 +298,14 @@ export const H264CodecSettings: Schema.Codec<H264CodecSettings> =
 export interface H265ColorFormatHDR10 {}
 
 export const H265ColorFormatHDR10: Schema.Codec<H265ColorFormatHDR10> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "H265ColorFormatHDR10",
   });
 
 export interface H265ColorFormatSDR {}
 
 export const H265ColorFormatSDR: Schema.Codec<H265ColorFormatSDR> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "H265ColorFormatSDR",
   });
 
@@ -363,7 +363,7 @@ export interface H265CodecSettings {
 }
 
 export const H265CodecSettings: Schema.Codec<H265CodecSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gopDuration: Schema.optional(Schema.String),
     gopFrameCount: Schema.optional(Schema.Number),
     bPyramid: Schema.optional(Schema.Boolean),
@@ -392,14 +392,14 @@ export const H265CodecSettings: Schema.Codec<H265CodecSettings> =
 export interface Vp9ColorFormatSDR {}
 
 export const Vp9ColorFormatSDR: Schema.Codec<Vp9ColorFormatSDR> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Vp9ColorFormatSDR",
   });
 
 export interface Vp9ColorFormatHLG {}
 
 export const Vp9ColorFormatHLG: Schema.Codec<Vp9ColorFormatHLG> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Vp9ColorFormatHLG",
   });
 
@@ -437,7 +437,7 @@ export interface Vp9CodecSettings {
 }
 
 export const Vp9CodecSettings: Schema.Codec<Vp9CodecSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     frameRateConversionStrategy: Schema.optional(Schema.String),
     sdr: Schema.optional(Vp9ColorFormatSDR),
     pixelFormat: Schema.optional(Schema.String),
@@ -463,7 +463,7 @@ export interface VideoStream {
 }
 
 export const VideoStream: Schema.Codec<VideoStream> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     h264: Schema.optional(H264CodecSettings),
     h265: Schema.optional(H265CodecSettings),
     vp9: Schema.optional(Vp9CodecSettings),
@@ -481,7 +481,7 @@ export interface ElementaryStream {
 }
 
 export const ElementaryStream: Schema.Codec<ElementaryStream> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textStream: Schema.optional(TextStream),
     key: Schema.optional(Schema.String),
     audioStream: Schema.optional(AudioStream),
@@ -498,7 +498,7 @@ export interface Audio {
 }
 
 export const Audio: Schema.Codec<Audio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lowBoost: Schema.optional(Schema.Boolean),
     lufs: Schema.optional(Schema.Number),
     highBoost: Schema.optional(Schema.Boolean),
@@ -515,14 +515,12 @@ export interface Pad {
   bottomPixels?: number;
 }
 
-export const Pad: Schema.Codec<Pad> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    leftPixels: Schema.optional(Schema.Number),
-    rightPixels: Schema.optional(Schema.Number),
-    topPixels: Schema.optional(Schema.Number),
-    bottomPixels: Schema.optional(Schema.Number),
-  },
-).annotate({ identifier: "Pad" });
+export const Pad: Schema.Codec<Pad> = /*@__PURE__*/ Schema.Struct({
+  leftPixels: Schema.optional(Schema.Number),
+  rightPixels: Schema.optional(Schema.Number),
+  topPixels: Schema.optional(Schema.Number),
+  bottomPixels: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Pad" });
 
 export interface YadifConfig {
   /** Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field */
@@ -536,7 +534,7 @@ export interface YadifConfig {
 }
 
 export const YadifConfig: Schema.Codec<YadifConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mode: Schema.optional(Schema.String),
     parity: Schema.optional(Schema.String),
     deinterlaceAllFrames: Schema.optional(Schema.Boolean),
@@ -553,7 +551,7 @@ export interface BwdifConfig {
 }
 
 export const BwdifConfig: Schema.Codec<BwdifConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deinterlaceAllFrames: Schema.optional(Schema.Boolean),
     mode: Schema.optional(Schema.String),
     parity: Schema.optional(Schema.String),
@@ -567,7 +565,7 @@ export interface Deinterlace {
 }
 
 export const Deinterlace: Schema.Codec<Deinterlace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     yadif: Schema.optional(YadifConfig),
     bwdif: Schema.optional(BwdifConfig),
   }).annotate({ identifier: "Deinterlace" });
@@ -580,7 +578,7 @@ export interface Denoise {
 }
 
 export const Denoise: Schema.Codec<Denoise> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     strength: Schema.optional(Schema.Number),
     tune: Schema.optional(Schema.String),
   }).annotate({ identifier: "Denoise" });
@@ -597,7 +595,7 @@ export interface Crop {
 }
 
 export const Crop: Schema.Codec<Crop> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     leftPixels: Schema.optional(Schema.Number),
     rightPixels: Schema.optional(Schema.Number),
     bottomPixels: Schema.optional(Schema.Number),
@@ -622,7 +620,7 @@ export interface PreprocessingConfig {
 }
 
 export const PreprocessingConfig: Schema.Codec<PreprocessingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     color: Schema.optional(Color),
     audio: Schema.optional(Audio),
     pad: Schema.optional(Pad),
@@ -644,7 +642,7 @@ export interface TrackDefinition {
 }
 
 export const TrackDefinition: Schema.Codec<TrackDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languages: Schema.optional(Schema.Array(Schema.String)),
     detectLanguages: Schema.optional(Schema.Boolean),
     detectedLanguages: Schema.optional(Schema.Array(Schema.String)),
@@ -657,7 +655,7 @@ export interface InputAttributes {
 }
 
 export const InputAttributes: Schema.Codec<InputAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trackDefinitions: Schema.optional(Schema.Array(TrackDefinition)),
   }).annotate({ identifier: "InputAttributes" });
 
@@ -673,7 +671,7 @@ export interface Input {
 }
 
 export const Input: Schema.Codec<Input> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     preprocessingConfig: Schema.optional(PreprocessingConfig),
     uri: Schema.optional(Schema.String),
@@ -686,7 +684,7 @@ export interface PubsubDestination {
 }
 
 export const PubsubDestination: Schema.Codec<PubsubDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.String),
   }).annotate({ identifier: "PubsubDestination" });
 
@@ -696,7 +694,7 @@ export interface Fmp4Config {
 }
 
 export const Fmp4Config: Schema.Codec<Fmp4Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     codecTag: Schema.optional(Schema.String),
   }).annotate({ identifier: "Fmp4Config" });
 
@@ -718,7 +716,7 @@ export interface MuxStream {
 }
 
 export const MuxStream: Schema.Codec<MuxStream> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     encryptionId: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
     elementaryStreams: Schema.optional(Schema.Array(Schema.String)),
@@ -734,7 +732,7 @@ export interface Output {
 }
 
 export const Output: Schema.Codec<Output> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "Output" });
 
@@ -764,7 +762,7 @@ export interface SpriteSheet {
 }
 
 export const SpriteSheet: Schema.Codec<SpriteSheet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     columnCount: Schema.optional(Schema.Number),
     format: Schema.optional(Schema.String),
     endTimeOffset: Schema.optional(Schema.String),
@@ -784,7 +782,7 @@ export interface AdBreak {
 }
 
 export const AdBreak: Schema.Codec<AdBreak> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTimeOffset: Schema.optional(Schema.String),
   }).annotate({ identifier: "AdBreak" });
 
@@ -800,7 +798,7 @@ export interface EditAtom {
 }
 
 export const EditAtom: Schema.Codec<EditAtom> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     startTimeOffset: Schema.optional(Schema.String),
     inputs: Schema.optional(Schema.Array(Schema.String)),
@@ -813,14 +811,14 @@ export interface MpegCommonEncryption {
 }
 
 export const MpegCommonEncryption: Schema.Codec<MpegCommonEncryption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scheme: Schema.optional(Schema.String),
   }).annotate({ identifier: "MpegCommonEncryption" });
 
 export interface SampleAesEncryption {}
 
 export const SampleAesEncryption: Schema.Codec<SampleAesEncryption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SampleAesEncryption",
   });
 
@@ -830,28 +828,28 @@ export interface SecretManagerSource {
 }
 
 export const SecretManagerSource: Schema.Codec<SecretManagerSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     secretVersion: Schema.optional(Schema.String),
   }).annotate({ identifier: "SecretManagerSource" });
 
 export interface Widevine {}
 
 export const Widevine: Schema.Codec<Widevine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Widevine",
   });
 
 export interface Fairplay {}
 
 export const Fairplay: Schema.Codec<Fairplay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Fairplay",
   });
 
 export interface Clearkey {}
 
 export const Clearkey: Schema.Codec<Clearkey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Clearkey",
   });
 
@@ -867,7 +865,7 @@ export interface DrmSystems {
 }
 
 export const DrmSystems: Schema.Codec<DrmSystems> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     widevine: Schema.optional(Widevine),
     fairplay: Schema.optional(Fairplay),
     playready: Schema.optional(Playready),
@@ -877,7 +875,7 @@ export const DrmSystems: Schema.Codec<DrmSystems> =
 export interface Aes128Encryption {}
 
 export const Aes128Encryption: Schema.Codec<Aes128Encryption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Aes128Encryption",
   });
 
@@ -897,7 +895,7 @@ export interface Encryption {
 }
 
 export const Encryption: Schema.Codec<Encryption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     mpegCenc: Schema.optional(MpegCommonEncryption),
     sampleAes: Schema.optional(SampleAesEncryption),
@@ -916,7 +914,7 @@ export interface DashConfig {
 }
 
 export const DashConfig: Schema.Codec<DashConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     segmentReferenceScheme: Schema.optional(Schema.String),
   }).annotate({ identifier: "DashConfig" });
 
@@ -932,7 +930,7 @@ export interface Manifest {
 }
 
 export const Manifest: Schema.Codec<Manifest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileName: Schema.optional(Schema.String),
     muxStreams: Schema.optional(Schema.Array(Schema.String)),
     dash: Schema.optional(DashConfig),
@@ -949,7 +947,7 @@ export interface Image {
 }
 
 export const Image: Schema.Codec<Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     resolution: Schema.optional(NormalizedCoordinate),
     alpha: Schema.optional(Schema.Number),
@@ -961,7 +959,7 @@ export interface AnimationEnd {
 }
 
 export const AnimationEnd: Schema.Codec<AnimationEnd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTimeOffset: Schema.optional(Schema.String),
   }).annotate({ identifier: "AnimationEnd" });
 
@@ -973,7 +971,7 @@ export interface AnimationStatic {
 }
 
 export const AnimationStatic: Schema.Codec<AnimationStatic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     xy: Schema.optional(NormalizedCoordinate),
     startTimeOffset: Schema.optional(Schema.String),
   }).annotate({ identifier: "AnimationStatic" });
@@ -988,7 +986,7 @@ export interface Animation {
 }
 
 export const Animation: Schema.Codec<Animation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     animationEnd: Schema.optional(AnimationEnd),
     animationFade: Schema.optional(AnimationFade),
     animationStatic: Schema.optional(AnimationStatic),
@@ -1002,7 +1000,7 @@ export interface Overlay {
 }
 
 export const Overlay: Schema.Codec<Overlay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     image: Schema.optional(Image),
     animations: Schema.optional(Schema.Array(Animation)),
   }).annotate({ identifier: "Overlay" });
@@ -1033,7 +1031,7 @@ export interface JobConfig {
 }
 
 export const JobConfig: Schema.Codec<JobConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     elementaryStreams: Schema.optional(Schema.Array(ElementaryStream)),
     inputs: Schema.optional(Schema.Array(Input)),
     pubsubDestination: Schema.optional(PubsubDestination),
@@ -1057,7 +1055,7 @@ export interface JobTemplate {
 }
 
 export const JobTemplate: Schema.Codec<JobTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     config: Schema.optional(JobConfig),
     name: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1073,7 +1071,7 @@ export interface ListJobTemplatesResponse {
 }
 
 export const ListJobTemplatesResponse: Schema.Codec<ListJobTemplatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobTemplates: Schema.optional(Schema.Array(JobTemplate)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1089,7 +1087,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -1146,31 +1144,29 @@ export interface Job {
     | (string & {});
 }
 
-export const Job: Schema.Codec<Job> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    error: Schema.optional(Status),
-    name: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.String),
-    templateId: Schema.optional(Schema.String),
-    config: Schema.optional(JobConfig),
-    batchModePriority: Schema.optional(Schema.Number),
-    state: Schema.optional(Schema.String),
-    mode: Schema.optional(Schema.String),
-    outputUri: Schema.optional(Schema.String),
-    inputUri: Schema.optional(Schema.String),
-    ttlAfterCompletionDays: Schema.optional(Schema.Number),
-    createTime: Schema.optional(Schema.String),
-    startTime: Schema.optional(Schema.String),
-    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    fillContentGaps: Schema.optional(Schema.Boolean),
-    optimization: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Job" });
+export const Job: Schema.Codec<Job> = /*@__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  templateId: Schema.optional(Schema.String),
+  config: Schema.optional(JobConfig),
+  batchModePriority: Schema.optional(Schema.Number),
+  state: Schema.optional(Schema.String),
+  mode: Schema.optional(Schema.String),
+  outputUri: Schema.optional(Schema.String),
+  inputUri: Schema.optional(Schema.String),
+  ttlAfterCompletionDays: Schema.optional(Schema.Number),
+  createTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  fillContentGaps: Schema.optional(Schema.Boolean),
+  optimization: Schema.optional(Schema.String),
+}).annotate({ identifier: "Job" });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -1184,7 +1180,7 @@ export interface ListJobsResponse {
 }
 
 export const ListJobsResponse: Schema.Codec<ListJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobs: Schema.optional(Schema.Array(Job)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1254,7 +1250,7 @@ export interface CreateProjectsLocationsJobTemplatesRequest {
 }
 
 export const CreateProjectsLocationsJobTemplatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     jobTemplateId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("jobTemplateId"),
@@ -1271,7 +1267,7 @@ export const CreateProjectsLocationsJobTemplatesRequest =
 
 export type CreateProjectsLocationsJobTemplatesResponse = JobTemplate;
 export const CreateProjectsLocationsJobTemplatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ JobTemplate;
+  /*@__PURE__*/ JobTemplate;
 
 export type CreateProjectsLocationsJobTemplatesError =
   | DefaultErrors
@@ -1286,7 +1282,7 @@ export const createProjectsLocationsJobTemplates: API.OperationMethod<
   CreateProjectsLocationsJobTemplatesResponse,
   CreateProjectsLocationsJobTemplatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsJobTemplatesRequest,
   output: CreateProjectsLocationsJobTemplatesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1306,7 +1302,7 @@ export interface ListProjectsLocationsJobTemplatesRequest {
 }
 
 export const ListProjectsLocationsJobTemplatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -1320,7 +1316,7 @@ export const ListProjectsLocationsJobTemplatesRequest =
 export type ListProjectsLocationsJobTemplatesResponse =
   ListJobTemplatesResponse;
 export const ListProjectsLocationsJobTemplatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListJobTemplatesResponse;
+  /*@__PURE__*/ ListJobTemplatesResponse;
 
 export type ListProjectsLocationsJobTemplatesError =
   | DefaultErrors
@@ -1333,7 +1329,7 @@ export const listProjectsLocationsJobTemplates: API.PaginatedOperationMethod<
   ListProjectsLocationsJobTemplatesResponse,
   ListProjectsLocationsJobTemplatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsJobTemplatesRequest,
   output: ListProjectsLocationsJobTemplatesResponse,
   errors: [NotFound, Forbidden],
@@ -1349,7 +1345,7 @@ export interface GetProjectsLocationsJobTemplatesRequest {
 }
 
 export const GetProjectsLocationsJobTemplatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1358,7 +1354,7 @@ export const GetProjectsLocationsJobTemplatesRequest =
 
 export type GetProjectsLocationsJobTemplatesResponse = JobTemplate;
 export const GetProjectsLocationsJobTemplatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ JobTemplate;
+  /*@__PURE__*/ JobTemplate;
 
 export type GetProjectsLocationsJobTemplatesError =
   | DefaultErrors
@@ -1371,7 +1367,7 @@ export const getProjectsLocationsJobTemplates: API.OperationMethod<
   GetProjectsLocationsJobTemplatesResponse,
   GetProjectsLocationsJobTemplatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsJobTemplatesRequest,
   output: GetProjectsLocationsJobTemplatesResponse,
   errors: [NotFound, Forbidden],
@@ -1385,7 +1381,7 @@ export interface DeleteProjectsLocationsJobTemplatesRequest {
 }
 
 export const DeleteProjectsLocationsJobTemplatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
@@ -1396,8 +1392,7 @@ export const DeleteProjectsLocationsJobTemplatesRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsJobTemplatesRequest>;
 
 export type DeleteProjectsLocationsJobTemplatesResponse = Empty;
-export const DeleteProjectsLocationsJobTemplatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsJobTemplatesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsJobTemplatesError =
   | DefaultErrors
@@ -1412,7 +1407,7 @@ export const deleteProjectsLocationsJobTemplates: API.OperationMethod<
   DeleteProjectsLocationsJobTemplatesResponse,
   DeleteProjectsLocationsJobTemplatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsJobTemplatesRequest,
   output: DeleteProjectsLocationsJobTemplatesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1426,7 +1421,7 @@ export interface DeleteProjectsLocationsJobsRequest {
 }
 
 export const DeleteProjectsLocationsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
@@ -1437,8 +1432,7 @@ export const DeleteProjectsLocationsJobsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsJobsRequest>;
 
 export type DeleteProjectsLocationsJobsResponse = Empty;
-export const DeleteProjectsLocationsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsJobsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsJobsError =
   | DefaultErrors
@@ -1453,7 +1447,7 @@ export const deleteProjectsLocationsJobs: API.OperationMethod<
   DeleteProjectsLocationsJobsResponse,
   DeleteProjectsLocationsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsJobsRequest,
   output: DeleteProjectsLocationsJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1465,7 +1459,7 @@ export interface GetProjectsLocationsJobsRequest {
 }
 
 export const GetProjectsLocationsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1473,7 +1467,7 @@ export const GetProjectsLocationsJobsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsJobsRequest>;
 
 export type GetProjectsLocationsJobsResponse = Job;
-export const GetProjectsLocationsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
+export const GetProjectsLocationsJobsResponse = /*@__PURE__*/ Job;
 
 export type GetProjectsLocationsJobsError =
   | DefaultErrors
@@ -1486,7 +1480,7 @@ export const getProjectsLocationsJobs: API.OperationMethod<
   GetProjectsLocationsJobsResponse,
   GetProjectsLocationsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsJobsRequest,
   output: GetProjectsLocationsJobsResponse,
   errors: [NotFound, Forbidden],
@@ -1500,7 +1494,7 @@ export interface CreateProjectsLocationsJobsRequest {
 }
 
 export const CreateProjectsLocationsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Job).pipe(T.HttpBody()),
   }).pipe(
@@ -1509,8 +1503,7 @@ export const CreateProjectsLocationsJobsRequest =
   ) as unknown as Schema.Codec<CreateProjectsLocationsJobsRequest>;
 
 export type CreateProjectsLocationsJobsResponse = Job;
-export const CreateProjectsLocationsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Job;
+export const CreateProjectsLocationsJobsResponse = /*@__PURE__*/ Job;
 
 export type CreateProjectsLocationsJobsError =
   | DefaultErrors
@@ -1525,7 +1518,7 @@ export const createProjectsLocationsJobs: API.OperationMethod<
   CreateProjectsLocationsJobsResponse,
   CreateProjectsLocationsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsJobsRequest,
   output: CreateProjectsLocationsJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1545,7 +1538,7 @@ export interface ListProjectsLocationsJobsRequest {
 }
 
 export const ListProjectsLocationsJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1557,8 +1550,7 @@ export const ListProjectsLocationsJobsRequest =
   ) as unknown as Schema.Codec<ListProjectsLocationsJobsRequest>;
 
 export type ListProjectsLocationsJobsResponse = ListJobsResponse;
-export const ListProjectsLocationsJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListJobsResponse;
+export const ListProjectsLocationsJobsResponse = /*@__PURE__*/ ListJobsResponse;
 
 export type ListProjectsLocationsJobsError =
   | DefaultErrors
@@ -1571,7 +1563,7 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsJobsResponse,
   ListProjectsLocationsJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsJobsRequest,
   output: ListProjectsLocationsJobsResponse,
   errors: [NotFound, Forbidden],

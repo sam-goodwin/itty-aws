@@ -76,12 +76,12 @@ export type RemoteOwnerAccount = string;
 export type AttachPoint =
   | { directConnectGateway: string; arn?: never }
   | { directConnectGateway?: never; arn: string };
-export const AttachPoint = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const AttachPoint = /*@__PURE__*/ S.Union([
   S.Struct({ directConnectGateway: S.String }),
   S.Struct({ arn: S.String }),
 ]);
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -93,7 +93,7 @@ export interface AcceptConnectionProposalRequest {
   clientToken?: string;
 }
 export const AcceptConnectionProposalRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       attachPoint: AttachPoint,
       activationKey: SensitiveString,
@@ -109,7 +109,7 @@ export const AcceptConnectionProposalRequest =
 export type Provider =
   | { cloudServiceProvider: string; lastMileProvider?: never }
   | { cloudServiceProvider?: never; lastMileProvider: string };
-export const Provider = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const Provider = /*@__PURE__*/ S.Union([
   S.Struct({ cloudServiceProvider: S.String }),
   S.Struct({ lastMileProvider: S.String }),
 ]);
@@ -123,7 +123,7 @@ export type ConnectionState =
   | "failed"
   | "updating"
   | (string & {});
-export const ConnectionState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConnectionState = /*@__PURE__*/ S.String;
 export interface Connection {
   id: string;
   arn: string;
@@ -141,7 +141,7 @@ export interface Connection {
   activationKey: string | redacted.Redacted<string>;
   tags?: { [key: string]: string | undefined };
 }
-export const Connection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Connection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     arn: S.String,
@@ -164,7 +164,7 @@ export interface AcceptConnectionProposalResponse {
   connection?: Connection;
 }
 export const AcceptConnectionProposalResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ connection: S.optional(Connection) }),
   ).annotate({
     identifier: "AcceptConnectionProposalResponse",
@@ -173,7 +173,7 @@ export interface DescribeConnectionProposalRequest {
   activationKey: string | redacted.Redacted<string>;
 }
 export const DescribeConnectionProposalRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ activationKey: SensitiveString }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -187,7 +187,7 @@ export interface DescribeConnectionProposalResponse {
   location: string;
 }
 export const DescribeConnectionProposalResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bandwidth: S.String,
       environmentId: S.String,
@@ -202,55 +202,52 @@ export interface ListAttachPointsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListAttachPointsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environmentId: S.String,
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListAttachPointsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListAttachPointsRequest",
 }) as any as S.Schema<ListAttachPointsRequest>;
 export type AttachPointType = "DirectConnectGateway" | (string & {});
-export const AttachPointType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AttachPointType = /*@__PURE__*/ S.String;
 export interface AttachPointDescriptor {
   type: AttachPointType;
   identifier: string;
   name: string;
 }
-export const AttachPointDescriptor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AttachPointDescriptor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: AttachPointType, identifier: S.String, name: S.String }),
 ).annotate({
   identifier: "AttachPointDescriptor",
 }) as any as S.Schema<AttachPointDescriptor>;
 export type AttachPointDescriptorList = AttachPointDescriptor[];
-export const AttachPointDescriptorList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const AttachPointDescriptorList = /*@__PURE__*/ S.Array(
   AttachPointDescriptor,
 );
 export interface ListAttachPointsResponse {
   attachPoints: AttachPointDescriptor[];
   nextToken?: string;
 }
-export const ListAttachPointsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      attachPoints: AttachPointDescriptorList,
-      nextToken: S.optional(S.String),
-    }),
+export const ListAttachPointsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    attachPoints: AttachPointDescriptorList,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListAttachPointsResponse",
 }) as any as S.Schema<ListAttachPointsResponse>;
 export interface ListTagsForResourceRequest {
   arn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ arn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -258,7 +255,7 @@ export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ tags: S.optional(TagMap) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -267,7 +264,7 @@ export interface TagResourceRequest {
   arn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String, tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -275,18 +272,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   arn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String, tagKeys: TagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -294,13 +291,13 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
 export type RemoteAccountIdentifier = { identifier: string };
-export const RemoteAccountIdentifier = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const RemoteAccountIdentifier = /*@__PURE__*/ S.Union([
   S.Struct({ identifier: S.String }),
 ]);
 export interface CreateConnectionRequest {
@@ -312,34 +309,33 @@ export interface CreateConnectionRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-export const CreateConnectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      description: S.optional(S.String),
-      bandwidth: S.String,
-      attachPoint: AttachPoint,
-      environmentId: S.String,
-      remoteAccount: S.optional(RemoteAccountIdentifier),
-      tags: S.optional(TagMap),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const CreateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    bandwidth: S.String,
+    attachPoint: AttachPoint,
+    environmentId: S.String,
+    remoteAccount: S.optional(RemoteAccountIdentifier),
+    tags: S.optional(TagMap),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "CreateConnectionRequest",
 }) as any as S.Schema<CreateConnectionRequest>;
 export interface CreateConnectionResponse {
   connection?: Connection;
 }
-export const CreateConnectionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ connection: S.optional(Connection) }),
+export const CreateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ connection: S.optional(Connection) }),
 ).annotate({
   identifier: "CreateConnectionResponse",
 }) as any as S.Schema<CreateConnectionResponse>;
 export interface GetConnectionRequest {
   identifier: string;
 }
-export const GetConnectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -349,7 +345,7 @@ export const GetConnectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetConnectionResponse {
   connection?: Connection;
 }
-export const GetConnectionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ connection: S.optional(Connection) }),
 ).annotate({
   identifier: "GetConnectionResponse",
@@ -360,24 +356,23 @@ export interface UpdateConnectionRequest {
   bandwidth?: string;
   clientToken?: string;
 }
-export const UpdateConnectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      identifier: S.String,
-      description: S.optional(S.String),
-      bandwidth: S.optional(S.String),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identifier: S.String,
+    description: S.optional(S.String),
+    bandwidth: S.optional(S.String),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "UpdateConnectionRequest",
 }) as any as S.Schema<UpdateConnectionRequest>;
 export interface UpdateConnectionResponse {
   connection?: Connection;
 }
-export const UpdateConnectionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ connection: S.optional(Connection) }),
+export const UpdateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ connection: S.optional(Connection) }),
 ).annotate({
   identifier: "UpdateConnectionResponse",
 }) as any as S.Schema<UpdateConnectionResponse>;
@@ -385,22 +380,21 @@ export interface DeleteConnectionRequest {
   identifier: string;
   clientToken?: string;
 }
-export const DeleteConnectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      identifier: S.String,
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identifier: S.String,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DeleteConnectionRequest",
 }) as any as S.Schema<DeleteConnectionRequest>;
 export interface DeleteConnectionResponse {
   connection: Connection;
 }
-export const DeleteConnectionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ connection: Connection }),
+export const DeleteConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ connection: Connection }),
 ).annotate({
   identifier: "DeleteConnectionResponse",
 }) as any as S.Schema<DeleteConnectionResponse>;
@@ -412,18 +406,17 @@ export interface ListConnectionsRequest {
   provider?: Provider;
   attachPoint?: AttachPoint;
 }
-export const ListConnectionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-      state: S.optional(ConnectionState),
-      environmentId: S.optional(S.String),
-      provider: S.optional(Provider),
-      attachPoint: S.optional(AttachPoint),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+    state: S.optional(ConnectionState),
+    environmentId: S.optional(S.String),
+    provider: S.optional(Provider),
+    attachPoint: S.optional(AttachPoint),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListConnectionsRequest",
 }) as any as S.Schema<ListConnectionsRequest>;
@@ -441,7 +434,7 @@ export interface ConnectionSummary {
   sharedId: string;
   billingTier?: number;
 }
-export const ConnectionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConnectionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     arn: S.String,
@@ -460,25 +453,23 @@ export const ConnectionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ConnectionSummary",
 }) as any as S.Schema<ConnectionSummary>;
 export type ConnectionSummariesList = ConnectionSummary[];
-export const ConnectionSummariesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ConnectionSummary);
+export const ConnectionSummariesList = /*@__PURE__*/ S.Array(ConnectionSummary);
 export interface ListConnectionsResponse {
   connections?: ConnectionSummary[];
   nextToken?: string;
 }
-export const ListConnectionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      connections: S.optional(ConnectionSummariesList),
-      nextToken: S.optional(S.String),
-    }),
+export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connections: S.optional(ConnectionSummariesList),
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListConnectionsResponse",
 }) as any as S.Schema<ListConnectionsResponse>;
 export interface GetEnvironmentRequest {
   id: string;
 }
-export const GetEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -490,21 +481,21 @@ export type EnvironmentState =
   | "limited"
   | "unavailable"
   | (string & {});
-export const EnvironmentState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EnvironmentState = /*@__PURE__*/ S.String;
 export type BandwidthList = string[];
-export const BandwidthList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const BandwidthList = /*@__PURE__*/ S.Array(S.String);
 export interface Bandwidths {
   available?: string[];
   supported?: string[];
 }
-export const Bandwidths = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Bandwidths = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.optional(BandwidthList),
     supported: S.optional(BandwidthList),
   }),
 ).annotate({ identifier: "Bandwidths" }) as any as S.Schema<Bandwidths>;
 export type RemoteAccountIdentifierType = "account" | "email" | (string & {});
-export const RemoteAccountIdentifierType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RemoteAccountIdentifierType = /*@__PURE__*/ S.String;
 export interface Environment {
   provider: Provider;
   location: string;
@@ -515,7 +506,7 @@ export interface Environment {
   activationPageUrl?: string;
   remoteIdentifierType?: RemoteAccountIdentifierType;
 }
-export const Environment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: Provider,
     location: S.String,
@@ -530,8 +521,8 @@ export const Environment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetEnvironmentResponse {
   environment: Environment;
 }
-export const GetEnvironmentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ environment: Environment }),
+export const GetEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ environment: Environment }),
 ).annotate({
   identifier: "GetEnvironmentResponse",
 }) as any as S.Schema<GetEnvironmentResponse>;
@@ -541,31 +532,29 @@ export interface ListEnvironmentsRequest {
   provider?: Provider;
   location?: string;
 }
-export const ListEnvironmentsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-      provider: S.optional(Provider),
-      location: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+    provider: S.optional(Provider),
+    location: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListEnvironmentsRequest",
 }) as any as S.Schema<ListEnvironmentsRequest>;
 export type EnvironmentList = Environment[];
-export const EnvironmentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Environment);
+export const EnvironmentList = /*@__PURE__*/ S.Array(Environment);
 export interface ListEnvironmentsResponse {
   environments: Environment[];
   nextToken?: string;
 }
-export const ListEnvironmentsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environments: EnvironmentList,
-      nextToken: S.optional(S.String),
-    }),
+export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environments: EnvironmentList,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListEnvironmentsResponse",
 }) as any as S.Schema<ListEnvironmentsResponse>;
@@ -586,7 +575,7 @@ export const acceptConnectionProposal: API.OperationMethod<
   AcceptConnectionProposalResponse,
   AcceptConnectionProposalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptConnectionProposalRequest,
   output: AcceptConnectionProposalResponse,
   errors: [],
@@ -601,7 +590,7 @@ export const describeConnectionProposal: API.OperationMethod<
   DescribeConnectionProposalResponse,
   DescribeConnectionProposalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeConnectionProposalRequest,
   output: DescribeConnectionProposalResponse,
   errors: [],
@@ -631,7 +620,7 @@ export const listAttachPoints: API.OperationMethod<
     ListAttachPointsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAttachPointsRequest,
   output: ListAttachPointsResponse,
   errors: [],
@@ -652,7 +641,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
@@ -667,7 +656,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
@@ -682,7 +671,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
@@ -703,7 +692,7 @@ export const createConnection: API.OperationMethod<
   CreateConnectionResponse,
   CreateConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConnectionRequest,
   output: CreateConnectionResponse,
   errors: [],
@@ -718,7 +707,7 @@ export const getConnection: API.OperationMethod<
   GetConnectionResponse,
   GetConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConnectionRequest,
   output: GetConnectionResponse,
   errors: [],
@@ -733,7 +722,7 @@ export const updateConnection: API.OperationMethod<
   UpdateConnectionResponse,
   UpdateConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConnectionRequest,
   output: UpdateConnectionResponse,
   errors: [],
@@ -750,7 +739,7 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionResponse,
   DeleteConnectionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConnectionRequest,
   output: DeleteConnectionResponse,
   errors: [],
@@ -792,7 +781,7 @@ export const listConnections: API.OperationMethod<
     ListConnectionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConnectionsRequest,
   output: ListConnectionsResponse,
   errors: [],
@@ -813,7 +802,7 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentResponse,
   GetEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnvironmentRequest,
   output: GetEnvironmentResponse,
   errors: [],
@@ -843,7 +832,7 @@ export const listEnvironments: API.OperationMethod<
     ListEnvironmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [],

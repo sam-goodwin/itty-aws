@@ -9,7 +9,7 @@ export interface ApiKeysControllerExpireInput {
   expires_at?: string | null;
 }
 export const ApiKeysControllerExpireInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expires_at: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
@@ -32,7 +32,7 @@ export interface ApiKeysControllerExpireOutput {
   updated_at?: string;
 }
 export const ApiKeysControllerExpireOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     owner: Schema.optional(
@@ -65,10 +65,8 @@ export const ApiKeysControllerExpireOutput =
  *
  * @param id - The unique ID of the API key.
  */
-export const ApiKeysControllerExpire = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApiKeysControllerExpireInput,
-    outputSchema: ApiKeysControllerExpireOutput,
-    errors: [NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const ApiKeysControllerExpire = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApiKeysControllerExpireInput,
+  outputSchema: ApiKeysControllerExpireOutput,
+  errors: [NotFound, Conflict, UnprocessableEntity] as const,
+}));

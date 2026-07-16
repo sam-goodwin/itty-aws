@@ -8,7 +8,7 @@ export interface ErrorTrackingIssuesActivityRetrieveInput {
   project_id: string;
 }
 export const ErrorTrackingIssuesActivityRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const ErrorTrackingIssuesActivityRetrieveInput =
 // Output Schema
 export type ErrorTrackingIssuesActivityRetrieveOutput = void;
 export const ErrorTrackingIssuesActivityRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingIssuesActivityRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingIssuesActivityRetrieveOutput>;
 
 // The operation
 /**
@@ -29,7 +29,7 @@ export const ErrorTrackingIssuesActivityRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingIssuesActivityRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingIssuesActivityRetrieveInput,
     outputSchema: ErrorTrackingIssuesActivityRetrieveOutput,
   }));

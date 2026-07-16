@@ -8,7 +8,7 @@ export interface GetDocumentInput {
   collectionName: string;
   documentId: string;
 }
-export const GetDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDocumentInput = /*@__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   documentId: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -21,7 +21,7 @@ export const GetDocumentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetDocumentOutput = unknown;
 export const GetDocumentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetDocumentOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<GetDocumentOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const GetDocumentOutput =
  * @param collectionName - The name of the collection to search for the document under
  * @param documentId - The Document ID
  */
-export const getDocument = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getDocument = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetDocumentInput,
   outputSchema: GetDocumentOutput,
   errors: [NotFound] as const,

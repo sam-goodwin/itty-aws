@@ -8,7 +8,7 @@ export interface ConnectionsControllerFindInput {
   id: string;
 }
 export const ConnectionsControllerFindInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/connections/{id}" }),
@@ -86,7 +86,7 @@ export interface ConnectionsControllerFindOutput {
   updated_at?: string;
 }
 export const ConnectionsControllerFindOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     organization_id: Schema.optional(Schema.String),
@@ -183,10 +183,8 @@ export const ConnectionsControllerFindOutput =
  *
  * @param id - Unique identifier for the Connection.
  */
-export const ConnectionsControllerFind = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ConnectionsControllerFindInput,
-    outputSchema: ConnectionsControllerFindOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const ConnectionsControllerFind = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ConnectionsControllerFindInput,
+  outputSchema: ConnectionsControllerFindOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

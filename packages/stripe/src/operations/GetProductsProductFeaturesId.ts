@@ -9,7 +9,7 @@ export interface GetProductsProductFeaturesIdInput {
   expand?: string;
 }
 export const GetProductsProductFeaturesIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     product: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -37,7 +37,7 @@ export interface GetProductsProductFeaturesIdOutput {
   object: "product_feature";
 }
 export const GetProductsProductFeaturesIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlement_feature: Schema.Struct({
       active: Schema.Boolean,
       id: Schema.String,
@@ -63,7 +63,7 @@ export const GetProductsProductFeaturesIdOutput =
  * @param product - The ID of the product.
  */
 export const GetProductsProductFeaturesId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetProductsProductFeaturesIdInput,
     outputSchema: GetProductsProductFeaturesIdOutput,
   }));

@@ -8,7 +8,7 @@ export interface V1GetActionRunInput {
   ref: string;
   run_id: string;
 }
-export const V1GetActionRunInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetActionRunInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   run_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -45,7 +45,7 @@ export interface V1GetActionRunOutput {
   created_at: string;
   updated_at: string;
 }
-export const V1GetActionRunOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetActionRunOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   branch_id: Schema.String,
   run_steps: Schema.Array(
@@ -88,7 +88,7 @@ export const V1GetActionRunOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param ref - Project ref
  * @param run_id - Action Run ID
  */
-export const v1GetActionRun = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetActionRun = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetActionRunInput,
   outputSchema: V1GetActionRunOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

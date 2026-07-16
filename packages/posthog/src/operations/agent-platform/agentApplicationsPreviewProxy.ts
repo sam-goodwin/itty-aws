@@ -13,7 +13,7 @@ export interface AgentApplicationsPreviewProxyInput {
   session_id?: string;
 }
 export const AgentApplicationsPreviewProxyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     rest: Schema.String.pipe(T.PathParam()),
@@ -31,7 +31,7 @@ export const AgentApplicationsPreviewProxyInput =
 // Output Schema
 export type AgentApplicationsPreviewProxyOutput = void;
 export const AgentApplicationsPreviewProxyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsPreviewProxyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsPreviewProxyOutput>;
 
 // The operation
 /**
@@ -49,7 +49,7 @@ export const AgentApplicationsPreviewProxyOutput =
  * @param revision_id - Target draft revision. Must belong to this application and not be live.
  */
 export const agentApplicationsPreviewProxy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsPreviewProxyInput,
     outputSchema: AgentApplicationsPreviewProxyOutput,
   }));

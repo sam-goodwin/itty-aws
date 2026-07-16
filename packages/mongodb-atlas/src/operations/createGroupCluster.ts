@@ -16,7 +16,7 @@ export interface CreateGroupClusterInput {
   pretty?: boolean;
 }
 export const CreateGroupClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -27,7 +27,7 @@ export const CreateGroupClusterInput =
 // Output Schema
 export type CreateGroupClusterOutput = void;
 export const CreateGroupClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterOutput>;
 
 // The operation
 /**
@@ -44,7 +44,7 @@ export const CreateGroupClusterOutput =
  * @param Use-Effective-Instance-Fields - Controls how hardware specification fields are returned in the response after cluster creation. When set to true, returns the original client-specified values and provides separate effective fields showing current operational values. When false (default), hardware specification fields show current operational values directly. Primarily used for autoscaling compatibility.
  * @param Use-Effective-Fields-Replication-Specs - Controls how `replicationSpecs` fields are returned in the response. When set to `true`, stores the client's view of `replicationSpecs` and returns it in `replicationSpecs`, while the actual cluster state (including auto-scaled hardware and auto-added shards) is returned in `effectiveReplicationSpecs`. When `false` (default), `replicationSpecs` contains the actual cluster state.
  */
-export const createGroupCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createGroupCluster = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateGroupClusterInput,
   outputSchema: CreateGroupClusterOutput,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict] as const,

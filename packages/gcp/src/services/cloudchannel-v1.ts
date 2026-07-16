@@ -28,7 +28,7 @@ export interface GoogleCloudChannelV1StartPaidServiceRequest {
 }
 
 export const GoogleCloudChannelV1StartPaidServiceRequest: Schema.Codec<GoogleCloudChannelV1StartPaidServiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1StartPaidServiceRequest" });
 
@@ -38,7 +38,7 @@ export interface GoogleCloudChannelV1SuspendEntitlementRequest {
 }
 
 export const GoogleCloudChannelV1SuspendEntitlementRequest: Schema.Codec<GoogleCloudChannelV1SuspendEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1SuspendEntitlementRequest" });
 
@@ -52,7 +52,7 @@ export interface GoogleCloudChannelV1alpha1ProvisionedService {
 }
 
 export const GoogleCloudChannelV1alpha1ProvisionedService: Schema.Codec<GoogleCloudChannelV1alpha1ProvisionedService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     provisioningId: Schema.optional(Schema.String),
     productId: Schema.optional(Schema.String),
     skuId: Schema.optional(Schema.String),
@@ -74,7 +74,7 @@ export interface GoogleCloudChannelV1ContactInfo {
 }
 
 export const GoogleCloudChannelV1ContactInfo: Schema.Codec<GoogleCloudChannelV1ContactInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastName: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -97,7 +97,7 @@ export interface GoogleCloudChannelV1BillingAccount {
 }
 
 export const GoogleCloudChannelV1BillingAccount: Schema.Codec<GoogleCloudChannelV1BillingAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export interface GoogleCloudChannelV1BillingAccountPurchaseInfo {
 }
 
 export const GoogleCloudChannelV1BillingAccountPurchaseInfo: Schema.Codec<GoogleCloudChannelV1BillingAccountPurchaseInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccount: Schema.optional(GoogleCloudChannelV1BillingAccount),
   }).annotate({ identifier: "GoogleCloudChannelV1BillingAccountPurchaseInfo" });
 
@@ -128,7 +128,7 @@ export interface GoogleCloudChannelV1Period {
 }
 
 export const GoogleCloudChannelV1Period: Schema.Codec<GoogleCloudChannelV1Period> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.Number),
     periodType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1Period" });
@@ -158,7 +158,7 @@ export interface GoogleCloudChannelV1Plan {
 }
 
 export const GoogleCloudChannelV1Plan: Schema.Codec<GoogleCloudChannelV1Plan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     paymentCycle: Schema.optional(GoogleCloudChannelV1Period),
     paymentType: Schema.optional(Schema.String),
     paymentPlan: Schema.optional(Schema.String),
@@ -192,7 +192,7 @@ export interface GoogleTypePostalAddress {
 }
 
 export const GoogleTypePostalAddress: Schema.Codec<GoogleTypePostalAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     administrativeArea: Schema.optional(Schema.String),
     sublocality: Schema.optional(Schema.String),
     revision: Schema.optional(Schema.Number),
@@ -229,7 +229,7 @@ export interface GoogleCloudChannelV1EduData {
 }
 
 export const GoogleCloudChannelV1EduData: Schema.Codec<GoogleCloudChannelV1EduData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instituteType: Schema.optional(Schema.String),
     instituteSize: Schema.optional(Schema.String),
     website: Schema.optional(Schema.String),
@@ -259,7 +259,7 @@ export interface GoogleCloudChannelV1CloudIdentityInfo {
 }
 
 export const GoogleCloudChannelV1CloudIdentityInfo: Schema.Codec<GoogleCloudChannelV1CloudIdentityInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adminConsoleUri: Schema.optional(Schema.String),
     primaryDomain: Schema.optional(Schema.String),
     isDomainVerified: Schema.optional(Schema.Boolean),
@@ -306,7 +306,7 @@ export interface GoogleCloudChannelV1Customer {
 }
 
 export const GoogleCloudChannelV1Customer: Schema.Codec<GoogleCloudChannelV1Customer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     orgDisplayName: Schema.optional(Schema.String),
     correlationId: Schema.optional(Schema.String),
@@ -333,7 +333,7 @@ export interface GoogleCloudChannelV1Media {
 }
 
 export const GoogleCloudChannelV1Media: Schema.Codec<GoogleCloudChannelV1Media> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
@@ -349,7 +349,7 @@ export interface GoogleCloudChannelV1MarketingInfo {
 }
 
 export const GoogleCloudChannelV1MarketingInfo: Schema.Codec<GoogleCloudChannelV1MarketingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultLogo: Schema.optional(GoogleCloudChannelV1Media),
     description: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -363,7 +363,7 @@ export interface GoogleCloudChannelV1Product {
 }
 
 export const GoogleCloudChannelV1Product: Schema.Codec<GoogleCloudChannelV1Product> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     marketingInfo: Schema.optional(GoogleCloudChannelV1MarketingInfo),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1Product" });
@@ -378,7 +378,7 @@ export interface GoogleCloudChannelV1Sku {
 }
 
 export const GoogleCloudChannelV1Sku: Schema.Codec<GoogleCloudChannelV1Sku> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     marketingInfo: Schema.optional(GoogleCloudChannelV1MarketingInfo),
     product: Schema.optional(GoogleCloudChannelV1Product),
@@ -390,7 +390,7 @@ export interface GoogleCloudChannelV1PurchasableSku {
 }
 
 export const GoogleCloudChannelV1PurchasableSku: Schema.Codec<GoogleCloudChannelV1PurchasableSku> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sku: Schema.optional(GoogleCloudChannelV1Sku),
   }).annotate({ identifier: "GoogleCloudChannelV1PurchasableSku" });
 
@@ -410,7 +410,7 @@ export interface GoogleCloudChannelV1alpha1ReportStatus {
 }
 
 export const GoogleCloudChannelV1alpha1ReportStatus: Schema.Codec<GoogleCloudChannelV1alpha1ReportStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -424,7 +424,7 @@ export interface GoogleCloudChannelV1alpha1ReportJob {
 }
 
 export const GoogleCloudChannelV1alpha1ReportJob: Schema.Codec<GoogleCloudChannelV1alpha1ReportJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     reportStatus: Schema.optional(GoogleCloudChannelV1alpha1ReportStatus),
   }).annotate({ identifier: "GoogleCloudChannelV1alpha1ReportJob" });
@@ -441,7 +441,7 @@ export interface GoogleCloudChannelV1alpha1CustomerEvent {
 }
 
 export const GoogleCloudChannelV1alpha1CustomerEvent: Schema.Codec<GoogleCloudChannelV1alpha1CustomerEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
     eventType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1alpha1CustomerEvent" });
@@ -461,7 +461,7 @@ export interface GoogleCloudChannelV1alpha1OpportunityEvent {
 }
 
 export const GoogleCloudChannelV1alpha1OpportunityEvent: Schema.Codec<GoogleCloudChannelV1alpha1OpportunityEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partner: Schema.optional(Schema.String),
     opportunity: Schema.optional(Schema.String),
     eventType: Schema.optional(Schema.String),
@@ -489,7 +489,7 @@ export interface GoogleCloudChannelV1alpha1EntitlementEvent {
 }
 
 export const GoogleCloudChannelV1alpha1EntitlementEvent: Schema.Codec<GoogleCloudChannelV1alpha1EntitlementEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlement: Schema.optional(Schema.String),
     eventType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1alpha1EntitlementEvent" });
@@ -506,7 +506,7 @@ export interface GoogleCloudChannelV1alpha1ChannelPartnerEvent {
 }
 
 export const GoogleCloudChannelV1alpha1ChannelPartnerEvent: Schema.Codec<GoogleCloudChannelV1alpha1ChannelPartnerEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventType: Schema.optional(Schema.String),
     channelPartner: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1alpha1ChannelPartnerEvent" });
@@ -523,7 +523,7 @@ export interface GoogleCloudChannelV1alpha1SubscriberEvent {
 }
 
 export const GoogleCloudChannelV1alpha1SubscriberEvent: Schema.Codec<GoogleCloudChannelV1alpha1SubscriberEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerEvent: Schema.optional(GoogleCloudChannelV1alpha1CustomerEvent),
     opportunityEvent: Schema.optional(
       GoogleCloudChannelV1alpha1OpportunityEvent,
@@ -552,7 +552,7 @@ export interface GoogleCloudChannelV1TransferEligibility {
 }
 
 export const GoogleCloudChannelV1TransferEligibility: Schema.Codec<GoogleCloudChannelV1TransferEligibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isEligible: Schema.optional(Schema.Boolean),
     description: Schema.optional(Schema.String),
     ineligibilityReason: Schema.optional(Schema.String),
@@ -568,7 +568,7 @@ export interface GoogleTypeMoney {
 }
 
 export const GoogleTypeMoney: Schema.Codec<GoogleTypeMoney> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nanos: Schema.optional(Schema.Number),
     currencyCode: Schema.optional(Schema.String),
     units: Schema.optional(Schema.String),
@@ -591,7 +591,7 @@ export interface GoogleCloudChannelV1DiscountComponent {
 }
 
 export const GoogleCloudChannelV1DiscountComponent: Schema.Codec<GoogleCloudChannelV1DiscountComponent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     discountType: Schema.optional(Schema.String),
     discountPercentage: Schema.optional(Schema.Number),
     discountAbsolute: Schema.optional(GoogleTypeMoney),
@@ -613,7 +613,7 @@ export interface GoogleCloudChannelV1Price {
 }
 
 export const GoogleCloudChannelV1Price: Schema.Codec<GoogleCloudChannelV1Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     discountComponents: Schema.optional(
       Schema.Array(GoogleCloudChannelV1DiscountComponent),
     ),
@@ -636,7 +636,7 @@ export interface GoogleCloudChannelV1BillableSku {
 }
 
 export const GoogleCloudChannelV1BillableSku: Schema.Codec<GoogleCloudChannelV1BillableSku> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sku: Schema.optional(Schema.String),
     service: Schema.optional(Schema.String),
     serviceDisplayName: Schema.optional(Schema.String),
@@ -651,7 +651,7 @@ export interface GoogleCloudChannelV1ListSkuGroupBillableSkusResponse {
 }
 
 export const GoogleCloudChannelV1ListSkuGroupBillableSkusResponse: Schema.Codec<GoogleCloudChannelV1ListSkuGroupBillableSkusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billableSkus: Schema.optional(
       Schema.Array(GoogleCloudChannelV1BillableSku),
     ),
@@ -668,7 +668,7 @@ export interface GoogleCloudChannelV1ListSkusResponse {
 }
 
 export const GoogleCloudChannelV1ListSkusResponse: Schema.Codec<GoogleCloudChannelV1ListSkusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skus: Schema.optional(Schema.Array(GoogleCloudChannelV1Sku)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1ListSkusResponse" });
@@ -676,7 +676,7 @@ export const GoogleCloudChannelV1ListSkusResponse: Schema.Codec<GoogleCloudChann
 export interface GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity {}
 
 export const GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity: Schema.Codec<GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity",
   });
 
@@ -686,7 +686,7 @@ export interface GoogleCloudChannelV1UnregisterSubscriberResponse {
 }
 
 export const GoogleCloudChannelV1UnregisterSubscriberResponse: Schema.Codec<GoogleCloudChannelV1UnregisterSubscriberResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudChannelV1UnregisterSubscriberResponse",
@@ -710,7 +710,7 @@ export interface GoogleCloudChannelV1Column {
 }
 
 export const GoogleCloudChannelV1Column: Schema.Codec<GoogleCloudChannelV1Column> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataType: Schema.optional(Schema.String),
     columnId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -728,7 +728,7 @@ export interface GoogleCloudChannelV1Report {
 }
 
 export const GoogleCloudChannelV1Report: Schema.Codec<GoogleCloudChannelV1Report> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     columns: Schema.optional(Schema.Array(GoogleCloudChannelV1Column)),
@@ -743,7 +743,7 @@ export interface GoogleCloudChannelV1ListReportsResponse {
 }
 
 export const GoogleCloudChannelV1ListReportsResponse: Schema.Codec<GoogleCloudChannelV1ListReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reports: Schema.optional(Schema.Array(GoogleCloudChannelV1Report)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1ListReportsResponse" });
@@ -758,7 +758,7 @@ export interface GoogleCloudChannelV1TransferableSku {
 }
 
 export const GoogleCloudChannelV1TransferableSku: Schema.Codec<GoogleCloudChannelV1TransferableSku> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sku: Schema.optional(GoogleCloudChannelV1Sku),
     transferEligibility: Schema.optional(
       GoogleCloudChannelV1TransferEligibility,
@@ -774,7 +774,7 @@ export interface GoogleCloudChannelV1ListTransferableSkusResponse {
 }
 
 export const GoogleCloudChannelV1ListTransferableSkusResponse: Schema.Codec<GoogleCloudChannelV1ListTransferableSkusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     transferableSkus: Schema.optional(
       Schema.Array(GoogleCloudChannelV1TransferableSku),
@@ -793,7 +793,7 @@ export interface GoogleRpcStatus {
 }
 
 export const GoogleRpcStatus: Schema.Codec<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -809,7 +809,7 @@ export interface GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest {
 }
 
 export const GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest: Schema.Codec<GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     primaryAdminEmail: Schema.optional(Schema.String),
   }).annotate({
@@ -822,7 +822,7 @@ export interface GoogleTypeDecimal {
 }
 
 export const GoogleTypeDecimal: Schema.Codec<GoogleTypeDecimal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleTypeDecimal" });
 
@@ -832,7 +832,7 @@ export interface GoogleCloudChannelV1PercentageAdjustment {
 }
 
 export const GoogleCloudChannelV1PercentageAdjustment: Schema.Codec<GoogleCloudChannelV1PercentageAdjustment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     percentage: Schema.optional(GoogleTypeDecimal),
   }).annotate({ identifier: "GoogleCloudChannelV1PercentageAdjustment" });
 
@@ -862,7 +862,7 @@ export interface GoogleCloudChannelV1ChannelPartnerLink {
 }
 
 export const GoogleCloudChannelV1ChannelPartnerLink: Schema.Codec<GoogleCloudChannelV1ChannelPartnerLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     publicId: Schema.optional(Schema.String),
     channelPartnerCloudIdentityInfo: Schema.optional(
@@ -883,7 +883,7 @@ export interface GoogleCloudChannelV1ListChannelPartnerLinksResponse {
 }
 
 export const GoogleCloudChannelV1ListChannelPartnerLinksResponse: Schema.Codec<GoogleCloudChannelV1ListChannelPartnerLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     channelPartnerLinks: Schema.optional(
       Schema.Array(GoogleCloudChannelV1ChannelPartnerLink),
@@ -900,7 +900,7 @@ export interface GoogleCloudChannelV1SkuGroup {
 }
 
 export const GoogleCloudChannelV1SkuGroup: Schema.Codec<GoogleCloudChannelV1SkuGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1SkuGroup" });
@@ -911,7 +911,7 @@ export interface GoogleCloudChannelV1RepricingAdjustment {
 }
 
 export const GoogleCloudChannelV1RepricingAdjustment: Schema.Codec<GoogleCloudChannelV1RepricingAdjustment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     percentageAdjustment: Schema.optional(
       GoogleCloudChannelV1PercentageAdjustment,
     ),
@@ -927,7 +927,7 @@ export interface GoogleCloudChannelV1ProvisionedService {
 }
 
 export const GoogleCloudChannelV1ProvisionedService: Schema.Codec<GoogleCloudChannelV1ProvisionedService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skuId: Schema.optional(Schema.String),
     provisioningId: Schema.optional(Schema.String),
     productId: Schema.optional(Schema.String),
@@ -943,7 +943,7 @@ export interface GoogleCloudChannelV1FetchReportResultsRequest {
 }
 
 export const GoogleCloudChannelV1FetchReportResultsRequest: Schema.Codec<GoogleCloudChannelV1FetchReportResultsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number),
     pageToken: Schema.optional(Schema.String),
     partitionKeys: Schema.optional(Schema.Array(Schema.String)),
@@ -959,7 +959,7 @@ export interface GoogleCloudChannelV1AdminUser {
 }
 
 export const GoogleCloudChannelV1AdminUser: Schema.Codec<GoogleCloudChannelV1AdminUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
     givenName: Schema.optional(Schema.String),
     familyName: Schema.optional(Schema.String),
@@ -971,7 +971,7 @@ export interface GoogleCloudChannelV1ActivateEntitlementRequest {
 }
 
 export const GoogleCloudChannelV1ActivateEntitlementRequest: Schema.Codec<GoogleCloudChannelV1ActivateEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1ActivateEntitlementRequest" });
 
@@ -993,7 +993,7 @@ export interface GoogleCloudChannelV1alpha1Column {
 }
 
 export const GoogleCloudChannelV1alpha1Column: Schema.Codec<GoogleCloudChannelV1alpha1Column> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataType: Schema.optional(Schema.String),
     columnId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -1011,7 +1011,7 @@ export interface GoogleCloudChannelV1alpha1Report {
 }
 
 export const GoogleCloudChannelV1alpha1Report: Schema.Codec<GoogleCloudChannelV1alpha1Report> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     columns: Schema.optional(Schema.Array(GoogleCloudChannelV1alpha1Column)),
@@ -1034,7 +1034,7 @@ export interface GoogleCloudChannelV1ReportStatus {
 }
 
 export const GoogleCloudChannelV1ReportStatus: Schema.Codec<GoogleCloudChannelV1ReportStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -1052,7 +1052,7 @@ export interface GoogleCloudChannelV1CustomerEvent {
 }
 
 export const GoogleCloudChannelV1CustomerEvent: Schema.Codec<GoogleCloudChannelV1CustomerEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.optional(Schema.String),
     eventType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1CustomerEvent" });
@@ -1079,7 +1079,7 @@ export interface GoogleCloudChannelV1EntitlementEvent {
 }
 
 export const GoogleCloudChannelV1EntitlementEvent: Schema.Codec<GoogleCloudChannelV1EntitlementEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventType: Schema.optional(Schema.String),
     entitlement: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1EntitlementEvent" });
@@ -1092,7 +1092,7 @@ export interface GoogleCloudChannelV1SubscriberEvent {
 }
 
 export const GoogleCloudChannelV1SubscriberEvent: Schema.Codec<GoogleCloudChannelV1SubscriberEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerEvent: Schema.optional(GoogleCloudChannelV1CustomerEvent),
     entitlementEvent: Schema.optional(GoogleCloudChannelV1EntitlementEvent),
   }).annotate({ identifier: "GoogleCloudChannelV1SubscriberEvent" });
@@ -1115,7 +1115,7 @@ export interface GoogleCloudChannelV1ImportCustomerRequest {
 }
 
 export const GoogleCloudChannelV1ImportCustomerRequest: Schema.Codec<GoogleCloudChannelV1ImportCustomerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryAdminEmail: Schema.optional(Schema.String),
     overwriteIfExists: Schema.optional(Schema.Boolean),
     channelPartnerId: Schema.optional(Schema.String),
@@ -1133,7 +1133,7 @@ export interface GoogleTypeTimeZone {
 }
 
 export const GoogleTypeTimeZone: Schema.Codec<GoogleTypeTimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleTypeTimeZone" });
@@ -1160,7 +1160,7 @@ export interface GoogleTypeDateTime {
 }
 
 export const GoogleTypeDateTime: Schema.Codec<GoogleTypeDateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hours: Schema.optional(Schema.Number),
     minutes: Schema.optional(Schema.Number),
     nanos: Schema.optional(Schema.Number),
@@ -1182,7 +1182,7 @@ export interface GoogleTypeDate {
 }
 
 export const GoogleTypeDate: Schema.Codec<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     month: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
@@ -1204,7 +1204,7 @@ export interface GoogleCloudChannelV1ReportValue {
 }
 
 export const GoogleCloudChannelV1ReportValue: Schema.Codec<GoogleCloudChannelV1ReportValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intValue: Schema.optional(Schema.String),
     dateTimeValue: Schema.optional(GoogleTypeDateTime),
     decimalValue: Schema.optional(GoogleTypeDecimal),
@@ -1227,7 +1227,7 @@ export interface GoogleCloudChannelV1Value {
 }
 
 export const GoogleCloudChannelV1Value: Schema.Codec<GoogleCloudChannelV1Value> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     boolValue: Schema.optional(Schema.Boolean),
     stringValue: Schema.optional(Schema.String),
     doubleValue: Schema.optional(Schema.Number),
@@ -1245,7 +1245,7 @@ export interface GoogleCloudChannelV1Parameter {
 }
 
 export const GoogleCloudChannelV1Parameter: Schema.Codec<GoogleCloudChannelV1Parameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     editable: Schema.optional(Schema.Boolean),
     value: Schema.optional(GoogleCloudChannelV1Value),
     name: Schema.optional(Schema.String),
@@ -1267,7 +1267,7 @@ export interface GoogleCloudChannelV1ChangeOfferRequest {
 }
 
 export const GoogleCloudChannelV1ChangeOfferRequest: Schema.Codec<GoogleCloudChannelV1ChangeOfferRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     purchaseOrderId: Schema.optional(Schema.String),
     offer: Schema.optional(Schema.String),
     billingAccount: Schema.optional(Schema.String),
@@ -1286,7 +1286,7 @@ export interface GoogleCloudChannelV1UnregisterSubscriberRequest {
 }
 
 export const GoogleCloudChannelV1UnregisterSubscriberRequest: Schema.Codec<GoogleCloudChannelV1UnregisterSubscriberRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     integrator: Schema.optional(Schema.String),
     serviceAccount: Schema.optional(Schema.String),
     account: Schema.optional(Schema.String),
@@ -1302,7 +1302,7 @@ export interface GoogleCloudChannelV1TrialSettings {
 }
 
 export const GoogleCloudChannelV1TrialSettings: Schema.Codec<GoogleCloudChannelV1TrialSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     trial: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudChannelV1TrialSettings" });
@@ -1317,7 +1317,7 @@ export interface GoogleCloudChannelV1PriceTier {
 }
 
 export const GoogleCloudChannelV1PriceTier: Schema.Codec<GoogleCloudChannelV1PriceTier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     firstResource: Schema.optional(Schema.Number),
     lastResource: Schema.optional(Schema.Number),
     price: Schema.optional(GoogleCloudChannelV1Price),
@@ -1342,7 +1342,7 @@ export interface GoogleCloudChannelV1PricePhase {
 }
 
 export const GoogleCloudChannelV1PricePhase: Schema.Codec<GoogleCloudChannelV1PricePhase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     periodType: Schema.optional(Schema.String),
     firstPeriod: Schema.optional(Schema.Number),
     priceTiers: Schema.optional(Schema.Array(GoogleCloudChannelV1PriceTier)),
@@ -1370,7 +1370,7 @@ export interface GoogleCloudChannelV1PriceByResource {
 }
 
 export const GoogleCloudChannelV1PriceByResource: Schema.Codec<GoogleCloudChannelV1PriceByResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     price: Schema.optional(GoogleCloudChannelV1Price),
     pricePhases: Schema.optional(Schema.Array(GoogleCloudChannelV1PricePhase)),
     resourceType: Schema.optional(Schema.String),
@@ -1398,7 +1398,7 @@ export interface GoogleCloudChannelV1ParameterDefinition {
 }
 
 export const GoogleCloudChannelV1ParameterDefinition: Schema.Codec<GoogleCloudChannelV1ParameterDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameterType: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     maxValue: Schema.optional(GoogleCloudChannelV1Value),
@@ -1425,7 +1425,7 @@ export interface GoogleCloudChannelV1CustomerConstraints {
 }
 
 export const GoogleCloudChannelV1CustomerConstraints: Schema.Codec<GoogleCloudChannelV1CustomerConstraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowedCustomerTypes: Schema.optional(Schema.Array(Schema.String)),
     allowedRegions: Schema.optional(Schema.Array(Schema.String)),
     promotionalOrderTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -1437,7 +1437,7 @@ export interface GoogleCloudChannelV1Constraints {
 }
 
 export const GoogleCloudChannelV1Constraints: Schema.Codec<GoogleCloudChannelV1Constraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerConstraints: Schema.optional(
       GoogleCloudChannelV1CustomerConstraints,
     ),
@@ -1467,7 +1467,7 @@ export interface GoogleCloudChannelV1Offer {
 }
 
 export const GoogleCloudChannelV1Offer: Schema.Codec<GoogleCloudChannelV1Offer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     plan: Schema.optional(GoogleCloudChannelV1Plan),
     priceByResources: Schema.optional(
       Schema.Array(GoogleCloudChannelV1PriceByResource),
@@ -1504,7 +1504,7 @@ export interface GoogleCloudChannelV1CloudIdentityCustomerAccount {
 }
 
 export const GoogleCloudChannelV1CloudIdentityCustomerAccount: Schema.Codec<GoogleCloudChannelV1CloudIdentityCustomerAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     existing: Schema.optional(Schema.Boolean),
     owned: Schema.optional(Schema.Boolean),
     channelPartnerCloudIdentityId: Schema.optional(Schema.String),
@@ -1525,7 +1525,7 @@ export interface GoogleCloudChannelV1ListSubscribersResponse {
 }
 
 export const GoogleCloudChannelV1ListSubscribersResponse: Schema.Codec<GoogleCloudChannelV1ListSubscribersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceAccounts: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
     topic: Schema.optional(Schema.String),
@@ -1545,7 +1545,7 @@ export interface GoogleCloudChannelV1alpha1Value {
 }
 
 export const GoogleCloudChannelV1alpha1Value: Schema.Codec<GoogleCloudChannelV1alpha1Value> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     doubleValue: Schema.optional(Schema.Number),
     int64Value: Schema.optional(Schema.String),
     protoValue: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1621,7 +1621,7 @@ export interface GoogleCloudChannelV1EntitlementChange {
 }
 
 export const GoogleCloudChannelV1EntitlementChange: Schema.Codec<GoogleCloudChannelV1EntitlementChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     otherChangeReason: Schema.optional(Schema.String),
     cancellationReason: Schema.optional(Schema.String),
     operatorType: Schema.optional(Schema.String),
@@ -1655,7 +1655,7 @@ export interface GoogleCloudChannelV1RenewalSettings {
 }
 
 export const GoogleCloudChannelV1RenewalSettings: Schema.Codec<GoogleCloudChannelV1RenewalSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resizeUnitCount: Schema.optional(Schema.Boolean),
     paymentCycle: Schema.optional(GoogleCloudChannelV1Period),
     enableRenewal: Schema.optional(Schema.Boolean),
@@ -1670,7 +1670,7 @@ export interface GoogleCloudChannelV1SkuPurchaseGroup {
 }
 
 export const GoogleCloudChannelV1SkuPurchaseGroup: Schema.Codec<GoogleCloudChannelV1SkuPurchaseGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billingAccountPurchaseInfos: Schema.optional(
       Schema.Array(GoogleCloudChannelV1BillingAccountPurchaseInfo),
     ),
@@ -1683,7 +1683,7 @@ export interface GoogleCloudChannelV1QueryEligibleBillingAccountsResponse {
 }
 
 export const GoogleCloudChannelV1QueryEligibleBillingAccountsResponse: Schema.Codec<GoogleCloudChannelV1QueryEligibleBillingAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skuPurchaseGroups: Schema.optional(
       Schema.Array(GoogleCloudChannelV1SkuPurchaseGroup),
     ),
@@ -1713,7 +1713,7 @@ export interface GoogleCloudChannelV1alpha1OperationMetadata {
 }
 
 export const GoogleCloudChannelV1alpha1OperationMetadata: Schema.Codec<GoogleCloudChannelV1alpha1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1alpha1OperationMetadata" });
 
@@ -1725,7 +1725,7 @@ export interface GoogleCloudChannelV1ListSkuGroupsResponse {
 }
 
 export const GoogleCloudChannelV1ListSkuGroupsResponse: Schema.Codec<GoogleCloudChannelV1ListSkuGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skuGroups: Schema.optional(Schema.Array(GoogleCloudChannelV1SkuGroup)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1ListSkuGroupsResponse" });
@@ -1743,7 +1743,7 @@ export interface GoogleCloudChannelV1alpha1Period {
 }
 
 export const GoogleCloudChannelV1alpha1Period: Schema.Codec<GoogleCloudChannelV1alpha1Period> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.Number),
     periodType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1alpha1Period" });
@@ -1777,7 +1777,7 @@ export interface GoogleCloudChannelV1alpha1RenewalSettings {
 }
 
 export const GoogleCloudChannelV1alpha1RenewalSettings: Schema.Codec<GoogleCloudChannelV1alpha1RenewalSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableRenewal: Schema.optional(Schema.Boolean),
     resizeUnitCount: Schema.optional(Schema.Boolean),
     paymentPlan: Schema.optional(Schema.String),
@@ -1795,7 +1795,7 @@ export interface GoogleCloudChannelV1ListEntitlementChangesResponse {
 }
 
 export const GoogleCloudChannelV1ListEntitlementChangesResponse: Schema.Codec<GoogleCloudChannelV1ListEntitlementChangesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlementChanges: Schema.optional(
       Schema.Array(GoogleCloudChannelV1EntitlementChange),
     ),
@@ -1814,7 +1814,7 @@ export interface GoogleCloudChannelV1alpha1CommitmentSettings {
 }
 
 export const GoogleCloudChannelV1alpha1CommitmentSettings: Schema.Codec<GoogleCloudChannelV1alpha1CommitmentSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     renewalSettings: Schema.optional(GoogleCloudChannelV1alpha1RenewalSettings),
@@ -1826,7 +1826,7 @@ export interface GoogleCloudChannelV1SkuGroupCondition {
 }
 
 export const GoogleCloudChannelV1SkuGroupCondition: Schema.Codec<GoogleCloudChannelV1SkuGroupCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skuGroup: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1SkuGroupCondition" });
 
@@ -1836,7 +1836,7 @@ export interface GoogleCloudChannelV1RepricingCondition {
 }
 
 export const GoogleCloudChannelV1RepricingCondition: Schema.Codec<GoogleCloudChannelV1RepricingCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skuGroupCondition: Schema.optional(GoogleCloudChannelV1SkuGroupCondition),
   }).annotate({ identifier: "GoogleCloudChannelV1RepricingCondition" });
 
@@ -1854,7 +1854,7 @@ export interface GoogleCloudChannelV1ConditionalOverride {
 }
 
 export const GoogleCloudChannelV1ConditionalOverride: Schema.Codec<GoogleCloudChannelV1ConditionalOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rebillingBasis: Schema.optional(Schema.String),
     repricingCondition: Schema.optional(GoogleCloudChannelV1RepricingCondition),
     adjustment: Schema.optional(GoogleCloudChannelV1RepricingAdjustment),
@@ -1866,7 +1866,7 @@ export interface GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
 }
 
 export const GoogleCloudChannelV1RepricingConfigEntitlementGranularity: Schema.Codec<GoogleCloudChannelV1RepricingConfigEntitlementGranularity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlement: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleCloudChannelV1RepricingConfigEntitlementGranularity",
@@ -1892,7 +1892,7 @@ export interface GoogleCloudChannelV1RepricingConfig {
 }
 
 export const GoogleCloudChannelV1RepricingConfig: Schema.Codec<GoogleCloudChannelV1RepricingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channelPartnerGranularity: Schema.optional(
       GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity,
     ),
@@ -1917,7 +1917,7 @@ export interface GoogleCloudChannelV1CustomerRepricingConfig {
 }
 
 export const GoogleCloudChannelV1CustomerRepricingConfig: Schema.Codec<GoogleCloudChannelV1CustomerRepricingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repricingConfig: Schema.optional(GoogleCloudChannelV1RepricingConfig),
     updateTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -1935,7 +1935,7 @@ export interface GoogleCloudChannelV1DateRange {
 }
 
 export const GoogleCloudChannelV1DateRange: Schema.Codec<GoogleCloudChannelV1DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     usageStartDateTime: Schema.optional(GoogleTypeDateTime),
     usageEndDateTime: Schema.optional(GoogleTypeDateTime),
     invoiceStartDate: Schema.optional(GoogleTypeDate),
@@ -1952,7 +1952,7 @@ export interface GoogleCloudChannelV1ChannelPartnerRepricingConfig {
 }
 
 export const GoogleCloudChannelV1ChannelPartnerRepricingConfig: Schema.Codec<GoogleCloudChannelV1ChannelPartnerRepricingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repricingConfig: Schema.optional(GoogleCloudChannelV1RepricingConfig),
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -1968,7 +1968,7 @@ export interface GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse 
 }
 
 export const GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse: Schema.Codec<GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channelPartnerRepricingConfigs: Schema.optional(
       Schema.Array(GoogleCloudChannelV1ChannelPartnerRepricingConfig),
     ),
@@ -1990,7 +1990,7 @@ export interface GoogleCloudChannelV1alpha1DateRange {
 }
 
 export const GoogleCloudChannelV1alpha1DateRange: Schema.Codec<GoogleCloudChannelV1alpha1DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     usageStartDateTime: Schema.optional(GoogleTypeDateTime),
     usageEndDateTime: Schema.optional(GoogleTypeDateTime),
     invoiceStartDate: Schema.optional(GoogleTypeDate),
@@ -2009,7 +2009,7 @@ export interface GoogleCloudChannelV1alpha1ReportResultsMetadata {
 }
 
 export const GoogleCloudChannelV1alpha1ReportResultsMetadata: Schema.Codec<GoogleCloudChannelV1alpha1ReportResultsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     report: Schema.optional(GoogleCloudChannelV1alpha1Report),
     rowCount: Schema.optional(Schema.String),
     dateRange: Schema.optional(GoogleCloudChannelV1alpha1DateRange),
@@ -2026,7 +2026,7 @@ export interface GoogleCloudChannelV1alpha1RunReportJobResponse {
 }
 
 export const GoogleCloudChannelV1alpha1RunReportJobResponse: Schema.Codec<GoogleCloudChannelV1alpha1RunReportJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportMetadata: Schema.optional(
       GoogleCloudChannelV1alpha1ReportResultsMetadata,
     ),
@@ -2041,7 +2041,7 @@ export interface GoogleCloudChannelV1ListCustomersResponse {
 }
 
 export const GoogleCloudChannelV1ListCustomersResponse: Schema.Codec<GoogleCloudChannelV1ListCustomersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customers: Schema.optional(Schema.Array(GoogleCloudChannelV1Customer)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1ListCustomersResponse" });
@@ -2060,7 +2060,7 @@ export interface GoogleLongrunningOperation {
 }
 
 export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(GoogleRpcStatus),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
@@ -2078,7 +2078,7 @@ export interface GoogleLongrunningListOperationsResponse {
 }
 
 export const GoogleLongrunningListOperationsResponse: Schema.Codec<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2092,7 +2092,7 @@ export interface GoogleCloudChannelV1Row {
 }
 
 export const GoogleCloudChannelV1Row: Schema.Codec<GoogleCloudChannelV1Row> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     partitionKey: Schema.optional(Schema.String),
     values: Schema.optional(Schema.Array(GoogleCloudChannelV1ReportValue)),
   }).annotate({ identifier: "GoogleCloudChannelV1Row" });
@@ -2116,7 +2116,7 @@ export interface GoogleCloudChannelV1OperationMetadata {
 }
 
 export const GoogleCloudChannelV1OperationMetadata: Schema.Codec<GoogleCloudChannelV1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1OperationMetadata" });
 
@@ -2130,7 +2130,7 @@ export interface GoogleCloudChannelV1RunReportJobRequest {
 }
 
 export const GoogleCloudChannelV1RunReportJobRequest: Schema.Codec<GoogleCloudChannelV1RunReportJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateRange: Schema.optional(GoogleCloudChannelV1DateRange),
     filter: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
@@ -2144,7 +2144,7 @@ export interface GoogleCloudChannelV1ListCustomerRepricingConfigsResponse {
 }
 
 export const GoogleCloudChannelV1ListCustomerRepricingConfigsResponse: Schema.Codec<GoogleCloudChannelV1ListCustomerRepricingConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerRepricingConfigs: Schema.optional(
       Schema.Array(GoogleCloudChannelV1CustomerRepricingConfig),
     ),
@@ -2159,14 +2159,14 @@ export interface GoogleCloudChannelV1CancelEntitlementRequest {
 }
 
 export const GoogleCloudChannelV1CancelEntitlementRequest: Schema.Codec<GoogleCloudChannelV1CancelEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1CancelEntitlementRequest" });
 
 export interface GoogleProtobufEmpty {}
 
 export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
 
@@ -2180,7 +2180,7 @@ export interface GoogleCloudChannelV1alpha1Parameter {
 }
 
 export const GoogleCloudChannelV1alpha1Parameter: Schema.Codec<GoogleCloudChannelV1alpha1Parameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     editable: Schema.optional(Schema.Boolean),
     value: Schema.optional(GoogleCloudChannelV1alpha1Value),
@@ -2194,7 +2194,7 @@ export interface GoogleCloudChannelV1ChangeRenewalSettingsRequest {
 }
 
 export const GoogleCloudChannelV1ChangeRenewalSettingsRequest: Schema.Codec<GoogleCloudChannelV1ChangeRenewalSettingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     renewalSettings: Schema.optional(GoogleCloudChannelV1RenewalSettings),
     requestId: Schema.optional(Schema.String),
   }).annotate({
@@ -2209,7 +2209,7 @@ export interface GoogleCloudChannelV1PurchasableOffer {
 }
 
 export const GoogleCloudChannelV1PurchasableOffer: Schema.Codec<GoogleCloudChannelV1PurchasableOffer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     offer: Schema.optional(GoogleCloudChannelV1Offer),
     priceReferenceId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1PurchasableOffer" });
@@ -2222,7 +2222,7 @@ export interface GoogleCloudChannelV1ListPurchasableOffersResponse {
 }
 
 export const GoogleCloudChannelV1ListPurchasableOffersResponse: Schema.Codec<GoogleCloudChannelV1ListPurchasableOffersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     purchasableOffers: Schema.optional(
       Schema.Array(GoogleCloudChannelV1PurchasableOffer),
     ),
@@ -2237,7 +2237,7 @@ export interface GoogleCloudChannelV1alpha1AssociationInfo {
 }
 
 export const GoogleCloudChannelV1alpha1AssociationInfo: Schema.Codec<GoogleCloudChannelV1alpha1AssociationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     baseEntitlement: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1alpha1AssociationInfo" });
 
@@ -2249,7 +2249,7 @@ export interface GoogleCloudChannelV1alpha1TrialSettings {
 }
 
 export const GoogleCloudChannelV1alpha1TrialSettings: Schema.Codec<GoogleCloudChannelV1alpha1TrialSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endTime: Schema.optional(Schema.String),
     trial: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleCloudChannelV1alpha1TrialSettings" });
@@ -2309,7 +2309,7 @@ export interface GoogleCloudChannelV1alpha1Entitlement {
 }
 
 export const GoogleCloudChannelV1alpha1Entitlement: Schema.Codec<GoogleCloudChannelV1alpha1Entitlement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     assignedUnits: Schema.optional(Schema.Number),
     associationInfo: Schema.optional(GoogleCloudChannelV1alpha1AssociationInfo),
     name: Schema.optional(Schema.String),
@@ -2348,7 +2348,7 @@ export interface GoogleCloudChannelV1ReportResultsMetadata {
 }
 
 export const GoogleCloudChannelV1ReportResultsMetadata: Schema.Codec<GoogleCloudChannelV1ReportResultsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     report: Schema.optional(GoogleCloudChannelV1Report),
     rowCount: Schema.optional(Schema.String),
     dateRange: Schema.optional(GoogleCloudChannelV1DateRange),
@@ -2363,7 +2363,7 @@ export interface GoogleCloudChannelV1ReportJob {
 }
 
 export const GoogleCloudChannelV1ReportJob: Schema.Codec<GoogleCloudChannelV1ReportJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     reportStatus: Schema.optional(GoogleCloudChannelV1ReportStatus),
   }).annotate({ identifier: "GoogleCloudChannelV1ReportJob" });
@@ -2376,7 +2376,7 @@ export interface GoogleCloudChannelV1TransferableOffer {
 }
 
 export const GoogleCloudChannelV1TransferableOffer: Schema.Codec<GoogleCloudChannelV1TransferableOffer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     offer: Schema.optional(GoogleCloudChannelV1Offer),
     priceReferenceId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1TransferableOffer" });
@@ -2389,7 +2389,7 @@ export interface GoogleCloudChannelV1ListOffersResponse {
 }
 
 export const GoogleCloudChannelV1ListOffersResponse: Schema.Codec<GoogleCloudChannelV1ListOffersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     offers: Schema.optional(Schema.Array(GoogleCloudChannelV1Offer)),
   }).annotate({ identifier: "GoogleCloudChannelV1ListOffersResponse" });
@@ -2400,7 +2400,7 @@ export interface GoogleCloudChannelV1AssociationInfo {
 }
 
 export const GoogleCloudChannelV1AssociationInfo: Schema.Codec<GoogleCloudChannelV1AssociationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     baseEntitlement: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1AssociationInfo" });
 
@@ -2414,7 +2414,7 @@ export interface GoogleCloudChannelV1CommitmentSettings {
 }
 
 export const GoogleCloudChannelV1CommitmentSettings: Schema.Codec<GoogleCloudChannelV1CommitmentSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startTime: Schema.optional(Schema.String),
     renewalSettings: Schema.optional(GoogleCloudChannelV1RenewalSettings),
     endTime: Schema.optional(Schema.String),
@@ -2464,7 +2464,7 @@ export interface GoogleCloudChannelV1Entitlement {
 }
 
 export const GoogleCloudChannelV1Entitlement: Schema.Codec<GoogleCloudChannelV1Entitlement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     associationInfo: Schema.optional(GoogleCloudChannelV1AssociationInfo),
     name: Schema.optional(Schema.String),
     priceReferenceId: Schema.optional(Schema.String),
@@ -2489,7 +2489,7 @@ export interface GoogleCloudChannelV1TransferEntitlementsToGoogleRequest {
 }
 
 export const GoogleCloudChannelV1TransferEntitlementsToGoogleRequest: Schema.Codec<GoogleCloudChannelV1TransferEntitlementsToGoogleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlements: Schema.optional(
       Schema.Array(GoogleCloudChannelV1Entitlement),
     ),
@@ -2506,7 +2506,7 @@ export interface GoogleCloudChannelV1CreateEntitlementRequest {
 }
 
 export const GoogleCloudChannelV1CreateEntitlementRequest: Schema.Codec<GoogleCloudChannelV1CreateEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlement: Schema.optional(GoogleCloudChannelV1Entitlement),
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1CreateEntitlementRequest" });
@@ -2529,7 +2529,7 @@ export interface GoogleCloudChannelV1ListTransferableOffersRequest {
 }
 
 export const GoogleCloudChannelV1ListTransferableOffersRequest: Schema.Codec<GoogleCloudChannelV1ListTransferableOffersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cloudIdentityId: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
     customerName: Schema.optional(Schema.String),
@@ -2551,7 +2551,7 @@ export interface GoogleCloudChannelV1RegisterSubscriberRequest {
 }
 
 export const GoogleCloudChannelV1RegisterSubscriberRequest: Schema.Codec<GoogleCloudChannelV1RegisterSubscriberRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     integrator: Schema.optional(Schema.String),
     serviceAccount: Schema.optional(Schema.String),
     account: Schema.optional(Schema.String),
@@ -2565,7 +2565,7 @@ export interface GoogleCloudChannelV1UpdateChannelPartnerLinkRequest {
 }
 
 export const GoogleCloudChannelV1UpdateChannelPartnerLinkRequest: Schema.Codec<GoogleCloudChannelV1UpdateChannelPartnerLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     channelPartnerLink: Schema.optional(GoogleCloudChannelV1ChannelPartnerLink),
     updateMask: Schema.optional(Schema.String),
   }).annotate({
@@ -2580,7 +2580,7 @@ export interface GoogleCloudChannelV1ListEntitlementsResponse {
 }
 
 export const GoogleCloudChannelV1ListEntitlementsResponse: Schema.Codec<GoogleCloudChannelV1ListEntitlementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlements: Schema.optional(
       Schema.Array(GoogleCloudChannelV1Entitlement),
     ),
@@ -2590,7 +2590,7 @@ export const GoogleCloudChannelV1ListEntitlementsResponse: Schema.Codec<GoogleCl
 export interface GoogleLongrunningCancelOperationRequest {}
 
 export const GoogleLongrunningCancelOperationRequest: Schema.Codec<GoogleLongrunningCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
   });
 
@@ -2604,7 +2604,7 @@ export interface GoogleCloudChannelV1FetchReportResultsResponse {
 }
 
 export const GoogleCloudChannelV1FetchReportResultsResponse: Schema.Codec<GoogleCloudChannelV1FetchReportResultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportMetadata: Schema.optional(GoogleCloudChannelV1ReportResultsMetadata),
     rows: Schema.optional(Schema.Array(GoogleCloudChannelV1Row)),
     nextPageToken: Schema.optional(Schema.String),
@@ -2620,7 +2620,7 @@ export interface GoogleCloudChannelV1ProvisionCloudIdentityRequest {
 }
 
 export const GoogleCloudChannelV1ProvisionCloudIdentityRequest: Schema.Codec<GoogleCloudChannelV1ProvisionCloudIdentityRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean),
     user: Schema.optional(GoogleCloudChannelV1AdminUser),
     cloudIdentityInfo: Schema.optional(GoogleCloudChannelV1CloudIdentityInfo),
@@ -2644,7 +2644,7 @@ export interface GoogleCloudChannelV1ListTransferableSkusRequest {
 }
 
 export const GoogleCloudChannelV1ListTransferableSkusRequest: Schema.Codec<GoogleCloudChannelV1ListTransferableSkusRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cloudIdentityId: Schema.optional(Schema.String),
     languageCode: Schema.optional(Schema.String),
     customerName: Schema.optional(Schema.String),
@@ -2663,7 +2663,7 @@ export interface GoogleCloudChannelV1ListProductsResponse {
 }
 
 export const GoogleCloudChannelV1ListProductsResponse: Schema.Codec<GoogleCloudChannelV1ListProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     products: Schema.optional(Schema.Array(GoogleCloudChannelV1Product)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1ListProductsResponse" });
@@ -2674,7 +2674,7 @@ export interface GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse {
 }
 
 export const GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse: Schema.Codec<GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cloudIdentityAccounts: Schema.optional(
       Schema.Array(GoogleCloudChannelV1CloudIdentityCustomerAccount),
     ),
@@ -2692,7 +2692,7 @@ export interface GoogleCloudChannelV1TransferEntitlementsRequest {
 }
 
 export const GoogleCloudChannelV1TransferEntitlementsRequest: Schema.Codec<GoogleCloudChannelV1TransferEntitlementsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlements: Schema.optional(
       Schema.Array(GoogleCloudChannelV1Entitlement),
     ),
@@ -2708,7 +2708,7 @@ export interface GoogleCloudChannelV1RegisterSubscriberResponse {
 }
 
 export const GoogleCloudChannelV1RegisterSubscriberResponse: Schema.Codec<GoogleCloudChannelV1RegisterSubscriberResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleCloudChannelV1RegisterSubscriberResponse" });
 
@@ -2718,7 +2718,7 @@ export interface GoogleCloudChannelV1alpha1TransferEntitlementsResponse {
 }
 
 export const GoogleCloudChannelV1alpha1TransferEntitlementsResponse: Schema.Codec<GoogleCloudChannelV1alpha1TransferEntitlementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlements: Schema.optional(
       Schema.Array(GoogleCloudChannelV1alpha1Entitlement),
     ),
@@ -2736,7 +2736,7 @@ export interface GoogleCloudChannelV1ChangeParametersRequest {
 }
 
 export const GoogleCloudChannelV1ChangeParametersRequest: Schema.Codec<GoogleCloudChannelV1ChangeParametersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
     requestId: Schema.optional(Schema.String),
     purchaseOrderId: Schema.optional(Schema.String),
@@ -2750,7 +2750,7 @@ export interface GoogleCloudChannelV1ListTransferableOffersResponse {
 }
 
 export const GoogleCloudChannelV1ListTransferableOffersResponse: Schema.Codec<GoogleCloudChannelV1ListTransferableOffersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transferableOffers: Schema.optional(
       Schema.Array(GoogleCloudChannelV1TransferableOffer),
     ),
@@ -2765,7 +2765,7 @@ export interface GoogleCloudChannelV1TransferEntitlementsResponse {
 }
 
 export const GoogleCloudChannelV1TransferEntitlementsResponse: Schema.Codec<GoogleCloudChannelV1TransferEntitlementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlements: Schema.optional(
       Schema.Array(GoogleCloudChannelV1Entitlement),
     ),
@@ -2781,7 +2781,7 @@ export interface GoogleCloudChannelV1RunReportJobResponse {
 }
 
 export const GoogleCloudChannelV1RunReportJobResponse: Schema.Codec<GoogleCloudChannelV1RunReportJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportJob: Schema.optional(GoogleCloudChannelV1ReportJob),
     reportMetadata: Schema.optional(GoogleCloudChannelV1ReportResultsMetadata),
   }).annotate({ identifier: "GoogleCloudChannelV1RunReportJobResponse" });
@@ -2794,7 +2794,7 @@ export interface GoogleCloudChannelV1ListPurchasableSkusResponse {
 }
 
 export const GoogleCloudChannelV1ListPurchasableSkusResponse: Schema.Codec<GoogleCloudChannelV1ListPurchasableSkusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     purchasableSkus: Schema.optional(
       Schema.Array(GoogleCloudChannelV1PurchasableSku),
     ),
@@ -2862,7 +2862,7 @@ export interface GetOperationsRequest {
   name: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -2870,8 +2870,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = GoogleLongrunningOperation;
-export const GetOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+export const GetOperationsResponse = /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2881,7 +2880,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2893,7 +2892,7 @@ export interface DeleteOperationsRequest {
 }
 
 export const DeleteOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -2901,8 +2900,7 @@ export const DeleteOperationsRequest =
   ) as unknown as Schema.Codec<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = GoogleProtobufEmpty;
-export const DeleteOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+export const DeleteOperationsResponse = /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOperationsError =
   | DefaultErrors
@@ -2917,7 +2915,7 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsResponse,
   DeleteOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2931,7 +2929,7 @@ export interface CancelOperationsRequest {
 }
 
 export const CancelOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleLongrunningCancelOperationRequest).pipe(
       T.HttpBody(),
@@ -2942,8 +2940,7 @@ export const CancelOperationsRequest =
   ) as unknown as Schema.Codec<CancelOperationsRequest>;
 
 export type CancelOperationsResponse = GoogleProtobufEmpty;
-export const CancelOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+export const CancelOperationsResponse = /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelOperationsError =
   | DefaultErrors
@@ -2958,7 +2955,7 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsResponse,
   CancelOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2977,7 +2974,7 @@ export interface ListOperationsRequest {
   filter?: string;
 }
 
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsRequest = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   name: Schema.String.pipe(T.HttpPath("name")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2992,7 +2989,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type ListOperationsResponse = GoogleLongrunningListOperationsResponse;
 export const ListOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
+  /*@__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3002,7 +2999,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsResponse,
   ListOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -3023,7 +3020,7 @@ export interface ListProductsRequest {
   account?: string;
 }
 
-export const ListProductsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListProductsRequest = /*@__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   languageCode: Schema.optional(Schema.String).pipe(
@@ -3037,7 +3034,7 @@ export const ListProductsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type ListProductsResponse = GoogleCloudChannelV1ListProductsResponse;
 export const ListProductsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListProductsResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListProductsResponse;
 
 export type ListProductsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3047,7 +3044,7 @@ export const listProducts: API.PaginatedOperationMethod<
   ListProductsResponse,
   ListProductsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProductsRequest,
   output: ListProductsResponse,
   errors: [NotFound, Forbidden],
@@ -3071,7 +3068,7 @@ export interface ListProductsSkusRequest {
 }
 
 export const ListProductsSkusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -3086,7 +3083,7 @@ export const ListProductsSkusRequest =
 
 export type ListProductsSkusResponse = GoogleCloudChannelV1ListSkusResponse;
 export const ListProductsSkusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListSkusResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListSkusResponse;
 
 export type ListProductsSkusError = DefaultErrors | NotFound | Forbidden;
 
@@ -3096,7 +3093,7 @@ export const listProductsSkus: API.PaginatedOperationMethod<
   ListProductsSkusResponse,
   ListProductsSkusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProductsSkusRequest,
   output: ListProductsSkusResponse,
   errors: [NotFound, Forbidden],
@@ -3114,7 +3111,7 @@ export interface CheckCloudIdentityAccountsExistAccountsRequest {
 }
 
 export const CheckCloudIdentityAccountsExistAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest,
@@ -3131,7 +3128,7 @@ export const CheckCloudIdentityAccountsExistAccountsRequest =
 export type CheckCloudIdentityAccountsExistAccountsResponse =
   GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse;
 export const CheckCloudIdentityAccountsExistAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse;
 
 export type CheckCloudIdentityAccountsExistAccountsError =
   | DefaultErrors
@@ -3146,7 +3143,7 @@ export const checkCloudIdentityAccountsExistAccounts: API.OperationMethod<
   CheckCloudIdentityAccountsExistAccountsResponse,
   CheckCloudIdentityAccountsExistAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckCloudIdentityAccountsExistAccountsRequest,
   output: CheckCloudIdentityAccountsExistAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3160,7 +3157,7 @@ export interface RegisterAccountsRequest {
 }
 
 export const RegisterAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.HttpPath("account")),
     body: Schema.optional(GoogleCloudChannelV1RegisterSubscriberRequest).pipe(
       T.HttpBody(),
@@ -3173,7 +3170,7 @@ export const RegisterAccountsRequest =
 export type RegisterAccountsResponse =
   GoogleCloudChannelV1RegisterSubscriberResponse;
 export const RegisterAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1RegisterSubscriberResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1RegisterSubscriberResponse;
 
 export type RegisterAccountsError =
   | DefaultErrors
@@ -3188,7 +3185,7 @@ export const registerAccounts: API.OperationMethod<
   RegisterAccountsResponse,
   RegisterAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterAccountsRequest,
   output: RegisterAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3202,7 +3199,7 @@ export interface UnregisterAccountsRequest {
 }
 
 export const UnregisterAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.HttpPath("account")),
     body: Schema.optional(GoogleCloudChannelV1UnregisterSubscriberRequest).pipe(
       T.HttpBody(),
@@ -3215,7 +3212,7 @@ export const UnregisterAccountsRequest =
 export type UnregisterAccountsResponse =
   GoogleCloudChannelV1UnregisterSubscriberResponse;
 export const UnregisterAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1UnregisterSubscriberResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1UnregisterSubscriberResponse;
 
 export type UnregisterAccountsError =
   | DefaultErrors
@@ -3230,7 +3227,7 @@ export const unregisterAccounts: API.OperationMethod<
   UnregisterAccountsResponse,
   UnregisterAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnregisterAccountsRequest,
   output: UnregisterAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3244,7 +3241,7 @@ export interface ListTransferableOffersAccountsRequest {
 }
 
 export const ListTransferableOffersAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudChannelV1ListTransferableOffersRequest,
@@ -3261,7 +3258,7 @@ export const ListTransferableOffersAccountsRequest =
 export type ListTransferableOffersAccountsResponse =
   GoogleCloudChannelV1ListTransferableOffersResponse;
 export const ListTransferableOffersAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListTransferableOffersResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListTransferableOffersResponse;
 
 export type ListTransferableOffersAccountsError =
   | DefaultErrors
@@ -3276,7 +3273,7 @@ export const listTransferableOffersAccounts: API.OperationMethod<
   ListTransferableOffersAccountsResponse,
   ListTransferableOffersAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTransferableOffersAccountsRequest,
   output: ListTransferableOffersAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3290,7 +3287,7 @@ export interface ListTransferableSkusAccountsRequest {
 }
 
 export const ListTransferableSkusAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudChannelV1ListTransferableSkusRequest).pipe(
       T.HttpBody(),
@@ -3307,7 +3304,7 @@ export const ListTransferableSkusAccountsRequest =
 export type ListTransferableSkusAccountsResponse =
   GoogleCloudChannelV1ListTransferableSkusResponse;
 export const ListTransferableSkusAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListTransferableSkusResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListTransferableSkusResponse;
 
 export type ListTransferableSkusAccountsError =
   | DefaultErrors
@@ -3322,7 +3319,7 @@ export const listTransferableSkusAccounts: API.OperationMethod<
   ListTransferableSkusAccountsResponse,
   ListTransferableSkusAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTransferableSkusAccountsRequest,
   output: ListTransferableSkusAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3340,7 +3337,7 @@ export interface ListSubscribersAccountsRequest {
 }
 
 export const ListSubscribersAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.HttpPath("account")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     integrator: Schema.optional(Schema.String).pipe(T.HttpQuery("integrator")),
@@ -3353,7 +3350,7 @@ export const ListSubscribersAccountsRequest =
 export type ListSubscribersAccountsResponse =
   GoogleCloudChannelV1ListSubscribersResponse;
 export const ListSubscribersAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListSubscribersResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListSubscribersResponse;
 
 export type ListSubscribersAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3363,7 +3360,7 @@ export const listSubscribersAccounts: API.PaginatedOperationMethod<
   ListSubscribersAccountsResponse,
   ListSubscribersAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscribersAccountsRequest,
   output: ListSubscribersAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -3389,7 +3386,7 @@ export interface ListAccountsOffersRequest {
 }
 
 export const ListAccountsOffersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     showFutureOffers: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("showFutureOffers"),
@@ -3407,7 +3404,7 @@ export const ListAccountsOffersRequest =
 
 export type ListAccountsOffersResponse = GoogleCloudChannelV1ListOffersResponse;
 export const ListAccountsOffersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListOffersResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListOffersResponse;
 
 export type ListAccountsOffersError = DefaultErrors | NotFound | Forbidden;
 
@@ -3417,7 +3414,7 @@ export const listAccountsOffers: API.PaginatedOperationMethod<
   ListAccountsOffersResponse,
   ListAccountsOffersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsOffersRequest,
   output: ListAccountsOffersResponse,
   errors: [NotFound, Forbidden],
@@ -3435,7 +3432,7 @@ export interface RunAccountsReportsRequest {
 }
 
 export const RunAccountsReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudChannelV1RunReportJobRequest).pipe(
       T.HttpBody(),
@@ -3447,7 +3444,7 @@ export const RunAccountsReportsRequest =
 
 export type RunAccountsReportsResponse = GoogleLongrunningOperation;
 export const RunAccountsReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type RunAccountsReportsError =
   | DefaultErrors
@@ -3462,7 +3459,7 @@ export const runAccountsReports: API.OperationMethod<
   RunAccountsReportsResponse,
   RunAccountsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunAccountsReportsRequest,
   output: RunAccountsReportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3480,7 +3477,7 @@ export interface ListAccountsReportsRequest {
 }
 
 export const ListAccountsReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -3495,7 +3492,7 @@ export const ListAccountsReportsRequest =
 export type ListAccountsReportsResponse =
   GoogleCloudChannelV1ListReportsResponse;
 export const ListAccountsReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListReportsResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListReportsResponse;
 
 export type ListAccountsReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3505,7 +3502,7 @@ export const listAccountsReports: API.PaginatedOperationMethod<
   ListAccountsReportsResponse,
   ListAccountsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsReportsRequest,
   output: ListAccountsReportsResponse,
   errors: [NotFound, Forbidden],
@@ -3523,7 +3520,7 @@ export interface FetchReportResultsAccountsReportJobsRequest {
 }
 
 export const FetchReportResultsAccountsReportJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportJob: Schema.String.pipe(T.HttpPath("reportJob")),
     body: Schema.optional(GoogleCloudChannelV1FetchReportResultsRequest).pipe(
       T.HttpBody(),
@@ -3540,7 +3537,7 @@ export const FetchReportResultsAccountsReportJobsRequest =
 export type FetchReportResultsAccountsReportJobsResponse =
   GoogleCloudChannelV1FetchReportResultsResponse;
 export const FetchReportResultsAccountsReportJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1FetchReportResultsResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1FetchReportResultsResponse;
 
 export type FetchReportResultsAccountsReportJobsError =
   | DefaultErrors
@@ -3555,7 +3552,7 @@ export const fetchReportResultsAccountsReportJobs: API.OperationMethod<
   FetchReportResultsAccountsReportJobsResponse,
   FetchReportResultsAccountsReportJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FetchReportResultsAccountsReportJobsRequest,
   output: FetchReportResultsAccountsReportJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3573,7 +3570,7 @@ export interface ListAccountsChannelPartnerLinksRequest {
 }
 
 export const ListAccountsChannelPartnerLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -3586,7 +3583,7 @@ export const ListAccountsChannelPartnerLinksRequest =
 export type ListAccountsChannelPartnerLinksResponse =
   GoogleCloudChannelV1ListChannelPartnerLinksResponse;
 export const ListAccountsChannelPartnerLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListChannelPartnerLinksResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListChannelPartnerLinksResponse;
 
 export type ListAccountsChannelPartnerLinksError =
   | DefaultErrors
@@ -3599,7 +3596,7 @@ export const listAccountsChannelPartnerLinks: API.PaginatedOperationMethod<
   ListAccountsChannelPartnerLinksResponse,
   ListAccountsChannelPartnerLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsChannelPartnerLinksRequest,
   output: ListAccountsChannelPartnerLinksResponse,
   errors: [NotFound, Forbidden],
@@ -3617,7 +3614,7 @@ export interface PatchAccountsChannelPartnerLinksRequest {
 }
 
 export const PatchAccountsChannelPartnerLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudChannelV1UpdateChannelPartnerLinkRequest,
@@ -3630,7 +3627,7 @@ export const PatchAccountsChannelPartnerLinksRequest =
 export type PatchAccountsChannelPartnerLinksResponse =
   GoogleCloudChannelV1ChannelPartnerLink;
 export const PatchAccountsChannelPartnerLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerLink;
+  /*@__PURE__*/ GoogleCloudChannelV1ChannelPartnerLink;
 
 export type PatchAccountsChannelPartnerLinksError =
   | DefaultErrors
@@ -3645,7 +3642,7 @@ export const patchAccountsChannelPartnerLinks: API.OperationMethod<
   PatchAccountsChannelPartnerLinksResponse,
   PatchAccountsChannelPartnerLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsChannelPartnerLinksRequest,
   output: PatchAccountsChannelPartnerLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3659,7 +3656,7 @@ export interface GetAccountsChannelPartnerLinksRequest {
 }
 
 export const GetAccountsChannelPartnerLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
@@ -3670,7 +3667,7 @@ export const GetAccountsChannelPartnerLinksRequest =
 export type GetAccountsChannelPartnerLinksResponse =
   GoogleCloudChannelV1ChannelPartnerLink;
 export const GetAccountsChannelPartnerLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerLink;
+  /*@__PURE__*/ GoogleCloudChannelV1ChannelPartnerLink;
 
 export type GetAccountsChannelPartnerLinksError =
   | DefaultErrors
@@ -3683,7 +3680,7 @@ export const getAccountsChannelPartnerLinks: API.OperationMethod<
   GetAccountsChannelPartnerLinksResponse,
   GetAccountsChannelPartnerLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsChannelPartnerLinksRequest,
   output: GetAccountsChannelPartnerLinksResponse,
   errors: [NotFound, Forbidden],
@@ -3697,7 +3694,7 @@ export interface CreateAccountsChannelPartnerLinksRequest {
 }
 
 export const CreateAccountsChannelPartnerLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudChannelV1ChannelPartnerLink).pipe(
       T.HttpBody(),
@@ -3714,7 +3711,7 @@ export const CreateAccountsChannelPartnerLinksRequest =
 export type CreateAccountsChannelPartnerLinksResponse =
   GoogleCloudChannelV1ChannelPartnerLink;
 export const CreateAccountsChannelPartnerLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerLink;
+  /*@__PURE__*/ GoogleCloudChannelV1ChannelPartnerLink;
 
 export type CreateAccountsChannelPartnerLinksError =
   | DefaultErrors
@@ -3729,7 +3726,7 @@ export const createAccountsChannelPartnerLinks: API.OperationMethod<
   CreateAccountsChannelPartnerLinksResponse,
   CreateAccountsChannelPartnerLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsChannelPartnerLinksRequest,
   output: CreateAccountsChannelPartnerLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3741,7 +3738,7 @@ export interface GetAccountsChannelPartnerLinksCustomersRequest {
 }
 
 export const GetAccountsChannelPartnerLinksCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -3751,7 +3748,7 @@ export const GetAccountsChannelPartnerLinksCustomersRequest =
 export type GetAccountsChannelPartnerLinksCustomersResponse =
   GoogleCloudChannelV1Customer;
 export const GetAccountsChannelPartnerLinksCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
+  /*@__PURE__*/ GoogleCloudChannelV1Customer;
 
 export type GetAccountsChannelPartnerLinksCustomersError =
   | DefaultErrors
@@ -3764,7 +3761,7 @@ export const getAccountsChannelPartnerLinksCustomers: API.OperationMethod<
   GetAccountsChannelPartnerLinksCustomersResponse,
   GetAccountsChannelPartnerLinksCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsChannelPartnerLinksCustomersRequest,
   output: GetAccountsChannelPartnerLinksCustomersResponse,
   errors: [NotFound, Forbidden],
@@ -3776,7 +3773,7 @@ export interface DeleteAccountsChannelPartnerLinksCustomersRequest {
 }
 
 export const DeleteAccountsChannelPartnerLinksCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -3786,7 +3783,7 @@ export const DeleteAccountsChannelPartnerLinksCustomersRequest =
 export type DeleteAccountsChannelPartnerLinksCustomersResponse =
   GoogleProtobufEmpty;
 export const DeleteAccountsChannelPartnerLinksCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteAccountsChannelPartnerLinksCustomersError =
   | DefaultErrors
@@ -3801,7 +3798,7 @@ export const deleteAccountsChannelPartnerLinksCustomers: API.OperationMethod<
   DeleteAccountsChannelPartnerLinksCustomersResponse,
   DeleteAccountsChannelPartnerLinksCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsChannelPartnerLinksCustomersRequest,
   output: DeleteAccountsChannelPartnerLinksCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3815,7 +3812,7 @@ export interface ImportAccountsChannelPartnerLinksCustomersRequest {
 }
 
 export const ImportAccountsChannelPartnerLinksCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudChannelV1ImportCustomerRequest).pipe(
       T.HttpBody(),
@@ -3832,7 +3829,7 @@ export const ImportAccountsChannelPartnerLinksCustomersRequest =
 export type ImportAccountsChannelPartnerLinksCustomersResponse =
   GoogleCloudChannelV1Customer;
 export const ImportAccountsChannelPartnerLinksCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
+  /*@__PURE__*/ GoogleCloudChannelV1Customer;
 
 export type ImportAccountsChannelPartnerLinksCustomersError =
   | DefaultErrors
@@ -3847,7 +3844,7 @@ export const importAccountsChannelPartnerLinksCustomers: API.OperationMethod<
   ImportAccountsChannelPartnerLinksCustomersResponse,
   ImportAccountsChannelPartnerLinksCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportAccountsChannelPartnerLinksCustomersRequest,
   output: ImportAccountsChannelPartnerLinksCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3865,7 +3862,7 @@ export interface ListAccountsChannelPartnerLinksCustomersRequest {
 }
 
 export const ListAccountsChannelPartnerLinksCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -3878,7 +3875,7 @@ export const ListAccountsChannelPartnerLinksCustomersRequest =
 export type ListAccountsChannelPartnerLinksCustomersResponse =
   GoogleCloudChannelV1ListCustomersResponse;
 export const ListAccountsChannelPartnerLinksCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListCustomersResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListCustomersResponse;
 
 export type ListAccountsChannelPartnerLinksCustomersError =
   | DefaultErrors
@@ -3891,7 +3888,7 @@ export const listAccountsChannelPartnerLinksCustomers: API.PaginatedOperationMet
   ListAccountsChannelPartnerLinksCustomersResponse,
   ListAccountsChannelPartnerLinksCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsChannelPartnerLinksCustomersRequest,
   output: ListAccountsChannelPartnerLinksCustomersResponse,
   errors: [NotFound, Forbidden],
@@ -3911,7 +3908,7 @@ export interface PatchAccountsChannelPartnerLinksCustomersRequest {
 }
 
 export const PatchAccountsChannelPartnerLinksCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
@@ -3923,7 +3920,7 @@ export const PatchAccountsChannelPartnerLinksCustomersRequest =
 export type PatchAccountsChannelPartnerLinksCustomersResponse =
   GoogleCloudChannelV1Customer;
 export const PatchAccountsChannelPartnerLinksCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
+  /*@__PURE__*/ GoogleCloudChannelV1Customer;
 
 export type PatchAccountsChannelPartnerLinksCustomersError =
   | DefaultErrors
@@ -3938,7 +3935,7 @@ export const patchAccountsChannelPartnerLinksCustomers: API.OperationMethod<
   PatchAccountsChannelPartnerLinksCustomersResponse,
   PatchAccountsChannelPartnerLinksCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsChannelPartnerLinksCustomersRequest,
   output: PatchAccountsChannelPartnerLinksCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3952,7 +3949,7 @@ export interface CreateAccountsChannelPartnerLinksCustomersRequest {
 }
 
 export const CreateAccountsChannelPartnerLinksCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
   }).pipe(
@@ -3963,7 +3960,7 @@ export const CreateAccountsChannelPartnerLinksCustomersRequest =
 export type CreateAccountsChannelPartnerLinksCustomersResponse =
   GoogleCloudChannelV1Customer;
 export const CreateAccountsChannelPartnerLinksCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
+  /*@__PURE__*/ GoogleCloudChannelV1Customer;
 
 export type CreateAccountsChannelPartnerLinksCustomersError =
   | DefaultErrors
@@ -3978,7 +3975,7 @@ export const createAccountsChannelPartnerLinksCustomers: API.OperationMethod<
   CreateAccountsChannelPartnerLinksCustomersResponse,
   CreateAccountsChannelPartnerLinksCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsChannelPartnerLinksCustomersRequest,
   output: CreateAccountsChannelPartnerLinksCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3992,7 +3989,7 @@ export interface CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigs
 }
 
 export const CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudChannelV1ChannelPartnerRepricingConfig,
@@ -4009,7 +4006,7 @@ export const CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequ
 export type CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
   GoogleCloudChannelV1ChannelPartnerRepricingConfig;
 export const CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerRepricingConfig;
+  /*@__PURE__*/ GoogleCloudChannelV1ChannelPartnerRepricingConfig;
 
 export type CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
   | DefaultErrors
@@ -4024,7 +4021,7 @@ export const createAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: AP
   CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
   CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
   output:
     CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
@@ -4043,7 +4040,7 @@ export interface ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRe
 }
 
 export const ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -4059,7 +4056,7 @@ export const ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsReques
 export type ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
   GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse;
 export const ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse;
 
 export type ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
   | DefaultErrors
@@ -4072,7 +4069,7 @@ export const listAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.
   ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
   ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
   output: ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -4090,7 +4087,7 @@ export interface PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsR
 }
 
 export const PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudChannelV1ChannelPartnerRepricingConfig,
@@ -4103,7 +4100,7 @@ export const PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsReque
 export type PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
   GoogleCloudChannelV1ChannelPartnerRepricingConfig;
 export const PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerRepricingConfig;
+  /*@__PURE__*/ GoogleCloudChannelV1ChannelPartnerRepricingConfig;
 
 export type PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
   | DefaultErrors
@@ -4118,7 +4115,7 @@ export const patchAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API
   PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
   PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
   output:
     PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
@@ -4131,7 +4128,7 @@ export interface GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsReq
 }
 
 export const GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4141,7 +4138,7 @@ export const GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest
 export type GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
   GoogleCloudChannelV1ChannelPartnerRepricingConfig;
 export const GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ChannelPartnerRepricingConfig;
+  /*@__PURE__*/ GoogleCloudChannelV1ChannelPartnerRepricingConfig;
 
 export type GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
   | DefaultErrors
@@ -4154,7 +4151,7 @@ export const getAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.O
   GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
   GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
   output: GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -4166,7 +4163,7 @@ export interface DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigs
 }
 
 export const DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -4176,7 +4173,7 @@ export const DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequ
 export type DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
   GoogleProtobufEmpty;
 export const DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError =
   | DefaultErrors
@@ -4191,7 +4188,7 @@ export const deleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: AP
   DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
   DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest,
   output:
     DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsResponse,
@@ -4206,7 +4203,7 @@ export interface CreateAccountsCustomersRequest {
 }
 
 export const CreateAccountsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
   }).pipe(
@@ -4216,7 +4213,7 @@ export const CreateAccountsCustomersRequest =
 
 export type CreateAccountsCustomersResponse = GoogleCloudChannelV1Customer;
 export const CreateAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
+  /*@__PURE__*/ GoogleCloudChannelV1Customer;
 
 export type CreateAccountsCustomersError =
   | DefaultErrors
@@ -4231,7 +4228,7 @@ export const createAccountsCustomers: API.OperationMethod<
   CreateAccountsCustomersResponse,
   CreateAccountsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsCustomersRequest,
   output: CreateAccountsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4245,7 +4242,7 @@ export interface TransferEntitlementsAccountsCustomersRequest {
 }
 
 export const TransferEntitlementsAccountsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudChannelV1TransferEntitlementsRequest).pipe(
       T.HttpBody(),
@@ -4262,7 +4259,7 @@ export const TransferEntitlementsAccountsCustomersRequest =
 export type TransferEntitlementsAccountsCustomersResponse =
   GoogleLongrunningOperation;
 export const TransferEntitlementsAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type TransferEntitlementsAccountsCustomersError =
   | DefaultErrors
@@ -4277,7 +4274,7 @@ export const transferEntitlementsAccountsCustomers: API.OperationMethod<
   TransferEntitlementsAccountsCustomersResponse,
   TransferEntitlementsAccountsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TransferEntitlementsAccountsCustomersRequest,
   output: TransferEntitlementsAccountsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4291,7 +4288,7 @@ export interface ProvisionCloudIdentityAccountsCustomersRequest {
 }
 
 export const ProvisionCloudIdentityAccountsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.HttpPath("customer")),
     body: Schema.optional(
       GoogleCloudChannelV1ProvisionCloudIdentityRequest,
@@ -4308,7 +4305,7 @@ export const ProvisionCloudIdentityAccountsCustomersRequest =
 export type ProvisionCloudIdentityAccountsCustomersResponse =
   GoogleLongrunningOperation;
 export const ProvisionCloudIdentityAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ProvisionCloudIdentityAccountsCustomersError =
   | DefaultErrors
@@ -4323,7 +4320,7 @@ export const provisionCloudIdentityAccountsCustomers: API.OperationMethod<
   ProvisionCloudIdentityAccountsCustomersResponse,
   ProvisionCloudIdentityAccountsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProvisionCloudIdentityAccountsCustomersRequest,
   output: ProvisionCloudIdentityAccountsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4335,7 +4332,7 @@ export interface DeleteAccountsCustomersRequest {
 }
 
 export const DeleteAccountsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -4344,7 +4341,7 @@ export const DeleteAccountsCustomersRequest =
 
 export type DeleteAccountsCustomersResponse = GoogleProtobufEmpty;
 export const DeleteAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteAccountsCustomersError =
   | DefaultErrors
@@ -4359,7 +4356,7 @@ export const deleteAccountsCustomers: API.OperationMethod<
   DeleteAccountsCustomersResponse,
   DeleteAccountsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsCustomersRequest,
   output: DeleteAccountsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4377,7 +4374,7 @@ export interface ListAccountsCustomersRequest {
 }
 
 export const ListAccountsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -4390,7 +4387,7 @@ export const ListAccountsCustomersRequest =
 export type ListAccountsCustomersResponse =
   GoogleCloudChannelV1ListCustomersResponse;
 export const ListAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListCustomersResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListCustomersResponse;
 
 export type ListAccountsCustomersError = DefaultErrors | NotFound | Forbidden;
 
@@ -4400,7 +4397,7 @@ export const listAccountsCustomers: API.PaginatedOperationMethod<
   ListAccountsCustomersResponse,
   ListAccountsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsCustomersRequest,
   output: ListAccountsCustomersResponse,
   errors: [NotFound, Forbidden],
@@ -4420,7 +4417,7 @@ export interface PatchAccountsCustomersRequest {
 }
 
 export const PatchAccountsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
@@ -4431,7 +4428,7 @@ export const PatchAccountsCustomersRequest =
 
 export type PatchAccountsCustomersResponse = GoogleCloudChannelV1Customer;
 export const PatchAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
+  /*@__PURE__*/ GoogleCloudChannelV1Customer;
 
 export type PatchAccountsCustomersError =
   | DefaultErrors
@@ -4446,7 +4443,7 @@ export const patchAccountsCustomers: API.OperationMethod<
   PatchAccountsCustomersResponse,
   PatchAccountsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsCustomersRequest,
   output: PatchAccountsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4460,7 +4457,7 @@ export interface QueryEligibleBillingAccountsAccountsCustomersRequest {
 }
 
 export const QueryEligibleBillingAccountsAccountsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.HttpPath("customer")),
     skus: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("skus"),
@@ -4476,7 +4473,7 @@ export const QueryEligibleBillingAccountsAccountsCustomersRequest =
 export type QueryEligibleBillingAccountsAccountsCustomersResponse =
   GoogleCloudChannelV1QueryEligibleBillingAccountsResponse;
 export const QueryEligibleBillingAccountsAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1QueryEligibleBillingAccountsResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1QueryEligibleBillingAccountsResponse;
 
 export type QueryEligibleBillingAccountsAccountsCustomersError =
   | DefaultErrors
@@ -4489,7 +4486,7 @@ export const queryEligibleBillingAccountsAccountsCustomers: API.OperationMethod<
   QueryEligibleBillingAccountsAccountsCustomersResponse,
   QueryEligibleBillingAccountsAccountsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryEligibleBillingAccountsAccountsCustomersRequest,
   output: QueryEligibleBillingAccountsAccountsCustomersResponse,
   errors: [NotFound, Forbidden],
@@ -4503,7 +4500,7 @@ export interface TransferEntitlementsToGoogleAccountsCustomersRequest {
 }
 
 export const TransferEntitlementsToGoogleAccountsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleCloudChannelV1TransferEntitlementsToGoogleRequest,
@@ -4520,7 +4517,7 @@ export const TransferEntitlementsToGoogleAccountsCustomersRequest =
 export type TransferEntitlementsToGoogleAccountsCustomersResponse =
   GoogleLongrunningOperation;
 export const TransferEntitlementsToGoogleAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type TransferEntitlementsToGoogleAccountsCustomersError =
   | DefaultErrors
@@ -4535,7 +4532,7 @@ export const transferEntitlementsToGoogleAccountsCustomers: API.OperationMethod<
   TransferEntitlementsToGoogleAccountsCustomersResponse,
   TransferEntitlementsToGoogleAccountsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TransferEntitlementsToGoogleAccountsCustomersRequest,
   output: TransferEntitlementsToGoogleAccountsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4549,7 +4546,7 @@ export interface ImportAccountsCustomersRequest {
 }
 
 export const ImportAccountsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudChannelV1ImportCustomerRequest).pipe(
       T.HttpBody(),
@@ -4565,7 +4562,7 @@ export const ImportAccountsCustomersRequest =
 
 export type ImportAccountsCustomersResponse = GoogleCloudChannelV1Customer;
 export const ImportAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
+  /*@__PURE__*/ GoogleCloudChannelV1Customer;
 
 export type ImportAccountsCustomersError =
   | DefaultErrors
@@ -4580,7 +4577,7 @@ export const importAccountsCustomers: API.OperationMethod<
   ImportAccountsCustomersResponse,
   ImportAccountsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportAccountsCustomersRequest,
   output: ImportAccountsCustomersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4592,7 +4589,7 @@ export interface GetAccountsCustomersRequest {
 }
 
 export const GetAccountsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4601,7 +4598,7 @@ export const GetAccountsCustomersRequest =
 
 export type GetAccountsCustomersResponse = GoogleCloudChannelV1Customer;
 export const GetAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Customer;
+  /*@__PURE__*/ GoogleCloudChannelV1Customer;
 
 export type GetAccountsCustomersError = DefaultErrors | NotFound | Forbidden;
 
@@ -4611,7 +4608,7 @@ export const getAccountsCustomers: API.OperationMethod<
   GetAccountsCustomersResponse,
   GetAccountsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsCustomersRequest,
   output: GetAccountsCustomersResponse,
   errors: [NotFound, Forbidden],
@@ -4639,7 +4636,7 @@ export interface ListPurchasableOffersAccountsCustomersRequest {
 }
 
 export const ListPurchasableOffersAccountsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "changeOfferPurchase.billingAccount": Schema.optional(Schema.String).pipe(
       T.HttpQuery("changeOfferPurchase.billingAccount"),
     ),
@@ -4669,7 +4666,7 @@ export const ListPurchasableOffersAccountsCustomersRequest =
 export type ListPurchasableOffersAccountsCustomersResponse =
   GoogleCloudChannelV1ListPurchasableOffersResponse;
 export const ListPurchasableOffersAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListPurchasableOffersResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListPurchasableOffersResponse;
 
 export type ListPurchasableOffersAccountsCustomersError =
   | DefaultErrors
@@ -4682,7 +4679,7 @@ export const listPurchasableOffersAccountsCustomers: API.PaginatedOperationMetho
   ListPurchasableOffersAccountsCustomersResponse,
   ListPurchasableOffersAccountsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPurchasableOffersAccountsCustomersRequest,
   output: ListPurchasableOffersAccountsCustomersResponse,
   errors: [NotFound, Forbidden],
@@ -4714,7 +4711,7 @@ export interface ListPurchasableSkusAccountsCustomersRequest {
 }
 
 export const ListPurchasableSkusAccountsCustomersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.HttpPath("customer")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -4738,7 +4735,7 @@ export const ListPurchasableSkusAccountsCustomersRequest =
 export type ListPurchasableSkusAccountsCustomersResponse =
   GoogleCloudChannelV1ListPurchasableSkusResponse;
 export const ListPurchasableSkusAccountsCustomersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListPurchasableSkusResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListPurchasableSkusResponse;
 
 export type ListPurchasableSkusAccountsCustomersError =
   | DefaultErrors
@@ -4751,7 +4748,7 @@ export const listPurchasableSkusAccountsCustomers: API.PaginatedOperationMethod<
   ListPurchasableSkusAccountsCustomersResponse,
   ListPurchasableSkusAccountsCustomersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPurchasableSkusAccountsCustomersRequest,
   output: ListPurchasableSkusAccountsCustomersResponse,
   errors: [NotFound, Forbidden],
@@ -4767,7 +4764,7 @@ export interface GetAccountsCustomersCustomerRepricingConfigsRequest {
 }
 
 export const GetAccountsCustomersCustomerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -4777,7 +4774,7 @@ export const GetAccountsCustomersCustomerRepricingConfigsRequest =
 export type GetAccountsCustomersCustomerRepricingConfigsResponse =
   GoogleCloudChannelV1CustomerRepricingConfig;
 export const GetAccountsCustomersCustomerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1CustomerRepricingConfig;
+  /*@__PURE__*/ GoogleCloudChannelV1CustomerRepricingConfig;
 
 export type GetAccountsCustomersCustomerRepricingConfigsError =
   | DefaultErrors
@@ -4790,7 +4787,7 @@ export const getAccountsCustomersCustomerRepricingConfigs: API.OperationMethod<
   GetAccountsCustomersCustomerRepricingConfigsResponse,
   GetAccountsCustomersCustomerRepricingConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsCustomersCustomerRepricingConfigsRequest,
   output: GetAccountsCustomersCustomerRepricingConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -4802,7 +4799,7 @@ export interface DeleteAccountsCustomersCustomerRepricingConfigsRequest {
 }
 
 export const DeleteAccountsCustomersCustomerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -4812,7 +4809,7 @@ export const DeleteAccountsCustomersCustomerRepricingConfigsRequest =
 export type DeleteAccountsCustomersCustomerRepricingConfigsResponse =
   GoogleProtobufEmpty;
 export const DeleteAccountsCustomersCustomerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteAccountsCustomersCustomerRepricingConfigsError =
   | DefaultErrors
@@ -4827,7 +4824,7 @@ export const deleteAccountsCustomersCustomerRepricingConfigs: API.OperationMetho
   DeleteAccountsCustomersCustomerRepricingConfigsResponse,
   DeleteAccountsCustomersCustomerRepricingConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsCustomersCustomerRepricingConfigsRequest,
   output: DeleteAccountsCustomersCustomerRepricingConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4845,7 +4842,7 @@ export interface ListAccountsCustomersCustomerRepricingConfigsRequest {
 }
 
 export const ListAccountsCustomersCustomerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -4858,7 +4855,7 @@ export const ListAccountsCustomersCustomerRepricingConfigsRequest =
 export type ListAccountsCustomersCustomerRepricingConfigsResponse =
   GoogleCloudChannelV1ListCustomerRepricingConfigsResponse;
 export const ListAccountsCustomersCustomerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListCustomerRepricingConfigsResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListCustomerRepricingConfigsResponse;
 
 export type ListAccountsCustomersCustomerRepricingConfigsError =
   | DefaultErrors
@@ -4871,7 +4868,7 @@ export const listAccountsCustomersCustomerRepricingConfigs: API.PaginatedOperati
   ListAccountsCustomersCustomerRepricingConfigsResponse,
   ListAccountsCustomersCustomerRepricingConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsCustomersCustomerRepricingConfigsRequest,
   output: ListAccountsCustomersCustomerRepricingConfigsResponse,
   errors: [NotFound, Forbidden],
@@ -4889,7 +4886,7 @@ export interface PatchAccountsCustomersCustomerRepricingConfigsRequest {
 }
 
 export const PatchAccountsCustomersCustomerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudChannelV1CustomerRepricingConfig).pipe(
       T.HttpBody(),
@@ -4902,7 +4899,7 @@ export const PatchAccountsCustomersCustomerRepricingConfigsRequest =
 export type PatchAccountsCustomersCustomerRepricingConfigsResponse =
   GoogleCloudChannelV1CustomerRepricingConfig;
 export const PatchAccountsCustomersCustomerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1CustomerRepricingConfig;
+  /*@__PURE__*/ GoogleCloudChannelV1CustomerRepricingConfig;
 
 export type PatchAccountsCustomersCustomerRepricingConfigsError =
   | DefaultErrors
@@ -4917,7 +4914,7 @@ export const patchAccountsCustomersCustomerRepricingConfigs: API.OperationMethod
   PatchAccountsCustomersCustomerRepricingConfigsResponse,
   PatchAccountsCustomersCustomerRepricingConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsCustomersCustomerRepricingConfigsRequest,
   output: PatchAccountsCustomersCustomerRepricingConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4931,7 +4928,7 @@ export interface CreateAccountsCustomersCustomerRepricingConfigsRequest {
 }
 
 export const CreateAccountsCustomersCustomerRepricingConfigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudChannelV1CustomerRepricingConfig).pipe(
       T.HttpBody(),
@@ -4948,7 +4945,7 @@ export const CreateAccountsCustomersCustomerRepricingConfigsRequest =
 export type CreateAccountsCustomersCustomerRepricingConfigsResponse =
   GoogleCloudChannelV1CustomerRepricingConfig;
 export const CreateAccountsCustomersCustomerRepricingConfigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1CustomerRepricingConfig;
+  /*@__PURE__*/ GoogleCloudChannelV1CustomerRepricingConfig;
 
 export type CreateAccountsCustomersCustomerRepricingConfigsError =
   | DefaultErrors
@@ -4963,7 +4960,7 @@ export const createAccountsCustomersCustomerRepricingConfigs: API.OperationMetho
   CreateAccountsCustomersCustomerRepricingConfigsResponse,
   CreateAccountsCustomersCustomerRepricingConfigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsCustomersCustomerRepricingConfigsRequest,
   output: CreateAccountsCustomersCustomerRepricingConfigsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -4975,7 +4972,7 @@ export interface LookupOfferAccountsCustomersEntitlementsRequest {
 }
 
 export const LookupOfferAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlement: Schema.String.pipe(T.HttpPath("entitlement")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+entitlement}:lookupOffer" }),
@@ -4985,7 +4982,7 @@ export const LookupOfferAccountsCustomersEntitlementsRequest =
 export type LookupOfferAccountsCustomersEntitlementsResponse =
   GoogleCloudChannelV1Offer;
 export const LookupOfferAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Offer;
+  /*@__PURE__*/ GoogleCloudChannelV1Offer;
 
 export type LookupOfferAccountsCustomersEntitlementsError =
   | DefaultErrors
@@ -4998,7 +4995,7 @@ export const lookupOfferAccountsCustomersEntitlements: API.OperationMethod<
   LookupOfferAccountsCustomersEntitlementsResponse,
   LookupOfferAccountsCustomersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LookupOfferAccountsCustomersEntitlementsRequest,
   output: LookupOfferAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden],
@@ -5012,7 +5009,7 @@ export interface ChangeOfferAccountsCustomersEntitlementsRequest {
 }
 
 export const ChangeOfferAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudChannelV1ChangeOfferRequest).pipe(
       T.HttpBody(),
@@ -5025,7 +5022,7 @@ export const ChangeOfferAccountsCustomersEntitlementsRequest =
 export type ChangeOfferAccountsCustomersEntitlementsResponse =
   GoogleLongrunningOperation;
 export const ChangeOfferAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ChangeOfferAccountsCustomersEntitlementsError =
   | DefaultErrors
@@ -5040,7 +5037,7 @@ export const changeOfferAccountsCustomersEntitlements: API.OperationMethod<
   ChangeOfferAccountsCustomersEntitlementsResponse,
   ChangeOfferAccountsCustomersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChangeOfferAccountsCustomersEntitlementsRequest,
   output: ChangeOfferAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5058,7 +5055,7 @@ export interface ListEntitlementChangesAccountsCustomersEntitlementsRequest {
 }
 
 export const ListEntitlementChangesAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -5071,7 +5068,7 @@ export const ListEntitlementChangesAccountsCustomersEntitlementsRequest =
 export type ListEntitlementChangesAccountsCustomersEntitlementsResponse =
   GoogleCloudChannelV1ListEntitlementChangesResponse;
 export const ListEntitlementChangesAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListEntitlementChangesResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListEntitlementChangesResponse;
 
 export type ListEntitlementChangesAccountsCustomersEntitlementsError =
   | DefaultErrors
@@ -5084,7 +5081,7 @@ export const listEntitlementChangesAccountsCustomersEntitlements: API.PaginatedO
   ListEntitlementChangesAccountsCustomersEntitlementsResponse,
   ListEntitlementChangesAccountsCustomersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEntitlementChangesAccountsCustomersEntitlementsRequest,
   output: ListEntitlementChangesAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden],
@@ -5100,7 +5097,7 @@ export interface GetAccountsCustomersEntitlementsRequest {
 }
 
 export const GetAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -5110,7 +5107,7 @@ export const GetAccountsCustomersEntitlementsRequest =
 export type GetAccountsCustomersEntitlementsResponse =
   GoogleCloudChannelV1Entitlement;
 export const GetAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1Entitlement;
+  /*@__PURE__*/ GoogleCloudChannelV1Entitlement;
 
 export type GetAccountsCustomersEntitlementsError =
   | DefaultErrors
@@ -5123,7 +5120,7 @@ export const getAccountsCustomersEntitlements: API.OperationMethod<
   GetAccountsCustomersEntitlementsResponse,
   GetAccountsCustomersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsCustomersEntitlementsRequest,
   output: GetAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden],
@@ -5137,7 +5134,7 @@ export interface ChangeParametersAccountsCustomersEntitlementsRequest {
 }
 
 export const ChangeParametersAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudChannelV1ChangeParametersRequest).pipe(
       T.HttpBody(),
@@ -5154,7 +5151,7 @@ export const ChangeParametersAccountsCustomersEntitlementsRequest =
 export type ChangeParametersAccountsCustomersEntitlementsResponse =
   GoogleLongrunningOperation;
 export const ChangeParametersAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ChangeParametersAccountsCustomersEntitlementsError =
   | DefaultErrors
@@ -5169,7 +5166,7 @@ export const changeParametersAccountsCustomersEntitlements: API.OperationMethod<
   ChangeParametersAccountsCustomersEntitlementsResponse,
   ChangeParametersAccountsCustomersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChangeParametersAccountsCustomersEntitlementsRequest,
   output: ChangeParametersAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5183,7 +5180,7 @@ export interface ActivateAccountsCustomersEntitlementsRequest {
 }
 
 export const ActivateAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudChannelV1ActivateEntitlementRequest).pipe(
       T.HttpBody(),
@@ -5196,7 +5193,7 @@ export const ActivateAccountsCustomersEntitlementsRequest =
 export type ActivateAccountsCustomersEntitlementsResponse =
   GoogleLongrunningOperation;
 export const ActivateAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ActivateAccountsCustomersEntitlementsError =
   | DefaultErrors
@@ -5211,7 +5208,7 @@ export const activateAccountsCustomersEntitlements: API.OperationMethod<
   ActivateAccountsCustomersEntitlementsResponse,
   ActivateAccountsCustomersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ActivateAccountsCustomersEntitlementsRequest,
   output: ActivateAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5225,7 +5222,7 @@ export interface StartPaidServiceAccountsCustomersEntitlementsRequest {
 }
 
 export const StartPaidServiceAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudChannelV1StartPaidServiceRequest).pipe(
       T.HttpBody(),
@@ -5242,7 +5239,7 @@ export const StartPaidServiceAccountsCustomersEntitlementsRequest =
 export type StartPaidServiceAccountsCustomersEntitlementsResponse =
   GoogleLongrunningOperation;
 export const StartPaidServiceAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type StartPaidServiceAccountsCustomersEntitlementsError =
   | DefaultErrors
@@ -5257,7 +5254,7 @@ export const startPaidServiceAccountsCustomersEntitlements: API.OperationMethod<
   StartPaidServiceAccountsCustomersEntitlementsResponse,
   StartPaidServiceAccountsCustomersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPaidServiceAccountsCustomersEntitlementsRequest,
   output: StartPaidServiceAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5271,7 +5268,7 @@ export interface CreateAccountsCustomersEntitlementsRequest {
 }
 
 export const CreateAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudChannelV1CreateEntitlementRequest).pipe(
       T.HttpBody(),
@@ -5288,7 +5285,7 @@ export const CreateAccountsCustomersEntitlementsRequest =
 export type CreateAccountsCustomersEntitlementsResponse =
   GoogleLongrunningOperation;
 export const CreateAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateAccountsCustomersEntitlementsError =
   | DefaultErrors
@@ -5303,7 +5300,7 @@ export const createAccountsCustomersEntitlements: API.OperationMethod<
   CreateAccountsCustomersEntitlementsResponse,
   CreateAccountsCustomersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsCustomersEntitlementsRequest,
   output: CreateAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5317,7 +5314,7 @@ export interface ChangeRenewalSettingsAccountsCustomersEntitlementsRequest {
 }
 
 export const ChangeRenewalSettingsAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleCloudChannelV1ChangeRenewalSettingsRequest,
@@ -5334,7 +5331,7 @@ export const ChangeRenewalSettingsAccountsCustomersEntitlementsRequest =
 export type ChangeRenewalSettingsAccountsCustomersEntitlementsResponse =
   GoogleLongrunningOperation;
 export const ChangeRenewalSettingsAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ChangeRenewalSettingsAccountsCustomersEntitlementsError =
   | DefaultErrors
@@ -5349,7 +5346,7 @@ export const changeRenewalSettingsAccountsCustomersEntitlements: API.OperationMe
   ChangeRenewalSettingsAccountsCustomersEntitlementsResponse,
   ChangeRenewalSettingsAccountsCustomersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ChangeRenewalSettingsAccountsCustomersEntitlementsRequest,
   output: ChangeRenewalSettingsAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5363,7 +5360,7 @@ export interface SuspendAccountsCustomersEntitlementsRequest {
 }
 
 export const SuspendAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudChannelV1SuspendEntitlementRequest).pipe(
       T.HttpBody(),
@@ -5376,7 +5373,7 @@ export const SuspendAccountsCustomersEntitlementsRequest =
 export type SuspendAccountsCustomersEntitlementsResponse =
   GoogleLongrunningOperation;
 export const SuspendAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type SuspendAccountsCustomersEntitlementsError =
   | DefaultErrors
@@ -5391,7 +5388,7 @@ export const suspendAccountsCustomersEntitlements: API.OperationMethod<
   SuspendAccountsCustomersEntitlementsResponse,
   SuspendAccountsCustomersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SuspendAccountsCustomersEntitlementsRequest,
   output: SuspendAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5405,7 +5402,7 @@ export interface CancelAccountsCustomersEntitlementsRequest {
 }
 
 export const CancelAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudChannelV1CancelEntitlementRequest).pipe(
       T.HttpBody(),
@@ -5418,7 +5415,7 @@ export const CancelAccountsCustomersEntitlementsRequest =
 export type CancelAccountsCustomersEntitlementsResponse =
   GoogleLongrunningOperation;
 export const CancelAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
+  /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CancelAccountsCustomersEntitlementsError =
   | DefaultErrors
@@ -5433,7 +5430,7 @@ export const cancelAccountsCustomersEntitlements: API.OperationMethod<
   CancelAccountsCustomersEntitlementsResponse,
   CancelAccountsCustomersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelAccountsCustomersEntitlementsRequest,
   output: CancelAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5449,7 +5446,7 @@ export interface ListAccountsCustomersEntitlementsRequest {
 }
 
 export const ListAccountsCustomersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -5461,7 +5458,7 @@ export const ListAccountsCustomersEntitlementsRequest =
 export type ListAccountsCustomersEntitlementsResponse =
   GoogleCloudChannelV1ListEntitlementsResponse;
 export const ListAccountsCustomersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListEntitlementsResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListEntitlementsResponse;
 
 export type ListAccountsCustomersEntitlementsError =
   | DefaultErrors
@@ -5474,7 +5471,7 @@ export const listAccountsCustomersEntitlements: API.PaginatedOperationMethod<
   ListAccountsCustomersEntitlementsResponse,
   ListAccountsCustomersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsCustomersEntitlementsRequest,
   output: ListAccountsCustomersEntitlementsResponse,
   errors: [NotFound, Forbidden],
@@ -5494,7 +5491,7 @@ export interface ListAccountsSkuGroupsRequest {
 }
 
 export const ListAccountsSkuGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -5506,7 +5503,7 @@ export const ListAccountsSkuGroupsRequest =
 export type ListAccountsSkuGroupsResponse =
   GoogleCloudChannelV1ListSkuGroupsResponse;
 export const ListAccountsSkuGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListSkuGroupsResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListSkuGroupsResponse;
 
 export type ListAccountsSkuGroupsError = DefaultErrors | NotFound | Forbidden;
 
@@ -5516,7 +5513,7 @@ export const listAccountsSkuGroups: API.PaginatedOperationMethod<
   ListAccountsSkuGroupsResponse,
   ListAccountsSkuGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsSkuGroupsRequest,
   output: ListAccountsSkuGroupsResponse,
   errors: [NotFound, Forbidden],
@@ -5536,7 +5533,7 @@ export interface ListAccountsSkuGroupsBillableSkusRequest {
 }
 
 export const ListAccountsSkuGroupsBillableSkusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -5548,7 +5545,7 @@ export const ListAccountsSkuGroupsBillableSkusRequest =
 export type ListAccountsSkuGroupsBillableSkusResponse =
   GoogleCloudChannelV1ListSkuGroupBillableSkusResponse;
 export const ListAccountsSkuGroupsBillableSkusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListSkuGroupBillableSkusResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListSkuGroupBillableSkusResponse;
 
 export type ListAccountsSkuGroupsBillableSkusError =
   | DefaultErrors
@@ -5561,7 +5558,7 @@ export const listAccountsSkuGroupsBillableSkus: API.PaginatedOperationMethod<
   ListAccountsSkuGroupsBillableSkusResponse,
   ListAccountsSkuGroupsBillableSkusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsSkuGroupsBillableSkusRequest,
   output: ListAccountsSkuGroupsBillableSkusResponse,
   errors: [NotFound, Forbidden],
@@ -5579,7 +5576,7 @@ export interface RegisterSubscriberIntegratorsRequest {
 }
 
 export const RegisterSubscriberIntegratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     integrator: Schema.String.pipe(T.HttpPath("integrator")),
     body: Schema.optional(GoogleCloudChannelV1RegisterSubscriberRequest).pipe(
       T.HttpBody(),
@@ -5596,7 +5593,7 @@ export const RegisterSubscriberIntegratorsRequest =
 export type RegisterSubscriberIntegratorsResponse =
   GoogleCloudChannelV1RegisterSubscriberResponse;
 export const RegisterSubscriberIntegratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1RegisterSubscriberResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1RegisterSubscriberResponse;
 
 export type RegisterSubscriberIntegratorsError =
   | DefaultErrors
@@ -5611,7 +5608,7 @@ export const registerSubscriberIntegrators: API.OperationMethod<
   RegisterSubscriberIntegratorsResponse,
   RegisterSubscriberIntegratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterSubscriberIntegratorsRequest,
   output: RegisterSubscriberIntegratorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5625,7 +5622,7 @@ export interface UnregisterSubscriberIntegratorsRequest {
 }
 
 export const UnregisterSubscriberIntegratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     integrator: Schema.String.pipe(T.HttpPath("integrator")),
     body: Schema.optional(GoogleCloudChannelV1UnregisterSubscriberRequest).pipe(
       T.HttpBody(),
@@ -5642,7 +5639,7 @@ export const UnregisterSubscriberIntegratorsRequest =
 export type UnregisterSubscriberIntegratorsResponse =
   GoogleCloudChannelV1UnregisterSubscriberResponse;
 export const UnregisterSubscriberIntegratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1UnregisterSubscriberResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1UnregisterSubscriberResponse;
 
 export type UnregisterSubscriberIntegratorsError =
   | DefaultErrors
@@ -5657,7 +5654,7 @@ export const unregisterSubscriberIntegrators: API.OperationMethod<
   UnregisterSubscriberIntegratorsResponse,
   UnregisterSubscriberIntegratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnregisterSubscriberIntegratorsRequest,
   output: UnregisterSubscriberIntegratorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -5675,7 +5672,7 @@ export interface ListSubscribersIntegratorsRequest {
 }
 
 export const ListSubscribersIntegratorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     account: Schema.optional(Schema.String).pipe(T.HttpQuery("account")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -5688,7 +5685,7 @@ export const ListSubscribersIntegratorsRequest =
 export type ListSubscribersIntegratorsResponse =
   GoogleCloudChannelV1ListSubscribersResponse;
 export const ListSubscribersIntegratorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleCloudChannelV1ListSubscribersResponse;
+  /*@__PURE__*/ GoogleCloudChannelV1ListSubscribersResponse;
 
 export type ListSubscribersIntegratorsError =
   | DefaultErrors
@@ -5701,7 +5698,7 @@ export const listSubscribersIntegrators: API.PaginatedOperationMethod<
   ListSubscribersIntegratorsResponse,
   ListSubscribersIntegratorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscribersIntegratorsRequest,
   output: ListSubscribersIntegratorsResponse,
   errors: [NotFound, Forbidden],

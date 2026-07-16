@@ -32,7 +32,7 @@ export interface GoogleFirebaseAppdistroV1alphaScreenshot {
 }
 
 export const GoogleFirebaseAppdistroV1alphaScreenshot: Schema.Codec<GoogleFirebaseAppdistroV1alphaScreenshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     height: Schema.optional(Schema.Number),
     width: Schema.optional(Schema.Number),
@@ -50,7 +50,7 @@ export interface GoogleFirebaseAppdistroV1alphaTerminalAction {
 }
 
 export const GoogleFirebaseAppdistroV1alphaTerminalAction: Schema.Codec<GoogleFirebaseAppdistroV1alphaTerminalAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     screenshot: Schema.optional(GoogleFirebaseAppdistroV1alphaScreenshot),
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaTerminalAction" });
@@ -61,7 +61,7 @@ export interface AndroidxCrawlerOutputPoint {
 }
 
 export const AndroidxCrawlerOutputPoint: Schema.Codec<AndroidxCrawlerOutputPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     xCoordinate: Schema.optional(Schema.Number),
     yCoordinate: Schema.optional(Schema.Number),
   }).annotate({ identifier: "AndroidxCrawlerOutputPoint" });
@@ -74,7 +74,7 @@ export interface AndroidxCrawlerOutputRectangle {
 }
 
 export const AndroidxCrawlerOutputRectangle: Schema.Codec<AndroidxCrawlerOutputRectangle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     left: Schema.optional(Schema.Number),
     right: Schema.optional(Schema.Number),
     top: Schema.optional(Schema.Number),
@@ -89,7 +89,7 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText {
 }
 
 export const GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText: Schema.Codec<GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     elementBounds: Schema.optional(AndroidxCrawlerOutputRectangle),
   }).annotate({
@@ -99,7 +99,7 @@ export const GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText: Schema.Co
 export interface GoogleFirebaseAppdistroV1alphaDeviceInteractionBack {}
 
 export const GoogleFirebaseAppdistroV1alphaDeviceInteractionBack: Schema.Codec<GoogleFirebaseAppdistroV1alphaDeviceInteractionBack> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaDeviceInteractionBack",
   });
 
@@ -111,7 +111,7 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe {
 }
 
 export const GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe: Schema.Codec<GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     start: Schema.optional(AndroidxCrawlerOutputPoint),
     end: Schema.optional(AndroidxCrawlerOutputPoint),
   }).annotate({
@@ -126,7 +126,7 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop {
 }
 
 export const GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop: Schema.Codec<GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     end: Schema.optional(AndroidxCrawlerOutputPoint),
     start: Schema.optional(AndroidxCrawlerOutputPoint),
   }).annotate({
@@ -139,7 +139,7 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceInteractionWait {
 }
 
 export const GoogleFirebaseAppdistroV1alphaDeviceInteractionWait: Schema.Codec<GoogleFirebaseAppdistroV1alphaDeviceInteractionWait> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duration: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaDeviceInteractionWait",
@@ -177,7 +177,7 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceInteraction {
 }
 
 export const GoogleFirebaseAppdistroV1alphaDeviceInteraction: Schema.Codec<GoogleFirebaseAppdistroV1alphaDeviceInteraction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     screenshot: Schema.optional(GoogleFirebaseAppdistroV1alphaScreenshot),
     tap: Schema.optional(AndroidxCrawlerOutputPoint),
     enterText: Schema.optional(
@@ -210,7 +210,7 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceAction {
 }
 
 export const GoogleFirebaseAppdistroV1alphaDeviceAction: Schema.Codec<GoogleFirebaseAppdistroV1alphaDeviceAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceInteractions: Schema.optional(
       Schema.Array(GoogleFirebaseAppdistroV1alphaDeviceInteraction),
     ),
@@ -225,7 +225,7 @@ export interface GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo {
 }
 
 export const GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo: Schema.Codec<GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     annotatedScreenshotUri: Schema.optional(Schema.String),
     jsonUri: Schema.optional(Schema.String),
   }).annotate({
@@ -253,7 +253,7 @@ export interface GoogleFirebaseAppdistroV1alphaGoalAction {
 }
 
 export const GoogleFirebaseAppdistroV1alphaGoalAction: Schema.Codec<GoogleFirebaseAppdistroV1alphaGoalAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cachingType: Schema.optional(Schema.String),
     explanation: Schema.optional(Schema.String),
     terminalAction: Schema.optional(
@@ -274,7 +274,7 @@ export interface GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints {
 }
 
 export const GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints: Schema.Codec<GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     usernameResourceName: Schema.optional(Schema.String),
     passwordResourceName: Schema.optional(Schema.String),
   }).annotate({
@@ -293,7 +293,7 @@ export interface GoogleFirebaseAppdistroV1alphaLoginCredential {
 }
 
 export const GoogleFirebaseAppdistroV1alphaLoginCredential: Schema.Codec<GoogleFirebaseAppdistroV1alphaLoginCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     fieldHints: Schema.optional(
       GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints,
@@ -316,7 +316,7 @@ export interface GoogleFirebaseAppdistroV1alphaAiStep {
 }
 
 export const GoogleFirebaseAppdistroV1alphaAiStep: Schema.Codec<GoogleFirebaseAppdistroV1alphaAiStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     goal: Schema.optional(Schema.String),
     successCriteria: Schema.optional(Schema.String),
     assertion: Schema.optional(Schema.String),
@@ -330,7 +330,7 @@ export interface GoogleFirebaseAppdistroV1alphaAiInstructions {
 }
 
 export const GoogleFirebaseAppdistroV1alphaAiInstructions: Schema.Codec<GoogleFirebaseAppdistroV1alphaAiInstructions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     steps: Schema.optional(Schema.Array(GoogleFirebaseAppdistroV1alphaAiStep)),
   }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaAiInstructions" });
 
@@ -342,7 +342,7 @@ export interface GoogleFirebaseAppdistroV1alphaRoboCrawler {
 }
 
 export const GoogleFirebaseAppdistroV1alphaRoboCrawler: Schema.Codec<GoogleFirebaseAppdistroV1alphaRoboCrawler> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     loginCredential: Schema.optional(
       GoogleFirebaseAppdistroV1alphaLoginCredential,
     ),
@@ -361,7 +361,7 @@ export interface GoogleFirebaseAppdistroV1alphaTestQuota {
 }
 
 export const GoogleFirebaseAppdistroV1alphaTestQuota: Schema.Codec<GoogleFirebaseAppdistroV1alphaTestQuota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     limit: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     usage: Schema.optional(Schema.String),
@@ -373,7 +373,7 @@ export interface GoogleFirebaseAppdistroV1ReleaseNotes {
 }
 
 export const GoogleFirebaseAppdistroV1ReleaseNotes: Schema.Codec<GoogleFirebaseAppdistroV1ReleaseNotes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleFirebaseAppdistroV1ReleaseNotes" });
 
@@ -383,7 +383,7 @@ export interface GoogleFirebaseAppdistroV1alphaJwt {
 }
 
 export const GoogleFirebaseAppdistroV1alphaJwt: Schema.Codec<GoogleFirebaseAppdistroV1alphaJwt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaJwt" });
 
@@ -399,7 +399,7 @@ export interface GoogleFirebaseAppdistroV1alphaTestDevice {
 }
 
 export const GoogleFirebaseAppdistroV1alphaTestDevice: Schema.Codec<GoogleFirebaseAppdistroV1alphaTestDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orientation: Schema.optional(Schema.String),
     locale: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
@@ -420,7 +420,7 @@ export interface GoogleFirebaseAppdistroV1alphaTestConfig {
 }
 
 export const GoogleFirebaseAppdistroV1alphaTestConfig: Schema.Codec<GoogleFirebaseAppdistroV1alphaTestConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     testDevices: Schema.optional(
       Schema.Array(GoogleFirebaseAppdistroV1alphaTestDevice),
     ),
@@ -433,7 +433,7 @@ export const GoogleFirebaseAppdistroV1alphaTestConfig: Schema.Codec<GoogleFireba
 export interface GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse {}
 
 export const GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse: Schema.Codec<GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse",
   });
 
@@ -447,7 +447,7 @@ export interface GoogleFirebaseAppdistroV1alphaTesterUdid {
 }
 
 export const GoogleFirebaseAppdistroV1alphaTesterUdid: Schema.Codec<GoogleFirebaseAppdistroV1alphaTesterUdid> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     udid: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     platform: Schema.optional(Schema.String),
@@ -456,7 +456,7 @@ export const GoogleFirebaseAppdistroV1alphaTesterUdid: Schema.Codec<GoogleFireba
 export interface GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse {}
 
 export const GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse: Schema.Codec<GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse",
   });
 
@@ -466,7 +466,7 @@ export interface GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse {
 }
 
 export const GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse: Schema.Codec<GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     testerUdids: Schema.optional(
       Schema.Array(GoogleFirebaseAppdistroV1alphaTesterUdid),
     ),
@@ -484,7 +484,7 @@ export interface GoogleFirebaseAppdistroV1alphaAssertionDetails {
 }
 
 export const GoogleFirebaseAppdistroV1alphaAssertionDetails: Schema.Codec<GoogleFirebaseAppdistroV1alphaAssertionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     screenshot: Schema.optional(GoogleFirebaseAppdistroV1alphaScreenshot),
     result: Schema.optional(Schema.Boolean),
     explanation: Schema.optional(Schema.String),
@@ -496,7 +496,7 @@ export interface GoogleFirebaseAppdistroV1alphaGoalDetails {
 }
 
 export const GoogleFirebaseAppdistroV1alphaGoalDetails: Schema.Codec<GoogleFirebaseAppdistroV1alphaGoalDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     goalActions: Schema.optional(
       Schema.Array(GoogleFirebaseAppdistroV1alphaGoalAction),
     ),
@@ -521,7 +521,7 @@ export interface GoogleFirebaseAppdistroV1alphaAiStepResult {
 }
 
 export const GoogleFirebaseAppdistroV1alphaAiStepResult: Schema.Codec<GoogleFirebaseAppdistroV1alphaAiStepResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     step: Schema.optional(GoogleFirebaseAppdistroV1alphaAiStep),
     assertionDetails: Schema.optional(
@@ -546,7 +546,7 @@ export interface GoogleFirebaseAppdistroV1alphaTestCase {
 }
 
 export const GoogleFirebaseAppdistroV1alphaTestCase: Schema.Codec<GoogleFirebaseAppdistroV1alphaTestCase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     prerequisiteTestCase: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -565,7 +565,7 @@ export interface GoogleFirebaseAppdistroV1alphaListTestCasesResponse {
 }
 
 export const GoogleFirebaseAppdistroV1alphaListTestCasesResponse: Schema.Codec<GoogleFirebaseAppdistroV1alphaListTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     testCases: Schema.optional(
       Schema.Array(GoogleFirebaseAppdistroV1alphaTestCase),
     ),
@@ -600,7 +600,7 @@ export interface GoogleFirebaseAppdistroV1alphaRelease {
 }
 
 export const GoogleFirebaseAppdistroV1alphaRelease: Schema.Codec<GoogleFirebaseAppdistroV1alphaRelease> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     distributedAt: Schema.optional(Schema.String),
     instanceId: Schema.optional(Schema.String),
     openInvitationCount: Schema.optional(Schema.Number),
@@ -620,7 +620,7 @@ export interface GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse {
 }
 
 export const GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse: Schema.Codec<GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     release: Schema.optional(GoogleFirebaseAppdistroV1alphaRelease),
   }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse",
@@ -632,7 +632,7 @@ export interface GoogleFirebaseAppdistroV1alphaReleaseNotes {
 }
 
 export const GoogleFirebaseAppdistroV1alphaReleaseNotes: Schema.Codec<GoogleFirebaseAppdistroV1alphaReleaseNotes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     releaseNotes: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaReleaseNotes" });
 
@@ -642,7 +642,7 @@ export interface GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest {
 }
 
 export const GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest: Schema.Codec<GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     releaseNotes: Schema.optional(GoogleFirebaseAppdistroV1alphaReleaseNotes),
   }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest",
@@ -660,7 +660,7 @@ export interface GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest {
 }
 
 export const GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest: Schema.Codec<GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayVersion: Schema.optional(Schema.String),
     emails: Schema.optional(Schema.Array(Schema.String)),
     groupIds: Schema.optional(Schema.Array(Schema.String)),
@@ -679,7 +679,7 @@ export interface GoogleFirebaseAppdistroV1alphaAabCertificate {
 }
 
 export const GoogleFirebaseAppdistroV1alphaAabCertificate: Schema.Codec<GoogleFirebaseAppdistroV1alphaAabCertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificateHashMd5: Schema.optional(Schema.String),
     certificateHashSha1: Schema.optional(Schema.String),
     certificateHashSha256: Schema.optional(Schema.String),
@@ -709,7 +709,7 @@ export interface GoogleFirebaseAppdistroV1Release {
 }
 
 export const GoogleFirebaseAppdistroV1Release: Schema.Codec<GoogleFirebaseAppdistroV1Release> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     releaseNotes: Schema.optional(GoogleFirebaseAppdistroV1ReleaseNotes),
     testingUri: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -735,7 +735,7 @@ export interface GoogleFirebaseAppdistroV1UploadReleaseResponse {
 }
 
 export const GoogleFirebaseAppdistroV1UploadReleaseResponse: Schema.Codec<GoogleFirebaseAppdistroV1UploadReleaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.String),
     release: Schema.optional(GoogleFirebaseAppdistroV1Release),
   }).annotate({ identifier: "GoogleFirebaseAppdistroV1UploadReleaseResponse" });
@@ -752,7 +752,7 @@ export interface GoogleFirebaseAppdistroV1alphaRoboStats {
 }
 
 export const GoogleFirebaseAppdistroV1alphaRoboStats: Schema.Codec<GoogleFirebaseAppdistroV1alphaRoboStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mainActivityCrawlTimedOut: Schema.optional(Schema.Boolean),
     crawlDuration: Schema.optional(Schema.String),
     distinctVisitedScreens: Schema.optional(Schema.Number),
@@ -767,7 +767,7 @@ export interface GoogleFirebaseAppdistroV1alphaAppCrash {
 }
 
 export const GoogleFirebaseAppdistroV1alphaAppCrash: Schema.Codec<GoogleFirebaseAppdistroV1alphaAppCrash> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     stackTrace: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaAppCrash" });
@@ -839,7 +839,7 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceExecution {
 }
 
 export const GoogleFirebaseAppdistroV1alphaDeviceExecution: Schema.Codec<GoogleFirebaseAppdistroV1alphaDeviceExecution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     roboStats: Schema.optional(GoogleFirebaseAppdistroV1alphaRoboStats),
     finalAiAssertionMissing: Schema.optional(Schema.Boolean),
     failedReason: Schema.optional(Schema.String),
@@ -888,7 +888,7 @@ export interface GoogleFirebaseAppdistroV1alphaReleaseTest {
 }
 
 export const GoogleFirebaseAppdistroV1alphaReleaseTest: Schema.Codec<GoogleFirebaseAppdistroV1alphaReleaseTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     deviceExecutions: Schema.optional(
       Schema.Array(GoogleFirebaseAppdistroV1alphaDeviceExecution),
@@ -950,7 +950,7 @@ export interface GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse {
 }
 
 export const GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse: Schema.Codec<GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     release: Schema.optional(GoogleFirebaseAppdistroV1alphaRelease),
     status: Schema.optional(Schema.String),
     errorCode: Schema.optional(Schema.String),
@@ -965,7 +965,7 @@ export interface GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse {
 }
 
 export const GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse: Schema.Codec<GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     testCases: Schema.optional(
       Schema.Array(GoogleFirebaseAppdistroV1alphaTestCase),
     ),
@@ -976,21 +976,21 @@ export const GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse: Schema.
 export interface GoogleFirebaseAppdistroV1UploadReleaseMetadata {}
 
 export const GoogleFirebaseAppdistroV1UploadReleaseMetadata: Schema.Codec<GoogleFirebaseAppdistroV1UploadReleaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1UploadReleaseMetadata",
   });
 
 export interface GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse {}
 
 export const GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse: Schema.Codec<GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse",
   });
 
 export interface GoogleProtobufEmpty {}
 
 export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
 
@@ -1002,7 +1002,7 @@ export interface GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest {
 }
 
 export const GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest: Schema.Codec<GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowMissing: Schema.optional(Schema.Boolean),
     testCase: Schema.optional(GoogleFirebaseAppdistroV1alphaTestCase),
   }).annotate({
@@ -1015,7 +1015,7 @@ export interface GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest {
 }
 
 export const GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest: Schema.Codec<GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     testDevices: Schema.optional(
       Schema.Array(GoogleFirebaseAppdistroV1alphaTestDevice),
     ),
@@ -1029,7 +1029,7 @@ export interface GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest {
 }
 
 export const GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest: Schema.Codec<GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requests: Schema.optional(
       Schema.Array(GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest),
     ),
@@ -1043,7 +1043,7 @@ export interface GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest {
 }
 
 export const GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest: Schema.Codec<GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     names: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest",
@@ -1052,7 +1052,7 @@ export const GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest: Schema.C
 export interface GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse {}
 
 export const GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse: Schema.Codec<GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse",
   });
 
@@ -1082,7 +1082,7 @@ export interface GoogleFirebaseAppdistroV1alphaApp {
 }
 
 export const GoogleFirebaseAppdistroV1alphaApp: Schema.Codec<GoogleFirebaseAppdistroV1alphaApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     platform: Schema.optional(Schema.String),
     contactEmail: Schema.optional(Schema.String),
     projectNumber: Schema.optional(Schema.String),
@@ -1102,7 +1102,7 @@ export interface GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse {
 }
 
 export const GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse: Schema.Codec<GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     releaseTests: Schema.optional(
       Schema.Array(GoogleFirebaseAppdistroV1alphaReleaseTest),
     ),
@@ -1171,7 +1171,7 @@ export interface GetTestQuotaProjectsRequest {
 }
 
 export const GetTestQuotaProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -1181,7 +1181,7 @@ export const GetTestQuotaProjectsRequest =
 export type GetTestQuotaProjectsResponse =
   GoogleFirebaseAppdistroV1alphaTestQuota;
 export const GetTestQuotaProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaTestQuota;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaTestQuota;
 
 export type GetTestQuotaProjectsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1191,7 +1191,7 @@ export const getTestQuotaProjects: API.OperationMethod<
   GetTestQuotaProjectsResponse,
   GetTestQuotaProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTestQuotaProjectsRequest,
   output: GetTestQuotaProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -1207,7 +1207,7 @@ export interface UpdateTestConfigProjectsAppsRequest {
 }
 
 export const UpdateTestConfigProjectsAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleFirebaseAppdistroV1alphaTestConfig).pipe(
@@ -1221,7 +1221,7 @@ export const UpdateTestConfigProjectsAppsRequest =
 export type UpdateTestConfigProjectsAppsResponse =
   GoogleFirebaseAppdistroV1alphaTestConfig;
 export const UpdateTestConfigProjectsAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaTestConfig;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaTestConfig;
 
 export type UpdateTestConfigProjectsAppsError =
   | DefaultErrors
@@ -1236,7 +1236,7 @@ export const updateTestConfigProjectsApps: API.OperationMethod<
   UpdateTestConfigProjectsAppsResponse,
   UpdateTestConfigProjectsAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTestConfigProjectsAppsRequest,
   output: UpdateTestConfigProjectsAppsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1248,7 +1248,7 @@ export interface GetTestConfigProjectsAppsRequest {
 }
 
 export const GetTestConfigProjectsAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -1258,7 +1258,7 @@ export const GetTestConfigProjectsAppsRequest =
 export type GetTestConfigProjectsAppsResponse =
   GoogleFirebaseAppdistroV1alphaTestConfig;
 export const GetTestConfigProjectsAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaTestConfig;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaTestConfig;
 
 export type GetTestConfigProjectsAppsError =
   | DefaultErrors
@@ -1271,7 +1271,7 @@ export const getTestConfigProjectsApps: API.OperationMethod<
   GetTestConfigProjectsAppsResponse,
   GetTestConfigProjectsAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTestConfigProjectsAppsRequest,
   output: GetTestConfigProjectsAppsResponse,
   errors: [NotFound, Forbidden],
@@ -1283,7 +1283,7 @@ export interface CancelProjectsAppsReleasesTestsRequest {
 }
 
 export const CancelProjectsAppsReleasesTestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}:cancel" }),
@@ -1293,7 +1293,7 @@ export const CancelProjectsAppsReleasesTestsRequest =
 export type CancelProjectsAppsReleasesTestsResponse =
   GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse;
 export const CancelProjectsAppsReleasesTestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse;
 
 export type CancelProjectsAppsReleasesTestsError =
   | DefaultErrors
@@ -1306,7 +1306,7 @@ export const cancelProjectsAppsReleasesTests: API.OperationMethod<
   CancelProjectsAppsReleasesTestsResponse,
   CancelProjectsAppsReleasesTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsAppsReleasesTestsRequest,
   output: CancelProjectsAppsReleasesTestsResponse,
   errors: [NotFound, Forbidden],
@@ -1328,7 +1328,7 @@ export interface ListProjectsAppsReleasesTestsRequest {
 }
 
 export const ListProjectsAppsReleasesTestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1341,7 +1341,7 @@ export const ListProjectsAppsReleasesTestsRequest =
 export type ListProjectsAppsReleasesTestsResponse =
   GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse;
 export const ListProjectsAppsReleasesTestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse;
 
 export type ListProjectsAppsReleasesTestsError =
   | DefaultErrors
@@ -1354,7 +1354,7 @@ export const listProjectsAppsReleasesTests: API.PaginatedOperationMethod<
   ListProjectsAppsReleasesTestsResponse,
   ListProjectsAppsReleasesTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAppsReleasesTestsRequest,
   output: ListProjectsAppsReleasesTestsResponse,
   errors: [NotFound, Forbidden],
@@ -1374,7 +1374,7 @@ export interface CreateProjectsAppsReleasesTestsRequest {
 }
 
 export const CreateProjectsAppsReleasesTestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     releaseTestId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("releaseTestId"),
     ),
@@ -1390,7 +1390,7 @@ export const CreateProjectsAppsReleasesTestsRequest =
 export type CreateProjectsAppsReleasesTestsResponse =
   GoogleFirebaseAppdistroV1alphaReleaseTest;
 export const CreateProjectsAppsReleasesTestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaReleaseTest;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaReleaseTest;
 
 export type CreateProjectsAppsReleasesTestsError =
   | DefaultErrors
@@ -1405,7 +1405,7 @@ export const createProjectsAppsReleasesTests: API.OperationMethod<
   CreateProjectsAppsReleasesTestsResponse,
   CreateProjectsAppsReleasesTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsAppsReleasesTestsRequest,
   output: CreateProjectsAppsReleasesTestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1417,7 +1417,7 @@ export interface GetProjectsAppsReleasesTestsRequest {
 }
 
 export const GetProjectsAppsReleasesTestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -1427,7 +1427,7 @@ export const GetProjectsAppsReleasesTestsRequest =
 export type GetProjectsAppsReleasesTestsResponse =
   GoogleFirebaseAppdistroV1alphaReleaseTest;
 export const GetProjectsAppsReleasesTestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaReleaseTest;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaReleaseTest;
 
 export type GetProjectsAppsReleasesTestsError =
   | DefaultErrors
@@ -1440,7 +1440,7 @@ export const getProjectsAppsReleasesTests: API.OperationMethod<
   GetProjectsAppsReleasesTestsResponse,
   GetProjectsAppsReleasesTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsAppsReleasesTestsRequest,
   output: GetProjectsAppsReleasesTestsResponse,
   errors: [NotFound, Forbidden],
@@ -1454,7 +1454,7 @@ export interface BatchUpdateProjectsAppsTestCasesRequest {
 }
 
 export const BatchUpdateProjectsAppsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest,
@@ -1471,7 +1471,7 @@ export const BatchUpdateProjectsAppsTestCasesRequest =
 export type BatchUpdateProjectsAppsTestCasesResponse =
   GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse;
 export const BatchUpdateProjectsAppsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse;
 
 export type BatchUpdateProjectsAppsTestCasesError =
   | DefaultErrors
@@ -1486,7 +1486,7 @@ export const batchUpdateProjectsAppsTestCases: API.OperationMethod<
   BatchUpdateProjectsAppsTestCasesResponse,
   BatchUpdateProjectsAppsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateProjectsAppsTestCasesRequest,
   output: BatchUpdateProjectsAppsTestCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1500,7 +1500,7 @@ export interface ClearTestCaseCacheProjectsAppsTestCasesRequest {
 }
 
 export const ClearTestCaseCacheProjectsAppsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     testCase: Schema.String.pipe(T.HttpPath("testCase")),
     body: Schema.optional(
       GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest,
@@ -1517,7 +1517,7 @@ export const ClearTestCaseCacheProjectsAppsTestCasesRequest =
 export type ClearTestCaseCacheProjectsAppsTestCasesResponse =
   GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse;
 export const ClearTestCaseCacheProjectsAppsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse;
 
 export type ClearTestCaseCacheProjectsAppsTestCasesError =
   | DefaultErrors
@@ -1532,7 +1532,7 @@ export const clearTestCaseCacheProjectsAppsTestCases: API.OperationMethod<
   ClearTestCaseCacheProjectsAppsTestCasesResponse,
   ClearTestCaseCacheProjectsAppsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClearTestCaseCacheProjectsAppsTestCasesRequest,
   output: ClearTestCaseCacheProjectsAppsTestCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1544,7 +1544,7 @@ export interface DeleteProjectsAppsTestCasesRequest {
 }
 
 export const DeleteProjectsAppsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
@@ -1553,7 +1553,7 @@ export const DeleteProjectsAppsTestCasesRequest =
 
 export type DeleteProjectsAppsTestCasesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsAppsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsAppsTestCasesError =
   | DefaultErrors
@@ -1568,7 +1568,7 @@ export const deleteProjectsAppsTestCases: API.OperationMethod<
   DeleteProjectsAppsTestCasesResponse,
   DeleteProjectsAppsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsAppsTestCasesRequest,
   output: DeleteProjectsAppsTestCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1584,7 +1584,7 @@ export interface CreateProjectsAppsTestCasesRequest {
 }
 
 export const CreateProjectsAppsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     testCaseId: Schema.optional(Schema.String).pipe(T.HttpQuery("testCaseId")),
     body: Schema.optional(GoogleFirebaseAppdistroV1alphaTestCase).pipe(
@@ -1602,7 +1602,7 @@ export const CreateProjectsAppsTestCasesRequest =
 export type CreateProjectsAppsTestCasesResponse =
   GoogleFirebaseAppdistroV1alphaTestCase;
 export const CreateProjectsAppsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaTestCase;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaTestCase;
 
 export type CreateProjectsAppsTestCasesError =
   | DefaultErrors
@@ -1617,7 +1617,7 @@ export const createProjectsAppsTestCases: API.OperationMethod<
   CreateProjectsAppsTestCasesResponse,
   CreateProjectsAppsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsAppsTestCasesRequest,
   output: CreateProjectsAppsTestCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1629,7 +1629,7 @@ export interface GetProjectsAppsTestCasesRequest {
 }
 
 export const GetProjectsAppsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -1639,7 +1639,7 @@ export const GetProjectsAppsTestCasesRequest =
 export type GetProjectsAppsTestCasesResponse =
   GoogleFirebaseAppdistroV1alphaTestCase;
 export const GetProjectsAppsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaTestCase;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaTestCase;
 
 export type GetProjectsAppsTestCasesError =
   | DefaultErrors
@@ -1652,7 +1652,7 @@ export const getProjectsAppsTestCases: API.OperationMethod<
   GetProjectsAppsTestCasesResponse,
   GetProjectsAppsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsAppsTestCasesRequest,
   output: GetProjectsAppsTestCasesResponse,
   errors: [NotFound, Forbidden],
@@ -1668,7 +1668,7 @@ export interface ListProjectsAppsTestCasesRequest {
 }
 
 export const ListProjectsAppsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1680,7 +1680,7 @@ export const ListProjectsAppsTestCasesRequest =
 export type ListProjectsAppsTestCasesResponse =
   GoogleFirebaseAppdistroV1alphaListTestCasesResponse;
 export const ListProjectsAppsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaListTestCasesResponse;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaListTestCasesResponse;
 
 export type ListProjectsAppsTestCasesError =
   | DefaultErrors
@@ -1693,7 +1693,7 @@ export const listProjectsAppsTestCases: API.PaginatedOperationMethod<
   ListProjectsAppsTestCasesResponse,
   ListProjectsAppsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAppsTestCasesRequest,
   output: ListProjectsAppsTestCasesResponse,
   errors: [NotFound, Forbidden],
@@ -1713,7 +1713,7 @@ export interface PatchProjectsAppsTestCasesRequest {
 }
 
 export const PatchProjectsAppsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     allowMissing: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("allowMissing"),
@@ -1729,7 +1729,7 @@ export const PatchProjectsAppsTestCasesRequest =
 export type PatchProjectsAppsTestCasesResponse =
   GoogleFirebaseAppdistroV1alphaTestCase;
 export const PatchProjectsAppsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaTestCase;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaTestCase;
 
 export type PatchProjectsAppsTestCasesError =
   | DefaultErrors
@@ -1744,7 +1744,7 @@ export const patchProjectsAppsTestCases: API.OperationMethod<
   PatchProjectsAppsTestCasesResponse,
   PatchProjectsAppsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsAppsTestCasesRequest,
   output: PatchProjectsAppsTestCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1758,7 +1758,7 @@ export interface BatchDeleteProjectsAppsTestCasesRequest {
 }
 
 export const BatchDeleteProjectsAppsTestCasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest,
@@ -1774,7 +1774,7 @@ export const BatchDeleteProjectsAppsTestCasesRequest =
 
 export type BatchDeleteProjectsAppsTestCasesResponse = GoogleProtobufEmpty;
 export const BatchDeleteProjectsAppsTestCasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type BatchDeleteProjectsAppsTestCasesError =
   | DefaultErrors
@@ -1789,7 +1789,7 @@ export const batchDeleteProjectsAppsTestCases: API.OperationMethod<
   BatchDeleteProjectsAppsTestCasesResponse,
   BatchDeleteProjectsAppsTestCasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeleteProjectsAppsTestCasesRequest,
   output: BatchDeleteProjectsAppsTestCasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1803,7 +1803,7 @@ export interface GetUdidsProjectsTestersRequest {
 }
 
 export const GetUdidsProjectsTestersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mobilesdkAppId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("mobilesdkAppId"),
     ),
@@ -1816,7 +1816,7 @@ export const GetUdidsProjectsTestersRequest =
 export type GetUdidsProjectsTestersResponse =
   GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse;
 export const GetUdidsProjectsTestersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse;
 
 export type GetUdidsProjectsTestersError = DefaultErrors | NotFound | Forbidden;
 
@@ -1826,7 +1826,7 @@ export const getUdidsProjectsTesters: API.OperationMethod<
   GetUdidsProjectsTestersResponse,
   GetUdidsProjectsTestersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUdidsProjectsTestersRequest,
   output: GetUdidsProjectsTestersResponse,
   errors: [NotFound, Forbidden],
@@ -1837,7 +1837,7 @@ export interface GetJwtAppsRequest {
   mobilesdkAppId: string;
 }
 
-export const GetJwtAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetJwtAppsRequest = /*@__PURE__*/ Schema.Struct({
   mobilesdkAppId: Schema.String.pipe(T.HttpPath("mobilesdkAppId")),
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha/apps/{mobilesdkAppId}/jwt" }),
@@ -1846,7 +1846,7 @@ export const GetJwtAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetJwtAppsResponse = GoogleFirebaseAppdistroV1alphaJwt;
 export const GetJwtAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaJwt;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaJwt;
 
 export type GetJwtAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1856,7 +1856,7 @@ export const getJwtApps: API.OperationMethod<
   GetJwtAppsResponse,
   GetJwtAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJwtAppsRequest,
   output: GetJwtAppsResponse,
   errors: [NotFound, Forbidden],
@@ -1869,7 +1869,7 @@ export interface GetAppsRequest {
   appView?: "APP_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
 }
 
-export const GetAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAppsRequest = /*@__PURE__*/ Schema.Struct({
   mobilesdkAppId: Schema.String.pipe(T.HttpPath("mobilesdkAppId")),
   appView: Schema.optional(Schema.String).pipe(T.HttpQuery("appView")),
 }).pipe(
@@ -1878,8 +1878,7 @@ export const GetAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetAppsRequest>;
 
 export type GetAppsResponse = GoogleFirebaseAppdistroV1alphaApp;
-export const GetAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaApp;
+export const GetAppsResponse = /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaApp;
 
 export type GetAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1889,7 +1888,7 @@ export const getApps: API.OperationMethod<
   GetAppsResponse,
   GetAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppsRequest,
   output: GetAppsResponse,
   errors: [NotFound, Forbidden],
@@ -1905,7 +1904,7 @@ export interface Enable_accessAppsReleasesRequest {
 }
 
 export const Enable_accessAppsReleasesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mobilesdkAppId: Schema.String.pipe(T.HttpPath("mobilesdkAppId")),
     releaseId: Schema.String.pipe(T.HttpPath("releaseId")),
     body: Schema.optional(
@@ -1923,7 +1922,7 @@ export const Enable_accessAppsReleasesRequest =
 export type Enable_accessAppsReleasesResponse =
   GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse;
 export const Enable_accessAppsReleasesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse;
 
 export type Enable_accessAppsReleasesError =
   | DefaultErrors
@@ -1938,7 +1937,7 @@ export const enable_accessAppsReleases: API.OperationMethod<
   Enable_accessAppsReleasesResponse,
   Enable_accessAppsReleasesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: Enable_accessAppsReleasesRequest,
   output: Enable_accessAppsReleasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1954,7 +1953,7 @@ export interface CreateAppsReleasesNotesRequest {
 }
 
 export const CreateAppsReleasesNotesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mobilesdkAppId: Schema.String.pipe(T.HttpPath("mobilesdkAppId")),
     releaseId: Schema.String.pipe(T.HttpPath("releaseId")),
     body: Schema.optional(
@@ -1972,7 +1971,7 @@ export const CreateAppsReleasesNotesRequest =
 export type CreateAppsReleasesNotesResponse =
   GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse;
 export const CreateAppsReleasesNotesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse;
 
 export type CreateAppsReleasesNotesError =
   | DefaultErrors
@@ -1987,7 +1986,7 @@ export const createAppsReleasesNotes: API.OperationMethod<
   CreateAppsReleasesNotesResponse,
   CreateAppsReleasesNotesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppsReleasesNotesRequest,
   output: CreateAppsReleasesNotesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2001,7 +2000,7 @@ export interface GetAppsRelease_by_hashRequest {
 }
 
 export const GetAppsRelease_by_hashRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uploadHash: Schema.String.pipe(T.HttpPath("uploadHash")),
     mobilesdkAppId: Schema.String.pipe(T.HttpPath("mobilesdkAppId")),
   }).pipe(
@@ -2015,7 +2014,7 @@ export const GetAppsRelease_by_hashRequest =
 export type GetAppsRelease_by_hashResponse =
   GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse;
 export const GetAppsRelease_by_hashResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse;
 
 export type GetAppsRelease_by_hashError = DefaultErrors | NotFound | Forbidden;
 
@@ -2025,7 +2024,7 @@ export const getAppsRelease_by_hash: API.OperationMethod<
   GetAppsRelease_by_hashResponse,
   GetAppsRelease_by_hashError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppsRelease_by_hashRequest,
   output: GetAppsRelease_by_hashResponse,
   errors: [NotFound, Forbidden],
@@ -2039,7 +2038,7 @@ export interface GetTesterUdidsAppsTestersRequest {
 }
 
 export const GetTesterUdidsAppsTestersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mobilesdkAppId: Schema.String.pipe(T.HttpPath("mobilesdkAppId")),
     project: Schema.optional(Schema.String).pipe(T.HttpQuery("project")),
   }).pipe(
@@ -2053,7 +2052,7 @@ export const GetTesterUdidsAppsTestersRequest =
 export type GetTesterUdidsAppsTestersResponse =
   GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse;
 export const GetTesterUdidsAppsTestersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse;
 
 export type GetTesterUdidsAppsTestersError =
   | DefaultErrors
@@ -2066,7 +2065,7 @@ export const getTesterUdidsAppsTesters: API.OperationMethod<
   GetTesterUdidsAppsTestersResponse,
   GetTesterUdidsAppsTestersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTesterUdidsAppsTestersRequest,
   output: GetTesterUdidsAppsTestersResponse,
   errors: [NotFound, Forbidden],
@@ -2080,7 +2079,7 @@ export interface GetAppsUpload_statusRequest {
 }
 
 export const GetAppsUpload_statusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mobilesdkAppId: Schema.String.pipe(T.HttpPath("mobilesdkAppId")),
     uploadToken: Schema.String.pipe(T.HttpPath("uploadToken")),
   }).pipe(
@@ -2094,7 +2093,7 @@ export const GetAppsUpload_statusRequest =
 export type GetAppsUpload_statusResponse =
   GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse;
 export const GetAppsUpload_statusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse;
+  /*@__PURE__*/ GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse;
 
 export type GetAppsUpload_statusError = DefaultErrors | NotFound | Forbidden;
 
@@ -2104,7 +2103,7 @@ export const getAppsUpload_status: API.OperationMethod<
   GetAppsUpload_statusResponse,
   GetAppsUpload_statusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppsUpload_statusRequest,
   output: GetAppsUpload_statusResponse,
   errors: [NotFound, Forbidden],

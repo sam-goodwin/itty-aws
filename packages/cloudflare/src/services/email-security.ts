@@ -87,7 +87,7 @@ interface Properties {
   /** User who requested the action */
   requestedBy?: string | null;
 }
-const Properties = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Properties = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     folder: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     requestedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -113,7 +113,7 @@ interface ActionLog {
   /** Status of the action */
   status?: string | null;
 }
-const ActionLog = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActionLog = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     completedAt: Schema.String,
     operation: Schema.Union([
@@ -173,7 +173,7 @@ interface Properties2 {
     | "outbound_ndr"
     | null;
 }
-const Properties2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Properties2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     allowlistedPattern: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -244,7 +244,7 @@ interface Finding {
   score?: number | null;
   value?: string | null;
 }
-const Finding = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Finding = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     attachment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     detail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -283,7 +283,7 @@ interface Validation {
   dmarc?: "pass" | "neutral" | "fail" | "error" | "none" | (string & {}) | null;
   spf?: "pass" | "neutral" | "fail" | "error" | "none" | (string & {}) | null;
 }
-const Validation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Validation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     dkim: Schema.optional(
@@ -487,7 +487,7 @@ interface ListInvestigatesResponseResult {
   xOriginatingIp?: string | null;
 }
 const ListInvestigatesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       actionLog: Schema.Array(ActionLog),
@@ -664,7 +664,7 @@ interface ListInvestigatesResponseResultInfo {
   totalCount?: number | null;
 }
 const ListInvestigatesResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -703,7 +703,7 @@ interface Move {
     | (string & {})
     | null;
 }
-const Move = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Move = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     destination: Schema.Union([
       Schema.Literals([
@@ -748,7 +748,7 @@ const Move = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Release {
   type: "RELEASE";
 }
-const Release = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Release = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("RELEASE"),
   }),
@@ -798,7 +798,7 @@ interface SearchParams {
   subject?: string | null;
   submissions?: boolean | null;
 }
-const SearchParams = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SearchParams = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     actionLog: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     alertId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -972,7 +972,7 @@ interface ListInvestigateBulksResponseResult {
   statusMessage?: string | null;
 }
 const ListInvestigateBulksResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       actionParams: Schema.Union([Move, Release]),
       actionType: Schema.Union([
@@ -1048,7 +1048,7 @@ interface Move2 {
     | (string & {})
     | null;
 }
-const Move2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Move2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     clientRecipient: Schema.String,
     destination: Schema.Union([
@@ -1096,7 +1096,7 @@ interface Release2 {
   clientRecipient: string;
   type: "RELEASE";
 }
-const Release2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Release2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     clientRecipient: Schema.String,
     type: Schema.Literal("RELEASE"),
@@ -1154,7 +1154,7 @@ interface ListInvestigateBulkMessagesResponseResult {
   statusMessage?: string | null;
 }
 const ListInvestigateBulkMessagesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       actionParams: Schema.Union([Move2, Release2]),
       actionType: Schema.Union([
@@ -1235,7 +1235,7 @@ interface Attachment {
   /** SHA256 hash of the attachment */
   sha256?: string | null;
 }
-const Attachment = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Attachment = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     size: Schema.Number,
     contentType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1279,7 +1279,7 @@ interface Header {
   name: string;
   value: string;
 }
-const Header = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Header = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     value: Schema.String,
@@ -1290,7 +1290,7 @@ interface Link {
   href: string;
   text?: string | null;
 }
-const Link = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Link = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     href: Schema.String,
     text: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1306,7 +1306,7 @@ interface SenderInfo {
   ip?: string | null;
   pld?: string | null;
 }
-const SenderInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SenderInfo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     asName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     asNumber: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1329,7 +1329,7 @@ interface ThreatCategory {
   description?: string | null;
   name?: string | null;
 }
-const ThreatCategory = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ThreatCategory = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1358,7 +1358,7 @@ interface CreateInvestigateMoveResponseResult {
   status?: string | null;
 }
 const CreateInvestigateMoveResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
       completedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1396,7 +1396,7 @@ interface BulkInvestigateReleaseResponseResult {
   undelivered?: string[] | null;
 }
 const BulkInvestigateReleaseResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       delivered: Schema.optional(
@@ -1428,7 +1428,7 @@ interface Line {
   /** @deprecated Deprecated, use `logged_at` instead. End of life: November 1, 2026. */
   ts?: string | null;
 }
-const Line = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Line = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lineno: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     loggedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1455,7 +1455,7 @@ interface Inbound {
     | null;
   pending?: boolean | null;
 }
-const Inbound = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Inbound = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lines: Schema.optional(Schema.Union([Schema.Array(Line), Schema.Null])),
     pending: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -1470,7 +1470,7 @@ interface Fields {
   /** @deprecated Deprecated, use `occurred_at` instead */
   ts?: string | null;
 }
-const Fields = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Fields = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     to: Schema.Array(Schema.String),
     from: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1492,7 +1492,7 @@ interface Tag {
   category: string;
   value: string;
 }
-const Tag = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Tag = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     category: Schema.String,
     value: Schema.String,
@@ -1530,7 +1530,7 @@ interface ListPhishguardReportsResponseResult {
   updatedAt?: string | null;
 }
 const ListPhishguardReportsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.Number,
       content: Schema.String,
@@ -1600,7 +1600,7 @@ interface ListSettingAllowPoliciesResponseResult {
   verifySender?: boolean | null;
 }
 const ListSettingAllowPoliciesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -1668,7 +1668,7 @@ interface ListSettingBlockSendersResponseResult {
   patternType?: "EMAIL" | "DOMAIN" | "IP" | "UNKNOWN" | (string & {}) | null;
 }
 const ListSettingBlockSendersResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1705,7 +1705,7 @@ interface Authorization {
   timestamp: string;
   statusMessage?: string | null;
 }
-const Authorization = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Authorization = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     authorized: Schema.Boolean,
     timestamp: Schema.String,
@@ -1724,7 +1724,7 @@ interface EmailsProcessed {
   totalEmailsProcessed: number;
   totalEmailsProcessedPrevious: number;
 }
-const EmailsProcessed = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const EmailsProcessed = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     timestamp: Schema.String,
     totalEmailsProcessed: Schema.Number,
@@ -1796,7 +1796,7 @@ interface ListSettingDomainsResponseResult {
   transport?: string | null;
 }
 const ListSettingDomainsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       allowedDeliveryModes: Schema.optional(
@@ -1966,7 +1966,7 @@ interface ListSettingImpersonationRegistriesResponseResult {
     | null;
 }
 const ListSettingImpersonationRegistriesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2031,7 +2031,7 @@ interface ListSettingSendingDomainRestrictionsResponseResult {
   modifiedAt?: string | null;
 }
 const ListSettingSendingDomainRestrictionsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2071,7 +2071,7 @@ interface ListSettingTrustedDomainsResponseResult {
   pattern?: string | null;
 }
 const ListSettingTrustedDomainsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2112,7 +2112,7 @@ interface ListSettingUrlIgnorePatternsResponseResult {
   modifiedAt?: string | null;
 }
 const ListSettingUrlIgnorePatternsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -2185,7 +2185,7 @@ interface ListSubmissionsResponseResult {
   type?: "Team" | "User" | null;
 }
 const ListSubmissionsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       requestedAt: Schema.String,
       submissionId: Schema.String,
@@ -2300,20 +2300,17 @@ export interface GetInvestigateRequest {
   submission?: boolean;
 }
 
-export const GetInvestigateRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      investigateId: Schema.String.pipe(T.HttpPath("investigateId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      submission: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("submission"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/email-security/investigate/{investigateId}",
-      }),
-    ),
+export const GetInvestigateRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    investigateId: Schema.String.pipe(T.HttpPath("investigateId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    submission: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("submission")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/email-security/investigate/{investigateId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetInvestigateRequest>;
 
 export interface GetInvestigateResponse {
@@ -2488,7 +2485,7 @@ export interface GetInvestigateResponse {
 }
 
 export const GetInvestigateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       actionLog: Schema.Array(ActionLog),
@@ -2667,7 +2664,7 @@ export const getInvestigate: API.OperationMethod<
   GetInvestigateResponse,
   GetInvestigateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInvestigateRequest,
   output: GetInvestigateResponse,
   errors: [],
@@ -2726,7 +2723,7 @@ export interface ListInvestigatesRequest {
 }
 
 export const ListInvestigatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -2967,7 +2964,7 @@ export interface ListInvestigatesResponse {
 }
 
 export const ListInvestigatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListInvestigatesResponseResult),
       resultInfo: Schema.optional(
@@ -2983,7 +2980,7 @@ export const listInvestigates: API.PaginatedOperationMethod<
   ListInvestigatesResponse,
   ListInvestigatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvestigatesRequest,
   output: ListInvestigatesResponse,
   errors: [],
@@ -3007,7 +3004,7 @@ export interface GetInvestigateBulkRequest {
 }
 
 export const GetInvestigateBulkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       jobId: Schema.String.pipe(T.HttpPath("jobId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3108,7 +3105,7 @@ export interface GetInvestigateBulkResponse {
 }
 
 export const GetInvestigateBulkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       actionParams: Schema.Union([Move, Release]),
       actionType: Schema.Union([
@@ -3169,7 +3166,7 @@ export const getInvestigateBulk: API.OperationMethod<
   GetInvestigateBulkResponse,
   GetInvestigateBulkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInvestigateBulkRequest,
   output: GetInvestigateBulkResponse,
   errors: [],
@@ -3195,7 +3192,7 @@ export interface ListInvestigateBulksRequest {
 }
 
 export const ListInvestigateBulksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -3322,7 +3319,7 @@ export interface ListInvestigateBulksResponse {
 }
 
 export const ListInvestigateBulksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListInvestigateBulksResponseResult),
       resultInfo: Schema.optional(
@@ -3338,7 +3335,7 @@ export const listInvestigateBulks: API.PaginatedOperationMethod<
   ListInvestigateBulksResponse,
   ListInvestigateBulksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvestigateBulksRequest,
   output: ListInvestigateBulksResponse,
   errors: [],
@@ -3421,7 +3418,7 @@ export interface CreateInvestigateBulkRequest {
 }
 
 export const CreateInvestigateBulkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       action: Schema.Union([
@@ -3563,7 +3560,7 @@ export interface CreateInvestigateBulkResponse {
 }
 
 export const CreateInvestigateBulkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       actionParams: Schema.Union([Move, Release]),
       actionType: Schema.Union([
@@ -3624,7 +3621,7 @@ export const createInvestigateBulk: API.OperationMethod<
   CreateInvestigateBulkResponse,
   CreateInvestigateBulkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInvestigateBulkRequest,
   output: CreateInvestigateBulkResponse,
   errors: [],
@@ -3637,7 +3634,7 @@ export interface DeleteInvestigateBulkRequest {
 }
 
 export const DeleteInvestigateBulkRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       jobId: Schema.String.pipe(T.HttpPath("jobId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3654,7 +3651,7 @@ export interface DeleteInvestigateBulkResponse {
 }
 
 export const DeleteInvestigateBulkResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -3667,7 +3664,7 @@ export const deleteInvestigateBulk: API.OperationMethod<
   DeleteInvestigateBulkResponse,
   DeleteInvestigateBulkError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteInvestigateBulkRequest,
   output: DeleteInvestigateBulkResponse,
   errors: [],
@@ -3684,7 +3681,7 @@ export interface CreateInvestigateBulkCancelRequest {
 }
 
 export const CreateInvestigateBulkCancelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       jobId: Schema.String.pipe(T.HttpPath("jobId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3785,7 +3782,7 @@ export interface CreateInvestigateBulkCancelResponse {
 }
 
 export const CreateInvestigateBulkCancelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       actionParams: Schema.Union([Move, Release]),
       actionType: Schema.Union([
@@ -3846,7 +3843,7 @@ export const createInvestigateBulkCancel: API.OperationMethod<
   CreateInvestigateBulkCancelResponse,
   CreateInvestigateBulkCancelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInvestigateBulkCancelRequest,
   output: CreateInvestigateBulkCancelResponse,
   errors: [],
@@ -3875,7 +3872,7 @@ export interface ListInvestigateBulkMessagesRequest {
 }
 
 export const ListInvestigateBulkMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       jobId: Schema.String.pipe(T.HttpPath("jobId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3960,7 +3957,7 @@ export interface ListInvestigateBulkMessagesResponse {
 }
 
 export const ListInvestigateBulkMessagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListInvestigateBulkMessagesResponseResult),
       resultInfo: Schema.optional(
@@ -3976,7 +3973,7 @@ export const listInvestigateBulkMessages: API.PaginatedOperationMethod<
   ListInvestigateBulkMessagesResponse,
   ListInvestigateBulkMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvestigateBulkMessagesRequest,
   output: ListInvestigateBulkMessagesResponse,
   errors: [],
@@ -4000,7 +3997,7 @@ export interface GetInvestigateDetectionRequest {
 }
 
 export const GetInvestigateDetectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       investigateId: Schema.String.pipe(T.HttpPath("investigateId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4111,7 +4108,7 @@ export interface GetInvestigateDetectionResponse {
 }
 
 export const GetInvestigateDetectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       action: Schema.String,
       attachments: Schema.Array(Attachment),
@@ -4165,7 +4162,7 @@ export const getInvestigateDetection: API.OperationMethod<
   GetInvestigateDetectionResponse,
   GetInvestigateDetectionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInvestigateDetectionRequest,
   output: GetInvestigateDetectionResponse,
   errors: [],
@@ -4203,7 +4200,7 @@ export interface CreateInvestigateMoveRequest {
 }
 
 export const CreateInvestigateMoveRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       investigateId: Schema.String.pipe(T.HttpPath("investigateId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4261,7 +4258,7 @@ export interface CreateInvestigateMoveResponse {
 }
 
 export const CreateInvestigateMoveResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(CreateInvestigateMoveResponseResult),
     }),
@@ -4274,7 +4271,7 @@ export const createInvestigateMove: API.PaginatedOperationMethod<
   CreateInvestigateMoveResponse,
   CreateInvestigateMoveError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: CreateInvestigateMoveRequest,
   output: CreateInvestigateMoveResponse,
   errors: [],
@@ -4315,7 +4312,7 @@ export interface BulkInvestigateMoveRequest {
 }
 
 export const BulkInvestigateMoveRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       postfixIds: Schema.optional(Schema.Array(Schema.String)).pipe(
@@ -4377,7 +4374,7 @@ export interface BulkInvestigateMoveResponse {
 }
 
 export const BulkInvestigateMoveResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(CreateInvestigateMoveResponseResult),
     }),
@@ -4390,7 +4387,7 @@ export const bulkInvestigateMove: API.PaginatedOperationMethod<
   BulkInvestigateMoveResponse,
   BulkInvestigateMoveError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkInvestigateMoveRequest,
   output: BulkInvestigateMoveResponse,
   errors: [],
@@ -4411,7 +4408,7 @@ export interface GetInvestigatePreviewRequest {
 }
 
 export const GetInvestigatePreviewRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       investigateId: Schema.String.pipe(T.HttpPath("investigateId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4429,7 +4426,7 @@ export interface GetInvestigatePreviewResponse {
 }
 
 export const GetInvestigatePreviewResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       screenshot: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -4442,7 +4439,7 @@ export const getInvestigatePreview: API.OperationMethod<
   GetInvestigatePreviewResponse,
   GetInvestigatePreviewError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInvestigatePreviewRequest,
   output: GetInvestigatePreviewResponse,
   errors: [],
@@ -4456,7 +4453,7 @@ export interface CreateInvestigatePreviewRequest {
 }
 
 export const CreateInvestigatePreviewRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       postfixId: Schema.String,
@@ -4475,7 +4472,7 @@ export interface CreateInvestigatePreviewResponse {
 }
 
 export const CreateInvestigatePreviewResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       screenshot: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -4488,7 +4485,7 @@ export const createInvestigatePreview: API.OperationMethod<
   CreateInvestigatePreviewResponse,
   CreateInvestigatePreviewError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInvestigatePreviewRequest,
   output: CreateInvestigatePreviewResponse,
   errors: [],
@@ -4505,7 +4502,7 @@ export interface GetInvestigateRawRequest {
 }
 
 export const GetInvestigateRawRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       investigateId: Schema.String.pipe(T.HttpPath("investigateId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4523,7 +4520,7 @@ export interface GetInvestigateRawResponse {
 }
 
 export const GetInvestigateRawResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       raw: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -4536,7 +4533,7 @@ export const getInvestigateRaw: API.OperationMethod<
   GetInvestigateRawResponse,
   GetInvestigateRawError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInvestigateRawRequest,
   output: GetInvestigateRawResponse,
   errors: [],
@@ -4566,7 +4563,7 @@ export interface CreateInvestigateReclassifyRequest {
 }
 
 export const CreateInvestigateReclassifyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       investigateId: Schema.String.pipe(T.HttpPath("investigateId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4599,7 +4596,7 @@ export const CreateInvestigateReclassifyRequest =
 export type CreateInvestigateReclassifyResponse = unknown;
 
 export const CreateInvestigateReclassifyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<CreateInvestigateReclassifyResponse>;
 
@@ -4610,7 +4607,7 @@ export const createInvestigateReclassify: API.OperationMethod<
   CreateInvestigateReclassifyResponse,
   CreateInvestigateReclassifyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInvestigateReclassifyRequest,
   output: CreateInvestigateReclassifyResponse,
   errors: [],
@@ -4628,7 +4625,7 @@ export interface BulkInvestigateReleaseRequest {
 }
 
 export const BulkInvestigateReleaseRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       body: Schema.Array(Schema.String).pipe(T.HttpBody()),
@@ -4651,7 +4648,7 @@ export interface BulkInvestigateReleaseResponse {
 }
 
 export const BulkInvestigateReleaseResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(BulkInvestigateReleaseResponseResult),
     }),
@@ -4664,7 +4661,7 @@ export const bulkInvestigateRelease: API.PaginatedOperationMethod<
   BulkInvestigateReleaseResponse,
   BulkInvestigateReleaseError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkInvestigateReleaseRequest,
   output: BulkInvestigateReleaseResponse,
   errors: [],
@@ -4685,7 +4682,7 @@ export interface GetInvestigateTraceRequest {
 }
 
 export const GetInvestigateTraceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       investigateId: Schema.String.pipe(T.HttpPath("investigateId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4723,7 +4720,7 @@ export interface GetInvestigateTraceResponse {
 }
 
 export const GetInvestigateTraceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       inbound: Inbound,
       outbound: Inbound,
@@ -4737,7 +4734,7 @@ export const getInvestigateTrace: API.OperationMethod<
   GetInvestigateTraceResponse,
   GetInvestigateTraceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInvestigateTraceRequest,
   output: GetInvestigateTraceResponse,
   errors: [],
@@ -4761,7 +4758,7 @@ export interface ListPhishguardReportsRequest {
 }
 
 export const ListPhishguardReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       end: Schema.optional(Schema.String).pipe(T.HttpQuery("end")),
@@ -4809,7 +4806,7 @@ export interface ListPhishguardReportsResponse {
 }
 
 export const ListPhishguardReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListPhishguardReportsResponseResult),
     }),
@@ -4822,7 +4819,7 @@ export const listPhishguardReports: API.PaginatedOperationMethod<
   ListPhishguardReportsResponse,
   ListPhishguardReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhishguardReportsRequest,
   output: ListPhishguardReportsResponse,
   errors: [],
@@ -4843,7 +4840,7 @@ export interface GetSettingAllowPolicyRequest {
 }
 
 export const GetSettingAllowPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -4884,7 +4881,7 @@ export interface GetSettingAllowPolicyResponse {
 }
 
 export const GetSettingAllowPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -4951,7 +4948,7 @@ export const getSettingAllowPolicy: API.OperationMethod<
   GetSettingAllowPolicyResponse,
   GetSettingAllowPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingAllowPolicyRequest,
   output: GetSettingAllowPolicyResponse,
   errors: [AllowPolicyNotFound, EmailSecurityNotEntitled, Forbidden],
@@ -4983,7 +4980,7 @@ export interface ListSettingAllowPoliciesRequest {
 }
 
 export const ListSettingAllowPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -5052,7 +5049,7 @@ export interface ListSettingAllowPoliciesResponse {
 }
 
 export const ListSettingAllowPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListSettingAllowPoliciesResponseResult),
       resultInfo: Schema.optional(
@@ -5071,7 +5068,7 @@ export const listSettingAllowPolicies: API.PaginatedOperationMethod<
   ListSettingAllowPoliciesResponse,
   ListSettingAllowPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSettingAllowPoliciesRequest,
   output: ListSettingAllowPoliciesResponse,
   errors: [EmailSecurityNotEntitled, Forbidden],
@@ -5112,7 +5109,7 @@ export interface CreateSettingAllowPolicyRequest {
 }
 
 export const CreateSettingAllowPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       isAcceptableSender: Schema.Boolean,
@@ -5179,7 +5176,7 @@ export interface CreateSettingAllowPolicyResponse {
 }
 
 export const CreateSettingAllowPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -5245,7 +5242,7 @@ export const createSettingAllowPolicy: API.OperationMethod<
   CreateSettingAllowPolicyResponse,
   CreateSettingAllowPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSettingAllowPolicyRequest,
   output: CreateSettingAllowPolicyResponse,
   errors: [EmailSecurityNotEntitled, Forbidden],
@@ -5280,7 +5277,7 @@ export interface PatchSettingAllowPolicyRequest {
 }
 
 export const PatchSettingAllowPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -5350,7 +5347,7 @@ export interface PatchSettingAllowPolicyResponse {
 }
 
 export const PatchSettingAllowPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -5417,7 +5414,7 @@ export const patchSettingAllowPolicy: API.OperationMethod<
   PatchSettingAllowPolicyResponse,
   PatchSettingAllowPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSettingAllowPolicyRequest,
   output: PatchSettingAllowPolicyResponse,
   errors: [AllowPolicyNotFound, EmailSecurityNotEntitled, Forbidden],
@@ -5430,7 +5427,7 @@ export interface DeleteSettingAllowPolicyRequest {
 }
 
 export const DeleteSettingAllowPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       policyId: Schema.String.pipe(T.HttpPath("policyId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -5448,7 +5445,7 @@ export interface DeleteSettingAllowPolicyResponse {
 }
 
 export const DeleteSettingAllowPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -5465,7 +5462,7 @@ export const deleteSettingAllowPolicy: API.OperationMethod<
   DeleteSettingAllowPolicyResponse,
   DeleteSettingAllowPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSettingAllowPolicyRequest,
   output: DeleteSettingAllowPolicyResponse,
   errors: [AllowPolicyNotFound, EmailSecurityNotEntitled, Forbidden],
@@ -5482,7 +5479,7 @@ export interface GetSettingBlockSenderRequest {
 }
 
 export const GetSettingBlockSenderRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       patternId: Schema.String.pipe(T.HttpPath("patternId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -5509,7 +5506,7 @@ export interface GetSettingBlockSenderResponse {
 }
 
 export const GetSettingBlockSenderResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -5554,7 +5551,7 @@ export const getSettingBlockSender: API.OperationMethod<
   GetSettingBlockSenderResponse,
   GetSettingBlockSenderError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingBlockSenderRequest,
   output: GetSettingBlockSenderResponse,
   errors: [BlockSenderNotFound, EmailSecurityNotEntitled, Forbidden],
@@ -5578,7 +5575,7 @@ export interface ListSettingBlockSendersRequest {
 }
 
 export const ListSettingBlockSendersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -5628,7 +5625,7 @@ export interface ListSettingBlockSendersResponse {
 }
 
 export const ListSettingBlockSendersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListSettingBlockSendersResponseResult),
       resultInfo: Schema.optional(
@@ -5647,7 +5644,7 @@ export const listSettingBlockSenders: API.PaginatedOperationMethod<
   ListSettingBlockSendersResponse,
   ListSettingBlockSendersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSettingBlockSendersRequest,
   output: ListSettingBlockSendersResponse,
   errors: [EmailSecurityNotEntitled, Forbidden],
@@ -5674,7 +5671,7 @@ export interface CreateSettingBlockSenderRequest {
 }
 
 export const CreateSettingBlockSenderRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       isRegex: Schema.Boolean,
@@ -5713,7 +5710,7 @@ export interface CreateSettingBlockSenderResponse {
 }
 
 export const CreateSettingBlockSenderResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -5757,7 +5754,7 @@ export const createSettingBlockSender: API.OperationMethod<
   CreateSettingBlockSenderResponse,
   CreateSettingBlockSenderError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSettingBlockSenderRequest,
   output: CreateSettingBlockSenderResponse,
   errors: [EmailSecurityNotEntitled, Forbidden],
@@ -5778,7 +5775,7 @@ export interface PatchSettingBlockSenderRequest {
 }
 
 export const PatchSettingBlockSenderRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       patternId: Schema.String.pipe(T.HttpPath("patternId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -5820,7 +5817,7 @@ export interface PatchSettingBlockSenderResponse {
 }
 
 export const PatchSettingBlockSenderResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -5865,7 +5862,7 @@ export const patchSettingBlockSender: API.OperationMethod<
   PatchSettingBlockSenderResponse,
   PatchSettingBlockSenderError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSettingBlockSenderRequest,
   output: PatchSettingBlockSenderResponse,
   errors: [BlockSenderNotFound, EmailSecurityNotEntitled, Forbidden],
@@ -5878,7 +5875,7 @@ export interface DeleteSettingBlockSenderRequest {
 }
 
 export const DeleteSettingBlockSenderRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       patternId: Schema.String.pipe(T.HttpPath("patternId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -5896,7 +5893,7 @@ export interface DeleteSettingBlockSenderResponse {
 }
 
 export const DeleteSettingBlockSenderResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -5913,7 +5910,7 @@ export const deleteSettingBlockSender: API.OperationMethod<
   DeleteSettingBlockSenderResponse,
   DeleteSettingBlockSenderError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSettingBlockSenderRequest,
   output: DeleteSettingBlockSenderResponse,
   errors: [BlockSenderNotFound, EmailSecurityNotEntitled, Forbidden],
@@ -5930,7 +5927,7 @@ export interface GetSettingDomainRequest {
 }
 
 export const GetSettingDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       domainId: Schema.String.pipe(T.HttpPath("domainId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6001,7 +5998,7 @@ export interface GetSettingDomainResponse {
 }
 
 export const GetSettingDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       allowedDeliveryModes: Schema.optional(
@@ -6160,7 +6157,7 @@ export const getSettingDomain: API.OperationMethod<
   GetSettingDomainResponse,
   GetSettingDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingDomainRequest,
   output: GetSettingDomainResponse,
   errors: [EmailSecurityDomainNotFound, EmailSecurityNotEntitled, Forbidden],
@@ -6202,7 +6199,7 @@ export interface ListSettingDomainsRequest {
 }
 
 export const ListSettingDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -6314,7 +6311,7 @@ export interface ListSettingDomainsResponse {
 }
 
 export const ListSettingDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListSettingDomainsResponseResult),
       resultInfo: Schema.optional(
@@ -6333,7 +6330,7 @@ export const listSettingDomains: API.PaginatedOperationMethod<
   ListSettingDomainsResponse,
   ListSettingDomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSettingDomainsRequest,
   output: ListSettingDomainsResponse,
   errors: [EmailSecurityNotEntitled, Forbidden],
@@ -6394,7 +6391,7 @@ export interface PatchSettingDomainRequest {
 }
 
 export const PatchSettingDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       domainId: Schema.String.pipe(T.HttpPath("domainId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6525,7 +6522,7 @@ export interface PatchSettingDomainResponse {
 }
 
 export const PatchSettingDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       allowedDeliveryModes: Schema.optional(
@@ -6684,7 +6681,7 @@ export const patchSettingDomain: API.OperationMethod<
   PatchSettingDomainResponse,
   PatchSettingDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSettingDomainRequest,
   output: PatchSettingDomainResponse,
   errors: [EmailSecurityDomainNotFound, EmailSecurityNotEntitled, Forbidden],
@@ -6697,7 +6694,7 @@ export interface DeleteSettingDomainRequest {
 }
 
 export const DeleteSettingDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       domainId: Schema.String.pipe(T.HttpPath("domainId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -6715,7 +6712,7 @@ export interface DeleteSettingDomainResponse {
 }
 
 export const DeleteSettingDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -6732,7 +6729,7 @@ export const deleteSettingDomain: API.OperationMethod<
   DeleteSettingDomainResponse,
   DeleteSettingDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSettingDomainRequest,
   output: DeleteSettingDomainResponse,
   errors: [EmailSecurityDomainNotFound, EmailSecurityNotEntitled, Forbidden],
@@ -6749,7 +6746,7 @@ export interface GetSettingImpersonationRegistryRequest {
 }
 
 export const GetSettingImpersonationRegistryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       impersonationRegistryId: Schema.String.pipe(
         T.HttpPath("impersonationRegistryId"),
@@ -6788,7 +6785,7 @@ export interface GetSettingImpersonationRegistryResponse {
 }
 
 export const GetSettingImpersonationRegistryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -6852,7 +6849,7 @@ export const getSettingImpersonationRegistry: API.OperationMethod<
   GetSettingImpersonationRegistryResponse,
   GetSettingImpersonationRegistryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingImpersonationRegistryRequest,
   output: GetSettingImpersonationRegistryResponse,
   errors: [
@@ -6883,7 +6880,7 @@ export interface ListSettingImpersonationRegistriesRequest {
 }
 
 export const ListSettingImpersonationRegistriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -6947,7 +6944,7 @@ export interface ListSettingImpersonationRegistriesResponse {
 }
 
 export const ListSettingImpersonationRegistriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListSettingImpersonationRegistriesResponseResult),
       resultInfo: Schema.optional(
@@ -6966,7 +6963,7 @@ export const listSettingImpersonationRegistries: API.PaginatedOperationMethod<
   ListSettingImpersonationRegistriesResponse,
   ListSettingImpersonationRegistriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSettingImpersonationRegistriesRequest,
   output: ListSettingImpersonationRegistriesResponse,
   errors: [EmailSecurityNotEntitled, Forbidden],
@@ -7006,7 +7003,7 @@ export interface CreateSettingImpersonationRegistryRequest {
 }
 
 export const CreateSettingImpersonationRegistryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       email: Schema.String,
@@ -7074,7 +7071,7 @@ export interface CreateSettingImpersonationRegistryResponse {
 }
 
 export const CreateSettingImpersonationRegistryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -7137,7 +7134,7 @@ export const createSettingImpersonationRegistry: API.OperationMethod<
   CreateSettingImpersonationRegistryResponse,
   CreateSettingImpersonationRegistryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSettingImpersonationRegistryRequest,
   output: CreateSettingImpersonationRegistryResponse,
   errors: [EmailSecurityNotEntitled, Forbidden],
@@ -7171,7 +7168,7 @@ export interface PatchSettingImpersonationRegistryRequest {
 }
 
 export const PatchSettingImpersonationRegistryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       impersonationRegistryId: Schema.String.pipe(
         T.HttpPath("impersonationRegistryId"),
@@ -7242,7 +7239,7 @@ export interface PatchSettingImpersonationRegistryResponse {
 }
 
 export const PatchSettingImpersonationRegistryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -7306,7 +7303,7 @@ export const patchSettingImpersonationRegistry: API.OperationMethod<
   PatchSettingImpersonationRegistryResponse,
   PatchSettingImpersonationRegistryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSettingImpersonationRegistryRequest,
   output: PatchSettingImpersonationRegistryResponse,
   errors: [
@@ -7323,7 +7320,7 @@ export interface DeleteSettingImpersonationRegistryRequest {
 }
 
 export const DeleteSettingImpersonationRegistryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       impersonationRegistryId: Schema.String.pipe(
         T.HttpPath("impersonationRegistryId"),
@@ -7343,7 +7340,7 @@ export interface DeleteSettingImpersonationRegistryResponse {
 }
 
 export const DeleteSettingImpersonationRegistryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -7360,7 +7357,7 @@ export const deleteSettingImpersonationRegistry: API.OperationMethod<
   DeleteSettingImpersonationRegistryResponse,
   DeleteSettingImpersonationRegistryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSettingImpersonationRegistryRequest,
   output: DeleteSettingImpersonationRegistryResponse,
   errors: [
@@ -7381,7 +7378,7 @@ export interface GetSettingSendingDomainRestrictionRequest {
 }
 
 export const GetSettingSendingDomainRestrictionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sendingDomainRestrictionId: Schema.String.pipe(
         T.HttpPath("sendingDomainRestrictionId"),
@@ -7410,7 +7407,7 @@ export interface GetSettingSendingDomainRestrictionResponse {
 }
 
 export const GetSettingSendingDomainRestrictionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -7443,7 +7440,7 @@ export const getSettingSendingDomainRestriction: API.OperationMethod<
   GetSettingSendingDomainRestrictionResponse,
   GetSettingSendingDomainRestrictionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingSendingDomainRestrictionRequest,
   output: GetSettingSendingDomainRestrictionResponse,
   errors: [],
@@ -7463,7 +7460,7 @@ export interface ListSettingSendingDomainRestrictionsRequest {
 }
 
 export const ListSettingSendingDomainRestrictionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -7505,7 +7502,7 @@ export interface ListSettingSendingDomainRestrictionsResponse {
 }
 
 export const ListSettingSendingDomainRestrictionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListSettingSendingDomainRestrictionsResponseResult),
       resultInfo: Schema.optional(
@@ -7521,7 +7518,7 @@ export const listSettingSendingDomainRestrictions: API.PaginatedOperationMethod<
   ListSettingSendingDomainRestrictionsResponse,
   ListSettingSendingDomainRestrictionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSettingSendingDomainRestrictionsRequest,
   output: ListSettingSendingDomainRestrictionsResponse,
   errors: [],
@@ -7546,7 +7543,7 @@ export interface CreateSettingSendingDomainRestrictionRequest {
 }
 
 export const CreateSettingSendingDomainRestrictionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       domain: Schema.String,
@@ -7575,7 +7572,7 @@ export interface CreateSettingSendingDomainRestrictionResponse {
 }
 
 export const CreateSettingSendingDomainRestrictionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -7608,7 +7605,7 @@ export const createSettingSendingDomainRestriction: API.OperationMethod<
   CreateSettingSendingDomainRestrictionResponse,
   CreateSettingSendingDomainRestrictionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSettingSendingDomainRestrictionRequest,
   output: CreateSettingSendingDomainRestrictionResponse,
   errors: [],
@@ -7627,7 +7624,7 @@ export interface PatchSettingSendingDomainRestrictionRequest {
 }
 
 export const PatchSettingSendingDomainRestrictionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sendingDomainRestrictionId: Schema.String.pipe(
         T.HttpPath("sendingDomainRestrictionId"),
@@ -7659,7 +7656,7 @@ export interface PatchSettingSendingDomainRestrictionResponse {
 }
 
 export const PatchSettingSendingDomainRestrictionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -7692,7 +7689,7 @@ export const patchSettingSendingDomainRestriction: API.OperationMethod<
   PatchSettingSendingDomainRestrictionResponse,
   PatchSettingSendingDomainRestrictionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSettingSendingDomainRestrictionRequest,
   output: PatchSettingSendingDomainRestrictionResponse,
   errors: [],
@@ -7705,7 +7702,7 @@ export interface DeleteSettingSendingDomainRestrictionRequest {
 }
 
 export const DeleteSettingSendingDomainRestrictionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       sendingDomainRestrictionId: Schema.String.pipe(
         T.HttpPath("sendingDomainRestrictionId"),
@@ -7725,7 +7722,7 @@ export interface DeleteSettingSendingDomainRestrictionResponse {
 }
 
 export const DeleteSettingSendingDomainRestrictionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -7738,7 +7735,7 @@ export const deleteSettingSendingDomainRestriction: API.OperationMethod<
   DeleteSettingSendingDomainRestrictionResponse,
   DeleteSettingSendingDomainRestrictionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSettingSendingDomainRestrictionRequest,
   output: DeleteSettingSendingDomainRestrictionResponse,
   errors: [],
@@ -7755,7 +7752,7 @@ export interface GetSettingTrustedDomainRequest {
 }
 
 export const GetSettingTrustedDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       trustedDomainId: Schema.String.pipe(T.HttpPath("trustedDomainId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -7784,7 +7781,7 @@ export interface GetSettingTrustedDomainResponse {
 }
 
 export const GetSettingTrustedDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -7825,7 +7822,7 @@ export const getSettingTrustedDomain: API.OperationMethod<
   GetSettingTrustedDomainResponse,
   GetSettingTrustedDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingTrustedDomainRequest,
   output: GetSettingTrustedDomainResponse,
   errors: [TrustedDomainNotFound, EmailSecurityNotEntitled, Forbidden],
@@ -7851,7 +7848,7 @@ export interface ListSettingTrustedDomainsRequest {
 }
 
 export const ListSettingTrustedDomainsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -7900,7 +7897,7 @@ export interface ListSettingTrustedDomainsResponse {
 }
 
 export const ListSettingTrustedDomainsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListSettingTrustedDomainsResponseResult),
       resultInfo: Schema.optional(
@@ -7919,7 +7916,7 @@ export const listSettingTrustedDomains: API.PaginatedOperationMethod<
   ListSettingTrustedDomainsResponse,
   ListSettingTrustedDomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSettingTrustedDomainsRequest,
   output: ListSettingTrustedDomainsResponse,
   errors: [EmailSecurityNotEntitled, Forbidden],
@@ -7948,7 +7945,7 @@ export interface CreateSettingTrustedDomainRequest {
 }
 
 export const CreateSettingTrustedDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       isRecent: Schema.Boolean,
@@ -7988,7 +7985,7 @@ export interface CreateSettingTrustedDomainResponse {
 }
 
 export const CreateSettingTrustedDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -8028,7 +8025,7 @@ export const createSettingTrustedDomain: API.OperationMethod<
   CreateSettingTrustedDomainResponse,
   CreateSettingTrustedDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSettingTrustedDomainRequest,
   output: CreateSettingTrustedDomainResponse,
   errors: [EmailSecurityNotEntitled, Forbidden],
@@ -8051,7 +8048,7 @@ export interface PatchSettingTrustedDomainRequest {
 }
 
 export const PatchSettingTrustedDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       trustedDomainId: Schema.String.pipe(T.HttpPath("trustedDomainId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -8092,7 +8089,7 @@ export interface PatchSettingTrustedDomainResponse {
 }
 
 export const PatchSettingTrustedDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       comments: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -8133,7 +8130,7 @@ export const patchSettingTrustedDomain: API.OperationMethod<
   PatchSettingTrustedDomainResponse,
   PatchSettingTrustedDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSettingTrustedDomainRequest,
   output: PatchSettingTrustedDomainResponse,
   errors: [TrustedDomainNotFound, EmailSecurityNotEntitled, Forbidden],
@@ -8146,7 +8143,7 @@ export interface DeleteSettingTrustedDomainRequest {
 }
 
 export const DeleteSettingTrustedDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       trustedDomainId: Schema.String.pipe(T.HttpPath("trustedDomainId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -8164,7 +8161,7 @@ export interface DeleteSettingTrustedDomainResponse {
 }
 
 export const DeleteSettingTrustedDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -8181,7 +8178,7 @@ export const deleteSettingTrustedDomain: API.OperationMethod<
   DeleteSettingTrustedDomainResponse,
   DeleteSettingTrustedDomainError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSettingTrustedDomainRequest,
   output: DeleteSettingTrustedDomainResponse,
   errors: [TrustedDomainNotFound, EmailSecurityNotEntitled, Forbidden],
@@ -8198,7 +8195,7 @@ export interface GetSettingUrlIgnorePatternRequest {
 }
 
 export const GetSettingUrlIgnorePatternRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       patternId: Schema.String.pipe(T.HttpPath("patternId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -8224,7 +8221,7 @@ export interface GetSettingUrlIgnorePatternResponse {
 }
 
 export const GetSettingUrlIgnorePatternResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -8253,7 +8250,7 @@ export const getSettingUrlIgnorePattern: API.OperationMethod<
   GetSettingUrlIgnorePatternResponse,
   GetSettingUrlIgnorePatternError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingUrlIgnorePatternRequest,
   output: GetSettingUrlIgnorePatternResponse,
   errors: [],
@@ -8267,7 +8264,7 @@ export interface ListSettingUrlIgnorePatternsRequest {
 }
 
 export const ListSettingUrlIgnorePatternsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -8298,7 +8295,7 @@ export interface ListSettingUrlIgnorePatternsResponse {
 }
 
 export const ListSettingUrlIgnorePatternsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListSettingUrlIgnorePatternsResponseResult),
       resultInfo: Schema.optional(
@@ -8314,7 +8311,7 @@ export const listSettingUrlIgnorePatterns: API.PaginatedOperationMethod<
   ListSettingUrlIgnorePatternsResponse,
   ListSettingUrlIgnorePatternsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSettingUrlIgnorePatternsRequest,
   output: ListSettingUrlIgnorePatternsResponse,
   errors: [],
@@ -8337,7 +8334,7 @@ export interface CreateSettingUrlIgnorePatternRequest {
 }
 
 export const CreateSettingUrlIgnorePatternRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       pattern: Schema.String,
@@ -8364,7 +8361,7 @@ export interface CreateSettingUrlIgnorePatternResponse {
 }
 
 export const CreateSettingUrlIgnorePatternResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -8393,7 +8390,7 @@ export const createSettingUrlIgnorePattern: API.OperationMethod<
   CreateSettingUrlIgnorePatternResponse,
   CreateSettingUrlIgnorePatternError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSettingUrlIgnorePatternRequest,
   output: CreateSettingUrlIgnorePatternResponse,
   errors: [],
@@ -8410,7 +8407,7 @@ export interface PatchSettingUrlIgnorePatternRequest {
 }
 
 export const PatchSettingUrlIgnorePatternRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       patternId: Schema.String.pipe(T.HttpPath("patternId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -8438,7 +8435,7 @@ export interface PatchSettingUrlIgnorePatternResponse {
 }
 
 export const PatchSettingUrlIgnorePatternResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -8467,7 +8464,7 @@ export const patchSettingUrlIgnorePattern: API.OperationMethod<
   PatchSettingUrlIgnorePatternResponse,
   PatchSettingUrlIgnorePatternError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSettingUrlIgnorePatternRequest,
   output: PatchSettingUrlIgnorePatternResponse,
   errors: [],
@@ -8480,7 +8477,7 @@ export interface DeleteSettingUrlIgnorePatternRequest {
 }
 
 export const DeleteSettingUrlIgnorePatternRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       patternId: Schema.String.pipe(T.HttpPath("patternId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -8498,7 +8495,7 @@ export interface DeleteSettingUrlIgnorePatternResponse {
 }
 
 export const DeleteSettingUrlIgnorePatternResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -8511,7 +8508,7 @@ export const deleteSettingUrlIgnorePattern: API.OperationMethod<
   DeleteSettingUrlIgnorePatternResponse,
   DeleteSettingUrlIgnorePatternError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSettingUrlIgnorePatternRequest,
   output: DeleteSettingUrlIgnorePatternResponse,
   errors: [],
@@ -8570,7 +8567,7 @@ export interface ListSubmissionsRequest {
 }
 
 export const ListSubmissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -8695,7 +8692,7 @@ export interface ListSubmissionsResponse {
 }
 
 export const ListSubmissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListSubmissionsResponseResult),
       resultInfo: Schema.optional(
@@ -8711,7 +8708,7 @@ export const listSubmissions: API.PaginatedOperationMethod<
   ListSubmissionsResponse,
   ListSubmissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubmissionsRequest,
   output: ListSubmissionsResponse,
   errors: [],

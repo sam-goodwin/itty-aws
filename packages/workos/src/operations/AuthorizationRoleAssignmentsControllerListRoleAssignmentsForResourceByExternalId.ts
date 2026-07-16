@@ -15,7 +15,7 @@ export interface AuthorizationRoleAssignmentsControllerListRoleAssignmentsForRes
   role_slug?: string;
 }
 export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     resource_type_slug: Schema.String.pipe(T.PathParam()),
     external_id: Schema.String.pipe(T.PathParam()),
@@ -50,7 +50,7 @@ export interface AuthorizationRoleAssignmentsControllerListRoleAssignmentsForRes
   list_metadata: { before: string | null; after: string | null };
 }
 export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     data: Schema.Array(
       Schema.Struct({
@@ -95,7 +95,7 @@ export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourc
  * @param role_slug - Filter assignments by the slug of the role.
  */
 export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceByExternalIdInput,
     outputSchema:

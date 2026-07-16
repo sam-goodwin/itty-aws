@@ -13,7 +13,7 @@ export interface AuthorizationRoleAssignmentsControllerListRoleAssignmentsForRes
   role_slug?: string;
 }
 export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource_id: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export interface AuthorizationRoleAssignmentsControllerListRoleAssignmentsForRes
   list_metadata: { before: string | null; after: string | null };
 }
 export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     data: Schema.Array(
       Schema.Struct({
@@ -89,7 +89,7 @@ export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourc
  * @param role_slug - Filter assignments by the slug of the role.
  */
 export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationRoleAssignmentsControllerListRoleAssignmentsForResourceInput,
     outputSchema:

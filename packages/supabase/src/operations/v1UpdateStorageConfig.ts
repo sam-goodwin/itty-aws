@@ -26,7 +26,7 @@ export interface V1UpdateStorageConfigInput {
   external?: { upstreamTarget: "main" | "canary" };
 }
 export const V1UpdateStorageConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     fileSizeLimit: Schema.optional(Schema.Number),
     features: Schema.optional(
@@ -75,7 +75,7 @@ export const V1UpdateStorageConfigInput =
 // Output Schema
 export type V1UpdateStorageConfigOutput = void;
 export const V1UpdateStorageConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1UpdateStorageConfigOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1UpdateStorageConfigOutput>;
 
 // The operation
 /**
@@ -83,10 +83,8 @@ export const V1UpdateStorageConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1UpdateStorageConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1UpdateStorageConfigInput,
-    outputSchema: V1UpdateStorageConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1UpdateStorageConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdateStorageConfigInput,
+  outputSchema: V1UpdateStorageConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

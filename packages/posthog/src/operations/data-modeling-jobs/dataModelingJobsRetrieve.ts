@@ -8,7 +8,7 @@ export interface DataModelingJobsRetrieveInput {
   project_id: string;
 }
 export const DataModelingJobsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -32,7 +32,7 @@ export interface DataModelingJobsRetrieveOutput {
   rows_expected: number | null;
 }
 export const DataModelingJobsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     saved_query_id: Schema.NullOr(Schema.String),
     status: Schema.Literals(["Cancelled", "Completed", "Failed", "Running"]),
@@ -52,9 +52,7 @@ export const DataModelingJobsRetrieveOutput =
  * @param id - A UUID string identifying this data modeling job.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const dataModelingJobsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DataModelingJobsRetrieveInput,
-    outputSchema: DataModelingJobsRetrieveOutput,
-  }),
-);
+export const dataModelingJobsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DataModelingJobsRetrieveInput,
+  outputSchema: DataModelingJobsRetrieveOutput,
+}));

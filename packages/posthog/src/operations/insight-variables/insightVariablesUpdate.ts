@@ -16,7 +16,7 @@ export interface InsightVariablesUpdateInput {
   values?: unknown;
 }
 export const InsightVariablesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -47,7 +47,7 @@ export interface InsightVariablesUpdateOutput {
   values?: unknown;
 }
 export const InsightVariablesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(
@@ -66,10 +66,8 @@ export const InsightVariablesUpdateOutput =
  * @param id - A UUID string identifying this insight variable.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const insightVariablesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InsightVariablesUpdateInput,
-    outputSchema: InsightVariablesUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const insightVariablesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InsightVariablesUpdateInput,
+  outputSchema: InsightVariablesUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

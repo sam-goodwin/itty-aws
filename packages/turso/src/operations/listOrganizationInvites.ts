@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const ListOrganizationInvitesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -17,7 +17,7 @@ export type ListOrganizationInvitesInput =
 
 // Output Schema
 export const ListOrganizationInvitesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invites: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -58,9 +58,7 @@ export type ListOrganizationInvitesOutput =
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const listOrganizationInvites = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListOrganizationInvitesInput,
-    outputSchema: ListOrganizationInvitesOutput,
-  }),
-);
+export const listOrganizationInvites = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListOrganizationInvitesInput,
+  outputSchema: ListOrganizationInvitesOutput,
+}));

@@ -9,7 +9,7 @@ export interface ListDatabaseInstancesInput {
   databaseName: string;
 }
 export const ListDatabaseInstancesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -30,7 +30,7 @@ export interface ListDatabaseInstancesOutput {
   }[];
 }
 export const ListDatabaseInstancesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     instances: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -53,10 +53,8 @@ export const ListDatabaseInstancesOutput =
  * @param organizationSlug - The slug of the organization or user account.
  * @param databaseName - The name of the database.
  */
-export const listDatabaseInstances = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListDatabaseInstancesInput,
-    outputSchema: ListDatabaseInstancesOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const listDatabaseInstances = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListDatabaseInstancesInput,
+  outputSchema: ListDatabaseInstancesOutput,
+  errors: [NotFound] as const,
+}));

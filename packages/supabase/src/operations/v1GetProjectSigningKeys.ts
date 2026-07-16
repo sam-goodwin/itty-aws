@@ -8,7 +8,7 @@ export interface V1GetProjectSigningKeysInput {
   ref: string;
 }
 export const V1GetProjectSigningKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -29,7 +29,7 @@ export interface V1GetProjectSigningKeysOutput {
   }[];
 }
 export const V1GetProjectSigningKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keys: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -53,10 +53,8 @@ export const V1GetProjectSigningKeysOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetProjectSigningKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetProjectSigningKeysInput,
-    outputSchema: V1GetProjectSigningKeysOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1GetProjectSigningKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetProjectSigningKeysInput,
+  outputSchema: V1GetProjectSigningKeysOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

@@ -28,7 +28,7 @@ export interface Options {
 }
 
 export const Options: Schema.Codec<Options> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     includeOnlyTargetedUserLists: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "Options" });
 
@@ -42,7 +42,7 @@ export interface Doubleclickbidmanager_Date {
 }
 
 export const Doubleclickbidmanager_Date: Schema.Codec<Doubleclickbidmanager_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
@@ -69,7 +69,7 @@ export interface QuerySchedule {
 }
 
 export const QuerySchedule: Schema.Codec<QuerySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endDate: Schema.optional(Doubleclickbidmanager_Date),
     startDate: Schema.optional(Doubleclickbidmanager_Date),
     frequency: Schema.optional(Schema.String),
@@ -92,7 +92,7 @@ export interface ReportStatus {
 }
 
 export const ReportStatus: Schema.Codec<ReportStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     finishTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     format: Schema.optional(Schema.String),
@@ -110,7 +110,7 @@ export interface ReportMetadata {
 }
 
 export const ReportMetadata: Schema.Codec<ReportMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportDataEndDate: Schema.optional(Doubleclickbidmanager_Date),
     reportDataStartDate: Schema.optional(Doubleclickbidmanager_Date),
     googleCloudStoragePath: Schema.optional(Schema.String),
@@ -147,7 +147,7 @@ export interface DataRange {
 }
 
 export const DataRange: Schema.Codec<DataRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customEndDate: Schema.optional(Doubleclickbidmanager_Date),
     range: Schema.optional(Schema.String),
     customStartDate: Schema.optional(Doubleclickbidmanager_Date),
@@ -167,7 +167,7 @@ export interface QueryMetadata {
 }
 
 export const QueryMetadata: Schema.Codec<QueryMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     dataRange: Schema.optional(DataRange),
     sendNotification: Schema.optional(Schema.Boolean),
@@ -183,7 +183,7 @@ export interface FilterPair {
 }
 
 export const FilterPair: Schema.Codec<FilterPair> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "FilterPair" });
@@ -215,7 +215,7 @@ export interface Parameters {
 }
 
 export const Parameters: Schema.Codec<Parameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Schema.String)),
     groupBys: Schema.optional(Schema.Array(Schema.String)),
     filters: Schema.optional(Schema.Array(FilterPair)),
@@ -231,7 +231,7 @@ export interface ReportKey {
 }
 
 export const ReportKey: Schema.Codec<ReportKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queryId: Schema.optional(Schema.String),
     reportId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReportKey" });
@@ -246,7 +246,7 @@ export interface Report {
 }
 
 export const Report: Schema.Codec<Report> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(ReportMetadata),
     params: Schema.optional(Parameters),
     key: Schema.optional(ReportKey),
@@ -260,7 +260,7 @@ export interface ListReportsResponse {
 }
 
 export const ListReportsResponse: Schema.Codec<ListReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reports: Schema.optional(Schema.Array(Report)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListReportsResponse" });
@@ -277,7 +277,7 @@ export interface Query {
 }
 
 export const Query: Schema.Codec<Query> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(QueryMetadata),
     params: Schema.optional(Parameters),
     schedule: Schema.optional(QuerySchedule),
@@ -292,7 +292,7 @@ export interface ListQueriesResponse {
 }
 
 export const ListQueriesResponse: Schema.Codec<ListQueriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queries: Schema.optional(Schema.Array(Query)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListQueriesResponse" });
@@ -303,7 +303,7 @@ export interface RunQueryRequest {
 }
 
 export const RunQueryRequest: Schema.Codec<RunQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataRange: Schema.optional(DataRange),
   }).annotate({ identifier: "RunQueryRequest" });
 
@@ -366,7 +366,7 @@ export interface DeleteQueriesRequest {
   queryId: string;
 }
 
-export const DeleteQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteQueriesRequest = /*@__PURE__*/ Schema.Struct({
   queryId: Schema.String.pipe(T.HttpPath("queryId")),
 }).pipe(
   T.Http({ method: "DELETE", path: "queries/{queryId}" }),
@@ -375,9 +375,7 @@ export const DeleteQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteQueriesResponse {}
 export const DeleteQueriesResponse: Schema.Codec<DeleteQueriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<DeleteQueriesResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<DeleteQueriesResponse>;
 
 export type DeleteQueriesError =
   | DefaultErrors
@@ -392,7 +390,7 @@ export const deleteQueries: API.OperationMethod<
   DeleteQueriesResponse,
   DeleteQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueriesRequest,
   output: DeleteQueriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -407,7 +405,7 @@ export interface ListQueriesRequest {
   pageToken?: string;
 }
 
-export const ListQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListQueriesRequest = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -417,8 +415,7 @@ export const ListQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListQueriesRequest>;
 
 export type ListQueriesResponse_Op = ListQueriesResponse;
-export const ListQueriesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListQueriesResponse;
+export const ListQueriesResponse_Op = /*@__PURE__*/ ListQueriesResponse;
 
 export type ListQueriesError = DefaultErrors | NotFound | Forbidden;
 
@@ -428,7 +425,7 @@ export const listQueries: API.PaginatedOperationMethod<
   ListQueriesResponse_Op,
   ListQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueriesRequest,
   output: ListQueriesResponse_Op,
   errors: [NotFound, Forbidden],
@@ -443,7 +440,7 @@ export interface CreateQueriesRequest {
   body?: Query;
 }
 
-export const CreateQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateQueriesRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(Query).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "queries", hasBody: true }),
@@ -451,7 +448,7 @@ export const CreateQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CreateQueriesRequest>;
 
 export type CreateQueriesResponse = Query;
-export const CreateQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ Query;
+export const CreateQueriesResponse = /*@__PURE__*/ Query;
 
 export type CreateQueriesError =
   | DefaultErrors
@@ -466,7 +463,7 @@ export const createQueries: API.OperationMethod<
   CreateQueriesResponse,
   CreateQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateQueriesRequest,
   output: CreateQueriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -477,7 +474,7 @@ export interface GetQueriesRequest {
   queryId: string;
 }
 
-export const GetQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetQueriesRequest = /*@__PURE__*/ Schema.Struct({
   queryId: Schema.String.pipe(T.HttpPath("queryId")),
 }).pipe(
   T.Http({ method: "GET", path: "queries/{queryId}" }),
@@ -485,7 +482,7 @@ export const GetQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetQueriesRequest>;
 
 export type GetQueriesResponse = Query;
-export const GetQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ Query;
+export const GetQueriesResponse = /*@__PURE__*/ Query;
 
 export type GetQueriesError = DefaultErrors | NotFound | Forbidden;
 
@@ -495,7 +492,7 @@ export const getQueries: API.OperationMethod<
   GetQueriesResponse,
   GetQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueriesRequest,
   output: GetQueriesResponse,
   errors: [NotFound, Forbidden],
@@ -510,7 +507,7 @@ export interface RunQueriesRequest {
   body?: RunQueryRequest;
 }
 
-export const RunQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RunQueriesRequest = /*@__PURE__*/ Schema.Struct({
   queryId: Schema.String.pipe(T.HttpPath("queryId")),
   synchronous: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("synchronous")),
   body: Schema.optional(RunQueryRequest).pipe(T.HttpBody()),
@@ -520,7 +517,7 @@ export const RunQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<RunQueriesRequest>;
 
 export type RunQueriesResponse = Report;
-export const RunQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
+export const RunQueriesResponse = /*@__PURE__*/ Report;
 
 export type RunQueriesError =
   | DefaultErrors
@@ -535,7 +532,7 @@ export const runQueries: API.OperationMethod<
   RunQueriesResponse,
   RunQueriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunQueriesRequest,
   output: RunQueriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -553,7 +550,7 @@ export interface ListQueriesReportsRequest {
 }
 
 export const ListQueriesReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queryId: Schema.String.pipe(T.HttpPath("queryId")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -564,8 +561,7 @@ export const ListQueriesReportsRequest =
   ) as unknown as Schema.Codec<ListQueriesReportsRequest>;
 
 export type ListQueriesReportsResponse = ListReportsResponse;
-export const ListQueriesReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListReportsResponse;
+export const ListQueriesReportsResponse = /*@__PURE__*/ ListReportsResponse;
 
 export type ListQueriesReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -575,7 +571,7 @@ export const listQueriesReports: API.PaginatedOperationMethod<
   ListQueriesReportsResponse,
   ListQueriesReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueriesReportsRequest,
   output: ListQueriesReportsResponse,
   errors: [NotFound, Forbidden],
@@ -593,7 +589,7 @@ export interface GetQueriesReportsRequest {
 }
 
 export const GetQueriesReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     queryId: Schema.String.pipe(T.HttpPath("queryId")),
     reportId: Schema.String.pipe(T.HttpPath("reportId")),
   }).pipe(
@@ -602,7 +598,7 @@ export const GetQueriesReportsRequest =
   ) as unknown as Schema.Codec<GetQueriesReportsRequest>;
 
 export type GetQueriesReportsResponse = Report;
-export const GetQueriesReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
+export const GetQueriesReportsResponse = /*@__PURE__*/ Report;
 
 export type GetQueriesReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -612,7 +608,7 @@ export const getQueriesReports: API.OperationMethod<
   GetQueriesReportsResponse,
   GetQueriesReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueriesReportsRequest,
   output: GetQueriesReportsResponse,
   errors: [NotFound, Forbidden],

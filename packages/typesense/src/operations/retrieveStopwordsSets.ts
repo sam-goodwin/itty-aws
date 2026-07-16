@@ -5,7 +5,7 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface RetrieveStopwordsSetsInput {}
 export const RetrieveStopwordsSetsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/stopwords" }),
   ) as unknown as Schema.Codec<RetrieveStopwordsSetsInput>;
 
@@ -14,7 +14,7 @@ export interface RetrieveStopwordsSetsOutput {
   stopwords: { id: string; stopwords: string[]; locale?: string }[];
 }
 export const RetrieveStopwordsSetsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stopwords: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -30,9 +30,7 @@ export const RetrieveStopwordsSetsOutput =
  *
  * Retrieve the details of all stopwords sets
  */
-export const retrieveStopwordsSets = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetrieveStopwordsSetsInput,
-    outputSchema: RetrieveStopwordsSetsOutput,
-  }),
-);
+export const retrieveStopwordsSets = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetrieveStopwordsSetsInput,
+  outputSchema: RetrieveStopwordsSetsOutput,
+}));

@@ -38,7 +38,7 @@ export interface AccessReason {
 }
 
 export const AccessReason: Schema.Codec<AccessReason> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     detail: Schema.optional(Schema.String),
   }).annotate({ identifier: "AccessReason" });
@@ -51,7 +51,7 @@ export interface AccessLocations {
 }
 
 export const AccessLocations: Schema.Codec<AccessLocations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principalOfficeCountry: Schema.optional(Schema.String),
     principalPhysicalLocationCountry: Schema.optional(Schema.String),
   }).annotate({ identifier: "AccessLocations" });
@@ -118,7 +118,7 @@ export interface SignatureInfo {
 }
 
 export const SignatureInfo: Schema.Codec<SignatureInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     googlePublicKeyPem: Schema.optional(Schema.String),
     customerKmsKeyVersion: Schema.optional(Schema.String),
     googleKeyAlgorithm: Schema.optional(Schema.String),
@@ -142,7 +142,7 @@ export interface ApproveDecision {
 }
 
 export const ApproveDecision: Schema.Codec<ApproveDecision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signatureInfo: Schema.optional(SignatureInfo),
     invalidateTime: Schema.optional(Schema.String),
     approveTime: Schema.optional(Schema.String),
@@ -163,14 +163,14 @@ export interface CustomerApprovalApprovalPolicy {
 }
 
 export const CustomerApprovalApprovalPolicy: Schema.Codec<CustomerApprovalApprovalPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     justificationBasedApprovalPolicy: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomerApprovalApprovalPolicy" });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -180,21 +180,21 @@ export interface AugmentedInfo {
 }
 
 export const AugmentedInfo: Schema.Codec<AugmentedInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     command: Schema.optional(Schema.String),
   }).annotate({ identifier: "AugmentedInfo" });
 
 export interface DismissApprovalRequestMessage {}
 
 export const DismissApprovalRequestMessage: Schema.Codec<DismissApprovalRequestMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DismissApprovalRequestMessage",
   });
 
 export interface InvalidateApprovalRequestMessage {}
 
 export const InvalidateApprovalRequestMessage: Schema.Codec<InvalidateApprovalRequestMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InvalidateApprovalRequestMessage",
   });
 
@@ -204,7 +204,7 @@ export interface ResourceProperties {
 }
 
 export const ResourceProperties: Schema.Codec<ResourceProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     excludesDescendants: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ResourceProperties" });
 
@@ -216,7 +216,7 @@ export interface DismissDecision {
 }
 
 export const DismissDecision: Schema.Codec<DismissDecision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     implicit: Schema.optional(Schema.Boolean),
     dismissTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "DismissDecision" });
@@ -247,7 +247,7 @@ export interface ApprovalRequest {
 }
 
 export const ApprovalRequest: Schema.Codec<ApprovalRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestedReason: Schema.optional(AccessReason),
     requestedDuration: Schema.optional(Schema.String),
     requestedAugmentedInfo: Schema.optional(AugmentedInfo),
@@ -269,7 +269,7 @@ export interface ListApprovalRequestsResponse {
 }
 
 export const ListApprovalRequestsResponse: Schema.Codec<ListApprovalRequestsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     approvalRequests: Schema.optional(Schema.Array(ApprovalRequest)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListApprovalRequestsResponse" });
@@ -285,7 +285,7 @@ export interface EnrolledService {
 }
 
 export const EnrolledService: Schema.Codec<EnrolledService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cloudProduct: Schema.optional(Schema.String),
     enrollmentLevel: Schema.optional(Schema.String),
   }).annotate({ identifier: "EnrolledService" });
@@ -329,7 +329,7 @@ export interface AccessApprovalSettings {
 }
 
 export const AccessApprovalSettings: Schema.Codec<AccessApprovalSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ancestorHasActiveKeyVersion: Schema.optional(Schema.Boolean),
     effectiveApprovalPolicy: Schema.optional(CustomerApprovalApprovalPolicy),
     enrolledServices: Schema.optional(Schema.Array(EnrolledService)),
@@ -353,7 +353,7 @@ export interface ApproveApprovalRequestMessage {
 }
 
 export const ApproveApprovalRequestMessage: Schema.Codec<ApproveApprovalRequestMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "ApproveApprovalRequestMessage" });
 
@@ -365,7 +365,7 @@ export interface AccessApprovalServiceAccount {
 }
 
 export const AccessApprovalServiceAccount: Schema.Codec<AccessApprovalServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     accountEmail: Schema.optional(Schema.String),
   }).annotate({ identifier: "AccessApprovalServiceAccount" });
@@ -430,7 +430,7 @@ export interface DeleteAccessApprovalSettingsFoldersRequest {
 }
 
 export const DeleteAccessApprovalSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -438,8 +438,7 @@ export const DeleteAccessApprovalSettingsFoldersRequest =
   ) as unknown as Schema.Codec<DeleteAccessApprovalSettingsFoldersRequest>;
 
 export type DeleteAccessApprovalSettingsFoldersResponse = Empty;
-export const DeleteAccessApprovalSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteAccessApprovalSettingsFoldersResponse = /*@__PURE__*/ Empty;
 
 export type DeleteAccessApprovalSettingsFoldersError =
   | DefaultErrors
@@ -454,7 +453,7 @@ export const deleteAccessApprovalSettingsFolders: API.OperationMethod<
   DeleteAccessApprovalSettingsFoldersResponse,
   DeleteAccessApprovalSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessApprovalSettingsFoldersRequest,
   output: DeleteAccessApprovalSettingsFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -466,7 +465,7 @@ export interface GetServiceAccountFoldersRequest {
 }
 
 export const GetServiceAccountFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -475,7 +474,7 @@ export const GetServiceAccountFoldersRequest =
 
 export type GetServiceAccountFoldersResponse = AccessApprovalServiceAccount;
 export const GetServiceAccountFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccessApprovalServiceAccount;
+  /*@__PURE__*/ AccessApprovalServiceAccount;
 
 export type GetServiceAccountFoldersError =
   | DefaultErrors
@@ -488,7 +487,7 @@ export const getServiceAccountFolders: API.OperationMethod<
   GetServiceAccountFoldersResponse,
   GetServiceAccountFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceAccountFoldersRequest,
   output: GetServiceAccountFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -500,7 +499,7 @@ export interface GetAccessApprovalSettingsFoldersRequest {
 }
 
 export const GetAccessApprovalSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -509,7 +508,7 @@ export const GetAccessApprovalSettingsFoldersRequest =
 
 export type GetAccessApprovalSettingsFoldersResponse = AccessApprovalSettings;
 export const GetAccessApprovalSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccessApprovalSettings;
+  /*@__PURE__*/ AccessApprovalSettings;
 
 export type GetAccessApprovalSettingsFoldersError =
   | DefaultErrors
@@ -522,7 +521,7 @@ export const getAccessApprovalSettingsFolders: API.OperationMethod<
   GetAccessApprovalSettingsFoldersResponse,
   GetAccessApprovalSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessApprovalSettingsFoldersRequest,
   output: GetAccessApprovalSettingsFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -538,7 +537,7 @@ export interface UpdateAccessApprovalSettingsFoldersRequest {
 }
 
 export const UpdateAccessApprovalSettingsFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AccessApprovalSettings).pipe(T.HttpBody()),
@@ -550,7 +549,7 @@ export const UpdateAccessApprovalSettingsFoldersRequest =
 export type UpdateAccessApprovalSettingsFoldersResponse =
   AccessApprovalSettings;
 export const UpdateAccessApprovalSettingsFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccessApprovalSettings;
+  /*@__PURE__*/ AccessApprovalSettings;
 
 export type UpdateAccessApprovalSettingsFoldersError =
   | DefaultErrors
@@ -565,7 +564,7 @@ export const updateAccessApprovalSettingsFolders: API.OperationMethod<
   UpdateAccessApprovalSettingsFoldersResponse,
   UpdateAccessApprovalSettingsFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessApprovalSettingsFoldersRequest,
   output: UpdateAccessApprovalSettingsFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -577,7 +576,7 @@ export interface GetFoldersApprovalRequestsRequest {
 }
 
 export const GetFoldersApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -585,8 +584,7 @@ export const GetFoldersApprovalRequestsRequest =
   ) as unknown as Schema.Codec<GetFoldersApprovalRequestsRequest>;
 
 export type GetFoldersApprovalRequestsResponse = ApprovalRequest;
-export const GetFoldersApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
+export const GetFoldersApprovalRequestsResponse = /*@__PURE__*/ ApprovalRequest;
 
 export type GetFoldersApprovalRequestsError =
   | DefaultErrors
@@ -599,7 +597,7 @@ export const getFoldersApprovalRequests: API.OperationMethod<
   GetFoldersApprovalRequestsResponse,
   GetFoldersApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFoldersApprovalRequestsRequest,
   output: GetFoldersApprovalRequestsResponse,
   errors: [NotFound, Forbidden],
@@ -613,7 +611,7 @@ export interface DismissFoldersApprovalRequestsRequest {
 }
 
 export const DismissFoldersApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DismissApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
@@ -623,7 +621,7 @@ export const DismissFoldersApprovalRequestsRequest =
 
 export type DismissFoldersApprovalRequestsResponse = ApprovalRequest;
 export const DismissFoldersApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
+  /*@__PURE__*/ ApprovalRequest;
 
 export type DismissFoldersApprovalRequestsError =
   | DefaultErrors
@@ -638,7 +636,7 @@ export const dismissFoldersApprovalRequests: API.OperationMethod<
   DismissFoldersApprovalRequestsResponse,
   DismissFoldersApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DismissFoldersApprovalRequestsRequest,
   output: DismissFoldersApprovalRequestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -656,7 +654,7 @@ export interface ListFoldersApprovalRequestsRequest {
 }
 
 export const ListFoldersApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -668,7 +666,7 @@ export const ListFoldersApprovalRequestsRequest =
 
 export type ListFoldersApprovalRequestsResponse = ListApprovalRequestsResponse;
 export const ListFoldersApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApprovalRequestsResponse;
+  /*@__PURE__*/ ListApprovalRequestsResponse;
 
 export type ListFoldersApprovalRequestsError =
   | DefaultErrors
@@ -681,7 +679,7 @@ export const listFoldersApprovalRequests: API.PaginatedOperationMethod<
   ListFoldersApprovalRequestsResponse,
   ListFoldersApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersApprovalRequestsRequest,
   output: ListFoldersApprovalRequestsResponse,
   errors: [NotFound, Forbidden],
@@ -699,7 +697,7 @@ export interface ApproveFoldersApprovalRequestsRequest {
 }
 
 export const ApproveFoldersApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
@@ -709,7 +707,7 @@ export const ApproveFoldersApprovalRequestsRequest =
 
 export type ApproveFoldersApprovalRequestsResponse = ApprovalRequest;
 export const ApproveFoldersApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
+  /*@__PURE__*/ ApprovalRequest;
 
 export type ApproveFoldersApprovalRequestsError =
   | DefaultErrors
@@ -724,7 +722,7 @@ export const approveFoldersApprovalRequests: API.OperationMethod<
   ApproveFoldersApprovalRequestsResponse,
   ApproveFoldersApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApproveFoldersApprovalRequestsRequest,
   output: ApproveFoldersApprovalRequestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -738,7 +736,7 @@ export interface InvalidateFoldersApprovalRequestsRequest {
 }
 
 export const InvalidateFoldersApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(InvalidateApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
@@ -748,7 +746,7 @@ export const InvalidateFoldersApprovalRequestsRequest =
 
 export type InvalidateFoldersApprovalRequestsResponse = ApprovalRequest;
 export const InvalidateFoldersApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
+  /*@__PURE__*/ ApprovalRequest;
 
 export type InvalidateFoldersApprovalRequestsError =
   | DefaultErrors
@@ -763,7 +761,7 @@ export const invalidateFoldersApprovalRequests: API.OperationMethod<
   InvalidateFoldersApprovalRequestsResponse,
   InvalidateFoldersApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvalidateFoldersApprovalRequestsRequest,
   output: InvalidateFoldersApprovalRequestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -775,7 +773,7 @@ export interface GetAccessApprovalSettingsOrganizationsRequest {
 }
 
 export const GetAccessApprovalSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -785,7 +783,7 @@ export const GetAccessApprovalSettingsOrganizationsRequest =
 export type GetAccessApprovalSettingsOrganizationsResponse =
   AccessApprovalSettings;
 export const GetAccessApprovalSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccessApprovalSettings;
+  /*@__PURE__*/ AccessApprovalSettings;
 
 export type GetAccessApprovalSettingsOrganizationsError =
   | DefaultErrors
@@ -798,7 +796,7 @@ export const getAccessApprovalSettingsOrganizations: API.OperationMethod<
   GetAccessApprovalSettingsOrganizationsResponse,
   GetAccessApprovalSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessApprovalSettingsOrganizationsRequest,
   output: GetAccessApprovalSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -814,7 +812,7 @@ export interface UpdateAccessApprovalSettingsOrganizationsRequest {
 }
 
 export const UpdateAccessApprovalSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AccessApprovalSettings).pipe(T.HttpBody()),
@@ -826,7 +824,7 @@ export const UpdateAccessApprovalSettingsOrganizationsRequest =
 export type UpdateAccessApprovalSettingsOrganizationsResponse =
   AccessApprovalSettings;
 export const UpdateAccessApprovalSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccessApprovalSettings;
+  /*@__PURE__*/ AccessApprovalSettings;
 
 export type UpdateAccessApprovalSettingsOrganizationsError =
   | DefaultErrors
@@ -841,7 +839,7 @@ export const updateAccessApprovalSettingsOrganizations: API.OperationMethod<
   UpdateAccessApprovalSettingsOrganizationsResponse,
   UpdateAccessApprovalSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessApprovalSettingsOrganizationsRequest,
   output: UpdateAccessApprovalSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -853,7 +851,7 @@ export interface DeleteAccessApprovalSettingsOrganizationsRequest {
 }
 
 export const DeleteAccessApprovalSettingsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -862,7 +860,7 @@ export const DeleteAccessApprovalSettingsOrganizationsRequest =
 
 export type DeleteAccessApprovalSettingsOrganizationsResponse = Empty;
 export const DeleteAccessApprovalSettingsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteAccessApprovalSettingsOrganizationsError =
   | DefaultErrors
@@ -877,7 +875,7 @@ export const deleteAccessApprovalSettingsOrganizations: API.OperationMethod<
   DeleteAccessApprovalSettingsOrganizationsResponse,
   DeleteAccessApprovalSettingsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessApprovalSettingsOrganizationsRequest,
   output: DeleteAccessApprovalSettingsOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -889,7 +887,7 @@ export interface GetServiceAccountOrganizationsRequest {
 }
 
 export const GetServiceAccountOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -899,7 +897,7 @@ export const GetServiceAccountOrganizationsRequest =
 export type GetServiceAccountOrganizationsResponse =
   AccessApprovalServiceAccount;
 export const GetServiceAccountOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccessApprovalServiceAccount;
+  /*@__PURE__*/ AccessApprovalServiceAccount;
 
 export type GetServiceAccountOrganizationsError =
   | DefaultErrors
@@ -912,7 +910,7 @@ export const getServiceAccountOrganizations: API.OperationMethod<
   GetServiceAccountOrganizationsResponse,
   GetServiceAccountOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceAccountOrganizationsRequest,
   output: GetServiceAccountOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -926,7 +924,7 @@ export interface DismissOrganizationsApprovalRequestsRequest {
 }
 
 export const DismissOrganizationsApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DismissApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
@@ -936,7 +934,7 @@ export const DismissOrganizationsApprovalRequestsRequest =
 
 export type DismissOrganizationsApprovalRequestsResponse = ApprovalRequest;
 export const DismissOrganizationsApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
+  /*@__PURE__*/ ApprovalRequest;
 
 export type DismissOrganizationsApprovalRequestsError =
   | DefaultErrors
@@ -951,7 +949,7 @@ export const dismissOrganizationsApprovalRequests: API.OperationMethod<
   DismissOrganizationsApprovalRequestsResponse,
   DismissOrganizationsApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DismissOrganizationsApprovalRequestsRequest,
   output: DismissOrganizationsApprovalRequestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -963,7 +961,7 @@ export interface GetOrganizationsApprovalRequestsRequest {
 }
 
 export const GetOrganizationsApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -972,7 +970,7 @@ export const GetOrganizationsApprovalRequestsRequest =
 
 export type GetOrganizationsApprovalRequestsResponse = ApprovalRequest;
 export const GetOrganizationsApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
+  /*@__PURE__*/ ApprovalRequest;
 
 export type GetOrganizationsApprovalRequestsError =
   | DefaultErrors
@@ -985,7 +983,7 @@ export const getOrganizationsApprovalRequests: API.OperationMethod<
   GetOrganizationsApprovalRequestsResponse,
   GetOrganizationsApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsApprovalRequestsRequest,
   output: GetOrganizationsApprovalRequestsResponse,
   errors: [NotFound, Forbidden],
@@ -1003,7 +1001,7 @@ export interface ListOrganizationsApprovalRequestsRequest {
 }
 
 export const ListOrganizationsApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1016,7 +1014,7 @@ export const ListOrganizationsApprovalRequestsRequest =
 export type ListOrganizationsApprovalRequestsResponse =
   ListApprovalRequestsResponse;
 export const ListOrganizationsApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApprovalRequestsResponse;
+  /*@__PURE__*/ ListApprovalRequestsResponse;
 
 export type ListOrganizationsApprovalRequestsError =
   | DefaultErrors
@@ -1029,7 +1027,7 @@ export const listOrganizationsApprovalRequests: API.PaginatedOperationMethod<
   ListOrganizationsApprovalRequestsResponse,
   ListOrganizationsApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsApprovalRequestsRequest,
   output: ListOrganizationsApprovalRequestsResponse,
   errors: [NotFound, Forbidden],
@@ -1047,7 +1045,7 @@ export interface ApproveOrganizationsApprovalRequestsRequest {
 }
 
 export const ApproveOrganizationsApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
@@ -1057,7 +1055,7 @@ export const ApproveOrganizationsApprovalRequestsRequest =
 
 export type ApproveOrganizationsApprovalRequestsResponse = ApprovalRequest;
 export const ApproveOrganizationsApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
+  /*@__PURE__*/ ApprovalRequest;
 
 export type ApproveOrganizationsApprovalRequestsError =
   | DefaultErrors
@@ -1072,7 +1070,7 @@ export const approveOrganizationsApprovalRequests: API.OperationMethod<
   ApproveOrganizationsApprovalRequestsResponse,
   ApproveOrganizationsApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApproveOrganizationsApprovalRequestsRequest,
   output: ApproveOrganizationsApprovalRequestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1086,7 +1084,7 @@ export interface InvalidateOrganizationsApprovalRequestsRequest {
 }
 
 export const InvalidateOrganizationsApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(InvalidateApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
@@ -1096,7 +1094,7 @@ export const InvalidateOrganizationsApprovalRequestsRequest =
 
 export type InvalidateOrganizationsApprovalRequestsResponse = ApprovalRequest;
 export const InvalidateOrganizationsApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
+  /*@__PURE__*/ ApprovalRequest;
 
 export type InvalidateOrganizationsApprovalRequestsError =
   | DefaultErrors
@@ -1111,7 +1109,7 @@ export const invalidateOrganizationsApprovalRequests: API.OperationMethod<
   InvalidateOrganizationsApprovalRequestsResponse,
   InvalidateOrganizationsApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvalidateOrganizationsApprovalRequestsRequest,
   output: InvalidateOrganizationsApprovalRequestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1123,7 +1121,7 @@ export interface GetServiceAccountProjectsRequest {
 }
 
 export const GetServiceAccountProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1132,7 +1130,7 @@ export const GetServiceAccountProjectsRequest =
 
 export type GetServiceAccountProjectsResponse = AccessApprovalServiceAccount;
 export const GetServiceAccountProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccessApprovalServiceAccount;
+  /*@__PURE__*/ AccessApprovalServiceAccount;
 
 export type GetServiceAccountProjectsError =
   | DefaultErrors
@@ -1145,7 +1143,7 @@ export const getServiceAccountProjects: API.OperationMethod<
   GetServiceAccountProjectsResponse,
   GetServiceAccountProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceAccountProjectsRequest,
   output: GetServiceAccountProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -1157,7 +1155,7 @@ export interface DeleteAccessApprovalSettingsProjectsRequest {
 }
 
 export const DeleteAccessApprovalSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -1165,8 +1163,7 @@ export const DeleteAccessApprovalSettingsProjectsRequest =
   ) as unknown as Schema.Codec<DeleteAccessApprovalSettingsProjectsRequest>;
 
 export type DeleteAccessApprovalSettingsProjectsResponse = Empty;
-export const DeleteAccessApprovalSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteAccessApprovalSettingsProjectsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteAccessApprovalSettingsProjectsError =
   | DefaultErrors
@@ -1181,7 +1178,7 @@ export const deleteAccessApprovalSettingsProjects: API.OperationMethod<
   DeleteAccessApprovalSettingsProjectsResponse,
   DeleteAccessApprovalSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessApprovalSettingsProjectsRequest,
   output: DeleteAccessApprovalSettingsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1197,7 +1194,7 @@ export interface UpdateAccessApprovalSettingsProjectsRequest {
 }
 
 export const UpdateAccessApprovalSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AccessApprovalSettings).pipe(T.HttpBody()),
@@ -1209,7 +1206,7 @@ export const UpdateAccessApprovalSettingsProjectsRequest =
 export type UpdateAccessApprovalSettingsProjectsResponse =
   AccessApprovalSettings;
 export const UpdateAccessApprovalSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccessApprovalSettings;
+  /*@__PURE__*/ AccessApprovalSettings;
 
 export type UpdateAccessApprovalSettingsProjectsError =
   | DefaultErrors
@@ -1224,7 +1221,7 @@ export const updateAccessApprovalSettingsProjects: API.OperationMethod<
   UpdateAccessApprovalSettingsProjectsResponse,
   UpdateAccessApprovalSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccessApprovalSettingsProjectsRequest,
   output: UpdateAccessApprovalSettingsProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1236,7 +1233,7 @@ export interface GetAccessApprovalSettingsProjectsRequest {
 }
 
 export const GetAccessApprovalSettingsProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1245,7 +1242,7 @@ export const GetAccessApprovalSettingsProjectsRequest =
 
 export type GetAccessApprovalSettingsProjectsResponse = AccessApprovalSettings;
 export const GetAccessApprovalSettingsProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AccessApprovalSettings;
+  /*@__PURE__*/ AccessApprovalSettings;
 
 export type GetAccessApprovalSettingsProjectsError =
   | DefaultErrors
@@ -1258,7 +1255,7 @@ export const getAccessApprovalSettingsProjects: API.OperationMethod<
   GetAccessApprovalSettingsProjectsResponse,
   GetAccessApprovalSettingsProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessApprovalSettingsProjectsRequest,
   output: GetAccessApprovalSettingsProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -1272,7 +1269,7 @@ export interface DismissProjectsApprovalRequestsRequest {
 }
 
 export const DismissProjectsApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DismissApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
@@ -1282,7 +1279,7 @@ export const DismissProjectsApprovalRequestsRequest =
 
 export type DismissProjectsApprovalRequestsResponse = ApprovalRequest;
 export const DismissProjectsApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
+  /*@__PURE__*/ ApprovalRequest;
 
 export type DismissProjectsApprovalRequestsError =
   | DefaultErrors
@@ -1297,7 +1294,7 @@ export const dismissProjectsApprovalRequests: API.OperationMethod<
   DismissProjectsApprovalRequestsResponse,
   DismissProjectsApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DismissProjectsApprovalRequestsRequest,
   output: DismissProjectsApprovalRequestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1309,7 +1306,7 @@ export interface GetProjectsApprovalRequestsRequest {
 }
 
 export const GetProjectsApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -1318,7 +1315,7 @@ export const GetProjectsApprovalRequestsRequest =
 
 export type GetProjectsApprovalRequestsResponse = ApprovalRequest;
 export const GetProjectsApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
+  /*@__PURE__*/ ApprovalRequest;
 
 export type GetProjectsApprovalRequestsError =
   | DefaultErrors
@@ -1331,7 +1328,7 @@ export const getProjectsApprovalRequests: API.OperationMethod<
   GetProjectsApprovalRequestsResponse,
   GetProjectsApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsApprovalRequestsRequest,
   output: GetProjectsApprovalRequestsResponse,
   errors: [NotFound, Forbidden],
@@ -1349,7 +1346,7 @@ export interface ListProjectsApprovalRequestsRequest {
 }
 
 export const ListProjectsApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1361,7 +1358,7 @@ export const ListProjectsApprovalRequestsRequest =
 
 export type ListProjectsApprovalRequestsResponse = ListApprovalRequestsResponse;
 export const ListProjectsApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApprovalRequestsResponse;
+  /*@__PURE__*/ ListApprovalRequestsResponse;
 
 export type ListProjectsApprovalRequestsError =
   | DefaultErrors
@@ -1374,7 +1371,7 @@ export const listProjectsApprovalRequests: API.PaginatedOperationMethod<
   ListProjectsApprovalRequestsResponse,
   ListProjectsApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsApprovalRequestsRequest,
   output: ListProjectsApprovalRequestsResponse,
   errors: [NotFound, Forbidden],
@@ -1392,7 +1389,7 @@ export interface ApproveProjectsApprovalRequestsRequest {
 }
 
 export const ApproveProjectsApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
@@ -1402,7 +1399,7 @@ export const ApproveProjectsApprovalRequestsRequest =
 
 export type ApproveProjectsApprovalRequestsResponse = ApprovalRequest;
 export const ApproveProjectsApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
+  /*@__PURE__*/ ApprovalRequest;
 
 export type ApproveProjectsApprovalRequestsError =
   | DefaultErrors
@@ -1417,7 +1414,7 @@ export const approveProjectsApprovalRequests: API.OperationMethod<
   ApproveProjectsApprovalRequestsResponse,
   ApproveProjectsApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApproveProjectsApprovalRequestsRequest,
   output: ApproveProjectsApprovalRequestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1431,7 +1428,7 @@ export interface InvalidateProjectsApprovalRequestsRequest {
 }
 
 export const InvalidateProjectsApprovalRequestsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(InvalidateApprovalRequestMessage).pipe(T.HttpBody()),
   }).pipe(
@@ -1441,7 +1438,7 @@ export const InvalidateProjectsApprovalRequestsRequest =
 
 export type InvalidateProjectsApprovalRequestsResponse = ApprovalRequest;
 export const InvalidateProjectsApprovalRequestsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
+  /*@__PURE__*/ ApprovalRequest;
 
 export type InvalidateProjectsApprovalRequestsError =
   | DefaultErrors
@@ -1456,7 +1453,7 @@ export const invalidateProjectsApprovalRequests: API.OperationMethod<
   InvalidateProjectsApprovalRequestsResponse,
   InvalidateProjectsApprovalRequestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvalidateProjectsApprovalRequestsRequest,
   output: InvalidateProjectsApprovalRequestsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

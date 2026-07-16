@@ -10,7 +10,7 @@ export interface V1GetProjectLogsInput {
   iso_timestamp_start?: string;
   iso_timestamp_end?: string;
 }
-export const V1GetProjectLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetProjectLogsInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   sql: Schema.optional(Schema.String),
   iso_timestamp_start: Schema.optional(Schema.String),
@@ -40,30 +40,28 @@ export interface V1GetProjectLogsOutput {
         status: string;
       };
 }
-export const V1GetProjectLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    result: Schema.optional(Schema.Array(Schema.Unknown)),
-    error: Schema.optional(
-      Schema.Union([
-        Schema.String,
-        Schema.Struct({
-          code: Schema.Number,
-          errors: Schema.Array(
-            Schema.Struct({
-              domain: Schema.String,
-              location: Schema.String,
-              locationType: Schema.String,
-              message: Schema.String,
-              reason: Schema.String,
-            }),
-          ),
-          message: Schema.String,
-          status: Schema.String,
-        }),
-      ]),
-    ),
-  },
-) as unknown as Schema.Codec<V1GetProjectLogsOutput>;
+export const V1GetProjectLogsOutput = /*@__PURE__*/ Schema.Struct({
+  result: Schema.optional(Schema.Array(Schema.Unknown)),
+  error: Schema.optional(
+    Schema.Union([
+      Schema.String,
+      Schema.Struct({
+        code: Schema.Number,
+        errors: Schema.Array(
+          Schema.Struct({
+            domain: Schema.String,
+            location: Schema.String,
+            locationType: Schema.String,
+            message: Schema.String,
+            reason: Schema.String,
+          }),
+        ),
+        message: Schema.String,
+        status: Schema.String,
+      }),
+    ]),
+  ),
+}) as unknown as Schema.Codec<V1GetProjectLogsOutput>;
 
 // The operation
 /**
@@ -79,7 +77,7 @@ export const V1GetProjectLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param ref - Project ref
  * @param sql - Custom SQL query to execute on the logs. See [querying logs](/docs/guides/telemetry/logs?queryGroups=product&product=postgres&queryGroups=source&source=edge_logs#querying-with-the-logs-explorer) for more details.
  */
-export const v1GetProjectLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetProjectLogs = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetProjectLogsInput,
   outputSchema: V1GetProjectLogsOutput,
   errors: [Forbidden] as const,

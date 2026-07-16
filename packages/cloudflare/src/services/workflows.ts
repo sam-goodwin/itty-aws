@@ -88,7 +88,7 @@ interface Error2 {
   message: string;
   name: string;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     message: Schema.String,
     name: Schema.String,
@@ -99,7 +99,7 @@ interface Rollback {
   error: { message: string; name: string } | null;
   outcome: "complete" | "failed" | (string & {});
 }
-const Rollback = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Rollback = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     error: Schema.Union([Error2, Schema.Null]),
     outcome: Schema.Union([
@@ -115,7 +115,7 @@ interface Attempt {
   start: string;
   success: boolean | null;
 }
-const Attempt = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Attempt = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     end: Schema.Union([Schema.String, Schema.Null]),
     error: Schema.Union([Error2, Schema.Null]),
@@ -130,7 +130,7 @@ interface Retries {
   limit: number;
   backoff?: "constant" | "linear" | "exponential" | (string & {}) | null;
 }
-const Retries = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Retries = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     delay: Schema.Union([Schema.String, Schema.Number]),
     limit: Schema.Number,
@@ -157,7 +157,7 @@ interface Config {
   /** When set to 'output', step output is redacted from log and step output responses. */
   sensitive?: "output" | null;
 }
-const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     retries: Retries,
     timeout: Schema.Unknown,
@@ -190,7 +190,7 @@ interface GetInstanceResponseStep {
   success: boolean | null;
   type: "step" | "rollback" | (string & {});
 }
-const GetInstanceResponseStep = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const GetInstanceResponseStep = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     attempts: Schema.Array(Attempt),
     config: Config,
@@ -211,22 +211,21 @@ interface GetInstanceResponseStep1 {
   start: string;
   type: "sleep";
 }
-const GetInstanceResponseStep1 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      end: Schema.String,
-      error: Schema.Union([Error2, Schema.Null]),
-      finished: Schema.Boolean,
-      name: Schema.String,
-      start: Schema.String,
-      type: Schema.Literal("sleep"),
-    }),
+const GetInstanceResponseStep1 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    end: Schema.String,
+    error: Schema.Union([Error2, Schema.Null]),
+    finished: Schema.Boolean,
+    name: Schema.String,
+    start: Schema.String,
+    type: Schema.Literal("sleep"),
+  }),
 ) as unknown as Schema.Codec<GetInstanceResponseStep1>;
 
 interface Trigger {
   source: string;
 }
-const Trigger = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Trigger = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     source: Schema.String,
   }),
@@ -236,12 +235,11 @@ interface GetInstanceResponseStep2 {
   trigger: { source: string };
   type: "termination";
 }
-const GetInstanceResponseStep2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      trigger: Trigger,
-      type: Schema.Literal("termination"),
-    }),
+const GetInstanceResponseStep2 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    trigger: Trigger,
+    type: Schema.Literal("termination"),
+  }),
 ) as unknown as Schema.Codec<GetInstanceResponseStep2>;
 
 interface GetInstanceResponseStep3 {
@@ -253,23 +251,22 @@ interface GetInstanceResponseStep3 {
   type: "waitForEvent";
   output?: string | null;
 }
-const GetInstanceResponseStep3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      end: Schema.String,
-      error: Schema.Union([Error2, Schema.Null]),
-      finished: Schema.Boolean,
-      name: Schema.String,
-      start: Schema.String,
-      type: Schema.Literal("waitForEvent"),
-      output: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+const GetInstanceResponseStep3 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    end: Schema.String,
+    error: Schema.Union([Error2, Schema.Null]),
+    finished: Schema.Boolean,
+    name: Schema.String,
+    start: Schema.String,
+    type: Schema.Literal("waitForEvent"),
+    output: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<GetInstanceResponseStep3>;
 
 interface Trigger2 {
   source: "unknown" | "api" | "binding" | "event" | "cron" | (string & {});
 }
-const Trigger2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Trigger2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     source: Schema.Union([
       Schema.Literals(["unknown", "api", "binding", "event", "cron"]),
@@ -282,7 +279,7 @@ interface Schedule {
   cron: string;
   scheduledTime: number;
 }
-const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Schedule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cron: Schema.String,
     scheduledTime: Schema.Number,
@@ -317,52 +314,51 @@ interface ListInstancesResponseResult {
     | (string & {})
     | null;
 }
-const ListInstancesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.String,
-      endedOn: Schema.Union([Schema.String, Schema.Null]),
-      modifiedOn: Schema.String,
-      startedOn: Schema.Union([Schema.String, Schema.Null]),
-      status: Schema.Union([
-        Schema.Literals([
-          "queued",
-          "running",
-          "paused",
-          "errored",
-          "terminated",
-          "complete",
-          "waitingForPause",
-          "waiting",
-          "rollingBack",
-        ]),
-        Schema.String,
+const ListInstancesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    endedOn: Schema.Union([Schema.String, Schema.Null]),
+    modifiedOn: Schema.String,
+    startedOn: Schema.Union([Schema.String, Schema.Null]),
+    status: Schema.Union([
+      Schema.Literals([
+        "queued",
+        "running",
+        "paused",
+        "errored",
+        "terminated",
+        "complete",
+        "waitingForPause",
+        "waiting",
+        "rollingBack",
       ]),
-      versionId: Schema.String,
-      workflowId: Schema.String,
-      triggerSource: Schema.optional(
+      Schema.String,
+    ]),
+    versionId: Schema.String,
+    workflowId: Schema.String,
+    triggerSource: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["unknown", "api", "binding", "event", "cron"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["unknown", "api", "binding", "event", "cron"]),
+          Schema.String,
         ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdOn: "created_on",
-        endedOn: "ended_on",
-        modifiedOn: "modified_on",
-        startedOn: "started_on",
-        status: "status",
-        versionId: "version_id",
-        workflowId: "workflow_id",
-        triggerSource: "trigger_source",
-      }),
+        Schema.Null,
+      ]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdOn: "created_on",
+      endedOn: "ended_on",
+      modifiedOn: "modified_on",
+      startedOn: "started_on",
+      status: "status",
+      versionId: "version_id",
+      workflowId: "workflow_id",
+      triggerSource: "trigger_source",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListInstancesResponseResult>;
 
 interface ListInstancesResponseResultInfo {
@@ -372,7 +368,7 @@ interface ListInstancesResponseResultInfo {
   totalCount?: number | null;
 }
 const ListInstancesResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -394,7 +390,7 @@ interface InstanceRetention {
   /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
   successRetention?: number | string | null;
 }
-const InstanceRetention = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const InstanceRetention = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     errorRetention: Schema.optional(
       Schema.Union([Schema.Union([Schema.Number, Schema.String]), Schema.Null]),
@@ -418,7 +414,7 @@ interface Body {
   } | null;
   params?: unknown | null;
 }
-const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     instanceId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     instanceRetention: Schema.optional(
@@ -458,44 +454,43 @@ interface BulkInstanceResponseResult {
     | (string & {})
     | null;
 }
-const BulkInstanceResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      status: Schema.Union([
-        Schema.Literals([
-          "queued",
-          "running",
-          "paused",
-          "errored",
-          "terminated",
-          "complete",
-          "waitingForPause",
-          "waiting",
-          "rollingBack",
-        ]),
-        Schema.String,
+const BulkInstanceResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    status: Schema.Union([
+      Schema.Literals([
+        "queued",
+        "running",
+        "paused",
+        "errored",
+        "terminated",
+        "complete",
+        "waitingForPause",
+        "waiting",
+        "rollingBack",
       ]),
-      versionId: Schema.String,
-      workflowId: Schema.String,
-      triggerSource: Schema.optional(
+      Schema.String,
+    ]),
+    versionId: Schema.String,
+    workflowId: Schema.String,
+    triggerSource: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["unknown", "api", "binding", "event", "cron"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["unknown", "api", "binding", "event", "cron"]),
+          Schema.String,
         ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        status: "status",
-        versionId: "version_id",
-        workflowId: "workflow_id",
-        triggerSource: "trigger_source",
-      }),
+        Schema.Null,
+      ]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      status: "status",
+      versionId: "version_id",
+      workflowId: "workflow_id",
+      triggerSource: "trigger_source",
+    }),
+  ),
 ) as unknown as Schema.Codec<BulkInstanceResponseResult>;
 
 interface From {
@@ -503,7 +498,7 @@ interface From {
   count?: number | null;
   type?: "do" | "sleep" | "waitForEvent" | (string & {}) | null;
 }
-const From = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const From = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -522,7 +517,7 @@ const From = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Limits {
   steps?: number | null;
 }
-const Limits = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Limits = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     steps: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   }),
@@ -539,32 +534,31 @@ interface ListVersionsResponseResult {
   workflowId: string;
   limits?: { steps?: number | null } | null;
 }
-const ListVersionsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      className: Schema.String,
-      createdOn: Schema.String,
-      hasDag: Schema.Boolean,
-      language: Schema.Union([
-        Schema.Literals(["javascript", "python"]),
-        Schema.String,
-      ]),
-      modifiedOn: Schema.String,
-      workflowId: Schema.String,
-      limits: Schema.optional(Schema.Union([Limits, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        className: "class_name",
-        createdOn: "created_on",
-        hasDag: "has_dag",
-        language: "language",
-        modifiedOn: "modified_on",
-        workflowId: "workflow_id",
-        limits: "limits",
-      }),
-    ),
+const ListVersionsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    className: Schema.String,
+    createdOn: Schema.String,
+    hasDag: Schema.Boolean,
+    language: Schema.Union([
+      Schema.Literals(["javascript", "python"]),
+      Schema.String,
+    ]),
+    modifiedOn: Schema.String,
+    workflowId: Schema.String,
+    limits: Schema.optional(Schema.Union([Limits, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      className: "class_name",
+      createdOn: "created_on",
+      hasDag: "has_dag",
+      language: "language",
+      modifiedOn: "modified_on",
+      workflowId: "workflow_id",
+      limits: "limits",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListVersionsResponseResult>;
 
 interface GraphVersionResponseGraphWorkflowNode {
@@ -576,7 +570,7 @@ interface GraphVersionResponseGraphWorkflowNode {
   starts?: number | null;
 }
 const GraphVersionResponseGraphWorkflowNode =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       duration: Schema.Union([Schema.Number, Schema.String]),
       name: Schema.String,
@@ -593,7 +587,7 @@ interface Retries2 {
   delay: number | string;
   limit: number;
 }
-const Retries2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Retries2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     backoff: Schema.Union([
       Schema.Literals(["constant", "linear", "exponential"]),
@@ -614,7 +608,7 @@ interface Config2 {
   /** Duration as milliseconds (number) or human-readable string. */
   timeout: number | string;
 }
-const Config2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     retries: Retries2,
     timeout: Schema.Union([Schema.Number, Schema.String]),
@@ -639,7 +633,7 @@ interface GraphVersionResponseGraphWorkflowNode1 {
   starts?: number | null;
 }
 const GraphVersionResponseGraphWorkflowNode1 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       config: Config2,
       name: Schema.String,
@@ -655,7 +649,7 @@ interface Options {
   /** Duration as milliseconds (number) or human-readable string. */
   timeout: number | string;
 }
-const Options = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Options = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     eventType: Schema.String,
     timeout: Schema.Union([Schema.Number, Schema.String]),
@@ -665,7 +659,7 @@ const Options = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Type {
   type: "unknown";
 }
-const Type = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Type = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Literal("unknown"),
   }),
@@ -677,7 +671,7 @@ interface GraphVersionResponseGraphWorkflowNode2Payload1 {
   type: "object";
 }
 const GraphVersionResponseGraphWorkflowNode2Payload1 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       fields: Schema.Record(Schema.String, Schema.Unknown),
       type: Schema.Literal("object"),
@@ -698,7 +692,7 @@ interface GraphVersionResponseGraphWorkflowNode2 {
   starts?: number | null;
 }
 const GraphVersionResponseGraphWorkflowNode2 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       options: Schema.Union([Options, Schema.Null]),
@@ -722,7 +716,7 @@ interface GraphVersionResponseGraphWorkflowNode3 {
   starts?: number | null;
 }
 const GraphVersionResponseGraphWorkflowNode3 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       timestamp: Schema.String,
@@ -738,7 +732,7 @@ interface GraphVersionResponseGraphWorkflowNode4 {
   type: "loop";
 }
 const GraphVersionResponseGraphWorkflowNode4 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       nodes: Schema.Array(Schema.Unknown),
       type: Schema.Literal("loop"),
@@ -753,7 +747,7 @@ interface GraphVersionResponseGraphWorkflowNode5 {
   type: "parallel";
 }
 const GraphVersionResponseGraphWorkflowNode5 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       kind: Schema.Union([
         Schema.Literals(["all", "any", "all_settled", "race"]),
@@ -769,7 +763,7 @@ interface CatchBlock {
   nodes: unknown[];
   type: "block";
 }
-const CatchBlock = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CatchBlock = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     nodes: Schema.Array(Schema.Unknown),
     type: Schema.Literal("block"),
@@ -783,7 +777,7 @@ interface GraphVersionResponseGraphWorkflowNode6 {
   type: "try";
 }
 const GraphVersionResponseGraphWorkflowNode6 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       catchBlock: Schema.Union([CatchBlock, Schema.Null]),
       finallyBlock: Schema.Union([CatchBlock, Schema.Null]),
@@ -804,7 +798,7 @@ interface Branch {
   /** Child nodes (recursive). */
   nodes: unknown[];
 }
-const Branch = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Branch = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     condition: Schema.Union([Schema.String, Schema.Null]),
     nodes: Schema.Array(Schema.Unknown),
@@ -816,7 +810,7 @@ interface GraphVersionResponseGraphWorkflowNode8 {
   type: "if";
 }
 const GraphVersionResponseGraphWorkflowNode8 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       branches: Schema.Array(Branch),
       type: Schema.Literal("if"),
@@ -829,7 +823,7 @@ interface GraphVersionResponseGraphWorkflowNode9 {
   type: "switch";
 }
 const GraphVersionResponseGraphWorkflowNode9 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       branches: Schema.Array(Branch),
       discriminant: Schema.String,
@@ -850,7 +844,7 @@ interface GraphVersionResponseGraphWorkflowNode10 {
     | null;
 }
 const GraphVersionResponseGraphWorkflowNode10 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       className: Schema.String,
       functions: Schema.Record(Schema.String, Schema.Unknown),
@@ -880,7 +874,7 @@ interface GraphVersionResponseGraphWorkflowNode11 {
   starts?: number | null;
 }
 const GraphVersionResponseGraphWorkflowNode11 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       type: Schema.Literal("function_call"),
@@ -896,7 +890,7 @@ interface GraphVersionResponseGraphWorkflowNode12 {
   type: "function_def";
 }
 const GraphVersionResponseGraphWorkflowNode12 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       nodes: Schema.Array(Schema.Unknown),
@@ -910,7 +904,7 @@ interface GraphVersionResponseGraphWorkflowNode13 {
   type: "break";
 }
 const GraphVersionResponseGraphWorkflowNode13 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       kind: Schema.Union([Schema.Literals(["break", "return"]), Schema.String]),
       type: Schema.Literal("break"),
@@ -1005,7 +999,7 @@ interface Workflow {
     | { fields: Record<string, unknown>; type: "object" }
     | null;
 }
-const Workflow = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Workflow = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     className: Schema.String,
     functions: Schema.Record(Schema.String, Schema.Unknown),
@@ -1137,7 +1131,7 @@ interface Graph {
       | null;
   };
 }
-const Graph = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Graph = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     version: Schema.Number,
     workflow: Workflow,
@@ -1155,7 +1149,7 @@ interface Instances {
   waiting?: number | null;
   waitingForPause?: number | null;
 }
-const Instances = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Instances = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     complete: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     errored: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1175,7 +1169,7 @@ interface Schedule2 {
   cron: string;
   nextInstance: string;
 }
-const Schedule2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Schedule2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cron: Schema.String,
     nextInstance: Schema.String,
@@ -1203,39 +1197,38 @@ interface ListWorkflowsResponseResult {
   triggeredOn: string | null;
   schedules?: { cron: string; nextInstance: string }[] | null;
 }
-const ListWorkflowsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      className: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdOn: Schema.String,
-      instances: Schema.optional(Schema.Union([Instances, Schema.Null])),
-      modifiedOn: Schema.String,
-      name: Schema.String,
-      scriptName: Schema.String,
-      triggeredOn: Schema.Union([Schema.String, Schema.Null]),
-      schedules: Schema.optional(
-        Schema.Union([Schema.Array(Schedule2), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        className: "class_name",
-        createdOn: "created_on",
-        instances: "instances",
-        modifiedOn: "modified_on",
-        name: "name",
-        scriptName: "script_name",
-        triggeredOn: "triggered_on",
-        schedules: "schedules",
-      }),
+const ListWorkflowsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    className: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.String,
+    instances: Schema.optional(Schema.Union([Instances, Schema.Null])),
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    scriptName: Schema.String,
+    triggeredOn: Schema.Union([Schema.String, Schema.Null]),
+    schedules: Schema.optional(
+      Schema.Union([Schema.Array(Schedule2), Schema.Null]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      className: "class_name",
+      createdOn: "created_on",
+      instances: "instances",
+      modifiedOn: "modified_on",
+      name: "name",
+      scriptName: "script_name",
+      triggeredOn: "triggered_on",
+      schedules: "schedules",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListWorkflowsResponseResult>;
 
 interface Schedule3 {
   cron: string;
 }
-const Schedule3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Schedule3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cron: Schema.String,
   }),
@@ -1256,22 +1249,21 @@ export interface GetInstanceRequest {
   simple?: boolean;
 }
 
-export const GetInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
-      instanceId: Schema.String.pipe(T.HttpPath("instanceId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      order: Schema.optional(
-        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-      ).pipe(T.HttpQuery("order")),
-      simple: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("simple")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}",
-      }),
-    ),
+export const GetInstanceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
+    instanceId: Schema.String.pipe(T.HttpPath("instanceId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    order: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("order")),
+    simple: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("simple")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetInstanceRequest>;
 
 export interface GetInstanceResponse {
@@ -1353,63 +1345,62 @@ export interface GetInstanceResponse {
   schedule?: { cron: string; scheduledTime: number } | null;
 }
 
-export const GetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      end: Schema.Union([Schema.String, Schema.Null]),
-      error: Schema.Union([Error2, Schema.Null]),
-      output: Schema.Union([Schema.String, Schema.Number, Schema.Null]),
-      params: Schema.Unknown,
-      queued: Schema.String,
-      rollback: Schema.Union([Rollback, Schema.Null]),
-      start: Schema.Union([Schema.String, Schema.Null]),
-      status: Schema.Union([
-        Schema.Literals([
-          "queued",
-          "running",
-          "paused",
-          "errored",
-          "terminated",
-          "complete",
-          "waitingForPause",
-          "waiting",
-          "rollingBack",
-        ]),
-        Schema.String,
+export const GetInstanceResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    end: Schema.Union([Schema.String, Schema.Null]),
+    error: Schema.Union([Error2, Schema.Null]),
+    output: Schema.Union([Schema.String, Schema.Number, Schema.Null]),
+    params: Schema.Unknown,
+    queued: Schema.String,
+    rollback: Schema.Union([Rollback, Schema.Null]),
+    start: Schema.Union([Schema.String, Schema.Null]),
+    status: Schema.Union([
+      Schema.Literals([
+        "queued",
+        "running",
+        "paused",
+        "errored",
+        "terminated",
+        "complete",
+        "waitingForPause",
+        "waiting",
+        "rollingBack",
       ]),
-      stepCount: Schema.Number,
-      steps: Schema.Array(
-        Schema.Union([
-          GetInstanceResponseStep,
-          GetInstanceResponseStep1,
-          GetInstanceResponseStep3,
-          GetInstanceResponseStep2,
-        ]),
-      ),
-      success: Schema.Union([Schema.Boolean, Schema.Null]),
-      trigger: Trigger2,
-      versionId: Schema.String,
-      schedule: Schema.optional(Schema.Union([Schedule, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          end: "end",
-          error: "error",
-          output: "output",
-          params: "params",
-          queued: "queued",
-          rollback: "rollback",
-          start: "start",
-          status: "status",
-          stepCount: "step_count",
-          steps: "steps",
-          success: "success",
-          trigger: "trigger",
-          versionId: "versionId",
-          schedule: "schedule",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+      Schema.String,
+    ]),
+    stepCount: Schema.Number,
+    steps: Schema.Array(
+      Schema.Union([
+        GetInstanceResponseStep,
+        GetInstanceResponseStep1,
+        GetInstanceResponseStep3,
+        GetInstanceResponseStep2,
+      ]),
+    ),
+    success: Schema.Union([Schema.Boolean, Schema.Null]),
+    trigger: Trigger2,
+    versionId: Schema.String,
+    schedule: Schema.optional(Schema.Union([Schedule, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        end: "end",
+        error: "error",
+        output: "output",
+        params: "params",
+        queued: "queued",
+        rollback: "rollback",
+        start: "start",
+        status: "status",
+        stepCount: "step_count",
+        steps: "steps",
+        success: "success",
+        trigger: "trigger",
+        versionId: "versionId",
+        schedule: "schedule",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetInstanceResponse>;
 
 export type GetInstanceError =
@@ -1423,7 +1414,7 @@ export const getInstance: API.OperationMethod<
   GetInstanceResponse,
   GetInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceRequest,
   output: GetInstanceResponse,
   errors: [WorkflowNotFound, InvalidRoute, InstanceNotFound],
@@ -1457,41 +1448,40 @@ export interface ListInstancesRequest {
     | (string & {});
 }
 
-export const ListInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
-      dateEnd: Schema.optional(Schema.String).pipe(T.HttpQuery("date_end")),
-      dateStart: Schema.optional(Schema.String).pipe(T.HttpQuery("date_start")),
-      direction: Schema.optional(
-        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-      ).pipe(T.HttpQuery("direction")),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "queued",
-            "running",
-            "paused",
-            "errored",
-            "terminated",
-            "complete",
-            "waitingForPause",
-            "waiting",
-            "rollingBack",
-          ]),
-          Schema.String,
+export const ListInstancesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+    dateEnd: Schema.optional(Schema.String).pipe(T.HttpQuery("date_end")),
+    dateStart: Schema.optional(Schema.String).pipe(T.HttpQuery("date_start")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "queued",
+          "running",
+          "paused",
+          "errored",
+          "terminated",
+          "complete",
+          "waitingForPause",
+          "waiting",
+          "rollingBack",
         ]),
-      ).pipe(T.HttpQuery("status")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workflows/{workflowName}/instances",
-      }),
-    ),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("status")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workflows/{workflowName}/instances",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListInstancesRequest>;
 
 export interface ListInstancesResponse {
@@ -1531,14 +1521,13 @@ export interface ListInstancesResponse {
   } | null;
 }
 
-export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListInstancesResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListInstancesResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListInstancesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListInstancesResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListInstancesResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListInstancesResponse>;
 
 export type ListInstancesError =
@@ -1553,7 +1542,7 @@ export const listInstances: API.PaginatedOperationMethod<
   ListInstancesResponse,
   ListInstancesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [WorkflowNotFound, WorkflowInternalError, InvalidRoute, InvalidBody],
@@ -1581,25 +1570,24 @@ export interface CreateInstanceRequest {
   params?: unknown;
 }
 
-export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      instanceId: Schema.optional(Schema.String),
-      instanceRetention: Schema.optional(InstanceRetention),
-      params: Schema.optional(Schema.Unknown),
-    }).pipe(
-      Schema.encodeKeys({
-        instanceId: "instance_id",
-        instanceRetention: "instance_retention",
-        params: "params",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/workflows/{workflowName}/instances",
-      }),
-    ),
+export const CreateInstanceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    instanceId: Schema.optional(Schema.String),
+    instanceRetention: Schema.optional(InstanceRetention),
+    params: Schema.optional(Schema.Unknown),
+  }).pipe(
+    Schema.encodeKeys({
+      instanceId: "instance_id",
+      instanceRetention: "instance_retention",
+      params: "params",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/workflows/{workflowName}/instances",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateInstanceRequest>;
 
 export interface CreateInstanceResponse {
@@ -1628,7 +1616,7 @@ export interface CreateInstanceResponse {
 }
 
 export const CreateInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       status: Schema.Union([
@@ -1681,7 +1669,7 @@ export const createInstance: API.OperationMethod<
   CreateInstanceResponse,
   CreateInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceRequest,
   output: CreateInstanceResponse,
   errors: [WorkflowNotFound, InstanceAlreadyExists, InvalidRoute, InvalidBody],
@@ -1702,18 +1690,17 @@ export interface BulkInstanceRequest {
   }[];
 }
 
-export const BulkInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      body: Schema.optional(Schema.Array(Body)).pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/workflows/{workflowName}/instances/batch",
-      }),
-    ),
+export const BulkInstanceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    body: Schema.optional(Schema.Array(Body)).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/workflows/{workflowName}/instances/batch",
+    }),
+  ),
 ) as unknown as Schema.Codec<BulkInstanceRequest>;
 
 export interface BulkInstanceResponse {
@@ -1743,11 +1730,10 @@ export interface BulkInstanceResponse {
   }[];
 }
 
-export const BulkInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(BulkInstanceResponseResult),
-    }),
+export const BulkInstanceResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(BulkInstanceResponseResult),
+  }),
 ) as unknown as Schema.Codec<BulkInstanceResponse>;
 
 export type BulkInstanceError =
@@ -1762,7 +1748,7 @@ export const bulkInstance: API.PaginatedOperationMethod<
   BulkInstanceResponse,
   BulkInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkInstanceRequest,
   output: BulkInstanceResponse,
   errors: [WorkflowNotFound, InstanceAlreadyExists, InvalidRoute, InvalidBody],
@@ -1785,24 +1771,23 @@ export interface StepInstanceRequest {
   attempt?: number;
 }
 
-export const StepInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
-      instanceId: Schema.String.pipe(T.HttpPath("instanceId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.String.pipe(T.HttpQuery("name")),
-      type: Schema.Union([
-        Schema.Literals(["step", "waitForEvent"]),
-        Schema.String,
-      ]).pipe(T.HttpQuery("type")),
-      attempt: Schema.optional(Schema.Number).pipe(T.HttpQuery("attempt")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}/step",
-      }),
-    ),
+export const StepInstanceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
+    instanceId: Schema.String.pipe(T.HttpPath("instanceId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.String.pipe(T.HttpQuery("name")),
+    type: Schema.Union([
+      Schema.Literals(["step", "waitForEvent"]),
+      Schema.String,
+    ]).pipe(T.HttpQuery("type")),
+    attempt: Schema.optional(Schema.Number).pipe(T.HttpQuery("attempt")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workflows/{workflowName}/instances/{instanceId}/step",
+    }),
+  ),
 ) as unknown as Schema.Codec<StepInstanceRequest>;
 
 export interface StepInstanceResponse {
@@ -1823,26 +1808,25 @@ export interface StepInstanceResponse {
   output?: unknown | null;
 }
 
-export const StepInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      error: Schema.Union([Error2, Schema.Null]),
-      status: Schema.Union([
-        Schema.Literals([
-          "queued",
-          "running",
-          "paused",
-          "errored",
-          "terminated",
-          "complete",
-          "waitingForPause",
-          "waiting",
-          "rollingBack",
-        ]),
-        Schema.String,
+export const StepInstanceResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    error: Schema.Union([Error2, Schema.Null]),
+    status: Schema.Union([
+      Schema.Literals([
+        "queued",
+        "running",
+        "paused",
+        "errored",
+        "terminated",
+        "complete",
+        "waitingForPause",
+        "waiting",
+        "rollingBack",
       ]),
-      output: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+      Schema.String,
+    ]),
+    output: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<StepInstanceResponse>;
 
 export type StepInstanceError = DefaultErrors;
@@ -1852,7 +1836,7 @@ export const stepInstance: API.OperationMethod<
   StepInstanceResponse,
   StepInstanceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StepInstanceRequest,
   output: StepInstanceResponse,
   errors: [],
@@ -1873,7 +1857,7 @@ export interface CreateInstanceEventRequest {
 }
 
 export const CreateInstanceEventRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
       instanceId: Schema.String.pipe(T.HttpPath("instanceId")),
@@ -1891,7 +1875,7 @@ export const CreateInstanceEventRequest =
 export type CreateInstanceEventResponse = unknown;
 
 export const CreateInstanceEventResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<CreateInstanceEventResponse>;
 
@@ -1907,7 +1891,7 @@ export const createInstanceEvent: API.OperationMethod<
   CreateInstanceEventResponse,
   CreateInstanceEventError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceEventRequest,
   output: CreateInstanceEventResponse,
   errors: [WorkflowNotFound, InvalidRoute, InstanceNotFound, InvalidBody],
@@ -1935,7 +1919,7 @@ export interface PatchInstanceStatusRequest {
 }
 
 export const PatchInstanceStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
       instanceId: Schema.String.pipe(T.HttpPath("instanceId")),
@@ -1971,7 +1955,7 @@ export interface PatchInstanceStatusResponse {
 }
 
 export const PatchInstanceStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       status: Schema.Union([
         Schema.Literals([
@@ -2003,7 +1987,7 @@ export const patchInstanceStatus: API.OperationMethod<
   PatchInstanceStatusResponse,
   PatchInstanceStatusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchInstanceStatusRequest,
   output: PatchInstanceStatusResponse,
   errors: [
@@ -2024,18 +2008,17 @@ export interface GetVersionRequest {
   accountId: string;
 }
 
-export const GetVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
-      versionId: Schema.String.pipe(T.HttpPath("versionId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workflows/{workflowName}/versions/{versionId}",
-      }),
-    ),
+export const GetVersionRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
+    versionId: Schema.String.pipe(T.HttpPath("versionId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workflows/{workflowName}/versions/{versionId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetVersionRequest>;
 
 export interface GetVersionResponse {
@@ -2050,34 +2033,33 @@ export interface GetVersionResponse {
   limits?: { steps?: number | null } | null;
 }
 
-export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      className: Schema.String,
-      createdOn: Schema.String,
-      hasDag: Schema.Boolean,
-      language: Schema.Union([
-        Schema.Literals(["javascript", "python"]),
-        Schema.String,
-      ]),
-      modifiedOn: Schema.String,
-      workflowId: Schema.String,
-      limits: Schema.optional(Schema.Union([Limits, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          className: "class_name",
-          createdOn: "created_on",
-          hasDag: "has_dag",
-          language: "language",
-          modifiedOn: "modified_on",
-          workflowId: "workflow_id",
-          limits: "limits",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetVersionResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    className: Schema.String,
+    createdOn: Schema.String,
+    hasDag: Schema.Boolean,
+    language: Schema.Union([
+      Schema.Literals(["javascript", "python"]),
+      Schema.String,
+    ]),
+    modifiedOn: Schema.String,
+    workflowId: Schema.String,
+    limits: Schema.optional(Schema.Union([Limits, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        className: "class_name",
+        createdOn: "created_on",
+        hasDag: "has_dag",
+        language: "language",
+        modifiedOn: "modified_on",
+        workflowId: "workflow_id",
+        limits: "limits",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetVersionResponse>;
 
 export type GetVersionError =
@@ -2091,7 +2073,7 @@ export const getVersion: API.OperationMethod<
   GetVersionResponse,
   GetVersionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVersionRequest,
   output: GetVersionResponse,
   errors: [WorkflowNotFound, InvalidRoute, VersionNotFound],
@@ -2105,19 +2087,18 @@ export interface ListVersionsRequest {
   perPage?: number;
 }
 
-export const ListVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workflows/{workflowName}/versions",
-      }),
-    ),
+export const ListVersionsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workflows/{workflowName}/versions",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListVersionsRequest>;
 
 export interface ListVersionsResponse {
@@ -2139,14 +2120,13 @@ export interface ListVersionsResponse {
   } | null;
 }
 
-export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListVersionsResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListInstancesResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListVersionsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListVersionsResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListInstancesResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListVersionsResponse>;
 
 export type ListVersionsError = DefaultErrors | WorkflowNotFound | InvalidRoute;
@@ -2156,7 +2136,7 @@ export const listVersions: API.PaginatedOperationMethod<
   ListVersionsResponse,
   ListVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVersionsRequest,
   output: ListVersionsResponse,
   errors: [WorkflowNotFound, InvalidRoute],
@@ -2175,18 +2155,17 @@ export interface GraphVersionRequest {
   accountId: string;
 }
 
-export const GraphVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
-      versionId: Schema.String.pipe(T.HttpPath("versionId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workflows/{workflowName}/versions/{versionId}/graph",
-      }),
-    ),
+export const GraphVersionRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
+    versionId: Schema.String.pipe(T.HttpPath("versionId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workflows/{workflowName}/versions/{versionId}/graph",
+    }),
+  ),
 ) as unknown as Schema.Codec<GraphVersionRequest>;
 
 export interface GraphVersionResponse {
@@ -2291,27 +2270,26 @@ export interface GraphVersionResponse {
   workflowId: string;
 }
 
-export const GraphVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      className: Schema.String,
-      createdOn: Schema.String,
-      graph: Schema.Union([Graph, Schema.Null]),
-      modifiedOn: Schema.String,
-      workflowId: Schema.String,
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          className: "class_name",
-          createdOn: "created_on",
-          graph: "graph",
-          modifiedOn: "modified_on",
-          workflowId: "workflow_id",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GraphVersionResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    className: Schema.String,
+    createdOn: Schema.String,
+    graph: Schema.Union([Graph, Schema.Null]),
+    modifiedOn: Schema.String,
+    workflowId: Schema.String,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        className: "class_name",
+        createdOn: "created_on",
+        graph: "graph",
+        modifiedOn: "modified_on",
+        workflowId: "workflow_id",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GraphVersionResponse>;
 
 export type GraphVersionError = DefaultErrors;
@@ -2321,7 +2299,7 @@ export const graphVersion: API.OperationMethod<
   GraphVersionResponse,
   GraphVersionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GraphVersionRequest,
   output: GraphVersionResponse,
   errors: [],
@@ -2336,17 +2314,16 @@ export interface GetWorkflowRequest {
   accountId: string;
 }
 
-export const GetWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workflows/{workflowName}",
-      }),
-    ),
+export const GetWorkflowRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workflows/{workflowName}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetWorkflowRequest>;
 
 export interface GetWorkflowResponse {
@@ -2371,35 +2348,34 @@ export interface GetWorkflowResponse {
   schedules?: { cron: string; nextInstance: string }[] | null;
 }
 
-export const GetWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      className: Schema.String,
-      createdOn: Schema.String,
-      instances: Instances,
-      modifiedOn: Schema.String,
-      name: Schema.String,
-      scriptName: Schema.String,
-      triggeredOn: Schema.Union([Schema.String, Schema.Null]),
-      schedules: Schema.optional(
-        Schema.Union([Schema.Array(Schedule2), Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          className: "class_name",
-          createdOn: "created_on",
-          instances: "instances",
-          modifiedOn: "modified_on",
-          name: "name",
-          scriptName: "script_name",
-          triggeredOn: "triggered_on",
-          schedules: "schedules",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetWorkflowResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    className: Schema.String,
+    createdOn: Schema.String,
+    instances: Instances,
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    scriptName: Schema.String,
+    triggeredOn: Schema.Union([Schema.String, Schema.Null]),
+    schedules: Schema.optional(
+      Schema.Union([Schema.Array(Schedule2), Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        className: "class_name",
+        createdOn: "created_on",
+        instances: "instances",
+        modifiedOn: "modified_on",
+        name: "name",
+        scriptName: "script_name",
+        triggeredOn: "triggered_on",
+        schedules: "schedules",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetWorkflowResponse>;
 
 export type GetWorkflowError = DefaultErrors | WorkflowNotFound | InvalidRoute;
@@ -2409,7 +2385,7 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowResponse,
   GetWorkflowError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowRequest,
   output: GetWorkflowResponse,
   errors: [WorkflowNotFound, InvalidRoute],
@@ -2424,16 +2400,13 @@ export interface ListWorkflowsRequest {
   search?: string;
 }
 
-export const ListWorkflowsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/workflows" }),
-    ),
+export const ListWorkflowsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/workflows" })),
 ) as unknown as Schema.Codec<ListWorkflowsRequest>;
 
 export interface ListWorkflowsResponse {
@@ -2466,14 +2439,13 @@ export interface ListWorkflowsResponse {
   } | null;
 }
 
-export const ListWorkflowsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListWorkflowsResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListInstancesResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListWorkflowsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListWorkflowsResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListInstancesResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListWorkflowsResponse>;
 
 export type ListWorkflowsError = DefaultErrors;
@@ -2483,7 +2455,7 @@ export const listWorkflows: API.PaginatedOperationMethod<
   ListWorkflowsResponse,
   ListWorkflowsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWorkflowsRequest,
   output: ListWorkflowsResponse,
   errors: [],
@@ -2510,27 +2482,26 @@ export interface PutWorkflowRequest {
   schedules?: { cron: string }[];
 }
 
-export const PutWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      className: Schema.String,
-      scriptName: Schema.String,
-      limits: Schema.optional(Limits),
-      schedules: Schema.optional(Schema.Array(Schedule3)),
-    }).pipe(
-      Schema.encodeKeys({
-        className: "class_name",
-        scriptName: "script_name",
-        limits: "limits",
-        schedules: "schedules",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/workflows/{workflowName}",
-      }),
-    ),
+export const PutWorkflowRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    className: Schema.String,
+    scriptName: Schema.String,
+    limits: Schema.optional(Limits),
+    schedules: Schema.optional(Schema.Array(Schedule3)),
+  }).pipe(
+    Schema.encodeKeys({
+      className: "class_name",
+      scriptName: "script_name",
+      limits: "limits",
+      schedules: "schedules",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/workflows/{workflowName}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PutWorkflowRequest>;
 
 export interface PutWorkflowResponse {
@@ -2546,37 +2517,36 @@ export interface PutWorkflowResponse {
   versionId: string;
 }
 
-export const PutWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      className: Schema.String,
-      createdOn: Schema.String,
-      isDeleted: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      modifiedOn: Schema.String,
-      name: Schema.String,
-      scriptName: Schema.String,
-      terminatorRunning: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      triggeredOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      versionId: Schema.String,
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          className: "class_name",
-          createdOn: "created_on",
-          isDeleted: "is_deleted",
-          modifiedOn: "modified_on",
-          name: "name",
-          scriptName: "script_name",
-          terminatorRunning: "terminator_running",
-          triggeredOn: "triggered_on",
-          versionId: "version_id",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PutWorkflowResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    className: Schema.String,
+    createdOn: Schema.String,
+    isDeleted: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    scriptName: Schema.String,
+    terminatorRunning: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    triggeredOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    versionId: Schema.String,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        className: "class_name",
+        createdOn: "created_on",
+        isDeleted: "is_deleted",
+        modifiedOn: "modified_on",
+        name: "name",
+        scriptName: "script_name",
+        terminatorRunning: "terminator_running",
+        triggeredOn: "triggered_on",
+        versionId: "version_id",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutWorkflowResponse>;
 
 export type PutWorkflowError =
@@ -2589,7 +2559,7 @@ export const putWorkflow: API.OperationMethod<
   PutWorkflowResponse,
   PutWorkflowError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutWorkflowRequest,
   output: PutWorkflowResponse,
   errors: [WorkflowInternalError, InvalidRoute],
@@ -2600,17 +2570,16 @@ export interface DeleteWorkflowRequest {
   accountId: string;
 }
 
-export const DeleteWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/workflows/{workflowName}",
-      }),
-    ),
+export const DeleteWorkflowRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workflowName: Schema.String.pipe(T.HttpPath("workflowName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/workflows/{workflowName}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteWorkflowRequest>;
 
 export interface DeleteWorkflowResponse {
@@ -2619,7 +2588,7 @@ export interface DeleteWorkflowResponse {
 }
 
 export const DeleteWorkflowResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       status: Schema.Literal("ok"),
       success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -2636,7 +2605,7 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteWorkflowResponse,
   DeleteWorkflowError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWorkflowRequest,
   output: DeleteWorkflowResponse,
   errors: [WorkflowNotFound, InvalidRoute],

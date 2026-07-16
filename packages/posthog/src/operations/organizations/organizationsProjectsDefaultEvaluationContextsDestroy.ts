@@ -8,7 +8,7 @@ export interface OrganizationsProjectsDefaultEvaluationContextsDestroyInput {
   organization_id: string;
 }
 export const OrganizationsProjectsDefaultEvaluationContextsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const OrganizationsProjectsDefaultEvaluationContextsDestroyInput =
 // Output Schema
 export type OrganizationsProjectsDefaultEvaluationContextsDestroyOutput = void;
 export const OrganizationsProjectsDefaultEvaluationContextsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationsProjectsDefaultEvaluationContextsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationsProjectsDefaultEvaluationContextsDestroyOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const OrganizationsProjectsDefaultEvaluationContextsDestroyOutput =
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const organizationsProjectsDefaultEvaluationContextsDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationsProjectsDefaultEvaluationContextsDestroyInput,
     outputSchema: OrganizationsProjectsDefaultEvaluationContextsDestroyOutput,
   }));

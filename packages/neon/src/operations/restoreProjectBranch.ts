@@ -13,7 +13,7 @@ export interface RestoreProjectBranchInput {
   preserve_under_name?: string;
 }
 export const RestoreProjectBranchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     source_branch_id: Schema.String,
@@ -122,7 +122,7 @@ export interface RestoreProjectBranchOutput {
   }[];
 }
 export const RestoreProjectBranchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     branch: Schema.Struct({
       id: Schema.String,
       project_id: Schema.String,
@@ -245,10 +245,8 @@ export const RestoreProjectBranchOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
  */
-export const restoreProjectBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RestoreProjectBranchInput,
-    outputSchema: RestoreProjectBranchOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const restoreProjectBranch = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RestoreProjectBranchInput,
+  outputSchema: RestoreProjectBranchOutput,
+  errors: [NotFound] as const,
+}));

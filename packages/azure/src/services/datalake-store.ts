@@ -16,7 +16,7 @@ export interface AccountsCheckNameAvailabilityInput {
   type: "Microsoft.DataLakeStore/accounts";
 }
 export const AccountsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
@@ -36,7 +36,7 @@ export interface AccountsCheckNameAvailabilityOutput {
   message?: string;
 }
 export const AccountsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export const AccountsCheckNameAvailabilityOutput =
  * @param api-version - Client Api Version.
  */
 export const AccountsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccountsCheckNameAvailabilityInput,
     outputSchema: AccountsCheckNameAvailabilityOutput,
   }));
@@ -97,7 +97,7 @@ export interface AccountsCreateInput {
       | "Commitment_5PB";
   };
 }
-export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -195,7 +195,7 @@ export interface AccountsCreateOutput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -212,7 +212,7 @@ export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the Data Lake Store account.
  * @param api-version - Client Api Version.
  */
-export const AccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsCreateInput,
   outputSchema: AccountsCreateOutput,
 }));
@@ -222,7 +222,7 @@ export interface AccountsDeleteInput {
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -237,7 +237,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AccountsDeleteOutput = void;
 export const AccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
 
 // The operation
 /**
@@ -248,7 +248,7 @@ export const AccountsDeleteOutput =
  * @param accountName - The name of the Data Lake Store account.
  * @param api-version - Client Api Version.
  */
-export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
@@ -259,7 +259,7 @@ export interface AccountsEnableKeyVaultInput {
   accountName: string;
 }
 export const AccountsEnableKeyVaultInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -274,7 +274,7 @@ export const AccountsEnableKeyVaultInput =
 // Output Schema
 export type AccountsEnableKeyVaultOutput = void;
 export const AccountsEnableKeyVaultOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsEnableKeyVaultOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsEnableKeyVaultOutput>;
 
 // The operation
 /**
@@ -285,19 +285,17 @@ export const AccountsEnableKeyVaultOutput =
  * @param accountName - The name of the Data Lake Store account.
  * @param api-version - Client Api Version.
  */
-export const AccountsEnableKeyVault = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsEnableKeyVaultInput,
-    outputSchema: AccountsEnableKeyVaultOutput,
-  }),
-);
+export const AccountsEnableKeyVault = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsEnableKeyVaultInput,
+  outputSchema: AccountsEnableKeyVaultOutput,
+}));
 // Input Schema
 export interface AccountsGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   accountName: string;
 }
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -317,7 +315,7 @@ export interface AccountsGetOutput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -334,7 +332,7 @@ export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the Data Lake Store account.
  * @param api-version - Client Api Version.
  */
-export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
   outputSchema: AccountsGetOutput,
 }));
@@ -348,7 +346,7 @@ export interface AccountsListInput {
   $orderby?: string;
   $count?: boolean;
 }
-export const AccountsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $filter: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -375,7 +373,7 @@ export interface AccountsListOutput {
   }[];
   nextLink?: string;
 }
-export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -403,7 +401,7 @@ export const AccountsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param $count - The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional.
  * @param api-version - Client Api Version.
  */
-export const AccountsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsListInput,
   outputSchema: AccountsListOutput,
 }));
@@ -419,7 +417,7 @@ export interface AccountsListByResourceGroupInput {
   $count?: boolean;
 }
 export const AccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -448,7 +446,7 @@ export interface AccountsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -477,12 +475,10 @@ export const AccountsListByResourceGroupOutput =
  * @param $count - A Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional.
  * @param api-version - Client Api Version.
  */
-export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListByResourceGroupInput,
-    outputSchema: AccountsListByResourceGroupOutput,
-  }),
-);
+export const AccountsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListByResourceGroupInput,
+  outputSchema: AccountsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface AccountsUpdateInput {
   subscriptionId: string;
@@ -517,7 +513,7 @@ export interface AccountsUpdateInput {
       | "Commitment_5PB";
   };
 }
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -607,7 +603,7 @@ export interface AccountsUpdateOutput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -624,7 +620,7 @@ export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - The name of the Data Lake Store account.
  * @param api-version - Client Api Version.
  */
-export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
   outputSchema: AccountsUpdateOutput,
 }));
@@ -637,7 +633,7 @@ export interface FirewallRulesCreateOrUpdateInput {
   properties: { startIpAddress: string; endIpAddress: string };
 }
 export const FirewallRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -661,7 +657,7 @@ export interface FirewallRulesCreateOrUpdateOutput {
   type?: string;
 }
 export const FirewallRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -677,12 +673,10 @@ export const FirewallRulesCreateOrUpdateOutput =
  * @param firewallRuleName - The name of the firewall rule to create or update.
  * @param api-version - Client Api Version.
  */
-export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FirewallRulesCreateOrUpdateInput,
-    outputSchema: FirewallRulesCreateOrUpdateOutput,
-  }),
-);
+export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FirewallRulesCreateOrUpdateInput,
+  outputSchema: FirewallRulesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface FirewallRulesDeleteInput {
   subscriptionId: string;
@@ -691,7 +685,7 @@ export interface FirewallRulesDeleteInput {
   firewallRuleName: string;
 }
 export const FirewallRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -707,7 +701,7 @@ export const FirewallRulesDeleteInput =
 // Output Schema
 export type FirewallRulesDeleteOutput = void;
 export const FirewallRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FirewallRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FirewallRulesDeleteOutput>;
 
 // The operation
 /**
@@ -719,7 +713,7 @@ export const FirewallRulesDeleteOutput =
  * @param firewallRuleName - The name of the firewall rule to delete.
  * @param api-version - Client Api Version.
  */
-export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesDeleteInput,
   outputSchema: FirewallRulesDeleteOutput,
 }));
@@ -730,7 +724,7 @@ export interface FirewallRulesGetInput {
   accountName: string;
   firewallRuleName: string;
 }
-export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FirewallRulesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -749,13 +743,11 @@ export interface FirewallRulesGetOutput {
   name?: string;
   type?: string;
 }
-export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<FirewallRulesGetOutput>;
+export const FirewallRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<FirewallRulesGetOutput>;
 
 // The operation
 /**
@@ -767,7 +759,7 @@ export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param firewallRuleName - The name of the firewall rule to retrieve.
  * @param api-version - Client Api Version.
  */
-export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesGetInput,
   outputSchema: FirewallRulesGetOutput,
 }));
@@ -778,7 +770,7 @@ export interface FirewallRulesListByAccountInput {
   accountName: string;
 }
 export const FirewallRulesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -796,7 +788,7 @@ export interface FirewallRulesListByAccountOutput {
   nextLink?: string;
 }
 export const FirewallRulesListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -818,12 +810,10 @@ export const FirewallRulesListByAccountOutput =
  * @param accountName - The name of the Data Lake Store account.
  * @param api-version - Client Api Version.
  */
-export const FirewallRulesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FirewallRulesListByAccountInput,
-    outputSchema: FirewallRulesListByAccountOutput,
-  }),
-);
+export const FirewallRulesListByAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FirewallRulesListByAccountInput,
+  outputSchema: FirewallRulesListByAccountOutput,
+}));
 // Input Schema
 export interface FirewallRulesUpdateInput {
   subscriptionId: string;
@@ -833,7 +823,7 @@ export interface FirewallRulesUpdateInput {
   properties?: { startIpAddress?: string; endIpAddress?: string };
 }
 export const FirewallRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -859,7 +849,7 @@ export interface FirewallRulesUpdateOutput {
   type?: string;
 }
 export const FirewallRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -875,7 +865,7 @@ export const FirewallRulesUpdateOutput =
  * @param firewallRuleName - The name of the firewall rule to update.
  * @param api-version - Client Api Version.
  */
-export const FirewallRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesUpdateInput,
   outputSchema: FirewallRulesUpdateOutput,
 }));
@@ -885,7 +875,7 @@ export interface LocationsGetCapabilityInput {
   location: string;
 }
 export const LocationsGetCapabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -905,7 +895,7 @@ export interface LocationsGetCapabilityOutput {
   migrationState?: boolean;
 }
 export const LocationsGetCapabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.optional(Schema.String),
     state: Schema.optional(
       Schema.Literals([
@@ -929,23 +919,19 @@ export const LocationsGetCapabilityOutput =
  * @param location - The resource location without whitespace.
  * @param api-version - Client Api Version.
  */
-export const LocationsGetCapability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LocationsGetCapabilityInput,
-    outputSchema: LocationsGetCapabilityOutput,
-  }),
-);
+export const LocationsGetCapability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LocationsGetCapabilityInput,
+  outputSchema: LocationsGetCapabilityOutput,
+}));
 // Input Schema
 export interface LocationsGetUsageInput {
   subscriptionId: string;
   location: string;
 }
-export const LocationsGetUsageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    location: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const LocationsGetUsageInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  location: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/usages",
@@ -970,7 +956,7 @@ export interface LocationsGetUsageOutput {
   }[];
 }
 export const LocationsGetUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1006,15 +992,13 @@ export const LocationsGetUsageOutput =
  * @param subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  * @param location - The resource location without whitespace.
  */
-export const LocationsGetUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LocationsGetUsage = /*@__PURE__*/ API.make(() => ({
   inputSchema: LocationsGetUsageInput,
   outputSchema: LocationsGetUsageOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataLakeStore/operations",
@@ -1036,7 +1020,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1064,7 +1048,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - Client Api Version.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1077,7 +1061,7 @@ export interface TrustedIdProvidersCreateOrUpdateInput {
   properties: { idProvider: string };
 }
 export const TrustedIdProvidersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1100,7 +1084,7 @@ export interface TrustedIdProvidersCreateOrUpdateOutput {
   type?: string;
 }
 export const TrustedIdProvidersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1117,7 +1101,7 @@ export const TrustedIdProvidersCreateOrUpdateOutput =
  * @param api-version - Client Api Version.
  */
 export const TrustedIdProvidersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TrustedIdProvidersCreateOrUpdateInput,
     outputSchema: TrustedIdProvidersCreateOrUpdateOutput,
   }));
@@ -1129,7 +1113,7 @@ export interface TrustedIdProvidersDeleteInput {
   trustedIdProviderName: string;
 }
 export const TrustedIdProvidersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1145,7 +1129,7 @@ export const TrustedIdProvidersDeleteInput =
 // Output Schema
 export type TrustedIdProvidersDeleteOutput = void;
 export const TrustedIdProvidersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TrustedIdProvidersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TrustedIdProvidersDeleteOutput>;
 
 // The operation
 /**
@@ -1157,12 +1141,10 @@ export const TrustedIdProvidersDeleteOutput =
  * @param trustedIdProviderName - The name of the trusted identity provider to delete.
  * @param api-version - Client Api Version.
  */
-export const TrustedIdProvidersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TrustedIdProvidersDeleteInput,
-    outputSchema: TrustedIdProvidersDeleteOutput,
-  }),
-);
+export const TrustedIdProvidersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrustedIdProvidersDeleteInput,
+  outputSchema: TrustedIdProvidersDeleteOutput,
+}));
 // Input Schema
 export interface TrustedIdProvidersGetInput {
   subscriptionId: string;
@@ -1171,7 +1153,7 @@ export interface TrustedIdProvidersGetInput {
   trustedIdProviderName: string;
 }
 export const TrustedIdProvidersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1191,7 +1173,7 @@ export interface TrustedIdProvidersGetOutput {
   type?: string;
 }
 export const TrustedIdProvidersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1207,12 +1189,10 @@ export const TrustedIdProvidersGetOutput =
  * @param trustedIdProviderName - The name of the trusted identity provider to retrieve.
  * @param api-version - Client Api Version.
  */
-export const TrustedIdProvidersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TrustedIdProvidersGetInput,
-    outputSchema: TrustedIdProvidersGetOutput,
-  }),
-);
+export const TrustedIdProvidersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrustedIdProvidersGetInput,
+  outputSchema: TrustedIdProvidersGetOutput,
+}));
 // Input Schema
 export interface TrustedIdProvidersListByAccountInput {
   subscriptionId: string;
@@ -1220,7 +1200,7 @@ export interface TrustedIdProvidersListByAccountInput {
   accountName: string;
 }
 export const TrustedIdProvidersListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1238,7 +1218,7 @@ export interface TrustedIdProvidersListByAccountOutput {
   nextLink?: string;
 }
 export const TrustedIdProvidersListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1261,7 +1241,7 @@ export const TrustedIdProvidersListByAccountOutput =
  * @param api-version - Client Api Version.
  */
 export const TrustedIdProvidersListByAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TrustedIdProvidersListByAccountInput,
     outputSchema: TrustedIdProvidersListByAccountOutput,
   }));
@@ -1274,7 +1254,7 @@ export interface TrustedIdProvidersUpdateInput {
   properties?: { idProvider?: string };
 }
 export const TrustedIdProvidersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1299,7 +1279,7 @@ export interface TrustedIdProvidersUpdateOutput {
   type?: string;
 }
 export const TrustedIdProvidersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1315,12 +1295,10 @@ export const TrustedIdProvidersUpdateOutput =
  * @param trustedIdProviderName - The name of the trusted identity provider. This is used for differentiation of providers in the account.
  * @param api-version - Client Api Version.
  */
-export const TrustedIdProvidersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TrustedIdProvidersUpdateInput,
-    outputSchema: TrustedIdProvidersUpdateOutput,
-  }),
-);
+export const TrustedIdProvidersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrustedIdProvidersUpdateInput,
+  outputSchema: TrustedIdProvidersUpdateOutput,
+}));
 // Input Schema
 export interface VirtualNetworkRulesCreateOrUpdateInput {
   subscriptionId: string;
@@ -1330,7 +1308,7 @@ export interface VirtualNetworkRulesCreateOrUpdateInput {
   properties: { subnetId: string };
 }
 export const VirtualNetworkRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1353,7 +1331,7 @@ export interface VirtualNetworkRulesCreateOrUpdateOutput {
   type?: string;
 }
 export const VirtualNetworkRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1370,7 +1348,7 @@ export const VirtualNetworkRulesCreateOrUpdateOutput =
  * @param api-version - Client Api Version.
  */
 export const VirtualNetworkRulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualNetworkRulesCreateOrUpdateInput,
     outputSchema: VirtualNetworkRulesCreateOrUpdateOutput,
   }));
@@ -1382,7 +1360,7 @@ export interface VirtualNetworkRulesDeleteInput {
   virtualNetworkRuleName: string;
 }
 export const VirtualNetworkRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1398,7 +1376,7 @@ export const VirtualNetworkRulesDeleteInput =
 // Output Schema
 export type VirtualNetworkRulesDeleteOutput = void;
 export const VirtualNetworkRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworkRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworkRulesDeleteOutput>;
 
 // The operation
 /**
@@ -1410,12 +1388,10 @@ export const VirtualNetworkRulesDeleteOutput =
  * @param virtualNetworkRuleName - The name of the virtual network rule to delete.
  * @param api-version - Client Api Version.
  */
-export const VirtualNetworkRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkRulesDeleteInput,
-    outputSchema: VirtualNetworkRulesDeleteOutput,
-  }),
-);
+export const VirtualNetworkRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkRulesDeleteInput,
+  outputSchema: VirtualNetworkRulesDeleteOutput,
+}));
 // Input Schema
 export interface VirtualNetworkRulesGetInput {
   subscriptionId: string;
@@ -1424,7 +1400,7 @@ export interface VirtualNetworkRulesGetInput {
   virtualNetworkRuleName: string;
 }
 export const VirtualNetworkRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1444,7 +1420,7 @@ export interface VirtualNetworkRulesGetOutput {
   type?: string;
 }
 export const VirtualNetworkRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1460,12 +1436,10 @@ export const VirtualNetworkRulesGetOutput =
  * @param virtualNetworkRuleName - The name of the virtual network rule to retrieve.
  * @param api-version - Client Api Version.
  */
-export const VirtualNetworkRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkRulesGetInput,
-    outputSchema: VirtualNetworkRulesGetOutput,
-  }),
-);
+export const VirtualNetworkRulesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkRulesGetInput,
+  outputSchema: VirtualNetworkRulesGetOutput,
+}));
 // Input Schema
 export interface VirtualNetworkRulesListByAccountInput {
   subscriptionId: string;
@@ -1473,7 +1447,7 @@ export interface VirtualNetworkRulesListByAccountInput {
   accountName: string;
 }
 export const VirtualNetworkRulesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1491,7 +1465,7 @@ export interface VirtualNetworkRulesListByAccountOutput {
   nextLink?: string;
 }
 export const VirtualNetworkRulesListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1514,7 +1488,7 @@ export const VirtualNetworkRulesListByAccountOutput =
  * @param api-version - Client Api Version.
  */
 export const VirtualNetworkRulesListByAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualNetworkRulesListByAccountInput,
     outputSchema: VirtualNetworkRulesListByAccountOutput,
   }));
@@ -1527,7 +1501,7 @@ export interface VirtualNetworkRulesUpdateInput {
   properties?: { subnetId?: string };
 }
 export const VirtualNetworkRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1552,7 +1526,7 @@ export interface VirtualNetworkRulesUpdateOutput {
   type?: string;
 }
 export const VirtualNetworkRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1568,9 +1542,7 @@ export const VirtualNetworkRulesUpdateOutput =
  * @param virtualNetworkRuleName - The name of the virtual network rule to update.
  * @param api-version - Client Api Version.
  */
-export const VirtualNetworkRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkRulesUpdateInput,
-    outputSchema: VirtualNetworkRulesUpdateOutput,
-  }),
-);
+export const VirtualNetworkRulesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkRulesUpdateInput,
+  outputSchema: VirtualNetworkRulesUpdateOutput,
+}));

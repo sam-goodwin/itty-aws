@@ -8,7 +8,7 @@ export interface PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesi
   expand?: string[];
 }
 export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignDeactivateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     personalization_design: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -130,7 +130,7 @@ export interface PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesi
   status: "active" | "inactive" | "rejected" | "review";
 }
 export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignDeactivateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card_logo: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -270,7 +270,7 @@ export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignDe
  * <p>Updates the <code>status</code> of the specified testmode personalization design object to <code>inactive</code>.</p>
  */
 export const PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignDeactivate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignDeactivateInput,
     outputSchema:

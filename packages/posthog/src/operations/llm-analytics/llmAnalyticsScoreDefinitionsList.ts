@@ -13,7 +13,7 @@ export interface LlmAnalyticsScoreDefinitionsListInput {
   search?: string;
 }
 export const LlmAnalyticsScoreDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     archived: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
@@ -77,7 +77,7 @@ export interface LlmAnalyticsScoreDefinitionsListOutput {
   }[];
 }
 export const LlmAnalyticsScoreDefinitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -176,7 +176,7 @@ export const LlmAnalyticsScoreDefinitionsListOutput =
  * @param search - Search scorers by name or description.
  */
 export const llmAnalyticsScoreDefinitionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsScoreDefinitionsListInput,
     outputSchema: LlmAnalyticsScoreDefinitionsListOutput,
   }));

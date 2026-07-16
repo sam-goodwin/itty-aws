@@ -28,7 +28,7 @@ export interface AccessPolicyAssignmentCreateUpdateInput {
   };
 }
 export const AccessPolicyAssignmentCreateUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -67,7 +67,7 @@ export interface AccessPolicyAssignmentCreateUpdateOutput {
   type?: string;
 }
 export const AccessPolicyAssignmentCreateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -85,7 +85,7 @@ export const AccessPolicyAssignmentCreateUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const AccessPolicyAssignmentCreateUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccessPolicyAssignmentCreateUpdateInput,
     outputSchema: AccessPolicyAssignmentCreateUpdateOutput,
   }));
@@ -98,7 +98,7 @@ export interface AccessPolicyAssignmentDeleteInput {
   accessPolicyAssignmentName: string;
 }
 export const AccessPolicyAssignmentDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -115,7 +115,7 @@ export const AccessPolicyAssignmentDeleteInput =
 // Output Schema
 export type AccessPolicyAssignmentDeleteOutput = void;
 export const AccessPolicyAssignmentDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessPolicyAssignmentDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessPolicyAssignmentDeleteOutput>;
 
 // The operation
 /**
@@ -129,7 +129,7 @@ export const AccessPolicyAssignmentDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const AccessPolicyAssignmentDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccessPolicyAssignmentDeleteInput,
     outputSchema: AccessPolicyAssignmentDeleteOutput,
   }));
@@ -142,7 +142,7 @@ export interface AccessPolicyAssignmentGetInput {
   accessPolicyAssignmentName: string;
 }
 export const AccessPolicyAssignmentGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -163,7 +163,7 @@ export interface AccessPolicyAssignmentGetOutput {
   type?: string;
 }
 export const AccessPolicyAssignmentGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -180,12 +180,10 @@ export const AccessPolicyAssignmentGetOutput =
  * @param accessPolicyAssignmentName - The name of the Redis Enterprise database access policy assignment.
  * @param api-version - The API version to use for this operation.
  */
-export const AccessPolicyAssignmentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessPolicyAssignmentGetInput,
-    outputSchema: AccessPolicyAssignmentGetOutput,
-  }),
-);
+export const AccessPolicyAssignmentGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPolicyAssignmentGetInput,
+  outputSchema: AccessPolicyAssignmentGetOutput,
+}));
 // Input Schema
 export interface AccessPolicyAssignmentListInput {
   subscriptionId: string;
@@ -194,7 +192,7 @@ export interface AccessPolicyAssignmentListInput {
   databaseName: string;
 }
 export const AccessPolicyAssignmentListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -213,7 +211,7 @@ export interface AccessPolicyAssignmentListOutput {
   nextLink?: string;
 }
 export const AccessPolicyAssignmentListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -236,12 +234,10 @@ export const AccessPolicyAssignmentListOutput =
  * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
  * @param databaseName - The name of the Redis Enterprise database.
  */
-export const AccessPolicyAssignmentList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessPolicyAssignmentListInput,
-    outputSchema: AccessPolicyAssignmentListOutput,
-  }),
-);
+export const AccessPolicyAssignmentList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPolicyAssignmentListInput,
+  outputSchema: AccessPolicyAssignmentListOutput,
+}));
 // Input Schema
 export interface DatabasesCreateInput {
   resourceGroupName: string;
@@ -308,7 +304,7 @@ export interface DatabasesCreateInput {
     accessKeysAuthentication?: "Disabled" | "Enabled";
   };
 }
-export const DatabasesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesCreateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
@@ -424,7 +420,7 @@ export interface DatabasesCreateOutput {
   name?: string;
   type?: string;
 }
-export const DatabasesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -440,7 +436,7 @@ export const DatabasesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesCreateInput,
   outputSchema: DatabasesCreateOutput,
 }));
@@ -451,7 +447,7 @@ export interface DatabasesDeleteInput {
   databaseName: string;
   subscriptionId: string;
 }
-export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
@@ -467,7 +463,7 @@ export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DatabasesDeleteOutput = void;
 export const DatabasesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesDeleteOutput>;
 
 // The operation
 /**
@@ -479,7 +475,7 @@ export const DatabasesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesDeleteInput,
   outputSchema: DatabasesDeleteOutput,
 }));
@@ -491,7 +487,7 @@ export interface DatabasesExportInput {
   subscriptionId: string;
   sasUri: string;
 }
-export const DatabasesExportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesExportInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
@@ -508,7 +504,7 @@ export const DatabasesExportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DatabasesExportOutput = void;
 export const DatabasesExportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesExportOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesExportOutput>;
 
 // The operation
 /**
@@ -520,7 +516,7 @@ export const DatabasesExportOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesExport = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesExport = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesExportInput,
   outputSchema: DatabasesExportOutput,
 }));
@@ -532,7 +528,7 @@ export interface DatabasesFlushInput {
   subscriptionId: string;
   ids?: string[];
 }
-export const DatabasesFlushInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesFlushInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
@@ -549,7 +545,7 @@ export const DatabasesFlushInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DatabasesFlushOutput = void;
 export const DatabasesFlushOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesFlushOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesFlushOutput>;
 
 // The operation
 /**
@@ -561,7 +557,7 @@ export const DatabasesFlushOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesFlush = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesFlush = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesFlushInput,
   outputSchema: DatabasesFlushOutput,
 }));
@@ -585,7 +581,7 @@ export interface DatabasesForceLinkToReplicationGroupInput {
   };
 }
 export const DatabasesForceLinkToReplicationGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
@@ -620,7 +616,7 @@ export const DatabasesForceLinkToReplicationGroupInput =
 // Output Schema
 export type DatabasesForceLinkToReplicationGroupOutput = void;
 export const DatabasesForceLinkToReplicationGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesForceLinkToReplicationGroupOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesForceLinkToReplicationGroupOutput>;
 
 // The operation
 /**
@@ -633,7 +629,7 @@ export const DatabasesForceLinkToReplicationGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const DatabasesForceLinkToReplicationGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabasesForceLinkToReplicationGroupInput,
     outputSchema: DatabasesForceLinkToReplicationGroupOutput,
   }));
@@ -646,7 +642,7 @@ export interface DatabasesForceUnlinkInput {
   ids: string[];
 }
 export const DatabasesForceUnlinkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
@@ -663,7 +659,7 @@ export const DatabasesForceUnlinkInput =
 // Output Schema
 export type DatabasesForceUnlinkOutput = void;
 export const DatabasesForceUnlinkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesForceUnlinkOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesForceUnlinkOutput>;
 
 // The operation
 /**
@@ -675,12 +671,10 @@ export const DatabasesForceUnlinkOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesForceUnlink = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabasesForceUnlinkInput,
-    outputSchema: DatabasesForceUnlinkOutput,
-  }),
-);
+export const DatabasesForceUnlink = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabasesForceUnlinkInput,
+  outputSchema: DatabasesForceUnlinkOutput,
+}));
 // Input Schema
 export interface DatabasesGetInput {
   resourceGroupName: string;
@@ -688,7 +682,7 @@ export interface DatabasesGetInput {
   databaseName: string;
   subscriptionId: string;
 }
-export const DatabasesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
@@ -707,7 +701,7 @@ export interface DatabasesGetOutput {
   name?: string;
   type?: string;
 }
-export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -723,7 +717,7 @@ export const DatabasesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesGetInput,
   outputSchema: DatabasesGetOutput,
 }));
@@ -735,7 +729,7 @@ export interface DatabasesImportInput {
   subscriptionId: string;
   sasUris: string[];
 }
-export const DatabasesImportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesImportInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
@@ -752,7 +746,7 @@ export const DatabasesImportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DatabasesImportOutput = void;
 export const DatabasesImportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesImportOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesImportOutput>;
 
 // The operation
 /**
@@ -764,7 +758,7 @@ export const DatabasesImportOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesImport = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesImport = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesImportInput,
   outputSchema: DatabasesImportOutput,
 }));
@@ -775,7 +769,7 @@ export interface DatabasesListByClusterInput {
   clusterName: string;
 }
 export const DatabasesListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -793,7 +787,7 @@ export interface DatabasesListByClusterOutput {
   nextLink?: string;
 }
 export const DatabasesListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -815,12 +809,10 @@ export const DatabasesListByClusterOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param clusterName - The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
  */
-export const DatabasesListByCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabasesListByClusterInput,
-    outputSchema: DatabasesListByClusterOutput,
-  }),
-);
+export const DatabasesListByCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabasesListByClusterInput,
+  outputSchema: DatabasesListByClusterOutput,
+}));
 // Input Schema
 export interface DatabasesListKeysInput {
   resourceGroupName: string;
@@ -828,14 +820,12 @@ export interface DatabasesListKeysInput {
   databaseName: string;
   subscriptionId: string;
 }
-export const DatabasesListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-    databaseName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const DatabasesListKeysInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+  databaseName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/listKeys",
@@ -849,7 +839,7 @@ export interface DatabasesListKeysOutput {
   secondaryKey?: string;
 }
 export const DatabasesListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DatabasesListKeysOutput>;
@@ -864,7 +854,7 @@ export const DatabasesListKeysOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesListKeysInput,
   outputSchema: DatabasesListKeysOutput,
 }));
@@ -877,7 +867,7 @@ export interface DatabasesRegenerateKeyInput {
   keyType: "Primary" | "Secondary";
 }
 export const DatabasesRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
@@ -897,7 +887,7 @@ export interface DatabasesRegenerateKeyOutput {
   secondaryKey?: string;
 }
 export const DatabasesRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DatabasesRegenerateKeyOutput>;
@@ -912,12 +902,10 @@ export const DatabasesRegenerateKeyOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatabasesRegenerateKeyInput,
-    outputSchema: DatabasesRegenerateKeyOutput,
-  }),
-);
+export const DatabasesRegenerateKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatabasesRegenerateKeyInput,
+  outputSchema: DatabasesRegenerateKeyOutput,
+}));
 // Input Schema
 export interface DatabasesUpdateInput {
   resourceGroupName: string;
@@ -984,7 +972,7 @@ export interface DatabasesUpdateInput {
     accessKeysAuthentication?: "Disabled" | "Enabled";
   };
 }
-export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   databaseName: Schema.String.pipe(T.PathParam()),
@@ -1100,7 +1088,7 @@ export interface DatabasesUpdateOutput {
   name?: string;
   type?: string;
 }
-export const DatabasesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatabasesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1116,7 +1104,7 @@ export const DatabasesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DatabasesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatabasesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatabasesUpdateInput,
   outputSchema: DatabasesUpdateOutput,
 }));
@@ -1128,7 +1116,7 @@ export interface DatabasesUpgradeDBRedisVersionInput {
   subscriptionId: string;
 }
 export const DatabasesUpgradeDBRedisVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
@@ -1144,7 +1132,7 @@ export const DatabasesUpgradeDBRedisVersionInput =
 // Output Schema
 export type DatabasesUpgradeDBRedisVersionOutput = void;
 export const DatabasesUpgradeDBRedisVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesUpgradeDBRedisVersionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatabasesUpgradeDBRedisVersionOutput>;
 
 // The operation
 /**
@@ -1157,15 +1145,13 @@ export const DatabasesUpgradeDBRedisVersionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const DatabasesUpgradeDBRedisVersion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DatabasesUpgradeDBRedisVersionInput,
     outputSchema: DatabasesUpgradeDBRedisVersionOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Cache/operations",
@@ -1189,7 +1175,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1219,7 +1205,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1230,7 +1216,7 @@ export interface OperationsStatusGetInput {
   subscriptionId: string;
 }
 export const OperationsStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1260,7 +1246,7 @@ export interface OperationsStatusGetOutput {
   };
 }
 export const OperationsStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
@@ -1297,7 +1283,7 @@ export const OperationsStatusGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const OperationsStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsStatusGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsStatusGetInput,
   outputSchema: OperationsStatusGetOutput,
 }));
@@ -1309,7 +1295,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1325,7 +1311,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1338,7 +1324,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -1350,7 +1336,7 @@ export interface PrivateEndpointConnectionsGetInput {
   subscriptionId: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     privateEndpointConnectionName: Schema.String.pipe(T.PathParam()),
@@ -1370,7 +1356,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1387,7 +1373,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -1398,7 +1384,7 @@ export interface PrivateEndpointConnectionsListInput {
   subscriptionId: string;
 }
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1415,7 +1401,7 @@ export interface PrivateEndpointConnectionsListOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1437,7 +1423,7 @@ export const PrivateEndpointConnectionsListOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListInput,
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
@@ -1461,7 +1447,7 @@ export interface PrivateEndpointConnectionsPutInput {
   type?: string;
 }
 export const PrivateEndpointConnectionsPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1503,7 +1489,7 @@ export interface PrivateEndpointConnectionsPutOutput {
   type?: string;
 }
 export const PrivateEndpointConnectionsPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1521,7 +1507,7 @@ export const PrivateEndpointConnectionsPutOutput =
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsPut =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsPutInput,
     outputSchema: PrivateEndpointConnectionsPutOutput,
   }));
@@ -1532,7 +1518,7 @@ export interface PrivateLinkResourcesListByClusterInput {
   subscriptionId: string;
 }
 export const PrivateLinkResourcesListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1549,7 +1535,7 @@ export interface PrivateLinkResourcesListByClusterOutput {
   value?: { id?: string; name?: string; type?: string }[];
 }
 export const PrivateLinkResourcesListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1571,7 +1557,7 @@ export const PrivateLinkResourcesListByClusterOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const PrivateLinkResourcesListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByClusterInput,
     outputSchema: PrivateLinkResourcesListByClusterOutput,
   }));
@@ -1702,7 +1688,7 @@ export interface RedisEnterpriseCreateInput {
   location: string;
 }
 export const RedisEnterpriseCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1879,7 +1865,7 @@ export interface RedisEnterpriseCreateOutput {
   type?: string;
 }
 export const RedisEnterpriseCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1894,12 +1880,10 @@ export const RedisEnterpriseCreateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RedisEnterpriseCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RedisEnterpriseCreateInput,
-    outputSchema: RedisEnterpriseCreateOutput,
-  }),
-);
+export const RedisEnterpriseCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedisEnterpriseCreateInput,
+  outputSchema: RedisEnterpriseCreateOutput,
+}));
 // Input Schema
 export interface RedisEnterpriseDeleteInput {
   resourceGroupName: string;
@@ -1907,7 +1891,7 @@ export interface RedisEnterpriseDeleteInput {
   subscriptionId: string;
 }
 export const RedisEnterpriseDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1922,7 +1906,7 @@ export const RedisEnterpriseDeleteInput =
 // Output Schema
 export type RedisEnterpriseDeleteOutput = void;
 export const RedisEnterpriseDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RedisEnterpriseDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RedisEnterpriseDeleteOutput>;
 
 // The operation
 /**
@@ -1933,12 +1917,10 @@ export const RedisEnterpriseDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RedisEnterpriseDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RedisEnterpriseDeleteInput,
-    outputSchema: RedisEnterpriseDeleteOutput,
-  }),
-);
+export const RedisEnterpriseDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedisEnterpriseDeleteInput,
+  outputSchema: RedisEnterpriseDeleteOutput,
+}));
 // Input Schema
 export interface RedisEnterpriseGetInput {
   resourceGroupName: string;
@@ -1946,7 +1928,7 @@ export interface RedisEnterpriseGetInput {
   subscriptionId: string;
 }
 export const RedisEnterpriseGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1965,7 +1947,7 @@ export interface RedisEnterpriseGetOutput {
   type?: string;
 }
 export const RedisEnterpriseGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1980,7 +1962,7 @@ export const RedisEnterpriseGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RedisEnterpriseGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisEnterpriseGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisEnterpriseGetInput,
   outputSchema: RedisEnterpriseGetOutput,
 }));
@@ -1989,7 +1971,7 @@ export interface RedisEnterpriseListInput {
   subscriptionId: string;
 }
 export const RedisEnterpriseListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2005,7 +1987,7 @@ export interface RedisEnterpriseListOutput {
   nextLink?: string;
 }
 export const RedisEnterpriseListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2025,7 +2007,7 @@ export const RedisEnterpriseListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RedisEnterpriseList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisEnterpriseList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisEnterpriseListInput,
   outputSchema: RedisEnterpriseListOutput,
 }));
@@ -2035,7 +2017,7 @@ export interface RedisEnterpriseListByResourceGroupInput {
   subscriptionId: string;
 }
 export const RedisEnterpriseListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2052,7 +2034,7 @@ export interface RedisEnterpriseListByResourceGroupOutput {
   nextLink?: string;
 }
 export const RedisEnterpriseListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2074,7 +2056,7 @@ export const RedisEnterpriseListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const RedisEnterpriseListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RedisEnterpriseListByResourceGroupInput,
     outputSchema: RedisEnterpriseListByResourceGroupOutput,
   }));
@@ -2085,7 +2067,7 @@ export interface RedisEnterpriseListSkusForScalingInput {
   subscriptionId: string;
 }
 export const RedisEnterpriseListSkusForScalingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2102,7 +2084,7 @@ export interface RedisEnterpriseListSkusForScalingOutput {
   skus?: { name?: string; sizeInGB?: number }[];
 }
 export const RedisEnterpriseListSkusForScalingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skus: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2123,7 +2105,7 @@ export const RedisEnterpriseListSkusForScalingOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const RedisEnterpriseListSkusForScaling =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RedisEnterpriseListSkusForScalingInput,
     outputSchema: RedisEnterpriseListSkusForScalingOutput,
   }));
@@ -2251,7 +2233,7 @@ export interface RedisEnterpriseUpdateInput {
   tags?: Record<string, string>;
 }
 export const RedisEnterpriseUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2427,7 +2409,7 @@ export interface RedisEnterpriseUpdateOutput {
   type?: string;
 }
 export const RedisEnterpriseUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2442,9 +2424,7 @@ export const RedisEnterpriseUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const RedisEnterpriseUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RedisEnterpriseUpdateInput,
-    outputSchema: RedisEnterpriseUpdateOutput,
-  }),
-);
+export const RedisEnterpriseUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedisEnterpriseUpdateInput,
+  outputSchema: RedisEnterpriseUpdateOutput,
+}));

@@ -21,7 +21,7 @@ export interface DeleteGroupIntegrationInput {
   pretty?: boolean;
 }
 export const DeleteGroupIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     integrationType: Schema.Literals([
       "PAGER_DUTY",
       "SLACK",
@@ -47,7 +47,7 @@ export const DeleteGroupIntegrationInput =
 // Output Schema
 export type DeleteGroupIntegrationOutput = void;
 export const DeleteGroupIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupIntegrationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupIntegrationOutput>;
 
 // The operation
 /**
@@ -62,10 +62,8 @@ export const DeleteGroupIntegrationOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const deleteGroupIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupIntegrationInput,
-    outputSchema: DeleteGroupIntegrationOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const deleteGroupIntegration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupIntegrationInput,
+  outputSchema: DeleteGroupIntegrationOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

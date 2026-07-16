@@ -46,7 +46,7 @@ export interface NotificationSetting {
 }
 
 export const NotificationSetting: Schema.Codec<NotificationSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notificationTypes: Schema.optional(Schema.Array(Schema.String)),
     pubsubTopic: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -112,7 +112,7 @@ export interface GetNotificationSettingAccountsRequest {
 }
 
 export const GetNotificationSettingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -121,7 +121,7 @@ export const GetNotificationSettingAccountsRequest =
 
 export type GetNotificationSettingAccountsResponse = NotificationSetting;
 export const GetNotificationSettingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ NotificationSetting;
+  /*@__PURE__*/ NotificationSetting;
 
 export type GetNotificationSettingAccountsError =
   | DefaultErrors
@@ -134,7 +134,7 @@ export const getNotificationSettingAccounts: API.OperationMethod<
   GetNotificationSettingAccountsResponse,
   GetNotificationSettingAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNotificationSettingAccountsRequest,
   output: GetNotificationSettingAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -150,7 +150,7 @@ export interface UpdateNotificationSettingAccountsRequest {
 }
 
 export const UpdateNotificationSettingAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(NotificationSetting).pipe(T.HttpBody()),
@@ -161,7 +161,7 @@ export const UpdateNotificationSettingAccountsRequest =
 
 export type UpdateNotificationSettingAccountsResponse = NotificationSetting;
 export const UpdateNotificationSettingAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ NotificationSetting;
+  /*@__PURE__*/ NotificationSetting;
 
 export type UpdateNotificationSettingAccountsError =
   | DefaultErrors
@@ -176,7 +176,7 @@ export const updateNotificationSettingAccounts: API.OperationMethod<
   UpdateNotificationSettingAccountsResponse,
   UpdateNotificationSettingAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNotificationSettingAccountsRequest,
   output: UpdateNotificationSettingAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

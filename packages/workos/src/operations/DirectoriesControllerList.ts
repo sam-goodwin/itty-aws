@@ -14,7 +14,7 @@ export interface DirectoriesControllerListInput {
   domain?: string;
 }
 export const DirectoriesControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -71,7 +71,7 @@ export interface DirectoriesControllerListOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const DirectoriesControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -152,10 +152,8 @@ export const DirectoriesControllerListOutput =
  * @param search - Searchable text to match against Directory names.
  * @param domain - Filter Directories by their associated domain.
  */
-export const DirectoriesControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DirectoriesControllerListInput,
-    outputSchema: DirectoriesControllerListOutput,
-    errors: [Forbidden, UnprocessableEntity] as const,
-  }),
-);
+export const DirectoriesControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DirectoriesControllerListInput,
+  outputSchema: DirectoriesControllerListOutput,
+  errors: [Forbidden, UnprocessableEntity] as const,
+}));

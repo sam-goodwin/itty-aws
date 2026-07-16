@@ -15,7 +15,7 @@ export interface V1CreateProjectApiKeyInput {
   secret_jwt_template?: Record<string, unknown> | null;
 }
 export const V1CreateProjectApiKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     reveal: Schema.optional(Schema.Boolean),
     type: Schema.Literals(["publishable", "secret"]),
@@ -42,7 +42,7 @@ export interface V1CreateProjectApiKeyOutput {
   updated_at?: string | null;
 }
 export const V1CreateProjectApiKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     api_key: Schema.optional(SensitiveOutputNullableString),
     id: Schema.optional(Schema.NullOr(Schema.String)),
     type: Schema.optional(
@@ -66,10 +66,8 @@ export const V1CreateProjectApiKeyOutput =
  * @param ref - Project ref
  * @param reveal - Boolean string, true or false
  */
-export const v1CreateProjectApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1CreateProjectApiKeyInput,
-    outputSchema: V1CreateProjectApiKeyOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1CreateProjectApiKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1CreateProjectApiKeyInput,
+  outputSchema: V1CreateProjectApiKeyOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

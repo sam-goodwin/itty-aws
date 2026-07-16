@@ -12,7 +12,7 @@ export interface CreateGroupStreamConnectionFailoverConnectionInput {
   pretty?: boolean;
 }
 export const CreateGroupStreamConnectionFailoverConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const CreateGroupStreamConnectionFailoverConnectionInput =
 // Output Schema
 export type CreateGroupStreamConnectionFailoverConnectionOutput = void;
 export const CreateGroupStreamConnectionFailoverConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupStreamConnectionFailoverConnectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupStreamConnectionFailoverConnectionOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const CreateGroupStreamConnectionFailoverConnectionOutput =
  * @param connectionName - Label that identifies the stream connection name.
  */
 export const createGroupStreamConnectionFailoverConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupStreamConnectionFailoverConnectionInput,
     outputSchema: CreateGroupStreamConnectionFailoverConnectionOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

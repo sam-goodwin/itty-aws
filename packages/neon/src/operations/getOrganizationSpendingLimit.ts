@@ -7,7 +7,7 @@ export interface GetOrganizationSpendingLimitInput {
   org_id: string;
 }
 export const GetOrganizationSpendingLimitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -21,7 +21,7 @@ export interface GetOrganizationSpendingLimitOutput {
   spending_limit_cents: number | null;
 }
 export const GetOrganizationSpendingLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spending_limit_cents: Schema.NullOr(Schema.Number),
   }) as unknown as Schema.Codec<GetOrganizationSpendingLimitOutput>;
 
@@ -36,7 +36,7 @@ export const GetOrganizationSpendingLimitOutput =
  * @param org_id - The Neon organization ID
  */
 export const getOrganizationSpendingLimit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetOrganizationSpendingLimitInput,
     outputSchema: GetOrganizationSpendingLimitOutput,
   }));

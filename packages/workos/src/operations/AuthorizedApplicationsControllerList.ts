@@ -12,7 +12,7 @@ export interface AuthorizedApplicationsControllerListInput {
   order?: string;
 }
 export const AuthorizedApplicationsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user_id: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -47,7 +47,7 @@ export interface AuthorizedApplicationsControllerListOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const AuthorizedApplicationsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -90,7 +90,7 @@ export const AuthorizedApplicationsControllerListOutput =
  * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  */
 export const AuthorizedApplicationsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizedApplicationsControllerListInput,
     outputSchema: AuthorizedApplicationsControllerListOutput,
     errors: [NotFound, UnprocessableEntity] as const,

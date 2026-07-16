@@ -8,7 +8,7 @@ export interface GetBillingPortalConfigurationsConfigurationInput {
   expand?: string;
 }
 export const GetBillingPortalConfigurationsConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -103,7 +103,7 @@ export interface GetBillingPortalConfigurationsConfigurationOutput {
   updated: number;
 }
 export const GetBillingPortalConfigurationsConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     application: Schema.NullOr(
       Schema.Union([
@@ -236,7 +236,7 @@ export const GetBillingPortalConfigurationsConfigurationOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetBillingPortalConfigurationsConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetBillingPortalConfigurationsConfigurationInput,
     outputSchema: GetBillingPortalConfigurationsConfigurationOutput,
   }));

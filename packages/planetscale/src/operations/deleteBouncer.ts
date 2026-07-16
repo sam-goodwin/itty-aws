@@ -10,7 +10,7 @@ export interface DeleteBouncerInput {
   branch: string;
   bouncer: string;
 }
-export const DeleteBouncerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteBouncerInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -25,7 +25,7 @@ export const DeleteBouncerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteBouncerOutput = void;
 export const DeleteBouncerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBouncerOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteBouncerOutput>;
 
 // The operation
 /**
@@ -36,7 +36,7 @@ export const DeleteBouncerOutput =
  * @param branch - Branch name from `list_branches`. Example: `main`.
  * @param bouncer - The name of the bouncer
  */
-export const deleteBouncer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteBouncer = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteBouncerInput,
   outputSchema: DeleteBouncerOutput,
   errors: [Forbidden, NotFound] as const,

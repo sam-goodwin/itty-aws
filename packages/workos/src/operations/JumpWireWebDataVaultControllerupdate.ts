@@ -10,7 +10,7 @@ export interface JumpWireWebDataVaultControllerupdateInput {
   version_check?: string | null;
 }
 export const JumpWireWebDataVaultControllerupdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     value: Schema.String,
     version_check: Schema.optional(Schema.NullOr(Schema.String)),
@@ -33,7 +33,7 @@ export interface JumpWireWebDataVaultControllerupdateOutput {
   name: string;
 }
 export const JumpWireWebDataVaultControllerupdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     metadata: Schema.Struct({
       context: Schema.Record(Schema.String, Schema.String),
@@ -59,7 +59,7 @@ export const JumpWireWebDataVaultControllerupdateOutput =
  * @param id - Unique identifier of the object.
  */
 export const JumpWireWebDataVaultControllerupdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: JumpWireWebDataVaultControllerupdateInput,
     outputSchema: JumpWireWebDataVaultControllerupdateOutput,
     errors: [BadRequest, Conflict] as const,

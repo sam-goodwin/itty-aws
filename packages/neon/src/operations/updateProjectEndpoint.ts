@@ -29,7 +29,7 @@ export interface UpdateProjectEndpointInput {
   };
 }
 export const UpdateProjectEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     endpoint_id: Schema.String.pipe(T.PathParam()),
     endpoint: Schema.Struct({
@@ -160,7 +160,7 @@ export interface UpdateProjectEndpointOutput {
   }[];
 }
 export const UpdateProjectEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoint: Schema.Struct({
       host: Schema.String,
       id: Schema.String,
@@ -279,10 +279,8 @@ export const UpdateProjectEndpointOutput =
  * @param project_id - The Neon project ID
  * @param endpoint_id - The endpoint ID
  */
-export const updateProjectEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateProjectEndpointInput,
-    outputSchema: UpdateProjectEndpointOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const updateProjectEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateProjectEndpointInput,
+  outputSchema: UpdateProjectEndpointOutput,
+  errors: [NotFound] as const,
+}));

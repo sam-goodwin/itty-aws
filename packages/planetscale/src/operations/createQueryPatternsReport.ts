@@ -10,7 +10,7 @@ export interface CreateQueryPatternsReportInput {
   branch: string;
 }
 export const CreateQueryPatternsReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -32,7 +32,7 @@ export interface CreateQueryPatternsReportOutput {
   actor: { id: string; display_name: string; avatar_url: string };
 }
 export const CreateQueryPatternsReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     state: Schema.Literals(["pending", "completed", "failed"]),
     created_at: Schema.String,
@@ -54,10 +54,8 @@ export const CreateQueryPatternsReportOutput =
  * @param database - The name of the database the branch belongs to
  * @param branch - The name of the branch
  */
-export const createQueryPatternsReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateQueryPatternsReportInput,
-    outputSchema: CreateQueryPatternsReportOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const createQueryPatternsReport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateQueryPatternsReportInput,
+  outputSchema: CreateQueryPatternsReportOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

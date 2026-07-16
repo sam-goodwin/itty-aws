@@ -13,7 +13,7 @@ export interface EngineeringAnalyticsWorkflowRunsInput {
   workflow_name: string;
 }
 export const EngineeringAnalyticsWorkflowRunsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     date_from: Schema.optional(Schema.String),
     date_to: Schema.optional(Schema.String),
@@ -43,7 +43,7 @@ export type EngineeringAnalyticsWorkflowRunsOutput = {
   pr_number: number;
 }[];
 export const EngineeringAnalyticsWorkflowRunsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       repo: Schema.Struct({
         provider: Schema.String,
@@ -76,7 +76,7 @@ export const EngineeringAnalyticsWorkflowRunsOutput =
  * @param workflow_name - Workflow name to list runs for.
  */
 export const engineeringAnalyticsWorkflowRuns =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EngineeringAnalyticsWorkflowRunsInput,
     outputSchema: EngineeringAnalyticsWorkflowRunsOutput,
     errors: [BadRequest] as const,

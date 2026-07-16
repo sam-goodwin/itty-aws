@@ -13,7 +13,7 @@ export interface PostTestHelpersTreasuryOutboundPaymentsIdInput {
   };
 }
 export const PostTestHelpersTreasuryOutboundPaymentsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     tracking_details: Schema.Struct({
@@ -395,7 +395,7 @@ export interface PostTestHelpersTreasuryOutboundPaymentsIdOutput {
       };
 }
 export const PostTestHelpersTreasuryOutboundPaymentsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     cancelable: Schema.Boolean,
     created: Schema.Number,
@@ -708,7 +708,7 @@ export const PostTestHelpersTreasuryOutboundPaymentsIdOutput =
  * <p>Updates a test mode created OutboundPayment with tracking details. The OutboundPayment must not be cancelable, and cannot be in the <code>canceled</code> or <code>failed</code> states.</p>
  */
 export const PostTestHelpersTreasuryOutboundPaymentsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersTreasuryOutboundPaymentsIdInput,
     outputSchema: PostTestHelpersTreasuryOutboundPaymentsIdOutput,
   }));

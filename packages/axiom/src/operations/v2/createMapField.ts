@@ -8,7 +8,7 @@ export interface CreateMapFieldInput {
   dataset_id: string;
   name: string;
 }
-export const CreateMapFieldInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateMapFieldInput = /*@__PURE__*/ Schema.Struct({
   dataset_id: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
 }).pipe(
@@ -19,12 +19,12 @@ export const CreateMapFieldInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface CreateMapFieldOutput {
   name: string;
 }
-export const CreateMapFieldOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateMapFieldOutput = /*@__PURE__*/ Schema.Struct({
   name: Schema.String,
 }) as unknown as Schema.Codec<CreateMapFieldOutput>;
 
 // The operation
-export const createMapField = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createMapField = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateMapFieldInput,
   outputSchema: CreateMapFieldOutput,
   errors: [NotFound, UnprocessableEntity] as const,

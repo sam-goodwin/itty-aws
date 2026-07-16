@@ -8,7 +8,7 @@ export interface V1DisableReadonlyModeTemporarilyInput {
   ref: string;
 }
 export const V1DisableReadonlyModeTemporarilyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20,7 +20,7 @@ export const V1DisableReadonlyModeTemporarilyInput =
 // Output Schema
 export type V1DisableReadonlyModeTemporarilyOutput = void;
 export const V1DisableReadonlyModeTemporarilyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DisableReadonlyModeTemporarilyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DisableReadonlyModeTemporarilyOutput>;
 
 // The operation
 /**
@@ -29,7 +29,7 @@ export const V1DisableReadonlyModeTemporarilyOutput =
  * @param ref - Project ref
  */
 export const v1DisableReadonlyModeTemporarily =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1DisableReadonlyModeTemporarilyInput,
     outputSchema: V1DisableReadonlyModeTemporarilyOutput,
     errors: [BadRequest, Forbidden] as const,

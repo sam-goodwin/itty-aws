@@ -10,7 +10,7 @@ export interface AgentApplicationsSessionsRetrieveInput {
   last_n?: number;
 }
 export const AgentApplicationsSessionsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     session_id: Schema.String.pipe(T.PathParam()),
@@ -98,7 +98,7 @@ export interface AgentApplicationsSessionsRetrieveOutput {
   conversation_total_turns?: number;
 }
 export const AgentApplicationsSessionsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     usage_total: Schema.Struct({
       tokens_in: Schema.Number,
       tokens_out: Schema.Number,
@@ -219,7 +219,7 @@ export const AgentApplicationsSessionsRetrieveOutput =
  * @param session_id - UUID of the session to fetch (must belong to this application).
  */
 export const agentApplicationsSessionsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsSessionsRetrieveInput,
     outputSchema: AgentApplicationsSessionsRetrieveOutput,
   }));

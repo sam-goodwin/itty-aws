@@ -12,7 +12,7 @@ export interface LiveDebuggerBreakpointsListInput {
   repository?: string;
 }
 export const LiveDebuggerBreakpointsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     filename: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -42,7 +42,7 @@ export interface LiveDebuggerBreakpointsListOutput {
   }[];
 }
 export const LiveDebuggerBreakpointsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -70,10 +70,8 @@ export const LiveDebuggerBreakpointsListOutput =
  * @param offset - The initial index from which to return the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const liveDebuggerBreakpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LiveDebuggerBreakpointsListInput,
-    outputSchema: LiveDebuggerBreakpointsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const liveDebuggerBreakpointsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LiveDebuggerBreakpointsListInput,
+  outputSchema: LiveDebuggerBreakpointsListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

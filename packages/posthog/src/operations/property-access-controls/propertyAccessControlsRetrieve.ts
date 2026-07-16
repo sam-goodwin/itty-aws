@@ -8,7 +8,7 @@ export interface PropertyAccessControlsRetrieveInput {
   property_definition_id: string;
 }
 export const PropertyAccessControlsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     property_definition_id: Schema.String,
   }).pipe(
@@ -33,7 +33,7 @@ export interface PropertyAccessControlsRetrieveOutput {
   default_access_level: string;
 }
 export const PropertyAccessControlsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     access_controls: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -57,7 +57,7 @@ export const PropertyAccessControlsRetrieveOutput =
  * @param property_definition_id - The property definition ID to fetch access control rules for.
  */
 export const propertyAccessControlsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PropertyAccessControlsRetrieveInput,
     outputSchema: PropertyAccessControlsRetrieveOutput,
   }));

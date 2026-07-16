@@ -7,7 +7,7 @@ export interface DeleteInvoicesInvoiceInput {
   invoice: string;
 }
 export const DeleteInvoicesInvoiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoice: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -24,7 +24,7 @@ export interface DeleteInvoicesInvoiceOutput {
   object: "invoice";
 }
 export const DeleteInvoicesInvoiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["invoice"]),
@@ -36,9 +36,7 @@ export const DeleteInvoicesInvoiceOutput =
  *
  * <p>Permanently deletes a one-off invoice draft. This cannot be undone. Attempts to delete invoices that are no longer in a draft state will fail; once an invoice has been finalized or if an invoice is for a subscription, it must be <a href="/api/invoices/void">voided</a>.</p>
  */
-export const DeleteInvoicesInvoice = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteInvoicesInvoiceInput,
-    outputSchema: DeleteInvoicesInvoiceOutput,
-  }),
-);
+export const DeleteInvoicesInvoice = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteInvoicesInvoiceInput,
+  outputSchema: DeleteInvoicesInvoiceOutput,
+}));

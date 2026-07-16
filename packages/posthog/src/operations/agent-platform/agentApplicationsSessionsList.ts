@@ -14,7 +14,7 @@ export interface AgentApplicationsSessionsListInput {
   state?: string;
 }
 export const AgentApplicationsSessionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     created_after: Schema.optional(Schema.String),
@@ -70,7 +70,7 @@ export interface AgentApplicationsSessionsListOutput {
   count: number;
 }
 export const AgentApplicationsSessionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         usage_total: Schema.Struct({
@@ -138,7 +138,7 @@ export const AgentApplicationsSessionsListOutput =
  * @param state - Filter by session state. Comma-separated list accepted (e.g. `completed,failed`). Valid values: queued, running, completed, closed, cancelled, failed.
  */
 export const agentApplicationsSessionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsSessionsListInput,
     outputSchema: AgentApplicationsSessionsListOutput,
   }));

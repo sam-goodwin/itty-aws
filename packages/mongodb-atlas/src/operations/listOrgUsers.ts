@@ -15,7 +15,7 @@ export interface ListOrgUsersInput {
   orgMembershipStatus?: string;
   orgMembershipStatuses?: string;
 }
-export const ListOrgUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOrgUsersInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const ListOrgUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListOrgUsersOutput = void;
 export const ListOrgUsersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgUsersOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgUsersOutput>;
 
 // The operation
 /**
@@ -52,7 +52,7 @@ export const ListOrgUsersOutput =
  * @param orgMembershipStatus - Deprecated: Use `orgMembershipStatuses` instead. Organization membership status to filter users by. Allowed values: `ACTIVE`, `PENDING`, `INVITATION_EXPIRED`, `INVITATION_REJECTED`. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
  * @param orgMembershipStatuses - Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: `ACTIVE`, `PENDING`, `INVITATION_EXPIRED`, `INVITATION_REJECTED`. Replaces the deprecated `orgMembershipStatus` parameter. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Cannot be combined with `orgMembershipStatus`. Not supported in deprecated versions.
  */
-export const listOrgUsers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listOrgUsers = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListOrgUsersInput,
   outputSchema: ListOrgUsersOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

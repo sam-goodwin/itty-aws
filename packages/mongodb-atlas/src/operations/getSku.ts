@@ -9,7 +9,7 @@ export interface GetSkuInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const GetSkuInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSkuInput = /*@__PURE__*/ Schema.Struct({
   skuId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export const GetSkuInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetSkuOutput = void;
 export const GetSkuOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetSkuOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetSkuOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const GetSkuOutput =
  * @param envelope - Flag that indicates whether Application wraps the response in an `envelope` JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope=true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const getSku = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getSku = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetSkuInput,
   outputSchema: GetSkuOutput,
   errors: [Forbidden, NotFound] as const,

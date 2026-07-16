@@ -166,7 +166,7 @@ export interface AssociateDelegateToResourceRequest {
   EntityId: string;
 }
 export const AssociateDelegateToResourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       ResourceId: S.String,
@@ -179,7 +179,7 @@ export const AssociateDelegateToResourceRequest =
   }) as any as S.Schema<AssociateDelegateToResourceRequest>;
 export interface AssociateDelegateToResourceResponse {}
 export const AssociateDelegateToResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateDelegateToResourceResponse",
   }) as any as S.Schema<AssociateDelegateToResourceResponse>;
 export interface AssociateMemberToGroupRequest {
@@ -188,7 +188,7 @@ export interface AssociateMemberToGroupRequest {
   MemberId: string;
 }
 export const AssociateMemberToGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       GroupId: S.String,
@@ -201,7 +201,7 @@ export const AssociateMemberToGroupRequest =
   }) as any as S.Schema<AssociateMemberToGroupRequest>;
 export interface AssociateMemberToGroupResponse {}
 export const AssociateMemberToGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateMemberToGroupResponse",
   }) as any as S.Schema<AssociateMemberToGroupResponse>;
 export interface AssumeImpersonationRoleRequest {
@@ -209,7 +209,7 @@ export interface AssumeImpersonationRoleRequest {
   ImpersonationRoleId: string;
 }
 export const AssumeImpersonationRoleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String, ImpersonationRoleId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -221,7 +221,7 @@ export interface AssumeImpersonationRoleResponse {
   ExpiresIn?: number;
 }
 export const AssumeImpersonationRoleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Token: S.optional(S.String), ExpiresIn: S.optional(S.Number) }),
   ).annotate({
     identifier: "AssumeImpersonationRoleResponse",
@@ -232,7 +232,7 @@ export interface CancelMailboxExportJobRequest {
   OrganizationId: string;
 }
 export const CancelMailboxExportJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ClientToken: S.String.pipe(T.IdempotencyToken()),
       JobId: S.String,
@@ -245,7 +245,7 @@ export const CancelMailboxExportJobRequest =
   }) as any as S.Schema<CancelMailboxExportJobRequest>;
 export interface CancelMailboxExportJobResponse {}
 export const CancelMailboxExportJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "CancelMailboxExportJobResponse",
   }) as any as S.Schema<CancelMailboxExportJobResponse>;
 export interface CreateAliasRequest {
@@ -253,7 +253,7 @@ export interface CreateAliasRequest {
   EntityId: string;
   Alias: string;
 }
-export const CreateAliasRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.String,
     EntityId: S.String,
@@ -265,7 +265,7 @@ export const CreateAliasRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateAliasRequest",
 }) as any as S.Schema<CreateAliasRequest>;
 export interface CreateAliasResponse {}
-export const CreateAliasResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateAliasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateAliasResponse",
@@ -275,21 +275,20 @@ export interface EwsAvailabilityProvider {
   EwsUsername: string;
   EwsPassword: string | redacted.Redacted<string>;
 }
-export const EwsAvailabilityProvider = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      EwsEndpoint: S.String,
-      EwsUsername: S.String,
-      EwsPassword: SensitiveString,
-    }),
+export const EwsAvailabilityProvider = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EwsEndpoint: S.String,
+    EwsUsername: S.String,
+    EwsPassword: SensitiveString,
+  }),
 ).annotate({
   identifier: "EwsAvailabilityProvider",
 }) as any as S.Schema<EwsAvailabilityProvider>;
 export interface LambdaAvailabilityProvider {
   LambdaArn: string;
 }
-export const LambdaAvailabilityProvider = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ LambdaArn: S.String }),
+export const LambdaAvailabilityProvider = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LambdaArn: S.String }),
 ).annotate({
   identifier: "LambdaAvailabilityProvider",
 }) as any as S.Schema<LambdaAvailabilityProvider>;
@@ -301,7 +300,7 @@ export interface CreateAvailabilityConfigurationRequest {
   LambdaProvider?: LambdaAvailabilityProvider;
 }
 export const CreateAvailabilityConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       OrganizationId: S.String,
@@ -316,7 +315,7 @@ export const CreateAvailabilityConfigurationRequest =
   }) as any as S.Schema<CreateAvailabilityConfigurationRequest>;
 export interface CreateAvailabilityConfigurationResponse {}
 export const CreateAvailabilityConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "CreateAvailabilityConfigurationResponse",
   }) as any as S.Schema<CreateAvailabilityConfigurationResponse>;
 export interface CreateGroupRequest {
@@ -324,7 +323,7 @@ export interface CreateGroupRequest {
   Name: string;
   HiddenFromGlobalAddressList?: boolean;
 }
-export const CreateGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.String,
     Name: S.String,
@@ -338,7 +337,7 @@ export const CreateGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateGroupResponse {
   GroupId?: string;
 }
-export const CreateGroupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GroupId: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateGroupResponse",
@@ -349,7 +348,7 @@ export interface CreateIdentityCenterApplicationRequest {
   ClientToken?: string;
 }
 export const CreateIdentityCenterApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Name: S.String,
       InstanceArn: S.String,
@@ -364,17 +363,17 @@ export interface CreateIdentityCenterApplicationResponse {
   ApplicationArn?: string;
 }
 export const CreateIdentityCenterApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ApplicationArn: S.optional(S.String) }),
   ).annotate({
     identifier: "CreateIdentityCenterApplicationResponse",
   }) as any as S.Schema<CreateIdentityCenterApplicationResponse>;
 export type ImpersonationRoleType = "FULL_ACCESS" | "READ_ONLY" | (string & {});
-export const ImpersonationRoleType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ImpersonationRoleType = /*@__PURE__*/ S.String;
 export type AccessEffect = "ALLOW" | "DENY" | (string & {});
-export const AccessEffect = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccessEffect = /*@__PURE__*/ S.String;
 export type TargetUsers = string[];
-export const TargetUsers = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TargetUsers = /*@__PURE__*/ S.Array(S.String);
 export interface ImpersonationRule {
   ImpersonationRuleId: string;
   Name?: string;
@@ -383,7 +382,7 @@ export interface ImpersonationRule {
   TargetUsers?: string[];
   NotTargetUsers?: string[];
 }
-export const ImpersonationRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ImpersonationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ImpersonationRuleId: S.String,
     Name: S.optional(S.String),
@@ -396,8 +395,7 @@ export const ImpersonationRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ImpersonationRule",
 }) as any as S.Schema<ImpersonationRule>;
 export type ImpersonationRuleList = ImpersonationRule[];
-export const ImpersonationRuleList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ImpersonationRule);
+export const ImpersonationRuleList = /*@__PURE__*/ S.Array(ImpersonationRule);
 export interface CreateImpersonationRoleRequest {
   ClientToken?: string;
   OrganizationId: string;
@@ -407,7 +405,7 @@ export interface CreateImpersonationRoleRequest {
   Rules: ImpersonationRule[];
 }
 export const CreateImpersonationRoleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       OrganizationId: S.String,
@@ -425,26 +423,21 @@ export interface CreateImpersonationRoleResponse {
   ImpersonationRoleId?: string;
 }
 export const CreateImpersonationRoleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ImpersonationRoleId: S.optional(S.String) }),
   ).annotate({
     identifier: "CreateImpersonationRoleResponse",
   }) as any as S.Schema<CreateImpersonationRoleResponse>;
 export type MobileDeviceAccessRuleEffect = "ALLOW" | "DENY" | (string & {});
-export const MobileDeviceAccessRuleEffect =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MobileDeviceAccessRuleEffect = /*@__PURE__*/ S.String;
 export type DeviceTypeList = string[];
-export const DeviceTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const DeviceTypeList = /*@__PURE__*/ S.Array(S.String);
 export type DeviceModelList = string[];
-export const DeviceModelList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const DeviceModelList = /*@__PURE__*/ S.Array(S.String);
 export type DeviceOperatingSystemList = string[];
-export const DeviceOperatingSystemList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const DeviceOperatingSystemList = /*@__PURE__*/ S.Array(S.String);
 export type DeviceUserAgentList = string[];
-export const DeviceUserAgentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const DeviceUserAgentList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateMobileDeviceAccessRuleRequest {
   OrganizationId: string;
   ClientToken?: string;
@@ -461,7 +454,7 @@ export interface CreateMobileDeviceAccessRuleRequest {
   NotDeviceUserAgents?: string[];
 }
 export const CreateMobileDeviceAccessRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -486,7 +479,7 @@ export interface CreateMobileDeviceAccessRuleResponse {
   MobileDeviceAccessRuleId?: string;
 }
 export const CreateMobileDeviceAccessRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ MobileDeviceAccessRuleId: S.optional(S.String) }),
   ).annotate({
     identifier: "CreateMobileDeviceAccessRuleResponse",
@@ -495,11 +488,11 @@ export interface Domain {
   DomainName: string;
   HostedZoneId?: string;
 }
-export const Domain = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Domain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, HostedZoneId: S.optional(S.String) }),
 ).annotate({ identifier: "Domain" }) as any as S.Schema<Domain>;
 export type Domains = Domain[];
-export const Domains = /*@__PURE__*/ /*#__PURE__*/ S.Array(Domain);
+export const Domains = /*@__PURE__*/ S.Array(Domain);
 export interface CreateOrganizationRequest {
   DirectoryId?: string;
   Alias: string;
@@ -508,31 +501,30 @@ export interface CreateOrganizationRequest {
   KmsKeyArn?: string;
   EnableInteroperability?: boolean;
 }
-export const CreateOrganizationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DirectoryId: S.optional(S.String),
-      Alias: S.String,
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      Domains: S.optional(Domains),
-      KmsKeyArn: S.optional(S.String),
-      EnableInteroperability: S.optional(S.Boolean),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.optional(S.String),
+    Alias: S.String,
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    Domains: S.optional(Domains),
+    KmsKeyArn: S.optional(S.String),
+    EnableInteroperability: S.optional(S.Boolean),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "CreateOrganizationRequest",
 }) as any as S.Schema<CreateOrganizationRequest>;
 export interface CreateOrganizationResponse {
   OrganizationId?: string;
 }
-export const CreateOrganizationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ OrganizationId: S.optional(S.String) }),
+export const CreateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OrganizationId: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateOrganizationResponse",
 }) as any as S.Schema<CreateOrganizationResponse>;
 export type ResourceType = "ROOM" | "EQUIPMENT" | (string & {});
-export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceType = /*@__PURE__*/ S.String;
 export interface CreateResourceRequest {
   OrganizationId: string;
   Name: string;
@@ -540,7 +532,7 @@ export interface CreateResourceRequest {
   Description?: string | redacted.Redacted<string>;
   HiddenFromGlobalAddressList?: boolean;
 }
-export const CreateResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.String,
     Name: S.String,
@@ -556,8 +548,8 @@ export const CreateResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateResourceResponse {
   ResourceId?: string;
 }
-export const CreateResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ResourceId: S.optional(S.String) }),
+export const CreateResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceId: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateResourceResponse",
 }) as any as S.Schema<CreateResourceResponse>;
@@ -567,7 +559,7 @@ export type UserRole =
   | "SYSTEM_USER"
   | "REMOTE_USER"
   | (string & {});
-export const UserRole = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UserRole = /*@__PURE__*/ S.String;
 export interface CreateUserRequest {
   OrganizationId: string;
   Name: string;
@@ -579,7 +571,7 @@ export interface CreateUserRequest {
   HiddenFromGlobalAddressList?: boolean;
   IdentityProviderUserId?: string;
 }
-export const CreateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.String,
     Name: S.String,
@@ -599,7 +591,7 @@ export const CreateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateUserResponse {
   UserId?: string;
 }
-export const CreateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UserId: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateUserResponse",
@@ -609,7 +601,7 @@ export interface DeleteAccessControlRuleRequest {
   Name: string;
 }
 export const DeleteAccessControlRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String, Name: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -618,7 +610,7 @@ export const DeleteAccessControlRuleRequest =
   }) as any as S.Schema<DeleteAccessControlRuleRequest>;
 export interface DeleteAccessControlRuleResponse {}
 export const DeleteAccessControlRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteAccessControlRuleResponse",
   }) as any as S.Schema<DeleteAccessControlRuleResponse>;
 export interface DeleteAliasRequest {
@@ -626,7 +618,7 @@ export interface DeleteAliasRequest {
   EntityId: string;
   Alias: string;
 }
-export const DeleteAliasRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.String,
     EntityId: S.String,
@@ -638,7 +630,7 @@ export const DeleteAliasRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteAliasRequest",
 }) as any as S.Schema<DeleteAliasRequest>;
 export interface DeleteAliasResponse {}
-export const DeleteAliasResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteAliasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteAliasResponse",
@@ -648,7 +640,7 @@ export interface DeleteAvailabilityConfigurationRequest {
   DomainName: string;
 }
 export const DeleteAvailabilityConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String, DomainName: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -657,14 +649,14 @@ export const DeleteAvailabilityConfigurationRequest =
   }) as any as S.Schema<DeleteAvailabilityConfigurationRequest>;
 export interface DeleteAvailabilityConfigurationResponse {}
 export const DeleteAvailabilityConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteAvailabilityConfigurationResponse",
   }) as any as S.Schema<DeleteAvailabilityConfigurationResponse>;
 export interface DeleteEmailMonitoringConfigurationRequest {
   OrganizationId: string;
 }
 export const DeleteEmailMonitoringConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -673,14 +665,14 @@ export const DeleteEmailMonitoringConfigurationRequest =
   }) as any as S.Schema<DeleteEmailMonitoringConfigurationRequest>;
 export interface DeleteEmailMonitoringConfigurationResponse {}
 export const DeleteEmailMonitoringConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteEmailMonitoringConfigurationResponse",
   }) as any as S.Schema<DeleteEmailMonitoringConfigurationResponse>;
 export interface DeleteGroupRequest {
   OrganizationId: string;
   GroupId: string;
 }
-export const DeleteGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OrganizationId: S.String, GroupId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -688,7 +680,7 @@ export const DeleteGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteGroupRequest",
 }) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResponse {}
-export const DeleteGroupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteGroupResponse",
@@ -697,7 +689,7 @@ export interface DeleteIdentityCenterApplicationRequest {
   ApplicationArn: string;
 }
 export const DeleteIdentityCenterApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ApplicationArn: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -706,14 +698,14 @@ export const DeleteIdentityCenterApplicationRequest =
   }) as any as S.Schema<DeleteIdentityCenterApplicationRequest>;
 export interface DeleteIdentityCenterApplicationResponse {}
 export const DeleteIdentityCenterApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteIdentityCenterApplicationResponse",
   }) as any as S.Schema<DeleteIdentityCenterApplicationResponse>;
 export interface DeleteIdentityProviderConfigurationRequest {
   OrganizationId: string;
 }
 export const DeleteIdentityProviderConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -722,7 +714,7 @@ export const DeleteIdentityProviderConfigurationRequest =
   }) as any as S.Schema<DeleteIdentityProviderConfigurationRequest>;
 export interface DeleteIdentityProviderConfigurationResponse {}
 export const DeleteIdentityProviderConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteIdentityProviderConfigurationResponse",
   }) as any as S.Schema<DeleteIdentityProviderConfigurationResponse>;
 export interface DeleteImpersonationRoleRequest {
@@ -730,7 +722,7 @@ export interface DeleteImpersonationRoleRequest {
   ImpersonationRoleId: string;
 }
 export const DeleteImpersonationRoleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String, ImpersonationRoleId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -739,7 +731,7 @@ export const DeleteImpersonationRoleRequest =
   }) as any as S.Schema<DeleteImpersonationRoleRequest>;
 export interface DeleteImpersonationRoleResponse {}
 export const DeleteImpersonationRoleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteImpersonationRoleResponse",
   }) as any as S.Schema<DeleteImpersonationRoleResponse>;
 export interface DeleteMailboxPermissionsRequest {
@@ -748,7 +740,7 @@ export interface DeleteMailboxPermissionsRequest {
   GranteeId: string;
 }
 export const DeleteMailboxPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       EntityId: S.String,
@@ -761,7 +753,7 @@ export const DeleteMailboxPermissionsRequest =
   }) as any as S.Schema<DeleteMailboxPermissionsRequest>;
 export interface DeleteMailboxPermissionsResponse {}
 export const DeleteMailboxPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteMailboxPermissionsResponse",
   }) as any as S.Schema<DeleteMailboxPermissionsResponse>;
 export interface DeleteMobileDeviceAccessOverrideRequest {
@@ -770,7 +762,7 @@ export interface DeleteMobileDeviceAccessOverrideRequest {
   DeviceId: string;
 }
 export const DeleteMobileDeviceAccessOverrideRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       UserId: S.String,
@@ -783,7 +775,7 @@ export const DeleteMobileDeviceAccessOverrideRequest =
   }) as any as S.Schema<DeleteMobileDeviceAccessOverrideRequest>;
 export interface DeleteMobileDeviceAccessOverrideResponse {}
 export const DeleteMobileDeviceAccessOverrideResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteMobileDeviceAccessOverrideResponse",
   }) as any as S.Schema<DeleteMobileDeviceAccessOverrideResponse>;
 export interface DeleteMobileDeviceAccessRuleRequest {
@@ -791,7 +783,7 @@ export interface DeleteMobileDeviceAccessRuleRequest {
   MobileDeviceAccessRuleId: string;
 }
 export const DeleteMobileDeviceAccessRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       MobileDeviceAccessRuleId: S.String,
@@ -803,7 +795,7 @@ export const DeleteMobileDeviceAccessRuleRequest =
   }) as any as S.Schema<DeleteMobileDeviceAccessRuleRequest>;
 export interface DeleteMobileDeviceAccessRuleResponse {}
 export const DeleteMobileDeviceAccessRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteMobileDeviceAccessRuleResponse",
   }) as any as S.Schema<DeleteMobileDeviceAccessRuleResponse>;
 export interface DeleteOrganizationRequest {
@@ -813,17 +805,16 @@ export interface DeleteOrganizationRequest {
   ForceDelete?: boolean;
   DeleteIdentityCenterApplication?: boolean;
 }
-export const DeleteOrganizationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      OrganizationId: S.String,
-      DeleteDirectory: S.Boolean,
-      ForceDelete: S.optional(S.Boolean),
-      DeleteIdentityCenterApplication: S.optional(S.Boolean),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    OrganizationId: S.String,
+    DeleteDirectory: S.Boolean,
+    ForceDelete: S.optional(S.Boolean),
+    DeleteIdentityCenterApplication: S.optional(S.Boolean),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DeleteOrganizationRequest",
 }) as any as S.Schema<DeleteOrganizationRequest>;
@@ -831,12 +822,11 @@ export interface DeleteOrganizationResponse {
   OrganizationId?: string;
   State?: string;
 }
-export const DeleteOrganizationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      OrganizationId: S.optional(S.String),
-      State: S.optional(S.String),
-    }),
+export const DeleteOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OrganizationId: S.optional(S.String),
+    State: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DeleteOrganizationResponse",
 }) as any as S.Schema<DeleteOrganizationResponse>;
@@ -845,7 +835,7 @@ export interface DeletePersonalAccessTokenRequest {
   PersonalAccessTokenId: string;
 }
 export const DeletePersonalAccessTokenRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       PersonalAccessTokenId: S.String,
@@ -857,14 +847,14 @@ export const DeletePersonalAccessTokenRequest =
   }) as any as S.Schema<DeletePersonalAccessTokenRequest>;
 export interface DeletePersonalAccessTokenResponse {}
 export const DeletePersonalAccessTokenResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeletePersonalAccessTokenResponse",
   }) as any as S.Schema<DeletePersonalAccessTokenResponse>;
 export interface DeleteResourceRequest {
   OrganizationId: string;
   ResourceId: string;
 }
-export const DeleteResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OrganizationId: S.String, ResourceId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -872,8 +862,8 @@ export const DeleteResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourceRequest",
 }) as any as S.Schema<DeleteResourceRequest>;
 export interface DeleteResourceResponse {}
-export const DeleteResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteResourceResponse",
 }) as any as S.Schema<DeleteResourceResponse>;
@@ -882,7 +872,7 @@ export interface DeleteRetentionPolicyRequest {
   Id: string;
 }
 export const DeleteRetentionPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String, Id: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -891,14 +881,14 @@ export const DeleteRetentionPolicyRequest =
   }) as any as S.Schema<DeleteRetentionPolicyRequest>;
 export interface DeleteRetentionPolicyResponse {}
 export const DeleteRetentionPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteRetentionPolicyResponse",
   }) as any as S.Schema<DeleteRetentionPolicyResponse>;
 export interface DeleteUserRequest {
   OrganizationId: string;
   UserId: string;
 }
-export const DeleteUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OrganizationId: S.String, UserId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -906,7 +896,7 @@ export const DeleteUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteUserRequest",
 }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteUserResponse",
@@ -916,7 +906,7 @@ export interface DeregisterFromWorkMailRequest {
   EntityId: string;
 }
 export const DeregisterFromWorkMailRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String, EntityId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -925,7 +915,7 @@ export const DeregisterFromWorkMailRequest =
   }) as any as S.Schema<DeregisterFromWorkMailRequest>;
 export interface DeregisterFromWorkMailResponse {}
 export const DeregisterFromWorkMailResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeregisterFromWorkMailResponse",
   }) as any as S.Schema<DeregisterFromWorkMailResponse>;
 export interface DeregisterMailDomainRequest {
@@ -933,7 +923,7 @@ export interface DeregisterMailDomainRequest {
   DomainName: string;
 }
 export const DeregisterMailDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String, DomainName: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -942,14 +932,14 @@ export const DeregisterMailDomainRequest =
   }) as any as S.Schema<DeregisterMailDomainRequest>;
 export interface DeregisterMailDomainResponse {}
 export const DeregisterMailDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeregisterMailDomainResponse",
   }) as any as S.Schema<DeregisterMailDomainResponse>;
 export interface DescribeEmailMonitoringConfigurationRequest {
   OrganizationId: string;
 }
 export const DescribeEmailMonitoringConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -961,7 +951,7 @@ export interface DescribeEmailMonitoringConfigurationResponse {
   LogGroupArn?: string;
 }
 export const DescribeEmailMonitoringConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       RoleArn: S.optional(S.String),
       LogGroupArn: S.optional(S.String),
@@ -973,7 +963,7 @@ export interface DescribeEntityRequest {
   OrganizationId: string;
   Email: string;
 }
-export const DescribeEntityRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeEntityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OrganizationId: S.String, Email: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -981,19 +971,18 @@ export const DescribeEntityRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DescribeEntityRequest",
 }) as any as S.Schema<DescribeEntityRequest>;
 export type EntityType = "GROUP" | "USER" | "RESOURCE" | (string & {});
-export const EntityType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EntityType = /*@__PURE__*/ S.String;
 export interface DescribeEntityResponse {
   EntityId?: string;
   Name?: string;
   Type?: EntityType;
 }
-export const DescribeEntityResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      EntityId: S.optional(S.String),
-      Name: S.optional(S.String),
-      Type: S.optional(EntityType),
-    }),
+export const DescribeEntityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EntityId: S.optional(S.String),
+    Name: S.optional(S.String),
+    Type: S.optional(EntityType),
+  }),
 ).annotate({
   identifier: "DescribeEntityResponse",
 }) as any as S.Schema<DescribeEntityResponse>;
@@ -1001,7 +990,7 @@ export interface DescribeGroupRequest {
   OrganizationId: string;
   GroupId: string;
 }
-export const DescribeGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OrganizationId: S.String, GroupId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1009,7 +998,7 @@ export const DescribeGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DescribeGroupRequest",
 }) as any as S.Schema<DescribeGroupRequest>;
 export type EntityState = "ENABLED" | "DISABLED" | "DELETED" | (string & {});
-export const EntityState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EntityState = /*@__PURE__*/ S.String;
 export interface DescribeGroupResponse {
   GroupId?: string;
   Name?: string;
@@ -1019,7 +1008,7 @@ export interface DescribeGroupResponse {
   DisabledDate?: Date;
   HiddenFromGlobalAddressList?: boolean;
 }
-export const DescribeGroupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GroupId: S.optional(S.String),
     Name: S.optional(S.String),
@@ -1036,7 +1025,7 @@ export interface DescribeIdentityProviderConfigurationRequest {
   OrganizationId: string;
 }
 export const DescribeIdentityProviderConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1047,14 +1036,13 @@ export type IdentityProviderAuthenticationMode =
   | "IDENTITY_PROVIDER_ONLY"
   | "IDENTITY_PROVIDER_AND_DIRECTORY"
   | (string & {});
-export const IdentityProviderAuthenticationMode =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const IdentityProviderAuthenticationMode = /*@__PURE__*/ S.String;
 export interface IdentityCenterConfiguration {
   InstanceArn: string;
   ApplicationArn: string;
 }
 export const IdentityCenterConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ InstanceArn: S.String, ApplicationArn: S.String }),
   ).annotate({
     identifier: "IdentityCenterConfiguration",
@@ -1063,14 +1051,13 @@ export type PersonalAccessTokenConfigurationStatus =
   | "ACTIVE"
   | "INACTIVE"
   | (string & {});
-export const PersonalAccessTokenConfigurationStatus =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PersonalAccessTokenConfigurationStatus = /*@__PURE__*/ S.String;
 export interface PersonalAccessTokenConfiguration {
   Status: PersonalAccessTokenConfigurationStatus;
   LifetimeInDays?: number;
 }
 export const PersonalAccessTokenConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Status: PersonalAccessTokenConfigurationStatus,
       LifetimeInDays: S.optional(S.Number),
@@ -1084,7 +1071,7 @@ export interface DescribeIdentityProviderConfigurationResponse {
   PersonalAccessTokenConfiguration?: PersonalAccessTokenConfiguration;
 }
 export const DescribeIdentityProviderConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AuthenticationMode: S.optional(IdentityProviderAuthenticationMode),
       IdentityCenterConfiguration: S.optional(IdentityCenterConfiguration),
@@ -1099,7 +1086,7 @@ export interface DescribeInboundDmarcSettingsRequest {
   OrganizationId: string;
 }
 export const DescribeInboundDmarcSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1110,7 +1097,7 @@ export interface DescribeInboundDmarcSettingsResponse {
   Enforced?: boolean;
 }
 export const DescribeInboundDmarcSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Enforced: S.optional(S.Boolean) }),
   ).annotate({
     identifier: "DescribeInboundDmarcSettingsResponse",
@@ -1120,7 +1107,7 @@ export interface DescribeMailboxExportJobRequest {
   OrganizationId: string;
 }
 export const DescribeMailboxExportJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ JobId: S.String, OrganizationId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1133,7 +1120,7 @@ export type MailboxExportJobState =
   | "FAILED"
   | "CANCELLED"
   | (string & {});
-export const MailboxExportJobState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MailboxExportJobState = /*@__PURE__*/ S.String;
 export interface DescribeMailboxExportJobResponse {
   EntityId?: string;
   Description?: string;
@@ -1149,7 +1136,7 @@ export interface DescribeMailboxExportJobResponse {
   EndTime?: Date;
 }
 export const DescribeMailboxExportJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       EntityId: S.optional(S.String),
       Description: S.optional(S.String),
@@ -1171,7 +1158,7 @@ export interface DescribeOrganizationRequest {
   OrganizationId: string;
 }
 export const DescribeOrganizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1192,7 +1179,7 @@ export interface DescribeOrganizationResponse {
   InteroperabilityEnabled?: boolean;
 }
 export const DescribeOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.optional(S.String),
       Alias: S.optional(S.String),
@@ -1215,11 +1202,10 @@ export interface DescribeResourceRequest {
   OrganizationId: string;
   ResourceId: string;
 }
-export const DescribeResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ OrganizationId: S.String, ResourceId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DescribeResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OrganizationId: S.String, ResourceId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DescribeResourceRequest",
 }) as any as S.Schema<DescribeResourceRequest>;
@@ -1228,7 +1214,7 @@ export interface BookingOptions {
   AutoDeclineRecurringRequests?: boolean;
   AutoDeclineConflictingRequests?: boolean;
 }
-export const BookingOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BookingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AutoAcceptRequests: S.optional(S.Boolean),
     AutoDeclineRecurringRequests: S.optional(S.Boolean),
@@ -1247,20 +1233,19 @@ export interface DescribeResourceResponse {
   Description?: string | redacted.Redacted<string>;
   HiddenFromGlobalAddressList?: boolean;
 }
-export const DescribeResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ResourceId: S.optional(S.String),
-      Email: S.optional(S.String),
-      Name: S.optional(S.String),
-      Type: S.optional(ResourceType),
-      BookingOptions: S.optional(BookingOptions),
-      State: S.optional(EntityState),
-      EnabledDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      DisabledDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      Description: S.optional(SensitiveString),
-      HiddenFromGlobalAddressList: S.optional(S.Boolean),
-    }),
+export const DescribeResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceId: S.optional(S.String),
+    Email: S.optional(S.String),
+    Name: S.optional(S.String),
+    Type: S.optional(ResourceType),
+    BookingOptions: S.optional(BookingOptions),
+    State: S.optional(EntityState),
+    EnabledDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    DisabledDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Description: S.optional(SensitiveString),
+    HiddenFromGlobalAddressList: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "DescribeResourceResponse",
 }) as any as S.Schema<DescribeResourceResponse>;
@@ -1268,7 +1253,7 @@ export interface DescribeUserRequest {
   OrganizationId: string;
   UserId: string;
 }
-export const DescribeUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OrganizationId: S.String, UserId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1302,7 +1287,7 @@ export interface DescribeUserResponse {
   IdentityProviderUserId?: string;
   IdentityProviderIdentityStoreId?: string;
 }
-export const DescribeUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UserId: S.optional(S.String),
     Name: S.optional(S.String),
@@ -1343,7 +1328,7 @@ export interface DisassociateDelegateFromResourceRequest {
   EntityId: string;
 }
 export const DisassociateDelegateFromResourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       ResourceId: S.String,
@@ -1356,7 +1341,7 @@ export const DisassociateDelegateFromResourceRequest =
   }) as any as S.Schema<DisassociateDelegateFromResourceRequest>;
 export interface DisassociateDelegateFromResourceResponse {}
 export const DisassociateDelegateFromResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DisassociateDelegateFromResourceResponse",
   }) as any as S.Schema<DisassociateDelegateFromResourceResponse>;
 export interface DisassociateMemberFromGroupRequest {
@@ -1365,7 +1350,7 @@ export interface DisassociateMemberFromGroupRequest {
   MemberId: string;
 }
 export const DisassociateMemberFromGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       GroupId: S.String,
@@ -1378,7 +1363,7 @@ export const DisassociateMemberFromGroupRequest =
   }) as any as S.Schema<DisassociateMemberFromGroupRequest>;
 export interface DisassociateMemberFromGroupResponse {}
 export const DisassociateMemberFromGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DisassociateMemberFromGroupResponse",
   }) as any as S.Schema<DisassociateMemberFromGroupResponse>;
 export interface GetAccessControlEffectRequest {
@@ -1389,7 +1374,7 @@ export interface GetAccessControlEffectRequest {
   ImpersonationRoleId?: string;
 }
 export const GetAccessControlEffectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       IpAddress: S.String,
@@ -1403,17 +1388,15 @@ export const GetAccessControlEffectRequest =
     identifier: "GetAccessControlEffectRequest",
   }) as any as S.Schema<GetAccessControlEffectRequest>;
 export type AccessControlRuleEffect = "ALLOW" | "DENY" | (string & {});
-export const AccessControlRuleEffect = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccessControlRuleEffect = /*@__PURE__*/ S.String;
 export type AccessControlRuleNameList = string[];
-export const AccessControlRuleNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const AccessControlRuleNameList = /*@__PURE__*/ S.Array(S.String);
 export interface GetAccessControlEffectResponse {
   Effect?: AccessControlRuleEffect;
   MatchedRules?: string[];
 }
 export const GetAccessControlEffectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Effect: S.optional(AccessControlRuleEffect),
       MatchedRules: S.optional(AccessControlRuleNameList),
@@ -1425,7 +1408,7 @@ export interface GetDefaultRetentionPolicyRequest {
   OrganizationId: string;
 }
 export const GetDefaultRetentionPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1439,19 +1422,19 @@ export type FolderName =
   | "DRAFTS"
   | "JUNK_EMAIL"
   | (string & {});
-export const FolderName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FolderName = /*@__PURE__*/ S.String;
 export type RetentionAction =
   | "NONE"
   | "DELETE"
   | "PERMANENTLY_DELETE"
   | (string & {});
-export const RetentionAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RetentionAction = /*@__PURE__*/ S.String;
 export interface FolderConfiguration {
   Name: FolderName;
   Action: RetentionAction;
   Period?: number;
 }
-export const FolderConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FolderConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: FolderName,
     Action: RetentionAction,
@@ -1461,8 +1444,7 @@ export const FolderConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "FolderConfiguration",
 }) as any as S.Schema<FolderConfiguration>;
 export type FolderConfigurations = FolderConfiguration[];
-export const FolderConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FolderConfiguration);
+export const FolderConfigurations = /*@__PURE__*/ S.Array(FolderConfiguration);
 export interface GetDefaultRetentionPolicyResponse {
   Id?: string;
   Name?: string;
@@ -1470,7 +1452,7 @@ export interface GetDefaultRetentionPolicyResponse {
   FolderConfigurations?: FolderConfiguration[];
 }
 export const GetDefaultRetentionPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Id: S.optional(S.String),
       Name: S.optional(S.String),
@@ -1485,7 +1467,7 @@ export interface GetImpersonationRoleRequest {
   ImpersonationRoleId: string;
 }
 export const GetImpersonationRoleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String, ImpersonationRoleId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1502,7 +1484,7 @@ export interface GetImpersonationRoleResponse {
   DateModified?: Date;
 }
 export const GetImpersonationRoleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ImpersonationRoleId: S.optional(S.String),
       Name: S.optional(S.String),
@@ -1521,7 +1503,7 @@ export interface GetImpersonationRoleEffectRequest {
   TargetUser: string;
 }
 export const GetImpersonationRoleEffectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       ImpersonationRoleId: S.String,
@@ -1536,17 +1518,16 @@ export interface ImpersonationMatchedRule {
   ImpersonationRuleId?: string;
   Name?: string;
 }
-export const ImpersonationMatchedRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ImpersonationRuleId: S.optional(S.String),
-      Name: S.optional(S.String),
-    }),
+export const ImpersonationMatchedRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ImpersonationRuleId: S.optional(S.String),
+    Name: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ImpersonationMatchedRule",
 }) as any as S.Schema<ImpersonationMatchedRule>;
 export type ImpersonationMatchedRuleList = ImpersonationMatchedRule[];
-export const ImpersonationMatchedRuleList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ImpersonationMatchedRuleList = /*@__PURE__*/ S.Array(
   ImpersonationMatchedRule,
 );
 export interface GetImpersonationRoleEffectResponse {
@@ -1555,7 +1536,7 @@ export interface GetImpersonationRoleEffectResponse {
   MatchedRules?: ImpersonationMatchedRule[];
 }
 export const GetImpersonationRoleEffectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Type: S.optional(ImpersonationRoleType),
       Effect: S.optional(AccessEffect),
@@ -1568,11 +1549,10 @@ export interface GetMailboxDetailsRequest {
   OrganizationId: string;
   UserId: string;
 }
-export const GetMailboxDetailsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ OrganizationId: S.String, UserId: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetMailboxDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OrganizationId: S.String, UserId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetMailboxDetailsRequest",
 }) as any as S.Schema<GetMailboxDetailsRequest>;
@@ -1580,12 +1560,11 @@ export interface GetMailboxDetailsResponse {
   MailboxQuota?: number;
   MailboxSize?: number;
 }
-export const GetMailboxDetailsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MailboxQuota: S.optional(S.Number),
-      MailboxSize: S.optional(S.Number),
-    }),
+export const GetMailboxDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MailboxQuota: S.optional(S.Number),
+    MailboxSize: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GetMailboxDetailsResponse",
 }) as any as S.Schema<GetMailboxDetailsResponse>;
@@ -1593,7 +1572,7 @@ export interface GetMailDomainRequest {
   OrganizationId: string;
   DomainName: string;
 }
-export const GetMailDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetMailDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OrganizationId: S.String, DomainName: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1605,7 +1584,7 @@ export interface DnsRecord {
   Hostname?: string;
   Value?: string;
 }
-export const DnsRecord = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DnsRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(S.String),
     Hostname: S.optional(S.String),
@@ -1613,13 +1592,13 @@ export const DnsRecord = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsRecord" }) as any as S.Schema<DnsRecord>;
 export type DnsRecords = DnsRecord[];
-export const DnsRecords = /*@__PURE__*/ /*#__PURE__*/ S.Array(DnsRecord);
+export const DnsRecords = /*@__PURE__*/ S.Array(DnsRecord);
 export type DnsRecordVerificationStatus =
   | "PENDING"
   | "VERIFIED"
   | "FAILED"
   | (string & {});
-export const DnsRecordVerificationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DnsRecordVerificationStatus = /*@__PURE__*/ S.String;
 export interface GetMailDomainResponse {
   Records?: DnsRecord[];
   IsTestDomain?: boolean;
@@ -1627,7 +1606,7 @@ export interface GetMailDomainResponse {
   OwnershipVerificationStatus?: DnsRecordVerificationStatus;
   DkimVerificationStatus?: DnsRecordVerificationStatus;
 }
-export const GetMailDomainResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetMailDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Records: S.optional(DnsRecords),
     IsTestDomain: S.optional(S.Boolean),
@@ -1646,7 +1625,7 @@ export interface GetMobileDeviceAccessEffectRequest {
   DeviceUserAgent?: string;
 }
 export const GetMobileDeviceAccessEffectRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       DeviceType: S.optional(S.String),
@@ -1664,7 +1643,7 @@ export interface MobileDeviceAccessMatchedRule {
   Name?: string;
 }
 export const MobileDeviceAccessMatchedRule =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       MobileDeviceAccessRuleId: S.optional(S.String),
       Name: S.optional(S.String),
@@ -1674,13 +1653,13 @@ export const MobileDeviceAccessMatchedRule =
   }) as any as S.Schema<MobileDeviceAccessMatchedRule>;
 export type MobileDeviceAccessMatchedRuleList = MobileDeviceAccessMatchedRule[];
 export const MobileDeviceAccessMatchedRuleList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MobileDeviceAccessMatchedRule);
+  /*@__PURE__*/ S.Array(MobileDeviceAccessMatchedRule);
 export interface GetMobileDeviceAccessEffectResponse {
   Effect?: MobileDeviceAccessRuleEffect;
   MatchedRules?: MobileDeviceAccessMatchedRule[];
 }
 export const GetMobileDeviceAccessEffectResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Effect: S.optional(MobileDeviceAccessRuleEffect),
       MatchedRules: S.optional(MobileDeviceAccessMatchedRuleList),
@@ -1694,7 +1673,7 @@ export interface GetMobileDeviceAccessOverrideRequest {
   DeviceId: string;
 }
 export const GetMobileDeviceAccessOverrideRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       UserId: S.String,
@@ -1714,7 +1693,7 @@ export interface GetMobileDeviceAccessOverrideResponse {
   DateModified?: Date;
 }
 export const GetMobileDeviceAccessOverrideResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       UserId: S.optional(S.String),
       DeviceId: S.optional(S.String),
@@ -1731,7 +1710,7 @@ export interface GetPersonalAccessTokenMetadataRequest {
   PersonalAccessTokenId: string;
 }
 export const GetPersonalAccessTokenMetadataRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       PersonalAccessTokenId: S.String,
@@ -1742,9 +1721,7 @@ export const GetPersonalAccessTokenMetadataRequest =
     identifier: "GetPersonalAccessTokenMetadataRequest",
   }) as any as S.Schema<GetPersonalAccessTokenMetadataRequest>;
 export type PersonalAccessTokenScopeList = string[];
-export const PersonalAccessTokenScopeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const PersonalAccessTokenScopeList = /*@__PURE__*/ S.Array(S.String);
 export interface GetPersonalAccessTokenMetadataResponse {
   PersonalAccessTokenId?: string;
   UserId?: string;
@@ -1755,7 +1732,7 @@ export interface GetPersonalAccessTokenMetadataResponse {
   Scopes?: string[];
 }
 export const GetPersonalAccessTokenMetadataResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       PersonalAccessTokenId: S.optional(S.String),
       UserId: S.optional(S.String),
@@ -1772,7 +1749,7 @@ export interface ListAccessControlRulesRequest {
   OrganizationId: string;
 }
 export const ListAccessControlRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1780,15 +1757,13 @@ export const ListAccessControlRulesRequest =
     identifier: "ListAccessControlRulesRequest",
   }) as any as S.Schema<ListAccessControlRulesRequest>;
 export type IpRangeList = string[];
-export const IpRangeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const IpRangeList = /*@__PURE__*/ S.Array(S.String);
 export type ActionsList = string[];
-export const ActionsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ActionsList = /*@__PURE__*/ S.Array(S.String);
 export type UserIdList = string[];
-export const UserIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const UserIdList = /*@__PURE__*/ S.Array(S.String);
 export type ImpersonationRoleIdList = string[];
-export const ImpersonationRoleIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const ImpersonationRoleIdList = /*@__PURE__*/ S.Array(S.String);
 export interface AccessControlRule {
   Name?: string;
   Effect?: AccessControlRuleEffect;
@@ -1804,7 +1779,7 @@ export interface AccessControlRule {
   ImpersonationRoleIds?: string[];
   NotImpersonationRoleIds?: string[];
 }
-export const AccessControlRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AccessControlRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Effect: S.optional(AccessControlRuleEffect),
@@ -1824,13 +1799,12 @@ export const AccessControlRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AccessControlRule",
 }) as any as S.Schema<AccessControlRule>;
 export type AccessControlRulesList = AccessControlRule[];
-export const AccessControlRulesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AccessControlRule);
+export const AccessControlRulesList = /*@__PURE__*/ S.Array(AccessControlRule);
 export interface ListAccessControlRulesResponse {
   Rules?: AccessControlRule[];
 }
 export const ListAccessControlRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Rules: S.optional(AccessControlRulesList) }),
   ).annotate({
     identifier: "ListAccessControlRulesResponse",
@@ -1841,7 +1815,7 @@ export interface ListAliasesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListAliasesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAliasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.String,
     EntityId: S.String,
@@ -1854,12 +1828,12 @@ export const ListAliasesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListAliasesRequest",
 }) as any as S.Schema<ListAliasesRequest>;
 export type Aliases = string[];
-export const Aliases = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Aliases = /*@__PURE__*/ S.Array(S.String);
 export interface ListAliasesResponse {
   Aliases?: string[];
   NextToken?: string;
 }
-export const ListAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAliasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Aliases: S.optional(Aliases), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListAliasesResponse",
@@ -1870,7 +1844,7 @@ export interface ListAvailabilityConfigurationsRequest {
   NextToken?: string;
 }
 export const ListAvailabilityConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       MaxResults: S.optional(S.Number),
@@ -1882,13 +1856,13 @@ export const ListAvailabilityConfigurationsRequest =
     identifier: "ListAvailabilityConfigurationsRequest",
   }) as any as S.Schema<ListAvailabilityConfigurationsRequest>;
 export type AvailabilityProviderType = "EWS" | "LAMBDA" | (string & {});
-export const AvailabilityProviderType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AvailabilityProviderType = /*@__PURE__*/ S.String;
 export interface RedactedEwsAvailabilityProvider {
   EwsEndpoint?: string;
   EwsUsername?: string;
 }
 export const RedactedEwsAvailabilityProvider =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       EwsEndpoint: S.optional(S.String),
       EwsUsername: S.optional(S.String),
@@ -1904,28 +1878,27 @@ export interface AvailabilityConfiguration {
   DateCreated?: Date;
   DateModified?: Date;
 }
-export const AvailabilityConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DomainName: S.optional(S.String),
-      ProviderType: S.optional(AvailabilityProviderType),
-      EwsProvider: S.optional(RedactedEwsAvailabilityProvider),
-      LambdaProvider: S.optional(LambdaAvailabilityProvider),
-      DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      DateModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
+export const AvailabilityConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainName: S.optional(S.String),
+    ProviderType: S.optional(AvailabilityProviderType),
+    EwsProvider: S.optional(RedactedEwsAvailabilityProvider),
+    LambdaProvider: S.optional(LambdaAvailabilityProvider),
+    DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    DateModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
 ).annotate({
   identifier: "AvailabilityConfiguration",
 }) as any as S.Schema<AvailabilityConfiguration>;
 export type AvailabilityConfigurationList = AvailabilityConfiguration[];
 export const AvailabilityConfigurationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AvailabilityConfiguration);
+  /*@__PURE__*/ S.Array(AvailabilityConfiguration);
 export interface ListAvailabilityConfigurationsResponse {
   AvailabilityConfigurations?: AvailabilityConfiguration[];
   NextToken?: string;
 }
 export const ListAvailabilityConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AvailabilityConfigurations: S.optional(AvailabilityConfigurationList),
       NextToken: S.optional(S.String),
@@ -1939,21 +1912,20 @@ export interface ListGroupMembersRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListGroupMembersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      OrganizationId: S.String,
-      GroupId: S.String,
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OrganizationId: S.String,
+    GroupId: S.String,
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListGroupMembersRequest",
 }) as any as S.Schema<ListGroupMembersRequest>;
 export type MemberType = "GROUP" | "USER" | (string & {});
-export const MemberType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MemberType = /*@__PURE__*/ S.String;
 export interface Member {
   Id?: string;
   Name?: string;
@@ -1962,7 +1934,7 @@ export interface Member {
   EnabledDate?: Date;
   DisabledDate?: Date;
 }
-export const Member = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Member = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Name: S.optional(S.String),
@@ -1973,14 +1945,13 @@ export const Member = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Member" }) as any as S.Schema<Member>;
 export type Members = Member[];
-export const Members = /*@__PURE__*/ /*#__PURE__*/ S.Array(Member);
+export const Members = /*@__PURE__*/ S.Array(Member);
 export interface ListGroupMembersResponse {
   Members?: Member[];
   NextToken?: string;
 }
-export const ListGroupMembersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Members: S.optional(Members), NextToken: S.optional(S.String) }),
+export const ListGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Members: S.optional(Members), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListGroupMembersResponse",
 }) as any as S.Schema<ListGroupMembersResponse>;
@@ -1989,7 +1960,7 @@ export interface ListGroupsFilters {
   PrimaryEmailPrefix?: string;
   State?: EntityState;
 }
-export const ListGroupsFilters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListGroupsFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NamePrefix: S.optional(S.String),
     PrimaryEmailPrefix: S.optional(S.String),
@@ -2004,7 +1975,7 @@ export interface ListGroupsRequest {
   MaxResults?: number;
   Filters?: ListGroupsFilters;
 }
-export const ListGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.String,
     NextToken: S.optional(S.String),
@@ -2024,7 +1995,7 @@ export interface Group {
   EnabledDate?: Date;
   DisabledDate?: Date;
 }
-export const Group = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Email: S.optional(S.String),
@@ -2035,12 +2006,12 @@ export const Group = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 export type Groups = Group[];
-export const Groups = /*@__PURE__*/ /*#__PURE__*/ S.Array(Group);
+export const Groups = /*@__PURE__*/ S.Array(Group);
 export interface ListGroupsResponse {
   Groups?: Group[];
   NextToken?: string;
 }
-export const ListGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Groups: S.optional(Groups), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListGroupsResponse",
@@ -2048,8 +2019,8 @@ export const ListGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListGroupsForEntityFilters {
   GroupNamePrefix?: string;
 }
-export const ListGroupsForEntityFilters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ GroupNamePrefix: S.optional(S.String) }),
+export const ListGroupsForEntityFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ GroupNamePrefix: S.optional(S.String) }),
 ).annotate({
   identifier: "ListGroupsForEntityFilters",
 }) as any as S.Schema<ListGroupsForEntityFilters>;
@@ -2060,17 +2031,16 @@ export interface ListGroupsForEntityRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListGroupsForEntityRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      OrganizationId: S.String,
-      EntityId: S.String,
-      Filters: S.optional(ListGroupsForEntityFilters),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListGroupsForEntityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OrganizationId: S.String,
+    EntityId: S.String,
+    Filters: S.optional(ListGroupsForEntityFilters),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListGroupsForEntityRequest",
 }) as any as S.Schema<ListGroupsForEntityRequest>;
@@ -2078,20 +2048,19 @@ export interface GroupIdentifier {
   GroupId?: string;
   GroupName?: string;
 }
-export const GroupIdentifier = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GroupIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GroupId: S.optional(S.String), GroupName: S.optional(S.String) }),
 ).annotate({
   identifier: "GroupIdentifier",
 }) as any as S.Schema<GroupIdentifier>;
 export type GroupIdentifiers = GroupIdentifier[];
-export const GroupIdentifiers =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GroupIdentifier);
+export const GroupIdentifiers = /*@__PURE__*/ S.Array(GroupIdentifier);
 export interface ListGroupsForEntityResponse {
   Groups?: GroupIdentifier[];
   NextToken?: string;
 }
 export const ListGroupsForEntityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Groups: S.optional(GroupIdentifiers),
       NextToken: S.optional(S.String),
@@ -2105,7 +2074,7 @@ export interface ListImpersonationRolesRequest {
   MaxResults?: number;
 }
 export const ListImpersonationRolesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       NextToken: S.optional(S.String),
@@ -2123,7 +2092,7 @@ export interface ImpersonationRole {
   DateCreated?: Date;
   DateModified?: Date;
 }
-export const ImpersonationRole = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ImpersonationRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ImpersonationRoleId: S.optional(S.String),
     Name: S.optional(S.String),
@@ -2135,14 +2104,13 @@ export const ImpersonationRole = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ImpersonationRole",
 }) as any as S.Schema<ImpersonationRole>;
 export type ImpersonationRoleList = ImpersonationRole[];
-export const ImpersonationRoleList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ImpersonationRole);
+export const ImpersonationRoleList = /*@__PURE__*/ S.Array(ImpersonationRole);
 export interface ListImpersonationRolesResponse {
   Roles?: ImpersonationRole[];
   NextToken?: string;
 }
 export const ListImpersonationRolesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Roles: S.optional(ImpersonationRoleList),
       NextToken: S.optional(S.String),
@@ -2156,7 +2124,7 @@ export interface ListMailboxExportJobsRequest {
   MaxResults?: number;
 }
 export const ListMailboxExportJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       NextToken: S.optional(S.String),
@@ -2178,7 +2146,7 @@ export interface MailboxExportJob {
   StartTime?: Date;
   EndTime?: Date;
 }
-export const MailboxExportJob = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MailboxExportJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobId: S.optional(S.String),
     EntityId: S.optional(S.String),
@@ -2194,13 +2162,13 @@ export const MailboxExportJob = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "MailboxExportJob",
 }) as any as S.Schema<MailboxExportJob>;
 export type Jobs = MailboxExportJob[];
-export const Jobs = /*@__PURE__*/ /*#__PURE__*/ S.Array(MailboxExportJob);
+export const Jobs = /*@__PURE__*/ S.Array(MailboxExportJob);
 export interface ListMailboxExportJobsResponse {
   Jobs?: MailboxExportJob[];
   NextToken?: string;
 }
 export const ListMailboxExportJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Jobs: S.optional(Jobs), NextToken: S.optional(S.String) }),
   ).annotate({
     identifier: "ListMailboxExportJobsResponse",
@@ -2212,7 +2180,7 @@ export interface ListMailboxPermissionsRequest {
   MaxResults?: number;
 }
 export const ListMailboxPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       EntityId: S.String,
@@ -2229,16 +2197,15 @@ export type PermissionType =
   | "SEND_AS"
   | "SEND_ON_BEHALF"
   | (string & {});
-export const PermissionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PermissionType = /*@__PURE__*/ S.String;
 export type PermissionValues = PermissionType[];
-export const PermissionValues =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PermissionType);
+export const PermissionValues = /*@__PURE__*/ S.Array(PermissionType);
 export interface Permission {
   GranteeId: string;
   GranteeType: MemberType;
   PermissionValues: PermissionType[];
 }
-export const Permission = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Permission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GranteeId: S.String,
     GranteeType: MemberType,
@@ -2246,13 +2213,13 @@ export const Permission = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 export type Permissions = Permission[];
-export const Permissions = /*@__PURE__*/ /*#__PURE__*/ S.Array(Permission);
+export const Permissions = /*@__PURE__*/ S.Array(Permission);
 export interface ListMailboxPermissionsResponse {
   Permissions?: Permission[];
   NextToken?: string;
 }
 export const ListMailboxPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Permissions: S.optional(Permissions),
       NextToken: S.optional(S.String),
@@ -2265,15 +2232,14 @@ export interface ListMailDomainsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListMailDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      OrganizationId: S.String,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListMailDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OrganizationId: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListMailDomainsRequest",
 }) as any as S.Schema<ListMailDomainsRequest>;
@@ -2281,7 +2247,7 @@ export interface MailDomainSummary {
   DomainName?: string;
   DefaultDomain?: boolean;
 }
-export const MailDomainSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MailDomainSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.optional(S.String),
     DefaultDomain: S.optional(S.Boolean),
@@ -2290,18 +2256,16 @@ export const MailDomainSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "MailDomainSummary",
 }) as any as S.Schema<MailDomainSummary>;
 export type MailDomains = MailDomainSummary[];
-export const MailDomains =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MailDomainSummary);
+export const MailDomains = /*@__PURE__*/ S.Array(MailDomainSummary);
 export interface ListMailDomainsResponse {
   MailDomains?: MailDomainSummary[];
   NextToken?: string;
 }
-export const ListMailDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MailDomains: S.optional(MailDomains),
-      NextToken: S.optional(S.String),
-    }),
+export const ListMailDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MailDomains: S.optional(MailDomains),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListMailDomainsResponse",
 }) as any as S.Schema<ListMailDomainsResponse>;
@@ -2313,7 +2277,7 @@ export interface ListMobileDeviceAccessOverridesRequest {
   MaxResults?: number;
 }
 export const ListMobileDeviceAccessOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       UserId: S.optional(S.String),
@@ -2334,28 +2298,27 @@ export interface MobileDeviceAccessOverride {
   DateCreated?: Date;
   DateModified?: Date;
 }
-export const MobileDeviceAccessOverride = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      UserId: S.optional(S.String),
-      DeviceId: S.optional(S.String),
-      Effect: S.optional(MobileDeviceAccessRuleEffect),
-      Description: S.optional(S.String),
-      DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      DateModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
+export const MobileDeviceAccessOverride = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    UserId: S.optional(S.String),
+    DeviceId: S.optional(S.String),
+    Effect: S.optional(MobileDeviceAccessRuleEffect),
+    Description: S.optional(S.String),
+    DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    DateModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
 ).annotate({
   identifier: "MobileDeviceAccessOverride",
 }) as any as S.Schema<MobileDeviceAccessOverride>;
 export type MobileDeviceAccessOverridesList = MobileDeviceAccessOverride[];
 export const MobileDeviceAccessOverridesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MobileDeviceAccessOverride);
+  /*@__PURE__*/ S.Array(MobileDeviceAccessOverride);
 export interface ListMobileDeviceAccessOverridesResponse {
   Overrides?: MobileDeviceAccessOverride[];
   NextToken?: string;
 }
 export const ListMobileDeviceAccessOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Overrides: S.optional(MobileDeviceAccessOverridesList),
       NextToken: S.optional(S.String),
@@ -2367,7 +2330,7 @@ export interface ListMobileDeviceAccessRulesRequest {
   OrganizationId: string;
 }
 export const ListMobileDeviceAccessRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -2390,36 +2353,35 @@ export interface MobileDeviceAccessRule {
   DateCreated?: Date;
   DateModified?: Date;
 }
-export const MobileDeviceAccessRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MobileDeviceAccessRuleId: S.optional(S.String),
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      Effect: S.optional(MobileDeviceAccessRuleEffect),
-      DeviceTypes: S.optional(DeviceTypeList),
-      NotDeviceTypes: S.optional(DeviceTypeList),
-      DeviceModels: S.optional(DeviceModelList),
-      NotDeviceModels: S.optional(DeviceModelList),
-      DeviceOperatingSystems: S.optional(DeviceOperatingSystemList),
-      NotDeviceOperatingSystems: S.optional(DeviceOperatingSystemList),
-      DeviceUserAgents: S.optional(DeviceUserAgentList),
-      NotDeviceUserAgents: S.optional(DeviceUserAgentList),
-      DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      DateModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
+export const MobileDeviceAccessRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MobileDeviceAccessRuleId: S.optional(S.String),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    Effect: S.optional(MobileDeviceAccessRuleEffect),
+    DeviceTypes: S.optional(DeviceTypeList),
+    NotDeviceTypes: S.optional(DeviceTypeList),
+    DeviceModels: S.optional(DeviceModelList),
+    NotDeviceModels: S.optional(DeviceModelList),
+    DeviceOperatingSystems: S.optional(DeviceOperatingSystemList),
+    NotDeviceOperatingSystems: S.optional(DeviceOperatingSystemList),
+    DeviceUserAgents: S.optional(DeviceUserAgentList),
+    NotDeviceUserAgents: S.optional(DeviceUserAgentList),
+    DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    DateModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
 ).annotate({
   identifier: "MobileDeviceAccessRule",
 }) as any as S.Schema<MobileDeviceAccessRule>;
 export type MobileDeviceAccessRulesList = MobileDeviceAccessRule[];
-export const MobileDeviceAccessRulesList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const MobileDeviceAccessRulesList = /*@__PURE__*/ S.Array(
   MobileDeviceAccessRule,
 );
 export interface ListMobileDeviceAccessRulesResponse {
   Rules?: MobileDeviceAccessRule[];
 }
 export const ListMobileDeviceAccessRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Rules: S.optional(MobileDeviceAccessRulesList) }),
   ).annotate({
     identifier: "ListMobileDeviceAccessRulesResponse",
@@ -2428,14 +2390,13 @@ export interface ListOrganizationsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListOrganizationsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListOrganizationsRequest",
 }) as any as S.Schema<ListOrganizationsRequest>;
@@ -2446,7 +2407,7 @@ export interface OrganizationSummary {
   ErrorMessage?: string;
   State?: string;
 }
-export const OrganizationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OrganizationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.optional(S.String),
     Alias: S.optional(S.String),
@@ -2458,18 +2419,16 @@ export const OrganizationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "OrganizationSummary",
 }) as any as S.Schema<OrganizationSummary>;
 export type OrganizationSummaries = OrganizationSummary[];
-export const OrganizationSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(OrganizationSummary);
+export const OrganizationSummaries = /*@__PURE__*/ S.Array(OrganizationSummary);
 export interface ListOrganizationsResponse {
   OrganizationSummaries?: OrganizationSummary[];
   NextToken?: string;
 }
-export const ListOrganizationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      OrganizationSummaries: S.optional(OrganizationSummaries),
-      NextToken: S.optional(S.String),
-    }),
+export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OrganizationSummaries: S.optional(OrganizationSummaries),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListOrganizationsResponse",
 }) as any as S.Schema<ListOrganizationsResponse>;
@@ -2480,7 +2439,7 @@ export interface ListPersonalAccessTokensRequest {
   MaxResults?: number;
 }
 export const ListPersonalAccessTokensRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       UserId: S.optional(S.String),
@@ -2501,29 +2460,28 @@ export interface PersonalAccessTokenSummary {
   ExpiresTime?: Date;
   Scopes?: string[];
 }
-export const PersonalAccessTokenSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PersonalAccessTokenId: S.optional(S.String),
-      UserId: S.optional(S.String),
-      Name: S.optional(S.String),
-      DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      DateLastUsed: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      ExpiresTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      Scopes: S.optional(PersonalAccessTokenScopeList),
-    }),
+export const PersonalAccessTokenSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PersonalAccessTokenId: S.optional(S.String),
+    UserId: S.optional(S.String),
+    Name: S.optional(S.String),
+    DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    DateLastUsed: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ExpiresTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Scopes: S.optional(PersonalAccessTokenScopeList),
+  }),
 ).annotate({
   identifier: "PersonalAccessTokenSummary",
 }) as any as S.Schema<PersonalAccessTokenSummary>;
 export type PersonalAccessTokenSummaryList = PersonalAccessTokenSummary[];
 export const PersonalAccessTokenSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PersonalAccessTokenSummary);
+  /*@__PURE__*/ S.Array(PersonalAccessTokenSummary);
 export interface ListPersonalAccessTokensResponse {
   NextToken?: string;
   PersonalAccessTokenSummaries?: PersonalAccessTokenSummary[];
 }
 export const ListPersonalAccessTokensResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextToken: S.optional(S.String),
       PersonalAccessTokenSummaries: S.optional(PersonalAccessTokenSummaryList),
@@ -2538,7 +2496,7 @@ export interface ListResourceDelegatesRequest {
   MaxResults?: number;
 }
 export const ListResourceDelegatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       ResourceId: S.String,
@@ -2554,17 +2512,17 @@ export interface Delegate {
   Id: string;
   Type: MemberType;
 }
-export const Delegate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Delegate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.String, Type: MemberType }),
 ).annotate({ identifier: "Delegate" }) as any as S.Schema<Delegate>;
 export type ResourceDelegates = Delegate[];
-export const ResourceDelegates = /*@__PURE__*/ /*#__PURE__*/ S.Array(Delegate);
+export const ResourceDelegates = /*@__PURE__*/ S.Array(Delegate);
 export interface ListResourceDelegatesResponse {
   Delegates?: Delegate[];
   NextToken?: string;
 }
 export const ListResourceDelegatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Delegates: S.optional(ResourceDelegates),
       NextToken: S.optional(S.String),
@@ -2577,7 +2535,7 @@ export interface ListResourcesFilters {
   PrimaryEmailPrefix?: string;
   State?: EntityState;
 }
-export const ListResourcesFilters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListResourcesFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NamePrefix: S.optional(S.String),
     PrimaryEmailPrefix: S.optional(S.String),
@@ -2592,7 +2550,7 @@ export interface ListResourcesRequest {
   MaxResults?: number;
   Filters?: ListResourcesFilters;
 }
-export const ListResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.String,
     NextToken: S.optional(S.String),
@@ -2614,7 +2572,7 @@ export interface Resource {
   DisabledDate?: Date;
   Description?: string | redacted.Redacted<string>;
 }
-export const Resource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Email: S.optional(S.String),
@@ -2627,12 +2585,12 @@ export const Resource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 export type Resources = Resource[];
-export const Resources = /*@__PURE__*/ /*#__PURE__*/ S.Array(Resource);
+export const Resources = /*@__PURE__*/ S.Array(Resource);
 export interface ListResourcesResponse {
   Resources?: Resource[];
   NextToken?: string;
 }
-export const ListResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Resources: S.optional(Resources),
     NextToken: S.optional(S.String),
@@ -2643,11 +2601,10 @@ export const ListResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceARN: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceARN: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -2655,16 +2612,16 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.String, Value: S.String }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ Tags: S.optional(TagList) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -2676,7 +2633,7 @@ export interface ListUsersFilters {
   State?: EntityState;
   IdentityProviderUserIdPrefix?: string;
 }
-export const ListUsersFilters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListUsersFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UsernamePrefix: S.optional(S.String),
     DisplayNamePrefix: S.optional(SensitiveString),
@@ -2693,7 +2650,7 @@ export interface ListUsersRequest {
   MaxResults?: number;
   Filters?: ListUsersFilters;
 }
-export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.String,
     NextToken: S.optional(S.String),
@@ -2717,7 +2674,7 @@ export interface User {
   IdentityProviderUserId?: string;
   IdentityProviderIdentityStoreId?: string;
 }
-export const User = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Email: S.optional(S.String),
@@ -2732,12 +2689,12 @@ export const User = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 export type Users = User[];
-export const Users = /*@__PURE__*/ /*#__PURE__*/ S.Array(User);
+export const Users = /*@__PURE__*/ S.Array(User);
 export interface ListUsersResponse {
   Users?: User[];
   NextToken?: string;
 }
-export const ListUsersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Users: S.optional(Users), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListUsersResponse",
@@ -2757,7 +2714,7 @@ export interface PutAccessControlRuleRequest {
   NotImpersonationRoleIds?: string[];
 }
 export const PutAccessControlRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Name: S.String,
       Effect: AccessControlRuleEffect,
@@ -2779,7 +2736,7 @@ export const PutAccessControlRuleRequest =
   }) as any as S.Schema<PutAccessControlRuleRequest>;
 export interface PutAccessControlRuleResponse {}
 export const PutAccessControlRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutAccessControlRuleResponse",
   }) as any as S.Schema<PutAccessControlRuleResponse>;
 export interface PutEmailMonitoringConfigurationRequest {
@@ -2788,7 +2745,7 @@ export interface PutEmailMonitoringConfigurationRequest {
   LogGroupArn: string;
 }
 export const PutEmailMonitoringConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       RoleArn: S.optional(S.String),
@@ -2801,7 +2758,7 @@ export const PutEmailMonitoringConfigurationRequest =
   }) as any as S.Schema<PutEmailMonitoringConfigurationRequest>;
 export interface PutEmailMonitoringConfigurationResponse {}
 export const PutEmailMonitoringConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutEmailMonitoringConfigurationResponse",
   }) as any as S.Schema<PutEmailMonitoringConfigurationResponse>;
 export interface PutIdentityProviderConfigurationRequest {
@@ -2811,7 +2768,7 @@ export interface PutIdentityProviderConfigurationRequest {
   PersonalAccessTokenConfiguration: PersonalAccessTokenConfiguration;
 }
 export const PutIdentityProviderConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       AuthenticationMode: IdentityProviderAuthenticationMode,
@@ -2825,7 +2782,7 @@ export const PutIdentityProviderConfigurationRequest =
   }) as any as S.Schema<PutIdentityProviderConfigurationRequest>;
 export interface PutIdentityProviderConfigurationResponse {}
 export const PutIdentityProviderConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutIdentityProviderConfigurationResponse",
   }) as any as S.Schema<PutIdentityProviderConfigurationResponse>;
 export interface PutInboundDmarcSettingsRequest {
@@ -2833,7 +2790,7 @@ export interface PutInboundDmarcSettingsRequest {
   Enforced: boolean;
 }
 export const PutInboundDmarcSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String, Enforced: S.Boolean }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -2842,7 +2799,7 @@ export const PutInboundDmarcSettingsRequest =
   }) as any as S.Schema<PutInboundDmarcSettingsRequest>;
 export interface PutInboundDmarcSettingsResponse {}
 export const PutInboundDmarcSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutInboundDmarcSettingsResponse",
   }) as any as S.Schema<PutInboundDmarcSettingsResponse>;
 export interface PutMailboxPermissionsRequest {
@@ -2852,7 +2809,7 @@ export interface PutMailboxPermissionsRequest {
   PermissionValues: PermissionType[];
 }
 export const PutMailboxPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       EntityId: S.String,
@@ -2866,7 +2823,7 @@ export const PutMailboxPermissionsRequest =
   }) as any as S.Schema<PutMailboxPermissionsRequest>;
 export interface PutMailboxPermissionsResponse {}
 export const PutMailboxPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutMailboxPermissionsResponse",
   }) as any as S.Schema<PutMailboxPermissionsResponse>;
 export interface PutMobileDeviceAccessOverrideRequest {
@@ -2877,7 +2834,7 @@ export interface PutMobileDeviceAccessOverrideRequest {
   Description?: string;
 }
 export const PutMobileDeviceAccessOverrideRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       UserId: S.String,
@@ -2892,7 +2849,7 @@ export const PutMobileDeviceAccessOverrideRequest =
   }) as any as S.Schema<PutMobileDeviceAccessOverrideRequest>;
 export interface PutMobileDeviceAccessOverrideResponse {}
 export const PutMobileDeviceAccessOverrideResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutMobileDeviceAccessOverrideResponse",
   }) as any as S.Schema<PutMobileDeviceAccessOverrideResponse>;
 export interface PutRetentionPolicyRequest {
@@ -2902,23 +2859,22 @@ export interface PutRetentionPolicyRequest {
   Description?: string | redacted.Redacted<string>;
   FolderConfigurations: FolderConfiguration[];
 }
-export const PutRetentionPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      OrganizationId: S.String,
-      Id: S.optional(S.String),
-      Name: S.String,
-      Description: S.optional(SensitiveString),
-      FolderConfigurations: FolderConfigurations,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const PutRetentionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OrganizationId: S.String,
+    Id: S.optional(S.String),
+    Name: S.String,
+    Description: S.optional(SensitiveString),
+    FolderConfigurations: FolderConfigurations,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "PutRetentionPolicyRequest",
 }) as any as S.Schema<PutRetentionPolicyRequest>;
 export interface PutRetentionPolicyResponse {}
-export const PutRetentionPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const PutRetentionPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "PutRetentionPolicyResponse",
 }) as any as S.Schema<PutRetentionPolicyResponse>;
@@ -2927,21 +2883,20 @@ export interface RegisterMailDomainRequest {
   OrganizationId: string;
   DomainName: string;
 }
-export const RegisterMailDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      OrganizationId: S.String,
-      DomainName: S.String,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const RegisterMailDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    OrganizationId: S.String,
+    DomainName: S.String,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "RegisterMailDomainRequest",
 }) as any as S.Schema<RegisterMailDomainRequest>;
 export interface RegisterMailDomainResponse {}
-export const RegisterMailDomainResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const RegisterMailDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "RegisterMailDomainResponse",
 }) as any as S.Schema<RegisterMailDomainResponse>;
@@ -2950,21 +2905,20 @@ export interface RegisterToWorkMailRequest {
   EntityId: string;
   Email: string;
 }
-export const RegisterToWorkMailRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      OrganizationId: S.String,
-      EntityId: S.String,
-      Email: S.String,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const RegisterToWorkMailRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OrganizationId: S.String,
+    EntityId: S.String,
+    Email: S.String,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "RegisterToWorkMailRequest",
 }) as any as S.Schema<RegisterToWorkMailRequest>;
 export interface RegisterToWorkMailResponse {}
-export const RegisterToWorkMailResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const RegisterToWorkMailResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "RegisterToWorkMailResponse",
 }) as any as S.Schema<RegisterToWorkMailResponse>;
@@ -2973,7 +2927,7 @@ export interface ResetPasswordRequest {
   UserId: string;
   Password: string | redacted.Redacted<string>;
 }
-export const ResetPasswordRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResetPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.String,
     UserId: S.String,
@@ -2985,7 +2939,7 @@ export const ResetPasswordRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ResetPasswordRequest",
 }) as any as S.Schema<ResetPasswordRequest>;
 export interface ResetPasswordResponse {}
-export const ResetPasswordResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResetPasswordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "ResetPasswordResponse",
@@ -3001,7 +2955,7 @@ export interface StartMailboxExportJobRequest {
   S3Prefix: string;
 }
 export const StartMailboxExportJobRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ClientToken: S.String.pipe(T.IdempotencyToken()),
       OrganizationId: S.String,
@@ -3021,7 +2975,7 @@ export interface StartMailboxExportJobResponse {
   JobId?: string;
 }
 export const StartMailboxExportJobResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ JobId: S.optional(S.String) }),
   ).annotate({
     identifier: "StartMailboxExportJobResponse",
@@ -3030,7 +2984,7 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -3038,7 +2992,7 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
@@ -3050,7 +3004,7 @@ export interface TestAvailabilityConfigurationRequest {
   LambdaProvider?: LambdaAvailabilityProvider;
 }
 export const TestAvailabilityConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       DomainName: S.optional(S.String),
@@ -3067,7 +3021,7 @@ export interface TestAvailabilityConfigurationResponse {
   FailureReason?: string;
 }
 export const TestAvailabilityConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       TestPassed: S.optional(S.Boolean),
       FailureReason: S.optional(S.String),
@@ -3076,12 +3030,12 @@ export const TestAvailabilityConfigurationResponse =
     identifier: "TestAvailabilityConfigurationResponse",
   }) as any as S.Schema<TestAvailabilityConfigurationResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -3089,7 +3043,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -3101,7 +3055,7 @@ export interface UpdateAvailabilityConfigurationRequest {
   LambdaProvider?: LambdaAvailabilityProvider;
 }
 export const UpdateAvailabilityConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       DomainName: S.String,
@@ -3115,7 +3069,7 @@ export const UpdateAvailabilityConfigurationRequest =
   }) as any as S.Schema<UpdateAvailabilityConfigurationRequest>;
 export interface UpdateAvailabilityConfigurationResponse {}
 export const UpdateAvailabilityConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateAvailabilityConfigurationResponse",
   }) as any as S.Schema<UpdateAvailabilityConfigurationResponse>;
 export interface UpdateDefaultMailDomainRequest {
@@ -3123,7 +3077,7 @@ export interface UpdateDefaultMailDomainRequest {
   DomainName: string;
 }
 export const UpdateDefaultMailDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrganizationId: S.String, DomainName: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -3132,7 +3086,7 @@ export const UpdateDefaultMailDomainRequest =
   }) as any as S.Schema<UpdateDefaultMailDomainRequest>;
 export interface UpdateDefaultMailDomainResponse {}
 export const UpdateDefaultMailDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateDefaultMailDomainResponse",
   }) as any as S.Schema<UpdateDefaultMailDomainResponse>;
 export interface UpdateGroupRequest {
@@ -3140,7 +3094,7 @@ export interface UpdateGroupRequest {
   GroupId: string;
   HiddenFromGlobalAddressList?: boolean;
 }
-export const UpdateGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.String,
     GroupId: S.String,
@@ -3152,7 +3106,7 @@ export const UpdateGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateGroupRequest",
 }) as any as S.Schema<UpdateGroupRequest>;
 export interface UpdateGroupResponse {}
-export const UpdateGroupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UpdateGroupResponse",
@@ -3166,7 +3120,7 @@ export interface UpdateImpersonationRoleRequest {
   Rules: ImpersonationRule[];
 }
 export const UpdateImpersonationRoleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       ImpersonationRoleId: S.String,
@@ -3182,7 +3136,7 @@ export const UpdateImpersonationRoleRequest =
   }) as any as S.Schema<UpdateImpersonationRoleRequest>;
 export interface UpdateImpersonationRoleResponse {}
 export const UpdateImpersonationRoleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateImpersonationRoleResponse",
   }) as any as S.Schema<UpdateImpersonationRoleResponse>;
 export interface UpdateMailboxQuotaRequest {
@@ -3190,21 +3144,20 @@ export interface UpdateMailboxQuotaRequest {
   UserId: string;
   MailboxQuota: number;
 }
-export const UpdateMailboxQuotaRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      OrganizationId: S.String,
-      UserId: S.String,
-      MailboxQuota: S.Number,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const UpdateMailboxQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OrganizationId: S.String,
+    UserId: S.String,
+    MailboxQuota: S.Number,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "UpdateMailboxQuotaRequest",
 }) as any as S.Schema<UpdateMailboxQuotaRequest>;
 export interface UpdateMailboxQuotaResponse {}
-export const UpdateMailboxQuotaResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const UpdateMailboxQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "UpdateMailboxQuotaResponse",
 }) as any as S.Schema<UpdateMailboxQuotaResponse>;
@@ -3224,7 +3177,7 @@ export interface UpdateMobileDeviceAccessRuleRequest {
   NotDeviceUserAgents?: string[];
 }
 export const UpdateMobileDeviceAccessRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       MobileDeviceAccessRuleId: S.String,
@@ -3247,7 +3200,7 @@ export const UpdateMobileDeviceAccessRuleRequest =
   }) as any as S.Schema<UpdateMobileDeviceAccessRuleRequest>;
 export interface UpdateMobileDeviceAccessRuleResponse {}
 export const UpdateMobileDeviceAccessRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateMobileDeviceAccessRuleResponse",
   }) as any as S.Schema<UpdateMobileDeviceAccessRuleResponse>;
 export interface UpdatePrimaryEmailAddressRequest {
@@ -3256,7 +3209,7 @@ export interface UpdatePrimaryEmailAddressRequest {
   Email: string;
 }
 export const UpdatePrimaryEmailAddressRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OrganizationId: S.String,
       EntityId: S.String,
@@ -3269,7 +3222,7 @@ export const UpdatePrimaryEmailAddressRequest =
   }) as any as S.Schema<UpdatePrimaryEmailAddressRequest>;
 export interface UpdatePrimaryEmailAddressResponse {}
 export const UpdatePrimaryEmailAddressResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdatePrimaryEmailAddressResponse",
   }) as any as S.Schema<UpdatePrimaryEmailAddressResponse>;
 export interface UpdateResourceRequest {
@@ -3281,7 +3234,7 @@ export interface UpdateResourceRequest {
   Type?: ResourceType;
   HiddenFromGlobalAddressList?: boolean;
 }
-export const UpdateResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.String,
     ResourceId: S.String,
@@ -3297,8 +3250,8 @@ export const UpdateResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateResourceRequest",
 }) as any as S.Schema<UpdateResourceRequest>;
 export interface UpdateResourceResponse {}
-export const UpdateResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const UpdateResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "UpdateResourceResponse",
 }) as any as S.Schema<UpdateResourceResponse>;
@@ -3322,7 +3275,7 @@ export interface UpdateUserRequest {
   Office?: string | redacted.Redacted<string>;
   IdentityProviderUserId?: string;
 }
-export const UpdateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.String,
     UserId: S.String,
@@ -3349,7 +3302,7 @@ export const UpdateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserRequest",
 }) as any as S.Schema<UpdateUserRequest>;
 export interface UpdateUserResponse {}
-export const UpdateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UpdateUserResponse",
@@ -3462,7 +3415,7 @@ export const associateDelegateToResource: API.OperationMethod<
   AssociateDelegateToResourceResponse,
   AssociateDelegateToResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateDelegateToResourceRequest,
   output: AssociateDelegateToResourceResponse,
   errors: [
@@ -3493,7 +3446,7 @@ export const associateMemberToGroup: API.OperationMethod<
   AssociateMemberToGroupResponse,
   AssociateMemberToGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateMemberToGroupRequest,
   output: AssociateMemberToGroupResponse,
   errors: [
@@ -3523,7 +3476,7 @@ export const assumeImpersonationRole: API.OperationMethod<
   AssumeImpersonationRoleResponse,
   AssumeImpersonationRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssumeImpersonationRoleRequest,
   output: AssumeImpersonationRoleResponse,
   errors: [
@@ -3551,7 +3504,7 @@ export const cancelMailboxExportJob: API.OperationMethod<
   CancelMailboxExportJobResponse,
   CancelMailboxExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelMailboxExportJobRequest,
   output: CancelMailboxExportJobResponse,
   errors: [
@@ -3581,7 +3534,7 @@ export const createAlias: API.OperationMethod<
   CreateAliasResponse,
   CreateAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAliasRequest,
   output: CreateAliasResponse,
   errors: [
@@ -3612,7 +3565,7 @@ export const createAvailabilityConfiguration: API.OperationMethod<
   CreateAvailabilityConfigurationResponse,
   CreateAvailabilityConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAvailabilityConfigurationRequest,
   output: CreateAvailabilityConfigurationResponse,
   errors: [
@@ -3642,7 +3595,7 @@ export const createGroup: API.OperationMethod<
   CreateGroupResponse,
   CreateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupRequest,
   output: CreateGroupResponse,
   errors: [
@@ -3668,7 +3621,7 @@ export const createIdentityCenterApplication: API.OperationMethod<
   CreateIdentityCenterApplicationResponse,
   CreateIdentityCenterApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIdentityCenterApplicationRequest,
   output: CreateIdentityCenterApplicationResponse,
   errors: [InvalidParameterException],
@@ -3695,7 +3648,7 @@ export const createImpersonationRole: API.OperationMethod<
   CreateImpersonationRoleResponse,
   CreateImpersonationRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateImpersonationRoleRequest,
   output: CreateImpersonationRoleResponse,
   errors: [
@@ -3722,7 +3675,7 @@ export const createMobileDeviceAccessRule: API.OperationMethod<
   CreateMobileDeviceAccessRuleResponse,
   CreateMobileDeviceAccessRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMobileDeviceAccessRuleRequest,
   output: CreateMobileDeviceAccessRuleResponse,
   errors: [
@@ -3758,7 +3711,7 @@ export const createOrganization: API.OperationMethod<
   CreateOrganizationResponse,
   CreateOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationRequest,
   output: CreateOrganizationResponse,
   errors: [
@@ -3788,7 +3741,7 @@ export const createResource: API.OperationMethod<
   CreateResourceResponse,
   CreateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceRequest,
   output: CreateResourceResponse,
   errors: [
@@ -3822,7 +3775,7 @@ export const createUser: API.OperationMethod<
   CreateUserResponse,
   CreateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
   errors: [
@@ -3852,7 +3805,7 @@ export const deleteAccessControlRule: API.OperationMethod<
   DeleteAccessControlRuleResponse,
   DeleteAccessControlRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessControlRuleRequest,
   output: DeleteAccessControlRuleResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
@@ -3874,7 +3827,7 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasResponse,
   DeleteAliasError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAliasRequest,
   output: DeleteAliasResponse,
   errors: [
@@ -3898,7 +3851,7 @@ export const deleteAvailabilityConfiguration: API.OperationMethod<
   DeleteAvailabilityConfigurationResponse,
   DeleteAvailabilityConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAvailabilityConfigurationRequest,
   output: DeleteAvailabilityConfigurationResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
@@ -3917,7 +3870,7 @@ export const deleteEmailMonitoringConfiguration: API.OperationMethod<
   DeleteEmailMonitoringConfigurationResponse,
   DeleteEmailMonitoringConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEmailMonitoringConfigurationRequest,
   output: DeleteEmailMonitoringConfigurationResponse,
   errors: [
@@ -3944,7 +3897,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupResponse,
   DeleteGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
   errors: [
@@ -3970,7 +3923,7 @@ export const deleteIdentityCenterApplication: API.OperationMethod<
   DeleteIdentityCenterApplicationResponse,
   DeleteIdentityCenterApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentityCenterApplicationRequest,
   output: DeleteIdentityCenterApplicationResponse,
   errors: [InvalidParameterException, OrganizationStateException],
@@ -3989,7 +3942,7 @@ export const deleteIdentityProviderConfiguration: API.OperationMethod<
   DeleteIdentityProviderConfigurationResponse,
   DeleteIdentityProviderConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIdentityProviderConfigurationRequest,
   output: DeleteIdentityProviderConfigurationResponse,
   errors: [
@@ -4012,7 +3965,7 @@ export const deleteImpersonationRole: API.OperationMethod<
   DeleteImpersonationRoleResponse,
   DeleteImpersonationRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteImpersonationRoleRequest,
   output: DeleteImpersonationRoleResponse,
   errors: [
@@ -4037,7 +3990,7 @@ export const deleteMailboxPermissions: API.OperationMethod<
   DeleteMailboxPermissionsResponse,
   DeleteMailboxPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMailboxPermissionsRequest,
   output: DeleteMailboxPermissionsResponse,
   errors: [
@@ -4065,7 +4018,7 @@ export const deleteMobileDeviceAccessOverride: API.OperationMethod<
   DeleteMobileDeviceAccessOverrideResponse,
   DeleteMobileDeviceAccessOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMobileDeviceAccessOverrideRequest,
   output: DeleteMobileDeviceAccessOverrideResponse,
   errors: [
@@ -4091,7 +4044,7 @@ export const deleteMobileDeviceAccessRule: API.OperationMethod<
   DeleteMobileDeviceAccessRuleResponse,
   DeleteMobileDeviceAccessRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMobileDeviceAccessRuleRequest,
   output: DeleteMobileDeviceAccessRuleResponse,
   errors: [
@@ -4114,7 +4067,7 @@ export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationResponse,
   DeleteOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationRequest,
   output: DeleteOrganizationResponse,
   errors: [
@@ -4137,7 +4090,7 @@ export const deletePersonalAccessToken: API.OperationMethod<
   DeletePersonalAccessTokenResponse,
   DeletePersonalAccessTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePersonalAccessTokenRequest,
   output: DeletePersonalAccessTokenResponse,
   errors: [
@@ -4162,7 +4115,7 @@ export const deleteResource: API.OperationMethod<
   DeleteResourceResponse,
   DeleteResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceRequest,
   output: DeleteResourceResponse,
   errors: [
@@ -4187,7 +4140,7 @@ export const deleteRetentionPolicy: API.OperationMethod<
   DeleteRetentionPolicyResponse,
   DeleteRetentionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRetentionPolicyRequest,
   output: DeleteRetentionPolicyResponse,
   errors: [
@@ -4219,7 +4172,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserResponse,
   DeleteUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
   errors: [
@@ -4251,7 +4204,7 @@ export const deregisterFromWorkMail: API.OperationMethod<
   DeregisterFromWorkMailResponse,
   DeregisterFromWorkMailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterFromWorkMailRequest,
   output: DeregisterFromWorkMailResponse,
   errors: [
@@ -4279,7 +4232,7 @@ export const deregisterMailDomain: API.OperationMethod<
   DeregisterMailDomainResponse,
   DeregisterMailDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterMailDomainRequest,
   output: DeregisterMailDomainResponse,
   errors: [
@@ -4305,7 +4258,7 @@ export const describeEmailMonitoringConfiguration: API.OperationMethod<
   DescribeEmailMonitoringConfigurationResponse,
   DescribeEmailMonitoringConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEmailMonitoringConfigurationRequest,
   output: DescribeEmailMonitoringConfigurationResponse,
   errors: [
@@ -4330,7 +4283,7 @@ export const describeEntity: API.OperationMethod<
   DescribeEntityResponse,
   DescribeEntityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeEntityRequest,
   output: DescribeEntityResponse,
   errors: [
@@ -4355,7 +4308,7 @@ export const describeGroup: API.OperationMethod<
   DescribeGroupResponse,
   DescribeGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGroupRequest,
   output: DescribeGroupResponse,
   errors: [
@@ -4380,7 +4333,7 @@ export const describeIdentityProviderConfiguration: API.OperationMethod<
   DescribeIdentityProviderConfigurationResponse,
   DescribeIdentityProviderConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeIdentityProviderConfigurationRequest,
   output: DescribeIdentityProviderConfigurationResponse,
   errors: [
@@ -4403,7 +4356,7 @@ export const describeInboundDmarcSettings: API.OperationMethod<
   DescribeInboundDmarcSettingsResponse,
   DescribeInboundDmarcSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeInboundDmarcSettingsRequest,
   output: DescribeInboundDmarcSettingsResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
@@ -4423,7 +4376,7 @@ export const describeMailboxExportJob: API.OperationMethod<
   DescribeMailboxExportJobResponse,
   DescribeMailboxExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMailboxExportJobRequest,
   output: DescribeMailboxExportJobResponse,
   errors: [
@@ -4447,7 +4400,7 @@ export const describeOrganization: API.OperationMethod<
   DescribeOrganizationResponse,
   DescribeOrganizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeOrganizationRequest,
   output: DescribeOrganizationResponse,
   errors: [InvalidParameterException, OrganizationNotFoundException],
@@ -4468,7 +4421,7 @@ export const describeResource: API.OperationMethod<
   DescribeResourceResponse,
   DescribeResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeResourceRequest,
   output: DescribeResourceResponse,
   errors: [
@@ -4496,7 +4449,7 @@ export const describeUser: API.OperationMethod<
   DescribeUserResponse,
   DescribeUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeUserRequest,
   output: DescribeUserResponse,
   errors: [
@@ -4525,7 +4478,7 @@ export const disassociateDelegateFromResource: API.OperationMethod<
   DisassociateDelegateFromResourceResponse,
   DisassociateDelegateFromResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateDelegateFromResourceRequest,
   output: DisassociateDelegateFromResourceResponse,
   errors: [
@@ -4556,7 +4509,7 @@ export const disassociateMemberFromGroup: API.OperationMethod<
   DisassociateMemberFromGroupResponse,
   DisassociateMemberFromGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateMemberFromGroupRequest,
   output: DisassociateMemberFromGroupResponse,
   errors: [
@@ -4587,7 +4540,7 @@ export const getAccessControlEffect: API.OperationMethod<
   GetAccessControlEffectResponse,
   GetAccessControlEffectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessControlEffectRequest,
   output: GetAccessControlEffectResponse,
   errors: [
@@ -4613,7 +4566,7 @@ export const getDefaultRetentionPolicy: API.OperationMethod<
   GetDefaultRetentionPolicyResponse,
   GetDefaultRetentionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDefaultRetentionPolicyRequest,
   output: GetDefaultRetentionPolicyResponse,
   errors: [
@@ -4638,7 +4591,7 @@ export const getImpersonationRole: API.OperationMethod<
   GetImpersonationRoleResponse,
   GetImpersonationRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImpersonationRoleRequest,
   output: GetImpersonationRoleResponse,
   errors: [
@@ -4665,7 +4618,7 @@ export const getImpersonationRoleEffect: API.OperationMethod<
   GetImpersonationRoleEffectResponse,
   GetImpersonationRoleEffectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetImpersonationRoleEffectRequest,
   output: GetImpersonationRoleEffectResponse,
   errors: [
@@ -4692,7 +4645,7 @@ export const getMailboxDetails: API.OperationMethod<
   GetMailboxDetailsResponse,
   GetMailboxDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMailboxDetailsRequest,
   output: GetMailboxDetailsResponse,
   errors: [
@@ -4717,7 +4670,7 @@ export const getMailDomain: API.OperationMethod<
   GetMailDomainResponse,
   GetMailDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMailDomainRequest,
   output: GetMailDomainResponse,
   errors: [
@@ -4742,7 +4695,7 @@ export const getMobileDeviceAccessEffect: API.OperationMethod<
   GetMobileDeviceAccessEffectResponse,
   GetMobileDeviceAccessEffectError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMobileDeviceAccessEffectRequest,
   output: GetMobileDeviceAccessEffectResponse,
   errors: [
@@ -4767,7 +4720,7 @@ export const getMobileDeviceAccessOverride: API.OperationMethod<
   GetMobileDeviceAccessOverrideResponse,
   GetMobileDeviceAccessOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMobileDeviceAccessOverrideRequest,
   output: GetMobileDeviceAccessOverrideResponse,
   errors: [
@@ -4793,7 +4746,7 @@ export const getPersonalAccessTokenMetadata: API.OperationMethod<
   GetPersonalAccessTokenMetadataResponse,
   GetPersonalAccessTokenMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPersonalAccessTokenMetadataRequest,
   output: GetPersonalAccessTokenMetadataResponse,
   errors: [
@@ -4816,7 +4769,7 @@ export const listAccessControlRules: API.OperationMethod<
   ListAccessControlRulesResponse,
   ListAccessControlRulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccessControlRulesRequest,
   output: ListAccessControlRulesResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
@@ -4853,7 +4806,7 @@ export const listAliases: API.OperationMethod<
     ListAliasesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAliasesRequest,
   output: ListAliasesResponse,
   errors: [
@@ -4898,7 +4851,7 @@ export const listAvailabilityConfigurations: API.OperationMethod<
     ListAvailabilityConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAvailabilityConfigurationsRequest,
   output: ListAvailabilityConfigurationsResponse,
   errors: [
@@ -4945,7 +4898,7 @@ export const listGroupMembers: API.OperationMethod<
     ListGroupMembersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupMembersRequest,
   output: ListGroupMembersResponse,
   errors: [
@@ -4991,7 +4944,7 @@ export const listGroups: API.OperationMethod<
     ListGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [
@@ -5037,7 +4990,7 @@ export const listGroupsForEntity: API.OperationMethod<
     ListGroupsForEntityError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsForEntityRequest,
   output: ListGroupsForEntityResponse,
   errors: [
@@ -5082,7 +5035,7 @@ export const listImpersonationRoles: API.OperationMethod<
     ListImpersonationRolesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImpersonationRolesRequest,
   output: ListImpersonationRolesResponse,
   errors: [
@@ -5126,7 +5079,7 @@ export const listMailboxExportJobs: API.OperationMethod<
     ListMailboxExportJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMailboxExportJobsRequest,
   output: ListMailboxExportJobsResponse,
   errors: [
@@ -5171,7 +5124,7 @@ export const listMailboxPermissions: API.OperationMethod<
     ListMailboxPermissionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMailboxPermissionsRequest,
   output: ListMailboxPermissionsResponse,
   errors: [
@@ -5215,7 +5168,7 @@ export const listMailDomains: API.OperationMethod<
     ListMailDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMailDomainsRequest,
   output: ListMailDomainsResponse,
   errors: [
@@ -5259,7 +5212,7 @@ export const listMobileDeviceAccessOverrides: API.OperationMethod<
     ListMobileDeviceAccessOverridesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMobileDeviceAccessOverridesRequest,
   output: ListMobileDeviceAccessOverridesResponse,
   errors: [
@@ -5288,7 +5241,7 @@ export const listMobileDeviceAccessRules: API.OperationMethod<
   ListMobileDeviceAccessRulesResponse,
   ListMobileDeviceAccessRulesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListMobileDeviceAccessRulesRequest,
   output: ListMobileDeviceAccessRulesResponse,
   errors: [
@@ -5322,7 +5275,7 @@ export const listOrganizations: API.OperationMethod<
     ListOrganizationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse,
   errors: [InvalidParameterException],
@@ -5363,7 +5316,7 @@ export const listPersonalAccessTokens: API.OperationMethod<
     ListPersonalAccessTokensError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPersonalAccessTokensRequest,
   output: ListPersonalAccessTokensResponse,
   errors: [
@@ -5413,7 +5366,7 @@ export const listResourceDelegates: API.OperationMethod<
     ListResourceDelegatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceDelegatesRequest,
   output: ListResourceDelegatesResponse,
   errors: [
@@ -5460,7 +5413,7 @@ export const listResources: API.OperationMethod<
     ListResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
   output: ListResourcesResponse,
   errors: [
@@ -5485,7 +5438,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
@@ -5519,7 +5472,7 @@ export const listUsers: API.OperationMethod<
     ListUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -5553,7 +5506,7 @@ export const putAccessControlRule: API.OperationMethod<
   PutAccessControlRuleResponse,
   PutAccessControlRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutAccessControlRuleRequest,
   output: PutAccessControlRuleResponse,
   errors: [
@@ -5580,7 +5533,7 @@ export const putEmailMonitoringConfiguration: API.OperationMethod<
   PutEmailMonitoringConfigurationResponse,
   PutEmailMonitoringConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEmailMonitoringConfigurationRequest,
   output: PutEmailMonitoringConfigurationResponse,
   errors: [
@@ -5606,7 +5559,7 @@ export const putIdentityProviderConfiguration: API.OperationMethod<
   PutIdentityProviderConfigurationResponse,
   PutIdentityProviderConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutIdentityProviderConfigurationRequest,
   output: PutIdentityProviderConfigurationResponse,
   errors: [
@@ -5629,7 +5582,7 @@ export const putInboundDmarcSettings: API.OperationMethod<
   PutInboundDmarcSettingsResponse,
   PutInboundDmarcSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutInboundDmarcSettingsRequest,
   output: PutInboundDmarcSettingsResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
@@ -5651,7 +5604,7 @@ export const putMailboxPermissions: API.OperationMethod<
   PutMailboxPermissionsResponse,
   PutMailboxPermissionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMailboxPermissionsRequest,
   output: PutMailboxPermissionsResponse,
   errors: [
@@ -5678,7 +5631,7 @@ export const putMobileDeviceAccessOverride: API.OperationMethod<
   PutMobileDeviceAccessOverrideResponse,
   PutMobileDeviceAccessOverrideError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMobileDeviceAccessOverrideRequest,
   output: PutMobileDeviceAccessOverrideResponse,
   errors: [
@@ -5704,7 +5657,7 @@ export const putRetentionPolicy: API.OperationMethod<
   PutRetentionPolicyResponse,
   PutRetentionPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRetentionPolicyRequest,
   output: PutRetentionPolicyResponse,
   errors: [
@@ -5731,7 +5684,7 @@ export const registerMailDomain: API.OperationMethod<
   RegisterMailDomainResponse,
   RegisterMailDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterMailDomainRequest,
   output: RegisterMailDomainResponse,
   errors: [
@@ -5772,7 +5725,7 @@ export const registerToWorkMail: API.OperationMethod<
   RegisterToWorkMailResponse,
   RegisterToWorkMailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterToWorkMailRequest,
   output: RegisterToWorkMailResponse,
   errors: [
@@ -5810,7 +5763,7 @@ export const resetPassword: API.OperationMethod<
   ResetPasswordResponse,
   ResetPasswordError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetPasswordRequest,
   output: ResetPasswordResponse,
   errors: [
@@ -5844,7 +5797,7 @@ export const startMailboxExportJob: API.OperationMethod<
   StartMailboxExportJobResponse,
   StartMailboxExportJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartMailboxExportJobRequest,
   output: StartMailboxExportJobResponse,
   errors: [
@@ -5871,7 +5824,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -5902,7 +5855,7 @@ export const testAvailabilityConfiguration: API.OperationMethod<
   TestAvailabilityConfigurationResponse,
   TestAvailabilityConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestAvailabilityConfigurationRequest,
   output: TestAvailabilityConfigurationResponse,
   errors: [
@@ -5923,7 +5876,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
@@ -5944,7 +5897,7 @@ export const updateAvailabilityConfiguration: API.OperationMethod<
   UpdateAvailabilityConfigurationResponse,
   UpdateAvailabilityConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAvailabilityConfigurationRequest,
   output: UpdateAvailabilityConfigurationResponse,
   errors: [
@@ -5970,7 +5923,7 @@ export const updateDefaultMailDomain: API.OperationMethod<
   UpdateDefaultMailDomainResponse,
   UpdateDefaultMailDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDefaultMailDomainRequest,
   output: UpdateDefaultMailDomainResponse,
   errors: [
@@ -5998,7 +5951,7 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupResponse,
   UpdateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupRequest,
   output: UpdateGroupResponse,
   errors: [
@@ -6028,7 +5981,7 @@ export const updateImpersonationRole: API.OperationMethod<
   UpdateImpersonationRoleResponse,
   UpdateImpersonationRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateImpersonationRoleRequest,
   output: UpdateImpersonationRoleResponse,
   errors: [
@@ -6058,7 +6011,7 @@ export const updateMailboxQuota: API.OperationMethod<
   UpdateMailboxQuotaResponse,
   UpdateMailboxQuotaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMailboxQuotaRequest,
   output: UpdateMailboxQuotaResponse,
   errors: [
@@ -6084,7 +6037,7 @@ export const updateMobileDeviceAccessRule: API.OperationMethod<
   UpdateMobileDeviceAccessRuleResponse,
   UpdateMobileDeviceAccessRuleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMobileDeviceAccessRuleRequest,
   output: UpdateMobileDeviceAccessRuleResponse,
   errors: [
@@ -6118,7 +6071,7 @@ export const updatePrimaryEmailAddress: API.OperationMethod<
   UpdatePrimaryEmailAddressResponse,
   UpdatePrimaryEmailAddressError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePrimaryEmailAddressRequest,
   output: UpdatePrimaryEmailAddressResponse,
   errors: [
@@ -6160,7 +6113,7 @@ export const updateResource: API.OperationMethod<
   UpdateResourceResponse,
   UpdateResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceRequest,
   output: UpdateResourceResponse,
   errors: [
@@ -6199,7 +6152,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserResponse,
   UpdateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,
   errors: [

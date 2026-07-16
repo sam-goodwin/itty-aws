@@ -10,7 +10,7 @@ export interface MarketingAnalyticsExplainConversionGoalRetrieveInput {
   goal_id: string;
 }
 export const MarketingAnalyticsExplainConversionGoalRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     date_from: Schema.optional(Schema.String),
     date_to: Schema.optional(Schema.String),
@@ -47,7 +47,7 @@ export interface MarketingAnalyticsExplainConversionGoalRetrieveOutput {
   notes: string[];
 }
 export const MarketingAnalyticsExplainConversionGoalRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     goal_id: Schema.String,
     goal_name: Schema.String,
     kind: Schema.String,
@@ -88,7 +88,7 @@ export const MarketingAnalyticsExplainConversionGoalRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const marketingAnalyticsExplainConversionGoalRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketingAnalyticsExplainConversionGoalRetrieveInput,
     outputSchema: MarketingAnalyticsExplainConversionGoalRetrieveOutput,
   }));

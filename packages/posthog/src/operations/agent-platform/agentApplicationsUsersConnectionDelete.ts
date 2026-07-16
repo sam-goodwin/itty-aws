@@ -10,7 +10,7 @@ export interface AgentApplicationsUsersConnectionDeleteInput {
   provider: string;
 }
 export const AgentApplicationsUsersConnectionDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agent_user_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -25,7 +25,7 @@ export const AgentApplicationsUsersConnectionDeleteInput =
 // Output Schema
 export type AgentApplicationsUsersConnectionDeleteOutput = void;
 export const AgentApplicationsUsersConnectionDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsUsersConnectionDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentApplicationsUsersConnectionDeleteOutput>;
 
 // The operation
 /**
@@ -36,7 +36,7 @@ export const AgentApplicationsUsersConnectionDeleteOutput =
  * @param provider - Identity provider id (e.g. 'posthog', 'github').
  */
 export const agentApplicationsUsersConnectionDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsUsersConnectionDeleteInput,
     outputSchema: AgentApplicationsUsersConnectionDeleteOutput,
   }));

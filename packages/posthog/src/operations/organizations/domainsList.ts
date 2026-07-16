@@ -9,7 +9,7 @@ export interface DomainsListInput {
   limit?: number;
   offset?: number;
 }
-export const DomainsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsListInput = /*@__PURE__*/ Schema.Struct({
   organization_id: Schema.String.pipe(T.PathParam()),
   limit: Schema.optional(Schema.Number),
   offset: Schema.optional(Schema.Number),
@@ -47,7 +47,7 @@ export interface DomainsListOutput {
     id_jag_allowed_clients?: string[];
   }[];
 }
-export const DomainsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DomainsListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -85,7 +85,7 @@ export const DomainsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param offset - The initial index from which to return the results.
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const domainsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const domainsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DomainsListInput,
   outputSchema: DomainsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

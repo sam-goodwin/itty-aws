@@ -34,7 +34,7 @@ export interface AchievementResetResponse {
 }
 
 export const AchievementResetResponse: Schema.Codec<AchievementResetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     definitionId: Schema.optional(Schema.String),
     updateOccurred: Schema.optional(Schema.Boolean),
@@ -49,7 +49,7 @@ export interface AchievementResetAllResponse {
 }
 
 export const AchievementResetAllResponse: Schema.Codec<AchievementResetAllResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(AchievementResetResponse)),
   }).annotate({ identifier: "AchievementResetAllResponse" });
@@ -62,7 +62,7 @@ export interface AchievementResetMultipleForAllRequest {
 }
 
 export const AchievementResetMultipleForAllRequest: Schema.Codec<AchievementResetMultipleForAllRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     achievement_ids: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AchievementResetMultipleForAllRequest" });
@@ -75,7 +75,7 @@ export interface EventsResetMultipleForAllRequest {
 }
 
 export const EventsResetMultipleForAllRequest: Schema.Codec<EventsResetMultipleForAllRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     event_ids: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "EventsResetMultipleForAllRequest" });
@@ -87,7 +87,7 @@ export interface ProfileSettings {
 }
 
 export const ProfileSettings: Schema.Codec<ProfileSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     profileVisible: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ProfileSettings" });
@@ -102,7 +102,7 @@ export interface GamesPlayerLevelResource {
 }
 
 export const GamesPlayerLevelResource: Schema.Codec<GamesPlayerLevelResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     level: Schema.optional(Schema.Number),
     minExperiencePoints: Schema.optional(Schema.String),
     maxExperiencePoints: Schema.optional(Schema.String),
@@ -120,7 +120,7 @@ export interface GamesPlayerExperienceInfoResource {
 }
 
 export const GamesPlayerExperienceInfoResource: Schema.Codec<GamesPlayerExperienceInfoResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentExperiencePoints: Schema.optional(Schema.String),
     lastLevelUpTimestampMillis: Schema.optional(Schema.String),
     currentLevel: Schema.optional(GamesPlayerLevelResource),
@@ -153,7 +153,7 @@ export interface Player {
 }
 
 export const Player: Schema.Codec<Player> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     playerId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -182,7 +182,7 @@ export interface HiddenPlayer {
 }
 
 export const HiddenPlayer: Schema.Codec<HiddenPlayer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     player: Schema.optional(Player),
     hiddenTimeMillis: Schema.optional(Schema.String),
@@ -198,7 +198,7 @@ export interface HiddenPlayerList {
 }
 
 export const HiddenPlayerList: Schema.Codec<HiddenPlayerList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(HiddenPlayer)),
     nextPageToken: Schema.optional(Schema.String),
@@ -214,7 +214,7 @@ export interface PlayerScoreResetResponse {
 }
 
 export const PlayerScoreResetResponse: Schema.Codec<PlayerScoreResetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     definitionId: Schema.optional(Schema.String),
     resetScoreTimeSpans: Schema.optional(Schema.Array(Schema.String)),
@@ -228,7 +228,7 @@ export interface PlayerScoreResetAllResponse {
 }
 
 export const PlayerScoreResetAllResponse: Schema.Codec<PlayerScoreResetAllResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     results: Schema.optional(Schema.Array(PlayerScoreResetResponse)),
   }).annotate({ identifier: "PlayerScoreResetAllResponse" });
@@ -241,7 +241,7 @@ export interface ScoresResetMultipleForAllRequest {
 }
 
 export const ScoresResetMultipleForAllRequest: Schema.Codec<ScoresResetMultipleForAllRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     leaderboard_ids: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ScoresResetMultipleForAllRequest" });
@@ -306,7 +306,7 @@ export interface ResetAchievementsRequest {
 }
 
 export const ResetAchievementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     achievementId: Schema.String.pipe(T.HttpPath("achievementId")),
   }).pipe(
     T.Http({
@@ -318,8 +318,7 @@ export const ResetAchievementsRequest =
   ) as unknown as Schema.Codec<ResetAchievementsRequest>;
 
 export type ResetAchievementsResponse = AchievementResetResponse;
-export const ResetAchievementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AchievementResetResponse;
+export const ResetAchievementsResponse = /*@__PURE__*/ AchievementResetResponse;
 
 export type ResetAchievementsError =
   | DefaultErrors
@@ -334,7 +333,7 @@ export const resetAchievements: API.OperationMethod<
   ResetAchievementsResponse,
   ResetAchievementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetAchievementsRequest,
   output: ResetAchievementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -343,7 +342,7 @@ export const resetAchievements: API.OperationMethod<
 export interface ResetAllAchievementsRequest {}
 
 export const ResetAllAchievementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "games/v1management/achievements/reset",
@@ -354,7 +353,7 @@ export const ResetAllAchievementsRequest =
 
 export type ResetAllAchievementsResponse = AchievementResetAllResponse;
 export const ResetAllAchievementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AchievementResetAllResponse;
+  /*@__PURE__*/ AchievementResetAllResponse;
 
 export type ResetAllAchievementsError =
   | DefaultErrors
@@ -369,7 +368,7 @@ export const resetAllAchievements: API.OperationMethod<
   ResetAllAchievementsResponse,
   ResetAllAchievementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetAllAchievementsRequest,
   output: ResetAllAchievementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -378,7 +377,7 @@ export const resetAllAchievements: API.OperationMethod<
 export interface ResetAllForAllPlayersAchievementsRequest {}
 
 export const ResetAllForAllPlayersAchievementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "games/v1management/achievements/resetAllForAllPlayers",
@@ -389,7 +388,7 @@ export const ResetAllForAllPlayersAchievementsRequest =
 
 export interface ResetAllForAllPlayersAchievementsResponse {}
 export const ResetAllForAllPlayersAchievementsResponse: Schema.Codec<ResetAllForAllPlayersAchievementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<ResetAllForAllPlayersAchievementsResponse>;
 
@@ -406,7 +405,7 @@ export const resetAllForAllPlayersAchievements: API.OperationMethod<
   ResetAllForAllPlayersAchievementsResponse,
   ResetAllForAllPlayersAchievementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetAllForAllPlayersAchievementsRequest,
   output: ResetAllForAllPlayersAchievementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -418,7 +417,7 @@ export interface ResetForAllPlayersAchievementsRequest {
 }
 
 export const ResetForAllPlayersAchievementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     achievementId: Schema.String.pipe(T.HttpPath("achievementId")),
   }).pipe(
     T.Http({
@@ -431,7 +430,7 @@ export const ResetForAllPlayersAchievementsRequest =
 
 export interface ResetForAllPlayersAchievementsResponse {}
 export const ResetForAllPlayersAchievementsResponse: Schema.Codec<ResetForAllPlayersAchievementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<ResetForAllPlayersAchievementsResponse>;
 
@@ -448,7 +447,7 @@ export const resetForAllPlayersAchievements: API.OperationMethod<
   ResetForAllPlayersAchievementsResponse,
   ResetForAllPlayersAchievementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetForAllPlayersAchievementsRequest,
   output: ResetForAllPlayersAchievementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -460,7 +459,7 @@ export interface ResetMultipleForAllPlayersAchievementsRequest {
 }
 
 export const ResetMultipleForAllPlayersAchievementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(AchievementResetMultipleForAllRequest).pipe(
       T.HttpBody(),
     ),
@@ -475,7 +474,7 @@ export const ResetMultipleForAllPlayersAchievementsRequest =
 
 export interface ResetMultipleForAllPlayersAchievementsResponse {}
 export const ResetMultipleForAllPlayersAchievementsResponse: Schema.Codec<ResetMultipleForAllPlayersAchievementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<ResetMultipleForAllPlayersAchievementsResponse>;
 
@@ -492,7 +491,7 @@ export const resetMultipleForAllPlayersAchievements: API.OperationMethod<
   ResetMultipleForAllPlayersAchievementsResponse,
   ResetMultipleForAllPlayersAchievementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetMultipleForAllPlayersAchievementsRequest,
   output: ResetMultipleForAllPlayersAchievementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -503,7 +502,7 @@ export interface ResetEventsRequest {
   eventId: string;
 }
 
-export const ResetEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ResetEventsRequest = /*@__PURE__*/ Schema.Struct({
   eventId: Schema.String.pipe(T.HttpPath("eventId")),
 }).pipe(
   T.Http({
@@ -516,9 +515,7 @@ export const ResetEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResetEventsResponse {}
 export const ResetEventsResponse: Schema.Codec<ResetEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<ResetEventsResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<ResetEventsResponse>;
 
 export type ResetEventsError =
   | DefaultErrors
@@ -533,7 +530,7 @@ export const resetEvents: API.OperationMethod<
   ResetEventsResponse,
   ResetEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetEventsRequest,
   output: ResetEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -541,9 +538,7 @@ export const resetEvents: API.OperationMethod<
 
 export interface ResetAllEventsRequest {}
 
-export const ResetAllEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ResetAllEventsRequest = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "POST",
     path: "games/v1management/events/reset",
@@ -554,7 +549,7 @@ export const ResetAllEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ResetAllEventsResponse {}
 export const ResetAllEventsResponse: Schema.Codec<ResetAllEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<ResetAllEventsResponse>;
 
@@ -571,7 +566,7 @@ export const resetAllEvents: API.OperationMethod<
   ResetAllEventsResponse,
   ResetAllEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetAllEventsRequest,
   output: ResetAllEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -580,7 +575,7 @@ export const resetAllEvents: API.OperationMethod<
 export interface ResetAllForAllPlayersEventsRequest {}
 
 export const ResetAllForAllPlayersEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "games/v1management/events/resetAllForAllPlayers",
@@ -591,7 +586,7 @@ export const ResetAllForAllPlayersEventsRequest =
 
 export interface ResetAllForAllPlayersEventsResponse {}
 export const ResetAllForAllPlayersEventsResponse: Schema.Codec<ResetAllForAllPlayersEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<ResetAllForAllPlayersEventsResponse>;
 
@@ -608,7 +603,7 @@ export const resetAllForAllPlayersEvents: API.OperationMethod<
   ResetAllForAllPlayersEventsResponse,
   ResetAllForAllPlayersEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetAllForAllPlayersEventsRequest,
   output: ResetAllForAllPlayersEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -620,7 +615,7 @@ export interface ResetForAllPlayersEventsRequest {
 }
 
 export const ResetForAllPlayersEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventId: Schema.String.pipe(T.HttpPath("eventId")),
   }).pipe(
     T.Http({
@@ -633,7 +628,7 @@ export const ResetForAllPlayersEventsRequest =
 
 export interface ResetForAllPlayersEventsResponse {}
 export const ResetForAllPlayersEventsResponse: Schema.Codec<ResetForAllPlayersEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<ResetForAllPlayersEventsResponse>;
 
@@ -650,7 +645,7 @@ export const resetForAllPlayersEvents: API.OperationMethod<
   ResetForAllPlayersEventsResponse,
   ResetForAllPlayersEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetForAllPlayersEventsRequest,
   output: ResetForAllPlayersEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -662,7 +657,7 @@ export interface ResetMultipleForAllPlayersEventsRequest {
 }
 
 export const ResetMultipleForAllPlayersEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(EventsResetMultipleForAllRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -675,7 +670,7 @@ export const ResetMultipleForAllPlayersEventsRequest =
 
 export interface ResetMultipleForAllPlayersEventsResponse {}
 export const ResetMultipleForAllPlayersEventsResponse: Schema.Codec<ResetMultipleForAllPlayersEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<ResetMultipleForAllPlayersEventsResponse>;
 
@@ -692,7 +687,7 @@ export const resetMultipleForAllPlayersEvents: API.OperationMethod<
   ResetMultipleForAllPlayersEventsResponse,
   ResetMultipleForAllPlayersEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetMultipleForAllPlayersEventsRequest,
   output: ResetMultipleForAllPlayersEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -705,7 +700,7 @@ export interface HidePlayersRequest {
   playerId: string;
 }
 
-export const HidePlayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HidePlayersRequest = /*@__PURE__*/ Schema.Struct({
   applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
   playerId: Schema.String.pipe(T.HttpPath("playerId")),
 }).pipe(
@@ -719,9 +714,7 @@ export const HidePlayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HidePlayersResponse {}
 export const HidePlayersResponse: Schema.Codec<HidePlayersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<HidePlayersResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<HidePlayersResponse>;
 
 export type HidePlayersError =
   | DefaultErrors
@@ -736,7 +729,7 @@ export const hidePlayers: API.OperationMethod<
   HidePlayersResponse,
   HidePlayersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: HidePlayersRequest,
   output: HidePlayersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -749,7 +742,7 @@ export interface UnhidePlayersRequest {
   playerId: string;
 }
 
-export const UnhidePlayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UnhidePlayersRequest = /*@__PURE__*/ Schema.Struct({
   applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
   playerId: Schema.String.pipe(T.HttpPath("playerId")),
 }).pipe(
@@ -762,9 +755,7 @@ export const UnhidePlayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UnhidePlayersResponse {}
 export const UnhidePlayersResponse: Schema.Codec<UnhidePlayersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<UnhidePlayersResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<UnhidePlayersResponse>;
 
 export type UnhidePlayersError =
   | DefaultErrors
@@ -779,7 +770,7 @@ export const unhidePlayers: API.OperationMethod<
   UnhidePlayersResponse,
   UnhidePlayersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UnhidePlayersRequest,
   output: UnhidePlayersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -795,7 +786,7 @@ export interface ListHiddenApplicationsRequest {
 }
 
 export const ListHiddenApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     applicationId: Schema.String.pipe(T.HttpPath("applicationId")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -808,8 +799,7 @@ export const ListHiddenApplicationsRequest =
   ) as unknown as Schema.Codec<ListHiddenApplicationsRequest>;
 
 export type ListHiddenApplicationsResponse = HiddenPlayerList;
-export const ListHiddenApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ HiddenPlayerList;
+export const ListHiddenApplicationsResponse = /*@__PURE__*/ HiddenPlayerList;
 
 export type ListHiddenApplicationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -819,7 +809,7 @@ export const listHiddenApplications: API.PaginatedOperationMethod<
   ListHiddenApplicationsResponse,
   ListHiddenApplicationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHiddenApplicationsRequest,
   output: ListHiddenApplicationsResponse,
   errors: [NotFound, Forbidden],
@@ -835,7 +825,7 @@ export interface ResetScoresRequest {
   leaderboardId: string;
 }
 
-export const ResetScoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ResetScoresRequest = /*@__PURE__*/ Schema.Struct({
   leaderboardId: Schema.String.pipe(T.HttpPath("leaderboardId")),
 }).pipe(
   T.Http({
@@ -847,8 +837,7 @@ export const ResetScoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ResetScoresRequest>;
 
 export type ResetScoresResponse = PlayerScoreResetResponse;
-export const ResetScoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PlayerScoreResetResponse;
+export const ResetScoresResponse = /*@__PURE__*/ PlayerScoreResetResponse;
 
 export type ResetScoresError =
   | DefaultErrors
@@ -863,7 +852,7 @@ export const resetScores: API.OperationMethod<
   ResetScoresResponse,
   ResetScoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetScoresRequest,
   output: ResetScoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -871,9 +860,7 @@ export const resetScores: API.OperationMethod<
 
 export interface ResetAllScoresRequest {}
 
-export const ResetAllScoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ResetAllScoresRequest = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "POST",
     path: "games/v1management/scores/reset",
@@ -883,8 +870,7 @@ export const ResetAllScoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<ResetAllScoresRequest>;
 
 export type ResetAllScoresResponse = PlayerScoreResetAllResponse;
-export const ResetAllScoresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PlayerScoreResetAllResponse;
+export const ResetAllScoresResponse = /*@__PURE__*/ PlayerScoreResetAllResponse;
 
 export type ResetAllScoresError =
   | DefaultErrors
@@ -899,7 +885,7 @@ export const resetAllScores: API.OperationMethod<
   ResetAllScoresResponse,
   ResetAllScoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetAllScoresRequest,
   output: ResetAllScoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -908,7 +894,7 @@ export const resetAllScores: API.OperationMethod<
 export interface ResetAllForAllPlayersScoresRequest {}
 
 export const ResetAllForAllPlayersScoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "games/v1management/scores/resetAllForAllPlayers",
@@ -919,7 +905,7 @@ export const ResetAllForAllPlayersScoresRequest =
 
 export interface ResetAllForAllPlayersScoresResponse {}
 export const ResetAllForAllPlayersScoresResponse: Schema.Codec<ResetAllForAllPlayersScoresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<ResetAllForAllPlayersScoresResponse>;
 
@@ -936,7 +922,7 @@ export const resetAllForAllPlayersScores: API.OperationMethod<
   ResetAllForAllPlayersScoresResponse,
   ResetAllForAllPlayersScoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetAllForAllPlayersScoresRequest,
   output: ResetAllForAllPlayersScoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -948,7 +934,7 @@ export interface ResetForAllPlayersScoresRequest {
 }
 
 export const ResetForAllPlayersScoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     leaderboardId: Schema.String.pipe(T.HttpPath("leaderboardId")),
   }).pipe(
     T.Http({
@@ -961,7 +947,7 @@ export const ResetForAllPlayersScoresRequest =
 
 export interface ResetForAllPlayersScoresResponse {}
 export const ResetForAllPlayersScoresResponse: Schema.Codec<ResetForAllPlayersScoresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<ResetForAllPlayersScoresResponse>;
 
@@ -978,7 +964,7 @@ export const resetForAllPlayersScores: API.OperationMethod<
   ResetForAllPlayersScoresResponse,
   ResetForAllPlayersScoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetForAllPlayersScoresRequest,
   output: ResetForAllPlayersScoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -990,7 +976,7 @@ export interface ResetMultipleForAllPlayersScoresRequest {
 }
 
 export const ResetMultipleForAllPlayersScoresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(ScoresResetMultipleForAllRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -1003,7 +989,7 @@ export const ResetMultipleForAllPlayersScoresRequest =
 
 export interface ResetMultipleForAllPlayersScoresResponse {}
 export const ResetMultipleForAllPlayersScoresResponse: Schema.Codec<ResetMultipleForAllPlayersScoresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<ResetMultipleForAllPlayersScoresResponse>;
 
@@ -1020,7 +1006,7 @@ export const resetMultipleForAllPlayersScores: API.OperationMethod<
   ResetMultipleForAllPlayersScoresResponse,
   ResetMultipleForAllPlayersScoresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetMultipleForAllPlayersScoresRequest,
   output: ResetMultipleForAllPlayersScoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

@@ -100,7 +100,7 @@ interface ApishieldAuthIDCharacteristic {
   type: "header" | "cookie" | (string & {});
 }
 const ApishieldAuthIDCharacteristic =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       type: Schema.Union([
@@ -117,7 +117,7 @@ interface ApishieldAuthIDCharacteristicJWTClaim {
   type: "jwt";
 }
 const ApishieldAuthIDCharacteristicJWTClaim =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       type: Schema.Literal("jwt"),
@@ -131,7 +131,7 @@ interface TrafficStats {
   /** The average number of requests seen during this period */
   requests: number;
 }
-const TrafficStats = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TrafficStats = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.String,
     periodSeconds: Schema.Number,
@@ -152,7 +152,7 @@ interface Features {
     requests: number;
   } | null;
 }
-const Features = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Features = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     trafficStats: Schema.optional(Schema.Union([TrafficStats, Schema.Null])),
   }).pipe(Schema.encodeKeys({ trafficStats: "traffic_stats" })),
@@ -190,7 +190,7 @@ interface DiscoveryOperation {
     } | null;
   } | null;
 }
-const DiscoveryOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DiscoveryOperation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     endpoint: Schema.String,
@@ -242,7 +242,7 @@ interface ListDiscoveryOperationsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListDiscoveryOperationsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -272,38 +272,34 @@ interface ListLabelsResponseResult {
   /** Provides counts of what resources are linked to this label */
   mappedResources?: unknown | null;
 }
-const ListLabelsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      createdAt: Schema.String,
-      description: Schema.String,
-      lastUpdated: Schema.String,
-      metadata: Schema.Unknown,
-      name: Schema.String,
-      source: Schema.Union([
-        Schema.Literals(["user", "managed"]),
-        Schema.String,
-      ]),
-      mappedResources: Schema.optional(
-        Schema.Union([Schema.Unknown, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        createdAt: "created_at",
-        description: "description",
-        lastUpdated: "last_updated",
-        metadata: "metadata",
-        name: "name",
-        source: "source",
-        mappedResources: "mapped_resources",
-      }),
+const ListLabelsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    createdAt: Schema.String,
+    description: Schema.String,
+    lastUpdated: Schema.String,
+    metadata: Schema.Unknown,
+    name: Schema.String,
+    source: Schema.Union([Schema.Literals(["user", "managed"]), Schema.String]),
+    mappedResources: Schema.optional(
+      Schema.Union([Schema.Unknown, Schema.Null]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      createdAt: "created_at",
+      description: "description",
+      lastUpdated: "last_updated",
+      metadata: "metadata",
+      name: "name",
+      source: "source",
+      mappedResources: "mapped_resources",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListLabelsResponseResult>;
 
 interface Include {
   operationIds: string[];
 }
-const Include = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Include = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     operationIds: Schema.Array(Schema.String),
   }).pipe(Schema.encodeKeys({ operationIds: "operation_ids" })),
@@ -312,7 +308,7 @@ const Include = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Selector {
   include: { operationIds: string[] };
 }
-const Selector = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Selector = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     include: Include,
   }),
@@ -326,7 +322,7 @@ interface Body {
   /** Metadata for the label */
   metadata?: unknown | null;
 }
-const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -347,7 +343,7 @@ interface BulkCreateLabelUsersResponseResult {
   source: "user" | "managed" | (string & {});
 }
 const BulkCreateLabelUsersResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       description: Schema.String,
@@ -389,7 +385,7 @@ interface Thresholds {
   /** The suggested threshold in requests done by the same auth_id or period_seconds. */
   suggestedThreshold?: number | null;
 }
-const Thresholds = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Thresholds = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     authIdTokens: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     dataPoints: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -431,7 +427,7 @@ interface ApishieldOperationFeatureThresholds {
   } | null;
 }
 const ApishieldOperationFeatureThresholds =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       thresholds: Schema.optional(Schema.Union([Thresholds, Schema.Null])),
     }),
@@ -443,7 +439,7 @@ interface ParameterSchemas {
   /** An empty response object. This field is required to yield a valid operation schema. */
   responses?: unknown | null;
 }
-const ParameterSchemas = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ParameterSchemas = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     parameters: Schema.optional(
       Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
@@ -460,7 +456,7 @@ interface ParameterSchemas2 {
     responses?: unknown | null;
   } | null;
 }
-const ParameterSchemas2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ParameterSchemas2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     parameterSchemas: Schema.optional(
@@ -484,7 +480,7 @@ interface ApishieldOperationFeatureParameterSchemas {
   };
 }
 const ApishieldOperationFeatureParameterSchemas =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       parameterSchemas: ParameterSchemas2,
     }).pipe(Schema.encodeKeys({ parameterSchemas: "parameter_schemas" })),
@@ -495,7 +491,7 @@ interface Apirouting {
   /** Target route. */
   route?: string | null;
 }
-const Apirouting = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Apirouting = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     route: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -507,7 +503,7 @@ interface ApishieldOperationFeatureAPIRouting {
   apiRouting?: { lastUpdated?: string | null; route?: string | null } | null;
 }
 const ApishieldOperationFeatureAPIRouting =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       apiRouting: Schema.optional(Schema.Union([Apirouting, Schema.Null])),
     }).pipe(Schema.encodeKeys({ apiRouting: "api_routing" })),
@@ -519,7 +515,7 @@ interface P90 {
   /** Upper bound for percentile estimate */
   upper?: number | null;
 }
-const P90 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const P90 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lower: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     upper: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -534,7 +530,7 @@ interface ConfidenceIntervals {
   /** Upper and lower bound for percentile estimate */
   p99?: { lower?: number | null; upper?: number | null } | null;
 }
-const ConfidenceIntervals = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ConfidenceIntervals = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     p90: Schema.optional(Schema.Union([P90, Schema.Null])),
     p95: Schema.optional(Schema.Union([P90, Schema.Null])),
@@ -551,7 +547,7 @@ interface SuggestedThreshold {
   /** Suggested threshold. */
   mean?: number | null;
 }
-const SuggestedThreshold = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SuggestedThreshold = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     confidenceIntervals: Schema.optional(
       Schema.Union([ConfidenceIntervals, Schema.Null]),
@@ -576,7 +572,7 @@ interface ConfidenceIntervals2 {
     mean?: number | null;
   } | null;
 }
-const ConfidenceIntervals2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ConfidenceIntervals2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     suggestedThreshold: Schema.optional(
@@ -604,7 +600,7 @@ interface ApishieldOperationFeatureConfidenceIntervals {
   } | null;
 }
 const ApishieldOperationFeatureConfidenceIntervals =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       confidenceIntervals: Schema.optional(
         Schema.Union([ConfidenceIntervals2, Schema.Null]),
@@ -621,7 +617,7 @@ interface ActiveSchema {
   /** Schema file name. */
   name?: string | null;
 }
-const ActiveSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ActiveSchema = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -650,7 +646,7 @@ interface SchemaInfo {
   /** Action taken on requests failing validation. */
   mitigationAction?: "none" | "log" | "block" | null;
 }
-const SchemaInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SchemaInfo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     activeSchema: Schema.optional(Schema.Union([ActiveSchema, Schema.Null])),
     learnedAvailable: Schema.optional(
@@ -686,7 +682,7 @@ interface ApishieldOperationFeatureSchemaInfo {
   } | null;
 }
 const ApishieldOperationFeatureSchemaInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       schemaInfo: Schema.optional(Schema.Union([SchemaInfo, Schema.Null])),
     }).pipe(Schema.encodeKeys({ schemaInfo: "schema_info" })),
@@ -698,7 +694,7 @@ interface Learned {
   /** OpenAPI request body object describing the expected request payload. */
   requestBody?: Record<string, unknown> | null;
 }
-const Learned = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Learned = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     parameters: Schema.optional(
       Schema.Union([
@@ -724,7 +720,7 @@ interface Schemas {
     requestBody?: Record<string, unknown> | null;
   } | null;
 }
-const Schemas = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Schemas = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     learned: Schema.optional(Schema.Union([Learned, Schema.Null])),
     uploaded: Schema.optional(Schema.Union([Learned, Schema.Null])),
@@ -807,55 +803,54 @@ interface ListOperationsResponseResult {
       }
     | null;
 }
-const ListOperationsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      endpoint: Schema.String,
-      host: Schema.String,
-      lastUpdated: Schema.String,
-      method: Schema.Union([
-        Schema.Literals([
-          "GET",
-          "POST",
-          "HEAD",
-          "OPTIONS",
-          "PUT",
-          "DELETE",
-          "CONNECT",
-          "PATCH",
-          "TRACE",
-        ]),
-        Schema.String,
+const ListOperationsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    endpoint: Schema.String,
+    host: Schema.String,
+    lastUpdated: Schema.String,
+    method: Schema.Union([
+      Schema.Literals([
+        "GET",
+        "POST",
+        "HEAD",
+        "OPTIONS",
+        "PUT",
+        "DELETE",
+        "CONNECT",
+        "PATCH",
+        "TRACE",
       ]),
-      operationId: Schema.String,
-      features: Schema.optional(
+      Schema.String,
+    ]),
+    operationId: Schema.String,
+    features: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            ApishieldOperationFeatureParameterSchemas,
-            ApishieldOperationFeatureThresholds,
-            ApishieldOperationFeatureAPIRouting,
-            ApishieldOperationFeatureConfidenceIntervals,
-            ApishieldOperationFeatureSchemaInfo,
-          ]),
-          Schema.Null,
+          ApishieldOperationFeatureParameterSchemas,
+          ApishieldOperationFeatureThresholds,
+          ApishieldOperationFeatureAPIRouting,
+          ApishieldOperationFeatureConfidenceIntervals,
+          ApishieldOperationFeatureSchemaInfo,
         ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        endpoint: "endpoint",
-        host: "host",
-        lastUpdated: "last_updated",
-        method: "method",
-        operationId: "operation_id",
-        features: "features",
-      }),
+        Schema.Null,
+      ]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      endpoint: "endpoint",
+      host: "host",
+      lastUpdated: "last_updated",
+      method: "method",
+      operationId: "operation_id",
+      features: "features",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListOperationsResponseResult>;
 
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -867,7 +862,7 @@ interface MessageItem {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const MessageItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MessageItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -903,7 +898,7 @@ interface Body2 {
     | "TRACE"
     | (string & {});
 }
-const Body2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     endpoint: Schema.String,
     host: Schema.String,
@@ -928,7 +923,7 @@ interface Managed {
   /** List of managed label names. */
   labels?: string[] | null;
 }
-const Managed = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Managed = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     labels: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -968,7 +963,7 @@ interface BulkCreateOperationLabelsResponseResult {
     | null;
 }
 const BulkCreateOperationLabelsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       endpoint: Schema.String,
       host: Schema.String,
@@ -1010,7 +1005,7 @@ interface Managed2 {
   /** List of managed label names. Providing an empty array will result in all managed labels being removed from all affected operations */
   labels: string[];
 }
-const Managed2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Managed2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     labels: Schema.Array(Schema.String),
   }),
@@ -1030,7 +1025,7 @@ interface ListUserSchemasResponseResult {
   validationEnabled?: boolean | null;
 }
 const ListUserSchemasResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       kind: Schema.Literal("openapi_v3"),
@@ -1060,7 +1055,7 @@ interface Warning {
   /** Diagnostic message that describes the event. */
   message?: string | null;
 }
-const Warning = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Warning = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     locations: Schema.optional(
@@ -1076,7 +1071,7 @@ interface UploadDetails {
     | { code: number; locations?: string[] | null; message?: string | null }[]
     | null;
 }
-const UploadDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const UploadDetails = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     warnings: Schema.optional(
       Schema.Union([Schema.Array(Warning), Schema.Null]),
@@ -1094,7 +1089,7 @@ interface ListUserSchemaHostsResponseResult {
   schemaId: string;
 }
 const ListUserSchemaHostsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       hosts: Schema.Array(Schema.String),
@@ -1122,7 +1117,7 @@ export interface GetConfigurationRequest {
 }
 
 export const GetConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       normalize: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("normalize")),
@@ -1142,7 +1137,7 @@ export interface GetConfigurationResponse {
 }
 
 export const GetConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       authIdCharacteristics: Schema.Array(
         Schema.Union([
@@ -1168,7 +1163,7 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationResponse,
   GetConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigurationRequest,
   output: GetConfigurationResponse,
   errors: [InvalidObjectIdentifier, NotEntitled, Forbidden],
@@ -1187,7 +1182,7 @@ export interface PutConfigurationRequest {
 }
 
 export const PutConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       normalize: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("normalize")),
@@ -1214,7 +1209,7 @@ export interface PutConfigurationResponse {
 }
 
 export const PutConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       authIdCharacteristics: Schema.Array(
         Schema.Union([
@@ -1240,7 +1235,7 @@ export const putConfiguration: API.OperationMethod<
   PutConfigurationResponse,
   PutConfigurationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConfigurationRequest,
   output: PutConfigurationResponse,
   errors: [InvalidObjectIdentifier, NotEntitled, Forbidden],
@@ -1255,13 +1250,12 @@ export interface GetDiscoveryRequest {
   zoneId: string;
 }
 
-export const GetDiscoveryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/zones/{zone_id}/api_gateway/discovery" }),
-    ),
+export const GetDiscoveryRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/api_gateway/discovery" }),
+  ),
 ) as unknown as Schema.Codec<GetDiscoveryRequest>;
 
 export interface GetDiscoveryResponse {
@@ -1269,12 +1263,11 @@ export interface GetDiscoveryResponse {
   timestamp: string;
 }
 
-export const GetDiscoveryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      schemas: Schema.Array(Schema.Unknown),
-      timestamp: Schema.String,
-    }).pipe(T.ResponsePath("result")),
+export const GetDiscoveryResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    schemas: Schema.Array(Schema.Unknown),
+    timestamp: Schema.String,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetDiscoveryResponse>;
 
 export type GetDiscoveryError =
@@ -1287,7 +1280,7 @@ export const getDiscovery: API.OperationMethod<
   GetDiscoveryResponse,
   GetDiscoveryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDiscoveryRequest,
   output: GetDiscoveryResponse,
   errors: [InvalidObjectIdentifier, NotEntitled],
@@ -1327,7 +1320,7 @@ export interface ListDiscoveryOperationsRequest {
 }
 
 export const ListDiscoveryOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -1411,7 +1404,7 @@ export interface ListDiscoveryOperationsResponse {
 }
 
 export const ListDiscoveryOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(DiscoveryOperation),
       resultInfo: Schema.optional(
@@ -1427,7 +1420,7 @@ export const listDiscoveryOperations: API.PaginatedOperationMethod<
   ListDiscoveryOperationsResponse,
   ListDiscoveryOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDiscoveryOperationsRequest,
   output: ListDiscoveryOperationsResponse,
   errors: [],
@@ -1448,7 +1441,7 @@ export interface BulkPatchDiscoveryOperationsRequest {
 }
 
 export const BulkPatchDiscoveryOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       body: Schema.Record(Schema.String, Schema.Unknown).pipe(T.HttpBody()),
@@ -1463,7 +1456,7 @@ export const BulkPatchDiscoveryOperationsRequest =
 export type BulkPatchDiscoveryOperationsResponse = Record<string, unknown>;
 
 export const BulkPatchDiscoveryOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Record(Schema.String, Schema.Unknown).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<BulkPatchDiscoveryOperationsResponse>;
 
@@ -1477,7 +1470,7 @@ export const bulkPatchDiscoveryOperations: API.OperationMethod<
   BulkPatchDiscoveryOperationsResponse,
   BulkPatchDiscoveryOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkPatchDiscoveryOperationsRequest,
   output: BulkPatchDiscoveryOperationsResponse,
   errors: [InvalidObjectIdentifier, NotEntitled],
@@ -1495,7 +1488,7 @@ export interface CreateExpressionTemplateFallthroughRequest {
 }
 
 export const CreateExpressionTemplateFallthroughRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       hosts: Schema.Array(Schema.String),
@@ -1515,7 +1508,7 @@ export interface CreateExpressionTemplateFallthroughResponse {
 }
 
 export const CreateExpressionTemplateFallthroughResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       expression: Schema.String,
       title: Schema.String,
@@ -1531,7 +1524,7 @@ export const createExpressionTemplateFallthrough: API.OperationMethod<
   CreateExpressionTemplateFallthroughResponse,
   CreateExpressionTemplateFallthroughError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateExpressionTemplateFallthroughRequest,
   output: CreateExpressionTemplateFallthroughResponse,
   errors: [InvalidObjectIdentifier],
@@ -1564,37 +1557,36 @@ export interface ListLabelsRequest {
   withMappedResourceCounts?: boolean;
 }
 
-export const ListLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      direction: Schema.optional(
-        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-      ).pipe(T.HttpQuery("direction")),
-      filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-      order: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "name",
-            "description",
-            "created_at",
-            "last_updated",
-            "mapped_resources.operations",
-          ]),
-          Schema.String,
+export const ListLabelsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+    order: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "name",
+          "description",
+          "created_at",
+          "last_updated",
+          "mapped_resources.operations",
         ]),
-      ).pipe(T.HttpQuery("order")),
-      source: Schema.optional(
-        Schema.Union([Schema.Literals(["user", "managed"]), Schema.String]),
-      ).pipe(T.HttpQuery("source")),
-      withMappedResourceCounts: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("with_mapped_resource_counts"),
-      ),
-    }).pipe(
-      T.Http({ method: "GET", path: "/zones/{zone_id}/api_gateway/labels" }),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("order")),
+    source: Schema.optional(
+      Schema.Union([Schema.Literals(["user", "managed"]), Schema.String]),
+    ).pipe(T.HttpQuery("source")),
+    withMappedResourceCounts: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("with_mapped_resource_counts"),
     ),
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/api_gateway/labels" }),
+  ),
 ) as unknown as Schema.Codec<ListLabelsRequest>;
 
 export interface ListLabelsResponse {
@@ -1615,14 +1607,13 @@ export interface ListLabelsResponse {
   } | null;
 }
 
-export const ListLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListLabelsResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListDiscoveryOperationsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListLabelsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListLabelsResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListDiscoveryOperationsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListLabelsResponse>;
 
 export type ListLabelsError = DefaultErrors | ZonePurged | Forbidden | NotFound;
@@ -1632,7 +1623,7 @@ export const listLabels: API.PaginatedOperationMethod<
   ListLabelsResponse,
   ListLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsRequest,
   output: ListLabelsResponse,
   errors: [ZonePurged, Forbidden, NotFound],
@@ -1658,7 +1649,7 @@ export interface GetLabelManagedRequest {
 }
 
 export const GetLabelManagedRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1689,7 +1680,7 @@ export interface GetLabelManagedResponse {
 }
 
 export const GetLabelManagedResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       description: Schema.String,
@@ -1725,7 +1716,7 @@ export const getLabelManaged: API.OperationMethod<
   GetLabelManagedResponse,
   GetLabelManagedError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLabelManagedRequest,
   output: GetLabelManagedResponse,
   errors: [],
@@ -1744,7 +1735,7 @@ export interface PutLabelManagedResourceOperationRequest {
 }
 
 export const PutLabelManagedResourceOperationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1773,7 +1764,7 @@ export interface PutLabelManagedResourceOperationResponse {
 }
 
 export const PutLabelManagedResourceOperationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       description: Schema.String,
@@ -1809,7 +1800,7 @@ export const putLabelManagedResourceOperation: API.OperationMethod<
   PutLabelManagedResourceOperationResponse,
   PutLabelManagedResourceOperationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutLabelManagedResourceOperationRequest,
   output: PutLabelManagedResourceOperationResponse,
   errors: [],
@@ -1827,20 +1818,19 @@ export interface GetLabelUserRequest {
   withMappedResourceCounts?: boolean;
 }
 
-export const GetLabelUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String.pipe(T.HttpPath("name")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      withMappedResourceCounts: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("with_mapped_resource_counts"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/api_gateway/labels/user/{name}",
-      }),
+export const GetLabelUserRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    withMappedResourceCounts: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("with_mapped_resource_counts"),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/api_gateway/labels/user/{name}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetLabelUserRequest>;
 
 export interface GetLabelUserResponse {
@@ -1858,34 +1848,30 @@ export interface GetLabelUserResponse {
   mappedResources?: unknown | null;
 }
 
-export const GetLabelUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      createdAt: Schema.String,
-      description: Schema.String,
-      lastUpdated: Schema.String,
-      metadata: Schema.Unknown,
-      name: Schema.String,
-      source: Schema.Union([
-        Schema.Literals(["user", "managed"]),
-        Schema.String,
-      ]),
-      mappedResources: Schema.optional(
-        Schema.Union([Schema.Unknown, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          createdAt: "created_at",
-          description: "description",
-          lastUpdated: "last_updated",
-          metadata: "metadata",
-          name: "name",
-          source: "source",
-          mappedResources: "mapped_resources",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetLabelUserResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    createdAt: Schema.String,
+    description: Schema.String,
+    lastUpdated: Schema.String,
+    metadata: Schema.Unknown,
+    name: Schema.String,
+    source: Schema.Union([Schema.Literals(["user", "managed"]), Schema.String]),
+    mappedResources: Schema.optional(
+      Schema.Union([Schema.Unknown, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        description: "description",
+        lastUpdated: "last_updated",
+        metadata: "metadata",
+        name: "name",
+        source: "source",
+        mappedResources: "mapped_resources",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetLabelUserResponse>;
 
 export type GetLabelUserError = DefaultErrors | LabelNotFound | Forbidden;
@@ -1895,7 +1881,7 @@ export const getLabelUser: API.OperationMethod<
   GetLabelUserResponse,
   GetLabelUserError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLabelUserRequest,
   output: GetLabelUserResponse,
   errors: [LabelNotFound, Forbidden],
@@ -1911,19 +1897,18 @@ export interface PutLabelUserRequest {
   metadata?: unknown;
 }
 
-export const PutLabelUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String.pipe(T.HttpPath("name")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      description: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Unknown),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/api_gateway/labels/user/{name}",
-      }),
-    ),
+export const PutLabelUserRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    description: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Unknown),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/api_gateway/labels/user/{name}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PutLabelUserRequest>;
 
 export interface PutLabelUserResponse {
@@ -1939,30 +1924,26 @@ export interface PutLabelUserResponse {
   source: "user" | "managed" | (string & {});
 }
 
-export const PutLabelUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      createdAt: Schema.String,
-      description: Schema.String,
-      lastUpdated: Schema.String,
-      metadata: Schema.Unknown,
-      name: Schema.String,
-      source: Schema.Union([
-        Schema.Literals(["user", "managed"]),
-        Schema.String,
-      ]),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          createdAt: "created_at",
-          description: "description",
-          lastUpdated: "last_updated",
-          metadata: "metadata",
-          name: "name",
-          source: "source",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PutLabelUserResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    createdAt: Schema.String,
+    description: Schema.String,
+    lastUpdated: Schema.String,
+    metadata: Schema.Unknown,
+    name: Schema.String,
+    source: Schema.Union([Schema.Literals(["user", "managed"]), Schema.String]),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        description: "description",
+        lastUpdated: "last_updated",
+        metadata: "metadata",
+        name: "name",
+        source: "source",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutLabelUserResponse>;
 
 export type PutLabelUserError = DefaultErrors | LabelNotFound;
@@ -1972,7 +1953,7 @@ export const putLabelUser: API.OperationMethod<
   PutLabelUserResponse,
   PutLabelUserError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutLabelUserRequest,
   output: PutLabelUserResponse,
   errors: [LabelNotFound],
@@ -1988,19 +1969,18 @@ export interface PatchLabelUserRequest {
   metadata?: unknown;
 }
 
-export const PatchLabelUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String.pipe(T.HttpPath("name")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      description: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Unknown),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        path: "/zones/{zone_id}/api_gateway/labels/user/{name}",
-      }),
-    ),
+export const PatchLabelUserRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String.pipe(T.HttpPath("name")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    description: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Unknown),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/zones/{zone_id}/api_gateway/labels/user/{name}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchLabelUserRequest>;
 
 export interface PatchLabelUserResponse {
@@ -2017,7 +1997,7 @@ export interface PatchLabelUserResponse {
 }
 
 export const PatchLabelUserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       description: Schema.String,
@@ -2049,7 +2029,7 @@ export const patchLabelUser: API.OperationMethod<
   PatchLabelUserResponse,
   PatchLabelUserError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchLabelUserRequest,
   output: PatchLabelUserResponse,
   errors: [LabelNotFound],
@@ -2062,7 +2042,7 @@ export interface DeleteLabelUserRequest {
 }
 
 export const DeleteLabelUserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -2088,7 +2068,7 @@ export interface DeleteLabelUserResponse {
 }
 
 export const DeleteLabelUserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       description: Schema.String,
@@ -2120,7 +2100,7 @@ export const deleteLabelUser: API.OperationMethod<
   DeleteLabelUserResponse,
   DeleteLabelUserError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLabelUserRequest,
   output: DeleteLabelUserResponse,
   errors: [LabelNotFound, Forbidden],
@@ -2134,7 +2114,7 @@ export interface BulkCreateLabelUsersRequest {
 }
 
 export const BulkCreateLabelUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       body: Schema.Array(Body).pipe(T.HttpBody()),
@@ -2158,7 +2138,7 @@ export interface BulkCreateLabelUsersResponse {
 }
 
 export const BulkCreateLabelUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(BulkCreateLabelUsersResponseResult),
     }),
@@ -2174,7 +2154,7 @@ export const bulkCreateLabelUsers: API.PaginatedOperationMethod<
   BulkCreateLabelUsersResponse,
   BulkCreateLabelUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkCreateLabelUsersRequest,
   output: BulkCreateLabelUsersResponse,
   errors: [LabelAlreadyExists, Forbidden],
@@ -2190,7 +2170,7 @@ export interface BulkDeleteLabelUsersRequest {
 }
 
 export const BulkDeleteLabelUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -2213,7 +2193,7 @@ export interface BulkDeleteLabelUsersResponse {
 }
 
 export const BulkDeleteLabelUsersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(BulkCreateLabelUsersResponseResult),
     }),
@@ -2226,7 +2206,7 @@ export const bulkDeleteLabelUsers: API.PaginatedOperationMethod<
   BulkDeleteLabelUsersResponse,
   BulkDeleteLabelUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkDeleteLabelUsersRequest,
   output: BulkDeleteLabelUsersResponse,
   errors: [],
@@ -2249,7 +2229,7 @@ export interface PutLabelUserResourceOperationRequest {
 }
 
 export const PutLabelUserResourceOperationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String.pipe(T.HttpPath("name")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -2278,7 +2258,7 @@ export interface PutLabelUserResourceOperationResponse {
 }
 
 export const PutLabelUserResourceOperationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       description: Schema.String,
@@ -2314,7 +2294,7 @@ export const putLabelUserResourceOperation: API.OperationMethod<
   PutLabelUserResourceOperationResponse,
   PutLabelUserResourceOperationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutLabelUserResourceOperationRequest,
   output: PutLabelUserResourceOperationResponse,
   errors: [],
@@ -2339,28 +2319,27 @@ export interface GetOperationRequest {
   withSchemas?: boolean;
 }
 
-export const GetOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      operationId: Schema.String.pipe(T.HttpPath("operationId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      feature: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
-            Schema.String,
-          ]),
-        ),
-      ).pipe(T.HttpQuery("feature")),
-      withSchemas: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("with_schemas"),
+export const GetOperationRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    operationId: Schema.String.pipe(T.HttpPath("operationId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    feature: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
+          Schema.String,
+        ]),
       ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/api_gateway/operations/{operationId}",
-      }),
+    ).pipe(T.HttpQuery("feature")),
+    withSchemas: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("with_schemas"),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/api_gateway/operations/{operationId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetOperationRequest>;
 
 export interface GetOperationResponse {
@@ -2451,53 +2430,52 @@ export interface GetOperationResponse {
   } | null;
 }
 
-export const GetOperationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      endpoint: Schema.String,
-      host: Schema.String,
-      lastUpdated: Schema.String,
-      method: Schema.Union([
-        Schema.Literals([
-          "GET",
-          "POST",
-          "HEAD",
-          "OPTIONS",
-          "PUT",
-          "DELETE",
-          "CONNECT",
-          "PATCH",
-          "TRACE",
-        ]),
-        Schema.String,
+export const GetOperationResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    endpoint: Schema.String,
+    host: Schema.String,
+    lastUpdated: Schema.String,
+    method: Schema.Union([
+      Schema.Literals([
+        "GET",
+        "POST",
+        "HEAD",
+        "OPTIONS",
+        "PUT",
+        "DELETE",
+        "CONNECT",
+        "PATCH",
+        "TRACE",
       ]),
-      operationId: Schema.String,
-      features: Schema.optional(
+      Schema.String,
+    ]),
+    operationId: Schema.String,
+    features: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            ApishieldOperationFeatureParameterSchemas,
-            ApishieldOperationFeatureThresholds,
-            ApishieldOperationFeatureAPIRouting,
-            ApishieldOperationFeatureConfidenceIntervals,
-            ApishieldOperationFeatureSchemaInfo,
-          ]),
-          Schema.Null,
+          ApishieldOperationFeatureParameterSchemas,
+          ApishieldOperationFeatureThresholds,
+          ApishieldOperationFeatureAPIRouting,
+          ApishieldOperationFeatureConfidenceIntervals,
+          ApishieldOperationFeatureSchemaInfo,
         ]),
-      ),
-      schemas: Schema.optional(Schema.Union([Schemas, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          endpoint: "endpoint",
-          host: "host",
-          lastUpdated: "last_updated",
-          method: "method",
-          operationId: "operation_id",
-          features: "features",
-          schemas: "schemas",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    schemas: Schema.optional(Schema.Union([Schemas, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        endpoint: "endpoint",
+        host: "host",
+        lastUpdated: "last_updated",
+        method: "method",
+        operationId: "operation_id",
+        features: "features",
+        schemas: "schemas",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetOperationResponse>;
 
 export type GetOperationError =
@@ -2511,7 +2489,7 @@ export const getOperation: API.OperationMethod<
   GetOperationResponse,
   GetOperationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationRequest,
   output: GetOperationResponse,
   errors: [InvalidObjectIdentifier, OperationNotFound, Forbidden],
@@ -2541,42 +2519,41 @@ export interface ListOperationsRequest {
   order?: "method" | "host" | "endpoint" | "thresholds.$key" | (string & {});
 }
 
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      direction: Schema.optional(
-        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-      ).pipe(T.HttpQuery("direction")),
-      endpoint: Schema.optional(Schema.String).pipe(T.HttpQuery("endpoint")),
-      feature: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
-            Schema.String,
-          ]),
-        ),
-      ).pipe(T.HttpQuery("feature")),
-      host: Schema.optional(Schema.Array(Schema.String)).pipe(
-        T.HttpQuery("host"),
-      ),
-      method: Schema.optional(Schema.Array(Schema.String)).pipe(
-        T.HttpQuery("method"),
-      ),
-      order: Schema.optional(
+export const ListOperationsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    endpoint: Schema.optional(Schema.String).pipe(T.HttpQuery("endpoint")),
+    feature: Schema.optional(
+      Schema.Array(
         Schema.Union([
-          Schema.Literals(["method", "host", "endpoint", "thresholds.$key"]),
+          Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
           Schema.String,
         ]),
-      ).pipe(T.HttpQuery("order")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/api_gateway/operations",
-      }),
+      ),
+    ).pipe(T.HttpQuery("feature")),
+    host: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("host"),
     ),
+    method: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("method"),
+    ),
+    order: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["method", "host", "endpoint", "thresholds.$key"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("order")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/api_gateway/operations",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export interface ListOperationsResponse {
@@ -2661,7 +2638,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListOperationsResponseResult),
       resultInfo: Schema.optional(
@@ -2677,7 +2654,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsResponse,
   ListOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [Forbidden],
@@ -2712,7 +2689,7 @@ export interface CreateOperationRequest {
 }
 
 export const CreateOperationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       endpoint: Schema.String,
@@ -2828,7 +2805,7 @@ export interface CreateOperationResponse {
 }
 
 export const CreateOperationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       endpoint: Schema.String,
       host: Schema.String,
@@ -2886,7 +2863,7 @@ export const createOperation: API.OperationMethod<
   CreateOperationResponse,
   CreateOperationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOperationRequest,
   output: CreateOperationResponse,
   errors: [InvalidObjectIdentifier, Forbidden],
@@ -2899,7 +2876,7 @@ export interface DeleteOperationRequest {
 }
 
 export const DeleteOperationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       operationId: Schema.String.pipe(T.HttpPath("operationId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -2929,7 +2906,7 @@ export interface DeleteOperationResponse {
 }
 
 export const DeleteOperationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(MessageItem),
       messages: Schema.Array(MessageItem),
@@ -2948,7 +2925,7 @@ export const deleteOperation: API.OperationMethod<
   DeleteOperationResponse,
   DeleteOperationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOperationRequest,
   output: DeleteOperationResponse,
   errors: [InvalidObjectIdentifier, OperationNotFound, Forbidden],
@@ -2976,7 +2953,7 @@ export interface BulkCreateOperationsRequest {
 }
 
 export const BulkCreateOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       body: Schema.Array(Body2).pipe(T.HttpBody()),
@@ -3064,7 +3041,7 @@ export interface BulkCreateOperationsResponse {
 }
 
 export const BulkCreateOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListOperationsResponseResult),
     }),
@@ -3077,7 +3054,7 @@ export const bulkCreateOperations: API.PaginatedOperationMethod<
   BulkCreateOperationsResponse,
   BulkCreateOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkCreateOperationsRequest,
   output: BulkCreateOperationsResponse,
   errors: [],
@@ -3093,7 +3070,7 @@ export interface BulkDeleteOperationsRequest {
 }
 
 export const BulkDeleteOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -3122,7 +3099,7 @@ export interface BulkDeleteOperationsResponse {
 }
 
 export const BulkDeleteOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(MessageItem),
       messages: Schema.Array(MessageItem),
@@ -3137,7 +3114,7 @@ export const bulkDeleteOperations: API.OperationMethod<
   BulkDeleteOperationsResponse,
   BulkDeleteOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteOperationsRequest,
   output: BulkDeleteOperationsResponse,
   errors: [InvalidObjectIdentifier],
@@ -3158,7 +3135,7 @@ export interface CreateOperationLabelRequest {
 }
 
 export const CreateOperationLabelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       operationId: Schema.String.pipe(T.HttpPath("operationId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -3205,7 +3182,7 @@ export interface CreateOperationLabelResponse {
 }
 
 export const CreateOperationLabelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       endpoint: Schema.String,
       host: Schema.String,
@@ -3252,7 +3229,7 @@ export const createOperationLabel: API.OperationMethod<
   CreateOperationLabelResponse,
   CreateOperationLabelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOperationLabelRequest,
   output: CreateOperationLabelResponse,
   errors: [],
@@ -3269,7 +3246,7 @@ export interface UpdateOperationLabelRequest {
 }
 
 export const UpdateOperationLabelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       operationId: Schema.String.pipe(T.HttpPath("operationId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -3316,7 +3293,7 @@ export interface UpdateOperationLabelResponse {
 }
 
 export const UpdateOperationLabelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       endpoint: Schema.String,
       host: Schema.String,
@@ -3363,7 +3340,7 @@ export const updateOperationLabel: API.OperationMethod<
   UpdateOperationLabelResponse,
   UpdateOperationLabelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOperationLabelRequest,
   output: UpdateOperationLabelResponse,
   errors: [],
@@ -3376,7 +3353,7 @@ export interface DeleteOperationLabelRequest {
 }
 
 export const DeleteOperationLabelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       operationId: Schema.String.pipe(T.HttpPath("operationId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -3421,7 +3398,7 @@ export interface DeleteOperationLabelResponse {
 }
 
 export const DeleteOperationLabelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       endpoint: Schema.String,
       host: Schema.String,
@@ -3468,7 +3445,7 @@ export const deleteOperationLabel: API.OperationMethod<
   DeleteOperationLabelResponse,
   DeleteOperationLabelError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOperationLabelRequest,
   output: DeleteOperationLabelResponse,
   errors: [],
@@ -3486,7 +3463,7 @@ export interface BulkCreateOperationLabelsRequest {
 }
 
 export const BulkCreateOperationLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       selector: Selector,
@@ -3531,7 +3508,7 @@ export interface BulkCreateOperationLabelsResponse {
 }
 
 export const BulkCreateOperationLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(BulkCreateOperationLabelsResponseResult),
     }),
@@ -3544,7 +3521,7 @@ export const bulkCreateOperationLabels: API.PaginatedOperationMethod<
   BulkCreateOperationLabelsResponse,
   BulkCreateOperationLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkCreateOperationLabelsRequest,
   output: BulkCreateOperationLabelsResponse,
   errors: [],
@@ -3566,7 +3543,7 @@ export interface BulkUpdateOperationLabelsRequest {
 }
 
 export const BulkUpdateOperationLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       managed: Managed2,
@@ -3611,7 +3588,7 @@ export interface BulkUpdateOperationLabelsResponse {
 }
 
 export const BulkUpdateOperationLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(BulkCreateOperationLabelsResponseResult),
     }),
@@ -3624,7 +3601,7 @@ export const bulkUpdateOperationLabels: API.PaginatedOperationMethod<
   BulkUpdateOperationLabelsResponse,
   BulkUpdateOperationLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkUpdateOperationLabelsRequest,
   output: BulkUpdateOperationLabelsResponse,
   errors: [],
@@ -3640,7 +3617,7 @@ export interface BulkDeleteOperationLabelsRequest {
 }
 
 export const BulkDeleteOperationLabelsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -3682,7 +3659,7 @@ export interface BulkDeleteOperationLabelsResponse {
 }
 
 export const BulkDeleteOperationLabelsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(BulkCreateOperationLabelsResponseResult),
     }),
@@ -3695,7 +3672,7 @@ export const bulkDeleteOperationLabels: API.PaginatedOperationMethod<
   BulkDeleteOperationLabelsResponse,
   BulkDeleteOperationLabelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkDeleteOperationLabelsRequest,
   output: BulkDeleteOperationLabelsResponse,
   errors: [],
@@ -3716,7 +3693,7 @@ export interface GetOperationSchemaValidationRequest {
 }
 
 export const GetOperationSchemaValidationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       operationId: Schema.String.pipe(T.HttpPath("operationId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -3736,7 +3713,7 @@ export interface GetOperationSchemaValidationResponse {
 }
 
 export const GetOperationSchemaValidationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mitigationAction: Schema.optional(
         Schema.Union([
@@ -3765,7 +3742,7 @@ export const getOperationSchemaValidation: API.OperationMethod<
   GetOperationSchemaValidationResponse,
   GetOperationSchemaValidationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationSchemaValidationRequest,
   output: GetOperationSchemaValidationResponse,
   errors: [InvalidObjectIdentifier, OperationNotFound],
@@ -3780,7 +3757,7 @@ export interface PutOperationSchemaValidationRequest {
 }
 
 export const PutOperationSchemaValidationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       operationId: Schema.String.pipe(T.HttpPath("operationId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -3809,7 +3786,7 @@ export interface PutOperationSchemaValidationResponse {
 }
 
 export const PutOperationSchemaValidationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mitigationAction: Schema.optional(
         Schema.Union([
@@ -3838,7 +3815,7 @@ export const putOperationSchemaValidation: API.OperationMethod<
   PutOperationSchemaValidationResponse,
   PutOperationSchemaValidationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutOperationSchemaValidationRequest,
   output: PutOperationSchemaValidationResponse,
   errors: [InvalidObjectIdentifier, OperationNotFound],
@@ -3852,7 +3829,7 @@ export interface PatchOperationSchemaValidationRequest {
 }
 
 export const PatchOperationSchemaValidationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       settingsMultipleRequest: Schema.Record(Schema.String, Schema.Unknown),
@@ -3870,7 +3847,7 @@ export const PatchOperationSchemaValidationRequest =
 export type PatchOperationSchemaValidationResponse = Record<string, unknown>;
 
 export const PatchOperationSchemaValidationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Record(Schema.String, Schema.Unknown).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<PatchOperationSchemaValidationResponse>;
 
@@ -3883,7 +3860,7 @@ export const patchOperationSchemaValidation: API.OperationMethod<
   PatchOperationSchemaValidationResponse,
   PatchOperationSchemaValidationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOperationSchemaValidationRequest,
   output: PatchOperationSchemaValidationResponse,
   errors: [InvalidObjectIdentifier],
@@ -3907,24 +3884,23 @@ export interface ListSchemasRequest {
   host?: string[];
 }
 
-export const ListSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      feature: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
-            Schema.String,
-          ]),
-        ),
-      ).pipe(T.HttpQuery("feature")),
-      host: Schema.optional(Schema.Array(Schema.String)).pipe(
-        T.HttpQuery("host"),
+export const ListSchemasRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    feature: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Literals(["thresholds", "parameter_schemas", "schema_info"]),
+          Schema.String,
+        ]),
       ),
-    }).pipe(
-      T.Http({ method: "GET", path: "/zones/{zone_id}/api_gateway/schemas" }),
+    ).pipe(T.HttpQuery("feature")),
+    host: Schema.optional(Schema.Array(Schema.String)).pipe(
+      T.HttpQuery("host"),
     ),
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/api_gateway/schemas" }),
+  ),
 ) as unknown as Schema.Codec<ListSchemasRequest>;
 
 export interface ListSchemasResponse {
@@ -3932,14 +3908,13 @@ export interface ListSchemasResponse {
   timestamp?: string | null;
 }
 
-export const ListSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      schemas: Schema.optional(
-        Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
-      ),
-      timestamp: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const ListSchemasResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    schemas: Schema.optional(
+      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+    ),
+    timestamp: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ListSchemasResponse>;
 
 export type ListSchemasError = DefaultErrors | InvalidObjectIdentifier;
@@ -3949,7 +3924,7 @@ export const listSchemas: API.OperationMethod<
   ListSchemasResponse,
   ListSchemasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListSchemasRequest,
   output: ListSchemasResponse,
   errors: [InvalidObjectIdentifier],
@@ -3965,7 +3940,7 @@ export interface GetSettingSchemaValidationRequest {
 }
 
 export const GetSettingSchemaValidationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -3989,7 +3964,7 @@ export interface GetSettingSchemaValidationResponse {
 }
 
 export const GetSettingSchemaValidationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       validationDefaultMitigationAction: Schema.optional(
         Schema.Union([
@@ -4022,7 +3997,7 @@ export const getSettingSchemaValidation: API.OperationMethod<
   GetSettingSchemaValidationResponse,
   GetSettingSchemaValidationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingSchemaValidationRequest,
   output: GetSettingSchemaValidationResponse,
   errors: [InvalidObjectIdentifier],
@@ -4038,7 +4013,7 @@ export interface PutSettingSchemaValidationRequest {
 }
 
 export const PutSettingSchemaValidationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       validationDefaultMitigationAction: Schema.Union([
@@ -4079,7 +4054,7 @@ export interface PutSettingSchemaValidationResponse {
 }
 
 export const PutSettingSchemaValidationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       validationDefaultMitigationAction: Schema.optional(
         Schema.Union([
@@ -4112,7 +4087,7 @@ export const putSettingSchemaValidation: API.OperationMethod<
   PutSettingSchemaValidationResponse,
   PutSettingSchemaValidationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSettingSchemaValidationRequest,
   output: PutSettingSchemaValidationResponse,
   errors: [InvalidObjectIdentifier],
@@ -4128,7 +4103,7 @@ export interface PatchSettingSchemaValidationRequest {
 }
 
 export const PatchSettingSchemaValidationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       validationDefaultMitigationAction: Schema.optional(
@@ -4173,7 +4148,7 @@ export interface PatchSettingSchemaValidationResponse {
 }
 
 export const PatchSettingSchemaValidationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       validationDefaultMitigationAction: Schema.optional(
         Schema.Union([
@@ -4206,7 +4181,7 @@ export const patchSettingSchemaValidation: API.OperationMethod<
   PatchSettingSchemaValidationResponse,
   PatchSettingSchemaValidationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSettingSchemaValidationRequest,
   output: PatchSettingSchemaValidationResponse,
   errors: [InvalidObjectIdentifier],
@@ -4224,20 +4199,19 @@ export interface GetUserSchemaRequest {
   omitSource?: boolean;
 }
 
-export const GetUserSchemaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      schemaId: Schema.String.pipe(T.HttpPath("schemaId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      omitSource: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("omit_source"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/api_gateway/user_schemas/{schemaId}",
-      }),
+export const GetUserSchemaRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    schemaId: Schema.String.pipe(T.HttpPath("schemaId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    omitSource: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("omit_source"),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/api_gateway/user_schemas/{schemaId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetUserSchemaRequest>;
 
 export interface GetUserSchemaResponse {
@@ -4254,29 +4228,28 @@ export interface GetUserSchemaResponse {
   validationEnabled?: boolean | null;
 }
 
-export const GetUserSchemaResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      createdAt: Schema.String,
-      kind: Schema.Literal("openapi_v3"),
-      name: Schema.String,
-      schemaId: Schema.String,
-      source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      validationEnabled: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          createdAt: "created_at",
-          kind: "kind",
-          name: "name",
-          schemaId: "schema_id",
-          source: "source",
-          validationEnabled: "validation_enabled",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetUserSchemaResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    createdAt: Schema.String,
+    kind: Schema.Literal("openapi_v3"),
+    name: Schema.String,
+    schemaId: Schema.String,
+    source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    validationEnabled: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        createdAt: "created_at",
+        kind: "kind",
+        name: "name",
+        schemaId: "schema_id",
+        source: "source",
+        validationEnabled: "validation_enabled",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetUserSchemaResponse>;
 
 export type GetUserSchemaError =
@@ -4290,7 +4263,7 @@ export const getUserSchema: API.OperationMethod<
   GetUserSchemaResponse,
   GetUserSchemaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserSchemaRequest,
   output: GetUserSchemaResponse,
   errors: [InvalidObjectIdentifier, SchemaNotFound, Forbidden],
@@ -4308,7 +4281,7 @@ export interface ListUserSchemasRequest {
 }
 
 export const ListUserSchemasRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -4345,7 +4318,7 @@ export interface ListUserSchemasResponse {
 }
 
 export const ListUserSchemasResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListUserSchemasResponseResult),
       resultInfo: Schema.optional(
@@ -4361,7 +4334,7 @@ export const listUserSchemas: API.PaginatedOperationMethod<
   ListUserSchemasResponse,
   ListUserSchemasError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserSchemasRequest,
   output: ListUserSchemasResponse,
   errors: [ZonePurged, Forbidden],
@@ -4388,7 +4361,7 @@ export interface CreateUserSchemaRequest {
 }
 
 export const CreateUserSchemaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       file: UploadableSchema.pipe(T.HttpFormDataFile()),
@@ -4427,7 +4400,7 @@ export interface CreateUserSchemaResponse {
 }
 
 export const CreateUserSchemaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       schema: ListUserSchemasResponseResult,
       uploadDetails: Schema.optional(
@@ -4453,7 +4426,7 @@ export const createUserSchema: API.OperationMethod<
   CreateUserSchemaResponse,
   CreateUserSchemaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserSchemaRequest,
   output: CreateUserSchemaResponse,
   errors: [InvalidObjectIdentifier, Forbidden],
@@ -4468,7 +4441,7 @@ export interface PatchUserSchemaRequest {
 }
 
 export const PatchUserSchemaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       schemaId: Schema.String.pipe(T.HttpPath("schemaId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -4497,7 +4470,7 @@ export interface PatchUserSchemaResponse {
 }
 
 export const PatchUserSchemaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       createdAt: Schema.String,
       kind: Schema.Literal("openapi_v3"),
@@ -4532,7 +4505,7 @@ export const patchUserSchema: API.OperationMethod<
   PatchUserSchemaResponse,
   PatchUserSchemaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchUserSchemaRequest,
   output: PatchUserSchemaResponse,
   errors: [InvalidObjectIdentifier, SchemaNotFound, Forbidden],
@@ -4545,7 +4518,7 @@ export interface DeleteUserSchemaRequest {
 }
 
 export const DeleteUserSchemaRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       schemaId: Schema.String.pipe(T.HttpPath("schemaId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -4575,7 +4548,7 @@ export interface DeleteUserSchemaResponse {
 }
 
 export const DeleteUserSchemaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(MessageItem),
       messages: Schema.Array(MessageItem),
@@ -4594,7 +4567,7 @@ export const deleteUserSchema: API.OperationMethod<
   DeleteUserSchemaResponse,
   DeleteUserSchemaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserSchemaRequest,
   output: DeleteUserSchemaResponse,
   errors: [InvalidObjectIdentifier, SchemaNotFound, Forbidden],
@@ -4612,7 +4585,7 @@ export interface ListUserSchemaHostsRequest {
 }
 
 export const ListUserSchemaHostsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -4641,7 +4614,7 @@ export interface ListUserSchemaHostsResponse {
 }
 
 export const ListUserSchemaHostsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListUserSchemaHostsResponseResult),
       resultInfo: Schema.optional(
@@ -4657,7 +4630,7 @@ export const listUserSchemaHosts: API.PaginatedOperationMethod<
   ListUserSchemaHostsResponse,
   ListUserSchemaHostsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserSchemaHostsRequest,
   output: ListUserSchemaHostsResponse,
   errors: [],
@@ -4698,7 +4671,7 @@ export interface ListUserSchemaOperationsRequest {
 }
 
 export const ListUserSchemaOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       schemaId: Schema.String.pipe(T.HttpPath("schemaId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -4838,7 +4811,7 @@ export interface ListUserSchemaOperationsResponse {
 }
 
 export const ListUserSchemaOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Schema.Union([ListOperationsResponseResult, Body2])),
       resultInfo: Schema.optional(
@@ -4854,7 +4827,7 @@ export const listUserSchemaOperations: API.PaginatedOperationMethod<
   ListUserSchemaOperationsResponse,
   ListUserSchemaOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserSchemaOperationsRequest,
   output: ListUserSchemaOperationsResponse,
   errors: [],

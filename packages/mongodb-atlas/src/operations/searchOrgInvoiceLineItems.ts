@@ -12,7 +12,7 @@ export interface SearchOrgInvoiceLineItemsInput {
   pageNum?: number;
 }
 export const SearchOrgInvoiceLineItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     invoiceId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -28,7 +28,7 @@ export const SearchOrgInvoiceLineItemsInput =
 // Output Schema
 export type SearchOrgInvoiceLineItemsOutput = void;
 export const SearchOrgInvoiceLineItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SearchOrgInvoiceLineItemsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SearchOrgInvoiceLineItemsOutput>;
 
 // The operation
 /**
@@ -42,10 +42,8 @@ export const SearchOrgInvoiceLineItemsOutput =
  * @param orgId - Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
  * @param invoiceId - Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
  */
-export const searchOrgInvoiceLineItems = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SearchOrgInvoiceLineItemsInput,
-    outputSchema: SearchOrgInvoiceLineItemsOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const searchOrgInvoiceLineItems = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SearchOrgInvoiceLineItemsInput,
+  outputSchema: SearchOrgInvoiceLineItemsOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

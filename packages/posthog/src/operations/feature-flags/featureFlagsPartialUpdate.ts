@@ -110,7 +110,7 @@ export interface FeatureFlagsPartialUpdateInput {
   bucketing_identifier?: "distinct_id" | "device_id" | null;
 }
 export const FeatureFlagsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     key: Schema.optional(Schema.String),
@@ -400,7 +400,7 @@ export interface FeatureFlagsPartialUpdateOutput {
   is_used_in_replay_settings?: boolean;
 }
 export const FeatureFlagsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -544,10 +544,8 @@ export const FeatureFlagsPartialUpdateOutput =
  * @param id - A unique integer value identifying this feature flag.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const featureFlagsPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FeatureFlagsPartialUpdateInput,
-    outputSchema: FeatureFlagsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const featureFlagsPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FeatureFlagsPartialUpdateInput,
+  outputSchema: FeatureFlagsPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

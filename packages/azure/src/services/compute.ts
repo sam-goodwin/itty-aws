@@ -99,7 +99,7 @@ export interface ContainerServicesCreateOrUpdateInput {
   tags?: Record<string, string>;
 }
 export const ContainerServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -237,7 +237,7 @@ export interface ContainerServicesCreateOrUpdateOutput {
   tags?: Record<string, string>;
 }
 export const ContainerServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -257,7 +257,7 @@ export const ContainerServicesCreateOrUpdateOutput =
  * @param subscriptionId - Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ContainerServicesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ContainerServicesCreateOrUpdateInput,
     outputSchema: ContainerServicesCreateOrUpdateOutput,
   }));
@@ -268,7 +268,7 @@ export interface ContainerServicesDeleteInput {
   subscriptionId: string;
 }
 export const ContainerServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -283,7 +283,7 @@ export const ContainerServicesDeleteInput =
 // Output Schema
 export type ContainerServicesDeleteOutput = void;
 export const ContainerServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContainerServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ContainerServicesDeleteOutput>;
 
 // The operation
 /**
@@ -296,12 +296,10 @@ export const ContainerServicesDeleteOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ContainerServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainerServicesDeleteInput,
-    outputSchema: ContainerServicesDeleteOutput,
-  }),
-);
+export const ContainerServicesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerServicesDeleteInput,
+  outputSchema: ContainerServicesDeleteOutput,
+}));
 // Input Schema
 export interface ContainerServicesGetInput {
   resourceGroupName: string;
@@ -309,7 +307,7 @@ export interface ContainerServicesGetInput {
   subscriptionId: string;
 }
 export const ContainerServicesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     containerServiceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -330,7 +328,7 @@ export interface ContainerServicesGetOutput {
   tags?: Record<string, string>;
 }
 export const ContainerServicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -349,18 +347,16 @@ export const ContainerServicesGetOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ContainerServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainerServicesGetInput,
-    outputSchema: ContainerServicesGetOutput,
-  }),
-);
+export const ContainerServicesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerServicesGetInput,
+  outputSchema: ContainerServicesGetOutput,
+}));
 // Input Schema
 export interface ContainerServicesListInput {
   subscriptionId: string;
 }
 export const ContainerServicesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -382,7 +378,7 @@ export interface ContainerServicesListOutput {
   nextLink?: string;
 }
 export const ContainerServicesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -406,19 +402,17 @@ export const ContainerServicesListOutput =
  * @param api-version - Client Api Version.
  * @param subscriptionId - Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
-export const ContainerServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainerServicesListInput,
-    outputSchema: ContainerServicesListOutput,
-  }),
-);
+export const ContainerServicesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainerServicesListInput,
+  outputSchema: ContainerServicesListOutput,
+}));
 // Input Schema
 export interface ContainerServicesListByResourceGroupInput {
   resourceGroupName: string;
   subscriptionId: string;
 }
 export const ContainerServicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -441,7 +435,7 @@ export interface ContainerServicesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ContainerServicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -467,7 +461,7 @@ export const ContainerServicesListByResourceGroupOutput =
  * @param subscriptionId - Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
  */
 export const ContainerServicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ContainerServicesListByResourceGroupInput,
     outputSchema: ContainerServicesListByResourceGroupOutput,
   }));
@@ -498,7 +492,7 @@ export interface DiskAccessesCreateOrUpdateInput {
   location: string;
 }
 export const DiskAccessesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskAccessName: Schema.String.pipe(T.PathParam()),
@@ -572,7 +566,7 @@ export interface DiskAccessesCreateOrUpdateOutput {
   };
 }
 export const DiskAccessesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -601,12 +595,10 @@ export const DiskAccessesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param diskAccessName - The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
-export const DiskAccessesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DiskAccessesCreateOrUpdateInput,
-    outputSchema: DiskAccessesCreateOrUpdateOutput,
-  }),
-);
+export const DiskAccessesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiskAccessesCreateOrUpdateInput,
+  outputSchema: DiskAccessesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DiskAccessesDeleteInput {
   subscriptionId: string;
@@ -614,7 +606,7 @@ export interface DiskAccessesDeleteInput {
   diskAccessName: string;
 }
 export const DiskAccessesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskAccessName: Schema.String.pipe(T.PathParam()),
@@ -629,7 +621,7 @@ export const DiskAccessesDeleteInput =
 // Output Schema
 export type DiskAccessesDeleteOutput = void;
 export const DiskAccessesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskAccessesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskAccessesDeleteOutput>;
 
 // The operation
 /**
@@ -640,7 +632,7 @@ export const DiskAccessesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param diskAccessName - The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
-export const DiskAccessesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiskAccessesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiskAccessesDeleteInput,
   outputSchema: DiskAccessesDeleteOutput,
 }));
@@ -652,7 +644,7 @@ export interface DiskAccessesDeleteAPrivateEndpointConnectionInput {
   privateEndpointConnectionName: string;
 }
 export const DiskAccessesDeleteAPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskAccessName: Schema.String.pipe(T.PathParam()),
@@ -668,7 +660,7 @@ export const DiskAccessesDeleteAPrivateEndpointConnectionInput =
 // Output Schema
 export type DiskAccessesDeleteAPrivateEndpointConnectionOutput = void;
 export const DiskAccessesDeleteAPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskAccessesDeleteAPrivateEndpointConnectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskAccessesDeleteAPrivateEndpointConnectionOutput>;
 
 // The operation
 /**
@@ -681,7 +673,7 @@ export const DiskAccessesDeleteAPrivateEndpointConnectionOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const DiskAccessesDeleteAPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiskAccessesDeleteAPrivateEndpointConnectionInput,
     outputSchema: DiskAccessesDeleteAPrivateEndpointConnectionOutput,
   }));
@@ -691,7 +683,7 @@ export interface DiskAccessesGetInput {
   resourceGroupName: string;
   diskAccessName: string;
 }
-export const DiskAccessesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiskAccessesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   diskAccessName: Schema.String.pipe(T.PathParam()),
@@ -717,7 +709,7 @@ export interface DiskAccessesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DiskAccessesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiskAccessesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -746,7 +738,7 @@ export const DiskAccessesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param diskAccessName - The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
-export const DiskAccessesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiskAccessesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiskAccessesGetInput,
   outputSchema: DiskAccessesGetOutput,
 }));
@@ -758,7 +750,7 @@ export interface DiskAccessesGetAPrivateEndpointConnectionInput {
   privateEndpointConnectionName: string;
 }
 export const DiskAccessesGetAPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskAccessName: Schema.String.pipe(T.PathParam()),
@@ -786,7 +778,7 @@ export interface DiskAccessesGetAPrivateEndpointConnectionOutput {
   };
 }
 export const DiskAccessesGetAPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -817,7 +809,7 @@ export const DiskAccessesGetAPrivateEndpointConnectionOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const DiskAccessesGetAPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiskAccessesGetAPrivateEndpointConnectionInput,
     outputSchema: DiskAccessesGetAPrivateEndpointConnectionOutput,
   }));
@@ -828,7 +820,7 @@ export interface DiskAccessesGetPrivateLinkResourcesInput {
   diskAccessName: string;
 }
 export const DiskAccessesGetPrivateLinkResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskAccessName: Schema.String.pipe(T.PathParam()),
@@ -854,7 +846,7 @@ export interface DiskAccessesGetPrivateLinkResourcesOutput {
   }[];
 }
 export const DiskAccessesGetPrivateLinkResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -883,7 +875,7 @@ export const DiskAccessesGetPrivateLinkResourcesOutput =
  * @param diskAccessName - The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
 export const DiskAccessesGetPrivateLinkResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiskAccessesGetPrivateLinkResourcesInput,
     outputSchema: DiskAccessesGetPrivateLinkResourcesOutput,
   }));
@@ -891,7 +883,7 @@ export const DiskAccessesGetPrivateLinkResources =
 export interface DiskAccessesListInput {
   subscriptionId: string;
 }
-export const DiskAccessesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DiskAccessesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -918,42 +910,30 @@ export interface DiskAccessesListOutput {
   }[];
   nextLink?: string;
 }
-export const DiskAccessesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<DiskAccessesListOutput>;
+export const DiskAccessesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<DiskAccessesListOutput>;
 
 // The operation
 /**
@@ -962,7 +942,7 @@ export const DiskAccessesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DiskAccessesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiskAccessesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiskAccessesListInput,
   outputSchema: DiskAccessesListOutput,
 }));
@@ -972,7 +952,7 @@ export interface DiskAccessesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const DiskAccessesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1001,7 +981,7 @@ export interface DiskAccessesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DiskAccessesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1045,7 +1025,7 @@ export const DiskAccessesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const DiskAccessesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiskAccessesListByResourceGroupInput,
     outputSchema: DiskAccessesListByResourceGroupOutput,
   }));
@@ -1056,7 +1036,7 @@ export interface DiskAccessesListPrivateEndpointConnectionsInput {
   diskAccessName: string;
 }
 export const DiskAccessesListPrivateEndpointConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskAccessName: Schema.String.pipe(T.PathParam()),
@@ -1086,7 +1066,7 @@ export interface DiskAccessesListPrivateEndpointConnectionsOutput {
   nextLink?: string;
 }
 export const DiskAccessesListPrivateEndpointConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1131,7 +1111,7 @@ export const DiskAccessesListPrivateEndpointConnectionsOutput =
  * @param diskAccessName - The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
 export const DiskAccessesListPrivateEndpointConnections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiskAccessesListPrivateEndpointConnectionsInput,
     outputSchema: DiskAccessesListPrivateEndpointConnectionsOutput,
   }));
@@ -1143,7 +1123,7 @@ export interface DiskAccessesUpdateInput {
   tags?: Record<string, string>;
 }
 export const DiskAccessesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskAccessName: Schema.String.pipe(T.PathParam()),
@@ -1171,7 +1151,7 @@ export interface DiskAccessesUpdateOutput {
   };
 }
 export const DiskAccessesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1200,7 +1180,7 @@ export const DiskAccessesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param diskAccessName - The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
-export const DiskAccessesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiskAccessesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiskAccessesUpdateInput,
   outputSchema: DiskAccessesUpdateOutput,
 }));
@@ -1221,7 +1201,7 @@ export interface DiskAccessesUpdateAPrivateEndpointConnectionInput {
   };
 }
 export const DiskAccessesUpdateAPrivateEndpointConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskAccessName: Schema.String.pipe(T.PathParam()),
@@ -1268,7 +1248,7 @@ export interface DiskAccessesUpdateAPrivateEndpointConnectionOutput {
   };
 }
 export const DiskAccessesUpdateAPrivateEndpointConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1299,7 +1279,7 @@ export const DiskAccessesUpdateAPrivateEndpointConnectionOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const DiskAccessesUpdateAPrivateEndpointConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiskAccessesUpdateAPrivateEndpointConnectionInput,
     outputSchema: DiskAccessesUpdateAPrivateEndpointConnectionOutput,
   }));
@@ -1344,7 +1324,7 @@ export interface DiskEncryptionSetsCreateOrUpdateInput {
   location: string;
 }
 export const DiskEncryptionSetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskEncryptionSetName: Schema.String.pipe(T.PathParam()),
@@ -1455,7 +1435,7 @@ export interface DiskEncryptionSetsCreateOrUpdateOutput {
   };
 }
 export const DiskEncryptionSetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1485,7 +1465,7 @@ export const DiskEncryptionSetsCreateOrUpdateOutput =
  * @param diskEncryptionSetName - The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
 export const DiskEncryptionSetsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiskEncryptionSetsCreateOrUpdateInput,
     outputSchema: DiskEncryptionSetsCreateOrUpdateOutput,
   }));
@@ -1496,7 +1476,7 @@ export interface DiskEncryptionSetsDeleteInput {
   diskEncryptionSetName: string;
 }
 export const DiskEncryptionSetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskEncryptionSetName: Schema.String.pipe(T.PathParam()),
@@ -1511,7 +1491,7 @@ export const DiskEncryptionSetsDeleteInput =
 // Output Schema
 export type DiskEncryptionSetsDeleteOutput = void;
 export const DiskEncryptionSetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskEncryptionSetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskEncryptionSetsDeleteOutput>;
 
 // The operation
 /**
@@ -1522,12 +1502,10 @@ export const DiskEncryptionSetsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param diskEncryptionSetName - The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
-export const DiskEncryptionSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DiskEncryptionSetsDeleteInput,
-    outputSchema: DiskEncryptionSetsDeleteOutput,
-  }),
-);
+export const DiskEncryptionSetsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiskEncryptionSetsDeleteInput,
+  outputSchema: DiskEncryptionSetsDeleteOutput,
+}));
 // Input Schema
 export interface DiskEncryptionSetsGetInput {
   subscriptionId: string;
@@ -1535,7 +1513,7 @@ export interface DiskEncryptionSetsGetInput {
   diskEncryptionSetName: string;
 }
 export const DiskEncryptionSetsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskEncryptionSetName: Schema.String.pipe(T.PathParam()),
@@ -1562,7 +1540,7 @@ export interface DiskEncryptionSetsGetOutput {
   };
 }
 export const DiskEncryptionSetsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1591,18 +1569,16 @@ export const DiskEncryptionSetsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param diskEncryptionSetName - The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
-export const DiskEncryptionSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DiskEncryptionSetsGetInput,
-    outputSchema: DiskEncryptionSetsGetOutput,
-  }),
-);
+export const DiskEncryptionSetsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiskEncryptionSetsGetInput,
+  outputSchema: DiskEncryptionSetsGetOutput,
+}));
 // Input Schema
 export interface DiskEncryptionSetsListInput {
   subscriptionId: string;
 }
 export const DiskEncryptionSetsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1630,7 +1606,7 @@ export interface DiskEncryptionSetsListOutput {
   nextLink?: string;
 }
 export const DiskEncryptionSetsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1672,12 +1648,10 @@ export const DiskEncryptionSetsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DiskEncryptionSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DiskEncryptionSetsListInput,
-    outputSchema: DiskEncryptionSetsListOutput,
-  }),
-);
+export const DiskEncryptionSetsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiskEncryptionSetsListInput,
+  outputSchema: DiskEncryptionSetsListOutput,
+}));
 // Input Schema
 export interface DiskEncryptionSetsListAssociatedResourcesInput {
   subscriptionId: string;
@@ -1685,7 +1659,7 @@ export interface DiskEncryptionSetsListAssociatedResourcesInput {
   diskEncryptionSetName: string;
 }
 export const DiskEncryptionSetsListAssociatedResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskEncryptionSetName: Schema.String.pipe(T.PathParam()),
@@ -1703,7 +1677,7 @@ export interface DiskEncryptionSetsListAssociatedResourcesOutput {
   nextLink?: string;
 }
 export const DiskEncryptionSetsListAssociatedResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(Schema.String),
     nextLink: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DiskEncryptionSetsListAssociatedResourcesOutput>;
@@ -1718,7 +1692,7 @@ export const DiskEncryptionSetsListAssociatedResourcesOutput =
  * @param diskEncryptionSetName - The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
 export const DiskEncryptionSetsListAssociatedResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiskEncryptionSetsListAssociatedResourcesInput,
     outputSchema: DiskEncryptionSetsListAssociatedResourcesOutput,
   }));
@@ -1728,7 +1702,7 @@ export interface DiskEncryptionSetsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const DiskEncryptionSetsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1757,7 +1731,7 @@ export interface DiskEncryptionSetsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DiskEncryptionSetsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1801,7 +1775,7 @@ export const DiskEncryptionSetsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const DiskEncryptionSetsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiskEncryptionSetsListByResourceGroupInput,
     outputSchema: DiskEncryptionSetsListByResourceGroupOutput,
   }));
@@ -1835,7 +1809,7 @@ export interface DiskEncryptionSetsUpdateInput {
   };
 }
 export const DiskEncryptionSetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskEncryptionSetName: Schema.String.pipe(T.PathParam()),
@@ -1909,7 +1883,7 @@ export interface DiskEncryptionSetsUpdateOutput {
   };
 }
 export const DiskEncryptionSetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1938,12 +1912,10 @@ export const DiskEncryptionSetsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param diskEncryptionSetName - The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
-export const DiskEncryptionSetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DiskEncryptionSetsUpdateInput,
-    outputSchema: DiskEncryptionSetsUpdateOutput,
-  }),
-);
+export const DiskEncryptionSetsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiskEncryptionSetsUpdateInput,
+  outputSchema: DiskEncryptionSetsUpdateOutput,
+}));
 // Input Schema
 export interface DiskRestorePointGetInput {
   subscriptionId: string;
@@ -1953,7 +1925,7 @@ export interface DiskRestorePointGetInput {
   diskRestorePointName: string;
 }
 export const DiskRestorePointGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
@@ -1982,7 +1954,7 @@ export interface DiskRestorePointGetOutput {
   };
 }
 export const DiskRestorePointGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2013,7 +1985,7 @@ export const DiskRestorePointGetOutput =
  * @param vmRestorePointName - The name of the vm restore point that the disk disk restore point belongs.
  * @param diskRestorePointName - The name of the DiskRestorePoint
  */
-export const DiskRestorePointGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DiskRestorePointGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DiskRestorePointGetInput,
   outputSchema: DiskRestorePointGetOutput,
 }));
@@ -2030,7 +2002,7 @@ export interface DiskRestorePointGrantAccessInput {
   fileFormat?: "VHD" | "VHDX";
 }
 export const DiskRestorePointGrantAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
@@ -2055,7 +2027,7 @@ export interface DiskRestorePointGrantAccessOutput {
   securityMetadataAccessSAS?: string;
 }
 export const DiskRestorePointGrantAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessSAS: Schema.optional(Schema.String),
     securityDataAccessSAS: Schema.optional(Schema.String),
     securityMetadataAccessSAS: Schema.optional(Schema.String),
@@ -2072,12 +2044,10 @@ export const DiskRestorePointGrantAccessOutput =
  * @param vmRestorePointName - The name of the vm restore point that the disk disk restore point belongs.
  * @param diskRestorePointName - The name of the DiskRestorePoint
  */
-export const DiskRestorePointGrantAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DiskRestorePointGrantAccessInput,
-    outputSchema: DiskRestorePointGrantAccessOutput,
-  }),
-);
+export const DiskRestorePointGrantAccess = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DiskRestorePointGrantAccessInput,
+  outputSchema: DiskRestorePointGrantAccessOutput,
+}));
 // Input Schema
 export interface DiskRestorePointListByRestorePointInput {
   subscriptionId: string;
@@ -2086,7 +2056,7 @@ export interface DiskRestorePointListByRestorePointInput {
   vmRestorePointName: string;
 }
 export const DiskRestorePointListByRestorePointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
@@ -2117,7 +2087,7 @@ export interface DiskRestorePointListByRestorePointOutput {
   nextLink?: string;
 }
 export const DiskRestorePointListByRestorePointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2163,7 +2133,7 @@ export const DiskRestorePointListByRestorePointOutput =
  * @param vmRestorePointName - The name of the vm restore point that the disk disk restore point belongs.
  */
 export const DiskRestorePointListByRestorePoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiskRestorePointListByRestorePointInput,
     outputSchema: DiskRestorePointListByRestorePointOutput,
   }));
@@ -2176,7 +2146,7 @@ export interface DiskRestorePointRevokeAccessInput {
   diskRestorePointName: string;
 }
 export const DiskRestorePointRevokeAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     restorePointCollectionName: Schema.String.pipe(T.PathParam()),
@@ -2193,7 +2163,7 @@ export const DiskRestorePointRevokeAccessInput =
 // Output Schema
 export type DiskRestorePointRevokeAccessOutput = void;
 export const DiskRestorePointRevokeAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskRestorePointRevokeAccessOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DiskRestorePointRevokeAccessOutput>;
 
 // The operation
 /**
@@ -2207,7 +2177,7 @@ export const DiskRestorePointRevokeAccessOutput =
  * @param diskRestorePointName - The name of the DiskRestorePoint
  */
 export const DiskRestorePointRevokeAccess =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiskRestorePointRevokeAccessInput,
     outputSchema: DiskRestorePointRevokeAccessOutput,
   }));
@@ -2349,7 +2319,7 @@ export interface DisksCreateOrUpdateInput {
   location: string;
 }
 export const DisksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     diskName: Schema.String.pipe(T.PathParam()),
@@ -2590,7 +2560,7 @@ export interface DisksCreateOrUpdateOutput {
   };
 }
 export const DisksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2619,7 +2589,7 @@ export const DisksCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param diskName - The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
-export const DisksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisksCreateOrUpdateInput,
   outputSchema: DisksCreateOrUpdateOutput,
 }));
@@ -2629,7 +2599,7 @@ export interface DisksDeleteInput {
   resourceGroupName: string;
   diskName: string;
 }
-export const DisksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   diskName: Schema.String.pipe(T.PathParam()),
@@ -2644,7 +2614,7 @@ export const DisksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DisksDeleteOutput = void;
 export const DisksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksDeleteOutput>;
 
 // The operation
 /**
@@ -2655,7 +2625,7 @@ export const DisksDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param diskName - The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
-export const DisksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisksDeleteInput,
   outputSchema: DisksDeleteOutput,
 }));
@@ -2665,7 +2635,7 @@ export interface DisksGetInput {
   resourceGroupName: string;
   diskName: string;
 }
-export const DisksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   diskName: Schema.String.pipe(T.PathParam()),
@@ -2691,7 +2661,7 @@ export interface DisksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DisksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2720,7 +2690,7 @@ export const DisksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param diskName - The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
-export const DisksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisksGetInput,
   outputSchema: DisksGetOutput,
 }));
@@ -2734,7 +2704,7 @@ export interface DisksGrantAccessInput {
   getSecureVMGuestStateSAS?: boolean;
   fileFormat?: "VHD" | "VHDX";
 }
-export const DisksGrantAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksGrantAccessInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   diskName: Schema.String.pipe(T.PathParam()),
@@ -2756,13 +2726,11 @@ export interface DisksGrantAccessOutput {
   securityDataAccessSAS?: string;
   securityMetadataAccessSAS?: string;
 }
-export const DisksGrantAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    accessSAS: Schema.optional(Schema.String),
-    securityDataAccessSAS: Schema.optional(Schema.String),
-    securityMetadataAccessSAS: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<DisksGrantAccessOutput>;
+export const DisksGrantAccessOutput = /*@__PURE__*/ Schema.Struct({
+  accessSAS: Schema.optional(Schema.String),
+  securityDataAccessSAS: Schema.optional(Schema.String),
+  securityMetadataAccessSAS: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<DisksGrantAccessOutput>;
 
 // The operation
 /**
@@ -2773,7 +2741,7 @@ export const DisksGrantAccessOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param diskName - The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
-export const DisksGrantAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisksGrantAccess = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisksGrantAccessInput,
   outputSchema: DisksGrantAccessOutput,
 }));
@@ -2781,7 +2749,7 @@ export const DisksGrantAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface DisksListInput {
   subscriptionId: string;
 }
-export const DisksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2808,7 +2776,7 @@ export interface DisksListOutput {
   }[];
   nextLink?: string;
 }
-export const DisksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2840,7 +2808,7 @@ export const DisksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const DisksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisksListInput,
   outputSchema: DisksListOutput,
 }));
@@ -2850,7 +2818,7 @@ export interface DisksListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const DisksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2879,7 +2847,7 @@ export interface DisksListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DisksListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2922,25 +2890,21 @@ export const DisksListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const DisksListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DisksListByResourceGroupInput,
-    outputSchema: DisksListByResourceGroupOutput,
-  }),
-);
+export const DisksListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DisksListByResourceGroupInput,
+  outputSchema: DisksListByResourceGroupOutput,
+}));
 // Input Schema
 export interface DisksRevokeAccessInput {
   subscriptionId: string;
   resourceGroupName: string;
   diskName: string;
 }
-export const DisksRevokeAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    diskName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const DisksRevokeAccessInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  diskName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/endGetAccess",
@@ -2951,7 +2915,7 @@ export const DisksRevokeAccessInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type DisksRevokeAccessOutput = void;
 export const DisksRevokeAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksRevokeAccessOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DisksRevokeAccessOutput>;
 
 // The operation
 /**
@@ -2962,7 +2926,7 @@ export const DisksRevokeAccessOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param diskName - The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
-export const DisksRevokeAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisksRevokeAccess = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisksRevokeAccessInput,
   outputSchema: DisksRevokeAccessOutput,
 }));
@@ -3032,7 +2996,7 @@ export interface DisksUpdateInput {
     tier?: string;
   };
 }
-export const DisksUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   diskName: Schema.String.pipe(T.PathParam()),
@@ -3173,7 +3137,7 @@ export interface DisksUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const DisksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DisksUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3202,15 +3166,13 @@ export const DisksUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param diskName - The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
  */
-export const DisksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DisksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DisksUpdateInput,
   outputSchema: DisksUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Compute/operations",
@@ -3234,7 +3196,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3264,7 +3226,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -3403,7 +3365,7 @@ export interface SnapshotsCreateOrUpdateInput {
   location: string;
 }
 export const SnapshotsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     snapshotName: Schema.String.pipe(T.PathParam()),
@@ -3631,7 +3593,7 @@ export interface SnapshotsCreateOrUpdateOutput {
   };
 }
 export const SnapshotsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3660,19 +3622,17 @@ export const SnapshotsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param snapshotName - The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.
  */
-export const SnapshotsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SnapshotsCreateOrUpdateInput,
-    outputSchema: SnapshotsCreateOrUpdateOutput,
-  }),
-);
+export const SnapshotsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SnapshotsCreateOrUpdateInput,
+  outputSchema: SnapshotsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface SnapshotsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   snapshotName: string;
 }
-export const SnapshotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
@@ -3687,7 +3647,7 @@ export const SnapshotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SnapshotsDeleteOutput = void;
 export const SnapshotsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SnapshotsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SnapshotsDeleteOutput>;
 
 // The operation
 /**
@@ -3698,7 +3658,7 @@ export const SnapshotsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param snapshotName - The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.
  */
-export const SnapshotsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotsDeleteInput,
   outputSchema: SnapshotsDeleteOutput,
 }));
@@ -3708,7 +3668,7 @@ export interface SnapshotsGetInput {
   resourceGroupName: string;
   snapshotName: string;
 }
-export const SnapshotsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
@@ -3734,7 +3694,7 @@ export interface SnapshotsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SnapshotsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3763,7 +3723,7 @@ export const SnapshotsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param snapshotName - The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.
  */
-export const SnapshotsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotsGetInput,
   outputSchema: SnapshotsGetOutput,
 }));
@@ -3778,7 +3738,7 @@ export interface SnapshotsGrantAccessInput {
   fileFormat?: "VHD" | "VHDX";
 }
 export const SnapshotsGrantAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     snapshotName: Schema.String.pipe(T.PathParam()),
@@ -3801,7 +3761,7 @@ export interface SnapshotsGrantAccessOutput {
   securityMetadataAccessSAS?: string;
 }
 export const SnapshotsGrantAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessSAS: Schema.optional(Schema.String),
     securityDataAccessSAS: Schema.optional(Schema.String),
     securityMetadataAccessSAS: Schema.optional(Schema.String),
@@ -3816,17 +3776,15 @@ export const SnapshotsGrantAccessOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param snapshotName - The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.
  */
-export const SnapshotsGrantAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SnapshotsGrantAccessInput,
-    outputSchema: SnapshotsGrantAccessOutput,
-  }),
-);
+export const SnapshotsGrantAccess = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SnapshotsGrantAccessInput,
+  outputSchema: SnapshotsGrantAccessOutput,
+}));
 // Input Schema
 export interface SnapshotsListInput {
   subscriptionId: string;
 }
-export const SnapshotsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -3853,7 +3811,7 @@ export interface SnapshotsListOutput {
   }[];
   nextLink?: string;
 }
-export const SnapshotsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -3885,7 +3843,7 @@ export const SnapshotsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const SnapshotsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotsListInput,
   outputSchema: SnapshotsListOutput,
 }));
@@ -3895,7 +3853,7 @@ export interface SnapshotsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const SnapshotsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -3924,7 +3882,7 @@ export interface SnapshotsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const SnapshotsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3968,7 +3926,7 @@ export const SnapshotsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const SnapshotsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SnapshotsListByResourceGroupInput,
     outputSchema: SnapshotsListByResourceGroupOutput,
   }));
@@ -3979,7 +3937,7 @@ export interface SnapshotsRevokeAccessInput {
   snapshotName: string;
 }
 export const SnapshotsRevokeAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     snapshotName: Schema.String.pipe(T.PathParam()),
@@ -3994,7 +3952,7 @@ export const SnapshotsRevokeAccessInput =
 // Output Schema
 export type SnapshotsRevokeAccessOutput = void;
 export const SnapshotsRevokeAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SnapshotsRevokeAccessOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SnapshotsRevokeAccessOutput>;
 
 // The operation
 /**
@@ -4005,12 +3963,10 @@ export const SnapshotsRevokeAccessOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param snapshotName - The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.
  */
-export const SnapshotsRevokeAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SnapshotsRevokeAccessInput,
-    outputSchema: SnapshotsRevokeAccessOutput,
-  }),
-);
+export const SnapshotsRevokeAccess = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SnapshotsRevokeAccessInput,
+  outputSchema: SnapshotsRevokeAccessOutput,
+}));
 // Input Schema
 export interface SnapshotsUpdateInput {
   subscriptionId: string;
@@ -4060,7 +4016,7 @@ export interface SnapshotsUpdateInput {
     tier?: string;
   };
 }
-export const SnapshotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
@@ -4174,7 +4130,7 @@ export interface SnapshotsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const SnapshotsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4203,7 +4159,7 @@ export const SnapshotsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param snapshotName - The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.
  */
-export const SnapshotsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotsUpdateInput,
   outputSchema: SnapshotsUpdateOutput,
 }));
@@ -4216,7 +4172,7 @@ export interface SnapshotsUpdateImmutabilityPolicyInput {
   type: "Unlocked" | "Locked";
 }
 export const SnapshotsUpdateImmutabilityPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     snapshotName: Schema.String.pipe(T.PathParam()),
@@ -4245,7 +4201,7 @@ export interface SnapshotsUpdateImmutabilityPolicyOutput {
   };
 }
 export const SnapshotsUpdateImmutabilityPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4275,7 +4231,7 @@ export const SnapshotsUpdateImmutabilityPolicyOutput =
  * @param snapshotName - The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.
  */
 export const SnapshotsUpdateImmutabilityPolicy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SnapshotsUpdateImmutabilityPolicyInput,
     outputSchema: SnapshotsUpdateImmutabilityPolicyOutput,
   }));
@@ -4288,7 +4244,7 @@ export interface SnapshotsUpdateImmutabilityPolicyLockInput {
   type: "Unlocked" | "Locked";
 }
 export const SnapshotsUpdateImmutabilityPolicyLockInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     snapshotName: Schema.String.pipe(T.PathParam()),
@@ -4317,7 +4273,7 @@ export interface SnapshotsUpdateImmutabilityPolicyLockOutput {
   };
 }
 export const SnapshotsUpdateImmutabilityPolicyLockOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4347,7 +4303,7 @@ export const SnapshotsUpdateImmutabilityPolicyLockOutput =
  * @param snapshotName - The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.
  */
 export const SnapshotsUpdateImmutabilityPolicyLock =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SnapshotsUpdateImmutabilityPolicyLockInput,
     outputSchema: SnapshotsUpdateImmutabilityPolicyLockOutput,
   }));
@@ -4357,7 +4313,7 @@ export interface SpotPlacementScoresGetInput {
   location: string;
 }
 export const SpotPlacementScoresGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4383,7 +4339,7 @@ export interface SpotPlacementScoresGetOutput {
   };
 }
 export const SpotPlacementScoresGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4411,12 +4367,10 @@ export const SpotPlacementScoresGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const SpotPlacementScoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SpotPlacementScoresGetInput,
-    outputSchema: SpotPlacementScoresGetOutput,
-  }),
-);
+export const SpotPlacementScoresGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SpotPlacementScoresGetInput,
+  outputSchema: SpotPlacementScoresGetOutput,
+}));
 // Input Schema
 export interface SpotPlacementScoresPostInput {
   subscriptionId: string;
@@ -4427,7 +4381,7 @@ export interface SpotPlacementScoresPostInput {
   availabilityZones?: boolean;
 }
 export const SpotPlacementScoresPostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     desiredLocations: Schema.optional(Schema.Array(Schema.String)),
@@ -4463,7 +4417,7 @@ export interface SpotPlacementScoresPostOutput {
   }[];
 }
 export const SpotPlacementScoresPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     desiredLocations: Schema.optional(Schema.Array(Schema.String)),
     desiredSizes: Schema.optional(
       Schema.Array(
@@ -4495,12 +4449,10 @@ export const SpotPlacementScoresPostOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param location - The name of the Azure region.
  */
-export const SpotPlacementScoresPost = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SpotPlacementScoresPostInput,
-    outputSchema: SpotPlacementScoresPostOutput,
-  }),
-);
+export const SpotPlacementScoresPost = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SpotPlacementScoresPostInput,
+  outputSchema: SpotPlacementScoresPostOutput,
+}));
 // Input Schema
 export interface VirtualMachineBulkOperationsBulkCancelInput {
   subscriptionId: string;
@@ -4509,7 +4461,7 @@ export interface VirtualMachineBulkOperationsBulkCancelInput {
   operationIds: string[];
 }
 export const VirtualMachineBulkOperationsBulkCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -4580,7 +4532,7 @@ export interface VirtualMachineBulkOperationsBulkCancelOutput {
   }[];
 }
 export const VirtualMachineBulkOperationsBulkCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         resourceId: Schema.optional(Schema.String),
@@ -4677,7 +4629,7 @@ export const VirtualMachineBulkOperationsBulkCancelOutput =
  * @param location - The location name.
  */
 export const VirtualMachineBulkOperationsBulkCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineBulkOperationsBulkCancelInput,
     outputSchema: VirtualMachineBulkOperationsBulkCancelOutput,
   }));
@@ -4702,7 +4654,7 @@ export interface VirtualMachineBulkOperationsBulkDeallocateInput {
   resources: { ids: string[] };
 }
 export const VirtualMachineBulkOperationsBulkDeallocateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -4796,7 +4748,7 @@ export interface VirtualMachineBulkOperationsBulkDeallocateOutput {
   }[];
 }
 export const VirtualMachineBulkOperationsBulkDeallocateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
     location: Schema.String,
@@ -4898,7 +4850,7 @@ export const VirtualMachineBulkOperationsBulkDeallocateOutput =
  * @param location - The location name.
  */
 export const VirtualMachineBulkOperationsBulkDeallocate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineBulkOperationsBulkDeallocateInput,
     outputSchema: VirtualMachineBulkOperationsBulkDeallocateOutput,
   }));
@@ -4924,7 +4876,7 @@ export interface VirtualMachineBulkOperationsBulkDeleteInput {
   forceDeletion?: boolean;
 }
 export const VirtualMachineBulkOperationsBulkDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -5019,7 +4971,7 @@ export interface VirtualMachineBulkOperationsBulkDeleteOutput {
   }[];
 }
 export const VirtualMachineBulkOperationsBulkDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
     location: Schema.String,
@@ -5121,7 +5073,7 @@ export const VirtualMachineBulkOperationsBulkDeleteOutput =
  * @param location - The location name.
  */
 export const VirtualMachineBulkOperationsBulkDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineBulkOperationsBulkDeleteInput,
     outputSchema: VirtualMachineBulkOperationsBulkDeleteOutput,
   }));
@@ -5133,7 +5085,7 @@ export interface VirtualMachineBulkOperationsBulkGetOperationsStatusInput {
   operationIds: string[];
 }
 export const VirtualMachineBulkOperationsBulkGetOperationsStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -5204,7 +5156,7 @@ export interface VirtualMachineBulkOperationsBulkGetOperationsStatusOutput {
   }[];
 }
 export const VirtualMachineBulkOperationsBulkGetOperationsStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         resourceId: Schema.optional(Schema.String),
@@ -5301,7 +5253,7 @@ export const VirtualMachineBulkOperationsBulkGetOperationsStatusOutput =
  * @param location - The location name.
  */
 export const VirtualMachineBulkOperationsBulkGetOperationsStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineBulkOperationsBulkGetOperationsStatusInput,
     outputSchema: VirtualMachineBulkOperationsBulkGetOperationsStatusOutput,
   }));
@@ -5326,7 +5278,7 @@ export interface VirtualMachineBulkOperationsBulkHibernateInput {
   resources: { ids: string[] };
 }
 export const VirtualMachineBulkOperationsBulkHibernateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -5420,7 +5372,7 @@ export interface VirtualMachineBulkOperationsBulkHibernateOutput {
   }[];
 }
 export const VirtualMachineBulkOperationsBulkHibernateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
     location: Schema.String,
@@ -5522,7 +5474,7 @@ export const VirtualMachineBulkOperationsBulkHibernateOutput =
  * @param location - The location name.
  */
 export const VirtualMachineBulkOperationsBulkHibernate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineBulkOperationsBulkHibernateInput,
     outputSchema: VirtualMachineBulkOperationsBulkHibernateOutput,
   }));
@@ -5547,7 +5499,7 @@ export interface VirtualMachineBulkOperationsBulkStartInput {
   resources: { ids: string[] };
 }
 export const VirtualMachineBulkOperationsBulkStartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -5641,7 +5593,7 @@ export interface VirtualMachineBulkOperationsBulkStartOutput {
   }[];
 }
 export const VirtualMachineBulkOperationsBulkStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.String,
     type: Schema.String,
     location: Schema.String,
@@ -5743,7 +5695,7 @@ export const VirtualMachineBulkOperationsBulkStartOutput =
  * @param location - The location name.
  */
 export const VirtualMachineBulkOperationsBulkStart =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachineBulkOperationsBulkStartInput,
     outputSchema: VirtualMachineBulkOperationsBulkStartOutput,
   }));

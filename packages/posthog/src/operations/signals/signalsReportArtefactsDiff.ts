@@ -10,7 +10,7 @@ export interface SignalsReportArtefactsDiffInput {
   report_id: string;
 }
 export const SignalsReportArtefactsDiffInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     report_id: Schema.String.pipe(T.PathParam()),
@@ -27,7 +27,7 @@ export interface SignalsReportArtefactsDiffOutput {
   truncated: boolean;
 }
 export const SignalsReportArtefactsDiffOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     diff: Schema.String,
     truncated: Schema.Boolean,
   }) as unknown as Schema.Codec<SignalsReportArtefactsDiffOutput>;
@@ -41,10 +41,8 @@ export const SignalsReportArtefactsDiffOutput =
  * @param id - A UUID string identifying this signal report artefact.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const signalsReportArtefactsDiff = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalsReportArtefactsDiffInput,
-    outputSchema: SignalsReportArtefactsDiffOutput,
-    errors: [BadRequest, NotFound] as const,
-  }),
-);
+export const signalsReportArtefactsDiff = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalsReportArtefactsDiffInput,
+  outputSchema: SignalsReportArtefactsDiffOutput,
+  errors: [BadRequest, NotFound] as const,
+}));

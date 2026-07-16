@@ -8,7 +8,7 @@ export interface GetV1ConnectionsByIdInput {
   id: string;
 }
 export const GetV1ConnectionsByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/connections/{id}" }),
@@ -33,7 +33,7 @@ export interface GetV1ConnectionsByIdOutput {
   };
 }
 export const GetV1ConnectionsByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -84,10 +84,8 @@ export const GetV1ConnectionsByIdOutput =
  *
  * Returns the connection with the given ID.
  */
-export const getV1ConnectionsById = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV1ConnectionsByIdInput,
-    outputSchema: GetV1ConnectionsByIdOutput,
-    errors: [NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const getV1ConnectionsById = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1ConnectionsByIdInput,
+  outputSchema: GetV1ConnectionsByIdOutput,
+  errors: [NotFound, UnprocessableEntity] as const,
+}));

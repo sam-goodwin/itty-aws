@@ -10,12 +10,10 @@ export interface V1CreateLoginRoleInput {
   ref: string;
   read_only: boolean;
 }
-export const V1CreateLoginRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-    read_only: Schema.Boolean,
-  },
-).pipe(
+export const V1CreateLoginRoleInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  read_only: Schema.Boolean,
+}).pipe(
   T.Http({ method: "POST", path: "/v1/projects/{ref}/cli/login-role" }),
 ) as unknown as Schema.Codec<V1CreateLoginRoleInput>;
 
@@ -26,7 +24,7 @@ export interface V1CreateLoginRoleOutput {
   ttl_seconds: number;
 }
 export const V1CreateLoginRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.String,
     password: SensitiveOutputString,
     ttl_seconds: Schema.Number,
@@ -38,7 +36,7 @@ export const V1CreateLoginRoleOutput =
  *
  * @param ref - Project ref
  */
-export const v1CreateLoginRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1CreateLoginRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1CreateLoginRoleInput,
   outputSchema: V1CreateLoginRoleOutput,
   errors: [BadRequest, Forbidden] as const,

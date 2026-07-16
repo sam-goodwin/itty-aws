@@ -5,7 +5,7 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const UserlandUsersControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(T.Http({ method: "GET", path: "/user_management/users/{id}" }));
 export type UserlandUsersControllerGetInput =
@@ -13,7 +13,7 @@ export type UserlandUsersControllerGetInput =
 
 // Output Schema
 export const UserlandUsersControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -39,10 +39,8 @@ export type UserlandUsersControllerGetOutput =
  *
  * @param id - The unique ID of the user.
  */
-export const UserlandUsersControllerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserlandUsersControllerGetInput,
-    outputSchema: UserlandUsersControllerGetOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const UserlandUsersControllerGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserlandUsersControllerGetInput,
+  outputSchema: UserlandUsersControllerGetOutput,
+  errors: [NotFound] as const,
+}));

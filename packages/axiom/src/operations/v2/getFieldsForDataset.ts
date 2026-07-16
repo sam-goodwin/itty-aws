@@ -8,7 +8,7 @@ export interface GetFieldsForDatasetInput {
   dataset_id: string;
 }
 export const GetFieldsForDatasetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataset_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v2/datasets/{dataset_id}/fields" }),
@@ -23,7 +23,7 @@ export type GetFieldsForDatasetOutput = ReadonlyArray<{
   unit?: string;
 }>;
 export const GetFieldsForDatasetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       description: Schema.optional(Schema.String),
       hidden: Schema.optional(Schema.Boolean),
@@ -34,7 +34,7 @@ export const GetFieldsForDatasetOutput =
   ) as unknown as Schema.Codec<GetFieldsForDatasetOutput>;
 
 // The operation
-export const getFieldsForDataset = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getFieldsForDataset = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetFieldsForDatasetInput,
   outputSchema: GetFieldsForDatasetOutput,
   errors: [Forbidden, NotFound] as const,

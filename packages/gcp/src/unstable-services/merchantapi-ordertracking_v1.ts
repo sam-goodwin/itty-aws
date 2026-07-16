@@ -30,7 +30,7 @@ export interface TimeZone {
 }
 
 export const TimeZone: Schema.Codec<TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
   }).annotate({ identifier: "TimeZone" });
@@ -57,7 +57,7 @@ export interface DateTime {
 }
 
 export const DateTime: Schema.Codec<DateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     minutes: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
     nanos: Schema.optional(Schema.Number),
@@ -99,7 +99,7 @@ export interface ShippingInfo {
 }
 
 export const ShippingInfo: Schema.Codec<ShippingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shippedTime: Schema.optional(DateTime),
     shipmentId: Schema.optional(Schema.String),
     latestDeliveryPromiseTime: Schema.optional(DateTime),
@@ -131,7 +131,7 @@ export interface LineItemDetails {
 }
 
 export const LineItemDetails: Schema.Codec<LineItemDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     brand: Schema.optional(Schema.String),
     lineItemId: Schema.optional(Schema.String),
     gtins: Schema.optional(Schema.Array(Schema.String)),
@@ -151,7 +151,7 @@ export interface ShipmentLineItemMapping {
 }
 
 export const ShipmentLineItemMapping: Schema.Codec<ShipmentLineItemMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lineItemId: Schema.optional(Schema.String),
     shipmentId: Schema.optional(Schema.String),
     quantity: Schema.optional(Schema.String),
@@ -165,7 +165,7 @@ export interface Price {
 }
 
 export const Price: Schema.Codec<Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amountMicros: Schema.optional(Schema.String),
     currencyCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "Price" });
@@ -194,7 +194,7 @@ export interface OrderTrackingSignal {
 }
 
 export const OrderTrackingSignal: Schema.Codec<OrderTrackingSignal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shippingInfo: Schema.optional(Schema.Array(ShippingInfo)),
     lineItems: Schema.optional(Schema.Array(LineItemDetails)),
     shipmentLineItemMapping: Schema.optional(
@@ -242,7 +242,7 @@ export interface ProductChange {
 }
 
 export const ProductChange: Schema.Codec<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newValue: Schema.optional(Schema.String),
     reportingContext: Schema.optional(Schema.String),
     regionCode: Schema.optional(Schema.String),
@@ -275,7 +275,7 @@ export interface ProductStatusChangeMessage {
 }
 
 export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.optional(Schema.String),
     resourceType: Schema.optional(Schema.String),
     resource: Schema.optional(Schema.String),
@@ -351,7 +351,7 @@ export interface CreateAccountsOrderTrackingSignalsRequest {
 }
 
 export const CreateAccountsOrderTrackingSignalsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     orderTrackingSignalId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("orderTrackingSignalId"),
@@ -368,7 +368,7 @@ export const CreateAccountsOrderTrackingSignalsRequest =
 
 export type CreateAccountsOrderTrackingSignalsResponse = OrderTrackingSignal;
 export const CreateAccountsOrderTrackingSignalsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ OrderTrackingSignal;
+  /*@__PURE__*/ OrderTrackingSignal;
 
 export type CreateAccountsOrderTrackingSignalsError =
   | DefaultErrors
@@ -383,7 +383,7 @@ export const createAccountsOrderTrackingSignals: API.OperationMethod<
   CreateAccountsOrderTrackingSignalsResponse,
   CreateAccountsOrderTrackingSignalsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsOrderTrackingSignalsRequest,
   output: CreateAccountsOrderTrackingSignalsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

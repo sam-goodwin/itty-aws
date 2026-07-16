@@ -10,7 +10,7 @@ export interface HeatmapScreenshotsContentRetrieveInput {
   width?: number;
 }
 export const HeatmapScreenshotsContentRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     width: Schema.optional(Schema.Number),
@@ -24,7 +24,7 @@ export const HeatmapScreenshotsContentRetrieveInput =
 // Output Schema
 export type HeatmapScreenshotsContentRetrieveOutput = void;
 export const HeatmapScreenshotsContentRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HeatmapScreenshotsContentRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HeatmapScreenshotsContentRetrieveOutput>;
 
 // The operation
 /**
@@ -35,7 +35,7 @@ export const HeatmapScreenshotsContentRetrieveOutput =
  * @param width - Viewport width (CSS pixels) to fetch. Defaults to 1024. If no exact render exists for this width the closest available one is returned.
  */
 export const heatmapScreenshotsContentRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HeatmapScreenshotsContentRetrieveInput,
     outputSchema: HeatmapScreenshotsContentRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

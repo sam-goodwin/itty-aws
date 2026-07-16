@@ -11,7 +11,7 @@ export interface ErrorTrackingGitProviderFileLinksResolveGitlabRetrieveInput {
   repository: string;
 }
 export const ErrorTrackingGitProviderFileLinksResolveGitlabRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     code_sample: Schema.String,
     file_name: Schema.String,
@@ -31,7 +31,7 @@ export interface ErrorTrackingGitProviderFileLinksResolveGitlabRetrieveOutput {
   error?: string;
 }
 export const ErrorTrackingGitProviderFileLinksResolveGitlabRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     found: Schema.optional(Schema.Boolean),
     url: Schema.optional(Schema.String),
     error: Schema.optional(Schema.String),
@@ -47,7 +47,7 @@ export const ErrorTrackingGitProviderFileLinksResolveGitlabRetrieveOutput =
  * @param repository - Repository name.
  */
 export const errorTrackingGitProviderFileLinksResolveGitlabRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingGitProviderFileLinksResolveGitlabRetrieveInput,
     outputSchema: ErrorTrackingGitProviderFileLinksResolveGitlabRetrieveOutput,
   }));

@@ -22,7 +22,7 @@ export interface PostV1AppsInput {
   branchGitName?: string | null;
   projectId: string;
 }
-export const PostV1AppsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostV1AppsInput = /*@__PURE__*/ Schema.Struct({
   displayName: Schema.String,
   regionId: Schema.optional(
     Schema.Literals([
@@ -56,7 +56,7 @@ export interface PostV1AppsOutput {
     createdAt: string;
   };
 }
-export const PostV1AppsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostV1AppsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Struct({
     id: Schema.String,
     type: Schema.String,
@@ -81,7 +81,7 @@ export const PostV1AppsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Creates a new app under the specified project. The `projectId` is required in the request body. The app is placed in the given region (or the default region if omitted). Returns `409 Conflict` with the existing app's id, name, and branch if an app with the same name already exists on the resolved branch.
  */
-export const postV1Apps = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const postV1Apps = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostV1AppsInput,
   outputSchema: PostV1AppsOutput,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity] as const,

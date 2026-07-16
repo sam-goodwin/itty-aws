@@ -11,7 +11,7 @@ export interface DeleteGroupAlertConfigInput {
   pretty?: boolean;
 }
 export const DeleteGroupAlertConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     alertConfigId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const DeleteGroupAlertConfigInput =
 // Output Schema
 export type DeleteGroupAlertConfigOutput = void;
 export const DeleteGroupAlertConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupAlertConfigOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupAlertConfigOutput>;
 
 // The operation
 /**
@@ -42,10 +42,8 @@ export const DeleteGroupAlertConfigOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param alertConfigId - Unique 24-hexadecimal digit string that identifies the alert configuration.
  */
-export const deleteGroupAlertConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupAlertConfigInput,
-    outputSchema: DeleteGroupAlertConfigOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const deleteGroupAlertConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupAlertConfigInput,
+  outputSchema: DeleteGroupAlertConfigOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

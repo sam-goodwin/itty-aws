@@ -12,7 +12,7 @@ export interface GetPaymentMethodDomainsInput {
   starting_after?: string;
 }
 export const GetPaymentMethodDomainsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domain_name: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
     ending_before: Schema.optional(Schema.String),
@@ -66,7 +66,7 @@ export interface GetPaymentMethodDomainsOutput {
   url: string;
 }
 export const GetPaymentMethodDomainsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amazon_pay: Schema.Struct({
@@ -143,9 +143,7 @@ export const GetPaymentMethodDomainsOutput =
  * @param limit - A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetPaymentMethodDomains = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetPaymentMethodDomainsInput,
-    outputSchema: GetPaymentMethodDomainsOutput,
-  }),
-);
+export const GetPaymentMethodDomains = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetPaymentMethodDomainsInput,
+  outputSchema: GetPaymentMethodDomainsOutput,
+}));

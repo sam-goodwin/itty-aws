@@ -9,7 +9,7 @@ export interface ExternalDataSourcesWebhookInfoRetrieveInput {
   project_id: string;
 }
 export const ExternalDataSourcesWebhookInfoRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const ExternalDataSourcesWebhookInfoRetrieveInput =
 // Output Schema
 export type ExternalDataSourcesWebhookInfoRetrieveOutput = void;
 export const ExternalDataSourcesWebhookInfoRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesWebhookInfoRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesWebhookInfoRetrieveOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const ExternalDataSourcesWebhookInfoRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const externalDataSourcesWebhookInfoRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesWebhookInfoRetrieveInput,
     outputSchema: ExternalDataSourcesWebhookInfoRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

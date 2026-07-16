@@ -172,7 +172,7 @@ interface Settings {
   /** The number of seconds to delay before making the message available for another attempt. */
   retryDelay?: number | null;
 }
-const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Settings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     batchSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     maxConcurrency: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -208,31 +208,30 @@ interface MqWorkerConsumerResponse {
   } | null;
   type?: "worker" | null;
 }
-const MqWorkerConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      deadLetterQueue: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(Schema.Union([Settings, Schema.Null])),
-      type: Schema.optional(
-        Schema.Union([Schema.Literal("worker"), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        consumerId: "consumer_id",
-        createdOn: "created_on",
-        deadLetterQueue: "dead_letter_queue",
-        queueName: "queue_name",
-        scriptName: "script",
-        settings: "settings",
-        type: "type",
-      }),
+const MqWorkerConsumerResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    deadLetterQueue: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
     ),
+    queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    settings: Schema.optional(Schema.Union([Settings, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([Schema.Literal("worker"), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      consumerId: "consumer_id",
+      createdOn: "created_on",
+      deadLetterQueue: "dead_letter_queue",
+      queueName: "queue_name",
+      scriptName: "script",
+      settings: "settings",
+      type: "type",
+    }),
+  ),
 ) as unknown as Schema.Codec<MqWorkerConsumerResponse>;
 
 interface Settings2 {
@@ -245,7 +244,7 @@ interface Settings2 {
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
   visibilityTimeoutMs?: number | null;
 }
-const Settings2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Settings2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     batchSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     maxRetries: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -278,7 +277,7 @@ interface MqHTTPConsumerResponse {
   } | null;
   type?: "http_pull" | null;
 }
-const MqHTTPConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MqHTTPConsumerResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -316,7 +315,7 @@ interface Settings3 {
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
   visibilityTimeoutMs?: number | null;
 }
-const Settings3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Settings3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     batchSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     maxConcurrency: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -356,37 +355,36 @@ interface MqWorkerConsumerResponse2 {
   } | null;
   type?: "worker" | null;
 }
-const MqWorkerConsumerResponse2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      deadLetterQueue: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(Schema.Union([Settings, Schema.Null])),
-      type: Schema.optional(
-        Schema.Union([Schema.Literal("worker"), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        consumerId: "consumer_id",
-        createdOn: "created_on",
-        deadLetterQueue: "dead_letter_queue",
-        queueName: "queue_name",
-        scriptName: "script_name",
-        settings: "settings",
-        type: "type",
-      }),
+const MqWorkerConsumerResponse2 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    consumerId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    deadLetterQueue: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
     ),
+    queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scriptName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    settings: Schema.optional(Schema.Union([Settings, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([Schema.Literal("worker"), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      consumerId: "consumer_id",
+      createdOn: "created_on",
+      deadLetterQueue: "dead_letter_queue",
+      queueName: "queue_name",
+      scriptName: "script_name",
+      settings: "settings",
+      type: "type",
+    }),
+  ),
 ) as unknown as Schema.Codec<MqWorkerConsumerResponse2>;
 
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -398,7 +396,7 @@ interface ResponseInfo {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const ResponseInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ResponseInfo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -422,7 +420,7 @@ interface MqQueueMessageText {
   /** The number of seconds to wait for attempting to deliver this message to consumers */
   delaySeconds?: number | null;
 }
-const MqQueueMessageText = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MqQueueMessageText = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     body: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     contentType: Schema.optional(
@@ -444,7 +442,7 @@ interface MqQueueMessageJson {
   /** The number of seconds to wait for attempting to deliver this message to consumers */
   delaySeconds?: number | null;
 }
-const MqQueueMessageJson = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MqQueueMessageJson = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     body: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
     contentType: Schema.optional(
@@ -468,7 +466,7 @@ interface Metrics {
   /** Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown. */
   oldestMessageTimestampMs: number;
 }
-const Metrics = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Metrics = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     backlogBytes: Schema.Number,
     backlogCount: Schema.Number,
@@ -490,7 +488,7 @@ interface Metadata {
     oldestMessageTimestampMs: number;
   } | null;
 }
-const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Metadata = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     metrics: Schema.optional(Schema.Union([Metrics, Schema.Null])),
   }),
@@ -505,7 +503,7 @@ interface Message {
   metadata?: unknown | null;
   timestampMs?: number | null;
 }
-const Message = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Message = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     attempts: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -529,7 +527,7 @@ interface Ack {
   /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
   leaseId?: string | null;
 }
-const Ack = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ack = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     leaseId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(Schema.encodeKeys({ leaseId: "lease_id" })),
@@ -541,7 +539,7 @@ interface Retry {
   /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
   leaseId?: string | null;
 }
-const Retry = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Retry = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     delaySeconds: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     leaseId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -554,7 +552,7 @@ interface MqWorkerProducer {
   script?: string | null;
   type?: "worker" | null;
 }
-const MqWorkerProducer = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MqWorkerProducer = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     script: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(
@@ -567,7 +565,7 @@ interface MqR2Producer {
   bucketName?: string | null;
   type?: "r2_bucket" | null;
 }
-const MqR2Producer = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MqR2Producer = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bucketName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     type: Schema.optional(
@@ -584,7 +582,7 @@ interface Settings4 {
   /** Number of seconds after which an unconsumed message will be delayed. */
   messageRetentionPeriod?: number | null;
 }
-const Settings4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Settings4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     deliveryDelay: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     deliveryPaused: Schema.optional(
@@ -653,47 +651,46 @@ interface ListQueuesResponseResult {
     messageRetentionPeriod?: number | null;
   } | null;
 }
-const ListQueuesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      consumers: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([MqWorkerConsumerResponse, MqHTTPConsumerResponse]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      consumersTotalCount: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      producers: Schema.optional(
-        Schema.Union([
-          Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
-          Schema.Null,
-        ]),
-      ),
-      producersTotalCount: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        consumers: "consumers",
-        consumersTotalCount: "consumers_total_count",
-        createdOn: "created_on",
-        modifiedOn: "modified_on",
-        producers: "producers",
-        producersTotalCount: "producers_total_count",
-        queueId: "queue_id",
-        queueName: "queue_name",
-        settings: "settings",
-      }),
+const ListQueuesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    consumers: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([MqWorkerConsumerResponse, MqHTTPConsumerResponse]),
+        ),
+        Schema.Null,
+      ]),
     ),
+    consumersTotalCount: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    producers: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
+        Schema.Null,
+      ]),
+    ),
+    producersTotalCount: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      consumers: "consumers",
+      consumersTotalCount: "consumers_total_count",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+      producers: "producers",
+      producersTotalCount: "producers_total_count",
+      queueId: "queue_id",
+      queueName: "queue_name",
+      settings: "settings",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListQueuesResponseResult>;
 
 interface Destination {
@@ -702,7 +699,7 @@ interface Destination {
   /** Type of destination */
   type: "queues.queue";
 }
-const Destination = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Destination = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     queueId: Schema.String,
     type: Schema.Literal("queues.queue"),
@@ -713,7 +710,7 @@ interface MqEventSourceImages {
   /** Type of source */
   type?: "images" | null;
 }
-const MqEventSourceImages = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MqEventSourceImages = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.optional(
       Schema.Union([Schema.Literal("images"), Schema.Null]),
@@ -725,7 +722,7 @@ interface MqEventSourceKV {
   /** Type of source */
   type?: "kv" | null;
 }
-const MqEventSourceKV = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MqEventSourceKV = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.optional(Schema.Union([Schema.Literal("kv"), Schema.Null])),
   }),
@@ -735,7 +732,7 @@ interface MqEventSourceR2 {
   /** Type of source */
   type?: "r2" | null;
 }
-const MqEventSourceR2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MqEventSourceR2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.optional(Schema.Union([Schema.Literal("r2"), Schema.Null])),
   }),
@@ -745,20 +742,19 @@ interface MqEventSourceSuperSlurper {
   /** Type of source */
   type?: "superSlurper" | null;
 }
-const MqEventSourceSuperSlurper = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      type: Schema.optional(
-        Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
-      ),
-    }),
+const MqEventSourceSuperSlurper = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.optional(
+      Schema.Union([Schema.Literal("superSlurper"), Schema.Null]),
+    ),
+  }),
 ) as unknown as Schema.Codec<MqEventSourceSuperSlurper>;
 
 interface MqEventSourceVectorize {
   /** Type of source */
   type?: "vectorize" | null;
 }
-const MqEventSourceVectorize = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MqEventSourceVectorize = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.optional(
       Schema.Union([Schema.Literal("vectorize"), Schema.Null]),
@@ -772,14 +768,13 @@ interface MqEventSourceWorkersAIModel {
   /** Type of source */
   type?: "workersAi.model" | null;
 }
-const MqEventSourceWorkersAIModel = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      modelName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      type: Schema.optional(
-        Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
+const MqEventSourceWorkersAIModel = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    modelName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([Schema.Literal("workersAi.model"), Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ modelName: "model_name", type: "type" })),
 ) as unknown as Schema.Codec<MqEventSourceWorkersAIModel>;
 
 interface MqEventSourceWorkersBuildsWorker {
@@ -789,7 +784,7 @@ interface MqEventSourceWorkersBuildsWorker {
   workerName?: string | null;
 }
 const MqEventSourceWorkersBuildsWorker =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       type: Schema.optional(
         Schema.Union([Schema.Literal("workersBuilds.worker"), Schema.Null]),
@@ -805,7 +800,7 @@ interface MqEventSourceWorkflowsWorkflow {
   workflowName?: string | null;
 }
 const MqEventSourceWorkflowsWorkflow =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       type: Schema.optional(
         Schema.Union([Schema.Literal("workflows.workflow"), Schema.Null]),
@@ -841,7 +836,7 @@ interface ListSubscriptionsResponseResult {
     | { type?: "workflows.workflow" | null; workflowName?: string | null };
 }
 const ListSubscriptionsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -881,7 +876,7 @@ interface ListSubscriptionsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListSubscriptionsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -908,18 +903,17 @@ export interface GetConsumerRequest {
   accountId: string;
 }
 
-export const GetConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      queueId: Schema.String.pipe(T.HttpPath("queueId")),
-      consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/queues/{queueId}/consumers/{consumerId}",
-      }),
-    ),
+export const GetConsumerRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/queues/{queueId}/consumers/{consumerId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetConsumerRequest>;
 
 export type GetConsumerResponse =
@@ -952,11 +946,10 @@ export type GetConsumerResponse =
       type?: "http_pull" | null;
     };
 
-export const GetConsumerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([MqWorkerConsumerResponse, MqHTTPConsumerResponse]).pipe(
-      T.ResponsePath("result"),
-    ),
+export const GetConsumerResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([MqWorkerConsumerResponse, MqHTTPConsumerResponse]).pipe(
+    T.ResponsePath("result"),
+  ),
 ) as unknown as Schema.Codec<GetConsumerResponse>;
 
 export type GetConsumerError =
@@ -971,7 +964,7 @@ export const getConsumer: API.OperationMethod<
   GetConsumerResponse,
   GetConsumerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConsumerRequest,
   output: GetConsumerResponse,
   errors: [InvalidRequestBody, QueueNotFound, ConsumerNotFound, InvalidRoute],
@@ -983,17 +976,16 @@ export interface ListConsumersRequest {
   accountId: string;
 }
 
-export const ListConsumersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      queueId: Schema.String.pipe(T.HttpPath("queueId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/queues/{queueId}/consumers",
-      }),
-    ),
+export const ListConsumersRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/queues/{queueId}/consumers",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListConsumersRequest>;
 
 export interface ListConsumersResponse {
@@ -1029,13 +1021,12 @@ export interface ListConsumersResponse {
   )[];
 }
 
-export const ListConsumersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(
-        Schema.Union([MqWorkerConsumerResponse, MqHTTPConsumerResponse]),
-      ),
-    }),
+export const ListConsumersResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(
+      Schema.Union([MqWorkerConsumerResponse, MqHTTPConsumerResponse]),
+    ),
+  }),
 ) as unknown as Schema.Codec<ListConsumersResponse>;
 
 export type ListConsumersError =
@@ -1049,7 +1040,7 @@ export const listConsumers: API.PaginatedOperationMethod<
   ListConsumersResponse,
   ListConsumersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListConsumersRequest,
   output: ListConsumersResponse,
   errors: [InvalidRequestBody, QueueNotFound, InvalidRoute],
@@ -1080,30 +1071,29 @@ export interface CreateConsumerRequest {
   };
 }
 
-export const CreateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      queueId: Schema.String.pipe(T.HttpPath("queueId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      scriptName: Schema.optional(Schema.String),
-      type: Schema.Union([
-        Schema.Literals(["worker", "http_pull"]),
-        Schema.String,
-      ]),
-      deadLetterQueue: Schema.optional(Schema.String),
-      settings: Schema.optional(Settings3),
-    }).pipe(
-      Schema.encodeKeys({
-        scriptName: "script_name",
-        type: "type",
-        deadLetterQueue: "dead_letter_queue",
-        settings: "settings",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/queues/{queueId}/consumers",
-      }),
-    ),
+export const CreateConsumerRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    scriptName: Schema.optional(Schema.String),
+    type: Schema.Union([
+      Schema.Literals(["worker", "http_pull"]),
+      Schema.String,
+    ]),
+    deadLetterQueue: Schema.optional(Schema.String),
+    settings: Schema.optional(Settings3),
+  }).pipe(
+    Schema.encodeKeys({
+      scriptName: "script_name",
+      type: "type",
+      deadLetterQueue: "dead_letter_queue",
+      settings: "settings",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/queues/{queueId}/consumers",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateConsumerRequest>;
 
 export type CreateConsumerResponse =
@@ -1137,7 +1127,7 @@ export type CreateConsumerResponse =
     };
 
 export const CreateConsumerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]).pipe(
       T.ResponsePath("result"),
     ),
@@ -1157,7 +1147,7 @@ export const createConsumer: API.OperationMethod<
   CreateConsumerResponse,
   CreateConsumerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateConsumerRequest,
   output: CreateConsumerResponse,
   errors: [
@@ -1192,31 +1182,30 @@ export interface UpdateConsumerRequest {
   };
 }
 
-export const UpdateConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      queueId: Schema.String.pipe(T.HttpPath("queueId")),
-      consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      scriptName: Schema.optional(Schema.String),
-      type: Schema.Union([
-        Schema.Literals(["worker", "http_pull"]),
-        Schema.String,
-      ]),
-      deadLetterQueue: Schema.optional(Schema.String),
-      settings: Schema.optional(Settings3),
-    }).pipe(
-      Schema.encodeKeys({
-        scriptName: "script_name",
-        type: "type",
-        deadLetterQueue: "dead_letter_queue",
-        settings: "settings",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/queues/{queueId}/consumers/{consumerId}",
-      }),
-    ),
+export const UpdateConsumerRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    scriptName: Schema.optional(Schema.String),
+    type: Schema.Union([
+      Schema.Literals(["worker", "http_pull"]),
+      Schema.String,
+    ]),
+    deadLetterQueue: Schema.optional(Schema.String),
+    settings: Schema.optional(Settings3),
+  }).pipe(
+    Schema.encodeKeys({
+      scriptName: "script_name",
+      type: "type",
+      deadLetterQueue: "dead_letter_queue",
+      settings: "settings",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/queues/{queueId}/consumers/{consumerId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateConsumerRequest>;
 
 export type UpdateConsumerResponse =
@@ -1250,7 +1239,7 @@ export type UpdateConsumerResponse =
     };
 
 export const UpdateConsumerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]).pipe(
       T.ResponsePath("result"),
     ),
@@ -1270,7 +1259,7 @@ export const updateConsumer: API.OperationMethod<
   UpdateConsumerResponse,
   UpdateConsumerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateConsumerRequest,
   output: UpdateConsumerResponse,
   errors: [
@@ -1290,18 +1279,17 @@ export interface DeleteConsumerRequest {
   accountId: string;
 }
 
-export const DeleteConsumerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      queueId: Schema.String.pipe(T.HttpPath("queueId")),
-      consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/queues/{queueId}/consumers/{consumerId}",
-      }),
-    ),
+export const DeleteConsumerRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    consumerId: Schema.String.pipe(T.HttpPath("consumerId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/queues/{queueId}/consumers/{consumerId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteConsumerRequest>;
 
 export interface DeleteConsumerResponse {
@@ -1319,7 +1307,7 @@ export interface DeleteConsumerResponse {
 }
 
 export const DeleteConsumerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.optional(
         Schema.Union([Schema.Array(ResponseInfo), Schema.Null]),
@@ -1345,7 +1333,7 @@ export const deleteConsumer: API.OperationMethod<
   DeleteConsumerResponse,
   DeleteConsumerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteConsumerRequest,
   output: DeleteConsumerResponse,
   errors: [InvalidRequestBody, QueueNotFound, ConsumerNotFound, InvalidRoute],
@@ -1369,7 +1357,7 @@ export interface BulkPushMessagesRequest {
 }
 
 export const BulkPushMessagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       queueId: Schema.String.pipe(T.HttpPath("queueId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1400,7 +1388,7 @@ export interface BulkPushMessagesResponse {
 }
 
 export const BulkPushMessagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -1417,7 +1405,7 @@ export const bulkPushMessages: API.OperationMethod<
   BulkPushMessagesResponse,
   BulkPushMessagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkPushMessagesRequest,
   output: BulkPushMessagesResponse,
   errors: [InvalidMessageBody, InvalidQueueId, InvalidRoute],
@@ -1433,23 +1421,22 @@ export interface PullMessageRequest {
   visibilityTimeoutMs?: number;
 }
 
-export const PullMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      queueId: Schema.String.pipe(T.HttpPath("queueId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      batchSize: Schema.optional(Schema.Number),
-      visibilityTimeoutMs: Schema.optional(Schema.Number),
-    }).pipe(
-      Schema.encodeKeys({
-        batchSize: "batch_size",
-        visibilityTimeoutMs: "visibility_timeout_ms",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/queues/{queueId}/messages/pull",
-      }),
-    ),
+export const PullMessageRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    batchSize: Schema.optional(Schema.Number),
+    visibilityTimeoutMs: Schema.optional(Schema.Number),
+  }).pipe(
+    Schema.encodeKeys({
+      batchSize: "batch_size",
+      visibilityTimeoutMs: "visibility_timeout_ms",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/queues/{queueId}/messages/pull",
+    }),
+  ),
 ) as unknown as Schema.Codec<PullMessageRequest>;
 
 export interface PullMessageResponse {
@@ -1474,25 +1461,24 @@ export interface PullMessageResponse {
   } | null;
 }
 
-export const PullMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      messageBacklogCount: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      messages: Schema.optional(
-        Schema.Union([Schema.Array(Message), Schema.Null]),
-      ),
-      metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          messageBacklogCount: "message_backlog_count",
-          messages: "messages",
-          metadata: "metadata",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PullMessageResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    messageBacklogCount: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    messages: Schema.optional(
+      Schema.Union([Schema.Array(Message), Schema.Null]),
+    ),
+    metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        messageBacklogCount: "message_backlog_count",
+        messages: "messages",
+        metadata: "metadata",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PullMessageResponse>;
 
 export type PullMessageError =
@@ -1507,7 +1493,7 @@ export const pullMessage: API.OperationMethod<
   PullMessageResponse,
   PullMessageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PullMessageRequest,
   output: PullMessageResponse,
   errors: [InvalidRequestBody, InvalidQueueId, QueueNotFound, InvalidRoute],
@@ -1525,27 +1511,26 @@ export interface PushMessageRequest {
   delaySeconds?: number;
 }
 
-export const PushMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      queueId: Schema.String.pipe(T.HttpPath("queueId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      body: Schema.optional(Schema.String),
-      contentType: Schema.optional(
-        Schema.Union([Schema.Literals(["text", "json"]), Schema.String]),
-      ),
-      delaySeconds: Schema.optional(Schema.Number),
-    }).pipe(
-      Schema.encodeKeys({
-        body: "body",
-        contentType: "content_type",
-        delaySeconds: "delay_seconds",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/queues/{queueId}/messages",
-      }),
+export const PushMessageRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    body: Schema.optional(Schema.String),
+    contentType: Schema.optional(
+      Schema.Union([Schema.Literals(["text", "json"]), Schema.String]),
     ),
+    delaySeconds: Schema.optional(Schema.Number),
+  }).pipe(
+    Schema.encodeKeys({
+      body: "body",
+      contentType: "content_type",
+      delaySeconds: "delay_seconds",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/queues/{queueId}/messages",
+    }),
+  ),
 ) as unknown as Schema.Codec<PushMessageRequest>;
 
 export interface PushMessageResponse {
@@ -1558,11 +1543,10 @@ export interface PushMessageResponse {
   } | null;
 }
 
-export const PushMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const PushMessageResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    metadata: Schema.optional(Schema.Union([Metadata, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PushMessageResponse>;
 
 export type PushMessageError =
@@ -1576,7 +1560,7 @@ export const pushMessage: API.OperationMethod<
   PushMessageResponse,
   PushMessageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PushMessageRequest,
   output: PushMessageResponse,
   errors: [InvalidMessageBody, InvalidQueueId, InvalidRoute],
@@ -1592,19 +1576,18 @@ export interface AckMessageRequest {
   retries?: { delaySeconds?: number; leaseId?: string }[];
 }
 
-export const AckMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      queueId: Schema.String.pipe(T.HttpPath("queueId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      acks: Schema.optional(Schema.Array(Ack)),
-      retries: Schema.optional(Schema.Array(Retry)),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/queues/{queueId}/messages/ack",
-      }),
-    ),
+export const AckMessageRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    acks: Schema.optional(Schema.Array(Ack)),
+    retries: Schema.optional(Schema.Array(Retry)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/queues/{queueId}/messages/ack",
+    }),
+  ),
 ) as unknown as Schema.Codec<AckMessageRequest>;
 
 export interface AckMessageResponse {
@@ -1616,18 +1599,14 @@ export interface AckMessageResponse {
   warnings?: Record<string, unknown> | null;
 }
 
-export const AckMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      ackCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      retryCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      warnings: Schema.optional(
-        Schema.Union([
-          Schema.Record(Schema.String, Schema.Unknown),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(T.ResponsePath("result")),
+export const AckMessageResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    ackCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    retryCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    warnings: Schema.optional(
+      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
+    ),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<AckMessageResponse>;
 
 export type AckMessageError =
@@ -1642,7 +1621,7 @@ export const ackMessage: API.OperationMethod<
   AckMessageResponse,
   AckMessageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AckMessageRequest,
   output: AckMessageResponse,
   errors: [InvalidRequestBody, InvalidQueueId, QueueNotFound, InvalidRoute],
@@ -1659,7 +1638,7 @@ export interface GetMetricsQueueRequest {
 }
 
 export const GetMetricsQueueRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       queueId: Schema.String.pipe(T.HttpPath("queueId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1681,7 +1660,7 @@ export interface GetMetricsQueueResponse {
 }
 
 export const GetMetricsQueueResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       backlogBytes: Schema.Number,
       backlogCount: Schema.Number,
@@ -1704,7 +1683,7 @@ export const getMetricsQueue: API.OperationMethod<
   GetMetricsQueueResponse,
   GetMetricsQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetricsQueueRequest,
   output: GetMetricsQueueResponse,
   errors: [],
@@ -1722,21 +1701,20 @@ export interface StartPurgeRequest {
   deleteMessagesPermanently?: boolean;
 }
 
-export const StartPurgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      queueId: Schema.String.pipe(T.HttpPath("queueId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      deleteMessagesPermanently: Schema.optional(Schema.Boolean),
-    }).pipe(
-      Schema.encodeKeys({
-        deleteMessagesPermanently: "delete_messages_permanently",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/queues/{queueId}/purge",
-      }),
-    ),
+export const StartPurgeRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    deleteMessagesPermanently: Schema.optional(Schema.Boolean),
+  }).pipe(
+    Schema.encodeKeys({
+      deleteMessagesPermanently: "delete_messages_permanently",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/queues/{queueId}/purge",
+    }),
+  ),
 ) as unknown as Schema.Codec<StartPurgeRequest>;
 
 export interface StartPurgeResponse {
@@ -1791,49 +1769,48 @@ export interface StartPurgeResponse {
   } | null;
 }
 
-export const StartPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      consumers: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      consumersTotalCount: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      producers: Schema.optional(
-        Schema.Union([
-          Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
-          Schema.Null,
-        ]),
-      ),
-      producersTotalCount: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          consumers: "consumers",
-          consumersTotalCount: "consumers_total_count",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          producers: "producers",
-          producersTotalCount: "producers_total_count",
-          queueId: "queue_id",
-          queueName: "queue_name",
-          settings: "settings",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const StartPurgeResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    consumers: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    consumersTotalCount: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    producers: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
+        Schema.Null,
+      ]),
+    ),
+    producersTotalCount: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        consumers: "consumers",
+        consumersTotalCount: "consumers_total_count",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        producers: "producers",
+        producersTotalCount: "producers_total_count",
+        queueId: "queue_id",
+        queueName: "queue_name",
+        settings: "settings",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<StartPurgeResponse>;
 
 export type StartPurgeError = DefaultErrors | InvalidQueueId | InvalidRoute;
@@ -1843,7 +1820,7 @@ export const startPurge: API.OperationMethod<
   StartPurgeResponse,
   StartPurgeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPurgeRequest,
   output: StartPurgeResponse,
   errors: [InvalidQueueId, InvalidRoute],
@@ -1855,17 +1832,16 @@ export interface StatusPurgeRequest {
   accountId: string;
 }
 
-export const StatusPurgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      queueId: Schema.String.pipe(T.HttpPath("queueId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/queues/{queueId}/purge",
-      }),
-    ),
+export const StatusPurgeRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/queues/{queueId}/purge",
+    }),
+  ),
 ) as unknown as Schema.Codec<StatusPurgeRequest>;
 
 export interface StatusPurgeResponse {
@@ -1875,16 +1851,15 @@ export interface StatusPurgeResponse {
   startedAt?: string | null;
 }
 
-export const StatusPurgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      startedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({ completed: "completed", startedAt: "started_at" }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const StatusPurgeResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    completed: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    startedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({ completed: "completed", startedAt: "started_at" }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<StatusPurgeResponse>;
 
 export type StatusPurgeError = DefaultErrors | InvalidQueueId | InvalidRoute;
@@ -1894,7 +1869,7 @@ export const statusPurge: API.OperationMethod<
   StatusPurgeResponse,
   StatusPurgeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StatusPurgeRequest,
   output: StatusPurgeResponse,
   errors: [InvalidQueueId, InvalidRoute],
@@ -1910,7 +1885,7 @@ export interface GetQueueRequest {
   accountId: string;
 }
 
-export const GetQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetQueueRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     queueId: Schema.String.pipe(T.HttpPath("queueId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1971,7 +1946,7 @@ export interface GetQueueResponse {
   } | null;
 }
 
-export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetQueueResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     consumers: Schema.optional(
       Schema.Union([
@@ -2022,7 +1997,7 @@ export const getQueue: API.OperationMethod<
   GetQueueResponse,
   GetQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueueRequest,
   output: GetQueueResponse,
   errors: [QueueNotFound, InvalidRoute],
@@ -2033,11 +2008,10 @@ export interface ListQueuesRequest {
   accountId: string;
 }
 
-export const ListQueuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/queues" })),
+export const ListQueuesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/queues" })),
 ) as unknown as Schema.Codec<ListQueuesRequest>;
 
 export interface ListQueuesResponse {
@@ -2094,11 +2068,10 @@ export interface ListQueuesResponse {
   }[];
 }
 
-export const ListQueuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListQueuesResponseResult),
-    }),
+export const ListQueuesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListQueuesResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListQueuesResponse>;
 
 export type ListQueuesError = DefaultErrors | InvalidRoute;
@@ -2108,7 +2081,7 @@ export const listQueues: API.PaginatedOperationMethod<
   ListQueuesResponse,
   ListQueuesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,
   output: ListQueuesResponse,
   errors: [InvalidRoute],
@@ -2125,15 +2098,14 @@ export interface CreateQueueRequest {
   queueName: string;
 }
 
-export const CreateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      queueName: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({ queueName: "queue_name" }),
-      T.Http({ method: "POST", path: "/accounts/{account_id}/queues" }),
-    ),
+export const CreateQueueRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    queueName: Schema.String,
+  }).pipe(
+    Schema.encodeKeys({ queueName: "queue_name" }),
+    T.Http({ method: "POST", path: "/accounts/{account_id}/queues" }),
+  ),
 ) as unknown as Schema.Codec<CreateQueueRequest>;
 
 export interface CreateQueueResponse {
@@ -2188,49 +2160,48 @@ export interface CreateQueueResponse {
   } | null;
 }
 
-export const CreateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      consumers: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      consumersTotalCount: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      producers: Schema.optional(
-        Schema.Union([
-          Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
-          Schema.Null,
-        ]),
-      ),
-      producersTotalCount: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          consumers: "consumers",
-          consumersTotalCount: "consumers_total_count",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          producers: "producers",
-          producersTotalCount: "producers_total_count",
-          queueId: "queue_id",
-          queueName: "queue_name",
-          settings: "settings",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateQueueResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    consumers: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    consumersTotalCount: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    producers: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
+        Schema.Null,
+      ]),
+    ),
+    producersTotalCount: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        consumers: "consumers",
+        consumersTotalCount: "consumers_total_count",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        producers: "producers",
+        producersTotalCount: "producers_total_count",
+        queueId: "queue_id",
+        queueName: "queue_name",
+        settings: "settings",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateQueueResponse>;
 
 export type CreateQueueError =
@@ -2244,7 +2215,7 @@ export const createQueue: API.OperationMethod<
   CreateQueueResponse,
   CreateQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateQueueRequest,
   output: CreateQueueResponse,
   errors: [QueueAlreadyExists, InvalidQueueName, InvalidRoute],
@@ -2264,20 +2235,19 @@ export interface UpdateQueueRequest {
   };
 }
 
-export const UpdateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      queueId: Schema.String.pipe(T.HttpPath("queueId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      queueName: Schema.optional(Schema.String),
-      settings: Schema.optional(Settings4),
-    }).pipe(
-      Schema.encodeKeys({ queueName: "queue_name", settings: "settings" }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/queues/{queueId}",
-      }),
-    ),
+export const UpdateQueueRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    queueName: Schema.optional(Schema.String),
+    settings: Schema.optional(Settings4),
+  }).pipe(
+    Schema.encodeKeys({ queueName: "queue_name", settings: "settings" }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/queues/{queueId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateQueueRequest>;
 
 export interface UpdateQueueResponse {
@@ -2332,49 +2302,48 @@ export interface UpdateQueueResponse {
   } | null;
 }
 
-export const UpdateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      consumers: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      consumersTotalCount: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      producers: Schema.optional(
-        Schema.Union([
-          Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
-          Schema.Null,
-        ]),
-      ),
-      producersTotalCount: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          consumers: "consumers",
-          consumersTotalCount: "consumers_total_count",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          producers: "producers",
-          producersTotalCount: "producers_total_count",
-          queueId: "queue_id",
-          queueName: "queue_name",
-          settings: "settings",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const UpdateQueueResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    consumers: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    consumersTotalCount: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    producers: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
+        Schema.Null,
+      ]),
+    ),
+    producersTotalCount: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        consumers: "consumers",
+        consumersTotalCount: "consumers_total_count",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        producers: "producers",
+        producersTotalCount: "producers_total_count",
+        queueId: "queue_id",
+        queueName: "queue_name",
+        settings: "settings",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateQueueResponse>;
 
 export type UpdateQueueError =
@@ -2388,7 +2357,7 @@ export const updateQueue: API.OperationMethod<
   UpdateQueueResponse,
   UpdateQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateQueueRequest,
   output: UpdateQueueResponse,
   errors: [InvalidQueueName, QueueNotFound, InvalidRoute],
@@ -2408,20 +2377,19 @@ export interface PatchQueueRequest {
   };
 }
 
-export const PatchQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      queueId: Schema.String.pipe(T.HttpPath("queueId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      queueName: Schema.optional(Schema.String),
-      settings: Schema.optional(Settings4),
-    }).pipe(
-      Schema.encodeKeys({ queueName: "queue_name", settings: "settings" }),
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/queues/{queueId}",
-      }),
-    ),
+export const PatchQueueRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    queueName: Schema.optional(Schema.String),
+    settings: Schema.optional(Settings4),
+  }).pipe(
+    Schema.encodeKeys({ queueName: "queue_name", settings: "settings" }),
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/queues/{queueId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchQueueRequest>;
 
 export interface PatchQueueResponse {
@@ -2476,49 +2444,48 @@ export interface PatchQueueResponse {
   } | null;
 }
 
-export const PatchQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      consumers: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      consumersTotalCount: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      producers: Schema.optional(
-        Schema.Union([
-          Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
-          Schema.Null,
-        ]),
-      ),
-      producersTotalCount: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          consumers: "consumers",
-          consumersTotalCount: "consumers_total_count",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          producers: "producers",
-          producersTotalCount: "producers_total_count",
-          queueId: "queue_id",
-          queueName: "queue_name",
-          settings: "settings",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const PatchQueueResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    consumers: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([MqWorkerConsumerResponse2, MqHTTPConsumerResponse]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    consumersTotalCount: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    producers: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Union([MqWorkerProducer, MqR2Producer])),
+        Schema.Null,
+      ]),
+    ),
+    producersTotalCount: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+    queueId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    queueName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    settings: Schema.optional(Schema.Union([Settings4, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        consumers: "consumers",
+        consumersTotalCount: "consumers_total_count",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        producers: "producers",
+        producersTotalCount: "producers_total_count",
+        queueId: "queue_id",
+        queueName: "queue_name",
+        settings: "settings",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchQueueResponse>;
 
 export type PatchQueueError = DefaultErrors | QueueNotFound | InvalidRoute;
@@ -2528,7 +2495,7 @@ export const patchQueue: API.OperationMethod<
   PatchQueueResponse,
   PatchQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchQueueRequest,
   output: PatchQueueResponse,
   errors: [QueueNotFound, InvalidRoute],
@@ -2540,17 +2507,16 @@ export interface DeleteQueueRequest {
   accountId: string;
 }
 
-export const DeleteQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      queueId: Schema.String.pipe(T.HttpPath("queueId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/queues/{queueId}",
-      }),
-    ),
+export const DeleteQueueRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    queueId: Schema.String.pipe(T.HttpPath("queueId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/queues/{queueId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteQueueRequest>;
 
 export interface DeleteQueueResponse {
@@ -2567,19 +2533,16 @@ export interface DeleteQueueResponse {
   success?: true | null;
 }
 
-export const DeleteQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      errors: Schema.optional(
-        Schema.Union([Schema.Array(ResponseInfo), Schema.Null]),
-      ),
-      messages: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      success: Schema.optional(
-        Schema.Union([Schema.Literal(true), Schema.Null]),
-      ),
-    }),
+export const DeleteQueueResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    errors: Schema.optional(
+      Schema.Union([Schema.Array(ResponseInfo), Schema.Null]),
+    ),
+    messages: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    success: Schema.optional(Schema.Union([Schema.Literal(true), Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<DeleteQueueResponse>;
 
 export type DeleteQueueError =
@@ -2593,7 +2556,7 @@ export const deleteQueue: API.OperationMethod<
   DeleteQueueResponse,
   DeleteQueueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueueRequest,
   output: DeleteQueueResponse,
   errors: [QueueNotFound, QueueInUseByEventNotification, InvalidRoute],
@@ -2610,7 +2573,7 @@ export interface GetSubscriptionRequest {
 }
 
 export const GetSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2650,7 +2613,7 @@ export interface GetSubscriptionResponse {
 }
 
 export const GetSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -2696,7 +2659,7 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionResponse,
   GetSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionRequest,
   output: GetSubscriptionResponse,
   errors: [UnrecognizedEventType, SubscriptionNotFound, Forbidden],
@@ -2714,7 +2677,7 @@ export interface ListSubscriptionsRequest {
 }
 
 export const ListSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -2764,7 +2727,7 @@ export interface ListSubscriptionsResponse {
 }
 
 export const ListSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListSubscriptionsResponseResult),
       resultInfo: Schema.optional(
@@ -2780,7 +2743,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsResponse,
   ListSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse,
   errors: [Forbidden],
@@ -2817,7 +2780,7 @@ export interface CreateSubscriptionRequest {
 }
 
 export const CreateSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       destination: Schema.optional(Destination),
@@ -2872,7 +2835,7 @@ export interface CreateSubscriptionResponse {
 }
 
 export const CreateSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -2918,7 +2881,7 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionResponse,
   CreateSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriptionRequest,
   output: CreateSubscriptionResponse,
   errors: [UnrecognizedEventType, SubscriptionAlreadyExists, QueueNotFound],
@@ -2939,7 +2902,7 @@ export interface PatchSubscriptionRequest {
 }
 
 export const PatchSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2983,7 +2946,7 @@ export interface PatchSubscriptionResponse {
 }
 
 export const PatchSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -3029,7 +2992,7 @@ export const patchSubscription: API.OperationMethod<
   PatchSubscriptionResponse,
   PatchSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSubscriptionRequest,
   output: PatchSubscriptionResponse,
   errors: [UnrecognizedEventType, SubscriptionNotFound, QueueNotFound],
@@ -3042,7 +3005,7 @@ export interface DeleteSubscriptionRequest {
 }
 
 export const DeleteSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       subscriptionId: Schema.String.pipe(T.HttpPath("subscriptionId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3082,7 +3045,7 @@ export interface DeleteSubscriptionResponse {
 }
 
 export const DeleteSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -3127,7 +3090,7 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionResponse,
   DeleteSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionRequest,
   output: DeleteSubscriptionResponse,
   errors: [UnrecognizedEventType, SubscriptionNotFound],

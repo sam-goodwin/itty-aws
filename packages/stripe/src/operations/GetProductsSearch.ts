@@ -9,14 +9,12 @@ export interface GetProductsSearchInput {
   page?: string;
   query: string;
 }
-export const GetProductsSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    expand: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    page: Schema.optional(Schema.String),
-    query: Schema.String,
-  },
-).pipe(
+export const GetProductsSearchInput = /*@__PURE__*/ Schema.Struct({
+  expand: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  page: Schema.optional(Schema.String),
+  query: Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/v1/products/search",
@@ -128,7 +126,7 @@ export interface GetProductsSearchOutput {
   url: string;
 }
 export const GetProductsSearchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         active: Schema.Boolean,
@@ -299,15 +297,13 @@ export const GetProductsSearchOutput =
  * @param page - A cursor for pagination across multiple pages of results. Don't include this parameter on the first call. Use the next_page value returned in a previous response to request subsequent results.
  * @param query - The search query string. See [search query language](https://docs.stripe.com/search#search-query-language) and the list of supported [query fields for products](https://docs.stripe.com/search#query-fields-for-products).
  */
-export const GetProductsSearch = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: GetProductsSearchInput,
-    outputSchema: GetProductsSearchOutput,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const GetProductsSearch = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: GetProductsSearchInput,
+  outputSchema: GetProductsSearchOutput,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

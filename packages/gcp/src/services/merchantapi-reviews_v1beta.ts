@@ -49,7 +49,7 @@ export interface ProductReviewDestinationStatus {
 }
 
 export const ProductReviewDestinationStatus: Schema.Codec<ProductReviewDestinationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
   }).annotate({ identifier: "ProductReviewDestinationStatus" });
 
@@ -98,7 +98,7 @@ export interface ProductReviewItemLevelIssue {
 }
 
 export const ProductReviewItemLevelIssue: Schema.Codec<ProductReviewItemLevelIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     reportingContext: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -154,7 +154,7 @@ export interface MerchantReviewItemLevelIssue {
 }
 
 export const MerchantReviewItemLevelIssue: Schema.Codec<MerchantReviewItemLevelIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     resolution: Schema.optional(Schema.String),
     attribute: Schema.optional(Schema.String),
@@ -192,7 +192,7 @@ export interface MerchantReviewDestinationStatus {
 }
 
 export const MerchantReviewDestinationStatus: Schema.Codec<MerchantReviewDestinationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
   }).annotate({ identifier: "MerchantReviewDestinationStatus" });
 
@@ -208,7 +208,7 @@ export interface MerchantReviewStatus {
 }
 
 export const MerchantReviewStatus: Schema.Codec<MerchantReviewStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     itemLevelIssues: Schema.optional(
       Schema.Array(MerchantReviewItemLevelIssue),
@@ -229,7 +229,7 @@ export interface CustomAttribute {
 }
 
 export const CustomAttribute: Schema.Codec<CustomAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
       value: Schema.optional(Schema.String),
@@ -280,7 +280,7 @@ export interface MerchantReviewAttributes {
 }
 
 export const MerchantReviewAttributes: Schema.Codec<MerchantReviewAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rating: Schema.optional(Schema.Number),
     title: Schema.optional(Schema.String),
     merchantId: Schema.optional(Schema.String),
@@ -315,7 +315,7 @@ export interface MerchantReview {
 }
 
 export const MerchantReview: Schema.Codec<MerchantReview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     merchantReviewId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     merchantReviewStatus: Schema.optional(MerchantReviewStatus),
@@ -332,7 +332,7 @@ export interface ListMerchantReviewsResponse {
 }
 
 export const ListMerchantReviewsResponse: Schema.Codec<ListMerchantReviewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     merchantReviews: Schema.optional(Schema.Array(MerchantReview)),
   }).annotate({ identifier: "ListMerchantReviewsResponse" });
@@ -345,7 +345,7 @@ export interface ReviewLink {
 }
 
 export const ReviewLink: Schema.Codec<ReviewLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     link: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReviewLink" });
@@ -420,7 +420,7 @@ export interface ProductReviewAttributes {
 }
 
 export const ProductReviewAttributes: Schema.Codec<ProductReviewAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gtins: Schema.optional(Schema.Array(Schema.String)),
     brands: Schema.optional(Schema.Array(Schema.String)),
     minRating: Schema.optional(Schema.String),
@@ -457,7 +457,7 @@ export const ProductReviewAttributes: Schema.Codec<ProductReviewAttributes> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -473,7 +473,7 @@ export interface ProductReviewStatus {
 }
 
 export const ProductReviewStatus: Schema.Codec<ProductReviewStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastUpdateTime: Schema.optional(Schema.String),
     destinationStatuses: Schema.optional(
       Schema.Array(ProductReviewDestinationStatus),
@@ -498,7 +498,7 @@ export interface ProductReview {
 }
 
 export const ProductReview: Schema.Codec<ProductReview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     productReviewAttributes: Schema.optional(ProductReviewAttributes),
     name: Schema.optional(Schema.String),
     dataSource: Schema.optional(Schema.String),
@@ -540,7 +540,7 @@ export interface ProductChange {
 }
 
 export const ProductChange: Schema.Codec<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportingContext: Schema.optional(Schema.String),
     oldValue: Schema.optional(Schema.String),
     newValue: Schema.optional(Schema.String),
@@ -573,7 +573,7 @@ export interface ProductStatusChangeMessage {
 }
 
 export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceId: Schema.optional(Schema.String),
     attribute: Schema.optional(Schema.String),
     resourceType: Schema.optional(Schema.String),
@@ -593,7 +593,7 @@ export interface ListProductReviewsResponse {
 }
 
 export const ListProductReviewsResponse: Schema.Codec<ListProductReviewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     productReviews: Schema.optional(Schema.Array(ProductReview)),
   }).annotate({ identifier: "ListProductReviewsResponse" });
@@ -658,7 +658,7 @@ export interface DeleteAccountsMerchantReviewsRequest {
 }
 
 export const DeleteAccountsMerchantReviewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "reviews/v1beta/{+name}" }),
@@ -666,8 +666,7 @@ export const DeleteAccountsMerchantReviewsRequest =
   ) as unknown as Schema.Codec<DeleteAccountsMerchantReviewsRequest>;
 
 export type DeleteAccountsMerchantReviewsResponse = Empty;
-export const DeleteAccountsMerchantReviewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteAccountsMerchantReviewsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteAccountsMerchantReviewsError =
   | DefaultErrors
@@ -682,7 +681,7 @@ export const deleteAccountsMerchantReviews: API.OperationMethod<
   DeleteAccountsMerchantReviewsResponse,
   DeleteAccountsMerchantReviewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsMerchantReviewsRequest,
   output: DeleteAccountsMerchantReviewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -698,7 +697,7 @@ export interface InsertAccountsMerchantReviewsRequest {
 }
 
 export const InsertAccountsMerchantReviewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dataSource: Schema.optional(Schema.String).pipe(T.HttpQuery("dataSource")),
     body: Schema.optional(MerchantReview).pipe(T.HttpBody()),
@@ -713,7 +712,7 @@ export const InsertAccountsMerchantReviewsRequest =
 
 export type InsertAccountsMerchantReviewsResponse = MerchantReview;
 export const InsertAccountsMerchantReviewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ MerchantReview;
+  /*@__PURE__*/ MerchantReview;
 
 export type InsertAccountsMerchantReviewsError =
   | DefaultErrors
@@ -728,7 +727,7 @@ export const insertAccountsMerchantReviews: API.OperationMethod<
   InsertAccountsMerchantReviewsResponse,
   InsertAccountsMerchantReviewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertAccountsMerchantReviewsRequest,
   output: InsertAccountsMerchantReviewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -740,7 +739,7 @@ export interface GetAccountsMerchantReviewsRequest {
 }
 
 export const GetAccountsMerchantReviewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "reviews/v1beta/{+name}" }),
@@ -748,8 +747,7 @@ export const GetAccountsMerchantReviewsRequest =
   ) as unknown as Schema.Codec<GetAccountsMerchantReviewsRequest>;
 
 export type GetAccountsMerchantReviewsResponse = MerchantReview;
-export const GetAccountsMerchantReviewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ MerchantReview;
+export const GetAccountsMerchantReviewsResponse = /*@__PURE__*/ MerchantReview;
 
 export type GetAccountsMerchantReviewsError =
   | DefaultErrors
@@ -762,7 +760,7 @@ export const getAccountsMerchantReviews: API.OperationMethod<
   GetAccountsMerchantReviewsResponse,
   GetAccountsMerchantReviewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsMerchantReviewsRequest,
   output: GetAccountsMerchantReviewsResponse,
   errors: [NotFound, Forbidden],
@@ -778,7 +776,7 @@ export interface ListAccountsMerchantReviewsRequest {
 }
 
 export const ListAccountsMerchantReviewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -789,7 +787,7 @@ export const ListAccountsMerchantReviewsRequest =
 
 export type ListAccountsMerchantReviewsResponse = ListMerchantReviewsResponse;
 export const ListAccountsMerchantReviewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListMerchantReviewsResponse;
+  /*@__PURE__*/ ListMerchantReviewsResponse;
 
 export type ListAccountsMerchantReviewsError =
   | DefaultErrors
@@ -802,7 +800,7 @@ export const listAccountsMerchantReviews: API.PaginatedOperationMethod<
   ListAccountsMerchantReviewsResponse,
   ListAccountsMerchantReviewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsMerchantReviewsRequest,
   output: ListAccountsMerchantReviewsResponse,
   errors: [NotFound, Forbidden],
@@ -818,7 +816,7 @@ export interface GetAccountsProductReviewsRequest {
 }
 
 export const GetAccountsProductReviewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "reviews/v1beta/{+name}" }),
@@ -826,8 +824,7 @@ export const GetAccountsProductReviewsRequest =
   ) as unknown as Schema.Codec<GetAccountsProductReviewsRequest>;
 
 export type GetAccountsProductReviewsResponse = ProductReview;
-export const GetAccountsProductReviewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProductReview;
+export const GetAccountsProductReviewsResponse = /*@__PURE__*/ ProductReview;
 
 export type GetAccountsProductReviewsError =
   | DefaultErrors
@@ -840,7 +837,7 @@ export const getAccountsProductReviews: API.OperationMethod<
   GetAccountsProductReviewsResponse,
   GetAccountsProductReviewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsProductReviewsRequest,
   output: GetAccountsProductReviewsResponse,
   errors: [NotFound, Forbidden],
@@ -856,7 +853,7 @@ export interface ListAccountsProductReviewsRequest {
 }
 
 export const ListAccountsProductReviewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -867,7 +864,7 @@ export const ListAccountsProductReviewsRequest =
 
 export type ListAccountsProductReviewsResponse = ListProductReviewsResponse;
 export const ListAccountsProductReviewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListProductReviewsResponse;
+  /*@__PURE__*/ ListProductReviewsResponse;
 
 export type ListAccountsProductReviewsError =
   | DefaultErrors
@@ -880,7 +877,7 @@ export const listAccountsProductReviews: API.PaginatedOperationMethod<
   ListAccountsProductReviewsResponse,
   ListAccountsProductReviewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProductReviewsRequest,
   output: ListAccountsProductReviewsResponse,
   errors: [NotFound, Forbidden],
@@ -896,7 +893,7 @@ export interface DeleteAccountsProductReviewsRequest {
 }
 
 export const DeleteAccountsProductReviewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "reviews/v1beta/{+name}" }),
@@ -904,8 +901,7 @@ export const DeleteAccountsProductReviewsRequest =
   ) as unknown as Schema.Codec<DeleteAccountsProductReviewsRequest>;
 
 export type DeleteAccountsProductReviewsResponse = Empty;
-export const DeleteAccountsProductReviewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteAccountsProductReviewsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteAccountsProductReviewsError =
   | DefaultErrors
@@ -920,7 +916,7 @@ export const deleteAccountsProductReviews: API.OperationMethod<
   DeleteAccountsProductReviewsResponse,
   DeleteAccountsProductReviewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsProductReviewsRequest,
   output: DeleteAccountsProductReviewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -936,7 +932,7 @@ export interface InsertAccountsProductReviewsRequest {
 }
 
 export const InsertAccountsProductReviewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataSource: Schema.optional(Schema.String).pipe(T.HttpQuery("dataSource")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ProductReview).pipe(T.HttpBody()),
@@ -950,8 +946,7 @@ export const InsertAccountsProductReviewsRequest =
   ) as unknown as Schema.Codec<InsertAccountsProductReviewsRequest>;
 
 export type InsertAccountsProductReviewsResponse = ProductReview;
-export const InsertAccountsProductReviewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ProductReview;
+export const InsertAccountsProductReviewsResponse = /*@__PURE__*/ ProductReview;
 
 export type InsertAccountsProductReviewsError =
   | DefaultErrors
@@ -966,7 +961,7 @@ export const insertAccountsProductReviews: API.OperationMethod<
   InsertAccountsProductReviewsResponse,
   InsertAccountsProductReviewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertAccountsProductReviewsRequest,
   output: InsertAccountsProductReviewsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

@@ -42,7 +42,7 @@ export interface InsightsListInput {
   tags?: string;
   user?: boolean;
 }
-export const InsightsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsightsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   basic: Schema.optional(Schema.Boolean),
   created_by: Schema.optional(Schema.String),
@@ -178,7 +178,7 @@ export interface InsightsListOutput {
     search_match_type?: "exact" | "similar" | null;
   }[];
 }
-export const InsightsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsightsListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -346,7 +346,7 @@ Background calculation can be tracked using the `query_status` response field.
  * @param tags - JSON-encoded array of tag names. Returns insights with any of the listed tags.
  * @param user - Include this parameter (any value) to restrict results to insights created by the authenticated user.
  */
-export const insightsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const insightsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: InsightsListInput,
   outputSchema: InsightsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

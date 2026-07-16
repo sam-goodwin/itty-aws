@@ -13,7 +13,7 @@ export interface PatchDashboardChartInput {
   version?: number;
 }
 export const PatchDashboardChartInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uid: Schema.String.pipe(T.PathParam()),
     chartId: Schema.String.pipe(T.PathParam()),
     chart: Schema.Record(Schema.String, Schema.Unknown),
@@ -205,7 +205,7 @@ export interface PatchDashboardChartOutput {
   status: "created" | "updated";
 }
 export const PatchDashboardChartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dashboard: Schema.Struct({
       createdAt: Schema.String,
       createdBy: Schema.String,
@@ -268,7 +268,7 @@ export const PatchDashboardChartOutput =
  *
  * Patch a single chart in a dashboard by chart ID.
  */
-export const patchDashboardChart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const patchDashboardChart = /*@__PURE__*/ API.make(() => ({
   inputSchema: PatchDashboardChartInput,
   outputSchema: PatchDashboardChartOutput,
   errors: [BadRequest, NotFound] as const,

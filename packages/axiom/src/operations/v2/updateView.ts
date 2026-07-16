@@ -13,7 +13,7 @@ export interface UpdateViewInput {
   sharedByOrg?: string;
   sharedByOrgName?: string;
 }
-export const UpdateViewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateViewInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   aplQuery: Schema.String,
   datasets: Schema.optional(Schema.Array(Schema.String)),
@@ -34,7 +34,7 @@ export interface UpdateViewOutput {
   sharedByOrg?: string;
   sharedByOrgName?: string;
 }
-export const UpdateViewOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateViewOutput = /*@__PURE__*/ Schema.Struct({
   aplQuery: Schema.String,
   datasets: Schema.optional(Schema.Array(Schema.String)),
   description: Schema.optional(Schema.String),
@@ -44,7 +44,7 @@ export const UpdateViewOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }) as unknown as Schema.Codec<UpdateViewOutput>;
 
 // The operation
-export const updateView = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateView = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateViewInput,
   outputSchema: UpdateViewOutput,
   errors: [NotFound, UnprocessableEntity] as const,

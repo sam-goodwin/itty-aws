@@ -14,7 +14,7 @@ export interface CreateDeployRequestInput {
   auto_delete_branch?: boolean;
 }
 export const CreateDeployRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String,
@@ -206,7 +206,7 @@ export interface CreateDeployRequestOutput {
   deployed_at: string | null;
 }
 export const CreateDeployRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     number: Schema.Number,
     actor: Schema.Struct({
@@ -452,7 +452,7 @@ export const CreateDeployRequestOutput =
  * @param auto_cutover - Whether or not to enable auto_cutover for the deploy request. When enabled, will auto cutover to the new schema as soon as it is ready.
  * @param auto_delete_branch - Whether or not to enable auto_delete_branch for the deploy request. When enabled, will delete the branch once the DR successfully completes.
  */
-export const createDeployRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createDeployRequest = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateDeployRequestInput,
   outputSchema: CreateDeployRequestOutput,
   errors: [Forbidden, NotFound] as const,

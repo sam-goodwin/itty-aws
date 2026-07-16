@@ -7,12 +7,10 @@ export interface SignSolanaMessageInput {
   address: string;
   message: string;
 }
-export const SignSolanaMessageInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    address: Schema.String.pipe(T.PathParam()),
-    message: Schema.String,
-  },
-).pipe(
+export const SignSolanaMessageInput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String.pipe(T.PathParam()),
+  message: Schema.String,
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v2/solana/accounts/{address}/sign/message",
@@ -24,7 +22,7 @@ export interface SignSolanaMessageOutput {
   signature: string;
 }
 export const SignSolanaMessageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signature: Schema.String,
   }) as unknown as Schema.Codec<SignSolanaMessageOutput>;
 
@@ -45,7 +43,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param address - The base58 encoded address of the Solana account.
  */
-export const signSolanaMessage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const signSolanaMessage = /*@__PURE__*/ API.make(() => ({
   inputSchema: SignSolanaMessageInput,
   outputSchema: SignSolanaMessageOutput,
 }));

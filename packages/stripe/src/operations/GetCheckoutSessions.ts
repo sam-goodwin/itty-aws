@@ -23,7 +23,7 @@ export interface GetCheckoutSessionsInput {
   subscription?: string;
 }
 export const GetCheckoutSessionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
     customer: Schema.optional(Schema.String),
     customer_account: Schema.optional(Schema.String),
@@ -1350,7 +1350,7 @@ export interface GetCheckoutSessionsOutput {
   url: string;
 }
 export const GetCheckoutSessionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         adaptive_pricing: Schema.NullOr(
@@ -2977,7 +2977,7 @@ export const GetCheckoutSessionsOutput =
  * @param status - Only return the Checkout Sessions matching the given status.
  * @param subscription - Only return the Checkout Session for the subscription specified.
  */
-export const GetCheckoutSessions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetCheckoutSessions = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCheckoutSessionsInput,
   outputSchema: GetCheckoutSessionsOutput,
 }));

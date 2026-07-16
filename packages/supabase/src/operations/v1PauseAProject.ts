@@ -7,7 +7,7 @@ import { BadRequest, Forbidden } from "../errors.ts";
 export interface V1PauseAProjectInput {
   ref: string;
 }
-export const V1PauseAProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1PauseAProjectInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "POST", path: "/v1/projects/{ref}/pause" }),
@@ -16,7 +16,7 @@ export const V1PauseAProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type V1PauseAProjectOutput = void;
 export const V1PauseAProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1PauseAProjectOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1PauseAProjectOutput>;
 
 // The operation
 /**
@@ -24,7 +24,7 @@ export const V1PauseAProjectOutput =
  *
  * @param ref - Project ref
  */
-export const v1PauseAProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1PauseAProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1PauseAProjectInput,
   outputSchema: V1PauseAProjectOutput,
   errors: [BadRequest, Forbidden] as const,

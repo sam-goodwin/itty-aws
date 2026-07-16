@@ -12,7 +12,7 @@ export interface UserApiKeysControllerCreateInput {
   expires_at?: string;
 }
 export const UserApiKeysControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     organization_id: Schema.String,
@@ -40,7 +40,7 @@ export interface UserApiKeysControllerCreateOutput {
   value: string;
 }
 export const UserApiKeysControllerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     owner: Schema.Struct({
@@ -66,10 +66,8 @@ export const UserApiKeysControllerCreateOutput =
  *
  * @param userId - Unique identifier of the user.
  */
-export const UserApiKeysControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserApiKeysControllerCreateInput,
-    outputSchema: UserApiKeysControllerCreateOutput,
-    errors: [BadRequest, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const UserApiKeysControllerCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserApiKeysControllerCreateInput,
+  outputSchema: UserApiKeysControllerCreateOutput,
+  errors: [BadRequest, NotFound, UnprocessableEntity] as const,
+}));

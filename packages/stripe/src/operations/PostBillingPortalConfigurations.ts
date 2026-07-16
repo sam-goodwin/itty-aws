@@ -74,7 +74,7 @@ export interface PostBillingPortalConfigurationsInput {
   name?: string | "";
 }
 export const PostBillingPortalConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     business_profile: Schema.optional(
       Schema.Struct({
         headline: Schema.optional(
@@ -307,7 +307,7 @@ export interface PostBillingPortalConfigurationsOutput {
   updated: number;
 }
 export const PostBillingPortalConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active: Schema.Boolean,
     application: Schema.NullOr(
       Schema.Union([
@@ -438,7 +438,7 @@ export const PostBillingPortalConfigurationsOutput =
  * <p>Creates a configuration that describes the functionality and behavior of a PortalSession</p>
  */
 export const PostBillingPortalConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostBillingPortalConfigurationsInput,
     outputSchema: PostBillingPortalConfigurationsOutput,
   }));

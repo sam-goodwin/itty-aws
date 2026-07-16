@@ -17,7 +17,7 @@ export interface McpAnalyticsMissingCapabilitiesCreateInput {
   blocked?: boolean;
 }
 export const McpAnalyticsMissingCapabilitiesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     attempted_tool: Schema.optional(Schema.String),
     mcp_client_name: Schema.optional(Schema.String),
@@ -55,7 +55,7 @@ export interface McpAnalyticsMissingCapabilitiesCreateOutput {
   updated_at: string;
 }
 export const McpAnalyticsMissingCapabilitiesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     kind: Schema.Literals(["feedback", "missing_capability"]),
     goal: Schema.String,
@@ -80,7 +80,7 @@ export const McpAnalyticsMissingCapabilitiesCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const mcpAnalyticsMissingCapabilitiesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: McpAnalyticsMissingCapabilitiesCreateInput,
     outputSchema: McpAnalyticsMissingCapabilitiesCreateOutput,
   }));

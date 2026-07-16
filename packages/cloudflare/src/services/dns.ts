@@ -119,7 +119,7 @@ interface Data {
   /** Array with one item per requested metric. Each item is a single value. */
   metrics: number[];
 }
-const Data = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dimensions: Schema.Array(Schema.String),
     metrics: Schema.Array(Schema.Number),
@@ -142,7 +142,7 @@ interface Query {
   /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
   sort?: string[] | null;
 }
-const Query = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Query = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dimensions: Schema.Array(Schema.String),
     limit: Schema.Number,
@@ -162,7 +162,7 @@ interface Data2 {
   /** Array with one item per requested metric. Each item is an array of values, broken down by time interval. */
   metrics: number[][];
 }
-const Data2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dimensions: Schema.Array(Schema.String),
     metrics: Schema.Array(Schema.Array(Schema.Number)),
@@ -198,7 +198,7 @@ interface Query2 {
   /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
   sort?: string[] | null;
 }
-const Query2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Query2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dimensions: Schema.Array(Schema.String),
     limit: Schema.Number,
@@ -244,7 +244,7 @@ interface Settings {
   /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has n */
   ipv6Only?: boolean | null;
 }
-const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Settings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     ipv6Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -285,7 +285,7 @@ interface A {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const A = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const A = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -365,7 +365,7 @@ interface Aaaa {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Aaaa = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Aaaa = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -419,7 +419,7 @@ interface Settings2 {
   /** When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has n */
   ipv6Only?: boolean | null;
 }
-const Settings2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Settings2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     flattenCname: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     ipv4Only: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -469,7 +469,7 @@ interface Cname {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Cname = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Cname = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -545,7 +545,7 @@ interface Mx {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Mx = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Mx = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -621,7 +621,7 @@ interface Ns {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Ns = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ns = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -695,7 +695,7 @@ interface Openpgpkey {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Openpgpkey = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Openpgpkey = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     comment: Schema.String,
@@ -767,7 +767,7 @@ interface Ptr {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Ptr = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ptr = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -841,7 +841,7 @@ interface Txt {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Txt = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Txt = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -891,7 +891,7 @@ interface Data3 {
   /** Value of the record. This field's semantics depend on the chosen tag. */
   value?: string | null;
 }
-const Data3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     flags: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -937,7 +937,7 @@ interface Caa {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Caa = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Caa = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -991,7 +991,7 @@ interface Data4 {
   /** Type. */
   type?: number | null;
 }
-const Data4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     algorithm: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1046,7 +1046,7 @@ interface Cert {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Cert = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Cert = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -1100,7 +1100,7 @@ interface Data5 {
   /** Public Key. */
   publicKey?: string | null;
 }
-const Data5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data5 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     algorithm: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     flags: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1155,7 +1155,7 @@ interface Dnskey {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Dnskey = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dnskey = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -1209,7 +1209,7 @@ interface Data6 {
   /** Key Tag. */
   keyTag?: number | null;
 }
-const Data6 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data6 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     algorithm: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     digest: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1264,7 +1264,7 @@ interface Ds {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Ds = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ds = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -1316,7 +1316,7 @@ interface Data7 {
   /** Value. */
   value?: string | null;
 }
-const Data7 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data7 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     target: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1362,7 +1362,7 @@ interface Https {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Https = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Https = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -1432,7 +1432,7 @@ interface Data8 {
   /** Size of location in meters. */
   size?: number | null;
 }
-const Data8 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data8 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     altitude: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     latDegrees: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1521,7 +1521,7 @@ interface Loc {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Loc = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Loc = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -1579,7 +1579,7 @@ interface Data9 {
   /** Service. */
   service?: string | null;
 }
-const Data9 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data9 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     flags: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     order: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1631,7 +1631,7 @@ interface Naptr {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Naptr = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Naptr = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -1685,7 +1685,7 @@ interface Data10 {
   /** Usage. */
   usage?: number | null;
 }
-const Data10 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data10 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     matchingType: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1740,7 +1740,7 @@ interface Smimea {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Smimea = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Smimea = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -1794,7 +1794,7 @@ interface Data11 {
   /** The record weight. */
   weight?: number | null;
 }
-const Data11 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data11 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -1842,7 +1842,7 @@ interface Srv {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Srv = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Srv = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -1894,7 +1894,7 @@ interface Data12 {
   /** Type. */
   type?: number | null;
 }
-const Data12 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data12 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     algorithm: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     fingerprint: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1940,7 +1940,7 @@ interface Sshfp {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Sshfp = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Sshfp = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2022,7 +2022,7 @@ interface Svcb {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Svcb = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Svcb = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2105,7 +2105,7 @@ interface Tlsa {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Tlsa = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Tlsa = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2155,7 +2155,7 @@ interface Data13 {
   /** The record weight. */
   weight?: number | null;
 }
-const Data13 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data13 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     target: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     weight: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -2198,7 +2198,7 @@ interface Uri {
   /** When the record tags were last modified. Omitted if there are no tags. */
   tagsModifiedOn?: string | null;
 }
-const Uri = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Uri = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2251,7 +2251,7 @@ interface ListRecordsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListRecordsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -2341,7 +2341,7 @@ interface Data14 {
   /** Fingerprint. */
   fingerprint?: string | null;
 }
-const Data14 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data14 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     flags: Schema.optional(
       Schema.Union([Schema.Union([Schema.Number, Schema.String]), Schema.Null]),
@@ -2437,7 +2437,7 @@ interface Delete {
   /** Identifier. */
   id: string;
 }
-const Delete = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Delete = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
   }),
@@ -2465,7 +2465,7 @@ interface Arecord {
   /** Identifier. */
   id: string;
 }
-const Arecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Arecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2519,7 +2519,7 @@ interface Aaaarecord {
   /** Identifier. */
   id: string;
 }
-const Aaaarecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Aaaarecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2575,7 +2575,7 @@ interface Cnamerecord {
   /** Identifier. */
   id: string;
 }
-const Cnamerecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Cnamerecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2613,7 +2613,7 @@ interface Mxrecord {
   /** Identifier. */
   id: string;
 }
-const Mxrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Mxrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2650,7 +2650,7 @@ interface Nsrecord {
   /** Identifier. */
   id: string;
 }
-const Nsrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Nsrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2686,7 +2686,7 @@ interface OpenpgpkeyRecord {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const OpenpgpkeyRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OpenpgpkeyRecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -2722,7 +2722,7 @@ interface Ptrrecord {
   /** Identifier. */
   id: string;
 }
-const Ptrrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ptrrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2758,7 +2758,7 @@ interface Txtrecord {
   /** Identifier. */
   id: string;
 }
-const Txtrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Txtrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2798,7 +2798,7 @@ interface Caarecord {
   /** Identifier. */
   id: string;
 }
-const Caarecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Caarecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2839,7 +2839,7 @@ interface Certrecord {
   /** Identifier. */
   id: string;
 }
-const Certrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Certrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2880,7 +2880,7 @@ interface Dnskeyrecord {
   /** Identifier. */
   id: string;
 }
-const Dnskeyrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dnskeyrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2921,7 +2921,7 @@ interface Dsrecord {
   /** Identifier. */
   id: string;
 }
-const Dsrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Dsrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -2961,7 +2961,7 @@ interface Httpsrecord {
   /** Identifier. */
   id: string;
 }
-const Httpsrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Httpsrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3010,7 +3010,7 @@ interface Locrecord {
   /** Identifier. */
   id: string;
 }
-const Locrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Locrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3053,7 +3053,7 @@ interface Naptrrecord {
   /** Identifier. */
   id: string;
 }
-const Naptrrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Naptrrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3094,7 +3094,7 @@ interface Smimearecord {
   /** Identifier. */
   id: string;
 }
-const Smimearecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Smimearecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3135,7 +3135,7 @@ interface Srvrecord {
   /** Identifier. */
   id: string;
 }
-const Srvrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Srvrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3175,7 +3175,7 @@ interface Sshfprecord {
   /** Identifier. */
   id: string;
 }
-const Sshfprecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Sshfprecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3215,7 +3215,7 @@ interface Svcbrecord {
   /** Identifier. */
   id: string;
 }
-const Svcbrecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Svcbrecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3256,7 +3256,7 @@ interface Tlsarecord {
   /** Identifier. */
   id: string;
 }
-const Tlsarecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Tlsarecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3294,7 +3294,7 @@ interface Urirecord {
   /** Identifier. */
   id: string;
 }
-const Urirecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Urirecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3331,7 +3331,7 @@ interface ArecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const ArecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ArecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3381,7 +3381,7 @@ interface AaaarecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const AaaarecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AaaarecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3433,7 +3433,7 @@ interface CnamerecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const CnamerecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CnamerecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3468,7 +3468,7 @@ interface MxrecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const MxrecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MxrecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3502,7 +3502,7 @@ interface NsrecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const NsrecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const NsrecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3535,20 +3535,19 @@ interface DnsrecordsOpenpgpkeyRecord {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const DnsrecordsOpenpgpkeyRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-      type: Schema.Literal("OPENPGPKEY"),
-      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      settings: Schema.optional(Schema.Union([Settings, Schema.Null])),
-      tags: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-    }),
+const DnsrecordsOpenpgpkeyRecord = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+    type: Schema.Literal("OPENPGPKEY"),
+    comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    proxied: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    settings: Schema.optional(Schema.Union([Settings, Schema.Null])),
+    tags: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+  }),
 ) as unknown as Schema.Codec<DnsrecordsOpenpgpkeyRecord>;
 
 interface PtrrecordParam {
@@ -3569,7 +3568,7 @@ interface PtrrecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const PtrrecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PtrrecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3602,7 +3601,7 @@ interface TxtrecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const TxtrecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TxtrecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3639,7 +3638,7 @@ interface CaarecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const CaarecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CaarecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3677,7 +3676,7 @@ interface CertrecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const CertrecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CertrecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3715,7 +3714,7 @@ interface DnskeyrecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const DnskeyrecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DnskeyrecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3753,7 +3752,7 @@ interface DsrecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const DsrecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DsrecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3790,7 +3789,7 @@ interface HttpsrecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const HttpsrecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const HttpsrecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3836,7 +3835,7 @@ interface LocrecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const LocrecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LocrecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3876,7 +3875,7 @@ interface NaptrrecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const NaptrrecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const NaptrrecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3914,7 +3913,7 @@ interface SmimearecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const SmimearecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SmimearecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3952,7 +3951,7 @@ interface SrvrecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const SrvrecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SrvrecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -3989,7 +3988,7 @@ interface SshfprecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const SshfprecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SshfprecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -4026,7 +4025,7 @@ interface SvcbrecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const SvcbrecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const SvcbrecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -4064,7 +4063,7 @@ interface TlsarecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const TlsarecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TlsarecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -4099,7 +4098,7 @@ interface UrirecordParam {
   /** Custom tags for the DNS record. This field has no effect on DNS responses. */
   tags?: string[] | null;
 }
-const UrirecordParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const UrirecordParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     name: Schema.String,
     ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
@@ -4119,7 +4118,7 @@ interface InternalDNS {
   /** The ID of the zone to fallback to. */
   referenceZoneId?: string | null;
 }
-const InternalDNS = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const InternalDNS = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     referenceZoneId: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -4136,7 +4135,7 @@ interface Nameservers {
     | "custom.tenant"
     | (string & {});
 }
-const Nameservers = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Nameservers = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Union([
       Schema.Literals([
@@ -4166,7 +4165,7 @@ interface Soa {
   /** The time to live (TTL) of the SOA record itself. */
   ttl?: number | null;
 }
-const Soa = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Soa = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     expire: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     minTtl: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -4223,7 +4222,7 @@ interface ZoneDefaults {
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode: "standard" | "cdn_only" | "dns_only" | (string & {});
 }
-const ZoneDefaults = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZoneDefaults = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     flattenAllCnames: Schema.Boolean,
     foundationDns: Schema.Boolean,
@@ -4262,7 +4261,7 @@ interface Nameservers2 {
     | (string & {})
     | null;
 }
-const Nameservers2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Nameservers2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.optional(
       Schema.Union([
@@ -4317,7 +4316,7 @@ interface ZoneDefaults2 {
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode?: "standard" | "cdn_only" | "dns_only" | (string & {}) | null;
 }
-const ZoneDefaults2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ZoneDefaults2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     flattenAllCnames: Schema.optional(
       Schema.Union([Schema.Boolean, Schema.Null]),
@@ -4368,7 +4367,7 @@ interface ListSettingAccountViewsResponseResult {
   zones: string[];
 }
 const ListSettingAccountViewsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdTime: Schema.String,
@@ -4397,7 +4396,7 @@ interface Nameservers3 {
   /** Configured nameserver set to be used for this zone */
   nsSet?: number | null;
 }
-const Nameservers3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Nameservers3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     type: Schema.Union([
       Schema.Literals([
@@ -4424,7 +4423,7 @@ interface Nameservers4 {
     | (string & {})
     | null;
 }
-const Nameservers4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Nameservers4 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     nsSet: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     type: Schema.optional(
@@ -4447,7 +4446,7 @@ const Nameservers4 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -4459,7 +4458,7 @@ interface Error2 {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -4485,7 +4484,7 @@ interface ListZoneTransferAclsResponseResult {
   name: string;
 }
 const ListZoneTransferAclsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       ipRange: Schema.String,
@@ -4507,7 +4506,7 @@ interface ListZoneTransferPeersResponseResult {
   tsigId?: string | null;
 }
 const ListZoneTransferPeersResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       name: Schema.String,
@@ -4537,7 +4536,7 @@ interface ListZoneTransferTsigsResponseResult {
   secret: string;
 }
 const ListZoneTransferTsigsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       algo: Schema.String,
@@ -4570,7 +4569,7 @@ export interface GetAnalyticReportRequest {
 }
 
 export const GetAnalyticReportRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       dimensions: Schema.optional(Schema.String).pipe(
@@ -4612,7 +4611,7 @@ export interface GetAnalyticReportResponse {
 }
 
 export const GetAnalyticReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.Array(Data),
       dataLag: Schema.Number,
@@ -4643,7 +4642,7 @@ export const getAnalyticReport: API.OperationMethod<
   GetAnalyticReportResponse,
   GetAnalyticReportError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnalyticReportRequest,
   output: GetAnalyticReportResponse,
   errors: [],
@@ -4686,7 +4685,7 @@ export interface GetAnalyticReportBytimeRequest {
 }
 
 export const GetAnalyticReportBytimeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       dimensions: Schema.optional(Schema.String).pipe(
@@ -4762,7 +4761,7 @@ export interface GetAnalyticReportBytimeResponse {
 }
 
 export const GetAnalyticReportBytimeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.Array(Data2),
       dataLag: Schema.Number,
@@ -4795,7 +4794,7 @@ export const getAnalyticReportBytime: API.OperationMethod<
   GetAnalyticReportBytimeResponse,
   GetAnalyticReportBytimeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnalyticReportBytimeRequest,
   output: GetAnalyticReportBytimeResponse,
   errors: [],
@@ -4810,7 +4809,7 @@ export interface GetDnssecRequest {
   zoneId: string;
 }
 
-export const GetDnssecRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetDnssecRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/dnssec" })),
@@ -4854,65 +4853,64 @@ export interface GetDnssecResponse {
     | null;
 }
 
-export const GetDnssecResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      algorithm: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      digest: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      digestAlgorithm: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      digestType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      dnssecMultiSigner: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      dnssecPresigned: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      dnssecUseNsec3: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      ds: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      flags: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      keyTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      keyType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      publicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(
+export const GetDnssecResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    algorithm: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    digest: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    digestAlgorithm: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    digestType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    dnssecMultiSigner: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    dnssecPresigned: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    dnssecUseNsec3: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    ds: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    flags: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    keyTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    keyType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    publicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "active",
-              "pending",
-              "disabled",
-              "pending-disabled",
-              "error",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "active",
+            "pending",
+            "disabled",
+            "pending-disabled",
+            "error",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          algorithm: "algorithm",
-          digest: "digest",
-          digestAlgorithm: "digest_algorithm",
-          digestType: "digest_type",
-          dnssecMultiSigner: "dnssec_multi_signer",
-          dnssecPresigned: "dnssec_presigned",
-          dnssecUseNsec3: "dnssec_use_nsec3",
-          ds: "ds",
-          flags: "flags",
-          keyTag: "key_tag",
-          keyType: "key_type",
-          modifiedOn: "modified_on",
-          publicKey: "public_key",
-          status: "status",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        algorithm: "algorithm",
+        digest: "digest",
+        digestAlgorithm: "digest_algorithm",
+        digestType: "digest_type",
+        dnssecMultiSigner: "dnssec_multi_signer",
+        dnssecPresigned: "dnssec_presigned",
+        dnssecUseNsec3: "dnssec_use_nsec3",
+        ds: "ds",
+        flags: "flags",
+        keyTag: "key_tag",
+        keyType: "key_type",
+        modifiedOn: "modified_on",
+        publicKey: "public_key",
+        status: "status",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetDnssecResponse>;
 
 export type GetDnssecError = DefaultErrors | Forbidden;
@@ -4922,7 +4920,7 @@ export const getDnssec: API.OperationMethod<
   GetDnssecResponse,
   GetDnssecError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDnssecRequest,
   output: GetDnssecResponse,
   errors: [Forbidden],
@@ -4941,25 +4939,24 @@ export interface PatchDnssecRequest {
   status?: "active" | "disabled" | (string & {});
 }
 
-export const PatchDnssecRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      dnssecMultiSigner: Schema.optional(Schema.Boolean),
-      dnssecPresigned: Schema.optional(Schema.Boolean),
-      dnssecUseNsec3: Schema.optional(Schema.Boolean),
-      status: Schema.optional(
-        Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        dnssecMultiSigner: "dnssec_multi_signer",
-        dnssecPresigned: "dnssec_presigned",
-        dnssecUseNsec3: "dnssec_use_nsec3",
-        status: "status",
-      }),
-      T.Http({ method: "PATCH", path: "/zones/{zone_id}/dnssec" }),
+export const PatchDnssecRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    dnssecMultiSigner: Schema.optional(Schema.Boolean),
+    dnssecPresigned: Schema.optional(Schema.Boolean),
+    dnssecUseNsec3: Schema.optional(Schema.Boolean),
+    status: Schema.optional(
+      Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      dnssecMultiSigner: "dnssec_multi_signer",
+      dnssecPresigned: "dnssec_presigned",
+      dnssecUseNsec3: "dnssec_use_nsec3",
+      status: "status",
+    }),
+    T.Http({ method: "PATCH", path: "/zones/{zone_id}/dnssec" }),
+  ),
 ) as unknown as Schema.Codec<PatchDnssecRequest>;
 
 export interface PatchDnssecResponse {
@@ -5000,65 +4997,64 @@ export interface PatchDnssecResponse {
     | null;
 }
 
-export const PatchDnssecResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      algorithm: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      digest: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      digestAlgorithm: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      digestType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      dnssecMultiSigner: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      dnssecPresigned: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      dnssecUseNsec3: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      ds: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      flags: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      keyTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      keyType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      publicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(
+export const PatchDnssecResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    algorithm: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    digest: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    digestAlgorithm: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    digestType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    dnssecMultiSigner: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    dnssecPresigned: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    dnssecUseNsec3: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    ds: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    flags: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    keyTag: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    keyType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    publicKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "active",
-              "pending",
-              "disabled",
-              "pending-disabled",
-              "error",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "active",
+            "pending",
+            "disabled",
+            "pending-disabled",
+            "error",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          algorithm: "algorithm",
-          digest: "digest",
-          digestAlgorithm: "digest_algorithm",
-          digestType: "digest_type",
-          dnssecMultiSigner: "dnssec_multi_signer",
-          dnssecPresigned: "dnssec_presigned",
-          dnssecUseNsec3: "dnssec_use_nsec3",
-          ds: "ds",
-          flags: "flags",
-          keyTag: "key_tag",
-          keyType: "key_type",
-          modifiedOn: "modified_on",
-          publicKey: "public_key",
-          status: "status",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        algorithm: "algorithm",
+        digest: "digest",
+        digestAlgorithm: "digest_algorithm",
+        digestType: "digest_type",
+        dnssecMultiSigner: "dnssec_multi_signer",
+        dnssecPresigned: "dnssec_presigned",
+        dnssecUseNsec3: "dnssec_use_nsec3",
+        ds: "ds",
+        flags: "flags",
+        keyTag: "key_tag",
+        keyType: "key_type",
+        modifiedOn: "modified_on",
+        publicKey: "public_key",
+        status: "status",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchDnssecResponse>;
 
 export type PatchDnssecError = DefaultErrors | Forbidden;
@@ -5068,7 +5064,7 @@ export const patchDnssec: API.OperationMethod<
   PatchDnssecResponse,
   PatchDnssecError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDnssecRequest,
   output: PatchDnssecResponse,
   errors: [Forbidden],
@@ -5079,17 +5075,16 @@ export interface DeleteDnssecRequest {
   zoneId: string;
 }
 
-export const DeleteDnssecRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(T.Http({ method: "DELETE", path: "/zones/{zone_id}/dnssec" })),
+export const DeleteDnssecRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(T.Http({ method: "DELETE", path: "/zones/{zone_id}/dnssec" })),
 ) as unknown as Schema.Codec<DeleteDnssecRequest>;
 
 export type DeleteDnssecResponse = string;
 
-export const DeleteDnssecResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.String.pipe(T.ResponsePath("result")),
+export const DeleteDnssecResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.String.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteDnssecResponse>;
 
 export type DeleteDnssecError = DefaultErrors | Forbidden;
@@ -5099,7 +5094,7 @@ export const deleteDnssec: API.OperationMethod<
   DeleteDnssecResponse,
   DeleteDnssecError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDnssecRequest,
   output: DeleteDnssecResponse,
   errors: [Forbidden],
@@ -5114,16 +5109,15 @@ export interface ScanListRecordRequest {
   zoneId: string;
 }
 
-export const ScanListRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/dns_records/scan/review",
-      }),
-    ),
+export const ScanListRecordRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/dns_records/scan/review",
+    }),
+  ),
 ) as unknown as Schema.Codec<ScanListRecordRequest>;
 
 export interface ScanListRecordResponse {
@@ -5633,7 +5627,7 @@ export interface ScanListRecordResponse {
 }
 
 export const ScanListRecordResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -5670,7 +5664,7 @@ export const scanListRecord: API.PaginatedOperationMethod<
   ScanListRecordResponse,
   ScanListRecordError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ScanListRecordRequest,
   output: ScanListRecordResponse,
   errors: [],
@@ -5692,7 +5686,7 @@ export interface ForceNotifyZoneTransferOutgoingRequest {
 }
 
 export const ForceNotifyZoneTransferOutgoingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       body: Schema.Unknown.pipe(T.HttpBody()),
@@ -5707,7 +5701,7 @@ export const ForceNotifyZoneTransferOutgoingRequest =
 export type ForceNotifyZoneTransferOutgoingResponse = string;
 
 export const ForceNotifyZoneTransferOutgoingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.String.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<ForceNotifyZoneTransferOutgoingResponse>;
 
@@ -5718,7 +5712,7 @@ export const forceNotifyZoneTransferOutgoing: API.OperationMethod<
   ForceNotifyZoneTransferOutgoingResponse,
   ForceNotifyZoneTransferOutgoingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ForceNotifyZoneTransferOutgoingRequest,
   output: ForceNotifyZoneTransferOutgoingResponse,
   errors: [],
@@ -5734,7 +5728,7 @@ export interface GetRecordRequest {
   zoneId: string;
 }
 
-export const GetRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRecordRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dnsRecordId: Schema.String.pipe(T.HttpPath("dnsRecordId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -6249,31 +6243,30 @@ export type GetRecordResponse =
       tagsModifiedOn?: string | null;
     };
 
-export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([
-      Openpgpkey,
-      A,
-      Aaaa,
-      Cname,
-      Mx,
-      Ns,
-      Ptr,
-      Txt,
-      Caa,
-      Cert,
-      Dnskey,
-      Ds,
-      Https,
-      Loc,
-      Naptr,
-      Smimea,
-      Srv,
-      Sshfp,
-      Svcb,
-      Tlsa,
-      Uri,
-    ]).pipe(T.ResponsePath("result")),
+export const GetRecordResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    Openpgpkey,
+    A,
+    Aaaa,
+    Cname,
+    Mx,
+    Ns,
+    Ptr,
+    Txt,
+    Caa,
+    Cert,
+    Dnskey,
+    Ds,
+    Https,
+    Loc,
+    Naptr,
+    Smimea,
+    Srv,
+    Sshfp,
+    Svcb,
+    Tlsa,
+    Uri,
+  ]).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetRecordResponse>;
 
 export type GetRecordError = DefaultErrors | Forbidden;
@@ -6283,7 +6276,7 @@ export const getRecord: API.OperationMethod<
   GetRecordResponse,
   GetRecordError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRecordRequest,
   output: GetRecordResponse,
   errors: [Forbidden],
@@ -6364,94 +6357,93 @@ export interface ListRecordsRequest {
     | (string & {});
 }
 
-export const ListRecordsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      comment: Schema.optional(
-        Schema.Struct({
-          absent: Schema.optional(Schema.String),
-          contains: Schema.optional(Schema.String),
-          endswith: Schema.optional(Schema.String),
-          exact: Schema.optional(Schema.String),
-          present: Schema.optional(Schema.String),
-          startswith: Schema.optional(Schema.String),
-        }),
-      ).pipe(T.HttpQuery("comment")),
-      content: Schema.optional(
-        Schema.Struct({
-          contains: Schema.optional(Schema.String),
-          endswith: Schema.optional(Schema.String),
-          exact: Schema.optional(Schema.String),
-          startswith: Schema.optional(Schema.String),
-        }),
-      ).pipe(T.HttpQuery("content")),
-      direction: Schema.optional(
-        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-      ).pipe(T.HttpQuery("direction")),
-      match: Schema.optional(
-        Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
-      ).pipe(T.HttpQuery("match")),
-      name: Schema.optional(
-        Schema.Struct({
-          contains: Schema.optional(Schema.String),
-          endswith: Schema.optional(Schema.String),
-          exact: Schema.optional(Schema.String),
-          startswith: Schema.optional(Schema.String),
-        }),
-      ).pipe(T.HttpQuery("name")),
-      order: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["type", "name", "content", "ttl", "proxied"]),
-          Schema.String,
+export const ListRecordsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    comment: Schema.optional(
+      Schema.Struct({
+        absent: Schema.optional(Schema.String),
+        contains: Schema.optional(Schema.String),
+        endswith: Schema.optional(Schema.String),
+        exact: Schema.optional(Schema.String),
+        present: Schema.optional(Schema.String),
+        startswith: Schema.optional(Schema.String),
+      }),
+    ).pipe(T.HttpQuery("comment")),
+    content: Schema.optional(
+      Schema.Struct({
+        contains: Schema.optional(Schema.String),
+        endswith: Schema.optional(Schema.String),
+        exact: Schema.optional(Schema.String),
+        startswith: Schema.optional(Schema.String),
+      }),
+    ).pipe(T.HttpQuery("content")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    match: Schema.optional(
+      Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+    ).pipe(T.HttpQuery("match")),
+    name: Schema.optional(
+      Schema.Struct({
+        contains: Schema.optional(Schema.String),
+        endswith: Schema.optional(Schema.String),
+        exact: Schema.optional(Schema.String),
+        startswith: Schema.optional(Schema.String),
+      }),
+    ).pipe(T.HttpQuery("name")),
+    order: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["type", "name", "content", "ttl", "proxied"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("order")),
+    proxied: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("proxied")),
+    search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+    tag: Schema.optional(
+      Schema.Struct({
+        absent: Schema.optional(Schema.String),
+        contains: Schema.optional(Schema.String),
+        endswith: Schema.optional(Schema.String),
+        exact: Schema.optional(Schema.String),
+        present: Schema.optional(Schema.String),
+        startswith: Schema.optional(Schema.String),
+      }),
+    ).pipe(T.HttpQuery("tag")),
+    tagMatch: Schema.optional(
+      Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+    ).pipe(T.HttpQuery("tag_match")),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "A",
+          "AAAA",
+          "CAA",
+          "CERT",
+          "CNAME",
+          "DNSKEY",
+          "DS",
+          "HTTPS",
+          "LOC",
+          "MX",
+          "NAPTR",
+          "NS",
+          "OPENPGPKEY",
+          "PTR",
+          "SMIMEA",
+          "SRV",
+          "SSHFP",
+          "SVCB",
+          "TLSA",
+          "TXT",
+          "URI",
         ]),
-      ).pipe(T.HttpQuery("order")),
-      proxied: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("proxied")),
-      search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-      tag: Schema.optional(
-        Schema.Struct({
-          absent: Schema.optional(Schema.String),
-          contains: Schema.optional(Schema.String),
-          endswith: Schema.optional(Schema.String),
-          exact: Schema.optional(Schema.String),
-          present: Schema.optional(Schema.String),
-          startswith: Schema.optional(Schema.String),
-        }),
-      ).pipe(T.HttpQuery("tag")),
-      tagMatch: Schema.optional(
-        Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
-      ).pipe(T.HttpQuery("tag_match")),
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "A",
-            "AAAA",
-            "CAA",
-            "CERT",
-            "CNAME",
-            "DNSKEY",
-            "DS",
-            "HTTPS",
-            "LOC",
-            "MX",
-            "NAPTR",
-            "NS",
-            "OPENPGPKEY",
-            "PTR",
-            "SMIMEA",
-            "SRV",
-            "SSHFP",
-            "SVCB",
-            "TLSA",
-            "TXT",
-            "URI",
-          ]),
-          Schema.String,
-        ]),
-      ).pipe(T.HttpQuery("type")),
-    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/dns_records" })),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("type")),
+  }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/dns_records" })),
 ) as unknown as Schema.Codec<ListRecordsRequest>;
 
 export interface ListRecordsResponse {
@@ -6966,38 +6958,37 @@ export interface ListRecordsResponse {
   } | null;
 }
 
-export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(
-        Schema.Union([
-          Openpgpkey,
-          A,
-          Aaaa,
-          Cname,
-          Mx,
-          Ns,
-          Ptr,
-          Txt,
-          Caa,
-          Cert,
-          Dnskey,
-          Ds,
-          Https,
-          Loc,
-          Naptr,
-          Smimea,
-          Srv,
-          Sshfp,
-          Svcb,
-          Tlsa,
-          Uri,
-        ]),
-      ),
-      resultInfo: Schema.optional(
-        Schema.Union([ListRecordsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListRecordsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(
+      Schema.Union([
+        Openpgpkey,
+        A,
+        Aaaa,
+        Cname,
+        Mx,
+        Ns,
+        Ptr,
+        Txt,
+        Caa,
+        Cert,
+        Dnskey,
+        Ds,
+        Https,
+        Loc,
+        Naptr,
+        Smimea,
+        Srv,
+        Sshfp,
+        Svcb,
+        Tlsa,
+        Uri,
+      ]),
+    ),
+    resultInfo: Schema.optional(
+      Schema.Union([ListRecordsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListRecordsResponse>;
 
 export type ListRecordsError = DefaultErrors | Forbidden;
@@ -7007,7 +6998,7 @@ export const listRecords: API.PaginatedOperationMethod<
   ListRecordsResponse,
   ListRecordsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecordsRequest,
   output: ListRecordsResponse,
   errors: [Forbidden],
@@ -7106,62 +7097,61 @@ export interface CreateRecordRequest {
   };
 }
 
-export const CreateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      name: Schema.String,
-      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-      type: Schema.Union([
-        Schema.Literals([
-          "A",
-          "AAAA",
-          "CNAME",
-          "MX",
-          "NS",
-          "OPENPGPKEY",
-          "PTR",
-          "TXT",
-          "CAA",
-          "CERT",
-          "DNSKEY",
-          "DS",
-          "HTTPS",
-          "LOC",
-          "NAPTR",
-          "SMIMEA",
-          "SRV",
-          "SSHFP",
-          "SVCB",
-          "TLSA",
-          "URI",
-        ]),
-        Schema.String,
+export const CreateRecordRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    name: Schema.String,
+    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+    type: Schema.Union([
+      Schema.Literals([
+        "A",
+        "AAAA",
+        "CNAME",
+        "MX",
+        "NS",
+        "OPENPGPKEY",
+        "PTR",
+        "TXT",
+        "CAA",
+        "CERT",
+        "DNSKEY",
+        "DS",
+        "HTTPS",
+        "LOC",
+        "NAPTR",
+        "SMIMEA",
+        "SRV",
+        "SSHFP",
+        "SVCB",
+        "TLSA",
+        "URI",
       ]),
-      comment: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      privateRouting: Schema.optional(Schema.Boolean),
-      proxied: Schema.optional(Schema.Boolean),
-      settings: Schema.optional(Settings2),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      priority: Schema.optional(Schema.Number),
-      data: Schema.optional(Data14),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        ttl: "ttl",
-        type: "type",
-        comment: "comment",
-        content: "content",
-        privateRouting: "private_routing",
-        proxied: "proxied",
-        settings: "settings",
-        tags: "tags",
-        priority: "priority",
-        data: "data",
-      }),
-      T.Http({ method: "POST", path: "/zones/{zone_id}/dns_records" }),
-    ),
+      Schema.String,
+    ]),
+    comment: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    privateRouting: Schema.optional(Schema.Boolean),
+    proxied: Schema.optional(Schema.Boolean),
+    settings: Schema.optional(Settings2),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    priority: Schema.optional(Schema.Number),
+    data: Schema.optional(Data14),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      ttl: "ttl",
+      type: "type",
+      comment: "comment",
+      content: "content",
+      privateRouting: "private_routing",
+      proxied: "proxied",
+      settings: "settings",
+      tags: "tags",
+      priority: "priority",
+      data: "data",
+    }),
+    T.Http({ method: "POST", path: "/zones/{zone_id}/dns_records" }),
+  ),
 ) as unknown as Schema.Codec<CreateRecordRequest>;
 
 export type CreateRecordResponse =
@@ -7667,31 +7657,30 @@ export type CreateRecordResponse =
       tagsModifiedOn?: string | null;
     };
 
-export const CreateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([
-      Openpgpkey,
-      A,
-      Aaaa,
-      Cname,
-      Mx,
-      Ns,
-      Ptr,
-      Txt,
-      Caa,
-      Cert,
-      Dnskey,
-      Ds,
-      Https,
-      Loc,
-      Naptr,
-      Smimea,
-      Srv,
-      Sshfp,
-      Svcb,
-      Tlsa,
-      Uri,
-    ]).pipe(T.ResponsePath("result")),
+export const CreateRecordResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    Openpgpkey,
+    A,
+    Aaaa,
+    Cname,
+    Mx,
+    Ns,
+    Ptr,
+    Txt,
+    Caa,
+    Cert,
+    Dnskey,
+    Ds,
+    Https,
+    Loc,
+    Naptr,
+    Smimea,
+    Srv,
+    Sshfp,
+    Svcb,
+    Tlsa,
+    Uri,
+  ]).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateRecordResponse>;
 
 export type CreateRecordError =
@@ -7704,7 +7693,7 @@ export const createRecord: API.OperationMethod<
   CreateRecordResponse,
   CreateRecordError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRecordRequest,
   output: CreateRecordResponse,
   errors: [DnsRecordAlreadyExists, Forbidden],
@@ -7797,66 +7786,65 @@ export interface UpdateRecordRequest {
   };
 }
 
-export const UpdateRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dnsRecordId: Schema.String.pipe(T.HttpPath("dnsRecordId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      name: Schema.String,
-      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-      type: Schema.Union([
-        Schema.Literals([
-          "A",
-          "AAAA",
-          "CNAME",
-          "MX",
-          "NS",
-          "OPENPGPKEY",
-          "PTR",
-          "TXT",
-          "CAA",
-          "CERT",
-          "DNSKEY",
-          "DS",
-          "HTTPS",
-          "LOC",
-          "NAPTR",
-          "SMIMEA",
-          "SRV",
-          "SSHFP",
-          "SVCB",
-          "TLSA",
-          "URI",
-        ]),
-        Schema.String,
+export const UpdateRecordRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dnsRecordId: Schema.String.pipe(T.HttpPath("dnsRecordId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    name: Schema.String,
+    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+    type: Schema.Union([
+      Schema.Literals([
+        "A",
+        "AAAA",
+        "CNAME",
+        "MX",
+        "NS",
+        "OPENPGPKEY",
+        "PTR",
+        "TXT",
+        "CAA",
+        "CERT",
+        "DNSKEY",
+        "DS",
+        "HTTPS",
+        "LOC",
+        "NAPTR",
+        "SMIMEA",
+        "SRV",
+        "SSHFP",
+        "SVCB",
+        "TLSA",
+        "URI",
       ]),
-      comment: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      privateRouting: Schema.optional(Schema.Boolean),
-      proxied: Schema.optional(Schema.Boolean),
-      settings: Schema.optional(Settings2),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      priority: Schema.optional(Schema.Number),
-      data: Schema.optional(Data14),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        ttl: "ttl",
-        type: "type",
-        comment: "comment",
-        content: "content",
-        privateRouting: "private_routing",
-        proxied: "proxied",
-        settings: "settings",
-        tags: "tags",
-        priority: "priority",
-        data: "data",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/dns_records/{dnsRecordId}",
-      }),
-    ),
+      Schema.String,
+    ]),
+    comment: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    privateRouting: Schema.optional(Schema.Boolean),
+    proxied: Schema.optional(Schema.Boolean),
+    settings: Schema.optional(Settings2),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    priority: Schema.optional(Schema.Number),
+    data: Schema.optional(Data14),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      ttl: "ttl",
+      type: "type",
+      comment: "comment",
+      content: "content",
+      privateRouting: "private_routing",
+      proxied: "proxied",
+      settings: "settings",
+      tags: "tags",
+      priority: "priority",
+      data: "data",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/dns_records/{dnsRecordId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateRecordRequest>;
 
 export type UpdateRecordResponse =
@@ -8362,31 +8350,30 @@ export type UpdateRecordResponse =
       tagsModifiedOn?: string | null;
     };
 
-export const UpdateRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([
-      Openpgpkey,
-      A,
-      Aaaa,
-      Cname,
-      Mx,
-      Ns,
-      Ptr,
-      Txt,
-      Caa,
-      Cert,
-      Dnskey,
-      Ds,
-      Https,
-      Loc,
-      Naptr,
-      Smimea,
-      Srv,
-      Sshfp,
-      Svcb,
-      Tlsa,
-      Uri,
-    ]).pipe(T.ResponsePath("result")),
+export const UpdateRecordResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    Openpgpkey,
+    A,
+    Aaaa,
+    Cname,
+    Mx,
+    Ns,
+    Ptr,
+    Txt,
+    Caa,
+    Cert,
+    Dnskey,
+    Ds,
+    Https,
+    Loc,
+    Naptr,
+    Smimea,
+    Srv,
+    Sshfp,
+    Svcb,
+    Tlsa,
+    Uri,
+  ]).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateRecordResponse>;
 
 export type UpdateRecordError = DefaultErrors;
@@ -8396,7 +8383,7 @@ export const updateRecord: API.OperationMethod<
   UpdateRecordResponse,
   UpdateRecordError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRecordRequest,
   output: UpdateRecordResponse,
   errors: [],
@@ -8489,66 +8476,65 @@ export interface PatchRecordRequest {
   };
 }
 
-export const PatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dnsRecordId: Schema.String.pipe(T.HttpPath("dnsRecordId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      name: Schema.String,
-      ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
-      type: Schema.Union([
-        Schema.Literals([
-          "A",
-          "AAAA",
-          "CNAME",
-          "MX",
-          "NS",
-          "OPENPGPKEY",
-          "PTR",
-          "TXT",
-          "CAA",
-          "CERT",
-          "DNSKEY",
-          "DS",
-          "HTTPS",
-          "LOC",
-          "NAPTR",
-          "SMIMEA",
-          "SRV",
-          "SSHFP",
-          "SVCB",
-          "TLSA",
-          "URI",
-        ]),
-        Schema.String,
+export const PatchRecordRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dnsRecordId: Schema.String.pipe(T.HttpPath("dnsRecordId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    name: Schema.String,
+    ttl: Schema.Union([Schema.Number, Schema.Literal("1")]),
+    type: Schema.Union([
+      Schema.Literals([
+        "A",
+        "AAAA",
+        "CNAME",
+        "MX",
+        "NS",
+        "OPENPGPKEY",
+        "PTR",
+        "TXT",
+        "CAA",
+        "CERT",
+        "DNSKEY",
+        "DS",
+        "HTTPS",
+        "LOC",
+        "NAPTR",
+        "SMIMEA",
+        "SRV",
+        "SSHFP",
+        "SVCB",
+        "TLSA",
+        "URI",
       ]),
-      comment: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      privateRouting: Schema.optional(Schema.Boolean),
-      proxied: Schema.optional(Schema.Boolean),
-      settings: Schema.optional(Settings2),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      priority: Schema.optional(Schema.Number),
-      data: Schema.optional(Data14),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        ttl: "ttl",
-        type: "type",
-        comment: "comment",
-        content: "content",
-        privateRouting: "private_routing",
-        proxied: "proxied",
-        settings: "settings",
-        tags: "tags",
-        priority: "priority",
-        data: "data",
-      }),
-      T.Http({
-        method: "PATCH",
-        path: "/zones/{zone_id}/dns_records/{dnsRecordId}",
-      }),
-    ),
+      Schema.String,
+    ]),
+    comment: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    privateRouting: Schema.optional(Schema.Boolean),
+    proxied: Schema.optional(Schema.Boolean),
+    settings: Schema.optional(Settings2),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    priority: Schema.optional(Schema.Number),
+    data: Schema.optional(Data14),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      ttl: "ttl",
+      type: "type",
+      comment: "comment",
+      content: "content",
+      privateRouting: "private_routing",
+      proxied: "proxied",
+      settings: "settings",
+      tags: "tags",
+      priority: "priority",
+      data: "data",
+    }),
+    T.Http({
+      method: "PATCH",
+      path: "/zones/{zone_id}/dns_records/{dnsRecordId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchRecordRequest>;
 
 export type PatchRecordResponse =
@@ -9054,31 +9040,30 @@ export type PatchRecordResponse =
       tagsModifiedOn?: string | null;
     };
 
-export const PatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([
-      Openpgpkey,
-      A,
-      Aaaa,
-      Cname,
-      Mx,
-      Ns,
-      Ptr,
-      Txt,
-      Caa,
-      Cert,
-      Dnskey,
-      Ds,
-      Https,
-      Loc,
-      Naptr,
-      Smimea,
-      Srv,
-      Sshfp,
-      Svcb,
-      Tlsa,
-      Uri,
-    ]).pipe(T.ResponsePath("result")),
+export const PatchRecordResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    Openpgpkey,
+    A,
+    Aaaa,
+    Cname,
+    Mx,
+    Ns,
+    Ptr,
+    Txt,
+    Caa,
+    Cert,
+    Dnskey,
+    Ds,
+    Https,
+    Loc,
+    Naptr,
+    Smimea,
+    Srv,
+    Sshfp,
+    Svcb,
+    Tlsa,
+    Uri,
+  ]).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PatchRecordResponse>;
 
 export type PatchRecordError = DefaultErrors;
@@ -9088,7 +9073,7 @@ export const patchRecord: API.OperationMethod<
   PatchRecordResponse,
   PatchRecordError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchRecordRequest,
   output: PatchRecordResponse,
   errors: [],
@@ -9100,17 +9085,16 @@ export interface DeleteRecordRequest {
   zoneId: string;
 }
 
-export const DeleteRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dnsRecordId: Schema.String.pipe(T.HttpPath("dnsRecordId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/zones/{zone_id}/dns_records/{dnsRecordId}",
-      }),
-    ),
+export const DeleteRecordRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dnsRecordId: Schema.String.pipe(T.HttpPath("dnsRecordId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/dns_records/{dnsRecordId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteRecordRequest>;
 
 export interface DeleteRecordResponse {
@@ -9118,11 +9102,10 @@ export interface DeleteRecordResponse {
   id?: string | null;
 }
 
-export const DeleteRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const DeleteRecordResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteRecordResponse>;
 
 export type DeleteRecordError = DefaultErrors;
@@ -9132,7 +9115,7 @@ export const deleteRecord: API.OperationMethod<
   DeleteRecordResponse,
   DeleteRecordError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRecordRequest,
   output: DeleteRecordResponse,
   errors: [],
@@ -10000,95 +9983,94 @@ export interface BatchRecordRequest {
   )[];
 }
 
-export const BatchRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      deletes: Schema.optional(Schema.Array(Delete)),
-      patches: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Arecord,
-            Aaaarecord,
-            Cnamerecord,
-            Mxrecord,
-            Nsrecord,
-            OpenpgpkeyRecord,
-            Ptrrecord,
-            Txtrecord,
-            Caarecord,
-            Certrecord,
-            Dnskeyrecord,
-            Dsrecord,
-            Httpsrecord,
-            Locrecord,
-            Naptrrecord,
-            Smimearecord,
-            Srvrecord,
-            Sshfprecord,
-            Svcbrecord,
-            Tlsarecord,
-            Urirecord,
-          ]),
-        ),
+export const BatchRecordRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    deletes: Schema.optional(Schema.Array(Delete)),
+    patches: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Arecord,
+          Aaaarecord,
+          Cnamerecord,
+          Mxrecord,
+          Nsrecord,
+          OpenpgpkeyRecord,
+          Ptrrecord,
+          Txtrecord,
+          Caarecord,
+          Certrecord,
+          Dnskeyrecord,
+          Dsrecord,
+          Httpsrecord,
+          Locrecord,
+          Naptrrecord,
+          Smimearecord,
+          Srvrecord,
+          Sshfprecord,
+          Svcbrecord,
+          Tlsarecord,
+          Urirecord,
+        ]),
       ),
-      posts: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            ArecordParam,
-            AaaarecordParam,
-            CnamerecordParam,
-            MxrecordParam,
-            NsrecordParam,
-            DnsrecordsOpenpgpkeyRecord,
-            PtrrecordParam,
-            TxtrecordParam,
-            CaarecordParam,
-            CertrecordParam,
-            DnskeyrecordParam,
-            DsrecordParam,
-            HttpsrecordParam,
-            LocrecordParam,
-            NaptrrecordParam,
-            SmimearecordParam,
-            SrvrecordParam,
-            SshfprecordParam,
-            SvcbrecordParam,
-            TlsarecordParam,
-            UrirecordParam,
-          ]),
-        ),
-      ),
-      puts: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Arecord,
-            Aaaarecord,
-            Cnamerecord,
-            Mxrecord,
-            Nsrecord,
-            OpenpgpkeyRecord,
-            Ptrrecord,
-            Txtrecord,
-            Caarecord,
-            Certrecord,
-            Dnskeyrecord,
-            Dsrecord,
-            Httpsrecord,
-            Locrecord,
-            Naptrrecord,
-            Smimearecord,
-            Srvrecord,
-            Sshfprecord,
-            Svcbrecord,
-            Tlsarecord,
-            Urirecord,
-          ]),
-        ),
-      ),
-    }).pipe(
-      T.Http({ method: "POST", path: "/zones/{zone_id}/dns_records/batch" }),
     ),
+    posts: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          ArecordParam,
+          AaaarecordParam,
+          CnamerecordParam,
+          MxrecordParam,
+          NsrecordParam,
+          DnsrecordsOpenpgpkeyRecord,
+          PtrrecordParam,
+          TxtrecordParam,
+          CaarecordParam,
+          CertrecordParam,
+          DnskeyrecordParam,
+          DsrecordParam,
+          HttpsrecordParam,
+          LocrecordParam,
+          NaptrrecordParam,
+          SmimearecordParam,
+          SrvrecordParam,
+          SshfprecordParam,
+          SvcbrecordParam,
+          TlsarecordParam,
+          UrirecordParam,
+        ]),
+      ),
+    ),
+    puts: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Arecord,
+          Aaaarecord,
+          Cnamerecord,
+          Mxrecord,
+          Nsrecord,
+          OpenpgpkeyRecord,
+          Ptrrecord,
+          Txtrecord,
+          Caarecord,
+          Certrecord,
+          Dnskeyrecord,
+          Dsrecord,
+          Httpsrecord,
+          Locrecord,
+          Naptrrecord,
+          Smimearecord,
+          Srvrecord,
+          Sshfprecord,
+          Svcbrecord,
+          Tlsarecord,
+          Urirecord,
+        ]),
+      ),
+    ),
+  }).pipe(
+    T.Http({ method: "POST", path: "/zones/{zone_id}/dns_records/batch" }),
+  ),
 ) as unknown as Schema.Codec<BatchRecordRequest>;
 
 export interface BatchRecordResponse {
@@ -12114,130 +12096,129 @@ export interface BatchRecordResponse {
     | null;
 }
 
-export const BatchRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      deletes: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Openpgpkey,
-              A,
-              Aaaa,
-              Cname,
-              Mx,
-              Ns,
-              Ptr,
-              Txt,
-              Caa,
-              Cert,
-              Dnskey,
-              Ds,
-              Https,
-              Loc,
-              Naptr,
-              Smimea,
-              Srv,
-              Sshfp,
-              Svcb,
-              Tlsa,
-              Uri,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      patches: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Openpgpkey,
-              A,
-              Aaaa,
-              Cname,
-              Mx,
-              Ns,
-              Ptr,
-              Txt,
-              Caa,
-              Cert,
-              Dnskey,
-              Ds,
-              Https,
-              Loc,
-              Naptr,
-              Smimea,
-              Srv,
-              Sshfp,
-              Svcb,
-              Tlsa,
-              Uri,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      posts: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Openpgpkey,
-              A,
-              Aaaa,
-              Cname,
-              Mx,
-              Ns,
-              Ptr,
-              Txt,
-              Caa,
-              Cert,
-              Dnskey,
-              Ds,
-              Https,
-              Loc,
-              Naptr,
-              Smimea,
-              Srv,
-              Sshfp,
-              Svcb,
-              Tlsa,
-              Uri,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      puts: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Openpgpkey,
-              A,
-              Aaaa,
-              Cname,
-              Mx,
-              Ns,
-              Ptr,
-              Txt,
-              Caa,
-              Cert,
-              Dnskey,
-              Ds,
-              Https,
-              Loc,
-              Naptr,
-              Smimea,
-              Srv,
-              Sshfp,
-              Svcb,
-              Tlsa,
-              Uri,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(T.ResponsePath("result")),
+export const BatchRecordResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    deletes: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            Openpgpkey,
+            A,
+            Aaaa,
+            Cname,
+            Mx,
+            Ns,
+            Ptr,
+            Txt,
+            Caa,
+            Cert,
+            Dnskey,
+            Ds,
+            Https,
+            Loc,
+            Naptr,
+            Smimea,
+            Srv,
+            Sshfp,
+            Svcb,
+            Tlsa,
+            Uri,
+          ]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    patches: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            Openpgpkey,
+            A,
+            Aaaa,
+            Cname,
+            Mx,
+            Ns,
+            Ptr,
+            Txt,
+            Caa,
+            Cert,
+            Dnskey,
+            Ds,
+            Https,
+            Loc,
+            Naptr,
+            Smimea,
+            Srv,
+            Sshfp,
+            Svcb,
+            Tlsa,
+            Uri,
+          ]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    posts: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            Openpgpkey,
+            A,
+            Aaaa,
+            Cname,
+            Mx,
+            Ns,
+            Ptr,
+            Txt,
+            Caa,
+            Cert,
+            Dnskey,
+            Ds,
+            Https,
+            Loc,
+            Naptr,
+            Smimea,
+            Srv,
+            Sshfp,
+            Svcb,
+            Tlsa,
+            Uri,
+          ]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    puts: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            Openpgpkey,
+            A,
+            Aaaa,
+            Cname,
+            Mx,
+            Ns,
+            Ptr,
+            Txt,
+            Caa,
+            Cert,
+            Dnskey,
+            Ds,
+            Https,
+            Loc,
+            Naptr,
+            Smimea,
+            Srv,
+            Sshfp,
+            Svcb,
+            Tlsa,
+            Uri,
+          ]),
+        ),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<BatchRecordResponse>;
 
 export type BatchRecordError = DefaultErrors;
@@ -12247,7 +12228,7 @@ export const batchRecord: API.OperationMethod<
   BatchRecordResponse,
   BatchRecordError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchRecordRequest,
   output: BatchRecordResponse,
   errors: [],
@@ -12258,18 +12239,17 @@ export interface ExportRecordRequest {
   zoneId: string;
 }
 
-export const ExportRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/zones/{zone_id}/dns_records/export" }),
-    ),
+export const ExportRecordRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/dns_records/export" }),
+  ),
 ) as unknown as Schema.Codec<ExportRecordRequest>;
 
 export type ExportRecordResponse = string;
 
-export const ExportRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+export const ExportRecordResponse = /*@__PURE__*/ Schema.suspend(
   () => Schema.String,
 ) as unknown as Schema.Codec<ExportRecordResponse>;
 
@@ -12280,7 +12260,7 @@ export const exportRecord: API.OperationMethod<
   ExportRecordResponse,
   ExportRecordError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExportRecordRequest,
   output: ExportRecordResponse,
   errors: [],
@@ -12295,19 +12275,18 @@ export interface ImportRecordRequest {
   proxied?: string;
 }
 
-export const ImportRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      file: Schema.String,
-      proxied: Schema.optional(Schema.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/zones/{zone_id}/dns_records/import",
-        contentType: "multipart",
-      }),
-    ),
+export const ImportRecordRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    file: Schema.String,
+    proxied: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/dns_records/import",
+      contentType: "multipart",
+    }),
+  ),
 ) as unknown as Schema.Codec<ImportRecordRequest>;
 
 export interface ImportRecordResponse {
@@ -12317,21 +12296,20 @@ export interface ImportRecordResponse {
   totalRecordsParsed?: number | null;
 }
 
-export const ImportRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      recsAdded: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalRecordsParsed: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          recsAdded: "recs_added",
-          totalRecordsParsed: "total_records_parsed",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const ImportRecordResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    recsAdded: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    totalRecordsParsed: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        recsAdded: "recs_added",
+        totalRecordsParsed: "total_records_parsed",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ImportRecordResponse>;
 
 export type ImportRecordError = DefaultErrors;
@@ -12341,7 +12319,7 @@ export const importRecord: API.OperationMethod<
   ImportRecordResponse,
   ImportRecordError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportRecordRequest,
   output: ImportRecordResponse,
   errors: [],
@@ -12354,14 +12332,13 @@ export interface ScanRecordRequest {
   body: unknown;
 }
 
-export const ScanRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      body: Schema.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({ method: "POST", path: "/zones/{zone_id}/dns_records/scan" }),
-    ),
+export const ScanRecordRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    body: Schema.Unknown.pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({ method: "POST", path: "/zones/{zone_id}/dns_records/scan" }),
+  ),
 ) as unknown as Schema.Codec<ScanRecordRequest>;
 
 export interface ScanRecordResponse {
@@ -12371,21 +12348,20 @@ export interface ScanRecordResponse {
   totalRecordsParsed?: number | null;
 }
 
-export const ScanRecordResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      recsAdded: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalRecordsParsed: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          recsAdded: "recs_added",
-          totalRecordsParsed: "total_records_parsed",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const ScanRecordResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    recsAdded: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    totalRecordsParsed: Schema.optional(
+      Schema.Union([Schema.Number, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        recsAdded: "recs_added",
+        totalRecordsParsed: "total_records_parsed",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ScanRecordResponse>;
 
 export type ScanRecordError = DefaultErrors;
@@ -12395,7 +12371,7 @@ export const scanRecord: API.OperationMethod<
   ScanRecordResponse,
   ScanRecordError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScanRecordRequest,
   output: ScanRecordResponse,
   errors: [],
@@ -12684,7 +12660,7 @@ export interface ScanReviewRecordRequest {
 }
 
 export const ScanReviewRecordRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       accepts: Schema.optional(
@@ -13233,7 +13209,7 @@ export interface ScanReviewRecordResponse {
 }
 
 export const ScanReviewRecordResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accepts: Schema.optional(
         Schema.Union([
@@ -13278,7 +13254,7 @@ export const scanReviewRecord: API.OperationMethod<
   ScanReviewRecordResponse,
   ScanReviewRecordError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScanReviewRecordRequest,
   output: ScanReviewRecordResponse,
   errors: [],
@@ -13294,7 +13270,7 @@ export interface GetSettingAccountRequest {
 }
 
 export const GetSettingAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -13334,7 +13310,7 @@ export interface GetSettingAccountResponse {
 }
 
 export const GetSettingAccountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneDefaults: ZoneDefaults,
       enforceDnsOnly: Schema.optional(
@@ -13357,7 +13333,7 @@ export const getSettingAccount: API.OperationMethod<
   GetSettingAccountResponse,
   GetSettingAccountError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingAccountRequest,
   output: GetSettingAccountResponse,
   errors: [],
@@ -13398,7 +13374,7 @@ export interface PatchSettingAccountRequest {
 }
 
 export const PatchSettingAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       enforceDnsOnly: Schema.optional(Schema.Boolean),
@@ -13444,7 +13420,7 @@ export interface PatchSettingAccountResponse {
 }
 
 export const PatchSettingAccountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneDefaults: ZoneDefaults,
       enforceDnsOnly: Schema.optional(
@@ -13467,7 +13443,7 @@ export const patchSettingAccount: API.OperationMethod<
   PatchSettingAccountResponse,
   PatchSettingAccountError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSettingAccountRequest,
   output: PatchSettingAccountResponse,
   errors: [DnsSettingNotAvailable],
@@ -13484,7 +13460,7 @@ export interface GetSettingAccountViewRequest {
 }
 
 export const GetSettingAccountViewRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       viewId: Schema.String.pipe(T.HttpPath("viewId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -13510,7 +13486,7 @@ export interface GetSettingAccountViewResponse {
 }
 
 export const GetSettingAccountViewResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdTime: Schema.String,
@@ -13537,7 +13513,7 @@ export const getSettingAccountView: API.OperationMethod<
   GetSettingAccountViewResponse,
   GetSettingAccountViewError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingAccountViewRequest,
   output: GetSettingAccountViewResponse,
   errors: [ViewNotFound],
@@ -13568,7 +13544,7 @@ export interface ListSettingAccountViewsRequest {
 }
 
 export const ListSettingAccountViewsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -13620,7 +13596,7 @@ export interface ListSettingAccountViewsResponse {
 }
 
 export const ListSettingAccountViewsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListSettingAccountViewsResponseResult),
       resultInfo: Schema.optional(
@@ -13636,7 +13612,7 @@ export const listSettingAccountViews: API.PaginatedOperationMethod<
   ListSettingAccountViewsResponse,
   ListSettingAccountViewsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSettingAccountViewsRequest,
   output: ListSettingAccountViewsResponse,
   errors: [],
@@ -13659,7 +13635,7 @@ export interface CreateSettingAccountViewRequest {
 }
 
 export const CreateSettingAccountViewRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -13686,7 +13662,7 @@ export interface CreateSettingAccountViewResponse {
 }
 
 export const CreateSettingAccountViewResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdTime: Schema.String,
@@ -13715,7 +13691,7 @@ export const createSettingAccountView: API.OperationMethod<
   CreateSettingAccountViewResponse,
   CreateSettingAccountViewError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSettingAccountViewRequest,
   output: CreateSettingAccountViewResponse,
   errors: [InternalDnsNotAvailable],
@@ -13732,7 +13708,7 @@ export interface PatchSettingAccountViewRequest {
 }
 
 export const PatchSettingAccountViewRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       viewId: Schema.String.pipe(T.HttpPath("viewId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -13760,7 +13736,7 @@ export interface PatchSettingAccountViewResponse {
 }
 
 export const PatchSettingAccountViewResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdTime: Schema.String,
@@ -13787,7 +13763,7 @@ export const patchSettingAccountView: API.OperationMethod<
   PatchSettingAccountViewResponse,
   PatchSettingAccountViewError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSettingAccountViewRequest,
   output: PatchSettingAccountViewResponse,
   errors: [ViewNotFound],
@@ -13800,7 +13776,7 @@ export interface DeleteSettingAccountViewRequest {
 }
 
 export const DeleteSettingAccountViewRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       viewId: Schema.String.pipe(T.HttpPath("viewId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -13818,7 +13794,7 @@ export interface DeleteSettingAccountViewResponse {
 }
 
 export const DeleteSettingAccountViewResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -13831,7 +13807,7 @@ export const deleteSettingAccountView: API.OperationMethod<
   DeleteSettingAccountViewResponse,
   DeleteSettingAccountViewError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSettingAccountViewRequest,
   output: DeleteSettingAccountViewResponse,
   errors: [ViewNotFound],
@@ -13846,11 +13822,10 @@ export interface GetSettingZoneRequest {
   zoneId: string;
 }
 
-export const GetSettingZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/dns_settings" })),
+export const GetSettingZoneRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/dns_settings" })),
 ) as unknown as Schema.Codec<GetSettingZoneRequest>;
 
 export interface GetSettingZoneResponse {
@@ -13891,7 +13866,7 @@ export interface GetSettingZoneResponse {
 }
 
 export const GetSettingZoneResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       flattenAllCnames: Schema.Boolean,
       foundationDns: Schema.Boolean,
@@ -13929,7 +13904,7 @@ export const getSettingZone: API.OperationMethod<
   GetSettingZoneResponse,
   GetSettingZoneError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingZoneRequest,
   output: GetSettingZoneResponse,
   errors: [Forbidden],
@@ -13975,7 +13950,7 @@ export interface PatchSettingZoneRequest {
 }
 
 export const PatchSettingZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       flattenAllCnames: Schema.optional(Schema.Boolean),
@@ -14046,7 +14021,7 @@ export interface PatchSettingZoneResponse {
 }
 
 export const PatchSettingZoneResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       flattenAllCnames: Schema.Boolean,
       foundationDns: Schema.Boolean,
@@ -14084,7 +14059,7 @@ export const patchSettingZone: API.OperationMethod<
   PatchSettingZoneResponse,
   PatchSettingZoneError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSettingZoneRequest,
   output: PatchSettingZoneResponse,
   errors: [Forbidden],
@@ -14100,7 +14075,7 @@ export interface ScanTriggerRecordRequest {
 }
 
 export const ScanTriggerRecordRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -14129,7 +14104,7 @@ export interface ScanTriggerRecordResponse {
 }
 
 export const ScanTriggerRecordResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -14144,7 +14119,7 @@ export const scanTriggerRecord: API.OperationMethod<
   ScanTriggerRecordResponse,
   ScanTriggerRecordError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScanTriggerRecordRequest,
   output: ScanTriggerRecordResponse,
   errors: [],
@@ -14160,7 +14135,7 @@ export interface GetUsageAccountRequest {
 }
 
 export const GetUsageAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -14183,7 +14158,7 @@ export interface GetUsageAccountResponse {
 }
 
 export const GetUsageAccountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       recordQuota: Schema.Union([Schema.Number, Schema.Null]),
       recordUsage: Schema.Number,
@@ -14212,7 +14187,7 @@ export const getUsageAccount: API.OperationMethod<
   GetUsageAccountResponse,
   GetUsageAccountError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsageAccountRequest,
   output: GetUsageAccountResponse,
   errors: [],
@@ -14227,13 +14202,12 @@ export interface GetUsageZoneRequest {
   zoneId: string;
 }
 
-export const GetUsageZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/zones/{zone_id}/dns_records/usage" }),
-    ),
+export const GetUsageZoneRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/dns_records/usage" }),
+  ),
 ) as unknown as Schema.Codec<GetUsageZoneRequest>;
 
 export interface GetUsageZoneResponse {
@@ -14243,19 +14217,18 @@ export interface GetUsageZoneResponse {
   recordUsage: number;
 }
 
-export const GetUsageZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      recordQuota: Schema.Union([Schema.Number, Schema.Null]),
-      recordUsage: Schema.Number,
-    })
-      .pipe(
-        Schema.encodeKeys({
-          recordQuota: "record_quota",
-          recordUsage: "record_usage",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetUsageZoneResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    recordQuota: Schema.Union([Schema.Number, Schema.Null]),
+    recordUsage: Schema.Number,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        recordQuota: "record_quota",
+        recordUsage: "record_usage",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetUsageZoneResponse>;
 
 export type GetUsageZoneError = DefaultErrors;
@@ -14265,7 +14238,7 @@ export const getUsageZone: API.OperationMethod<
   GetUsageZoneResponse,
   GetUsageZoneError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsageZoneRequest,
   output: GetUsageZoneResponse,
   errors: [],
@@ -14281,7 +14254,7 @@ export interface GetZoneTransferAclRequest {
 }
 
 export const GetZoneTransferAclRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aclId: Schema.String.pipe(T.HttpPath("aclId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -14302,7 +14275,7 @@ export interface GetZoneTransferAclResponse {
 }
 
 export const GetZoneTransferAclResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       ipRange: Schema.String,
@@ -14319,7 +14292,7 @@ export const getZoneTransferAcl: API.OperationMethod<
   GetZoneTransferAclResponse,
   GetZoneTransferAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetZoneTransferAclRequest,
   output: GetZoneTransferAclResponse,
   errors: [AclNotFound],
@@ -14330,7 +14303,7 @@ export interface ListZoneTransferAclsRequest {
 }
 
 export const ListZoneTransferAclsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -14346,7 +14319,7 @@ export interface ListZoneTransferAclsResponse {
 }
 
 export const ListZoneTransferAclsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListZoneTransferAclsResponseResult),
     }),
@@ -14359,7 +14332,7 @@ export const listZoneTransferAcls: API.PaginatedOperationMethod<
   ListZoneTransferAclsResponse,
   ListZoneTransferAclsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZoneTransferAclsRequest,
   output: ListZoneTransferAclsResponse,
   errors: [],
@@ -14379,7 +14352,7 @@ export interface CreateZoneTransferAclRequest {
 }
 
 export const CreateZoneTransferAclRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ipRange: Schema.String,
@@ -14402,7 +14375,7 @@ export interface CreateZoneTransferAclResponse {
 }
 
 export const CreateZoneTransferAclResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       ipRange: Schema.String,
@@ -14419,7 +14392,7 @@ export const createZoneTransferAcl: API.OperationMethod<
   CreateZoneTransferAclResponse,
   CreateZoneTransferAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateZoneTransferAclRequest,
   output: CreateZoneTransferAclResponse,
   errors: [],
@@ -14436,7 +14409,7 @@ export interface UpdateZoneTransferAclRequest {
 }
 
 export const UpdateZoneTransferAclRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aclId: Schema.String.pipe(T.HttpPath("aclId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -14460,7 +14433,7 @@ export interface UpdateZoneTransferAclResponse {
 }
 
 export const UpdateZoneTransferAclResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       ipRange: Schema.String,
@@ -14477,7 +14450,7 @@ export const updateZoneTransferAcl: API.OperationMethod<
   UpdateZoneTransferAclResponse,
   UpdateZoneTransferAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateZoneTransferAclRequest,
   output: UpdateZoneTransferAclResponse,
   errors: [AclNotFound],
@@ -14489,7 +14462,7 @@ export interface DeleteZoneTransferAclRequest {
 }
 
 export const DeleteZoneTransferAclRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       aclId: Schema.String.pipe(T.HttpPath("aclId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -14506,7 +14479,7 @@ export interface DeleteZoneTransferAclResponse {
 }
 
 export const DeleteZoneTransferAclResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -14519,7 +14492,7 @@ export const deleteZoneTransferAcl: API.OperationMethod<
   DeleteZoneTransferAclResponse,
   DeleteZoneTransferAclError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteZoneTransferAclRequest,
   output: DeleteZoneTransferAclResponse,
   errors: [AclNotFound],
@@ -14537,7 +14510,7 @@ export interface CreateZoneTransferForceAxfrRequest {
 }
 
 export const CreateZoneTransferForceAxfrRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       body: Schema.Unknown.pipe(T.HttpBody()),
@@ -14552,7 +14525,7 @@ export const CreateZoneTransferForceAxfrRequest =
 export type CreateZoneTransferForceAxfrResponse = string;
 
 export const CreateZoneTransferForceAxfrResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.String.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<CreateZoneTransferForceAxfrResponse>;
 
@@ -14563,7 +14536,7 @@ export const createZoneTransferForceAxfr: API.OperationMethod<
   CreateZoneTransferForceAxfrResponse,
   CreateZoneTransferForceAxfrError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateZoneTransferForceAxfrRequest,
   output: CreateZoneTransferForceAxfrResponse,
   errors: [],
@@ -14578,7 +14551,7 @@ export interface GetZoneTransferIncomingRequest {
 }
 
 export const GetZoneTransferIncomingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -14608,7 +14581,7 @@ export interface GetZoneTransferIncomingResponse {
 }
 
 export const GetZoneTransferIncomingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       autoRefreshSeconds: Schema.optional(
@@ -14647,7 +14620,7 @@ export const getZoneTransferIncoming: API.OperationMethod<
   GetZoneTransferIncomingResponse,
   GetZoneTransferIncomingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetZoneTransferIncomingRequest,
   output: GetZoneTransferIncomingResponse,
   errors: [IncomingZoneTransferNotFound],
@@ -14665,7 +14638,7 @@ export interface CreateZoneTransferIncomingRequest {
 }
 
 export const CreateZoneTransferIncomingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       autoRefreshSeconds: Schema.Number,
@@ -14703,7 +14676,7 @@ export interface CreateZoneTransferIncomingResponse {
 }
 
 export const CreateZoneTransferIncomingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       autoRefreshSeconds: Schema.optional(
@@ -14740,7 +14713,7 @@ export const createZoneTransferIncoming: API.OperationMethod<
   CreateZoneTransferIncomingResponse,
   CreateZoneTransferIncomingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateZoneTransferIncomingRequest,
   output: CreateZoneTransferIncomingResponse,
   errors: [],
@@ -14758,7 +14731,7 @@ export interface UpdateZoneTransferIncomingRequest {
 }
 
 export const UpdateZoneTransferIncomingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       autoRefreshSeconds: Schema.Number,
@@ -14796,7 +14769,7 @@ export interface UpdateZoneTransferIncomingResponse {
 }
 
 export const UpdateZoneTransferIncomingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       autoRefreshSeconds: Schema.optional(
@@ -14835,7 +14808,7 @@ export const updateZoneTransferIncoming: API.OperationMethod<
   UpdateZoneTransferIncomingResponse,
   UpdateZoneTransferIncomingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateZoneTransferIncomingRequest,
   output: UpdateZoneTransferIncomingResponse,
   errors: [IncomingZoneTransferNotFound],
@@ -14846,7 +14819,7 @@ export interface DeleteZoneTransferIncomingRequest {
 }
 
 export const DeleteZoneTransferIncomingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -14862,7 +14835,7 @@ export interface DeleteZoneTransferIncomingResponse {
 }
 
 export const DeleteZoneTransferIncomingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -14877,7 +14850,7 @@ export const deleteZoneTransferIncoming: API.OperationMethod<
   DeleteZoneTransferIncomingResponse,
   DeleteZoneTransferIncomingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteZoneTransferIncomingRequest,
   output: DeleteZoneTransferIncomingResponse,
   errors: [IncomingZoneTransferNotFound],
@@ -14892,7 +14865,7 @@ export interface GetZoneTransferOutgoingRequest {
 }
 
 export const GetZoneTransferOutgoingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -14920,7 +14893,7 @@ export interface GetZoneTransferOutgoingResponse {
 }
 
 export const GetZoneTransferOutgoingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       checkedTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -14958,7 +14931,7 @@ export const getZoneTransferOutgoing: API.OperationMethod<
   GetZoneTransferOutgoingResponse,
   GetZoneTransferOutgoingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetZoneTransferOutgoingRequest,
   output: GetZoneTransferOutgoingResponse,
   errors: [OutgoingZoneTransferNotFound, OutgoingZoneTransfersNotAllowed],
@@ -14974,7 +14947,7 @@ export interface CreateZoneTransferOutgoingRequest {
 }
 
 export const CreateZoneTransferOutgoingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       name: Schema.String,
@@ -15004,7 +14977,7 @@ export interface CreateZoneTransferOutgoingResponse {
 }
 
 export const CreateZoneTransferOutgoingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       checkedTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -15041,7 +15014,7 @@ export const createZoneTransferOutgoing: API.OperationMethod<
   CreateZoneTransferOutgoingResponse,
   CreateZoneTransferOutgoingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateZoneTransferOutgoingRequest,
   output: CreateZoneTransferOutgoingResponse,
   errors: [OutgoingZoneTransfersNotAllowed],
@@ -15057,7 +15030,7 @@ export interface UpdateZoneTransferOutgoingRequest {
 }
 
 export const UpdateZoneTransferOutgoingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       name: Schema.String,
@@ -15087,7 +15060,7 @@ export interface UpdateZoneTransferOutgoingResponse {
 }
 
 export const UpdateZoneTransferOutgoingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       checkedTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -15125,7 +15098,7 @@ export const updateZoneTransferOutgoing: API.OperationMethod<
   UpdateZoneTransferOutgoingResponse,
   UpdateZoneTransferOutgoingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateZoneTransferOutgoingRequest,
   output: UpdateZoneTransferOutgoingResponse,
   errors: [OutgoingZoneTransferNotFound, OutgoingZoneTransfersNotAllowed],
@@ -15136,7 +15109,7 @@ export interface DeleteZoneTransferOutgoingRequest {
 }
 
 export const DeleteZoneTransferOutgoingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -15152,7 +15125,7 @@ export interface DeleteZoneTransferOutgoingResponse {
 }
 
 export const DeleteZoneTransferOutgoingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -15168,7 +15141,7 @@ export const deleteZoneTransferOutgoing: API.OperationMethod<
   DeleteZoneTransferOutgoingResponse,
   DeleteZoneTransferOutgoingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteZoneTransferOutgoingRequest,
   output: DeleteZoneTransferOutgoingResponse,
   errors: [OutgoingZoneTransferNotFound, OutgoingZoneTransfersNotAllowed],
@@ -15182,7 +15155,7 @@ export interface EnableZoneTransferOutgoingRequest {
 }
 
 export const EnableZoneTransferOutgoingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       body: Schema.Unknown.pipe(T.HttpBody()),
@@ -15197,7 +15170,7 @@ export const EnableZoneTransferOutgoingRequest =
 export type EnableZoneTransferOutgoingResponse = string;
 
 export const EnableZoneTransferOutgoingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.String.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<EnableZoneTransferOutgoingResponse>;
 
@@ -15210,7 +15183,7 @@ export const enableZoneTransferOutgoing: API.OperationMethod<
   EnableZoneTransferOutgoingResponse,
   EnableZoneTransferOutgoingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableZoneTransferOutgoingRequest,
   output: EnableZoneTransferOutgoingResponse,
   errors: [OutgoingZoneTransfersNotAllowed],
@@ -15224,7 +15197,7 @@ export interface DisableZoneTransferOutgoingRequest {
 }
 
 export const DisableZoneTransferOutgoingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       body: Schema.Unknown.pipe(T.HttpBody()),
@@ -15239,7 +15212,7 @@ export const DisableZoneTransferOutgoingRequest =
 export type DisableZoneTransferOutgoingResponse = string;
 
 export const DisableZoneTransferOutgoingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.String.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DisableZoneTransferOutgoingResponse>;
 
@@ -15252,7 +15225,7 @@ export const disableZoneTransferOutgoing: API.OperationMethod<
   DisableZoneTransferOutgoingResponse,
   DisableZoneTransferOutgoingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableZoneTransferOutgoingRequest,
   output: DisableZoneTransferOutgoingResponse,
   errors: [OutgoingZoneTransfersNotAllowed],
@@ -15267,7 +15240,7 @@ export interface GetZoneTransferOutgoingStatusRequest {
 }
 
 export const GetZoneTransferOutgoingStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -15281,7 +15254,7 @@ export const GetZoneTransferOutgoingStatusRequest =
 export type GetZoneTransferOutgoingStatusResponse = string;
 
 export const GetZoneTransferOutgoingStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.String.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetZoneTransferOutgoingStatusResponse>;
 
@@ -15292,7 +15265,7 @@ export const getZoneTransferOutgoingStatus: API.OperationMethod<
   GetZoneTransferOutgoingStatusResponse,
   GetZoneTransferOutgoingStatusError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetZoneTransferOutgoingStatusRequest,
   output: GetZoneTransferOutgoingStatusResponse,
   errors: [],
@@ -15308,7 +15281,7 @@ export interface GetZoneTransferPeerRequest {
 }
 
 export const GetZoneTransferPeerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       peerId: Schema.String.pipe(T.HttpPath("peerId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -15335,7 +15308,7 @@ export interface GetZoneTransferPeerResponse {
 }
 
 export const GetZoneTransferPeerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       name: Schema.String,
@@ -15364,7 +15337,7 @@ export const getZoneTransferPeer: API.OperationMethod<
   GetZoneTransferPeerResponse,
   GetZoneTransferPeerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetZoneTransferPeerRequest,
   output: GetZoneTransferPeerResponse,
   errors: [PeerNotFound],
@@ -15375,7 +15348,7 @@ export interface ListZoneTransferPeersRequest {
 }
 
 export const ListZoneTransferPeersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -15398,7 +15371,7 @@ export interface ListZoneTransferPeersResponse {
 }
 
 export const ListZoneTransferPeersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListZoneTransferPeersResponseResult),
     }),
@@ -15411,7 +15384,7 @@ export const listZoneTransferPeers: API.PaginatedOperationMethod<
   ListZoneTransferPeersResponse,
   ListZoneTransferPeersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZoneTransferPeersRequest,
   output: ListZoneTransferPeersResponse,
   errors: [],
@@ -15429,7 +15402,7 @@ export interface CreateZoneTransferPeerRequest {
 }
 
 export const CreateZoneTransferPeerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -15456,7 +15429,7 @@ export interface CreateZoneTransferPeerResponse {
 }
 
 export const CreateZoneTransferPeerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       name: Schema.String,
@@ -15485,7 +15458,7 @@ export const createZoneTransferPeer: API.OperationMethod<
   CreateZoneTransferPeerResponse,
   CreateZoneTransferPeerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateZoneTransferPeerRequest,
   output: CreateZoneTransferPeerResponse,
   errors: [],
@@ -15508,7 +15481,7 @@ export interface UpdateZoneTransferPeerRequest {
 }
 
 export const UpdateZoneTransferPeerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       peerId: Schema.String.pipe(T.HttpPath("peerId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -15547,7 +15520,7 @@ export interface UpdateZoneTransferPeerResponse {
 }
 
 export const UpdateZoneTransferPeerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       name: Schema.String,
@@ -15576,7 +15549,7 @@ export const updateZoneTransferPeer: API.OperationMethod<
   UpdateZoneTransferPeerResponse,
   UpdateZoneTransferPeerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateZoneTransferPeerRequest,
   output: UpdateZoneTransferPeerResponse,
   errors: [PeerNotFound],
@@ -15588,7 +15561,7 @@ export interface DeleteZoneTransferPeerRequest {
 }
 
 export const DeleteZoneTransferPeerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       peerId: Schema.String.pipe(T.HttpPath("peerId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -15605,7 +15578,7 @@ export interface DeleteZoneTransferPeerResponse {
 }
 
 export const DeleteZoneTransferPeerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -15618,7 +15591,7 @@ export const deleteZoneTransferPeer: API.OperationMethod<
   DeleteZoneTransferPeerResponse,
   DeleteZoneTransferPeerError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteZoneTransferPeerRequest,
   output: DeleteZoneTransferPeerResponse,
   errors: [PeerNotFound],
@@ -15634,7 +15607,7 @@ export interface GetZoneTransferTsigRequest {
 }
 
 export const GetZoneTransferTsigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tsigId: Schema.String.pipe(T.HttpPath("tsigId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -15657,7 +15630,7 @@ export interface GetZoneTransferTsigResponse {
 }
 
 export const GetZoneTransferTsigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       algo: Schema.String,
@@ -15673,7 +15646,7 @@ export const getZoneTransferTsig: API.OperationMethod<
   GetZoneTransferTsigResponse,
   GetZoneTransferTsigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetZoneTransferTsigRequest,
   output: GetZoneTransferTsigResponse,
   errors: [TsigNotFound],
@@ -15684,7 +15657,7 @@ export interface ListZoneTransferTsigsRequest {
 }
 
 export const ListZoneTransferTsigsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -15700,7 +15673,7 @@ export interface ListZoneTransferTsigsResponse {
 }
 
 export const ListZoneTransferTsigsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListZoneTransferTsigsResponseResult),
     }),
@@ -15713,7 +15686,7 @@ export const listZoneTransferTsigs: API.PaginatedOperationMethod<
   ListZoneTransferTsigsResponse,
   ListZoneTransferTsigsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZoneTransferTsigsRequest,
   output: ListZoneTransferTsigsResponse,
   errors: [],
@@ -15735,7 +15708,7 @@ export interface CreateZoneTransferTsigRequest {
 }
 
 export const CreateZoneTransferTsigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       algo: Schema.String,
@@ -15760,7 +15733,7 @@ export interface CreateZoneTransferTsigResponse {
 }
 
 export const CreateZoneTransferTsigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       algo: Schema.String,
@@ -15776,7 +15749,7 @@ export const createZoneTransferTsig: API.OperationMethod<
   CreateZoneTransferTsigResponse,
   CreateZoneTransferTsigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateZoneTransferTsigRequest,
   output: CreateZoneTransferTsigResponse,
   errors: [],
@@ -15795,7 +15768,7 @@ export interface UpdateZoneTransferTsigRequest {
 }
 
 export const UpdateZoneTransferTsigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tsigId: Schema.String.pipe(T.HttpPath("tsigId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -15821,7 +15794,7 @@ export interface UpdateZoneTransferTsigResponse {
 }
 
 export const UpdateZoneTransferTsigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       algo: Schema.String,
@@ -15837,7 +15810,7 @@ export const updateZoneTransferTsig: API.OperationMethod<
   UpdateZoneTransferTsigResponse,
   UpdateZoneTransferTsigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateZoneTransferTsigRequest,
   output: UpdateZoneTransferTsigResponse,
   errors: [TsigNotFound],
@@ -15849,7 +15822,7 @@ export interface DeleteZoneTransferTsigRequest {
 }
 
 export const DeleteZoneTransferTsigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       tsigId: Schema.String.pipe(T.HttpPath("tsigId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -15866,7 +15839,7 @@ export interface DeleteZoneTransferTsigResponse {
 }
 
 export const DeleteZoneTransferTsigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -15879,7 +15852,7 @@ export const deleteZoneTransferTsig: API.OperationMethod<
   DeleteZoneTransferTsigResponse,
   DeleteZoneTransferTsigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteZoneTransferTsigRequest,
   output: DeleteZoneTransferTsigResponse,
   errors: [TsigNotFound],

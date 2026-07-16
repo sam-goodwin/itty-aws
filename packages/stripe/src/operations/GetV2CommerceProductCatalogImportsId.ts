@@ -7,7 +7,7 @@ export interface GetV2CommerceProductCatalogImportsIdInput {
   id: string;
 }
 export const GetV2CommerceProductCatalogImportsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -58,7 +58,7 @@ export interface GetV2CommerceProductCatalogImportsIdOutput {
   };
 }
 export const GetV2CommerceProductCatalogImportsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.String,
     feed_type: Schema.Literals([
       "inventory",
@@ -145,7 +145,7 @@ export const GetV2CommerceProductCatalogImportsIdOutput =
  * @param id - The ID of the ProductCatalogImport to retrieve.
  */
 export const GetV2CommerceProductCatalogImportsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV2CommerceProductCatalogImportsIdInput,
     outputSchema: GetV2CommerceProductCatalogImportsIdOutput,
   }));

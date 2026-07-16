@@ -9,7 +9,7 @@ export interface LegalDocumentsDestroyInput {
   organization_id: string;
 }
 export const LegalDocumentsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const LegalDocumentsDestroyInput =
 // Output Schema
 export type LegalDocumentsDestroyOutput = void;
 export const LegalDocumentsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LegalDocumentsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LegalDocumentsDestroyOutput>;
 
 // The operation
 /**
@@ -37,10 +37,8 @@ export const LegalDocumentsDestroyOutput =
  *
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const legalDocumentsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LegalDocumentsDestroyInput,
-    outputSchema: LegalDocumentsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const legalDocumentsDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LegalDocumentsDestroyInput,
+  outputSchema: LegalDocumentsDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -39,7 +39,7 @@ export interface ApprovalPoliciesCreateInput {
   updated_at?: string | null;
 }
 export const ApprovalPoliciesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     action_key: Schema.optional(Schema.String),
@@ -128,7 +128,7 @@ export interface ApprovalPoliciesCreateOutput {
   updated_at?: string | null;
 }
 export const ApprovalPoliciesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     action_key: Schema.optional(Schema.String),
     conditions: Schema.optional(Schema.Unknown),
@@ -180,9 +180,7 @@ export const ApprovalPoliciesCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const approvalPoliciesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApprovalPoliciesCreateInput,
-    outputSchema: ApprovalPoliciesCreateOutput,
-  }),
-);
+export const approvalPoliciesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApprovalPoliciesCreateInput,
+  outputSchema: ApprovalPoliciesCreateOutput,
+}));

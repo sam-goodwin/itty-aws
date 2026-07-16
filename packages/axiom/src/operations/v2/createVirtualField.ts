@@ -13,7 +13,7 @@ export interface CreateVirtualFieldInput {
   unit?: string;
 }
 export const CreateVirtualFieldInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataset: Schema.String,
     description: Schema.optional(Schema.String),
     expression: Schema.String,
@@ -35,7 +35,7 @@ export interface CreateVirtualFieldOutput {
   id: string;
 }
 export const CreateVirtualFieldOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataset: Schema.String,
     description: Schema.optional(Schema.String),
     expression: Schema.String,
@@ -46,7 +46,7 @@ export const CreateVirtualFieldOutput =
   }) as unknown as Schema.Codec<CreateVirtualFieldOutput>;
 
 // The operation
-export const createVirtualField = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createVirtualField = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateVirtualFieldInput,
   outputSchema: CreateVirtualFieldOutput,
   errors: [UnprocessableEntity] as const,

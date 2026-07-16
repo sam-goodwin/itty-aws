@@ -8,7 +8,7 @@ export interface VisionScannersDestroyInput {
   project_id: string;
 }
 export const VisionScannersDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const VisionScannersDestroyInput =
 // Output Schema
 export type VisionScannersDestroyOutput = void;
 export const VisionScannersDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VisionScannersDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VisionScannersDestroyOutput>;
 
 // The operation
 /**
@@ -30,9 +30,7 @@ export const VisionScannersDestroyOutput =
  * @param id - A UUID string identifying this replay scanner.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const visionScannersDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VisionScannersDestroyInput,
-    outputSchema: VisionScannersDestroyOutput,
-  }),
-);
+export const visionScannersDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VisionScannersDestroyInput,
+  outputSchema: VisionScannersDestroyOutput,
+}));

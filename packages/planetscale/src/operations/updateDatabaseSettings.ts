@@ -20,7 +20,7 @@ export interface UpdateDatabaseSettingsInput {
   default_branch?: string;
 }
 export const UpdateDatabaseSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     new_name: Schema.optional(Schema.String),
@@ -110,7 +110,7 @@ export interface UpdateDatabaseSettingsOutput {
   kind: "mysql" | "postgresql";
 }
 export const UpdateDatabaseSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     url: Schema.String,
     branches_url: Schema.String,
@@ -205,10 +205,8 @@ export const UpdateDatabaseSettingsOutput =
  * @param production_branch_web_console - Whether or not the web console can be used on the production branch of the database
  * @param default_branch - The default branch of the database
  */
-export const updateDatabaseSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateDatabaseSettingsInput,
-    outputSchema: UpdateDatabaseSettingsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const updateDatabaseSettings = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateDatabaseSettingsInput,
+  outputSchema: UpdateDatabaseSettingsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

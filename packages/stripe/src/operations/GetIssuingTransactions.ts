@@ -19,7 +19,7 @@ export interface GetIssuingTransactionsInput {
   type?: "capture" | "refund";
 }
 export const GetIssuingTransactionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card: Schema.optional(Schema.String),
     cardholder: Schema.optional(Schema.String),
     created: Schema.optional(Schema.String),
@@ -368,7 +368,7 @@ export interface GetIssuingTransactionsOutput {
   url: string;
 }
 export const GetIssuingTransactionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amount: Schema.Number,
@@ -845,9 +845,7 @@ export const GetIssuingTransactionsOutput =
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param type - Only return transactions that have the given type. One of `capture` or `refund`.
  */
-export const GetIssuingTransactions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetIssuingTransactionsInput,
-    outputSchema: GetIssuingTransactionsOutput,
-  }),
-);
+export const GetIssuingTransactions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetIssuingTransactionsInput,
+  outputSchema: GetIssuingTransactionsOutput,
+}));

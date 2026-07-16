@@ -9,7 +9,7 @@ export interface UpdateGroupMaintenanceWindowInput {
   envelope?: boolean;
 }
 export const UpdateGroupMaintenanceWindowInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -22,7 +22,7 @@ export const UpdateGroupMaintenanceWindowInput =
 // Output Schema
 export type UpdateGroupMaintenanceWindowOutput = void;
 export const UpdateGroupMaintenanceWindowOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupMaintenanceWindowOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupMaintenanceWindowOutput>;
 
 // The operation
 /**
@@ -36,7 +36,7 @@ export const UpdateGroupMaintenanceWindowOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
 export const updateGroupMaintenanceWindow =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateGroupMaintenanceWindowInput,
     outputSchema: UpdateGroupMaintenanceWindowOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

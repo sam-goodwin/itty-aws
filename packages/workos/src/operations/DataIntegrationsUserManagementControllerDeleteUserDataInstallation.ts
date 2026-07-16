@@ -10,7 +10,7 @@ export interface DataIntegrationsUserManagementControllerDeleteUserDataInstallat
   organization_id?: string;
 }
 export const DataIntegrationsUserManagementControllerDeleteUserDataInstallationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user_id: Schema.String.pipe(T.PathParam()),
     slug: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.optional(Schema.String),
@@ -25,7 +25,7 @@ export const DataIntegrationsUserManagementControllerDeleteUserDataInstallationI
 export type DataIntegrationsUserManagementControllerDeleteUserDataInstallationOutput =
   void;
 export const DataIntegrationsUserManagementControllerDeleteUserDataInstallationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataIntegrationsUserManagementControllerDeleteUserDataInstallationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataIntegrationsUserManagementControllerDeleteUserDataInstallationOutput>;
 
 // The operation
 /**
@@ -38,7 +38,7 @@ export const DataIntegrationsUserManagementControllerDeleteUserDataInstallationO
  * @param organization_id - An [Organization](/reference/organization) identifier. Optional parameter if the connection is scoped to an organization.
  */
 export const DataIntegrationsUserManagementControllerDeleteUserDataInstallation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DataIntegrationsUserManagementControllerDeleteUserDataInstallationInput,
     outputSchema:

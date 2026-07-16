@@ -12,7 +12,7 @@ export interface GetShippingRatesInput {
   limit?: number;
   starting_after?: string;
 }
-export const GetShippingRatesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetShippingRatesInput = /*@__PURE__*/ Schema.Struct({
   active: Schema.optional(Schema.Boolean),
   created: Schema.optional(Schema.String),
   currency: Schema.optional(Schema.String),
@@ -70,86 +70,84 @@ export interface GetShippingRatesOutput {
   object: "list";
   url: string;
 }
-export const GetShippingRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    data: Schema.Array(
-      Schema.Struct({
-        active: Schema.Boolean,
-        created: Schema.Number,
-        delivery_estimate: Schema.NullOr(
-          Schema.Struct({
-            maximum: Schema.NullOr(
-              Schema.Struct({
-                unit: Schema.Literals([
-                  "business_day",
-                  "day",
-                  "hour",
-                  "month",
-                  "week",
-                ]),
-                value: Schema.Number,
-              }),
-            ),
-            minimum: Schema.NullOr(
-              Schema.Struct({
-                unit: Schema.Literals([
-                  "business_day",
-                  "day",
-                  "hour",
-                  "month",
-                  "week",
-                ]),
-                value: Schema.Number,
-              }),
-            ),
-          }),
-        ),
-        display_name: Schema.NullOr(Schema.String),
-        fixed_amount: Schema.optional(
-          Schema.Struct({
-            amount: Schema.Number,
-            currency: Schema.String,
-            currency_options: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  amount: Schema.Number,
-                  tax_behavior: Schema.Literals([
-                    "exclusive",
-                    "inclusive",
-                    "unspecified",
-                  ]),
-                }),
-              ),
-            ),
-          }),
-        ),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        metadata: Schema.Record(Schema.String, Schema.String),
-        object: Schema.Literals(["shipping_rate"]),
-        tax_behavior: Schema.NullOr(
-          Schema.Literals(["exclusive", "inclusive", "unspecified"]),
-        ),
-        tax_code: Schema.NullOr(
-          Schema.Union([
-            Schema.String,
+export const GetShippingRatesOutput = /*@__PURE__*/ Schema.Struct({
+  data: Schema.Array(
+    Schema.Struct({
+      active: Schema.Boolean,
+      created: Schema.Number,
+      delivery_estimate: Schema.NullOr(
+        Schema.Struct({
+          maximum: Schema.NullOr(
             Schema.Struct({
-              description: Schema.String,
-              id: Schema.String,
-              name: Schema.String,
-              object: Schema.Literals(["tax_code"]),
+              unit: Schema.Literals([
+                "business_day",
+                "day",
+                "hour",
+                "month",
+                "week",
+              ]),
+              value: Schema.Number,
             }),
-          ]),
-        ),
-        type: Schema.Literals(["fixed_amount"]),
-      }),
-    ),
-    has_more: Schema.Boolean,
-    object: Schema.Literals(["list"]),
-    url: Schema.String,
-  },
-) as unknown as Schema.Codec<GetShippingRatesOutput>;
+          ),
+          minimum: Schema.NullOr(
+            Schema.Struct({
+              unit: Schema.Literals([
+                "business_day",
+                "day",
+                "hour",
+                "month",
+                "week",
+              ]),
+              value: Schema.Number,
+            }),
+          ),
+        }),
+      ),
+      display_name: Schema.NullOr(Schema.String),
+      fixed_amount: Schema.optional(
+        Schema.Struct({
+          amount: Schema.Number,
+          currency: Schema.String,
+          currency_options: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({
+                amount: Schema.Number,
+                tax_behavior: Schema.Literals([
+                  "exclusive",
+                  "inclusive",
+                  "unspecified",
+                ]),
+              }),
+            ),
+          ),
+        }),
+      ),
+      id: Schema.String,
+      livemode: Schema.Boolean,
+      metadata: Schema.Record(Schema.String, Schema.String),
+      object: Schema.Literals(["shipping_rate"]),
+      tax_behavior: Schema.NullOr(
+        Schema.Literals(["exclusive", "inclusive", "unspecified"]),
+      ),
+      tax_code: Schema.NullOr(
+        Schema.Union([
+          Schema.String,
+          Schema.Struct({
+            description: Schema.String,
+            id: Schema.String,
+            name: Schema.String,
+            object: Schema.Literals(["tax_code"]),
+          }),
+        ]),
+      ),
+      type: Schema.Literals(["fixed_amount"]),
+    }),
+  ),
+  has_more: Schema.Boolean,
+  object: Schema.Literals(["list"]),
+  url: Schema.String,
+}) as unknown as Schema.Codec<GetShippingRatesOutput>;
 
 // The operation
 /**
@@ -165,7 +163,7 @@ export const GetShippingRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param limit - A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetShippingRates = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetShippingRates = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetShippingRatesInput,
   outputSchema: GetShippingRatesOutput,
 }));

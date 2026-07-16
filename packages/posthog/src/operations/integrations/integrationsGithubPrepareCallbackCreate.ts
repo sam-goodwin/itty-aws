@@ -9,7 +9,7 @@ export interface IntegrationsGithubPrepareCallbackCreateInput {
   installation_id?: string;
 }
 export const IntegrationsGithubPrepareCallbackCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     next: Schema.optional(Schema.String),
     installation_id: Schema.optional(Schema.String),
@@ -23,7 +23,7 @@ export const IntegrationsGithubPrepareCallbackCreateInput =
 // Output Schema
 export type IntegrationsGithubPrepareCallbackCreateOutput = void;
 export const IntegrationsGithubPrepareCallbackCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsGithubPrepareCallbackCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsGithubPrepareCallbackCreateOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const IntegrationsGithubPrepareCallbackCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const integrationsGithubPrepareCallbackCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsGithubPrepareCallbackCreateInput,
     outputSchema: IntegrationsGithubPrepareCallbackCreateOutput,
   }));

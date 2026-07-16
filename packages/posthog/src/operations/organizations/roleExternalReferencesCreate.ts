@@ -37,7 +37,7 @@ export interface RoleExternalReferencesCreateInput {
   } | null;
 }
 export const RoleExternalReferencesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     provider: Schema.optional(Schema.String),
@@ -120,7 +120,7 @@ export interface RoleExternalReferencesCreateOutput {
   } | null;
 }
 export const RoleExternalReferencesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     provider: Schema.optional(Schema.String),
     provider_organization_id: Schema.optional(Schema.String),
@@ -170,7 +170,7 @@ export const RoleExternalReferencesCreateOutput =
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
 export const roleExternalReferencesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RoleExternalReferencesCreateInput,
     outputSchema: RoleExternalReferencesCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

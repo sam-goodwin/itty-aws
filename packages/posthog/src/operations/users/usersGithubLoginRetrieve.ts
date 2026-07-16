@@ -8,7 +8,7 @@ export interface UsersGithubLoginRetrieveInput {
   uuid: string;
 }
 export const UsersGithubLoginRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/api/users/{uuid}/github_login/" }),
@@ -17,13 +17,11 @@ export const UsersGithubLoginRetrieveInput =
 // Output Schema
 export type UsersGithubLoginRetrieveOutput = void;
 export const UsersGithubLoginRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersGithubLoginRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersGithubLoginRetrieveOutput>;
 
 // The operation
-export const usersGithubLoginRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsersGithubLoginRetrieveInput,
-    outputSchema: UsersGithubLoginRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const usersGithubLoginRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersGithubLoginRetrieveInput,
+  outputSchema: UsersGithubLoginRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

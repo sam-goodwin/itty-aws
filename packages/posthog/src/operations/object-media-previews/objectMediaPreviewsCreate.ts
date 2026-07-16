@@ -17,7 +17,7 @@ export interface ObjectMediaPreviewsCreateInput {
   event_definition_id?: string | null;
 }
 export const ObjectMediaPreviewsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export interface ObjectMediaPreviewsCreateOutput {
   event_definition_id?: string | null;
 }
 export const ObjectMediaPreviewsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.NullOr(Schema.String)),
@@ -65,10 +65,8 @@ export const ObjectMediaPreviewsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const objectMediaPreviewsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ObjectMediaPreviewsCreateInput,
-    outputSchema: ObjectMediaPreviewsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const objectMediaPreviewsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ObjectMediaPreviewsCreateInput,
+  outputSchema: ObjectMediaPreviewsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

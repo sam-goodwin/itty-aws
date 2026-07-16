@@ -12,7 +12,7 @@ export interface TasksRunsStartCreateInput {
   pending_user_artifact_ids?: string[];
 }
 export const TasksRunsStartCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     task_id: Schema.String.pipe(T.PathParam()),
@@ -59,7 +59,7 @@ export interface TasksRunsStartCreateOutput {
   ci_prompt: string | null;
 }
 export const TasksRunsStartCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     task_number: Schema.NullOr(Schema.Number),
     slug: Schema.String,
@@ -106,10 +106,8 @@ export const TasksRunsStartCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const tasksRunsStartCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TasksRunsStartCreateInput,
-    outputSchema: TasksRunsStartCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const tasksRunsStartCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TasksRunsStartCreateInput,
+  outputSchema: TasksRunsStartCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

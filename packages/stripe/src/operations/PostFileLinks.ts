@@ -9,7 +9,7 @@ export interface PostFileLinksInput {
   file: string;
   metadata?: Record<string, string> | "";
 }
-export const PostFileLinksInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostFileLinksInput = /*@__PURE__*/ Schema.Struct({
   expand: Schema.optional(Schema.Array(Schema.String)),
   expires_at: Schema.optional(Schema.Number),
   file: Schema.String,
@@ -89,7 +89,7 @@ export interface PostFileLinksOutput {
   object: "file_link";
   url: string | null;
 }
-export const PostFileLinksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostFileLinksOutput = /*@__PURE__*/ Schema.Struct({
   created: Schema.Number,
   expired: Schema.Boolean,
   expires_at: Schema.NullOr(Schema.Number),
@@ -165,7 +165,7 @@ export const PostFileLinksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>Creates a new file link object.</p>
  */
-export const PostFileLinks = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostFileLinks = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostFileLinksInput,
   outputSchema: PostFileLinksOutput,
 }));

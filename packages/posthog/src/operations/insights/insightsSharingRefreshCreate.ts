@@ -26,7 +26,7 @@ export interface InsightsSharingRefreshCreateInput {
   }[];
 }
 export const InsightsSharingRefreshCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     insight_id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     created_at: Schema.optional(Schema.String),
@@ -68,7 +68,7 @@ export interface InsightsSharingRefreshCreateOutput {
   }[];
 }
 export const InsightsSharingRefreshCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created_at: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
     access_token: Schema.optional(SensitiveOutputNullableString),
@@ -93,7 +93,7 @@ export const InsightsSharingRefreshCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const insightsSharingRefreshCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InsightsSharingRefreshCreateInput,
     outputSchema: InsightsSharingRefreshCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

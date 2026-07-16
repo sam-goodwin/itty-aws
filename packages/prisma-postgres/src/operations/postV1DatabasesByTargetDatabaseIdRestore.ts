@@ -9,7 +9,7 @@ export interface PostV1DatabasesByTargetDatabaseIdRestoreInput {
   source: { type: string; databaseId: string; backupId: string };
 }
 export const PostV1DatabasesByTargetDatabaseIdRestoreInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetDatabaseId: Schema.String.pipe(T.PathParam()),
     source: Schema.Struct({
       type: Schema.String,
@@ -56,7 +56,7 @@ export interface PostV1DatabasesByTargetDatabaseIdRestoreOutput {
   };
 }
 export const PostV1DatabasesByTargetDatabaseIdRestoreOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -143,7 +143,7 @@ export const PostV1DatabasesByTargetDatabaseIdRestoreOutput =
  * Replaces the data in an existing database from a backup. Connections and credentials are preserved — only the data layer is replaced.
  */
 export const postV1DatabasesByTargetDatabaseIdRestore =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV1DatabasesByTargetDatabaseIdRestoreInput,
     outputSchema: PostV1DatabasesByTargetDatabaseIdRestoreOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,

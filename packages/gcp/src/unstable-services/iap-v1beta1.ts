@@ -34,7 +34,7 @@ export interface Expr {
 }
 
 export const Expr: Schema.Codec<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export interface Binding {
 }
 
 export const Binding: Schema.Codec<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     condition: Schema.optional(Expr),
     role: Schema.optional(Schema.String),
     members: Schema.optional(Schema.Array(Schema.String)),
@@ -67,7 +67,7 @@ export interface Policy {
 }
 
 export const Policy: Schema.Codec<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.Number),
     bindings: Schema.optional(Schema.Array(Binding)),
     etag: Schema.optional(Schema.String),
@@ -79,7 +79,7 @@ export interface GetPolicyOptions {
 }
 
 export const GetPolicyOptions: Schema.Codec<GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GetPolicyOptions" });
 
@@ -89,7 +89,7 @@ export interface GetIamPolicyRequest {
 }
 
 export const GetIamPolicyRequest: Schema.Codec<GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     options: Schema.optional(GetPolicyOptions),
   }).annotate({ identifier: "GetIamPolicyRequest" });
 
@@ -99,7 +99,7 @@ export interface TestIamPermissionsRequest {
 }
 
 export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
 
@@ -109,7 +109,7 @@ export interface SetIamPolicyRequest {
 }
 
 export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "SetIamPolicyRequest" });
 
@@ -119,7 +119,7 @@ export interface TestIamPermissionsResponse {
 }
 
 export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
@@ -185,7 +185,7 @@ export interface TestIamPermissionsV1beta1Request {
 }
 
 export const TestIamPermissionsV1beta1Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -199,7 +199,7 @@ export const TestIamPermissionsV1beta1Request =
 
 export type TestIamPermissionsV1beta1Response = TestIamPermissionsResponse;
 export const TestIamPermissionsV1beta1Response =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsV1beta1Error =
   | DefaultErrors
@@ -214,7 +214,7 @@ export const testIamPermissionsV1beta1: API.OperationMethod<
   TestIamPermissionsV1beta1Response,
   TestIamPermissionsV1beta1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsV1beta1Request,
   output: TestIamPermissionsV1beta1Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -228,7 +228,7 @@ export interface GetIamPolicyV1beta1Request {
 }
 
 export const GetIamPolicyV1beta1Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -241,7 +241,7 @@ export const GetIamPolicyV1beta1Request =
   ) as unknown as Schema.Codec<GetIamPolicyV1beta1Request>;
 
 export type GetIamPolicyV1beta1Response = Policy;
-export const GetIamPolicyV1beta1Response = /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetIamPolicyV1beta1Response = /*@__PURE__*/ Policy;
 
 export type GetIamPolicyV1beta1Error =
   | DefaultErrors
@@ -256,7 +256,7 @@ export const getIamPolicyV1beta1: API.OperationMethod<
   GetIamPolicyV1beta1Response,
   GetIamPolicyV1beta1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyV1beta1Request,
   output: GetIamPolicyV1beta1Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -270,7 +270,7 @@ export interface SetIamPolicyV1beta1Request {
 }
 
 export const SetIamPolicyV1beta1Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -283,7 +283,7 @@ export const SetIamPolicyV1beta1Request =
   ) as unknown as Schema.Codec<SetIamPolicyV1beta1Request>;
 
 export type SetIamPolicyV1beta1Response = Policy;
-export const SetIamPolicyV1beta1Response = /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const SetIamPolicyV1beta1Response = /*@__PURE__*/ Policy;
 
 export type SetIamPolicyV1beta1Error =
   | DefaultErrors
@@ -298,7 +298,7 @@ export const setIamPolicyV1beta1: API.OperationMethod<
   SetIamPolicyV1beta1Response,
   SetIamPolicyV1beta1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyV1beta1Request,
   output: SetIamPolicyV1beta1Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

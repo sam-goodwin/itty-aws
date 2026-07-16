@@ -57,7 +57,7 @@ export interface AgentPoolCreateOrUpdateInput {
   extendedLocation?: { type?: "CustomLocation"; name?: string };
 }
 export const AgentPoolCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
     agentPoolName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -149,7 +149,7 @@ export interface AgentPoolCreateOrUpdateOutput {
   };
 }
 export const AgentPoolCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -177,18 +177,16 @@ export const AgentPoolCreateOrUpdateOutput =
  * @param agentPoolName - Parameter for the name of the agent pool in the provisioned cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const agentPoolCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentPoolCreateOrUpdateInput,
-    outputSchema: AgentPoolCreateOrUpdateOutput,
-  }),
-);
+export const agentPoolCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentPoolCreateOrUpdateInput,
+  outputSchema: AgentPoolCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface AgentPoolDeleteInput {
   connectedClusterResourceUri: string;
   agentPoolName: string;
 }
-export const AgentPoolDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentPoolDeleteInput = /*@__PURE__*/ Schema.Struct({
   connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
   agentPoolName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -202,7 +200,7 @@ export const AgentPoolDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AgentPoolDeleteOutput = void;
 export const AgentPoolDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentPoolDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentPoolDeleteOutput>;
 
 // The operation
 /**
@@ -212,7 +210,7 @@ export const AgentPoolDeleteOutput =
  * @param agentPoolName - Parameter for the name of the agent pool in the provisioned cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const agentPoolDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const agentPoolDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentPoolDeleteInput,
   outputSchema: AgentPoolDeleteOutput,
 }));
@@ -221,7 +219,7 @@ export interface AgentPoolGetInput {
   connectedClusterResourceUri: string;
   agentPoolName: string;
 }
-export const AgentPoolGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentPoolGetInput = /*@__PURE__*/ Schema.Struct({
   connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
   agentPoolName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -246,7 +244,7 @@ export interface AgentPoolGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AgentPoolGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AgentPoolGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -274,7 +272,7 @@ export const AgentPoolGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param agentPoolName - Parameter for the name of the agent pool in the provisioned cluster.
  * @param api-version - The API version to use for this operation.
  */
-export const agentPoolGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const agentPoolGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentPoolGetInput,
   outputSchema: AgentPoolGetOutput,
 }));
@@ -283,7 +281,7 @@ export interface AgentPoolListByProvisionedClusterInput {
   connectedClusterResourceUri: string;
 }
 export const AgentPoolListByProvisionedClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -311,7 +309,7 @@ export interface AgentPoolListByProvisionedClusterOutput {
   nextLink?: string;
 }
 export const AgentPoolListByProvisionedClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -356,7 +354,7 @@ export const AgentPoolListByProvisionedClusterOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const agentPoolListByProvisionedCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentPoolListByProvisionedClusterInput,
     outputSchema: AgentPoolListByProvisionedClusterOutput,
   }));
@@ -365,7 +363,7 @@ export interface DeleteKubernetesVersionsInput {
   customLocationResourceUri: string;
 }
 export const DeleteKubernetesVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customLocationResourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -378,7 +376,7 @@ export const DeleteKubernetesVersionsInput =
 // Output Schema
 export type DeleteKubernetesVersionsOutput = void;
 export const DeleteKubernetesVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteKubernetesVersionsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteKubernetesVersionsOutput>;
 
 // The operation
 /**
@@ -389,17 +387,15 @@ export const DeleteKubernetesVersionsOutput =
  * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
-export const DeleteKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteKubernetesVersionsInput,
-    outputSchema: DeleteKubernetesVersionsOutput,
-  }),
-);
+export const DeleteKubernetesVersions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteKubernetesVersionsInput,
+  outputSchema: DeleteKubernetesVersionsOutput,
+}));
 // Input Schema
 export interface DeleteVMSkusInput {
   customLocationResourceUri: string;
 }
-export const DeleteVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteVMSkusInput = /*@__PURE__*/ Schema.Struct({
   customLocationResourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -412,7 +408,7 @@ export const DeleteVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteVMSkusOutput = void;
 export const DeleteVMSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteVMSkusOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteVMSkusOutput>;
 
 // The operation
 /**
@@ -421,7 +417,7 @@ export const DeleteVMSkusOutput =
  * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
-export const DeleteVMSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeleteVMSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteVMSkusInput,
   outputSchema: DeleteVMSkusOutput,
 }));
@@ -430,7 +426,7 @@ export interface GetKubernetesVersionsInput {
   customLocationResourceUri: string;
 }
 export const GetKubernetesVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customLocationResourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -455,7 +451,7 @@ export interface GetKubernetesVersionsOutput {
   };
 }
 export const GetKubernetesVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -484,17 +480,15 @@ export const GetKubernetesVersionsOutput =
  * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
-export const GetKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetKubernetesVersionsInput,
-    outputSchema: GetKubernetesVersionsOutput,
-  }),
-);
+export const GetKubernetesVersions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetKubernetesVersionsInput,
+  outputSchema: GetKubernetesVersionsOutput,
+}));
 // Input Schema
 export interface GetVMSkusInput {
   customLocationResourceUri: string;
 }
-export const GetVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetVMSkusInput = /*@__PURE__*/ Schema.Struct({
   customLocationResourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -518,7 +512,7 @@ export interface GetVMSkusOutput {
     lastModifiedAt?: string;
   };
 }
-export const GetVMSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetVMSkusOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -547,7 +541,7 @@ export const GetVMSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
-export const GetVMSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetVMSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetVMSkusInput,
   outputSchema: GetVMSkusOutput,
 }));
@@ -556,7 +550,7 @@ export interface HybridIdentityMetadataDeleteInput {
   connectedClusterResourceUri: string;
 }
 export const HybridIdentityMetadataDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -569,7 +563,7 @@ export const HybridIdentityMetadataDeleteInput =
 // Output Schema
 export type HybridIdentityMetadataDeleteOutput = void;
 export const HybridIdentityMetadataDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridIdentityMetadataDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HybridIdentityMetadataDeleteOutput>;
 
 // The operation
 /**
@@ -581,7 +575,7 @@ export const HybridIdentityMetadataDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const HybridIdentityMetadataDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HybridIdentityMetadataDeleteInput,
     outputSchema: HybridIdentityMetadataDeleteOutput,
   }));
@@ -590,7 +584,7 @@ export interface HybridIdentityMetadataGetInput {
   connectedClusterResourceUri: string;
 }
 export const HybridIdentityMetadataGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -615,7 +609,7 @@ export interface HybridIdentityMetadataGetOutput {
   };
 }
 export const HybridIdentityMetadataGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -644,18 +638,16 @@ export const HybridIdentityMetadataGetOutput =
  * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  * @param api-version - The API version to use for this operation.
  */
-export const HybridIdentityMetadataGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridIdentityMetadataGetInput,
-    outputSchema: HybridIdentityMetadataGetOutput,
-  }),
-);
+export const HybridIdentityMetadataGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridIdentityMetadataGetInput,
+  outputSchema: HybridIdentityMetadataGetOutput,
+}));
 // Input Schema
 export interface HybridIdentityMetadataListByClusterInput {
   connectedClusterResourceUri: string;
 }
 export const HybridIdentityMetadataListByClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -683,7 +675,7 @@ export interface HybridIdentityMetadataListByClusterOutput {
   }[];
 }
 export const HybridIdentityMetadataListByClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.Array(
       Schema.Struct({
@@ -728,7 +720,7 @@ export const HybridIdentityMetadataListByClusterOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const HybridIdentityMetadataListByCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HybridIdentityMetadataListByClusterInput,
     outputSchema: HybridIdentityMetadataListByClusterOutput,
   }));
@@ -759,7 +751,7 @@ export interface HybridIdentityMetadataPutInput {
   };
 }
 export const HybridIdentityMetadataPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       resourceUid: Schema.optional(Schema.String),
@@ -815,7 +807,7 @@ export interface HybridIdentityMetadataPutOutput {
   };
 }
 export const HybridIdentityMetadataPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -844,18 +836,16 @@ export const HybridIdentityMetadataPutOutput =
  * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  * @param api-version - The API version to use for this operation.
  */
-export const HybridIdentityMetadataPut = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HybridIdentityMetadataPutInput,
-    outputSchema: HybridIdentityMetadataPutOutput,
-  }),
-);
+export const HybridIdentityMetadataPut = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HybridIdentityMetadataPutInput,
+  outputSchema: HybridIdentityMetadataPutOutput,
+}));
 // Input Schema
 export interface KubernetesVersionsListInput {
   customLocationResourceUri: string;
 }
 export const KubernetesVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customLocationResourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -883,7 +873,7 @@ export interface KubernetesVersionsListOutput {
   nextLink?: string;
 }
 export const KubernetesVersionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -929,17 +919,13 @@ export const KubernetesVersionsListOutput =
  * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
-export const KubernetesVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: KubernetesVersionsListInput,
-    outputSchema: KubernetesVersionsListOutput,
-  }),
-);
+export const KubernetesVersionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: KubernetesVersionsListInput,
+  outputSchema: KubernetesVersionsListOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.HybridContainerService/operations",
@@ -963,7 +949,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -993,7 +979,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1098,7 +1084,7 @@ export interface ProvisionedClusterInstancesCreateOrUpdateInput {
   extendedLocation?: { type?: "CustomLocation"; name?: string };
 }
 export const ProvisionedClusterInstancesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
       Schema.Struct({
@@ -1308,7 +1294,7 @@ export interface ProvisionedClusterInstancesCreateOrUpdateOutput {
   };
 }
 export const ProvisionedClusterInstancesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1336,7 +1322,7 @@ export const ProvisionedClusterInstancesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const provisionedClusterInstancesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProvisionedClusterInstancesCreateOrUpdateInput,
     outputSchema: ProvisionedClusterInstancesCreateOrUpdateOutput,
   }));
@@ -1345,7 +1331,7 @@ export interface ProvisionedClusterInstancesDeleteInput {
   connectedClusterResourceUri: string;
 }
 export const ProvisionedClusterInstancesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1358,7 +1344,7 @@ export const ProvisionedClusterInstancesDeleteInput =
 // Output Schema
 export type ProvisionedClusterInstancesDeleteOutput = void;
 export const ProvisionedClusterInstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProvisionedClusterInstancesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ProvisionedClusterInstancesDeleteOutput>;
 
 // The operation
 /**
@@ -1368,7 +1354,7 @@ export const ProvisionedClusterInstancesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const provisionedClusterInstancesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProvisionedClusterInstancesDeleteInput,
     outputSchema: ProvisionedClusterInstancesDeleteOutput,
   }));
@@ -1377,7 +1363,7 @@ export interface ProvisionedClusterInstancesGetInput {
   connectedClusterResourceUri: string;
 }
 export const ProvisionedClusterInstancesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1402,7 +1388,7 @@ export interface ProvisionedClusterInstancesGetOutput {
   };
 }
 export const ProvisionedClusterInstancesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1430,7 +1416,7 @@ export const ProvisionedClusterInstancesGetOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const provisionedClusterInstancesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProvisionedClusterInstancesGetInput,
     outputSchema: ProvisionedClusterInstancesGetOutput,
   }));
@@ -1439,7 +1425,7 @@ export interface ProvisionedClusterInstancesGetUpgradeProfileInput {
   connectedClusterResourceUri: string;
 }
 export const ProvisionedClusterInstancesGetUpgradeProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1464,7 +1450,7 @@ export interface ProvisionedClusterInstancesGetUpgradeProfileOutput {
   };
 }
 export const ProvisionedClusterInstancesGetUpgradeProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1492,7 +1478,7 @@ export const ProvisionedClusterInstancesGetUpgradeProfileOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const provisionedClusterInstancesGetUpgradeProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProvisionedClusterInstancesGetUpgradeProfileInput,
     outputSchema: ProvisionedClusterInstancesGetUpgradeProfileOutput,
   }));
@@ -1501,7 +1487,7 @@ export interface ProvisionedClusterInstancesListInput {
   connectedClusterResourceUri: string;
 }
 export const ProvisionedClusterInstancesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1529,7 +1515,7 @@ export interface ProvisionedClusterInstancesListOutput {
   nextLink?: string;
 }
 export const ProvisionedClusterInstancesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1574,7 +1560,7 @@ export const ProvisionedClusterInstancesListOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const provisionedClusterInstancesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProvisionedClusterInstancesListInput,
     outputSchema: ProvisionedClusterInstancesListOutput,
   }));
@@ -1583,7 +1569,7 @@ export interface ProvisionedClusterInstancesListAdminKubeconfigInput {
   connectedClusterResourceUri: string;
 }
 export const ProvisionedClusterInstancesListAdminKubeconfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1612,7 +1598,7 @@ export interface ProvisionedClusterInstancesListAdminKubeconfigOutput {
   properties?: { kubeconfigs?: { name?: string; value?: string }[] };
 }
 export const ProvisionedClusterInstancesListAdminKubeconfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
@@ -1657,7 +1643,7 @@ export const ProvisionedClusterInstancesListAdminKubeconfigOutput =
  * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  */
 export const provisionedClusterInstancesListAdminKubeconfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProvisionedClusterInstancesListAdminKubeconfigInput,
     outputSchema: ProvisionedClusterInstancesListAdminKubeconfigOutput,
   }));
@@ -1666,7 +1652,7 @@ export interface ProvisionedClusterInstancesListUserKubeconfigInput {
   connectedClusterResourceUri: string;
 }
 export const ProvisionedClusterInstancesListUserKubeconfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectedClusterResourceUri: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1695,7 +1681,7 @@ export interface ProvisionedClusterInstancesListUserKubeconfigOutput {
   properties?: { kubeconfigs?: { name?: string; value?: string }[] };
 }
 export const ProvisionedClusterInstancesListUserKubeconfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
@@ -1740,7 +1726,7 @@ export const ProvisionedClusterInstancesListUserKubeconfigOutput =
  * @param connectedClusterResourceUri - The fully qualified Azure Resource Manager identifier of the connected cluster resource.
  */
 export const provisionedClusterInstancesListUserKubeconfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProvisionedClusterInstancesListUserKubeconfigInput,
     outputSchema: ProvisionedClusterInstancesListUserKubeconfigOutput,
   }));
@@ -1778,7 +1764,7 @@ export interface PutKubernetesVersionsInput {
   };
 }
 export const PutKubernetesVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customLocationResourceUri: Schema.String.pipe(T.PathParam()),
     extendedLocation: Schema.optional(
       Schema.Struct({
@@ -1860,7 +1846,7 @@ export interface PutKubernetesVersionsOutput {
   };
 }
 export const PutKubernetesVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1887,12 +1873,10 @@ export const PutKubernetesVersionsOutput =
  * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
-export const PutKubernetesVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PutKubernetesVersionsInput,
-    outputSchema: PutKubernetesVersionsOutput,
-  }),
-);
+export const PutKubernetesVersions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PutKubernetesVersionsInput,
+  outputSchema: PutKubernetesVersionsOutput,
+}));
 // Input Schema
 export interface PutVMSkusInput {
   customLocationResourceUri: string;
@@ -1917,7 +1901,7 @@ export interface PutVMSkusInput {
     }[];
   };
 }
-export const PutVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutVMSkusInput = /*@__PURE__*/ Schema.Struct({
   customLocationResourceUri: Schema.String.pipe(T.PathParam()),
   extendedLocation: Schema.optional(
     Schema.Struct({
@@ -1982,7 +1966,7 @@ export interface PutVMSkusOutput {
     lastModifiedAt?: string;
   };
 }
-export const PutVMSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PutVMSkusOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2009,7 +1993,7 @@ export const PutVMSkusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
-export const PutVMSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PutVMSkus = /*@__PURE__*/ API.make(() => ({
   inputSchema: PutVMSkusInput,
   outputSchema: PutVMSkusOutput,
 }));
@@ -2050,7 +2034,7 @@ export interface VirtualNetworksCreateOrUpdateInput {
   location: string;
 }
 export const VirtualNetworksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
@@ -2148,7 +2132,7 @@ export interface VirtualNetworksCreateOrUpdateOutput {
   };
 }
 export const VirtualNetworksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2178,7 +2162,7 @@ export const VirtualNetworksCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const virtualNetworksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualNetworksCreateOrUpdateInput,
     outputSchema: VirtualNetworksCreateOrUpdateOutput,
   }));
@@ -2189,7 +2173,7 @@ export interface VirtualNetworksDeleteInput {
   virtualNetworkName: string;
 }
 export const VirtualNetworksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
@@ -2204,7 +2188,7 @@ export const VirtualNetworksDeleteInput =
 // Output Schema
 export type VirtualNetworksDeleteOutput = void;
 export const VirtualNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -2215,19 +2199,17 @@ export const VirtualNetworksDeleteOutput =
  * @param virtualNetworkName - Parameter for the name of the virtual network
  * @param api-version - The API version to use for this operation.
  */
-export const virtualNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworksDeleteInput,
-    outputSchema: VirtualNetworksDeleteOutput,
-  }),
-);
+export const virtualNetworksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksDeleteInput,
+  outputSchema: VirtualNetworksDeleteOutput,
+}));
 // Input Schema
 export interface VirtualNetworksListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const VirtualNetworksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2256,7 +2238,7 @@ export interface VirtualNetworksListByResourceGroupOutput {
   nextLink?: string;
 }
 export const VirtualNetworksListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2302,7 +2284,7 @@ export const VirtualNetworksListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const virtualNetworksListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualNetworksListByResourceGroupInput,
     outputSchema: VirtualNetworksListByResourceGroupOutput,
   }));
@@ -2311,7 +2293,7 @@ export interface VirtualNetworksListBySubscriptionInput {
   subscriptionId: string;
 }
 export const VirtualNetworksListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2339,7 +2321,7 @@ export interface VirtualNetworksListBySubscriptionOutput {
   nextLink?: string;
 }
 export const VirtualNetworksListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2384,7 +2366,7 @@ export const VirtualNetworksListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const virtualNetworksListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualNetworksListBySubscriptionInput,
     outputSchema: VirtualNetworksListBySubscriptionOutput,
   }));
@@ -2395,7 +2377,7 @@ export interface VirtualNetworksRetrieveInput {
   virtualNetworkName: string;
 }
 export const VirtualNetworksRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
@@ -2422,7 +2404,7 @@ export interface VirtualNetworksRetrieveOutput {
   };
 }
 export const VirtualNetworksRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2451,12 +2433,10 @@ export const VirtualNetworksRetrieveOutput =
  * @param virtualNetworkName - Parameter for the name of the virtual network
  * @param api-version - The API version to use for this operation.
  */
-export const virtualNetworksRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworksRetrieveInput,
-    outputSchema: VirtualNetworksRetrieveOutput,
-  }),
-);
+export const virtualNetworksRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksRetrieveInput,
+  outputSchema: VirtualNetworksRetrieveOutput,
+}));
 // Input Schema
 export interface VirtualNetworksUpdateInput {
   subscriptionId: string;
@@ -2465,7 +2445,7 @@ export interface VirtualNetworksUpdateInput {
   tags?: Record<string, string>;
 }
 export const VirtualNetworksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
@@ -2493,7 +2473,7 @@ export interface VirtualNetworksUpdateOutput {
   };
 }
 export const VirtualNetworksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2522,17 +2502,15 @@ export const VirtualNetworksUpdateOutput =
  * @param virtualNetworkName - Parameter for the name of the virtual network
  * @param api-version - The API version to use for this operation.
  */
-export const virtualNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworksUpdateInput,
-    outputSchema: VirtualNetworksUpdateOutput,
-  }),
-);
+export const virtualNetworksUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworksUpdateInput,
+  outputSchema: VirtualNetworksUpdateOutput,
+}));
 // Input Schema
 export interface VMSkusListInput {
   customLocationResourceUri: string;
 }
-export const VMSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VMSkusListInput = /*@__PURE__*/ Schema.Struct({
   customLocationResourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2559,7 +2537,7 @@ export interface VMSkusListOutput {
   }[];
   nextLink?: string;
 }
-export const VMSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VMSkusListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2605,7 +2583,7 @@ export const VMSkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param customLocationResourceUri - The fully qualified Azure Resource Manager identifier of the custom location resource.
  * @param api-version - The API version to use for this operation.
  */
-export const VMSkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VMSkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: VMSkusListInput,
   outputSchema: VMSkusListOutput,
 }));

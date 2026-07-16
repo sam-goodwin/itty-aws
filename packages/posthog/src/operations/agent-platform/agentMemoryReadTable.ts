@@ -10,7 +10,7 @@ export interface AgentMemoryReadTableInput {
   limit?: number;
 }
 export const AgentMemoryReadTableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -31,7 +31,7 @@ export interface AgentMemoryReadTableOutput {
   rows: Record<string, unknown>[];
 }
 export const AgentMemoryReadTableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String,
     total: Schema.Number,
     returned: Schema.Number,
@@ -46,9 +46,7 @@ export const AgentMemoryReadTableOutput =
  * @param limit - Max rows to return (default 500, max 5000).
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const agentMemoryReadTable = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentMemoryReadTableInput,
-    outputSchema: AgentMemoryReadTableOutput,
-  }),
-);
+export const agentMemoryReadTable = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentMemoryReadTableInput,
+  outputSchema: AgentMemoryReadTableOutput,
+}));

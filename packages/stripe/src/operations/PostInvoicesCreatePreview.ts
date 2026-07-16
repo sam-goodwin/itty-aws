@@ -357,7 +357,7 @@ export interface PostInvoicesCreatePreviewInput {
   };
 }
 export const PostInvoicesCreatePreviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     automatic_tax: Schema.optional(
       Schema.Struct({
         enabled: Schema.Boolean,
@@ -3206,7 +3206,7 @@ export interface PostInvoicesCreatePreviewOutput {
   webhooks_delivered_at: number | null;
 }
 export const PostInvoicesCreatePreviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_country: Schema.NullOr(Schema.String),
     account_name: Schema.NullOr(Schema.String),
     account_tax_ids: Schema.NullOr(
@@ -4919,9 +4919,7 @@ export const PostInvoicesCreatePreviewOutput =
  * <p>Note that when you are viewing an upcoming invoice, you are simply viewing a preview – the invoice has not yet been created. As such, the upcoming invoice will not show up in invoice listing calls, and you cannot use the API to pay or edit the invoice. If you want to change the amount that your customer will be billed, you can add, remove, or update pending invoice items, or update the customer’s discount.</p>
  * <p>Note: Currency conversion calculations use the latest exchange rates. Exchange rates may vary between the time of the preview and the time of the actual invoice creation. <a href="https://docs.stripe.com/currencies/conversions">Learn more</a></p>
  */
-export const PostInvoicesCreatePreview = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostInvoicesCreatePreviewInput,
-    outputSchema: PostInvoicesCreatePreviewOutput,
-  }),
-);
+export const PostInvoicesCreatePreview = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostInvoicesCreatePreviewInput,
+  outputSchema: PostInvoicesCreatePreviewOutput,
+}));

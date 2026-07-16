@@ -26,7 +26,7 @@ export interface ControllerCreateInput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const ControllerCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ControllerCreateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -62,15 +62,13 @@ export interface ControllerCreateOutput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const ControllerCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  },
-) as unknown as Schema.Codec<ControllerCreateOutput>;
+export const ControllerCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}) as unknown as Schema.Codec<ControllerCreateOutput>;
 
 // The operation
 /**
@@ -81,7 +79,7 @@ export const ControllerCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ControllerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ControllerCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ControllerCreateInput,
   outputSchema: ControllerCreateOutput,
 }));
@@ -91,7 +89,7 @@ export interface ControllerDeleteInput {
   resourceName: string;
   subscriptionId: string;
 }
-export const ControllerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ControllerDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -106,7 +104,7 @@ export const ControllerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ControllerDeleteOutput = void;
 export const ControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ControllerDeleteOutput>;
 
 // The operation
 /**
@@ -117,7 +115,7 @@ export const ControllerDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ControllerDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ControllerDeleteInput,
   outputSchema: ControllerDeleteOutput,
 }));
@@ -128,7 +126,7 @@ export interface ControllerGetDetailsInput {
   subscriptionId: string;
 }
 export const ControllerGetDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -149,7 +147,7 @@ export interface ControllerGetDetailsOutput {
   tags?: Record<string, string>;
 }
 export const ControllerGetDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -166,12 +164,10 @@ export const ControllerGetDetailsOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ControllerGetDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ControllerGetDetailsInput,
-    outputSchema: ControllerGetDetailsOutput,
-  }),
-);
+export const ControllerGetDetails = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ControllerGetDetailsInput,
+  outputSchema: ControllerGetDetailsOutput,
+}));
 // Input Schema
 export interface ControllerPatchInput {
   resourceGroupName: string;
@@ -179,7 +175,7 @@ export interface ControllerPatchInput {
   subscriptionId: string;
   tags?: Record<string, string>;
 }
-export const ControllerPatchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ControllerPatchInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -200,7 +196,7 @@ export interface ControllerPatchOutput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const ControllerPatchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ControllerPatchOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -217,7 +213,7 @@ export const ControllerPatchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const ControllerPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ControllerPatch = /*@__PURE__*/ API.make(() => ({
   inputSchema: ControllerPatchInput,
   outputSchema: ControllerPatchOutput,
 }));
@@ -227,7 +223,7 @@ export interface DelegatedNetworkListByResourceGroupInput {
   subscriptionId: string;
 }
 export const DelegatedNetworkListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -250,7 +246,7 @@ export interface DelegatedNetworkListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DelegatedNetworkListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -272,7 +268,7 @@ export const DelegatedNetworkListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const DelegatedNetworkListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DelegatedNetworkListByResourceGroupInput,
     outputSchema: DelegatedNetworkListByResourceGroupOutput,
   }));
@@ -281,7 +277,7 @@ export interface DelegatedNetworkListBySubscriptionInput {
   subscriptionId: string;
 }
 export const DelegatedNetworkListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -303,7 +299,7 @@ export interface DelegatedNetworkListBySubscriptionOutput {
   nextLink?: string;
 }
 export const DelegatedNetworkListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -324,7 +320,7 @@ export const DelegatedNetworkListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const DelegatedNetworkListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DelegatedNetworkListBySubscriptionInput,
     outputSchema: DelegatedNetworkListBySubscriptionOutput,
   }));
@@ -336,7 +332,7 @@ export interface DelegatedSubnetServiceDeleteDetailsInput {
   forceDelete?: boolean;
 }
 export const DelegatedSubnetServiceDeleteDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -352,7 +348,7 @@ export const DelegatedSubnetServiceDeleteDetailsInput =
 // Output Schema
 export type DelegatedSubnetServiceDeleteDetailsOutput = void;
 export const DelegatedSubnetServiceDeleteDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DelegatedSubnetServiceDeleteDetailsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DelegatedSubnetServiceDeleteDetailsOutput>;
 
 // The operation
 /**
@@ -365,7 +361,7 @@ export const DelegatedSubnetServiceDeleteDetailsOutput =
  * @param forceDelete - Force delete resource
  */
 export const DelegatedSubnetServiceDeleteDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DelegatedSubnetServiceDeleteDetailsInput,
     outputSchema: DelegatedSubnetServiceDeleteDetailsOutput,
   }));
@@ -376,7 +372,7 @@ export interface DelegatedSubnetServiceGetDetailsInput {
   subscriptionId: string;
 }
 export const DelegatedSubnetServiceGetDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -397,7 +393,7 @@ export interface DelegatedSubnetServiceGetDetailsOutput {
   tags?: Record<string, string>;
 }
 export const DelegatedSubnetServiceGetDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -415,7 +411,7 @@ export const DelegatedSubnetServiceGetDetailsOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const DelegatedSubnetServiceGetDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DelegatedSubnetServiceGetDetailsInput,
     outputSchema: DelegatedSubnetServiceGetDetailsOutput,
   }));
@@ -425,7 +421,7 @@ export interface DelegatedSubnetServiceListByResourceGroupInput {
   subscriptionId: string;
 }
 export const DelegatedSubnetServiceListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -448,7 +444,7 @@ export interface DelegatedSubnetServiceListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DelegatedSubnetServiceListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -470,7 +466,7 @@ export const DelegatedSubnetServiceListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const DelegatedSubnetServiceListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DelegatedSubnetServiceListByResourceGroupInput,
     outputSchema: DelegatedSubnetServiceListByResourceGroupOutput,
   }));
@@ -479,7 +475,7 @@ export interface DelegatedSubnetServiceListBySubscriptionInput {
   subscriptionId: string;
 }
 export const DelegatedSubnetServiceListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -501,7 +497,7 @@ export interface DelegatedSubnetServiceListBySubscriptionOutput {
   nextLink?: string;
 }
 export const DelegatedSubnetServiceListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -522,7 +518,7 @@ export const DelegatedSubnetServiceListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const DelegatedSubnetServiceListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DelegatedSubnetServiceListBySubscriptionInput,
     outputSchema: DelegatedSubnetServiceListBySubscriptionOutput,
   }));
@@ -534,7 +530,7 @@ export interface DelegatedSubnetServicePatchDetailsInput {
   tags?: Record<string, string>;
 }
 export const DelegatedSubnetServicePatchDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -556,7 +552,7 @@ export interface DelegatedSubnetServicePatchDetailsOutput {
   tags?: Record<string, string>;
 }
 export const DelegatedSubnetServicePatchDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -574,7 +570,7 @@ export const DelegatedSubnetServicePatchDetailsOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const DelegatedSubnetServicePatchDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DelegatedSubnetServicePatchDetailsInput,
     outputSchema: DelegatedSubnetServicePatchDetailsOutput,
   }));
@@ -596,7 +592,7 @@ export interface DelegatedSubnetServicePutDetailsInput {
   tags?: Record<string, string>;
 }
 export const DelegatedSubnetServicePutDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -640,7 +636,7 @@ export interface DelegatedSubnetServicePutDetailsOutput {
   tags?: Record<string, string>;
 }
 export const DelegatedSubnetServicePutDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -658,15 +654,13 @@ export const DelegatedSubnetServicePutDetailsOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const DelegatedSubnetServicePutDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DelegatedSubnetServicePutDetailsInput,
     outputSchema: DelegatedSubnetServicePutDetailsOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DelegatedNetwork/operations",
@@ -690,7 +684,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -720,7 +714,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -752,7 +746,7 @@ export interface OrchestratorInstanceServiceCreateInput {
   tags?: Record<string, string>;
 }
 export const OrchestratorInstanceServiceCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -808,7 +802,7 @@ export interface OrchestratorInstanceServiceCreateOutput {
   tags?: Record<string, string>;
 }
 export const OrchestratorInstanceServiceCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -834,7 +828,7 @@ export const OrchestratorInstanceServiceCreateOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const OrchestratorInstanceServiceCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrchestratorInstanceServiceCreateInput,
     outputSchema: OrchestratorInstanceServiceCreateOutput,
   }));
@@ -846,7 +840,7 @@ export interface OrchestratorInstanceServiceDeleteInput {
   forceDelete?: boolean;
 }
 export const OrchestratorInstanceServiceDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -862,7 +856,7 @@ export const OrchestratorInstanceServiceDeleteInput =
 // Output Schema
 export type OrchestratorInstanceServiceDeleteOutput = void;
 export const OrchestratorInstanceServiceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrchestratorInstanceServiceDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OrchestratorInstanceServiceDeleteOutput>;
 
 // The operation
 /**
@@ -875,7 +869,7 @@ export const OrchestratorInstanceServiceDeleteOutput =
  * @param forceDelete - Force delete resource
  */
 export const OrchestratorInstanceServiceDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrchestratorInstanceServiceDeleteInput,
     outputSchema: OrchestratorInstanceServiceDeleteOutput,
   }));
@@ -886,7 +880,7 @@ export interface OrchestratorInstanceServiceGetDetailsInput {
   subscriptionId: string;
 }
 export const OrchestratorInstanceServiceGetDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -913,7 +907,7 @@ export interface OrchestratorInstanceServiceGetDetailsOutput {
   tags?: Record<string, string>;
 }
 export const OrchestratorInstanceServiceGetDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -939,7 +933,7 @@ export const OrchestratorInstanceServiceGetDetailsOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const OrchestratorInstanceServiceGetDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrchestratorInstanceServiceGetDetailsInput,
     outputSchema: OrchestratorInstanceServiceGetDetailsOutput,
   }));
@@ -949,7 +943,7 @@ export interface OrchestratorInstanceServiceListByResourceGroupInput {
   subscriptionId: string;
 }
 export const OrchestratorInstanceServiceListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -978,7 +972,7 @@ export interface OrchestratorInstanceServiceListByResourceGroupOutput {
   nextLink?: string;
 }
 export const OrchestratorInstanceServiceListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1008,7 +1002,7 @@ export const OrchestratorInstanceServiceListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const OrchestratorInstanceServiceListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrchestratorInstanceServiceListByResourceGroupInput,
     outputSchema: OrchestratorInstanceServiceListByResourceGroupOutput,
   }));
@@ -1017,7 +1011,7 @@ export interface OrchestratorInstanceServiceListBySubscriptionInput {
   subscriptionId: string;
 }
 export const OrchestratorInstanceServiceListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1045,7 +1039,7 @@ export interface OrchestratorInstanceServiceListBySubscriptionOutput {
   nextLink?: string;
 }
 export const OrchestratorInstanceServiceListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1074,7 +1068,7 @@ export const OrchestratorInstanceServiceListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const OrchestratorInstanceServiceListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrchestratorInstanceServiceListBySubscriptionInput,
     outputSchema: OrchestratorInstanceServiceListBySubscriptionOutput,
   }));
@@ -1086,7 +1080,7 @@ export interface OrchestratorInstanceServicePatchInput {
   tags?: Record<string, string>;
 }
 export const OrchestratorInstanceServicePatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1114,7 +1108,7 @@ export interface OrchestratorInstanceServicePatchOutput {
   tags?: Record<string, string>;
 }
 export const OrchestratorInstanceServicePatchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1140,7 +1134,7 @@ export const OrchestratorInstanceServicePatchOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const OrchestratorInstanceServicePatch =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrchestratorInstanceServicePatchInput,
     outputSchema: OrchestratorInstanceServicePatchOutput,
   }));

@@ -26,7 +26,7 @@ export interface SessionRecordingsSharingRefreshCreateInput {
   }[];
 }
 export const SessionRecordingsSharingRefreshCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     recording_id: Schema.String.pipe(T.PathParam()),
     created_at: Schema.optional(Schema.String),
@@ -68,7 +68,7 @@ export interface SessionRecordingsSharingRefreshCreateOutput {
   }[];
 }
 export const SessionRecordingsSharingRefreshCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created_at: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
     access_token: Schema.optional(SensitiveOutputNullableString),
@@ -93,7 +93,7 @@ export const SessionRecordingsSharingRefreshCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const sessionRecordingsSharingRefreshCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SessionRecordingsSharingRefreshCreateInput,
     outputSchema: SessionRecordingsSharingRefreshCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -15,7 +15,7 @@ export interface CatalogsCountDevicesInput {
   catalogName: string;
 }
 export const CatalogsCountDevicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -32,7 +32,7 @@ export interface CatalogsCountDevicesOutput {
   value: number;
 }
 export const CatalogsCountDevicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Number,
   }) as unknown as Schema.Codec<CatalogsCountDevicesOutput>;
 
@@ -45,12 +45,10 @@ export const CatalogsCountDevicesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param catalogName - Name of catalog
  */
-export const CatalogsCountDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CatalogsCountDevicesInput,
-    outputSchema: CatalogsCountDevicesOutput,
-  }),
-);
+export const CatalogsCountDevices = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CatalogsCountDevicesInput,
+  outputSchema: CatalogsCountDevicesOutput,
+}));
 // Input Schema
 export interface CatalogsCreateOrUpdateInput {
   subscriptionId: string;
@@ -71,7 +69,7 @@ export interface CatalogsCreateOrUpdateInput {
   location: string;
 }
 export const CatalogsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -116,7 +114,7 @@ export interface CatalogsCreateOrUpdateOutput {
   };
 }
 export const CatalogsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -145,19 +143,17 @@ export const CatalogsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param catalogName - Name of catalog
  */
-export const CatalogsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CatalogsCreateOrUpdateInput,
-    outputSchema: CatalogsCreateOrUpdateOutput,
-  }),
-);
+export const CatalogsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CatalogsCreateOrUpdateInput,
+  outputSchema: CatalogsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface CatalogsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   catalogName: string;
 }
-export const CatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CatalogsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -172,7 +168,7 @@ export const CatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type CatalogsDeleteOutput = void;
 export const CatalogsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CatalogsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CatalogsDeleteOutput>;
 
 // The operation
 /**
@@ -183,7 +179,7 @@ export const CatalogsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param catalogName - Name of catalog
  */
-export const CatalogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CatalogsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CatalogsDeleteInput,
   outputSchema: CatalogsDeleteOutput,
 }));
@@ -193,7 +189,7 @@ export interface CatalogsGetInput {
   resourceGroupName: string;
   catalogName: string;
 }
-export const CatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CatalogsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -219,7 +215,7 @@ export interface CatalogsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const CatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CatalogsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -248,7 +244,7 @@ export const CatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param catalogName - Name of catalog
  */
-export const CatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CatalogsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CatalogsGetInput,
   outputSchema: CatalogsGetOutput,
 }));
@@ -258,7 +254,7 @@ export interface CatalogsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const CatalogsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -287,7 +283,7 @@ export interface CatalogsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const CatalogsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -330,18 +326,16 @@ export const CatalogsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const CatalogsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CatalogsListByResourceGroupInput,
-    outputSchema: CatalogsListByResourceGroupOutput,
-  }),
-);
+export const CatalogsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CatalogsListByResourceGroupInput,
+  outputSchema: CatalogsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface CatalogsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const CatalogsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -369,7 +363,7 @@ export interface CatalogsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const CatalogsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -411,12 +405,10 @@ export const CatalogsListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const CatalogsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CatalogsListBySubscriptionInput,
-    outputSchema: CatalogsListBySubscriptionOutput,
-  }),
-);
+export const CatalogsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CatalogsListBySubscriptionInput,
+  outputSchema: CatalogsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface CatalogsListDeploymentsInput {
   subscriptionId: string;
@@ -428,7 +420,7 @@ export interface CatalogsListDeploymentsInput {
   $maxpagesize?: number;
 }
 export const CatalogsListDeploymentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -462,7 +454,7 @@ export interface CatalogsListDeploymentsOutput {
   nextLink?: string;
 }
 export const CatalogsListDeploymentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -510,12 +502,10 @@ export const CatalogsListDeploymentsOutput =
  * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
-export const CatalogsListDeployments = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CatalogsListDeploymentsInput,
-    outputSchema: CatalogsListDeploymentsOutput,
-  }),
-);
+export const CatalogsListDeployments = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CatalogsListDeploymentsInput,
+  outputSchema: CatalogsListDeploymentsOutput,
+}));
 // Input Schema
 export interface CatalogsListDeviceGroupsInput {
   subscriptionId: string;
@@ -528,7 +518,7 @@ export interface CatalogsListDeviceGroupsInput {
   deviceGroupName?: string;
 }
 export const CatalogsListDeviceGroupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -563,7 +553,7 @@ export interface CatalogsListDeviceGroupsOutput {
   nextLink?: string;
 }
 export const CatalogsListDeviceGroupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -611,12 +601,10 @@ export const CatalogsListDeviceGroupsOutput =
  * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
-export const CatalogsListDeviceGroups = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CatalogsListDeviceGroupsInput,
-    outputSchema: CatalogsListDeviceGroupsOutput,
-  }),
-);
+export const CatalogsListDeviceGroups = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CatalogsListDeviceGroupsInput,
+  outputSchema: CatalogsListDeviceGroupsOutput,
+}));
 // Input Schema
 export interface CatalogsListDeviceInsightsInput {
   subscriptionId: string;
@@ -628,7 +616,7 @@ export interface CatalogsListDeviceInsightsInput {
   $maxpagesize?: number;
 }
 export const CatalogsListDeviceInsightsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -659,7 +647,7 @@ export interface CatalogsListDeviceInsightsOutput {
   nextLink?: string;
 }
 export const CatalogsListDeviceInsightsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         deviceId: Schema.String,
@@ -688,12 +676,10 @@ export const CatalogsListDeviceInsightsOutput =
  * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
-export const CatalogsListDeviceInsights = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CatalogsListDeviceInsightsInput,
-    outputSchema: CatalogsListDeviceInsightsOutput,
-  }),
-);
+export const CatalogsListDeviceInsights = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CatalogsListDeviceInsightsInput,
+  outputSchema: CatalogsListDeviceInsightsOutput,
+}));
 // Input Schema
 export interface CatalogsListDevicesInput {
   subscriptionId: string;
@@ -705,7 +691,7 @@ export interface CatalogsListDevicesInput {
   $maxpagesize?: number;
 }
 export const CatalogsListDevicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -739,7 +725,7 @@ export interface CatalogsListDevicesOutput {
   nextLink?: string;
 }
 export const CatalogsListDevicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -787,7 +773,7 @@ export const CatalogsListDevicesOutput =
  * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
-export const CatalogsListDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CatalogsListDevices = /*@__PURE__*/ API.make(() => ({
   inputSchema: CatalogsListDevicesInput,
   outputSchema: CatalogsListDevicesOutput,
 }));
@@ -798,7 +784,7 @@ export interface CatalogsUpdateInput {
   catalogName: string;
   tags?: Record<string, string>;
 }
-export const CatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CatalogsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -825,7 +811,7 @@ export interface CatalogsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const CatalogsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CatalogsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -854,7 +840,7 @@ export const CatalogsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param catalogName - Name of catalog
  */
-export const CatalogsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CatalogsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CatalogsUpdateInput,
   outputSchema: CatalogsUpdateOutput,
 }));
@@ -907,7 +893,7 @@ export interface CatalogsUploadImageInput {
   };
 }
 export const CatalogsUploadImageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -972,7 +958,7 @@ export const CatalogsUploadImageInput =
 // Output Schema
 export type CatalogsUploadImageOutput = void;
 export const CatalogsUploadImageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CatalogsUploadImageOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CatalogsUploadImageOutput>;
 
 // The operation
 /**
@@ -983,7 +969,7 @@ export const CatalogsUploadImageOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param catalogName - Name of catalog
  */
-export const CatalogsUploadImage = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CatalogsUploadImage = /*@__PURE__*/ API.make(() => ({
   inputSchema: CatalogsUploadImageInput,
   outputSchema: CatalogsUploadImageOutput,
 }));
@@ -994,7 +980,7 @@ export interface CertificatesGetInput {
   catalogName: string;
   serialNumber: string;
 }
-export const CertificatesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CertificatesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -1021,7 +1007,7 @@ export interface CertificatesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const CertificatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CertificatesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1051,7 +1037,7 @@ export const CertificatesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param catalogName - Name of catalog
  * @param serialNumber - Serial number of the certificate. Use '.default' to get current active certificate.
  */
-export const CertificatesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CertificatesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CertificatesGetInput,
   outputSchema: CertificatesGetOutput,
 }));
@@ -1066,7 +1052,7 @@ export interface CertificatesListByCatalogInput {
   $maxpagesize?: number;
 }
 export const CertificatesListByCatalogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -1100,7 +1086,7 @@ export interface CertificatesListByCatalogOutput {
   nextLink?: string;
 }
 export const CertificatesListByCatalogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1148,12 +1134,10 @@ export const CertificatesListByCatalogOutput =
  * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
-export const CertificatesListByCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CertificatesListByCatalogInput,
-    outputSchema: CertificatesListByCatalogOutput,
-  }),
-);
+export const CertificatesListByCatalog = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CertificatesListByCatalogInput,
+  outputSchema: CertificatesListByCatalogOutput,
+}));
 // Input Schema
 export interface CertificatesRetrieveCertChainInput {
   subscriptionId: string;
@@ -1162,7 +1146,7 @@ export interface CertificatesRetrieveCertChainInput {
   serialNumber: string;
 }
 export const CertificatesRetrieveCertChainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -1180,7 +1164,7 @@ export interface CertificatesRetrieveCertChainOutput {
   certificateChain?: string;
 }
 export const CertificatesRetrieveCertChainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificateChain: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<CertificatesRetrieveCertChainOutput>;
 
@@ -1195,7 +1179,7 @@ export const CertificatesRetrieveCertChainOutput =
  * @param serialNumber - Serial number of the certificate. Use '.default' to get current active certificate.
  */
 export const CertificatesRetrieveCertChain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CertificatesRetrieveCertChainInput,
     outputSchema: CertificatesRetrieveCertChainOutput,
   }));
@@ -1208,7 +1192,7 @@ export interface CertificatesRetrieveProofOfPossessionNonceInput {
   proofOfPossessionNonce: string;
 }
 export const CertificatesRetrieveProofOfPossessionNonceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -1240,7 +1224,7 @@ export interface CertificatesRetrieveProofOfPossessionNonceOutput {
     | "Accepted";
 }
 export const CertificatesRetrieveProofOfPossessionNonceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certificate: Schema.optional(Schema.String),
     status: Schema.optional(
       Schema.Literals(["Active", "Inactive", "Expired", "Revoked"]),
@@ -1273,7 +1257,7 @@ export const CertificatesRetrieveProofOfPossessionNonceOutput =
  * @param serialNumber - Serial number of the certificate. Use '.default' to get current active certificate.
  */
 export const CertificatesRetrieveProofOfPossessionNonce =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CertificatesRetrieveProofOfPossessionNonceInput,
     outputSchema: CertificatesRetrieveProofOfPossessionNonceOutput,
   }));
@@ -1312,7 +1296,7 @@ export interface DeploymentsCreateOrUpdateInput {
   };
 }
 export const DeploymentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -1392,7 +1376,7 @@ export interface DeploymentsCreateOrUpdateOutput {
   };
 }
 export const DeploymentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1424,12 +1408,10 @@ export const DeploymentsCreateOrUpdateOutput =
  * @param deviceGroupName - Name of device group.
  * @param deploymentName - Deployment name. Use .default for deployment creation and to get the current deployment for the associated device group.
  */
-export const DeploymentsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeploymentsCreateOrUpdateInput,
-    outputSchema: DeploymentsCreateOrUpdateOutput,
-  }),
-);
+export const DeploymentsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeploymentsCreateOrUpdateInput,
+  outputSchema: DeploymentsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DeploymentsDeleteInput {
   subscriptionId: string;
@@ -1439,16 +1421,14 @@ export interface DeploymentsDeleteInput {
   deviceGroupName: string;
   deploymentName: string;
 }
-export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    catalogName: Schema.String.pipe(T.PathParam()),
-    productName: Schema.String.pipe(T.PathParam()),
-    deviceGroupName: Schema.String.pipe(T.PathParam()),
-    deploymentName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const DeploymentsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  catalogName: Schema.String.pipe(T.PathParam()),
+  productName: Schema.String.pipe(T.PathParam()),
+  deviceGroupName: Schema.String.pipe(T.PathParam()),
+  deploymentName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}",
@@ -1459,7 +1439,7 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type DeploymentsDeleteOutput = void;
 export const DeploymentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeploymentsDeleteOutput>;
 
 // The operation
 /**
@@ -1473,7 +1453,7 @@ export const DeploymentsDeleteOutput =
  * @param deviceGroupName - Name of device group.
  * @param deploymentName - Deployment name. Use .default for deployment creation and to get the current deployment for the associated device group.
  */
-export const DeploymentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsDeleteInput,
   outputSchema: DeploymentsDeleteOutput,
 }));
@@ -1486,7 +1466,7 @@ export interface DeploymentsGetInput {
   deviceGroupName: string;
   deploymentName: string;
 }
-export const DeploymentsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeploymentsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -1515,7 +1495,7 @@ export interface DeploymentsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeploymentsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1547,7 +1527,7 @@ export const DeploymentsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param deviceGroupName - Name of device group.
  * @param deploymentName - Deployment name. Use .default for deployment creation and to get the current deployment for the associated device group.
  */
-export const DeploymentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentsGetInput,
   outputSchema: DeploymentsGetOutput,
 }));
@@ -1564,7 +1544,7 @@ export interface DeploymentsListByDeviceGroupInput {
   $maxpagesize?: number;
 }
 export const DeploymentsListByDeviceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -1600,7 +1580,7 @@ export interface DeploymentsListByDeviceGroupOutput {
   nextLink?: string;
 }
 export const DeploymentsListByDeviceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1651,7 +1631,7 @@ export const DeploymentsListByDeviceGroupOutput =
  * @param deviceGroupName - Name of device group.
  */
 export const DeploymentsListByDeviceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeploymentsListByDeviceGroupInput,
     outputSchema: DeploymentsListByDeviceGroupOutput,
   }));
@@ -1665,7 +1645,7 @@ export interface DeviceGroupsClaimDevicesInput {
   deviceIdentifiers: string[];
 }
 export const DeviceGroupsClaimDevicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -1683,7 +1663,7 @@ export const DeviceGroupsClaimDevicesInput =
 // Output Schema
 export type DeviceGroupsClaimDevicesOutput = void;
 export const DeviceGroupsClaimDevicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeviceGroupsClaimDevicesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeviceGroupsClaimDevicesOutput>;
 
 // The operation
 /**
@@ -1696,12 +1676,10 @@ export const DeviceGroupsClaimDevicesOutput =
  * @param productName - Name of product.
  * @param deviceGroupName - Name of device group.
  */
-export const DeviceGroupsClaimDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeviceGroupsClaimDevicesInput,
-    outputSchema: DeviceGroupsClaimDevicesOutput,
-  }),
-);
+export const DeviceGroupsClaimDevices = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeviceGroupsClaimDevicesInput,
+  outputSchema: DeviceGroupsClaimDevicesOutput,
+}));
 // Input Schema
 export interface DeviceGroupsCountDevicesInput {
   subscriptionId: string;
@@ -1711,7 +1689,7 @@ export interface DeviceGroupsCountDevicesInput {
   deviceGroupName: string;
 }
 export const DeviceGroupsCountDevicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -1730,7 +1708,7 @@ export interface DeviceGroupsCountDevicesOutput {
   value: number;
 }
 export const DeviceGroupsCountDevicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Number,
   }) as unknown as Schema.Codec<DeviceGroupsCountDevicesOutput>;
 
@@ -1745,12 +1723,10 @@ export const DeviceGroupsCountDevicesOutput =
  * @param productName - Name of product.
  * @param deviceGroupName - Name of device group.
  */
-export const DeviceGroupsCountDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeviceGroupsCountDevicesInput,
-    outputSchema: DeviceGroupsCountDevicesOutput,
-  }),
-);
+export const DeviceGroupsCountDevices = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeviceGroupsCountDevicesInput,
+  outputSchema: DeviceGroupsCountDevicesOutput,
+}));
 // Input Schema
 export interface DeviceGroupsCreateOrUpdateInput {
   subscriptionId: string;
@@ -1776,7 +1752,7 @@ export interface DeviceGroupsCreateOrUpdateInput {
   };
 }
 export const DeviceGroupsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -1830,7 +1806,7 @@ export interface DeviceGroupsCreateOrUpdateOutput {
   };
 }
 export const DeviceGroupsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1861,12 +1837,10 @@ export const DeviceGroupsCreateOrUpdateOutput =
  * @param productName - Name of product.
  * @param deviceGroupName - Name of device group.
  */
-export const DeviceGroupsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeviceGroupsCreateOrUpdateInput,
-    outputSchema: DeviceGroupsCreateOrUpdateOutput,
-  }),
-);
+export const DeviceGroupsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeviceGroupsCreateOrUpdateInput,
+  outputSchema: DeviceGroupsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DeviceGroupsDeleteInput {
   subscriptionId: string;
@@ -1876,7 +1850,7 @@ export interface DeviceGroupsDeleteInput {
   deviceGroupName: string;
 }
 export const DeviceGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -1893,7 +1867,7 @@ export const DeviceGroupsDeleteInput =
 // Output Schema
 export type DeviceGroupsDeleteOutput = void;
 export const DeviceGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeviceGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeviceGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -1906,7 +1880,7 @@ export const DeviceGroupsDeleteOutput =
  * @param productName - Name of product.
  * @param deviceGroupName - Name of device group.
  */
-export const DeviceGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeviceGroupsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeviceGroupsDeleteInput,
   outputSchema: DeviceGroupsDeleteOutput,
 }));
@@ -1918,7 +1892,7 @@ export interface DeviceGroupsGetInput {
   productName: string;
   deviceGroupName: string;
 }
-export const DeviceGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeviceGroupsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -1946,7 +1920,7 @@ export interface DeviceGroupsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DeviceGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeviceGroupsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1977,7 +1951,7 @@ export const DeviceGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param productName - Name of product.
  * @param deviceGroupName - Name of device group.
  */
-export const DeviceGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeviceGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeviceGroupsGetInput,
   outputSchema: DeviceGroupsGetOutput,
 }));
@@ -1993,7 +1967,7 @@ export interface DeviceGroupsListByProductInput {
   $maxpagesize?: number;
 }
 export const DeviceGroupsListByProductInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -2028,7 +2002,7 @@ export interface DeviceGroupsListByProductOutput {
   nextLink?: string;
 }
 export const DeviceGroupsListByProductOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2077,12 +2051,10 @@ export const DeviceGroupsListByProductOutput =
  * @param catalogName - Name of catalog
  * @param productName - Name of product.
  */
-export const DeviceGroupsListByProduct = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeviceGroupsListByProductInput,
-    outputSchema: DeviceGroupsListByProductOutput,
-  }),
-);
+export const DeviceGroupsListByProduct = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeviceGroupsListByProductInput,
+  outputSchema: DeviceGroupsListByProductOutput,
+}));
 // Input Schema
 export interface DeviceGroupsUpdateInput {
   subscriptionId: string;
@@ -2099,7 +2071,7 @@ export interface DeviceGroupsUpdateInput {
   };
 }
 export const DeviceGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -2141,7 +2113,7 @@ export interface DeviceGroupsUpdateOutput {
   };
 }
 export const DeviceGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2172,7 +2144,7 @@ export const DeviceGroupsUpdateOutput =
  * @param productName - Name of product.
  * @param deviceGroupName - Name of device group.
  */
-export const DeviceGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeviceGroupsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeviceGroupsUpdateInput,
   outputSchema: DeviceGroupsUpdateOutput,
 }));
@@ -2202,7 +2174,7 @@ export interface DevicesCreateOrUpdateInput {
   };
 }
 export const DevicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -2253,7 +2225,7 @@ export interface DevicesCreateOrUpdateOutput {
   };
 }
 export const DevicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2285,12 +2257,10 @@ export const DevicesCreateOrUpdateOutput =
  * @param deviceGroupName - Name of device group.
  * @param deviceName - Device name
  */
-export const DevicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DevicesCreateOrUpdateInput,
-    outputSchema: DevicesCreateOrUpdateOutput,
-  }),
-);
+export const DevicesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DevicesCreateOrUpdateInput,
+  outputSchema: DevicesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DevicesDeleteInput {
   subscriptionId: string;
@@ -2300,7 +2270,7 @@ export interface DevicesDeleteInput {
   deviceGroupName: string;
   deviceName: string;
 }
-export const DevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DevicesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -2318,7 +2288,7 @@ export const DevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DevicesDeleteOutput = void;
 export const DevicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesDeleteOutput>;
 
 // The operation
 /**
@@ -2332,7 +2302,7 @@ export const DevicesDeleteOutput =
  * @param deviceGroupName - Name of device group.
  * @param deviceName - Device name
  */
-export const DevicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DevicesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DevicesDeleteInput,
   outputSchema: DevicesDeleteOutput,
 }));
@@ -2347,7 +2317,7 @@ export interface DevicesGenerateCapabilityImageInput {
   capabilities: ("ApplicationDevelopment" | "FieldServicing")[];
 }
 export const DevicesGenerateCapabilityImageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -2370,7 +2340,7 @@ export interface DevicesGenerateCapabilityImageOutput {
   image?: string;
 }
 export const DevicesGenerateCapabilityImageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     image: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<DevicesGenerateCapabilityImageOutput>;
 
@@ -2387,7 +2357,7 @@ export const DevicesGenerateCapabilityImageOutput =
  * @param deviceName - Device name
  */
 export const DevicesGenerateCapabilityImage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DevicesGenerateCapabilityImageInput,
     outputSchema: DevicesGenerateCapabilityImageOutput,
   }));
@@ -2400,7 +2370,7 @@ export interface DevicesGetInput {
   deviceGroupName: string;
   deviceName: string;
 }
-export const DevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DevicesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -2429,7 +2399,7 @@ export interface DevicesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DevicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DevicesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2461,7 +2431,7 @@ export const DevicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param deviceGroupName - Name of device group.
  * @param deviceName - Device name
  */
-export const DevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DevicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DevicesGetInput,
   outputSchema: DevicesGetOutput,
 }));
@@ -2474,7 +2444,7 @@ export interface DevicesListByDeviceGroupInput {
   deviceGroupName: string;
 }
 export const DevicesListByDeviceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -2506,7 +2476,7 @@ export interface DevicesListByDeviceGroupOutput {
   nextLink?: string;
 }
 export const DevicesListByDeviceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2552,12 +2522,10 @@ export const DevicesListByDeviceGroupOutput =
  * @param productName - Name of product.
  * @param deviceGroupName - Name of device group.
  */
-export const DevicesListByDeviceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DevicesListByDeviceGroupInput,
-    outputSchema: DevicesListByDeviceGroupOutput,
-  }),
-);
+export const DevicesListByDeviceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DevicesListByDeviceGroupInput,
+  outputSchema: DevicesListByDeviceGroupOutput,
+}));
 // Input Schema
 export interface DevicesUpdateInput {
   subscriptionId: string;
@@ -2568,7 +2536,7 @@ export interface DevicesUpdateInput {
   deviceName: string;
   properties?: { deviceGroupId?: string };
 }
-export const DevicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DevicesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -2602,7 +2570,7 @@ export interface DevicesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const DevicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DevicesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2634,7 +2602,7 @@ export const DevicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param deviceGroupName - Name of device group.
  * @param deviceName - Device name
  */
-export const DevicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DevicesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DevicesUpdateInput,
   outputSchema: DevicesUpdateOutput,
 }));
@@ -2688,7 +2656,7 @@ export interface ImagesCreateOrUpdateInput {
   };
 }
 export const ImagesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -2766,7 +2734,7 @@ export interface ImagesCreateOrUpdateOutput {
   };
 }
 export const ImagesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2796,12 +2764,10 @@ export const ImagesCreateOrUpdateOutput =
  * @param catalogName - Name of catalog
  * @param imageName - Image name. Use an image GUID for GA versions of the API.
  */
-export const ImagesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ImagesCreateOrUpdateInput,
-    outputSchema: ImagesCreateOrUpdateOutput,
-  }),
-);
+export const ImagesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ImagesCreateOrUpdateInput,
+  outputSchema: ImagesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ImagesDeleteInput {
   subscriptionId: string;
@@ -2809,7 +2775,7 @@ export interface ImagesDeleteInput {
   catalogName: string;
   imageName: string;
 }
-export const ImagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImagesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -2825,7 +2791,7 @@ export const ImagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ImagesDeleteOutput = void;
 export const ImagesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ImagesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ImagesDeleteOutput>;
 
 // The operation
 /**
@@ -2837,7 +2803,7 @@ export const ImagesDeleteOutput =
  * @param catalogName - Name of catalog
  * @param imageName - Image name. Use an image GUID for GA versions of the API.
  */
-export const ImagesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ImagesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImagesDeleteInput,
   outputSchema: ImagesDeleteOutput,
 }));
@@ -2848,7 +2814,7 @@ export interface ImagesGetInput {
   catalogName: string;
   imageName: string;
 }
-export const ImagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImagesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -2875,7 +2841,7 @@ export interface ImagesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImagesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2905,7 +2871,7 @@ export const ImagesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param catalogName - Name of catalog
  * @param imageName - Image name. Use an image GUID for GA versions of the API.
  */
-export const ImagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ImagesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImagesGetInput,
   outputSchema: ImagesGetOutput,
 }));
@@ -2920,7 +2886,7 @@ export interface ImagesListByCatalogInput {
   $maxpagesize?: number;
 }
 export const ImagesListByCatalogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -2954,7 +2920,7 @@ export interface ImagesListByCatalogOutput {
   nextLink?: string;
 }
 export const ImagesListByCatalogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3002,15 +2968,13 @@ export const ImagesListByCatalogOutput =
  * @param $maxpagesize - The maximum number of result items per page.
  * @param catalogName - Name of catalog
  */
-export const ImagesListByCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ImagesListByCatalog = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImagesListByCatalogInput,
   outputSchema: ImagesListByCatalogOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AzureSphere/operations",
@@ -3034,7 +2998,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3064,7 +3028,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -3076,7 +3040,7 @@ export interface ProductsCountDevicesInput {
   productName: string;
 }
 export const ProductsCountDevicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -3094,7 +3058,7 @@ export interface ProductsCountDevicesOutput {
   value: number;
 }
 export const ProductsCountDevicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Number,
   }) as unknown as Schema.Codec<ProductsCountDevicesOutput>;
 
@@ -3108,12 +3072,10 @@ export const ProductsCountDevicesOutput =
  * @param catalogName - Name of catalog
  * @param productName - Name of product.
  */
-export const ProductsCountDevices = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductsCountDevicesInput,
-    outputSchema: ProductsCountDevicesOutput,
-  }),
-);
+export const ProductsCountDevices = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductsCountDevicesInput,
+  outputSchema: ProductsCountDevicesOutput,
+}));
 // Input Schema
 export interface ProductsCreateOrUpdateInput {
   subscriptionId: string;
@@ -3133,7 +3095,7 @@ export interface ProductsCreateOrUpdateInput {
   };
 }
 export const ProductsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -3177,7 +3139,7 @@ export interface ProductsCreateOrUpdateOutput {
   };
 }
 export const ProductsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3207,12 +3169,10 @@ export const ProductsCreateOrUpdateOutput =
  * @param catalogName - Name of catalog
  * @param productName - Name of product.
  */
-export const ProductsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductsCreateOrUpdateInput,
-    outputSchema: ProductsCreateOrUpdateOutput,
-  }),
-);
+export const ProductsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductsCreateOrUpdateInput,
+  outputSchema: ProductsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ProductsDeleteInput {
   subscriptionId: string;
@@ -3220,7 +3180,7 @@ export interface ProductsDeleteInput {
   catalogName: string;
   productName: string;
 }
-export const ProductsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -3236,7 +3196,7 @@ export const ProductsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ProductsDeleteOutput = void;
 export const ProductsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProductsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ProductsDeleteOutput>;
 
 // The operation
 /**
@@ -3248,7 +3208,7 @@ export const ProductsDeleteOutput =
  * @param catalogName - Name of catalog
  * @param productName - Name of product.
  */
-export const ProductsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsDeleteInput,
   outputSchema: ProductsDeleteOutput,
 }));
@@ -3260,7 +3220,7 @@ export interface ProductsGenerateDefaultDeviceGroupsInput {
   productName: string;
 }
 export const ProductsGenerateDefaultDeviceGroupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -3291,7 +3251,7 @@ export interface ProductsGenerateDefaultDeviceGroupsOutput {
   nextLink?: string;
 }
 export const ProductsGenerateDefaultDeviceGroupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3337,7 +3297,7 @@ export const ProductsGenerateDefaultDeviceGroupsOutput =
  * @param productName - Name of product.
  */
 export const ProductsGenerateDefaultDeviceGroups =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProductsGenerateDefaultDeviceGroupsInput,
     outputSchema: ProductsGenerateDefaultDeviceGroupsOutput,
   }));
@@ -3348,7 +3308,7 @@ export interface ProductsGetInput {
   catalogName: string;
   productName: string;
 }
-export const ProductsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -3375,7 +3335,7 @@ export interface ProductsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ProductsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3405,7 +3365,7 @@ export const ProductsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param catalogName - Name of catalog
  * @param productName - Name of product.
  */
-export const ProductsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsGetInput,
   outputSchema: ProductsGetOutput,
 }));
@@ -3416,7 +3376,7 @@ export interface ProductsListByCatalogInput {
   catalogName: string;
 }
 export const ProductsListByCatalogInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -3446,7 +3406,7 @@ export interface ProductsListByCatalogOutput {
   nextLink?: string;
 }
 export const ProductsListByCatalogOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3490,12 +3450,10 @@ export const ProductsListByCatalogOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param catalogName - Name of catalog
  */
-export const ProductsListByCatalog = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProductsListByCatalogInput,
-    outputSchema: ProductsListByCatalogOutput,
-  }),
-);
+export const ProductsListByCatalog = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProductsListByCatalogInput,
+  outputSchema: ProductsListByCatalogOutput,
+}));
 // Input Schema
 export interface ProductsUpdateInput {
   subscriptionId: string;
@@ -3504,7 +3462,7 @@ export interface ProductsUpdateInput {
   productName: string;
   properties?: { description?: string };
 }
-export const ProductsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -3536,7 +3494,7 @@ export interface ProductsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ProductsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProductsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3566,7 +3524,7 @@ export const ProductsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param catalogName - Name of catalog
  * @param productName - Name of product.
  */
-export const ProductsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProductsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProductsUpdateInput,
   outputSchema: ProductsUpdateOutput,
 }));

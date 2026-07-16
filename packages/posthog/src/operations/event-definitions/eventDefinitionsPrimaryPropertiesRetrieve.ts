@@ -8,7 +8,7 @@ export interface EventDefinitionsPrimaryPropertiesRetrieveInput {
   names?: string;
 }
 export const EventDefinitionsPrimaryPropertiesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     names: Schema.optional(Schema.String),
   }).pipe(
@@ -23,7 +23,7 @@ export interface EventDefinitionsPrimaryPropertiesRetrieveOutput {
   primary_properties: Record<string, string>;
 }
 export const EventDefinitionsPrimaryPropertiesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primary_properties: Schema.Record(Schema.String, Schema.String),
   }) as unknown as Schema.Codec<EventDefinitionsPrimaryPropertiesRetrieveOutput>;
 
@@ -38,7 +38,7 @@ export const EventDefinitionsPrimaryPropertiesRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const eventDefinitionsPrimaryPropertiesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EventDefinitionsPrimaryPropertiesRetrieveInput,
     outputSchema: EventDefinitionsPrimaryPropertiesRetrieveOutput,
   }));

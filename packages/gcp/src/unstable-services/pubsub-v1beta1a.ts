@@ -28,7 +28,7 @@ export interface PushConfig {
 }
 
 export const PushConfig: Schema.Codec<PushConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pushEndpoint: Schema.optional(Schema.String),
   }).annotate({ identifier: "PushConfig" });
 
@@ -42,7 +42,7 @@ export interface PullBatchRequest {
 }
 
 export const PullBatchRequest: Schema.Codec<PullBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Schema.String),
     maxEvents: Schema.optional(Schema.Number),
     returnImmediately: Schema.optional(Schema.Boolean),
@@ -56,7 +56,7 @@ export interface ModifyPushConfigRequest {
 }
 
 export const ModifyPushConfigRequest: Schema.Codec<ModifyPushConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Schema.String),
     pushConfig: Schema.optional(PushConfig),
   }).annotate({ identifier: "ModifyPushConfigRequest" });
@@ -71,7 +71,7 @@ export interface Label {
 }
 
 export const Label: Schema.Codec<Label> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     strValue: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
     numValue: Schema.optional(Schema.String),
@@ -89,7 +89,7 @@ export interface PubsubMessage {
 }
 
 export const PubsubMessage: Schema.Codec<PubsubMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     publishTime: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
     label: Schema.optional(Schema.Array(Label)),
@@ -108,7 +108,7 @@ export interface PubsubEvent {
 }
 
 export const PubsubEvent: Schema.Codec<PubsubEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.optional(Schema.Boolean),
     truncated: Schema.optional(Schema.Boolean),
     subscription: Schema.optional(Schema.String),
@@ -123,7 +123,7 @@ export interface PullResponse {
 }
 
 export const PullResponse: Schema.Codec<PullResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pubsubEvent: Schema.optional(PubsubEvent),
     ackId: Schema.optional(Schema.String),
   }).annotate({ identifier: "PullResponse" });
@@ -134,7 +134,7 @@ export interface PullBatchResponse {
 }
 
 export const PullBatchResponse: Schema.Codec<PullBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pullResponses: Schema.optional(Schema.Array(PullResponse)),
   }).annotate({ identifier: "PullBatchResponse" });
 
@@ -150,7 +150,7 @@ export interface Subscription {
 }
 
 export const Subscription: Schema.Codec<Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ackDeadlineSeconds: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     topic: Schema.optional(Schema.String),
@@ -165,7 +165,7 @@ export interface ListSubscriptionsResponse {
 }
 
 export const ListSubscriptionsResponse: Schema.Codec<ListSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     subscription: Schema.optional(Schema.Array(Subscription)),
   }).annotate({ identifier: "ListSubscriptionsResponse" });
@@ -178,7 +178,7 @@ export interface PublishRequest {
 }
 
 export const PublishRequest: Schema.Codec<PublishRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     topic: Schema.optional(Schema.String),
     message: Schema.optional(PubsubMessage),
   }).annotate({ identifier: "PublishRequest" });
@@ -191,7 +191,7 @@ export interface PublishBatchRequest {
 }
 
 export const PublishBatchRequest: Schema.Codec<PublishBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messages: Schema.optional(Schema.Array(PubsubMessage)),
     topic: Schema.optional(Schema.String),
   }).annotate({ identifier: "PublishBatchRequest" });
@@ -208,7 +208,7 @@ export interface ModifyAckDeadlineRequest {
 }
 
 export const ModifyAckDeadlineRequest: Schema.Codec<ModifyAckDeadlineRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Schema.String),
     ackId: Schema.optional(Schema.String),
     ackIds: Schema.optional(Schema.Array(Schema.String)),
@@ -221,7 +221,7 @@ export interface Topic {
 }
 
 export const Topic: Schema.Codec<Topic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Topic" });
 
@@ -231,7 +231,7 @@ export interface PublishBatchResponse {
 }
 
 export const PublishBatchResponse: Schema.Codec<PublishBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     messageIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "PublishBatchResponse" });
 
@@ -243,7 +243,7 @@ export interface AcknowledgeRequest {
 }
 
 export const AcknowledgeRequest: Schema.Codec<AcknowledgeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Schema.String),
     ackId: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AcknowledgeRequest" });
@@ -256,7 +256,7 @@ export interface ListTopicsResponse {
 }
 
 export const ListTopicsResponse: Schema.Codec<ListTopicsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     topic: Schema.optional(Schema.Array(Topic)),
   }).annotate({ identifier: "ListTopicsResponse" });
@@ -269,7 +269,7 @@ export interface PullRequest {
 }
 
 export const PullRequest: Schema.Codec<PullRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.optional(Schema.String),
     returnImmediately: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "PullRequest" });
@@ -277,7 +277,7 @@ export const PullRequest: Schema.Codec<PullRequest> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -344,7 +344,7 @@ export interface ListTopicsRequest {
   pageToken?: string;
 }
 
-export const ListTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListTopicsRequest = /*@__PURE__*/ Schema.Struct({
   query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -354,8 +354,7 @@ export const ListTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListTopicsRequest>;
 
 export type ListTopicsResponse_Op = ListTopicsResponse;
-export const ListTopicsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListTopicsResponse;
+export const ListTopicsResponse_Op = /*@__PURE__*/ ListTopicsResponse;
 
 export type ListTopicsError = DefaultErrors | NotFound | Forbidden;
 
@@ -365,7 +364,7 @@ export const listTopics: API.PaginatedOperationMethod<
   ListTopicsResponse_Op,
   ListTopicsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTopicsRequest,
   output: ListTopicsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -380,7 +379,7 @@ export interface GetTopicsRequest {
   topic: string;
 }
 
-export const GetTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTopicsRequest = /*@__PURE__*/ Schema.Struct({
   topic: Schema.String.pipe(T.HttpPath("topic")),
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1a/topics/{+topic}" }),
@@ -388,7 +387,7 @@ export const GetTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetTopicsRequest>;
 
 export type GetTopicsResponse = Topic;
-export const GetTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
+export const GetTopicsResponse = /*@__PURE__*/ Topic;
 
 export type GetTopicsError = DefaultErrors | NotFound | Forbidden;
 
@@ -398,7 +397,7 @@ export const getTopics: API.OperationMethod<
   GetTopicsResponse,
   GetTopicsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTopicsRequest,
   output: GetTopicsResponse,
   errors: [NotFound, Forbidden],
@@ -409,7 +408,7 @@ export interface DeleteTopicsRequest {
   topic: string;
 }
 
-export const DeleteTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteTopicsRequest = /*@__PURE__*/ Schema.Struct({
   topic: Schema.String.pipe(T.HttpPath("topic")),
 }).pipe(
   T.Http({ method: "DELETE", path: "v1beta1a/topics/{+topic}" }),
@@ -417,7 +416,7 @@ export const DeleteTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DeleteTopicsRequest>;
 
 export type DeleteTopicsResponse = Empty;
-export const DeleteTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteTopicsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteTopicsError =
   | DefaultErrors
@@ -432,7 +431,7 @@ export const deleteTopics: API.OperationMethod<
   DeleteTopicsResponse,
   DeleteTopicsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTopicsRequest,
   output: DeleteTopicsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -443,7 +442,7 @@ export interface PublishTopicsRequest {
   body?: PublishRequest;
 }
 
-export const PublishTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishTopicsRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(PublishRequest).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v1beta1a/topics/publish", hasBody: true }),
@@ -451,7 +450,7 @@ export const PublishTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PublishTopicsRequest>;
 
 export type PublishTopicsResponse = Empty;
-export const PublishTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const PublishTopicsResponse = /*@__PURE__*/ Empty;
 
 export type PublishTopicsError =
   | DefaultErrors
@@ -466,7 +465,7 @@ export const publishTopics: API.OperationMethod<
   PublishTopicsResponse,
   PublishTopicsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishTopicsRequest,
   output: PublishTopicsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -478,7 +477,7 @@ export interface PublishBatchTopicsRequest {
 }
 
 export const PublishBatchTopicsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(PublishBatchRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -490,8 +489,7 @@ export const PublishBatchTopicsRequest =
   ) as unknown as Schema.Codec<PublishBatchTopicsRequest>;
 
 export type PublishBatchTopicsResponse = PublishBatchResponse;
-export const PublishBatchTopicsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PublishBatchResponse;
+export const PublishBatchTopicsResponse = /*@__PURE__*/ PublishBatchResponse;
 
 export type PublishBatchTopicsError =
   | DefaultErrors
@@ -506,7 +504,7 @@ export const publishBatchTopics: API.OperationMethod<
   PublishBatchTopicsResponse,
   PublishBatchTopicsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishBatchTopicsRequest,
   output: PublishBatchTopicsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -517,7 +515,7 @@ export interface CreateTopicsRequest {
   body?: Topic;
 }
 
-export const CreateTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateTopicsRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(Topic).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v1beta1a/topics", hasBody: true }),
@@ -525,7 +523,7 @@ export const CreateTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CreateTopicsRequest>;
 
 export type CreateTopicsResponse = Topic;
-export const CreateTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
+export const CreateTopicsResponse = /*@__PURE__*/ Topic;
 
 export type CreateTopicsError =
   | DefaultErrors
@@ -540,7 +538,7 @@ export const createTopics: API.OperationMethod<
   CreateTopicsResponse,
   CreateTopicsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTopicsRequest,
   output: CreateTopicsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -552,7 +550,7 @@ export interface ModifyPushConfigSubscriptionsRequest {
 }
 
 export const ModifyPushConfigSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(ModifyPushConfigRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -564,8 +562,7 @@ export const ModifyPushConfigSubscriptionsRequest =
   ) as unknown as Schema.Codec<ModifyPushConfigSubscriptionsRequest>;
 
 export type ModifyPushConfigSubscriptionsResponse = Empty;
-export const ModifyPushConfigSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const ModifyPushConfigSubscriptionsResponse = /*@__PURE__*/ Empty;
 
 export type ModifyPushConfigSubscriptionsError =
   | DefaultErrors
@@ -580,7 +577,7 @@ export const modifyPushConfigSubscriptions: API.OperationMethod<
   ModifyPushConfigSubscriptionsResponse,
   ModifyPushConfigSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyPushConfigSubscriptionsRequest,
   output: ModifyPushConfigSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -592,7 +589,7 @@ export interface ModifyAckDeadlineSubscriptionsRequest {
 }
 
 export const ModifyAckDeadlineSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(ModifyAckDeadlineRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -604,8 +601,7 @@ export const ModifyAckDeadlineSubscriptionsRequest =
   ) as unknown as Schema.Codec<ModifyAckDeadlineSubscriptionsRequest>;
 
 export type ModifyAckDeadlineSubscriptionsResponse = Empty;
-export const ModifyAckDeadlineSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const ModifyAckDeadlineSubscriptionsResponse = /*@__PURE__*/ Empty;
 
 export type ModifyAckDeadlineSubscriptionsError =
   | DefaultErrors
@@ -620,7 +616,7 @@ export const modifyAckDeadlineSubscriptions: API.OperationMethod<
   ModifyAckDeadlineSubscriptionsResponse,
   ModifyAckDeadlineSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyAckDeadlineSubscriptionsRequest,
   output: ModifyAckDeadlineSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -632,7 +628,7 @@ export interface GetSubscriptionsRequest {
 }
 
 export const GetSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.String.pipe(T.HttpPath("subscription")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1a/subscriptions/{+subscription}" }),
@@ -640,8 +636,7 @@ export const GetSubscriptionsRequest =
   ) as unknown as Schema.Codec<GetSubscriptionsRequest>;
 
 export type GetSubscriptionsResponse = Subscription;
-export const GetSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+export const GetSubscriptionsResponse = /*@__PURE__*/ Subscription;
 
 export type GetSubscriptionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -651,7 +646,7 @@ export const getSubscriptions: API.OperationMethod<
   GetSubscriptionsResponse,
   GetSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSubscriptionsRequest,
   output: GetSubscriptionsResponse,
   errors: [NotFound, Forbidden],
@@ -663,7 +658,7 @@ export interface CreateSubscriptionsRequest {
 }
 
 export const CreateSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(Subscription).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1beta1a/subscriptions", hasBody: true }),
@@ -671,8 +666,7 @@ export const CreateSubscriptionsRequest =
   ) as unknown as Schema.Codec<CreateSubscriptionsRequest>;
 
 export type CreateSubscriptionsResponse = Subscription;
-export const CreateSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Subscription;
+export const CreateSubscriptionsResponse = /*@__PURE__*/ Subscription;
 
 export type CreateSubscriptionsError =
   | DefaultErrors
@@ -687,7 +681,7 @@ export const createSubscriptions: API.OperationMethod<
   CreateSubscriptionsResponse,
   CreateSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriptionsRequest,
   output: CreateSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -699,7 +693,7 @@ export interface PullSubscriptionsRequest {
 }
 
 export const PullSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(PullRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -711,8 +705,7 @@ export const PullSubscriptionsRequest =
   ) as unknown as Schema.Codec<PullSubscriptionsRequest>;
 
 export type PullSubscriptionsResponse = PullResponse;
-export const PullSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PullResponse;
+export const PullSubscriptionsResponse = /*@__PURE__*/ PullResponse;
 
 export type PullSubscriptionsError =
   | DefaultErrors
@@ -727,7 +720,7 @@ export const pullSubscriptions: API.OperationMethod<
   PullSubscriptionsResponse,
   PullSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PullSubscriptionsRequest,
   output: PullSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -739,7 +732,7 @@ export interface AcknowledgeSubscriptionsRequest {
 }
 
 export const AcknowledgeSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(AcknowledgeRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -751,8 +744,7 @@ export const AcknowledgeSubscriptionsRequest =
   ) as unknown as Schema.Codec<AcknowledgeSubscriptionsRequest>;
 
 export type AcknowledgeSubscriptionsResponse = Empty;
-export const AcknowledgeSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const AcknowledgeSubscriptionsResponse = /*@__PURE__*/ Empty;
 
 export type AcknowledgeSubscriptionsError =
   | DefaultErrors
@@ -767,7 +759,7 @@ export const acknowledgeSubscriptions: API.OperationMethod<
   AcknowledgeSubscriptionsResponse,
   AcknowledgeSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcknowledgeSubscriptionsRequest,
   output: AcknowledgeSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -779,7 +771,7 @@ export interface DeleteSubscriptionsRequest {
 }
 
 export const DeleteSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscription: Schema.String.pipe(T.HttpPath("subscription")),
   }).pipe(
     T.Http({
@@ -790,7 +782,7 @@ export const DeleteSubscriptionsRequest =
   ) as unknown as Schema.Codec<DeleteSubscriptionsRequest>;
 
 export type DeleteSubscriptionsResponse = Empty;
-export const DeleteSubscriptionsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteSubscriptionsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteSubscriptionsError =
   | DefaultErrors
@@ -805,7 +797,7 @@ export const deleteSubscriptions: API.OperationMethod<
   DeleteSubscriptionsResponse,
   DeleteSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionsRequest,
   output: DeleteSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -817,7 +809,7 @@ export interface PullBatchSubscriptionsRequest {
 }
 
 export const PullBatchSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(PullBatchRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -829,8 +821,7 @@ export const PullBatchSubscriptionsRequest =
   ) as unknown as Schema.Codec<PullBatchSubscriptionsRequest>;
 
 export type PullBatchSubscriptionsResponse = PullBatchResponse;
-export const PullBatchSubscriptionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PullBatchResponse;
+export const PullBatchSubscriptionsResponse = /*@__PURE__*/ PullBatchResponse;
 
 export type PullBatchSubscriptionsError =
   | DefaultErrors
@@ -845,7 +836,7 @@ export const pullBatchSubscriptions: API.OperationMethod<
   PullBatchSubscriptionsResponse,
   PullBatchSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PullBatchSubscriptionsRequest,
   output: PullBatchSubscriptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -861,7 +852,7 @@ export interface ListSubscriptionsRequest {
 }
 
 export const ListSubscriptionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
@@ -872,7 +863,7 @@ export const ListSubscriptionsRequest =
 
 export type ListSubscriptionsResponse_Op = ListSubscriptionsResponse;
 export const ListSubscriptionsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionsResponse;
+  /*@__PURE__*/ ListSubscriptionsResponse;
 
 export type ListSubscriptionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -882,7 +873,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   ListSubscriptionsResponse_Op,
   ListSubscriptionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse_Op,
   errors: [NotFound, Forbidden],

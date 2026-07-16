@@ -12,7 +12,7 @@ export interface UserlandUserSessionsControllerListInput {
   order?: string;
 }
 export const UserlandUserSessionsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export interface UserlandUserSessionsControllerListOutput {
   }>;
 }
 export const UserlandUserSessionsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     list_metadata: Schema.optional(
       Schema.Struct({
@@ -111,7 +111,7 @@ export const UserlandUserSessionsControllerListOutput =
  * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  */
 export const UserlandUserSessionsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserSessionsControllerListInput,
     outputSchema: UserlandUserSessionsControllerListOutput,
     errors: [NotFound, UnprocessableEntity] as const,

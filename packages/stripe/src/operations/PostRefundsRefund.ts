@@ -13,18 +13,16 @@ export interface PostRefundsRefundInput {
   expand?: string[];
   metadata?: Record<string, string> | "";
 }
-export const PostRefundsRefundInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    refund: Schema.String.pipe(T.PathParam()),
-    expand: Schema.optional(Schema.Array(Schema.String)),
-    metadata: Schema.optional(
-      Schema.Union([
-        Schema.Record(Schema.String, Schema.String),
-        Schema.Literals([""]),
-      ]),
-    ),
-  },
-).pipe(
+export const PostRefundsRefundInput = /*@__PURE__*/ Schema.Struct({
+  refund: Schema.String.pipe(T.PathParam()),
+  expand: Schema.optional(Schema.Array(Schema.String)),
+  metadata: Schema.optional(
+    Schema.Union([
+      Schema.Record(Schema.String, Schema.String),
+      Schema.Literals([""]),
+    ]),
+  ),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v1/refunds/{refund}",
@@ -701,7 +699,7 @@ export interface PostRefundsRefundOutput {
     | null;
 }
 export const PostRefundsRefundOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transaction: Schema.NullOr(
       Schema.Union([
@@ -1049,7 +1047,7 @@ export const PostRefundsRefundOutput =
  * <p>Updates the refund that you specify by setting the values of the passed parameters. Any parameters that you don’t provide remain unchanged.</p>
  * <p>This request only accepts <code>metadata</code> as an argument.</p>
  */
-export const PostRefundsRefund = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostRefundsRefund = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostRefundsRefundInput,
   outputSchema: PostRefundsRefundOutput,
 }));

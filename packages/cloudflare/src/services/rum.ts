@@ -74,7 +74,7 @@ interface Rumrule {
   paths?: string[] | null;
   priority?: number | null;
 }
-const Rumrule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Rumrule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -107,7 +107,7 @@ interface Ruleset {
   /** The zone identifier. */
   zoneTag?: string | null;
 }
-const Ruleset = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ruleset = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -131,7 +131,7 @@ interface Rule {
   isPaused?: boolean | null;
   paths?: string[] | null;
 }
-const Rule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Rule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -181,31 +181,28 @@ interface ListSiteInfosResponseResult {
   snippet?: string | null;
   host?: string | null;
 }
-const ListSiteInfosResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      rules: Schema.optional(
-        Schema.Union([Schema.Array(Rumrule), Schema.Null]),
-      ),
-      ruleset: Schema.optional(Schema.Union([Ruleset, Schema.Null])),
-      siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        autoInstall: "auto_install",
-        created: "created",
-        rules: "rules",
-        ruleset: "ruleset",
-        siteTag: "site_tag",
-        siteToken: "site_token",
-        snippet: "snippet",
-        host: "host",
-      }),
-    ),
+const ListSiteInfosResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    rules: Schema.optional(Schema.Union([Schema.Array(Rumrule), Schema.Null])),
+    ruleset: Schema.optional(Schema.Union([Ruleset, Schema.Null])),
+    siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      autoInstall: "auto_install",
+      created: "created",
+      rules: "rules",
+      ruleset: "ruleset",
+      siteTag: "site_tag",
+      siteToken: "site_token",
+      snippet: "snippet",
+      host: "host",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSiteInfosResponseResult>;
 
 interface ListSiteInfosResponseResultInfo {
@@ -215,7 +212,7 @@ interface ListSiteInfosResponseResultInfo {
   totalCount?: number | null;
 }
 const ListSiteInfosResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -241,7 +238,7 @@ export interface ListRulesRequest {
   accountId: string;
 }
 
-export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListRulesRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -274,14 +271,11 @@ export interface ListRulesResponse {
   } | null;
 }
 
-export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      rules: Schema.optional(
-        Schema.Union([Schema.Array(Rumrule), Schema.Null]),
-      ),
-      ruleset: Schema.optional(Schema.Union([Ruleset, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const ListRulesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    rules: Schema.optional(Schema.Union([Schema.Array(Rumrule), Schema.Null])),
+    ruleset: Schema.optional(Schema.Union([Ruleset, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ListRulesResponse>;
 
 export type ListRulesError = DefaultErrors | Forbidden | RulesetNotFound;
@@ -291,7 +285,7 @@ export const listRules: API.OperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [Forbidden, RulesetNotFound],
@@ -311,27 +305,26 @@ export interface CreateRuleRequest {
   paths?: string[];
 }
 
-export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      host: Schema.optional(Schema.String),
-      inclusive: Schema.optional(Schema.Boolean),
-      isPaused: Schema.optional(Schema.Boolean),
-      paths: Schema.optional(Schema.Array(Schema.String)),
-    }).pipe(
-      Schema.encodeKeys({
-        host: "host",
-        inclusive: "inclusive",
-        isPaused: "is_paused",
-        paths: "paths",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/rum/v2/{rulesetId}/rule",
-      }),
-    ),
+export const CreateRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    host: Schema.optional(Schema.String),
+    inclusive: Schema.optional(Schema.Boolean),
+    isPaused: Schema.optional(Schema.Boolean),
+    paths: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
+    Schema.encodeKeys({
+      host: "host",
+      inclusive: "inclusive",
+      isPaused: "is_paused",
+      paths: "paths",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/rum/v2/{rulesetId}/rule",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateRuleRequest>;
 
 export interface CreateRuleResponse {
@@ -349,31 +342,30 @@ export interface CreateRuleResponse {
   priority?: number | null;
 }
 
-export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      inclusive: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isPaused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      paths: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          created: "created",
-          host: "host",
-          inclusive: "inclusive",
-          isPaused: "is_paused",
-          paths: "paths",
-          priority: "priority",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    inclusive: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isPaused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    paths: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        created: "created",
+        host: "host",
+        inclusive: "inclusive",
+        isPaused: "is_paused",
+        paths: "paths",
+        priority: "priority",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateRuleResponse>;
 
 export type CreateRuleError =
@@ -387,7 +379,7 @@ export const createRule: API.OperationMethod<
   CreateRuleResponse,
   CreateRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRuleRequest,
   output: CreateRuleResponse,
   errors: [Forbidden, RulesetNotFound, MaxRulesExceeded],
@@ -408,28 +400,27 @@ export interface UpdateRuleRequest {
   paths?: string[];
 }
 
-export const UpdateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
-      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      host: Schema.optional(Schema.String),
-      inclusive: Schema.optional(Schema.Boolean),
-      isPaused: Schema.optional(Schema.Boolean),
-      paths: Schema.optional(Schema.Array(Schema.String)),
-    }).pipe(
-      Schema.encodeKeys({
-        host: "host",
-        inclusive: "inclusive",
-        isPaused: "is_paused",
-        paths: "paths",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/rum/v2/{rulesetId}/rule/{ruleId}",
-      }),
-    ),
+export const UpdateRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
+    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    host: Schema.optional(Schema.String),
+    inclusive: Schema.optional(Schema.Boolean),
+    isPaused: Schema.optional(Schema.Boolean),
+    paths: Schema.optional(Schema.Array(Schema.String)),
+  }).pipe(
+    Schema.encodeKeys({
+      host: "host",
+      inclusive: "inclusive",
+      isPaused: "is_paused",
+      paths: "paths",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/rum/v2/{rulesetId}/rule/{ruleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateRuleRequest>;
 
 export interface UpdateRuleResponse {
@@ -447,31 +438,30 @@ export interface UpdateRuleResponse {
   priority?: number | null;
 }
 
-export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      inclusive: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      isPaused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      paths: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          created: "created",
-          host: "host",
-          inclusive: "inclusive",
-          isPaused: "is_paused",
-          paths: "paths",
-          priority: "priority",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const UpdateRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    inclusive: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    isPaused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    paths: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        created: "created",
+        host: "host",
+        inclusive: "inclusive",
+        isPaused: "is_paused",
+        paths: "paths",
+        priority: "priority",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateRuleResponse>;
 
 export type UpdateRuleError = DefaultErrors | Forbidden | RulesetNotFound;
@@ -481,7 +471,7 @@ export const updateRule: API.OperationMethod<
   UpdateRuleResponse,
   UpdateRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRuleRequest,
   output: UpdateRuleResponse,
   errors: [Forbidden, RulesetNotFound],
@@ -494,18 +484,17 @@ export interface DeleteRuleRequest {
   accountId: string;
 }
 
-export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
-      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/rum/v2/{rulesetId}/rule/{ruleId}",
-      }),
-    ),
+export const DeleteRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
+    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/rum/v2/{rulesetId}/rule/{ruleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteRuleRequest>;
 
 export interface DeleteRuleResponse {
@@ -513,11 +502,10 @@ export interface DeleteRuleResponse {
   id?: string | null;
 }
 
-export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const DeleteRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteRuleResponse>;
 
 export type DeleteRuleError =
@@ -531,7 +519,7 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
   errors: [Forbidden, RulesetNotFound, RuleNotFound],
@@ -554,7 +542,7 @@ export interface BulkCreateRulesRequest {
 }
 
 export const BulkCreateRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -591,7 +579,7 @@ export interface BulkCreateRulesResponse {
 }
 
 export const BulkCreateRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       rules: Schema.optional(
         Schema.Union([Schema.Array(Rumrule), Schema.Null]),
@@ -607,7 +595,7 @@ export const bulkCreateRules: API.OperationMethod<
   BulkCreateRulesResponse,
   BulkCreateRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkCreateRulesRequest,
   output: BulkCreateRulesResponse,
   errors: [],
@@ -623,17 +611,16 @@ export interface GetSiteInfoRequest {
   accountId: string;
 }
 
-export const GetSiteInfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/rum/site_info/{siteId}",
-      }),
-    ),
+export const GetSiteInfoRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/rum/site_info/{siteId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetSiteInfoRequest>;
 
 export interface GetSiteInfoResponse {
@@ -667,33 +654,30 @@ export interface GetSiteInfoResponse {
   host?: string | null;
 }
 
-export const GetSiteInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      rules: Schema.optional(
-        Schema.Union([Schema.Array(Rumrule), Schema.Null]),
-      ),
-      ruleset: Schema.optional(Schema.Union([Ruleset, Schema.Null])),
-      siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          autoInstall: "auto_install",
-          created: "created",
-          rules: "rules",
-          ruleset: "ruleset",
-          siteTag: "site_tag",
-          siteToken: "site_token",
-          snippet: "snippet",
-          host: "host",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetSiteInfoResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    rules: Schema.optional(Schema.Union([Schema.Array(Rumrule), Schema.Null])),
+    ruleset: Schema.optional(Schema.Union([Ruleset, Schema.Null])),
+    siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    siteToken: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    snippet: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    host: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        autoInstall: "auto_install",
+        created: "created",
+        rules: "rules",
+        ruleset: "ruleset",
+        siteTag: "site_tag",
+        siteToken: "site_token",
+        snippet: "snippet",
+        host: "host",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetSiteInfoResponse>;
 
 export type GetSiteInfoError = DefaultErrors | SiteNotFound | Forbidden;
@@ -703,7 +687,7 @@ export const getSiteInfo: API.OperationMethod<
   GetSiteInfoResponse,
   GetSiteInfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSiteInfoRequest,
   output: GetSiteInfoResponse,
   errors: [SiteNotFound, Forbidden],
@@ -718,21 +702,20 @@ export interface ListSiteInfosRequest {
   orderBy?: "host" | "created" | (string & {});
 }
 
-export const ListSiteInfosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      orderBy: Schema.optional(
-        Schema.Union([Schema.Literals(["host", "created"]), Schema.String]),
-      ).pipe(T.HttpQuery("order_by")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/rum/site_info/list",
-      }),
-    ),
+export const ListSiteInfosRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    orderBy: Schema.optional(
+      Schema.Union([Schema.Literals(["host", "created"]), Schema.String]),
+    ).pipe(T.HttpQuery("order_by")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/rum/site_info/list",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListSiteInfosRequest>;
 
 export interface ListSiteInfosResponse {
@@ -769,14 +752,13 @@ export interface ListSiteInfosResponse {
   } | null;
 }
 
-export const ListSiteInfosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListSiteInfosResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListSiteInfosResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListSiteInfosResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListSiteInfosResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListSiteInfosResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListSiteInfosResponse>;
 
 export type ListSiteInfosError = DefaultErrors | Forbidden;
@@ -786,7 +768,7 @@ export const listSiteInfos: API.PaginatedOperationMethod<
   ListSiteInfosResponse,
   ListSiteInfosError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSiteInfosRequest,
   output: ListSiteInfosResponse,
   errors: [Forbidden],
@@ -810,21 +792,20 @@ export interface CreateSiteInfoRequest {
   zoneTag?: string;
 }
 
-export const CreateSiteInfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      autoInstall: Schema.optional(Schema.Boolean),
-      host: Schema.optional(Schema.String),
-      zoneTag: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        autoInstall: "auto_install",
-        host: "host",
-        zoneTag: "zone_tag",
-      }),
-      T.Http({ method: "POST", path: "/accounts/{account_id}/rum/site_info" }),
-    ),
+export const CreateSiteInfoRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    autoInstall: Schema.optional(Schema.Boolean),
+    host: Schema.optional(Schema.String),
+    zoneTag: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      autoInstall: "auto_install",
+      host: "host",
+      zoneTag: "zone_tag",
+    }),
+    T.Http({ method: "POST", path: "/accounts/{account_id}/rum/site_info" }),
+  ),
 ) as unknown as Schema.Codec<CreateSiteInfoRequest>;
 
 export interface CreateSiteInfoResponse {
@@ -859,7 +840,7 @@ export interface CreateSiteInfoResponse {
 }
 
 export const CreateSiteInfoResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -894,7 +875,7 @@ export const createSiteInfo: API.OperationMethod<
   CreateSiteInfoResponse,
   CreateSiteInfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSiteInfoRequest,
   output: CreateSiteInfoResponse,
   errors: [Forbidden],
@@ -916,29 +897,28 @@ export interface UpdateSiteInfoRequest {
   zoneTag?: string;
 }
 
-export const UpdateSiteInfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      autoInstall: Schema.optional(Schema.Boolean),
-      enabled: Schema.optional(Schema.Boolean),
-      host: Schema.optional(Schema.String),
-      lite: Schema.optional(Schema.Boolean),
-      zoneTag: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        autoInstall: "auto_install",
-        enabled: "enabled",
-        host: "host",
-        lite: "lite",
-        zoneTag: "zone_tag",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/rum/site_info/{siteId}",
-      }),
-    ),
+export const UpdateSiteInfoRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    autoInstall: Schema.optional(Schema.Boolean),
+    enabled: Schema.optional(Schema.Boolean),
+    host: Schema.optional(Schema.String),
+    lite: Schema.optional(Schema.Boolean),
+    zoneTag: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      autoInstall: "auto_install",
+      enabled: "enabled",
+      host: "host",
+      lite: "lite",
+      zoneTag: "zone_tag",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/rum/site_info/{siteId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateSiteInfoRequest>;
 
 export interface UpdateSiteInfoResponse {
@@ -973,7 +953,7 @@ export interface UpdateSiteInfoResponse {
 }
 
 export const UpdateSiteInfoResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       autoInstall: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
       created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1008,7 +988,7 @@ export const updateSiteInfo: API.OperationMethod<
   UpdateSiteInfoResponse,
   UpdateSiteInfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSiteInfoRequest,
   output: UpdateSiteInfoResponse,
   errors: [SiteNotFound, Forbidden],
@@ -1020,17 +1000,16 @@ export interface DeleteSiteInfoRequest {
   accountId: string;
 }
 
-export const DeleteSiteInfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      siteId: Schema.String.pipe(T.HttpPath("siteId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/rum/site_info/{siteId}",
-      }),
-    ),
+export const DeleteSiteInfoRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    siteId: Schema.String.pipe(T.HttpPath("siteId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/rum/site_info/{siteId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteSiteInfoRequest>;
 
 export interface DeleteSiteInfoResponse {
@@ -1039,7 +1018,7 @@ export interface DeleteSiteInfoResponse {
 }
 
 export const DeleteSiteInfoResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       siteTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
@@ -1054,7 +1033,7 @@ export const deleteSiteInfo: API.OperationMethod<
   DeleteSiteInfoResponse,
   DeleteSiteInfoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSiteInfoRequest,
   output: DeleteSiteInfoResponse,
   errors: [SiteNotFound, Forbidden],

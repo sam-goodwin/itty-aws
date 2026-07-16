@@ -13,7 +13,7 @@ export interface DashboardTemplatesListInput {
   scope?: "feature_flag" | "global" | "organization" | "team";
 }
 export const DashboardTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     is_featured: Schema.optional(Schema.Boolean),
     limit: Schema.optional(Schema.Number),
@@ -85,7 +85,7 @@ export interface DashboardTemplatesListOutput {
   }[];
 }
 export const DashboardTemplatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -177,10 +177,8 @@ export const DashboardTemplatesListOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param scope - Optional. `global`: official templates only. `team`: this project's saved templates only (`scope=team` rows for the current project). `organization`: templates shared across all projects in this organization. `feature_flag`: feature-flag dashboard templates only. Omit for official, organization, and this project's templates (default dashboard template picker behavior).
  */
-export const dashboardTemplatesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DashboardTemplatesListInput,
-    outputSchema: DashboardTemplatesListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const dashboardTemplatesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DashboardTemplatesListInput,
+  outputSchema: DashboardTemplatesListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

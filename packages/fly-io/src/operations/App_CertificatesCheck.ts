@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export const App_CertificatesCheckInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "POST",
       path: "/apps/{app_name}/certificates/{hostname}/check",
@@ -14,7 +14,7 @@ export type App_CertificatesCheckInput = typeof App_CertificatesCheckInput.Type;
 
 // Output Schema
 export const App_CertificatesCheckOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
     certificates: Schema.optional(
       Schema.Array(
@@ -104,9 +104,7 @@ export type App_CertificatesCheckOutput =
 /**
  * Check DNS and re-validate certificate
  */
-export const App_CertificatesCheck = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: App_CertificatesCheckInput,
-    outputSchema: App_CertificatesCheckOutput,
-  }),
-);
+export const App_CertificatesCheck = /*@__PURE__*/ API.make(() => ({
+  inputSchema: App_CertificatesCheckInput,
+  outputSchema: App_CertificatesCheckOutput,
+}));

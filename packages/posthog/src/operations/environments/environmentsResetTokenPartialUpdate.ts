@@ -1092,7 +1092,7 @@ export interface EnvironmentsResetTokenPartialUpdateInput {
   events_retention_enforced?: boolean;
 }
 export const EnvironmentsResetTokenPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     uuid: Schema.optional(Schema.String),
@@ -2269,7 +2269,7 @@ export const EnvironmentsResetTokenPartialUpdateInput =
 // Output Schema
 export type EnvironmentsResetTokenPartialUpdateOutput = void;
 export const EnvironmentsResetTokenPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsResetTokenPartialUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsResetTokenPartialUpdateOutput>;
 
 // The operation
 /**
@@ -2279,7 +2279,7 @@ export const EnvironmentsResetTokenPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const environmentsResetTokenPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsResetTokenPartialUpdateInput,
     outputSchema: EnvironmentsResetTokenPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

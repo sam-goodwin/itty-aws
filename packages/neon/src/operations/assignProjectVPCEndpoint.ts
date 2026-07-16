@@ -9,7 +9,7 @@ export interface AssignProjectVPCEndpointInput {
   label: string;
 }
 export const AssignProjectVPCEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     vpc_endpoint_id: Schema.String.pipe(T.PathParam()),
     label: Schema.String,
@@ -23,7 +23,7 @@ export const AssignProjectVPCEndpointInput =
 // Output Schema
 export type AssignProjectVPCEndpointOutput = void;
 export const AssignProjectVPCEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AssignProjectVPCEndpointOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AssignProjectVPCEndpointOutput>;
 
 // The operation
 /**
@@ -38,9 +38,7 @@ export const AssignProjectVPCEndpointOutput =
  * @param project_id - The Neon project ID
  * @param vpc_endpoint_id - The VPC endpoint ID
  */
-export const assignProjectVPCEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AssignProjectVPCEndpointInput,
-    outputSchema: AssignProjectVPCEndpointOutput,
-  }),
-);
+export const assignProjectVPCEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AssignProjectVPCEndpointInput,
+  outputSchema: AssignProjectVPCEndpointOutput,
+}));

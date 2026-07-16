@@ -9,7 +9,7 @@ export interface DeleteGroupInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const DeleteGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteGroupInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   pretty: Schema.optional(Schema.Boolean),
@@ -20,7 +20,7 @@ export const DeleteGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteGroupOutput = void;
 export const DeleteGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const DeleteGroupOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const deleteGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteGroupInput,
   outputSchema: DeleteGroupOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

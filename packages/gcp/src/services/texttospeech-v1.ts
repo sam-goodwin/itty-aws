@@ -32,7 +32,7 @@ export interface GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata {
 }
 
 export const GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata: Schema.Codec<GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastUpdateTime: Schema.optional(Schema.String),
     startTime: Schema.optional(Schema.String),
     progressPercentage: Schema.optional(Schema.Number),
@@ -57,7 +57,7 @@ export interface Voice {
 }
 
 export const Voice: Schema.Codec<Voice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ssmlGender: Schema.optional(Schema.String),
     languageCodes: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -70,7 +70,7 @@ export interface ListVoicesResponse {
 }
 
 export const ListVoicesResponse: Schema.Codec<ListVoicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     voices: Schema.optional(Schema.Array(Voice)),
   }).annotate({ identifier: "ListVoicesResponse" });
 
@@ -82,7 +82,7 @@ export interface Turn {
 }
 
 export const Turn: Schema.Codec<Turn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     text: Schema.optional(Schema.String),
     speaker: Schema.optional(Schema.String),
   }).annotate({ identifier: "Turn" });
@@ -93,7 +93,7 @@ export interface MultiSpeakerMarkup {
 }
 
 export const MultiSpeakerMarkup: Schema.Codec<MultiSpeakerMarkup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     turns: Schema.optional(Schema.Array(Turn)),
   }).annotate({ identifier: "MultiSpeakerMarkup" });
 
@@ -113,7 +113,7 @@ export interface CustomPronunciationParams {
 }
 
 export const CustomPronunciationParams: Schema.Codec<CustomPronunciationParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phoneticEncoding: Schema.optional(Schema.String),
     phrase: Schema.optional(Schema.String),
     pronunciation: Schema.optional(Schema.String),
@@ -125,7 +125,7 @@ export interface CustomPronunciations {
 }
 
 export const CustomPronunciations: Schema.Codec<CustomPronunciations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pronunciations: Schema.optional(Schema.Array(CustomPronunciationParams)),
   }).annotate({ identifier: "CustomPronunciations" });
 
@@ -145,7 +145,7 @@ export interface SynthesisInput {
 }
 
 export const SynthesisInput: Schema.Codec<SynthesisInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     multiSpeakerMarkup: Schema.optional(MultiSpeakerMarkup),
     prompt: Schema.optional(Schema.String),
     ssml: Schema.optional(Schema.String),
@@ -179,7 +179,7 @@ export interface AudioConfig {
 }
 
 export const AudioConfig: Schema.Codec<AudioConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pitch: Schema.optional(Schema.Number),
     speakingRate: Schema.optional(Schema.Number),
     sampleRateHertz: Schema.optional(Schema.Number),
@@ -194,7 +194,7 @@ export interface VoiceCloneParams {
 }
 
 export const VoiceCloneParams: Schema.Codec<VoiceCloneParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     voiceCloningKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "VoiceCloneParams" });
 
@@ -206,7 +206,7 @@ export interface MultispeakerPrebuiltVoice {
 }
 
 export const MultispeakerPrebuiltVoice: Schema.Codec<MultispeakerPrebuiltVoice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     speakerAlias: Schema.optional(Schema.String),
     speakerId: Schema.optional(Schema.String),
   }).annotate({ identifier: "MultispeakerPrebuiltVoice" });
@@ -217,7 +217,7 @@ export interface MultiSpeakerVoiceConfig {
 }
 
 export const MultiSpeakerVoiceConfig: Schema.Codec<MultiSpeakerVoiceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     speakerVoiceConfigs: Schema.optional(
       Schema.Array(MultispeakerPrebuiltVoice),
     ),
@@ -235,7 +235,7 @@ export interface CustomVoiceParams {
 }
 
 export const CustomVoiceParams: Schema.Codec<CustomVoiceParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportedUsage: Schema.optional(Schema.String),
     model: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomVoiceParams" });
@@ -263,7 +263,7 @@ export interface VoiceSelectionParams {
 }
 
 export const VoiceSelectionParams: Schema.Codec<VoiceSelectionParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ssmlGender: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     voiceClone: Schema.optional(VoiceCloneParams),
@@ -285,7 +285,7 @@ export interface SynthesizeLongAudioRequest {
 }
 
 export const SynthesizeLongAudioRequest: Schema.Codec<SynthesizeLongAudioRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     input: Schema.optional(SynthesisInput),
     audioConfig: Schema.optional(AudioConfig),
     outputGcsUri: Schema.optional(Schema.String),
@@ -298,7 +298,7 @@ export interface SynthesizeSpeechResponse {
 }
 
 export const SynthesizeSpeechResponse: Schema.Codec<SynthesizeSpeechResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audioContent: Schema.optional(Schema.String),
   }).annotate({ identifier: "SynthesizeSpeechResponse" });
 
@@ -323,7 +323,7 @@ export interface SafetySetting {
 }
 
 export const SafetySetting: Schema.Codec<SafetySetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     category: Schema.optional(Schema.String),
     threshold: Schema.optional(Schema.String),
   }).annotate({ identifier: "SafetySetting" });
@@ -338,7 +338,7 @@ export interface SynthesizeLongAudioMetadata {
 }
 
 export const SynthesizeLongAudioMetadata: Schema.Codec<SynthesizeLongAudioMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastUpdateTime: Schema.optional(Schema.String),
     progressPercentage: Schema.optional(Schema.Number),
     startTime: Schema.optional(Schema.String),
@@ -350,7 +350,7 @@ export interface SafetySettings {
 }
 
 export const SafetySettings: Schema.Codec<SafetySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     settings: Schema.optional(Schema.Array(SafetySetting)),
   }).annotate({ identifier: "SafetySettings" });
 
@@ -366,7 +366,7 @@ export interface AdvancedVoiceOptions {
 }
 
 export const AdvancedVoiceOptions: Schema.Codec<AdvancedVoiceOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     relaxSafetyFilters: Schema.optional(Schema.Boolean),
     safetySettings: Schema.optional(SafetySettings),
     lowLatencyJourneySynthesis: Schema.optional(Schema.Boolean),
@@ -383,7 +383,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -405,7 +405,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
@@ -423,7 +423,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     nextPageToken: Schema.optional(Schema.String),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -432,7 +432,7 @@ export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -448,7 +448,7 @@ export interface SynthesizeSpeechRequest {
 }
 
 export const SynthesizeSpeechRequest: Schema.Codec<SynthesizeSpeechRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     input: Schema.optional(SynthesisInput),
     voice: Schema.optional(VoiceSelectionParams),
     audioConfig: Schema.optional(AudioConfig),
@@ -458,7 +458,7 @@ export const SynthesizeSpeechRequest: Schema.Codec<SynthesizeSpeechRequest> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -521,7 +521,7 @@ export interface ListVoicesRequest {
   languageCode?: string;
 }
 
-export const ListVoicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListVoicesRequest = /*@__PURE__*/ Schema.Struct({
   languageCode: Schema.optional(Schema.String).pipe(
     T.HttpQuery("languageCode"),
   ),
@@ -531,8 +531,7 @@ export const ListVoicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListVoicesRequest>;
 
 export type ListVoicesResponse_Op = ListVoicesResponse;
-export const ListVoicesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListVoicesResponse;
+export const ListVoicesResponse_Op = /*@__PURE__*/ ListVoicesResponse;
 
 export type ListVoicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -542,7 +541,7 @@ export const listVoices: API.OperationMethod<
   ListVoicesResponse_Op,
   ListVoicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListVoicesRequest,
   output: ListVoicesResponse_Op,
   errors: [NotFound, Forbidden],
@@ -556,7 +555,7 @@ export interface SynthesizeLongAudioProjectsLocationsRequest {
 }
 
 export const SynthesizeLongAudioProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(SynthesizeLongAudioRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -570,7 +569,7 @@ export const SynthesizeLongAudioProjectsLocationsRequest =
 
 export type SynthesizeLongAudioProjectsLocationsResponse = Operation;
 export const SynthesizeLongAudioProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type SynthesizeLongAudioProjectsLocationsError =
   | DefaultErrors
@@ -585,7 +584,7 @@ export const synthesizeLongAudioProjectsLocations: API.OperationMethod<
   SynthesizeLongAudioProjectsLocationsResponse,
   SynthesizeLongAudioProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SynthesizeLongAudioProjectsLocationsRequest,
   output: SynthesizeLongAudioProjectsLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -605,7 +604,7 @@ export interface ListProjectsLocationsOperationsRequest {
 }
 
 export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
@@ -620,7 +619,7 @@ export const ListProjectsLocationsOperationsRequest =
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsOperationsError =
   | DefaultErrors
@@ -633,7 +632,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsResponse,
   ListProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -649,7 +648,7 @@ export interface GetProjectsLocationsOperationsRequest {
 }
 
 export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -657,8 +656,7 @@ export const GetProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetProjectsLocationsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsOperationsError =
   | DefaultErrors
@@ -671,7 +669,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsResponse,
   GetProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -683,7 +681,7 @@ export interface DeleteOperationsRequest {
 }
 
 export const DeleteOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -691,7 +689,7 @@ export const DeleteOperationsRequest =
   ) as unknown as Schema.Codec<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = Empty;
-export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteOperationsError =
   | DefaultErrors
@@ -706,7 +704,7 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsResponse,
   DeleteOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -720,7 +718,7 @@ export interface CancelOperationsRequest {
 }
 
 export const CancelOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -729,7 +727,7 @@ export const CancelOperationsRequest =
   ) as unknown as Schema.Codec<CancelOperationsRequest>;
 
 export type CancelOperationsResponse = Empty;
-export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelOperationsError =
   | DefaultErrors
@@ -744,7 +742,7 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsResponse,
   CancelOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -755,7 +753,7 @@ export interface SynthesizeTextRequest {
   body?: SynthesizeSpeechRequest;
 }
 
-export const SynthesizeTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SynthesizeTextRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(SynthesizeSpeechRequest).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v1/text:synthesize", hasBody: true }),
@@ -763,8 +761,7 @@ export const SynthesizeTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<SynthesizeTextRequest>;
 
 export type SynthesizeTextResponse = SynthesizeSpeechResponse;
-export const SynthesizeTextResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SynthesizeSpeechResponse;
+export const SynthesizeTextResponse = /*@__PURE__*/ SynthesizeSpeechResponse;
 
 export type SynthesizeTextError =
   | DefaultErrors
@@ -779,7 +776,7 @@ export const synthesizeText: API.OperationMethod<
   SynthesizeTextResponse,
   SynthesizeTextError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SynthesizeTextRequest,
   output: SynthesizeTextResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

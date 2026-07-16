@@ -8,7 +8,7 @@ export interface GetTaxTransactionsTransactionInput {
   expand?: string;
 }
 export const GetTaxTransactionsTransactionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transaction: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -252,7 +252,7 @@ export interface GetTaxTransactionsTransactionOutput {
   type: "reversal" | "transaction";
 }
 export const GetTaxTransactionsTransactionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     currency: Schema.String,
     customer: Schema.NullOr(Schema.String),
@@ -536,7 +536,7 @@ export const GetTaxTransactionsTransactionOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetTaxTransactionsTransaction =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTaxTransactionsTransactionInput,
     outputSchema: GetTaxTransactionsTransactionOutput,
   }));

@@ -59,7 +59,7 @@ export interface V1CreateProjectSigningKeyInput {
       };
 }
 export const V1CreateProjectSigningKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     algorithm: Schema.Literals(["EdDSA", "ES256", "RS256", "HS256"]),
     status: Schema.optional(Schema.Literals(["in_use", "standby"])),
@@ -140,7 +140,7 @@ export interface V1CreateProjectSigningKeyOutput {
   updated_at: string;
 }
 export const V1CreateProjectSigningKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     algorithm: Schema.Literals(["EdDSA", "ES256", "RS256", "HS256"]),
     status: Schema.Literals([
@@ -160,10 +160,8 @@ export const V1CreateProjectSigningKeyOutput =
  *
  * @param ref - Project ref
  */
-export const v1CreateProjectSigningKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1CreateProjectSigningKeyInput,
-    outputSchema: V1CreateProjectSigningKeyOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1CreateProjectSigningKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1CreateProjectSigningKeyInput,
+  outputSchema: V1CreateProjectSigningKeyOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

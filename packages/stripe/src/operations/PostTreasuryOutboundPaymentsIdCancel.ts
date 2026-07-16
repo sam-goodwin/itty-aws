@@ -8,7 +8,7 @@ export interface PostTreasuryOutboundPaymentsIdCancelInput {
   expand?: string[];
 }
 export const PostTreasuryOutboundPaymentsIdCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -375,7 +375,7 @@ export interface PostTreasuryOutboundPaymentsIdCancelOutput {
       };
 }
 export const PostTreasuryOutboundPaymentsIdCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     cancelable: Schema.Boolean,
     created: Schema.Number,
@@ -688,7 +688,7 @@ export const PostTreasuryOutboundPaymentsIdCancelOutput =
  * <p>Cancel an OutboundPayment.</p>
  */
 export const PostTreasuryOutboundPaymentsIdCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTreasuryOutboundPaymentsIdCancelInput,
     outputSchema: PostTreasuryOutboundPaymentsIdCancelOutput,
   }));

@@ -32,7 +32,7 @@ export interface PostTerminalReadersReaderCollectInputsInput {
   metadata?: Record<string, string>;
 }
 export const PostTerminalReadersReaderCollectInputsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     inputs: Schema.Array(
@@ -162,7 +162,7 @@ export interface PostTerminalReadersReaderCollectInputsOutput {
   status: "offline" | "online" | null;
 }
 export const PostTerminalReadersReaderCollectInputsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.Unknown,
     device_sw_version: Schema.NullOr(Schema.String),
     device_type: Schema.Literals([
@@ -250,7 +250,7 @@ export const PostTerminalReadersReaderCollectInputsOutput =
  * <p>Initiates an <a href="/docs/terminal/features/collect-inputs">input collection flow</a> on a Reader to display input forms and collect information from your customers.</p>
  */
 export const PostTerminalReadersReaderCollectInputs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTerminalReadersReaderCollectInputsInput,
     outputSchema: PostTerminalReadersReaderCollectInputsOutput,
   }));

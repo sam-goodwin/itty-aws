@@ -11,7 +11,7 @@ export interface RemoveGroupUserRoleInput {
   pretty?: boolean;
 }
 export const RemoveGroupUserRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     userId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const RemoveGroupUserRoleInput =
 // Output Schema
 export type RemoveGroupUserRoleOutput = void;
 export const RemoveGroupUserRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveGroupUserRoleOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveGroupUserRoleOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const RemoveGroupUserRoleOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param userId - Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by `username`.
  */
-export const removeGroupUserRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const removeGroupUserRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: RemoveGroupUserRoleInput,
   outputSchema: RemoveGroupUserRoleOutput,
   errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

@@ -15,7 +15,7 @@ export interface ListRolesInput {
   status?: string;
   q?: string;
 }
-export const ListRolesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRolesInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -88,7 +88,7 @@ export interface ListRolesOutput {
     };
   }>;
 }
-export const ListRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListRolesOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -166,7 +166,7 @@ export const ListRolesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param status - Filter roles by status
  * @param q - Search roles by name or username
  */
-export const listRoles = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+export const listRoles = /*@__PURE__*/ API.makePaginated(() => ({
   inputSchema: ListRolesInput,
   outputSchema: ListRolesOutput,
   errors: [Forbidden, NotFound] as const,

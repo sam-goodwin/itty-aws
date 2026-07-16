@@ -8,7 +8,7 @@ export interface UpdateEvmAccountInput {
   name?: string;
   accountPolicy?: string;
 }
-export const UpdateEvmAccountInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateEvmAccountInput = /*@__PURE__*/ Schema.Struct({
   address: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.String),
   accountPolicy: Schema.optional(Schema.String),
@@ -24,15 +24,13 @@ export interface UpdateEvmAccountOutput {
   createdAt?: string;
   updatedAt?: string;
 }
-export const UpdateEvmAccountOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    address: Schema.String,
-    name: Schema.optional(Schema.String),
-    policies: Schema.optional(Schema.Array(Schema.String)),
-    createdAt: Schema.optional(Schema.String),
-    updatedAt: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<UpdateEvmAccountOutput>;
+export const UpdateEvmAccountOutput = /*@__PURE__*/ Schema.Struct({
+  address: Schema.String,
+  name: Schema.optional(Schema.String),
+  policies: Schema.optional(Schema.Array(Schema.String)),
+  createdAt: Schema.optional(Schema.String),
+  updatedAt: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<UpdateEvmAccountOutput>;
 
 // The operation
 /**
@@ -46,7 +44,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param address - The 0x-prefixed address of the EVM account. The address does not need to be checksummed.
  */
-export const updateEvmAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateEvmAccount = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateEvmAccountInput,
   outputSchema: UpdateEvmAccountOutput,
 }));

@@ -12,7 +12,7 @@ export interface UpdateGroupClusterOnlineArchiveInput {
   pretty?: boolean;
 }
 export const UpdateGroupClusterOnlineArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     archiveId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const UpdateGroupClusterOnlineArchiveInput =
 // Output Schema
 export type UpdateGroupClusterOnlineArchiveOutput = void;
 export const UpdateGroupClusterOnlineArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterOnlineArchiveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterOnlineArchiveOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const UpdateGroupClusterOnlineArchiveOutput =
  * @param clusterName - Human-readable label that identifies the cluster that contains the specified collection from which Application created the online archive.
  */
 export const updateGroupClusterOnlineArchive =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateGroupClusterOnlineArchiveInput,
     outputSchema: UpdateGroupClusterOnlineArchiveOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

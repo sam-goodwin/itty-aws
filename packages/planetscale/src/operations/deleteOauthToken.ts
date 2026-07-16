@@ -9,7 +9,7 @@ export interface DeleteOauthTokenInput {
   application_id: string;
   token_id: string;
 }
-export const DeleteOauthTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteOauthTokenInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   application_id: Schema.String.pipe(T.PathParam()),
   token_id: Schema.String.pipe(T.PathParam()),
@@ -23,7 +23,7 @@ export const DeleteOauthTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteOauthTokenOutput = void;
 export const DeleteOauthTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOauthTokenOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteOauthTokenOutput>;
 
 // The operation
 /**
@@ -33,7 +33,7 @@ export const DeleteOauthTokenOutput =
  * @param application_id - The ID of the OAuth application
  * @param token_id - The ID of the OAuth application token
  */
-export const deleteOauthToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteOauthToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteOauthTokenInput,
   outputSchema: DeleteOauthTokenOutput,
   errors: [Forbidden, NotFound] as const,

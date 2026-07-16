@@ -8,7 +8,7 @@ export interface PostTestHelpersIssuingCardsCardShippingSubmitInput {
   expand?: string[];
 }
 export const PostTestHelpersIssuingCardsCardShippingSubmitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -1329,7 +1329,7 @@ export interface PostTestHelpersIssuingCardsCardShippingSubmitOutput {
   } | null;
 }
 export const PostTestHelpersIssuingCardsCardShippingSubmitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     brand: Schema.String,
     cancellation_reason: Schema.NullOr(
       Schema.Literals([
@@ -2615,7 +2615,7 @@ export const PostTestHelpersIssuingCardsCardShippingSubmitOutput =
  * <p>Updates the shipping status of the specified Issuing <code>Card</code> object to <code>submitted</code>. This method requires Stripe Version ‘2024-09-30.acacia’ or later.</p>
  */
 export const PostTestHelpersIssuingCardsCardShippingSubmit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersIssuingCardsCardShippingSubmitInput,
     outputSchema: PostTestHelpersIssuingCardsCardShippingSubmitOutput,
   }));

@@ -20,7 +20,7 @@ export interface PostTestHelpersTreasuryReceivedCreditsInput {
   network: "ach" | "us_domestic_wire";
 }
 export const PostTestHelpersTreasuryReceivedCreditsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     currency: Schema.String,
     description: Schema.optional(Schema.String),
@@ -202,7 +202,7 @@ export interface PostTestHelpersTreasuryReceivedCreditsOutput {
     | null;
 }
 export const PostTestHelpersTreasuryReceivedCreditsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     created: Schema.Number,
     currency: Schema.String,
@@ -388,7 +388,7 @@ export const PostTestHelpersTreasuryReceivedCreditsOutput =
  * <p>Use this endpoint to simulate a test mode ReceivedCredit initiated by a third party. In live mode, you can’t directly create ReceivedCredits initiated by third parties.</p>
  */
 export const PostTestHelpersTreasuryReceivedCredits =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersTreasuryReceivedCreditsInput,
     outputSchema: PostTestHelpersTreasuryReceivedCreditsOutput,
   }));

@@ -17,7 +17,7 @@ export interface SendNeonAuthTestEmailInput {
   recipient_email: string;
 }
 export const SendNeonAuthTestEmailInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     host: Schema.String,
@@ -40,7 +40,7 @@ export interface SendNeonAuthTestEmailOutput {
   error_message?: string;
 }
 export const SendNeonAuthTestEmailOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     success: Schema.Boolean,
     error_message: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<SendNeonAuthTestEmailOutput>;
@@ -56,9 +56,7 @@ export const SendNeonAuthTestEmailOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const sendNeonAuthTestEmail = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SendNeonAuthTestEmailInput,
-    outputSchema: SendNeonAuthTestEmailOutput,
-  }),
-);
+export const sendNeonAuthTestEmail = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SendNeonAuthTestEmailInput,
+  outputSchema: SendNeonAuthTestEmailOutput,
+}));

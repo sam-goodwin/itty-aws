@@ -14,7 +14,7 @@ export interface MarketplaceRegistrationDefinitionsGetInput {
   marketplaceIdentifier: string;
 }
 export const MarketplaceRegistrationDefinitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     marketplaceIdentifier: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -58,7 +58,7 @@ export interface MarketplaceRegistrationDefinitionsGetOutput {
   name?: string;
 }
 export const MarketplaceRegistrationDefinitionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         managedByTenantId: Schema.String,
@@ -122,7 +122,7 @@ export const MarketplaceRegistrationDefinitionsGetOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceRegistrationDefinitionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceRegistrationDefinitionsGetInput,
     outputSchema: MarketplaceRegistrationDefinitionsGetOutput,
   }));
@@ -132,7 +132,7 @@ export interface MarketplaceRegistrationDefinitionsListInput {
   $filter?: string;
 }
 export const MarketplaceRegistrationDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -184,7 +184,7 @@ export interface MarketplaceRegistrationDefinitionsListOutput {
   nextLink?: string;
 }
 export const MarketplaceRegistrationDefinitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -262,7 +262,7 @@ export const MarketplaceRegistrationDefinitionsListOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceRegistrationDefinitionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceRegistrationDefinitionsListInput,
     outputSchema: MarketplaceRegistrationDefinitionsListOutput,
   }));
@@ -271,7 +271,7 @@ export interface MarketplaceRegistrationDefinitionsWithoutScopeGetInput {
   marketplaceIdentifier: string;
 }
 export const MarketplaceRegistrationDefinitionsWithoutScopeGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     marketplaceIdentifier: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -314,7 +314,7 @@ export interface MarketplaceRegistrationDefinitionsWithoutScopeGetOutput {
   name?: string;
 }
 export const MarketplaceRegistrationDefinitionsWithoutScopeGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         managedByTenantId: Schema.String,
@@ -377,7 +377,7 @@ export const MarketplaceRegistrationDefinitionsWithoutScopeGetOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceRegistrationDefinitionsWithoutScopeGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceRegistrationDefinitionsWithoutScopeGetInput,
     outputSchema: MarketplaceRegistrationDefinitionsWithoutScopeGetOutput,
   }));
@@ -386,7 +386,7 @@ export interface MarketplaceRegistrationDefinitionsWithoutScopeListInput {
   $filter?: string;
 }
 export const MarketplaceRegistrationDefinitionsWithoutScopeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -437,7 +437,7 @@ export interface MarketplaceRegistrationDefinitionsWithoutScopeListOutput {
   nextLink?: string;
 }
 export const MarketplaceRegistrationDefinitionsWithoutScopeListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -514,15 +514,13 @@ export const MarketplaceRegistrationDefinitionsWithoutScopeListOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const MarketplaceRegistrationDefinitionsWithoutScopeList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MarketplaceRegistrationDefinitionsWithoutScopeListInput,
     outputSchema: MarketplaceRegistrationDefinitionsWithoutScopeListOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ManagedServices/operations",
@@ -542,7 +540,7 @@ export interface OperationsListOutput {
     };
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -566,7 +564,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -575,7 +573,7 @@ export interface OperationsWithScopeListInput {
   scope: string;
 }
 export const OperationsWithScopeListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -598,7 +596,7 @@ export interface OperationsWithScopeListOutput {
   }[];
 }
 export const OperationsWithScopeListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -623,12 +621,10 @@ export const OperationsWithScopeListOutput =
  * @param scope - The scope of the resource.
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsWithScopeList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OperationsWithScopeListInput,
-    outputSchema: OperationsWithScopeListOutput,
-  }),
-);
+export const OperationsWithScopeList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OperationsWithScopeListInput,
+  outputSchema: OperationsWithScopeListOutput,
+}));
 // Input Schema
 export interface RegistrationAssignmentsCreateOrUpdateInput {
   scope: string;
@@ -721,7 +717,7 @@ export interface RegistrationAssignmentsCreateOrUpdateInput {
   };
 }
 export const RegistrationAssignmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     registrationAssignmentId: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -967,7 +963,7 @@ export interface RegistrationAssignmentsCreateOrUpdateOutput {
   };
 }
 export const RegistrationAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         registrationDefinitionId: Schema.String,
@@ -1124,7 +1120,7 @@ export const RegistrationAssignmentsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const RegistrationAssignmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistrationAssignmentsCreateOrUpdateInput,
     outputSchema: RegistrationAssignmentsCreateOrUpdateOutput,
   }));
@@ -1134,7 +1130,7 @@ export interface RegistrationAssignmentsDeleteInput {
   registrationAssignmentId: string;
 }
 export const RegistrationAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     registrationAssignmentId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1148,7 +1144,7 @@ export const RegistrationAssignmentsDeleteInput =
 // Output Schema
 export type RegistrationAssignmentsDeleteOutput = void;
 export const RegistrationAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistrationAssignmentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistrationAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -1159,7 +1155,7 @@ export const RegistrationAssignmentsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const RegistrationAssignmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistrationAssignmentsDeleteInput,
     outputSchema: RegistrationAssignmentsDeleteOutput,
   }));
@@ -1170,7 +1166,7 @@ export interface RegistrationAssignmentsGetInput {
   $expandRegistrationDefinition?: boolean;
 }
 export const RegistrationAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     registrationAssignmentId: Schema.String.pipe(T.PathParam()),
     $expandRegistrationDefinition: Schema.optional(Schema.Boolean),
@@ -1272,7 +1268,7 @@ export interface RegistrationAssignmentsGetOutput {
   };
 }
 export const RegistrationAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         registrationDefinitionId: Schema.String,
@@ -1429,12 +1425,10 @@ export const RegistrationAssignmentsGetOutput =
  * @param $expandRegistrationDefinition - The flag indicating whether to return the registration definition details along with the registration assignment details.
  * @param api-version - The API version to use for this operation.
  */
-export const RegistrationAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistrationAssignmentsGetInput,
-    outputSchema: RegistrationAssignmentsGetOutput,
-  }),
-);
+export const RegistrationAssignmentsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistrationAssignmentsGetInput,
+  outputSchema: RegistrationAssignmentsGetOutput,
+}));
 // Input Schema
 export interface RegistrationAssignmentsListInput {
   scope: string;
@@ -1442,7 +1436,7 @@ export interface RegistrationAssignmentsListInput {
   $filter?: string;
 }
 export const RegistrationAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     $expandRegistrationDefinition: Schema.optional(Schema.Boolean),
     $filter: Schema.optional(Schema.String),
@@ -1551,7 +1545,7 @@ export interface RegistrationAssignmentsListOutput {
   nextLink?: string;
 }
 export const RegistrationAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1731,12 +1725,10 @@ export const RegistrationAssignmentsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param $filter - The filter query parameter to filter managed services resources by.
  */
-export const RegistrationAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistrationAssignmentsListInput,
-    outputSchema: RegistrationAssignmentsListOutput,
-  }),
-);
+export const RegistrationAssignmentsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistrationAssignmentsListInput,
+  outputSchema: RegistrationAssignmentsListOutput,
+}));
 // Input Schema
 export interface RegistrationDefinitionsCreateOrUpdateInput {
   registrationDefinitionId: string;
@@ -1795,7 +1787,7 @@ export interface RegistrationDefinitionsCreateOrUpdateInput {
   };
 }
 export const RegistrationDefinitionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     registrationDefinitionId: Schema.String.pipe(T.PathParam()),
     scope: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1946,7 +1938,7 @@ export interface RegistrationDefinitionsCreateOrUpdateOutput {
   };
 }
 export const RegistrationDefinitionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -2042,7 +2034,7 @@ export const RegistrationDefinitionsCreateOrUpdateOutput =
  * @param scope - The scope of the resource.
  */
 export const RegistrationDefinitionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistrationDefinitionsCreateOrUpdateInput,
     outputSchema: RegistrationDefinitionsCreateOrUpdateOutput,
   }));
@@ -2052,7 +2044,7 @@ export interface RegistrationDefinitionsDeleteInput {
   scope: string;
 }
 export const RegistrationDefinitionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     registrationDefinitionId: Schema.String.pipe(T.PathParam()),
     scope: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2066,7 +2058,7 @@ export const RegistrationDefinitionsDeleteInput =
 // Output Schema
 export type RegistrationDefinitionsDeleteOutput = void;
 export const RegistrationDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistrationDefinitionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RegistrationDefinitionsDeleteOutput>;
 
 // The operation
 /**
@@ -2077,7 +2069,7 @@ export const RegistrationDefinitionsDeleteOutput =
  * @param scope - The scope of the resource.
  */
 export const RegistrationDefinitionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RegistrationDefinitionsDeleteInput,
     outputSchema: RegistrationDefinitionsDeleteOutput,
   }));
@@ -2087,7 +2079,7 @@ export interface RegistrationDefinitionsGetInput {
   registrationDefinitionId: string;
 }
 export const RegistrationDefinitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     registrationDefinitionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2154,7 +2146,7 @@ export interface RegistrationDefinitionsGetOutput {
   };
 }
 export const RegistrationDefinitionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         description: Schema.optional(Schema.String),
@@ -2249,19 +2241,17 @@ export const RegistrationDefinitionsGetOutput =
  * @param registrationDefinitionId - The GUID of the registration definition.
  * @param api-version - The API version to use for this operation.
  */
-export const RegistrationDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistrationDefinitionsGetInput,
-    outputSchema: RegistrationDefinitionsGetOutput,
-  }),
-);
+export const RegistrationDefinitionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistrationDefinitionsGetInput,
+  outputSchema: RegistrationDefinitionsGetOutput,
+}));
 // Input Schema
 export interface RegistrationDefinitionsListInput {
   scope: string;
   $filter?: string;
 }
 export const RegistrationDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -2336,7 +2326,7 @@ export interface RegistrationDefinitionsListOutput {
   nextLink?: string;
 }
 export const RegistrationDefinitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2455,9 +2445,7 @@ export const RegistrationDefinitionsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param $filter - The filter query parameter to filter managed services resources by.
  */
-export const RegistrationDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RegistrationDefinitionsListInput,
-    outputSchema: RegistrationDefinitionsListOutput,
-  }),
-);
+export const RegistrationDefinitionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RegistrationDefinitionsListInput,
+  outputSchema: RegistrationDefinitionsListOutput,
+}));

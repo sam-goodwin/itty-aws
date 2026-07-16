@@ -9,7 +9,7 @@ export interface V1UpdateHostnameConfigInput {
   custom_hostname: string;
 }
 export const V1UpdateHostnameConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     custom_hostname: Schema.String,
   }).pipe(
@@ -48,7 +48,7 @@ export interface V1UpdateHostnameConfigOutput {
   };
 }
 export const V1UpdateHostnameConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.Literals([
       "1_not_started",
       "2_initiated",
@@ -98,10 +98,8 @@ export const V1UpdateHostnameConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1UpdateHostnameConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1UpdateHostnameConfigInput,
-    outputSchema: V1UpdateHostnameConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1UpdateHostnameConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdateHostnameConfigInput,
+  outputSchema: V1UpdateHostnameConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

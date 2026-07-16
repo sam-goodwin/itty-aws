@@ -14,7 +14,7 @@ export interface ListGroupClusterBackupExportsInput {
   pageNum?: number;
 }
 export const ListGroupClusterBackupExportsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const ListGroupClusterBackupExportsInput =
 // Output Schema
 export type ListGroupClusterBackupExportsOutput = void;
 export const ListGroupClusterBackupExportsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterBackupExportsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterBackupExportsOutput>;
 
 // The operation
 /**
@@ -51,7 +51,7 @@ export const ListGroupClusterBackupExportsOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  */
 export const listGroupClusterBackupExports =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupClusterBackupExportsInput,
     outputSchema: ListGroupClusterBackupExportsOutput,
     errors: [Forbidden, NotFound] as const,

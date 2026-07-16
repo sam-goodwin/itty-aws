@@ -10,7 +10,7 @@ export interface PinGroupClusterCollStatPinnedNamespacesInput {
   envelope?: boolean;
 }
 export const PinGroupClusterCollStatPinnedNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const PinGroupClusterCollStatPinnedNamespacesInput =
 // Output Schema
 export type PinGroupClusterCollStatPinnedNamespacesOutput = void;
 export const PinGroupClusterCollStatPinnedNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PinGroupClusterCollStatPinnedNamespacesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PinGroupClusterCollStatPinnedNamespacesOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const PinGroupClusterCollStatPinnedNamespacesOutput =
  * @param clusterName - Human-readable label that identifies the cluster to pin namespaces to.
  */
 export const pinGroupClusterCollStatPinnedNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PinGroupClusterCollStatPinnedNamespacesInput,
     outputSchema: PinGroupClusterCollStatPinnedNamespacesOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

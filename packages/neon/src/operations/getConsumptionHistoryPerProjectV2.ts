@@ -15,7 +15,7 @@ export interface GetConsumptionHistoryPerProjectV2Input {
   metrics: string;
 }
 export const GetConsumptionHistoryPerProjectV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     project_ids: Schema.optional(Schema.String),
@@ -47,7 +47,7 @@ export interface GetConsumptionHistoryPerProjectV2Output {
   pagination?: { cursor: string };
 }
 export const GetConsumptionHistoryPerProjectV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projects: Schema.Array(
       Schema.Struct({
         project_id: Schema.String,
@@ -152,7 +152,7 @@ Pass multiple values as repeated query parameters or a comma-separated list:
 
  */
 export const getConsumptionHistoryPerProjectV2 =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: GetConsumptionHistoryPerProjectV2Input,
     outputSchema: GetConsumptionHistoryPerProjectV2Output,
     errors: [Forbidden, NotFound] as const,

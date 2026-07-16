@@ -30,7 +30,7 @@ export interface Option {
 }
 
 export const Option: Schema.Codec<Option> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "Option" });
@@ -45,7 +45,7 @@ export interface EnumValue {
 }
 
 export const EnumValue: Schema.Codec<EnumValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     number: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     options: Schema.optional(Schema.Array(Option)),
@@ -57,7 +57,7 @@ export interface SourceContext {
 }
 
 export const SourceContext: Schema.Codec<SourceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileName: Schema.optional(Schema.String),
   }).annotate({ identifier: "SourceContext" });
 
@@ -81,7 +81,7 @@ export interface Enum {
 }
 
 export const Enum: Schema.Codec<Enum> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enumvalue: Schema.optional(Schema.Array(EnumValue)),
     sourceContext: Schema.optional(SourceContext),
     edition: Schema.optional(Schema.String),
@@ -100,7 +100,7 @@ export interface Page {
 }
 
 export const Page: Schema.Codec<Page> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.optional(Schema.String),
       content: Schema.optional(Schema.String),
@@ -120,7 +120,7 @@ export interface JwtLocation {
 }
 
 export const JwtLocation: Schema.Codec<JwtLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String),
     cookie: Schema.optional(Schema.String),
     header: Schema.optional(Schema.String),
@@ -143,7 +143,7 @@ export interface AuthProvider {
 }
 
 export const AuthProvider: Schema.Codec<AuthProvider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     authorizationUrl: Schema.optional(Schema.String),
     audiences: Schema.optional(Schema.String),
@@ -162,7 +162,7 @@ export interface FieldPolicy {
 }
 
 export const FieldPolicy: Schema.Codec<FieldPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourcePermission: Schema.optional(Schema.String),
     selector: Schema.optional(Schema.String),
     resourceType: Schema.optional(Schema.String),
@@ -176,7 +176,7 @@ export interface MethodPolicy {
 }
 
 export const MethodPolicy: Schema.Codec<MethodPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     requestPolicies: Schema.optional(Schema.Array(FieldPolicy)),
   }).annotate({ identifier: "MethodPolicy" });
@@ -189,7 +189,7 @@ export interface Control {
 }
 
 export const Control: Schema.Codec<Control> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     methodPolicies: Schema.optional(Schema.Array(MethodPolicy)),
     environment: Schema.optional(Schema.String),
   }).annotate({ identifier: "Control" });
@@ -208,7 +208,7 @@ export interface V1Beta1ServiceIdentity {
 }
 
 export const V1Beta1ServiceIdentity: Schema.Codec<V1Beta1ServiceIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
     tag: Schema.optional(Schema.String),
@@ -241,7 +241,7 @@ export interface BatchingSettingsProto {
 }
 
 export const BatchingSettingsProto: Schema.Codec<BatchingSettingsProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     elementCountThreshold: Schema.optional(Schema.Number),
     requestByteLimit: Schema.optional(Schema.Number),
     flowControlElementLimit: Schema.optional(Schema.Number),
@@ -268,7 +268,7 @@ export interface V1Beta1ProducerQuotaPolicy {
 }
 
 export const V1Beta1ProducerQuotaPolicy: Schema.Codec<V1Beta1ProducerQuotaPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metric: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     container: Schema.optional(Schema.String),
@@ -283,7 +283,7 @@ export interface V1Beta1PolicyInlineSource {
 }
 
 export const V1Beta1PolicyInlineSource: Schema.Codec<V1Beta1PolicyInlineSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policies: Schema.optional(Schema.Array(V1Beta1ProducerQuotaPolicy)),
   }).annotate({ identifier: "V1Beta1PolicyInlineSource" });
 
@@ -301,7 +301,7 @@ export interface V1Beta1ImportProducerQuotaPoliciesRequest {
 }
 
 export const V1Beta1ImportProducerQuotaPoliciesRequest: Schema.Codec<V1Beta1ImportProducerQuotaPoliciesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inlineSource: Schema.optional(V1Beta1PolicyInlineSource),
     force: Schema.optional(Schema.Boolean),
     validateOnly: Schema.optional(Schema.Boolean),
@@ -319,7 +319,7 @@ export interface LabelDescriptor {
 }
 
 export const LabelDescriptor: Schema.Codec<LabelDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     valueType: Schema.optional(Schema.String),
@@ -337,7 +337,7 @@ export interface LogDescriptor {
 }
 
 export const LogDescriptor: Schema.Codec<LogDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(LabelDescriptor)),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -354,7 +354,7 @@ export interface SystemParameter {
 }
 
 export const SystemParameter: Schema.Codec<SystemParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     httpHeader: Schema.optional(Schema.String),
     urlQueryParameter: Schema.optional(Schema.String),
@@ -368,7 +368,7 @@ export interface SystemParameterRule {
 }
 
 export const SystemParameterRule: Schema.Codec<SystemParameterRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     parameters: Schema.optional(Schema.Array(SystemParameter)),
   }).annotate({ identifier: "SystemParameterRule" });
@@ -379,7 +379,7 @@ export interface SystemParameters {
 }
 
 export const SystemParameters: Schema.Codec<SystemParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(SystemParameterRule)),
   }).annotate({ identifier: "SystemParameters" });
 
@@ -413,7 +413,7 @@ export interface BackendRule {
 }
 
 export const BackendRule: Schema.Codec<BackendRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       overridesByRequestProtocol: Schema.optional(
         Schema.Record(Schema.String, BackendRule),
@@ -437,7 +437,7 @@ export interface Backend {
 }
 
 export const Backend: Schema.Codec<Backend> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(BackendRule)),
   }).annotate({ identifier: "Backend" });
 
@@ -449,7 +449,7 @@ export interface AspectRule {
 }
 
 export const AspectRule: Schema.Codec<AspectRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     config: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "AspectRule" });
@@ -462,7 +462,7 @@ export interface MetricRule {
 }
 
 export const MetricRule: Schema.Codec<MetricRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     metricCosts: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "MetricRule" });
@@ -475,7 +475,7 @@ export interface CustomErrorRule {
 }
 
 export const CustomErrorRule: Schema.Codec<CustomErrorRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     isErrorType: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CustomErrorRule" });
@@ -488,7 +488,7 @@ export interface MonitoringDestination {
 }
 
 export const MonitoringDestination: Schema.Codec<MonitoringDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     monitoredResource: Schema.optional(Schema.String),
     metrics: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "MonitoringDestination" });
@@ -507,7 +507,7 @@ export interface V1beta1ServiceAccount {
 }
 
 export const V1beta1ServiceAccount: Schema.Codec<V1beta1ServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uniqueId: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
     tag: Schema.optional(Schema.String),
@@ -523,7 +523,7 @@ export interface AuthRequirement {
 }
 
 export const AuthRequirement: Schema.Codec<AuthRequirement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audiences: Schema.optional(Schema.String),
     providerId: Schema.optional(Schema.String),
   }).annotate({ identifier: "AuthRequirement" });
@@ -544,7 +544,7 @@ export interface V1Beta1QuotaOverride {
 }
 
 export const V1Beta1QuotaOverride: Schema.Codec<V1Beta1QuotaOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adminOverrideAncestor: Schema.optional(Schema.String),
     metric: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -559,7 +559,7 @@ export interface V1Beta1RolloutInfo {
 }
 
 export const V1Beta1RolloutInfo: Schema.Codec<V1Beta1RolloutInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultLimitOngoingRollout: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "V1Beta1RolloutInfo" });
 
@@ -583,7 +583,7 @@ export interface V1Beta1QuotaBucket {
 }
 
 export const V1Beta1QuotaBucket: Schema.Codec<V1Beta1QuotaBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     producerOverride: Schema.optional(V1Beta1QuotaOverride),
     producerQuotaPolicy: Schema.optional(V1Beta1ProducerQuotaPolicy),
     defaultLimit: Schema.optional(Schema.String),
@@ -610,7 +610,7 @@ export interface V1Beta1ConsumerQuotaLimit {
 }
 
 export const V1Beta1ConsumerQuotaLimit: Schema.Codec<V1Beta1ConsumerQuotaLimit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     supportedLocations: Schema.optional(Schema.Array(Schema.String)),
     metric: Schema.optional(Schema.String),
@@ -635,7 +635,7 @@ export interface V1Beta1ConsumerQuotaMetric {
 }
 
 export const V1Beta1ConsumerQuotaMetric: Schema.Codec<V1Beta1ConsumerQuotaMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consumerQuotaLimits: Schema.optional(
       Schema.Array(V1Beta1ConsumerQuotaLimit),
     ),
@@ -656,7 +656,7 @@ export interface V1Beta1ListConsumerQuotaMetricsResponse {
 }
 
 export const V1Beta1ListConsumerQuotaMetricsResponse: Schema.Codec<V1Beta1ListConsumerQuotaMetricsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(V1Beta1ConsumerQuotaMetric)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "V1Beta1ListConsumerQuotaMetricsResponse" });
@@ -710,7 +710,7 @@ export interface Field {
 }
 
 export const Field: Schema.Codec<Field> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     defaultValue: Schema.optional(Schema.String),
     typeUrl: Schema.optional(Schema.String),
@@ -731,7 +731,7 @@ export interface LoggingDestination {
 }
 
 export const LoggingDestination: Schema.Codec<LoggingDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     monitoredResource: Schema.optional(Schema.String),
     logs: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "LoggingDestination" });
@@ -744,7 +744,7 @@ export interface Logging {
 }
 
 export const Logging: Schema.Codec<Logging> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consumerDestinations: Schema.optional(Schema.Array(LoggingDestination)),
     producerDestinations: Schema.optional(Schema.Array(LoggingDestination)),
   }).annotate({ identifier: "Logging" });
@@ -752,7 +752,7 @@ export const Logging: Schema.Codec<Logging> =
 export interface V1Beta1RefreshConsumerResponse {}
 
 export const V1Beta1RefreshConsumerResponse: Schema.Codec<V1Beta1RefreshConsumerResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "V1Beta1RefreshConsumerResponse",
   });
 
@@ -762,7 +762,7 @@ export interface OAuthRequirements {
 }
 
 export const OAuthRequirements: Schema.Codec<OAuthRequirements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     canonicalScopes: Schema.optional(Schema.String),
   }).annotate({ identifier: "OAuthRequirements" });
 
@@ -778,7 +778,7 @@ export interface AuthenticationRule {
 }
 
 export const AuthenticationRule: Schema.Codec<AuthenticationRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oauth: Schema.optional(OAuthRequirements),
     selector: Schema.optional(Schema.String),
     allowWithoutCredential: Schema.optional(Schema.Boolean),
@@ -791,7 +791,7 @@ export interface V1Beta1GenerateServiceIdentityResponse {
 }
 
 export const V1Beta1GenerateServiceIdentityResponse: Schema.Codec<V1Beta1GenerateServiceIdentityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     identity: Schema.optional(V1Beta1ServiceIdentity),
   }).annotate({ identifier: "V1Beta1GenerateServiceIdentityResponse" });
 
@@ -801,7 +801,7 @@ export interface V1Beta1ImportProducerOverridesResponse {
 }
 
 export const V1Beta1ImportProducerOverridesResponse: Schema.Codec<V1Beta1ImportProducerOverridesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     overrides: Schema.optional(Schema.Array(V1Beta1QuotaOverride)),
   }).annotate({ identifier: "V1Beta1ImportProducerOverridesResponse" });
 
@@ -813,7 +813,7 @@ export interface SelectiveGapicGeneration {
 }
 
 export const SelectiveGapicGeneration: Schema.Codec<SelectiveGapicGeneration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     methods: Schema.optional(Schema.Array(Schema.String)),
     generateOmittedAsInternal: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "SelectiveGapicGeneration" });
@@ -833,7 +833,7 @@ export interface CommonLanguageSettings {
 }
 
 export const CommonLanguageSettings: Schema.Codec<CommonLanguageSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destinations: Schema.optional(Schema.Array(Schema.String)),
     selectiveGapicGeneration: Schema.optional(SelectiveGapicGeneration),
     referenceDocsUri: Schema.optional(Schema.String),
@@ -849,7 +849,7 @@ export interface ExperimentalFeatures {
 }
 
 export const ExperimentalFeatures: Schema.Codec<ExperimentalFeatures> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     protobufPythonicTypesEnabled: Schema.optional(Schema.Boolean),
     restAsyncIoEnabled: Schema.optional(Schema.Boolean),
     unversionedPackageDisabled: Schema.optional(Schema.Boolean),
@@ -863,7 +863,7 @@ export interface PythonSettings {
 }
 
 export const PythonSettings: Schema.Codec<PythonSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
     experimentalFeatures: Schema.optional(ExperimentalFeatures),
   }).annotate({ identifier: "PythonSettings" });
@@ -880,7 +880,7 @@ export interface DocumentationRule {
 }
 
 export const DocumentationRule: Schema.Codec<DocumentationRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     deprecationDescription: Schema.optional(Schema.String),
@@ -907,7 +907,7 @@ export interface Documentation {
 }
 
 export const Documentation: Schema.Codec<Documentation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     additionalIamInfo: Schema.optional(Schema.String),
     documentationRootUrl: Schema.optional(Schema.String),
     sectionOverrides: Schema.optional(Schema.Array(Page)),
@@ -930,7 +930,7 @@ export interface LongRunning {
 }
 
 export const LongRunning: Schema.Codec<LongRunning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxPollDelay: Schema.optional(Schema.String),
     totalPollTimeout: Schema.optional(Schema.String),
     initialPollDelay: Schema.optional(Schema.String),
@@ -947,7 +947,7 @@ export interface BatchingDescriptorProto {
 }
 
 export const BatchingDescriptorProto: Schema.Codec<BatchingDescriptorProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subresponseField: Schema.optional(Schema.String),
     discriminatorFields: Schema.optional(Schema.Array(Schema.String)),
     batchedField: Schema.optional(Schema.String),
@@ -961,7 +961,7 @@ export interface BatchingConfigProto {
 }
 
 export const BatchingConfigProto: Schema.Codec<BatchingConfigProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     thresholds: Schema.optional(BatchingSettingsProto),
     batchDescriptor: Schema.optional(BatchingDescriptorProto),
   }).annotate({ identifier: "BatchingConfigProto" });
@@ -978,7 +978,7 @@ export interface MethodSettings {
 }
 
 export const MethodSettings: Schema.Codec<MethodSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     longRunning: Schema.optional(LongRunning),
     autoPopulatedFields: Schema.optional(Schema.Array(Schema.String)),
     selector: Schema.optional(Schema.String),
@@ -995,7 +995,7 @@ export interface JavaSettings {
 }
 
 export const JavaSettings: Schema.Codec<JavaSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
     libraryPackage: Schema.optional(Schema.String),
     serviceClassNames: Schema.optional(
@@ -1009,7 +1009,7 @@ export interface NodeSettings {
 }
 
 export const NodeSettings: Schema.Codec<NodeSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
   }).annotate({ identifier: "NodeSettings" });
 
@@ -1019,7 +1019,7 @@ export interface RubySettings {
 }
 
 export const RubySettings: Schema.Codec<RubySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
   }).annotate({ identifier: "RubySettings" });
 
@@ -1029,7 +1029,7 @@ export interface CppSettings {
 }
 
 export const CppSettings: Schema.Codec<CppSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
   }).annotate({ identifier: "CppSettings" });
 
@@ -1049,7 +1049,7 @@ export interface DotnetSettings {
 }
 
 export const DotnetSettings: Schema.Codec<DotnetSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
     renamedResources: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -1070,7 +1070,7 @@ export interface PhpSettings {
 }
 
 export const PhpSettings: Schema.Codec<PhpSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
     libraryPackage: Schema.optional(Schema.String),
   }).annotate({ identifier: "PhpSettings" });
@@ -1083,7 +1083,7 @@ export interface GoSettings {
 }
 
 export const GoSettings: Schema.Codec<GoSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     common: Schema.optional(CommonLanguageSettings),
     renamedServices: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -1125,7 +1125,7 @@ export interface ClientLibrarySettings {
 }
 
 export const ClientLibrarySettings: Schema.Codec<ClientLibrarySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     javaSettings: Schema.optional(JavaSettings),
     restNumericEnums: Schema.optional(Schema.Boolean),
     version: Schema.optional(Schema.String),
@@ -1175,7 +1175,7 @@ export interface Publishing {
 }
 
 export const Publishing: Schema.Codec<Publishing> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     docTagPrefix: Schema.optional(Schema.String),
     protoReferenceDocumentationUri: Schema.optional(Schema.String),
     methodSettings: Schema.optional(Schema.Array(MethodSettings)),
@@ -1192,7 +1192,7 @@ export const Publishing: Schema.Codec<Publishing> =
 export interface V1Beta1DisableConsumerResponse {}
 
 export const V1Beta1DisableConsumerResponse: Schema.Codec<V1Beta1DisableConsumerResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "V1Beta1DisableConsumerResponse",
   });
 
@@ -1204,7 +1204,7 @@ export interface Mixin {
 }
 
 export const Mixin: Schema.Codec<Mixin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     root: Schema.optional(Schema.String),
   }).annotate({ identifier: "Mixin" });
@@ -1233,7 +1233,7 @@ export interface Method {
 }
 
 export const Method: Schema.Codec<Method> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestTypeUrl: Schema.optional(Schema.String),
     responseTypeUrl: Schema.optional(Schema.String),
     responseStreaming: Schema.optional(Schema.Boolean),
@@ -1267,18 +1267,16 @@ export interface Api {
   edition?: string;
 }
 
-export const Api: Schema.Codec<Api> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.optional(Schema.String),
-    options: Schema.optional(Schema.Array(Option)),
-    syntax: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.String),
-    mixins: Schema.optional(Schema.Array(Mixin)),
-    methods: Schema.optional(Schema.Array(Method)),
-    sourceContext: Schema.optional(SourceContext),
-    edition: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Api" });
+export const Api: Schema.Codec<Api> = /*@__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  options: Schema.optional(Schema.Array(Option)),
+  syntax: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  mixins: Schema.optional(Schema.Array(Mixin)),
+  methods: Schema.optional(Schema.Array(Method)),
+  sourceContext: Schema.optional(SourceContext),
+  edition: Schema.optional(Schema.String),
+}).annotate({ identifier: "Api" });
 
 export interface Aspect {
   /** Content of the configuration. The underlying schema should be defined by Aspect owners as protobuf message under `google/api/configaspects/proto`. */
@@ -1290,7 +1288,7 @@ export interface Aspect {
 }
 
 export const Aspect: Schema.Codec<Aspect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     kind: Schema.optional(Schema.String),
     rules: Schema.optional(Schema.Array(AspectRule)),
@@ -1302,7 +1300,7 @@ export interface V1beta1RemoveVisibilityLabelsResponse {
 }
 
 export const V1beta1RemoveVisibilityLabelsResponse: Schema.Codec<V1beta1RemoveVisibilityLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "V1beta1RemoveVisibilityLabelsResponse" });
 
@@ -1333,7 +1331,7 @@ export interface MetricDescriptorMetadata {
 }
 
 export const MetricDescriptorMetadata: Schema.Codec<MetricDescriptorMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     launchStage: Schema.optional(Schema.String),
     ingestDelay: Schema.optional(Schema.String),
     samplePeriod: Schema.optional(Schema.String),
@@ -1345,7 +1343,7 @@ export const MetricDescriptorMetadata: Schema.Codec<MetricDescriptorMetadata> =
 export interface V1Beta1EnableConsumerResponse {}
 
 export const V1Beta1EnableConsumerResponse: Schema.Codec<V1Beta1EnableConsumerResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "V1Beta1EnableConsumerResponse",
   });
 
@@ -1355,7 +1353,7 @@ export interface V1Beta1ImportProducerQuotaPoliciesResponse {
 }
 
 export const V1Beta1ImportProducerQuotaPoliciesResponse: Schema.Codec<V1Beta1ImportProducerQuotaPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policies: Schema.optional(Schema.Array(V1Beta1ProducerQuotaPolicy)),
   }).annotate({ identifier: "V1Beta1ImportProducerQuotaPoliciesResponse" });
 
@@ -1367,7 +1365,7 @@ export interface CustomError {
 }
 
 export const CustomError: Schema.Codec<CustomError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(CustomErrorRule)),
     types: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CustomError" });
@@ -1378,7 +1376,7 @@ export interface V1beta1GenerateServiceAccountResponse {
 }
 
 export const V1beta1GenerateServiceAccountResponse: Schema.Codec<V1beta1GenerateServiceAccountResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.optional(V1beta1ServiceAccount),
   }).annotate({ identifier: "V1beta1GenerateServiceAccountResponse" });
 
@@ -1407,7 +1405,7 @@ export interface MonitoredResourceDescriptor {
 }
 
 export const MonitoredResourceDescriptor: Schema.Codec<MonitoredResourceDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     launchStage: Schema.optional(Schema.String),
@@ -1438,7 +1436,7 @@ export interface Type {
 }
 
 export const Type: Schema.Codec<Type> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oneofs: Schema.optional(Schema.Array(Schema.String)),
     fields: Schema.optional(Schema.Array(Field)),
     sourceContext: Schema.optional(SourceContext),
@@ -1460,7 +1458,7 @@ export interface Endpoint {
 }
 
 export const Endpoint: Schema.Codec<Endpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     target: Schema.optional(Schema.String),
     aliases: Schema.optional(Schema.Array(Schema.String)),
@@ -1475,7 +1473,7 @@ export interface CustomHttpPattern {
 }
 
 export const CustomHttpPattern: Schema.Codec<CustomHttpPattern> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
   }).annotate({ identifier: "CustomHttpPattern" });
@@ -1483,7 +1481,7 @@ export const CustomHttpPattern: Schema.Codec<CustomHttpPattern> =
 export interface V1beta1EnableConsumerResponse {}
 
 export const V1beta1EnableConsumerResponse: Schema.Codec<V1beta1EnableConsumerResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "V1beta1EnableConsumerResponse",
   });
 
@@ -1499,7 +1497,7 @@ export interface V1beta1DefaultIdentity {
 }
 
 export const V1beta1DefaultIdentity: Schema.Codec<V1beta1DefaultIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     uniqueId: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
@@ -1522,7 +1520,7 @@ export interface V1beta1GenerateDefaultIdentityResponse {
 }
 
 export const V1beta1GenerateDefaultIdentityResponse: Schema.Codec<V1beta1GenerateDefaultIdentityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     attachStatus: Schema.optional(Schema.String),
     identity: Schema.optional(V1beta1DefaultIdentity),
@@ -1542,7 +1540,7 @@ export interface ContextRule {
 }
 
 export const ContextRule: Schema.Codec<ContextRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowedResponseExtensions: Schema.optional(Schema.Array(Schema.String)),
     selector: Schema.optional(Schema.String),
     provided: Schema.optional(Schema.Array(Schema.String)),
@@ -1556,7 +1554,7 @@ export interface Context {
 }
 
 export const Context: Schema.Codec<Context> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(ContextRule)),
   }).annotate({ identifier: "Context" });
 
@@ -1608,7 +1606,7 @@ export interface MetricDescriptor {
 }
 
 export const MetricDescriptor: Schema.Codec<MetricDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     metricKind: Schema.optional(Schema.String),
@@ -1630,7 +1628,7 @@ export interface Authentication {
 }
 
 export const Authentication: Schema.Codec<Authentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(AuthenticationRule)),
     providers: Schema.optional(Schema.Array(AuthProvider)),
   }).annotate({ identifier: "Authentication" });
@@ -1659,7 +1657,7 @@ export interface QuotaLimit {
 }
 
 export const QuotaLimit: Schema.Codec<QuotaLimit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultLimit: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -1680,7 +1678,7 @@ export interface Quota {
 }
 
 export const Quota: Schema.Codec<Quota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     limits: Schema.optional(Schema.Array(QuotaLimit)),
     metricRules: Schema.optional(Schema.Array(MetricRule)),
   }).annotate({ identifier: "Quota" });
@@ -1709,7 +1707,7 @@ export interface HttpRule {
 }
 
 export const HttpRule: Schema.Codec<HttpRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       delete: Schema.optional(Schema.String),
       responseBody: Schema.optional(Schema.String),
@@ -1732,7 +1730,7 @@ export interface Http {
 }
 
 export const Http: Schema.Codec<Http> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(HttpRule)),
     fullyDecodeReservedExpansion: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "Http" });
@@ -1747,7 +1745,7 @@ export interface UsageRule {
 }
 
 export const UsageRule: Schema.Codec<UsageRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selector: Schema.optional(Schema.String),
     allowUnregisteredCalls: Schema.optional(Schema.Boolean),
     skipServiceControl: Schema.optional(Schema.Boolean),
@@ -1763,7 +1761,7 @@ export interface Usage {
 }
 
 export const Usage: Schema.Codec<Usage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rules: Schema.optional(Schema.Array(UsageRule)),
     producerNotificationChannel: Schema.optional(Schema.String),
     requirements: Schema.optional(Schema.Array(Schema.String)),
@@ -1777,7 +1775,7 @@ export interface Monitoring {
 }
 
 export const Monitoring: Schema.Codec<Monitoring> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consumerDestinations: Schema.optional(Schema.Array(MonitoringDestination)),
     producerDestinations: Schema.optional(Schema.Array(MonitoringDestination)),
   }).annotate({ identifier: "Monitoring" });
@@ -1790,7 +1788,7 @@ export interface BillingDestination {
 }
 
 export const BillingDestination: Schema.Codec<BillingDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metrics: Schema.optional(Schema.Array(Schema.String)),
     monitoredResource: Schema.optional(Schema.String),
   }).annotate({ identifier: "BillingDestination" });
@@ -1801,7 +1799,7 @@ export interface Billing {
 }
 
 export const Billing: Schema.Codec<Billing> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consumerDestinations: Schema.optional(Schema.Array(BillingDestination)),
   }).annotate({ identifier: "Billing" });
 
@@ -1811,7 +1809,7 @@ export interface SourceInfo {
 }
 
 export const SourceInfo: Schema.Codec<SourceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceFiles: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -1879,7 +1877,7 @@ export interface Service {
 }
 
 export const Service: Schema.Codec<Service> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configVersion: Schema.optional(Schema.Number),
     id: Schema.optional(Schema.String),
     context: Schema.optional(Context),
@@ -1919,7 +1917,7 @@ export interface V1Beta1OverrideInlineSource {
 }
 
 export const V1Beta1OverrideInlineSource: Schema.Codec<V1Beta1OverrideInlineSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     overrides: Schema.optional(Schema.Array(V1Beta1QuotaOverride)),
   }).annotate({ identifier: "V1Beta1OverrideInlineSource" });
 
@@ -1933,7 +1931,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -1955,7 +1953,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     error: Schema.optional(Status),
@@ -1969,14 +1967,14 @@ export interface V1beta1AddVisibilityLabelsResponse {
 }
 
 export const V1beta1AddVisibilityLabelsResponse: Schema.Codec<V1beta1AddVisibilityLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "V1beta1AddVisibilityLabelsResponse" });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -1986,14 +1984,14 @@ export interface V1Beta1BatchCreateProducerOverridesResponse {
 }
 
 export const V1Beta1BatchCreateProducerOverridesResponse: Schema.Codec<V1Beta1BatchCreateProducerOverridesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     overrides: Schema.optional(Schema.Array(V1Beta1QuotaOverride)),
   }).annotate({ identifier: "V1Beta1BatchCreateProducerOverridesResponse" });
 
 export interface V1beta1DisableConsumerResponse {}
 
 export const V1beta1DisableConsumerResponse: Schema.Codec<V1beta1DisableConsumerResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "V1beta1DisableConsumerResponse",
   });
 
@@ -2005,7 +2003,7 @@ export interface V1Beta1ListProducerOverridesResponse {
 }
 
 export const V1Beta1ListProducerOverridesResponse: Schema.Codec<V1Beta1ListProducerOverridesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     overrides: Schema.optional(Schema.Array(V1Beta1QuotaOverride)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "V1Beta1ListProducerOverridesResponse" });
@@ -2018,7 +2016,7 @@ export interface V1Beta1ListProducerQuotaPoliciesResponse {
 }
 
 export const V1Beta1ListProducerQuotaPoliciesResponse: Schema.Codec<V1Beta1ListProducerQuotaPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     producerQuotaPolicies: Schema.optional(
       Schema.Array(V1Beta1ProducerQuotaPolicy),
     ),
@@ -2042,7 +2040,7 @@ export interface V1Beta1ImportProducerOverridesRequest {
 }
 
 export const V1Beta1ImportProducerOverridesRequest: Schema.Codec<V1Beta1ImportProducerOverridesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean),
     inlineSource: Schema.optional(V1Beta1OverrideInlineSource),
     forceJustification: Schema.optional(Schema.String),
@@ -2052,7 +2050,7 @@ export const V1Beta1ImportProducerOverridesRequest: Schema.Codec<V1Beta1ImportPr
 export interface V1beta1RefreshConsumerResponse {}
 
 export const V1beta1RefreshConsumerResponse: Schema.Codec<V1beta1RefreshConsumerResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "V1beta1RefreshConsumerResponse",
   });
 
@@ -2115,7 +2113,7 @@ export interface GetOperationsRequest {
   name: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -2123,7 +2121,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2133,7 +2131,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2151,7 +2149,7 @@ export interface ListServicesConsumerQuotaMetricsRequest {
 }
 
 export const ListServicesConsumerQuotaMetricsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2164,7 +2162,7 @@ export const ListServicesConsumerQuotaMetricsRequest =
 export type ListServicesConsumerQuotaMetricsResponse =
   V1Beta1ListConsumerQuotaMetricsResponse;
 export const ListServicesConsumerQuotaMetricsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ V1Beta1ListConsumerQuotaMetricsResponse;
+  /*@__PURE__*/ V1Beta1ListConsumerQuotaMetricsResponse;
 
 export type ListServicesConsumerQuotaMetricsError =
   | DefaultErrors
@@ -2177,7 +2175,7 @@ export const listServicesConsumerQuotaMetrics: API.PaginatedOperationMethod<
   ListServicesConsumerQuotaMetricsResponse,
   ListServicesConsumerQuotaMetricsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsRequest,
   output: ListServicesConsumerQuotaMetricsResponse,
   errors: [NotFound, Forbidden],
@@ -2195,7 +2193,7 @@ export interface GetServicesConsumerQuotaMetricsRequest {
 }
 
 export const GetServicesConsumerQuotaMetricsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
@@ -2206,7 +2204,7 @@ export const GetServicesConsumerQuotaMetricsRequest =
 export type GetServicesConsumerQuotaMetricsResponse =
   V1Beta1ConsumerQuotaMetric;
 export const GetServicesConsumerQuotaMetricsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ V1Beta1ConsumerQuotaMetric;
+  /*@__PURE__*/ V1Beta1ConsumerQuotaMetric;
 
 export type GetServicesConsumerQuotaMetricsError =
   | DefaultErrors
@@ -2219,7 +2217,7 @@ export const getServicesConsumerQuotaMetrics: API.OperationMethod<
   GetServicesConsumerQuotaMetricsResponse,
   GetServicesConsumerQuotaMetricsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServicesConsumerQuotaMetricsRequest,
   output: GetServicesConsumerQuotaMetricsResponse,
   errors: [NotFound, Forbidden],
@@ -2233,7 +2231,7 @@ export interface ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest 
 }
 
 export const ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(V1Beta1ImportProducerQuotaPoliciesRequest).pipe(
       T.HttpBody(),
@@ -2250,7 +2248,7 @@ export const ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest =
 export type ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsResponse =
   Operation;
 export const ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsError =
   | DefaultErrors
@@ -2265,7 +2263,7 @@ export const importProducerQuotaPoliciesServicesConsumerQuotaMetrics: API.Operat
   ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsResponse,
   ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest,
   output: ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2279,7 +2277,7 @@ export interface ImportProducerOverridesServicesConsumerQuotaMetricsRequest {
 }
 
 export const ImportProducerOverridesServicesConsumerQuotaMetricsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(V1Beta1ImportProducerOverridesRequest).pipe(
       T.HttpBody(),
@@ -2296,7 +2294,7 @@ export const ImportProducerOverridesServicesConsumerQuotaMetricsRequest =
 export type ImportProducerOverridesServicesConsumerQuotaMetricsResponse =
   Operation;
 export const ImportProducerOverridesServicesConsumerQuotaMetricsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type ImportProducerOverridesServicesConsumerQuotaMetricsError =
   | DefaultErrors
@@ -2311,7 +2309,7 @@ export const importProducerOverridesServicesConsumerQuotaMetrics: API.OperationM
   ImportProducerOverridesServicesConsumerQuotaMetricsResponse,
   ImportProducerOverridesServicesConsumerQuotaMetricsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportProducerOverridesServicesConsumerQuotaMetricsRequest,
   output: ImportProducerOverridesServicesConsumerQuotaMetricsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2325,7 +2323,7 @@ export interface GetServicesConsumerQuotaMetricsLimitsRequest {
 }
 
 export const GetServicesConsumerQuotaMetricsLimitsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
@@ -2336,7 +2334,7 @@ export const GetServicesConsumerQuotaMetricsLimitsRequest =
 export type GetServicesConsumerQuotaMetricsLimitsResponse =
   V1Beta1ConsumerQuotaLimit;
 export const GetServicesConsumerQuotaMetricsLimitsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ V1Beta1ConsumerQuotaLimit;
+  /*@__PURE__*/ V1Beta1ConsumerQuotaLimit;
 
 export type GetServicesConsumerQuotaMetricsLimitsError =
   | DefaultErrors
@@ -2349,7 +2347,7 @@ export const getServicesConsumerQuotaMetricsLimits: API.OperationMethod<
   GetServicesConsumerQuotaMetricsLimitsResponse,
   GetServicesConsumerQuotaMetricsLimitsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServicesConsumerQuotaMetricsLimitsRequest,
   output: GetServicesConsumerQuotaMetricsLimitsResponse,
   errors: [NotFound, Forbidden],
@@ -2373,7 +2371,7 @@ export interface CreateServicesConsumerQuotaMetricsLimitsProducerOverridesReques
 }
 
 export const CreateServicesConsumerQuotaMetricsLimitsProducerOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     forceOnly: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("forceOnly"),
@@ -2395,7 +2393,7 @@ export const CreateServicesConsumerQuotaMetricsLimitsProducerOverridesRequest =
 export type CreateServicesConsumerQuotaMetricsLimitsProducerOverridesResponse =
   Operation;
 export const CreateServicesConsumerQuotaMetricsLimitsProducerOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateServicesConsumerQuotaMetricsLimitsProducerOverridesError =
   | DefaultErrors
@@ -2410,7 +2408,7 @@ export const createServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Oper
   CreateServicesConsumerQuotaMetricsLimitsProducerOverridesResponse,
   CreateServicesConsumerQuotaMetricsLimitsProducerOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateServicesConsumerQuotaMetricsLimitsProducerOverridesRequest,
   output: CreateServicesConsumerQuotaMetricsLimitsProducerOverridesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2426,7 +2424,7 @@ export interface ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest 
 }
 
 export const ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2438,7 +2436,7 @@ export const ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest =
 export type ListServicesConsumerQuotaMetricsLimitsProducerOverridesResponse =
   V1Beta1ListProducerOverridesResponse;
 export const ListServicesConsumerQuotaMetricsLimitsProducerOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ V1Beta1ListProducerOverridesResponse;
+  /*@__PURE__*/ V1Beta1ListProducerOverridesResponse;
 
 export type ListServicesConsumerQuotaMetricsLimitsProducerOverridesError =
   | DefaultErrors
@@ -2451,7 +2449,7 @@ export const listServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Pagina
   ListServicesConsumerQuotaMetricsLimitsProducerOverridesResponse,
   ListServicesConsumerQuotaMetricsLimitsProducerOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest,
   output: ListServicesConsumerQuotaMetricsLimitsProducerOverridesResponse,
   errors: [NotFound, Forbidden],
@@ -2481,7 +2479,7 @@ export interface PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest
 }
 
 export const PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     forceOnly: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("forceOnly"),
@@ -2500,7 +2498,7 @@ export const PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest =
 export type PatchServicesConsumerQuotaMetricsLimitsProducerOverridesResponse =
   Operation;
 export const PatchServicesConsumerQuotaMetricsLimitsProducerOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchServicesConsumerQuotaMetricsLimitsProducerOverridesError =
   | DefaultErrors
@@ -2515,7 +2513,7 @@ export const patchServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Opera
   PatchServicesConsumerQuotaMetricsLimitsProducerOverridesResponse,
   PatchServicesConsumerQuotaMetricsLimitsProducerOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest,
   output: PatchServicesConsumerQuotaMetricsLimitsProducerOverridesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2537,7 +2535,7 @@ export interface DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesReques
 }
 
 export const DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     forceOnly: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("forceOnly"),
     ),
@@ -2554,7 +2552,7 @@ export const DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest =
 export type DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesResponse =
   Operation;
 export const DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesError =
   | DefaultErrors
@@ -2569,7 +2567,7 @@ export const deleteServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Oper
   DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesResponse,
   DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest,
   output: DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2591,7 +2589,7 @@ export interface PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesReq
 }
 
 export const PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
@@ -2610,7 +2608,7 @@ export const PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest
 export type PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse =
   Operation;
 export const PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError =
   | DefaultErrors
@@ -2625,7 +2623,7 @@ export const patchServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.O
   PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse,
   PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest,
   output: PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2643,7 +2641,7 @@ export interface DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRe
 }
 
 export const DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
@@ -2660,7 +2658,7 @@ export const DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesReques
 export type DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse =
   Operation;
 export const DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError =
   | DefaultErrors
@@ -2675,7 +2673,7 @@ export const deleteServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.
   DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse,
   DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest,
   output: DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2695,7 +2693,7 @@ export interface CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRe
 }
 
 export const CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
@@ -2717,7 +2715,7 @@ export const CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesReques
 export type CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse =
   Operation;
 export const CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError =
   | DefaultErrors
@@ -2732,7 +2730,7 @@ export const createServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.
   CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse,
   CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest,
   output: CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2748,7 +2746,7 @@ export interface ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequ
 }
 
 export const ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2760,7 +2758,7 @@ export const ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest 
 export type ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse =
   V1Beta1ListProducerQuotaPoliciesResponse;
 export const ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ V1Beta1ListProducerQuotaPoliciesResponse;
+  /*@__PURE__*/ V1Beta1ListProducerQuotaPoliciesResponse;
 
 export type ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError =
   | DefaultErrors
@@ -2773,7 +2771,7 @@ export const listServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.Pa
   ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse,
   ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest,
   output: ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse,
   errors: [NotFound, Forbidden],

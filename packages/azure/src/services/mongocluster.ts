@@ -29,7 +29,7 @@ export interface FirewallRulesCreateOrUpdateInput {
   };
 }
 export const FirewallRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -73,7 +73,7 @@ export interface FirewallRulesCreateOrUpdateOutput {
   };
 }
 export const FirewallRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -103,12 +103,10 @@ export const FirewallRulesCreateOrUpdateOutput =
  * @param mongoClusterName - The name of the mongo cluster.
  * @param firewallRuleName - The name of the mongo cluster firewall rule.
  */
-export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FirewallRulesCreateOrUpdateInput,
-    outputSchema: FirewallRulesCreateOrUpdateOutput,
-  }),
-);
+export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FirewallRulesCreateOrUpdateInput,
+  outputSchema: FirewallRulesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface FirewallRulesDeleteInput {
   subscriptionId: string;
@@ -117,7 +115,7 @@ export interface FirewallRulesDeleteInput {
   firewallRuleName: string;
 }
 export const FirewallRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -133,7 +131,7 @@ export const FirewallRulesDeleteInput =
 // Output Schema
 export type FirewallRulesDeleteOutput = void;
 export const FirewallRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FirewallRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FirewallRulesDeleteOutput>;
 
 // The operation
 /**
@@ -145,7 +143,7 @@ export const FirewallRulesDeleteOutput =
  * @param mongoClusterName - The name of the mongo cluster.
  * @param firewallRuleName - The name of the mongo cluster firewall rule.
  */
-export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesDeleteInput,
   outputSchema: FirewallRulesDeleteOutput,
 }));
@@ -156,7 +154,7 @@ export interface FirewallRulesGetInput {
   mongoClusterName: string;
   firewallRuleName: string;
 }
-export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FirewallRulesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -183,27 +181,25 @@ export interface FirewallRulesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<FirewallRulesGetOutput>;
+export const FirewallRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<FirewallRulesGetOutput>;
 
 // The operation
 /**
@@ -215,7 +211,7 @@ export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param mongoClusterName - The name of the mongo cluster.
  * @param firewallRuleName - The name of the mongo cluster firewall rule.
  */
-export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesGetInput,
   outputSchema: FirewallRulesGetOutput,
 }));
@@ -226,7 +222,7 @@ export interface FirewallRulesListByMongoClusterInput {
   mongoClusterName: string;
 }
 export const FirewallRulesListByMongoClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -256,7 +252,7 @@ export interface FirewallRulesListByMongoClusterOutput {
   nextLink?: string;
 }
 export const FirewallRulesListByMongoClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -301,7 +297,7 @@ export const FirewallRulesListByMongoClusterOutput =
  * @param mongoClusterName - The name of the mongo cluster.
  */
 export const FirewallRulesListByMongoCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FirewallRulesListByMongoClusterInput,
     outputSchema: FirewallRulesListByMongoClusterOutput,
   }));
@@ -313,7 +309,7 @@ export interface MongoClustersCheckNameAvailabilityInput {
   type?: string;
 }
 export const MongoClustersCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -333,7 +329,7 @@ export interface MongoClustersCheckNameAvailabilityOutput {
   message?: string;
 }
 export const MongoClustersCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -350,7 +346,7 @@ export const MongoClustersCheckNameAvailabilityOutput =
  * @param type - The resource type.
  */
 export const MongoClustersCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoClustersCheckNameAvailabilityInput,
     outputSchema: MongoClustersCheckNameAvailabilityOutput,
   }));
@@ -448,7 +444,7 @@ export interface MongoClustersCreateOrUpdateInput {
   location: string;
 }
 export const MongoClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -677,7 +673,7 @@ export interface MongoClustersCreateOrUpdateOutput {
   };
 }
 export const MongoClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -706,12 +702,10 @@ export const MongoClustersCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param mongoClusterName - The name of the mongo cluster.
  */
-export const MongoClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MongoClustersCreateOrUpdateInput,
-    outputSchema: MongoClustersCreateOrUpdateOutput,
-  }),
-);
+export const MongoClustersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MongoClustersCreateOrUpdateInput,
+  outputSchema: MongoClustersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface MongoClustersDeleteInput {
   subscriptionId: string;
@@ -719,7 +713,7 @@ export interface MongoClustersDeleteInput {
   mongoClusterName: string;
 }
 export const MongoClustersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -734,7 +728,7 @@ export const MongoClustersDeleteInput =
 // Output Schema
 export type MongoClustersDeleteOutput = void;
 export const MongoClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoClustersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoClustersDeleteOutput>;
 
 // The operation
 /**
@@ -745,7 +739,7 @@ export const MongoClustersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param mongoClusterName - The name of the mongo cluster.
  */
-export const MongoClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoClustersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: MongoClustersDeleteInput,
   outputSchema: MongoClustersDeleteOutput,
 }));
@@ -755,7 +749,7 @@ export interface MongoClustersGetInput {
   resourceGroupName: string;
   mongoClusterName: string;
 }
-export const MongoClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MongoClustersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -781,27 +775,25 @@ export interface MongoClustersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const MongoClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<MongoClustersGetOutput>;
+export const MongoClustersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<MongoClustersGetOutput>;
 
 // The operation
 /**
@@ -812,7 +804,7 @@ export const MongoClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param mongoClusterName - The name of the mongo cluster.
  */
-export const MongoClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: MongoClustersGetInput,
   outputSchema: MongoClustersGetOutput,
 }));
@@ -820,11 +812,9 @@ export const MongoClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface MongoClustersListInput {
   subscriptionId: string;
 }
-export const MongoClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const MongoClustersListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/mongoClusters",
@@ -850,7 +840,7 @@ export interface MongoClustersListOutput {
   nextLink?: string;
 }
 export const MongoClustersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -892,7 +882,7 @@ export const MongoClustersListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const MongoClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoClustersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MongoClustersListInput,
   outputSchema: MongoClustersListOutput,
 }));
@@ -902,7 +892,7 @@ export interface MongoClustersListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const MongoClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -931,7 +921,7 @@ export interface MongoClustersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const MongoClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -975,7 +965,7 @@ export const MongoClustersListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const MongoClustersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoClustersListByResourceGroupInput,
     outputSchema: MongoClustersListByResourceGroupOutput,
   }));
@@ -986,7 +976,7 @@ export interface MongoClustersListConnectionStringsInput {
   mongoClusterName: string;
 }
 export const MongoClustersListConnectionStringsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -1007,7 +997,7 @@ export interface MongoClustersListConnectionStringsOutput {
   }[];
 }
 export const MongoClustersListConnectionStringsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectionStrings: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1029,7 +1019,7 @@ export const MongoClustersListConnectionStringsOutput =
  * @param mongoClusterName - The name of the mongo cluster.
  */
 export const MongoClustersListConnectionStrings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MongoClustersListConnectionStringsInput,
     outputSchema: MongoClustersListConnectionStringsOutput,
   }));
@@ -1042,7 +1032,7 @@ export interface MongoClustersPromoteInput {
   mode?: "Switchover";
 }
 export const MongoClustersPromoteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -1059,7 +1049,7 @@ export const MongoClustersPromoteInput =
 // Output Schema
 export type MongoClustersPromoteOutput = void;
 export const MongoClustersPromoteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoClustersPromoteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MongoClustersPromoteOutput>;
 
 // The operation
 /**
@@ -1070,12 +1060,10 @@ export const MongoClustersPromoteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param mongoClusterName - The name of the mongo cluster.
  */
-export const MongoClustersPromote = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MongoClustersPromoteInput,
-    outputSchema: MongoClustersPromoteOutput,
-  }),
-);
+export const MongoClustersPromote = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MongoClustersPromoteInput,
+  outputSchema: MongoClustersPromoteOutput,
+}));
 // Input Schema
 export interface MongoClustersUpdateInput {
   subscriptionId: string;
@@ -1125,7 +1113,7 @@ export interface MongoClustersUpdateInput {
   };
 }
 export const MongoClustersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -1259,7 +1247,7 @@ export interface MongoClustersUpdateOutput {
   };
 }
 export const MongoClustersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1288,15 +1276,13 @@ export const MongoClustersUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param mongoClusterName - The name of the mongo cluster.
  */
-export const MongoClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MongoClustersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MongoClustersUpdateInput,
   outputSchema: MongoClustersUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DocumentDB/operations",
@@ -1320,7 +1306,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1350,7 +1336,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1372,7 +1358,7 @@ export interface PrivateEndpointConnectionsCreateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -1420,7 +1406,7 @@ export interface PrivateEndpointConnectionsCreateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1451,7 +1437,7 @@ export const PrivateEndpointConnectionsCreateOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateInput,
     outputSchema: PrivateEndpointConnectionsCreateOutput,
   }));
@@ -1463,7 +1449,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -1479,7 +1465,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1492,7 +1478,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -1504,7 +1490,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -1532,7 +1518,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1563,7 +1549,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -1574,7 +1560,7 @@ export interface PrivateEndpointConnectionsListByMongoClusterInput {
   mongoClusterName: string;
 }
 export const PrivateEndpointConnectionsListByMongoClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -1604,7 +1590,7 @@ export interface PrivateEndpointConnectionsListByMongoClusterOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListByMongoClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1649,7 +1635,7 @@ export const PrivateEndpointConnectionsListByMongoClusterOutput =
  * @param mongoClusterName - The name of the mongo cluster.
  */
 export const PrivateEndpointConnectionsListByMongoCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByMongoClusterInput,
     outputSchema: PrivateEndpointConnectionsListByMongoClusterOutput,
   }));
@@ -1660,7 +1646,7 @@ export interface PrivateLinksListByMongoClusterInput {
   mongoClusterName: string;
 }
 export const PrivateLinksListByMongoClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -1690,7 +1676,7 @@ export interface PrivateLinksListByMongoClusterOutput {
   nextLink?: string;
 }
 export const PrivateLinksListByMongoClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1735,7 +1721,7 @@ export const PrivateLinksListByMongoClusterOutput =
  * @param mongoClusterName - The name of the mongo cluster.
  */
 export const PrivateLinksListByMongoCluster =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinksListByMongoClusterInput,
     outputSchema: PrivateLinksListByMongoClusterOutput,
   }));
@@ -1746,7 +1732,7 @@ export interface ReplicasListByParentInput {
   mongoClusterName: string;
 }
 export const ReplicasListByParentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -1776,7 +1762,7 @@ export interface ReplicasListByParentOutput {
   nextLink?: string;
 }
 export const ReplicasListByParentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1820,12 +1806,10 @@ export const ReplicasListByParentOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param mongoClusterName - The name of the mongo cluster.
  */
-export const ReplicasListByParent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReplicasListByParentInput,
-    outputSchema: ReplicasListByParentOutput,
-  }),
-);
+export const ReplicasListByParent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReplicasListByParentInput,
+  outputSchema: ReplicasListByParentOutput,
+}));
 // Input Schema
 export interface UsersCreateOrUpdateInput {
   subscriptionId: string;
@@ -1845,7 +1829,7 @@ export interface UsersCreateOrUpdateInput {
   };
 }
 export const UsersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -1900,7 +1884,7 @@ export interface UsersCreateOrUpdateOutput {
   };
 }
 export const UsersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1930,7 +1914,7 @@ export const UsersCreateOrUpdateOutput =
  * @param mongoClusterName - The name of the mongo cluster.
  * @param userName - The name of the mongo cluster user.
  */
-export const UsersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersCreateOrUpdateInput,
   outputSchema: UsersCreateOrUpdateOutput,
 }));
@@ -1941,7 +1925,7 @@ export interface UsersDeleteInput {
   mongoClusterName: string;
   userName: string;
 }
-export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -1957,7 +1941,7 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type UsersDeleteOutput = void;
 export const UsersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersDeleteOutput>;
 
 // The operation
 /**
@@ -1969,7 +1953,7 @@ export const UsersDeleteOutput =
  * @param mongoClusterName - The name of the mongo cluster.
  * @param userName - The name of the mongo cluster user.
  */
-export const UsersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersDeleteInput,
   outputSchema: UsersDeleteOutput,
 }));
@@ -1980,7 +1964,7 @@ export interface UsersGetInput {
   mongoClusterName: string;
   userName: string;
 }
-export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -2007,7 +1991,7 @@ export interface UsersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2037,7 +2021,7 @@ export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param mongoClusterName - The name of the mongo cluster.
  * @param userName - The name of the mongo cluster user.
  */
-export const UsersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersGetInput,
   outputSchema: UsersGetOutput,
 }));
@@ -2048,7 +2032,7 @@ export interface UsersListByMongoClusterInput {
   mongoClusterName: string;
 }
 export const UsersListByMongoClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     mongoClusterName: Schema.String.pipe(T.PathParam()),
@@ -2078,7 +2062,7 @@ export interface UsersListByMongoClusterOutput {
   nextLink?: string;
 }
 export const UsersListByMongoClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2122,9 +2106,7 @@ export const UsersListByMongoClusterOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param mongoClusterName - The name of the mongo cluster.
  */
-export const UsersListByMongoCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsersListByMongoClusterInput,
-    outputSchema: UsersListByMongoClusterOutput,
-  }),
-);
+export const UsersListByMongoCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersListByMongoClusterInput,
+  outputSchema: UsersListByMongoClusterOutput,
+}));

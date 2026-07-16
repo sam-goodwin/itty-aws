@@ -10,7 +10,7 @@ export interface GetProjectBranchDatabaseInput {
   database_name: string;
 }
 export const GetProjectBranchDatabaseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     database_name: Schema.String.pipe(T.PathParam()),
@@ -33,7 +33,7 @@ export interface GetProjectBranchDatabaseOutput {
   };
 }
 export const GetProjectBranchDatabaseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     database: Schema.Struct({
       id: Schema.Number,
       branch_id: Schema.String,
@@ -55,10 +55,8 @@ export const GetProjectBranchDatabaseOutput =
  * @param branch_id - The branch ID
  * @param database_name - The database name
  */
-export const getProjectBranchDatabase = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetProjectBranchDatabaseInput,
-    outputSchema: GetProjectBranchDatabaseOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const getProjectBranchDatabase = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetProjectBranchDatabaseInput,
+  outputSchema: GetProjectBranchDatabaseOutput,
+  errors: [NotFound] as const,
+}));

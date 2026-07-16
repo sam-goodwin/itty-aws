@@ -19,7 +19,7 @@ export interface PostTransfersInput {
   source_type?: "bank_account" | "card" | "fpx";
   transfer_group?: string;
 }
-export const PostTransfersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTransfersInput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.optional(Schema.Number),
   currency: Schema.String,
   description: Schema.optional(Schema.String),
@@ -340,7 +340,7 @@ export interface PostTransfersOutput {
   source_type?: string;
   transfer_group: string | null;
 }
-export const PostTransfersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTransfersOutput = /*@__PURE__*/ Schema.Struct({
   amount: Schema.Number,
   amount_reversed: Schema.Number,
   balance_transaction: Schema.NullOr(
@@ -672,7 +672,7 @@ export const PostTransfersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>To send funds from your Stripe account to a connected account, you create a new transfer object. Your <a href="#balance">Stripe balance</a> must be able to cover the transfer amount, or you’ll receive an “Insufficient Funds” error.</p>
  */
-export const PostTransfers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTransfers = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostTransfersInput,
   outputSchema: PostTransfersOutput,
 }));

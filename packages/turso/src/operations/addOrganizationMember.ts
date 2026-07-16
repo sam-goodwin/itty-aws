@@ -10,7 +10,7 @@ export interface AddOrganizationMemberInput {
   role?: "admin" | "member" | "viewer";
 }
 export const AddOrganizationMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     username: Schema.optional(Schema.String),
     role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
@@ -27,7 +27,7 @@ export interface AddOrganizationMemberOutput {
   role?: "owner" | "admin" | "member" | "viewer";
 }
 export const AddOrganizationMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     member: Schema.optional(Schema.String),
     role: Schema.optional(
       Schema.Literals(["owner", "admin", "member", "viewer"]),
@@ -42,10 +42,8 @@ export const AddOrganizationMemberOutput =
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const addOrganizationMember = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AddOrganizationMemberInput,
-    outputSchema: AddOrganizationMemberOutput,
-    errors: [BadRequest, NotFound, Conflict] as const,
-  }),
-);
+export const addOrganizationMember = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AddOrganizationMemberInput,
+  outputSchema: AddOrganizationMemberOutput,
+  errors: [BadRequest, NotFound, Conflict] as const,
+}));

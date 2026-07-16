@@ -8,7 +8,7 @@ export interface MachinesStartInput {
   app_name: string;
   machine_id: string;
 }
-export const MachinesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MachinesStartInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   machine_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -21,7 +21,7 @@ export const MachinesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type MachinesStartOutput = void;
 export const MachinesStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MachinesStartOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const MachinesStartOutput =
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MachinesStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: MachinesStartInput,
   outputSchema: MachinesStartOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

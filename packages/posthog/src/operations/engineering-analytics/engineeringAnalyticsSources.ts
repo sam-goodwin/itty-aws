@@ -7,7 +7,7 @@ export interface EngineeringAnalyticsSourcesInput {
   project_id: string;
 }
 export const EngineeringAnalyticsSourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -23,7 +23,7 @@ export type EngineeringAnalyticsSourcesOutput = {
   prefix: string;
 }[];
 export const EngineeringAnalyticsSourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.String,
       repo: Schema.String,
@@ -37,9 +37,7 @@ export const EngineeringAnalyticsSourcesOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const engineeringAnalyticsSources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EngineeringAnalyticsSourcesInput,
-    outputSchema: EngineeringAnalyticsSourcesOutput,
-  }),
-);
+export const engineeringAnalyticsSources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EngineeringAnalyticsSourcesInput,
+  outputSchema: EngineeringAnalyticsSourcesOutput,
+}));

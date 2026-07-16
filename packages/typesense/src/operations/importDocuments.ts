@@ -8,7 +8,7 @@ export interface ImportDocumentsInput {
   collectionName: string;
   importDocumentsParameters?: string;
 }
-export const ImportDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImportDocumentsInput = /*@__PURE__*/ Schema.Struct({
   collectionName: Schema.String.pipe(T.PathParam()),
   importDocumentsParameters: Schema.optional(Schema.String),
 }).pipe(
@@ -21,7 +21,7 @@ export const ImportDocumentsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ImportDocumentsOutput = void;
 export const ImportDocumentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportDocumentsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ImportDocumentsOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const ImportDocumentsOutput =
  *
  * @param collectionName - The name of the collection
  */
-export const importDocuments = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const importDocuments = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImportDocumentsInput,
   outputSchema: ImportDocumentsOutput,
   errors: [BadRequest, NotFound] as const,

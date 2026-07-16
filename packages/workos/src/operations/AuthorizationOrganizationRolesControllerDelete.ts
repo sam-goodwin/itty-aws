@@ -9,7 +9,7 @@ export interface AuthorizationOrganizationRolesControllerDeleteInput {
   slug: string;
 }
 export const AuthorizationOrganizationRolesControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const AuthorizationOrganizationRolesControllerDeleteInput =
 // Output Schema
 export type AuthorizationOrganizationRolesControllerDeleteOutput = void;
 export const AuthorizationOrganizationRolesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationOrganizationRolesControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationOrganizationRolesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const AuthorizationOrganizationRolesControllerDeleteOutput =
  * @param slug - The slug of the role.
  */
 export const AuthorizationOrganizationRolesControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationOrganizationRolesControllerDeleteInput,
     outputSchema: AuthorizationOrganizationRolesControllerDeleteOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

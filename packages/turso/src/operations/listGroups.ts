@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface ListGroupsInput {
   organizationSlug: string;
 }
-export const ListGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupsInput = /*@__PURE__*/ Schema.Struct({
   organizationSlug: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -26,7 +26,7 @@ export interface ListGroupsOutput {
     delete_protection?: boolean;
   }[];
 }
-export const ListGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupsOutput = /*@__PURE__*/ Schema.Struct({
   groups: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -49,7 +49,7 @@ export const ListGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const listGroups = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroups = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupsInput,
   outputSchema: ListGroupsOutput,
 }));

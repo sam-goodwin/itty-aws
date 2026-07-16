@@ -32,7 +32,7 @@ export interface LinearBuckets {
 }
 
 export const LinearBuckets: Schema.Codec<LinearBuckets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     numFiniteBuckets: Schema.optional(Schema.Number),
     width: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -48,7 +48,7 @@ export interface ExponentialBuckets {
 }
 
 export const ExponentialBuckets: Schema.Codec<ExponentialBuckets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     numFiniteBuckets: Schema.optional(Schema.Number),
     growthFactor: Schema.optional(Schema.Number),
     scale: Schema.optional(Schema.Number),
@@ -60,7 +60,7 @@ export interface ExplicitBuckets {
 }
 
 export const ExplicitBuckets: Schema.Codec<ExplicitBuckets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bounds: Schema.optional(Schema.Array(Schema.Number)),
   }).annotate({ identifier: "ExplicitBuckets" });
 
@@ -74,7 +74,7 @@ export interface Exemplar {
 }
 
 export const Exemplar: Schema.Codec<Exemplar> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     timestamp: Schema.optional(Schema.String),
     attachments: Schema.optional(
@@ -106,7 +106,7 @@ export interface Distribution {
 }
 
 export const Distribution: Schema.Codec<Distribution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
     mean: Schema.optional(Schema.Number),
     minimum: Schema.optional(Schema.Number),
@@ -129,7 +129,7 @@ export interface Money {
 }
 
 export const Money: Schema.Codec<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     units: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
@@ -157,7 +157,7 @@ export interface MetricValue {
 }
 
 export const MetricValue: Schema.Codec<MetricValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     startTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -177,7 +177,7 @@ export interface MetricValueSet {
 }
 
 export const MetricValueSet: Schema.Codec<MetricValueSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metricName: Schema.optional(Schema.String),
     metricValues: Schema.optional(Schema.Array(MetricValue)),
   }).annotate({ identifier: "MetricValueSet" });
@@ -204,7 +204,7 @@ export interface QuotaOperation {
 }
 
 export const QuotaOperation: Schema.Codec<QuotaOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationId: Schema.optional(Schema.String),
     methodName: Schema.optional(Schema.String),
     consumerId: Schema.optional(Schema.String),
@@ -221,7 +221,7 @@ export interface AllocateQuotaRequest {
 }
 
 export const AllocateQuotaRequest: Schema.Codec<AllocateQuotaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allocateOperation: Schema.optional(QuotaOperation),
     serviceConfigId: Schema.optional(Schema.String),
   }).annotate({ identifier: "AllocateQuotaRequest" });
@@ -236,7 +236,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -271,7 +271,7 @@ export interface QuotaError {
 }
 
 export const QuotaError: Schema.Codec<QuotaError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     subject: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -284,7 +284,7 @@ export interface AllocateInfo {
 }
 
 export const AllocateInfo: Schema.Codec<AllocateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unusedArguments: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AllocateInfo" });
 
@@ -302,7 +302,7 @@ export interface AllocateQuotaResponse {
 }
 
 export const AllocateQuotaResponse: Schema.Codec<AllocateQuotaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationId: Schema.optional(Schema.String),
     allocateErrors: Schema.optional(Schema.Array(QuotaError)),
     quotaMetrics: Schema.optional(Schema.Array(MetricValueSet)),
@@ -344,7 +344,7 @@ export interface HttpRequest {
 }
 
 export const HttpRequest: Schema.Codec<HttpRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestMethod: Schema.optional(Schema.String),
     requestUrl: Schema.optional(Schema.String),
     requestSize: Schema.optional(Schema.String),
@@ -374,7 +374,7 @@ export interface LogEntryOperation {
 }
 
 export const LogEntryOperation: Schema.Codec<LogEntryOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     producer: Schema.optional(Schema.String),
     first: Schema.optional(Schema.Boolean),
@@ -391,7 +391,7 @@ export interface LogEntrySourceLocation {
 }
 
 export const LogEntrySourceLocation: Schema.Codec<LogEntrySourceLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     file: Schema.optional(Schema.String),
     line: Schema.optional(Schema.String),
     function: Schema.optional(Schema.String),
@@ -435,7 +435,7 @@ export interface LogEntry {
 }
 
 export const LogEntry: Schema.Codec<LogEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     timestamp: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -458,7 +458,7 @@ export interface QuotaProperties {
 }
 
 export const QuotaProperties: Schema.Codec<QuotaProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quotaMode: Schema.optional(Schema.String),
   }).annotate({ identifier: "QuotaProperties" });
 
@@ -474,7 +474,7 @@ export interface ResourceInfo {
 }
 
 export const ResourceInfo: Schema.Codec<ResourceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceContainer: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     resourceLocation: Schema.optional(Schema.String),
@@ -489,7 +489,7 @@ export interface TruncatableString {
 }
 
 export const TruncatableString: Schema.Codec<TruncatableString> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     truncatedByteCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "TruncatableString" });
@@ -504,7 +504,7 @@ export interface AttributeValue {
 }
 
 export const AttributeValue: Schema.Codec<AttributeValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stringValue: Schema.optional(TruncatableString),
     intValue: Schema.optional(Schema.String),
     boolValue: Schema.optional(Schema.Boolean),
@@ -518,7 +518,7 @@ export interface Attributes {
 }
 
 export const Attributes: Schema.Codec<Attributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attributeMap: Schema.optional(Schema.Record(Schema.String, AttributeValue)),
     droppedAttributesCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "Attributes" });
@@ -556,7 +556,7 @@ export interface TraceSpan {
 }
 
 export const TraceSpan: Schema.Codec<TraceSpan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     spanId: Schema.optional(Schema.String),
     parentSpanId: Schema.optional(Schema.String),
@@ -600,7 +600,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationId: Schema.optional(Schema.String),
     operationName: Schema.optional(Schema.String),
     consumerId: Schema.optional(Schema.String),
@@ -628,7 +628,7 @@ export interface CheckRequest {
 }
 
 export const CheckRequest: Schema.Codec<CheckRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(Operation),
     requestProjectSettings: Schema.optional(Schema.Boolean),
     serviceConfigId: Schema.optional(Schema.String),
@@ -685,7 +685,7 @@ export interface CheckError {
 }
 
 export const CheckError: Schema.Codec<CheckError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     subject: Schema.optional(Schema.String),
     detail: Schema.optional(Schema.String),
@@ -708,7 +708,7 @@ export interface QuotaInfo {
 }
 
 export const QuotaInfo: Schema.Codec<QuotaInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quotaConsumed: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
     limitExceeded: Schema.optional(Schema.Array(Schema.String)),
     quotaMetrics: Schema.optional(Schema.Array(MetricValueSet)),
@@ -731,7 +731,7 @@ export interface ConsumerInfo {
 }
 
 export const ConsumerInfo: Schema.Codec<ConsumerInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectNumber: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     consumerNumber: Schema.optional(Schema.String),
@@ -749,7 +749,7 @@ export interface CheckInfo {
 }
 
 export const CheckInfo: Schema.Codec<CheckInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unusedArguments: Schema.optional(Schema.Array(Schema.String)),
     consumerInfo: Schema.optional(ConsumerInfo),
     apiKeyUid: Schema.optional(Schema.String),
@@ -772,7 +772,7 @@ export interface CheckResponse {
 }
 
 export const CheckResponse: Schema.Codec<CheckResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationId: Schema.optional(Schema.String),
     checkErrors: Schema.optional(Schema.Array(CheckError)),
     quotaInfo: Schema.optional(QuotaInfo),
@@ -789,7 +789,7 @@ export interface ReportRequest {
 }
 
 export const ReportRequest: Schema.Codec<ReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     serviceConfigId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReportRequest" });
@@ -802,7 +802,7 @@ export interface ReportError {
 }
 
 export const ReportError: Schema.Codec<ReportError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operationId: Schema.optional(Schema.String),
     status: Schema.optional(Status),
   }).annotate({ identifier: "ReportError" });
@@ -817,7 +817,7 @@ export interface ReportResponse {
 }
 
 export const ReportResponse: Schema.Codec<ReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportErrors: Schema.optional(Schema.Array(ReportError)),
     serviceConfigId: Schema.optional(Schema.String),
     serviceRolloutId: Schema.optional(Schema.String),
@@ -831,7 +831,7 @@ export interface ResourceLocation {
 }
 
 export const ResourceLocation: Schema.Codec<ResourceLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentLocations: Schema.optional(Schema.Array(Schema.String)),
     originalLocations: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ResourceLocation" });
@@ -844,7 +844,7 @@ export interface FirstPartyPrincipal {
 }
 
 export const FirstPartyPrincipal: Schema.Codec<FirstPartyPrincipal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principalEmail: Schema.optional(Schema.String),
     serviceMetadata: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
@@ -857,7 +857,7 @@ export interface ThirdPartyPrincipal {
 }
 
 export const ThirdPartyPrincipal: Schema.Codec<ThirdPartyPrincipal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     thirdPartyClaims: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
@@ -873,7 +873,7 @@ export interface ServiceAccountDelegationInfo {
 }
 
 export const ServiceAccountDelegationInfo: Schema.Codec<ServiceAccountDelegationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principalSubject: Schema.optional(Schema.String),
     firstPartyPrincipal: Schema.optional(FirstPartyPrincipal),
     thirdPartyPrincipal: Schema.optional(ThirdPartyPrincipal),
@@ -889,7 +889,7 @@ export interface ServiceMetadata {
 }
 
 export const ServiceMetadata: Schema.Codec<ServiceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principalSubject: Schema.optional(Schema.String),
     serviceDomain: Schema.optional(Schema.String),
     jobMetadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -903,7 +903,7 @@ export interface ServiceDelegationHistory {
 }
 
 export const ServiceDelegationHistory: Schema.Codec<ServiceDelegationHistory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     originalPrincipal: Schema.optional(Schema.String),
     serviceMetadata: Schema.optional(Schema.Array(ServiceMetadata)),
   }).annotate({ identifier: "ServiceDelegationHistory" });
@@ -914,7 +914,7 @@ export interface OAuthInfo {
 }
 
 export const OAuthInfo: Schema.Codec<OAuthInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oauthClientId: Schema.optional(Schema.String),
   }).annotate({ identifier: "OAuthInfo" });
 
@@ -940,7 +940,7 @@ export interface AuthenticationInfo {
 }
 
 export const AuthenticationInfo: Schema.Codec<AuthenticationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principalEmail: Schema.optional(Schema.String),
     authoritySelector: Schema.optional(Schema.String),
     thirdPartyPrincipal: Schema.optional(
@@ -986,7 +986,7 @@ export interface Resource {
 }
 
 export const Resource: Schema.Codec<Resource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1021,7 +1021,7 @@ export interface AuthorizationInfo {
 }
 
 export const AuthorizationInfo: Schema.Codec<AuthorizationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.String),
     granted: Schema.optional(Schema.Boolean),
@@ -1048,7 +1048,7 @@ export interface ViolationInfo {
 }
 
 export const ViolationInfo: Schema.Codec<ViolationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     constraint: Schema.optional(Schema.String),
     errorMessage: Schema.optional(Schema.String),
     checkedValue: Schema.optional(Schema.String),
@@ -1070,7 +1070,7 @@ export interface OrgPolicyViolationInfo {
 }
 
 export const OrgPolicyViolationInfo: Schema.Codec<OrgPolicyViolationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     resourceType: Schema.optional(Schema.String),
     resourceTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1083,7 +1083,7 @@ export interface PolicyViolationInfo {
 }
 
 export const PolicyViolationInfo: Schema.Codec<PolicyViolationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgPolicyViolationInfo: Schema.optional(OrgPolicyViolationInfo),
   }).annotate({ identifier: "PolicyViolationInfo" });
 
@@ -1093,7 +1093,7 @@ export interface Oauth {
 }
 
 export const Oauth: Schema.Codec<Oauth> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientId: Schema.optional(Schema.String),
   }).annotate({ identifier: "Oauth" });
 
@@ -1115,7 +1115,7 @@ export interface Auth {
 }
 
 export const Auth: Schema.Codec<Auth> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     principal: Schema.optional(Schema.String),
     audiences: Schema.optional(Schema.Array(Schema.String)),
     presenter: Schema.optional(Schema.String),
@@ -1155,7 +1155,7 @@ export interface Request {
 }
 
 export const Request: Schema.Codec<Request> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     method: Schema.optional(Schema.String),
     headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1185,7 +1185,7 @@ export interface Peer {
 }
 
 export const Peer: Schema.Codec<Peer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ip: Schema.optional(Schema.String),
     port: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1207,7 +1207,7 @@ export interface RequestMetadata {
 }
 
 export const RequestMetadata: Schema.Codec<RequestMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     callerIp: Schema.optional(Schema.String),
     callerSuppliedUserAgent: Schema.optional(Schema.String),
     callerNetwork: Schema.optional(Schema.String),
@@ -1251,7 +1251,7 @@ export interface AuditLog {
 }
 
 export const AuditLog: Schema.Codec<AuditLog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersionIdentifier: Schema.optional(Schema.String),
     serviceName: Schema.optional(Schema.String),
     methodName: Schema.optional(Schema.String),
@@ -1278,7 +1278,7 @@ export interface SpanContext {
 }
 
 export const SpanContext: Schema.Codec<SpanContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     spanName: Schema.optional(Schema.String),
   }).annotate({ identifier: "SpanContext" });
 
@@ -1316,7 +1316,7 @@ export interface V1HttpRequest {
 }
 
 export const V1HttpRequest: Schema.Codec<V1HttpRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestMethod: Schema.optional(Schema.String),
     requestUrl: Schema.optional(Schema.String),
     requestSize: Schema.optional(Schema.String),
@@ -1346,7 +1346,7 @@ export interface V1LogEntryOperation {
 }
 
 export const V1LogEntryOperation: Schema.Codec<V1LogEntryOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     producer: Schema.optional(Schema.String),
     first: Schema.optional(Schema.Boolean),
@@ -1363,7 +1363,7 @@ export interface V1LogEntrySourceLocation {
 }
 
 export const V1LogEntrySourceLocation: Schema.Codec<V1LogEntrySourceLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     file: Schema.optional(Schema.String),
     line: Schema.optional(Schema.String),
     function: Schema.optional(Schema.String),
@@ -1409,7 +1409,7 @@ export interface V1LogEntry {
 }
 
 export const V1LogEntry: Schema.Codec<V1LogEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     timestamp: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -1453,7 +1453,7 @@ export interface V1ResourceEvent {
 }
 
 export const V1ResourceEvent: Schema.Codec<V1ResourceEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     type: Schema.optional(Schema.String),
     destinations: Schema.optional(Schema.String),
@@ -1525,7 +1525,7 @@ export interface AllocateQuotaServicesRequest {
 }
 
 export const AllocateQuotaServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.HttpPath("serviceName")),
     body: Schema.optional(AllocateQuotaRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1539,7 +1539,7 @@ export const AllocateQuotaServicesRequest =
 
 export type AllocateQuotaServicesResponse = AllocateQuotaResponse;
 export const AllocateQuotaServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AllocateQuotaResponse;
+  /*@__PURE__*/ AllocateQuotaResponse;
 
 export type AllocateQuotaServicesError =
   | DefaultErrors
@@ -1554,7 +1554,7 @@ export const allocateQuotaServices: API.OperationMethod<
   AllocateQuotaServicesResponse,
   AllocateQuotaServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AllocateQuotaServicesRequest,
   output: AllocateQuotaServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1567,7 +1567,7 @@ export interface CheckServicesRequest {
   body?: CheckRequest;
 }
 
-export const CheckServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CheckServicesRequest = /*@__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.HttpPath("serviceName")),
   body: Schema.optional(CheckRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -1580,7 +1580,7 @@ export const CheckServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CheckServicesRequest>;
 
 export type CheckServicesResponse = CheckResponse;
-export const CheckServicesResponse = /*@__PURE__*/ /*#__PURE__*/ CheckResponse;
+export const CheckServicesResponse = /*@__PURE__*/ CheckResponse;
 
 export type CheckServicesError =
   | DefaultErrors
@@ -1595,7 +1595,7 @@ export const checkServices: API.OperationMethod<
   CheckServicesResponse,
   CheckServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckServicesRequest,
   output: CheckServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1608,7 +1608,7 @@ export interface ReportServicesRequest {
   body?: ReportRequest;
 }
 
-export const ReportServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportServicesRequest = /*@__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.HttpPath("serviceName")),
   body: Schema.optional(ReportRequest).pipe(T.HttpBody()),
 }).pipe(
@@ -1621,8 +1621,7 @@ export const ReportServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ReportServicesRequest>;
 
 export type ReportServicesResponse = ReportResponse;
-export const ReportServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReportResponse;
+export const ReportServicesResponse = /*@__PURE__*/ ReportResponse;
 
 export type ReportServicesError =
   | DefaultErrors
@@ -1637,7 +1636,7 @@ export const reportServices: API.OperationMethod<
   ReportServicesResponse,
   ReportServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReportServicesRequest,
   output: ReportServicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

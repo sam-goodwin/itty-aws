@@ -10,7 +10,7 @@ export interface GetGroupAlertInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const GetGroupAlertInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupAlertInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   alertId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -25,7 +25,7 @@ export const GetGroupAlertInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetGroupAlertOutput = void;
 export const GetGroupAlertOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupAlertOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupAlertOutput>;
 
 // The operation
 /**
@@ -41,7 +41,7 @@ export const GetGroupAlertOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param alertId - Unique 24-hexadecimal digit string that identifies the alert.
  */
-export const getGroupAlert = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupAlert = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupAlertInput,
   outputSchema: GetGroupAlertOutput,
   errors: [Forbidden, NotFound] as const,

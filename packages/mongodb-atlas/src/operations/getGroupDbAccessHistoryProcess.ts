@@ -16,7 +16,7 @@ export interface GetGroupDbAccessHistoryProcessInput {
   start?: number;
 }
 export const GetGroupDbAccessHistoryProcessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     hostname: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -36,7 +36,7 @@ export const GetGroupDbAccessHistoryProcessInput =
 // Output Schema
 export type GetGroupDbAccessHistoryProcessOutput = void;
 export const GetGroupDbAccessHistoryProcessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupDbAccessHistoryProcessOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupDbAccessHistoryProcessOutput>;
 
 // The operation
 /**
@@ -57,7 +57,7 @@ export const GetGroupDbAccessHistoryProcessOutput =
  * @param start - Date and time when MongoDB Cloud begins retrieving database history. If you specify **start**, you must also specify **end**. This parameter uses UNIX epoch time in milliseconds.
  */
 export const getGroupDbAccessHistoryProcess =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupDbAccessHistoryProcessInput,
     outputSchema: GetGroupDbAccessHistoryProcessOutput,
     errors: [Forbidden, NotFound] as const,

@@ -52,7 +52,7 @@ export interface EventSchemasUpdateInput {
   updated_at?: string;
 }
 export const EventSchemasUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     event_definition: Schema.optional(Schema.String),
@@ -186,7 +186,7 @@ export interface EventSchemasUpdateOutput {
   updated_at?: string;
 }
 export const EventSchemasUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     event_definition: Schema.optional(Schema.String),
     property_group: Schema.optional(
@@ -272,7 +272,7 @@ export const EventSchemasUpdateOutput =
  * @param id - A UUID string identifying this event schema.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const eventSchemasUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const eventSchemasUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EventSchemasUpdateInput,
   outputSchema: EventSchemasUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

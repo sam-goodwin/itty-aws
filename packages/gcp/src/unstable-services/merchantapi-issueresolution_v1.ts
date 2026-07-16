@@ -30,7 +30,7 @@ export interface Region {
 }
 
 export const Region: Schema.Codec<Region> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Region" });
@@ -49,7 +49,7 @@ export interface TextWithTooltip {
 }
 
 export const TextWithTooltip: Schema.Codec<TextWithTooltip> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     simpleValue: Schema.optional(Schema.String),
     simpleTooltipValue: Schema.optional(Schema.String),
     tooltipIconStyle: Schema.optional(Schema.String),
@@ -65,7 +65,7 @@ export interface ChoiceInputOption {
 }
 
 export const ChoiceInputOption: Schema.Codec<ChoiceInputOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       label: Schema.optional(TextWithTooltip),
       id: Schema.optional(Schema.String),
@@ -81,7 +81,7 @@ export interface ChoiceInput {
 }
 
 export const ChoiceInput: Schema.Codec<ChoiceInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       options: Schema.optional(Schema.Array(ChoiceInputOption)),
     }),
@@ -103,7 +103,7 @@ export interface TextInput {
 }
 
 export const TextInput: Schema.Codec<TextInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     additionalInfo: Schema.optional(TextWithTooltip),
     formatInfo: Schema.optional(Schema.String),
@@ -113,7 +113,7 @@ export const TextInput: Schema.Codec<TextInput> =
 export interface CheckboxInput {}
 
 export const CheckboxInput: Schema.Codec<CheckboxInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CheckboxInput",
   });
 
@@ -133,7 +133,7 @@ export interface InputField {
 }
 
 export const InputField: Schema.Codec<InputField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       choiceInput: Schema.optional(ChoiceInput),
       required: Schema.optional(Schema.Boolean),
@@ -177,7 +177,7 @@ export interface ProductChange {
 }
 
 export const ProductChange: Schema.Codec<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regionCode: Schema.optional(Schema.String),
     newValue: Schema.optional(Schema.String),
     reportingContext: Schema.optional(Schema.String),
@@ -192,7 +192,7 @@ export interface Breakdown {
 }
 
 export const Breakdown: Schema.Codec<Breakdown> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regions: Schema.optional(Schema.Array(Region)),
     details: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Breakdown" });
@@ -212,7 +212,7 @@ export interface Impact {
 }
 
 export const Impact: Schema.Codec<Impact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
     breakdowns: Schema.optional(Schema.Array(Breakdown)),
@@ -224,7 +224,7 @@ export interface ChoiceInputValue {
 }
 
 export const ChoiceInputValue: Schema.Codec<ChoiceInputValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     choiceInputOptionId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ChoiceInputValue" });
 
@@ -254,7 +254,7 @@ export interface ProductStatusChangeMessage {
 }
 
 export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attribute: Schema.optional(Schema.String),
     account: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
@@ -272,7 +272,7 @@ export interface TextInputValue {
 }
 
 export const TextInputValue: Schema.Codec<TextInputValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "TextInputValue" });
 
@@ -289,7 +289,7 @@ export interface Callout {
 }
 
 export const Callout: Schema.Codec<Callout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     styleHint: Schema.optional(Schema.String),
     fullMessage: Schema.optional(TextWithTooltip),
   }).annotate({ identifier: "Callout" });
@@ -312,7 +312,7 @@ export interface ActionFlow {
 }
 
 export const ActionFlow: Schema.Codec<ActionFlow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputs: Schema.optional(Schema.Array(InputField)),
     dialogButtonLabel: Schema.optional(Schema.String),
     dialogMessage: Schema.optional(TextWithTooltip),
@@ -330,7 +330,7 @@ export interface BuiltInUserInputAction {
 }
 
 export const BuiltInUserInputAction: Schema.Codec<BuiltInUserInputAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flows: Schema.optional(Schema.Array(ActionFlow)),
     actionContext: Schema.optional(Schema.String),
   }).annotate({ identifier: "BuiltInUserInputAction" });
@@ -341,7 +341,7 @@ export interface CheckboxInputValue {
 }
 
 export const CheckboxInputValue: Schema.Codec<CheckboxInputValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CheckboxInputValue" });
 
@@ -357,7 +357,7 @@ export interface InputValue {
 }
 
 export const InputValue: Schema.Codec<InputValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textInputValue: Schema.optional(TextInputValue),
     checkboxInputValue: Schema.optional(CheckboxInputValue),
     choiceInputValue: Schema.optional(ChoiceInputValue),
@@ -372,7 +372,7 @@ export interface AdditionalContent {
 }
 
 export const AdditionalContent: Schema.Codec<AdditionalContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     paragraphs: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AdditionalContent" });
@@ -392,7 +392,7 @@ export interface RenderIssuesRequestPayload {
 }
 
 export const RenderIssuesRequestPayload: Schema.Codec<RenderIssuesRequestPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentOption: Schema.optional(Schema.String),
     userInputActionOption: Schema.optional(Schema.String),
   }).annotate({ identifier: "RenderIssuesRequestPayload" });
@@ -418,7 +418,7 @@ export interface BuiltInSimpleAction {
 }
 
 export const BuiltInSimpleAction: Schema.Codec<BuiltInSimpleAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     additionalContent: Schema.optional(AdditionalContent),
     attributeCode: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -434,7 +434,7 @@ export interface Reason {
 }
 
 export const Reason: Schema.Codec<Reason> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       message: Schema.optional(Schema.String),
       detail: Schema.optional(Schema.String),
@@ -457,7 +457,7 @@ export interface ExternalAction {
 }
 
 export const ExternalAction: Schema.Codec<ExternalAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
   }).annotate({ identifier: "ExternalAction" });
@@ -478,7 +478,7 @@ export interface Action {
 }
 
 export const Action: Schema.Codec<Action> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       isAvailable: Schema.optional(Schema.Boolean),
       builtinSimpleAction: Schema.optional(BuiltInSimpleAction),
@@ -503,7 +503,7 @@ export interface RenderedIssue {
 }
 
 export const RenderedIssue: Schema.Codec<RenderedIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     impact: Schema.optional(Impact),
     prerenderedContent: Schema.optional(Schema.String),
@@ -517,7 +517,7 @@ export interface RenderProductIssuesResponse {
 }
 
 export const RenderProductIssuesResponse: Schema.Codec<RenderProductIssuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     renderedIssues: Schema.optional(Schema.Array(RenderedIssue)),
   }).annotate({ identifier: "RenderProductIssuesResponse" });
 
@@ -533,7 +533,7 @@ export interface Stats {
 }
 
 export const Stats: Schema.Codec<Stats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activeCount: Schema.optional(Schema.String),
     pendingCount: Schema.optional(Schema.String),
     expiringCount: Schema.optional(Schema.String),
@@ -569,7 +569,7 @@ export interface ItemLevelIssue {
 }
 
 export const ItemLevelIssue: Schema.Codec<ItemLevelIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     documentationUri: Schema.optional(Schema.String),
     productCount: Schema.optional(Schema.String),
@@ -615,7 +615,7 @@ export interface AggregateProductStatus {
 }
 
 export const AggregateProductStatus: Schema.Codec<AggregateProductStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stats: Schema.optional(Stats),
     itemLevelIssues: Schema.optional(Schema.Array(ItemLevelIssue)),
     country: Schema.optional(Schema.String),
@@ -631,7 +631,7 @@ export interface ListAggregateProductStatusesResponse {
 }
 
 export const ListAggregateProductStatusesResponse: Schema.Codec<ListAggregateProductStatusesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aggregateProductStatuses: Schema.optional(
       Schema.Array(AggregateProductStatus),
     ),
@@ -646,7 +646,7 @@ export interface ActionInput {
 }
 
 export const ActionInput: Schema.Codec<ActionInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputValues: Schema.optional(Schema.Array(InputValue)),
     actionFlowId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ActionInput" });
@@ -659,7 +659,7 @@ export interface TriggerActionPayload {
 }
 
 export const TriggerActionPayload: Schema.Codec<TriggerActionPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     actionInput: Schema.optional(ActionInput),
     actionContext: Schema.optional(Schema.String),
   }).annotate({ identifier: "TriggerActionPayload" });
@@ -670,7 +670,7 @@ export interface RenderAccountIssuesResponse {
 }
 
 export const RenderAccountIssuesResponse: Schema.Codec<RenderAccountIssuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     renderedIssues: Schema.optional(Schema.Array(RenderedIssue)),
   }).annotate({ identifier: "RenderAccountIssuesResponse" });
 
@@ -680,7 +680,7 @@ export interface TriggerActionResponse {
 }
 
 export const TriggerActionResponse: Schema.Codec<TriggerActionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
   }).annotate({ identifier: "TriggerActionResponse" });
 
@@ -750,7 +750,7 @@ export interface ListAccountsAggregateProductStatusesRequest {
 }
 
 export const ListAccountsAggregateProductStatusesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -766,7 +766,7 @@ export const ListAccountsAggregateProductStatusesRequest =
 export type ListAccountsAggregateProductStatusesResponse =
   ListAggregateProductStatusesResponse;
 export const ListAccountsAggregateProductStatusesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAggregateProductStatusesResponse;
+  /*@__PURE__*/ ListAggregateProductStatusesResponse;
 
 export type ListAccountsAggregateProductStatusesError =
   | DefaultErrors
@@ -779,7 +779,7 @@ export const listAccountsAggregateProductStatuses: API.PaginatedOperationMethod<
   ListAccountsAggregateProductStatusesResponse,
   ListAccountsAggregateProductStatusesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAggregateProductStatusesRequest,
   output: ListAccountsAggregateProductStatusesResponse,
   errors: [NotFound, Forbidden],
@@ -799,7 +799,7 @@ export interface TriggeractionIssueresolutionRequest {
 }
 
 export const TriggeractionIssueresolutionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -816,7 +816,7 @@ export const TriggeractionIssueresolutionRequest =
 
 export type TriggeractionIssueresolutionResponse = TriggerActionResponse;
 export const TriggeractionIssueresolutionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TriggerActionResponse;
+  /*@__PURE__*/ TriggerActionResponse;
 
 export type TriggeractionIssueresolutionError =
   | DefaultErrors
@@ -831,7 +831,7 @@ export const triggeractionIssueresolution: API.OperationMethod<
   TriggeractionIssueresolutionResponse,
   TriggeractionIssueresolutionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TriggeractionIssueresolutionRequest,
   output: TriggeractionIssueresolutionResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -849,7 +849,7 @@ export interface RenderaccountissuesIssueresolutionRequest {
 }
 
 export const RenderaccountissuesIssueresolutionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
     ),
@@ -868,7 +868,7 @@ export const RenderaccountissuesIssueresolutionRequest =
 export type RenderaccountissuesIssueresolutionResponse =
   RenderAccountIssuesResponse;
 export const RenderaccountissuesIssueresolutionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RenderAccountIssuesResponse;
+  /*@__PURE__*/ RenderAccountIssuesResponse;
 
 export type RenderaccountissuesIssueresolutionError =
   | DefaultErrors
@@ -883,7 +883,7 @@ export const renderaccountissuesIssueresolution: API.OperationMethod<
   RenderaccountissuesIssueresolutionResponse,
   RenderaccountissuesIssueresolutionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RenderaccountissuesIssueresolutionRequest,
   output: RenderaccountissuesIssueresolutionResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -901,7 +901,7 @@ export interface RenderproductissuesIssueresolutionRequest {
 }
 
 export const RenderproductissuesIssueresolutionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
     ),
@@ -920,7 +920,7 @@ export const RenderproductissuesIssueresolutionRequest =
 export type RenderproductissuesIssueresolutionResponse =
   RenderProductIssuesResponse;
 export const RenderproductissuesIssueresolutionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RenderProductIssuesResponse;
+  /*@__PURE__*/ RenderProductIssuesResponse;
 
 export type RenderproductissuesIssueresolutionError =
   | DefaultErrors
@@ -935,7 +935,7 @@ export const renderproductissuesIssueresolution: API.OperationMethod<
   RenderproductissuesIssueresolutionResponse,
   RenderproductissuesIssueresolutionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RenderproductissuesIssueresolutionRequest,
   output: RenderproductissuesIssueresolutionResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

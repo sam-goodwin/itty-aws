@@ -10,7 +10,7 @@ export interface GetGroupManagedSlowMsInput {
   pretty?: boolean;
 }
 export const GetGroupManagedSlowMsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const GetGroupManagedSlowMsInput =
 // Output Schema
 export type GetGroupManagedSlowMsOutput = void;
 export const GetGroupManagedSlowMsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupManagedSlowMsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupManagedSlowMsOutput>;
 
 // The operation
 /**
@@ -38,10 +38,8 @@ export const GetGroupManagedSlowMsOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const getGroupManagedSlowMs = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupManagedSlowMsInput,
-    outputSchema: GetGroupManagedSlowMsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupManagedSlowMs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupManagedSlowMsInput,
+  outputSchema: GetGroupManagedSlowMsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -11,7 +11,7 @@ export interface AuthorizeGroupCloudProviderAccessRoleInput {
   pretty?: boolean;
 }
 export const AuthorizeGroupCloudProviderAccessRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     roleId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const AuthorizeGroupCloudProviderAccessRoleInput =
 // Output Schema
 export type AuthorizeGroupCloudProviderAccessRoleOutput = void;
 export const AuthorizeGroupCloudProviderAccessRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizeGroupCloudProviderAccessRoleOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizeGroupCloudProviderAccessRoleOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const AuthorizeGroupCloudProviderAccessRoleOutput =
  * @param roleId - Unique 24-hexadecimal digit string that identifies the role.
  */
 export const authorizeGroupCloudProviderAccessRole =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizeGroupCloudProviderAccessRoleInput,
     outputSchema: AuthorizeGroupCloudProviderAccessRoleOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

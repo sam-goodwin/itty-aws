@@ -7,7 +7,7 @@ export interface GetAvailablePreloadLibrariesInput {
   project_id: string;
 }
 export const GetAvailablePreloadLibrariesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -27,7 +27,7 @@ export interface GetAvailablePreloadLibrariesOutput {
   }[];
 }
 export const GetAvailablePreloadLibrariesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     libraries: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -52,7 +52,7 @@ export const GetAvailablePreloadLibrariesOutput =
  * `settings.preload_libraries` configuration.
  */
 export const getAvailablePreloadLibraries =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAvailablePreloadLibrariesInput,
     outputSchema: GetAvailablePreloadLibrariesOutput,
   }));

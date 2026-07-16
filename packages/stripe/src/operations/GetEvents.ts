@@ -13,7 +13,7 @@ export interface GetEventsInput {
   type?: string;
   types?: string;
 }
-export const GetEventsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEventsInput = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.String),
   delivery_success: Schema.optional(Schema.Boolean),
   ending_before: Schema.optional(Schema.String),
@@ -305,7 +305,7 @@ export interface GetEventsOutput {
   object: "list";
   url: string;
 }
-export const GetEventsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetEventsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       account: Schema.optional(Schema.String),
@@ -610,7 +610,7 @@ export const GetEventsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param type - A string containing a specific event name, or group of events using * as a wildcard. The list will be filtered to include only events with a matching event property.
  * @param types - An array of up to 20 strings containing specific event names. The list will be filtered to include only events with a matching event property. You may pass either `type` or `types`, but not both.
  */
-export const GetEvents = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetEvents = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetEventsInput,
   outputSchema: GetEventsOutput,
 }));

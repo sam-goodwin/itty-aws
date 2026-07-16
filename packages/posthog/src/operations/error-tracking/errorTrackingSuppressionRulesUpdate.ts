@@ -10,7 +10,7 @@ export interface ErrorTrackingSuppressionRulesUpdateInput {
   sampling_rate?: number;
 }
 export const ErrorTrackingSuppressionRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     filters: Schema.optional(
@@ -30,7 +30,7 @@ export const ErrorTrackingSuppressionRulesUpdateInput =
 // Output Schema
 export type ErrorTrackingSuppressionRulesUpdateOutput = void;
 export const ErrorTrackingSuppressionRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSuppressionRulesUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingSuppressionRulesUpdateOutput>;
 
 // The operation
 /**
@@ -38,7 +38,7 @@ export const ErrorTrackingSuppressionRulesUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingSuppressionRulesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingSuppressionRulesUpdateInput,
     outputSchema: ErrorTrackingSuppressionRulesUpdateOutput,
   }));

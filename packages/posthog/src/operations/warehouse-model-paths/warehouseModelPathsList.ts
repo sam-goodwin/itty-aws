@@ -9,7 +9,7 @@ export interface WarehouseModelPathsListInput {
   offset?: number;
 }
 export const WarehouseModelPathsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -57,7 +57,7 @@ export interface WarehouseModelPathsListOutput {
   }[];
 }
 export const WarehouseModelPathsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.Number,
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -110,9 +110,7 @@ export const WarehouseModelPathsListOutput =
  * @param offset - The initial index from which to return the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const warehouseModelPathsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WarehouseModelPathsListInput,
-    outputSchema: WarehouseModelPathsListOutput,
-  }),
-);
+export const warehouseModelPathsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WarehouseModelPathsListInput,
+  outputSchema: WarehouseModelPathsListOutput,
+}));

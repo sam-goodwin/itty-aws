@@ -18,7 +18,7 @@ export interface GetCreditNotesInput {
   limit?: number;
   starting_after?: string;
 }
-export const GetCreditNotesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCreditNotesInput = /*@__PURE__*/ Schema.Struct({
   created: Schema.optional(Schema.String),
   customer: Schema.optional(Schema.String),
   customer_account: Schema.optional(Schema.String),
@@ -1027,7 +1027,7 @@ export interface GetCreditNotesOutput {
   object: "list";
   url: string;
 }
-export const GetCreditNotesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetCreditNotesOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       amount: Schema.Number,
@@ -2070,7 +2070,7 @@ export const GetCreditNotesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param limit - A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetCreditNotes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetCreditNotes = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetCreditNotesInput,
   outputSchema: GetCreditNotesOutput,
 }));

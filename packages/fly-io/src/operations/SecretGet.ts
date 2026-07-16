@@ -10,7 +10,7 @@ export interface SecretGetInput {
   min_version?: string;
   show_secrets?: boolean;
 }
-export const SecretGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretGetInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
   min_version: Schema.optional(Schema.String),
@@ -27,7 +27,7 @@ export interface SecretGetOutput {
   updated_at?: string;
   value?: string;
 }
-export const SecretGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretGetOutput = /*@__PURE__*/ Schema.Struct({
   created_at: Schema.optional(Schema.String),
   digest: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
@@ -44,7 +44,7 @@ export const SecretGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param min_version - Minimum secrets version to return. Returned when setting a new secret
  * @param show_secrets - Show the secret value.
  */
-export const SecretGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretGetInput,
   outputSchema: SecretGetOutput,
   errors: [Forbidden, NotFound] as const,

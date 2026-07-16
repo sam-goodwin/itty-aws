@@ -8,7 +8,7 @@ export interface GetIssuingCardsCardInput {
   expand?: string;
 }
 export const GetIssuingCardsCardInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -1329,7 +1329,7 @@ export interface GetIssuingCardsCardOutput {
   } | null;
 }
 export const GetIssuingCardsCardOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     brand: Schema.String,
     cancellation_reason: Schema.NullOr(
       Schema.Literals([
@@ -2616,7 +2616,7 @@ export const GetIssuingCardsCardOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetIssuingCardsCard = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetIssuingCardsCard = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetIssuingCardsCardInput,
   outputSchema: GetIssuingCardsCardOutput,
 }));

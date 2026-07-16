@@ -46,7 +46,7 @@ export interface CreateRoleInput {
     }
   >;
 }
-export const CreateRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateRoleInput = /*@__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.optional(
     Schema.Record(
       Schema.String,
@@ -177,7 +177,7 @@ export interface CreateRoleOutput {
   >;
   id: string;
 }
-export const CreateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateRoleOutput = /*@__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.optional(
     Schema.Record(
       Schema.String,
@@ -269,7 +269,7 @@ export const CreateRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * Creates a new role in the organization with the specified permissions and member assignments.
  */
-export const createRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateRoleInput,
   outputSchema: CreateRoleOutput,
   errors: [UnprocessableEntity] as const,

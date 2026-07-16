@@ -30,7 +30,7 @@ export interface UpdateNotifierInput {
   };
   updatedAt?: string;
 }
-export const UpdateNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateNotifierInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   createdAt: Schema.optional(Schema.String),
   createdBy: Schema.optional(Schema.String),
@@ -121,7 +121,7 @@ export interface UpdateNotifierOutput {
   updatedAt?: string;
   id?: string;
 }
-export const UpdateNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateNotifierOutput = /*@__PURE__*/ Schema.Struct({
   createdAt: Schema.optional(Schema.String),
   createdBy: Schema.optional(Schema.String),
   disabledUntil: Schema.optional(Schema.String),
@@ -189,7 +189,7 @@ export const UpdateNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Update notifier
  */
-export const updateNotifier = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateNotifier = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateNotifierInput,
   outputSchema: UpdateNotifierOutput,
   errors: [NotFound, UnprocessableEntity] as const,

@@ -32,7 +32,7 @@ export interface EventData {
 }
 
 export const EventData: Schema.Codec<EventData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventTime: Schema.optional(Schema.String),
     eventId: Schema.optional(Schema.String),
     event: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -46,7 +46,7 @@ export interface Events {
 }
 
 export const Events: Schema.Codec<Events> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     componentId: Schema.optional(Schema.String),
     events: Schema.optional(Schema.Array(EventData)),
   }).annotate({ identifier: "Events" });
@@ -59,7 +59,7 @@ export interface HomeEvents {
 }
 
 export const HomeEvents: Schema.Codec<HomeEvents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceId: Schema.optional(Schema.String),
     events: Schema.optional(Schema.Array(Events)),
   }).annotate({ identifier: "HomeEvents" });
@@ -72,7 +72,7 @@ export interface TraitData {
 }
 
 export const TraitData: Schema.Codec<TraitData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trait: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     commitTime: Schema.optional(Schema.String),
   }).annotate({ identifier: "TraitData" });
@@ -85,7 +85,7 @@ export interface ComponentTraitUpdates {
 }
 
 export const ComponentTraitUpdates: Schema.Codec<ComponentTraitUpdates> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     componentId: Schema.optional(Schema.String),
     traitData: Schema.optional(Schema.Array(TraitData)),
   }).annotate({ identifier: "ComponentTraitUpdates" });
@@ -98,7 +98,7 @@ export interface HomeTraitUpdates {
 }
 
 export const HomeTraitUpdates: Schema.Codec<HomeTraitUpdates> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     components: Schema.optional(Schema.Array(ComponentTraitUpdates)),
     deviceId: Schema.optional(Schema.String),
   }).annotate({ identifier: "HomeTraitUpdates" });
@@ -115,7 +115,7 @@ export interface ReportStateAndNotificationDevice {
 }
 
 export const ReportStateAndNotificationDevice: Schema.Codec<ReportStateAndNotificationDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     notifications: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
@@ -130,7 +130,7 @@ export interface StateAndNotificationPayload {
 }
 
 export const StateAndNotificationPayload: Schema.Codec<StateAndNotificationPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     devices: Schema.optional(ReportStateAndNotificationDevice),
   }).annotate({ identifier: "StateAndNotificationPayload" });
 
@@ -148,7 +148,7 @@ export interface ReportStateAndNotificationRequest {
 }
 
 export const ReportStateAndNotificationRequest: Schema.Codec<ReportStateAndNotificationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventId: Schema.optional(Schema.String),
     followUpToken: Schema.optional(Schema.String),
     payload: Schema.optional(StateAndNotificationPayload),
@@ -162,7 +162,7 @@ export interface ReportStateAndNotificationResponse {
 }
 
 export const ReportStateAndNotificationResponse: Schema.Codec<ReportStateAndNotificationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReportStateAndNotificationResponse" });
 
@@ -172,7 +172,7 @@ export interface AgentDeviceId {
 }
 
 export const AgentDeviceId: Schema.Codec<AgentDeviceId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "AgentDeviceId" });
 
@@ -182,7 +182,7 @@ export interface QueryRequestPayload {
 }
 
 export const QueryRequestPayload: Schema.Codec<QueryRequestPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     devices: Schema.optional(Schema.Array(AgentDeviceId)),
   }).annotate({ identifier: "QueryRequestPayload" });
 
@@ -192,7 +192,7 @@ export interface QueryRequestInput {
 }
 
 export const QueryRequestInput: Schema.Codec<QueryRequestInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payload: Schema.optional(QueryRequestPayload),
   }).annotate({ identifier: "QueryRequestInput" });
 
@@ -215,7 +215,7 @@ export interface QueryRequest {
 }
 
 export const QueryRequest: Schema.Codec<QueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     agentUserId: Schema.optional(Schema.String),
     inputs: Schema.optional(Schema.Array(QueryRequestInput)),
@@ -231,7 +231,7 @@ export interface SyncRequest {
 }
 
 export const SyncRequest: Schema.Codec<SyncRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     agentUserId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SyncRequest" });
@@ -246,7 +246,7 @@ export interface DeviceNames {
 }
 
 export const DeviceNames: Schema.Codec<DeviceNames> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     defaultNames: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
     nicknames: Schema.optional(Schema.Array(Schema.String)),
@@ -264,7 +264,7 @@ export interface Component {
 }
 
 export const Component: Schema.Codec<Component> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       childComponents: Schema.optional(Schema.Array(Component)),
       deviceTypes: Schema.optional(Schema.Array(Schema.String)),
@@ -281,7 +281,7 @@ export interface AgentOtherDeviceId {
 }
 
 export const AgentOtherDeviceId: Schema.Codec<AgentOtherDeviceId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deviceId: Schema.optional(Schema.String),
     agentId: Schema.optional(Schema.String),
   }).annotate({ identifier: "AgentOtherDeviceId" });
@@ -292,7 +292,7 @@ export interface HomeTraitPayload {
 }
 
 export const HomeTraitPayload: Schema.Codec<HomeTraitPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rootComponent: Schema.optional(Component),
   }).annotate({ identifier: "HomeTraitPayload" });
 
@@ -302,7 +302,7 @@ export interface DeviceMetadata {
 }
 
 export const DeviceMetadata: Schema.Codec<DeviceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     traitCommitTimestamps: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
     ),
@@ -318,7 +318,7 @@ export interface QueryResponsePayload {
 }
 
 export const QueryResponsePayload: Schema.Codec<QueryResponsePayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     homeTraitPayload: Schema.optional(
       Schema.Record(Schema.String, HomeTraitPayload),
     ),
@@ -341,7 +341,7 @@ export interface QueryResponse {
 }
 
 export const QueryResponse: Schema.Codec<QueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     payload: Schema.optional(QueryResponsePayload),
   }).annotate({ identifier: "QueryResponse" });
@@ -358,7 +358,7 @@ export interface DeviceInfo {
 }
 
 export const DeviceInfo: Schema.Codec<DeviceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     swVersion: Schema.optional(Schema.String),
     manufacturer: Schema.optional(Schema.String),
     hwVersion: Schema.optional(Schema.String),
@@ -393,7 +393,7 @@ export interface Device {
 }
 
 export const Device: Schema.Codec<Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     otherDeviceIds: Schema.optional(Schema.Array(AgentOtherDeviceId)),
     notificationSupportedByAgent: Schema.optional(Schema.Boolean),
@@ -416,7 +416,7 @@ export interface SyncResponsePayload {
 }
 
 export const SyncResponsePayload: Schema.Codec<SyncResponsePayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     devices: Schema.optional(Schema.Array(Device)),
     agentUserId: Schema.optional(Schema.String),
   }).annotate({ identifier: "SyncResponsePayload" });
@@ -429,7 +429,7 @@ export interface SyncResponse {
 }
 
 export const SyncResponse: Schema.Codec<SyncResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     payload: Schema.optional(SyncResponsePayload),
   }).annotate({ identifier: "SyncResponse" });
@@ -437,7 +437,7 @@ export const SyncResponse: Schema.Codec<SyncResponse> =
 export interface RequestSyncDevicesResponse {}
 
 export const RequestSyncDevicesResponse: Schema.Codec<RequestSyncDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RequestSyncDevicesResponse",
   });
 
@@ -449,7 +449,7 @@ export interface RequestSyncDevicesRequest {
 }
 
 export const RequestSyncDevicesRequest: Schema.Codec<RequestSyncDevicesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agentUserId: Schema.optional(Schema.String),
     async: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "RequestSyncDevicesRequest" });
@@ -457,7 +457,7 @@ export const RequestSyncDevicesRequest: Schema.Codec<RequestSyncDevicesRequest> 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -523,7 +523,7 @@ export interface DeleteAgentUsersRequest {
 }
 
 export const DeleteAgentUsersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     agentUserId: Schema.String.pipe(T.HttpPath("agentUserId")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
@@ -532,7 +532,7 @@ export const DeleteAgentUsersRequest =
   ) as unknown as Schema.Codec<DeleteAgentUsersRequest>;
 
 export type DeleteAgentUsersResponse = Empty;
-export const DeleteAgentUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteAgentUsersResponse = /*@__PURE__*/ Empty;
 
 export type DeleteAgentUsersError =
   | DefaultErrors
@@ -547,7 +547,7 @@ export const deleteAgentUsers: API.OperationMethod<
   DeleteAgentUsersResponse,
   DeleteAgentUsersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAgentUsersRequest,
   output: DeleteAgentUsersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -559,7 +559,7 @@ export interface ReportStateAndNotificationDevicesRequest {
 }
 
 export const ReportStateAndNotificationDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(ReportStateAndNotificationRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -573,7 +573,7 @@ export const ReportStateAndNotificationDevicesRequest =
 export type ReportStateAndNotificationDevicesResponse =
   ReportStateAndNotificationResponse;
 export const ReportStateAndNotificationDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReportStateAndNotificationResponse;
+  /*@__PURE__*/ ReportStateAndNotificationResponse;
 
 export type ReportStateAndNotificationDevicesError =
   | DefaultErrors
@@ -588,7 +588,7 @@ export const reportStateAndNotificationDevices: API.OperationMethod<
   ReportStateAndNotificationDevicesResponse,
   ReportStateAndNotificationDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReportStateAndNotificationDevicesRequest,
   output: ReportStateAndNotificationDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -599,7 +599,7 @@ export interface QueryDevicesRequest {
   body?: QueryRequest;
 }
 
-export const QueryDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryDevicesRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(QueryRequest).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v1/devices:query", hasBody: true }),
@@ -607,7 +607,7 @@ export const QueryDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<QueryDevicesRequest>;
 
 export type QueryDevicesResponse = QueryResponse;
-export const QueryDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ QueryResponse;
+export const QueryDevicesResponse = /*@__PURE__*/ QueryResponse;
 
 export type QueryDevicesError =
   | DefaultErrors
@@ -622,7 +622,7 @@ export const queryDevices: API.OperationMethod<
   QueryDevicesResponse,
   QueryDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryDevicesRequest,
   output: QueryDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -634,7 +634,7 @@ export interface RequestSyncDevicesRequest_Op {
 }
 
 export const RequestSyncDevicesRequest_Op =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(RequestSyncDevicesRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1/devices:requestSync", hasBody: true }),
@@ -643,7 +643,7 @@ export const RequestSyncDevicesRequest_Op =
 
 export type RequestSyncDevicesResponse_Op = RequestSyncDevicesResponse;
 export const RequestSyncDevicesResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ RequestSyncDevicesResponse;
+  /*@__PURE__*/ RequestSyncDevicesResponse;
 
 export type RequestSyncDevicesError =
   | DefaultErrors
@@ -658,7 +658,7 @@ export const requestSyncDevices: API.OperationMethod<
   RequestSyncDevicesResponse_Op,
   RequestSyncDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RequestSyncDevicesRequest_Op,
   output: RequestSyncDevicesResponse_Op,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -669,7 +669,7 @@ export interface SyncDevicesRequest {
   body?: SyncRequest;
 }
 
-export const SyncDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SyncDevicesRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(SyncRequest).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v1/devices:sync", hasBody: true }),
@@ -677,7 +677,7 @@ export const SyncDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<SyncDevicesRequest>;
 
 export type SyncDevicesResponse = SyncResponse;
-export const SyncDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ SyncResponse;
+export const SyncDevicesResponse = /*@__PURE__*/ SyncResponse;
 
 export type SyncDevicesError =
   | DefaultErrors
@@ -692,7 +692,7 @@ export const syncDevices: API.OperationMethod<
   SyncDevicesResponse,
   SyncDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SyncDevicesRequest,
   output: SyncDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

@@ -40,7 +40,7 @@ export interface MysqlColumn {
 }
 
 export const MysqlColumn: Schema.Codec<MysqlColumn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.Boolean),
     length: Schema.optional(Schema.Number),
     nullable: Schema.optional(Schema.Boolean),
@@ -58,7 +58,7 @@ export interface MysqlTable {
 }
 
 export const MysqlTable: Schema.Codec<MysqlTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tableName: Schema.optional(Schema.String),
     mysqlColumns: Schema.optional(Schema.Array(MysqlColumn)),
   }).annotate({ identifier: "MysqlTable" });
@@ -71,7 +71,7 @@ export interface MysqlDatabase {
 }
 
 export const MysqlDatabase: Schema.Codec<MysqlDatabase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databaseName: Schema.optional(Schema.String),
     mysqlTables: Schema.optional(Schema.Array(MysqlTable)),
   }).annotate({ identifier: "MysqlDatabase" });
@@ -82,7 +82,7 @@ export interface MysqlRdbms {
 }
 
 export const MysqlRdbms: Schema.Codec<MysqlRdbms> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mysqlDatabases: Schema.optional(Schema.Array(MysqlDatabase)),
   }).annotate({ identifier: "MysqlRdbms" });
 
@@ -108,7 +108,7 @@ export interface OracleColumn {
 }
 
 export const OracleColumn: Schema.Codec<OracleColumn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scale: Schema.optional(Schema.Number),
     dataType: Schema.optional(Schema.String),
     precision: Schema.optional(Schema.Number),
@@ -128,7 +128,7 @@ export interface OracleTable {
 }
 
 export const OracleTable: Schema.Codec<OracleTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oracleColumns: Schema.optional(Schema.Array(OracleColumn)),
     tableName: Schema.optional(Schema.String),
   }).annotate({ identifier: "OracleTable" });
@@ -141,7 +141,7 @@ export interface OracleSchema {
 }
 
 export const OracleSchema: Schema.Codec<OracleSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schemaName: Schema.optional(Schema.String),
     oracleTables: Schema.optional(Schema.Array(OracleTable)),
   }).annotate({ identifier: "OracleSchema" });
@@ -152,7 +152,7 @@ export interface OracleRdbms {
 }
 
 export const OracleRdbms: Schema.Codec<OracleRdbms> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oracleSchemas: Schema.optional(Schema.Array(OracleSchema)),
   }).annotate({ identifier: "OracleRdbms" });
 
@@ -164,7 +164,7 @@ export interface BackfillAllStrategy {
 }
 
 export const BackfillAllStrategy: Schema.Codec<BackfillAllStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mysqlExcludedObjects: Schema.optional(MysqlRdbms),
     oracleExcludedObjects: Schema.optional(OracleRdbms),
   }).annotate({ identifier: "BackfillAllStrategy" });
@@ -183,7 +183,7 @@ export interface ForwardSshTunnelConnectivity {
 }
 
 export const ForwardSshTunnelConnectivity: Schema.Codec<ForwardSshTunnelConnectivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     username: Schema.optional(Schema.String),
     password: Schema.optional(Schema.String),
     hostname: Schema.optional(Schema.String),
@@ -207,7 +207,7 @@ export interface MysqlSslConfig {
 }
 
 export const MysqlSslConfig: Schema.Codec<MysqlSslConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientKeySet: Schema.optional(Schema.Boolean),
     clientCertificate: Schema.optional(Schema.String),
     caCertificate: Schema.optional(Schema.String),
@@ -230,7 +230,7 @@ export interface MysqlProfile {
 }
 
 export const MysqlProfile: Schema.Codec<MysqlProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sslConfig: Schema.optional(MysqlSslConfig),
     hostname: Schema.optional(Schema.String),
     port: Schema.optional(Schema.Number),
@@ -243,21 +243,21 @@ export interface PrivateConnectivity {
 }
 
 export const PrivateConnectivity: Schema.Codec<PrivateConnectivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateConnectionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "PrivateConnectivity" });
 
 export interface StaticServiceIpConnectivity {}
 
 export const StaticServiceIpConnectivity: Schema.Codec<StaticServiceIpConnectivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StaticServiceIpConnectivity",
   });
 
 export interface NoConnectivitySettings {}
 
 export const NoConnectivitySettings: Schema.Codec<NoConnectivitySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "NoConnectivitySettings",
   });
 
@@ -277,7 +277,7 @@ export interface OracleProfile {
 }
 
 export const OracleProfile: Schema.Codec<OracleProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     databaseService: Schema.optional(Schema.String),
     username: Schema.optional(Schema.String),
     password: Schema.optional(Schema.String),
@@ -296,7 +296,7 @@ export interface GcsProfile {
 }
 
 export const GcsProfile: Schema.Codec<GcsProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucketName: Schema.optional(Schema.String),
     rootPath: Schema.optional(Schema.String),
   }).annotate({ identifier: "GcsProfile" });
@@ -329,7 +329,7 @@ export interface ConnectionProfile {
 }
 
 export const ConnectionProfile: Schema.Codec<ConnectionProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     forwardSshConnectivity: Schema.optional(ForwardSshTunnelConnectivity),
     displayName: Schema.optional(Schema.String),
     mysqlProfile: Schema.optional(MysqlProfile),
@@ -354,7 +354,7 @@ export interface ListConnectionProfilesResponse {
 }
 
 export const ListConnectionProfilesResponse: Schema.Codec<ListConnectionProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     connectionProfiles: Schema.optional(Schema.Array(ConnectionProfile)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -366,7 +366,7 @@ export interface RetryInfo {
 }
 
 export const RetryInfo: Schema.Codec<RetryInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     retryDelay: Schema.optional(Schema.String),
   }).annotate({ identifier: "RetryInfo" });
 
@@ -380,7 +380,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -396,7 +396,7 @@ export interface MysqlObjectIdentifier {
 }
 
 export const MysqlObjectIdentifier: Schema.Codec<MysqlObjectIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     database: Schema.optional(Schema.String),
     table: Schema.optional(Schema.String),
   }).annotate({ identifier: "MysqlObjectIdentifier" });
@@ -409,7 +409,7 @@ export interface OracleObjectIdentifier {
 }
 
 export const OracleObjectIdentifier: Schema.Codec<OracleObjectIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schema: Schema.optional(Schema.String),
     table: Schema.optional(Schema.String),
   }).annotate({ identifier: "OracleObjectIdentifier" });
@@ -422,7 +422,7 @@ export interface SourceObjectIdentifier {
 }
 
 export const SourceObjectIdentifier: Schema.Codec<SourceObjectIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mysqlIdentifier: Schema.optional(MysqlObjectIdentifier),
     oracleIdentifier: Schema.optional(OracleObjectIdentifier),
   }).annotate({ identifier: "SourceObjectIdentifier" });
@@ -441,7 +441,7 @@ export interface Datastream_Error {
 }
 
 export const Datastream_Error: Schema.Codec<Datastream_Error> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errorUuid: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     details: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -472,7 +472,7 @@ export interface BackfillJob {
 }
 
 export const BackfillJob: Schema.Codec<BackfillJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trigger: Schema.optional(Schema.String),
     lastEndTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -498,7 +498,7 @@ export interface StreamObject {
 }
 
 export const StreamObject: Schema.Codec<StreamObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -514,21 +514,21 @@ export interface StartBackfillJobResponse {
 }
 
 export const StartBackfillJobResponse: Schema.Codec<StartBackfillJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(StreamObject),
   }).annotate({ identifier: "StartBackfillJobResponse" });
 
 export interface BackfillNoneStrategy {}
 
 export const BackfillNoneStrategy: Schema.Codec<BackfillNoneStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "BackfillNoneStrategy",
   });
 
 export interface AvroFileFormat {}
 
 export const AvroFileFormat: Schema.Codec<AvroFileFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AvroFileFormat",
   });
 
@@ -548,7 +548,7 @@ export interface JsonFileFormat {
 }
 
 export const JsonFileFormat: Schema.Codec<JsonFileFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schemaFileFormat: Schema.optional(Schema.String),
     compression: Schema.optional(Schema.String),
   }).annotate({ identifier: "JsonFileFormat" });
@@ -569,7 +569,7 @@ export interface GcsDestinationConfig {
 }
 
 export const GcsDestinationConfig: Schema.Codec<GcsDestinationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gcsFileFormat: Schema.optional(Schema.String),
     fileRotationInterval: Schema.optional(Schema.String),
     avroFileFormat: Schema.optional(AvroFileFormat),
@@ -586,7 +586,7 @@ export interface DestinationConfig {
 }
 
 export const DestinationConfig: Schema.Codec<DestinationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destinationConnectionProfileName: Schema.optional(Schema.String),
     gcsDestinationConfig: Schema.optional(GcsDestinationConfig),
   }).annotate({ identifier: "DestinationConfig" });
@@ -594,7 +594,7 @@ export const DestinationConfig: Schema.Codec<DestinationConfig> =
 export interface DropLargeObjects {}
 
 export const DropLargeObjects: Schema.Codec<DropLargeObjects> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DropLargeObjects",
   });
 
@@ -608,7 +608,7 @@ export interface OracleSourceConfig {
 }
 
 export const OracleSourceConfig: Schema.Codec<OracleSourceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dropLargeObjects: Schema.optional(DropLargeObjects),
     rejectlist: Schema.optional(OracleRdbms),
     allowlist: Schema.optional(OracleRdbms),
@@ -622,7 +622,7 @@ export interface MysqlSourceConfig {
 }
 
 export const MysqlSourceConfig: Schema.Codec<MysqlSourceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowlist: Schema.optional(MysqlRdbms),
     rejectlist: Schema.optional(MysqlRdbms),
   }).annotate({ identifier: "MysqlSourceConfig" });
@@ -637,7 +637,7 @@ export interface SourceConfig {
 }
 
 export const SourceConfig: Schema.Codec<SourceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceConnectionProfileName: Schema.optional(Schema.String),
     oracleSourceConfig: Schema.optional(OracleSourceConfig),
     mysqlSourceConfig: Schema.optional(MysqlSourceConfig),
@@ -681,7 +681,7 @@ export interface Stream {
 }
 
 export const Stream: Schema.Codec<Stream> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     backfillAll: Schema.optional(BackfillAllStrategy),
     displayName: Schema.optional(Schema.String),
@@ -702,7 +702,7 @@ export interface StopBackfillJobResponse {
 }
 
 export const StopBackfillJobResponse: Schema.Codec<StopBackfillJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(StreamObject),
   }).annotate({ identifier: "StopBackfillJobResponse" });
 
@@ -714,7 +714,7 @@ export interface Link {
 }
 
 export const Link: Schema.Codec<Link> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
   }).annotate({ identifier: "Link" });
@@ -731,7 +731,7 @@ export interface ValidationMessage {
 }
 
 export const ValidationMessage: Schema.Codec<ValidationMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     code: Schema.optional(Schema.String),
@@ -755,7 +755,7 @@ export interface Validation {
 }
 
 export const Validation: Schema.Codec<Validation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     message: Schema.optional(Schema.Array(ValidationMessage)),
     status: Schema.optional(Schema.String),
@@ -768,7 +768,7 @@ export interface ValidationResult {
 }
 
 export const ValidationResult: Schema.Codec<ValidationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validations: Schema.optional(Schema.Array(Validation)),
   }).annotate({ identifier: "ValidationResult" });
 
@@ -792,7 +792,7 @@ export interface OperationMetadata {
 }
 
 export const OperationMetadata: Schema.Codec<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     statusMessage: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -813,7 +813,7 @@ export interface PreconditionFailureViolation {
 }
 
 export const PreconditionFailureViolation: Schema.Codec<PreconditionFailureViolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     subject: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -825,14 +825,14 @@ export interface PreconditionFailure {
 }
 
 export const PreconditionFailure: Schema.Codec<PreconditionFailure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     violations: Schema.optional(Schema.Array(PreconditionFailureViolation)),
   }).annotate({ identifier: "PreconditionFailure" });
 
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -844,7 +844,7 @@ export interface RequestInfo {
 }
 
 export const RequestInfo: Schema.Codec<RequestInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String),
     servingData: Schema.optional(Schema.String),
   }).annotate({ identifier: "RequestInfo" });
@@ -863,7 +863,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -877,7 +877,7 @@ export interface FetchErrorsResponse {
 }
 
 export const FetchErrorsResponse: Schema.Codec<FetchErrorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errors: Schema.optional(Schema.Array(Datastream_Error)),
   }).annotate({ identifier: "FetchErrorsResponse" });
 
@@ -899,7 +899,7 @@ export interface Route {
 }
 
 export const Route: Schema.Codec<Route> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     destinationAddress: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -921,7 +921,7 @@ export interface ResourceInfo {
 }
 
 export const ResourceInfo: Schema.Codec<ResourceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     resourceName: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -944,7 +944,7 @@ export interface DiscoverConnectionProfileRequest {
 }
 
 export const DiscoverConnectionProfileRequest: Schema.Codec<DiscoverConnectionProfileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mysqlRdbms: Schema.optional(MysqlRdbms),
     oracleRdbms: Schema.optional(OracleRdbms),
     connectionProfileName: Schema.optional(Schema.String),
@@ -956,7 +956,7 @@ export const DiscoverConnectionProfileRequest: Schema.Codec<DiscoverConnectionPr
 export interface FetchErrorsRequest {}
 
 export const FetchErrorsRequest: Schema.Codec<FetchErrorsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FetchErrorsRequest",
   });
 
@@ -968,7 +968,7 @@ export interface LocalizedMessage {
 }
 
 export const LocalizedMessage: Schema.Codec<LocalizedMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locale: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
   }).annotate({ identifier: "LocalizedMessage" });
@@ -981,7 +981,7 @@ export interface DebugInfo {
 }
 
 export const DebugInfo: Schema.Codec<DebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stackEntries: Schema.optional(Schema.Array(Schema.String)),
     detail: Schema.optional(Schema.String),
   }).annotate({ identifier: "DebugInfo" });
@@ -1000,7 +1000,7 @@ export interface Location {
 }
 
 export const Location: Schema.Codec<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1011,7 +1011,7 @@ export const Location: Schema.Codec<Location> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -1023,7 +1023,7 @@ export interface FetchStaticIpsResponse {
 }
 
 export const FetchStaticIpsResponse: Schema.Codec<FetchStaticIpsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     staticIps: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "FetchStaticIpsResponse" });
@@ -1038,7 +1038,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(Operation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1052,7 +1052,7 @@ export interface ListStreamObjectsResponse {
 }
 
 export const ListStreamObjectsResponse: Schema.Codec<ListStreamObjectsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     streamObjects: Schema.optional(Schema.Array(StreamObject)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListStreamObjectsResponse" });
@@ -1067,7 +1067,7 @@ export interface ErrorInfo {
 }
 
 export const ErrorInfo: Schema.Codec<ErrorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     domain: Schema.optional(Schema.String),
@@ -1081,7 +1081,7 @@ export interface VpcPeeringConfig {
 }
 
 export const VpcPeeringConfig: Schema.Codec<VpcPeeringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subnet: Schema.optional(Schema.String),
     vpcName: Schema.optional(Schema.String),
   }).annotate({ identifier: "VpcPeeringConfig" });
@@ -1096,7 +1096,7 @@ export interface ListRoutesResponse {
 }
 
 export const ListRoutesResponse: Schema.Codec<ListRoutesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     routes: Schema.optional(Schema.Array(Route)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1122,7 +1122,7 @@ export interface QuotaFailureViolation {
 }
 
 export const QuotaFailureViolation: Schema.Codec<QuotaFailureViolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiService: Schema.optional(Schema.String),
     quotaValue: Schema.optional(Schema.String),
     quotaDimensions: Schema.optional(
@@ -1147,7 +1147,7 @@ export interface FieldViolation {
 }
 
 export const FieldViolation: Schema.Codec<FieldViolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     localizedMessage: Schema.optional(LocalizedMessage),
@@ -1181,7 +1181,7 @@ export interface PrivateConnection {
 }
 
 export const PrivateConnection: Schema.Codec<PrivateConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     displayName: Schema.optional(Schema.String),
@@ -1198,7 +1198,7 @@ export interface Datastream_BadRequest {
 }
 
 export const Datastream_BadRequest: Schema.Codec<Datastream_BadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fieldViolations: Schema.optional(Schema.Array(FieldViolation)),
   }).annotate({ identifier: "Datastream_BadRequest" });
 
@@ -1212,7 +1212,7 @@ export interface ListStreamsResponse {
 }
 
 export const ListStreamsResponse: Schema.Codec<ListStreamsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     streams: Schema.optional(Schema.Array(Stream)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1228,7 +1228,7 @@ export interface ListPrivateConnectionsResponse {
 }
 
 export const ListPrivateConnectionsResponse: Schema.Codec<ListPrivateConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privateConnections: Schema.optional(Schema.Array(PrivateConnection)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -1242,7 +1242,7 @@ export interface DiscoverConnectionProfileResponse {
 }
 
 export const DiscoverConnectionProfileResponse: Schema.Codec<DiscoverConnectionProfileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     mysqlRdbms: Schema.optional(MysqlRdbms),
     oracleRdbms: Schema.optional(OracleRdbms),
   }).annotate({ identifier: "DiscoverConnectionProfileResponse" });
@@ -1255,7 +1255,7 @@ export interface ListLocationsResponse {
 }
 
 export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     locations: Schema.optional(Schema.Array(Location)),
   }).annotate({ identifier: "ListLocationsResponse" });
@@ -1266,7 +1266,7 @@ export interface QuotaFailure {
 }
 
 export const QuotaFailure: Schema.Codec<QuotaFailure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     violations: Schema.optional(Schema.Array(QuotaFailureViolation)),
   }).annotate({ identifier: "QuotaFailure" });
 
@@ -1276,7 +1276,7 @@ export interface Help {
 }
 
 export const Help: Schema.Codec<Help> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     links: Schema.optional(Schema.Array(Link)),
   }).annotate({ identifier: "Help" });
 
@@ -1348,7 +1348,7 @@ export interface ListProjectsLocationsRequest {
 }
 
 export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("extraLocationTypes"),
@@ -1363,7 +1363,7 @@ export const ListProjectsLocationsRequest =
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+  /*@__PURE__*/ ListLocationsResponse;
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1373,7 +1373,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsResponse,
   ListProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1389,7 +1389,7 @@ export interface GetProjectsLocationsRequest {
 }
 
 export const GetProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -1397,8 +1397,7 @@ export const GetProjectsLocationsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
-export const GetProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Location;
+export const GetProjectsLocationsResponse = /*@__PURE__*/ Location;
 
 export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1408,7 +1407,7 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsResponse,
   GetProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1424,7 +1423,7 @@ export interface FetchStaticIpsProjectsLocationsRequest {
 }
 
 export const FetchStaticIpsProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1435,7 +1434,7 @@ export const FetchStaticIpsProjectsLocationsRequest =
 
 export type FetchStaticIpsProjectsLocationsResponse = FetchStaticIpsResponse;
 export const FetchStaticIpsProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FetchStaticIpsResponse;
+  /*@__PURE__*/ FetchStaticIpsResponse;
 
 export type FetchStaticIpsProjectsLocationsError =
   | DefaultErrors
@@ -1448,7 +1447,7 @@ export const fetchStaticIpsProjectsLocations: API.PaginatedOperationMethod<
   FetchStaticIpsProjectsLocationsResponse,
   FetchStaticIpsProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: FetchStaticIpsProjectsLocationsRequest,
   output: FetchStaticIpsProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -1472,7 +1471,7 @@ export interface ListProjectsLocationsOperationsRequest {
 }
 
 export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1487,7 +1486,7 @@ export const ListProjectsLocationsOperationsRequest =
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1500,7 +1499,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsResponse,
   ListProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1516,7 +1515,7 @@ export interface GetProjectsLocationsOperationsRequest {
 }
 
 export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -1524,8 +1523,7 @@ export const GetProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetProjectsLocationsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1538,7 +1536,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsResponse,
   GetProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1552,7 +1550,7 @@ export interface CancelProjectsLocationsOperationsRequest {
 }
 
 export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1561,8 +1559,7 @@ export const CancelProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1577,7 +1574,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsResponse,
   CancelProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1589,7 +1586,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
 }
 
 export const DeleteProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
@@ -1597,8 +1594,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsOperationsError =
   | DefaultErrors
@@ -1613,7 +1609,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsResponse,
   DeleteProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1635,7 +1631,7 @@ export interface CreateProjectsLocationsStreamsRequest {
 }
 
 export const CreateProjectsLocationsStreamsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
     ),
@@ -1654,8 +1650,7 @@ export const CreateProjectsLocationsStreamsRequest =
   ) as unknown as Schema.Codec<CreateProjectsLocationsStreamsRequest>;
 
 export type CreateProjectsLocationsStreamsResponse = Operation;
-export const CreateProjectsLocationsStreamsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateProjectsLocationsStreamsResponse = /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsStreamsError =
   | DefaultErrors
@@ -1670,7 +1665,7 @@ export const createProjectsLocationsStreams: API.OperationMethod<
   CreateProjectsLocationsStreamsResponse,
   CreateProjectsLocationsStreamsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsStreamsRequest,
   output: CreateProjectsLocationsStreamsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1690,7 +1685,7 @@ export interface ListProjectsLocationsStreamsRequest {
 }
 
 export const ListProjectsLocationsStreamsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -1703,7 +1698,7 @@ export const ListProjectsLocationsStreamsRequest =
 
 export type ListProjectsLocationsStreamsResponse = ListStreamsResponse;
 export const ListProjectsLocationsStreamsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListStreamsResponse;
+  /*@__PURE__*/ ListStreamsResponse;
 
 export type ListProjectsLocationsStreamsError =
   | DefaultErrors
@@ -1716,7 +1711,7 @@ export const listProjectsLocationsStreams: API.PaginatedOperationMethod<
   ListProjectsLocationsStreamsResponse,
   ListProjectsLocationsStreamsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsStreamsRequest,
   output: ListProjectsLocationsStreamsResponse,
   errors: [NotFound, Forbidden],
@@ -1734,7 +1729,7 @@ export interface FetchErrorsProjectsLocationsStreamsRequest {
 }
 
 export const FetchErrorsProjectsLocationsStreamsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     stream: Schema.String.pipe(T.HttpPath("stream")),
     body: Schema.optional(FetchErrorsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1748,7 +1743,7 @@ export const FetchErrorsProjectsLocationsStreamsRequest =
 
 export type FetchErrorsProjectsLocationsStreamsResponse = Operation;
 export const FetchErrorsProjectsLocationsStreamsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type FetchErrorsProjectsLocationsStreamsError =
   | DefaultErrors
@@ -1763,7 +1758,7 @@ export const fetchErrorsProjectsLocationsStreams: API.OperationMethod<
   FetchErrorsProjectsLocationsStreamsResponse,
   FetchErrorsProjectsLocationsStreamsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FetchErrorsProjectsLocationsStreamsRequest,
   output: FetchErrorsProjectsLocationsStreamsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1777,7 +1772,7 @@ export interface DeleteProjectsLocationsStreamsRequest {
 }
 
 export const DeleteProjectsLocationsStreamsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
@@ -1786,8 +1781,7 @@ export const DeleteProjectsLocationsStreamsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsStreamsRequest>;
 
 export type DeleteProjectsLocationsStreamsResponse = Operation;
-export const DeleteProjectsLocationsStreamsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const DeleteProjectsLocationsStreamsResponse = /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsStreamsError =
   | DefaultErrors
@@ -1802,7 +1796,7 @@ export const deleteProjectsLocationsStreams: API.OperationMethod<
   DeleteProjectsLocationsStreamsResponse,
   DeleteProjectsLocationsStreamsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsStreamsRequest,
   output: DeleteProjectsLocationsStreamsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1814,7 +1808,7 @@ export interface GetProjectsLocationsStreamsRequest {
 }
 
 export const GetProjectsLocationsStreamsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -1822,8 +1816,7 @@ export const GetProjectsLocationsStreamsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsStreamsRequest>;
 
 export type GetProjectsLocationsStreamsResponse = Stream;
-export const GetProjectsLocationsStreamsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Stream;
+export const GetProjectsLocationsStreamsResponse = /*@__PURE__*/ Stream;
 
 export type GetProjectsLocationsStreamsError =
   | DefaultErrors
@@ -1836,7 +1829,7 @@ export const getProjectsLocationsStreams: API.OperationMethod<
   GetProjectsLocationsStreamsResponse,
   GetProjectsLocationsStreamsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsStreamsRequest,
   output: GetProjectsLocationsStreamsResponse,
   errors: [NotFound, Forbidden],
@@ -1858,7 +1851,7 @@ export interface PatchProjectsLocationsStreamsRequest {
 }
 
 export const PatchProjectsLocationsStreamsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
@@ -1873,8 +1866,7 @@ export const PatchProjectsLocationsStreamsRequest =
   ) as unknown as Schema.Codec<PatchProjectsLocationsStreamsRequest>;
 
 export type PatchProjectsLocationsStreamsResponse = Operation;
-export const PatchProjectsLocationsStreamsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PatchProjectsLocationsStreamsResponse = /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsStreamsError =
   | DefaultErrors
@@ -1889,7 +1881,7 @@ export const patchProjectsLocationsStreams: API.OperationMethod<
   PatchProjectsLocationsStreamsResponse,
   PatchProjectsLocationsStreamsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsStreamsRequest,
   output: PatchProjectsLocationsStreamsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1901,7 +1893,7 @@ export interface StopBackfillJobProjectsLocationsStreamsObjectsRequest {
 }
 
 export const StopBackfillJobProjectsLocationsStreamsObjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String.pipe(T.HttpPath("object")),
   }).pipe(
     T.Http({
@@ -1915,7 +1907,7 @@ export const StopBackfillJobProjectsLocationsStreamsObjectsRequest =
 export type StopBackfillJobProjectsLocationsStreamsObjectsResponse =
   StopBackfillJobResponse;
 export const StopBackfillJobProjectsLocationsStreamsObjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ StopBackfillJobResponse;
+  /*@__PURE__*/ StopBackfillJobResponse;
 
 export type StopBackfillJobProjectsLocationsStreamsObjectsError =
   | DefaultErrors
@@ -1930,7 +1922,7 @@ export const stopBackfillJobProjectsLocationsStreamsObjects: API.OperationMethod
   StopBackfillJobProjectsLocationsStreamsObjectsResponse,
   StopBackfillJobProjectsLocationsStreamsObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopBackfillJobProjectsLocationsStreamsObjectsRequest,
   output: StopBackfillJobProjectsLocationsStreamsObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1942,7 +1934,7 @@ export interface GetProjectsLocationsStreamsObjectsRequest {
 }
 
 export const GetProjectsLocationsStreamsObjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -1951,7 +1943,7 @@ export const GetProjectsLocationsStreamsObjectsRequest =
 
 export type GetProjectsLocationsStreamsObjectsResponse = StreamObject;
 export const GetProjectsLocationsStreamsObjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ StreamObject;
+  /*@__PURE__*/ StreamObject;
 
 export type GetProjectsLocationsStreamsObjectsError =
   | DefaultErrors
@@ -1964,7 +1956,7 @@ export const getProjectsLocationsStreamsObjects: API.OperationMethod<
   GetProjectsLocationsStreamsObjectsResponse,
   GetProjectsLocationsStreamsObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsStreamsObjectsRequest,
   output: GetProjectsLocationsStreamsObjectsResponse,
   errors: [NotFound, Forbidden],
@@ -1980,7 +1972,7 @@ export interface ListProjectsLocationsStreamsObjectsRequest {
 }
 
 export const ListProjectsLocationsStreamsObjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1992,7 +1984,7 @@ export const ListProjectsLocationsStreamsObjectsRequest =
 export type ListProjectsLocationsStreamsObjectsResponse =
   ListStreamObjectsResponse;
 export const ListProjectsLocationsStreamsObjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListStreamObjectsResponse;
+  /*@__PURE__*/ ListStreamObjectsResponse;
 
 export type ListProjectsLocationsStreamsObjectsError =
   | DefaultErrors
@@ -2005,7 +1997,7 @@ export const listProjectsLocationsStreamsObjects: API.PaginatedOperationMethod<
   ListProjectsLocationsStreamsObjectsResponse,
   ListProjectsLocationsStreamsObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsStreamsObjectsRequest,
   output: ListProjectsLocationsStreamsObjectsResponse,
   errors: [NotFound, Forbidden],
@@ -2021,7 +2013,7 @@ export interface StartBackfillJobProjectsLocationsStreamsObjectsRequest {
 }
 
 export const StartBackfillJobProjectsLocationsStreamsObjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String.pipe(T.HttpPath("object")),
   }).pipe(
     T.Http({
@@ -2035,7 +2027,7 @@ export const StartBackfillJobProjectsLocationsStreamsObjectsRequest =
 export type StartBackfillJobProjectsLocationsStreamsObjectsResponse =
   StartBackfillJobResponse;
 export const StartBackfillJobProjectsLocationsStreamsObjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ StartBackfillJobResponse;
+  /*@__PURE__*/ StartBackfillJobResponse;
 
 export type StartBackfillJobProjectsLocationsStreamsObjectsError =
   | DefaultErrors
@@ -2050,7 +2042,7 @@ export const startBackfillJobProjectsLocationsStreamsObjects: API.OperationMetho
   StartBackfillJobProjectsLocationsStreamsObjectsResponse,
   StartBackfillJobProjectsLocationsStreamsObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartBackfillJobProjectsLocationsStreamsObjectsRequest,
   output: StartBackfillJobProjectsLocationsStreamsObjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2068,7 +2060,7 @@ export interface CreateProjectsLocationsPrivateConnectionsRequest {
 }
 
 export const CreateProjectsLocationsPrivateConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     privateConnectionId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("privateConnectionId"),
@@ -2086,7 +2078,7 @@ export const CreateProjectsLocationsPrivateConnectionsRequest =
 
 export type CreateProjectsLocationsPrivateConnectionsResponse = Operation;
 export const CreateProjectsLocationsPrivateConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsPrivateConnectionsError =
   | DefaultErrors
@@ -2101,7 +2093,7 @@ export const createProjectsLocationsPrivateConnections: API.OperationMethod<
   CreateProjectsLocationsPrivateConnectionsResponse,
   CreateProjectsLocationsPrivateConnectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPrivateConnectionsRequest,
   output: CreateProjectsLocationsPrivateConnectionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2117,7 +2109,7 @@ export interface DeleteProjectsLocationsPrivateConnectionsRequest {
 }
 
 export const DeleteProjectsLocationsPrivateConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
@@ -2128,7 +2120,7 @@ export const DeleteProjectsLocationsPrivateConnectionsRequest =
 
 export type DeleteProjectsLocationsPrivateConnectionsResponse = Operation;
 export const DeleteProjectsLocationsPrivateConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsPrivateConnectionsError =
   | DefaultErrors
@@ -2143,7 +2135,7 @@ export const deleteProjectsLocationsPrivateConnections: API.OperationMethod<
   DeleteProjectsLocationsPrivateConnectionsResponse,
   DeleteProjectsLocationsPrivateConnectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPrivateConnectionsRequest,
   output: DeleteProjectsLocationsPrivateConnectionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2155,7 +2147,7 @@ export interface GetProjectsLocationsPrivateConnectionsRequest {
 }
 
 export const GetProjectsLocationsPrivateConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -2164,7 +2156,7 @@ export const GetProjectsLocationsPrivateConnectionsRequest =
 
 export type GetProjectsLocationsPrivateConnectionsResponse = PrivateConnection;
 export const GetProjectsLocationsPrivateConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PrivateConnection;
+  /*@__PURE__*/ PrivateConnection;
 
 export type GetProjectsLocationsPrivateConnectionsError =
   | DefaultErrors
@@ -2177,7 +2169,7 @@ export const getProjectsLocationsPrivateConnections: API.OperationMethod<
   GetProjectsLocationsPrivateConnectionsResponse,
   GetProjectsLocationsPrivateConnectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPrivateConnectionsRequest,
   output: GetProjectsLocationsPrivateConnectionsResponse,
   errors: [NotFound, Forbidden],
@@ -2197,7 +2189,7 @@ export interface ListProjectsLocationsPrivateConnectionsRequest {
 }
 
 export const ListProjectsLocationsPrivateConnectionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -2211,7 +2203,7 @@ export const ListProjectsLocationsPrivateConnectionsRequest =
 export type ListProjectsLocationsPrivateConnectionsResponse =
   ListPrivateConnectionsResponse;
 export const ListProjectsLocationsPrivateConnectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListPrivateConnectionsResponse;
+  /*@__PURE__*/ ListPrivateConnectionsResponse;
 
 export type ListProjectsLocationsPrivateConnectionsError =
   | DefaultErrors
@@ -2224,7 +2216,7 @@ export const listProjectsLocationsPrivateConnections: API.PaginatedOperationMeth
   ListProjectsLocationsPrivateConnectionsResponse,
   ListProjectsLocationsPrivateConnectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateConnectionsRequest,
   output: ListProjectsLocationsPrivateConnectionsResponse,
   errors: [NotFound, Forbidden],
@@ -2246,7 +2238,7 @@ export interface CreateProjectsLocationsPrivateConnectionsRoutesRequest {
 }
 
 export const CreateProjectsLocationsPrivateConnectionsRoutesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     routeId: Schema.optional(Schema.String).pipe(T.HttpQuery("routeId")),
@@ -2262,7 +2254,7 @@ export const CreateProjectsLocationsPrivateConnectionsRoutesRequest =
 
 export type CreateProjectsLocationsPrivateConnectionsRoutesResponse = Operation;
 export const CreateProjectsLocationsPrivateConnectionsRoutesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsPrivateConnectionsRoutesError =
   | DefaultErrors
@@ -2277,7 +2269,7 @@ export const createProjectsLocationsPrivateConnectionsRoutes: API.OperationMetho
   CreateProjectsLocationsPrivateConnectionsRoutesResponse,
   CreateProjectsLocationsPrivateConnectionsRoutesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPrivateConnectionsRoutesRequest,
   output: CreateProjectsLocationsPrivateConnectionsRoutesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2291,7 +2283,7 @@ export interface DeleteProjectsLocationsPrivateConnectionsRoutesRequest {
 }
 
 export const DeleteProjectsLocationsPrivateConnectionsRoutesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
@@ -2301,7 +2293,7 @@ export const DeleteProjectsLocationsPrivateConnectionsRoutesRequest =
 
 export type DeleteProjectsLocationsPrivateConnectionsRoutesResponse = Operation;
 export const DeleteProjectsLocationsPrivateConnectionsRoutesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsPrivateConnectionsRoutesError =
   | DefaultErrors
@@ -2316,7 +2308,7 @@ export const deleteProjectsLocationsPrivateConnectionsRoutes: API.OperationMetho
   DeleteProjectsLocationsPrivateConnectionsRoutesResponse,
   DeleteProjectsLocationsPrivateConnectionsRoutesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPrivateConnectionsRoutesRequest,
   output: DeleteProjectsLocationsPrivateConnectionsRoutesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2328,7 +2320,7 @@ export interface GetProjectsLocationsPrivateConnectionsRoutesRequest {
 }
 
 export const GetProjectsLocationsPrivateConnectionsRoutesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -2337,7 +2329,7 @@ export const GetProjectsLocationsPrivateConnectionsRoutesRequest =
 
 export type GetProjectsLocationsPrivateConnectionsRoutesResponse = Route;
 export const GetProjectsLocationsPrivateConnectionsRoutesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Route;
+  /*@__PURE__*/ Route;
 
 export type GetProjectsLocationsPrivateConnectionsRoutesError =
   | DefaultErrors
@@ -2350,7 +2342,7 @@ export const getProjectsLocationsPrivateConnectionsRoutes: API.OperationMethod<
   GetProjectsLocationsPrivateConnectionsRoutesResponse,
   GetProjectsLocationsPrivateConnectionsRoutesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPrivateConnectionsRoutesRequest,
   output: GetProjectsLocationsPrivateConnectionsRoutesResponse,
   errors: [NotFound, Forbidden],
@@ -2370,7 +2362,7 @@ export interface ListProjectsLocationsPrivateConnectionsRoutesRequest {
 }
 
 export const ListProjectsLocationsPrivateConnectionsRoutesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -2384,7 +2376,7 @@ export const ListProjectsLocationsPrivateConnectionsRoutesRequest =
 export type ListProjectsLocationsPrivateConnectionsRoutesResponse =
   ListRoutesResponse;
 export const ListProjectsLocationsPrivateConnectionsRoutesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListRoutesResponse;
+  /*@__PURE__*/ ListRoutesResponse;
 
 export type ListProjectsLocationsPrivateConnectionsRoutesError =
   | DefaultErrors
@@ -2397,7 +2389,7 @@ export const listProjectsLocationsPrivateConnectionsRoutes: API.PaginatedOperati
   ListProjectsLocationsPrivateConnectionsRoutesResponse,
   ListProjectsLocationsPrivateConnectionsRoutesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateConnectionsRoutesRequest,
   output: ListProjectsLocationsPrivateConnectionsRoutesResponse,
   errors: [NotFound, Forbidden],
@@ -2419,7 +2411,7 @@ export interface CreateProjectsLocationsConnectionProfilesRequest {
 }
 
 export const CreateProjectsLocationsConnectionProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectionProfileId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("connectionProfileId"),
     ),
@@ -2437,7 +2429,7 @@ export const CreateProjectsLocationsConnectionProfilesRequest =
 
 export type CreateProjectsLocationsConnectionProfilesResponse = Operation;
 export const CreateProjectsLocationsConnectionProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsConnectionProfilesError =
   | DefaultErrors
@@ -2452,7 +2444,7 @@ export const createProjectsLocationsConnectionProfiles: API.OperationMethod<
   CreateProjectsLocationsConnectionProfilesResponse,
   CreateProjectsLocationsConnectionProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsConnectionProfilesRequest,
   output: CreateProjectsLocationsConnectionProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2472,7 +2464,7 @@ export interface ListProjectsLocationsConnectionProfilesRequest {
 }
 
 export const ListProjectsLocationsConnectionProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -2486,7 +2478,7 @@ export const ListProjectsLocationsConnectionProfilesRequest =
 export type ListProjectsLocationsConnectionProfilesResponse =
   ListConnectionProfilesResponse;
 export const ListProjectsLocationsConnectionProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListConnectionProfilesResponse;
+  /*@__PURE__*/ ListConnectionProfilesResponse;
 
 export type ListProjectsLocationsConnectionProfilesError =
   | DefaultErrors
@@ -2499,7 +2491,7 @@ export const listProjectsLocationsConnectionProfiles: API.PaginatedOperationMeth
   ListProjectsLocationsConnectionProfilesResponse,
   ListProjectsLocationsConnectionProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionProfilesRequest,
   output: ListProjectsLocationsConnectionProfilesResponse,
   errors: [NotFound, Forbidden],
@@ -2517,7 +2509,7 @@ export interface DeleteProjectsLocationsConnectionProfilesRequest {
 }
 
 export const DeleteProjectsLocationsConnectionProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
@@ -2527,7 +2519,7 @@ export const DeleteProjectsLocationsConnectionProfilesRequest =
 
 export type DeleteProjectsLocationsConnectionProfilesResponse = Operation;
 export const DeleteProjectsLocationsConnectionProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsConnectionProfilesError =
   | DefaultErrors
@@ -2542,7 +2534,7 @@ export const deleteProjectsLocationsConnectionProfiles: API.OperationMethod<
   DeleteProjectsLocationsConnectionProfilesResponse,
   DeleteProjectsLocationsConnectionProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsConnectionProfilesRequest,
   output: DeleteProjectsLocationsConnectionProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2554,7 +2546,7 @@ export interface GetProjectsLocationsConnectionProfilesRequest {
 }
 
 export const GetProjectsLocationsConnectionProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -2563,7 +2555,7 @@ export const GetProjectsLocationsConnectionProfilesRequest =
 
 export type GetProjectsLocationsConnectionProfilesResponse = ConnectionProfile;
 export const GetProjectsLocationsConnectionProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ConnectionProfile;
+  /*@__PURE__*/ ConnectionProfile;
 
 export type GetProjectsLocationsConnectionProfilesError =
   | DefaultErrors
@@ -2576,7 +2568,7 @@ export const getProjectsLocationsConnectionProfiles: API.OperationMethod<
   GetProjectsLocationsConnectionProfilesResponse,
   GetProjectsLocationsConnectionProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsConnectionProfilesRequest,
   output: GetProjectsLocationsConnectionProfilesResponse,
   errors: [NotFound, Forbidden],
@@ -2596,7 +2588,7 @@ export interface PatchProjectsLocationsConnectionProfilesRequest {
 }
 
 export const PatchProjectsLocationsConnectionProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     validateOnly: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("validateOnly"),
@@ -2611,7 +2603,7 @@ export const PatchProjectsLocationsConnectionProfilesRequest =
 
 export type PatchProjectsLocationsConnectionProfilesResponse = Operation;
 export const PatchProjectsLocationsConnectionProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsConnectionProfilesError =
   | DefaultErrors
@@ -2626,7 +2618,7 @@ export const patchProjectsLocationsConnectionProfiles: API.OperationMethod<
   PatchProjectsLocationsConnectionProfilesResponse,
   PatchProjectsLocationsConnectionProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsConnectionProfilesRequest,
   output: PatchProjectsLocationsConnectionProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2640,7 +2632,7 @@ export interface DiscoverProjectsLocationsConnectionProfilesRequest {
 }
 
 export const DiscoverProjectsLocationsConnectionProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(DiscoverConnectionProfileRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2655,7 +2647,7 @@ export const DiscoverProjectsLocationsConnectionProfilesRequest =
 export type DiscoverProjectsLocationsConnectionProfilesResponse =
   DiscoverConnectionProfileResponse;
 export const DiscoverProjectsLocationsConnectionProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DiscoverConnectionProfileResponse;
+  /*@__PURE__*/ DiscoverConnectionProfileResponse;
 
 export type DiscoverProjectsLocationsConnectionProfilesError =
   | DefaultErrors
@@ -2670,7 +2662,7 @@ export const discoverProjectsLocationsConnectionProfiles: API.OperationMethod<
   DiscoverProjectsLocationsConnectionProfilesResponse,
   DiscoverProjectsLocationsConnectionProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DiscoverProjectsLocationsConnectionProfilesRequest,
   output: DiscoverProjectsLocationsConnectionProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

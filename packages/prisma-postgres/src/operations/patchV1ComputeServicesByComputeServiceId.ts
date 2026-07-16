@@ -5,7 +5,7 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const PatchV1ComputeServicesByComputeServiceIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     computeServiceId: Schema.String.pipe(T.PathParam()),
     displayName: Schema.String,
   }).pipe(
@@ -19,7 +19,7 @@ export type PatchV1ComputeServicesByComputeServiceIdInput =
 
 // Output Schema
 export const PatchV1ComputeServicesByComputeServiceIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -46,7 +46,7 @@ export type PatchV1ComputeServicesByComputeServiceIdOutput =
  * Updates the display name of a compute service.
  */
 export const patchV1ComputeServicesByComputeServiceId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchV1ComputeServicesByComputeServiceIdInput,
     outputSchema: PatchV1ComputeServicesByComputeServiceIdOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

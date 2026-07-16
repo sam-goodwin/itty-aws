@@ -14,7 +14,7 @@ export interface PostSetupIntentsIntentCancelInput {
   expand?: string[];
 }
 export const PostSetupIntentsIntentCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     cancellation_reason: Schema.optional(
       Schema.Literals(["abandoned", "duplicate", "requested_by_customer"]),
@@ -507,7 +507,7 @@ export interface PostSetupIntentsIntentCancelOutput {
   usage: string;
 }
 export const PostSetupIntentsIntentCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -691,7 +691,7 @@ export const PostSetupIntentsIntentCancelOutput =
  * <p>After you cancel it, setup is abandoned and any operations on the SetupIntent fail with an error. You can’t cancel the SetupIntent for a Checkout Session. <a href="/docs/api/checkout/sessions/expire">Expire the Checkout Session</a> instead.</p>
  */
 export const PostSetupIntentsIntentCancel =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostSetupIntentsIntentCancelInput,
     outputSchema: PostSetupIntentsIntentCancelOutput,
   }));

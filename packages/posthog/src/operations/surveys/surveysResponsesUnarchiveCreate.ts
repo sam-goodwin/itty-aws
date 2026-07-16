@@ -106,7 +106,7 @@ export interface SurveysResponsesUnarchiveCreateInput {
   form_content?: unknown;
 }
 export const SurveysResponsesUnarchiveCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     response_uuid: Schema.String.pipe(T.PathParam()),
@@ -293,7 +293,7 @@ export const SurveysResponsesUnarchiveCreateInput =
 // Output Schema
 export type SurveysResponsesUnarchiveCreateOutput = void;
 export const SurveysResponsesUnarchiveCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SurveysResponsesUnarchiveCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SurveysResponsesUnarchiveCreateOutput>;
 
 // The operation
 /**
@@ -303,7 +303,7 @@ export const SurveysResponsesUnarchiveCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const surveysResponsesUnarchiveCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SurveysResponsesUnarchiveCreateInput,
     outputSchema: SurveysResponsesUnarchiveCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

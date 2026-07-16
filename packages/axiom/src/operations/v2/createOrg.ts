@@ -7,7 +7,7 @@ export interface CreateOrgInput {
   edgeDeployment?: string;
   name: string;
 }
-export const CreateOrgInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateOrgInput = /*@__PURE__*/ Schema.Struct({
   edgeDeployment: Schema.optional(Schema.String),
   name: Schema.String,
 }).pipe(
@@ -70,7 +70,7 @@ export interface CreateOrgOutput {
   primaryEmail: string;
   role?: string;
 }
-export const CreateOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateOrgOutput = /*@__PURE__*/ Schema.Struct({
   defaultEdgeDeployment: Schema.optional(Schema.String),
   firstFailedPayment: Schema.optional(Schema.String),
   id: Schema.String,
@@ -129,7 +129,7 @@ export const CreateOrgOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }) as unknown as Schema.Codec<CreateOrgOutput>;
 
 // The operation
-export const createOrg = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createOrg = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateOrgInput,
   outputSchema: CreateOrgOutput,
 }));

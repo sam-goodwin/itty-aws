@@ -17,7 +17,7 @@ export interface SignalsScoutConfigUpdateInput {
   created_at?: string;
 }
 export const SignalsScoutConfigUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     skill_name: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export interface SignalsScoutConfigUpdateOutput {
   created_at: string;
 }
 export const SignalsScoutConfigUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     skill_name: Schema.String,
     description: Schema.String,
@@ -69,10 +69,8 @@ export const SignalsScoutConfigUpdateOutput =
  * @param id - A UUID string identifying this Signal scout config.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const signalsScoutConfigUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalsScoutConfigUpdateInput,
-    outputSchema: SignalsScoutConfigUpdateOutput,
-    errors: [BadRequest, NotFound] as const,
-  }),
-);
+export const signalsScoutConfigUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalsScoutConfigUpdateInput,
+  outputSchema: SignalsScoutConfigUpdateOutput,
+  errors: [BadRequest, NotFound] as const,
+}));

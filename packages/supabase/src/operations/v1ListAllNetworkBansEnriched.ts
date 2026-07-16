@@ -8,7 +8,7 @@ export interface V1ListAllNetworkBansEnrichedInput {
   ref: string;
 }
 export const V1ListAllNetworkBansEnrichedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -26,7 +26,7 @@ export interface V1ListAllNetworkBansEnrichedOutput {
   }[];
 }
 export const V1ListAllNetworkBansEnrichedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     banned_ipv4_addresses: Schema.Array(
       Schema.Struct({
         banned_address: Schema.String,
@@ -43,7 +43,7 @@ export const V1ListAllNetworkBansEnrichedOutput =
  * @param ref - Project ref
  */
 export const v1ListAllNetworkBansEnriched =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1ListAllNetworkBansEnrichedInput,
     outputSchema: V1ListAllNetworkBansEnrichedOutput,
     errors: [BadRequest, Forbidden] as const,

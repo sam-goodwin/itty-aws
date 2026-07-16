@@ -11,7 +11,7 @@ export interface ListBackupPoliciesInput {
   per_page?: number;
 }
 export const ListBackupPoliciesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     page: Schema.optional(Schema.Number),
@@ -51,7 +51,7 @@ export interface ListBackupPoliciesOutput {
   }>;
 }
 export const ListBackupPoliciesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -89,16 +89,14 @@ export const ListBackupPoliciesOutput =
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listBackupPolicies = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListBackupPoliciesInput,
-    outputSchema: ListBackupPoliciesOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listBackupPolicies = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListBackupPoliciesInput,
+  outputSchema: ListBackupPoliciesOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

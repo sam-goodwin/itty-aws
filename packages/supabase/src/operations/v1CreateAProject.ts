@@ -77,7 +77,7 @@ export interface V1CreateAProjectInput {
   template_url?: string;
   high_availability?: boolean;
 }
-export const V1CreateAProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1CreateAProjectInput = /*@__PURE__*/ Schema.Struct({
   db_pass: Schema.String,
   name: Schema.String,
   organization_id: Schema.optional(Schema.String),
@@ -192,40 +192,38 @@ export interface V1CreateAProjectOutput {
     | "PAUSE_FAILED"
     | "RESIZING";
 }
-export const V1CreateAProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String,
-    ref: Schema.String,
-    organization_id: Schema.String,
-    organization_slug: Schema.String,
-    name: Schema.String,
-    region: Schema.String,
-    created_at: Schema.String,
-    status: Schema.Literals([
-      "INACTIVE",
-      "ACTIVE_HEALTHY",
-      "ACTIVE_UNHEALTHY",
-      "COMING_UP",
-      "UNKNOWN",
-      "GOING_DOWN",
-      "INIT_FAILED",
-      "REMOVED",
-      "RESTORING",
-      "UPGRADING",
-      "PAUSING",
-      "RESTORE_FAILED",
-      "RESTARTING",
-      "PAUSE_FAILED",
-      "RESIZING",
-    ]),
-  },
-) as unknown as Schema.Codec<V1CreateAProjectOutput>;
+export const V1CreateAProjectOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  ref: Schema.String,
+  organization_id: Schema.String,
+  organization_slug: Schema.String,
+  name: Schema.String,
+  region: Schema.String,
+  created_at: Schema.String,
+  status: Schema.Literals([
+    "INACTIVE",
+    "ACTIVE_HEALTHY",
+    "ACTIVE_UNHEALTHY",
+    "COMING_UP",
+    "UNKNOWN",
+    "GOING_DOWN",
+    "INIT_FAILED",
+    "REMOVED",
+    "RESTORING",
+    "UPGRADING",
+    "PAUSING",
+    "RESTORE_FAILED",
+    "RESTARTING",
+    "PAUSE_FAILED",
+    "RESIZING",
+  ]),
+}) as unknown as Schema.Codec<V1CreateAProjectOutput>;
 
 // The operation
 /**
  * Create a project
  */
-export const v1CreateAProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1CreateAProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1CreateAProjectInput,
   outputSchema: V1CreateAProjectOutput,
   errors: [BadRequest, Forbidden] as const,

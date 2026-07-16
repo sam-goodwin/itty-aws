@@ -11,7 +11,7 @@ export interface DeleteGroupContainerInput {
   pretty?: boolean;
 }
 export const DeleteGroupContainerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     containerId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const DeleteGroupContainerInput =
 // Output Schema
 export type DeleteGroupContainerOutput = void;
 export const DeleteGroupContainerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupContainerOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupContainerOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const DeleteGroupContainerOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param containerId - Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
  */
-export const deleteGroupContainer = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupContainerInput,
-    outputSchema: DeleteGroupContainerOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const deleteGroupContainer = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupContainerInput,
+  outputSchema: DeleteGroupContainerOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

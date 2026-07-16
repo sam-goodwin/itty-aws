@@ -12,7 +12,7 @@ export interface EventDefinitionsListInput {
   offset?: number;
 }
 export const EventDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     exclude_hidden: Schema.optional(Schema.Boolean),
     exclude_stale: Schema.optional(Schema.Boolean),
@@ -118,7 +118,7 @@ export interface EventDefinitionsListOutput {
   }[];
 }
 export const EventDefinitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -267,10 +267,8 @@ export const EventDefinitionsListOutput =
  * @param offset - The initial index from which to return the results.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const eventDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EventDefinitionsListInput,
-    outputSchema: EventDefinitionsListOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const eventDefinitionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EventDefinitionsListInput,
+  outputSchema: EventDefinitionsListOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

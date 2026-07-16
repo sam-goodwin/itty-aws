@@ -13,7 +13,7 @@ export interface ListGroupProcessPerformanceAdvisorNamespacesInput {
   since?: number;
 }
 export const ListGroupProcessPerformanceAdvisorNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     processId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -30,7 +30,7 @@ export const ListGroupProcessPerformanceAdvisorNamespacesInput =
 // Output Schema
 export type ListGroupProcessPerformanceAdvisorNamespacesOutput = void;
 export const ListGroupProcessPerformanceAdvisorNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupProcessPerformanceAdvisorNamespacesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupProcessPerformanceAdvisorNamespacesOutput>;
 
 // The operation
 /**
@@ -54,7 +54,7 @@ export const ListGroupProcessPerformanceAdvisorNamespacesOutput =
 - If you specify neither the **duration** nor the **since** parameters, the endpoint returns data from the previous 24 hours.
  */
 export const listGroupProcessPerformanceAdvisorNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupProcessPerformanceAdvisorNamespacesInput,
     outputSchema: ListGroupProcessPerformanceAdvisorNamespacesOutput,
     errors: [Forbidden, NotFound] as const,

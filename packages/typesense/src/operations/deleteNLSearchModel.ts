@@ -8,7 +8,7 @@ export interface DeleteNLSearchModelInput {
   modelId: string;
 }
 export const DeleteNLSearchModelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     modelId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/nl_search_models/{modelId}" }),
@@ -19,7 +19,7 @@ export interface DeleteNLSearchModelOutput {
   id: string;
 }
 export const DeleteNLSearchModelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
   }) as unknown as Schema.Codec<DeleteNLSearchModelOutput>;
 
@@ -31,7 +31,7 @@ export const DeleteNLSearchModelOutput =
  *
  * @param modelId - The ID of the NL search model to delete
  */
-export const deleteNLSearchModel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteNLSearchModel = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteNLSearchModelInput,
   outputSchema: DeleteNLSearchModelOutput,
   errors: [NotFound] as const,

@@ -51,7 +51,7 @@ export interface LlmAnalyticsProviderKeysUpdateInput {
   last_used_at?: string | null;
 }
 export const LlmAnalyticsProviderKeysUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     provider: Schema.optional(
@@ -165,7 +165,7 @@ export interface LlmAnalyticsProviderKeysUpdateOutput {
   last_used_at?: string | null;
 }
 export const LlmAnalyticsProviderKeysUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     provider: Schema.optional(
       Schema.Literals([
@@ -234,7 +234,7 @@ export const LlmAnalyticsProviderKeysUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const llmAnalyticsProviderKeysUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsProviderKeysUpdateInput,
     outputSchema: LlmAnalyticsProviderKeysUpdateOutput,
   }));

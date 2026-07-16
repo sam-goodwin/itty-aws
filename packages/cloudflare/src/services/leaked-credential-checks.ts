@@ -61,13 +61,12 @@ interface ListDetectionsResponseResult {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string | null;
 }
-const ListDetectionsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      password: Schema.optional(Schema.Union([SensitiveString, Schema.Null])),
-      username: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+const ListDetectionsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    password: Schema.optional(Schema.Union([SensitiveString, Schema.Null])),
+    username: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<ListDetectionsResponseResult>;
 
 // =============================================================================
@@ -80,17 +79,16 @@ export interface GetDetectionRequest {
   zoneId: string;
 }
 
-export const GetDetectionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      detectionId: Schema.String.pipe(T.HttpPath("detectionId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/leaked-credential-checks/detections/{detectionId}",
-      }),
-    ),
+export const GetDetectionRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    detectionId: Schema.String.pipe(T.HttpPath("detectionId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/leaked-credential-checks/detections/{detectionId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetDetectionRequest>;
 
 export interface GetDetectionResponse {
@@ -102,13 +100,12 @@ export interface GetDetectionResponse {
   username?: string | null;
 }
 
-export const GetDetectionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      password: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      username: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const GetDetectionResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    password: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    username: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetDetectionResponse>;
 
 export type GetDetectionError =
@@ -122,7 +119,7 @@ export const getDetection: API.OperationMethod<
   GetDetectionResponse,
   GetDetectionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDetectionRequest,
   output: GetDetectionResponse,
   errors: [DetectionNotFound, LeakedCredentialChecksDisabled, Forbidden],
@@ -133,16 +130,15 @@ export interface ListDetectionsRequest {
   zoneId: string;
 }
 
-export const ListDetectionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/leaked-credential-checks/detections",
-      }),
-    ),
+export const ListDetectionsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/leaked-credential-checks/detections",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListDetectionsRequest>;
 
 export interface ListDetectionsResponse {
@@ -154,7 +150,7 @@ export interface ListDetectionsResponse {
 }
 
 export const ListDetectionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDetectionsResponseResult),
     }),
@@ -170,7 +166,7 @@ export const listDetections: API.PaginatedOperationMethod<
   ListDetectionsResponse,
   ListDetectionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDetectionsRequest,
   output: ListDetectionsResponse,
   errors: [LeakedCredentialChecksDisabled, Forbidden],
@@ -190,7 +186,7 @@ export interface CreateDetectionRequest {
 }
 
 export const CreateDetectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       password: Schema.optional(Schema.String),
@@ -213,7 +209,7 @@ export interface CreateDetectionResponse {
 }
 
 export const CreateDetectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       password: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -232,7 +228,7 @@ export const createDetection: API.OperationMethod<
   CreateDetectionResponse,
   CreateDetectionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDetectionRequest,
   output: CreateDetectionResponse,
   errors: [DetectionQuotaExceeded, LeakedCredentialChecksDisabled, Forbidden],
@@ -249,7 +245,7 @@ export interface UpdateDetectionRequest {
 }
 
 export const UpdateDetectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       detectionId: Schema.String.pipe(T.HttpPath("detectionId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -273,7 +269,7 @@ export interface UpdateDetectionResponse {
 }
 
 export const UpdateDetectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       password: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -292,7 +288,7 @@ export const updateDetection: API.OperationMethod<
   UpdateDetectionResponse,
   UpdateDetectionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDetectionRequest,
   output: UpdateDetectionResponse,
   errors: [DetectionNotFound, LeakedCredentialChecksDisabled, Forbidden],
@@ -305,7 +301,7 @@ export interface DeleteDetectionRequest {
 }
 
 export const DeleteDetectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       detectionId: Schema.String.pipe(T.HttpPath("detectionId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -320,7 +316,7 @@ export const DeleteDetectionRequest =
 export type DeleteDetectionResponse = unknown;
 
 export const DeleteDetectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteDetectionResponse>;
 
@@ -335,7 +331,7 @@ export const deleteDetection: API.OperationMethod<
   DeleteDetectionResponse,
   DeleteDetectionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDetectionRequest,
   output: DeleteDetectionResponse,
   errors: [DetectionNotFound, LeakedCredentialChecksDisabled, Forbidden],
@@ -351,7 +347,7 @@ export interface GetLeakedCredentialCheckRequest {
 }
 
 export const GetLeakedCredentialCheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -368,7 +364,7 @@ export interface GetLeakedCredentialCheckResponse {
 }
 
 export const GetLeakedCredentialCheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -381,7 +377,7 @@ export const getLeakedCredentialCheck: API.OperationMethod<
   GetLeakedCredentialCheckResponse,
   GetLeakedCredentialCheckError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLeakedCredentialCheckRequest,
   output: GetLeakedCredentialCheckResponse,
   errors: [Forbidden],
@@ -395,7 +391,7 @@ export interface CreateLeakedCredentialCheckRequest {
 }
 
 export const CreateLeakedCredentialCheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       enabled: Schema.optional(Schema.Boolean),
@@ -413,7 +409,7 @@ export interface CreateLeakedCredentialCheckResponse {
 }
 
 export const CreateLeakedCredentialCheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -426,7 +422,7 @@ export const createLeakedCredentialCheck: API.OperationMethod<
   CreateLeakedCredentialCheckResponse,
   CreateLeakedCredentialCheckError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLeakedCredentialCheckRequest,
   output: CreateLeakedCredentialCheckResponse,
   errors: [Forbidden],

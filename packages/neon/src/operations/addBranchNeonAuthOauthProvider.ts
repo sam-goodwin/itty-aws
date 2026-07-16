@@ -14,7 +14,7 @@ export interface AddBranchNeonAuthOauthProviderInput {
   microsoft_tenant_id?: string;
 }
 export const AddBranchNeonAuthOauthProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
@@ -36,7 +36,7 @@ export interface AddBranchNeonAuthOauthProviderOutput {
   client_secret?: Redacted.Redacted<string>;
 }
 export const AddBranchNeonAuthOauthProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Literals(["google", "github", "microsoft", "vercel"]),
     type: Schema.Literals(["standard", "shared"]),
     client_id: Schema.optional(Schema.String),
@@ -54,7 +54,7 @@ export const AddBranchNeonAuthOauthProviderOutput =
  * @param branch_id - The Neon branch ID
  */
 export const addBranchNeonAuthOauthProvider =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddBranchNeonAuthOauthProviderInput,
     outputSchema: AddBranchNeonAuthOauthProviderOutput,
   }));

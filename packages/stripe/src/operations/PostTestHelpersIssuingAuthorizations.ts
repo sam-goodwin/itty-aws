@@ -422,7 +422,7 @@ export interface PostTestHelpersIssuingAuthorizationsInput {
   wallet?: "apple_pay" | "google_pay" | "samsung_pay";
 }
 export const PostTestHelpersIssuingAuthorizationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.optional(Schema.Number),
     amount_details: Schema.optional(
       Schema.Struct({
@@ -2968,7 +2968,7 @@ export interface PostTestHelpersIssuingAuthorizationsOutput {
   wallet: string | null;
 }
 export const PostTestHelpersIssuingAuthorizationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.NullOr(
       Schema.Struct({
@@ -5265,7 +5265,7 @@ export const PostTestHelpersIssuingAuthorizationsOutput =
  * <p>Create a test-mode authorization.</p>
  */
 export const PostTestHelpersIssuingAuthorizations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersIssuingAuthorizationsInput,
     outputSchema: PostTestHelpersIssuingAuthorizationsOutput,
   }));

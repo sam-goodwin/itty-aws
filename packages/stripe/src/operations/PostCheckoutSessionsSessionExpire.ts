@@ -13,7 +13,7 @@ export interface PostCheckoutSessionsSessionExpireInput {
   expand?: string[];
 }
 export const PostCheckoutSessionsSessionExpireInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -1362,7 +1362,7 @@ export interface PostCheckoutSessionsSessionExpireOutput {
   wallet_options: { link?: { display?: "auto" | "never" } } | null;
 }
 export const PostCheckoutSessionsSessionExpireOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adaptive_pricing: Schema.NullOr(
       Schema.Struct({
         enabled: Schema.Boolean,
@@ -3050,7 +3050,7 @@ export const PostCheckoutSessionsSessionExpireOutput =
  * <p>After it expires, a customer can’t complete a Checkout Session and customers loading the Checkout Session see a message saying the Checkout Session is expired.</p>
  */
 export const PostCheckoutSessionsSessionExpire =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostCheckoutSessionsSessionExpireInput,
     outputSchema: PostCheckoutSessionsSessionExpireOutput,
   }));

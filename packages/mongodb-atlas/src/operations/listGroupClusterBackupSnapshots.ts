@@ -17,7 +17,7 @@ export interface ListGroupClusterBackupSnapshotsInput {
   oplogInc?: number;
 }
 export const ListGroupClusterBackupSnapshotsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -38,7 +38,7 @@ export const ListGroupClusterBackupSnapshotsInput =
 // Output Schema
 export type ListGroupClusterBackupSnapshotsOutput = void;
 export const ListGroupClusterBackupSnapshotsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterBackupSnapshotsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterBackupSnapshotsOutput>;
 
 // The operation
 /**
@@ -60,7 +60,7 @@ export const ListGroupClusterBackupSnapshotsOutput =
  * @param oplogInc - Oplog operation number that represents the desired point in time. This is the second part of an Oplog timestamp. Must be used with `oplogTs`. Mutually exclusive with `pointInTimeUtcSeconds`.
  */
 export const listGroupClusterBackupSnapshots =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupClusterBackupSnapshotsInput,
     outputSchema: ListGroupClusterBackupSnapshotsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

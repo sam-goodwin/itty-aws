@@ -15,7 +15,7 @@ export interface PostTerminalOnboardingLinksInput {
   on_behalf_of?: string;
 }
 export const PostTerminalOnboardingLinksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     link_options: Schema.Struct({
       apple_terms_and_conditions: Schema.optional(
@@ -49,7 +49,7 @@ export interface PostTerminalOnboardingLinksOutput {
   redirect_url: string;
 }
 export const PostTerminalOnboardingLinksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     link_options: Schema.Struct({
       apple_terms_and_conditions: Schema.NullOr(
         Schema.Struct({
@@ -70,9 +70,7 @@ export const PostTerminalOnboardingLinksOutput =
  *
  * <p>Creates a new <code>OnboardingLink</code> object that contains a redirect_url used for onboarding onto Tap to Pay on iPhone.</p>
  */
-export const PostTerminalOnboardingLinks = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostTerminalOnboardingLinksInput,
-    outputSchema: PostTerminalOnboardingLinksOutput,
-  }),
-);
+export const PostTerminalOnboardingLinks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTerminalOnboardingLinksInput,
+  outputSchema: PostTerminalOnboardingLinksOutput,
+}));

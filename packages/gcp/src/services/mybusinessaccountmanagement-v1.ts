@@ -48,7 +48,7 @@ export interface PostalAddress {
 }
 
 export const PostalAddress: Schema.Codec<PostalAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     recipients: Schema.optional(Schema.Array(Schema.String)),
     addressLines: Schema.optional(Schema.Array(Schema.String)),
     regionCode: Schema.optional(Schema.String),
@@ -72,7 +72,7 @@ export interface OrganizationInfo {
 }
 
 export const OrganizationInfo: Schema.Codec<OrganizationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     registeredDomain: Schema.optional(Schema.String),
     address: Schema.optional(PostalAddress),
     phoneNumber: Schema.optional(Schema.String),
@@ -128,7 +128,7 @@ export interface Account {
 }
 
 export const Account: Schema.Codec<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountName: Schema.optional(Schema.String),
     primaryOwner: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -161,7 +161,7 @@ export interface Admin {
 }
 
 export const Admin: Schema.Codec<Admin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     account: Schema.optional(Schema.String),
     admin: Schema.optional(Schema.String),
@@ -175,7 +175,7 @@ export interface ListLocationAdminsResponse {
 }
 
 export const ListLocationAdminsResponse: Schema.Codec<ListLocationAdminsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     admins: Schema.optional(Schema.Array(Admin)),
   }).annotate({ identifier: "ListLocationAdminsResponse" });
 
@@ -185,7 +185,7 @@ export interface TransferLocationRequest {
 }
 
 export const TransferLocationRequest: Schema.Codec<TransferLocationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destinationAccount: Schema.optional(Schema.String),
   }).annotate({ identifier: "TransferLocationRequest" });
 
@@ -199,7 +199,7 @@ export interface TargetLocation {
 }
 
 export const TargetLocation: Schema.Codec<TargetLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationName: Schema.optional(Schema.String),
     address: Schema.optional(Schema.String),
     placeId: Schema.optional(Schema.String),
@@ -229,7 +229,7 @@ export interface Invitation {
 }
 
 export const Invitation: Schema.Codec<Invitation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.optional(Schema.String),
     targetType: Schema.optional(Schema.String),
     targetAccount: Schema.optional(Account),
@@ -240,14 +240,14 @@ export const Invitation: Schema.Codec<Invitation> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
 export interface DeclineInvitationRequest {}
 
 export const DeclineInvitationRequest: Schema.Codec<DeclineInvitationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeclineInvitationRequest",
   });
 
@@ -257,7 +257,7 @@ export interface ListInvitationsResponse {
 }
 
 export const ListInvitationsResponse: Schema.Codec<ListInvitationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invitations: Schema.optional(Schema.Array(Invitation)),
   }).annotate({ identifier: "ListInvitationsResponse" });
 
@@ -269,7 +269,7 @@ export interface ListAccountsResponse {
 }
 
 export const ListAccountsResponse: Schema.Codec<ListAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     accounts: Schema.optional(Schema.Array(Account)),
   }).annotate({ identifier: "ListAccountsResponse" });
@@ -280,14 +280,14 @@ export interface ListAccountAdminsResponse {
 }
 
 export const ListAccountAdminsResponse: Schema.Codec<ListAccountAdminsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountAdmins: Schema.optional(Schema.Array(Admin)),
   }).annotate({ identifier: "ListAccountAdminsResponse" });
 
 export interface AcceptInvitationRequest {}
 
 export const AcceptInvitationRequest: Schema.Codec<AcceptInvitationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AcceptInvitationRequest",
   });
 
@@ -350,7 +350,7 @@ export interface CreateAccountsRequest {
   body?: Account;
 }
 
-export const CreateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateAccountsRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(Account).pipe(T.HttpBody()),
 }).pipe(
   T.Http({ method: "POST", path: "v1/accounts", hasBody: true }),
@@ -358,7 +358,7 @@ export const CreateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CreateAccountsRequest>;
 
 export type CreateAccountsResponse = Account;
-export const CreateAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
+export const CreateAccountsResponse = /*@__PURE__*/ Account;
 
 export type CreateAccountsError =
   | DefaultErrors
@@ -373,7 +373,7 @@ export const createAccounts: API.OperationMethod<
   CreateAccountsResponse,
   CreateAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsRequest,
   output: CreateAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -384,7 +384,7 @@ export interface GetAccountsRequest {
   name: string;
 }
 
-export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAccountsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -392,7 +392,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetAccountsRequest>;
 
 export type GetAccountsResponse = Account;
-export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
+export const GetAccountsResponse = /*@__PURE__*/ Account;
 
 export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -402,7 +402,7 @@ export const getAccounts: API.OperationMethod<
   GetAccountsResponse,
   GetAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -419,7 +419,7 @@ export interface PatchAccountsRequest {
   body?: Account;
 }
 
-export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchAccountsRequest = /*@__PURE__*/ Schema.Struct({
   validateOnly: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("validateOnly"),
   ),
@@ -432,7 +432,7 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchAccountsRequest>;
 
 export type PatchAccountsResponse = Account;
-export const PatchAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
+export const PatchAccountsResponse = /*@__PURE__*/ Account;
 
 export type PatchAccountsError =
   | DefaultErrors
@@ -447,7 +447,7 @@ export const patchAccounts: API.OperationMethod<
   PatchAccountsResponse,
   PatchAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsRequest,
   output: PatchAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -464,7 +464,7 @@ export interface ListAccountsRequest {
   filter?: string;
 }
 
-export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAccountsRequest = /*@__PURE__*/ Schema.Struct({
   parentAccount: Schema.optional(Schema.String).pipe(
     T.HttpQuery("parentAccount"),
   ),
@@ -477,8 +477,7 @@ export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListAccountsRequest>;
 
 export type ListAccountsResponse_Op = ListAccountsResponse;
-export const ListAccountsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListAccountsResponse;
+export const ListAccountsResponse_Op = /*@__PURE__*/ ListAccountsResponse;
 
 export type ListAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -488,7 +487,7 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsResponse_Op,
   ListAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -506,7 +505,7 @@ export interface AcceptAccountsInvitationsRequest {
 }
 
 export const AcceptAccountsInvitationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AcceptInvitationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -515,8 +514,7 @@ export const AcceptAccountsInvitationsRequest =
   ) as unknown as Schema.Codec<AcceptAccountsInvitationsRequest>;
 
 export type AcceptAccountsInvitationsResponse = Empty;
-export const AcceptAccountsInvitationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const AcceptAccountsInvitationsResponse = /*@__PURE__*/ Empty;
 
 export type AcceptAccountsInvitationsError =
   | DefaultErrors
@@ -531,7 +529,7 @@ export const acceptAccountsInvitations: API.OperationMethod<
   AcceptAccountsInvitationsResponse,
   AcceptAccountsInvitationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptAccountsInvitationsRequest,
   output: AcceptAccountsInvitationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -545,7 +543,7 @@ export interface DeclineAccountsInvitationsRequest {
 }
 
 export const DeclineAccountsInvitationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeclineInvitationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -554,8 +552,7 @@ export const DeclineAccountsInvitationsRequest =
   ) as unknown as Schema.Codec<DeclineAccountsInvitationsRequest>;
 
 export type DeclineAccountsInvitationsResponse = Empty;
-export const DeclineAccountsInvitationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeclineAccountsInvitationsResponse = /*@__PURE__*/ Empty;
 
 export type DeclineAccountsInvitationsError =
   | DefaultErrors
@@ -570,7 +567,7 @@ export const declineAccountsInvitations: API.OperationMethod<
   DeclineAccountsInvitationsResponse,
   DeclineAccountsInvitationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeclineAccountsInvitationsRequest,
   output: DeclineAccountsInvitationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -584,7 +581,7 @@ export interface ListAccountsInvitationsRequest {
 }
 
 export const ListAccountsInvitationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
@@ -594,7 +591,7 @@ export const ListAccountsInvitationsRequest =
 
 export type ListAccountsInvitationsResponse = ListInvitationsResponse;
 export const ListAccountsInvitationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListInvitationsResponse;
+  /*@__PURE__*/ ListInvitationsResponse;
 
 export type ListAccountsInvitationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -604,7 +601,7 @@ export const listAccountsInvitations: API.OperationMethod<
   ListAccountsInvitationsResponse,
   ListAccountsInvitationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccountsInvitationsRequest,
   output: ListAccountsInvitationsResponse,
   errors: [NotFound, Forbidden],
@@ -616,7 +613,7 @@ export interface ListAccountsAdminsRequest {
 }
 
 export const ListAccountsAdminsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/admins" }),
@@ -625,7 +622,7 @@ export const ListAccountsAdminsRequest =
 
 export type ListAccountsAdminsResponse = ListAccountAdminsResponse;
 export const ListAccountsAdminsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAccountAdminsResponse;
+  /*@__PURE__*/ ListAccountAdminsResponse;
 
 export type ListAccountsAdminsError = DefaultErrors | NotFound | Forbidden;
 
@@ -635,7 +632,7 @@ export const listAccountsAdmins: API.OperationMethod<
   ListAccountsAdminsResponse,
   ListAccountsAdminsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccountsAdminsRequest,
   output: ListAccountsAdminsResponse,
   errors: [NotFound, Forbidden],
@@ -647,7 +644,7 @@ export interface DeleteAccountsAdminsRequest {
 }
 
 export const DeleteAccountsAdminsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -655,7 +652,7 @@ export const DeleteAccountsAdminsRequest =
   ) as unknown as Schema.Codec<DeleteAccountsAdminsRequest>;
 
 export type DeleteAccountsAdminsResponse = Empty;
-export const DeleteAccountsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteAccountsAdminsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteAccountsAdminsError =
   | DefaultErrors
@@ -670,7 +667,7 @@ export const deleteAccountsAdmins: API.OperationMethod<
   DeleteAccountsAdminsResponse,
   DeleteAccountsAdminsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsAdminsRequest,
   output: DeleteAccountsAdminsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -686,7 +683,7 @@ export interface PatchAccountsAdminsRequest {
 }
 
 export const PatchAccountsAdminsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Admin).pipe(T.HttpBody()),
@@ -696,7 +693,7 @@ export const PatchAccountsAdminsRequest =
   ) as unknown as Schema.Codec<PatchAccountsAdminsRequest>;
 
 export type PatchAccountsAdminsResponse = Admin;
-export const PatchAccountsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
+export const PatchAccountsAdminsResponse = /*@__PURE__*/ Admin;
 
 export type PatchAccountsAdminsError =
   | DefaultErrors
@@ -711,7 +708,7 @@ export const patchAccountsAdmins: API.OperationMethod<
   PatchAccountsAdminsResponse,
   PatchAccountsAdminsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsAdminsRequest,
   output: PatchAccountsAdminsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -725,7 +722,7 @@ export interface CreateAccountsAdminsRequest {
 }
 
 export const CreateAccountsAdminsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Admin).pipe(T.HttpBody()),
   }).pipe(
@@ -734,7 +731,7 @@ export const CreateAccountsAdminsRequest =
   ) as unknown as Schema.Codec<CreateAccountsAdminsRequest>;
 
 export type CreateAccountsAdminsResponse = Admin;
-export const CreateAccountsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
+export const CreateAccountsAdminsResponse = /*@__PURE__*/ Admin;
 
 export type CreateAccountsAdminsError =
   | DefaultErrors
@@ -749,7 +746,7 @@ export const createAccountsAdmins: API.OperationMethod<
   CreateAccountsAdminsResponse,
   CreateAccountsAdminsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsAdminsRequest,
   output: CreateAccountsAdminsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -763,7 +760,7 @@ export interface TransferLocationsRequest {
 }
 
 export const TransferLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(TransferLocationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -772,7 +769,7 @@ export const TransferLocationsRequest =
   ) as unknown as Schema.Codec<TransferLocationsRequest>;
 
 export type TransferLocationsResponse = Empty;
-export const TransferLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const TransferLocationsResponse = /*@__PURE__*/ Empty;
 
 export type TransferLocationsError =
   | DefaultErrors
@@ -787,7 +784,7 @@ export const transferLocations: API.OperationMethod<
   TransferLocationsResponse,
   TransferLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TransferLocationsRequest,
   output: TransferLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -801,7 +798,7 @@ export interface CreateLocationsAdminsRequest {
 }
 
 export const CreateLocationsAdminsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Admin).pipe(T.HttpBody()),
   }).pipe(
@@ -810,7 +807,7 @@ export const CreateLocationsAdminsRequest =
   ) as unknown as Schema.Codec<CreateLocationsAdminsRequest>;
 
 export type CreateLocationsAdminsResponse = Admin;
-export const CreateLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
+export const CreateLocationsAdminsResponse = /*@__PURE__*/ Admin;
 
 export type CreateLocationsAdminsError =
   | DefaultErrors
@@ -825,7 +822,7 @@ export const createLocationsAdmins: API.OperationMethod<
   CreateLocationsAdminsResponse,
   CreateLocationsAdminsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationsAdminsRequest,
   output: CreateLocationsAdminsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -837,7 +834,7 @@ export interface DeleteLocationsAdminsRequest {
 }
 
 export const DeleteLocationsAdminsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -845,7 +842,7 @@ export const DeleteLocationsAdminsRequest =
   ) as unknown as Schema.Codec<DeleteLocationsAdminsRequest>;
 
 export type DeleteLocationsAdminsResponse = Empty;
-export const DeleteLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteLocationsAdminsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteLocationsAdminsError =
   | DefaultErrors
@@ -860,7 +857,7 @@ export const deleteLocationsAdmins: API.OperationMethod<
   DeleteLocationsAdminsResponse,
   DeleteLocationsAdminsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocationsAdminsRequest,
   output: DeleteLocationsAdminsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -876,7 +873,7 @@ export interface PatchLocationsAdminsRequest {
 }
 
 export const PatchLocationsAdminsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Admin).pipe(T.HttpBody()),
@@ -886,7 +883,7 @@ export const PatchLocationsAdminsRequest =
   ) as unknown as Schema.Codec<PatchLocationsAdminsRequest>;
 
 export type PatchLocationsAdminsResponse = Admin;
-export const PatchLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
+export const PatchLocationsAdminsResponse = /*@__PURE__*/ Admin;
 
 export type PatchLocationsAdminsError =
   | DefaultErrors
@@ -901,7 +898,7 @@ export const patchLocationsAdmins: API.OperationMethod<
   PatchLocationsAdminsResponse,
   PatchLocationsAdminsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchLocationsAdminsRequest,
   output: PatchLocationsAdminsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -913,7 +910,7 @@ export interface ListLocationsAdminsRequest {
 }
 
 export const ListLocationsAdminsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/admins" }),
@@ -922,7 +919,7 @@ export const ListLocationsAdminsRequest =
 
 export type ListLocationsAdminsResponse = ListLocationAdminsResponse;
 export const ListLocationsAdminsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationAdminsResponse;
+  /*@__PURE__*/ ListLocationAdminsResponse;
 
 export type ListLocationsAdminsError = DefaultErrors | NotFound | Forbidden;
 
@@ -932,7 +929,7 @@ export const listLocationsAdmins: API.OperationMethod<
   ListLocationsAdminsResponse,
   ListLocationsAdminsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListLocationsAdminsRequest,
   output: ListLocationsAdminsResponse,
   errors: [NotFound, Forbidden],

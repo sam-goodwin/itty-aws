@@ -1092,7 +1092,7 @@ export interface EnvironmentsDefaultReleaseConditionsUpdateInput {
   events_retention_enforced?: boolean;
 }
 export const EnvironmentsDefaultReleaseConditionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     uuid: Schema.optional(Schema.String),
@@ -2269,7 +2269,7 @@ export const EnvironmentsDefaultReleaseConditionsUpdateInput =
 // Output Schema
 export type EnvironmentsDefaultReleaseConditionsUpdateOutput = void;
 export const EnvironmentsDefaultReleaseConditionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDefaultReleaseConditionsUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDefaultReleaseConditionsUpdateOutput>;
 
 // The operation
 /**
@@ -2279,7 +2279,7 @@ export const EnvironmentsDefaultReleaseConditionsUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const environmentsDefaultReleaseConditionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsDefaultReleaseConditionsUpdateInput,
     outputSchema: EnvironmentsDefaultReleaseConditionsUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

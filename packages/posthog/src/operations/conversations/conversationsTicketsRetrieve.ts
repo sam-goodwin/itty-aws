@@ -9,7 +9,7 @@ export interface ConversationsTicketsRetrieveInput {
   project_id: string;
 }
 export const ConversationsTicketsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -79,7 +79,7 @@ export interface ConversationsTicketsRetrieveOutput {
   tags?: unknown[];
 }
 export const ConversationsTicketsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     ticket_number: Schema.optional(Schema.Number),
     channel_source: Schema.optional(
@@ -173,7 +173,7 @@ export const ConversationsTicketsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const conversationsTicketsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConversationsTicketsRetrieveInput,
     outputSchema: ConversationsTicketsRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

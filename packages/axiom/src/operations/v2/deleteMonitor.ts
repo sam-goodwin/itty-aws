@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface DeleteMonitorInput {
   id: string;
 }
-export const DeleteMonitorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteMonitorInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/v2/monitors/{id}" }),
@@ -16,13 +16,13 @@ export const DeleteMonitorInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteMonitorOutput = void;
 export const DeleteMonitorOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteMonitorOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteMonitorOutput>;
 
 // The operation
 /**
  * Delete monitor
  */
-export const deleteMonitor = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteMonitor = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteMonitorInput,
   outputSchema: DeleteMonitorOutput,
   errors: [NotFound] as const,

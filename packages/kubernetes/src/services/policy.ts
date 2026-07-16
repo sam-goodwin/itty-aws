@@ -77,7 +77,7 @@ export interface CreatePolicyV1NamespacedPodDisruptionBudgetInput {
   };
 }
 export const CreatePolicyV1NamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -246,7 +246,7 @@ export interface CreatePolicyV1NamespacedPodDisruptionBudgetOutput {
   };
 }
 export const CreatePolicyV1NamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -353,7 +353,7 @@ export const CreatePolicyV1NamespacedPodDisruptionBudgetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createPolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreatePolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: CreatePolicyV1NamespacedPodDisruptionBudgetOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -381,7 +381,7 @@ export interface DeletePolicyV1CollectionNamespacedPodDisruptionBudgetInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeletePolicyV1CollectionNamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -440,7 +440,7 @@ export interface DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput {
   status?: string;
 }
 export const DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -543,7 +543,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deletePolicyV1CollectionNamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeletePolicyV1CollectionNamespacedPodDisruptionBudgetInput,
     outputSchema: DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput,
   }));
@@ -562,7 +562,7 @@ export interface DeletePolicyV1NamespacedPodDisruptionBudgetInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeletePolicyV1NamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -613,7 +613,7 @@ export interface DeletePolicyV1NamespacedPodDisruptionBudgetOutput {
   status?: string;
 }
 export const DeletePolicyV1NamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -667,16 +667,14 @@ export const DeletePolicyV1NamespacedPodDisruptionBudgetOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deletePolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeletePolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: DeletePolicyV1NamespacedPodDisruptionBudgetOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export interface GetPolicyAPIGroupInput {}
-export const GetPolicyAPIGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetPolicyAPIGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/apis/policy/" }),
 ) as unknown as Schema.Codec<GetPolicyAPIGroupInput>;
 
@@ -690,7 +688,7 @@ export interface GetPolicyAPIGroupOutput {
   versions: { groupVersion: string; version: string }[];
 }
 export const GetPolicyAPIGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     name: Schema.String,
@@ -720,14 +718,14 @@ export const GetPolicyAPIGroupOutput =
 /**
  * get information of a group
  */
-export const getPolicyAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getPolicyAPIGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetPolicyAPIGroupInput,
   outputSchema: GetPolicyAPIGroupOutput,
 }));
 // Input Schema
 export interface GetPolicyV1APIResourcesInput {}
 export const GetPolicyV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/policy/v1/" }),
   ) as unknown as Schema.Codec<GetPolicyV1APIResourcesInput>;
 
@@ -750,7 +748,7 @@ export interface GetPolicyV1APIResourcesOutput {
   }[];
 }
 export const GetPolicyV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -774,12 +772,10 @@ export const GetPolicyV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getPolicyV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetPolicyV1APIResourcesInput,
-    outputSchema: GetPolicyV1APIResourcesOutput,
-  }),
-);
+export const getPolicyV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetPolicyV1APIResourcesInput,
+  outputSchema: GetPolicyV1APIResourcesOutput,
+}));
 // Input Schema
 export interface ListPolicyV1NamespacedPodDisruptionBudgetInput {
   namespace: string;
@@ -797,7 +793,7 @@ export interface ListPolicyV1NamespacedPodDisruptionBudgetInput {
   watch?: boolean;
 }
 export const ListPolicyV1NamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -896,7 +892,7 @@ export interface ListPolicyV1NamespacedPodDisruptionBudgetOutput {
   };
 }
 export const ListPolicyV1NamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1073,7 +1069,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listPolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListPolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: ListPolicyV1NamespacedPodDisruptionBudgetOutput,
   }));
@@ -1093,7 +1089,7 @@ export interface ListPolicyV1PodDisruptionBudgetForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListPolicyV1PodDisruptionBudgetForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -1188,7 +1184,7 @@ export interface ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput {
   };
 }
 export const ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -1364,7 +1360,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listPolicyV1PodDisruptionBudgetForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListPolicyV1PodDisruptionBudgetForAllNamespacesInput,
     outputSchema: ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput,
   }));
@@ -1379,7 +1375,7 @@ export interface PatchPolicyV1NamespacedPodDisruptionBudgetInput {
   force?: boolean;
 }
 export const PatchPolicyV1NamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1457,7 +1453,7 @@ export interface PatchPolicyV1NamespacedPodDisruptionBudgetOutput {
   };
 }
 export const PatchPolicyV1NamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1566,7 +1562,7 @@ export const PatchPolicyV1NamespacedPodDisruptionBudgetOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchPolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchPolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: PatchPolicyV1NamespacedPodDisruptionBudgetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -1582,7 +1578,7 @@ export interface PatchPolicyV1NamespacedPodDisruptionBudgetStatusInput {
   force?: boolean;
 }
 export const PatchPolicyV1NamespacedPodDisruptionBudgetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1660,7 +1656,7 @@ export interface PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput {
   };
 }
 export const PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1769,7 +1765,7 @@ export const PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchPolicyV1NamespacedPodDisruptionBudgetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchPolicyV1NamespacedPodDisruptionBudgetStatusInput,
     outputSchema: PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -1781,7 +1777,7 @@ export interface ReadPolicyV1NamespacedPodDisruptionBudgetInput {
   pretty?: string;
 }
 export const ReadPolicyV1NamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -1855,7 +1851,7 @@ export interface ReadPolicyV1NamespacedPodDisruptionBudgetOutput {
   };
 }
 export const ReadPolicyV1NamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -1960,7 +1956,7 @@ export const ReadPolicyV1NamespacedPodDisruptionBudgetOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readPolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadPolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: ReadPolicyV1NamespacedPodDisruptionBudgetOutput,
     errors: [NotFound] as const,
@@ -1972,7 +1968,7 @@ export interface ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput {
   pretty?: string;
 }
 export const ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -2046,7 +2042,7 @@ export interface ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput {
   };
 }
 export const ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2151,7 +2147,7 @@ export const ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readPolicyV1NamespacedPodDisruptionBudgetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadPolicyV1NamespacedPodDisruptionBudgetStatusInput,
     outputSchema: ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput,
     errors: [NotFound] as const,
@@ -2225,7 +2221,7 @@ export interface ReplacePolicyV1NamespacedPodDisruptionBudgetInput {
   };
 }
 export const ReplacePolicyV1NamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -2395,7 +2391,7 @@ export interface ReplacePolicyV1NamespacedPodDisruptionBudgetOutput {
   };
 }
 export const ReplacePolicyV1NamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2503,7 +2499,7 @@ export const ReplacePolicyV1NamespacedPodDisruptionBudgetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replacePolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplacePolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: ReplacePolicyV1NamespacedPodDisruptionBudgetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -2577,7 +2573,7 @@ export interface ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput {
   };
 }
 export const ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -2747,7 +2743,7 @@ export interface ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput {
   };
 }
 export const ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -2855,7 +2851,7 @@ export const ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replacePolicyV1NamespacedPodDisruptionBudgetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput,
     outputSchema: ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -2878,7 +2874,7 @@ export interface WatchPolicyV1NamespacedPodDisruptionBudgetInput {
   watch?: boolean;
 }
 export const WatchPolicyV1NamespacedPodDisruptionBudgetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -2906,7 +2902,7 @@ export interface WatchPolicyV1NamespacedPodDisruptionBudgetOutput {
   type: string;
 }
 export const WatchPolicyV1NamespacedPodDisruptionBudgetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchPolicyV1NamespacedPodDisruptionBudgetOutput>;
@@ -2972,7 +2968,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchPolicyV1NamespacedPodDisruptionBudget =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchPolicyV1NamespacedPodDisruptionBudgetInput,
     outputSchema: WatchPolicyV1NamespacedPodDisruptionBudgetOutput,
   }));
@@ -2993,7 +2989,7 @@ export interface WatchPolicyV1NamespacedPodDisruptionBudgetListInput {
   watch?: boolean;
 }
 export const WatchPolicyV1NamespacedPodDisruptionBudgetListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -3020,7 +3016,7 @@ export interface WatchPolicyV1NamespacedPodDisruptionBudgetListOutput {
   type: string;
 }
 export const WatchPolicyV1NamespacedPodDisruptionBudgetListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchPolicyV1NamespacedPodDisruptionBudgetListOutput>;
@@ -3085,7 +3081,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchPolicyV1NamespacedPodDisruptionBudgetList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchPolicyV1NamespacedPodDisruptionBudgetListInput,
     outputSchema: WatchPolicyV1NamespacedPodDisruptionBudgetListOutput,
   }));
@@ -3105,7 +3101,7 @@ export interface WatchPolicyV1PodDisruptionBudgetListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchPolicyV1PodDisruptionBudgetListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -3131,7 +3127,7 @@ export interface WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOutput {
   type: string;
 }
 export const WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOutput>;
@@ -3195,7 +3191,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchPolicyV1PodDisruptionBudgetListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchPolicyV1PodDisruptionBudgetListForAllNamespacesInput,
     outputSchema: WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOutput,
   }));

@@ -9,7 +9,7 @@ export interface FileSystemRetrieveInput {
   project_id: string;
 }
 export const FileSystemRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -33,7 +33,7 @@ export interface FileSystemRetrieveOutput {
   last_viewed_at?: string | null;
 }
 export const FileSystemRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
     depth: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -52,7 +52,7 @@ export const FileSystemRetrieveOutput =
  * @param id - A UUID string identifying this file system.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const fileSystemRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const fileSystemRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: FileSystemRetrieveInput,
   outputSchema: FileSystemRetrieveOutput,
   errors: [Forbidden, NotFound] as const,

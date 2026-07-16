@@ -8,7 +8,7 @@ export interface UpdateNLSearchModelInput {
   modelId: string;
 }
 export const UpdateNLSearchModelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     modelId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "PUT", path: "/nl_search_models/{modelId}" }),
@@ -19,7 +19,7 @@ export interface UpdateNLSearchModelOutput {
   id: string;
 }
 export const UpdateNLSearchModelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
   }) as unknown as Schema.Codec<UpdateNLSearchModelOutput>;
 
@@ -31,7 +31,7 @@ export const UpdateNLSearchModelOutput =
  *
  * @param modelId - The ID of the NL search model to update
  */
-export const updateNLSearchModel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateNLSearchModel = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateNLSearchModelInput,
   outputSchema: UpdateNLSearchModelOutput,
   errors: [BadRequest, NotFound] as const,

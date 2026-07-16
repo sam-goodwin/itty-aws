@@ -10,7 +10,7 @@ export interface GroupsTypesMetricsRetrieveInput {
   project_id: string;
 }
 export const GroupsTypesMetricsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     group_type_index: Schema.Number.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -33,7 +33,7 @@ export interface GroupsTypesMetricsRetrieveOutput {
   math_property?: string | null;
 }
 export const GroupsTypesMetricsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     format: Schema.optional(Schema.Literals(["numeric", "currency"])),
@@ -50,10 +50,8 @@ export const GroupsTypesMetricsRetrieveOutput =
  * @param id - A UUID string identifying this group usage metric.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const groupsTypesMetricsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupsTypesMetricsRetrieveInput,
-    outputSchema: GroupsTypesMetricsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const groupsTypesMetricsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupsTypesMetricsRetrieveInput,
+  outputSchema: GroupsTypesMetricsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

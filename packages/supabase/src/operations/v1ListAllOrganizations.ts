@@ -6,7 +6,7 @@ import { Forbidden } from "../errors.ts";
 // Input Schema
 export interface V1ListAllOrganizationsInput {}
 export const V1ListAllOrganizationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/v1/organizations" }),
   ) as unknown as Schema.Codec<V1ListAllOrganizationsInput>;
 
@@ -17,7 +17,7 @@ export type V1ListAllOrganizationsOutput = {
   name: string;
 }[];
 export const V1ListAllOrganizationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.String,
       slug: Schema.String,
@@ -31,10 +31,8 @@ export const V1ListAllOrganizationsOutput =
  *
  * Returns a list of organizations that you currently belong to.
  */
-export const v1ListAllOrganizations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1ListAllOrganizationsInput,
-    outputSchema: V1ListAllOrganizationsOutput,
-    errors: [Forbidden] as const,
-  }),
-);
+export const v1ListAllOrganizations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1ListAllOrganizationsInput,
+  outputSchema: V1ListAllOrganizationsOutput,
+  errors: [Forbidden] as const,
+}));

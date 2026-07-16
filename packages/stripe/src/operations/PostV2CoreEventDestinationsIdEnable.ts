@@ -9,7 +9,7 @@ export interface PostV2CoreEventDestinationsIdEnableInput {
   id: string;
 }
 export const PostV2CoreEventDestinationsIdEnableInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "POST", path: "/v2/core/event_destinations/{id}/enable" }),
@@ -61,7 +61,7 @@ export interface PostV2CoreEventDestinationsIdEnableOutput {
   };
 }
 export const PostV2CoreEventDestinationsIdEnableOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amazon_eventbridge: Schema.optional(
       Schema.Struct({
         aws_account_id: Schema.String,
@@ -136,7 +136,7 @@ export const PostV2CoreEventDestinationsIdEnableOutput =
  * @param id - Identifier for the event destination to enable.
  */
 export const PostV2CoreEventDestinationsIdEnable =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV2CoreEventDestinationsIdEnableInput,
     outputSchema: PostV2CoreEventDestinationsIdEnableOutput,
   }));

@@ -14,7 +14,7 @@ export interface ListGroupContainersInput {
   providerName: "AWS" | "AZURE" | "GCP";
 }
 export const ListGroupContainersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     includeCount: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const ListGroupContainersInput =
 // Output Schema
 export type ListGroupContainersOutput = void;
 export const ListGroupContainersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupContainersOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupContainersOutput>;
 
 // The operation
 /**
@@ -50,7 +50,7 @@ export const ListGroupContainersOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param providerName - Cloud service provider that serves the desired network peering containers.
  */
-export const listGroupContainers = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupContainers = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupContainersInput,
   outputSchema: ListGroupContainersOutput,
   errors: [Forbidden, NotFound] as const,

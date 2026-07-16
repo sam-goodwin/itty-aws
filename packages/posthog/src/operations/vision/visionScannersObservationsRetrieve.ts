@@ -9,7 +9,7 @@ export interface VisionScannersObservationsRetrieveInput {
   scanner_id: string;
 }
 export const VisionScannersObservationsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     scanner_id: Schema.String.pipe(T.PathParam()),
@@ -69,7 +69,7 @@ export interface VisionScannersObservationsRetrieveOutput {
   created_at: string;
 }
 export const VisionScannersObservationsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     scanner_id: Schema.String,
     session_id: Schema.String,
@@ -156,7 +156,7 @@ export const VisionScannersObservationsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const visionScannersObservationsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VisionScannersObservationsRetrieveInput,
     outputSchema: VisionScannersObservationsRetrieveOutput,
   }));

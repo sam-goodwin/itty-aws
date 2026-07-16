@@ -14,7 +14,7 @@ export interface CustomerJourneysCreateInput {
   updated_at?: string | null;
 }
 export const CustomerJourneysCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     insight: Schema.optional(Schema.Number),
@@ -41,7 +41,7 @@ export interface CustomerJourneysCreateOutput {
   updated_at?: string | null;
 }
 export const CustomerJourneysCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     insight: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
@@ -56,9 +56,7 @@ export const CustomerJourneysCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const customerJourneysCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomerJourneysCreateInput,
-    outputSchema: CustomerJourneysCreateOutput,
-  }),
-);
+export const customerJourneysCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomerJourneysCreateInput,
+  outputSchema: CustomerJourneysCreateOutput,
+}));

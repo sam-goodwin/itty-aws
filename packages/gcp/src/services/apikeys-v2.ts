@@ -32,7 +32,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -43,7 +43,7 @@ export const Status: Schema.Codec<Status> =
 export interface V2UndeleteKeyRequest {}
 
 export const V2UndeleteKeyRequest: Schema.Codec<V2UndeleteKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "V2UndeleteKeyRequest",
   });
 
@@ -55,7 +55,7 @@ export interface V2ApiTarget {
 }
 
 export const V2ApiTarget: Schema.Codec<V2ApiTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     methods: Schema.optional(Schema.Array(Schema.String)),
     service: Schema.optional(Schema.String),
   }).annotate({ identifier: "V2ApiTarget" });
@@ -66,7 +66,7 @@ export interface V2BrowserKeyRestrictions {
 }
 
 export const V2BrowserKeyRestrictions: Schema.Codec<V2BrowserKeyRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowedReferrers: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "V2BrowserKeyRestrictions" });
 
@@ -78,7 +78,7 @@ export interface V2AndroidApplication {
 }
 
 export const V2AndroidApplication: Schema.Codec<V2AndroidApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sha1Fingerprint: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
   }).annotate({ identifier: "V2AndroidApplication" });
@@ -89,7 +89,7 @@ export interface V2AndroidKeyRestrictions {
 }
 
 export const V2AndroidKeyRestrictions: Schema.Codec<V2AndroidKeyRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowedApplications: Schema.optional(Schema.Array(V2AndroidApplication)),
   }).annotate({ identifier: "V2AndroidKeyRestrictions" });
 
@@ -99,7 +99,7 @@ export interface V2ServerKeyRestrictions {
 }
 
 export const V2ServerKeyRestrictions: Schema.Codec<V2ServerKeyRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowedIps: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "V2ServerKeyRestrictions" });
 
@@ -109,7 +109,7 @@ export interface V2IosKeyRestrictions {
 }
 
 export const V2IosKeyRestrictions: Schema.Codec<V2IosKeyRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowedBundleIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "V2IosKeyRestrictions" });
 
@@ -127,7 +127,7 @@ export interface V2Restrictions {
 }
 
 export const V2Restrictions: Schema.Codec<V2Restrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiTargets: Schema.optional(Schema.Array(V2ApiTarget)),
     browserKeyRestrictions: Schema.optional(V2BrowserKeyRestrictions),
     androidKeyRestrictions: Schema.optional(V2AndroidKeyRestrictions),
@@ -161,7 +161,7 @@ export interface V2Key {
 }
 
 export const V2Key: Schema.Codec<V2Key> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uid: Schema.optional(Schema.String),
     deleteTime: Schema.optional(Schema.String),
     annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -183,7 +183,7 @@ export interface V2LookupKeyResponse {
 }
 
 export const V2LookupKeyResponse: Schema.Codec<V2LookupKeyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     parent: Schema.optional(Schema.String),
   }).annotate({ identifier: "V2LookupKeyResponse" });
@@ -194,7 +194,7 @@ export interface V2GetKeyStringResponse {
 }
 
 export const V2GetKeyStringResponse: Schema.Codec<V2GetKeyStringResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyString: Schema.optional(Schema.String),
   }).annotate({ identifier: "V2GetKeyStringResponse" });
 
@@ -206,7 +206,7 @@ export interface V2ListKeysResponse {
 }
 
 export const V2ListKeysResponse: Schema.Codec<V2ListKeysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keys: Schema.optional(Schema.Array(V2Key)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "V2ListKeysResponse" });
@@ -225,7 +225,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
@@ -292,7 +292,7 @@ export interface LookupKeyKeysRequest {
   keyString?: string;
 }
 
-export const LookupKeyKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LookupKeyKeysRequest = /*@__PURE__*/ Schema.Struct({
   keyString: Schema.optional(Schema.String).pipe(T.HttpQuery("keyString")),
 }).pipe(
   T.Http({ method: "GET", path: "v2/keys:lookupKey" }),
@@ -300,8 +300,7 @@ export const LookupKeyKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<LookupKeyKeysRequest>;
 
 export type LookupKeyKeysResponse = V2LookupKeyResponse;
-export const LookupKeyKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ V2LookupKeyResponse;
+export const LookupKeyKeysResponse = /*@__PURE__*/ V2LookupKeyResponse;
 
 export type LookupKeyKeysError = DefaultErrors | NotFound | Forbidden;
 
@@ -311,7 +310,7 @@ export const lookupKeyKeys: API.OperationMethod<
   LookupKeyKeysResponse,
   LookupKeyKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LookupKeyKeysRequest,
   output: LookupKeyKeysResponse,
   errors: [NotFound, Forbidden],
@@ -322,7 +321,7 @@ export interface GetOperationsRequest {
   name: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -330,7 +329,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -340,7 +339,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -356,7 +355,7 @@ export interface CreateProjectsLocationsKeysRequest {
 }
 
 export const CreateProjectsLocationsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     keyId: Schema.optional(Schema.String).pipe(T.HttpQuery("keyId")),
     body: Schema.optional(V2Key).pipe(T.HttpBody()),
@@ -366,8 +365,7 @@ export const CreateProjectsLocationsKeysRequest =
   ) as unknown as Schema.Codec<CreateProjectsLocationsKeysRequest>;
 
 export type CreateProjectsLocationsKeysResponse = Operation;
-export const CreateProjectsLocationsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreateProjectsLocationsKeysResponse = /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsKeysError =
   | DefaultErrors
@@ -382,7 +380,7 @@ export const createProjectsLocationsKeys: API.OperationMethod<
   CreateProjectsLocationsKeysResponse,
   CreateProjectsLocationsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsKeysRequest,
   output: CreateProjectsLocationsKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -396,7 +394,7 @@ export interface DeleteProjectsLocationsKeysRequest {
 }
 
 export const DeleteProjectsLocationsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
@@ -405,8 +403,7 @@ export const DeleteProjectsLocationsKeysRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsKeysRequest>;
 
 export type DeleteProjectsLocationsKeysResponse = Operation;
-export const DeleteProjectsLocationsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const DeleteProjectsLocationsKeysResponse = /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsKeysError =
   | DefaultErrors
@@ -421,7 +418,7 @@ export const deleteProjectsLocationsKeys: API.OperationMethod<
   DeleteProjectsLocationsKeysResponse,
   DeleteProjectsLocationsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsKeysRequest,
   output: DeleteProjectsLocationsKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -437,7 +434,7 @@ export interface PatchProjectsLocationsKeysRequest {
 }
 
 export const PatchProjectsLocationsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(V2Key).pipe(T.HttpBody()),
@@ -447,8 +444,7 @@ export const PatchProjectsLocationsKeysRequest =
   ) as unknown as Schema.Codec<PatchProjectsLocationsKeysRequest>;
 
 export type PatchProjectsLocationsKeysResponse = Operation;
-export const PatchProjectsLocationsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PatchProjectsLocationsKeysResponse = /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsKeysError =
   | DefaultErrors
@@ -463,7 +459,7 @@ export const patchProjectsLocationsKeys: API.OperationMethod<
   PatchProjectsLocationsKeysResponse,
   PatchProjectsLocationsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsKeysRequest,
   output: PatchProjectsLocationsKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -477,7 +473,7 @@ export interface UndeleteProjectsLocationsKeysRequest {
 }
 
 export const UndeleteProjectsLocationsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(V2UndeleteKeyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -486,8 +482,7 @@ export const UndeleteProjectsLocationsKeysRequest =
   ) as unknown as Schema.Codec<UndeleteProjectsLocationsKeysRequest>;
 
 export type UndeleteProjectsLocationsKeysResponse = Operation;
-export const UndeleteProjectsLocationsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const UndeleteProjectsLocationsKeysResponse = /*@__PURE__*/ Operation;
 
 export type UndeleteProjectsLocationsKeysError =
   | DefaultErrors
@@ -502,7 +497,7 @@ export const undeleteProjectsLocationsKeys: API.OperationMethod<
   UndeleteProjectsLocationsKeysResponse,
   UndeleteProjectsLocationsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeleteProjectsLocationsKeysRequest,
   output: UndeleteProjectsLocationsKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -514,7 +509,7 @@ export interface GetProjectsLocationsKeysRequest {
 }
 
 export const GetProjectsLocationsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}" }),
@@ -522,8 +517,7 @@ export const GetProjectsLocationsKeysRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsKeysRequest>;
 
 export type GetProjectsLocationsKeysResponse = V2Key;
-export const GetProjectsLocationsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ V2Key;
+export const GetProjectsLocationsKeysResponse = /*@__PURE__*/ V2Key;
 
 export type GetProjectsLocationsKeysError =
   | DefaultErrors
@@ -536,7 +530,7 @@ export const getProjectsLocationsKeys: API.OperationMethod<
   GetProjectsLocationsKeysResponse,
   GetProjectsLocationsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsKeysRequest,
   output: GetProjectsLocationsKeysResponse,
   errors: [NotFound, Forbidden],
@@ -554,7 +548,7 @@ export interface ListProjectsLocationsKeysRequest {
 }
 
 export const ListProjectsLocationsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     showDeleted: Schema.optional(Schema.Boolean).pipe(
@@ -568,7 +562,7 @@ export const ListProjectsLocationsKeysRequest =
 
 export type ListProjectsLocationsKeysResponse = V2ListKeysResponse;
 export const ListProjectsLocationsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ V2ListKeysResponse;
+  /*@__PURE__*/ V2ListKeysResponse;
 
 export type ListProjectsLocationsKeysError =
   | DefaultErrors
@@ -581,7 +575,7 @@ export const listProjectsLocationsKeys: API.PaginatedOperationMethod<
   ListProjectsLocationsKeysResponse,
   ListProjectsLocationsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsKeysRequest,
   output: ListProjectsLocationsKeysResponse,
   errors: [NotFound, Forbidden],
@@ -597,7 +591,7 @@ export interface GetKeyStringProjectsLocationsKeysRequest {
 }
 
 export const GetKeyStringProjectsLocationsKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v2/{+name}/keyString" }),
@@ -606,7 +600,7 @@ export const GetKeyStringProjectsLocationsKeysRequest =
 
 export type GetKeyStringProjectsLocationsKeysResponse = V2GetKeyStringResponse;
 export const GetKeyStringProjectsLocationsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ V2GetKeyStringResponse;
+  /*@__PURE__*/ V2GetKeyStringResponse;
 
 export type GetKeyStringProjectsLocationsKeysError =
   | DefaultErrors
@@ -619,7 +613,7 @@ export const getKeyStringProjectsLocationsKeys: API.OperationMethod<
   GetKeyStringProjectsLocationsKeysResponse,
   GetKeyStringProjectsLocationsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetKeyStringProjectsLocationsKeysRequest,
   output: GetKeyStringProjectsLocationsKeysResponse,
   errors: [NotFound, Forbidden],

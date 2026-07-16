@@ -14,7 +14,7 @@ export interface ListProjectBranchesInput {
   include_deleted?: boolean;
 }
 export const ListProjectBranchesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     search: Schema.optional(Schema.String),
     sort_by: Schema.optional(
@@ -79,7 +79,7 @@ export interface ListProjectBranchesOutput {
   pagination?: { next?: string; sort_by?: string; sort_order?: string };
 }
 export const ListProjectBranchesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     branches: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -178,7 +178,7 @@ This parameter is part of the Branch Recovery feature, which is in preview and n
 
  */
 export const listProjectBranches =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListProjectBranchesInput,
     outputSchema: ListProjectBranchesOutput,
     errors: [NotFound] as const,

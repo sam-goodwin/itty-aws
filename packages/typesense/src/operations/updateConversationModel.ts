@@ -19,7 +19,7 @@ export interface UpdateConversationModelInput {
   vllm_url?: string;
 }
 export const UpdateConversationModelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     modelId: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     model_name: Schema.optional(Schema.String),
@@ -39,7 +39,7 @@ export interface UpdateConversationModelOutput {
   id: string;
 }
 export const UpdateConversationModelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
   }) as unknown as Schema.Codec<UpdateConversationModelOutput>;
 
@@ -49,10 +49,8 @@ export const UpdateConversationModelOutput =
  *
  * @param modelId - The id of the conversation model to update
  */
-export const updateConversationModel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateConversationModelInput,
-    outputSchema: UpdateConversationModelOutput,
-    errors: [BadRequest, NotFound] as const,
-  }),
-);
+export const updateConversationModel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateConversationModelInput,
+  outputSchema: UpdateConversationModelOutput,
+  errors: [BadRequest, NotFound] as const,
+}));

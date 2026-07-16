@@ -8,7 +8,7 @@ export interface UsersTwoFactorStartSetupRetrieveInput {
   uuid: string;
 }
 export const UsersTwoFactorStartSetupRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20,11 +20,11 @@ export const UsersTwoFactorStartSetupRetrieveInput =
 // Output Schema
 export type UsersTwoFactorStartSetupRetrieveOutput = void;
 export const UsersTwoFactorStartSetupRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersTwoFactorStartSetupRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersTwoFactorStartSetupRetrieveOutput>;
 
 // The operation
 export const usersTwoFactorStartSetupRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersTwoFactorStartSetupRetrieveInput,
     outputSchema: UsersTwoFactorStartSetupRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

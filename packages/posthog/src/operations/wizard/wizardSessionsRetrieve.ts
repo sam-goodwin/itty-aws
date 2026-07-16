@@ -9,7 +9,7 @@ export interface WizardSessionsRetrieveInput {
   session_id: string;
 }
 export const WizardSessionsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     session_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -39,7 +39,7 @@ export interface WizardSessionsRetrieveOutput {
   is_stale: boolean;
 }
 export const WizardSessionsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session_id: Schema.String,
     team_id: Schema.Number,
     workflow_id: Schema.String,
@@ -72,10 +72,8 @@ export const WizardSessionsRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const wizardSessionsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WizardSessionsRetrieveInput,
-    outputSchema: WizardSessionsRetrieveOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const wizardSessionsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WizardSessionsRetrieveInput,
+  outputSchema: WizardSessionsRetrieveOutput,
+  errors: [NotFound] as const,
+}));

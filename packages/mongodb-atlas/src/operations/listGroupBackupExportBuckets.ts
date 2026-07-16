@@ -13,7 +13,7 @@ export interface ListGroupBackupExportBucketsInput {
   pretty?: boolean;
 }
 export const ListGroupBackupExportBucketsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     includeCount: Schema.optional(Schema.Boolean),
@@ -30,7 +30,7 @@ export const ListGroupBackupExportBucketsInput =
 // Output Schema
 export type ListGroupBackupExportBucketsOutput = void;
 export const ListGroupBackupExportBucketsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupBackupExportBucketsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupBackupExportBucketsOutput>;
 
 // The operation
 /**
@@ -48,7 +48,7 @@ export const ListGroupBackupExportBucketsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const listGroupBackupExportBuckets =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupBackupExportBucketsInput,
     outputSchema: ListGroupBackupExportBucketsOutput,
     errors: [Forbidden, NotFound] as const,

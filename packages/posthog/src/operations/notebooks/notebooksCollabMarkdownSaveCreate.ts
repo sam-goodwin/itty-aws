@@ -19,7 +19,7 @@ export interface NotebooksCollabMarkdownSaveCreateInput {
   };
 }
 export const NotebooksCollabMarkdownSaveCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     short_id: Schema.String.pipe(T.PathParam()),
     client_id: Schema.String,
@@ -45,7 +45,7 @@ export const NotebooksCollabMarkdownSaveCreateInput =
 // Output Schema
 export type NotebooksCollabMarkdownSaveCreateOutput = void;
 export const NotebooksCollabMarkdownSaveCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebooksCollabMarkdownSaveCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NotebooksCollabMarkdownSaveCreateOutput>;
 
 // The operation
 /**
@@ -54,7 +54,7 @@ export const NotebooksCollabMarkdownSaveCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const notebooksCollabMarkdownSaveCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NotebooksCollabMarkdownSaveCreateInput,
     outputSchema: NotebooksCollabMarkdownSaveCreateOutput,
   }));

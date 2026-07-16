@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface GetRoleByIdInput {
   id: string;
 }
-export const GetRoleByIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRoleByIdInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/rbac/roles/{id}" }),
@@ -57,7 +57,7 @@ export interface GetRoleByIdOutput {
   >;
   id: string;
 }
-export const GetRoleByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRoleByIdOutput = /*@__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.optional(
     Schema.Record(
       Schema.String,
@@ -151,7 +151,7 @@ export const GetRoleByIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param id - Unique identifier of the role to retrieve
  */
-export const getRoleById = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getRoleById = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetRoleByIdInput,
   outputSchema: GetRoleByIdOutput,
   errors: [NotFound] as const,

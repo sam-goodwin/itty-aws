@@ -14,7 +14,7 @@ export interface ExternalDataSchemasLogsRetrieveInput {
   search?: string;
 }
 export const ExternalDataSchemasLogsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     after: Schema.optional(Schema.String),
@@ -33,7 +33,7 @@ export const ExternalDataSchemasLogsRetrieveInput =
 // Output Schema
 export type ExternalDataSchemasLogsRetrieveOutput = void;
 export const ExternalDataSchemasLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSchemasLogsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSchemasLogsRetrieveOutput>;
 
 // The operation
 /**
@@ -48,7 +48,7 @@ export const ExternalDataSchemasLogsRetrieveOutput =
  * @param search - Case-insensitive substring search across log messages.
  */
 export const externalDataSchemasLogsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSchemasLogsRetrieveInput,
     outputSchema: ExternalDataSchemasLogsRetrieveOutput,
   }));

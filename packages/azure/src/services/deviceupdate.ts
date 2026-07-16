@@ -58,7 +58,7 @@ export interface AccountsCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsCreateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -175,7 +175,7 @@ export interface AccountsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -204,7 +204,7 @@ export const AccountsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The Azure subscription ID.
  * @param accountName - Account name.
  */
-export const AccountsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsCreateInput,
   outputSchema: AccountsCreateOutput,
 }));
@@ -214,7 +214,7 @@ export interface AccountsDeleteInput {
   subscriptionId: string;
   accountName: string;
 }
-export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -229,7 +229,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AccountsDeleteOutput = void;
 export const AccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccountsDeleteOutput>;
 
 // The operation
 /**
@@ -240,7 +240,7 @@ export const AccountsDeleteOutput =
  * @param subscriptionId - The Azure subscription ID.
  * @param accountName - Account name.
  */
-export const AccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsDeleteInput,
   outputSchema: AccountsDeleteOutput,
 }));
@@ -250,7 +250,7 @@ export interface AccountsGetInput {
   subscriptionId: string;
   accountName: string;
 }
-export const AccountsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -276,7 +276,7 @@ export interface AccountsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -305,7 +305,7 @@ export const AccountsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The Azure subscription ID.
  * @param accountName - Account name.
  */
-export const AccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsGetInput,
   outputSchema: AccountsGetOutput,
 }));
@@ -315,7 +315,7 @@ export interface AccountsListByResourceGroupInput {
   subscriptionId: string;
 }
 export const AccountsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -344,7 +344,7 @@ export interface AccountsListByResourceGroupOutput {
   }[];
 }
 export const AccountsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -389,18 +389,16 @@ export const AccountsListByResourceGroupOutput =
  * @param api-version - ADU schema API version.
  * @param subscriptionId - The Azure subscription ID.
  */
-export const AccountsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListByResourceGroupInput,
-    outputSchema: AccountsListByResourceGroupOutput,
-  }),
-);
+export const AccountsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListByResourceGroupInput,
+  outputSchema: AccountsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface AccountsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AccountsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -428,7 +426,7 @@ export interface AccountsListBySubscriptionOutput {
   }[];
 }
 export const AccountsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -472,12 +470,10 @@ export const AccountsListBySubscriptionOutput =
  * @param api-version - ADU schema API version.
  * @param subscriptionId - The Azure subscription ID.
  */
-export const AccountsListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsListBySubscriptionInput,
-    outputSchema: AccountsListBySubscriptionOutput,
-  }),
-);
+export const AccountsListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsListBySubscriptionInput,
+  outputSchema: AccountsListBySubscriptionOutput,
+}));
 // Input Schema
 export interface AccountsUpdateInput {
   resourceGroupName: string;
@@ -499,7 +495,7 @@ export interface AccountsUpdateInput {
   location?: string;
   tags?: Record<string, string>;
 }
-export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -550,7 +546,7 @@ export interface AccountsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccountsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -579,7 +575,7 @@ export const AccountsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The Azure subscription ID.
  * @param accountName - Account name.
  */
-export const AccountsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccountsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccountsUpdateInput,
   outputSchema: AccountsUpdateOutput,
 }));
@@ -590,7 +586,7 @@ export interface CheckNameAvailabilityInput {
   type?: string;
 }
 export const CheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -609,7 +605,7 @@ export interface CheckNameAvailabilityOutput {
   message?: string;
 }
 export const CheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -624,12 +620,10 @@ export const CheckNameAvailabilityOutput =
  * @param name - The name of the resource for which availability needs to be checked.
  * @param type - The resource type.
  */
-export const CheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CheckNameAvailabilityInput,
-    outputSchema: CheckNameAvailabilityOutput,
-  }),
-);
+export const CheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CheckNameAvailabilityInput,
+  outputSchema: CheckNameAvailabilityOutput,
+}));
 // Input Schema
 export interface InstancesCreateInput {
   resourceGroupName: string;
@@ -656,7 +650,7 @@ export interface InstancesCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const InstancesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstancesCreateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -713,7 +707,7 @@ export interface InstancesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const InstancesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstancesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -743,7 +737,7 @@ export const InstancesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - Account name.
  * @param instanceName - Instance name.
  */
-export const InstancesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InstancesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: InstancesCreateInput,
   outputSchema: InstancesCreateOutput,
 }));
@@ -754,7 +748,7 @@ export interface InstancesDeleteInput {
   accountName: string;
   instanceName: string;
 }
-export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstancesDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -770,7 +764,7 @@ export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type InstancesDeleteOutput = void;
 export const InstancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InstancesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InstancesDeleteOutput>;
 
 // The operation
 /**
@@ -782,7 +776,7 @@ export const InstancesDeleteOutput =
  * @param accountName - Account name.
  * @param instanceName - Instance name.
  */
-export const InstancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InstancesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: InstancesDeleteInput,
   outputSchema: InstancesDeleteOutput,
 }));
@@ -793,7 +787,7 @@ export interface InstancesGetInput {
   accountName: string;
   instanceName: string;
 }
-export const InstancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstancesGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -820,7 +814,7 @@ export interface InstancesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const InstancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstancesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -850,7 +844,7 @@ export const InstancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - Account name.
  * @param instanceName - Instance name.
  */
-export const InstancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InstancesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InstancesGetInput,
   outputSchema: InstancesGetOutput,
 }));
@@ -861,7 +855,7 @@ export interface InstancesListByAccountInput {
   accountName: string;
 }
 export const InstancesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -891,7 +885,7 @@ export interface InstancesListByAccountOutput {
   }[];
 }
 export const InstancesListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -937,12 +931,10 @@ export const InstancesListByAccountOutput =
  * @param subscriptionId - The Azure subscription ID.
  * @param accountName - Account name.
  */
-export const InstancesListByAccount = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InstancesListByAccountInput,
-    outputSchema: InstancesListByAccountOutput,
-  }),
-);
+export const InstancesListByAccount = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InstancesListByAccountInput,
+  outputSchema: InstancesListByAccountOutput,
+}));
 // Input Schema
 export interface InstancesUpdateInput {
   resourceGroupName: string;
@@ -951,7 +943,7 @@ export interface InstancesUpdateInput {
   instanceName: string;
   tags?: Record<string, string>;
 }
-export const InstancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstancesUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   accountName: Schema.String.pipe(T.PathParam()),
@@ -979,7 +971,7 @@ export interface InstancesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const InstancesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InstancesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1009,15 +1001,13 @@ export const InstancesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param accountName - Account name.
  * @param instanceName - Instance name.
  */
-export const InstancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InstancesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: InstancesUpdateInput,
   outputSchema: InstancesUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DeviceUpdate/operations",
@@ -1041,7 +1031,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1071,7 +1061,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - ADU schema API version.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1129,7 +1119,7 @@ export interface PrivateEndpointConnectionProxiesCreateOrUpdateInput {
   status?: string;
 }
 export const PrivateEndpointConnectionProxiesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1271,7 +1261,7 @@ export interface PrivateEndpointConnectionProxiesCreateOrUpdateOutput {
   status?: string;
 }
 export const PrivateEndpointConnectionProxiesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eTag: Schema.optional(Schema.String),
     remotePrivateEndpoint: Schema.optional(
       Schema.Struct({
@@ -1360,7 +1350,7 @@ export const PrivateEndpointConnectionProxiesCreateOrUpdateOutput =
  * @param privateEndpointConnectionProxyId - The ID of the private endpoint connection proxy object.
  */
 export const PrivateEndpointConnectionProxiesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionProxiesCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionProxiesCreateOrUpdateOutput,
   }));
@@ -1372,7 +1362,7 @@ export interface PrivateEndpointConnectionProxiesDeleteInput {
   privateEndpointConnectionProxyId: string;
 }
 export const PrivateEndpointConnectionProxiesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1388,7 +1378,7 @@ export const PrivateEndpointConnectionProxiesDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionProxiesDeleteOutput = void;
 export const PrivateEndpointConnectionProxiesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionProxiesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionProxiesDeleteOutput>;
 
 // The operation
 /**
@@ -1401,7 +1391,7 @@ export const PrivateEndpointConnectionProxiesDeleteOutput =
  * @param privateEndpointConnectionProxyId - The ID of the private endpoint connection proxy object.
  */
 export const PrivateEndpointConnectionProxiesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionProxiesDeleteInput,
     outputSchema: PrivateEndpointConnectionProxiesDeleteOutput,
   }));
@@ -1413,7 +1403,7 @@ export interface PrivateEndpointConnectionProxiesGetInput {
   privateEndpointConnectionProxyId: string;
 }
 export const PrivateEndpointConnectionProxiesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1473,7 +1463,7 @@ export interface PrivateEndpointConnectionProxiesGetOutput {
   status?: string;
 }
 export const PrivateEndpointConnectionProxiesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eTag: Schema.optional(Schema.String),
     remotePrivateEndpoint: Schema.optional(
       Schema.Struct({
@@ -1562,7 +1552,7 @@ export const PrivateEndpointConnectionProxiesGetOutput =
  * @param privateEndpointConnectionProxyId - The ID of the private endpoint connection proxy object.
  */
 export const PrivateEndpointConnectionProxiesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionProxiesGetInput,
     outputSchema: PrivateEndpointConnectionProxiesGetOutput,
   }));
@@ -1573,7 +1563,7 @@ export interface PrivateEndpointConnectionProxiesListByAccountInput {
   accountName: string;
 }
 export const PrivateEndpointConnectionProxiesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1635,7 +1625,7 @@ export interface PrivateEndpointConnectionProxiesListByAccountOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionProxiesListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1732,7 +1722,7 @@ export const PrivateEndpointConnectionProxiesListByAccountOutput =
  * @param accountName - Account name.
  */
 export const PrivateEndpointConnectionProxiesListByAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionProxiesListByAccountInput,
     outputSchema: PrivateEndpointConnectionProxiesListByAccountOutput,
   }));
@@ -1749,7 +1739,7 @@ export interface PrivateEndpointConnectionProxiesUpdatePrivateEndpointProperties
   vnetTrafficTag?: string;
 }
 export const PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1771,7 +1761,7 @@ export const PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesInpu
 export type PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesOutput =
   void;
 export const PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesOutput>;
 
 // The operation
 /**
@@ -1784,7 +1774,7 @@ export const PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesOutp
  * @param privateEndpointConnectionProxyId - The ID of the private endpoint connection proxy object.
  */
 export const PrivateEndpointConnectionProxiesUpdatePrivateEndpointProperties =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesInput,
     outputSchema:
@@ -1844,7 +1834,7 @@ export interface PrivateEndpointConnectionProxiesValidateInput {
   status?: string;
 }
 export const PrivateEndpointConnectionProxiesValidateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -1942,7 +1932,7 @@ export const PrivateEndpointConnectionProxiesValidateInput =
 // Output Schema
 export type PrivateEndpointConnectionProxiesValidateOutput = void;
 export const PrivateEndpointConnectionProxiesValidateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionProxiesValidateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionProxiesValidateOutput>;
 
 // The operation
 /**
@@ -1955,7 +1945,7 @@ export const PrivateEndpointConnectionProxiesValidateOutput =
  * @param privateEndpointConnectionProxyId - The ID of the private endpoint connection proxy object.
  */
 export const PrivateEndpointConnectionProxiesValidate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionProxiesValidateInput,
     outputSchema: PrivateEndpointConnectionProxiesValidateOutput,
   }));
@@ -1988,7 +1978,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2051,7 +2041,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2083,7 +2073,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
@@ -2095,7 +2085,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2111,7 +2101,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -2124,7 +2114,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -2136,7 +2126,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2164,7 +2154,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2195,7 +2185,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -2206,7 +2196,7 @@ export interface PrivateEndpointConnectionsListByAccountInput {
   accountName: string;
 }
 export const PrivateEndpointConnectionsListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2235,7 +2225,7 @@ export interface PrivateEndpointConnectionsListByAccountOutput {
   }[];
 }
 export const PrivateEndpointConnectionsListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2281,7 +2271,7 @@ export const PrivateEndpointConnectionsListByAccountOutput =
  * @param accountName - Account name.
  */
 export const PrivateEndpointConnectionsListByAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListByAccountInput,
     outputSchema: PrivateEndpointConnectionsListByAccountOutput,
   }));
@@ -2293,7 +2283,7 @@ export interface PrivateLinkResourcesGetInput {
   groupId: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2321,7 +2311,7 @@ export interface PrivateLinkResourcesGetOutput {
   };
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2351,12 +2341,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param accountName - Account name.
  * @param groupId - The group ID of the private link resource.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListByAccountInput {
   subscriptionId: string;
@@ -2364,7 +2352,7 @@ export interface PrivateLinkResourcesListByAccountInput {
   accountName: string;
 }
 export const PrivateLinkResourcesListByAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accountName: Schema.String.pipe(T.PathParam()),
@@ -2394,7 +2382,7 @@ export interface PrivateLinkResourcesListByAccountOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListByAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2441,7 +2429,7 @@ export const PrivateLinkResourcesListByAccountOutput =
  * @param accountName - Account name.
  */
 export const PrivateLinkResourcesListByAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByAccountInput,
     outputSchema: PrivateLinkResourcesListByAccountOutput,
   }));

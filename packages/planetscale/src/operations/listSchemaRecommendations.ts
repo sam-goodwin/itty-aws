@@ -12,7 +12,7 @@ export interface ListSchemaRecommendationsInput {
   per_page?: number;
 }
 export const ListSchemaRecommendationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     state: Schema.optional(Schema.Literals(["open", "closed"])),
@@ -69,7 +69,7 @@ export interface ListSchemaRecommendationsOutput {
   }>;
 }
 export const ListSchemaRecommendationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -130,7 +130,7 @@ export const ListSchemaRecommendationsOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listSchemaRecommendations =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListSchemaRecommendationsInput,
     outputSchema: ListSchemaRecommendationsOutput,
     errors: [Forbidden, NotFound] as const,

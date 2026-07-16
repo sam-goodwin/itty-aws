@@ -170,7 +170,7 @@ interface ManagedBy {
   /** Name of the parent Organization, if one exists */
   parentOrgName?: string | null;
 }
-const ManagedBy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ManagedBy = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     parentOrgId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     parentOrgName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -188,7 +188,7 @@ interface Settings {
   /** Indicates whether membership in this account requires that Two-Factor Authentication is enabled */
   enforceTwofactor?: boolean | null;
 }
-const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Settings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     abuseContactEmail: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -210,7 +210,7 @@ interface Settings2 {
   /** Indicates whether membership in this account requires that Two-Factor Authentication is enabled */
   enforceTwofactor?: boolean | null;
 }
-const Settings2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Settings2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     abuseContactEmail: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -245,28 +245,27 @@ interface ListAccountsResponseResult {
     enforceTwofactor?: boolean | null;
   } | null;
 }
-const ListAccountsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      type: Schema.Union([
-        Schema.Literals(["standard", "enterprise"]),
-        Schema.String,
-      ]),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      managedBy: Schema.optional(Schema.Union([ManagedBy, Schema.Null])),
-      settings: Schema.optional(Schema.Union([Settings2, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        name: "name",
-        type: "type",
-        createdOn: "created_on",
-        managedBy: "managed_by",
-        settings: "settings",
-      }),
-    ),
+const ListAccountsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    name: Schema.String,
+    type: Schema.Union([
+      Schema.Literals(["standard", "enterprise"]),
+      Schema.String,
+    ]),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    managedBy: Schema.optional(Schema.Union([ManagedBy, Schema.Null])),
+    settings: Schema.optional(Schema.Union([Settings2, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      name: "name",
+      type: "type",
+      createdOn: "created_on",
+      managedBy: "managed_by",
+      settings: "settings",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListAccountsResponseResult>;
 
 interface ListAccountsResponseResultInfo {
@@ -276,7 +275,7 @@ interface ListAccountsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListAccountsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -296,7 +295,7 @@ interface Unit {
   /** Tenant unit ID */
   id?: string | null;
 }
-const Unit = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Unit = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -308,7 +307,7 @@ interface Account {
   /** A string that identifies the account name. */
   name?: string | null;
 }
-const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Account = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -325,7 +324,7 @@ interface Action {
   /** A short string that describes the action that was performed. */
   type?: string | null;
 }
-const Action = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Action = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     result: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -362,7 +361,7 @@ interface Actor {
     | (string & {})
     | null;
 }
-const Actor = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Actor = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     context: Schema.optional(
@@ -418,7 +417,7 @@ interface Raw {
   /** The client's user agent string sent with the request. */
   userAgent?: string | null;
 }
-const Raw = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Raw = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cfRayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     method: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -448,7 +447,7 @@ interface Resource {
   /** The type of the resource. */
   type?: string | null;
 }
-const Resource = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Resource = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     product: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -514,24 +513,23 @@ interface ListLogAuditsResponseResult {
   /** Provides details about the zone affected by the action. */
   zone?: { id?: string | null; name?: string | null } | null;
 }
-const ListLogAuditsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      account: Schema.optional(Schema.Union([Account, Schema.Null])),
-      action: Schema.optional(Schema.Union([Action, Schema.Null])),
-      actor: Schema.optional(Schema.Union([Actor, Schema.Null])),
-      raw: Schema.optional(Schema.Union([Raw, Schema.Null])),
-      resource: Schema.optional(Schema.Union([Resource, Schema.Null])),
-      zone: Schema.optional(Schema.Union([Account, Schema.Null])),
-    }),
+const ListLogAuditsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    account: Schema.optional(Schema.Union([Account, Schema.Null])),
+    action: Schema.optional(Schema.Union([Action, Schema.Null])),
+    actor: Schema.optional(Schema.Union([Actor, Schema.Null])),
+    raw: Schema.optional(Schema.Union([Raw, Schema.Null])),
+    resource: Schema.optional(Schema.Union([Resource, Schema.Null])),
+    zone: Schema.optional(Schema.Union([Account, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<ListLogAuditsResponseResult>;
 
 interface ListLogAuditsResponseResultInfoCursors {
   after?: string | null;
 }
 const ListLogAuditsResponseResultInfoCursors =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
@@ -541,7 +539,7 @@ interface ListLogAuditsResponseResultInfo {
   cursors?: { after?: string | null } | null;
 }
 const ListLogAuditsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       cursors: Schema.optional(
         Schema.Union([ListLogAuditsResponseResultInfoCursors, Schema.Null]),
@@ -553,7 +551,7 @@ interface PolicyPermissionGroup {
   /** Identifier of the group. */
   id: string;
 }
-const PolicyPermissionGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PolicyPermissionGroup = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
   }),
@@ -569,7 +567,7 @@ interface Policy {
   /** A list of resource groups that the policy applies to. */
   resourceGroups?: { id: string }[] | null;
 }
-const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Policy = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     access: Schema.optional(
@@ -598,7 +596,7 @@ interface PermissionGrant {
   read?: boolean | null;
   write?: boolean | null;
 }
-const PermissionGrant = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PermissionGrant = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     read: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     write: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -619,7 +617,7 @@ interface Permissions {
   zoneSettings?: { read?: boolean | null; write?: boolean | null } | null;
   zones?: { read?: boolean | null; write?: boolean | null } | null;
 }
-const Permissions = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Permissions = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     analytics: Schema.optional(Schema.Union([PermissionGrant, Schema.Null])),
     billing: Schema.optional(Schema.Union([PermissionGrant, Schema.Null])),
@@ -673,7 +671,7 @@ interface Role {
     zones?: { read?: boolean | null; write?: boolean | null } | null;
   };
 }
-const Role = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Role = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     description: Schema.String,
@@ -694,7 +692,7 @@ interface User {
   /** Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication. */
   twoFactorAuthenticationEnabled?: boolean | null;
 }
-const User = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const User = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     email: Schema.String,
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -767,7 +765,7 @@ interface Member {
     twoFactorAuthenticationEnabled?: boolean | null;
   } | null;
 }
-const Member = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Member = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -793,7 +791,7 @@ interface Policy2 {
   /** A list of resource groups that the policy applies to. */
   resourceGroups: { id: string }[];
 }
-const Policy2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Policy2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     access: Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
     permissionGroups: Schema.Array(PolicyPermissionGroup),
@@ -835,7 +833,7 @@ interface RatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: string[] | null;
 }
-const RatePlan = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RatePlan = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(
       Schema.Union([
@@ -933,7 +931,7 @@ interface Subscription {
     | (string & {})
     | null;
 }
-const Subscription = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Subscription = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -991,7 +989,7 @@ interface ConditionRequestIP {
   /** List of IPv4/IPv6 CIDR addresses. */
   notIn?: string[] | null;
 }
-const ConditionRequestIP = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ConditionRequestIP = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     in: Schema.optional(
       Schema.Union([Schema.Array(Schema.String), Schema.Null]),
@@ -1006,7 +1004,7 @@ interface Condition {
   /** Client IP restrictions. */
   requestIp?: { in?: string[] | null; notIn?: string[] | null } | null;
 }
-const Condition = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Condition = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     requestIp: Schema.optional(Schema.Union([ConditionRequestIP, Schema.Null])),
   }).pipe(Schema.encodeKeys({ requestIp: "request_ip" })),
@@ -1016,7 +1014,7 @@ interface Meta {
   key?: string | null;
   value?: string | null;
 }
-const Meta = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1031,7 +1029,7 @@ interface PermissionGroup {
   /** Name of the permission group. */
   name?: string | null;
 }
-const PermissionGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PermissionGroup = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
@@ -1053,7 +1051,7 @@ interface TokenPolicy {
   /** A list of resource names that the policy applies to. */
   resources: Record<string, unknown>;
 }
-const TokenPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TokenPolicy = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     effect: Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
@@ -1103,7 +1101,7 @@ interface Token {
   /** Status of the token. */
   status?: "active" | "disabled" | "expired" | (string & {}) | null;
 }
-const Token = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Token = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     condition: Schema.optional(Schema.Union([Condition, Schema.Null])),
@@ -1147,7 +1145,7 @@ interface PermissionGroup2 {
   /** Attributes associated to the permission group. */
   meta?: { key?: string | null; value?: string | null } | null;
 }
-const PermissionGroup2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PermissionGroup2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
@@ -1165,7 +1163,7 @@ interface TokenPolicyParam {
   /** A list of resource names that the policy applies to. */
   resources: Record<string, unknown>;
 }
-const TokenPolicyParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TokenPolicyParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     effect: Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
     permissionGroups: Schema.Array(PermissionGroup2),
@@ -1213,7 +1211,7 @@ interface PermissionGroupGetResponseItem {
     | null;
 }
 const PermissionGroupGetResponseItem =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       category: Schema.optional(
@@ -1268,11 +1266,10 @@ export interface GetAccountRequest {
   accountId: string;
 }
 
-export const GetAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}" })),
+export const GetAccountRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}" })),
 ) as unknown as Schema.Codec<GetAccountRequest>;
 
 export interface GetAccountResponse {
@@ -1295,30 +1292,29 @@ export interface GetAccountResponse {
   } | null;
 }
 
-export const GetAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      type: Schema.Union([
-        Schema.Literals(["standard", "enterprise"]),
-        Schema.String,
-      ]),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      managedBy: Schema.optional(Schema.Union([ManagedBy, Schema.Null])),
-      settings: Schema.optional(Schema.Union([Settings, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          name: "name",
-          type: "type",
-          createdOn: "created_on",
-          managedBy: "managed_by",
-          settings: "settings",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetAccountResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    name: Schema.String,
+    type: Schema.Union([
+      Schema.Literals(["standard", "enterprise"]),
+      Schema.String,
+    ]),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    managedBy: Schema.optional(Schema.Union([ManagedBy, Schema.Null])),
+    settings: Schema.optional(Schema.Union([Settings, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        name: "name",
+        type: "type",
+        createdOn: "created_on",
+        managedBy: "managed_by",
+        settings: "settings",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetAccountResponse>;
 
 export type GetAccountError = DefaultErrors | InvalidRoute;
@@ -1328,7 +1324,7 @@ export const getAccount: API.OperationMethod<
   GetAccountResponse,
   GetAccountError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountRequest,
   output: GetAccountResponse,
   errors: [InvalidRoute],
@@ -1343,16 +1339,15 @@ export interface ListAccountsRequest {
   name?: string;
 }
 
-export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      direction: Schema.optional(
-        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-      ).pipe(T.HttpQuery("direction")),
-      name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-    }).pipe(T.Http({ method: "GET", path: "/accounts" })),
+export const ListAccountsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts" })),
 ) as unknown as Schema.Codec<ListAccountsRequest>;
 
 export interface ListAccountsResponse {
@@ -1378,14 +1373,13 @@ export interface ListAccountsResponse {
   } | null;
 }
 
-export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListAccountsResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListAccountsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListAccountsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListAccountsResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListAccountsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListAccountsResponse>;
 
 export type ListAccountsError = DefaultErrors;
@@ -1395,7 +1389,7 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsResponse,
   ListAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
   errors: [],
@@ -1416,18 +1410,17 @@ export interface CreateAccountRequest {
   unit?: { id?: string };
 }
 
-export const CreateAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      name: Schema.String,
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["standard", "enterprise"]),
-          Schema.String,
-        ]),
-      ),
-      unit: Schema.optional(Unit),
-    }).pipe(T.Http({ method: "POST", path: "/accounts" })),
+export const CreateAccountRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["standard", "enterprise"]),
+        Schema.String,
+      ]),
+    ),
+    unit: Schema.optional(Unit),
+  }).pipe(T.Http({ method: "POST", path: "/accounts" })),
 ) as unknown as Schema.Codec<CreateAccountRequest>;
 
 export interface CreateAccountResponse {
@@ -1450,30 +1443,29 @@ export interface CreateAccountResponse {
   } | null;
 }
 
-export const CreateAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      type: Schema.Union([
-        Schema.Literals(["standard", "enterprise"]),
-        Schema.String,
-      ]),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      managedBy: Schema.optional(Schema.Union([ManagedBy, Schema.Null])),
-      settings: Schema.optional(Schema.Union([Settings2, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          name: "name",
-          type: "type",
-          createdOn: "created_on",
-          managedBy: "managed_by",
-          settings: "settings",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateAccountResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    name: Schema.String,
+    type: Schema.Union([
+      Schema.Literals(["standard", "enterprise"]),
+      Schema.String,
+    ]),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    managedBy: Schema.optional(Schema.Union([ManagedBy, Schema.Null])),
+    settings: Schema.optional(Schema.Union([Settings2, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        name: "name",
+        type: "type",
+        createdOn: "created_on",
+        managedBy: "managed_by",
+        settings: "settings",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateAccountResponse>;
 
 export type CreateAccountError =
@@ -1486,7 +1478,7 @@ export const createAccount: API.OperationMethod<
   CreateAccountResponse,
   CreateAccountError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountRequest,
   output: CreateAccountResponse,
   errors: [AccountCreationForbidden, MissingName],
@@ -1507,30 +1499,29 @@ export interface UpdateAccountRequest {
   settings?: { abuseContactEmail?: string; enforceTwofactor?: boolean };
 }
 
-export const UpdateAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      id: Schema.String,
-      name: Schema.String,
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["standard", "enterprise"]),
-          Schema.String,
-        ]),
-      ),
-      managedBy: Schema.optional(Schema.Unknown),
-      settings: Schema.optional(Settings2),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        name: "name",
-        type: "type",
-        managedBy: "managed_by",
-        settings: "settings",
-      }),
-      T.Http({ method: "PUT", path: "/accounts/{account_id}" }),
+export const UpdateAccountRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    id: Schema.String,
+    name: Schema.String,
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["standard", "enterprise"]),
+        Schema.String,
+      ]),
     ),
+    managedBy: Schema.optional(Schema.Unknown),
+    settings: Schema.optional(Settings2),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      name: "name",
+      type: "type",
+      managedBy: "managed_by",
+      settings: "settings",
+    }),
+    T.Http({ method: "PUT", path: "/accounts/{account_id}" }),
+  ),
 ) as unknown as Schema.Codec<UpdateAccountRequest>;
 
 export interface UpdateAccountResponse {
@@ -1553,30 +1544,29 @@ export interface UpdateAccountResponse {
   } | null;
 }
 
-export const UpdateAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-      type: Schema.Union([
-        Schema.Literals(["standard", "enterprise"]),
-        Schema.String,
-      ]),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      managedBy: Schema.optional(Schema.Union([ManagedBy, Schema.Null])),
-      settings: Schema.optional(Schema.Union([Settings, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          name: "name",
-          type: "type",
-          createdOn: "created_on",
-          managedBy: "managed_by",
-          settings: "settings",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const UpdateAccountResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    name: Schema.String,
+    type: Schema.Union([
+      Schema.Literals(["standard", "enterprise"]),
+      Schema.String,
+    ]),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    managedBy: Schema.optional(Schema.Union([ManagedBy, Schema.Null])),
+    settings: Schema.optional(Schema.Union([Settings, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        name: "name",
+        type: "type",
+        createdOn: "created_on",
+        managedBy: "managed_by",
+        settings: "settings",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateAccountResponse>;
 
 export type UpdateAccountError =
@@ -1592,7 +1582,7 @@ export const updateAccount: API.OperationMethod<
   UpdateAccountResponse,
   UpdateAccountError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountRequest,
   output: UpdateAccountResponse,
   errors: [
@@ -1609,11 +1599,10 @@ export interface DeleteAccountRequest {
   accountId: string;
 }
 
-export const DeleteAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(T.Http({ method: "DELETE", path: "/accounts/{account_id}" })),
+export const DeleteAccountRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(T.Http({ method: "DELETE", path: "/accounts/{account_id}" })),
 ) as unknown as Schema.Codec<DeleteAccountRequest>;
 
 export interface DeleteAccountResponse {
@@ -1621,11 +1610,10 @@ export interface DeleteAccountResponse {
   id: string;
 }
 
-export const DeleteAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-    }).pipe(T.ResponsePath("result")),
+export const DeleteAccountResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteAccountResponse>;
 
 export type DeleteAccountError =
@@ -1638,7 +1626,7 @@ export const deleteAccount: API.OperationMethod<
   DeleteAccountResponse,
   DeleteAccountError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountRequest,
   output: DeleteAccountResponse,
   errors: [InvalidRoute, MethodNotAllowed],
@@ -1727,176 +1715,173 @@ export interface ListLogAuditsRequest {
   zoneName?: { not?: string[] };
 }
 
-export const ListLogAuditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
-      before: Schema.String.pipe(T.HttpQuery("before")),
-      since: Schema.String.pipe(T.HttpQuery("since")),
-      id: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("id")),
-      accountName: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("account_name")),
-      actionResult: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(
-            Schema.Array(
-              Schema.Union([
-                Schema.Literals(["success", "failure"]),
-                Schema.String,
-              ]),
-            ),
+export const ListLogAuditsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+    before: Schema.String.pipe(T.HttpQuery("before")),
+    since: Schema.String.pipe(T.HttpQuery("since")),
+    id: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("id")),
+    accountName: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("account_name")),
+    actionResult: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals(["success", "failure"]),
+              Schema.String,
+            ]),
           ),
-        }),
-      ).pipe(T.HttpQuery("action_result")),
-      actionType: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(
-            Schema.Array(
-              Schema.Union([
-                Schema.Literals(["create", "delete", "view", "update"]),
-                Schema.String,
-              ]),
-            ),
+        ),
+      }),
+    ).pipe(T.HttpQuery("action_result")),
+    actionType: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals(["create", "delete", "view", "update"]),
+              Schema.String,
+            ]),
           ),
-        }),
-      ).pipe(T.HttpQuery("action_type")),
-      actorContext: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(
-            Schema.Array(
-              Schema.Union([
-                Schema.Literals([
-                  "api_key",
-                  "api_token",
-                  "dash",
-                  "oauth",
-                  "origin_ca_key",
-                ]),
-                Schema.String,
+        ),
+      }),
+    ).pipe(T.HttpQuery("action_type")),
+    actorContext: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals([
+                "api_key",
+                "api_token",
+                "dash",
+                "oauth",
+                "origin_ca_key",
               ]),
-            ),
+              Schema.String,
+            ]),
           ),
-        }),
-      ).pipe(T.HttpQuery("actor_context")),
-      actorEmail: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("actor_email")),
-      actorId: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("actor_id")),
-      actorIpAddress: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("actor_ip_address")),
-      actorTokenId: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("actor_token_id")),
-      actorTokenName: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("actor_token_name")),
-      actorType: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(
-            Schema.Array(
-              Schema.Union([
-                Schema.Literals([
-                  "account",
-                  "cloudflare_admin",
-                  "system",
-                  "user",
-                ]),
-                Schema.String,
+        ),
+      }),
+    ).pipe(T.HttpQuery("actor_context")),
+    actorEmail: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("actor_email")),
+    actorId: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("actor_id")),
+    actorIpAddress: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("actor_ip_address")),
+    actorTokenId: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("actor_token_id")),
+    actorTokenName: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("actor_token_name")),
+    actorType: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals([
+                "account",
+                "cloudflare_admin",
+                "system",
+                "user",
               ]),
-            ),
+              Schema.String,
+            ]),
           ),
-        }),
-      ).pipe(T.HttpQuery("actor_type")),
-      auditLogId: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("audit_log_id")),
-      direction: Schema.optional(
-        Schema.Union([Schema.Literals(["desc", "asc"]), Schema.String]),
-      ).pipe(T.HttpQuery("direction")),
-      limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
-      rawCfRayId: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("raw_cf_ray_id")),
-      rawMethod: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("raw_method")),
-      rawStatusCode: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.Number)),
-        }),
-      ).pipe(T.HttpQuery("raw_status_code")),
-      rawUri: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("raw_uri")),
-      resourceId: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("resource_id")),
-      resourceProduct: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("resource_product")),
-      resourceScope: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(
-            Schema.Array(
-              Schema.Union([
-                Schema.Literals(["accounts", "user", "zones", "memberships"]),
-                Schema.String,
-              ]),
-            ),
+        ),
+      }),
+    ).pipe(T.HttpQuery("actor_type")),
+    auditLogId: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("audit_log_id")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["desc", "asc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+    rawCfRayId: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("raw_cf_ray_id")),
+    rawMethod: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("raw_method")),
+    rawStatusCode: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.Number)),
+      }),
+    ).pipe(T.HttpQuery("raw_status_code")),
+    rawUri: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("raw_uri")),
+    resourceId: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("resource_id")),
+    resourceProduct: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("resource_product")),
+    resourceScope: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals(["accounts", "user", "zones", "memberships"]),
+              Schema.String,
+            ]),
           ),
-        }),
-      ).pipe(T.HttpQuery("resource_scope")),
-      resourceType: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("resource_type")),
-      zoneId: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("zone_id")),
-      zoneName: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("zone_name")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/logs/audit" }),
-    ),
+        ),
+      }),
+    ).pipe(T.HttpQuery("resource_scope")),
+    resourceType: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("resource_type")),
+    zoneId: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("zone_id")),
+    zoneName: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("zone_name")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/logs/audit" })),
 ) as unknown as Schema.Codec<ListLogAuditsRequest>;
 
 export interface ListLogAuditsResponse {
@@ -1951,14 +1936,13 @@ export interface ListLogAuditsResponse {
   resultInfo?: { cursors?: { after?: string | null } | null } | null;
 }
 
-export const ListLogAuditsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListLogAuditsResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListLogAuditsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListLogAuditsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListLogAuditsResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListLogAuditsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListLogAuditsResponse>;
 
 export type ListLogAuditsError = DefaultErrors;
@@ -1968,7 +1952,7 @@ export const listLogAudits: API.PaginatedOperationMethod<
   ListLogAuditsResponse,
   ListLogAuditsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogAuditsRequest,
   output: ListLogAuditsResponse,
   errors: [],
@@ -1990,7 +1974,7 @@ export interface GetMemberRequest {
   accountId: string;
 }
 
-export const GetMemberRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetMemberRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     memberId: Schema.String.pipe(T.HttpPath("memberId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2056,26 +2040,22 @@ export interface GetMemberResponse {
   } | null;
 }
 
-export const GetMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policies: Schema.optional(
-        Schema.Union([Schema.Array(Policy), Schema.Null]),
-      ),
-      roles: Schema.optional(Schema.Union([Schema.Array(Role), Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["accepted", "pending"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      user: Schema.optional(Schema.Union([User, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const GetMemberResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    policies: Schema.optional(
+      Schema.Union([Schema.Array(Policy), Schema.Null]),
+    ),
+    roles: Schema.optional(Schema.Union([Schema.Array(Role), Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    user: Schema.optional(Schema.Union([User, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetMemberResponse>;
 
 export type GetMemberError = DefaultErrors | MemberNotFound | InvalidRoute;
@@ -2085,7 +2065,7 @@ export const getMember: API.OperationMethod<
   GetMemberResponse,
   GetMemberError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMemberRequest,
   output: GetMemberResponse,
   errors: [MemberNotFound, InvalidRoute],
@@ -2109,33 +2089,32 @@ export interface ListMembersRequest {
   status?: "accepted" | "pending" | "rejected" | (string & {});
 }
 
-export const ListMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      direction: Schema.optional(
-        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-      ).pipe(T.HttpQuery("direction")),
-      order: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "user.first_name",
-            "user.last_name",
-            "user.email",
-            "status",
-          ]),
-          Schema.String,
+export const ListMembersRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    order: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "user.first_name",
+          "user.last_name",
+          "user.email",
+          "status",
         ]),
-      ).pipe(T.HttpQuery("order")),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["accepted", "pending", "rejected"]),
-          Schema.String,
-        ]),
-      ).pipe(T.HttpQuery("status")),
-    }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/members" })),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("order")),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["accepted", "pending", "rejected"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("status")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/members" })),
 ) as unknown as Schema.Codec<ListMembersRequest>;
 
 export interface ListMembersResponse {
@@ -2211,14 +2190,13 @@ export interface ListMembersResponse {
   } | null;
 }
 
-export const ListMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Union([Schema.Array(Member), Schema.Null]),
-      resultInfo: Schema.optional(
-        Schema.Union([ListAccountsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListMembersResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Union([Schema.Array(Member), Schema.Null]),
+    resultInfo: Schema.optional(
+      Schema.Union([ListAccountsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListMembersResponse>;
 
 export type ListMembersError = DefaultErrors;
@@ -2228,7 +2206,7 @@ export const listMembers: API.PaginatedOperationMethod<
   ListMembersResponse,
   ListMembersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersRequest,
   output: ListMembersResponse,
   errors: [],
@@ -2258,17 +2236,16 @@ export interface CreateMemberRequest {
   }[];
 }
 
-export const CreateMemberRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      email: Schema.String,
-      roles: Schema.optional(Schema.Array(Schema.String)),
-      status: Schema.optional(
-        Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.String]),
-      ),
-      policies: Schema.optional(Schema.Array(Policy2)),
-    }).pipe(T.Http({ method: "POST", path: "/accounts/{account_id}/members" })),
+export const CreateMemberRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    email: Schema.String,
+    roles: Schema.optional(Schema.Array(Schema.String)),
+    status: Schema.optional(
+      Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.String]),
+    ),
+    policies: Schema.optional(Schema.Array(Policy2)),
+  }).pipe(T.Http({ method: "POST", path: "/accounts/{account_id}/members" })),
 ) as unknown as Schema.Codec<CreateMemberRequest>;
 
 export interface CreateMemberResponse {
@@ -2325,26 +2302,22 @@ export interface CreateMemberResponse {
   } | null;
 }
 
-export const CreateMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policies: Schema.optional(
-        Schema.Union([Schema.Array(Policy), Schema.Null]),
-      ),
-      roles: Schema.optional(Schema.Union([Schema.Array(Role), Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["accepted", "pending"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      user: Schema.optional(Schema.Union([User, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const CreateMemberResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    policies: Schema.optional(
+      Schema.Union([Schema.Array(Policy), Schema.Null]),
+    ),
+    roles: Schema.optional(Schema.Union([Schema.Array(Role), Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    user: Schema.optional(Schema.Union([User, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateMemberResponse>;
 
 export type CreateMemberError =
@@ -2358,7 +2331,7 @@ export const createMember: API.OperationMethod<
   CreateMemberResponse,
   CreateMemberError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMemberRequest,
   output: CreateMemberResponse,
   errors: [InvalidRoute, ValidationError, AccountMemberAlreadyExists],
@@ -2378,19 +2351,18 @@ export interface UpdateMemberRequest {
   }[];
 }
 
-export const UpdateMemberRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      memberId: Schema.String.pipe(T.HttpPath("memberId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      roles: Schema.optional(Schema.Array(PolicyPermissionGroup)),
-      policies: Schema.optional(Schema.Array(Policy2)),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/members/{memberId}",
-      }),
-    ),
+export const UpdateMemberRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    memberId: Schema.String.pipe(T.HttpPath("memberId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    roles: Schema.optional(Schema.Array(PolicyPermissionGroup)),
+    policies: Schema.optional(Schema.Array(Policy2)),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/members/{memberId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateMemberRequest>;
 
 export interface UpdateMemberResponse {
@@ -2447,26 +2419,22 @@ export interface UpdateMemberResponse {
   } | null;
 }
 
-export const UpdateMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policies: Schema.optional(
-        Schema.Union([Schema.Array(Policy), Schema.Null]),
-      ),
-      roles: Schema.optional(Schema.Union([Schema.Array(Role), Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["accepted", "pending"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      user: Schema.optional(Schema.Union([User, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const UpdateMemberResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    policies: Schema.optional(
+      Schema.Union([Schema.Array(Policy), Schema.Null]),
+    ),
+    roles: Schema.optional(Schema.Union([Schema.Array(Role), Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["accepted", "pending"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    user: Schema.optional(Schema.Union([User, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateMemberResponse>;
 
 export type UpdateMemberError =
@@ -2481,7 +2449,7 @@ export const updateMember: API.OperationMethod<
   UpdateMemberResponse,
   UpdateMemberError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMemberRequest,
   output: UpdateMemberResponse,
   errors: [MemberNotFound, InvalidRoute, BadRequest, MethodNotAllowed],
@@ -2493,17 +2461,16 @@ export interface DeleteMemberRequest {
   accountId: string;
 }
 
-export const DeleteMemberRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      memberId: Schema.String.pipe(T.HttpPath("memberId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/members/{memberId}",
-      }),
-    ),
+export const DeleteMemberRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    memberId: Schema.String.pipe(T.HttpPath("memberId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/members/{memberId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteMemberRequest>;
 
 export interface DeleteMemberResponse {
@@ -2511,11 +2478,10 @@ export interface DeleteMemberResponse {
   id: string;
 }
 
-export const DeleteMemberResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-    }).pipe(T.ResponsePath("result")),
+export const DeleteMemberResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteMemberResponse>;
 
 export type DeleteMemberError = DefaultErrors | MemberNotFound | InvalidRoute;
@@ -2525,7 +2491,7 @@ export const deleteMember: API.OperationMethod<
   DeleteMemberResponse,
   DeleteMemberError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMemberRequest,
   output: DeleteMemberResponse,
   errors: [MemberNotFound, InvalidRoute],
@@ -2541,7 +2507,7 @@ export interface GetRoleRequest {
   accountId: string;
 }
 
-export const GetRoleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRoleRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     roleId: Schema.String.pipe(T.HttpPath("roleId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2573,7 +2539,7 @@ export interface GetRoleResponse {
   };
 }
 
-export const GetRoleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRoleResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     description: Schema.String,
@@ -2589,7 +2555,7 @@ export const getRole: API.OperationMethod<
   GetRoleResponse,
   GetRoleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRoleRequest,
   output: GetRoleResponse,
   errors: [InvalidRoute],
@@ -2602,7 +2568,7 @@ export interface ListRolesRequest {
   perPage?: number;
 }
 
-export const ListRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListRolesRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -2646,14 +2612,13 @@ export interface ListRolesResponse {
   } | null;
 }
 
-export const ListRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Union([Schema.Array(Role), Schema.Null]),
-      resultInfo: Schema.optional(
-        Schema.Union([ListAccountsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListRolesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Union([Schema.Array(Role), Schema.Null]),
+    resultInfo: Schema.optional(
+      Schema.Union([ListAccountsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListRolesResponse>;
 
 export type ListRolesError = DefaultErrors;
@@ -2663,7 +2628,7 @@ export const listRoles: API.PaginatedOperationMethod<
   ListRolesResponse,
   ListRolesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRolesRequest,
   output: ListRolesResponse,
   errors: [],
@@ -2686,7 +2651,7 @@ export interface GetSubscriptionRequest {
 }
 
 export const GetSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -2743,7 +2708,7 @@ export interface GetSubscriptionResponse {
 }
 
 export const GetSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Subscription),
     }),
@@ -2756,7 +2721,7 @@ export const getSubscription: API.PaginatedOperationMethod<
   GetSubscriptionResponse,
   GetSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSubscriptionRequest,
   output: GetSubscriptionResponse,
   errors: [],
@@ -2795,7 +2760,7 @@ export interface CreateSubscriptionRequest {
 }
 
 export const CreateSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       frequency: Schema.optional(
@@ -2866,7 +2831,7 @@ export interface CreateSubscriptionResponse {
 }
 
 export const CreateSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2930,7 +2895,7 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionResponse,
   CreateSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSubscriptionRequest,
   output: CreateSubscriptionResponse,
   errors: [JsonDecodeFailure, InvalidRoute],
@@ -2966,7 +2931,7 @@ export interface UpdateSubscriptionRequest {
 }
 
 export const UpdateSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       subscriptionIdentifier: Schema.String.pipe(
         T.HttpPath("subscriptionIdentifier"),
@@ -3043,7 +3008,7 @@ export interface UpdateSubscriptionResponse {
 }
 
 export const UpdateSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       currency: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3108,7 +3073,7 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionResponse,
   UpdateSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSubscriptionRequest,
   output: UpdateSubscriptionResponse,
   errors: [JsonDecodeFailure, InvalidRoute, EndpointNotFound],
@@ -3121,7 +3086,7 @@ export interface DeleteSubscriptionRequest {
 }
 
 export const DeleteSubscriptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       subscriptionIdentifier: Schema.String.pipe(
         T.HttpPath("subscriptionIdentifier"),
@@ -3141,7 +3106,7 @@ export interface DeleteSubscriptionResponse {
 }
 
 export const DeleteSubscriptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       subscriptionId: Schema.optional(
         Schema.Union([Schema.String, Schema.Null]),
@@ -3161,7 +3126,7 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionResponse,
   DeleteSubscriptionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionRequest,
   output: DeleteSubscriptionResponse,
   errors: [InvalidRoute, EndpointNotFound],
@@ -3177,7 +3142,7 @@ export interface GetTokenRequest {
   accountId: string;
 }
 
-export const GetTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetTokenRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3221,7 +3186,7 @@ export interface GetTokenResponse {
   status?: "active" | "disabled" | "expired" | (string & {}) | null;
 }
 
-export const GetTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetTokenResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     condition: Schema.optional(Schema.Union([Condition, Schema.Null])),
@@ -3268,7 +3233,7 @@ export const getToken: API.OperationMethod<
   GetTokenResponse,
   GetTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTokenRequest,
   output: GetTokenResponse,
   errors: [InvalidRoute, TokenNotFound],
@@ -3283,16 +3248,15 @@ export interface ListTokensRequest {
   direction?: "asc" | "desc" | (string & {});
 }
 
-export const ListTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      direction: Schema.optional(
-        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-      ).pipe(T.HttpQuery("direction")),
-    }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/tokens" })),
+export const ListTokensRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+  }).pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/tokens" })),
 ) as unknown as Schema.Codec<ListTokensRequest>;
 
 export interface ListTokensResponse {
@@ -3329,14 +3293,13 @@ export interface ListTokensResponse {
   } | null;
 }
 
-export const ListTokensResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(Token),
-      resultInfo: Schema.optional(
-        Schema.Union([ListAccountsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListTokensResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(Token),
+    resultInfo: Schema.optional(
+      Schema.Union([ListAccountsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListTokensResponse>;
 
 export type ListTokensError = DefaultErrors;
@@ -3346,7 +3309,7 @@ export const listTokens: API.PaginatedOperationMethod<
   ListTokensResponse,
   ListTokensError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTokensRequest,
   output: ListTokensResponse,
   errors: [],
@@ -3378,25 +3341,24 @@ export interface CreateTokenRequest {
   notBefore?: string;
 }
 
-export const CreateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.String,
-      policies: Schema.Array(TokenPolicyParam),
-      condition: Schema.optional(Condition),
-      expiresOn: Schema.optional(Schema.String),
-      notBefore: Schema.optional(Schema.String),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        policies: "policies",
-        condition: "condition",
-        expiresOn: "expires_on",
-        notBefore: "not_before",
-      }),
-      T.Http({ method: "POST", path: "/accounts/{account_id}/tokens" }),
-    ),
+export const CreateTokenRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.String,
+    policies: Schema.Array(TokenPolicyParam),
+    condition: Schema.optional(Condition),
+    expiresOn: Schema.optional(Schema.String),
+    notBefore: Schema.optional(Schema.String),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      policies: "policies",
+      condition: "condition",
+      expiresOn: "expires_on",
+      notBefore: "not_before",
+    }),
+    T.Http({ method: "POST", path: "/accounts/{account_id}/tokens" }),
+  ),
 ) as unknown as Schema.Codec<CreateTokenRequest>;
 
 export interface CreateTokenResponse {
@@ -3436,47 +3398,46 @@ export interface CreateTokenResponse {
   value?: string | null;
 }
 
-export const CreateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      condition: Schema.optional(Schema.Union([Condition, Schema.Null])),
-      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      issuedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      lastUsedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policies: Schema.optional(
-        Schema.Union([Schema.Array(TokenPolicy), Schema.Null]),
-      ),
-      status: Schema.optional(
+export const CreateTokenResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    condition: Schema.optional(Schema.Union([Condition, Schema.Null])),
+    expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    issuedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastUsedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    policies: Schema.optional(
+      Schema.Union([Schema.Array(TokenPolicy), Schema.Null]),
+    ),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["active", "disabled", "expired"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["active", "disabled", "expired"]),
+          Schema.String,
         ]),
-      ),
-      value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          condition: "condition",
-          expiresOn: "expires_on",
-          issuedOn: "issued_on",
-          lastUsedOn: "last_used_on",
-          modifiedOn: "modified_on",
-          name: "name",
-          notBefore: "not_before",
-          policies: "policies",
-          status: "status",
-          value: "value",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        condition: "condition",
+        expiresOn: "expires_on",
+        issuedOn: "issued_on",
+        lastUsedOn: "last_used_on",
+        modifiedOn: "modified_on",
+        name: "name",
+        notBefore: "not_before",
+        policies: "policies",
+        status: "status",
+        value: "value",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateTokenResponse>;
 
 export type CreateTokenError =
@@ -3490,7 +3451,7 @@ export const createToken: API.OperationMethod<
   CreateTokenResponse,
   CreateTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTokenRequest,
   output: CreateTokenResponse,
   errors: [InvalidRoute, InvalidTokenName, PermissionGroupNotFound],
@@ -3518,36 +3479,35 @@ export interface UpdateTokenRequest {
   status?: "active" | "disabled" | "expired" | (string & {});
 }
 
-export const UpdateTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.String,
-      policies: Schema.Array(TokenPolicyParam),
-      condition: Schema.optional(Condition),
-      expiresOn: Schema.optional(Schema.String),
-      notBefore: Schema.optional(Schema.String),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["active", "disabled", "expired"]),
-          Schema.String,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        policies: "policies",
-        condition: "condition",
-        expiresOn: "expires_on",
-        notBefore: "not_before",
-        status: "status",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/tokens/{tokenId}",
-      }),
+export const UpdateTokenRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.String,
+    policies: Schema.Array(TokenPolicyParam),
+    condition: Schema.optional(Condition),
+    expiresOn: Schema.optional(Schema.String),
+    notBefore: Schema.optional(Schema.String),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["active", "disabled", "expired"]),
+        Schema.String,
+      ]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      policies: "policies",
+      condition: "condition",
+      expiresOn: "expires_on",
+      notBefore: "not_before",
+      status: "status",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/tokens/{tokenId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateTokenRequest>;
 
 export interface UpdateTokenResponse {
@@ -3585,45 +3545,44 @@ export interface UpdateTokenResponse {
   status?: "active" | "disabled" | "expired" | (string & {}) | null;
 }
 
-export const UpdateTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      condition: Schema.optional(Schema.Union([Condition, Schema.Null])),
-      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      issuedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      lastUsedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      policies: Schema.optional(
-        Schema.Union([Schema.Array(TokenPolicy), Schema.Null]),
-      ),
-      status: Schema.optional(
+export const UpdateTokenResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    condition: Schema.optional(Schema.Union([Condition, Schema.Null])),
+    expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    issuedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastUsedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    policies: Schema.optional(
+      Schema.Union([Schema.Array(TokenPolicy), Schema.Null]),
+    ),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["active", "disabled", "expired"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["active", "disabled", "expired"]),
+          Schema.String,
         ]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          condition: "condition",
-          expiresOn: "expires_on",
-          issuedOn: "issued_on",
-          lastUsedOn: "last_used_on",
-          modifiedOn: "modified_on",
-          name: "name",
-          notBefore: "not_before",
-          policies: "policies",
-          status: "status",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        condition: "condition",
+        expiresOn: "expires_on",
+        issuedOn: "issued_on",
+        lastUsedOn: "last_used_on",
+        modifiedOn: "modified_on",
+        name: "name",
+        notBefore: "not_before",
+        policies: "policies",
+        status: "status",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateTokenResponse>;
 
 export type UpdateTokenError =
@@ -3638,7 +3597,7 @@ export const updateToken: API.OperationMethod<
   UpdateTokenResponse,
   UpdateTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTokenRequest,
   output: UpdateTokenResponse,
   errors: [
@@ -3655,17 +3614,16 @@ export interface DeleteTokenRequest {
   accountId: string;
 }
 
-export const DeleteTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/tokens/{tokenId}",
-      }),
-    ),
+export const DeleteTokenRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/tokens/{tokenId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteTokenRequest>;
 
 export interface DeleteTokenResponse {
@@ -3673,11 +3631,10 @@ export interface DeleteTokenResponse {
   id: string;
 }
 
-export const DeleteTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-    }).pipe(T.ResponsePath("result")),
+export const DeleteTokenResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteTokenResponse>;
 
 export type DeleteTokenError =
@@ -3692,7 +3649,7 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenResponse,
   DeleteTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTokenRequest,
   output: DeleteTokenResponse,
   errors: [
@@ -3708,13 +3665,12 @@ export interface VerifyTokenRequest {
   accountId: string;
 }
 
-export const VerifyTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/tokens/verify" }),
-    ),
+export const VerifyTokenRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/tokens/verify" }),
+  ),
 ) as unknown as Schema.Codec<VerifyTokenRequest>;
 
 export interface VerifyTokenResponse {
@@ -3728,26 +3684,25 @@ export interface VerifyTokenResponse {
   notBefore?: string | null;
 }
 
-export const VerifyTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      status: Schema.Union([
-        Schema.Literals(["active", "disabled", "expired"]),
-        Schema.String,
-      ]),
-      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          status: "status",
-          expiresOn: "expires_on",
-          notBefore: "not_before",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const VerifyTokenResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    status: Schema.Union([
+      Schema.Literals(["active", "disabled", "expired"]),
+      Schema.String,
+    ]),
+    expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    notBefore: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        status: "status",
+        expiresOn: "expires_on",
+        notBefore: "not_before",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<VerifyTokenResponse>;
 
 export type VerifyTokenError =
@@ -3760,7 +3715,7 @@ export const verifyToken: API.OperationMethod<
   VerifyTokenResponse,
   VerifyTokenError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VerifyTokenRequest,
   output: VerifyTokenResponse,
   errors: [MissingAuthenticationToken, InvalidRoute],
@@ -3780,7 +3735,7 @@ export interface GetTokenPermissionGroupRequest {
 }
 
 export const GetTokenPermissionGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
@@ -3824,7 +3779,7 @@ export type GetTokenPermissionGroupResponse = {
 }[];
 
 export const GetTokenPermissionGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(PermissionGroupGetResponseItem).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetTokenPermissionGroupResponse>;
 
@@ -3835,7 +3790,7 @@ export const getTokenPermissionGroup: API.OperationMethod<
   GetTokenPermissionGroupResponse,
   GetTokenPermissionGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTokenPermissionGroupRequest,
   output: GetTokenPermissionGroupResponse,
   errors: [InvalidRoute],
@@ -3851,7 +3806,7 @@ export interface ListTokenPermissionGroupsRequest {
 }
 
 export const ListTokenPermissionGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
@@ -3897,7 +3852,7 @@ export interface ListTokenPermissionGroupsResponse {
 }
 
 export const ListTokenPermissionGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(PermissionGroupGetResponseItem),
     }),
@@ -3910,7 +3865,7 @@ export const listTokenPermissionGroups: API.PaginatedOperationMethod<
   ListTokenPermissionGroupsResponse,
   ListTokenPermissionGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTokenPermissionGroupsRequest,
   output: ListTokenPermissionGroupsResponse,
   errors: [],
@@ -3932,24 +3887,23 @@ export interface PutTokenValueRequest {
   body: unknown;
 }
 
-export const PutTokenValueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      body: Schema.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/tokens/{tokenId}/value",
-      }),
-    ),
+export const PutTokenValueRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    tokenId: Schema.String.pipe(T.HttpPath("tokenId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    body: Schema.Unknown.pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/tokens/{tokenId}/value",
+    }),
+  ),
 ) as unknown as Schema.Codec<PutTokenValueRequest>;
 
 export type PutTokenValueResponse = string;
 
-export const PutTokenValueResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.String.pipe(T.ResponsePath("result")),
+export const PutTokenValueResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.String.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutTokenValueResponse>;
 
 export type PutTokenValueError = DefaultErrors | InvalidRoute | TokenNotFound;
@@ -3959,7 +3913,7 @@ export const putTokenValue: API.OperationMethod<
   PutTokenValueResponse,
   PutTokenValueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTokenValueRequest,
   output: PutTokenValueResponse,
   errors: [InvalidRoute, TokenNotFound],

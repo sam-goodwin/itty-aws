@@ -13,7 +13,7 @@ export interface GetConfirmationTokensConfirmationTokenInput {
   expand?: string;
 }
 export const GetConfirmationTokensConfirmationTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     confirmation_token: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -69,7 +69,7 @@ export interface GetConfirmationTokensConfirmationTokenOutput {
   use_stripe_sdk: boolean;
 }
 export const GetConfirmationTokensConfirmationTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     expires_at: Schema.NullOr(Schema.Number),
     id: Schema.String,
@@ -147,7 +147,7 @@ export const GetConfirmationTokensConfirmationTokenOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetConfirmationTokensConfirmationToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetConfirmationTokensConfirmationTokenInput,
     outputSchema: GetConfirmationTokensConfirmationTokenOutput,
   }));

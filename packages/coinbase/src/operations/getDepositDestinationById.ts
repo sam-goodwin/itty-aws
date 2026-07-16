@@ -7,7 +7,7 @@ export interface GetDepositDestinationByIdInput {
   depositDestinationId: string;
 }
 export const GetDepositDestinationByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     depositDestinationId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -42,7 +42,7 @@ export interface GetDepositDestinationByIdOutput {
   updatedAt: string;
 }
 export const GetDepositDestinationByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     depositDestinationId: Schema.String,
     accountId: Schema.String,
     type: Schema.Literals(["crypto"]),
@@ -81,9 +81,7 @@ export const GetDepositDestinationByIdOutput =
  *
  * @param depositDestinationId - The ID of the deposit address to retrieve.
  */
-export const getDepositDestinationById = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetDepositDestinationByIdInput,
-    outputSchema: GetDepositDestinationByIdOutput,
-  }),
-);
+export const getDepositDestinationById = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetDepositDestinationByIdInput,
+  outputSchema: GetDepositDestinationByIdOutput,
+}));

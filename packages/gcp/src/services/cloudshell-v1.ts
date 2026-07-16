@@ -34,28 +34,28 @@ export interface StartEnvironmentMetadata {
 }
 
 export const StartEnvironmentMetadata: Schema.Codec<StartEnvironmentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "StartEnvironmentMetadata" });
 
 export interface RemovePublicKeyResponse {}
 
 export const RemovePublicKeyResponse: Schema.Codec<RemovePublicKeyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemovePublicKeyResponse",
   });
 
 export interface AuthorizeEnvironmentResponse {}
 
 export const AuthorizeEnvironmentResponse: Schema.Codec<AuthorizeEnvironmentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AuthorizeEnvironmentResponse",
   });
 
 export interface AuthorizeEnvironmentMetadata {}
 
 export const AuthorizeEnvironmentMetadata: Schema.Codec<AuthorizeEnvironmentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AuthorizeEnvironmentMetadata",
   });
 
@@ -65,7 +65,7 @@ export interface RemovePublicKeyRequest {
 }
 
 export const RemovePublicKeyRequest: Schema.Codec<RemovePublicKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "RemovePublicKeyRequest" });
 
@@ -79,7 +79,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -115,7 +115,7 @@ export interface Environment {
 }
 
 export const Environment: Schema.Codec<Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     sshHost: Schema.optional(Schema.String),
@@ -133,7 +133,7 @@ export interface StartEnvironmentResponse {
 }
 
 export const StartEnvironmentResponse: Schema.Codec<StartEnvironmentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.optional(Environment),
   }).annotate({ identifier: "StartEnvironmentResponse" });
 
@@ -151,7 +151,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
@@ -169,7 +169,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.optional(Schema.Array(Operation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     nextPageToken: Schema.optional(Schema.String),
@@ -178,7 +178,7 @@ export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -190,7 +190,7 @@ export interface StartEnvironmentRequest {
 }
 
 export const StartEnvironmentRequest: Schema.Codec<StartEnvironmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessToken: Schema.optional(Schema.String),
     publicKeys: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "StartEnvironmentRequest" });
@@ -198,28 +198,28 @@ export const StartEnvironmentRequest: Schema.Codec<StartEnvironmentRequest> =
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
 export interface DeleteEnvironmentMetadata {}
 
 export const DeleteEnvironmentMetadata: Schema.Codec<DeleteEnvironmentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteEnvironmentMetadata",
   });
 
 export interface AddPublicKeyMetadata {}
 
 export const AddPublicKeyMetadata: Schema.Codec<AddPublicKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AddPublicKeyMetadata",
   });
 
 export interface CreateEnvironmentMetadata {}
 
 export const CreateEnvironmentMetadata: Schema.Codec<CreateEnvironmentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateEnvironmentMetadata",
   });
 
@@ -229,14 +229,14 @@ export interface AddPublicKeyRequest {
 }
 
 export const AddPublicKeyRequest: Schema.Codec<AddPublicKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "AddPublicKeyRequest" });
 
 export interface RemovePublicKeyMetadata {}
 
 export const RemovePublicKeyMetadata: Schema.Codec<RemovePublicKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemovePublicKeyMetadata",
   });
 
@@ -246,7 +246,7 @@ export interface AddPublicKeyResponse {
 }
 
 export const AddPublicKeyResponse: Schema.Codec<AddPublicKeyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key: Schema.optional(Schema.String),
   }).annotate({ identifier: "AddPublicKeyResponse" });
 
@@ -260,7 +260,7 @@ export interface AuthorizeEnvironmentRequest {
 }
 
 export const AuthorizeEnvironmentRequest: Schema.Codec<AuthorizeEnvironmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessToken: Schema.optional(Schema.String),
     idToken: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
@@ -272,7 +272,7 @@ export interface GenerateAccessTokenResponse {
 }
 
 export const GenerateAccessTokenResponse: Schema.Codec<GenerateAccessTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accessToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateAccessTokenResponse" });
 
@@ -335,7 +335,7 @@ export interface GetOperationsRequest {
   name: string;
 }
 
-export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOperationsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -343,7 +343,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
-export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -353,7 +353,7 @@ export const getOperations: API.OperationMethod<
   GetOperationsResponse,
   GetOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -365,7 +365,7 @@ export interface DeleteOperationsRequest {
 }
 
 export const DeleteOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1/{+name}" }),
@@ -373,7 +373,7 @@ export const DeleteOperationsRequest =
   ) as unknown as Schema.Codec<DeleteOperationsRequest>;
 
 export type DeleteOperationsResponse = Empty;
-export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteOperationsError =
   | DefaultErrors
@@ -388,7 +388,7 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsResponse,
   DeleteOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -407,7 +407,7 @@ export interface ListOperationsRequest {
   pageSize?: number;
 }
 
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOperationsRequest = /*@__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   name: Schema.String.pipe(T.HttpPath("name")),
   returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
@@ -421,8 +421,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListOperationsRequest>;
 
 export type ListOperationsResponse_Op = ListOperationsResponse;
-export const ListOperationsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+export const ListOperationsResponse_Op = /*@__PURE__*/ ListOperationsResponse;
 
 export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -432,7 +431,7 @@ export const listOperations: API.PaginatedOperationMethod<
   ListOperationsResponse_Op,
   ListOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -450,7 +449,7 @@ export interface CancelOperationsRequest {
 }
 
 export const CancelOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -459,7 +458,7 @@ export const CancelOperationsRequest =
   ) as unknown as Schema.Codec<CancelOperationsRequest>;
 
 export type CancelOperationsResponse = Empty;
-export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelOperationsError =
   | DefaultErrors
@@ -474,7 +473,7 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsResponse,
   CancelOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -488,7 +487,7 @@ export interface RemovePublicKeyUsersEnvironmentsRequest {
 }
 
 export const RemovePublicKeyUsersEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.String.pipe(T.HttpPath("environment")),
     body: Schema.optional(RemovePublicKeyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -501,8 +500,7 @@ export const RemovePublicKeyUsersEnvironmentsRequest =
   ) as unknown as Schema.Codec<RemovePublicKeyUsersEnvironmentsRequest>;
 
 export type RemovePublicKeyUsersEnvironmentsResponse = Operation;
-export const RemovePublicKeyUsersEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const RemovePublicKeyUsersEnvironmentsResponse = /*@__PURE__*/ Operation;
 
 export type RemovePublicKeyUsersEnvironmentsError =
   | DefaultErrors
@@ -517,7 +515,7 @@ export const removePublicKeyUsersEnvironments: API.OperationMethod<
   RemovePublicKeyUsersEnvironmentsResponse,
   RemovePublicKeyUsersEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemovePublicKeyUsersEnvironmentsRequest,
   output: RemovePublicKeyUsersEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -533,7 +531,7 @@ export interface GenerateAccessTokenUsersEnvironmentsRequest {
 }
 
 export const GenerateAccessTokenUsersEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String).pipe(T.HttpQuery("expireTime")),
     environment: Schema.String.pipe(T.HttpPath("environment")),
     ttl: Schema.optional(Schema.String).pipe(T.HttpQuery("ttl")),
@@ -545,7 +543,7 @@ export const GenerateAccessTokenUsersEnvironmentsRequest =
 export type GenerateAccessTokenUsersEnvironmentsResponse =
   GenerateAccessTokenResponse;
 export const GenerateAccessTokenUsersEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenerateAccessTokenResponse;
+  /*@__PURE__*/ GenerateAccessTokenResponse;
 
 export type GenerateAccessTokenUsersEnvironmentsError =
   | DefaultErrors
@@ -558,7 +556,7 @@ export const generateAccessTokenUsersEnvironments: API.OperationMethod<
   GenerateAccessTokenUsersEnvironmentsResponse,
   GenerateAccessTokenUsersEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateAccessTokenUsersEnvironmentsRequest,
   output: GenerateAccessTokenUsersEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -572,7 +570,7 @@ export interface AddPublicKeyUsersEnvironmentsRequest {
 }
 
 export const AddPublicKeyUsersEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environment: Schema.String.pipe(T.HttpPath("environment")),
     body: Schema.optional(AddPublicKeyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -585,8 +583,7 @@ export const AddPublicKeyUsersEnvironmentsRequest =
   ) as unknown as Schema.Codec<AddPublicKeyUsersEnvironmentsRequest>;
 
 export type AddPublicKeyUsersEnvironmentsResponse = Operation;
-export const AddPublicKeyUsersEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const AddPublicKeyUsersEnvironmentsResponse = /*@__PURE__*/ Operation;
 
 export type AddPublicKeyUsersEnvironmentsError =
   | DefaultErrors
@@ -601,7 +598,7 @@ export const addPublicKeyUsersEnvironments: API.OperationMethod<
   AddPublicKeyUsersEnvironmentsResponse,
   AddPublicKeyUsersEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddPublicKeyUsersEnvironmentsRequest,
   output: AddPublicKeyUsersEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -613,7 +610,7 @@ export interface GetUsersEnvironmentsRequest {
 }
 
 export const GetUsersEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -621,8 +618,7 @@ export const GetUsersEnvironmentsRequest =
   ) as unknown as Schema.Codec<GetUsersEnvironmentsRequest>;
 
 export type GetUsersEnvironmentsResponse = Environment;
-export const GetUsersEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Environment;
+export const GetUsersEnvironmentsResponse = /*@__PURE__*/ Environment;
 
 export type GetUsersEnvironmentsError = DefaultErrors | NotFound | Forbidden;
 
@@ -632,7 +628,7 @@ export const getUsersEnvironments: API.OperationMethod<
   GetUsersEnvironmentsResponse,
   GetUsersEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUsersEnvironmentsRequest,
   output: GetUsersEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -646,7 +642,7 @@ export interface StartUsersEnvironmentsRequest {
 }
 
 export const StartUsersEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StartEnvironmentRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -655,8 +651,7 @@ export const StartUsersEnvironmentsRequest =
   ) as unknown as Schema.Codec<StartUsersEnvironmentsRequest>;
 
 export type StartUsersEnvironmentsResponse = Operation;
-export const StartUsersEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const StartUsersEnvironmentsResponse = /*@__PURE__*/ Operation;
 
 export type StartUsersEnvironmentsError =
   | DefaultErrors
@@ -671,7 +666,7 @@ export const startUsersEnvironments: API.OperationMethod<
   StartUsersEnvironmentsResponse,
   StartUsersEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartUsersEnvironmentsRequest,
   output: StartUsersEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -685,7 +680,7 @@ export interface AuthorizeUsersEnvironmentsRequest {
 }
 
 export const AuthorizeUsersEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AuthorizeEnvironmentRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -694,8 +689,7 @@ export const AuthorizeUsersEnvironmentsRequest =
   ) as unknown as Schema.Codec<AuthorizeUsersEnvironmentsRequest>;
 
 export type AuthorizeUsersEnvironmentsResponse = Operation;
-export const AuthorizeUsersEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const AuthorizeUsersEnvironmentsResponse = /*@__PURE__*/ Operation;
 
 export type AuthorizeUsersEnvironmentsError =
   | DefaultErrors
@@ -710,7 +704,7 @@ export const authorizeUsersEnvironments: API.OperationMethod<
   AuthorizeUsersEnvironmentsResponse,
   AuthorizeUsersEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeUsersEnvironmentsRequest,
   output: AuthorizeUsersEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

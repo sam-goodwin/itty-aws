@@ -22,7 +22,7 @@ export interface ErrorTrackingIssuesBulkCreateInput {
   cohort: { id: number; name: string } | null;
 }
 export const ErrorTrackingIssuesBulkCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String,
     status: Schema.String,
@@ -67,7 +67,7 @@ export const ErrorTrackingIssuesBulkCreateInput =
 // Output Schema
 export type ErrorTrackingIssuesBulkCreateOutput = void;
 export const ErrorTrackingIssuesBulkCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingIssuesBulkCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingIssuesBulkCreateOutput>;
 
 // The operation
 /**
@@ -75,7 +75,7 @@ export const ErrorTrackingIssuesBulkCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingIssuesBulkCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingIssuesBulkCreateInput,
     outputSchema: ErrorTrackingIssuesBulkCreateOutput,
   }));

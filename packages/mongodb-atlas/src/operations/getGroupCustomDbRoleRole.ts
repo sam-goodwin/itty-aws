@@ -11,7 +11,7 @@ export interface GetGroupCustomDbRoleRoleInput {
   pretty?: boolean;
 }
 export const GetGroupCustomDbRoleRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     roleName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const GetGroupCustomDbRoleRoleInput =
 // Output Schema
 export type GetGroupCustomDbRoleRoleOutput = void;
 export const GetGroupCustomDbRoleRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupCustomDbRoleRoleOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupCustomDbRoleRoleOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const GetGroupCustomDbRoleRoleOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param roleName - Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
  */
-export const getGroupCustomDbRoleRole = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupCustomDbRoleRoleInput,
-    outputSchema: GetGroupCustomDbRoleRoleOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupCustomDbRoleRole = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupCustomDbRoleRoleInput,
+  outputSchema: GetGroupCustomDbRoleRoleOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

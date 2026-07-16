@@ -240,7 +240,7 @@ export interface DashboardsPartialUpdateInput {
   delete_insights?: boolean;
 }
 export const DashboardsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["json", "txt"])),
@@ -352,7 +352,7 @@ export interface DashboardsPartialUpdateOutput {
   _create_in_folder?: string;
 }
 export const DashboardsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.NullOr(Schema.String)),
     description: Schema.optional(Schema.String),
@@ -437,10 +437,8 @@ export const DashboardsPartialUpdateOutput =
  * @param id - A unique integer value identifying this dashboard.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const dashboardsPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DashboardsPartialUpdateInput,
-    outputSchema: DashboardsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const dashboardsPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DashboardsPartialUpdateInput,
+  outputSchema: DashboardsPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

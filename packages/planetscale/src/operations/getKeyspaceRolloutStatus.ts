@@ -11,7 +11,7 @@ export interface GetKeyspaceRolloutStatusInput {
   keyspace: string;
 }
 export const GetKeyspaceRolloutStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -35,7 +35,7 @@ export interface GetKeyspaceRolloutStatusOutput {
   }>;
 }
 export const GetKeyspaceRolloutStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String,
     state: Schema.String,
     shards: Schema.Array(
@@ -57,10 +57,8 @@ export const GetKeyspaceRolloutStatusOutput =
  * @param branch - The name of the branch
  * @param keyspace - The name of the keyspace
  */
-export const getKeyspaceRolloutStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetKeyspaceRolloutStatusInput,
-    outputSchema: GetKeyspaceRolloutStatusOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getKeyspaceRolloutStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetKeyspaceRolloutStatusInput,
+  outputSchema: GetKeyspaceRolloutStatusOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

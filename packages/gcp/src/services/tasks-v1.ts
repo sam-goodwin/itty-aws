@@ -30,7 +30,7 @@ export interface DriveResourceInfo {
 }
 
 export const DriveResourceInfo: Schema.Codec<DriveResourceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     driveFileId: Schema.optional(Schema.String),
     resourceKey: Schema.optional(Schema.String),
   }).annotate({ identifier: "DriveResourceInfo" });
@@ -41,7 +41,7 @@ export interface SpaceInfo {
 }
 
 export const SpaceInfo: Schema.Codec<SpaceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     space: Schema.optional(Schema.String),
   }).annotate({ identifier: "SpaceInfo" });
 
@@ -62,7 +62,7 @@ export interface AssignmentInfo {
 }
 
 export const AssignmentInfo: Schema.Codec<AssignmentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     driveResourceInfo: Schema.optional(DriveResourceInfo),
     surfaceType: Schema.optional(Schema.String),
     linkToTask: Schema.optional(Schema.String),
@@ -107,7 +107,7 @@ export interface Task {
 }
 
 export const Task: Schema.Codec<Task> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     notes: Schema.optional(Schema.String),
     due: Schema.optional(Schema.String),
@@ -147,7 +147,7 @@ export interface Tasks {
 }
 
 export const Tasks: Schema.Codec<Tasks> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     nextPageToken: Schema.optional(Schema.String),
@@ -170,7 +170,7 @@ export interface TaskList {
 }
 
 export const TaskList: Schema.Codec<TaskList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     selfLink: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
@@ -191,7 +191,7 @@ export interface TaskLists {
 }
 
 export const TaskLists: Schema.Codec<TaskLists> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     items: Schema.optional(Schema.Array(TaskList)),
     kind: Schema.optional(Schema.String),
@@ -279,7 +279,7 @@ export interface ListTasksRequest {
   showDeleted?: boolean;
 }
 
-export const ListTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListTasksRequest = /*@__PURE__*/ Schema.Struct({
   dueMin: Schema.optional(Schema.String).pipe(T.HttpQuery("dueMin")),
   showHidden: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("showHidden")),
   tasklist: Schema.String.pipe(T.HttpPath("tasklist")),
@@ -306,7 +306,7 @@ export const ListTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListTasksRequest>;
 
 export type ListTasksResponse = Tasks;
-export const ListTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Tasks;
+export const ListTasksResponse = /*@__PURE__*/ Tasks;
 
 export type ListTasksError = DefaultErrors | NotFound | Forbidden;
 
@@ -316,7 +316,7 @@ export const listTasks: API.PaginatedOperationMethod<
   ListTasksResponse,
   ListTasksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksRequest,
   output: ListTasksResponse,
   errors: [NotFound, Forbidden],
@@ -332,7 +332,7 @@ export interface ClearTasksRequest {
   tasklist: string;
 }
 
-export const ClearTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClearTasksRequest = /*@__PURE__*/ Schema.Struct({
   tasklist: Schema.String.pipe(T.HttpPath("tasklist")),
 }).pipe(
   T.Http({
@@ -345,9 +345,7 @@ export const ClearTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ClearTasksResponse {}
 export const ClearTasksResponse: Schema.Codec<ClearTasksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<ClearTasksResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<ClearTasksResponse>;
 
 export type ClearTasksError =
   | DefaultErrors
@@ -362,7 +360,7 @@ export const clearTasks: API.OperationMethod<
   ClearTasksResponse,
   ClearTasksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClearTasksRequest,
   output: ClearTasksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -375,7 +373,7 @@ export interface DeleteTasksRequest {
   tasklist: string;
 }
 
-export const DeleteTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteTasksRequest = /*@__PURE__*/ Schema.Struct({
   task: Schema.String.pipe(T.HttpPath("task")),
   tasklist: Schema.String.pipe(T.HttpPath("tasklist")),
 }).pipe(
@@ -385,9 +383,7 @@ export const DeleteTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteTasksResponse {}
 export const DeleteTasksResponse: Schema.Codec<DeleteTasksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-    {},
-  ) as any as Schema.Codec<DeleteTasksResponse>;
+  /*@__PURE__*/ Schema.Struct({}) as any as Schema.Codec<DeleteTasksResponse>;
 
 export type DeleteTasksError =
   | DefaultErrors
@@ -402,7 +398,7 @@ export const deleteTasks: API.OperationMethod<
   DeleteTasksResponse,
   DeleteTasksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTasksRequest,
   output: DeleteTasksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -419,7 +415,7 @@ export interface InsertTasksRequest {
   body?: Task;
 }
 
-export const InsertTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertTasksRequest = /*@__PURE__*/ Schema.Struct({
   previous: Schema.optional(Schema.String).pipe(T.HttpQuery("previous")),
   parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
   tasklist: Schema.String.pipe(T.HttpPath("tasklist")),
@@ -434,7 +430,7 @@ export const InsertTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertTasksRequest>;
 
 export type InsertTasksResponse = Task;
-export const InsertTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
+export const InsertTasksResponse = /*@__PURE__*/ Task;
 
 export type InsertTasksError =
   | DefaultErrors
@@ -449,7 +445,7 @@ export const insertTasks: API.OperationMethod<
   InsertTasksResponse,
   InsertTasksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertTasksRequest,
   output: InsertTasksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -462,7 +458,7 @@ export interface GetTasksRequest {
   tasklist: string;
 }
 
-export const GetTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTasksRequest = /*@__PURE__*/ Schema.Struct({
   task: Schema.String.pipe(T.HttpPath("task")),
   tasklist: Schema.String.pipe(T.HttpPath("tasklist")),
 }).pipe(
@@ -471,7 +467,7 @@ export const GetTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetTasksRequest>;
 
 export type GetTasksResponse = Task;
-export const GetTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
+export const GetTasksResponse = /*@__PURE__*/ Task;
 
 export type GetTasksError = DefaultErrors | NotFound | Forbidden;
 
@@ -481,7 +477,7 @@ export const getTasks: API.OperationMethod<
   GetTasksResponse,
   GetTasksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTasksRequest,
   output: GetTasksResponse,
   errors: [NotFound, Forbidden],
@@ -500,7 +496,7 @@ export interface MoveTasksRequest {
   parent?: string;
 }
 
-export const MoveTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MoveTasksRequest = /*@__PURE__*/ Schema.Struct({
   previous: Schema.optional(Schema.String).pipe(T.HttpQuery("previous")),
   task: Schema.String.pipe(T.HttpPath("task")),
   destinationTasklist: Schema.optional(Schema.String).pipe(
@@ -518,7 +514,7 @@ export const MoveTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<MoveTasksRequest>;
 
 export type MoveTasksResponse = Task;
-export const MoveTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
+export const MoveTasksResponse = /*@__PURE__*/ Task;
 
 export type MoveTasksError =
   | DefaultErrors
@@ -533,7 +529,7 @@ export const moveTasks: API.OperationMethod<
   MoveTasksResponse,
   MoveTasksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: MoveTasksRequest,
   output: MoveTasksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -548,7 +544,7 @@ export interface UpdateTasksRequest {
   body?: Task;
 }
 
-export const UpdateTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateTasksRequest = /*@__PURE__*/ Schema.Struct({
   tasklist: Schema.String.pipe(T.HttpPath("tasklist")),
   task: Schema.String.pipe(T.HttpPath("task")),
   body: Schema.optional(Task).pipe(T.HttpBody()),
@@ -562,7 +558,7 @@ export const UpdateTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdateTasksRequest>;
 
 export type UpdateTasksResponse = Task;
-export const UpdateTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
+export const UpdateTasksResponse = /*@__PURE__*/ Task;
 
 export type UpdateTasksError =
   | DefaultErrors
@@ -577,7 +573,7 @@ export const updateTasks: API.OperationMethod<
   UpdateTasksResponse,
   UpdateTasksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTasksRequest,
   output: UpdateTasksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -592,7 +588,7 @@ export interface PatchTasksRequest {
   body?: Task;
 }
 
-export const PatchTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchTasksRequest = /*@__PURE__*/ Schema.Struct({
   task: Schema.String.pipe(T.HttpPath("task")),
   tasklist: Schema.String.pipe(T.HttpPath("tasklist")),
   body: Schema.optional(Task).pipe(T.HttpBody()),
@@ -606,7 +602,7 @@ export const PatchTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchTasksRequest>;
 
 export type PatchTasksResponse = Task;
-export const PatchTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
+export const PatchTasksResponse = /*@__PURE__*/ Task;
 
 export type PatchTasksError =
   | DefaultErrors
@@ -621,7 +617,7 @@ export const patchTasks: API.OperationMethod<
   PatchTasksResponse,
   PatchTasksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchTasksRequest,
   output: PatchTasksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -634,7 +630,7 @@ export interface PatchTasklistsRequest {
   body?: TaskList;
 }
 
-export const PatchTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchTasklistsRequest = /*@__PURE__*/ Schema.Struct({
   tasklist: Schema.String.pipe(T.HttpPath("tasklist")),
   body: Schema.optional(TaskList).pipe(T.HttpBody()),
 }).pipe(
@@ -647,7 +643,7 @@ export const PatchTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchTasklistsRequest>;
 
 export type PatchTasklistsResponse = TaskList;
-export const PatchTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskList;
+export const PatchTasklistsResponse = /*@__PURE__*/ TaskList;
 
 export type PatchTasklistsError =
   | DefaultErrors
@@ -662,7 +658,7 @@ export const patchTasklists: API.OperationMethod<
   PatchTasklistsResponse,
   PatchTasklistsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchTasklistsRequest,
   output: PatchTasklistsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -675,12 +671,10 @@ export interface UpdateTasklistsRequest {
   body?: TaskList;
 }
 
-export const UpdateTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    tasklist: Schema.String.pipe(T.HttpPath("tasklist")),
-    body: Schema.optional(TaskList).pipe(T.HttpBody()),
-  },
-).pipe(
+export const UpdateTasklistsRequest = /*@__PURE__*/ Schema.Struct({
+  tasklist: Schema.String.pipe(T.HttpPath("tasklist")),
+  body: Schema.optional(TaskList).pipe(T.HttpBody()),
+}).pipe(
   T.Http({
     method: "PUT",
     path: "tasks/v1/users/@me/lists/{tasklist}",
@@ -690,7 +684,7 @@ export const UpdateTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<UpdateTasklistsRequest>;
 
 export type UpdateTasklistsResponse = TaskList;
-export const UpdateTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskList;
+export const UpdateTasklistsResponse = /*@__PURE__*/ TaskList;
 
 export type UpdateTasklistsError =
   | DefaultErrors
@@ -705,7 +699,7 @@ export const updateTasklists: API.OperationMethod<
   UpdateTasklistsResponse,
   UpdateTasklistsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTasklistsRequest,
   output: UpdateTasklistsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -716,7 +710,7 @@ export interface GetTasklistsRequest {
   tasklist: string;
 }
 
-export const GetTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTasklistsRequest = /*@__PURE__*/ Schema.Struct({
   tasklist: Schema.String.pipe(T.HttpPath("tasklist")),
 }).pipe(
   T.Http({ method: "GET", path: "tasks/v1/users/@me/lists/{tasklist}" }),
@@ -724,7 +718,7 @@ export const GetTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetTasklistsRequest>;
 
 export type GetTasklistsResponse = TaskList;
-export const GetTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskList;
+export const GetTasklistsResponse = /*@__PURE__*/ TaskList;
 
 export type GetTasklistsError = DefaultErrors | NotFound | Forbidden;
 
@@ -734,7 +728,7 @@ export const getTasklists: API.OperationMethod<
   GetTasklistsResponse,
   GetTasklistsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTasklistsRequest,
   output: GetTasklistsResponse,
   errors: [NotFound, Forbidden],
@@ -745,18 +739,16 @@ export interface DeleteTasklistsRequest {
   tasklist: string;
 }
 
-export const DeleteTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    tasklist: Schema.String.pipe(T.HttpPath("tasklist")),
-  },
-).pipe(
+export const DeleteTasklistsRequest = /*@__PURE__*/ Schema.Struct({
+  tasklist: Schema.String.pipe(T.HttpPath("tasklist")),
+}).pipe(
   T.Http({ method: "DELETE", path: "tasks/v1/users/@me/lists/{tasklist}" }),
   svc,
 ) as unknown as Schema.Codec<DeleteTasklistsRequest>;
 
 export interface DeleteTasklistsResponse {}
 export const DeleteTasklistsResponse: Schema.Codec<DeleteTasklistsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteTasklistsResponse>;
 
@@ -773,7 +765,7 @@ export const deleteTasklists: API.OperationMethod<
   DeleteTasklistsResponse,
   DeleteTasklistsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTasklistsRequest,
   output: DeleteTasklistsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -784,17 +776,15 @@ export interface InsertTasklistsRequest {
   body?: TaskList;
 }
 
-export const InsertTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    body: Schema.optional(TaskList).pipe(T.HttpBody()),
-  },
-).pipe(
+export const InsertTasklistsRequest = /*@__PURE__*/ Schema.Struct({
+  body: Schema.optional(TaskList).pipe(T.HttpBody()),
+}).pipe(
   T.Http({ method: "POST", path: "tasks/v1/users/@me/lists", hasBody: true }),
   svc,
 ) as unknown as Schema.Codec<InsertTasklistsRequest>;
 
 export type InsertTasklistsResponse = TaskList;
-export const InsertTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskList;
+export const InsertTasklistsResponse = /*@__PURE__*/ TaskList;
 
 export type InsertTasklistsError =
   | DefaultErrors
@@ -809,7 +799,7 @@ export const insertTasklists: API.OperationMethod<
   InsertTasklistsResponse,
   InsertTasklistsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertTasklistsRequest,
   output: InsertTasklistsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -822,7 +812,7 @@ export interface ListTasklistsRequest {
   pageToken?: string;
 }
 
-export const ListTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListTasklistsRequest = /*@__PURE__*/ Schema.Struct({
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
 }).pipe(
@@ -831,7 +821,7 @@ export const ListTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListTasklistsRequest>;
 
 export type ListTasklistsResponse = TaskLists;
-export const ListTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskLists;
+export const ListTasklistsResponse = /*@__PURE__*/ TaskLists;
 
 export type ListTasklistsError = DefaultErrors | NotFound | Forbidden;
 
@@ -841,7 +831,7 @@ export const listTasklists: API.PaginatedOperationMethod<
   ListTasklistsResponse,
   ListTasklistsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasklistsRequest,
   output: ListTasklistsResponse,
   errors: [NotFound, Forbidden],

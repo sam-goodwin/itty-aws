@@ -8,7 +8,7 @@ export interface V1DisablePreviewBranchingInput {
   ref: string;
 }
 export const V1DisablePreviewBranchingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/projects/{ref}/branches" }),
@@ -17,7 +17,7 @@ export const V1DisablePreviewBranchingInput =
 // Output Schema
 export type V1DisablePreviewBranchingOutput = void;
 export const V1DisablePreviewBranchingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DisablePreviewBranchingOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DisablePreviewBranchingOutput>;
 
 // The operation
 /**
@@ -27,10 +27,8 @@ export const V1DisablePreviewBranchingOutput =
  *
  * @param ref - Project ref
  */
-export const v1DisablePreviewBranching = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1DisablePreviewBranchingInput,
-    outputSchema: V1DisablePreviewBranchingOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const v1DisablePreviewBranching = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1DisablePreviewBranchingInput,
+  outputSchema: V1DisablePreviewBranchingOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

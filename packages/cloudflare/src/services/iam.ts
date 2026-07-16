@@ -88,7 +88,7 @@ interface ClientURIVerification {
   /** Exact TXT record value that must be added to DNS to prove ownership of the client URI host. */
   text?: string | null;
 }
-const ClientURIVerification = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ClientURIVerification = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     status: Schema.optional(
       Schema.Union([
@@ -160,7 +160,7 @@ interface ListOauthClientsResponseResult {
   updatedAt?: string | null;
 }
 const ListOauthClientsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clientId: Schema.String,
       visibility: Schema.Union([
@@ -264,7 +264,7 @@ interface ListOauthScopesResponseResult {
   scopes?: string[] | null;
 }
 const ListOauthScopesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       name: Schema.String,
@@ -279,7 +279,7 @@ interface Meta {
   key?: string | null;
   value?: string | null;
 }
-const Meta = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -295,7 +295,7 @@ interface ListPermissionGroupsResponseResult {
   name?: string | null;
 }
 const ListPermissionGroupsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
@@ -310,7 +310,7 @@ interface ListPermissionGroupsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListPermissionGroupsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -337,7 +337,7 @@ interface ListResourceGroupsResponseResult {
   name?: string | null;
 }
 const ListResourceGroupsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       scope: Schema.Unknown,
@@ -350,7 +350,7 @@ interface Object2 {
   /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
-const Object2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Object2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     key: Schema.String,
   }),
@@ -362,7 +362,7 @@ interface Scope {
   /** A list of scope objects for additional context. The number of Scope objects should not be zero. */
   objects: { key: string }[];
 }
-const Scope = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Scope = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     key: Schema.String,
     objects: Schema.Array(Object2),
@@ -381,7 +381,7 @@ interface Verification {
     | (string & {})
     | null;
 }
-const Verification = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Verification = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     status: Schema.optional(
@@ -418,7 +418,7 @@ interface ListSsosResponseResult {
       | null;
   } | null;
 }
-const ListSsosResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListSsosResponseResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -465,7 +465,7 @@ interface Policy {
       }[]
     | null;
 }
-const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Policy = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     access: Schema.optional(
@@ -528,32 +528,31 @@ interface ListUserGroupsResponseResult {
       }[]
     | null;
 }
-const ListUserGroupsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.String,
-      modifiedOn: Schema.String,
-      name: Schema.String,
-      policies: Schema.optional(
-        Schema.Union([Schema.Array(Policy), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdOn: "created_on",
-        modifiedOn: "modified_on",
-        name: "name",
-        policies: "policies",
-      }),
+const ListUserGroupsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    policies: Schema.optional(
+      Schema.Union([Schema.Array(Policy), Schema.Null]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+      name: "name",
+      policies: "policies",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListUserGroupsResponseResult>;
 
 interface PermissionGroup {
   /** Permission Group identifier tag. */
   id: string;
 }
-const PermissionGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const PermissionGroup = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
   }),
@@ -567,7 +566,7 @@ interface Policy2 {
   /** A set of resource groups that are specified to the policy. */
   resourceGroups: { id: string }[];
 }
-const Policy2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Policy2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     access: Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
     permissionGroups: Schema.Array(PermissionGroup),
@@ -591,7 +590,7 @@ interface Policy3 {
   /** A set of resource groups that are specified to the policy. */
   resourceGroups: { id: string }[];
 }
-const Policy3 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Policy3 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     access: Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
@@ -617,7 +616,7 @@ interface User {
   /** User's last name. */
   lastName?: string | null;
 }
-const User = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const User = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -642,7 +641,7 @@ interface ListUserGroupMembersResponseResult {
   status?: "accepted" | "pending" | (string & {}) | null;
 }
 const ListUserGroupMembersResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -661,7 +660,7 @@ const ListUserGroupMembersResponseResult =
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -673,7 +672,7 @@ interface Error2 {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -701,17 +700,16 @@ export interface GetOauthClientRequest {
   accountId: string;
 }
 
-export const GetOauthClientRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      oauthClientId: Schema.String.pipe(T.HttpPath("oauthClientId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/oauth_clients/{oauthClientId}",
-      }),
-    ),
+export const GetOauthClientRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    oauthClientId: Schema.String.pipe(T.HttpPath("oauthClientId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/oauth_clients/{oauthClientId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetOauthClientRequest>;
 
 export interface GetOauthClientResponse {
@@ -772,7 +770,7 @@ export interface GetOauthClientResponse {
 }
 
 export const GetOauthClientResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clientId: Schema.String,
       visibility: Schema.Union([
@@ -874,7 +872,7 @@ export const getOauthClient: API.OperationMethod<
   GetOauthClientResponse,
   GetOauthClientError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOauthClientRequest,
   output: GetOauthClientResponse,
   errors: [],
@@ -886,7 +884,7 @@ export interface ListOauthClientsRequest {
 }
 
 export const ListOauthClientsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -935,7 +933,7 @@ export interface ListOauthClientsResponse {
 }
 
 export const ListOauthClientsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListOauthClientsResponseResult),
     }),
@@ -948,7 +946,7 @@ export const listOauthClients: API.PaginatedOperationMethod<
   ListOauthClientsResponse,
   ListOauthClientsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOauthClientsRequest,
   output: ListOauthClientsResponse,
   errors: [],
@@ -992,7 +990,7 @@ export interface CreateOauthClientRequest {
 }
 
 export const CreateOauthClientRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       clientName: Schema.String,
@@ -1099,7 +1097,7 @@ export interface CreateOauthClientResponse {
 }
 
 export const CreateOauthClientResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clientId: Schema.String,
       visibility: Schema.Union([
@@ -1203,7 +1201,7 @@ export const createOauthClient: API.OperationMethod<
   CreateOauthClientResponse,
   CreateOauthClientError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOauthClientRequest,
   output: CreateOauthClientResponse,
   errors: [],
@@ -1246,7 +1244,7 @@ export interface PatchOauthClientRequest {
 }
 
 export const PatchOauthClientRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       oauthClientId: Schema.String.pipe(T.HttpPath("oauthClientId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1367,7 +1365,7 @@ export interface PatchOauthClientResponse {
 }
 
 export const PatchOauthClientResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clientId: Schema.String,
       visibility: Schema.Union([
@@ -1469,7 +1467,7 @@ export const patchOauthClient: API.OperationMethod<
   PatchOauthClientResponse,
   PatchOauthClientError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchOauthClientRequest,
   output: PatchOauthClientResponse,
   errors: [],
@@ -1482,7 +1480,7 @@ export interface DeleteOauthClientRequest {
 }
 
 export const DeleteOauthClientRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       oauthClientId: Schema.String.pipe(T.HttpPath("oauthClientId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1500,7 +1498,7 @@ export interface DeleteOauthClientResponse {
 }
 
 export const DeleteOauthClientResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -1513,7 +1511,7 @@ export const deleteOauthClient: API.OperationMethod<
   DeleteOauthClientResponse,
   DeleteOauthClientError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOauthClientRequest,
   output: DeleteOauthClientResponse,
   errors: [],
@@ -1526,7 +1524,7 @@ export const deleteOauthClient: API.OperationMethod<
 export interface ListOauthScopesRequest {}
 
 export const ListOauthScopesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({}).pipe(T.Http({ method: "GET", path: "/oauth/scopes" })),
   ) as unknown as Schema.Codec<ListOauthScopesRequest>;
 
@@ -1540,7 +1538,7 @@ export interface ListOauthScopesResponse {
 }
 
 export const ListOauthScopesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListOauthScopesResponseResult),
     }),
@@ -1553,7 +1551,7 @@ export const listOauthScopes: API.PaginatedOperationMethod<
   ListOauthScopesResponse,
   ListOauthScopesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOauthScopesRequest,
   output: ListOauthScopesResponse,
   errors: [],
@@ -1574,7 +1572,7 @@ export interface GetPermissionGroupRequest {
 }
 
 export const GetPermissionGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       permissionGroupId: Schema.String.pipe(T.HttpPath("permissionGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1596,7 +1594,7 @@ export interface GetPermissionGroupResponse {
 }
 
 export const GetPermissionGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       meta: Schema.optional(Schema.Union([Meta, Schema.Null])),
@@ -1611,7 +1609,7 @@ export const getPermissionGroup: API.OperationMethod<
   GetPermissionGroupResponse,
   GetPermissionGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPermissionGroupRequest,
   output: GetPermissionGroupResponse,
   errors: [],
@@ -1631,7 +1629,7 @@ export interface ListPermissionGroupsRequest {
 }
 
 export const ListPermissionGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -1664,7 +1662,7 @@ export interface ListPermissionGroupsResponse {
 }
 
 export const ListPermissionGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
         Schema.Array(ListPermissionGroupsResponseResult),
@@ -1683,7 +1681,7 @@ export const listPermissionGroups: API.PaginatedOperationMethod<
   ListPermissionGroupsResponse,
   ListPermissionGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionGroupsRequest,
   output: ListPermissionGroupsResponse,
   errors: [],
@@ -1707,7 +1705,7 @@ export interface GetResourceGroupRequest {
 }
 
 export const GetResourceGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       resourceGroupId: Schema.String.pipe(T.HttpPath("resourceGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1731,7 +1729,7 @@ export interface GetResourceGroupResponse {
 }
 
 export const GetResourceGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       scope: Schema.Unknown,
@@ -1750,7 +1748,7 @@ export const getResourceGroup: API.OperationMethod<
   GetResourceGroupResponse,
   GetResourceGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceGroupRequest,
   output: GetResourceGroupResponse,
   errors: [ResourceGroupNotFound, Forbidden],
@@ -1766,7 +1764,7 @@ export interface ListResourceGroupsRequest {
 }
 
 export const ListResourceGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
@@ -1791,7 +1789,7 @@ export interface ListResourceGroupsResponse {
 }
 
 export const ListResourceGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
         Schema.Array(ListResourceGroupsResponseResult),
@@ -1807,7 +1805,7 @@ export const listResourceGroups: API.PaginatedOperationMethod<
   ListResourceGroupsResponse,
   ListResourceGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceGroupsRequest,
   output: ListResourceGroupsResponse,
   errors: [],
@@ -1827,7 +1825,7 @@ export interface CreateResourceGroupRequest {
 }
 
 export const CreateResourceGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -1852,7 +1850,7 @@ export interface CreateResourceGroupResponse {
 }
 
 export const CreateResourceGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       scope: Schema.Unknown,
@@ -1868,7 +1866,7 @@ export const createResourceGroup: API.OperationMethod<
   CreateResourceGroupResponse,
   CreateResourceGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceGroupRequest,
   output: CreateResourceGroupResponse,
   errors: [],
@@ -1885,7 +1883,7 @@ export interface UpdateResourceGroupRequest {
 }
 
 export const UpdateResourceGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       resourceGroupId: Schema.String.pipe(T.HttpPath("resourceGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1911,7 +1909,7 @@ export interface UpdateResourceGroupResponse {
 }
 
 export const UpdateResourceGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       scope: Schema.Unknown,
@@ -1927,7 +1925,7 @@ export const updateResourceGroup: API.OperationMethod<
   UpdateResourceGroupResponse,
   UpdateResourceGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResourceGroupRequest,
   output: UpdateResourceGroupResponse,
   errors: [ResourceGroupNotFound],
@@ -1940,7 +1938,7 @@ export interface DeleteResourceGroupRequest {
 }
 
 export const DeleteResourceGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       resourceGroupId: Schema.String.pipe(T.HttpPath("resourceGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1958,7 +1956,7 @@ export interface DeleteResourceGroupResponse {
 }
 
 export const DeleteResourceGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -1971,7 +1969,7 @@ export const deleteResourceGroup: API.OperationMethod<
   DeleteResourceGroupResponse,
   DeleteResourceGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceGroupRequest,
   output: DeleteResourceGroupResponse,
   errors: [ResourceGroupNotFound],
@@ -1988,7 +1986,7 @@ export interface DeleteRotatedSecretOauthClientRequest {
 }
 
 export const DeleteRotatedSecretOauthClientRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       oauthClientId: Schema.String.pipe(T.HttpPath("oauthClientId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2006,7 +2004,7 @@ export interface DeleteRotatedSecretOauthClientResponse {
 }
 
 export const DeleteRotatedSecretOauthClientResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -2019,7 +2017,7 @@ export const deleteRotatedSecretOauthClient: API.OperationMethod<
   DeleteRotatedSecretOauthClientResponse,
   DeleteRotatedSecretOauthClientError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRotatedSecretOauthClientRequest,
   output: DeleteRotatedSecretOauthClientResponse,
   errors: [],
@@ -2036,7 +2034,7 @@ export interface RotateSecretOauthClientRequest {
 }
 
 export const RotateSecretOauthClientRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       oauthClientId: Schema.String.pipe(T.HttpPath("oauthClientId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2054,7 +2052,7 @@ export interface RotateSecretOauthClientResponse {
 }
 
 export const RotateSecretOauthClientResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clientSecret: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     })
@@ -2069,7 +2067,7 @@ export const rotateSecretOauthClient: API.OperationMethod<
   RotateSecretOauthClientResponse,
   RotateSecretOauthClientError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RotateSecretOauthClientRequest,
   output: RotateSecretOauthClientResponse,
   errors: [],
@@ -2085,7 +2083,7 @@ export interface GetSsoRequest {
   accountId: string;
 }
 
-export const GetSsoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetSsoRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ssoConnectorId: Schema.String.pipe(T.HttpPath("ssoConnectorId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2120,7 +2118,7 @@ export interface GetSsoResponse {
   } | null;
 }
 
-export const GetSsoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetSsoResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2153,7 +2151,7 @@ export const getSso: API.OperationMethod<
   GetSsoResponse,
   GetSsoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSsoRequest,
   output: GetSsoResponse,
   errors: [],
@@ -2164,7 +2162,7 @@ export interface ListSsosRequest {
   accountId: string;
 }
 
-export const ListSsosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListSsosRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(
@@ -2193,7 +2191,7 @@ export interface ListSsosResponse {
   }[];
 }
 
-export const ListSsosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListSsosResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     result: Schema.Array(ListSsosResponseResult),
   }),
@@ -2206,7 +2204,7 @@ export const listSsos: API.PaginatedOperationMethod<
   ListSsosResponse,
   ListSsosError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSsosRequest,
   output: ListSsosResponse,
   errors: [],
@@ -2227,7 +2225,7 @@ export interface CreateSsoRequest {
   useFedrampLanguage?: boolean;
 }
 
-export const CreateSsoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const CreateSsoRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     emailDomain: Schema.String,
@@ -2266,31 +2264,30 @@ export interface CreateSsoResponse {
   } | null;
 }
 
-export const CreateSsoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      emailDomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      updatedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      useFedrampLanguage: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      verification: Schema.optional(Schema.Union([Verification, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          emailDomain: "email_domain",
-          enabled: "enabled",
-          updatedOn: "updated_on",
-          useFedrampLanguage: "use_fedramp_language",
-          verification: "verification",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateSsoResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    emailDomain: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    updatedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    useFedrampLanguage: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+    verification: Schema.optional(Schema.Union([Verification, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        emailDomain: "email_domain",
+        enabled: "enabled",
+        updatedOn: "updated_on",
+        useFedrampLanguage: "use_fedramp_language",
+        verification: "verification",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateSsoResponse>;
 
 export type CreateSsoError = DefaultErrors;
@@ -2300,7 +2297,7 @@ export const createSso: API.OperationMethod<
   CreateSsoResponse,
   CreateSsoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSsoRequest,
   output: CreateSsoResponse,
   errors: [],
@@ -2316,7 +2313,7 @@ export interface PatchSsoRequest {
   useFedrampLanguage?: boolean;
 }
 
-export const PatchSsoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PatchSsoRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ssoConnectorId: Schema.String.pipe(T.HttpPath("ssoConnectorId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2357,7 +2354,7 @@ export interface PatchSsoResponse {
   } | null;
 }
 
-export const PatchSsoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PatchSsoResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2390,7 +2387,7 @@ export const patchSso: API.OperationMethod<
   PatchSsoResponse,
   PatchSsoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchSsoRequest,
   output: PatchSsoResponse,
   errors: [],
@@ -2402,7 +2399,7 @@ export interface DeleteSsoRequest {
   accountId: string;
 }
 
-export const DeleteSsoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const DeleteSsoRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ssoConnectorId: Schema.String.pipe(T.HttpPath("ssoConnectorId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2419,11 +2416,10 @@ export interface DeleteSsoResponse {
   id: string;
 }
 
-export const DeleteSsoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-    }).pipe(T.ResponsePath("result")),
+export const DeleteSsoResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteSsoResponse>;
 
 export type DeleteSsoError = DefaultErrors;
@@ -2433,7 +2429,7 @@ export const deleteSso: API.OperationMethod<
   DeleteSsoResponse,
   DeleteSsoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSsoRequest,
   output: DeleteSsoResponse,
   errors: [],
@@ -2449,17 +2445,16 @@ export interface GetUserGroupRequest {
   accountId: string;
 }
 
-export const GetUserGroupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/iam/user_groups/{userGroupId}",
-      }),
-    ),
+export const GetUserGroupRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/iam/user_groups/{userGroupId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetUserGroupRequest>;
 
 export interface GetUserGroupResponse {
@@ -2495,27 +2490,26 @@ export interface GetUserGroupResponse {
     | null;
 }
 
-export const GetUserGroupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.String,
-      modifiedOn: Schema.String,
-      name: Schema.String,
-      policies: Schema.optional(
-        Schema.Union([Schema.Array(Policy), Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          name: "name",
-          policies: "policies",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetUserGroupResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    policies: Schema.optional(
+      Schema.Union([Schema.Array(Policy), Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        name: "name",
+        policies: "policies",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetUserGroupResponse>;
 
 export type GetUserGroupError = DefaultErrors | UserGroupNotFound | Forbidden;
@@ -2525,7 +2519,7 @@ export const getUserGroup: API.OperationMethod<
   GetUserGroupResponse,
   GetUserGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserGroupRequest,
   output: GetUserGroupResponse,
   errors: [UserGroupNotFound, Forbidden],
@@ -2546,21 +2540,20 @@ export interface ListUserGroupsRequest {
   name?: string;
 }
 
-export const ListUserGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
-      direction: Schema.optional(
-        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-      ).pipe(T.HttpQuery("direction")),
-      fuzzyName: Schema.optional(Schema.String).pipe(T.HttpQuery("fuzzyName")),
-      name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/iam/user_groups" }),
-    ),
+export const ListUserGroupsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    fuzzyName: Schema.optional(Schema.String).pipe(T.HttpQuery("fuzzyName")),
+    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/iam/user_groups" }),
+  ),
 ) as unknown as Schema.Codec<ListUserGroupsRequest>;
 
 export interface ListUserGroupsResponse {
@@ -2608,7 +2601,7 @@ export interface ListUserGroupsResponse {
 }
 
 export const ListUserGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
         Schema.Array(ListUserGroupsResponseResult),
@@ -2627,7 +2620,7 @@ export const listUserGroups: API.PaginatedOperationMethod<
   ListUserGroupsResponse,
   ListUserGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserGroupsRequest,
   output: ListUserGroupsResponse,
   errors: [],
@@ -2654,7 +2647,7 @@ export interface CreateUserGroupRequest {
 }
 
 export const CreateUserGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -2701,7 +2694,7 @@ export interface CreateUserGroupResponse {
 }
 
 export const CreateUserGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdOn: Schema.String,
@@ -2730,7 +2723,7 @@ export const createUserGroup: API.OperationMethod<
   CreateUserGroupResponse,
   CreateUserGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserGroupRequest,
   output: CreateUserGroupResponse,
   errors: [UserGroupNameInUse],
@@ -2752,7 +2745,7 @@ export interface UpdateUserGroupRequest {
 }
 
 export const UpdateUserGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2800,7 +2793,7 @@ export interface UpdateUserGroupResponse {
 }
 
 export const UpdateUserGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdOn: Schema.String,
@@ -2832,7 +2825,7 @@ export const updateUserGroup: API.OperationMethod<
   UpdateUserGroupResponse,
   UpdateUserGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserGroupRequest,
   output: UpdateUserGroupResponse,
   errors: [UserGroupNotFound, UserGroupNameInUse],
@@ -2845,7 +2838,7 @@ export interface DeleteUserGroupRequest {
 }
 
 export const DeleteUserGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -2863,7 +2856,7 @@ export interface DeleteUserGroupResponse {
 }
 
 export const DeleteUserGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -2876,7 +2869,7 @@ export const deleteUserGroup: API.OperationMethod<
   DeleteUserGroupResponse,
   DeleteUserGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserGroupRequest,
   output: DeleteUserGroupResponse,
   errors: [UserGroupNotFound],
@@ -2894,7 +2887,7 @@ export interface GetUserGroupMemberRequest {
 }
 
 export const GetUserGroupMemberRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
       memberId: Schema.String.pipe(T.HttpPath("memberId")),
@@ -2926,7 +2919,7 @@ export interface GetUserGroupMemberResponse {
 }
 
 export const GetUserGroupMemberResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2965,7 +2958,7 @@ export const getUserGroupMember: API.OperationMethod<
   GetUserGroupMemberResponse,
   GetUserGroupMemberError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserGroupMemberRequest,
   output: GetUserGroupMemberResponse,
   errors: [UserGroupMemberNotFound, UserGroupNotFound, Forbidden],
@@ -2984,7 +2977,7 @@ export interface ListUserGroupMembersRequest {
 }
 
 export const ListUserGroupMembersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3021,7 +3014,7 @@ export interface ListUserGroupMembersResponse {
 }
 
 export const ListUserGroupMembersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
         Schema.Array(ListUserGroupMembersResponseResult),
@@ -3043,7 +3036,7 @@ export const listUserGroupMembers: API.PaginatedOperationMethod<
   ListUserGroupMembersResponse,
   ListUserGroupMembersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUserGroupMembersRequest,
   output: ListUserGroupMembersResponse,
   errors: [UserGroupNotFound, PolicyValidationFailed],
@@ -3065,7 +3058,7 @@ export interface CreateUserGroupMemberRequest {
 }
 
 export const CreateUserGroupMemberRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3087,7 +3080,7 @@ export interface CreateUserGroupMemberResponse {
 }
 
 export const CreateUserGroupMemberResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListUserGroupMembersResponseResult),
     }),
@@ -3103,7 +3096,7 @@ export const createUserGroupMember: API.PaginatedOperationMethod<
   CreateUserGroupMemberResponse,
   CreateUserGroupMemberError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: CreateUserGroupMemberRequest,
   output: CreateUserGroupMemberResponse,
   errors: [InvalidMember, UserGroupNotFound],
@@ -3122,7 +3115,7 @@ export interface UpdateUserGroupMemberRequest {
 }
 
 export const UpdateUserGroupMemberRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3144,7 +3137,7 @@ export interface UpdateUserGroupMemberResponse {
 }
 
 export const UpdateUserGroupMemberResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListUserGroupMembersResponseResult),
     }),
@@ -3160,7 +3153,7 @@ export const updateUserGroupMember: API.PaginatedOperationMethod<
   UpdateUserGroupMemberResponse,
   UpdateUserGroupMemberError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: UpdateUserGroupMemberRequest,
   output: UpdateUserGroupMemberResponse,
   errors: [InvalidMember, UserGroupNotFound],
@@ -3178,7 +3171,7 @@ export interface DeleteUserGroupMemberRequest {
 }
 
 export const DeleteUserGroupMemberRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       userGroupId: Schema.String.pipe(T.HttpPath("userGroupId")),
       memberId: Schema.String.pipe(T.HttpPath("memberId")),
@@ -3201,7 +3194,7 @@ export interface DeleteUserGroupMemberResponse {
 }
 
 export const DeleteUserGroupMemberResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3228,7 +3221,7 @@ export const deleteUserGroupMember: API.OperationMethod<
   DeleteUserGroupMemberResponse,
   DeleteUserGroupMemberError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserGroupMemberRequest,
   output: DeleteUserGroupMemberResponse,
   errors: [InvalidMember, UserGroupMemberNotFound, UserGroupNotFound],
@@ -3245,7 +3238,7 @@ export interface BeginVerificationSsoRequest {
 }
 
 export const BeginVerificationSsoRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ssoConnectorId: Schema.String.pipe(T.HttpPath("ssoConnectorId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -3275,7 +3268,7 @@ export interface BeginVerificationSsoResponse {
 }
 
 export const BeginVerificationSsoResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
@@ -3290,7 +3283,7 @@ export const beginVerificationSso: API.OperationMethod<
   BeginVerificationSsoResponse,
   BeginVerificationSsoError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BeginVerificationSsoRequest,
   output: BeginVerificationSsoResponse,
   errors: [],

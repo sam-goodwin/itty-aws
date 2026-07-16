@@ -96,12 +96,12 @@ export type Token = string;
 
 //# Schemas
 export type TargetType = "ACCOUNT" | (string & {});
-export const TargetType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TargetType = /*@__PURE__*/ S.String;
 export interface Target {
   Type: TargetType;
   Id?: string;
 }
-export const Target = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Target = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: TargetType, Id: S.optional(S.String) }),
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 export interface CreateHomeRegionControlRequest {
@@ -110,7 +110,7 @@ export interface CreateHomeRegionControlRequest {
   DryRun?: boolean;
 }
 export const CreateHomeRegionControlRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       HomeRegion: S.String,
       Target: Target,
@@ -127,7 +127,7 @@ export interface HomeRegionControl {
   Target?: Target;
   RequestedTime?: Date;
 }
-export const HomeRegionControl = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HomeRegionControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ControlId: S.optional(S.String),
     HomeRegion: S.optional(S.String),
@@ -141,7 +141,7 @@ export interface CreateHomeRegionControlResult {
   HomeRegionControl?: HomeRegionControl;
 }
 export const CreateHomeRegionControlResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ HomeRegionControl: S.optional(HomeRegionControl) }),
   ).annotate({
     identifier: "CreateHomeRegionControlResult",
@@ -150,7 +150,7 @@ export interface DeleteHomeRegionControlRequest {
   ControlId: string;
 }
 export const DeleteHomeRegionControlRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ControlId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -159,7 +159,7 @@ export const DeleteHomeRegionControlRequest =
   }) as any as S.Schema<DeleteHomeRegionControlRequest>;
 export interface DeleteHomeRegionControlResult {}
 export const DeleteHomeRegionControlResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteHomeRegionControlResult",
   }) as any as S.Schema<DeleteHomeRegionControlResult>;
 export interface DescribeHomeRegionControlsRequest {
@@ -170,7 +170,7 @@ export interface DescribeHomeRegionControlsRequest {
   NextToken?: string;
 }
 export const DescribeHomeRegionControlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ControlId: S.optional(S.String),
       HomeRegion: S.optional(S.String),
@@ -184,14 +184,13 @@ export const DescribeHomeRegionControlsRequest =
     identifier: "DescribeHomeRegionControlsRequest",
   }) as any as S.Schema<DescribeHomeRegionControlsRequest>;
 export type HomeRegionControls = HomeRegionControl[];
-export const HomeRegionControls =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(HomeRegionControl);
+export const HomeRegionControls = /*@__PURE__*/ S.Array(HomeRegionControl);
 export interface DescribeHomeRegionControlsResult {
   HomeRegionControls?: HomeRegionControl[];
   NextToken?: string;
 }
 export const DescribeHomeRegionControlsResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       HomeRegionControls: S.optional(HomeRegionControls),
       NextToken: S.optional(S.String),
@@ -200,7 +199,7 @@ export const DescribeHomeRegionControlsResult =
     identifier: "DescribeHomeRegionControlsResult",
   }) as any as S.Schema<DescribeHomeRegionControlsResult>;
 export interface GetHomeRegionRequest {}
-export const GetHomeRegionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetHomeRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -210,7 +209,7 @@ export const GetHomeRegionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetHomeRegionResult {
   HomeRegion?: string;
 }
-export const GetHomeRegionResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetHomeRegionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HomeRegion: S.optional(S.String) }),
 ).annotate({
   identifier: "GetHomeRegionResult",
@@ -262,7 +261,7 @@ export const createHomeRegionControl: API.OperationMethod<
   CreateHomeRegionControlResult,
   CreateHomeRegionControlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHomeRegionControlRequest,
   output: CreateHomeRegionControlResult,
   errors: [
@@ -290,7 +289,7 @@ export const deleteHomeRegionControl: API.OperationMethod<
   DeleteHomeRegionControlResult,
   DeleteHomeRegionControlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHomeRegionControlRequest,
   output: DeleteHomeRegionControlResult,
   errors: [
@@ -333,7 +332,7 @@ export const describeHomeRegionControls: API.OperationMethod<
     DescribeHomeRegionControlsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHomeRegionControlsRequest,
   output: DescribeHomeRegionControlsResult,
   errors: [
@@ -369,7 +368,7 @@ export const getHomeRegion: API.OperationMethod<
   GetHomeRegionResult,
   GetHomeRegionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHomeRegionRequest,
   output: GetHomeRegionResult,
   errors: [

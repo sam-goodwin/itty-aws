@@ -8,7 +8,7 @@ export interface UserInterviewTopicsTestLinkRetrieveInput {
   project_id: string;
 }
 export const UserInterviewTopicsTestLinkRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -28,7 +28,7 @@ export interface UserInterviewTopicsTestLinkRetrieveOutput {
   } | null;
 }
 export const UserInterviewTopicsTestLinkRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     interview_url: Schema.String,
     latest_test_interview: Schema.NullOr(
       Schema.Struct({
@@ -47,7 +47,7 @@ export const UserInterviewTopicsTestLinkRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const userInterviewTopicsTestLinkRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserInterviewTopicsTestLinkRetrieveInput,
     outputSchema: UserInterviewTopicsTestLinkRetrieveOutput,
   }));

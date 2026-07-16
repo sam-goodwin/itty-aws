@@ -11,7 +11,7 @@ export interface ListReadOnlyRegionsInput {
   per_page?: number;
 }
 export const ListReadOnlyRegionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     page: Schema.optional(Schema.Number),
@@ -54,7 +54,7 @@ export interface ListReadOnlyRegionsOutput {
   }>;
 }
 export const ListReadOnlyRegionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -102,7 +102,7 @@ export const ListReadOnlyRegionsOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listReadOnlyRegions =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListReadOnlyRegionsInput,
     outputSchema: ListReadOnlyRegionsOutput,
     errors: [Forbidden, NotFound] as const,

@@ -16,22 +16,20 @@ export interface SubscriptionsListInput {
   search?: string;
   target_type?: "email" | "slack";
 }
-export const SubscriptionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    project_id: Schema.String.pipe(T.PathParam()),
-    created_by: Schema.optional(Schema.String),
-    dashboard: Schema.optional(Schema.Number),
-    insight: Schema.optional(Schema.Number),
-    limit: Schema.optional(Schema.Number),
-    offset: Schema.optional(Schema.Number),
-    ordering: Schema.optional(Schema.String),
-    resource_type: Schema.optional(
-      Schema.Literals(["ai_prompt", "dashboard", "insight"]),
-    ),
-    search: Schema.optional(Schema.String),
-    target_type: Schema.optional(Schema.Literals(["email", "slack"])),
-  },
-).pipe(
+export const SubscriptionsListInput = /*@__PURE__*/ Schema.Struct({
+  project_id: Schema.String.pipe(T.PathParam()),
+  created_by: Schema.optional(Schema.String),
+  dashboard: Schema.optional(Schema.Number),
+  insight: Schema.optional(Schema.Number),
+  limit: Schema.optional(Schema.Number),
+  offset: Schema.optional(Schema.Number),
+  ordering: Schema.optional(Schema.String),
+  resource_type: Schema.optional(
+    Schema.Literals(["ai_prompt", "dashboard", "insight"]),
+  ),
+  search: Schema.optional(Schema.String),
+  target_type: Schema.optional(Schema.Literals(["email", "slack"])),
+}).pipe(
   T.Http({ method: "GET", path: "/api/projects/{project_id}/subscriptions/" }),
 ) as unknown as Schema.Codec<SubscriptionsListInput>;
 
@@ -102,7 +100,7 @@ export interface SubscriptionsListOutput {
   }[];
 }
 export const SubscriptionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -210,7 +208,7 @@ export const SubscriptionsListOutput =
  * @param search - A search term.
  * @param target_type - Filter by delivery channel (email or Slack).
  */
-export const subscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const subscriptionsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SubscriptionsListInput,
   outputSchema: SubscriptionsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

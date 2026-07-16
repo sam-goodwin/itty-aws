@@ -9,7 +9,7 @@ export interface ConversationsTicketsBulkUpdateStatusCreateInput {
   status: "new" | "open" | "pending" | "on_hold" | "resolved";
 }
 export const ConversationsTicketsBulkUpdateStatusCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     ids: Schema.Array(Schema.String),
     status: Schema.Literals(["new", "open", "pending", "on_hold", "resolved"]),
@@ -26,7 +26,7 @@ export interface ConversationsTicketsBulkUpdateStatusCreateOutput {
   ids: string[];
 }
 export const ConversationsTicketsBulkUpdateStatusCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updated: Schema.Number,
     ids: Schema.Array(Schema.String),
   }) as unknown as Schema.Codec<ConversationsTicketsBulkUpdateStatusCreateOutput>;
@@ -40,7 +40,7 @@ export const ConversationsTicketsBulkUpdateStatusCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const conversationsTicketsBulkUpdateStatusCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConversationsTicketsBulkUpdateStatusCreateInput,
     outputSchema: ConversationsTicketsBulkUpdateStatusCreateOutput,
   }));

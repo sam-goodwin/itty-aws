@@ -9,7 +9,7 @@ export interface SignalsScoutRunsEmissionReportsInput {
   run_id: string;
 }
 export const SignalsScoutRunsEmissionReportsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     run_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -26,7 +26,7 @@ export type SignalsScoutRunsEmissionReportsOutput = {
   report: { id: string; title: string | null; status: string } | null;
 }[];
 export const SignalsScoutRunsEmissionReportsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       finding_id: Schema.String,
       source_id: Schema.String,
@@ -50,7 +50,7 @@ export const SignalsScoutRunsEmissionReportsOutput =
  * @param run_id - UUID of the `SignalScoutRun` bridge row.
  */
 export const signalsScoutRunsEmissionReports =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalsScoutRunsEmissionReportsInput,
     outputSchema: SignalsScoutRunsEmissionReportsOutput,
     errors: [NotFound] as const,

@@ -50,7 +50,7 @@ interface Data {
   /** Array with one item per requested metric. Each item is a single value. */
   metrics: number[];
 }
-const Data = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dimensions: Schema.Array(Schema.String),
     metrics: Schema.Array(Schema.Number),
@@ -73,7 +73,7 @@ interface Query {
   /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
   sort?: string[] | null;
 }
-const Query = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Query = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dimensions: Schema.Array(Schema.String),
     limit: Schema.Number,
@@ -93,7 +93,7 @@ interface Data2 {
   /** Array with one item per requested metric. Each item is an array of values, broken down by time interval. */
   metrics: number[][];
 }
-const Data2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Data2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dimensions: Schema.Array(Schema.String),
     metrics: Schema.Array(Schema.Array(Schema.Number)),
@@ -129,7 +129,7 @@ interface Query2 {
   /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
   sort?: string[] | null;
 }
-const Query2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Query2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     dimensions: Schema.Array(Schema.String),
     limit: Schema.Number,
@@ -175,7 +175,7 @@ interface AttackMitigation {
   /** Only mitigate attacks when upstream servers seem unhealthy */
   onlyWhenUpstreamUnhealthy?: boolean | null;
 }
-const AttackMitigation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const AttackMitigation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     onlyWhenUpstreamUnhealthy: Schema.optional(
@@ -219,7 +219,7 @@ interface ListDnsFirewallsResponseResult {
   } | null;
 }
 const ListDnsFirewallsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       deprecateAnyRequests: Schema.Boolean,
@@ -262,7 +262,7 @@ interface ListDnsFirewallsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListDnsFirewallsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -303,7 +303,7 @@ export interface GetAnalyticReportRequest {
 }
 
 export const GetAnalyticReportRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dnsFirewallId: Schema.String.pipe(T.HttpPath("dnsFirewallId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -349,7 +349,7 @@ export interface GetAnalyticReportResponse {
 }
 
 export const GetAnalyticReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.Array(Data),
       dataLag: Schema.Number,
@@ -380,7 +380,7 @@ export const getAnalyticReport: API.OperationMethod<
   GetAnalyticReportResponse,
   GetAnalyticReportError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnalyticReportRequest,
   output: GetAnalyticReportResponse,
   errors: [],
@@ -424,7 +424,7 @@ export interface GetAnalyticReportBytimeRequest {
 }
 
 export const GetAnalyticReportBytimeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dnsFirewallId: Schema.String.pipe(T.HttpPath("dnsFirewallId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -501,7 +501,7 @@ export interface GetAnalyticReportBytimeResponse {
 }
 
 export const GetAnalyticReportBytimeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       data: Schema.Array(Data2),
       dataLag: Schema.Number,
@@ -534,7 +534,7 @@ export const getAnalyticReportBytime: API.OperationMethod<
   GetAnalyticReportBytimeResponse,
   GetAnalyticReportBytimeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAnalyticReportBytimeRequest,
   output: GetAnalyticReportBytimeResponse,
   errors: [],
@@ -550,17 +550,16 @@ export interface GetDnsFirewallRequest {
   accountId: string;
 }
 
-export const GetDnsFirewallRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dnsFirewallId: Schema.String.pipe(T.HttpPath("dnsFirewallId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/dns_firewall/{dnsFirewallId}",
-      }),
-    ),
+export const GetDnsFirewallRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dnsFirewallId: Schema.String.pipe(T.HttpPath("dnsFirewallId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/dns_firewall/{dnsFirewallId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetDnsFirewallRequest>;
 
 export interface GetDnsFirewallResponse {
@@ -594,7 +593,7 @@ export interface GetDnsFirewallResponse {
 }
 
 export const GetDnsFirewallResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       deprecateAnyRequests: Schema.Boolean,
@@ -642,7 +641,7 @@ export const getDnsFirewall: API.OperationMethod<
   GetDnsFirewallResponse,
   GetDnsFirewallError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDnsFirewallRequest,
   output: GetDnsFirewallResponse,
   errors: [DnsFirewallNotFound, Forbidden],
@@ -656,7 +655,7 @@ export interface ListDnsFirewallsRequest {
 }
 
 export const ListDnsFirewallsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -694,7 +693,7 @@ export interface ListDnsFirewallsResponse {
 }
 
 export const ListDnsFirewallsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListDnsFirewallsResponseResult),
       resultInfo: Schema.optional(
@@ -710,7 +709,7 @@ export const listDnsFirewalls: API.PaginatedOperationMethod<
   ListDnsFirewallsResponse,
   ListDnsFirewallsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDnsFirewallsRequest,
   output: ListDnsFirewallsResponse,
   errors: [Forbidden],
@@ -754,7 +753,7 @@ export interface CreateDnsFirewallRequest {
 }
 
 export const CreateDnsFirewallRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       name: Schema.String,
@@ -821,7 +820,7 @@ export interface CreateDnsFirewallResponse {
 }
 
 export const CreateDnsFirewallResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       deprecateAnyRequests: Schema.Boolean,
@@ -869,7 +868,7 @@ export const createDnsFirewall: API.OperationMethod<
   CreateDnsFirewallResponse,
   CreateDnsFirewallError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDnsFirewallRequest,
   output: CreateDnsFirewallResponse,
   errors: [DnsFirewallNotEntitled, Forbidden],
@@ -905,7 +904,7 @@ export interface PatchDnsFirewallRequest {
 }
 
 export const PatchDnsFirewallRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dnsFirewallId: Schema.String.pipe(T.HttpPath("dnsFirewallId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -974,7 +973,7 @@ export interface PatchDnsFirewallResponse {
 }
 
 export const PatchDnsFirewallResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       deprecateAnyRequests: Schema.Boolean,
@@ -1022,7 +1021,7 @@ export const patchDnsFirewall: API.OperationMethod<
   PatchDnsFirewallResponse,
   PatchDnsFirewallError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDnsFirewallRequest,
   output: PatchDnsFirewallResponse,
   errors: [DnsFirewallNotFound, Forbidden],
@@ -1035,7 +1034,7 @@ export interface DeleteDnsFirewallRequest {
 }
 
 export const DeleteDnsFirewallRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       dnsFirewallId: Schema.String.pipe(T.HttpPath("dnsFirewallId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1053,7 +1052,7 @@ export interface DeleteDnsFirewallResponse {
 }
 
 export const DeleteDnsFirewallResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -1069,7 +1068,7 @@ export const deleteDnsFirewall: API.OperationMethod<
   DeleteDnsFirewallResponse,
   DeleteDnsFirewallError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDnsFirewallRequest,
   output: DeleteDnsFirewallResponse,
   errors: [DnsFirewallNotFound, Forbidden],
@@ -1085,17 +1084,16 @@ export interface GetReverseDnRequest {
   accountId: string;
 }
 
-export const GetReverseDnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dnsFirewallId: Schema.String.pipe(T.HttpPath("dnsFirewallId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/dns_firewall/{dnsFirewallId}/reverse_dns",
-      }),
-    ),
+export const GetReverseDnRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dnsFirewallId: Schema.String.pipe(T.HttpPath("dnsFirewallId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/dns_firewall/{dnsFirewallId}/reverse_dns",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetReverseDnRequest>;
 
 export interface GetReverseDnResponse {
@@ -1103,11 +1101,10 @@ export interface GetReverseDnResponse {
   ptr: Record<string, unknown>;
 }
 
-export const GetReverseDnResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      ptr: Schema.Record(Schema.String, Schema.Unknown),
-    }).pipe(T.ResponsePath("result")),
+export const GetReverseDnResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    ptr: Schema.Record(Schema.String, Schema.Unknown),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetReverseDnResponse>;
 
 export type GetReverseDnError = DefaultErrors | DnsFirewallNotFound | Forbidden;
@@ -1117,7 +1114,7 @@ export const getReverseDn: API.OperationMethod<
   GetReverseDnResponse,
   GetReverseDnError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetReverseDnRequest,
   output: GetReverseDnResponse,
   errors: [DnsFirewallNotFound, Forbidden],
@@ -1131,18 +1128,17 @@ export interface PatchReverseDnRequest {
   ptr?: Record<string, unknown>;
 }
 
-export const PatchReverseDnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dnsFirewallId: Schema.String.pipe(T.HttpPath("dnsFirewallId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      ptr: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/dns_firewall/{dnsFirewallId}/reverse_dns",
-      }),
-    ),
+export const PatchReverseDnRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dnsFirewallId: Schema.String.pipe(T.HttpPath("dnsFirewallId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ptr: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/dns_firewall/{dnsFirewallId}/reverse_dns",
+    }),
+  ),
 ) as unknown as Schema.Codec<PatchReverseDnRequest>;
 
 export interface PatchReverseDnResponse {
@@ -1151,7 +1147,7 @@ export interface PatchReverseDnResponse {
 }
 
 export const PatchReverseDnResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       ptr: Schema.Record(Schema.String, Schema.Unknown),
     }).pipe(T.ResponsePath("result")),
@@ -1167,7 +1163,7 @@ export const patchReverseDn: API.OperationMethod<
   PatchReverseDnResponse,
   PatchReverseDnError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchReverseDnRequest,
   output: PatchReverseDnResponse,
   errors: [DnsFirewallNotFound, Forbidden],

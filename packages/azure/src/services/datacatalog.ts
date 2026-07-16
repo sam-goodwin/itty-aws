@@ -29,7 +29,7 @@ export interface ADCCatalogsCreateOrUpdateInput {
   etag?: string;
 }
 export const ADCCatalogsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     catalogName: Schema.String.pipe(T.PathParam()),
@@ -81,7 +81,7 @@ export interface ADCCatalogsCreateOrUpdateOutput {
   etag?: string;
 }
 export const ADCCatalogsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -101,25 +101,21 @@ export const ADCCatalogsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
  * @param catalogName - The name of the data catalog in the specified subscription and resource group.
  */
-export const ADCCatalogsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ADCCatalogsCreateOrUpdateInput,
-    outputSchema: ADCCatalogsCreateOrUpdateOutput,
-  }),
-);
+export const ADCCatalogsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ADCCatalogsCreateOrUpdateInput,
+  outputSchema: ADCCatalogsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ADCCatalogsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   catalogName: string;
 }
-export const ADCCatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    catalogName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ADCCatalogsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  catalogName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
@@ -130,7 +126,7 @@ export const ADCCatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type ADCCatalogsDeleteOutput = void;
 export const ADCCatalogsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ADCCatalogsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ADCCatalogsDeleteOutput>;
 
 // The operation
 /**
@@ -143,7 +139,7 @@ export const ADCCatalogsDeleteOutput =
  * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
  * @param catalogName - The name of the data catalog in the specified subscription and resource group.
  */
-export const ADCCatalogsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ADCCatalogsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ADCCatalogsDeleteInput,
   outputSchema: ADCCatalogsDeleteOutput,
 }));
@@ -153,7 +149,7 @@ export interface ADCCatalogsGetInput {
   resourceGroupName: string;
   catalogName: string;
 }
-export const ADCCatalogsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ADCCatalogsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   catalogName: Schema.String.pipe(T.PathParam()),
@@ -174,7 +170,7 @@ export interface ADCCatalogsGetOutput {
   tags?: Record<string, string>;
   etag?: string;
 }
-export const ADCCatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ADCCatalogsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -194,7 +190,7 @@ export const ADCCatalogsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
  * @param catalogName - The name of the data catalog in the specified subscription and resource group.
  */
-export const ADCCatalogsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ADCCatalogsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ADCCatalogsGetInput,
   outputSchema: ADCCatalogsGetOutput,
 }));
@@ -204,7 +200,7 @@ export interface ADCCatalogsListtByResourceGroupInput {
   resourceGroupName: string;
 }
 export const ADCCatalogsListtByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -227,7 +223,7 @@ export interface ADCCatalogsListtByResourceGroupOutput {
   }[];
 }
 export const ADCCatalogsListtByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -253,7 +249,7 @@ export const ADCCatalogsListtByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
  */
 export const ADCCatalogsListtByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ADCCatalogsListtByResourceGroupInput,
     outputSchema: ADCCatalogsListtByResourceGroupOutput,
   }));
@@ -277,43 +273,41 @@ export interface ADCCatalogsUpdateInput {
   tags?: Record<string, string>;
   etag?: string;
 }
-export const ADCCatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    catalogName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        sku: Schema.optional(Schema.Literals(["Free", "Standard"])),
-        units: Schema.optional(Schema.Number),
-        admins: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              upn: Schema.optional(Schema.String),
-              objectId: Schema.optional(Schema.String),
-            }),
-          ),
+export const ADCCatalogsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  catalogName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      sku: Schema.optional(Schema.Literals(["Free", "Standard"])),
+      units: Schema.optional(Schema.Number),
+      admins: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            upn: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+          }),
         ),
-        users: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              upn: Schema.optional(Schema.String),
-              objectId: Schema.optional(Schema.String),
-            }),
-          ),
+      ),
+      users: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            upn: Schema.optional(Schema.String),
+            objectId: Schema.optional(Schema.String),
+          }),
         ),
-        successfullyProvisioned: Schema.optional(Schema.Boolean),
-        enableAutomaticUnitAdjustment: Schema.optional(Schema.Boolean),
-      }),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    location: Schema.optional(Schema.String),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    etag: Schema.optional(Schema.String),
-  },
-).pipe(
+      ),
+      successfullyProvisioned: Schema.optional(Schema.Boolean),
+      enableAutomaticUnitAdjustment: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
@@ -331,7 +325,7 @@ export interface ADCCatalogsUpdateOutput {
   etag?: string;
 }
 export const ADCCatalogsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -351,15 +345,13 @@ export const ADCCatalogsUpdateOutput =
  * @param resourceGroupName - The name of the resource group within the user's subscription. The name is case insensitive.
  * @param catalogName - The name of the data catalog in the specified subscription and resource group.
  */
-export const ADCCatalogsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ADCCatalogsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ADCCatalogsUpdateInput,
   outputSchema: ADCCatalogsUpdateOutput,
 }));
 // Input Schema
 export interface ADCOperationsListInput {}
-export const ADCOperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ADCOperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataCatalog/operations",
@@ -380,7 +372,7 @@ export interface ADCOperationsListOutput {
   }[];
 }
 export const ADCOperationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -404,7 +396,7 @@ export const ADCOperationsListOutput =
  *
  * @param api-version - Client Api Version.
  */
-export const ADCOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ADCOperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ADCOperationsListInput,
   outputSchema: ADCOperationsListOutput,
 }));

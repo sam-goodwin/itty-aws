@@ -9,7 +9,7 @@ export interface V1RemoveProjectSigningKeyInput {
   ref: string;
 }
 export const V1RemoveProjectSigningKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -29,7 +29,7 @@ export interface V1RemoveProjectSigningKeyOutput {
   updated_at: string;
 }
 export const V1RemoveProjectSigningKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     algorithm: Schema.Literals(["EdDSA", "ES256", "RS256", "HS256"]),
     status: Schema.Literals([
@@ -49,10 +49,8 @@ export const V1RemoveProjectSigningKeyOutput =
  *
  * @param ref - Project ref
  */
-export const v1RemoveProjectSigningKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1RemoveProjectSigningKeyInput,
-    outputSchema: V1RemoveProjectSigningKeyOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const v1RemoveProjectSigningKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1RemoveProjectSigningKeyInput,
+  outputSchema: V1RemoveProjectSigningKeyOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

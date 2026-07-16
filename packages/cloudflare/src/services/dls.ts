@@ -25,27 +25,26 @@ interface ListRegionsResponseResult {
   version: number;
   versionCreatedOn: string;
 }
-const ListRegionsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.String,
-      modifiedOn: Schema.String,
-      name: Schema.String,
-      regionKey: Schema.String,
-      version: Schema.Number,
-      versionCreatedOn: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdOn: "created_on",
-        modifiedOn: "modified_on",
-        name: "name",
-        regionKey: "region_key",
-        version: "version",
-        versionCreatedOn: "version_created_on",
-      }),
-    ),
+const ListRegionsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    regionKey: Schema.String,
+    version: Schema.Number,
+    versionCreatedOn: Schema.String,
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdOn: "created_on",
+      modifiedOn: "modified_on",
+      name: "name",
+      regionKey: "region_key",
+      version: "version",
+      versionCreatedOn: "version_created_on",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListRegionsResponseResult>;
 
 interface ListRegionsResponseResultInfo {
@@ -54,7 +53,7 @@ interface ListRegionsResponseResultInfo {
   perPage?: number | null;
 }
 const ListRegionsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -79,7 +78,7 @@ interface ListRegionalServicePrefixBindingsResponseResult {
   regionKey: string;
 }
 const ListRegionalServicePrefixBindingsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       cidr: Schema.String,
@@ -98,7 +97,7 @@ const ListRegionalServicePrefixBindingsResponseResult =
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -110,7 +109,7 @@ interface ResponseInfo {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const ResponseInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ResponseInfo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -138,7 +137,7 @@ export interface GetRegionRequest {
   accountId: string;
 }
 
-export const GetRegionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRegionRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     regionId: Schema.String.pipe(T.HttpPath("regionId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -160,29 +159,28 @@ export interface GetRegionResponse {
   versionCreatedOn: string;
 }
 
-export const GetRegionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.String,
-      modifiedOn: Schema.String,
-      name: Schema.String,
-      regionKey: Schema.String,
-      version: Schema.Number,
-      versionCreatedOn: Schema.String,
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          name: "name",
-          regionKey: "region_key",
-          version: "version",
-          versionCreatedOn: "version_created_on",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetRegionResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    modifiedOn: Schema.String,
+    name: Schema.String,
+    regionKey: Schema.String,
+    version: Schema.Number,
+    versionCreatedOn: Schema.String,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        name: "name",
+        regionKey: "region_key",
+        version: "version",
+        versionCreatedOn: "version_created_on",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetRegionResponse>;
 
 export type GetRegionError = DefaultErrors;
@@ -192,7 +190,7 @@ export const getRegion: API.OperationMethod<
   GetRegionResponse,
   GetRegionError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRegionRequest,
   output: GetRegionResponse,
   errors: [],
@@ -207,18 +205,17 @@ export interface ListRegionsRequest {
   type?: "managed" | "custom" | (string & {});
 }
 
-export const ListRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
-      type: Schema.optional(
-        Schema.Union([Schema.Literals(["managed", "custom"]), Schema.String]),
-      ).pipe(T.HttpQuery("type")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/dls/regions" }),
-    ),
+export const ListRegionsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+    type: Schema.optional(
+      Schema.Union([Schema.Literals(["managed", "custom"]), Schema.String]),
+    ).pipe(T.HttpQuery("type")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/dls/regions" }),
+  ),
 ) as unknown as Schema.Codec<ListRegionsRequest>;
 
 export interface ListRegionsResponse {
@@ -238,14 +235,13 @@ export interface ListRegionsResponse {
   } | null;
 }
 
-export const ListRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListRegionsResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListRegionsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListRegionsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListRegionsResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListRegionsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListRegionsResponse>;
 
 export type ListRegionsError = DefaultErrors;
@@ -255,7 +251,7 @@ export const listRegions: API.PaginatedOperationMethod<
   ListRegionsResponse,
   ListRegionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionsRequest,
   output: ListRegionsResponse,
   errors: [],
@@ -279,7 +275,7 @@ export interface GetRegionalServicePrefixBindingRequest {
 }
 
 export const GetRegionalServicePrefixBindingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       bindingId: Schema.String.pipe(T.HttpPath("bindingId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -303,7 +299,7 @@ export interface GetRegionalServicePrefixBindingResponse {
 }
 
 export const GetRegionalServicePrefixBindingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       cidr: Schema.String,
@@ -328,7 +324,7 @@ export const getRegionalServicePrefixBinding: API.OperationMethod<
   GetRegionalServicePrefixBindingResponse,
   GetRegionalServicePrefixBindingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRegionalServicePrefixBindingRequest,
   output: GetRegionalServicePrefixBindingResponse,
   errors: [],
@@ -342,7 +338,7 @@ export interface ListRegionalServicePrefixBindingsRequest {
 }
 
 export const ListRegionalServicePrefixBindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
@@ -365,7 +361,7 @@ export interface ListRegionalServicePrefixBindingsResponse {
 }
 
 export const ListRegionalServicePrefixBindingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListRegionalServicePrefixBindingsResponseResult),
       resultInfo: Schema.optional(
@@ -381,7 +377,7 @@ export const listRegionalServicePrefixBindings: API.PaginatedOperationMethod<
   ListRegionalServicePrefixBindingsResponse,
   ListRegionalServicePrefixBindingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRegionalServicePrefixBindingsRequest,
   output: ListRegionalServicePrefixBindingsResponse,
   errors: [],
@@ -406,7 +402,7 @@ export interface CreateRegionalServicePrefixBindingRequest {
 }
 
 export const CreateRegionalServicePrefixBindingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       cidr: Schema.String,
@@ -437,7 +433,7 @@ export interface CreateRegionalServicePrefixBindingResponse {
 }
 
 export const CreateRegionalServicePrefixBindingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       cidr: Schema.String,
@@ -462,7 +458,7 @@ export const createRegionalServicePrefixBinding: API.OperationMethod<
   CreateRegionalServicePrefixBindingResponse,
   CreateRegionalServicePrefixBindingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRegionalServicePrefixBindingRequest,
   output: CreateRegionalServicePrefixBindingResponse,
   errors: [],
@@ -477,7 +473,7 @@ export interface PatchRegionalServicePrefixBindingRequest {
 }
 
 export const PatchRegionalServicePrefixBindingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       bindingId: Schema.String.pipe(T.HttpPath("bindingId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -503,7 +499,7 @@ export interface PatchRegionalServicePrefixBindingResponse {
 }
 
 export const PatchRegionalServicePrefixBindingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       cidr: Schema.String,
@@ -528,7 +524,7 @@ export const patchRegionalServicePrefixBinding: API.OperationMethod<
   PatchRegionalServicePrefixBindingResponse,
   PatchRegionalServicePrefixBindingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchRegionalServicePrefixBindingRequest,
   output: PatchRegionalServicePrefixBindingResponse,
   errors: [],
@@ -541,7 +537,7 @@ export interface DeleteRegionalServicePrefixBindingRequest {
 }
 
 export const DeleteRegionalServicePrefixBindingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       bindingId: Schema.String.pipe(T.HttpPath("bindingId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -572,7 +568,7 @@ export interface DeleteRegionalServicePrefixBindingResponse {
 }
 
 export const DeleteRegionalServicePrefixBindingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       messages: Schema.Array(ResponseInfo),
       success: Schema.Boolean,
@@ -589,7 +585,7 @@ export const deleteRegionalServicePrefixBinding: API.OperationMethod<
   DeleteRegionalServicePrefixBindingResponse,
   DeleteRegionalServicePrefixBindingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRegionalServicePrefixBindingRequest,
   output: DeleteRegionalServicePrefixBindingResponse,
   errors: [],

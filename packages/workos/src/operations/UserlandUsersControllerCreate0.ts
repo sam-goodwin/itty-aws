@@ -14,7 +14,7 @@ export interface UserlandUsersControllerCreate0Input {
   external_id?: string | null;
 }
 export const UserlandUsersControllerCreate0Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.String,
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
     last_name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -46,7 +46,7 @@ export interface UserlandUsersControllerCreate0Output {
   updated_at?: string;
 }
 export const UserlandUsersControllerCreate0Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -70,7 +70,7 @@ export const UserlandUsersControllerCreate0Output =
  * Create a new user in the current environment.
  */
 export const UserlandUsersControllerCreate0 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerCreate0Input,
     outputSchema: UserlandUsersControllerCreate0Output,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

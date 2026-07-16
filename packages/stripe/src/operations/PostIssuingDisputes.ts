@@ -93,7 +93,7 @@ export interface PostIssuingDisputesInput {
   treasury?: { received_debit: string };
 }
 export const PostIssuingDisputesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.optional(Schema.Number),
     evidence: Schema.optional(
       Schema.Struct({
@@ -1044,7 +1044,7 @@ export interface PostIssuingDisputesOutput {
   treasury?: { debit_reversal: string | null; received_debit: string } | null;
 }
 export const PostIssuingDisputesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transactions: Schema.optional(
       Schema.NullOr(
@@ -1944,7 +1944,7 @@ export const PostIssuingDisputesOutput =
  *
  * <p>Creates an Issuing <code>Dispute</code> object. Individual pieces of evidence within the <code>evidence</code> object are optional at this point. Stripe only validates that required evidence is present during submission. Refer to <a href="/docs/issuing/purchases/disputes#dispute-reasons-and-evidence">Dispute reasons and evidence</a> for more details about evidence requirements.</p>
  */
-export const PostIssuingDisputes = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostIssuingDisputes = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostIssuingDisputesInput,
   outputSchema: PostIssuingDisputesOutput,
 }));

@@ -12,7 +12,7 @@ export interface AlertsListInput {
   offset?: number;
   search?: string;
 }
-export const AlertsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   created_by: Schema.optional(Schema.String),
   insight_id: Schema.optional(Schema.Number),
@@ -319,7 +319,7 @@ export interface AlertsListOutput {
     search_match_type?: "exact" | "similar" | null;
   }[];
 }
-export const AlertsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -534,7 +534,7 @@ export const AlertsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param search - Optional. Fuzzy match against alert `name` using Postgres trigram word similarity (handles typos, transpositions, and prefix-as-you-type). Results are ordered by relevance, then creation time. Capped at 200 characters; longer queries return a 400 error.
  */
-export const alertsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const alertsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsListInput,
   outputSchema: AlertsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

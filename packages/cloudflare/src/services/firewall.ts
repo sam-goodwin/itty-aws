@@ -98,14 +98,11 @@ interface AccessRuleIPConfiguration {
   /** The IP address to match. This address will be compared to the IP address of incoming requests. */
   value?: string | null;
 }
-const AccessRuleIPConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      target: Schema.optional(
-        Schema.Union([Schema.Literal("ip"), Schema.Null]),
-      ),
-      value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+const AccessRuleIPConfiguration = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    target: Schema.optional(Schema.Union([Schema.Literal("ip"), Schema.Null])),
+    value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<AccessRuleIPConfiguration>;
 
 interface Ipv6Configuration {
@@ -114,7 +111,7 @@ interface Ipv6Configuration {
   /** The IPv6 address to match. */
   value?: string | null;
 }
-const Ipv6Configuration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Ipv6Configuration = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     target: Schema.optional(Schema.Union([Schema.Literal("ip6"), Schema.Null])),
     value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -127,14 +124,13 @@ interface AccessRuleCIDRConfiguration {
   /** The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges. */
   value?: string | null;
 }
-const AccessRuleCIDRConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      target: Schema.optional(
-        Schema.Union([Schema.Literal("ip_range"), Schema.Null]),
-      ),
-      value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+const AccessRuleCIDRConfiguration = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    target: Schema.optional(
+      Schema.Union([Schema.Literal("ip_range"), Schema.Null]),
+    ),
+    value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<AccessRuleCIDRConfiguration>;
 
 interface Asnconfiguration {
@@ -143,7 +139,7 @@ interface Asnconfiguration {
   /** The AS number to match. */
   value?: string | null;
 }
-const Asnconfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Asnconfiguration = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     target: Schema.optional(Schema.Union([Schema.Literal("asn"), Schema.Null])),
     value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -156,7 +152,7 @@ interface CountryConfiguration {
   /** The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country). */
   value?: string | null;
 }
-const CountryConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const CountryConfiguration = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     target: Schema.optional(
       Schema.Union([Schema.Literal("country"), Schema.Null]),
@@ -173,7 +169,7 @@ interface Scope {
   /** Defines the scope of the rule. */
   type?: "user" | "organization" | (string & {}) | null;
 }
-const Scope = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Scope = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -230,7 +226,7 @@ interface ListAccessRulesResponseResult {
   } | null;
 }
 const ListAccessRulesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       allowedModes: Schema.Array(
@@ -287,7 +283,7 @@ interface ListAccessRulesResponseResultInfo {
   totalCount?: number | null;
 }
 const ListAccessRulesResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -323,31 +319,30 @@ interface ListLockdownsResponseResult {
   urls: string[];
   priority?: number | null;
 }
-const ListLockdownsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      configurations: Schema.Array(
-        Schema.Union([AccessRuleIPConfiguration, AccessRuleCIDRConfiguration]),
-      ),
-      createdOn: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.String,
-      paused: Schema.Boolean,
-      urls: Schema.Array(Schema.String),
-      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        configurations: "configurations",
-        createdOn: "created_on",
-        description: "description",
-        modifiedOn: "modified_on",
-        paused: "paused",
-        urls: "urls",
-        priority: "priority",
-      }),
+const ListLockdownsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    configurations: Schema.Array(
+      Schema.Union([AccessRuleIPConfiguration, AccessRuleCIDRConfiguration]),
     ),
+    createdOn: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.String,
+    paused: Schema.Boolean,
+    urls: Schema.Array(Schema.String),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      configurations: "configurations",
+      createdOn: "created_on",
+      description: "description",
+      modifiedOn: "modified_on",
+      paused: "paused",
+      urls: "urls",
+      priority: "priority",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListLockdownsResponseResult>;
 
 interface FirewallFilter {
@@ -362,7 +357,7 @@ interface FirewallFilter {
   /** A short reference tag. Allows you to select related filters. */
   ref?: string | null;
 }
-const FirewallFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FirewallFilter = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -378,7 +373,7 @@ interface DeletedFilter {
   /** When true, indicates that the firewall rule was deleted. */
   deleted: boolean;
 }
-const DeletedFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const DeletedFilter = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     deleted: Schema.Boolean,
@@ -430,57 +425,56 @@ interface BulkPutRulesResponseResult {
   /** A short reference tag. Allows you to select related firewall rules. */
   ref?: string | null;
 }
-const BulkPutRulesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(
+const BulkPutRulesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(
+      Schema.Union([
         Schema.Union([
+          Schema.Literals([
+            "block",
+            "challenge",
+            "js_challenge",
+            "managed_challenge",
+            "allow",
+            "log",
+            "bypass",
+          ]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    filter: Schema.optional(
+      Schema.Union([
+        Schema.Union([DeletedFilter, FirewallFilter]),
+        Schema.Null,
+      ]),
+    ),
+    paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    products: Schema.optional(
+      Schema.Union([
+        Schema.Array(
           Schema.Union([
             Schema.Literals([
-              "block",
-              "challenge",
-              "js_challenge",
-              "managed_challenge",
-              "allow",
-              "log",
-              "bypass",
+              "zoneLockdown",
+              "uaBlock",
+              "bic",
+              "hot",
+              "securityLevel",
+              "rateLimit",
+              "waf",
             ]),
             Schema.String,
           ]),
-          Schema.Null,
-        ]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      filter: Schema.optional(
-        Schema.Union([
-          Schema.Union([DeletedFilter, FirewallFilter]),
-          Schema.Null,
-        ]),
-      ),
-      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      products: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Literals([
-                "zoneLockdown",
-                "uaBlock",
-                "bic",
-                "hot",
-                "securityLevel",
-                "rateLimit",
-                "waf",
-              ]),
-              Schema.String,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<BulkPutRulesResponseResult>;
 
 interface Response {
@@ -489,7 +483,7 @@ interface Response {
   /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
   contentType?: string | null;
 }
-const Response = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Response = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     body: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     contentType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -511,7 +505,7 @@ interface Action {
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. Notes: If "mode" is "challenge", "managed_challenge", or " */
   timeout?: number | null;
 }
-const Action = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Action = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     mode: Schema.optional(
       Schema.Union([
@@ -543,7 +537,7 @@ interface FirewallFilterParam {
   /** A short reference tag. Allows you to select related filters. */
   ref?: string | null;
 }
-const FirewallFilterParam = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const FirewallFilterParam = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -558,7 +552,7 @@ interface Configuration {
   /** The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value. */
   value?: string | null;
 }
-const Configuration = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Configuration = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     target: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -583,30 +577,27 @@ interface ListUaRulesResponseResult {
   /** When true, indicates that the rule is currently paused. */
   paused?: boolean | null;
 }
-const ListUaRulesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      configuration: Schema.optional(
-        Schema.Union([Configuration, Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      mode: Schema.optional(
+const ListUaRulesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    configuration: Schema.optional(Schema.Union([Configuration, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    mode: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "block",
-              "challenge",
-              "js_challenge",
-              "managed_challenge",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "block",
+            "challenge",
+            "js_challenge",
+            "managed_challenge",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }),
+        Schema.Null,
+      ]),
+    ),
+    paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<ListUaRulesResponseResult>;
 
 interface Configuration2 {
@@ -615,7 +606,7 @@ interface Configuration2 {
   /** the user agent to exactly match */
   value?: string | null;
 }
-const Configuration2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Configuration2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     target: Schema.optional(Schema.Union([Schema.Literal("ua"), Schema.Null])),
     value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -669,7 +660,7 @@ interface RewriteAction {
     | (string & {})
     | null;
 }
-const RewriteAction = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RewriteAction = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     block: Schema.optional(
       Schema.Union([
@@ -809,7 +800,7 @@ interface ListWafOverridesResponseResult {
   urls?: string[] | null;
 }
 const ListWafOverridesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -850,7 +841,7 @@ const ListWafOverridesResponseResult =
 interface Source {
   pointer?: string | null;
 }
-const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Source = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     pointer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -862,7 +853,7 @@ interface ResponseInfo {
   documentationUrl?: string | null;
   source?: { pointer?: string | null } | null;
 }
-const ResponseInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ResponseInfo = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.Number,
     message: Schema.String,
@@ -897,20 +888,19 @@ interface FirewallAPIResponseSingle {
   /** Defines whether the API call was successful. */
   success: true;
 }
-const FirewallAPIResponseSingle = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      errors: Schema.Array(ResponseInfo),
-      messages: Schema.Array(ResponseInfo),
-      result: Schema.Unknown,
-      success: Schema.Literal(true),
-    }),
+const FirewallAPIResponseSingle = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    errors: Schema.Array(ResponseInfo),
+    messages: Schema.Array(ResponseInfo),
+    result: Schema.Unknown,
+    success: Schema.Literal(true),
+  }),
 ) as unknown as Schema.Codec<FirewallAPIResponseSingle>;
 
 interface Result {
   result?: unknown | null;
 }
-const Result = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Result = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     result: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
   }),
@@ -935,7 +925,7 @@ interface ListWafPackageGroupsResponseResult {
   packageId?: string | null;
 }
 const ListWafPackageGroupsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       description: Schema.Union([Schema.String, Schema.Null]),
@@ -974,7 +964,7 @@ interface WafruleGroup {
   /** Defines the name of the rule group. */
   name?: string | null;
 }
-const WafruleGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WafruleGroup = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -997,29 +987,28 @@ interface WafmanagedRulesAnomalyRule {
   /** Defines the order in which the individual WAF rule is executed within its rule group. */
   priority: string;
 }
-const WafmanagedRulesAnomalyRule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      allowedModes: Schema.Array(
-        Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-      ),
-      description: Schema.String,
-      group: WafruleGroup,
-      mode: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-      packageId: Schema.String,
-      priority: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        allowedModes: "allowed_modes",
-        description: "description",
-        group: "group",
-        mode: "mode",
-        packageId: "package_id",
-        priority: "priority",
-      }),
+const WafmanagedRulesAnomalyRule = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    allowedModes: Schema.Array(
+      Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
     ),
+    description: Schema.String,
+    group: WafruleGroup,
+    mode: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    packageId: Schema.String,
+    priority: Schema.String,
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      allowedModes: "allowed_modes",
+      description: "description",
+      group: "group",
+      mode: "mode",
+      packageId: "package_id",
+      priority: "priority",
+    }),
+  ),
 ) as unknown as Schema.Codec<WafmanagedRulesAnomalyRule>;
 
 interface WafmanagedRulesTraditionalDenyRule {
@@ -1054,7 +1043,7 @@ interface WafmanagedRulesTraditionalDenyRule {
   priority: string;
 }
 const WafmanagedRulesTraditionalDenyRule =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       allowedModes: Schema.Array(
@@ -1124,7 +1113,7 @@ export interface GetAccessRuleForZoneRequest extends GetAccessRuleBaseRequest {
 }
 
 export const GetAccessRuleForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetAccessRuleBaseFields,
@@ -1137,7 +1126,7 @@ export const GetAccessRuleForAccountRequest =
   ) as unknown as Schema.Codec<GetAccessRuleForAccountRequest>;
 
 export const GetAccessRuleForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetAccessRuleBaseFields,
@@ -1190,30 +1179,11 @@ export interface GetAccessRuleResponse {
   } | null;
 }
 
-export const GetAccessRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      allowedModes: Schema.Array(
-        Schema.Union([
-          Schema.Literals([
-            "block",
-            "challenge",
-            "whitelist",
-            "js_challenge",
-            "managed_challenge",
-          ]),
-          Schema.String,
-        ]),
-      ),
-      configuration: Schema.Union([
-        AccessRuleIPConfiguration,
-        Ipv6Configuration,
-        AccessRuleCIDRConfiguration,
-        Asnconfiguration,
-        CountryConfiguration,
-      ]),
-      mode: Schema.Union([
+export const GetAccessRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    allowedModes: Schema.Array(
+      Schema.Union([
         Schema.Literals([
           "block",
           "challenge",
@@ -1223,24 +1193,42 @@ export const GetAccessRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         ]),
         Schema.String,
       ]),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      notes: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      scope: Schema.optional(Schema.Union([Scope, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          allowedModes: "allowed_modes",
-          configuration: "configuration",
-          mode: "mode",
-          createdOn: "created_on",
-          modifiedOn: "modified_on",
-          notes: "notes",
-          scope: "scope",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+    ),
+    configuration: Schema.Union([
+      AccessRuleIPConfiguration,
+      Ipv6Configuration,
+      AccessRuleCIDRConfiguration,
+      Asnconfiguration,
+      CountryConfiguration,
+    ]),
+    mode: Schema.Union([
+      Schema.Literals([
+        "block",
+        "challenge",
+        "whitelist",
+        "js_challenge",
+        "managed_challenge",
+      ]),
+      Schema.String,
+    ]),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    notes: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    scope: Schema.optional(Schema.Union([Scope, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        allowedModes: "allowed_modes",
+        configuration: "configuration",
+        mode: "mode",
+        createdOn: "created_on",
+        modifiedOn: "modified_on",
+        notes: "notes",
+        scope: "scope",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetAccessRuleResponse>;
 
 export type GetAccessRuleError = DefaultErrors | AccessRuleNotFound | Forbidden;
@@ -1250,7 +1238,7 @@ export const getAccessRuleForAccount: API.OperationMethod<
   GetAccessRuleResponse,
   GetAccessRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessRuleForAccountRequest,
   output: GetAccessRuleResponse,
   errors: [AccessRuleNotFound, Forbidden],
@@ -1261,7 +1249,7 @@ export const getAccessRuleForZone: API.OperationMethod<
   GetAccessRuleResponse,
   GetAccessRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessRuleForZoneRequest,
   output: GetAccessRuleResponse,
   errors: [AccessRuleNotFound, Forbidden],
@@ -1349,7 +1337,7 @@ export interface ListAccessRulesForZoneRequest extends ListAccessRulesBaseReques
 }
 
 export const ListAccessRulesForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListAccessRulesBaseFields,
@@ -1362,7 +1350,7 @@ export const ListAccessRulesForAccountRequest =
   ) as unknown as Schema.Codec<ListAccessRulesForAccountRequest>;
 
 export const ListAccessRulesForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListAccessRulesBaseFields,
@@ -1416,7 +1404,7 @@ export interface ListAccessRulesResponse {
 }
 
 export const ListAccessRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListAccessRulesResponseResult),
       resultInfo: Schema.optional(
@@ -1432,7 +1420,7 @@ export const listAccessRulesForAccount: API.PaginatedOperationMethod<
   ListAccessRulesResponse,
   ListAccessRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessRulesForAccountRequest,
   output: ListAccessRulesResponse,
   errors: [Forbidden],
@@ -1450,7 +1438,7 @@ export const listAccessRulesForZone: API.PaginatedOperationMethod<
   ListAccessRulesResponse,
   ListAccessRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessRulesForZoneRequest,
   output: ListAccessRulesResponse,
   errors: [Forbidden],
@@ -1515,7 +1503,7 @@ export interface CreateAccessRuleForZoneRequest extends CreateAccessRuleBaseRequ
 }
 
 export const CreateAccessRuleForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateAccessRuleBaseFields,
@@ -1528,7 +1516,7 @@ export const CreateAccessRuleForAccountRequest =
   ) as unknown as Schema.Codec<CreateAccessRuleForAccountRequest>;
 
 export const CreateAccessRuleForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateAccessRuleBaseFields,
@@ -1582,7 +1570,7 @@ export interface CreateAccessRuleResponse {
 }
 
 export const CreateAccessRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       allowedModes: Schema.Array(
@@ -1644,7 +1632,7 @@ export const createAccessRuleForAccount: API.OperationMethod<
   CreateAccessRuleResponse,
   CreateAccessRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessRuleForAccountRequest,
   output: CreateAccessRuleResponse,
   errors: [DuplicateAccessRule, Forbidden],
@@ -1655,7 +1643,7 @@ export const createAccessRuleForZone: API.OperationMethod<
   CreateAccessRuleResponse,
   CreateAccessRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessRuleForZoneRequest,
   output: CreateAccessRuleResponse,
   errors: [DuplicateAccessRule, Forbidden],
@@ -1715,7 +1703,7 @@ export interface PatchAccessRuleForZoneRequest extends PatchAccessRuleBaseReques
 }
 
 export const PatchAccessRuleForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...PatchAccessRuleBaseFields,
@@ -1728,7 +1716,7 @@ export const PatchAccessRuleForAccountRequest =
   ) as unknown as Schema.Codec<PatchAccessRuleForAccountRequest>;
 
 export const PatchAccessRuleForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...PatchAccessRuleBaseFields,
@@ -1782,7 +1770,7 @@ export interface PatchAccessRuleResponse {
 }
 
 export const PatchAccessRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       allowedModes: Schema.Array(
@@ -1844,7 +1832,7 @@ export const patchAccessRuleForAccount: API.OperationMethod<
   PatchAccessRuleResponse,
   PatchAccessRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccessRuleForAccountRequest,
   output: PatchAccessRuleResponse,
   errors: [AccessRuleNotFound, Forbidden],
@@ -1855,7 +1843,7 @@ export const patchAccessRuleForZone: API.OperationMethod<
   PatchAccessRuleResponse,
   PatchAccessRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccessRuleForZoneRequest,
   output: PatchAccessRuleResponse,
   errors: [AccessRuleNotFound, Forbidden],
@@ -1880,7 +1868,7 @@ export interface DeleteAccessRuleForZoneRequest extends DeleteAccessRuleBaseRequ
 }
 
 export const DeleteAccessRuleForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DeleteAccessRuleBaseFields,
@@ -1893,7 +1881,7 @@ export const DeleteAccessRuleForAccountRequest =
   ) as unknown as Schema.Codec<DeleteAccessRuleForAccountRequest>;
 
 export const DeleteAccessRuleForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DeleteAccessRuleBaseFields,
@@ -1911,7 +1899,7 @@ export interface DeleteAccessRuleResponse {
 }
 
 export const DeleteAccessRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -1927,7 +1915,7 @@ export const deleteAccessRuleForAccount: API.OperationMethod<
   DeleteAccessRuleResponse,
   DeleteAccessRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessRuleForAccountRequest,
   output: DeleteAccessRuleResponse,
   errors: [AccessRuleNotFound, Forbidden],
@@ -1938,7 +1926,7 @@ export const deleteAccessRuleForZone: API.OperationMethod<
   DeleteAccessRuleResponse,
   DeleteAccessRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessRuleForZoneRequest,
   output: DeleteAccessRuleResponse,
   errors: [AccessRuleNotFound, Forbidden],
@@ -1954,17 +1942,16 @@ export interface GetLockdownRequest {
   zoneId: string;
 }
 
-export const GetLockdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      lockDownsId: Schema.String.pipe(T.HttpPath("lockDownsId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/firewall/lockdowns/{lockDownsId}",
-      }),
-    ),
+export const GetLockdownRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    lockDownsId: Schema.String.pipe(T.HttpPath("lockDownsId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/firewall/lockdowns/{lockDownsId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetLockdownRequest>;
 
 export interface GetLockdownResponse {
@@ -1988,33 +1975,32 @@ export interface GetLockdownResponse {
   priority?: number | null;
 }
 
-export const GetLockdownResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      configurations: Schema.Array(
-        Schema.Union([AccessRuleIPConfiguration, AccessRuleCIDRConfiguration]),
-      ),
-      createdOn: Schema.String,
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.String,
-      paused: Schema.Boolean,
-      urls: Schema.Array(Schema.String),
-      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          configurations: "configurations",
-          createdOn: "created_on",
-          description: "description",
-          modifiedOn: "modified_on",
-          paused: "paused",
-          urls: "urls",
-          priority: "priority",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetLockdownResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    configurations: Schema.Array(
+      Schema.Union([AccessRuleIPConfiguration, AccessRuleCIDRConfiguration]),
+    ),
+    createdOn: Schema.String,
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.String,
+    paused: Schema.Boolean,
+    urls: Schema.Array(Schema.String),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        configurations: "configurations",
+        createdOn: "created_on",
+        description: "description",
+        modifiedOn: "modified_on",
+        paused: "paused",
+        urls: "urls",
+        priority: "priority",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetLockdownResponse>;
 
 export type GetLockdownError = DefaultErrors | LockdownNotFound | Forbidden;
@@ -2024,7 +2010,7 @@ export const getLockdown: API.OperationMethod<
   GetLockdownResponse,
   GetLockdownError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLockdownRequest,
   output: GetLockdownResponse,
   errors: [LockdownNotFound, Forbidden],
@@ -2055,32 +2041,29 @@ export interface ListLockdownsRequest {
   uriSearch?: string;
 }
 
-export const ListLockdownsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      createdOn: Schema.optional(Schema.String).pipe(T.HttpQuery("created_on")),
-      description: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("description"),
-      ),
-      descriptionSearch: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("description_search"),
-      ),
-      ip: Schema.optional(Schema.String).pipe(T.HttpQuery("ip")),
-      ipRangeSearch: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("ip_range_search"),
-      ),
-      ipSearch: Schema.optional(Schema.String).pipe(T.HttpQuery("ip_search")),
-      modifiedOn: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("modified_on"),
-      ),
-      priority: Schema.optional(Schema.Number).pipe(T.HttpQuery("priority")),
-      uriSearch: Schema.optional(Schema.String).pipe(T.HttpQuery("uri_search")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/zones/{zone_id}/firewall/lockdowns" }),
+export const ListLockdownsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    createdOn: Schema.optional(Schema.String).pipe(T.HttpQuery("created_on")),
+    description: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("description"),
     ),
+    descriptionSearch: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("description_search"),
+    ),
+    ip: Schema.optional(Schema.String).pipe(T.HttpQuery("ip")),
+    ipRangeSearch: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("ip_range_search"),
+    ),
+    ipSearch: Schema.optional(Schema.String).pipe(T.HttpQuery("ip_search")),
+    modifiedOn: Schema.optional(Schema.String).pipe(T.HttpQuery("modified_on")),
+    priority: Schema.optional(Schema.Number).pipe(T.HttpQuery("priority")),
+    uriSearch: Schema.optional(Schema.String).pipe(T.HttpQuery("uri_search")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/firewall/lockdowns" }),
+  ),
 ) as unknown as Schema.Codec<ListLockdownsRequest>;
 
 export interface ListLockdownsResponse {
@@ -2105,14 +2088,13 @@ export interface ListLockdownsResponse {
   } | null;
 }
 
-export const ListLockdownsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListLockdownsResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListAccessRulesResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListLockdownsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListLockdownsResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListAccessRulesResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListLockdownsResponse>;
 
 export type ListLockdownsError = DefaultErrors | Forbidden;
@@ -2122,7 +2104,7 @@ export const listLockdowns: API.PaginatedOperationMethod<
   ListLockdownsResponse,
   ListLockdownsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLockdownsRequest,
   output: ListLockdownsResponse,
   errors: [Forbidden],
@@ -2153,20 +2135,19 @@ export interface CreateLockdownRequest {
   priority?: number;
 }
 
-export const CreateLockdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      configurations: Schema.Array(
-        Schema.Union([AccessRuleIPConfiguration, AccessRuleCIDRConfiguration]),
-      ),
-      urls: Schema.Array(Schema.String),
-      description: Schema.optional(Schema.String),
-      paused: Schema.optional(Schema.Boolean),
-      priority: Schema.optional(Schema.Number),
-    }).pipe(
-      T.Http({ method: "POST", path: "/zones/{zone_id}/firewall/lockdowns" }),
+export const CreateLockdownRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    configurations: Schema.Array(
+      Schema.Union([AccessRuleIPConfiguration, AccessRuleCIDRConfiguration]),
     ),
+    urls: Schema.Array(Schema.String),
+    description: Schema.optional(Schema.String),
+    paused: Schema.optional(Schema.Boolean),
+    priority: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({ method: "POST", path: "/zones/{zone_id}/firewall/lockdowns" }),
+  ),
 ) as unknown as Schema.Codec<CreateLockdownRequest>;
 
 export interface CreateLockdownResponse {
@@ -2191,7 +2172,7 @@ export interface CreateLockdownResponse {
 }
 
 export const CreateLockdownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       configurations: Schema.Array(
@@ -2226,7 +2207,7 @@ export const createLockdown: API.OperationMethod<
   CreateLockdownResponse,
   CreateLockdownError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateLockdownRequest,
   output: CreateLockdownResponse,
   errors: [DuplicateLockdown, Forbidden],
@@ -2248,24 +2229,23 @@ export interface UpdateLockdownRequest {
   priority?: number;
 }
 
-export const UpdateLockdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      lockDownsId: Schema.String.pipe(T.HttpPath("lockDownsId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      configurations: Schema.Array(
-        Schema.Union([AccessRuleIPConfiguration, AccessRuleCIDRConfiguration]),
-      ),
-      urls: Schema.Array(Schema.String),
-      description: Schema.optional(Schema.String),
-      paused: Schema.optional(Schema.Boolean),
-      priority: Schema.optional(Schema.Number),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/firewall/lockdowns/{lockDownsId}",
-      }),
+export const UpdateLockdownRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    lockDownsId: Schema.String.pipe(T.HttpPath("lockDownsId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    configurations: Schema.Array(
+      Schema.Union([AccessRuleIPConfiguration, AccessRuleCIDRConfiguration]),
     ),
+    urls: Schema.Array(Schema.String),
+    description: Schema.optional(Schema.String),
+    paused: Schema.optional(Schema.Boolean),
+    priority: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/firewall/lockdowns/{lockDownsId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateLockdownRequest>;
 
 export interface UpdateLockdownResponse {
@@ -2290,7 +2270,7 @@ export interface UpdateLockdownResponse {
 }
 
 export const UpdateLockdownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       configurations: Schema.Array(
@@ -2329,7 +2309,7 @@ export const updateLockdown: API.OperationMethod<
   UpdateLockdownResponse,
   UpdateLockdownError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateLockdownRequest,
   output: UpdateLockdownResponse,
   errors: [LockdownNotFound, DuplicateLockdown, Forbidden],
@@ -2341,17 +2321,16 @@ export interface DeleteLockdownRequest {
   zoneId: string;
 }
 
-export const DeleteLockdownRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      lockDownsId: Schema.String.pipe(T.HttpPath("lockDownsId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/zones/{zone_id}/firewall/lockdowns/{lockDownsId}",
-      }),
-    ),
+export const DeleteLockdownRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    lockDownsId: Schema.String.pipe(T.HttpPath("lockDownsId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/firewall/lockdowns/{lockDownsId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteLockdownRequest>;
 
 export interface DeleteLockdownResponse {
@@ -2360,7 +2339,7 @@ export interface DeleteLockdownResponse {
 }
 
 export const DeleteLockdownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -2373,7 +2352,7 @@ export const deleteLockdown: API.OperationMethod<
   DeleteLockdownResponse,
   DeleteLockdownError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteLockdownRequest,
   output: DeleteLockdownResponse,
   errors: [LockdownNotFound, Forbidden],
@@ -2390,12 +2369,11 @@ export interface BulkPutRulesRequest {
   body: unknown;
 }
 
-export const BulkPutRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      body: Schema.Unknown.pipe(T.HttpBody()),
-    }).pipe(T.Http({ method: "PUT", path: "/zones/{zone_id}/firewall/rules" })),
+export const BulkPutRulesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    body: Schema.Unknown.pipe(T.HttpBody()),
+  }).pipe(T.Http({ method: "PUT", path: "/zones/{zone_id}/firewall/rules" })),
 ) as unknown as Schema.Codec<BulkPutRulesRequest>;
 
 export interface BulkPutRulesResponse {
@@ -2440,11 +2418,10 @@ export interface BulkPutRulesResponse {
   }[];
 }
 
-export const BulkPutRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(BulkPutRulesResponseResult),
-    }),
+export const BulkPutRulesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(BulkPutRulesResponseResult),
+  }),
 ) as unknown as Schema.Codec<BulkPutRulesResponse>;
 
 export type BulkPutRulesError = DefaultErrors;
@@ -2454,7 +2431,7 @@ export const bulkPutRules: API.PaginatedOperationMethod<
   BulkPutRulesResponse,
   BulkPutRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkPutRulesRequest,
   output: BulkPutRulesResponse,
   errors: [],
@@ -2474,7 +2451,7 @@ export interface GetRuleRequest {
   zoneId: string;
 }
 
-export const GetRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -2529,7 +2506,7 @@ export interface GetRuleResponse {
   ref?: string | null;
 }
 
-export const GetRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     action: Schema.optional(
@@ -2588,7 +2565,7 @@ export const getRule: API.OperationMethod<
   GetRuleResponse,
   GetRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRuleRequest,
   output: GetRuleResponse,
   errors: [],
@@ -2609,7 +2586,7 @@ export interface ListRulesRequest {
   paused?: boolean;
 }
 
-export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListRulesRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -2671,14 +2648,13 @@ export interface ListRulesResponse {
   } | null;
 }
 
-export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(BulkPutRulesResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListAccessRulesResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListRulesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(BulkPutRulesResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListAccessRulesResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListRulesResponse>;
 
 export type ListRulesError = DefaultErrors;
@@ -2688,7 +2664,7 @@ export const listRules: API.PaginatedOperationMethod<
   ListRulesResponse,
   ListRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [],
@@ -2725,15 +2701,12 @@ export interface CreateRuleRequest {
   };
 }
 
-export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      action: Action,
-      filter: FirewallFilterParam,
-    }).pipe(
-      T.Http({ method: "POST", path: "/zones/{zone_id}/firewall/rules" }),
-    ),
+export const CreateRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    action: Action,
+    filter: FirewallFilterParam,
+  }).pipe(T.Http({ method: "POST", path: "/zones/{zone_id}/firewall/rules" })),
 ) as unknown as Schema.Codec<CreateRuleRequest>;
 
 export interface CreateRuleResponse {
@@ -2778,11 +2751,10 @@ export interface CreateRuleResponse {
   }[];
 }
 
-export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(BulkPutRulesResponseResult),
-    }),
+export const CreateRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(BulkPutRulesResponseResult),
+  }),
 ) as unknown as Schema.Codec<CreateRuleResponse>;
 
 export type CreateRuleError = DefaultErrors;
@@ -2792,7 +2764,7 @@ export const createRule: API.PaginatedOperationMethod<
   CreateRuleResponse,
   CreateRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: CreateRuleRequest,
   output: CreateRuleResponse,
   errors: [],
@@ -2827,19 +2799,18 @@ export interface UpdateRuleRequest {
   };
 }
 
-export const UpdateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      action: Action,
-      filter: FirewallFilterParam,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/firewall/rules/{ruleId}",
-      }),
-    ),
+export const UpdateRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    action: Action,
+    filter: FirewallFilterParam,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/firewall/rules/{ruleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateRuleRequest>;
 
 export interface UpdateRuleResponse {
@@ -2888,57 +2859,56 @@ export interface UpdateRuleResponse {
   ref?: string | null;
 }
 
-export const UpdateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(
+export const UpdateRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(
+      Schema.Union([
         Schema.Union([
+          Schema.Literals([
+            "block",
+            "challenge",
+            "js_challenge",
+            "managed_challenge",
+            "allow",
+            "log",
+            "bypass",
+          ]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    filter: Schema.optional(
+      Schema.Union([
+        Schema.Union([DeletedFilter, FirewallFilter]),
+        Schema.Null,
+      ]),
+    ),
+    paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    products: Schema.optional(
+      Schema.Union([
+        Schema.Array(
           Schema.Union([
             Schema.Literals([
-              "block",
-              "challenge",
-              "js_challenge",
-              "managed_challenge",
-              "allow",
-              "log",
-              "bypass",
+              "zoneLockdown",
+              "uaBlock",
+              "bic",
+              "hot",
+              "securityLevel",
+              "rateLimit",
+              "waf",
             ]),
             Schema.String,
           ]),
-          Schema.Null,
-        ]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      filter: Schema.optional(
-        Schema.Union([
-          Schema.Union([DeletedFilter, FirewallFilter]),
-          Schema.Null,
-        ]),
-      ),
-      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      products: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Literals([
-                "zoneLockdown",
-                "uaBlock",
-                "bic",
-                "hot",
-                "securityLevel",
-                "rateLimit",
-                "waf",
-              ]),
-              Schema.String,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateRuleResponse>;
 
 export type UpdateRuleError = DefaultErrors;
@@ -2948,7 +2918,7 @@ export const updateRule: API.OperationMethod<
   UpdateRuleResponse,
   UpdateRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRuleRequest,
   output: UpdateRuleResponse,
   errors: [],
@@ -2960,7 +2930,7 @@ export interface PatchRuleRequest {
   zoneId: string;
 }
 
-export const PatchRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PatchRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -3014,11 +2984,10 @@ export interface PatchRuleResponse {
   }[];
 }
 
-export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(BulkPutRulesResponseResult),
-    }),
+export const PatchRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(BulkPutRulesResponseResult),
+  }),
 ) as unknown as Schema.Codec<PatchRuleResponse>;
 
 export type PatchRuleError = DefaultErrors;
@@ -3028,7 +2997,7 @@ export const patchRule: API.PaginatedOperationMethod<
   PatchRuleResponse,
   PatchRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PatchRuleRequest,
   output: PatchRuleResponse,
   errors: [],
@@ -3044,17 +3013,16 @@ export interface DeleteRuleRequest {
   zoneId: string;
 }
 
-export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/zones/{zone_id}/firewall/rules/{ruleId}",
-      }),
-    ),
+export const DeleteRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/firewall/rules/{ruleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteRuleRequest>;
 
 export interface DeleteRuleResponse {
@@ -3103,57 +3071,56 @@ export interface DeleteRuleResponse {
   ref?: string | null;
 }
 
-export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(
+export const DeleteRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(
+      Schema.Union([
         Schema.Union([
+          Schema.Literals([
+            "block",
+            "challenge",
+            "js_challenge",
+            "managed_challenge",
+            "allow",
+            "log",
+            "bypass",
+          ]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    filter: Schema.optional(
+      Schema.Union([
+        Schema.Union([DeletedFilter, FirewallFilter]),
+        Schema.Null,
+      ]),
+    ),
+    paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    products: Schema.optional(
+      Schema.Union([
+        Schema.Array(
           Schema.Union([
             Schema.Literals([
-              "block",
-              "challenge",
-              "js_challenge",
-              "managed_challenge",
-              "allow",
-              "log",
-              "bypass",
+              "zoneLockdown",
+              "uaBlock",
+              "bic",
+              "hot",
+              "securityLevel",
+              "rateLimit",
+              "waf",
             ]),
             Schema.String,
           ]),
-          Schema.Null,
-        ]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      filter: Schema.optional(
-        Schema.Union([
-          Schema.Union([DeletedFilter, FirewallFilter]),
-          Schema.Null,
-        ]),
-      ),
-      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      products: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              Schema.Literals([
-                "zoneLockdown",
-                "uaBlock",
-                "bic",
-                "hot",
-                "securityLevel",
-                "rateLimit",
-                "waf",
-              ]),
-              Schema.String,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+        ),
+        Schema.Null,
+      ]),
+    ),
+    ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteRuleResponse>;
 
 export type DeleteRuleError = DefaultErrors;
@@ -3163,7 +3130,7 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRuleRequest,
   output: DeleteRuleResponse,
   errors: [],
@@ -3176,14 +3143,11 @@ export interface BulkPatchRulesRequest {
   body: unknown;
 }
 
-export const BulkPatchRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      body: Schema.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({ method: "PATCH", path: "/zones/{zone_id}/firewall/rules" }),
-    ),
+export const BulkPatchRulesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    body: Schema.Unknown.pipe(T.HttpBody()),
+  }).pipe(T.Http({ method: "PATCH", path: "/zones/{zone_id}/firewall/rules" })),
 ) as unknown as Schema.Codec<BulkPatchRulesRequest>;
 
 export interface BulkPatchRulesResponse {
@@ -3229,7 +3193,7 @@ export interface BulkPatchRulesResponse {
 }
 
 export const BulkPatchRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(BulkPutRulesResponseResult),
     }),
@@ -3242,7 +3206,7 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
   BulkPatchRulesResponse,
   BulkPatchRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkPatchRulesRequest,
   output: BulkPatchRulesResponse,
   errors: [],
@@ -3258,7 +3222,7 @@ export interface BulkDeleteRulesRequest {
 }
 
 export const BulkDeleteRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -3309,7 +3273,7 @@ export interface BulkDeleteRulesResponse {
 }
 
 export const BulkDeleteRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(BulkPutRulesResponseResult),
     }),
@@ -3322,7 +3286,7 @@ export const bulkDeleteRules: API.PaginatedOperationMethod<
   BulkDeleteRulesResponse,
   BulkDeleteRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: BulkDeleteRulesRequest,
   output: BulkDeleteRulesResponse,
   errors: [],
@@ -3342,7 +3306,7 @@ export interface GetUaRuleRequest {
   zoneId: string;
 }
 
-export const GetUaRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetUaRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     uaRuleId: Schema.String.pipe(T.HttpPath("uaRuleId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -3373,30 +3337,27 @@ export interface GetUaRuleResponse {
   paused?: boolean | null;
 }
 
-export const GetUaRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      configuration: Schema.optional(
-        Schema.Union([Configuration, Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      mode: Schema.optional(
+export const GetUaRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    configuration: Schema.optional(Schema.Union([Configuration, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    mode: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "block",
-              "challenge",
-              "js_challenge",
-              "managed_challenge",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "block",
+            "challenge",
+            "js_challenge",
+            "managed_challenge",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetUaRuleResponse>;
 
 export type GetUaRuleError = DefaultErrors | UaRuleNotFound | Forbidden;
@@ -3406,7 +3367,7 @@ export const getUaRule: API.OperationMethod<
   GetUaRuleResponse,
   GetUaRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUaRuleRequest,
   output: GetUaRuleResponse,
   errors: [UaRuleNotFound, Forbidden],
@@ -3425,20 +3386,19 @@ export interface ListUaRulesRequest {
   userAgent?: string;
 }
 
-export const ListUaRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      description: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("description"),
-      ),
-      paused: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("paused")),
-      userAgent: Schema.optional(Schema.String).pipe(T.HttpQuery("user_agent")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/zones/{zone_id}/firewall/ua_rules" }),
+export const ListUaRulesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    description: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("description"),
     ),
+    paused: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("paused")),
+    userAgent: Schema.optional(Schema.String).pipe(T.HttpQuery("user_agent")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/firewall/ua_rules" }),
+  ),
 ) as unknown as Schema.Codec<ListUaRulesRequest>;
 
 export interface ListUaRulesResponse {
@@ -3463,14 +3423,13 @@ export interface ListUaRulesResponse {
   } | null;
 }
 
-export const ListUaRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListUaRulesResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListAccessRulesResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListUaRulesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListUaRulesResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListAccessRulesResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListUaRulesResponse>;
 
 export type ListUaRulesError = DefaultErrors | Forbidden;
@@ -3480,7 +3439,7 @@ export const listUaRules: API.PaginatedOperationMethod<
   ListUaRulesResponse,
   ListUaRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUaRulesRequest,
   output: ListUaRulesResponse,
   errors: [Forbidden],
@@ -3512,26 +3471,25 @@ export interface CreateUaRuleRequest {
   paused?: boolean;
 }
 
-export const CreateUaRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      configuration: Configuration2,
-      mode: Schema.Union([
-        Schema.Literals([
-          "block",
-          "challenge",
-          "whitelist",
-          "js_challenge",
-          "managed_challenge",
-        ]),
-        Schema.String,
+export const CreateUaRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    configuration: Configuration2,
+    mode: Schema.Union([
+      Schema.Literals([
+        "block",
+        "challenge",
+        "whitelist",
+        "js_challenge",
+        "managed_challenge",
       ]),
-      description: Schema.optional(Schema.String),
-      paused: Schema.optional(Schema.Boolean),
-    }).pipe(
-      T.Http({ method: "POST", path: "/zones/{zone_id}/firewall/ua_rules" }),
-    ),
+      Schema.String,
+    ]),
+    description: Schema.optional(Schema.String),
+    paused: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({ method: "POST", path: "/zones/{zone_id}/firewall/ua_rules" }),
+  ),
 ) as unknown as Schema.Codec<CreateUaRuleRequest>;
 
 export interface CreateUaRuleResponse {
@@ -3553,30 +3511,27 @@ export interface CreateUaRuleResponse {
   paused?: boolean | null;
 }
 
-export const CreateUaRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      configuration: Schema.optional(
-        Schema.Union([Configuration, Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      mode: Schema.optional(
+export const CreateUaRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    configuration: Schema.optional(Schema.Union([Configuration, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    mode: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "block",
-              "challenge",
-              "js_challenge",
-              "managed_challenge",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "block",
+            "challenge",
+            "js_challenge",
+            "managed_challenge",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateUaRuleResponse>;
 
 export type CreateUaRuleError = DefaultErrors | DuplicateUaRule | Forbidden;
@@ -3586,7 +3541,7 @@ export const createUaRule: API.OperationMethod<
   CreateUaRuleResponse,
   CreateUaRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUaRuleRequest,
   output: CreateUaRuleResponse,
   errors: [DuplicateUaRule, Forbidden],
@@ -3618,37 +3573,36 @@ export interface UpdateUaRuleRequest {
   paused?: boolean;
 }
 
-export const UpdateUaRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      uaRuleId: Schema.String.pipe(T.HttpPath("uaRuleId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      configuration: Schema.Union([
-        AccessRuleIPConfiguration,
-        Ipv6Configuration,
-        AccessRuleCIDRConfiguration,
-        Asnconfiguration,
-        CountryConfiguration,
-        Configuration2,
+export const UpdateUaRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    uaRuleId: Schema.String.pipe(T.HttpPath("uaRuleId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    configuration: Schema.Union([
+      AccessRuleIPConfiguration,
+      Ipv6Configuration,
+      AccessRuleCIDRConfiguration,
+      Asnconfiguration,
+      CountryConfiguration,
+      Configuration2,
+    ]),
+    mode: Schema.Union([
+      Schema.Literals([
+        "block",
+        "challenge",
+        "whitelist",
+        "js_challenge",
+        "managed_challenge",
       ]),
-      mode: Schema.Union([
-        Schema.Literals([
-          "block",
-          "challenge",
-          "whitelist",
-          "js_challenge",
-          "managed_challenge",
-        ]),
-        Schema.String,
-      ]),
-      description: Schema.optional(Schema.String),
-      paused: Schema.optional(Schema.Boolean),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/firewall/ua_rules/{uaRuleId}",
-      }),
-    ),
+      Schema.String,
+    ]),
+    description: Schema.optional(Schema.String),
+    paused: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/firewall/ua_rules/{uaRuleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateUaRuleRequest>;
 
 export interface UpdateUaRuleResponse {
@@ -3670,30 +3624,27 @@ export interface UpdateUaRuleResponse {
   paused?: boolean | null;
 }
 
-export const UpdateUaRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      configuration: Schema.optional(
-        Schema.Union([Configuration, Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      mode: Schema.optional(
+export const UpdateUaRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    configuration: Schema.optional(Schema.Union([Configuration, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    mode: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "block",
-              "challenge",
-              "js_challenge",
-              "managed_challenge",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "block",
+            "challenge",
+            "js_challenge",
+            "managed_challenge",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateUaRuleResponse>;
 
 export type UpdateUaRuleError =
@@ -3707,7 +3658,7 @@ export const updateUaRule: API.OperationMethod<
   UpdateUaRuleResponse,
   UpdateUaRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUaRuleRequest,
   output: UpdateUaRuleResponse,
   errors: [UaRuleNotFound, DuplicateUaRule, Forbidden],
@@ -3719,17 +3670,16 @@ export interface DeleteUaRuleRequest {
   zoneId: string;
 }
 
-export const DeleteUaRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      uaRuleId: Schema.String.pipe(T.HttpPath("uaRuleId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/zones/{zone_id}/firewall/ua_rules/{uaRuleId}",
-      }),
-    ),
+export const DeleteUaRuleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    uaRuleId: Schema.String.pipe(T.HttpPath("uaRuleId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/firewall/ua_rules/{uaRuleId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteUaRuleRequest>;
 
 export interface DeleteUaRuleResponse {
@@ -3751,30 +3701,27 @@ export interface DeleteUaRuleResponse {
   paused?: boolean | null;
 }
 
-export const DeleteUaRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      configuration: Schema.optional(
-        Schema.Union([Configuration, Schema.Null]),
-      ),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      mode: Schema.optional(
+export const DeleteUaRuleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    configuration: Schema.optional(Schema.Union([Configuration, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    mode: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "block",
-              "challenge",
-              "js_challenge",
-              "managed_challenge",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "block",
+            "challenge",
+            "js_challenge",
+            "managed_challenge",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteUaRuleResponse>;
 
 export type DeleteUaRuleError = DefaultErrors | UaRuleNotFound | Forbidden;
@@ -3784,7 +3731,7 @@ export const deleteUaRule: API.OperationMethod<
   DeleteUaRuleResponse,
   DeleteUaRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUaRuleRequest,
   output: DeleteUaRuleResponse,
   errors: [UaRuleNotFound, Forbidden],
@@ -3800,17 +3747,16 @@ export interface GetWafOverrideRequest {
   zoneId: string;
 }
 
-export const GetWafOverrideRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      overridesId: Schema.String.pipe(T.HttpPath("overridesId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/firewall/waf/overrides/{overridesId}",
-      }),
-    ),
+export const GetWafOverrideRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    overridesId: Schema.String.pipe(T.HttpPath("overridesId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/firewall/waf/overrides/{overridesId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetWafOverrideRequest>;
 
 export interface GetWafOverrideResponse {
@@ -3874,7 +3820,7 @@ export interface GetWafOverrideResponse {
 }
 
 export const GetWafOverrideResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3921,7 +3867,7 @@ export const getWafOverride: API.OperationMethod<
   GetWafOverrideResponse,
   GetWafOverrideError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWafOverrideRequest,
   output: GetWafOverrideResponse,
   errors: [],
@@ -3935,7 +3881,7 @@ export interface ListWafOverridesRequest {
 }
 
 export const ListWafOverridesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -4009,7 +3955,7 @@ export interface ListWafOverridesResponse {
 }
 
 export const ListWafOverridesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListWafOverridesResponseResult),
       resultInfo: Schema.optional(
@@ -4025,7 +3971,7 @@ export const listWafOverrides: API.PaginatedOperationMethod<
   ListWafOverridesResponse,
   ListWafOverridesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWafOverridesRequest,
   output: ListWafOverridesResponse,
   errors: [],
@@ -4046,7 +3992,7 @@ export interface CreateWafOverrideRequest {
 }
 
 export const CreateWafOverrideRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       urls: Schema.Array(Schema.String),
@@ -4119,7 +4065,7 @@ export interface CreateWafOverrideResponse {
 }
 
 export const CreateWafOverrideResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -4166,7 +4112,7 @@ export const createWafOverride: API.OperationMethod<
   CreateWafOverrideResponse,
   CreateWafOverrideError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateWafOverrideRequest,
   output: CreateWafOverrideResponse,
   errors: [],
@@ -4223,7 +4169,7 @@ export interface UpdateWafOverrideRequest {
 }
 
 export const UpdateWafOverrideRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       overridesId: Schema.String.pipe(T.HttpPath("overridesId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -4306,7 +4252,7 @@ export interface UpdateWafOverrideResponse {
 }
 
 export const UpdateWafOverrideResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -4353,7 +4299,7 @@ export const updateWafOverride: API.OperationMethod<
   UpdateWafOverrideResponse,
   UpdateWafOverrideError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateWafOverrideRequest,
   output: UpdateWafOverrideResponse,
   errors: [],
@@ -4366,7 +4312,7 @@ export interface DeleteWafOverrideRequest {
 }
 
 export const DeleteWafOverrideRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       overridesId: Schema.String.pipe(T.HttpPath("overridesId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -4384,7 +4330,7 @@ export interface DeleteWafOverrideResponse {
 }
 
 export const DeleteWafOverrideResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -4397,7 +4343,7 @@ export const deleteWafOverride: API.OperationMethod<
   DeleteWafOverrideResponse,
   DeleteWafOverrideError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWafOverrideRequest,
   output: DeleteWafOverrideResponse,
   errors: [],
@@ -4413,17 +4359,16 @@ export interface GetWafPackageRequest {
   zoneId: string;
 }
 
-export const GetWafPackageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      packageId: Schema.String.pipe(T.HttpPath("packageId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/firewall/waf/packages/{packageId}",
-      }),
-    ),
+export const GetWafPackageRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    packageId: Schema.String.pipe(T.HttpPath("packageId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/firewall/waf/packages/{packageId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetWafPackageRequest>;
 
 export type GetWafPackageResponse =
@@ -4445,8 +4390,8 @@ export type GetWafPackageResponse =
     }
   | { result?: unknown | null };
 
-export const GetWafPackageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Union([FirewallAPIResponseSingle, Result]),
+export const GetWafPackageResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([FirewallAPIResponseSingle, Result]),
 ) as unknown as Schema.Codec<GetWafPackageResponse>;
 
 export type GetWafPackageError = DefaultErrors;
@@ -4456,7 +4401,7 @@ export const getWafPackage: API.OperationMethod<
   GetWafPackageResponse,
   GetWafPackageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWafPackageRequest,
   output: GetWafPackageResponse,
   errors: [],
@@ -4478,7 +4423,7 @@ export interface ListWafPackagesRequest {
 }
 
 export const ListWafPackagesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -4507,7 +4452,7 @@ export interface ListWafPackagesResponse {
 }
 
 export const ListWafPackagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Schema.Unknown),
       resultInfo: Schema.optional(
@@ -4523,7 +4468,7 @@ export const listWafPackages: API.PaginatedOperationMethod<
   ListWafPackagesResponse,
   ListWafPackagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWafPackagesRequest,
   output: ListWafPackagesResponse,
   errors: [],
@@ -4548,7 +4493,7 @@ export interface GetWafPackageGroupRequest {
 }
 
 export const GetWafPackageGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       packageId: Schema.String.pipe(T.HttpPath("packageId")),
       groupId: Schema.String.pipe(T.HttpPath("groupId")),
@@ -4564,7 +4509,7 @@ export const GetWafPackageGroupRequest =
 export type GetWafPackageGroupResponse = unknown;
 
 export const GetWafPackageGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetWafPackageGroupResponse>;
 
@@ -4575,7 +4520,7 @@ export const getWafPackageGroup: API.OperationMethod<
   GetWafPackageGroupResponse,
   GetWafPackageGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWafPackageGroupRequest,
   output: GetWafPackageGroupResponse,
   errors: [],
@@ -4602,7 +4547,7 @@ export interface ListWafPackageGroupsRequest {
 }
 
 export const ListWafPackageGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       packageId: Schema.String.pipe(T.HttpPath("packageId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -4652,7 +4597,7 @@ export interface ListWafPackageGroupsResponse {
 }
 
 export const ListWafPackageGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListWafPackageGroupsResponseResult),
       resultInfo: Schema.optional(
@@ -4668,7 +4613,7 @@ export const listWafPackageGroups: API.PaginatedOperationMethod<
   ListWafPackageGroupsResponse,
   ListWafPackageGroupsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWafPackageGroupsRequest,
   output: ListWafPackageGroupsResponse,
   errors: [],
@@ -4691,7 +4636,7 @@ export interface PatchWafPackageGroupRequest {
 }
 
 export const PatchWafPackageGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       packageId: Schema.String.pipe(T.HttpPath("packageId")),
       groupId: Schema.String.pipe(T.HttpPath("groupId")),
@@ -4710,7 +4655,7 @@ export const PatchWafPackageGroupRequest =
 export type PatchWafPackageGroupResponse = unknown;
 
 export const PatchWafPackageGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<PatchWafPackageGroupResponse>;
 
@@ -4721,7 +4666,7 @@ export const patchWafPackageGroup: API.OperationMethod<
   PatchWafPackageGroupResponse,
   PatchWafPackageGroupError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchWafPackageGroupRequest,
   output: PatchWafPackageGroupResponse,
   errors: [],
@@ -4739,7 +4684,7 @@ export interface GetWafPackageRuleRequest {
 }
 
 export const GetWafPackageRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       packageId: Schema.String.pipe(T.HttpPath("packageId")),
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
@@ -4755,7 +4700,7 @@ export const GetWafPackageRuleRequest =
 export type GetWafPackageRuleResponse = unknown;
 
 export const GetWafPackageRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetWafPackageRuleResponse>;
 
@@ -4766,7 +4711,7 @@ export const getWafPackageRule: API.OperationMethod<
   GetWafPackageRuleResponse,
   GetWafPackageRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWafPackageRuleRequest,
   output: GetWafPackageRuleResponse,
   errors: [],
@@ -4795,7 +4740,7 @@ export interface ListWafPackageRulesRequest {
 }
 
 export const ListWafPackageRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       packageId: Schema.String.pipe(T.HttpPath("packageId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -4881,7 +4826,7 @@ export interface ListWafPackageRulesResponse {
 }
 
 export const ListWafPackageRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -4902,7 +4847,7 @@ export const listWafPackageRules: API.PaginatedOperationMethod<
   ListWafPackageRulesResponse,
   ListWafPackageRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWafPackageRulesRequest,
   output: ListWafPackageRulesResponse,
   errors: [],
@@ -4933,7 +4878,7 @@ export interface PatchWafPackageRuleRequest {
 }
 
 export const PatchWafPackageRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       packageId: Schema.String.pipe(T.HttpPath("packageId")),
       ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
@@ -5000,7 +4945,7 @@ export type PatchWafPackageRuleResponse =
     };
 
 export const PatchWafPackageRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Union([
       WafmanagedRulesTraditionalDenyRule,
       WafmanagedRulesAnomalyRule,
@@ -5014,7 +4959,7 @@ export const patchWafPackageRule: API.OperationMethod<
   PatchWafPackageRuleResponse,
   PatchWafPackageRuleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchWafPackageRuleRequest,
   output: PatchWafPackageRuleResponse,
   errors: [],

@@ -30,7 +30,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
 }
 
 export const GoogleFactcheckingFactchecktoolsV1alpha1Publisher: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1Publisher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     site: Schema.optional(Schema.String),
   }).annotate({
@@ -53,7 +53,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
 }
 
 export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     textualRating: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
@@ -78,7 +78,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1Claim {
 }
 
 export const GoogleFactcheckingFactchecktoolsV1alpha1Claim: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1Claim> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     claimant: Schema.optional(Schema.String),
     claimReview: Schema.optional(
       Schema.Array(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview),
@@ -93,7 +93,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSe
 }
 
 export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     claim: Schema.optional(GoogleFactcheckingFactchecktoolsV1alpha1Claim),
   }).annotate({
     identifier:
@@ -108,7 +108,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSe
 }
 
 export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     results: Schema.optional(
       Schema.Array(
@@ -128,7 +128,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchR
 }
 
 export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     claims: Schema.optional(
       Schema.Array(GoogleFactcheckingFactchecktoolsV1alpha1Claim),
@@ -146,7 +146,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
 }
 
 export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     imageUrl: Schema.optional(Schema.String),
   }).annotate({
@@ -156,7 +156,7 @@ export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor: Schema.C
 export interface GoogleProtobufEmpty {}
 
 export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
 
@@ -176,7 +176,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
 }
 
 export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textualRating: Schema.optional(Schema.String),
     ratingValue: Schema.optional(Schema.Number),
     worstRating: Schema.optional(Schema.Number),
@@ -199,7 +199,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
 }
 
 export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     sameAs: Schema.optional(Schema.String),
     jobTitle: Schema.optional(Schema.String),
@@ -228,7 +228,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
 }
 
 export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     claimReviewed: Schema.optional(Schema.String),
     claimDate: Schema.optional(Schema.String),
     claimFirstAppearance: Schema.optional(Schema.String),
@@ -261,7 +261,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
 }
 
 export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageUrl: Schema.optional(Schema.String),
     claimReviewMarkups: Schema.optional(
       Schema.Array(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup),
@@ -284,7 +284,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPa
 }
 
 export const GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse: Schema.Codec<GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     claimReviewMarkupPages: Schema.optional(
       Schema.Array(
         GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage,
@@ -367,7 +367,7 @@ export interface SearchClaimsRequest {
   offset?: number;
 }
 
-export const SearchClaimsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SearchClaimsRequest = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   languageCode: Schema.optional(Schema.String).pipe(
     T.HttpQuery("languageCode"),
@@ -387,7 +387,7 @@ export const SearchClaimsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SearchClaimsResponse =
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse;
 export const SearchClaimsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse;
+  /*@__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse;
 
 export type SearchClaimsError = DefaultErrors | NotFound | Forbidden;
 
@@ -397,7 +397,7 @@ export const searchClaims: API.PaginatedOperationMethod<
   SearchClaimsResponse,
   SearchClaimsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchClaimsRequest,
   output: SearchClaimsResponse,
   errors: [NotFound, Forbidden],
@@ -421,7 +421,7 @@ export interface ImageSearchClaimsRequest {
 }
 
 export const ImageSearchClaimsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageUri: Schema.optional(Schema.String).pipe(T.HttpQuery("imageUri")),
     languageCode: Schema.optional(Schema.String).pipe(
       T.HttpQuery("languageCode"),
@@ -437,7 +437,7 @@ export const ImageSearchClaimsRequest =
 export type ImageSearchClaimsResponse =
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse;
 export const ImageSearchClaimsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse;
+  /*@__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse;
 
 export type ImageSearchClaimsError = DefaultErrors | NotFound | Forbidden;
 
@@ -447,7 +447,7 @@ export const imageSearchClaims: API.PaginatedOperationMethod<
   ImageSearchClaimsResponse,
   ImageSearchClaimsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ImageSearchClaimsRequest,
   output: ImageSearchClaimsResponse,
   errors: [NotFound, Forbidden],
@@ -462,7 +462,7 @@ export interface CreatePagesRequest {
   body?: GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 }
 
-export const CreatePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePagesRequest = /*@__PURE__*/ Schema.Struct({
   body: Schema.optional(
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage,
   ).pipe(T.HttpBody()),
@@ -474,7 +474,7 @@ export const CreatePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreatePagesResponse =
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 export const CreatePagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
+  /*@__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 
 export type CreatePagesError =
   | DefaultErrors
@@ -489,7 +489,7 @@ export const createPages: API.OperationMethod<
   CreatePagesResponse,
   CreatePagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePagesRequest,
   output: CreatePagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -500,7 +500,7 @@ export interface GetPagesRequest {
   name: string;
 }
 
-export const GetPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPagesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1alpha1/{+name}" }),
@@ -510,7 +510,7 @@ export const GetPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPagesResponse =
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 export const GetPagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
+  /*@__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 
 export type GetPagesError = DefaultErrors | NotFound | Forbidden;
 
@@ -520,7 +520,7 @@ export const getPages: API.OperationMethod<
   GetPagesResponse,
   GetPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPagesRequest,
   output: GetPagesResponse,
   errors: [NotFound, Forbidden],
@@ -539,7 +539,7 @@ export interface ListPagesRequest {
   pageToken?: string;
 }
 
-export const ListPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPagesRequest = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   organization: Schema.optional(Schema.String).pipe(
     T.HttpQuery("organization"),
@@ -555,7 +555,7 @@ export const ListPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListPagesResponse =
   GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse;
 export const ListPagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse;
+  /*@__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse;
 
 export type ListPagesError = DefaultErrors | NotFound | Forbidden;
 
@@ -565,7 +565,7 @@ export const listPages: API.PaginatedOperationMethod<
   ListPagesResponse,
   ListPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPagesRequest,
   output: ListPagesResponse,
   errors: [NotFound, Forbidden],
@@ -582,7 +582,7 @@ export interface UpdatePagesRequest {
   body?: GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 }
 
-export const UpdatePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePagesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage,
@@ -595,7 +595,7 @@ export const UpdatePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdatePagesResponse =
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 export const UpdatePagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
+  /*@__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 
 export type UpdatePagesError =
   | DefaultErrors
@@ -610,7 +610,7 @@ export const updatePages: API.OperationMethod<
   UpdatePagesResponse,
   UpdatePagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePagesRequest,
   output: UpdatePagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -621,7 +621,7 @@ export interface DeletePagesRequest {
   name: string;
 }
 
-export const DeletePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePagesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "DELETE", path: "v1alpha1/{+name}" }),
@@ -629,8 +629,7 @@ export const DeletePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DeletePagesRequest>;
 
 export type DeletePagesResponse = GoogleProtobufEmpty;
-export const DeletePagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+export const DeletePagesResponse = /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeletePagesError =
   | DefaultErrors
@@ -645,7 +644,7 @@ export const deletePages: API.OperationMethod<
   DeletePagesResponse,
   DeletePagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePagesRequest,
   output: DeletePagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

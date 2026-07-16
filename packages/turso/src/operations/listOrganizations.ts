@@ -4,9 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface ListOrganizationsInput {}
-export const ListOrganizationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ListOrganizationsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v1/organizations" }),
 ) as unknown as Schema.Codec<ListOrganizationsInput>;
 
@@ -23,7 +21,7 @@ export type ListOrganizationsOutput = {
   plan_timeline?: string;
   platform?: string;
 }[];
-export const ListOrganizationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ListOrganizationsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     name: Schema.optional(Schema.String),
     slug: Schema.optional(Schema.String),
@@ -44,7 +42,7 @@ export const ListOrganizationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  *
  * Returns a list of organizations the authenticated user owns or is a member of.
  */
-export const listOrganizations = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listOrganizations = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListOrganizationsInput,
   outputSchema: ListOrganizationsOutput,
 }));

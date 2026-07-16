@@ -12,7 +12,7 @@ export interface GetProjectBranchRolePasswordInput {
   role_name: string;
 }
 export const GetProjectBranchRolePasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     role_name: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export interface GetProjectBranchRolePasswordOutput {
   password: Redacted.Redacted<string>;
 }
 export const GetProjectBranchRolePasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     password: SensitiveOutputString,
   }) as unknown as Schema.Codec<GetProjectBranchRolePasswordOutput>;
 
@@ -44,7 +44,7 @@ export const GetProjectBranchRolePasswordOutput =
  * @param role_name - The role name
  */
 export const getProjectBranchRolePassword =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetProjectBranchRolePasswordInput,
     outputSchema: GetProjectBranchRolePasswordOutput,
     errors: [NotFound] as const,

@@ -13,7 +13,7 @@ export interface ListGroupProcessesInput {
   pretty?: boolean;
 }
 export const ListGroupProcessesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     includeCount: Schema.optional(Schema.Boolean),
@@ -27,7 +27,7 @@ export const ListGroupProcessesInput =
 // Output Schema
 export type ListGroupProcessesOutput = void;
 export const ListGroupProcessesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupProcessesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupProcessesOutput>;
 
 // The operation
 /**
@@ -44,7 +44,7 @@ export const ListGroupProcessesOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupProcesses = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupProcesses = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupProcessesInput,
   outputSchema: ListGroupProcessesOutput,
   errors: [Forbidden, NotFound] as const,

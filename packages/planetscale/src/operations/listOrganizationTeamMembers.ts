@@ -18,7 +18,7 @@ export interface ListOrganizationTeamMembersInput {
   per_page?: number;
 }
 export const ListOrganizationTeamMembersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     team: Schema.String.pipe(T.PathParam()),
     page: Schema.optional(Schema.Number),
@@ -108,7 +108,7 @@ export interface ListOrganizationTeamMembersOutput {
   }>;
 }
 export const ListOrganizationTeamMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -213,7 +213,7 @@ export const ListOrganizationTeamMembersOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listOrganizationTeamMembers =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListOrganizationTeamMembersInput,
     outputSchema: ListOrganizationTeamMembersOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

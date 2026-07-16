@@ -15,7 +15,7 @@ export interface ApplicationsControllerUpdateInput {
   }> | null;
 }
 export const ApplicationsControllerUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -46,7 +46,7 @@ export interface ApplicationsControllerUpdateOutput {
   updated_at: string;
 }
 export const ApplicationsControllerUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     client_id: Schema.String,
@@ -66,7 +66,7 @@ export const ApplicationsControllerUpdateOutput =
  * @param id - The application ID or client ID of the Connect Application.
  */
 export const ApplicationsControllerUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApplicationsControllerUpdateInput,
     outputSchema: ApplicationsControllerUpdateOutput,
     errors: [NotFound, UnprocessableEntity] as const,

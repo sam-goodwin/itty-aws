@@ -140,7 +140,7 @@ export interface HogFlowsPartialUpdateInput {
   }[];
 }
 export const HogFlowsPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -559,7 +559,7 @@ export interface HogFlowsPartialUpdateOutput {
   }[];
 }
 export const HogFlowsPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.NullOr(Schema.String)),
     description: Schema.optional(Schema.String),
@@ -842,10 +842,8 @@ export const HogFlowsPartialUpdateOutput =
  * @param id - A UUID string identifying this hog flow.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const hogFlowsPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HogFlowsPartialUpdateInput,
-    outputSchema: HogFlowsPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const hogFlowsPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HogFlowsPartialUpdateInput,
+  outputSchema: HogFlowsPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

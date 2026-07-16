@@ -8,7 +8,7 @@ export interface PostBillingMetersIdDeactivateInput {
   expand?: string[];
 }
 export const PostBillingMetersIdDeactivateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -36,7 +36,7 @@ export interface PostBillingMetersIdDeactivateOutput {
   value_settings: { event_payload_key: string };
 }
 export const PostBillingMetersIdDeactivateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     customer_mapping: Schema.Struct({
       event_payload_key: Schema.String,
@@ -68,7 +68,7 @@ export const PostBillingMetersIdDeactivateOutput =
  * <p>When a meter is deactivated, no more meter events will be accepted for this meter. You can’t attach a deactivated meter to a price.</p>
  */
 export const PostBillingMetersIdDeactivate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostBillingMetersIdDeactivateInput,
     outputSchema: PostBillingMetersIdDeactivateOutput,
   }));

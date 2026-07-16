@@ -10,7 +10,7 @@ export interface V1GetProjectFunctionCombinedStatsInput {
   function_id: string;
 }
 export const V1GetProjectFunctionCombinedStatsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     interval: Schema.Literals(["15min", "1hr", "3hr", "1day"]),
     function_id: Schema.String,
@@ -40,7 +40,7 @@ export interface V1GetProjectFunctionCombinedStatsOutput {
       };
 }
 export const V1GetProjectFunctionCombinedStatsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.Array(Schema.Unknown)),
     error: Schema.optional(
       Schema.Union([
@@ -70,7 +70,7 @@ export const V1GetProjectFunctionCombinedStatsOutput =
  * @param ref - Project ref
  */
 export const v1GetProjectFunctionCombinedStats =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1GetProjectFunctionCombinedStatsInput,
     outputSchema: V1GetProjectFunctionCombinedStatsOutput,
     errors: [BadRequest, Forbidden] as const,

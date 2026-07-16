@@ -660,7 +660,7 @@ export interface ExternalDataSourcesPreviewResourceCreateInput {
   limit?: number;
 }
 export const ExternalDataSourcesPreviewResourceCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     source_type: Schema.Literals([
       "Ashby",
@@ -1331,7 +1331,7 @@ export interface ExternalDataSourcesPreviewResourceCreateOutput {
   error: string | null;
 }
 export const ExternalDataSourcesPreviewResourceCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rows: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     row_count: Schema.Number,
     columns: Schema.Array(
@@ -1355,7 +1355,7 @@ export const ExternalDataSourcesPreviewResourceCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const externalDataSourcesPreviewResourceCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesPreviewResourceCreateInput,
     outputSchema: ExternalDataSourcesPreviewResourceCreateOutput,
   }));

@@ -7,7 +7,7 @@ export interface DataWarehouseCompletedActivityRetrieveInput {
   project_id: string;
 }
 export const DataWarehouseCompletedActivityRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -19,7 +19,7 @@ export const DataWarehouseCompletedActivityRetrieveInput =
 // Output Schema
 export type DataWarehouseCompletedActivityRetrieveOutput = void;
 export const DataWarehouseCompletedActivityRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DataWarehouseCompletedActivityRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DataWarehouseCompletedActivityRetrieveOutput>;
 
 // The operation
 /**
@@ -29,7 +29,7 @@ export const DataWarehouseCompletedActivityRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const dataWarehouseCompletedActivityRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataWarehouseCompletedActivityRetrieveInput,
     outputSchema: DataWarehouseCompletedActivityRetrieveOutput,
   }));

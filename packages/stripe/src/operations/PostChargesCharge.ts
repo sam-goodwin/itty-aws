@@ -32,43 +32,41 @@ export interface PostChargesChargeInput {
   };
   transfer_group?: string;
 }
-export const PostChargesChargeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    charge: Schema.String.pipe(T.PathParam()),
-    customer: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    expand: Schema.optional(Schema.Array(Schema.String)),
-    fraud_details: Schema.optional(
-      Schema.Struct({
-        user_report: Schema.Literals(["", "fraudulent", "safe"]),
+export const PostChargesChargeInput = /*@__PURE__*/ Schema.Struct({
+  charge: Schema.String.pipe(T.PathParam()),
+  customer: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  expand: Schema.optional(Schema.Array(Schema.String)),
+  fraud_details: Schema.optional(
+    Schema.Struct({
+      user_report: Schema.Literals(["", "fraudulent", "safe"]),
+    }),
+  ),
+  metadata: Schema.optional(
+    Schema.Union([
+      Schema.Record(Schema.String, Schema.String),
+      Schema.Literals([""]),
+    ]),
+  ),
+  receipt_email: Schema.optional(Schema.String),
+  shipping: Schema.optional(
+    Schema.Struct({
+      address: Schema.Struct({
+        city: Schema.optional(Schema.String),
+        country: Schema.optional(Schema.String),
+        line1: Schema.optional(Schema.String),
+        line2: Schema.optional(Schema.String),
+        postal_code: Schema.optional(Schema.String),
+        state: Schema.optional(Schema.String),
       }),
-    ),
-    metadata: Schema.optional(
-      Schema.Union([
-        Schema.Record(Schema.String, Schema.String),
-        Schema.Literals([""]),
-      ]),
-    ),
-    receipt_email: Schema.optional(Schema.String),
-    shipping: Schema.optional(
-      Schema.Struct({
-        address: Schema.Struct({
-          city: Schema.optional(Schema.String),
-          country: Schema.optional(Schema.String),
-          line1: Schema.optional(Schema.String),
-          line2: Schema.optional(Schema.String),
-          postal_code: Schema.optional(Schema.String),
-          state: Schema.optional(Schema.String),
-        }),
-        carrier: Schema.optional(Schema.String),
-        name: Schema.String,
-        phone: Schema.optional(Schema.String),
-        tracking_number: Schema.optional(Schema.String),
-      }),
-    ),
-    transfer_group: Schema.optional(Schema.String),
-  },
-).pipe(
+      carrier: Schema.optional(Schema.String),
+      name: Schema.String,
+      phone: Schema.optional(Schema.String),
+      tracking_number: Schema.optional(Schema.String),
+    }),
+  ),
+  transfer_group: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v1/charges/{charge}",
@@ -1653,7 +1651,7 @@ export interface PostChargesChargeOutput {
   transfer_group: string | null;
 }
 export const PostChargesChargeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_captured: Schema.Number,
     amount_refunded: Schema.Number,
@@ -2394,7 +2392,7 @@ export const PostChargesChargeOutput =
  *
  * <p>Updates the specified charge by setting the values of the parameters passed. Any parameters not provided will be left unchanged.</p>
  */
-export const PostChargesCharge = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostChargesCharge = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostChargesChargeInput,
   outputSchema: PostChargesChargeOutput,
 }));

@@ -9,7 +9,7 @@ export interface CreateVolumeSnapshotInput {
   volume_id: string;
 }
 export const CreateVolumeSnapshotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     volume_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const CreateVolumeSnapshotInput =
 // Output Schema
 export type CreateVolumeSnapshotOutput = void;
 export const CreateVolumeSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateVolumeSnapshotOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateVolumeSnapshotOutput>;
 
 // The operation
 /**
@@ -33,10 +33,8 @@ export const CreateVolumeSnapshotOutput =
  * @param app_name - Fly App Name
  * @param volume_id - Volume ID
  */
-export const createVolumeSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateVolumeSnapshotInput,
-    outputSchema: CreateVolumeSnapshotOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const createVolumeSnapshot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateVolumeSnapshotInput,
+  outputSchema: CreateVolumeSnapshotOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

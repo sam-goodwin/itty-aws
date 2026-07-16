@@ -9,7 +9,7 @@ export interface AgentApplicationsRevisionsSystemPromptInput {
   project_id: string;
 }
 export const AgentApplicationsRevisionsSystemPromptInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -27,7 +27,7 @@ export interface AgentApplicationsRevisionsSystemPromptOutput {
   system_prompt: string;
 }
 export const AgentApplicationsRevisionsSystemPromptOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     revision_id: Schema.String,
     framework_prompt_version: Schema.Number,
     system_prompt: Schema.String,
@@ -46,7 +46,7 @@ export const AgentApplicationsRevisionsSystemPromptOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const agentApplicationsRevisionsSystemPrompt =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsRevisionsSystemPromptInput,
     outputSchema: AgentApplicationsRevisionsSystemPromptOutput,
   }));

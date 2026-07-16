@@ -35,7 +35,7 @@ export interface TaggersCreateInput {
     provider_key_id?: string | null;
   } | null;
 }
-export const TaggersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TaggersCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
   description: Schema.optional(Schema.String),
@@ -155,7 +155,7 @@ export interface TaggersCreateOutput {
   };
   deleted?: boolean;
 }
-export const TaggersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TaggersCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   description: Schema.optional(Schema.String),
@@ -253,7 +253,7 @@ export const TaggersCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const taggersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const taggersCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TaggersCreateInput,
   outputSchema: TaggersCreateOutput,
 }));

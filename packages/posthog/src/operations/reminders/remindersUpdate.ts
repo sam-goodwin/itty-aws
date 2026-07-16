@@ -43,7 +43,7 @@ export interface RemindersUpdateInput {
   created_at: string;
   updated_at: string | null;
 }
-export const RemindersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RemindersUpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization: Schema.String,
   team: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -142,7 +142,7 @@ export interface RemindersUpdateOutput {
   created_at: string;
   updated_at: string | null;
 }
-export const RemindersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RemindersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   organization: Schema.String,
   team: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -203,7 +203,7 @@ export const RemindersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param id - A UUID string identifying this reminder.
  */
-export const remindersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const remindersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RemindersUpdateInput,
   outputSchema: RemindersUpdateOutput,
 }));

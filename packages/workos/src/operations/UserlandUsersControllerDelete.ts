@@ -5,15 +5,14 @@ import { NotFound } from "../errors.ts";
 
 // Input Schema
 export const UserlandUsersControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(T.Http({ method: "DELETE", path: "/user_management/users/{id}" }));
 export type UserlandUsersControllerDeleteInput =
   typeof UserlandUsersControllerDeleteInput.Type;
 
 // Output Schema
-export const UserlandUsersControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void;
+export const UserlandUsersControllerDeleteOutput = /*@__PURE__*/ Schema.Void;
 export type UserlandUsersControllerDeleteOutput =
   typeof UserlandUsersControllerDeleteOutput.Type;
 
@@ -26,7 +25,7 @@ export type UserlandUsersControllerDeleteOutput =
  * @param id - The unique ID of the user.
  */
 export const UserlandUsersControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerDeleteInput,
     outputSchema: UserlandUsersControllerDeleteOutput,
     errors: [NotFound] as const,

@@ -13,7 +13,7 @@ export interface GetIssuingPersonalizationDesignsInput {
   status?: "active" | "inactive" | "rejected" | "review";
 }
 export const GetIssuingPersonalizationDesignsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -147,7 +147,7 @@ export interface GetIssuingPersonalizationDesignsOutput {
   url: string;
 }
 export const GetIssuingPersonalizationDesignsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         card_logo: Schema.NullOr(
@@ -310,7 +310,7 @@ export const GetIssuingPersonalizationDesignsOutput =
  * @param status - Only return personalization designs with the given status.
  */
 export const GetIssuingPersonalizationDesigns =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetIssuingPersonalizationDesignsInput,
     outputSchema: GetIssuingPersonalizationDesignsOutput,
   }));

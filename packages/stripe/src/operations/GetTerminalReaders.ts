@@ -38,7 +38,7 @@ export interface GetTerminalReadersInput {
   status?: "offline" | "online";
 }
 export const GetTerminalReadersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     device_type: Schema.optional(
       Schema.Literals([
         "bbpos_chipper2x",
@@ -157,7 +157,7 @@ export interface GetTerminalReadersOutput {
   url: string;
 }
 export const GetTerminalReadersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         action: Schema.Unknown,
@@ -260,7 +260,7 @@ export const GetTerminalReadersOutput =
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param status - A status filter to filter readers to only offline or online readers
  */
-export const GetTerminalReaders = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetTerminalReaders = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetTerminalReadersInput,
   outputSchema: GetTerminalReadersOutput,
 }));

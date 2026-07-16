@@ -15,7 +15,7 @@ export interface PostPaymentIntentsIntentVerifyMicrodepositsInput {
   expand?: string[];
 }
 export const PostPaymentIntentsIntentVerifyMicrodepositsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     amounts: Schema.optional(Schema.Array(Schema.Number)),
     descriptor_code: Schema.optional(Schema.String),
@@ -286,7 +286,7 @@ export interface PostPaymentIntentsIntentVerifyMicrodepositsOutput {
   transfer_group: string | null;
 }
 export const PostPaymentIntentsIntentVerifyMicrodepositsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -673,7 +673,7 @@ export const PostPaymentIntentsIntentVerifyMicrodepositsOutput =
  * <p>Verifies microdeposits on a PaymentIntent object.</p>
  */
 export const PostPaymentIntentsIntentVerifyMicrodeposits =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentIntentsIntentVerifyMicrodepositsInput,
     outputSchema: PostPaymentIntentsIntentVerifyMicrodepositsOutput,
   }));

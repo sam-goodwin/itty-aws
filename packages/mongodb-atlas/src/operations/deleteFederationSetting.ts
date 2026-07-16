@@ -8,7 +8,7 @@ export interface DeleteFederationSettingInput {
   federationSettingsId: string;
 }
 export const DeleteFederationSettingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     federationSettingsId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20,7 +20,7 @@ export const DeleteFederationSettingInput =
 // Output Schema
 export type DeleteFederationSettingOutput = void;
 export const DeleteFederationSettingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteFederationSettingOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteFederationSettingOutput>;
 
 // The operation
 /**
@@ -30,10 +30,8 @@ export const DeleteFederationSettingOutput =
  *
  * @param federationSettingsId - Unique 24-hexadecimal digit string that identifies your federation.
  */
-export const deleteFederationSetting = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteFederationSettingInput,
-    outputSchema: DeleteFederationSettingOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const deleteFederationSetting = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteFederationSettingInput,
+  outputSchema: DeleteFederationSettingOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

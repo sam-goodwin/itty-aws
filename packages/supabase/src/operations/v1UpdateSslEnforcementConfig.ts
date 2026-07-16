@@ -9,7 +9,7 @@ export interface V1UpdateSslEnforcementConfigInput {
   requestedConfig: { database: boolean };
 }
 export const V1UpdateSslEnforcementConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     requestedConfig: Schema.Struct({
       database: Schema.Boolean,
@@ -24,7 +24,7 @@ export interface V1UpdateSslEnforcementConfigOutput {
   appliedSuccessfully: boolean;
 }
 export const V1UpdateSslEnforcementConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentConfig: Schema.Struct({
       database: Schema.Boolean,
     }),
@@ -38,7 +38,7 @@ export const V1UpdateSslEnforcementConfigOutput =
  * @param ref - Project ref
  */
 export const v1UpdateSslEnforcementConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1UpdateSslEnforcementConfigInput,
     outputSchema: V1UpdateSslEnforcementConfigOutput,
     errors: [BadRequest, Forbidden] as const,

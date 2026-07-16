@@ -11,7 +11,7 @@ export interface DownloadGroupDataFederationQueryLogsInput {
   startDate?: number;
 }
 export const DownloadGroupDataFederationQueryLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     endDate: Schema.optional(Schema.Number),
@@ -26,7 +26,7 @@ export const DownloadGroupDataFederationQueryLogsInput =
 // Output Schema
 export type DownloadGroupDataFederationQueryLogsOutput = void;
 export const DownloadGroupDataFederationQueryLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupDataFederationQueryLogsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupDataFederationQueryLogsOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const DownloadGroupDataFederationQueryLogsOutput =
  * @param tenantName - Human-readable label that identifies the federated database instance for which you want to download query logs.
  */
 export const downloadGroupDataFederationQueryLogs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DownloadGroupDataFederationQueryLogsInput,
     outputSchema: DownloadGroupDataFederationQueryLogsOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

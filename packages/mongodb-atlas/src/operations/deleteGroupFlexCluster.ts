@@ -11,7 +11,7 @@ export interface DeleteGroupFlexClusterInput {
   pretty?: boolean;
 }
 export const DeleteGroupFlexClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const DeleteGroupFlexClusterInput =
 // Output Schema
 export type DeleteGroupFlexClusterOutput = void;
 export const DeleteGroupFlexClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupFlexClusterOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupFlexClusterOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const DeleteGroupFlexClusterOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param name - Human-readable label that identifies the flex cluster.
  */
-export const deleteGroupFlexCluster = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupFlexClusterInput,
-    outputSchema: DeleteGroupFlexClusterOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const deleteGroupFlexCluster = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupFlexClusterInput,
+  outputSchema: DeleteGroupFlexClusterOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

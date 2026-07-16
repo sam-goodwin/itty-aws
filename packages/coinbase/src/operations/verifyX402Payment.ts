@@ -231,89 +231,13 @@ export interface VerifyX402PaymentInput {
         extra?: Record<string, unknown>;
       };
 }
-export const VerifyX402PaymentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    x402Version: Schema.Literals([1, 2]),
-    paymentPayload: Schema.Union([
-      Schema.Struct({
-        x402Version: Schema.Literals([1, 2]),
-        payload: Schema.Unknown,
-        accepted: Schema.Struct({
-          scheme: Schema.Literals(["exact", "upto", "batch-settlement"]),
-          network: Schema.Literals([
-            "eip155:8453",
-            "eip155:84532",
-            "eip155:137",
-            "eip155:42161",
-            "eip155:480",
-            "eip155:4801",
-            "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
-            "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
-          ]),
-          asset: Schema.String,
-          amount: Schema.String,
-          payTo: Schema.String,
-          maxTimeoutSeconds: Schema.Number,
-          extra: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-        }),
-        resource: Schema.optional(
-          Schema.Struct({
-            url: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-            mimeType: Schema.optional(Schema.String),
-          }),
-        ),
-        extensions: Schema.optional(
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      }),
-      Schema.Struct({
-        x402Version: Schema.Literals([1, 2]),
-        scheme: Schema.Literals(["exact"]),
-        network: Schema.Literals([
-          "base",
-          "base-sepolia",
-          "solana",
-          "solana-devnet",
-        ]),
-        payload: Schema.Union([
-          Schema.Struct({
-            signature: Schema.String,
-            authorization: Schema.Struct({
-              from: Schema.String,
-              to: Schema.String,
-              value: Schema.String,
-              validAfter: Schema.String,
-              validBefore: Schema.String,
-              nonce: Schema.String,
-            }),
-          }),
-          Schema.Struct({
-            signature: Schema.String,
-            permit2Authorization: Schema.Struct({
-              from: Schema.String,
-              permitted: Schema.Struct({
-                token: Schema.String,
-                amount: Schema.String,
-              }),
-              spender: Schema.String,
-              nonce: Schema.String,
-              deadline: Schema.String,
-              witness: Schema.Struct({
-                to: Schema.String,
-                validAfter: Schema.String,
-                extra: Schema.optional(Schema.String),
-              }),
-            }),
-          }),
-          Schema.Struct({
-            transaction: Schema.String,
-          }),
-        ]),
-      }),
-    ]),
-    paymentRequirements: Schema.Union([
-      Schema.Struct({
+export const VerifyX402PaymentInput = /*@__PURE__*/ Schema.Struct({
+  x402Version: Schema.Literals([1, 2]),
+  paymentPayload: Schema.Union([
+    Schema.Struct({
+      x402Version: Schema.Literals([1, 2]),
+      payload: Schema.Unknown,
+      accepted: Schema.Struct({
         scheme: Schema.Literals(["exact", "upto", "batch-settlement"]),
         network: Schema.Literals([
           "eip155:8453",
@@ -331,29 +255,101 @@ export const VerifyX402PaymentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         maxTimeoutSeconds: Schema.Number,
         extra: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
       }),
-      Schema.Struct({
-        scheme: Schema.Literals(["exact"]),
-        network: Schema.Literals([
-          "base",
-          "base-sepolia",
-          "solana",
-          "solana-devnet",
-        ]),
-        maxAmountRequired: Schema.String,
-        resource: Schema.String,
-        description: Schema.String,
-        mimeType: Schema.String,
-        outputSchema: Schema.optional(
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-        payTo: Schema.String,
-        maxTimeoutSeconds: Schema.Number,
-        asset: Schema.String,
-        extra: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      }),
-    ]),
-  },
-).pipe(
+      resource: Schema.optional(
+        Schema.Struct({
+          url: Schema.optional(Schema.String),
+          description: Schema.optional(Schema.String),
+          mimeType: Schema.optional(Schema.String),
+        }),
+      ),
+      extensions: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+    Schema.Struct({
+      x402Version: Schema.Literals([1, 2]),
+      scheme: Schema.Literals(["exact"]),
+      network: Schema.Literals([
+        "base",
+        "base-sepolia",
+        "solana",
+        "solana-devnet",
+      ]),
+      payload: Schema.Union([
+        Schema.Struct({
+          signature: Schema.String,
+          authorization: Schema.Struct({
+            from: Schema.String,
+            to: Schema.String,
+            value: Schema.String,
+            validAfter: Schema.String,
+            validBefore: Schema.String,
+            nonce: Schema.String,
+          }),
+        }),
+        Schema.Struct({
+          signature: Schema.String,
+          permit2Authorization: Schema.Struct({
+            from: Schema.String,
+            permitted: Schema.Struct({
+              token: Schema.String,
+              amount: Schema.String,
+            }),
+            spender: Schema.String,
+            nonce: Schema.String,
+            deadline: Schema.String,
+            witness: Schema.Struct({
+              to: Schema.String,
+              validAfter: Schema.String,
+              extra: Schema.optional(Schema.String),
+            }),
+          }),
+        }),
+        Schema.Struct({
+          transaction: Schema.String,
+        }),
+      ]),
+    }),
+  ]),
+  paymentRequirements: Schema.Union([
+    Schema.Struct({
+      scheme: Schema.Literals(["exact", "upto", "batch-settlement"]),
+      network: Schema.Literals([
+        "eip155:8453",
+        "eip155:84532",
+        "eip155:137",
+        "eip155:42161",
+        "eip155:480",
+        "eip155:4801",
+        "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+        "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+      ]),
+      asset: Schema.String,
+      amount: Schema.String,
+      payTo: Schema.String,
+      maxTimeoutSeconds: Schema.Number,
+      extra: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+    Schema.Struct({
+      scheme: Schema.Literals(["exact"]),
+      network: Schema.Literals([
+        "base",
+        "base-sepolia",
+        "solana",
+        "solana-devnet",
+      ]),
+      maxAmountRequired: Schema.String,
+      resource: Schema.String,
+      description: Schema.String,
+      mimeType: Schema.String,
+      outputSchema: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+      payTo: Schema.String,
+      maxTimeoutSeconds: Schema.Number,
+      asset: Schema.String,
+      extra: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+  ]),
+}).pipe(
   T.Http({ method: "POST", path: "/v2/x402/verify" }),
 ) as unknown as Schema.Codec<VerifyX402PaymentInput>;
 
@@ -561,7 +557,7 @@ export interface VerifyX402PaymentOutput {
   extra?: Record<string, unknown>;
 }
 export const VerifyX402PaymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isValid: Schema.Boolean,
     invalidReason: Schema.optional(
       Schema.Literals([
@@ -773,7 +769,7 @@ export const VerifyX402PaymentOutput =
  *
  * Verify an x402 protocol payment with a specific scheme and network.
  */
-export const verifyX402Payment = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const verifyX402Payment = /*@__PURE__*/ API.make(() => ({
   inputSchema: VerifyX402PaymentInput,
   outputSchema: VerifyX402PaymentOutput,
 }));

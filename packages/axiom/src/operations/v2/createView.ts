@@ -12,7 +12,7 @@ export interface CreateViewInput {
   sharedByOrg?: string;
   sharedByOrgName?: string;
 }
-export const CreateViewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateViewInput = /*@__PURE__*/ Schema.Struct({
   aplQuery: Schema.String,
   datasets: Schema.optional(Schema.Array(Schema.String)),
   description: Schema.optional(Schema.String),
@@ -32,7 +32,7 @@ export interface CreateViewOutput {
   sharedByOrg?: string;
   sharedByOrgName?: string;
 }
-export const CreateViewOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateViewOutput = /*@__PURE__*/ Schema.Struct({
   aplQuery: Schema.String,
   datasets: Schema.optional(Schema.Array(Schema.String)),
   description: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export const CreateViewOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }) as unknown as Schema.Codec<CreateViewOutput>;
 
 // The operation
-export const createView = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createView = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateViewInput,
   outputSchema: CreateViewOutput,
   errors: [UnprocessableEntity] as const,

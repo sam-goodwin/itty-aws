@@ -174,7 +174,7 @@ export interface PostV2CoreAccountsAccountIdPersonsIdInput {
   surname?: string;
 }
 export const PostV2CoreAccountsAccountIdPersonsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     additional_addresses: Schema.optional(
@@ -602,7 +602,7 @@ export interface PostV2CoreAccountsAccountIdPersonsIdOutput {
   updated: string;
 }
 export const PostV2CoreAccountsAccountIdPersonsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String,
     additional_addresses: Schema.optional(
       Schema.Array(
@@ -861,7 +861,7 @@ export const PostV2CoreAccountsAccountIdPersonsIdOutput =
  * @param id - The ID of the Person to update.
  */
 export const PostV2CoreAccountsAccountIdPersonsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostV2CoreAccountsAccountIdPersonsIdInput,
     outputSchema: PostV2CoreAccountsAccountIdPersonsIdOutput,
   }));

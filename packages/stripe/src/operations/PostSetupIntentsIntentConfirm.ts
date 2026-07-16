@@ -496,7 +496,7 @@ export interface PostSetupIntentsIntentConfirmInput {
   use_stripe_sdk?: boolean;
 }
 export const PostSetupIntentsIntentConfirmInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     confirmation_token: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -1752,7 +1752,7 @@ export interface PostSetupIntentsIntentConfirmOutput {
   usage: string;
 }
 export const PostSetupIntentsIntentConfirmOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -1946,7 +1946,7 @@ export const PostSetupIntentsIntentConfirmOutput =
  * confirmation limit is reached.</p>
  */
 export const PostSetupIntentsIntentConfirm =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostSetupIntentsIntentConfirmInput,
     outputSchema: PostSetupIntentsIntentConfirmOutput,
   }));

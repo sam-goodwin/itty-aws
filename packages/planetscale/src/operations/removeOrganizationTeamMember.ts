@@ -16,7 +16,7 @@ export interface RemoveOrganizationTeamMemberInput {
   delete_passwords?: boolean;
 }
 export const RemoveOrganizationTeamMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     team: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
@@ -31,7 +31,7 @@ export const RemoveOrganizationTeamMemberInput =
 // Output Schema
 export type RemoveOrganizationTeamMemberOutput = void;
 export const RemoveOrganizationTeamMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveOrganizationTeamMemberOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RemoveOrganizationTeamMemberOutput>;
 
 // The operation
 /**
@@ -43,7 +43,7 @@ export const RemoveOrganizationTeamMemberOutput =
  * @param delete_passwords - Whether to delete the member's passwords created through this team
  */
 export const removeOrganizationTeamMember =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RemoveOrganizationTeamMemberInput,
     outputSchema: RemoveOrganizationTeamMemberOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

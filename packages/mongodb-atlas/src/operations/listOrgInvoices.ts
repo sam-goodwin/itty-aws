@@ -18,7 +18,7 @@ export interface ListOrgInvoicesInput {
   sortBy?: "START_DATE" | "END_DATE";
   orderBy?: "desc" | "asc";
 }
-export const ListOrgInvoicesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListOrgInvoicesInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
@@ -38,7 +38,7 @@ export const ListOrgInvoicesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListOrgInvoicesOutput = void;
 export const ListOrgInvoicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgInvoicesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgInvoicesOutput>;
 
 // The operation
 /**
@@ -60,7 +60,7 @@ export const ListOrgInvoicesOutput =
  * @param sortBy - Field used to sort the returned invoices by. Use in combination with `orderBy` parameter to control the order of the result.
  * @param orderBy - Field used to order the returned invoices by. Use in combination of `sortBy` parameter to control the order of the result.
  */
-export const listOrgInvoices = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listOrgInvoices = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListOrgInvoicesInput,
   outputSchema: ListOrgInvoicesOutput,
   errors: [Forbidden, NotFound] as const,

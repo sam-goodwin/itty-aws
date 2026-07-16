@@ -11,7 +11,7 @@ export interface ListWebhookSubscriptionEventsInput {
   eventTypeNames?: string;
 }
 export const ListWebhookSubscriptionEventsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     eventId: Schema.optional(Schema.String),
     minCreatedAt: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface ListWebhookSubscriptionEventsOutput {
   }[];
 }
 export const ListWebhookSubscriptionEventsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     events: Schema.Array(
       Schema.Struct({
         eventId: Schema.String,
@@ -95,7 +95,7 @@ export const ListWebhookSubscriptionEventsOutput =
  * @param eventTypeNames - Filter by event type names (comma-separated).
  */
 export const listWebhookSubscriptionEvents =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListWebhookSubscriptionEventsInput,
     outputSchema: ListWebhookSubscriptionEventsOutput,
   }));

@@ -6,7 +6,7 @@ import * as T from "../traits.ts";
 export interface GetV1RegionsInput {
   product?: "postgres" | "accelerate";
 }
-export const GetV1RegionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV1RegionsInput = /*@__PURE__*/ Schema.Struct({
   product: Schema.optional(Schema.Literals(["postgres", "accelerate"])),
 }).pipe(
   T.Http({ method: "GET", path: "/v1/regions" }),
@@ -22,7 +22,7 @@ export interface GetV1RegionsOutput {
     status?: "available" | "unavailable";
   }[];
 }
-export const GetV1RegionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetV1RegionsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       id: Schema.String,
@@ -40,7 +40,7 @@ export const GetV1RegionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * Returns all available regions across products. Optionally filter by product.
  */
-export const getV1Regions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getV1Regions = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV1RegionsInput,
   outputSchema: GetV1RegionsOutput,
 }));

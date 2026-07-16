@@ -658,7 +658,7 @@ export interface ExternalDataSourcesDatabaseSchemaCreateInput {
     | "Baserow";
 }
 export const ExternalDataSourcesDatabaseSchemaCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     source_type: Schema.optional(
       Schema.Literals([
@@ -1323,7 +1323,7 @@ export const ExternalDataSourcesDatabaseSchemaCreateInput =
 // Output Schema
 export type ExternalDataSourcesDatabaseSchemaCreateOutput = void;
 export const ExternalDataSourcesDatabaseSchemaCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesDatabaseSchemaCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalDataSourcesDatabaseSchemaCreateOutput>;
 
 // The operation
 /**
@@ -1332,7 +1332,7 @@ export const ExternalDataSourcesDatabaseSchemaCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const externalDataSourcesDatabaseSchemaCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesDatabaseSchemaCreateInput,
     outputSchema: ExternalDataSourcesDatabaseSchemaCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

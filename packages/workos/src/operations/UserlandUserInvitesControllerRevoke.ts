@@ -8,7 +8,7 @@ export interface UserlandUserInvitesControllerRevokeInput {
   id: string;
 }
 export const UserlandUserInvitesControllerRevokeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -36,7 +36,7 @@ export interface UserlandUserInvitesControllerRevokeOutput {
   accept_invitation_url: string;
 }
 export const UserlandUserInvitesControllerRevokeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     email: Schema.String,
@@ -63,7 +63,7 @@ export const UserlandUserInvitesControllerRevokeOutput =
  * @param id - The unique ID of the invitation.
  */
 export const UserlandUserInvitesControllerRevoke =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserInvitesControllerRevokeInput,
     outputSchema: UserlandUserInvitesControllerRevokeOutput,
     errors: [BadRequest] as const,

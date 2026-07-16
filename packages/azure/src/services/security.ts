@@ -37,7 +37,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateLinkName: Schema.String.pipe(T.PathParam()),
@@ -102,7 +102,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -134,7 +134,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
@@ -146,7 +146,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateLinkName: Schema.String.pipe(T.PathParam()),
@@ -162,7 +162,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -175,7 +175,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -187,7 +187,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateLinkName: Schema.String.pipe(T.PathParam()),
@@ -215,7 +215,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -246,7 +246,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -257,7 +257,7 @@ export interface PrivateEndpointConnectionsListInput {
   privateLinkName: string;
 }
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateLinkName: Schema.String.pipe(T.PathParam()),
@@ -287,7 +287,7 @@ export interface PrivateEndpointConnectionsListOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -332,7 +332,7 @@ export const PrivateEndpointConnectionsListOutput =
  * @param privateLinkName - The name of the private link resource. Must be unique within the resource group and follow Azure naming conventions.
  */
 export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListInput,
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
@@ -344,7 +344,7 @@ export interface PrivateLinkResourcesGetInput {
   groupId: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateLinkName: Schema.String.pipe(T.PathParam()),
@@ -372,7 +372,7 @@ export interface PrivateLinkResourcesGetOutput {
   };
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -402,12 +402,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param privateLinkName - The name of the private link resource. Must be unique within the resource group and follow Azure naming conventions.
  * @param groupId - The group ID of the private link resource.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListInput {
   subscriptionId: string;
@@ -415,7 +413,7 @@ export interface PrivateLinkResourcesListInput {
   privateLinkName: string;
 }
 export const PrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateLinkName: Schema.String.pipe(T.PathParam()),
@@ -445,7 +443,7 @@ export interface PrivateLinkResourcesListOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -489,12 +487,10 @@ export const PrivateLinkResourcesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateLinkName - The name of the private link resource. Must be unique within the resource group and follow Azure naming conventions.
  */
-export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesListInput,
-    outputSchema: PrivateLinkResourcesListOutput,
-  }),
-);
+export const PrivateLinkResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesListInput,
+  outputSchema: PrivateLinkResourcesListOutput,
+}));
 // Input Schema
 export interface PrivateLinksCreateInput {
   subscriptionId: string;
@@ -541,7 +537,7 @@ export interface PrivateLinksCreateInput {
   location: string;
 }
 export const PrivateLinksCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateLinkName: Schema.String.pipe(T.PathParam()),
@@ -652,7 +648,7 @@ export interface PrivateLinksCreateOutput {
   };
 }
 export const PrivateLinksCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -681,7 +677,7 @@ export const PrivateLinksCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateLinkName - The name of the private link resource. Must be unique within the resource group and follow Azure naming conventions.
  */
-export const PrivateLinksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateLinksCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateLinksCreateInput,
   outputSchema: PrivateLinksCreateOutput,
 }));
@@ -692,7 +688,7 @@ export interface PrivateLinksDeleteInput {
   privateLinkName: string;
 }
 export const PrivateLinksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateLinkName: Schema.String.pipe(T.PathParam()),
@@ -707,7 +703,7 @@ export const PrivateLinksDeleteInput =
 // Output Schema
 export type PrivateLinksDeleteOutput = void;
 export const PrivateLinksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateLinksDeleteOutput>;
 
 // The operation
 /**
@@ -718,7 +714,7 @@ export const PrivateLinksDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateLinkName - The name of the private link resource. Must be unique within the resource group and follow Azure naming conventions.
  */
-export const PrivateLinksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateLinksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateLinksDeleteInput,
   outputSchema: PrivateLinksDeleteOutput,
 }));
@@ -728,7 +724,7 @@ export interface PrivateLinksGetInput {
   resourceGroupName: string;
   privateLinkName: string;
 }
-export const PrivateLinksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateLinksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateLinkName: Schema.String.pipe(T.PathParam()),
@@ -754,7 +750,7 @@ export interface PrivateLinksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const PrivateLinksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateLinksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -783,7 +779,7 @@ export const PrivateLinksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateLinkName - The name of the private link resource. Must be unique within the resource group and follow Azure naming conventions.
  */
-export const PrivateLinksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateLinksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateLinksGetInput,
   outputSchema: PrivateLinksGetOutput,
 }));
@@ -792,7 +788,7 @@ export interface PrivateLinksListInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
-export const PrivateLinksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateLinksListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -820,42 +816,30 @@ export interface PrivateLinksListOutput {
   }[];
   nextLink?: string;
 }
-export const PrivateLinksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<PrivateLinksListOutput>;
+export const PrivateLinksListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<PrivateLinksListOutput>;
 
 // The operation
 /**
@@ -865,7 +849,7 @@ export const PrivateLinksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PrivateLinksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateLinksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateLinksListInput,
   outputSchema: PrivateLinksListOutput,
 }));
@@ -874,7 +858,7 @@ export interface PrivateLinksListBySubscriptionInput {
   subscriptionId: string;
 }
 export const PrivateLinksListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -902,7 +886,7 @@ export interface PrivateLinksListBySubscriptionOutput {
   nextLink?: string;
 }
 export const PrivateLinksListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -945,7 +929,7 @@ export const PrivateLinksListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const PrivateLinksListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinksListBySubscriptionInput,
     outputSchema: PrivateLinksListBySubscriptionOutput,
   }));
@@ -957,7 +941,7 @@ export interface PrivateLinksUpdateInput {
   tags?: Record<string, string>;
 }
 export const PrivateLinksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateLinkName: Schema.String.pipe(T.PathParam()),
@@ -985,7 +969,7 @@ export interface PrivateLinksUpdateOutput {
   };
 }
 export const PrivateLinksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1014,7 +998,7 @@ export const PrivateLinksUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateLinkName - The name of the private link resource. Must be unique within the resource group and follow Azure naming conventions.
  */
-export const PrivateLinksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateLinksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateLinksUpdateInput,
   outputSchema: PrivateLinksUpdateOutput,
 }));

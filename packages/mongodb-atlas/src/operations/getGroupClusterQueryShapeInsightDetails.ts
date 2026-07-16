@@ -15,7 +15,7 @@ export interface GetGroupClusterQueryShapeInsightDetailsInput {
   processIds?: string;
 }
 export const GetGroupClusterQueryShapeInsightDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     queryShapeHash: Schema.String.pipe(T.PathParam()),
@@ -34,7 +34,7 @@ export const GetGroupClusterQueryShapeInsightDetailsInput =
 // Output Schema
 export type GetGroupClusterQueryShapeInsightDetailsOutput = void;
 export const GetGroupClusterQueryShapeInsightDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterQueryShapeInsightDetailsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupClusterQueryShapeInsightDetailsOutput>;
 
 // The operation
 /**
@@ -60,7 +60,7 @@ export const GetGroupClusterQueryShapeInsightDetailsOutput =
  * @param queryShapeHash - A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
  */
 export const getGroupClusterQueryShapeInsightDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupClusterQueryShapeInsightDetailsInput,
     outputSchema: GetGroupClusterQueryShapeInsightDetailsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

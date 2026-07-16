@@ -10,7 +10,7 @@ export interface GetWebhookEndpointsWebhookEndpointInput {
   expand?: string;
 }
 export const GetWebhookEndpointsWebhookEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     webhook_endpoint: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -37,7 +37,7 @@ export interface GetWebhookEndpointsWebhookEndpointOutput {
   url: string;
 }
 export const GetWebhookEndpointsWebhookEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     api_version: Schema.NullOr(Schema.String),
     application: Schema.NullOr(Schema.String),
     created: Schema.Number,
@@ -61,7 +61,7 @@ export const GetWebhookEndpointsWebhookEndpointOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetWebhookEndpointsWebhookEndpoint =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetWebhookEndpointsWebhookEndpointInput,
     outputSchema: GetWebhookEndpointsWebhookEndpointOutput,
   }));

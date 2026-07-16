@@ -15,7 +15,7 @@ export interface LlmAnalyticsTraceReviewsListInput {
   trace_id__in?: string;
 }
 export const LlmAnalyticsTraceReviewsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     definition_id: Schema.optional(Schema.String),
     definition_id__in: Schema.optional(Schema.String),
@@ -113,7 +113,7 @@ export interface LlmAnalyticsTraceReviewsListOutput {
   }[];
 }
 export const LlmAnalyticsTraceReviewsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -268,7 +268,7 @@ export const LlmAnalyticsTraceReviewsListOutput =
  * @param trace_id__in - Filter by multiple trace IDs separated by commas.
  */
 export const llmAnalyticsTraceReviewsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsTraceReviewsListInput,
     outputSchema: LlmAnalyticsTraceReviewsListOutput,
   }));

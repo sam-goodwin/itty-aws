@@ -7,7 +7,7 @@ export interface DeleteRadarValueListsValueListInput {
   value_list: string;
 }
 export const DeleteRadarValueListsValueListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value_list: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -24,7 +24,7 @@ export interface DeleteRadarValueListsValueListOutput {
   object: "radar.value_list";
 }
 export const DeleteRadarValueListsValueListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["radar.value_list"]),
@@ -37,7 +37,7 @@ export const DeleteRadarValueListsValueListOutput =
  * <p>Deletes a <code>ValueList</code> object, also deleting any items contained within the value list. To be deleted, a value list must not be referenced in any rules.</p>
  */
 export const DeleteRadarValueListsValueList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteRadarValueListsValueListInput,
     outputSchema: DeleteRadarValueListsValueListOutput,
   }));

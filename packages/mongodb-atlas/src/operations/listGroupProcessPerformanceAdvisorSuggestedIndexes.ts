@@ -19,7 +19,7 @@ export interface ListGroupProcessPerformanceAdvisorSuggestedIndexesInput {
   since?: number;
 }
 export const ListGroupProcessPerformanceAdvisorSuggestedIndexesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     processId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -42,7 +42,7 @@ export const ListGroupProcessPerformanceAdvisorSuggestedIndexesInput =
 // Output Schema
 export type ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput = void;
 export const ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput>;
 
 // The operation
 /**
@@ -72,7 +72,7 @@ export const ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput =
 - If you specify neither the **duration** nor the **since** parameters, the endpoint returns data from the previous 24 hours.
  */
 export const listGroupProcessPerformanceAdvisorSuggestedIndexes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupProcessPerformanceAdvisorSuggestedIndexesInput,
     outputSchema: ListGroupProcessPerformanceAdvisorSuggestedIndexesOutput,
     errors: [Forbidden, NotFound] as const,

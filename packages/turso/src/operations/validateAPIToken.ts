@@ -4,9 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface ValidateAPITokenInput {}
-export const ValidateAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ValidateAPITokenInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v1/auth/validate" }),
 ) as unknown as Schema.Codec<ValidateAPITokenInput>;
 
@@ -14,11 +12,9 @@ export const ValidateAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface ValidateAPITokenOutput {
   exp?: number;
 }
-export const ValidateAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    exp: Schema.optional(Schema.Number),
-  },
-) as unknown as Schema.Codec<ValidateAPITokenOutput>;
+export const ValidateAPITokenOutput = /*@__PURE__*/ Schema.Struct({
+  exp: Schema.optional(Schema.Number),
+}) as unknown as Schema.Codec<ValidateAPITokenOutput>;
 
 // The operation
 /**
@@ -26,7 +22,7 @@ export const ValidateAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  *
  * Validates an API token belonging to a user.
  */
-export const validateAPIToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const validateAPIToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: ValidateAPITokenInput,
   outputSchema: ValidateAPITokenOutput,
 }));

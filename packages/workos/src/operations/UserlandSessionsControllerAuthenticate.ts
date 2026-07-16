@@ -11,7 +11,7 @@ import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const UserlandSessionsControllerAuthenticateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "POST", path: "/user_management/authenticate" }),
   );
 export type UserlandSessionsControllerAuthenticateInput =
@@ -19,7 +19,7 @@ export type UserlandSessionsControllerAuthenticateInput =
 
 // Output Schema
 export const UserlandSessionsControllerAuthenticateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user: Schema.optional(
       Schema.Struct({
         object: Schema.optional(Schema.String),
@@ -93,7 +93,7 @@ export type UserlandSessionsControllerAuthenticateOutput =
  * Authenticate a user with a specified [authentication method](/reference/authkit/authentication).
  */
 export const UserlandSessionsControllerAuthenticate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandSessionsControllerAuthenticateInput,
     outputSchema: UserlandSessionsControllerAuthenticateOutput,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,

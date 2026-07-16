@@ -11,7 +11,7 @@ export interface GetGroupStreamConnectionInput {
   envelope?: boolean;
 }
 export const GetGroupStreamConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export const GetGroupStreamConnectionInput =
 // Output Schema
 export type GetGroupStreamConnectionOutput = void;
 export const GetGroupStreamConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupStreamConnectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupStreamConnectionOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const GetGroupStreamConnectionOutput =
  * @param tenantName - Label that identifies the stream workspace to return.
  * @param connectionName - Label that identifies the stream connection to return.
  */
-export const getGroupStreamConnection = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupStreamConnectionInput,
-    outputSchema: GetGroupStreamConnectionOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupStreamConnection = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupStreamConnectionInput,
+  outputSchema: GetGroupStreamConnectionOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

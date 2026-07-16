@@ -10,7 +10,7 @@ export interface GetGroupIpAddressesInput {
   pretty?: boolean;
 }
 export const GetGroupIpAddressesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const GetGroupIpAddressesInput =
 // Output Schema
 export type GetGroupIpAddressesOutput = void;
 export const GetGroupIpAddressesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupIpAddressesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupIpAddressesOutput>;
 
 // The operation
 /**
@@ -38,7 +38,7 @@ export const GetGroupIpAddressesOutput =
 
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
-export const getGroupIpAddresses = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupIpAddresses = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupIpAddressesInput,
   outputSchema: GetGroupIpAddressesOutput,
   errors: [Forbidden, NotFound] as const,

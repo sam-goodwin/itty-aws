@@ -10,7 +10,7 @@ export interface ErrorTrackingAssignmentRulesUpdateInput {
   assignee?: { type?: "user" | "role"; id?: number | string } | null;
 }
 export const ErrorTrackingAssignmentRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     filters: Schema.optional(
@@ -39,7 +39,7 @@ export const ErrorTrackingAssignmentRulesUpdateInput =
 // Output Schema
 export type ErrorTrackingAssignmentRulesUpdateOutput = void;
 export const ErrorTrackingAssignmentRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingAssignmentRulesUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ErrorTrackingAssignmentRulesUpdateOutput>;
 
 // The operation
 /**
@@ -47,7 +47,7 @@ export const ErrorTrackingAssignmentRulesUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingAssignmentRulesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingAssignmentRulesUpdateInput,
     outputSchema: ErrorTrackingAssignmentRulesUpdateOutput,
   }));

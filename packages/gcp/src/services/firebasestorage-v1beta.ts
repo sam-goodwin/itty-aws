@@ -28,7 +28,7 @@ export interface Bucket {
 }
 
 export const Bucket: Schema.Codec<Bucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Bucket" });
 
@@ -44,7 +44,7 @@ export interface DefaultBucket {
 }
 
 export const DefaultBucket: Schema.Codec<DefaultBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.optional(Schema.String),
     bucket: Schema.optional(Bucket),
     storageClass: Schema.optional(Schema.String),
@@ -54,7 +54,7 @@ export const DefaultBucket: Schema.Codec<DefaultBucket> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -66,7 +66,7 @@ export interface ListBucketsResponse {
 }
 
 export const ListBucketsResponse: Schema.Codec<ListBucketsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     buckets: Schema.optional(Schema.Array(Bucket)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListBucketsResponse" });
@@ -74,14 +74,14 @@ export const ListBucketsResponse: Schema.Codec<ListBucketsResponse> =
 export interface AddFirebaseRequest {}
 
 export const AddFirebaseRequest: Schema.Codec<AddFirebaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AddFirebaseRequest",
   });
 
 export interface RemoveFirebaseRequest {}
 
 export const RemoveFirebaseRequest: Schema.Codec<RemoveFirebaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoveFirebaseRequest",
   });
 
@@ -145,7 +145,7 @@ export interface GetDefaultBucketProjectsRequest {
 }
 
 export const GetDefaultBucketProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -153,8 +153,7 @@ export const GetDefaultBucketProjectsRequest =
   ) as unknown as Schema.Codec<GetDefaultBucketProjectsRequest>;
 
 export type GetDefaultBucketProjectsResponse = DefaultBucket;
-export const GetDefaultBucketProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DefaultBucket;
+export const GetDefaultBucketProjectsResponse = /*@__PURE__*/ DefaultBucket;
 
 export type GetDefaultBucketProjectsError =
   | DefaultErrors
@@ -167,7 +166,7 @@ export const getDefaultBucketProjects: API.OperationMethod<
   GetDefaultBucketProjectsResponse,
   GetDefaultBucketProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDefaultBucketProjectsRequest,
   output: GetDefaultBucketProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -179,7 +178,7 @@ export interface DeleteDefaultBucketProjectsRequest {
 }
 
 export const DeleteDefaultBucketProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
@@ -187,8 +186,7 @@ export const DeleteDefaultBucketProjectsRequest =
   ) as unknown as Schema.Codec<DeleteDefaultBucketProjectsRequest>;
 
 export type DeleteDefaultBucketProjectsResponse = Empty;
-export const DeleteDefaultBucketProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteDefaultBucketProjectsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteDefaultBucketProjectsError =
   | DefaultErrors
@@ -203,7 +201,7 @@ export const deleteDefaultBucketProjects: API.OperationMethod<
   DeleteDefaultBucketProjectsResponse,
   DeleteDefaultBucketProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDefaultBucketProjectsRequest,
   output: DeleteDefaultBucketProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -219,7 +217,7 @@ export interface ListProjectsBucketsRequest {
 }
 
 export const ListProjectsBucketsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -229,8 +227,7 @@ export const ListProjectsBucketsRequest =
   ) as unknown as Schema.Codec<ListProjectsBucketsRequest>;
 
 export type ListProjectsBucketsResponse = ListBucketsResponse;
-export const ListProjectsBucketsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListBucketsResponse;
+export const ListProjectsBucketsResponse = /*@__PURE__*/ ListBucketsResponse;
 
 export type ListProjectsBucketsError = DefaultErrors | NotFound | Forbidden;
 
@@ -240,7 +237,7 @@ export const listProjectsBuckets: API.PaginatedOperationMethod<
   ListProjectsBucketsResponse,
   ListProjectsBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsBucketsRequest,
   output: ListProjectsBucketsResponse,
   errors: [NotFound, Forbidden],
@@ -258,7 +255,7 @@ export interface AddFirebaseProjectsBucketsRequest {
 }
 
 export const AddFirebaseProjectsBucketsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.String.pipe(T.HttpPath("bucket")),
     body: Schema.optional(AddFirebaseRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -271,8 +268,7 @@ export const AddFirebaseProjectsBucketsRequest =
   ) as unknown as Schema.Codec<AddFirebaseProjectsBucketsRequest>;
 
 export type AddFirebaseProjectsBucketsResponse = Bucket;
-export const AddFirebaseProjectsBucketsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Bucket;
+export const AddFirebaseProjectsBucketsResponse = /*@__PURE__*/ Bucket;
 
 export type AddFirebaseProjectsBucketsError =
   | DefaultErrors
@@ -287,7 +283,7 @@ export const addFirebaseProjectsBuckets: API.OperationMethod<
   AddFirebaseProjectsBucketsResponse,
   AddFirebaseProjectsBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddFirebaseProjectsBucketsRequest,
   output: AddFirebaseProjectsBucketsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -299,7 +295,7 @@ export interface GetProjectsBucketsRequest {
 }
 
 export const GetProjectsBucketsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -307,7 +303,7 @@ export const GetProjectsBucketsRequest =
   ) as unknown as Schema.Codec<GetProjectsBucketsRequest>;
 
 export type GetProjectsBucketsResponse = Bucket;
-export const GetProjectsBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
+export const GetProjectsBucketsResponse = /*@__PURE__*/ Bucket;
 
 export type GetProjectsBucketsError = DefaultErrors | NotFound | Forbidden;
 
@@ -317,7 +313,7 @@ export const getProjectsBuckets: API.OperationMethod<
   GetProjectsBucketsResponse,
   GetProjectsBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsBucketsRequest,
   output: GetProjectsBucketsResponse,
   errors: [NotFound, Forbidden],
@@ -331,7 +327,7 @@ export interface RemoveFirebaseProjectsBucketsRequest {
 }
 
 export const RemoveFirebaseProjectsBucketsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bucket: Schema.String.pipe(T.HttpPath("bucket")),
     body: Schema.optional(RemoveFirebaseRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -344,8 +340,7 @@ export const RemoveFirebaseProjectsBucketsRequest =
   ) as unknown as Schema.Codec<RemoveFirebaseProjectsBucketsRequest>;
 
 export type RemoveFirebaseProjectsBucketsResponse = Empty;
-export const RemoveFirebaseProjectsBucketsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const RemoveFirebaseProjectsBucketsResponse = /*@__PURE__*/ Empty;
 
 export type RemoveFirebaseProjectsBucketsError =
   | DefaultErrors
@@ -360,7 +355,7 @@ export const removeFirebaseProjectsBuckets: API.OperationMethod<
   RemoveFirebaseProjectsBucketsResponse,
   RemoveFirebaseProjectsBucketsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveFirebaseProjectsBucketsRequest,
   output: RemoveFirebaseProjectsBucketsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -374,7 +369,7 @@ export interface CreateProjectsDefaultBucketRequest {
 }
 
 export const CreateProjectsDefaultBucketRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(DefaultBucket).pipe(T.HttpBody()),
   }).pipe(
@@ -387,8 +382,7 @@ export const CreateProjectsDefaultBucketRequest =
   ) as unknown as Schema.Codec<CreateProjectsDefaultBucketRequest>;
 
 export type CreateProjectsDefaultBucketResponse = DefaultBucket;
-export const CreateProjectsDefaultBucketResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DefaultBucket;
+export const CreateProjectsDefaultBucketResponse = /*@__PURE__*/ DefaultBucket;
 
 export type CreateProjectsDefaultBucketError =
   | DefaultErrors
@@ -403,7 +397,7 @@ export const createProjectsDefaultBucket: API.OperationMethod<
   CreateProjectsDefaultBucketResponse,
   CreateProjectsDefaultBucketError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsDefaultBucketRequest,
   output: CreateProjectsDefaultBucketResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

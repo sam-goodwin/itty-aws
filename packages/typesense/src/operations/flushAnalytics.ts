@@ -4,9 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface FlushAnalyticsInput {}
-export const FlushAnalyticsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const FlushAnalyticsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "POST", path: "/analytics/flush" }),
 ) as unknown as Schema.Codec<FlushAnalyticsInput>;
 
@@ -14,7 +12,7 @@ export const FlushAnalyticsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface FlushAnalyticsOutput {
   ok: boolean;
 }
-export const FlushAnalyticsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FlushAnalyticsOutput = /*@__PURE__*/ Schema.Struct({
   ok: Schema.Boolean,
 }) as unknown as Schema.Codec<FlushAnalyticsOutput>;
 
@@ -24,7 +22,7 @@ export const FlushAnalyticsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * Triggers a flush of analytics data to persistent storage.
  */
-export const flushAnalytics = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const flushAnalytics = /*@__PURE__*/ API.make(() => ({
   inputSchema: FlushAnalyticsInput,
   outputSchema: FlushAnalyticsOutput,
 }));

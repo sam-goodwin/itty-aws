@@ -8,7 +8,7 @@ export interface V1ListAllFunctionsInput {
   ref: string;
 }
 export const V1ListAllFunctionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/functions" }),
@@ -30,7 +30,7 @@ export type V1ListAllFunctionsOutput = {
   ezbr_sha256?: string;
 }[];
 export const V1ListAllFunctionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.String,
       slug: Schema.String,
@@ -55,7 +55,7 @@ export const V1ListAllFunctionsOutput =
  *
  * @param ref - Project ref
  */
-export const v1ListAllFunctions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1ListAllFunctions = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1ListAllFunctionsInput,
   outputSchema: V1ListAllFunctionsOutput,
   errors: [BadRequest, Forbidden] as const,

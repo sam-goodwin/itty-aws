@@ -15,7 +15,7 @@ export interface VisionScannersObservationsStatsRetrieveInput {
   verdict?: string;
 }
 export const VisionScannersObservationsStatsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     scanner_id: Schema.String.pipe(T.PathParam()),
     recent_days: Schema.optional(Schema.Number),
@@ -72,7 +72,7 @@ export interface VisionScannersObservationsStatsRetrieveOutput {
   } | null;
 }
 export const VisionScannersObservationsStatsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status_counts: Schema.Struct({
       total: Schema.Number,
       succeeded: Schema.Number,
@@ -148,7 +148,7 @@ export const VisionScannersObservationsStatsRetrieveOutput =
  * @param verdict - Filter monitor observations by verdict. Accepts a comma-separated list (e.g. `yes,inconclusive`).
  */
 export const visionScannersObservationsStatsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VisionScannersObservationsStatsRetrieveInput,
     outputSchema: VisionScannersObservationsStatsRetrieveOutput,
   }));

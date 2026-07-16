@@ -12,7 +12,7 @@ export interface SurveysGenerateTranslationsCreateInput {
   survey?: Record<string, unknown>;
 }
 export const SurveysGenerateTranslationsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     target_language: Schema.String,
@@ -56,7 +56,7 @@ export interface SurveysGenerateTranslationsCreateOutput {
   trace_id: string;
 }
 export const SurveysGenerateTranslationsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     translations: Schema.Record(
       Schema.String,
       Schema.Struct({
@@ -94,7 +94,7 @@ export const SurveysGenerateTranslationsCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const surveysGenerateTranslationsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SurveysGenerateTranslationsCreateInput,
     outputSchema: SurveysGenerateTranslationsCreateOutput,
   }));

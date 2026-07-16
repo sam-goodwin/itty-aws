@@ -8,7 +8,7 @@ export interface DashboardsWidgetCatalogRetrieveInput {
   format?: "json" | "txt";
 }
 export const DashboardsWidgetCatalogRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["json", "txt"])),
   }).pipe(
@@ -23,7 +23,7 @@ export interface DashboardsWidgetCatalogRetrieveOutput {
   results: unknown[];
 }
 export const DashboardsWidgetCatalogRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(Schema.Unknown),
   }) as unknown as Schema.Codec<DashboardsWidgetCatalogRetrieveOutput>;
 
@@ -34,7 +34,7 @@ export const DashboardsWidgetCatalogRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const dashboardsWidgetCatalogRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DashboardsWidgetCatalogRetrieveInput,
     outputSchema: DashboardsWidgetCatalogRetrieveOutput,
   }));

@@ -11,7 +11,7 @@ export interface GetGroupFlexClusterBackupSnapshotInput {
   envelope?: boolean;
 }
 export const GetGroupFlexClusterBackupSnapshotInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     snapshotId: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export const GetGroupFlexClusterBackupSnapshotInput =
 // Output Schema
 export type GetGroupFlexClusterBackupSnapshotOutput = void;
 export const GetGroupFlexClusterBackupSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupFlexClusterBackupSnapshotOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupFlexClusterBackupSnapshotOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const GetGroupFlexClusterBackupSnapshotOutput =
  * @param snapshotId - Unique 24-hexadecimal digit string that identifies the desired snapshot.
  */
 export const getGroupFlexClusterBackupSnapshot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupFlexClusterBackupSnapshotInput,
     outputSchema: GetGroupFlexClusterBackupSnapshotOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

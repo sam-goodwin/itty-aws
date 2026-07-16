@@ -12,7 +12,7 @@ export interface GetTaxIdsIdInput {
   id: string;
   expand?: string;
 }
-export const GetTaxIdsIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTaxIdsIdInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   expand: Schema.optional(Schema.String),
 }).pipe(
@@ -166,7 +166,7 @@ export interface GetTaxIdsIdOutput {
     verified_name: string | null;
   } | null;
 }
-export const GetTaxIdsIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTaxIdsIdOutput = /*@__PURE__*/ Schema.Struct({
   country: Schema.NullOr(Schema.String),
   created: Schema.Number,
   customer: Schema.Unknown,
@@ -334,7 +334,7 @@ export const GetTaxIdsIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTaxIdsId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetTaxIdsId = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetTaxIdsIdInput,
   outputSchema: GetTaxIdsIdOutput,
 }));

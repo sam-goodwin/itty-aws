@@ -22,7 +22,7 @@ export interface SignalsScoutEmitReportInput {
   suggested_reviewers?: string[];
 }
 export const SignalsScoutEmitReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     run_id: Schema.String.pipe(T.PathParam()),
     title: Schema.String,
@@ -63,7 +63,7 @@ export interface SignalsScoutEmitReportOutput {
   safety_explanation: string | null;
 }
 export const SignalsScoutEmitReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     report_id: Schema.NullOr(Schema.String),
     report_status: Schema.NullOr(Schema.String),
     emitted: Schema.Boolean,
@@ -80,10 +80,8 @@ export const SignalsScoutEmitReportOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param run_id - UUID of the `SignalScoutRun` bridge row.
  */
-export const signalsScoutEmitReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalsScoutEmitReportInput,
-    outputSchema: SignalsScoutEmitReportOutput,
-    errors: [BadRequest, NotFound] as const,
-  }),
-);
+export const signalsScoutEmitReport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalsScoutEmitReportInput,
+  outputSchema: SignalsScoutEmitReportOutput,
+  errors: [BadRequest, NotFound] as const,
+}));

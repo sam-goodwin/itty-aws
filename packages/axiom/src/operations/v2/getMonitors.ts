@@ -4,9 +4,7 @@ import * as T from "../../traits.ts";
 
 // Input Schema
 export interface GetMonitorsInput {}
-export const GetMonitorsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetMonitorsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v2/monitors" }),
 ) as unknown as Schema.Codec<GetMonitorsInput>;
 
@@ -45,7 +43,7 @@ export type GetMonitorsOutput = ReadonlyArray<{
   updatedAt?: string;
   id: string;
 }>;
-export const GetMonitorsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const GetMonitorsOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     alertOnNoData: Schema.optional(Schema.Boolean),
     aplQuery: Schema.optional(Schema.String),
@@ -89,7 +87,7 @@ export const GetMonitorsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
 /**
  * Lists all configured monitors. Returns an array of monitor configurations including their IDs and current status.
  */
-export const getMonitors = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getMonitors = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetMonitorsInput,
   outputSchema: GetMonitorsOutput,
 }));

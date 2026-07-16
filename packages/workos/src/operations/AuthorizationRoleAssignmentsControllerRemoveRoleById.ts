@@ -9,7 +9,7 @@ export interface AuthorizationRoleAssignmentsControllerRemoveRoleByIdInput {
   role_assignment_id: string;
 }
 export const AuthorizationRoleAssignmentsControllerRemoveRoleByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
     role_assignment_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const AuthorizationRoleAssignmentsControllerRemoveRoleByIdInput =
 // Output Schema
 export type AuthorizationRoleAssignmentsControllerRemoveRoleByIdOutput = void;
 export const AuthorizationRoleAssignmentsControllerRemoveRoleByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerRemoveRoleByIdOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerRemoveRoleByIdOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const AuthorizationRoleAssignmentsControllerRemoveRoleByIdOutput =
  * @param role_assignment_id - The ID of the role assignment to remove.
  */
 export const AuthorizationRoleAssignmentsControllerRemoveRoleById =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationRoleAssignmentsControllerRemoveRoleByIdInput,
     outputSchema: AuthorizationRoleAssignmentsControllerRemoveRoleByIdOutput,
     errors: [Forbidden, NotFound] as const,

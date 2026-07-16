@@ -11,7 +11,7 @@ export interface GetKeyspaceVschemaInput {
   keyspace: string;
 }
 export const GetKeyspaceVschemaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export interface GetKeyspaceVschemaOutput {
   raw: string;
 }
 export const GetKeyspaceVschemaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     raw: Schema.String,
   }) as unknown as Schema.Codec<GetKeyspaceVschemaOutput>;
 
@@ -41,7 +41,7 @@ export const GetKeyspaceVschemaOutput =
  * @param branch - The name of the branch
  * @param keyspace - The name of the keyspace
  */
-export const getKeyspaceVschema = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getKeyspaceVschema = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetKeyspaceVschemaInput,
   outputSchema: GetKeyspaceVschemaOutput,
   errors: [Forbidden, NotFound] as const,

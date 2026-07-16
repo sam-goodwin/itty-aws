@@ -9,7 +9,7 @@ export interface DisableGroupUserSecurityCustomerX509Input {
   envelope?: boolean;
 }
 export const DisableGroupUserSecurityCustomerX509Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -22,7 +22,7 @@ export const DisableGroupUserSecurityCustomerX509Input =
 // Output Schema
 export type DisableGroupUserSecurityCustomerX509Output = void;
 export const DisableGroupUserSecurityCustomerX509Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DisableGroupUserSecurityCustomerX509Output>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DisableGroupUserSecurityCustomerX509Output>;
 
 // The operation
 /**
@@ -37,7 +37,7 @@ export const DisableGroupUserSecurityCustomerX509Output =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
 export const disableGroupUserSecurityCustomerX509 =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DisableGroupUserSecurityCustomerX509Input,
     outputSchema: DisableGroupUserSecurityCustomerX509Output,
     errors: [Forbidden, NotFound] as const,

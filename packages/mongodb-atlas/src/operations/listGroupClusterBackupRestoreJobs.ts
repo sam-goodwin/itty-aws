@@ -14,7 +14,7 @@ export interface ListGroupClusterBackupRestoreJobsInput {
   pretty?: boolean;
 }
 export const ListGroupClusterBackupRestoreJobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const ListGroupClusterBackupRestoreJobsInput =
 // Output Schema
 export type ListGroupClusterBackupRestoreJobsOutput = void;
 export const ListGroupClusterBackupRestoreJobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterBackupRestoreJobsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterBackupRestoreJobsOutput>;
 
 // The operation
 /**
@@ -51,7 +51,7 @@ export const ListGroupClusterBackupRestoreJobsOutput =
  * @param clusterName - Human-readable label that identifies the cluster with the restore jobs you want to return.
  */
 export const listGroupClusterBackupRestoreJobs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupClusterBackupRestoreJobsInput,
     outputSchema: ListGroupClusterBackupRestoreJobsOutput,
     errors: [Forbidden, NotFound] as const,

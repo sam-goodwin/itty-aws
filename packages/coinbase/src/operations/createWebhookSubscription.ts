@@ -38,7 +38,7 @@ export interface CreateWebhookSubscriptionInput {
   labels?: Record<string, string>;
 }
 export const CreateWebhookSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     eventTypes: Schema.Array(
       Schema.Literals([
@@ -116,7 +116,7 @@ export interface CreateWebhookSubscriptionOutput {
   labels?: Record<string, string>;
 }
 export const CreateWebhookSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createdAt: Schema.String,
     updatedAt: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -183,9 +183,7 @@ export const CreateWebhookSubscriptionOutput =
  * Do not lose the secret, as you will not be able to recreate it. If you lose the secret, you will need to create a new subscription.
  * See the [verification guide](https://docs.cdp.coinbase.com/onramp-&-offramp/webhooks#webhook-signature-verification) for implementation details.
  */
-export const createWebhookSubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateWebhookSubscriptionInput,
-    outputSchema: CreateWebhookSubscriptionOutput,
-  }),
-);
+export const createWebhookSubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateWebhookSubscriptionInput,
+  outputSchema: CreateWebhookSubscriptionOutput,
+}));

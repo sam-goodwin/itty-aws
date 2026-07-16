@@ -8,12 +8,10 @@ export interface V1DeleteAFunctionInput {
   ref: string;
   function_slug: string;
 }
-export const V1DeleteAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-    function_slug: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const V1DeleteAFunctionInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  function_slug: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/v1/projects/{ref}/functions/{function_slug}",
@@ -23,7 +21,7 @@ export const V1DeleteAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type V1DeleteAFunctionOutput = void;
 export const V1DeleteAFunctionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteAFunctionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1DeleteAFunctionOutput>;
 
 // The operation
 /**
@@ -34,7 +32,7 @@ export const V1DeleteAFunctionOutput =
  * @param ref - Project ref
  * @param function_slug - Function slug
  */
-export const v1DeleteAFunction = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1DeleteAFunction = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1DeleteAFunctionInput,
   outputSchema: V1DeleteAFunctionOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

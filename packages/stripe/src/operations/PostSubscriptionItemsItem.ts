@@ -41,7 +41,7 @@ export interface PostSubscriptionItemsItemInput {
   tax_rates?: string[] | "";
 }
 export const PostSubscriptionItemsItemInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     item: Schema.String.pipe(T.PathParam()),
     billing_thresholds: Schema.optional(
       Schema.Union([
@@ -488,7 +488,7 @@ export interface PostSubscriptionItemsItemOutput {
     | null;
 }
 export const PostSubscriptionItemsItemOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billed_until: Schema.optional(Schema.Number),
     billing_thresholds: Schema.NullOr(
       Schema.Struct({
@@ -877,9 +877,7 @@ export const PostSubscriptionItemsItemOutput =
  *
  * <p>Updates the plan or quantity of an item on a current subscription.</p>
  */
-export const PostSubscriptionItemsItem = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostSubscriptionItemsItemInput,
-    outputSchema: PostSubscriptionItemsItemOutput,
-  }),
-);
+export const PostSubscriptionItemsItem = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostSubscriptionItemsItemInput,
+  outputSchema: PostSubscriptionItemsItemOutput,
+}));

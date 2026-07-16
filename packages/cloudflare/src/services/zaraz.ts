@@ -40,7 +40,7 @@ interface ContextEnricher {
   escapedWorkerName: string;
   workerTag: string;
 }
-const ContextEnricher = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ContextEnricher = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     escapedWorkerName: Schema.String,
     workerTag: Schema.String,
@@ -77,7 +77,7 @@ interface Settings {
   /** Custom endpoint for Zaraz tracking requests. */
   trackPath?: string | null;
 }
-const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Settings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     autoInjectScript: Schema.Boolean,
     contextEnricher: Schema.optional(
@@ -110,7 +110,7 @@ interface Analytics {
   /** Session expiration time (seconds). */
   sessionExpTime?: number | null;
 }
-const Analytics = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Analytics = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     defaultPurpose: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -126,7 +126,7 @@ interface ButtonTextTranslation {
   /** Object where keys are language codes. */
   rejectAll: Record<string, unknown>;
 }
-const ButtonTextTranslation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ButtonTextTranslation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     acceptAll: Schema.Record(Schema.String, Schema.Unknown),
     confirmMyChoices: Schema.Record(Schema.String, Schema.Unknown),
@@ -164,7 +164,7 @@ interface Consent {
   purposesWithTranslations?: Record<string, unknown> | null;
   tcfCompliant?: boolean | null;
 }
-const Consent = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Consent = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     enabled: Schema.Boolean,
     buttonTextTranslations: Schema.optional(
@@ -212,15 +212,14 @@ interface ListHistoriesResponseResult {
   /** Alpha-numeric ID of the account user who published the configuration. */
   userId: string;
 }
-const ListHistoriesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.Number,
-      createdAt: Schema.String,
-      description: Schema.String,
-      updatedAt: Schema.String,
-      userId: Schema.String,
-    }),
+const ListHistoriesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.Number,
+    createdAt: Schema.String,
+    description: Schema.String,
+    updatedAt: Schema.String,
+    userId: Schema.String,
+  }),
 ) as unknown as Schema.Codec<ListHistoriesResponseResult>;
 
 // =============================================================================
@@ -232,7 +231,7 @@ export interface GetConfigRequest {
   zoneId: string;
 }
 
-export const GetConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetConfigRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -302,22 +301,19 @@ export interface GetConfigResponse {
   historyChange?: boolean | null;
 }
 
-export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dataLayer: Schema.Boolean,
-      debugKey: Schema.String,
-      settings: Settings,
-      tools: Schema.Record(Schema.String, Schema.Unknown),
-      triggers: Schema.Record(Schema.String, Schema.Unknown),
-      variables: Schema.Record(Schema.String, Schema.Unknown),
-      zarazVersion: Schema.Number,
-      analytics: Schema.optional(Schema.Union([Analytics, Schema.Null])),
-      consent: Schema.optional(Schema.Union([Consent, Schema.Null])),
-      historyChange: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(T.ResponsePath("result")),
+export const GetConfigResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dataLayer: Schema.Boolean,
+    debugKey: Schema.String,
+    settings: Settings,
+    tools: Schema.Record(Schema.String, Schema.Unknown),
+    triggers: Schema.Record(Schema.String, Schema.Unknown),
+    variables: Schema.Record(Schema.String, Schema.Unknown),
+    zarazVersion: Schema.Number,
+    analytics: Schema.optional(Schema.Union([Analytics, Schema.Null])),
+    consent: Schema.optional(Schema.Union([Consent, Schema.Null])),
+    historyChange: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetConfigResponse>;
 
 export type GetConfigError = DefaultErrors | Forbidden | NotFound;
@@ -327,7 +323,7 @@ export const getConfig: API.OperationMethod<
   GetConfigResponse,
   GetConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetConfigRequest,
   output: GetConfigResponse,
   errors: [Forbidden, NotFound],
@@ -397,7 +393,7 @@ export interface PutConfigRequest {
   historyChange?: boolean;
 }
 
-export const PutConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PutConfigRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     dataLayer: Schema.Boolean,
@@ -477,22 +473,19 @@ export interface PutConfigResponse {
   historyChange?: boolean | null;
 }
 
-export const PutConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dataLayer: Schema.Boolean,
-      debugKey: Schema.String,
-      settings: Settings,
-      tools: Schema.Record(Schema.String, Schema.Unknown),
-      triggers: Schema.Record(Schema.String, Schema.Unknown),
-      variables: Schema.Record(Schema.String, Schema.Unknown),
-      zarazVersion: Schema.Number,
-      analytics: Schema.optional(Schema.Union([Analytics, Schema.Null])),
-      consent: Schema.optional(Schema.Union([Consent, Schema.Null])),
-      historyChange: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(T.ResponsePath("result")),
+export const PutConfigResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dataLayer: Schema.Boolean,
+    debugKey: Schema.String,
+    settings: Settings,
+    tools: Schema.Record(Schema.String, Schema.Unknown),
+    triggers: Schema.Record(Schema.String, Schema.Unknown),
+    variables: Schema.Record(Schema.String, Schema.Unknown),
+    zarazVersion: Schema.Number,
+    analytics: Schema.optional(Schema.Union([Analytics, Schema.Null])),
+    consent: Schema.optional(Schema.Union([Consent, Schema.Null])),
+    historyChange: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutConfigResponse>;
 
 export type PutConfigError = DefaultErrors;
@@ -502,7 +495,7 @@ export const putConfig: API.OperationMethod<
   PutConfigResponse,
   PutConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutConfigRequest,
   output: PutConfigResponse,
   errors: [],
@@ -517,16 +510,15 @@ export interface GetDefaultRequest {
   zoneId: string;
 }
 
-export const GetDefaultRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/settings/zaraz/default",
-      }),
-    ),
+export const GetDefaultRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/settings/zaraz/default",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetDefaultRequest>;
 
 export interface GetDefaultResponse {
@@ -591,22 +583,19 @@ export interface GetDefaultResponse {
   historyChange?: boolean | null;
 }
 
-export const GetDefaultResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dataLayer: Schema.Boolean,
-      debugKey: Schema.String,
-      settings: Settings,
-      tools: Schema.Record(Schema.String, Schema.Unknown),
-      triggers: Schema.Record(Schema.String, Schema.Unknown),
-      variables: Schema.Record(Schema.String, Schema.Unknown),
-      zarazVersion: Schema.Number,
-      analytics: Schema.optional(Schema.Union([Analytics, Schema.Null])),
-      consent: Schema.optional(Schema.Union([Consent, Schema.Null])),
-      historyChange: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(T.ResponsePath("result")),
+export const GetDefaultResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dataLayer: Schema.Boolean,
+    debugKey: Schema.String,
+    settings: Settings,
+    tools: Schema.Record(Schema.String, Schema.Unknown),
+    triggers: Schema.Record(Schema.String, Schema.Unknown),
+    variables: Schema.Record(Schema.String, Schema.Unknown),
+    zarazVersion: Schema.Number,
+    analytics: Schema.optional(Schema.Union([Analytics, Schema.Null])),
+    consent: Schema.optional(Schema.Union([Consent, Schema.Null])),
+    historyChange: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetDefaultResponse>;
 
 export type GetDefaultError = DefaultErrors;
@@ -616,7 +605,7 @@ export const getDefault: API.OperationMethod<
   GetDefaultResponse,
   GetDefaultError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDefaultRequest,
   output: GetDefaultResponse,
   errors: [],
@@ -631,7 +620,7 @@ export interface GetExportRequest {
   zoneId: string;
 }
 
-export const GetExportRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetExportRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -701,22 +690,19 @@ export interface GetExportResponse {
   historyChange?: boolean | null;
 }
 
-export const GetExportResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dataLayer: Schema.Boolean,
-      debugKey: Schema.String,
-      settings: Settings,
-      tools: Schema.Record(Schema.String, Schema.Unknown),
-      triggers: Schema.Record(Schema.String, Schema.Unknown),
-      variables: Schema.Record(Schema.String, Schema.Unknown),
-      zarazVersion: Schema.Number,
-      analytics: Schema.optional(Schema.Union([Analytics, Schema.Null])),
-      consent: Schema.optional(Schema.Union([Consent, Schema.Null])),
-      historyChange: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }),
+export const GetExportResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dataLayer: Schema.Boolean,
+    debugKey: Schema.String,
+    settings: Settings,
+    tools: Schema.Record(Schema.String, Schema.Unknown),
+    triggers: Schema.Record(Schema.String, Schema.Unknown),
+    variables: Schema.Record(Schema.String, Schema.Unknown),
+    zarazVersion: Schema.Number,
+    analytics: Schema.optional(Schema.Union([Analytics, Schema.Null])),
+    consent: Schema.optional(Schema.Union([Consent, Schema.Null])),
+    historyChange: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<GetExportResponse>;
 
 export type GetExportError = DefaultErrors;
@@ -726,7 +712,7 @@ export const getExport: API.OperationMethod<
   GetExportResponse,
   GetExportError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExportRequest,
   output: GetExportResponse,
   errors: [],
@@ -755,33 +741,32 @@ export interface ListHistoriesRequest {
   sortOrder?: "DESC" | "ASC" | (string & {});
 }
 
-export const ListHistoriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
-      offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
-      sortField: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "id",
-            "user_id",
-            "description",
-            "created_at",
-            "updated_at",
-          ]),
-          Schema.String,
+export const ListHistoriesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+    offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
+    sortField: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "id",
+          "user_id",
+          "description",
+          "created_at",
+          "updated_at",
         ]),
-      ).pipe(T.HttpQuery("sortField")),
-      sortOrder: Schema.optional(
-        Schema.Union([Schema.Literals(["DESC", "ASC"]), Schema.String]),
-      ).pipe(T.HttpQuery("sortOrder")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/settings/zaraz/history",
-      }),
-    ),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("sortField")),
+    sortOrder: Schema.optional(
+      Schema.Union([Schema.Literals(["DESC", "ASC"]), Schema.String]),
+    ).pipe(T.HttpQuery("sortOrder")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/settings/zaraz/history",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListHistoriesRequest>;
 
 export interface ListHistoriesResponse {
@@ -794,11 +779,10 @@ export interface ListHistoriesResponse {
   }[];
 }
 
-export const ListHistoriesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListHistoriesResponseResult),
-    }),
+export const ListHistoriesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListHistoriesResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListHistoriesResponse>;
 
 export type ListHistoriesError = DefaultErrors;
@@ -808,7 +792,7 @@ export const listHistories: API.PaginatedOperationMethod<
   ListHistoriesResponse,
   ListHistoriesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHistoriesRequest,
   output: ListHistoriesResponse,
   errors: [],
@@ -825,17 +809,16 @@ export interface PutHistoryRequest {
   body: number;
 }
 
-export const PutHistoryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      body: Schema.Number.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/settings/zaraz/history",
-      }),
-    ),
+export const PutHistoryRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    body: Schema.Number.pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/settings/zaraz/history",
+    }),
+  ),
 ) as unknown as Schema.Codec<PutHistoryRequest>;
 
 export interface PutHistoryResponse {
@@ -900,22 +883,19 @@ export interface PutHistoryResponse {
   historyChange?: boolean | null;
 }
 
-export const PutHistoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      dataLayer: Schema.Boolean,
-      debugKey: Schema.String,
-      settings: Settings,
-      tools: Schema.Record(Schema.String, Schema.Unknown),
-      triggers: Schema.Record(Schema.String, Schema.Unknown),
-      variables: Schema.Record(Schema.String, Schema.Unknown),
-      zarazVersion: Schema.Number,
-      analytics: Schema.optional(Schema.Union([Analytics, Schema.Null])),
-      consent: Schema.optional(Schema.Union([Consent, Schema.Null])),
-      historyChange: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(T.ResponsePath("result")),
+export const PutHistoryResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dataLayer: Schema.Boolean,
+    debugKey: Schema.String,
+    settings: Settings,
+    tools: Schema.Record(Schema.String, Schema.Unknown),
+    triggers: Schema.Record(Schema.String, Schema.Unknown),
+    variables: Schema.Record(Schema.String, Schema.Unknown),
+    zarazVersion: Schema.Number,
+    analytics: Schema.optional(Schema.Union([Analytics, Schema.Null])),
+    consent: Schema.optional(Schema.Union([Consent, Schema.Null])),
+    historyChange: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutHistoryResponse>;
 
 export type PutHistoryError = DefaultErrors;
@@ -925,7 +905,7 @@ export const putHistory: API.OperationMethod<
   PutHistoryResponse,
   PutHistoryError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutHistoryRequest,
   output: PutHistoryResponse,
   errors: [],
@@ -943,7 +923,7 @@ export interface GetHistoryConfigRequest {
 }
 
 export const GetHistoryConfigRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ids: Schema.Array(Schema.Number).pipe(T.HttpQuery("ids")),
@@ -958,7 +938,7 @@ export const GetHistoryConfigRequest =
 export type GetHistoryConfigResponse = Record<string, unknown>;
 
 export const GetHistoryConfigResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Record(Schema.String, Schema.Unknown).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetHistoryConfigResponse>;
 
@@ -969,7 +949,7 @@ export const getHistoryConfig: API.OperationMethod<
   GetHistoryConfigResponse,
   GetHistoryConfigError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHistoryConfigRequest,
   output: GetHistoryConfigResponse,
   errors: [],
@@ -986,23 +966,22 @@ export interface CreatePublishRequest {
   body?: string;
 }
 
-export const CreatePublishRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      body: Schema.optional(Schema.String).pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/zones/{zone_id}/settings/zaraz/publish",
-      }),
-    ),
+export const CreatePublishRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    body: Schema.optional(Schema.String).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/settings/zaraz/publish",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreatePublishRequest>;
 
 export type CreatePublishResponse = string;
 
-export const CreatePublishResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.String.pipe(T.ResponsePath("result")),
+export const CreatePublishResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.String.pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreatePublishResponse>;
 
 export type CreatePublishError = DefaultErrors;
@@ -1012,7 +991,7 @@ export const createPublish: API.OperationMethod<
   CreatePublishResponse,
   CreatePublishError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePublishRequest,
   output: CreatePublishResponse,
   errors: [],
@@ -1027,26 +1006,23 @@ export interface GetWorkflowRequest {
   zoneId: string;
 }
 
-export const GetWorkflowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/settings/zaraz/workflow",
-      }),
-    ),
+export const GetWorkflowRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/settings/zaraz/workflow",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetWorkflowRequest>;
 
 export type GetWorkflowResponse = "realtime" | "preview" | (string & {});
 
-export const GetWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Union([
-      Schema.Literals(["realtime", "preview"]),
-      Schema.String,
-    ]).pipe(T.ResponsePath("result")),
+export const GetWorkflowResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([Schema.Literals(["realtime", "preview"]), Schema.String]).pipe(
+    T.ResponsePath("result"),
+  ),
 ) as unknown as Schema.Codec<GetWorkflowResponse>;
 
 export type GetWorkflowError = DefaultErrors | Forbidden | NotFound;
@@ -1056,7 +1032,7 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowResponse,
   GetWorkflowError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetWorkflowRequest,
   output: GetWorkflowResponse,
   errors: [Forbidden, NotFound],
@@ -1073,7 +1049,7 @@ export interface PutZarazRequest {
   workflow: "realtime" | "preview" | (string & {});
 }
 
-export const PutZarazRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PutZarazRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     workflow: Schema.Union([
@@ -1091,7 +1067,7 @@ export const PutZarazRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 
 export type PutZarazResponse = "realtime" | "preview" | (string & {});
 
-export const PutZarazResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const PutZarazResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Union([Schema.Literals(["realtime", "preview"]), Schema.String]).pipe(
     T.ResponsePath("result"),
   ),
@@ -1104,7 +1080,7 @@ export const putZaraz: API.OperationMethod<
   PutZarazResponse,
   PutZarazError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutZarazRequest,
   output: PutZarazResponse,
   errors: [],

@@ -16,7 +16,7 @@ export interface PersonsFunnelCreateInput {
   last_seen_at?: string | null;
 }
 export const PersonsFunnelCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
     id: Schema.optional(Schema.Number),
@@ -36,7 +36,7 @@ export const PersonsFunnelCreateInput =
 // Output Schema
 export type PersonsFunnelCreateOutput = void;
 export const PersonsFunnelCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsFunnelCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsFunnelCreateOutput>;
 
 // The operation
 /**
@@ -44,7 +44,7 @@ export const PersonsFunnelCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const personsFunnelCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const personsFunnelCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PersonsFunnelCreateInput,
   outputSchema: PersonsFunnelCreateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

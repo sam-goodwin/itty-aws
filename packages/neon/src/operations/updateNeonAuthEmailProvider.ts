@@ -10,7 +10,7 @@ export interface UpdateNeonAuthEmailProviderInput {
   branch_id: string;
 }
 export const UpdateNeonAuthEmailProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -32,7 +32,7 @@ export type UpdateNeonAuthEmailProviderOutput =
     }
   | { sender_email?: string; sender_name?: string };
 export const UpdateNeonAuthEmailProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       host: Schema.String,
       port: Schema.Number,
@@ -57,9 +57,7 @@ export const UpdateNeonAuthEmailProviderOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const updateNeonAuthEmailProvider = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateNeonAuthEmailProviderInput,
-    outputSchema: UpdateNeonAuthEmailProviderOutput,
-  }),
-);
+export const updateNeonAuthEmailProvider = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateNeonAuthEmailProviderInput,
+  outputSchema: UpdateNeonAuthEmailProviderOutput,
+}));

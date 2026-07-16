@@ -57,7 +57,7 @@ interface ResponseFormat {
   jsonSchema?: unknown | null;
   type?: "json_object" | "json_schema" | (string & {}) | null;
 }
-const ResponseFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ResponseFormat = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     jsonSchema: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
     type: Schema.optional(
@@ -78,12 +78,11 @@ interface RunAiRequestMessageContent {
   /** Type of the content (text) */
   type?: string | null;
 }
-const RunAiRequestMessageContent = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      text: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+const RunAiRequestMessageContent = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    text: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<RunAiRequestMessageContent>;
 
 interface Message {
@@ -92,7 +91,7 @@ interface Message {
   /** The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool'). */
   role: string;
 }
-const Message = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Message = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     content: Schema.Union([
       Schema.String,
@@ -106,7 +105,7 @@ interface ImageURL {
   /** Image URI with data (e.g. data:image/jpeg;base64,/9j/...). */
   url: string;
 }
-const ImageURL = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ImageURL = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     url: Schema.String,
   }),
@@ -120,15 +119,14 @@ interface RunAiRequestMessageContent2 {
   /** Text content (when type is 'text'). */
   text?: string | null;
 }
-const RunAiRequestMessageContent2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      type: Schema.String,
-      imageUrl: Schema.optional(Schema.Union([ImageURL, Schema.Null])),
-      text: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({ type: "type", imageUrl: "image_url", text: "text" }),
-    ),
+const RunAiRequestMessageContent2 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    type: Schema.String,
+    imageUrl: Schema.optional(Schema.Union([ImageURL, Schema.Null])),
+    text: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({ type: "type", imageUrl: "image_url", text: "text" }),
+  ),
 ) as unknown as Schema.Codec<RunAiRequestMessageContent2>;
 
 interface Message2 {
@@ -143,7 +141,7 @@ interface Message2 {
   /** The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool'). */
   role: string;
 }
-const Message2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Message2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     content: Schema.Union([
       Schema.String,
@@ -157,7 +155,7 @@ interface Function {
   code: string;
   name: string;
 }
-const Function = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Function = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.String,
     name: Schema.String,
@@ -172,7 +170,7 @@ interface Parameters {
   /** List of required parameter names. */
   required?: string[] | null;
 }
-const Parameters = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Parameters = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     properties: Schema.Record(Schema.String, Schema.Unknown),
     type: Schema.String,
@@ -194,7 +192,7 @@ interface RunAiRequestTool {
     required?: string[] | null;
   };
 }
-const RunAiRequestTool = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RunAiRequestTool = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     description: Schema.String,
     name: Schema.String,
@@ -208,7 +206,7 @@ interface TextClassification {
   /** Confidence score indicating the likelihood that the text belongs to the specified label */
   score?: number | null;
 }
-const TextClassification = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TextClassification = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     score: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -219,7 +217,7 @@ interface Audio {
   /** The generated audio in MP3 format, base64-encoded */
   audio?: string | null;
 }
-const Audio = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Audio = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     audio: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -230,7 +228,7 @@ interface TextEmbeddings {
   data?: number[][] | null;
   shape?: number[] | null;
 }
-const TextEmbeddings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const TextEmbeddings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     data: Schema.optional(
       Schema.Union([Schema.Array(Schema.Array(Schema.Number)), Schema.Null]),
@@ -248,7 +246,7 @@ interface Word {
   start?: number | null;
   word?: string | null;
 }
-const Word = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Word = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     end: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     start: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -265,21 +263,20 @@ interface AutomaticSpeechRecognition {
     | { end?: number | null; start?: number | null; word?: string | null }[]
     | null;
 }
-const AutomaticSpeechRecognition = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      text: Schema.String,
-      vtt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      wordCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      words: Schema.optional(Schema.Union([Schema.Array(Word), Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        text: "text",
-        vtt: "vtt",
-        wordCount: "word_count",
-        words: "words",
-      }),
-    ),
+const AutomaticSpeechRecognition = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    text: Schema.String,
+    vtt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    wordCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    words: Schema.optional(Schema.Union([Schema.Array(Word), Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      text: "text",
+      vtt: "vtt",
+      wordCount: "word_count",
+      words: "words",
+    }),
+  ),
 ) as unknown as Schema.Codec<AutomaticSpeechRecognition>;
 
 interface Box {
@@ -292,7 +289,7 @@ interface Box {
   /** The y-coordinate of the top-left corner of the bounding box */
   ymin?: number | null;
 }
-const Box = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Box = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     xmax: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     xmin: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -314,7 +311,7 @@ interface ObjectDetection {
   /** Confidence score indicating the likelihood that the detection is correct */
   score?: number | null;
 }
-const ObjectDetection = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ObjectDetection = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     box: Schema.optional(Schema.Union([Box, Schema.Null])),
     label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -328,7 +325,7 @@ interface ToolCall {
   /** The name of the tool to be called */
   name?: string | null;
 }
-const ToolCall = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ToolCall = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     arguments: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
     name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -343,7 +340,7 @@ interface Usage {
   /** Total number of input and output tokens */
   totalTokens?: number | null;
 }
-const Usage = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Usage = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     completionTokens: Schema.optional(
       Schema.Union([Schema.Number, Schema.Null]),
@@ -371,7 +368,7 @@ interface RunAiResponse7 {
     totalTokens?: number | null;
   } | null;
 }
-const RunAiResponse7 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RunAiResponse7 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     response: Schema.String,
     toolCalls: Schema.optional(
@@ -391,7 +388,7 @@ interface Translation {
   /** The translated text in the target language */
   translatedText?: string | null;
 }
-const Translation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Translation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     translatedText: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }).pipe(Schema.encodeKeys({ translatedText: "translated_text" })),
@@ -401,7 +398,7 @@ interface Summarization {
   /** The summarized version of the input text */
   summary?: string | null;
 }
-const Summarization = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Summarization = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     summary: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -410,7 +407,7 @@ const Summarization = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface ImageToText {
   description?: string | null;
 }
-const ImageToText = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ImageToText = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -424,7 +421,7 @@ interface ListFinetunesResponse2 {
   name: string;
   description?: string | null;
 }
-const ListFinetunesResponse2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListFinetunesResponse2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -454,7 +451,7 @@ interface ListFinetunePublicsResponseResult {
   description?: string | null;
 }
 const ListFinetunePublicsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -482,21 +479,20 @@ interface ListModelsResponseResultInfo {
   perPage?: number | null;
   totalCount?: number | null;
 }
-const ListModelsResponseResultInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
-    ),
+const ListModelsResponseResultInfo = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      count: "count",
+      page: "page",
+      perPage: "per_page",
+      totalCount: "total_count",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListModelsResponseResultInfo>;
 
 interface Input {
@@ -504,7 +500,7 @@ interface Input {
   description: string;
   type: string;
 }
-const Input = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Input = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     additionalProperties: Schema.Boolean,
     description: Schema.String,
@@ -517,7 +513,7 @@ interface SupportedToMarkdownResponseResult {
   mimeType: string;
 }
 const SupportedToMarkdownResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       extension: Schema.String,
       mimeType: Schema.String,
@@ -527,7 +523,7 @@ const SupportedToMarkdownResponseResult =
 interface File2 {
   files: (File | Blob)[];
 }
-const File2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const File2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     files: Schema.Array(UploadableSchema.pipe(T.HttpFormDataFile())),
   }),
@@ -540,15 +536,14 @@ interface ToMarkdownTransformResponse {
   name: string;
   tokens: string;
 }
-const ToMarkdownTransformResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      data: Schema.String,
-      format: Schema.String,
-      mimeType: Schema.String,
-      name: Schema.String,
-      tokens: Schema.String,
-    }),
+const ToMarkdownTransformResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    data: Schema.String,
+    format: Schema.String,
+    mimeType: Schema.String,
+    name: Schema.String,
+    tokens: Schema.String,
+  }),
 ) as unknown as Schema.Codec<ToMarkdownTransformResponse>;
 
 // =============================================================================
@@ -648,7 +643,7 @@ export interface RunAiRequest {
   ignoreEos?: boolean;
 }
 
-export const RunAiRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const RunAiRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     modelName: Schema.String.pipe(T.HttpPath("modelName")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -773,7 +768,7 @@ export type RunAiResponse =
   | { summary?: string | null }
   | { description?: string | null };
 
-export const RunAiResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const RunAiResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Union([
     AutomaticSpeechRecognition,
     RunAiResponse7,
@@ -795,7 +790,7 @@ export const runAi: API.OperationMethod<
   RunAiResponse,
   RunAiError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunAiRequest,
   output: RunAiResponse,
   errors: [ModelNotFound],
@@ -809,27 +804,25 @@ export interface ListAuthorsRequest {
   accountId: string;
 }
 
-export const ListAuthorsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/ai/authors/search",
-      }),
-    ),
+export const ListAuthorsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/ai/authors/search",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListAuthorsRequest>;
 
 export interface ListAuthorsResponse {
   result: unknown[];
 }
 
-export const ListAuthorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(Schema.Unknown),
-    }),
+export const ListAuthorsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(Schema.Unknown),
+  }),
 ) as unknown as Schema.Codec<ListAuthorsResponse>;
 
 export type ListAuthorsError = DefaultErrors;
@@ -839,7 +832,7 @@ export const listAuthors: API.PaginatedOperationMethod<
   ListAuthorsResponse,
   ListAuthorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAuthorsRequest,
   output: ListAuthorsResponse,
   errors: [],
@@ -857,13 +850,12 @@ export interface ListFinetunesRequest {
   accountId: string;
 }
 
-export const ListFinetunesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/ai/finetunes" }),
-    ),
+export const ListFinetunesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/ai/finetunes" }),
+  ),
 ) as unknown as Schema.Codec<ListFinetunesRequest>;
 
 export type ListFinetunesResponse = {
@@ -875,8 +867,8 @@ export type ListFinetunesResponse = {
   description?: string | null;
 }[];
 
-export const ListFinetunesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () => Schema.Array(ListFinetunesResponse2).pipe(T.ResponsePath("result")),
+export const ListFinetunesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Array(ListFinetunesResponse2).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<ListFinetunesResponse>;
 
 export type ListFinetunesError = DefaultErrors | AccountNotFound;
@@ -886,7 +878,7 @@ export const listFinetunes: API.OperationMethod<
   ListFinetunesResponse,
   ListFinetunesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListFinetunesRequest,
   output: ListFinetunesResponse,
   errors: [AccountNotFound],
@@ -905,17 +897,16 @@ export interface CreateFinetuneRequest {
   public?: boolean;
 }
 
-export const CreateFinetuneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      model: Schema.String,
-      name: Schema.String,
-      description: Schema.optional(Schema.String),
-      public: Schema.optional(Schema.Boolean),
-    }).pipe(
-      T.Http({ method: "POST", path: "/accounts/{account_id}/ai/finetunes" }),
-    ),
+export const CreateFinetuneRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    model: Schema.String,
+    name: Schema.String,
+    description: Schema.optional(Schema.String),
+    public: Schema.optional(Schema.Boolean),
+  }).pipe(
+    T.Http({ method: "POST", path: "/accounts/{account_id}/ai/finetunes" }),
+  ),
 ) as unknown as Schema.Codec<CreateFinetuneRequest>;
 
 export interface CreateFinetuneResponse {
@@ -929,7 +920,7 @@ export interface CreateFinetuneResponse {
 }
 
 export const CreateFinetuneResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createdAt: Schema.String,
@@ -963,7 +954,7 @@ export const createFinetune: API.OperationMethod<
   CreateFinetuneResponse,
   CreateFinetuneError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFinetuneRequest,
   output: CreateFinetuneResponse,
   errors: [ModelNotSupported, AccountNotFound],
@@ -984,7 +975,7 @@ export interface CreateFinetuneAssetRequest {
 }
 
 export const CreateFinetuneAssetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       finetuneId: Schema.String.pipe(T.HttpPath("finetuneId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1005,7 +996,7 @@ export interface CreateFinetuneAssetResponse {
 }
 
 export const CreateFinetuneAssetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       success: Schema.Boolean,
     }),
@@ -1021,7 +1012,7 @@ export const createFinetuneAsset: API.OperationMethod<
   CreateFinetuneAssetResponse,
   CreateFinetuneAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFinetuneAssetRequest,
   output: CreateFinetuneAssetResponse,
   errors: [ModelNotSupported, AccountNotFound],
@@ -1043,7 +1034,7 @@ export interface ListFinetunePublicsRequest {
 }
 
 export const ListFinetunePublicsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
@@ -1070,7 +1061,7 @@ export interface ListFinetunePublicsResponse {
 }
 
 export const ListFinetunePublicsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListFinetunePublicsResponseResult),
     }),
@@ -1083,7 +1074,7 @@ export const listFinetunePublics: API.PaginatedOperationMethod<
   ListFinetunePublicsResponse,
   ListFinetunePublicsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFinetunePublicsRequest,
   output: ListFinetunePublicsResponse,
   errors: [],
@@ -1118,31 +1109,30 @@ export interface ListModelsRequest {
   task?: string;
 }
 
-export const ListModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      author: Schema.optional(Schema.String).pipe(T.HttpQuery("author")),
-      format: Schema.optional(Schema.Literal("openrouter")).pipe(
-        T.HttpQuery("format"),
-      ),
-      hideExperimental: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("hide_experimental"),
-      ),
-      includeDeprecated: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("include_deprecated"),
-      ),
-      search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-      source: Schema.optional(Schema.Number).pipe(T.HttpQuery("source")),
-      task: Schema.optional(Schema.String).pipe(T.HttpQuery("task")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/ai/models/search",
-      }),
+export const ListModelsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    author: Schema.optional(Schema.String).pipe(T.HttpQuery("author")),
+    format: Schema.optional(Schema.Literal("openrouter")).pipe(
+      T.HttpQuery("format"),
     ),
+    hideExperimental: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("hide_experimental"),
+    ),
+    includeDeprecated: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("include_deprecated"),
+    ),
+    search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+    source: Schema.optional(Schema.Number).pipe(T.HttpQuery("source")),
+    task: Schema.optional(Schema.String).pipe(T.HttpQuery("task")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/ai/models/search",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListModelsRequest>;
 
 export interface ListModelsResponse {
@@ -1155,14 +1145,13 @@ export interface ListModelsResponse {
   } | null;
 }
 
-export const ListModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(Schema.Unknown),
-      resultInfo: Schema.optional(
-        Schema.Union([ListModelsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListModelsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(Schema.Unknown),
+    resultInfo: Schema.optional(
+      Schema.Union([ListModelsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListModelsResponse>;
 
 export type ListModelsError = DefaultErrors;
@@ -1172,7 +1161,7 @@ export const listModels: API.PaginatedOperationMethod<
   ListModelsResponse,
   ListModelsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListModelsRequest,
   output: ListModelsResponse,
   errors: [],
@@ -1196,17 +1185,16 @@ export interface GetModelSchemaRequest {
   model: string;
 }
 
-export const GetModelSchemaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      model: Schema.String.pipe(T.HttpQuery("model")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/ai/models/schema",
-      }),
-    ),
+export const GetModelSchemaRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    model: Schema.String.pipe(T.HttpQuery("model")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/ai/models/schema",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetModelSchemaRequest>;
 
 export interface GetModelSchemaResponse {
@@ -1215,7 +1203,7 @@ export interface GetModelSchemaResponse {
 }
 
 export const GetModelSchemaResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       input: Input,
       output: Input,
@@ -1233,7 +1221,7 @@ export const getModelSchema: API.OperationMethod<
   GetModelSchemaResponse,
   GetModelSchemaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetModelSchemaRequest,
   output: GetModelSchemaResponse,
   errors: [ModelNotSupported, ModelSchemaNotFound, AccountNotFound],
@@ -1247,7 +1235,7 @@ export interface ListTasksRequest {
   accountId: string;
 }
 
-export const ListTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListTasksRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(
@@ -1259,11 +1247,10 @@ export interface ListTasksResponse {
   result: unknown[];
 }
 
-export const ListTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(Schema.Unknown),
-    }),
+export const ListTasksResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(Schema.Unknown),
+  }),
 ) as unknown as Schema.Codec<ListTasksResponse>;
 
 export type ListTasksError = DefaultErrors;
@@ -1273,7 +1260,7 @@ export const listTasks: API.PaginatedOperationMethod<
   ListTasksResponse,
   ListTasksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTasksRequest,
   output: ListTasksResponse,
   errors: [],
@@ -1292,7 +1279,7 @@ export interface SupportedToMarkdownRequest {
 }
 
 export const SupportedToMarkdownRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
@@ -1308,7 +1295,7 @@ export interface SupportedToMarkdownResponse {
 }
 
 export const SupportedToMarkdownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(SupportedToMarkdownResponseResult),
     }),
@@ -1321,7 +1308,7 @@ export const supportedToMarkdown: API.PaginatedOperationMethod<
   SupportedToMarkdownResponse,
   SupportedToMarkdownError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SupportedToMarkdownRequest,
   output: SupportedToMarkdownResponse,
   errors: [],
@@ -1339,7 +1326,7 @@ export interface TransformToMarkdownRequest {
 }
 
 export const TransformToMarkdownRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       file: File2,
@@ -1361,7 +1348,7 @@ export type TransformToMarkdownResponse = {
 }[];
 
 export const TransformToMarkdownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(ToMarkdownTransformResponse).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<TransformToMarkdownResponse>;
 
@@ -1372,7 +1359,7 @@ export const transformToMarkdown: API.OperationMethod<
   TransformToMarkdownResponse,
   TransformToMarkdownError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TransformToMarkdownRequest,
   output: TransformToMarkdownResponse,
   errors: [],

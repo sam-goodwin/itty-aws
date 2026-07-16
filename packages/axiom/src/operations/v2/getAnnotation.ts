@@ -7,7 +7,7 @@ import { BadRequest, NotFound } from "../../errors.ts";
 export interface GetAnnotationInput {
   id: string;
 }
-export const GetAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAnnotationInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/annotations/{id}" }),
@@ -24,7 +24,7 @@ export interface GetAnnotationOutput {
   type: string;
   url?: string;
 }
-export const GetAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAnnotationOutput = /*@__PURE__*/ Schema.Struct({
   datasets: Schema.Array(Schema.String),
   description: Schema.optional(Schema.String),
   endTime: Schema.optional(Schema.NullOr(Schema.String)),
@@ -41,7 +41,7 @@ export const GetAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param id - Unique ID of the annotation
  */
-export const getAnnotation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAnnotation = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAnnotationInput,
   outputSchema: GetAnnotationOutput,
   errors: [BadRequest, NotFound] as const,

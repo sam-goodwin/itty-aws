@@ -14,7 +14,7 @@ export interface EndpointsLogsRetrieveInput {
   search?: string;
 }
 export const EndpointsLogsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     after: Schema.optional(Schema.String),
@@ -33,7 +33,7 @@ export const EndpointsLogsRetrieveInput =
 // Output Schema
 export type EndpointsLogsRetrieveOutput = void;
 export const EndpointsLogsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsLogsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsLogsRetrieveOutput>;
 
 // The operation
 /**
@@ -46,9 +46,7 @@ export const EndpointsLogsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param search - Case-insensitive substring search across log messages.
  */
-export const endpointsLogsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EndpointsLogsRetrieveInput,
-    outputSchema: EndpointsLogsRetrieveOutput,
-  }),
-);
+export const endpointsLogsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EndpointsLogsRetrieveInput,
+  outputSchema: EndpointsLogsRetrieveOutput,
+}));

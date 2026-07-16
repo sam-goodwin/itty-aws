@@ -15,7 +15,7 @@ export interface GetProductsInput {
   type?: "good" | "service";
   url?: string;
 }
-export const GetProductsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProductsInput = /*@__PURE__*/ Schema.Struct({
   active: Schema.optional(Schema.Boolean),
   created: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
@@ -135,7 +135,7 @@ export interface GetProductsOutput {
   object: "list";
   url: string;
 }
-export const GetProductsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProductsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       active: Schema.Boolean,
@@ -307,7 +307,7 @@ export const GetProductsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param type - Only return products of this type.
  * @param url - Only return products with the given url.
  */
-export const GetProducts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetProducts = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetProductsInput,
   outputSchema: GetProductsOutput,
 }));

@@ -11,7 +11,7 @@ export interface GetV1DeploymentsByDeploymentIdLogsInput {
   cursor?: string;
 }
 export const GetV1DeploymentsByDeploymentIdLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deploymentId: Schema.String.pipe(T.PathParam()),
     tail: Schema.optional(Schema.Number),
     from_start: Schema.optional(Schema.Literals(["true", "false"])),
@@ -23,7 +23,7 @@ export const GetV1DeploymentsByDeploymentIdLogsInput =
 // Output Schema
 export type GetV1DeploymentsByDeploymentIdLogsOutput = void;
 export const GetV1DeploymentsByDeploymentIdLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetV1DeploymentsByDeploymentIdLogsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetV1DeploymentsByDeploymentIdLogsOutput>;
 
 // The operation
 /**
@@ -33,7 +33,7 @@ export const GetV1DeploymentsByDeploymentIdLogsOutput =
  * Upgrades to a WebSocket connection that streams log output for the specified deployment. Each message is a JSON object with `type: "log"` (log text + byte metadata) or `type: "terminal"` (end-of-segment signal with reconnect cursor). The stream ends after 10 minutes; reconnect with the `cursor` query parameter to continue.
  */
 export const getV1DeploymentsByDeploymentIdLogs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV1DeploymentsByDeploymentIdLogsInput,
     outputSchema: GetV1DeploymentsByDeploymentIdLogsOutput,
     errors: [Forbidden, NotFound] as const,

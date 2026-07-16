@@ -8,7 +8,7 @@ export interface RetrieveNLSearchModelInput {
   modelId: string;
 }
 export const RetrieveNLSearchModelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     modelId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/nl_search_models/{modelId}" }),
@@ -19,7 +19,7 @@ export interface RetrieveNLSearchModelOutput {
   id: string;
 }
 export const RetrieveNLSearchModelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
   }) as unknown as Schema.Codec<RetrieveNLSearchModelOutput>;
 
@@ -31,10 +31,8 @@ export const RetrieveNLSearchModelOutput =
  *
  * @param modelId - The ID of the NL search model to retrieve
  */
-export const retrieveNLSearchModel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RetrieveNLSearchModelInput,
-    outputSchema: RetrieveNLSearchModelOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const retrieveNLSearchModel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RetrieveNLSearchModelInput,
+  outputSchema: RetrieveNLSearchModelOutput,
+  errors: [NotFound] as const,
+}));

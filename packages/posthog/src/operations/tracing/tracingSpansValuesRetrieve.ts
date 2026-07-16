@@ -12,7 +12,7 @@ export interface TracingSpansValuesRetrieveInput {
   value?: string;
 }
 export const TracingSpansValuesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     attribute_type: Schema.optional(
       Schema.Literals(["span", "span_attribute", "span_resource_attribute"]),
@@ -31,7 +31,7 @@ export const TracingSpansValuesRetrieveInput =
 // Output Schema
 export type TracingSpansValuesRetrieveOutput = void;
 export const TracingSpansValuesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansValuesRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansValuesRetrieveOutput>;
 
 // The operation
 /**
@@ -47,9 +47,7 @@ export const TracingSpansValuesRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param value - Search filter for attribute values.
  */
-export const tracingSpansValuesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TracingSpansValuesRetrieveInput,
-    outputSchema: TracingSpansValuesRetrieveOutput,
-  }),
-);
+export const tracingSpansValuesRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TracingSpansValuesRetrieveInput,
+  outputSchema: TracingSpansValuesRetrieveOutput,
+}));

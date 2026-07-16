@@ -9,7 +9,7 @@ import * as Redacted from "effect/Redacted";
 export interface UsersRetrieveInput {
   uuid: string;
 }
-export const UsersRetrieveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersRetrieveInput = /*@__PURE__*/ Schema.Struct({
   uuid: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/api/users/{uuid}/" }),
@@ -732,7 +732,7 @@ export interface UsersRetrieveOutput {
   }[];
   requires_credential_review?: boolean;
 }
-export const UsersRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersRetrieveOutput = /*@__PURE__*/ Schema.Struct({
   date_joined: Schema.optional(Schema.String),
   uuid: Schema.optional(Schema.String),
   distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1528,7 +1528,7 @@ export const UsersRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Retrieve a user's profile and settings. Pass `@me` as the UUID to fetch the authenticated user; non-staff callers may only access their own account.
  */
-export const usersRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const usersRetrieve = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersRetrieveInput,
   outputSchema: UsersRetrieveOutput,
   errors: [Forbidden, NotFound] as const,

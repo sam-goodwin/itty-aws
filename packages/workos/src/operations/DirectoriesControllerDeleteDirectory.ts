@@ -8,7 +8,7 @@ export interface DirectoriesControllerDeleteDirectoryInput {
   id: string;
 }
 export const DirectoriesControllerDeleteDirectoryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/directories/{id}" }),
@@ -17,7 +17,7 @@ export const DirectoriesControllerDeleteDirectoryInput =
 // Output Schema
 export type DirectoriesControllerDeleteDirectoryOutput = void;
 export const DirectoriesControllerDeleteDirectoryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DirectoriesControllerDeleteDirectoryOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DirectoriesControllerDeleteDirectoryOutput>;
 
 // The operation
 /**
@@ -28,7 +28,7 @@ export const DirectoriesControllerDeleteDirectoryOutput =
  * @param id - Unique identifier for the Directory.
  */
 export const DirectoriesControllerDeleteDirectory =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DirectoriesControllerDeleteDirectoryInput,
     outputSchema: DirectoriesControllerDeleteDirectoryOutput,
     errors: [Forbidden, NotFound] as const,

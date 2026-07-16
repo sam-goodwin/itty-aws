@@ -14,14 +14,12 @@ export interface GetInvoicesSearchInput {
   page?: string;
   query: string;
 }
-export const GetInvoicesSearchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    expand: Schema.optional(Schema.String),
-    limit: Schema.optional(Schema.Number),
-    page: Schema.optional(Schema.String),
-    query: Schema.String,
-  },
-).pipe(
+export const GetInvoicesSearchInput = /*@__PURE__*/ Schema.Struct({
+  expand: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  page: Schema.optional(Schema.String),
+  query: Schema.String,
+}).pipe(
   T.Http({
     method: "GET",
     path: "/v1/invoices/search",
@@ -1937,7 +1935,7 @@ export interface GetInvoicesSearchOutput {
   url: string;
 }
 export const GetInvoicesSearchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         account_country: Schema.NullOr(Schema.String),
@@ -4046,15 +4044,13 @@ export const GetInvoicesSearchOutput =
  * @param page - A cursor for pagination across multiple pages of results. Don't include this parameter on the first call. Use the next_page value returned in a previous response to request subsequent results.
  * @param query - The search query string. See [search query language](https://docs.stripe.com/search#search-query-language) and the list of supported [query fields for invoices](https://docs.stripe.com/search#query-fields-for-invoices).
  */
-export const GetInvoicesSearch = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: GetInvoicesSearchInput,
-    outputSchema: GetInvoicesSearchOutput,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const GetInvoicesSearch = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: GetInvoicesSearchInput,
+  outputSchema: GetInvoicesSearchOutput,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

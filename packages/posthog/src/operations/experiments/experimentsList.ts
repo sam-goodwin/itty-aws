@@ -17,7 +17,7 @@ export interface ExperimentsListInput {
   search?: string;
   status?: "all" | "complete" | "draft" | "paused" | "running" | "stopped";
 }
-export const ExperimentsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExperimentsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   archived: Schema.optional(Schema.Boolean),
   created_by_id: Schema.optional(Schema.String),
@@ -244,7 +244,7 @@ export interface ExperimentsListOutput {
     user_access_level: string | null;
   }[];
 }
-export const ExperimentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ExperimentsListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.Number,
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -622,7 +622,7 @@ export const ExperimentsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param search - Free-text search applied to the experiment name (case-insensitive).
  * @param status - Filter by experiment status. "running" and "paused" are mutually exclusive: "running" returns launched experiments with an active feature flag, "paused" returns launched experiments whose feature flag is deactivated. "complete" is an alias for "stopped". "all" disables status filtering.
  */
-export const experimentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const experimentsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExperimentsListInput,
   outputSchema: ExperimentsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -108,16 +108,15 @@ export type QueueIdentifier = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type ResponseTagMap = { [key: string]: string | undefined };
-export const ResponseTagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ResponseTagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -125,13 +124,13 @@ export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ tags: S.optional(ResponseTagMap) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
   }) as any as S.Schema<ListTagsForResourceResponse>;
 export type RequestTagMap = { [key: string]: string | undefined };
-export const RequestTagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const RequestTagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -139,7 +138,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tags: RequestTagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -147,18 +146,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeys,
@@ -169,38 +168,36 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
 export type SchedulerType = "SLURM" | (string & {});
-export const SchedulerType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SchedulerType = /*@__PURE__*/ S.String;
 export interface SchedulerRequest {
   type: SchedulerType;
   version: string;
 }
-export const SchedulerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SchedulerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: SchedulerType, version: S.String }),
 ).annotate({
   identifier: "SchedulerRequest",
 }) as any as S.Schema<SchedulerRequest>;
 export type Size = "SMALL" | "MEDIUM" | "LARGE" | (string & {});
-export const Size = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Size = /*@__PURE__*/ S.String;
 export type SubnetIdList = string[];
-export const SubnetIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupIdList = string[];
-export const SecurityGroupIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
 export type NetworkType = "IPV4" | "IPV6" | (string & {});
-export const NetworkType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkType = /*@__PURE__*/ S.String;
 export interface NetworkingRequest {
   subnetIds?: string[];
   securityGroupIds?: string[];
   networkType?: NetworkType;
 }
-export const NetworkingRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NetworkingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetIds: S.optional(SubnetIdList),
     securityGroupIds: S.optional(SecurityGroupIdList),
@@ -213,46 +210,44 @@ export interface SlurmCustomSetting {
   parameterName: string;
   parameterValue: string;
 }
-export const SlurmCustomSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SlurmCustomSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ parameterName: S.String, parameterValue: S.String }),
 ).annotate({
   identifier: "SlurmCustomSetting",
 }) as any as S.Schema<SlurmCustomSetting>;
 export type SlurmCustomSettings = SlurmCustomSetting[];
-export const SlurmCustomSettings =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SlurmCustomSetting);
+export const SlurmCustomSettings = /*@__PURE__*/ S.Array(SlurmCustomSetting);
 export interface SlurmdbdCustomSetting {
   parameterName: string;
   parameterValue: string;
 }
-export const SlurmdbdCustomSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SlurmdbdCustomSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ parameterName: S.String, parameterValue: S.String }),
 ).annotate({
   identifier: "SlurmdbdCustomSetting",
 }) as any as S.Schema<SlurmdbdCustomSetting>;
 export type SlurmdbdCustomSettings = SlurmdbdCustomSetting[];
-export const SlurmdbdCustomSettings = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const SlurmdbdCustomSettings = /*@__PURE__*/ S.Array(
   SlurmdbdCustomSetting,
 );
 export interface CgroupCustomSetting {
   parameterName: string;
   parameterValue: string;
 }
-export const CgroupCustomSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CgroupCustomSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ parameterName: S.String, parameterValue: S.String }),
 ).annotate({
   identifier: "CgroupCustomSetting",
 }) as any as S.Schema<CgroupCustomSetting>;
 export type CgroupCustomSettings = CgroupCustomSetting[];
-export const CgroupCustomSettings =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CgroupCustomSetting);
+export const CgroupCustomSettings = /*@__PURE__*/ S.Array(CgroupCustomSetting);
 export type AccountingMode = "STANDARD" | "NONE" | (string & {});
-export const AccountingMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccountingMode = /*@__PURE__*/ S.String;
 export interface AccountingRequest {
   defaultPurgeTimeInDays?: number;
   mode: AccountingMode;
 }
-export const AccountingRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AccountingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultPurgeTimeInDays: S.optional(S.Number),
     mode: AccountingMode,
@@ -261,11 +256,11 @@ export const AccountingRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AccountingRequest",
 }) as any as S.Schema<AccountingRequest>;
 export type SlurmRestMode = "STANDARD" | "NONE" | (string & {});
-export const SlurmRestMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SlurmRestMode = /*@__PURE__*/ S.String;
 export interface SlurmRestRequest {
   mode: SlurmRestMode;
 }
-export const SlurmRestRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SlurmRestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mode: SlurmRestMode }),
 ).annotate({
   identifier: "SlurmRestRequest",
@@ -279,7 +274,7 @@ export interface ClusterSlurmConfigurationRequest {
   slurmRest?: SlurmRestRequest;
 }
 export const ClusterSlurmConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scaleDownIdleTimeInSeconds: S.optional(S.Number),
       slurmCustomSettings: S.optional(SlurmCustomSettings),
@@ -300,7 +295,7 @@ export interface CreateClusterRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterName: S.String,
     scheduler: SchedulerRequest,
@@ -327,39 +322,39 @@ export type ClusterStatus =
   | "SUSPENDED"
   | "RESUMING"
   | (string & {});
-export const ClusterStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ClusterStatus = /*@__PURE__*/ S.String;
 export interface Scheduler {
   type: SchedulerType;
   version: string;
 }
-export const Scheduler = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Scheduler = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: SchedulerType, version: S.String }),
 ).annotate({ identifier: "Scheduler" }) as any as S.Schema<Scheduler>;
 export interface SlurmAuthKey {
   secretArn: string;
   secretVersion: string;
 }
-export const SlurmAuthKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SlurmAuthKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ secretArn: S.String, secretVersion: S.String }),
 ).annotate({ identifier: "SlurmAuthKey" }) as any as S.Schema<SlurmAuthKey>;
 export interface JwtKey {
   secretArn: string;
   secretVersion: string;
 }
-export const JwtKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const JwtKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ secretArn: S.String, secretVersion: S.String }),
 ).annotate({ identifier: "JwtKey" }) as any as S.Schema<JwtKey>;
 export interface JwtAuth {
   jwtKey?: JwtKey;
 }
-export const JwtAuth = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const JwtAuth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ jwtKey: S.optional(JwtKey) }),
 ).annotate({ identifier: "JwtAuth" }) as any as S.Schema<JwtAuth>;
 export interface Accounting {
   defaultPurgeTimeInDays?: number;
   mode: AccountingMode;
 }
-export const Accounting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Accounting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultPurgeTimeInDays: S.optional(S.Number),
     mode: AccountingMode,
@@ -368,7 +363,7 @@ export const Accounting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface SlurmRest {
   mode: SlurmRestMode;
 }
-export const SlurmRest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SlurmRest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mode: SlurmRestMode }),
 ).annotate({ identifier: "SlurmRest" }) as any as S.Schema<SlurmRest>;
 export interface ClusterSlurmConfiguration {
@@ -381,18 +376,17 @@ export interface ClusterSlurmConfiguration {
   accounting?: Accounting;
   slurmRest?: SlurmRest;
 }
-export const ClusterSlurmConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      scaleDownIdleTimeInSeconds: S.optional(S.Number),
-      slurmCustomSettings: S.optional(SlurmCustomSettings),
-      slurmdbdCustomSettings: S.optional(SlurmdbdCustomSettings),
-      cgroupCustomSettings: S.optional(CgroupCustomSettings),
-      authKey: S.optional(SlurmAuthKey),
-      jwtAuth: S.optional(JwtAuth),
-      accounting: S.optional(Accounting),
-      slurmRest: S.optional(SlurmRest),
-    }),
+export const ClusterSlurmConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scaleDownIdleTimeInSeconds: S.optional(S.Number),
+    slurmCustomSettings: S.optional(SlurmCustomSettings),
+    slurmdbdCustomSettings: S.optional(SlurmdbdCustomSettings),
+    cgroupCustomSettings: S.optional(CgroupCustomSettings),
+    authKey: S.optional(SlurmAuthKey),
+    jwtAuth: S.optional(JwtAuth),
+    accounting: S.optional(Accounting),
+    slurmRest: S.optional(SlurmRest),
+  }),
 ).annotate({
   identifier: "ClusterSlurmConfiguration",
 }) as any as S.Schema<ClusterSlurmConfiguration>;
@@ -401,7 +395,7 @@ export interface Networking {
   securityGroupIds?: string[];
   networkType?: NetworkType;
 }
-export const Networking = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Networking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetIds: S.optional(SubnetIdList),
     securityGroupIds: S.optional(SecurityGroupIdList),
@@ -413,7 +407,7 @@ export type EndpointType =
   | "SLURMDBD"
   | "SLURMRESTD"
   | (string & {});
-export const EndpointType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EndpointType = /*@__PURE__*/ S.String;
 export interface Endpoint {
   type: EndpointType;
   privateIpAddress: string;
@@ -421,7 +415,7 @@ export interface Endpoint {
   ipv6Address?: string;
   port: string;
 }
-export const Endpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: EndpointType,
     privateIpAddress: S.String,
@@ -431,16 +425,16 @@ export const Endpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 export type Endpoints = Endpoint[];
-export const Endpoints = /*@__PURE__*/ /*#__PURE__*/ S.Array(Endpoint);
+export const Endpoints = /*@__PURE__*/ S.Array(Endpoint);
 export interface ErrorInfo {
   code?: string;
   message?: string;
 }
-export const ErrorInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
 ).annotate({ identifier: "ErrorInfo" }) as any as S.Schema<ErrorInfo>;
 export type ErrorInfoList = ErrorInfo[];
-export const ErrorInfoList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ErrorInfo);
+export const ErrorInfoList = /*@__PURE__*/ S.Array(ErrorInfo);
 export interface Cluster {
   name: string;
   id: string;
@@ -455,7 +449,7 @@ export interface Cluster {
   endpoints?: Endpoint[];
   errorInfo?: ErrorInfo[];
 }
-export const Cluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     id: S.String,
@@ -474,7 +468,7 @@ export const Cluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateClusterResponse {
   cluster?: Cluster;
 }
-export const CreateClusterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cluster: S.optional(Cluster) }),
 ).annotate({
   identifier: "CreateClusterResponse",
@@ -485,38 +479,37 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ name: S.String, message: S.String }),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export interface UpdateAccountingRequest {
   defaultPurgeTimeInDays?: number;
   mode?: AccountingMode;
 }
-export const UpdateAccountingRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      defaultPurgeTimeInDays: S.optional(S.Number),
-      mode: S.optional(AccountingMode),
-    }),
+export const UpdateAccountingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPurgeTimeInDays: S.optional(S.Number),
+    mode: S.optional(AccountingMode),
+  }),
 ).annotate({
   identifier: "UpdateAccountingRequest",
 }) as any as S.Schema<UpdateAccountingRequest>;
 export interface UpdateSlurmRestRequest {
   mode?: SlurmRestMode;
 }
-export const UpdateSlurmRestRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ mode: S.optional(SlurmRestMode) }),
+export const UpdateSlurmRestRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ mode: S.optional(SlurmRestMode) }),
 ).annotate({
   identifier: "UpdateSlurmRestRequest",
 }) as any as S.Schema<UpdateSlurmRestRequest>;
@@ -529,7 +522,7 @@ export interface UpdateClusterSlurmConfigurationRequest {
   slurmRest?: UpdateSlurmRestRequest;
 }
 export const UpdateClusterSlurmConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scaleDownIdleTimeInSeconds: S.optional(S.Number),
       slurmCustomSettings: S.optional(SlurmCustomSettings),
@@ -544,8 +537,8 @@ export const UpdateClusterSlurmConfigurationRequest =
 export interface UpdateSchedulerRequest {
   version: string;
 }
-export const UpdateSchedulerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ version: S.String }),
+export const UpdateSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ version: S.String }),
 ).annotate({
   identifier: "UpdateSchedulerRequest",
 }) as any as S.Schema<UpdateSchedulerRequest>;
@@ -555,7 +548,7 @@ export interface UpdateClusterRequest {
   slurmConfiguration?: UpdateClusterSlurmConfigurationRequest;
   scheduler?: UpdateSchedulerRequest;
 }
-export const UpdateClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterIdentifier: S.String,
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -570,7 +563,7 @@ export const UpdateClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateClusterResponse {
   cluster?: Cluster;
 }
-export const UpdateClusterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cluster: S.optional(Cluster) }),
 ).annotate({
   identifier: "UpdateClusterResponse",
@@ -579,7 +572,7 @@ export interface DeleteClusterRequest {
   clusterIdentifier: string;
   clientToken?: string;
 }
-export const DeleteClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterIdentifier: S.String,
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -590,7 +583,7 @@ export const DeleteClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteClusterRequest",
 }) as any as S.Schema<DeleteClusterRequest>;
 export interface DeleteClusterResponse {}
-export const DeleteClusterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteClusterResponse",
@@ -598,7 +591,7 @@ export const DeleteClusterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetClusterRequest {
   clusterIdentifier: string;
 }
-export const GetClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ clusterIdentifier: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -608,7 +601,7 @@ export const GetClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetClusterResponse {
   cluster?: Cluster;
 }
-export const GetClusterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cluster: S.optional(Cluster) }),
 ).annotate({
   identifier: "GetClusterResponse",
@@ -618,7 +611,7 @@ export interface RegisterComputeNodeGroupInstanceRequest {
   bootstrapId: string;
 }
 export const RegisterComputeNodeGroupInstanceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ clusterIdentifier: S.String, bootstrapId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -631,7 +624,7 @@ export interface RegisterComputeNodeGroupInstanceResponse {
   endpoints: Endpoint[];
 }
 export const RegisterComputeNodeGroupInstanceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nodeID: S.String,
       sharedSecret: SensitiveString,
@@ -644,7 +637,7 @@ export interface ListClustersRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListClustersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -662,7 +655,7 @@ export interface ClusterSummary {
   modifiedAt: Date;
   status: ClusterStatus;
 }
-export const ClusterSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ClusterSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     id: S.String,
@@ -673,30 +666,30 @@ export const ClusterSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClusterSummary" }) as any as S.Schema<ClusterSummary>;
 export type ClusterList = ClusterSummary[];
-export const ClusterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ClusterSummary);
+export const ClusterList = /*@__PURE__*/ S.Array(ClusterSummary);
 export interface ListClustersResponse {
   clusters: ClusterSummary[];
   nextToken?: string;
 }
-export const ListClustersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ clusters: ClusterList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListClustersResponse",
 }) as any as S.Schema<ListClustersResponse>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StringList = /*@__PURE__*/ S.Array(S.String);
 export type PurchaseOption =
   | "ONDEMAND"
   | "SPOT"
   | "CAPACITY_BLOCK"
   | "INTERRUPTIBLE_CAPACITY_RESERVATION"
   | (string & {});
-export const PurchaseOption = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PurchaseOption = /*@__PURE__*/ S.String;
 export interface CustomLaunchTemplate {
   id: string;
   version: string;
 }
-export const CustomLaunchTemplate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CustomLaunchTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String, version: S.String }),
 ).annotate({
   identifier: "CustomLaunchTemplate",
@@ -706,7 +699,7 @@ export interface ScalingConfigurationRequest {
   maxInstanceCount: number;
 }
 export const ScalingConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ minInstanceCount: S.Number, maxInstanceCount: S.Number }),
   ).annotate({
     identifier: "ScalingConfigurationRequest",
@@ -714,21 +707,21 @@ export const ScalingConfigurationRequest =
 export interface InstanceConfig {
   instanceType?: string;
 }
-export const InstanceConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instanceType: S.optional(S.String) }),
 ).annotate({ identifier: "InstanceConfig" }) as any as S.Schema<InstanceConfig>;
 export type InstanceList = InstanceConfig[];
-export const InstanceList = /*@__PURE__*/ /*#__PURE__*/ S.Array(InstanceConfig);
+export const InstanceList = /*@__PURE__*/ S.Array(InstanceConfig);
 export type SpotAllocationStrategy =
   | "lowest-price"
   | "capacity-optimized"
   | "price-capacity-optimized"
   | (string & {});
-export const SpotAllocationStrategy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SpotAllocationStrategy = /*@__PURE__*/ S.String;
 export interface SpotOptions {
   allocationStrategy?: SpotAllocationStrategy;
 }
-export const SpotOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SpotOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ allocationStrategy: S.optional(SpotAllocationStrategy) }),
 ).annotate({ identifier: "SpotOptions" }) as any as S.Schema<SpotOptions>;
 export interface ComputeNodeGroupSlurmConfigurationRequest {
@@ -736,7 +729,7 @@ export interface ComputeNodeGroupSlurmConfigurationRequest {
   slurmCustomSettings?: SlurmCustomSetting[];
 }
 export const ComputeNodeGroupSlurmConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scaleDownIdleTimeInSeconds: S.optional(S.Number),
       slurmCustomSettings: S.optional(SlurmCustomSettings),
@@ -760,7 +753,7 @@ export interface CreateComputeNodeGroupRequest {
   tags?: { [key: string]: string | undefined };
 }
 export const CreateComputeNodeGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clusterIdentifier: S.String,
       computeNodeGroupName: S.String,
@@ -794,12 +787,12 @@ export type ComputeNodeGroupStatus =
   | "SUSPENDED"
   | "RESUMING"
   | (string & {});
-export const ComputeNodeGroupStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ComputeNodeGroupStatus = /*@__PURE__*/ S.String;
 export interface ScalingConfiguration {
   minInstanceCount: number;
   maxInstanceCount: number;
 }
-export const ScalingConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ScalingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ minInstanceCount: S.Number, maxInstanceCount: S.Number }),
 ).annotate({
   identifier: "ScalingConfiguration",
@@ -809,7 +802,7 @@ export interface ComputeNodeGroupSlurmConfiguration {
   slurmCustomSettings?: SlurmCustomSetting[];
 }
 export const ComputeNodeGroupSlurmConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scaleDownIdleTimeInSeconds: S.optional(S.Number),
       slurmCustomSettings: S.optional(SlurmCustomSettings),
@@ -836,7 +829,7 @@ export interface ComputeNodeGroup {
   slurmConfiguration?: ComputeNodeGroupSlurmConfiguration;
   errorInfo?: ErrorInfo[];
 }
-export const ComputeNodeGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ComputeNodeGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     id: S.String,
@@ -863,7 +856,7 @@ export interface CreateComputeNodeGroupResponse {
   computeNodeGroup?: ComputeNodeGroup;
 }
 export const CreateComputeNodeGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ computeNodeGroup: S.optional(ComputeNodeGroup) }),
   ).annotate({
     identifier: "CreateComputeNodeGroupResponse",
@@ -873,7 +866,7 @@ export interface UpdateComputeNodeGroupSlurmConfigurationRequest {
   slurmCustomSettings?: SlurmCustomSetting[];
 }
 export const UpdateComputeNodeGroupSlurmConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scaleDownIdleTimeInSeconds: S.optional(S.Number),
       slurmCustomSettings: S.optional(SlurmCustomSettings),
@@ -895,7 +888,7 @@ export interface UpdateComputeNodeGroupRequest {
   clientToken?: string;
 }
 export const UpdateComputeNodeGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clusterIdentifier: S.String,
       computeNodeGroupIdentifier: S.String,
@@ -920,7 +913,7 @@ export interface UpdateComputeNodeGroupResponse {
   computeNodeGroup?: ComputeNodeGroup;
 }
 export const UpdateComputeNodeGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ computeNodeGroup: S.optional(ComputeNodeGroup) }),
   ).annotate({
     identifier: "UpdateComputeNodeGroupResponse",
@@ -931,7 +924,7 @@ export interface DeleteComputeNodeGroupRequest {
   clientToken?: string;
 }
 export const DeleteComputeNodeGroupRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clusterIdentifier: S.String,
       computeNodeGroupIdentifier: S.String,
@@ -944,21 +937,20 @@ export const DeleteComputeNodeGroupRequest =
   }) as any as S.Schema<DeleteComputeNodeGroupRequest>;
 export interface DeleteComputeNodeGroupResponse {}
 export const DeleteComputeNodeGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteComputeNodeGroupResponse",
   }) as any as S.Schema<DeleteComputeNodeGroupResponse>;
 export interface GetComputeNodeGroupRequest {
   clusterIdentifier: string;
   computeNodeGroupIdentifier: string;
 }
-export const GetComputeNodeGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clusterIdentifier: S.String,
-      computeNodeGroupIdentifier: S.String,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetComputeNodeGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterIdentifier: S.String,
+    computeNodeGroupIdentifier: S.String,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetComputeNodeGroupRequest",
 }) as any as S.Schema<GetComputeNodeGroupRequest>;
@@ -966,7 +958,7 @@ export interface GetComputeNodeGroupResponse {
   computeNodeGroup?: ComputeNodeGroup;
 }
 export const GetComputeNodeGroupResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ computeNodeGroup: S.optional(ComputeNodeGroup) }),
   ).annotate({
     identifier: "GetComputeNodeGroupResponse",
@@ -977,7 +969,7 @@ export interface ListComputeNodeGroupsRequest {
   maxResults?: number;
 }
 export const ListComputeNodeGroupsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clusterIdentifier: S.String,
       nextToken: S.optional(S.String),
@@ -997,22 +989,21 @@ export interface ComputeNodeGroupSummary {
   modifiedAt: Date;
   status: ComputeNodeGroupStatus;
 }
-export const ComputeNodeGroupSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      id: S.String,
-      arn: S.String,
-      clusterId: S.String,
-      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      modifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      status: ComputeNodeGroupStatus,
-    }),
+export const ComputeNodeGroupSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    id: S.String,
+    arn: S.String,
+    clusterId: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    modifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: ComputeNodeGroupStatus,
+  }),
 ).annotate({
   identifier: "ComputeNodeGroupSummary",
 }) as any as S.Schema<ComputeNodeGroupSummary>;
 export type ComputeNodeGroupList = ComputeNodeGroupSummary[];
-export const ComputeNodeGroupList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ComputeNodeGroupList = /*@__PURE__*/ S.Array(
   ComputeNodeGroupSummary,
 );
 export interface ListComputeNodeGroupsResponse {
@@ -1020,7 +1011,7 @@ export interface ListComputeNodeGroupsResponse {
   nextToken?: string;
 }
 export const ListComputeNodeGroupsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       computeNodeGroups: ComputeNodeGroupList,
       nextToken: S.optional(S.String),
@@ -1032,19 +1023,19 @@ export interface ComputeNodeGroupConfiguration {
   computeNodeGroupId?: string;
 }
 export const ComputeNodeGroupConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ computeNodeGroupId: S.optional(S.String) }),
   ).annotate({
     identifier: "ComputeNodeGroupConfiguration",
   }) as any as S.Schema<ComputeNodeGroupConfiguration>;
 export type ComputeNodeGroupConfigurationList = ComputeNodeGroupConfiguration[];
 export const ComputeNodeGroupConfigurationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ComputeNodeGroupConfiguration);
+  /*@__PURE__*/ S.Array(ComputeNodeGroupConfiguration);
 export interface QueueSlurmConfigurationRequest {
   slurmCustomSettings?: SlurmCustomSetting[];
 }
 export const QueueSlurmConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ slurmCustomSettings: S.optional(SlurmCustomSettings) }),
   ).annotate({
     identifier: "QueueSlurmConfigurationRequest",
@@ -1057,7 +1048,7 @@ export interface CreateQueueRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterIdentifier: S.String,
     queueName: S.String,
@@ -1085,12 +1076,12 @@ export type QueueStatus =
   | "SUSPENDED"
   | "RESUMING"
   | (string & {});
-export const QueueStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const QueueStatus = /*@__PURE__*/ S.String;
 export interface QueueSlurmConfiguration {
   slurmCustomSettings?: SlurmCustomSetting[];
 }
-export const QueueSlurmConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ slurmCustomSettings: S.optional(SlurmCustomSettings) }),
+export const QueueSlurmConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ slurmCustomSettings: S.optional(SlurmCustomSettings) }),
 ).annotate({
   identifier: "QueueSlurmConfiguration",
 }) as any as S.Schema<QueueSlurmConfiguration>;
@@ -1106,7 +1097,7 @@ export interface Queue {
   slurmConfiguration?: QueueSlurmConfiguration;
   errorInfo?: ErrorInfo[];
 }
-export const Queue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Queue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     id: S.String,
@@ -1123,7 +1114,7 @@ export const Queue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateQueueResponse {
   queue?: Queue;
 }
-export const CreateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ queue: S.optional(Queue) }),
 ).annotate({
   identifier: "CreateQueueResponse",
@@ -1132,7 +1123,7 @@ export interface UpdateQueueSlurmConfigurationRequest {
   slurmCustomSettings?: SlurmCustomSetting[];
 }
 export const UpdateQueueSlurmConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ slurmCustomSettings: S.optional(SlurmCustomSettings) }),
   ).annotate({
     identifier: "UpdateQueueSlurmConfigurationRequest",
@@ -1144,7 +1135,7 @@ export interface UpdateQueueRequest {
   slurmConfiguration?: UpdateQueueSlurmConfigurationRequest;
   clientToken?: string;
 }
-export const UpdateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterIdentifier: S.String,
     queueIdentifier: S.String,
@@ -1162,7 +1153,7 @@ export const UpdateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateQueueResponse {
   queue?: Queue;
 }
-export const UpdateQueueResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ queue: S.optional(Queue) }),
 ).annotate({
   identifier: "UpdateQueueResponse",
@@ -1172,7 +1163,7 @@ export interface DeleteQueueRequest {
   queueIdentifier: string;
   clientToken?: string;
 }
-export const DeleteQueueRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterIdentifier: S.String,
     queueIdentifier: S.String,
@@ -1184,7 +1175,7 @@ export const DeleteQueueRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteQueueRequest",
 }) as any as S.Schema<DeleteQueueRequest>;
 export interface DeleteQueueResponse {}
-export const DeleteQueueResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteQueueResponse",
@@ -1193,7 +1184,7 @@ export interface GetQueueRequest {
   clusterIdentifier: string;
   queueIdentifier: string;
 }
-export const GetQueueRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ clusterIdentifier: S.String, queueIdentifier: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1203,7 +1194,7 @@ export const GetQueueRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetQueueResponse {
   queue?: Queue;
 }
-export const GetQueueResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ queue: S.optional(Queue) }),
 ).annotate({
   identifier: "GetQueueResponse",
@@ -1213,7 +1204,7 @@ export interface ListQueuesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListQueuesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterIdentifier: S.String,
     nextToken: S.optional(S.String),
@@ -1233,7 +1224,7 @@ export interface QueueSummary {
   modifiedAt: Date;
   status: QueueStatus;
 }
-export const QueueSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const QueueSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     id: S.String,
@@ -1245,12 +1236,12 @@ export const QueueSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueueSummary" }) as any as S.Schema<QueueSummary>;
 export type QueueList = QueueSummary[];
-export const QueueList = /*@__PURE__*/ /*#__PURE__*/ S.Array(QueueSummary);
+export const QueueList = /*@__PURE__*/ S.Array(QueueSummary);
 export interface ListQueuesResponse {
   queues: QueueSummary[];
   nextToken?: string;
 }
-export const ListQueuesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListQueuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ queues: QueueList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListQueuesResponse",
@@ -1311,7 +1302,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
@@ -1329,7 +1320,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
@@ -1344,7 +1335,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
@@ -1368,7 +1359,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterResponse,
   CreateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResponse,
   errors: [
@@ -1399,7 +1390,7 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterResponse,
   UpdateClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateClusterRequest,
   output: UpdateClusterResponse,
   errors: [
@@ -1428,7 +1419,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterResponse,
   DeleteClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
   errors: [
@@ -1457,7 +1448,7 @@ export const getCluster: API.OperationMethod<
   GetClusterResponse,
   GetClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetClusterRequest,
   output: GetClusterResponse,
   errors: [
@@ -1484,7 +1475,7 @@ export const registerComputeNodeGroupInstance: API.OperationMethod<
   RegisterComputeNodeGroupInstanceResponse,
   RegisterComputeNodeGroupInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterComputeNodeGroupInstanceRequest,
   output: RegisterComputeNodeGroupInstanceResponse,
   errors: [AccessDeniedException, InternalServerException],
@@ -1521,7 +1512,7 @@ export const listClusters: API.OperationMethod<
     ListClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListClustersRequest,
   output: ListClustersResponse,
   errors: [
@@ -1557,7 +1548,7 @@ export const createComputeNodeGroup: API.OperationMethod<
   CreateComputeNodeGroupResponse,
   CreateComputeNodeGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateComputeNodeGroupRequest,
   output: CreateComputeNodeGroupResponse,
   errors: [
@@ -1588,7 +1579,7 @@ export const updateComputeNodeGroup: API.OperationMethod<
   UpdateComputeNodeGroupResponse,
   UpdateComputeNodeGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateComputeNodeGroupRequest,
   output: UpdateComputeNodeGroupResponse,
   errors: [
@@ -1618,7 +1609,7 @@ export const deleteComputeNodeGroup: API.OperationMethod<
   DeleteComputeNodeGroupResponse,
   DeleteComputeNodeGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteComputeNodeGroupRequest,
   output: DeleteComputeNodeGroupResponse,
   errors: [
@@ -1647,7 +1638,7 @@ export const getComputeNodeGroup: API.OperationMethod<
   GetComputeNodeGroupResponse,
   GetComputeNodeGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComputeNodeGroupRequest,
   output: GetComputeNodeGroupResponse,
   errors: [
@@ -1691,7 +1682,7 @@ export const listComputeNodeGroups: API.OperationMethod<
     ListComputeNodeGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComputeNodeGroupsRequest,
   output: ListComputeNodeGroupsResponse,
   errors: [
@@ -1727,7 +1718,7 @@ export const createQueue: API.OperationMethod<
   CreateQueueResponse,
   CreateQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateQueueRequest,
   output: CreateQueueResponse,
   errors: [
@@ -1758,7 +1749,7 @@ export const updateQueue: API.OperationMethod<
   UpdateQueueResponse,
   UpdateQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateQueueRequest,
   output: UpdateQueueResponse,
   errors: [
@@ -1788,7 +1779,7 @@ export const deleteQueue: API.OperationMethod<
   DeleteQueueResponse,
   DeleteQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueueRequest,
   output: DeleteQueueResponse,
   errors: [
@@ -1817,7 +1808,7 @@ export const getQueue: API.OperationMethod<
   GetQueueResponse,
   GetQueueError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueueRequest,
   output: GetQueueResponse,
   errors: [
@@ -1861,7 +1852,7 @@ export const listQueues: API.OperationMethod<
     ListQueuesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListQueuesRequest,
   output: ListQueuesResponse,
   errors: [

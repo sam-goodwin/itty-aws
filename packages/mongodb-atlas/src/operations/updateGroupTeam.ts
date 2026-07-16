@@ -10,7 +10,7 @@ export interface UpdateGroupTeamInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const UpdateGroupTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateGroupTeamInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   teamId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -25,7 +25,7 @@ export const UpdateGroupTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type UpdateGroupTeamOutput = void;
 export const UpdateGroupTeamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupTeamOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupTeamOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ export const UpdateGroupTeamOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param teamId - Unique 24-hexadecimal digit string that identifies the team for which you want to update roles.
  */
-export const updateGroupTeam = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateGroupTeam = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateGroupTeamInput,
   outputSchema: UpdateGroupTeamOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

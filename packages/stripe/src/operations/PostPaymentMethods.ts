@@ -282,7 +282,7 @@ export interface PostPaymentMethodsInput {
   zip?: {};
 }
 export const PostPaymentMethodsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acss_debit: Schema.optional(
       Schema.Struct({
         account_number: Schema.String,
@@ -1503,7 +1503,7 @@ export interface PostPaymentMethodsOutput {
   zip?: {};
 }
 export const PostPaymentMethodsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acss_debit: Schema.optional(
       Schema.Struct({
         bank_name: Schema.NullOr(Schema.String),
@@ -2290,7 +2290,7 @@ export const PostPaymentMethodsOutput =
  * <p>Creates a PaymentMethod object. Read the <a href="/docs/stripe-js/reference#stripe-create-payment-method">Stripe.js reference</a> to learn how to create PaymentMethods via Stripe.js.</p>
  * <p>Instead of creating a PaymentMethod directly, we recommend using the <a href="/docs/payments/accept-a-payment">PaymentIntents</a> API to accept a payment immediately or the <a href="/docs/payments/save-and-reuse">SetupIntent</a> API to collect payment method details ahead of a future payment.</p>
  */
-export const PostPaymentMethods = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostPaymentMethods = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostPaymentMethodsInput,
   outputSchema: PostPaymentMethodsOutput,
 }));

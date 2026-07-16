@@ -9,7 +9,7 @@ export interface SignalsSourceConfigsDestroyInput {
   project_id: string;
 }
 export const SignalsSourceConfigsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const SignalsSourceConfigsDestroyInput =
 // Output Schema
 export type SignalsSourceConfigsDestroyOutput = void;
 export const SignalsSourceConfigsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalsSourceConfigsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SignalsSourceConfigsDestroyOutput>;
 
 // The operation
 /**
@@ -30,10 +30,8 @@ export const SignalsSourceConfigsDestroyOutput =
  * @param id - A UUID string identifying this signal source config.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const signalsSourceConfigsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SignalsSourceConfigsDestroyInput,
-    outputSchema: SignalsSourceConfigsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const signalsSourceConfigsDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SignalsSourceConfigsDestroyInput,
+  outputSchema: SignalsSourceConfigsDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

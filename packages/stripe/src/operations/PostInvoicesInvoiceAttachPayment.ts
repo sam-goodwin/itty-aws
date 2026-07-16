@@ -15,7 +15,7 @@ export interface PostInvoicesInvoiceAttachPaymentInput {
   payment_record?: string;
 }
 export const PostInvoicesInvoiceAttachPaymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoice: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     payment_intent: Schema.optional(Schema.String),
@@ -2214,7 +2214,7 @@ export interface PostInvoicesInvoiceAttachPaymentOutput {
   webhooks_delivered_at: number | null;
 }
 export const PostInvoicesInvoiceAttachPaymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_country: Schema.NullOr(Schema.String),
     account_name: Schema.NullOr(Schema.String),
     account_tax_ids: Schema.NullOr(
@@ -3930,7 +3930,7 @@ export const PostInvoicesInvoiceAttachPaymentOutput =
  * <p>See: <a href="/docs/invoicing/partial-payments">Partial payments</a> to learn more.</p>
  */
 export const PostInvoicesInvoiceAttachPayment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostInvoicesInvoiceAttachPaymentInput,
     outputSchema: PostInvoicesInvoiceAttachPaymentOutput,
   }));

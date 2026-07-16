@@ -12,7 +12,7 @@ export interface OrganizationMembershipGroupsControllerListGroupsInput {
   order?: string;
 }
 export const OrganizationMembershipGroupsControllerListGroupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     omId: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export interface OrganizationMembershipGroupsControllerListGroupsOutput {
   list_metadata?: { before: string | null; after: string | null };
 }
 export const OrganizationMembershipGroupsControllerListGroupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
       Schema.Array(
@@ -76,7 +76,7 @@ export const OrganizationMembershipGroupsControllerListGroupsOutput =
  * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  */
 export const OrganizationMembershipGroupsControllerListGroups =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationMembershipGroupsControllerListGroupsInput,
     outputSchema: OrganizationMembershipGroupsControllerListGroupsOutput,
     errors: [NotFound] as const,

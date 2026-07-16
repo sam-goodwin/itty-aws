@@ -9,7 +9,7 @@ export interface AuthorizationGroupRoleAssignmentsControllerGetInput {
   role_assignment_id: string;
 }
 export const AuthorizationGroupRoleAssignmentsControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     group_id: Schema.String.pipe(T.PathParam()),
     role_assignment_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -30,7 +30,7 @@ export interface AuthorizationGroupRoleAssignmentsControllerGetOutput {
   updated_at: string;
 }
 export const AuthorizationGroupRoleAssignmentsControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     id: Schema.String,
     group_id: Schema.String,
@@ -56,7 +56,7 @@ export const AuthorizationGroupRoleAssignmentsControllerGetOutput =
  * @param role_assignment_id - The ID of the group role assignment.
  */
 export const AuthorizationGroupRoleAssignmentsControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationGroupRoleAssignmentsControllerGetInput,
     outputSchema: AuthorizationGroupRoleAssignmentsControllerGetOutput,
     errors: [Forbidden, NotFound] as const,

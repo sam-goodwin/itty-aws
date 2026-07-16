@@ -40,7 +40,7 @@ export interface TraceSpan {
 }
 
 export const TraceSpan: Schema.Codec<TraceSpan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parentSpanId: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -60,7 +60,7 @@ export interface Trace {
 }
 
 export const Trace: Schema.Codec<Trace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     traceId: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
     spans: Schema.optional(Schema.Array(TraceSpan)),
@@ -72,7 +72,7 @@ export interface Traces {
 }
 
 export const Traces: Schema.Codec<Traces> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     traces: Schema.optional(Schema.Array(Trace)),
   }).annotate({ identifier: "Traces" });
 
@@ -84,7 +84,7 @@ export interface ListTracesResponse {
 }
 
 export const ListTracesResponse: Schema.Codec<ListTracesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     traces: Schema.optional(Schema.Array(Trace)),
   }).annotate({ identifier: "ListTracesResponse" });
@@ -92,7 +92,7 @@ export const ListTracesResponse: Schema.Codec<ListTracesResponse> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -158,7 +158,7 @@ export interface PatchTracesProjectsRequest {
 }
 
 export const PatchTracesProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     body: Schema.optional(Traces).pipe(T.HttpBody()),
   }).pipe(
@@ -171,7 +171,7 @@ export const PatchTracesProjectsRequest =
   ) as unknown as Schema.Codec<PatchTracesProjectsRequest>;
 
 export type PatchTracesProjectsResponse = Empty;
-export const PatchTracesProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const PatchTracesProjectsResponse = /*@__PURE__*/ Empty;
 
 export type PatchTracesProjectsError =
   | DefaultErrors
@@ -186,7 +186,7 @@ export const patchTracesProjects: API.OperationMethod<
   PatchTracesProjectsResponse,
   PatchTracesProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchTracesProjectsRequest,
   output: PatchTracesProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -200,7 +200,7 @@ export interface GetProjectsTracesRequest {
 }
 
 export const GetProjectsTracesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     traceId: Schema.String.pipe(T.HttpPath("traceId")),
   }).pipe(
@@ -209,7 +209,7 @@ export const GetProjectsTracesRequest =
   ) as unknown as Schema.Codec<GetProjectsTracesRequest>;
 
 export type GetProjectsTracesResponse = Trace;
-export const GetProjectsTracesResponse = /*@__PURE__*/ /*#__PURE__*/ Trace;
+export const GetProjectsTracesResponse = /*@__PURE__*/ Trace;
 
 export type GetProjectsTracesError = DefaultErrors | NotFound | Forbidden;
 
@@ -219,7 +219,7 @@ export const getProjectsTraces: API.OperationMethod<
   GetProjectsTracesResponse,
   GetProjectsTracesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsTracesRequest,
   output: GetProjectsTracesResponse,
   errors: [NotFound, Forbidden],
@@ -250,7 +250,7 @@ export interface ListProjectsTracesRequest {
 }
 
 export const ListProjectsTracesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String.pipe(T.HttpPath("projectId")),
     startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
     endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("endTime")),
@@ -265,8 +265,7 @@ export const ListProjectsTracesRequest =
   ) as unknown as Schema.Codec<ListProjectsTracesRequest>;
 
 export type ListProjectsTracesResponse = ListTracesResponse;
-export const ListProjectsTracesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListTracesResponse;
+export const ListProjectsTracesResponse = /*@__PURE__*/ ListTracesResponse;
 
 export type ListProjectsTracesError = DefaultErrors | NotFound | Forbidden;
 
@@ -276,7 +275,7 @@ export const listProjectsTraces: API.PaginatedOperationMethod<
   ListProjectsTracesResponse,
   ListProjectsTracesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTracesRequest,
   output: ListProjectsTracesResponse,
   errors: [NotFound, Forbidden],

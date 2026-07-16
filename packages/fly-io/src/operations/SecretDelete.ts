@@ -8,7 +8,7 @@ export interface SecretDeleteInput {
   app_name: string;
   secret_name: string;
 }
-export const SecretDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretDeleteInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   secret_name: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -20,7 +20,7 @@ export interface SecretDeleteOutput {
   Version?: number;
   version?: number;
 }
-export const SecretDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretDeleteOutput = /*@__PURE__*/ Schema.Struct({
   Version: Schema.optional(Schema.Number),
   version: Schema.optional(Schema.Number),
 }) as unknown as Schema.Codec<SecretDeleteOutput>;
@@ -32,7 +32,7 @@ export const SecretDeleteOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param app_name - Fly App Name
  * @param secret_name - App secret name
  */
-export const SecretDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretDeleteInput,
   outputSchema: SecretDeleteOutput,
   errors: [Forbidden, NotFound] as const,

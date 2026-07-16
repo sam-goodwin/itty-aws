@@ -16,7 +16,7 @@ export interface DigitalTwinsCheckNameAvailabilityInput {
   type: "Microsoft.DigitalTwins/digitalTwinsInstances";
 }
 export const DigitalTwinsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
@@ -36,7 +36,7 @@ export interface DigitalTwinsCheckNameAvailabilityOutput {
   reason?: "Invalid" | "AlreadyExists" | null;
 }
 export const DigitalTwinsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     message: Schema.optional(Schema.NullOr(Schema.String)),
     reason: Schema.optional(
@@ -53,7 +53,7 @@ export const DigitalTwinsCheckNameAvailabilityOutput =
  * @param location - Location of DigitalTwinsInstance.
  */
 export const DigitalTwinsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DigitalTwinsCheckNameAvailabilityInput,
     outputSchema: DigitalTwinsCheckNameAvailabilityOutput,
   }));
@@ -153,7 +153,7 @@ export interface DigitalTwinsCreateOrUpdateInput {
   };
 }
 export const DigitalTwinsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -348,7 +348,7 @@ export interface DigitalTwinsCreateOrUpdateOutput {
   };
 }
 export const DigitalTwinsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -410,12 +410,10 @@ export const DigitalTwinsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
  * @param resourceName - The name of the DigitalTwinsInstance.
  */
-export const DigitalTwinsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DigitalTwinsCreateOrUpdateInput,
-    outputSchema: DigitalTwinsCreateOrUpdateOutput,
-  }),
-);
+export const DigitalTwinsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DigitalTwinsCreateOrUpdateInput,
+  outputSchema: DigitalTwinsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DigitalTwinsDeleteInput {
   subscriptionId: string;
@@ -423,7 +421,7 @@ export interface DigitalTwinsDeleteInput {
   resourceName: string;
 }
 export const DigitalTwinsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -470,7 +468,7 @@ export interface DigitalTwinsDeleteOutput {
   };
 }
 export const DigitalTwinsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -532,7 +530,7 @@ export const DigitalTwinsDeleteOutput =
  * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
  * @param resourceName - The name of the DigitalTwinsInstance.
  */
-export const DigitalTwinsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DigitalTwinsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DigitalTwinsDeleteInput,
   outputSchema: DigitalTwinsDeleteOutput,
 }));
@@ -585,7 +583,7 @@ export interface DigitalTwinsEndpointCreateOrUpdateInput {
   };
 }
 export const DigitalTwinsEndpointCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -674,7 +672,7 @@ export interface DigitalTwinsEndpointCreateOrUpdateOutput {
   };
 }
 export const DigitalTwinsEndpointCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -709,7 +707,7 @@ export const DigitalTwinsEndpointCreateOrUpdateOutput =
  * @param endpointName - Name of Endpoint Resource.
  */
 export const DigitalTwinsEndpointCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DigitalTwinsEndpointCreateOrUpdateInput,
     outputSchema: DigitalTwinsEndpointCreateOrUpdateOutput,
   }));
@@ -721,7 +719,7 @@ export interface DigitalTwinsEndpointDeleteInput {
   endpointName: string;
 }
 export const DigitalTwinsEndpointDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -754,7 +752,7 @@ export interface DigitalTwinsEndpointDeleteOutput {
   };
 }
 export const DigitalTwinsEndpointDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -788,12 +786,10 @@ export const DigitalTwinsEndpointDeleteOutput =
  * @param resourceName - The name of the DigitalTwinsInstance.
  * @param endpointName - Name of Endpoint Resource.
  */
-export const DigitalTwinsEndpointDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DigitalTwinsEndpointDeleteInput,
-    outputSchema: DigitalTwinsEndpointDeleteOutput,
-  }),
-);
+export const DigitalTwinsEndpointDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DigitalTwinsEndpointDeleteInput,
+  outputSchema: DigitalTwinsEndpointDeleteOutput,
+}));
 // Input Schema
 export interface DigitalTwinsEndpointGetInput {
   subscriptionId: string;
@@ -802,7 +798,7 @@ export interface DigitalTwinsEndpointGetInput {
   endpointName: string;
 }
 export const DigitalTwinsEndpointGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -835,7 +831,7 @@ export interface DigitalTwinsEndpointGetOutput {
   };
 }
 export const DigitalTwinsEndpointGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -869,12 +865,10 @@ export const DigitalTwinsEndpointGetOutput =
  * @param resourceName - The name of the DigitalTwinsInstance.
  * @param endpointName - Name of Endpoint Resource.
  */
-export const DigitalTwinsEndpointGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DigitalTwinsEndpointGetInput,
-    outputSchema: DigitalTwinsEndpointGetOutput,
-  }),
-);
+export const DigitalTwinsEndpointGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DigitalTwinsEndpointGetInput,
+  outputSchema: DigitalTwinsEndpointGetOutput,
+}));
 // Input Schema
 export interface DigitalTwinsEndpointListInput {
   subscriptionId: string;
@@ -882,7 +876,7 @@ export interface DigitalTwinsEndpointListInput {
   resourceName: string;
 }
 export const DigitalTwinsEndpointListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -917,7 +911,7 @@ export interface DigitalTwinsEndpointListOutput {
   }[];
 }
 export const DigitalTwinsEndpointListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
       Schema.Array(
@@ -967,19 +961,17 @@ export const DigitalTwinsEndpointListOutput =
  * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
  * @param resourceName - The name of the DigitalTwinsInstance.
  */
-export const DigitalTwinsEndpointList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DigitalTwinsEndpointListInput,
-    outputSchema: DigitalTwinsEndpointListOutput,
-  }),
-);
+export const DigitalTwinsEndpointList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DigitalTwinsEndpointListInput,
+  outputSchema: DigitalTwinsEndpointListOutput,
+}));
 // Input Schema
 export interface DigitalTwinsGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   resourceName: string;
 }
-export const DigitalTwinsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DigitalTwinsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -1025,7 +1017,7 @@ export interface DigitalTwinsGetOutput {
     lastModifiedAt?: string | null;
   };
 }
-export const DigitalTwinsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DigitalTwinsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1087,7 +1079,7 @@ export const DigitalTwinsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
  * @param resourceName - The name of the DigitalTwinsInstance.
  */
-export const DigitalTwinsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DigitalTwinsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DigitalTwinsGetInput,
   outputSchema: DigitalTwinsGetOutput,
 }));
@@ -1095,7 +1087,7 @@ export const DigitalTwinsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface DigitalTwinsListInput {
   subscriptionId: string;
 }
-export const DigitalTwinsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DigitalTwinsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1142,77 +1134,75 @@ export interface DigitalTwinsListOutput {
     };
   }[];
 }
-export const DigitalTwinsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    nextLink: Schema.optional(Schema.NullOr(Schema.String)),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.String,
-          tags: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-          ),
-          identity: Schema.optional(
-            Schema.Struct({
-              type: Schema.optional(
+export const DigitalTwinsListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.NullOr(Schema.String)),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.String,
+        tags: Schema.optional(
+          Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+        ),
+        identity: Schema.optional(
+          Schema.Struct({
+            type: Schema.optional(
+              Schema.Literals([
+                "None",
+                "SystemAssigned",
+                "UserAssigned",
+                "SystemAssigned,UserAssigned",
+              ]),
+            ),
+            principalId: Schema.optional(Schema.NullOr(Schema.String)),
+            tenantId: Schema.optional(Schema.NullOr(Schema.String)),
+            userAssignedIdentities: Schema.optional(
+              Schema.NullOr(
+                Schema.Record(
+                  Schema.String,
+                  Schema.Struct({
+                    clientId: Schema.optional(Schema.String),
+                    principalId: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            ),
+          }),
+        ),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.NullOr(Schema.String)),
+            createdByType: Schema.optional(
+              Schema.NullOr(
                 Schema.Literals([
-                  "None",
-                  "SystemAssigned",
-                  "UserAssigned",
-                  "SystemAssigned,UserAssigned",
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
                 ]),
               ),
-              principalId: Schema.optional(Schema.NullOr(Schema.String)),
-              tenantId: Schema.optional(Schema.NullOr(Schema.String)),
-              userAssignedIdentities: Schema.optional(
-                Schema.NullOr(
-                  Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      clientId: Schema.optional(Schema.String),
-                      principalId: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
+            ),
+            createdAt: Schema.optional(Schema.NullOr(Schema.String)),
+            lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
+            lastModifiedByType: Schema.optional(
+              Schema.NullOr(
+                Schema.Literals([
+                  "User",
+                  "Application",
+                  "ManagedIdentity",
+                  "Key",
+                ]),
               ),
-            }),
-          ),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.NullOr(Schema.String)),
-              createdByType: Schema.optional(
-                Schema.NullOr(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-              ),
-              createdAt: Schema.optional(Schema.NullOr(Schema.String)),
-              lastModifiedBy: Schema.optional(Schema.NullOr(Schema.String)),
-              lastModifiedByType: Schema.optional(
-                Schema.NullOr(
-                  Schema.Literals([
-                    "User",
-                    "Application",
-                    "ManagedIdentity",
-                    "Key",
-                  ]),
-                ),
-              ),
-              lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-        }),
-      ),
+            ),
+            lastModifiedAt: Schema.optional(Schema.NullOr(Schema.String)),
+          }),
+        ),
+      }),
     ),
-  },
-) as unknown as Schema.Codec<DigitalTwinsListOutput>;
+  ),
+}) as unknown as Schema.Codec<DigitalTwinsListOutput>;
 
 // The operation
 /**
@@ -1221,7 +1211,7 @@ export const DigitalTwinsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - Version of the DigitalTwinsInstance Management API.
  * @param subscriptionId - The subscription identifier.
  */
-export const DigitalTwinsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DigitalTwinsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DigitalTwinsListInput,
   outputSchema: DigitalTwinsListOutput,
 }));
@@ -1231,7 +1221,7 @@ export interface DigitalTwinsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const DigitalTwinsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1280,7 +1270,7 @@ export interface DigitalTwinsListByResourceGroupOutput {
   }[];
 }
 export const DigitalTwinsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
       Schema.Array(
@@ -1359,7 +1349,7 @@ export const DigitalTwinsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
  */
 export const DigitalTwinsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DigitalTwinsListByResourceGroupInput,
     outputSchema: DigitalTwinsListByResourceGroupOutput,
   }));
@@ -1385,7 +1375,7 @@ export interface DigitalTwinsUpdateInput {
   properties?: { publicNetworkAccess?: "Enabled" | "Disabled" | null };
 }
 export const DigitalTwinsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1467,7 +1457,7 @@ export interface DigitalTwinsUpdateOutput {
   };
 }
 export const DigitalTwinsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1529,15 +1519,13 @@ export const DigitalTwinsUpdateOutput =
  * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
  * @param resourceName - The name of the DigitalTwinsInstance.
  */
-export const DigitalTwinsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DigitalTwinsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DigitalTwinsUpdateInput,
   outputSchema: DigitalTwinsUpdateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DigitalTwins/operations",
@@ -1561,7 +1549,7 @@ export interface OperationsListOutput {
     properties?: Record<string, unknown> | null;
   }[];
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.NullOr(Schema.String)),
   value: Schema.optional(
     Schema.Array(
@@ -1591,7 +1579,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - Version of the DigitalTwinsInstance Management API.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1634,7 +1622,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateInput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1728,7 +1716,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateOutput {
   };
 }
 export const PrivateEndpointConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1788,7 +1776,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsCreateOrUpdateInput,
     outputSchema: PrivateEndpointConnectionsCreateOrUpdateOutput,
   }));
@@ -1800,7 +1788,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1816,7 +1804,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1829,7 +1817,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -1841,7 +1829,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -1889,7 +1877,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1949,7 +1937,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -1960,7 +1948,7 @@ export interface PrivateEndpointConnectionsListInput {
   resourceName: string;
 }
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2009,7 +1997,7 @@ export interface PrivateEndpointConnectionsListOutput {
   }[];
 }
 export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2089,7 +2077,7 @@ export const PrivateEndpointConnectionsListOutput =
  * @param resourceName - The name of the DigitalTwinsInstance.
  */
 export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListInput,
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
@@ -2101,7 +2089,7 @@ export interface PrivateLinkResourcesGetInput {
   resourceId: string;
 }
 export const PrivateLinkResourcesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2126,7 +2114,7 @@ export interface PrivateLinkResourcesGetOutput {
   type?: string;
 }
 export const PrivateLinkResourcesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.Struct({
       groupId: Schema.optional(Schema.String),
       requiredMembers: Schema.optional(Schema.Array(Schema.String)),
@@ -2147,12 +2135,10 @@ export const PrivateLinkResourcesGetOutput =
  * @param resourceName - The name of the DigitalTwinsInstance.
  * @param resourceId - The name of the private link resource.
  */
-export const PrivateLinkResourcesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesGetInput,
-    outputSchema: PrivateLinkResourcesGetOutput,
-  }),
-);
+export const PrivateLinkResourcesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesGetInput,
+  outputSchema: PrivateLinkResourcesGetOutput,
+}));
 // Input Schema
 export interface PrivateLinkResourcesListInput {
   subscriptionId: string;
@@ -2160,7 +2146,7 @@ export interface PrivateLinkResourcesListInput {
   resourceName: string;
 }
 export const PrivateLinkResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2186,7 +2172,7 @@ export interface PrivateLinkResourcesListOutput {
   }[];
 }
 export const PrivateLinkResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2212,12 +2198,10 @@ export const PrivateLinkResourcesListOutput =
  * @param resourceGroupName - The name of the resource group that contains the DigitalTwinsInstance.
  * @param resourceName - The name of the DigitalTwinsInstance.
  */
-export const PrivateLinkResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateLinkResourcesListInput,
-    outputSchema: PrivateLinkResourcesListOutput,
-  }),
-);
+export const PrivateLinkResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateLinkResourcesListInput,
+  outputSchema: PrivateLinkResourcesListOutput,
+}));
 // Input Schema
 export interface TimeSeriesDatabaseConnectionsCreateOrUpdateInput {
   subscriptionId: string;
@@ -2262,7 +2246,7 @@ export interface TimeSeriesDatabaseConnectionsCreateOrUpdateInput {
   };
 }
 export const TimeSeriesDatabaseConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2345,7 +2329,7 @@ export interface TimeSeriesDatabaseConnectionsCreateOrUpdateOutput {
   };
 }
 export const TimeSeriesDatabaseConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2380,7 +2364,7 @@ export const TimeSeriesDatabaseConnectionsCreateOrUpdateOutput =
  * @param timeSeriesDatabaseConnectionName - Name of time series database connection.
  */
 export const TimeSeriesDatabaseConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TimeSeriesDatabaseConnectionsCreateOrUpdateInput,
     outputSchema: TimeSeriesDatabaseConnectionsCreateOrUpdateOutput,
   }));
@@ -2393,7 +2377,7 @@ export interface TimeSeriesDatabaseConnectionsDeleteInput {
   cleanupConnectionArtifacts?: "true" | "false";
 }
 export const TimeSeriesDatabaseConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2429,7 +2413,7 @@ export interface TimeSeriesDatabaseConnectionsDeleteOutput {
   };
 }
 export const TimeSeriesDatabaseConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2465,7 +2449,7 @@ export const TimeSeriesDatabaseConnectionsDeleteOutput =
  * @param cleanupConnectionArtifacts - Specifies whether or not to attempt to clean up artifacts that were created in order to establish a connection to the time series database. This is a best-effort attempt that will fail if appropriate permissions are not in place. Setting this to 'true' does not delete any recorded data.
  */
 export const TimeSeriesDatabaseConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TimeSeriesDatabaseConnectionsDeleteInput,
     outputSchema: TimeSeriesDatabaseConnectionsDeleteOutput,
   }));
@@ -2477,7 +2461,7 @@ export interface TimeSeriesDatabaseConnectionsGetInput {
   timeSeriesDatabaseConnectionName: string;
 }
 export const TimeSeriesDatabaseConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2510,7 +2494,7 @@ export interface TimeSeriesDatabaseConnectionsGetOutput {
   };
 }
 export const TimeSeriesDatabaseConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2545,7 +2529,7 @@ export const TimeSeriesDatabaseConnectionsGetOutput =
  * @param timeSeriesDatabaseConnectionName - Name of time series database connection.
  */
 export const TimeSeriesDatabaseConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TimeSeriesDatabaseConnectionsGetInput,
     outputSchema: TimeSeriesDatabaseConnectionsGetOutput,
   }));
@@ -2556,7 +2540,7 @@ export interface TimeSeriesDatabaseConnectionsListInput {
   resourceName: string;
 }
 export const TimeSeriesDatabaseConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -2591,7 +2575,7 @@ export interface TimeSeriesDatabaseConnectionsListOutput {
   }[];
 }
 export const TimeSeriesDatabaseConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.NullOr(Schema.String)),
     value: Schema.optional(
       Schema.Array(
@@ -2642,7 +2626,7 @@ export const TimeSeriesDatabaseConnectionsListOutput =
  * @param resourceName - The name of the DigitalTwinsInstance.
  */
 export const TimeSeriesDatabaseConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TimeSeriesDatabaseConnectionsListInput,
     outputSchema: TimeSeriesDatabaseConnectionsListOutput,
   }));

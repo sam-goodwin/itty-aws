@@ -13,7 +13,7 @@ export interface GetSubscriptionSchedulesScheduleInput {
   expand?: string;
 }
 export const GetSubscriptionSchedulesScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schedule: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -1225,7 +1225,7 @@ export interface GetSubscriptionSchedulesScheduleOutput {
     | null;
 }
 export const GetSubscriptionSchedulesScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -2503,7 +2503,7 @@ export const GetSubscriptionSchedulesScheduleOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetSubscriptionSchedulesSchedule =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetSubscriptionSchedulesScheduleInput,
     outputSchema: GetSubscriptionSchedulesScheduleOutput,
   }));

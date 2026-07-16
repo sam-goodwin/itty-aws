@@ -79,7 +79,7 @@ interface OutputOptions {
     | (string & {})
     | null;
 }
-const OutputOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OutputOptions = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     batchPrefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     batchSuffix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -229,7 +229,7 @@ interface LogpushJob {
       | null;
   } | null;
 }
-const LogpushJob = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LogpushJob = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     dataset: Schema.optional(
@@ -337,7 +337,7 @@ interface InstantLogpushJob {
   /** Unique session id of the job. */
   sessionId?: string | null;
 }
-const InstantLogpushJob = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const InstantLogpushJob = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     destinationConf: Schema.optional(
       Schema.Union([Schema.String, Schema.Null]),
@@ -380,7 +380,7 @@ export interface GetDatasetFieldForZoneRequest extends GetDatasetFieldBaseReques
 }
 
 export const GetDatasetFieldForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetDatasetFieldBaseFields,
@@ -393,7 +393,7 @@ export const GetDatasetFieldForAccountRequest =
   ) as unknown as Schema.Codec<GetDatasetFieldForAccountRequest>;
 
 export const GetDatasetFieldForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetDatasetFieldBaseFields,
@@ -408,7 +408,7 @@ export const GetDatasetFieldForZoneRequest =
 export type GetDatasetFieldResponse = unknown;
 
 export const GetDatasetFieldResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetDatasetFieldResponse>;
 
@@ -419,7 +419,7 @@ export const getDatasetFieldForAccount: API.OperationMethod<
   GetDatasetFieldResponse,
   GetDatasetFieldError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDatasetFieldForAccountRequest,
   output: GetDatasetFieldResponse,
   errors: [],
@@ -430,7 +430,7 @@ export const getDatasetFieldForZone: API.OperationMethod<
   GetDatasetFieldResponse,
   GetDatasetFieldError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDatasetFieldForZoneRequest,
   output: GetDatasetFieldResponse,
   errors: [],
@@ -459,7 +459,7 @@ export interface GetDatasetJobForZoneRequest extends GetDatasetJobBaseRequest {
 }
 
 export const GetDatasetJobForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetDatasetJobBaseFields,
@@ -472,7 +472,7 @@ export const GetDatasetJobForAccountRequest =
   ) as unknown as Schema.Codec<GetDatasetJobForAccountRequest>;
 
 export const GetDatasetJobForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetDatasetJobBaseFields,
@@ -561,11 +561,10 @@ export interface GetDatasetJobResponse {
   } | null)[];
 }
 
-export const GetDatasetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(Schema.Union([LogpushJob, Schema.Null])),
-    }),
+export const GetDatasetJobResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(Schema.Union([LogpushJob, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<GetDatasetJobResponse>;
 
 export type GetDatasetJobError = DefaultErrors;
@@ -575,7 +574,7 @@ export const getDatasetJobForAccount: API.PaginatedOperationMethod<
   GetDatasetJobResponse,
   GetDatasetJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDatasetJobForAccountRequest,
   output: GetDatasetJobResponse,
   errors: [],
@@ -590,7 +589,7 @@ export const getDatasetJobForZone: API.PaginatedOperationMethod<
   GetDatasetJobResponse,
   GetDatasetJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetDatasetJobForZoneRequest,
   output: GetDatasetJobResponse,
   errors: [],
@@ -609,7 +608,7 @@ export interface GetEdgeRequest {
   zoneId: string;
 }
 
-export const GetEdgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetEdgeRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(
@@ -627,7 +626,7 @@ export interface GetEdgeResponse {
   } | null)[];
 }
 
-export const GetEdgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetEdgeResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     result: Schema.Array(Schema.Union([InstantLogpushJob, Schema.Null])),
   }),
@@ -640,7 +639,7 @@ export const getEdge: API.PaginatedOperationMethod<
   GetEdgeResponse,
   GetEdgeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetEdgeRequest,
   output: GetEdgeResponse,
   errors: [],
@@ -661,16 +660,15 @@ export interface CreateEdgeRequest {
   sample?: number;
 }
 
-export const CreateEdgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      fields: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      sample: Schema.optional(Schema.Number),
-    }).pipe(
-      T.Http({ method: "POST", path: "/zones/{zone_id}/logpush/edge/jobs" }),
-    ),
+export const CreateEdgeRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    fields: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    sample: Schema.optional(Schema.Number),
+  }).pipe(
+    T.Http({ method: "POST", path: "/zones/{zone_id}/logpush/edge/jobs" }),
+  ),
 ) as unknown as Schema.Codec<CreateEdgeRequest>;
 
 export interface CreateEdgeResponse {
@@ -686,27 +684,26 @@ export interface CreateEdgeResponse {
   sessionId?: string | null;
 }
 
-export const CreateEdgeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      destinationConf: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      fields: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      filter: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sample: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      sessionId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          destinationConf: "destination_conf",
-          fields: "fields",
-          filter: "filter",
-          sample: "sample",
-          sessionId: "session_id",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateEdgeResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    destinationConf: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    fields: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    filter: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    sample: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    sessionId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        destinationConf: "destination_conf",
+        fields: "fields",
+        filter: "filter",
+        sample: "sample",
+        sessionId: "session_id",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateEdgeResponse>;
 
 export type CreateEdgeError = DefaultErrors;
@@ -716,7 +713,7 @@ export const createEdge: API.OperationMethod<
   CreateEdgeResponse,
   CreateEdgeError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEdgeRequest,
   output: CreateEdgeResponse,
   errors: [],
@@ -746,7 +743,7 @@ export interface DestinationExistsValidateForZoneRequest extends DestinationExis
 }
 
 export const DestinationExistsValidateForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DestinationExistsValidateBaseFields,
@@ -760,7 +757,7 @@ export const DestinationExistsValidateForAccountRequest =
   ) as unknown as Schema.Codec<DestinationExistsValidateForAccountRequest>;
 
 export const DestinationExistsValidateForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DestinationExistsValidateBaseFields,
@@ -778,7 +775,7 @@ export interface DestinationExistsValidateResponse {
 }
 
 export const DestinationExistsValidateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       exists: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -791,7 +788,7 @@ export const destinationExistsValidateForAccount: API.OperationMethod<
   DestinationExistsValidateResponse,
   DestinationExistsValidateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DestinationExistsValidateForAccountRequest,
   output: DestinationExistsValidateResponse,
   errors: [],
@@ -802,7 +799,7 @@ export const destinationExistsValidateForZone: API.OperationMethod<
   DestinationExistsValidateResponse,
   DestinationExistsValidateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DestinationExistsValidateForZoneRequest,
   output: DestinationExistsValidateResponse,
   errors: [],
@@ -831,7 +828,7 @@ export interface GetJobForZoneRequest extends GetJobBaseRequest {
 }
 
 export const GetJobForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetJobBaseFields,
@@ -843,14 +840,13 @@ export const GetJobForAccountRequest =
     ),
   ) as unknown as Schema.Codec<GetJobForAccountRequest>;
 
-export const GetJobForZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      ...GetJobBaseFields,
-    }).pipe(
-      T.Http({ method: "GET", path: "/zones/{zone_id}/logpush/jobs/{jobId}" }),
-    ),
+export const GetJobForZoneRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...GetJobBaseFields,
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/logpush/jobs/{jobId}" }),
+  ),
 ) as unknown as Schema.Codec<GetJobForZoneRequest>;
 
 export interface GetJobResponse {
@@ -943,7 +939,7 @@ export interface GetJobResponse {
   } | null;
 }
 
-export const GetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetJobResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     dataset: Schema.optional(
@@ -1048,7 +1044,7 @@ export const getJobForAccount: API.OperationMethod<
   GetJobResponse,
   GetJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJobForAccountRequest,
   output: GetJobResponse,
   errors: [JobNotFound, Forbidden],
@@ -1059,7 +1055,7 @@ export const getJobForZone: API.OperationMethod<
   GetJobResponse,
   GetJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJobForZoneRequest,
   output: GetJobResponse,
   errors: [JobNotFound, Forbidden],
@@ -1080,7 +1076,7 @@ export interface ListJobsForZoneRequest extends ListJobsBaseRequest {
 }
 
 export const ListJobsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListJobsBaseFields,
@@ -1090,7 +1086,7 @@ export const ListJobsForAccountRequest =
   ) as unknown as Schema.Codec<ListJobsForAccountRequest>;
 
 export const ListJobsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListJobsBaseFields,
@@ -1174,7 +1170,7 @@ export interface ListJobsResponse {
   } | null)[];
 }
 
-export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListJobsResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     result: Schema.Array(Schema.Union([LogpushJob, Schema.Null])),
   }),
@@ -1187,7 +1183,7 @@ export const listJobsForAccount: API.PaginatedOperationMethod<
   ListJobsResponse,
   ListJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsForAccountRequest,
   output: ListJobsResponse,
   errors: [Forbidden, NotFound],
@@ -1202,7 +1198,7 @@ export const listJobsForZone: API.PaginatedOperationMethod<
   ListJobsResponse,
   ListJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobsForZoneRequest,
   output: ListJobsResponse,
   errors: [Forbidden, NotFound],
@@ -1373,7 +1369,7 @@ export interface CreateJobForZoneRequest extends CreateJobBaseRequest {
 }
 
 export const CreateJobForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateJobBaseFields,
@@ -1398,7 +1394,7 @@ export const CreateJobForAccountRequest =
   ) as unknown as Schema.Codec<CreateJobForAccountRequest>;
 
 export const CreateJobForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateJobBaseFields,
@@ -1512,107 +1508,102 @@ export interface CreateJobResponse {
   } | null;
 }
 
-export const CreateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      dataset: Schema.optional(
-        Schema.Union([
-          Schema.Literal("access_requests"),
-          Schema.Literal("audit_logs"),
-          Schema.Literal("audit_logs_v2"),
-          Schema.Literal("biso_user_actions"),
-          Schema.Literal("casb_findings"),
-          Schema.Literal("device_posture_results"),
-          Schema.Literal("dex_application_tests"),
-          Schema.Literal("dex_device_state_events"),
-          Schema.Literal("dlp_forensic_copies"),
-          Schema.Literal("dns_firewall_logs"),
-          Schema.Literal("dns_logs"),
-          Schema.Literal("email_security_alerts"),
-          Schema.Literal("email_security_post_delivery_events"),
-          Schema.Literal("firewall_events"),
-          Schema.Literal("gateway_dns"),
-          Schema.Literal("gateway_http"),
-          Schema.Literal("gateway_network"),
-          Schema.Literal("http_requests"),
-          Schema.Literal("ipsec_logs"),
-          Schema.Literal("magic_ids_detections"),
-          Schema.Literal("mcp_portal_logs"),
-          Schema.Literal("mnm_flow_logs"),
-          Schema.Literal("nel_reports"),
-          Schema.Literal("network_analytics_logs"),
-          Schema.Literal("page_shield_events"),
-          Schema.Literal("sinkhole_http_logs"),
-          Schema.Literal("spectrum_events"),
-          Schema.Literal("ssh_logs"),
-          Schema.Literal("turnstile_events"),
-          Schema.Literal("warp_config_changes"),
-          Schema.Literal("warp_toggle_changes"),
-          Schema.Literal("websocket_analytics"),
-          Schema.Literal("workers_trace_events"),
-          Schema.Literal("zaraz_events"),
-          Schema.Literal("zero_trust_network_sessions"),
-          Schema.Null,
-        ]),
-      ),
-      destinationConf: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      errorMessage: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      frequency: Schema.optional(
-        Schema.Union([
-          Schema.Literal("high"),
-          Schema.Literal("low"),
-          Schema.Null,
-        ]),
-      ),
-      kind: Schema.optional(
-        Schema.Union([
-          Schema.Union([Schema.Literals(["", "edge"]), Schema.String]),
-          Schema.Null,
-        ]),
-      ),
-      lastComplete: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      lastError: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      logpullOptions: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      maxUploadBytes: Schema.optional(
-        Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
-      ),
-      maxUploadIntervalSeconds: Schema.optional(
-        Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
-      ),
-      maxUploadRecords: Schema.optional(
-        Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      outputOptions: Schema.optional(
-        Schema.Union([OutputOptions, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          dataset: "dataset",
-          destinationConf: "destination_conf",
-          enabled: "enabled",
-          errorMessage: "error_message",
-          frequency: "frequency",
-          kind: "kind",
-          lastComplete: "last_complete",
-          lastError: "last_error",
-          logpullOptions: "logpull_options",
-          maxUploadBytes: "max_upload_bytes",
-          maxUploadIntervalSeconds: "max_upload_interval_seconds",
-          maxUploadRecords: "max_upload_records",
-          name: "name",
-          outputOptions: "output_options",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateJobResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    dataset: Schema.optional(
+      Schema.Union([
+        Schema.Literal("access_requests"),
+        Schema.Literal("audit_logs"),
+        Schema.Literal("audit_logs_v2"),
+        Schema.Literal("biso_user_actions"),
+        Schema.Literal("casb_findings"),
+        Schema.Literal("device_posture_results"),
+        Schema.Literal("dex_application_tests"),
+        Schema.Literal("dex_device_state_events"),
+        Schema.Literal("dlp_forensic_copies"),
+        Schema.Literal("dns_firewall_logs"),
+        Schema.Literal("dns_logs"),
+        Schema.Literal("email_security_alerts"),
+        Schema.Literal("email_security_post_delivery_events"),
+        Schema.Literal("firewall_events"),
+        Schema.Literal("gateway_dns"),
+        Schema.Literal("gateway_http"),
+        Schema.Literal("gateway_network"),
+        Schema.Literal("http_requests"),
+        Schema.Literal("ipsec_logs"),
+        Schema.Literal("magic_ids_detections"),
+        Schema.Literal("mcp_portal_logs"),
+        Schema.Literal("mnm_flow_logs"),
+        Schema.Literal("nel_reports"),
+        Schema.Literal("network_analytics_logs"),
+        Schema.Literal("page_shield_events"),
+        Schema.Literal("sinkhole_http_logs"),
+        Schema.Literal("spectrum_events"),
+        Schema.Literal("ssh_logs"),
+        Schema.Literal("turnstile_events"),
+        Schema.Literal("warp_config_changes"),
+        Schema.Literal("warp_toggle_changes"),
+        Schema.Literal("websocket_analytics"),
+        Schema.Literal("workers_trace_events"),
+        Schema.Literal("zaraz_events"),
+        Schema.Literal("zero_trust_network_sessions"),
+        Schema.Null,
+      ]),
+    ),
+    destinationConf: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    errorMessage: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    frequency: Schema.optional(
+      Schema.Union([
+        Schema.Literal("high"),
+        Schema.Literal("low"),
+        Schema.Null,
+      ]),
+    ),
+    kind: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["", "edge"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    lastComplete: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastError: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    logpullOptions: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    maxUploadBytes: Schema.optional(
+      Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
+    ),
+    maxUploadIntervalSeconds: Schema.optional(
+      Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
+    ),
+    maxUploadRecords: Schema.optional(
+      Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    outputOptions: Schema.optional(Schema.Union([OutputOptions, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        dataset: "dataset",
+        destinationConf: "destination_conf",
+        enabled: "enabled",
+        errorMessage: "error_message",
+        frequency: "frequency",
+        kind: "kind",
+        lastComplete: "last_complete",
+        lastError: "last_error",
+        logpullOptions: "logpull_options",
+        maxUploadBytes: "max_upload_bytes",
+        maxUploadIntervalSeconds: "max_upload_interval_seconds",
+        maxUploadRecords: "max_upload_records",
+        name: "name",
+        outputOptions: "output_options",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateJobResponse>;
 
 export type CreateJobError = DefaultErrors;
@@ -1622,7 +1613,7 @@ export const createJobForAccount: API.OperationMethod<
   CreateJobResponse,
   CreateJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateJobForAccountRequest,
   output: CreateJobResponse,
   errors: [],
@@ -1633,7 +1624,7 @@ export const createJobForZone: API.OperationMethod<
   CreateJobResponse,
   CreateJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateJobForZoneRequest,
   output: CreateJobResponse,
   errors: [],
@@ -1724,7 +1715,7 @@ export interface UpdateJobForZoneRequest extends UpdateJobBaseRequest {
 }
 
 export const UpdateJobForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...UpdateJobBaseFields,
@@ -1751,7 +1742,7 @@ export const UpdateJobForAccountRequest =
   ) as unknown as Schema.Codec<UpdateJobForAccountRequest>;
 
 export const UpdateJobForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...UpdateJobBaseFields,
@@ -1864,107 +1855,102 @@ export interface UpdateJobResponse {
   } | null;
 }
 
-export const UpdateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      dataset: Schema.optional(
-        Schema.Union([
-          Schema.Literal("access_requests"),
-          Schema.Literal("audit_logs"),
-          Schema.Literal("audit_logs_v2"),
-          Schema.Literal("biso_user_actions"),
-          Schema.Literal("casb_findings"),
-          Schema.Literal("device_posture_results"),
-          Schema.Literal("dex_application_tests"),
-          Schema.Literal("dex_device_state_events"),
-          Schema.Literal("dlp_forensic_copies"),
-          Schema.Literal("dns_firewall_logs"),
-          Schema.Literal("dns_logs"),
-          Schema.Literal("email_security_alerts"),
-          Schema.Literal("email_security_post_delivery_events"),
-          Schema.Literal("firewall_events"),
-          Schema.Literal("gateway_dns"),
-          Schema.Literal("gateway_http"),
-          Schema.Literal("gateway_network"),
-          Schema.Literal("http_requests"),
-          Schema.Literal("ipsec_logs"),
-          Schema.Literal("magic_ids_detections"),
-          Schema.Literal("mcp_portal_logs"),
-          Schema.Literal("mnm_flow_logs"),
-          Schema.Literal("nel_reports"),
-          Schema.Literal("network_analytics_logs"),
-          Schema.Literal("page_shield_events"),
-          Schema.Literal("sinkhole_http_logs"),
-          Schema.Literal("spectrum_events"),
-          Schema.Literal("ssh_logs"),
-          Schema.Literal("turnstile_events"),
-          Schema.Literal("warp_config_changes"),
-          Schema.Literal("warp_toggle_changes"),
-          Schema.Literal("websocket_analytics"),
-          Schema.Literal("workers_trace_events"),
-          Schema.Literal("zaraz_events"),
-          Schema.Literal("zero_trust_network_sessions"),
-          Schema.Null,
-        ]),
-      ),
-      destinationConf: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      errorMessage: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      frequency: Schema.optional(
-        Schema.Union([
-          Schema.Literal("high"),
-          Schema.Literal("low"),
-          Schema.Null,
-        ]),
-      ),
-      kind: Schema.optional(
-        Schema.Union([
-          Schema.Union([Schema.Literals(["", "edge"]), Schema.String]),
-          Schema.Null,
-        ]),
-      ),
-      lastComplete: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      lastError: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      logpullOptions: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      maxUploadBytes: Schema.optional(
-        Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
-      ),
-      maxUploadIntervalSeconds: Schema.optional(
-        Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
-      ),
-      maxUploadRecords: Schema.optional(
-        Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
-      ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      outputOptions: Schema.optional(
-        Schema.Union([OutputOptions, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          dataset: "dataset",
-          destinationConf: "destination_conf",
-          enabled: "enabled",
-          errorMessage: "error_message",
-          frequency: "frequency",
-          kind: "kind",
-          lastComplete: "last_complete",
-          lastError: "last_error",
-          logpullOptions: "logpull_options",
-          maxUploadBytes: "max_upload_bytes",
-          maxUploadIntervalSeconds: "max_upload_interval_seconds",
-          maxUploadRecords: "max_upload_records",
-          name: "name",
-          outputOptions: "output_options",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const UpdateJobResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    dataset: Schema.optional(
+      Schema.Union([
+        Schema.Literal("access_requests"),
+        Schema.Literal("audit_logs"),
+        Schema.Literal("audit_logs_v2"),
+        Schema.Literal("biso_user_actions"),
+        Schema.Literal("casb_findings"),
+        Schema.Literal("device_posture_results"),
+        Schema.Literal("dex_application_tests"),
+        Schema.Literal("dex_device_state_events"),
+        Schema.Literal("dlp_forensic_copies"),
+        Schema.Literal("dns_firewall_logs"),
+        Schema.Literal("dns_logs"),
+        Schema.Literal("email_security_alerts"),
+        Schema.Literal("email_security_post_delivery_events"),
+        Schema.Literal("firewall_events"),
+        Schema.Literal("gateway_dns"),
+        Schema.Literal("gateway_http"),
+        Schema.Literal("gateway_network"),
+        Schema.Literal("http_requests"),
+        Schema.Literal("ipsec_logs"),
+        Schema.Literal("magic_ids_detections"),
+        Schema.Literal("mcp_portal_logs"),
+        Schema.Literal("mnm_flow_logs"),
+        Schema.Literal("nel_reports"),
+        Schema.Literal("network_analytics_logs"),
+        Schema.Literal("page_shield_events"),
+        Schema.Literal("sinkhole_http_logs"),
+        Schema.Literal("spectrum_events"),
+        Schema.Literal("ssh_logs"),
+        Schema.Literal("turnstile_events"),
+        Schema.Literal("warp_config_changes"),
+        Schema.Literal("warp_toggle_changes"),
+        Schema.Literal("websocket_analytics"),
+        Schema.Literal("workers_trace_events"),
+        Schema.Literal("zaraz_events"),
+        Schema.Literal("zero_trust_network_sessions"),
+        Schema.Null,
+      ]),
+    ),
+    destinationConf: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    errorMessage: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    frequency: Schema.optional(
+      Schema.Union([
+        Schema.Literal("high"),
+        Schema.Literal("low"),
+        Schema.Null,
+      ]),
+    ),
+    kind: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["", "edge"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    lastComplete: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastError: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    logpullOptions: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    maxUploadBytes: Schema.optional(
+      Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
+    ),
+    maxUploadIntervalSeconds: Schema.optional(
+      Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
+    ),
+    maxUploadRecords: Schema.optional(
+      Schema.Union([Schema.Literal("0"), Schema.Number, Schema.Null]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    outputOptions: Schema.optional(Schema.Union([OutputOptions, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        dataset: "dataset",
+        destinationConf: "destination_conf",
+        enabled: "enabled",
+        errorMessage: "error_message",
+        frequency: "frequency",
+        kind: "kind",
+        lastComplete: "last_complete",
+        lastError: "last_error",
+        logpullOptions: "logpull_options",
+        maxUploadBytes: "max_upload_bytes",
+        maxUploadIntervalSeconds: "max_upload_interval_seconds",
+        maxUploadRecords: "max_upload_records",
+        name: "name",
+        outputOptions: "output_options",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateJobResponse>;
 
 export type UpdateJobError = DefaultErrors;
@@ -1974,7 +1960,7 @@ export const updateJobForAccount: API.OperationMethod<
   UpdateJobResponse,
   UpdateJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateJobForAccountRequest,
   output: UpdateJobResponse,
   errors: [],
@@ -1985,7 +1971,7 @@ export const updateJobForZone: API.OperationMethod<
   UpdateJobResponse,
   UpdateJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateJobForZoneRequest,
   output: UpdateJobResponse,
   errors: [],
@@ -2010,7 +1996,7 @@ export interface DeleteJobForZoneRequest extends DeleteJobBaseRequest {
 }
 
 export const DeleteJobForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DeleteJobBaseFields,
@@ -2023,7 +2009,7 @@ export const DeleteJobForAccountRequest =
   ) as unknown as Schema.Codec<DeleteJobForAccountRequest>;
 
 export const DeleteJobForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DeleteJobBaseFields,
@@ -2040,11 +2026,10 @@ export interface DeleteJobResponse {
   id?: number | null;
 }
 
-export const DeleteJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const DeleteJobResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteJobResponse>;
 
 export type DeleteJobError = DefaultErrors | JobNotFound;
@@ -2054,7 +2039,7 @@ export const deleteJobForAccount: API.OperationMethod<
   DeleteJobResponse,
   DeleteJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteJobForAccountRequest,
   output: DeleteJobResponse,
   errors: [JobNotFound],
@@ -2065,7 +2050,7 @@ export const deleteJobForZone: API.OperationMethod<
   DeleteJobResponse,
   DeleteJobError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteJobForZoneRequest,
   output: DeleteJobResponse,
   errors: [JobNotFound],
@@ -2095,7 +2080,7 @@ export interface CreateOwnershipForZoneRequest extends CreateOwnershipBaseReques
 }
 
 export const CreateOwnershipForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateOwnershipBaseFields,
@@ -2109,7 +2094,7 @@ export const CreateOwnershipForAccountRequest =
   ) as unknown as Schema.Codec<CreateOwnershipForAccountRequest>;
 
 export const CreateOwnershipForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateOwnershipBaseFields,
@@ -2126,7 +2111,7 @@ export interface CreateOwnershipResponse {
 }
 
 export const CreateOwnershipResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       message: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -2141,7 +2126,7 @@ export const createOwnershipForAccount: API.OperationMethod<
   CreateOwnershipResponse,
   CreateOwnershipError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOwnershipForAccountRequest,
   output: CreateOwnershipResponse,
   errors: [],
@@ -2152,7 +2137,7 @@ export const createOwnershipForZone: API.OperationMethod<
   CreateOwnershipResponse,
   CreateOwnershipError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOwnershipForZoneRequest,
   output: CreateOwnershipResponse,
   errors: [],
@@ -2181,7 +2166,7 @@ export interface ValidateOwnershipForZoneRequest extends ValidateOwnershipBaseRe
 }
 
 export const ValidateOwnershipForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ValidateOwnershipBaseFields,
@@ -2198,7 +2183,7 @@ export const ValidateOwnershipForAccountRequest =
   ) as unknown as Schema.Codec<ValidateOwnershipForAccountRequest>;
 
 export const ValidateOwnershipForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ValidateOwnershipBaseFields,
@@ -2219,7 +2204,7 @@ export interface ValidateOwnershipResponse {
 }
 
 export const ValidateOwnershipResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       valid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -2232,7 +2217,7 @@ export const validateOwnershipForAccount: API.OperationMethod<
   ValidateOwnershipResponse,
   ValidateOwnershipError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateOwnershipForAccountRequest,
   output: ValidateOwnershipResponse,
   errors: [],
@@ -2243,7 +2228,7 @@ export const validateOwnershipForZone: API.OperationMethod<
   ValidateOwnershipResponse,
   ValidateOwnershipError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateOwnershipForZoneRequest,
   output: ValidateOwnershipResponse,
   errors: [],
@@ -2273,7 +2258,7 @@ export interface DestinationValidateForZoneRequest extends DestinationValidateBa
 }
 
 export const DestinationValidateForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DestinationValidateBaseFields,
@@ -2287,7 +2272,7 @@ export const DestinationValidateForAccountRequest =
   ) as unknown as Schema.Codec<DestinationValidateForAccountRequest>;
 
 export const DestinationValidateForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DestinationValidateBaseFields,
@@ -2306,7 +2291,7 @@ export interface DestinationValidateResponse {
 }
 
 export const DestinationValidateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       message: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       valid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -2320,7 +2305,7 @@ export const destinationValidateForAccount: API.OperationMethod<
   DestinationValidateResponse,
   DestinationValidateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DestinationValidateForAccountRequest,
   output: DestinationValidateResponse,
   errors: [],
@@ -2331,7 +2316,7 @@ export const destinationValidateForZone: API.OperationMethod<
   DestinationValidateResponse,
   DestinationValidateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DestinationValidateForZoneRequest,
   output: DestinationValidateResponse,
   errors: [],
@@ -2357,7 +2342,7 @@ export interface OriginValidateForZoneRequest extends OriginValidateBaseRequest 
 }
 
 export const OriginValidateForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...OriginValidateBaseFields,
@@ -2371,7 +2356,7 @@ export const OriginValidateForAccountRequest =
   ) as unknown as Schema.Codec<OriginValidateForAccountRequest>;
 
 export const OriginValidateForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...OriginValidateBaseFields,
@@ -2390,7 +2375,7 @@ export interface OriginValidateResponse {
 }
 
 export const OriginValidateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       message: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       valid: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -2404,7 +2389,7 @@ export const originValidateForAccount: API.OperationMethod<
   OriginValidateResponse,
   OriginValidateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OriginValidateForAccountRequest,
   output: OriginValidateResponse,
   errors: [],
@@ -2415,7 +2400,7 @@ export const originValidateForZone: API.OperationMethod<
   OriginValidateResponse,
   OriginValidateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OriginValidateForZoneRequest,
   output: OriginValidateResponse,
   errors: [],

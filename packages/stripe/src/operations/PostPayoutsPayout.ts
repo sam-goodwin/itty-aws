@@ -13,18 +13,16 @@ export interface PostPayoutsPayoutInput {
   expand?: string[];
   metadata?: Record<string, string> | "";
 }
-export const PostPayoutsPayoutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    payout: Schema.String.pipe(T.PathParam()),
-    expand: Schema.optional(Schema.Array(Schema.String)),
-    metadata: Schema.optional(
-      Schema.Union([
-        Schema.Record(Schema.String, Schema.String),
-        Schema.Literals([""]),
-      ]),
-    ),
-  },
-).pipe(
+export const PostPayoutsPayoutInput = /*@__PURE__*/ Schema.Struct({
+  payout: Schema.String.pipe(T.PathParam()),
+  expand: Schema.optional(Schema.Array(Schema.String)),
+  metadata: Schema.optional(
+    Schema.Union([
+      Schema.Record(Schema.String, Schema.String),
+      Schema.Literals([""]),
+    ]),
+  ),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v1/payouts/{payout}",
@@ -488,7 +486,7 @@ export interface PostPayoutsPayoutOutput {
   type: "bank_account" | "card";
 }
 export const PostPayoutsPayoutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     application_fee: Schema.Unknown,
     application_fee_amount: Schema.NullOr(Schema.Number),
@@ -808,7 +806,7 @@ export const PostPayoutsPayoutOutput =
  *
  * <p>Updates the specified payout by setting the values of the parameters you pass. We don’t change parameters that you don’t provide. This request only accepts the metadata as arguments.</p>
  */
-export const PostPayoutsPayout = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostPayoutsPayout = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostPayoutsPayoutInput,
   outputSchema: PostPayoutsPayoutOutput,
 }));

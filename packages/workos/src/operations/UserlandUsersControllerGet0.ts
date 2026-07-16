@@ -8,7 +8,7 @@ export interface UserlandUsersControllerGet0Input {
   id: string;
 }
 export const UserlandUsersControllerGet0Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/user_management/users/{id}" }),
@@ -32,7 +32,7 @@ export interface UserlandUsersControllerGet0Output {
   updated_at?: string;
 }
 export const UserlandUsersControllerGet0Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
@@ -57,10 +57,8 @@ export const UserlandUsersControllerGet0Output =
  *
  * @param id - The unique ID of the user.
  */
-export const UserlandUsersControllerGet0 = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserlandUsersControllerGet0Input,
-    outputSchema: UserlandUsersControllerGet0Output,
-    errors: [NotFound] as const,
-  }),
-);
+export const UserlandUsersControllerGet0 = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserlandUsersControllerGet0Input,
+  outputSchema: UserlandUsersControllerGet0Output,
+  errors: [NotFound] as const,
+}));

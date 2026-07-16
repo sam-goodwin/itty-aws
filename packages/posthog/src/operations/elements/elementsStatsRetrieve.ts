@@ -8,7 +8,7 @@ export interface ElementsStatsRetrieveInput {
   project_id: string;
 }
 export const ElementsStatsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20,7 +20,7 @@ export const ElementsStatsRetrieveInput =
 // Output Schema
 export type ElementsStatsRetrieveOutput = void;
 export const ElementsStatsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ElementsStatsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ElementsStatsRetrieveOutput>;
 
 // The operation
 /**
@@ -31,10 +31,8 @@ export const ElementsStatsRetrieveOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const elementsStatsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ElementsStatsRetrieveInput,
-    outputSchema: ElementsStatsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const elementsStatsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ElementsStatsRetrieveInput,
+  outputSchema: ElementsStatsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

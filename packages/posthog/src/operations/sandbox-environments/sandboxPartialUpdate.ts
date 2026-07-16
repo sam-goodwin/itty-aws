@@ -16,7 +16,7 @@ export interface SandboxPartialUpdateInput {
   private?: boolean;
 }
 export const SandboxPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -59,7 +59,7 @@ export interface SandboxPartialUpdateOutput {
   updated_at?: string | null;
 }
 export const SandboxPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     network_access_level: Schema.String,
@@ -94,10 +94,8 @@ export const SandboxPartialUpdateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const sandboxPartialUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SandboxPartialUpdateInput,
-    outputSchema: SandboxPartialUpdateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const sandboxPartialUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SandboxPartialUpdateInput,
+  outputSchema: SandboxPartialUpdateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

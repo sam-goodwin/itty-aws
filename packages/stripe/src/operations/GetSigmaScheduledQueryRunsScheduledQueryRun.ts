@@ -8,7 +8,7 @@ export interface GetSigmaScheduledQueryRunsScheduledQueryRunInput {
   expand?: string;
 }
 export const GetSigmaScheduledQueryRunsScheduledQueryRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scheduled_query_run: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -82,7 +82,7 @@ export interface GetSigmaScheduledQueryRunsScheduledQueryRunOutput {
   title: string;
 }
 export const GetSigmaScheduledQueryRunsScheduledQueryRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     data_load_time: Schema.Number,
     error: Schema.optional(
@@ -166,7 +166,7 @@ export const GetSigmaScheduledQueryRunsScheduledQueryRunOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetSigmaScheduledQueryRunsScheduledQueryRun =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetSigmaScheduledQueryRunsScheduledQueryRunInput,
     outputSchema: GetSigmaScheduledQueryRunsScheduledQueryRunOutput,
   }));

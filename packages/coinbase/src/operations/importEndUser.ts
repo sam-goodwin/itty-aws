@@ -30,7 +30,7 @@ export interface ImportEndUserInput {
   encryptedPrivateKey: string;
   keyType: "evm" | "solana";
 }
-export const ImportEndUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImportEndUserInput = /*@__PURE__*/ Schema.Struct({
   userId: Schema.String,
   authenticationMethods: Schema.Array(
     Schema.Union([
@@ -117,7 +117,7 @@ export interface ImportEndUserOutput {
   solanaAccountObjects: { address: string; createdAt: string }[];
   createdAt: string;
 }
-export const ImportEndUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ImportEndUserOutput = /*@__PURE__*/ Schema.Struct({
   userId: Schema.String,
   authenticationMethods: Schema.Array(
     Schema.Union([
@@ -212,7 +212,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const importEndUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const importEndUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: ImportEndUserInput,
   outputSchema: ImportEndUserOutput,
 }));

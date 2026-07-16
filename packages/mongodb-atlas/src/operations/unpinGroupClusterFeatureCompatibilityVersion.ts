@@ -17,7 +17,7 @@ export interface UnpinGroupClusterFeatureCompatibilityVersionInput {
   pretty?: boolean;
 }
 export const UnpinGroupClusterFeatureCompatibilityVersionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const UnpinGroupClusterFeatureCompatibilityVersionInput =
 // Output Schema
 export type UnpinGroupClusterFeatureCompatibilityVersionOutput = void;
 export const UnpinGroupClusterFeatureCompatibilityVersionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UnpinGroupClusterFeatureCompatibilityVersionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UnpinGroupClusterFeatureCompatibilityVersionOutput>;
 
 // The operation
 /**
@@ -48,7 +48,7 @@ export const UnpinGroupClusterFeatureCompatibilityVersionOutput =
  * @param clusterName - Human-readable label that identifies this cluster.
  */
 export const unpinGroupClusterFeatureCompatibilityVersion =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UnpinGroupClusterFeatureCompatibilityVersionInput,
     outputSchema: UnpinGroupClusterFeatureCompatibilityVersionOutput,
     errors: [

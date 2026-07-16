@@ -9,7 +9,7 @@ export interface FeatureFlagsRemoteConfigRetrieveInput {
   project_id: string;
 }
 export const FeatureFlagsRemoteConfigRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const FeatureFlagsRemoteConfigRetrieveInput =
 // Output Schema
 export type FeatureFlagsRemoteConfigRetrieveOutput = void;
 export const FeatureFlagsRemoteConfigRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FeatureFlagsRemoteConfigRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FeatureFlagsRemoteConfigRetrieveOutput>;
 
 // The operation
 /**
@@ -33,7 +33,7 @@ export const FeatureFlagsRemoteConfigRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const featureFlagsRemoteConfigRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FeatureFlagsRemoteConfigRetrieveInput,
     outputSchema: FeatureFlagsRemoteConfigRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

@@ -9,7 +9,7 @@ export interface MachinesListVersionsInput {
   machine_id: string;
 }
 export const MachinesListVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     machine_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -259,7 +259,7 @@ export type MachinesListVersionsOutput = {
   version?: string;
 }[];
 export const MachinesListVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       user_config: Schema.optional(
         Schema.Struct({
@@ -735,10 +735,8 @@ export const MachinesListVersionsOutput =
  * @param app_name - Fly App Name
  * @param machine_id - Machine ID
  */
-export const MachinesListVersions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesListVersionsInput,
-    outputSchema: MachinesListVersionsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const MachinesListVersions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesListVersionsInput,
+  outputSchema: MachinesListVersionsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

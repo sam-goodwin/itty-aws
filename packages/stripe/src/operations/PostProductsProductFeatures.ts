@@ -9,7 +9,7 @@ export interface PostProductsProductFeaturesInput {
   expand?: string[];
 }
 export const PostProductsProductFeaturesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     product: Schema.String.pipe(T.PathParam()),
     entitlement_feature: Schema.String,
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -37,7 +37,7 @@ export interface PostProductsProductFeaturesOutput {
   object: "product_feature";
 }
 export const PostProductsProductFeaturesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlement_feature: Schema.Struct({
       active: Schema.Boolean,
       id: Schema.String,
@@ -58,9 +58,7 @@ export const PostProductsProductFeaturesOutput =
  *
  * <p>Creates a product_feature, which represents a feature attachment to a product</p>
  */
-export const PostProductsProductFeatures = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostProductsProductFeaturesInput,
-    outputSchema: PostProductsProductFeaturesOutput,
-  }),
-);
+export const PostProductsProductFeatures = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostProductsProductFeaturesInput,
+  outputSchema: PostProductsProductFeaturesOutput,
+}));

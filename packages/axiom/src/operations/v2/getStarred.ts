@@ -7,7 +7,7 @@ import { NotFound } from "../../errors.ts";
 export interface GetStarredInput {
   id: string;
 }
-export const GetStarredInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetStarredInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/apl-starred-queries/{id}" }),
@@ -51,7 +51,7 @@ export interface GetStarredOutput {
   who: string;
   id: string;
 }
-export const GetStarredOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetStarredOutput = /*@__PURE__*/ Schema.Struct({
   dataset: Schema.optional(Schema.String),
   kind: Schema.Literals(["apl"]),
   metadata: Schema.Record(Schema.String, Schema.String),
@@ -110,7 +110,7 @@ export const GetStarredOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }) as unknown as Schema.Codec<GetStarredOutput>;
 
 // The operation
-export const getStarred = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getStarred = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetStarredInput,
   outputSchema: GetStarredOutput,
   errors: [NotFound] as const,

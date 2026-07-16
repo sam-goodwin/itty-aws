@@ -10,7 +10,7 @@ export interface UserlandUsersControllerGetPasswordResetInput {
   id: string;
 }
 export const UserlandUsersControllerGetPasswordResetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/user_management/password_reset/{id}" }),
@@ -28,7 +28,7 @@ export interface UserlandUsersControllerGetPasswordResetOutput {
   password_reset_url?: Redacted.Redacted<string>;
 }
 export const UserlandUsersControllerGetPasswordResetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     user_id: Schema.optional(Schema.String),
@@ -48,7 +48,7 @@ export const UserlandUsersControllerGetPasswordResetOutput =
  * @param id - The ID of the password reset token.
  */
 export const UserlandUsersControllerGetPasswordReset =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerGetPasswordResetInput,
     outputSchema: UserlandUsersControllerGetPasswordResetOutput,
     errors: [NotFound] as const,

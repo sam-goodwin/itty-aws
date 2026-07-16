@@ -31,7 +31,7 @@ export interface PostFinancialConnectionsSessionsInput {
   return_url?: string;
 }
 export const PostFinancialConnectionsSessionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.Struct({
       account: Schema.optional(Schema.String),
       customer: Schema.optional(Schema.String),
@@ -199,7 +199,7 @@ export interface PostFinancialConnectionsSessionsOutput {
   return_url?: string;
 }
 export const PostFinancialConnectionsSessionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.NullOr(
       Schema.Struct({
         account: Schema.optional(Schema.Unknown),
@@ -401,7 +401,7 @@ export const PostFinancialConnectionsSessionsOutput =
  * <p>To launch the Financial Connections authorization flow, create a <code>Session</code>. The session’s <code>client_secret</code> can be used to launch the flow using Stripe.js.</p>
  */
 export const PostFinancialConnectionsSessions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostFinancialConnectionsSessionsInput,
     outputSchema: PostFinancialConnectionsSessionsOutput,
   }));

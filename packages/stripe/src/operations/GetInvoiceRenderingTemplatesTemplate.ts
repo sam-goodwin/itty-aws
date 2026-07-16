@@ -9,7 +9,7 @@ export interface GetInvoiceRenderingTemplatesTemplateInput {
   version?: number;
 }
 export const GetInvoiceRenderingTemplatesTemplateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     template: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
@@ -33,7 +33,7 @@ export interface GetInvoiceRenderingTemplatesTemplateOutput {
   version: number;
 }
 export const GetInvoiceRenderingTemplatesTemplateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     id: Schema.String,
     livemode: Schema.Boolean,
@@ -53,7 +53,7 @@ export const GetInvoiceRenderingTemplatesTemplateOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetInvoiceRenderingTemplatesTemplate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetInvoiceRenderingTemplatesTemplateInput,
     outputSchema: GetInvoiceRenderingTemplatesTemplateOutput,
   }));

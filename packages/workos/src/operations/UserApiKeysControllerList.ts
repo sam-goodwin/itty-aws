@@ -13,7 +13,7 @@ export interface UserApiKeysControllerListInput {
   organization_id?: string;
 }
 export const UserApiKeysControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userId: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface UserApiKeysControllerListOutput {
   list_metadata: { before: string | null; after: string | null };
 }
 export const UserApiKeysControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     data: Schema.Array(
       Schema.Struct({
@@ -81,10 +81,8 @@ export const UserApiKeysControllerListOutput =
  * @param order - Order the results by the creation time.
  * @param organization_id - The ID of the organization to filter user API keys by. When provided, only API keys created against that organization membership are returned.
  */
-export const UserApiKeysControllerList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserApiKeysControllerListInput,
-    outputSchema: UserApiKeysControllerListOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const UserApiKeysControllerList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserApiKeysControllerListInput,
+  outputSchema: UserApiKeysControllerListOutput,
+  errors: [NotFound] as const,
+}));

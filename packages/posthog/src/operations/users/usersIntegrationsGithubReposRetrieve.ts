@@ -11,7 +11,7 @@ export interface UsersIntegrationsGithubReposRetrieveInput {
   search?: string;
 }
 export const UsersIntegrationsGithubReposRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     installation_id: Schema.String.pipe(T.PathParam()),
     uuid: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
@@ -30,7 +30,7 @@ export interface UsersIntegrationsGithubReposRetrieveOutput {
   has_more?: boolean;
 }
 export const UsersIntegrationsGithubReposRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repositories: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -54,7 +54,7 @@ export const UsersIntegrationsGithubReposRetrieveOutput =
  * @param search - Optional case-insensitive repository name search query.
  */
 export const usersIntegrationsGithubReposRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersIntegrationsGithubReposRetrieveInput,
     outputSchema: UsersIntegrationsGithubReposRetrieveOutput,
   }));

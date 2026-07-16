@@ -10,7 +10,7 @@ export interface ListAuditLogsInput {
   ending_before?: string;
   limit?: number;
 }
-export const ListAuditLogsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAuditLogsInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   starting_after: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export interface ListAuditLogsOutput {
     metadata: Record<string, unknown> | null;
   }>;
 }
-export const ListAuditLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAuditLogsOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   has_next: Schema.Boolean,
   has_prev: Schema.Boolean,
@@ -84,7 +84,7 @@ export const ListAuditLogsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param ending_before - If provided, returns results before the specified cursor
  * @param limit - If provided, specifies the number of returned results (max 100)
  */
-export const listAuditLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listAuditLogs = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListAuditLogsInput,
   outputSchema: ListAuditLogsOutput,
   errors: [Forbidden, NotFound] as const,

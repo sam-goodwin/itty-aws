@@ -16,7 +16,7 @@ export interface PostTestHelpersCustomersCustomerFundCashBalanceInput {
   reference?: string;
 }
 export const PostTestHelpersCustomersCustomerFundCashBalanceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customer: Schema.String.pipe(T.PathParam()),
     amount: Schema.Number,
     currency: Schema.String,
@@ -389,7 +389,7 @@ export interface PostTestHelpersCustomersCustomerFundCashBalanceOutput {
   unapplied_from_payment?: { payment_intent: unknown };
 }
 export const PostTestHelpersCustomersCustomerFundCashBalanceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adjusted_for_overdraft: Schema.optional(
       Schema.Struct({
         balance_transaction: Schema.Union([
@@ -660,7 +660,7 @@ export const PostTestHelpersCustomersCustomerFundCashBalanceOutput =
  * <p>Create an incoming testmode bank transfer</p>
  */
 export const PostTestHelpersCustomersCustomerFundCashBalance =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTestHelpersCustomersCustomerFundCashBalanceInput,
     outputSchema: PostTestHelpersCustomersCustomerFundCashBalanceOutput,
   }));

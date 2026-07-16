@@ -30,7 +30,7 @@ import { applyAllPatches } from "../src/json-patch.ts";
 const annotatePureExportConst = (definition: string) =>
   definition.replace(
     /^export const ([^=]+?)\s*=\s*/m,
-    "export const $1 = /*@__PURE__*/ /*#__PURE__*/ ",
+    "export const $1 = /*@__PURE__*/ ",
   );
 
 /** Quote a property name if it's not a valid JS identifier. */
@@ -1553,7 +1553,7 @@ function generateOutputSchema(
       outputSchemaCode: emitTypedSchema(
         outputSchemaName,
         "void",
-        `export const ${outputSchemaName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Void;`,
+        `export const ${outputSchemaName} = /*@__PURE__*/ Schema.Void;`,
       ),
       outputSchemaName,
       sensitiveImports: {
@@ -1589,7 +1589,7 @@ function generateOutputSchema(
       outputSchemaCode: emitTypedSchema(
         outputSchemaName,
         `ReadonlyArray<${itemTs}>`,
-        `export const ${outputSchemaName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(${itemSchema});`,
+        `export const ${outputSchemaName} = /*@__PURE__*/ Schema.Array(${itemSchema});`,
       ),
       outputSchemaName,
       sensitiveImports: {
@@ -1614,7 +1614,7 @@ function generateOutputSchema(
     outputSchemaCode: emitTypedSchema(
       outputSchemaName,
       responseTs,
-      `export const ${outputSchemaName} = /*@__PURE__*/ /*#__PURE__*/ ${schemaCode};`,
+      `export const ${outputSchemaName} = /*@__PURE__*/ ${schemaCode};`,
     ),
     outputSchemaName,
     sensitiveImports: {
@@ -1658,11 +1658,11 @@ function generateOperationCode(
 
   const operationCode = jsDoc
     ? `${jsDoc}
-export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ${functionName} = /*@__PURE__*/ API.make(() => ({
   inputSchema: ${inputSchemaName},
   outputSchema: ${outputSchemaName},${errorsLine}
 }));`
-    : `export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    : `export const ${functionName} = /*@__PURE__*/ API.make(() => ({
   inputSchema: ${inputSchemaName},
   outputSchema: ${outputSchemaName},${errorsLine}
 }));`;
@@ -2216,11 +2216,11 @@ function buildOperationFile(
 
   const operationCode = jsDoc
     ? `${jsDoc}
-export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.${factory}(() => ({
+export const ${functionName} = /*@__PURE__*/ API.${factory}(() => ({
   inputSchema: ${inputSchemaName},
   outputSchema: ${outputSchemaName},${errorsLine}${paginationLine}
 }));`
-    : `export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.${factory}(() => ({
+    : `export const ${functionName} = /*@__PURE__*/ API.${factory}(() => ({
   inputSchema: ${inputSchemaName},
   outputSchema: ${outputSchemaName},${errorsLine}${paginationLine}
 }));`;

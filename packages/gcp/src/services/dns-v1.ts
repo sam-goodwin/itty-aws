@@ -35,7 +35,7 @@ export interface ManagedZoneForwardingConfigNameServerTarget {
 }
 
 export const ManagedZoneForwardingConfigNameServerTarget: Schema.Codec<ManagedZoneForwardingConfigNameServerTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     forwardingPath: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     ipv6Address: Schema.optional(Schema.String),
@@ -67,7 +67,7 @@ export interface RRSetRoutingPolicyLoadBalancerTarget {
 }
 
 export const RRSetRoutingPolicyLoadBalancerTarget: Schema.Codec<RRSetRoutingPolicyLoadBalancerTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ipAddress: Schema.optional(Schema.String),
     loadBalancerType: Schema.optional(Schema.String),
     region: Schema.optional(Schema.String),
@@ -86,7 +86,7 @@ export interface RRSetRoutingPolicyHealthCheckTargets {
 }
 
 export const RRSetRoutingPolicyHealthCheckTargets: Schema.Codec<RRSetRoutingPolicyHealthCheckTargets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     internalLoadBalancers: Schema.optional(
       Schema.Array(RRSetRoutingPolicyLoadBalancerTarget),
     ),
@@ -105,7 +105,7 @@ export interface RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
 }
 
 export const RRSetRoutingPolicyGeoPolicyGeoPolicyItem: Schema.Codec<RRSetRoutingPolicyGeoPolicyGeoPolicyItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rrdatas: Schema.optional(Schema.Array(Schema.String)),
     healthCheckedTargets: Schema.optional(RRSetRoutingPolicyHealthCheckTargets),
     signatureRrdatas: Schema.optional(Schema.Array(Schema.String)),
@@ -122,7 +122,7 @@ export interface RRSetRoutingPolicyGeoPolicy {
 }
 
 export const RRSetRoutingPolicyGeoPolicy: Schema.Codec<RRSetRoutingPolicyGeoPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     items: Schema.optional(
       Schema.Array(RRSetRoutingPolicyGeoPolicyGeoPolicyItem),
@@ -142,7 +142,7 @@ export interface RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
 }
 
 export const RRSetRoutingPolicyWrrPolicyWrrPolicyItem: Schema.Codec<RRSetRoutingPolicyWrrPolicyWrrPolicyItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     weight: Schema.optional(Schema.Number),
     rrdatas: Schema.optional(Schema.Array(Schema.String)),
     healthCheckedTargets: Schema.optional(RRSetRoutingPolicyHealthCheckTargets),
@@ -156,7 +156,7 @@ export interface RRSetRoutingPolicyWrrPolicy {
 }
 
 export const RRSetRoutingPolicyWrrPolicy: Schema.Codec<RRSetRoutingPolicyWrrPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     items: Schema.optional(
       Schema.Array(RRSetRoutingPolicyWrrPolicyWrrPolicyItem),
     ),
@@ -174,7 +174,7 @@ export interface RRSetRoutingPolicyPrimaryBackupPolicy {
 }
 
 export const RRSetRoutingPolicyPrimaryBackupPolicy: Schema.Codec<RRSetRoutingPolicyPrimaryBackupPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryTargets: Schema.optional(RRSetRoutingPolicyHealthCheckTargets),
     kind: Schema.optional(Schema.String),
     backupGeoTargets: Schema.optional(RRSetRoutingPolicyGeoPolicy),
@@ -191,7 +191,7 @@ export interface RRSetRoutingPolicy {
 }
 
 export const RRSetRoutingPolicy: Schema.Codec<RRSetRoutingPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     geo: Schema.optional(RRSetRoutingPolicyGeoPolicy),
     kind: Schema.optional(Schema.String),
     wrr: Schema.optional(RRSetRoutingPolicyWrrPolicy),
@@ -216,7 +216,7 @@ export interface ResourceRecordSet {
 }
 
 export const ResourceRecordSet: Schema.Codec<ResourceRecordSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     ttl: Schema.optional(Schema.Number),
     routingPolicy: Schema.optional(RRSetRoutingPolicy),
@@ -243,7 +243,7 @@ export interface Change {
 }
 
 export const Change: Schema.Codec<Change> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isServing: Schema.optional(Schema.Boolean),
     additions: Schema.optional(Schema.Array(ResourceRecordSet)),
     id: Schema.optional(Schema.String),
@@ -263,7 +263,7 @@ export interface ChangesListResponse {
 }
 
 export const ChangesListResponse: Schema.Codec<ChangesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     changes: Schema.optional(Schema.Array(Change)),
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -276,7 +276,7 @@ export interface ManagedZoneCloudLoggingConfig {
 }
 
 export const ManagedZoneCloudLoggingConfig: Schema.Codec<ManagedZoneCloudLoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     enableLogging: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "ManagedZoneCloudLoggingConfig" });
@@ -288,7 +288,7 @@ export interface ResponsePolicyNetwork {
 }
 
 export const ResponsePolicyNetwork: Schema.Codec<ResponsePolicyNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     networkUrl: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResponsePolicyNetwork" });
@@ -300,7 +300,7 @@ export interface ResponsePolicyGKECluster {
 }
 
 export const ResponsePolicyGKECluster: Schema.Codec<ResponsePolicyGKECluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     gkeClusterName: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResponsePolicyGKECluster" });
@@ -322,7 +322,7 @@ export interface ResponsePolicy {
 }
 
 export const ResponsePolicy: Schema.Codec<ResponsePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     networks: Schema.optional(Schema.Array(ResponsePolicyNetwork)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     kind: Schema.optional(Schema.String),
@@ -337,7 +337,7 @@ export interface ResponsePoliciesUpdateResponse {
 }
 
 export const ResponsePoliciesUpdateResponse: Schema.Codec<ResponsePoliciesUpdateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responsePolicy: Schema.optional(ResponsePolicy),
   }).annotate({ identifier: "ResponsePoliciesUpdateResponse" });
 
@@ -353,7 +353,7 @@ export interface Expr {
 }
 
 export const Expr: Schema.Codec<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
@@ -370,7 +370,7 @@ export interface GoogleIamV1Binding {
 }
 
 export const GoogleIamV1Binding: Schema.Codec<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
     condition: Schema.optional(Expr),
@@ -389,7 +389,7 @@ export interface GoogleIamV1AuditLogConfig {
 }
 
 export const GoogleIamV1AuditLogConfig: Schema.Codec<GoogleIamV1AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     logType: Schema.optional(Schema.String),
     exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
@@ -402,7 +402,7 @@ export interface GoogleIamV1AuditConfig {
 }
 
 export const GoogleIamV1AuditConfig: Schema.Codec<GoogleIamV1AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     service: Schema.optional(Schema.String),
     auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
   }).annotate({ identifier: "GoogleIamV1AuditConfig" });
@@ -419,7 +419,7 @@ export interface GoogleIamV1Policy {
 }
 
 export const GoogleIamV1Policy: Schema.Codec<GoogleIamV1Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
     etag: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
@@ -434,7 +434,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
 }
 
 export const GoogleIamV1SetIamPolicyRequest: Schema.Codec<GoogleIamV1SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(GoogleIamV1Policy),
     updateMask: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
@@ -448,7 +448,7 @@ export interface ManagedZonePeeringConfigTargetNetwork {
 }
 
 export const ManagedZonePeeringConfigTargetNetwork: Schema.Codec<ManagedZonePeeringConfigTargetNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deactivateTime: Schema.optional(Schema.String),
     networkUrl: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -461,7 +461,7 @@ export interface ManagedZonePeeringConfig {
 }
 
 export const ManagedZonePeeringConfig: Schema.Codec<ManagedZonePeeringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     targetNetwork: Schema.optional(ManagedZonePeeringConfigTargetNetwork),
   }).annotate({ identifier: "ManagedZonePeeringConfig" });
@@ -483,7 +483,7 @@ export interface DnsKeySpec {
 }
 
 export const DnsKeySpec: Schema.Codec<DnsKeySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyType: Schema.optional(Schema.String),
     keyLength: Schema.optional(Schema.Number),
     algorithm: Schema.optional(Schema.String),
@@ -501,7 +501,7 @@ export interface ManagedZoneDnsSecConfig {
 }
 
 export const ManagedZoneDnsSecConfig: Schema.Codec<ManagedZoneDnsSecConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nonExistence: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     defaultKeySpecs: Schema.optional(Schema.Array(DnsKeySpec)),
@@ -517,7 +517,7 @@ export interface ManagedZoneServiceDirectoryConfigNamespace {
 }
 
 export const ManagedZoneServiceDirectoryConfigNamespace: Schema.Codec<ManagedZoneServiceDirectoryConfigNamespace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     namespaceUrl: Schema.optional(Schema.String),
     deletionTime: Schema.optional(Schema.String),
@@ -530,7 +530,7 @@ export interface ManagedZoneServiceDirectoryConfig {
 }
 
 export const ManagedZoneServiceDirectoryConfig: Schema.Codec<ManagedZoneServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.optional(ManagedZoneServiceDirectoryConfigNamespace),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "ManagedZoneServiceDirectoryConfig" });
@@ -542,7 +542,7 @@ export interface ManagedZonePrivateVisibilityConfigGKECluster {
 }
 
 export const ManagedZonePrivateVisibilityConfigGKECluster: Schema.Codec<ManagedZonePrivateVisibilityConfigGKECluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gkeClusterName: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "ManagedZonePrivateVisibilityConfigGKECluster" });
@@ -554,7 +554,7 @@ export interface ManagedZonePrivateVisibilityConfigNetwork {
 }
 
 export const ManagedZonePrivateVisibilityConfigNetwork: Schema.Codec<ManagedZonePrivateVisibilityConfigNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     networkUrl: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "ManagedZonePrivateVisibilityConfigNetwork" });
@@ -568,7 +568,7 @@ export interface ManagedZonePrivateVisibilityConfig {
 }
 
 export const ManagedZonePrivateVisibilityConfig: Schema.Codec<ManagedZonePrivateVisibilityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     gkeClusters: Schema.optional(
       Schema.Array(ManagedZonePrivateVisibilityConfigGKECluster),
     ),
@@ -583,7 +583,7 @@ export interface ManagedZoneReverseLookupConfig {
 }
 
 export const ManagedZoneReverseLookupConfig: Schema.Codec<ManagedZoneReverseLookupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "ManagedZoneReverseLookupConfig" });
 
@@ -594,7 +594,7 @@ export interface ManagedZoneForwardingConfig {
 }
 
 export const ManagedZoneForwardingConfig: Schema.Codec<ManagedZoneForwardingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     targetNameServers: Schema.optional(
       Schema.Array(ManagedZoneForwardingConfigNameServerTarget),
@@ -637,7 +637,7 @@ export interface ManagedZone {
 }
 
 export const ManagedZone: Schema.Codec<ManagedZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameServers: Schema.optional(Schema.Array(Schema.String)),
     peeringConfig: Schema.optional(ManagedZonePeeringConfig),
     visibility: Schema.optional(Schema.String),
@@ -667,7 +667,7 @@ export interface OperationManagedZoneContext {
 }
 
 export const OperationManagedZoneContext: Schema.Codec<OperationManagedZoneContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(ManagedZone),
     newValue: Schema.optional(ManagedZone),
   }).annotate({ identifier: "OperationManagedZoneContext" });
@@ -679,7 +679,7 @@ export interface PolicyNetwork {
 }
 
 export const PolicyNetwork: Schema.Codec<PolicyNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     networkUrl: Schema.optional(Schema.String),
   }).annotate({ identifier: "PolicyNetwork" });
@@ -692,7 +692,7 @@ export interface DnsKeyDigest {
 }
 
 export const DnsKeyDigest: Schema.Codec<DnsKeyDigest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     digest: Schema.optional(Schema.String),
   }).annotate({ identifier: "DnsKeyDigest" });
@@ -728,7 +728,7 @@ export interface DnsKey {
 }
 
 export const DnsKey: Schema.Codec<DnsKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     algorithm: Schema.optional(Schema.String),
     keyTag: Schema.optional(Schema.Number),
     publicKey: Schema.optional(Schema.String),
@@ -752,7 +752,7 @@ export interface DnsKeysListResponse {
 }
 
 export const DnsKeysListResponse: Schema.Codec<DnsKeysListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     dnsKeys: Schema.optional(Schema.Array(DnsKey)),
@@ -764,7 +764,7 @@ export interface ResponsePolicyRuleLocalData {
 }
 
 export const ResponsePolicyRuleLocalData: Schema.Codec<ResponsePolicyRuleLocalData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     localDatas: Schema.optional(Schema.Array(ResourceRecordSet)),
   }).annotate({ identifier: "ResponsePolicyRuleLocalData" });
 
@@ -773,7 +773,7 @@ export interface ResponsePoliciesPatchResponse {
 }
 
 export const ResponsePoliciesPatchResponse: Schema.Codec<ResponsePoliciesPatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responsePolicy: Schema.optional(ResponsePolicy),
   }).annotate({ identifier: "ResponsePoliciesPatchResponse" });
 
@@ -788,7 +788,7 @@ export interface PolicyAlternativeNameServerConfigTargetNameServer {
 }
 
 export const PolicyAlternativeNameServerConfigTargetNameServer: Schema.Codec<PolicyAlternativeNameServerConfigTargetNameServer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     forwardingPath: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     ipv6Address: Schema.optional(Schema.String),
@@ -804,7 +804,7 @@ export interface PolicyAlternativeNameServerConfig {
 }
 
 export const PolicyAlternativeNameServerConfig: Schema.Codec<PolicyAlternativeNameServerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetNameServers: Schema.optional(
       Schema.Array(PolicyAlternativeNameServerConfigTargetNameServer),
     ),
@@ -818,7 +818,7 @@ export interface PolicyDns64ConfigScope {
 }
 
 export const PolicyDns64ConfigScope: Schema.Codec<PolicyDns64ConfigScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allQueries: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "PolicyDns64ConfigScope" });
@@ -830,7 +830,7 @@ export interface PolicyDns64Config {
 }
 
 export const PolicyDns64Config: Schema.Codec<PolicyDns64Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.optional(PolicyDns64ConfigScope),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "PolicyDns64Config" });
@@ -856,7 +856,7 @@ export interface Policy {
 }
 
 export const Policy: Schema.Codec<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     networks: Schema.optional(Schema.Array(PolicyNetwork)),
     alternativeNameServerConfig: Schema.optional(
       PolicyAlternativeNameServerConfig,
@@ -875,7 +875,7 @@ export interface PoliciesPatchResponse {
 }
 
 export const PoliciesPatchResponse: Schema.Codec<PoliciesPatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "PoliciesPatchResponse" });
 
@@ -885,7 +885,7 @@ export interface GoogleIamV1GetPolicyOptions {
 }
 
 export const GoogleIamV1GetPolicyOptions: Schema.Codec<GoogleIamV1GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestedPolicyVersion: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleIamV1GetPolicyOptions" });
 
@@ -902,7 +902,7 @@ export interface ResponsePolicyRule {
 }
 
 export const ResponsePolicyRule: Schema.Codec<ResponsePolicyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     localData: Schema.optional(ResponsePolicyRuleLocalData),
     dnsName: Schema.optional(Schema.String),
@@ -915,7 +915,7 @@ export interface ResponsePolicyRulesPatchResponse {
 }
 
 export const ResponsePolicyRulesPatchResponse: Schema.Codec<ResponsePolicyRulesPatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responsePolicyRule: Schema.optional(ResponsePolicyRule),
   }).annotate({ identifier: "ResponsePolicyRulesPatchResponse" });
 
@@ -925,7 +925,7 @@ export interface GoogleIamV1TestIamPermissionsResponse {
 }
 
 export const GoogleIamV1TestIamPermissionsResponse: Schema.Codec<GoogleIamV1TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
 
@@ -934,7 +934,7 @@ export interface PoliciesUpdateResponse {
 }
 
 export const PoliciesUpdateResponse: Schema.Codec<PoliciesUpdateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(Policy),
   }).annotate({ identifier: "PoliciesUpdateResponse" });
 
@@ -946,7 +946,7 @@ export interface OperationDnsKeyContext {
 }
 
 export const OperationDnsKeyContext: Schema.Codec<OperationDnsKeyContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     oldValue: Schema.optional(DnsKey),
     newValue: Schema.optional(DnsKey),
   }).annotate({ identifier: "OperationDnsKeyContext" });
@@ -970,7 +970,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -989,7 +989,7 @@ export interface ResponsePoliciesListResponse {
 }
 
 export const ResponsePoliciesListResponse: Schema.Codec<ResponsePoliciesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responsePolicies: Schema.optional(Schema.Array(ResponsePolicy)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResponsePoliciesListResponse" });
@@ -1004,7 +1004,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -1026,7 +1026,7 @@ export interface GoogleLongrunningOperation {
 }
 
 export const GoogleLongrunningOperation: Schema.Codec<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
     error: Schema.optional(Status),
@@ -1042,7 +1042,7 @@ export interface ResponsePolicyRulesListResponse {
 }
 
 export const ResponsePolicyRulesListResponse: Schema.Codec<ResponsePolicyRulesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responsePolicyRules: Schema.optional(Schema.Array(ResponsePolicyRule)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ResponsePolicyRulesListResponse" });
@@ -1053,14 +1053,14 @@ export interface GoogleIamV1TestIamPermissionsRequest {
 }
 
 export const GoogleIamV1TestIamPermissionsRequest: Schema.Codec<GoogleIamV1TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
 
 export interface ResourceRecordSetsDeleteResponse {}
 
 export const ResourceRecordSetsDeleteResponse: Schema.Codec<ResourceRecordSetsDeleteResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResourceRecordSetsDeleteResponse",
   });
 
@@ -1074,7 +1074,7 @@ export interface ManagedZonesListResponse {
 }
 
 export const ManagedZonesListResponse: Schema.Codec<ManagedZonesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managedZones: Schema.optional(Schema.Array(ManagedZone)),
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1090,7 +1090,7 @@ export interface ResourceRecordSetsListResponse {
 }
 
 export const ResourceRecordSetsListResponse: Schema.Codec<ResourceRecordSetsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rrsets: Schema.optional(Schema.Array(ResourceRecordSet)),
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1150,7 +1150,7 @@ export interface Quota {
 }
 
 export const Quota: Schema.Codec<Quota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     networksPerResponsePolicy: Schema.optional(Schema.Number),
     gkeClustersPerManagedZone: Schema.optional(Schema.Number),
     kind: Schema.optional(Schema.String),
@@ -1185,7 +1185,7 @@ export interface GoogleIamV1GetIamPolicyRequest {
 }
 
 export const GoogleIamV1GetIamPolicyRequest: Schema.Codec<GoogleIamV1GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     options: Schema.optional(GoogleIamV1GetPolicyOptions),
   }).annotate({ identifier: "GoogleIamV1GetIamPolicyRequest" });
 
@@ -1194,7 +1194,7 @@ export interface ResponsePolicyRulesUpdateResponse {
 }
 
 export const ResponsePolicyRulesUpdateResponse: Schema.Codec<ResponsePolicyRulesUpdateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responsePolicyRule: Schema.optional(ResponsePolicyRule),
   }).annotate({ identifier: "ResponsePolicyRulesUpdateResponse" });
 
@@ -1208,7 +1208,7 @@ export interface PoliciesListResponse {
 }
 
 export const PoliciesListResponse: Schema.Codec<PoliciesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policies: Schema.optional(Schema.Array(Policy)),
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
@@ -1224,7 +1224,7 @@ export interface ManagedZoneOperationsListResponse {
 }
 
 export const ManagedZoneOperationsListResponse: Schema.Codec<ManagedZoneOperationsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(Operation)),
@@ -1241,7 +1241,7 @@ export interface Project {
 }
 
 export const Project: Schema.Codec<Project> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.optional(Schema.String),
     number: Schema.optional(Schema.String),
     quota: Schema.optional(Quota),
@@ -1314,7 +1314,7 @@ export interface CreateResponsePolicyRulesRequest {
 }
 
 export const CreateResponsePolicyRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
     clientOperationId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("clientOperationId"),
@@ -1332,7 +1332,7 @@ export const CreateResponsePolicyRulesRequest =
 
 export type CreateResponsePolicyRulesResponse = ResponsePolicyRule;
 export const CreateResponsePolicyRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRule;
+  /*@__PURE__*/ ResponsePolicyRule;
 
 export type CreateResponsePolicyRulesError =
   | DefaultErrors
@@ -1347,7 +1347,7 @@ export const createResponsePolicyRules: API.OperationMethod<
   CreateResponsePolicyRulesResponse,
   CreateResponsePolicyRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResponsePolicyRulesRequest,
   output: CreateResponsePolicyRulesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1367,7 +1367,7 @@ export interface UpdateResponsePolicyRulesRequest {
 }
 
 export const UpdateResponsePolicyRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
     responsePolicyRule: Schema.String.pipe(T.HttpPath("responsePolicyRule")),
@@ -1387,7 +1387,7 @@ export const UpdateResponsePolicyRulesRequest =
 export type UpdateResponsePolicyRulesResponse =
   ResponsePolicyRulesUpdateResponse;
 export const UpdateResponsePolicyRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRulesUpdateResponse;
+  /*@__PURE__*/ ResponsePolicyRulesUpdateResponse;
 
 export type UpdateResponsePolicyRulesError =
   | DefaultErrors
@@ -1402,7 +1402,7 @@ export const updateResponsePolicyRules: API.OperationMethod<
   UpdateResponsePolicyRulesResponse,
   UpdateResponsePolicyRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResponsePolicyRulesRequest,
   output: UpdateResponsePolicyRulesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1420,7 +1420,7 @@ export interface ListResponsePolicyRulesRequest {
 }
 
 export const ListResponsePolicyRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
@@ -1435,7 +1435,7 @@ export const ListResponsePolicyRulesRequest =
 
 export type ListResponsePolicyRulesResponse = ResponsePolicyRulesListResponse;
 export const ListResponsePolicyRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRulesListResponse;
+  /*@__PURE__*/ ResponsePolicyRulesListResponse;
 
 export type ListResponsePolicyRulesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1445,7 +1445,7 @@ export const listResponsePolicyRules: API.PaginatedOperationMethod<
   ListResponsePolicyRulesResponse,
   ListResponsePolicyRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResponsePolicyRulesRequest,
   output: ListResponsePolicyRulesResponse,
   errors: [NotFound, Forbidden],
@@ -1469,7 +1469,7 @@ export interface PatchResponsePolicyRulesRequest {
 }
 
 export const PatchResponsePolicyRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
     responsePolicyRule: Schema.String.pipe(T.HttpPath("responsePolicyRule")),
@@ -1488,7 +1488,7 @@ export const PatchResponsePolicyRulesRequest =
 
 export type PatchResponsePolicyRulesResponse = ResponsePolicyRulesPatchResponse;
 export const PatchResponsePolicyRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRulesPatchResponse;
+  /*@__PURE__*/ ResponsePolicyRulesPatchResponse;
 
 export type PatchResponsePolicyRulesError =
   | DefaultErrors
@@ -1503,7 +1503,7 @@ export const patchResponsePolicyRules: API.OperationMethod<
   PatchResponsePolicyRulesResponse,
   PatchResponsePolicyRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchResponsePolicyRulesRequest,
   output: PatchResponsePolicyRulesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1521,7 +1521,7 @@ export interface GetResponsePolicyRulesRequest {
 }
 
 export const GetResponsePolicyRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
     responsePolicyRule: Schema.String.pipe(T.HttpPath("responsePolicyRule")),
@@ -1537,8 +1537,7 @@ export const GetResponsePolicyRulesRequest =
   ) as unknown as Schema.Codec<GetResponsePolicyRulesRequest>;
 
 export type GetResponsePolicyRulesResponse = ResponsePolicyRule;
-export const GetResponsePolicyRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRule;
+export const GetResponsePolicyRulesResponse = /*@__PURE__*/ ResponsePolicyRule;
 
 export type GetResponsePolicyRulesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1548,7 +1547,7 @@ export const getResponsePolicyRules: API.OperationMethod<
   GetResponsePolicyRulesResponse,
   GetResponsePolicyRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResponsePolicyRulesRequest,
   output: GetResponsePolicyRulesResponse,
   errors: [NotFound, Forbidden],
@@ -1566,7 +1565,7 @@ export interface DeleteResponsePolicyRulesRequest {
 }
 
 export const DeleteResponsePolicyRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
     responsePolicyRule: Schema.String.pipe(T.HttpPath("responsePolicyRule")),
@@ -1583,7 +1582,7 @@ export const DeleteResponsePolicyRulesRequest =
 
 export interface DeleteResponsePolicyRulesResponse {}
 export const DeleteResponsePolicyRulesResponse: Schema.Codec<DeleteResponsePolicyRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteResponsePolicyRulesResponse>;
 
@@ -1600,7 +1599,7 @@ export const deleteResponsePolicyRules: API.OperationMethod<
   DeleteResponsePolicyRulesResponse,
   DeleteResponsePolicyRulesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResponsePolicyRulesRequest,
   output: DeleteResponsePolicyRulesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1618,7 +1617,7 @@ export interface CreateResourceRecordSetsRequest {
 }
 
 export const CreateResourceRecordSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientOperationId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("clientOperationId"),
     ),
@@ -1635,8 +1634,7 @@ export const CreateResourceRecordSetsRequest =
   ) as unknown as Schema.Codec<CreateResourceRecordSetsRequest>;
 
 export type CreateResourceRecordSetsResponse = ResourceRecordSet;
-export const CreateResourceRecordSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSet;
+export const CreateResourceRecordSetsResponse = /*@__PURE__*/ ResourceRecordSet;
 
 export type CreateResourceRecordSetsError =
   | DefaultErrors
@@ -1651,7 +1649,7 @@ export const createResourceRecordSets: API.OperationMethod<
   CreateResourceRecordSetsResponse,
   CreateResourceRecordSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceRecordSetsRequest,
   output: CreateResourceRecordSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1671,7 +1669,7 @@ export interface DeleteResourceRecordSetsRequest {
 }
 
 export const DeleteResourceRecordSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String.pipe(T.HttpPath("type")),
     project: Schema.String.pipe(T.HttpPath("project")),
     clientOperationId: Schema.optional(Schema.String).pipe(
@@ -1689,7 +1687,7 @@ export const DeleteResourceRecordSetsRequest =
 
 export type DeleteResourceRecordSetsResponse = ResourceRecordSetsDeleteResponse;
 export const DeleteResourceRecordSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSetsDeleteResponse;
+  /*@__PURE__*/ ResourceRecordSetsDeleteResponse;
 
 export type DeleteResourceRecordSetsError =
   | DefaultErrors
@@ -1704,7 +1702,7 @@ export const deleteResourceRecordSets: API.OperationMethod<
   DeleteResourceRecordSetsResponse,
   DeleteResourceRecordSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceRecordSetsRequest,
   output: DeleteResourceRecordSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1724,7 +1722,7 @@ export interface GetResourceRecordSetsRequest {
 }
 
 export const GetResourceRecordSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientOperationId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("clientOperationId"),
     ),
@@ -1741,8 +1739,7 @@ export const GetResourceRecordSetsRequest =
   ) as unknown as Schema.Codec<GetResourceRecordSetsRequest>;
 
 export type GetResourceRecordSetsResponse = ResourceRecordSet;
-export const GetResourceRecordSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSet;
+export const GetResourceRecordSetsResponse = /*@__PURE__*/ ResourceRecordSet;
 
 export type GetResourceRecordSetsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1752,7 +1749,7 @@ export const getResourceRecordSets: API.OperationMethod<
   GetResourceRecordSetsResponse,
   GetResourceRecordSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourceRecordSetsRequest,
   output: GetResourceRecordSetsResponse,
   errors: [NotFound, Forbidden],
@@ -1776,7 +1773,7 @@ export interface ListResourceRecordSetsRequest {
 }
 
 export const ListResourceRecordSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
@@ -1794,7 +1791,7 @@ export const ListResourceRecordSetsRequest =
 
 export type ListResourceRecordSetsResponse = ResourceRecordSetsListResponse;
 export const ListResourceRecordSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSetsListResponse;
+  /*@__PURE__*/ ResourceRecordSetsListResponse;
 
 export type ListResourceRecordSetsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1804,7 +1801,7 @@ export const listResourceRecordSets: API.PaginatedOperationMethod<
   ListResourceRecordSetsResponse,
   ListResourceRecordSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourceRecordSetsRequest,
   output: ListResourceRecordSetsResponse,
   errors: [NotFound, Forbidden],
@@ -1830,7 +1827,7 @@ export interface PatchResourceRecordSetsRequest {
 }
 
 export const PatchResourceRecordSetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     type: Schema.String.pipe(T.HttpPath("type")),
     name: Schema.String.pipe(T.HttpPath("name")),
@@ -1849,8 +1846,7 @@ export const PatchResourceRecordSetsRequest =
   ) as unknown as Schema.Codec<PatchResourceRecordSetsRequest>;
 
 export type PatchResourceRecordSetsResponse = ResourceRecordSet;
-export const PatchResourceRecordSetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSet;
+export const PatchResourceRecordSetsResponse = /*@__PURE__*/ ResourceRecordSet;
 
 export type PatchResourceRecordSetsError =
   | DefaultErrors
@@ -1865,7 +1861,7 @@ export const patchResourceRecordSets: API.OperationMethod<
   PatchResourceRecordSetsResponse,
   PatchResourceRecordSetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchResourceRecordSetsRequest,
   output: PatchResourceRecordSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1881,7 +1877,7 @@ export interface ListResponsePoliciesRequest {
 }
 
 export const ListResponsePoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1895,7 +1891,7 @@ export const ListResponsePoliciesRequest =
 
 export type ListResponsePoliciesResponse = ResponsePoliciesListResponse;
 export const ListResponsePoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePoliciesListResponse;
+  /*@__PURE__*/ ResponsePoliciesListResponse;
 
 export type ListResponsePoliciesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1905,7 +1901,7 @@ export const listResponsePolicies: API.PaginatedOperationMethod<
   ListResponsePoliciesResponse,
   ListResponsePoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResponsePoliciesRequest,
   output: ListResponsePoliciesResponse,
   errors: [NotFound, Forbidden],
@@ -1927,7 +1923,7 @@ export interface PatchResponsePoliciesRequest {
 }
 
 export const PatchResponsePoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
     clientOperationId: Schema.optional(Schema.String).pipe(
@@ -1945,7 +1941,7 @@ export const PatchResponsePoliciesRequest =
 
 export type PatchResponsePoliciesResponse = ResponsePoliciesPatchResponse;
 export const PatchResponsePoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePoliciesPatchResponse;
+  /*@__PURE__*/ ResponsePoliciesPatchResponse;
 
 export type PatchResponsePoliciesError =
   | DefaultErrors
@@ -1960,7 +1956,7 @@ export const patchResponsePolicies: API.OperationMethod<
   PatchResponsePoliciesResponse,
   PatchResponsePoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchResponsePoliciesRequest,
   output: PatchResponsePoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1976,7 +1972,7 @@ export interface DeleteResponsePoliciesRequest {
 }
 
 export const DeleteResponsePoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
     clientOperationId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("clientOperationId"),
@@ -1992,7 +1988,7 @@ export const DeleteResponsePoliciesRequest =
 
 export interface DeleteResponsePoliciesResponse {}
 export const DeleteResponsePoliciesResponse: Schema.Codec<DeleteResponsePoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteResponsePoliciesResponse>;
 
@@ -2009,7 +2005,7 @@ export const deleteResponsePolicies: API.OperationMethod<
   DeleteResponsePoliciesResponse,
   DeleteResponsePoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResponsePoliciesRequest,
   output: DeleteResponsePoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2025,7 +2021,7 @@ export interface GetResponsePoliciesRequest {
 }
 
 export const GetResponsePoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
     clientOperationId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("clientOperationId"),
@@ -2040,8 +2036,7 @@ export const GetResponsePoliciesRequest =
   ) as unknown as Schema.Codec<GetResponsePoliciesRequest>;
 
 export type GetResponsePoliciesResponse = ResponsePolicy;
-export const GetResponsePoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicy;
+export const GetResponsePoliciesResponse = /*@__PURE__*/ ResponsePolicy;
 
 export type GetResponsePoliciesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2051,7 +2046,7 @@ export const getResponsePolicies: API.OperationMethod<
   GetResponsePoliciesResponse,
   GetResponsePoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResponsePoliciesRequest,
   output: GetResponsePoliciesResponse,
   errors: [NotFound, Forbidden],
@@ -2067,7 +2062,7 @@ export interface CreateResponsePoliciesRequest {
 }
 
 export const CreateResponsePoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientOperationId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("clientOperationId"),
     ),
@@ -2083,8 +2078,7 @@ export const CreateResponsePoliciesRequest =
   ) as unknown as Schema.Codec<CreateResponsePoliciesRequest>;
 
 export type CreateResponsePoliciesResponse = ResponsePolicy;
-export const CreateResponsePoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePolicy;
+export const CreateResponsePoliciesResponse = /*@__PURE__*/ ResponsePolicy;
 
 export type CreateResponsePoliciesError =
   | DefaultErrors
@@ -2099,7 +2093,7 @@ export const createResponsePolicies: API.OperationMethod<
   CreateResponsePoliciesResponse,
   CreateResponsePoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResponsePoliciesRequest,
   output: CreateResponsePoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2117,7 +2111,7 @@ export interface UpdateResponsePoliciesRequest {
 }
 
 export const UpdateResponsePoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     responsePolicy: Schema.String.pipe(T.HttpPath("responsePolicy")),
     clientOperationId: Schema.optional(Schema.String).pipe(
@@ -2135,7 +2129,7 @@ export const UpdateResponsePoliciesRequest =
 
 export type UpdateResponsePoliciesResponse = ResponsePoliciesUpdateResponse;
 export const UpdateResponsePoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ResponsePoliciesUpdateResponse;
+  /*@__PURE__*/ ResponsePoliciesUpdateResponse;
 
 export type UpdateResponsePoliciesError =
   | DefaultErrors
@@ -2150,7 +2144,7 @@ export const updateResponsePolicies: API.OperationMethod<
   UpdateResponsePoliciesResponse,
   UpdateResponsePoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateResponsePoliciesRequest,
   output: UpdateResponsePoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2168,7 +2162,7 @@ export interface GetManagedZoneOperationsRequest {
 }
 
 export const GetManagedZoneOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
     operation: Schema.String.pipe(T.HttpPath("operation")),
@@ -2184,8 +2178,7 @@ export const GetManagedZoneOperationsRequest =
   ) as unknown as Schema.Codec<GetManagedZoneOperationsRequest>;
 
 export type GetManagedZoneOperationsResponse = Operation;
-export const GetManagedZoneOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetManagedZoneOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetManagedZoneOperationsError =
   | DefaultErrors
@@ -2198,7 +2191,7 @@ export const getManagedZoneOperations: API.OperationMethod<
   GetManagedZoneOperationsResponse,
   GetManagedZoneOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedZoneOperationsRequest,
   output: GetManagedZoneOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2218,7 +2211,7 @@ export interface ListManagedZoneOperationsRequest {
 }
 
 export const ListManagedZoneOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2235,7 +2228,7 @@ export const ListManagedZoneOperationsRequest =
 export type ListManagedZoneOperationsResponse =
   ManagedZoneOperationsListResponse;
 export const ListManagedZoneOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ManagedZoneOperationsListResponse;
+  /*@__PURE__*/ ManagedZoneOperationsListResponse;
 
 export type ListManagedZoneOperationsError =
   | DefaultErrors
@@ -2248,7 +2241,7 @@ export const listManagedZoneOperations: API.PaginatedOperationMethod<
   ListManagedZoneOperationsResponse,
   ListManagedZoneOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedZoneOperationsRequest,
   output: ListManagedZoneOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2266,7 +2259,7 @@ export interface TestIamPermissionsManagedZonesRequest {
 }
 
 export const TestIamPermissionsManagedZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1TestIamPermissionsRequest).pipe(
       T.HttpBody(),
@@ -2283,7 +2276,7 @@ export const TestIamPermissionsManagedZonesRequest =
 export type TestIamPermissionsManagedZonesResponse =
   GoogleIamV1TestIamPermissionsResponse;
 export const TestIamPermissionsManagedZonesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
+  /*@__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsManagedZonesError =
   | DefaultErrors
@@ -2298,7 +2291,7 @@ export const testIamPermissionsManagedZones: API.OperationMethod<
   TestIamPermissionsManagedZonesResponse,
   TestIamPermissionsManagedZonesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsManagedZonesRequest,
   output: TestIamPermissionsManagedZonesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2312,7 +2305,7 @@ export interface GetIamPolicyManagedZonesRequest {
 }
 
 export const GetIamPolicyManagedZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1GetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2325,8 +2318,7 @@ export const GetIamPolicyManagedZonesRequest =
   ) as unknown as Schema.Codec<GetIamPolicyManagedZonesRequest>;
 
 export type GetIamPolicyManagedZonesResponse = GoogleIamV1Policy;
-export const GetIamPolicyManagedZonesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+export const GetIamPolicyManagedZonesResponse = /*@__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyManagedZonesError =
   | DefaultErrors
@@ -2341,7 +2333,7 @@ export const getIamPolicyManagedZones: API.OperationMethod<
   GetIamPolicyManagedZonesResponse,
   GetIamPolicyManagedZonesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyManagedZonesRequest,
   output: GetIamPolicyManagedZonesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2359,7 +2351,7 @@ export interface UpdateManagedZonesRequest {
 }
 
 export const UpdateManagedZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
     clientOperationId: Schema.optional(Schema.String).pipe(
@@ -2376,7 +2368,7 @@ export const UpdateManagedZonesRequest =
   ) as unknown as Schema.Codec<UpdateManagedZonesRequest>;
 
 export type UpdateManagedZonesResponse = Operation;
-export const UpdateManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const UpdateManagedZonesResponse = /*@__PURE__*/ Operation;
 
 export type UpdateManagedZonesError =
   | DefaultErrors
@@ -2391,7 +2383,7 @@ export const updateManagedZones: API.OperationMethod<
   UpdateManagedZonesResponse,
   UpdateManagedZonesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateManagedZonesRequest,
   output: UpdateManagedZonesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2409,7 +2401,7 @@ export interface ListManagedZonesRequest {
 }
 
 export const ListManagedZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     dnsName: Schema.optional(Schema.String).pipe(T.HttpQuery("dnsName")),
@@ -2420,8 +2412,7 @@ export const ListManagedZonesRequest =
   ) as unknown as Schema.Codec<ListManagedZonesRequest>;
 
 export type ListManagedZonesResponse = ManagedZonesListResponse;
-export const ListManagedZonesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ManagedZonesListResponse;
+export const ListManagedZonesResponse = /*@__PURE__*/ ManagedZonesListResponse;
 
 export type ListManagedZonesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2431,7 +2422,7 @@ export const listManagedZones: API.PaginatedOperationMethod<
   ListManagedZonesResponse,
   ListManagedZonesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedZonesRequest,
   output: ListManagedZonesResponse,
   errors: [NotFound, Forbidden],
@@ -2453,7 +2444,7 @@ export interface PatchManagedZonesRequest {
 }
 
 export const PatchManagedZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
     clientOperationId: Schema.optional(Schema.String).pipe(
@@ -2470,7 +2461,7 @@ export const PatchManagedZonesRequest =
   ) as unknown as Schema.Codec<PatchManagedZonesRequest>;
 
 export type PatchManagedZonesResponse = Operation;
-export const PatchManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const PatchManagedZonesResponse = /*@__PURE__*/ Operation;
 
 export type PatchManagedZonesError =
   | DefaultErrors
@@ -2485,7 +2476,7 @@ export const patchManagedZones: API.OperationMethod<
   PatchManagedZonesResponse,
   PatchManagedZonesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchManagedZonesRequest,
   output: PatchManagedZonesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2501,7 +2492,7 @@ export interface DeleteManagedZonesRequest {
 }
 
 export const DeleteManagedZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientOperationId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("clientOperationId"),
     ),
@@ -2517,7 +2508,7 @@ export const DeleteManagedZonesRequest =
 
 export interface DeleteManagedZonesResponse {}
 export const DeleteManagedZonesResponse: Schema.Codec<DeleteManagedZonesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteManagedZonesResponse>;
 
@@ -2534,7 +2525,7 @@ export const deleteManagedZones: API.OperationMethod<
   DeleteManagedZonesResponse,
   DeleteManagedZonesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteManagedZonesRequest,
   output: DeleteManagedZonesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2549,15 +2540,13 @@ export interface GetManagedZonesRequest {
   managedZone: string;
 }
 
-export const GetManagedZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    clientOperationId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("clientOperationId"),
-    ),
-    project: Schema.String.pipe(T.HttpPath("project")),
-    managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
-  },
-).pipe(
+export const GetManagedZonesRequest = /*@__PURE__*/ Schema.Struct({
+  clientOperationId: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("clientOperationId"),
+  ),
+  project: Schema.String.pipe(T.HttpPath("project")),
+  managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
+}).pipe(
   T.Http({
     method: "GET",
     path: "dns/v1/projects/{project}/managedZones/{managedZone}",
@@ -2566,7 +2555,7 @@ export const GetManagedZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<GetManagedZonesRequest>;
 
 export type GetManagedZonesResponse = ManagedZone;
-export const GetManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ ManagedZone;
+export const GetManagedZonesResponse = /*@__PURE__*/ ManagedZone;
 
 export type GetManagedZonesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2576,7 +2565,7 @@ export const getManagedZones: API.OperationMethod<
   GetManagedZonesResponse,
   GetManagedZonesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedZonesRequest,
   output: GetManagedZonesResponse,
   errors: [NotFound, Forbidden],
@@ -2592,7 +2581,7 @@ export interface CreateManagedZonesRequest {
 }
 
 export const CreateManagedZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.String.pipe(T.HttpPath("project")),
     clientOperationId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("clientOperationId"),
@@ -2608,8 +2597,7 @@ export const CreateManagedZonesRequest =
   ) as unknown as Schema.Codec<CreateManagedZonesRequest>;
 
 export type CreateManagedZonesResponse = ManagedZone;
-export const CreateManagedZonesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ManagedZone;
+export const CreateManagedZonesResponse = /*@__PURE__*/ ManagedZone;
 
 export type CreateManagedZonesError =
   | DefaultErrors
@@ -2624,7 +2612,7 @@ export const createManagedZones: API.OperationMethod<
   CreateManagedZonesResponse,
   CreateManagedZonesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateManagedZonesRequest,
   output: CreateManagedZonesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2638,7 +2626,7 @@ export interface SetIamPolicyManagedZonesRequest {
 }
 
 export const SetIamPolicyManagedZonesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(GoogleIamV1SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -2651,8 +2639,7 @@ export const SetIamPolicyManagedZonesRequest =
   ) as unknown as Schema.Codec<SetIamPolicyManagedZonesRequest>;
 
 export type SetIamPolicyManagedZonesResponse = GoogleIamV1Policy;
-export const SetIamPolicyManagedZonesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
+export const SetIamPolicyManagedZonesResponse = /*@__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyManagedZonesError =
   | DefaultErrors
@@ -2667,7 +2654,7 @@ export const setIamPolicyManagedZones: API.OperationMethod<
   SetIamPolicyManagedZonesResponse,
   SetIamPolicyManagedZonesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyManagedZonesRequest,
   output: SetIamPolicyManagedZonesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2686,7 +2673,7 @@ export interface GetDnsKeysRequest {
   project: string;
 }
 
-export const GetDnsKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDnsKeysRequest = /*@__PURE__*/ Schema.Struct({
   dnsKeyId: Schema.String.pipe(T.HttpPath("dnsKeyId")),
   clientOperationId: Schema.optional(Schema.String).pipe(
     T.HttpQuery("clientOperationId"),
@@ -2703,7 +2690,7 @@ export const GetDnsKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetDnsKeysRequest>;
 
 export type GetDnsKeysResponse = DnsKey;
-export const GetDnsKeysResponse = /*@__PURE__*/ /*#__PURE__*/ DnsKey;
+export const GetDnsKeysResponse = /*@__PURE__*/ DnsKey;
 
 export type GetDnsKeysError = DefaultErrors | NotFound | Forbidden;
 
@@ -2713,7 +2700,7 @@ export const getDnsKeys: API.OperationMethod<
   GetDnsKeysResponse,
   GetDnsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDnsKeysRequest,
   output: GetDnsKeysResponse,
   errors: [NotFound, Forbidden],
@@ -2732,7 +2719,7 @@ export interface ListDnsKeysRequest {
   project: string;
 }
 
-export const ListDnsKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDnsKeysRequest = /*@__PURE__*/ Schema.Struct({
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
   digestType: Schema.optional(Schema.String).pipe(T.HttpQuery("digestType")),
@@ -2747,8 +2734,7 @@ export const ListDnsKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListDnsKeysRequest>;
 
 export type ListDnsKeysResponse = DnsKeysListResponse;
-export const ListDnsKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DnsKeysListResponse;
+export const ListDnsKeysResponse = /*@__PURE__*/ DnsKeysListResponse;
 
 export type ListDnsKeysError = DefaultErrors | NotFound | Forbidden;
 
@@ -2758,7 +2744,7 @@ export const listDnsKeys: API.PaginatedOperationMethod<
   ListDnsKeysResponse,
   ListDnsKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDnsKeysRequest,
   output: ListDnsKeysResponse,
   errors: [NotFound, Forbidden],
@@ -2775,7 +2761,7 @@ export interface GetProjectsRequest {
   project: string;
 }
 
-export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProjectsRequest = /*@__PURE__*/ Schema.Struct({
   clientOperationId: Schema.optional(Schema.String).pipe(
     T.HttpQuery("clientOperationId"),
   ),
@@ -2786,7 +2772,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetProjectsRequest>;
 
 export type GetProjectsResponse = Project;
-export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
+export const GetProjectsResponse = /*@__PURE__*/ Project;
 
 export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2796,7 +2782,7 @@ export const getProjects: API.OperationMethod<
   GetProjectsResponse,
   GetProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsRequest,
   output: GetProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -2813,7 +2799,7 @@ export interface GetChangesRequest {
   changeId: string;
 }
 
-export const GetChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetChangesRequest = /*@__PURE__*/ Schema.Struct({
   clientOperationId: Schema.optional(Schema.String).pipe(
     T.HttpQuery("clientOperationId"),
   ),
@@ -2829,7 +2815,7 @@ export const GetChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetChangesRequest>;
 
 export type GetChangesResponse = Change;
-export const GetChangesResponse = /*@__PURE__*/ /*#__PURE__*/ Change;
+export const GetChangesResponse = /*@__PURE__*/ Change;
 
 export type GetChangesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2839,7 +2825,7 @@ export const getChanges: API.OperationMethod<
   GetChangesResponse,
   GetChangesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChangesRequest,
   output: GetChangesResponse,
   errors: [NotFound, Forbidden],
@@ -2860,7 +2846,7 @@ export interface ListChangesRequest {
   sortOrder?: string;
 }
 
-export const ListChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListChangesRequest = /*@__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   project: Schema.String.pipe(T.HttpPath("project")),
   sortBy: Schema.optional(Schema.String).pipe(T.HttpQuery("sortBy")),
@@ -2876,8 +2862,7 @@ export const ListChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListChangesRequest>;
 
 export type ListChangesResponse = ChangesListResponse;
-export const ListChangesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ChangesListResponse;
+export const ListChangesResponse = /*@__PURE__*/ ChangesListResponse;
 
 export type ListChangesError = DefaultErrors | NotFound | Forbidden;
 
@@ -2887,7 +2872,7 @@ export const listChanges: API.PaginatedOperationMethod<
   ListChangesResponse,
   ListChangesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChangesRequest,
   output: ListChangesResponse,
   errors: [NotFound, Forbidden],
@@ -2908,7 +2893,7 @@ export interface CreateChangesRequest {
   body?: Change;
 }
 
-export const CreateChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateChangesRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   managedZone: Schema.String.pipe(T.HttpPath("managedZone")),
   clientOperationId: Schema.optional(Schema.String).pipe(
@@ -2925,7 +2910,7 @@ export const CreateChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CreateChangesRequest>;
 
 export type CreateChangesResponse = Change;
-export const CreateChangesResponse = /*@__PURE__*/ /*#__PURE__*/ Change;
+export const CreateChangesResponse = /*@__PURE__*/ Change;
 
 export type CreateChangesError =
   | DefaultErrors
@@ -2940,7 +2925,7 @@ export const createChanges: API.OperationMethod<
   CreateChangesResponse,
   CreateChangesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChangesRequest,
   output: CreateChangesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2955,7 +2940,7 @@ export interface CreatePoliciesRequest {
   body?: Policy;
 }
 
-export const CreatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreatePoliciesRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   clientOperationId: Schema.optional(Schema.String).pipe(
     T.HttpQuery("clientOperationId"),
@@ -2971,7 +2956,7 @@ export const CreatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<CreatePoliciesRequest>;
 
 export type CreatePoliciesResponse = Policy;
-export const CreatePoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const CreatePoliciesResponse = /*@__PURE__*/ Policy;
 
 export type CreatePoliciesError =
   | DefaultErrors
@@ -2986,7 +2971,7 @@ export const createPolicies: API.OperationMethod<
   CreatePoliciesResponse,
   CreatePoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePoliciesRequest,
   output: CreatePoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3003,7 +2988,7 @@ export interface UpdatePoliciesRequest {
   body?: Policy;
 }
 
-export const UpdatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdatePoliciesRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   policy: Schema.String.pipe(T.HttpPath("policy")),
   clientOperationId: Schema.optional(Schema.String).pipe(
@@ -3020,8 +3005,7 @@ export const UpdatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdatePoliciesRequest>;
 
 export type UpdatePoliciesResponse = PoliciesUpdateResponse;
-export const UpdatePoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PoliciesUpdateResponse;
+export const UpdatePoliciesResponse = /*@__PURE__*/ PoliciesUpdateResponse;
 
 export type UpdatePoliciesError =
   | DefaultErrors
@@ -3036,7 +3020,7 @@ export const updatePolicies: API.OperationMethod<
   UpdatePoliciesResponse,
   UpdatePoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePoliciesRequest,
   output: UpdatePoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3051,7 +3035,7 @@ export interface ListPoliciesRequest {
   project: string;
 }
 
-export const ListPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPoliciesRequest = /*@__PURE__*/ Schema.Struct({
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   project: Schema.String.pipe(T.HttpPath("project")),
@@ -3061,8 +3045,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListPoliciesRequest>;
 
 export type ListPoliciesResponse = PoliciesListResponse;
-export const ListPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PoliciesListResponse;
+export const ListPoliciesResponse = /*@__PURE__*/ PoliciesListResponse;
 
 export type ListPoliciesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3072,7 +3055,7 @@ export const listPolicies: API.PaginatedOperationMethod<
   ListPoliciesResponse,
   ListPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [NotFound, Forbidden],
@@ -3093,7 +3076,7 @@ export interface PatchPoliciesRequest {
   body?: Policy;
 }
 
-export const PatchPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchPoliciesRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   policy: Schema.String.pipe(T.HttpPath("policy")),
   clientOperationId: Schema.optional(Schema.String).pipe(
@@ -3110,8 +3093,7 @@ export const PatchPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PatchPoliciesRequest>;
 
 export type PatchPoliciesResponse = PoliciesPatchResponse;
-export const PatchPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PoliciesPatchResponse;
+export const PatchPoliciesResponse = /*@__PURE__*/ PoliciesPatchResponse;
 
 export type PatchPoliciesError =
   | DefaultErrors
@@ -3126,7 +3108,7 @@ export const patchPolicies: API.OperationMethod<
   PatchPoliciesResponse,
   PatchPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPoliciesRequest,
   output: PatchPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3141,7 +3123,7 @@ export interface DeletePoliciesRequest {
   clientOperationId?: string;
 }
 
-export const DeletePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeletePoliciesRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   policy: Schema.String.pipe(T.HttpPath("policy")),
   clientOperationId: Schema.optional(Schema.String).pipe(
@@ -3157,7 +3139,7 @@ export const DeletePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeletePoliciesResponse {}
 export const DeletePoliciesResponse: Schema.Codec<DeletePoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeletePoliciesResponse>;
 
@@ -3174,7 +3156,7 @@ export const deletePolicies: API.OperationMethod<
   DeletePoliciesResponse,
   DeletePoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePoliciesRequest,
   output: DeletePoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3189,7 +3171,7 @@ export interface GetPoliciesRequest {
   clientOperationId?: string;
 }
 
-export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPoliciesRequest = /*@__PURE__*/ Schema.Struct({
   project: Schema.String.pipe(T.HttpPath("project")),
   policy: Schema.String.pipe(T.HttpPath("policy")),
   clientOperationId: Schema.optional(Schema.String).pipe(
@@ -3204,7 +3186,7 @@ export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetPoliciesRequest>;
 
 export type GetPoliciesResponse = Policy;
-export const GetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetPoliciesResponse = /*@__PURE__*/ Policy;
 
 export type GetPoliciesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3214,7 +3196,7 @@ export const getPolicies: API.OperationMethod<
   GetPoliciesResponse,
   GetPoliciesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPoliciesRequest,
   output: GetPoliciesResponse,
   errors: [NotFound, Forbidden],

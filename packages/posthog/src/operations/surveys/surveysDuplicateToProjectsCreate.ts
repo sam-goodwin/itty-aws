@@ -105,7 +105,7 @@ export interface SurveysDuplicateToProjectsCreateInput {
   form_content?: unknown;
 }
 export const SurveysDuplicateToProjectsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -291,7 +291,7 @@ export const SurveysDuplicateToProjectsCreateInput =
 // Output Schema
 export type SurveysDuplicateToProjectsCreateOutput = void;
 export const SurveysDuplicateToProjectsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SurveysDuplicateToProjectsCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SurveysDuplicateToProjectsCreateOutput>;
 
 // The operation
 /**
@@ -303,7 +303,7 @@ export const SurveysDuplicateToProjectsCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const surveysDuplicateToProjectsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SurveysDuplicateToProjectsCreateInput,
     outputSchema: SurveysDuplicateToProjectsCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

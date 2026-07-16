@@ -9,7 +9,7 @@ export interface V1GenerateTypescriptTypesInput {
   included_schemas?: string;
 }
 export const V1GenerateTypescriptTypesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     included_schemas: Schema.optional(Schema.String),
   }).pipe(
@@ -21,7 +21,7 @@ export interface V1GenerateTypescriptTypesOutput {
   types: string;
 }
 export const V1GenerateTypescriptTypesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     types: Schema.String,
   }) as unknown as Schema.Codec<V1GenerateTypescriptTypesOutput>;
 
@@ -33,10 +33,8 @@ export const V1GenerateTypescriptTypesOutput =
  *
  * @param ref - Project ref
  */
-export const v1GenerateTypescriptTypes = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GenerateTypescriptTypesInput,
-    outputSchema: V1GenerateTypescriptTypesOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1GenerateTypescriptTypes = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GenerateTypescriptTypesInput,
+  outputSchema: V1GenerateTypescriptTypesOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

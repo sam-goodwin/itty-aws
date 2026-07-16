@@ -20,7 +20,7 @@ export interface PostTaxSettingsInput {
     };
   };
 }
-export const PostTaxSettingsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTaxSettingsInput = /*@__PURE__*/ Schema.Struct({
   defaults: Schema.optional(
     Schema.Struct({
       tax_behavior: Schema.optional(
@@ -75,7 +75,7 @@ export interface PostTaxSettingsOutput {
     pending?: { missing_fields: string[] | null };
   };
 }
-export const PostTaxSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostTaxSettingsOutput = /*@__PURE__*/ Schema.Struct({
   defaults: Schema.Struct({
     provider: Schema.Literals(["anrok", "avalara", "sphere", "stripe"]),
     tax_behavior: Schema.NullOr(
@@ -114,7 +114,7 @@ export const PostTaxSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>Updates Tax <code>Settings</code> parameters used in tax calculations. All parameters are editable but none can be removed once set.</p>
  */
-export const PostTaxSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostTaxSettings = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostTaxSettingsInput,
   outputSchema: PostTaxSettingsOutput,
 }));

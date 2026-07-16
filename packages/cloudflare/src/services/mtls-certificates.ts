@@ -53,12 +53,11 @@ interface GetAssociationResponseResult {
   /** Certificate deployment status for the given service. */
   status?: string | null;
 }
-const GetAssociationResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      service: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
+const GetAssociationResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    service: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<GetAssociationResponseResult>;
 
 interface ListMtlsCertificatesResponseResult {
@@ -84,7 +83,7 @@ interface ListMtlsCertificatesResponseResult {
   uploadedOn?: string | null;
 }
 const ListMtlsCertificatesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       ca: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -130,17 +129,16 @@ export interface GetAssociationRequest {
   accountId: string;
 }
 
-export const GetAssociationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      mtlsCertificateId: Schema.String.pipe(T.HttpPath("mtlsCertificateId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/mtls_certificates/{mtlsCertificateId}/associations",
-      }),
-    ),
+export const GetAssociationRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    mtlsCertificateId: Schema.String.pipe(T.HttpPath("mtlsCertificateId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/mtls_certificates/{mtlsCertificateId}/associations",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetAssociationRequest>;
 
 export interface GetAssociationResponse {
@@ -148,7 +146,7 @@ export interface GetAssociationResponse {
 }
 
 export const GetAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(GetAssociationResponseResult),
     }),
@@ -161,7 +159,7 @@ export const getAssociation: API.PaginatedOperationMethod<
   GetAssociationResponse,
   GetAssociationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAssociationRequest,
   output: GetAssociationResponse,
   errors: [],
@@ -182,7 +180,7 @@ export interface GetMtlsCertificateRequest {
 }
 
 export const GetMtlsCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mtlsCertificateId: Schema.String.pipe(T.HttpPath("mtlsCertificateId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -218,7 +216,7 @@ export interface GetMtlsCertificateResponse {
 }
 
 export const GetMtlsCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       ca: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -263,7 +261,7 @@ export const getMtlsCertificate: API.OperationMethod<
   GetMtlsCertificateResponse,
   GetMtlsCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMtlsCertificateRequest,
   output: GetMtlsCertificateResponse,
   errors: [CertificateNotFound],
@@ -277,7 +275,7 @@ export interface ListMtlsCertificatesRequest {
 }
 
 export const ListMtlsCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       type: Schema.optional(
@@ -317,7 +315,7 @@ export interface ListMtlsCertificatesResponse {
 }
 
 export const ListMtlsCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListMtlsCertificatesResponseResult),
     }),
@@ -330,7 +328,7 @@ export const listMtlsCertificates: API.PaginatedOperationMethod<
   ListMtlsCertificatesResponse,
   ListMtlsCertificatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMtlsCertificatesRequest,
   output: ListMtlsCertificatesResponse,
   errors: [],
@@ -354,7 +352,7 @@ export interface CreateMtlsCertificateRequest {
 }
 
 export const CreateMtlsCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ca: Schema.Boolean,
@@ -401,7 +399,7 @@ export interface CreateMtlsCertificateResponse {
 }
 
 export const CreateMtlsCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       ca: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -450,7 +448,7 @@ export const createMtlsCertificate: API.OperationMethod<
   CreateMtlsCertificateResponse,
   CreateMtlsCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMtlsCertificateRequest,
   output: CreateMtlsCertificateResponse,
   errors: [CertificateAlreadyExists],
@@ -463,7 +461,7 @@ export interface DeleteMtlsCertificateRequest {
 }
 
 export const DeleteMtlsCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mtlsCertificateId: Schema.String.pipe(T.HttpPath("mtlsCertificateId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -499,7 +497,7 @@ export interface DeleteMtlsCertificateResponse {
 }
 
 export const DeleteMtlsCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       ca: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -547,7 +545,7 @@ export const deleteMtlsCertificate: API.OperationMethod<
   DeleteMtlsCertificateResponse,
   DeleteMtlsCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMtlsCertificateRequest,
   output: DeleteMtlsCertificateResponse,
   errors: [CertificateNotFound, CertificateAlreadyDeleted],

@@ -27,23 +27,22 @@ interface ListAssetsResponseResult {
   /** The URL where the asset content is fetched from. */
   url?: string | null;
 }
-const ListAssetsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        description: "description",
-        lastUpdated: "last_updated",
-        name: "name",
-        sizeBytes: "size_bytes",
-        url: "url",
-      }),
-    ),
+const ListAssetsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    sizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      description: "description",
+      lastUpdated: "last_updated",
+      name: "name",
+      sizeBytes: "size_bytes",
+      url: "url",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListAssetsResponseResult>;
 
 interface ListAssetsResponseResultInfo {
@@ -52,21 +51,20 @@ interface ListAssetsResponseResultInfo {
   perPage?: number | null;
   totalCount?: number | null;
 }
-const ListAssetsResponseResultInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
-    ),
+const ListAssetsResponseResultInfo = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      count: "count",
+      page: "page",
+      perPage: "per_page",
+      totalCount: "total_count",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListAssetsResponseResultInfo>;
 
 interface ListCustomPagesResponseResult {
@@ -82,7 +80,7 @@ interface ListCustomPagesResponseResult {
   url?: string | null;
 }
 const ListCustomPagesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -141,7 +139,7 @@ export interface GetAssetForZoneRequest extends GetAssetBaseRequest {
 }
 
 export const GetAssetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetAssetBaseFields,
@@ -154,7 +152,7 @@ export const GetAssetForAccountRequest =
   ) as unknown as Schema.Codec<GetAssetForAccountRequest>;
 
 export const GetAssetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetAssetBaseFields,
@@ -178,7 +176,7 @@ export interface GetAssetResponse {
   url?: string | null;
 }
 
-export const GetAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetAssetResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -205,7 +203,7 @@ export const getAssetForAccount: API.OperationMethod<
   GetAssetResponse,
   GetAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssetForAccountRequest,
   output: GetAssetResponse,
   errors: [],
@@ -216,7 +214,7 @@ export const getAssetForZone: API.OperationMethod<
   GetAssetResponse,
   GetAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAssetForZoneRequest,
   output: GetAssetResponse,
   errors: [],
@@ -243,7 +241,7 @@ export interface ListAssetsForZoneRequest extends ListAssetsBaseRequest {
 }
 
 export const ListAssetsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListAssetsBaseFields,
@@ -256,7 +254,7 @@ export const ListAssetsForAccountRequest =
   ) as unknown as Schema.Codec<ListAssetsForAccountRequest>;
 
 export const ListAssetsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListAssetsBaseFields,
@@ -281,14 +279,13 @@ export interface ListAssetsResponse {
   } | null;
 }
 
-export const ListAssetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListAssetsResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListAssetsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListAssetsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListAssetsResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListAssetsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListAssetsResponse>;
 
 export type ListAssetsError = DefaultErrors;
@@ -298,7 +295,7 @@ export const listAssetsForAccount: API.PaginatedOperationMethod<
   ListAssetsResponse,
   ListAssetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsForAccountRequest,
   output: ListAssetsResponse,
   errors: [],
@@ -316,7 +313,7 @@ export const listAssetsForZone: API.PaginatedOperationMethod<
   ListAssetsResponse,
   ListAssetsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsForZoneRequest,
   output: ListAssetsResponse,
   errors: [],
@@ -355,7 +352,7 @@ export interface CreateAssetForZoneRequest extends CreateAssetBaseRequest {
 }
 
 export const CreateAssetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...CreateAssetBaseFields,
@@ -368,7 +365,7 @@ export const CreateAssetForAccountRequest =
   ) as unknown as Schema.Codec<CreateAssetForAccountRequest>;
 
 export const CreateAssetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...CreateAssetBaseFields,
@@ -389,25 +386,24 @@ export interface CreateAssetResponse {
   url?: string | null;
 }
 
-export const CreateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          description: "description",
-          lastUpdated: "last_updated",
-          name: "name",
-          sizeBytes: "size_bytes",
-          url: "url",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateAssetResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    sizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        description: "description",
+        lastUpdated: "last_updated",
+        name: "name",
+        sizeBytes: "size_bytes",
+        url: "url",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateAssetResponse>;
 
 export type CreateAssetError = DefaultErrors;
@@ -417,7 +413,7 @@ export const createAssetForAccount: API.OperationMethod<
   CreateAssetResponse,
   CreateAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssetForAccountRequest,
   output: CreateAssetResponse,
   errors: [],
@@ -428,7 +424,7 @@ export const createAssetForZone: API.OperationMethod<
   CreateAssetResponse,
   CreateAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAssetForZoneRequest,
   output: CreateAssetResponse,
   errors: [],
@@ -459,7 +455,7 @@ export interface UpdateAssetForZoneRequest extends UpdateAssetBaseRequest {
 }
 
 export const UpdateAssetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...UpdateAssetBaseFields,
@@ -472,7 +468,7 @@ export const UpdateAssetForAccountRequest =
   ) as unknown as Schema.Codec<UpdateAssetForAccountRequest>;
 
 export const UpdateAssetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...UpdateAssetBaseFields,
@@ -496,25 +492,24 @@ export interface UpdateAssetResponse {
   url?: string | null;
 }
 
-export const UpdateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          description: "description",
-          lastUpdated: "last_updated",
-          name: "name",
-          sizeBytes: "size_bytes",
-          url: "url",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const UpdateAssetResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    sizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        description: "description",
+        lastUpdated: "last_updated",
+        name: "name",
+        sizeBytes: "size_bytes",
+        url: "url",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateAssetResponse>;
 
 export type UpdateAssetError = DefaultErrors;
@@ -524,7 +519,7 @@ export const updateAssetForAccount: API.OperationMethod<
   UpdateAssetResponse,
   UpdateAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssetForAccountRequest,
   output: UpdateAssetResponse,
   errors: [],
@@ -535,7 +530,7 @@ export const updateAssetForZone: API.OperationMethod<
   UpdateAssetResponse,
   UpdateAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAssetForZoneRequest,
   output: UpdateAssetResponse,
   errors: [],
@@ -560,7 +555,7 @@ export interface DeleteAssetForZoneRequest extends DeleteAssetBaseRequest {
 }
 
 export const DeleteAssetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...DeleteAssetBaseFields,
@@ -573,7 +568,7 @@ export const DeleteAssetForAccountRequest =
   ) as unknown as Schema.Codec<DeleteAssetForAccountRequest>;
 
 export const DeleteAssetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...DeleteAssetBaseFields,
@@ -587,7 +582,7 @@ export const DeleteAssetForZoneRequest =
 
 export type DeleteAssetResponse = unknown;
 
-export const DeleteAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+export const DeleteAssetResponse = /*@__PURE__*/ Schema.suspend(
   () => Schema.Unknown,
 ) as unknown as Schema.Codec<DeleteAssetResponse>;
 
@@ -598,7 +593,7 @@ export const deleteAssetForAccount: API.OperationMethod<
   DeleteAssetResponse,
   DeleteAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssetForAccountRequest,
   output: DeleteAssetResponse,
   errors: [],
@@ -609,7 +604,7 @@ export const deleteAssetForZone: API.OperationMethod<
   DeleteAssetResponse,
   DeleteAssetError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAssetForZoneRequest,
   output: DeleteAssetResponse,
   errors: [],
@@ -638,7 +633,7 @@ export interface GetCustomPageForZoneRequest extends GetCustomPageBaseRequest {
 }
 
 export const GetCustomPageForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...GetCustomPageBaseFields,
@@ -651,7 +646,7 @@ export const GetCustomPageForAccountRequest =
   ) as unknown as Schema.Codec<GetCustomPageForAccountRequest>;
 
 export const GetCustomPageForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...GetCustomPageBaseFields,
@@ -676,43 +671,40 @@ export interface GetCustomPageResponse {
   url?: string | null;
 }
 
-export const GetCustomPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      previewTarget: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      requiredTokens: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      state: Schema.optional(
+export const GetCustomPageResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    previewTarget: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    requiredTokens: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    state: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["default", "customized"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["default", "customized"]),
+          Schema.String,
         ]),
-      ),
-      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          description: "description",
-          modifiedOn: "modified_on",
-          previewTarget: "preview_target",
-          requiredTokens: "required_tokens",
-          state: "state",
-          url: "url",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        description: "description",
+        modifiedOn: "modified_on",
+        previewTarget: "preview_target",
+        requiredTokens: "required_tokens",
+        state: "state",
+        url: "url",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetCustomPageResponse>;
 
 export type GetCustomPageError = DefaultErrors;
@@ -722,7 +714,7 @@ export const getCustomPageForAccount: API.OperationMethod<
   GetCustomPageResponse,
   GetCustomPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomPageForAccountRequest,
   output: GetCustomPageResponse,
   errors: [],
@@ -733,7 +725,7 @@ export const getCustomPageForZone: API.OperationMethod<
   GetCustomPageResponse,
   GetCustomPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCustomPageForZoneRequest,
   output: GetCustomPageResponse,
   errors: [],
@@ -754,7 +746,7 @@ export interface ListCustomPagesForZoneRequest extends ListCustomPagesBaseReques
 }
 
 export const ListCustomPagesForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...ListCustomPagesBaseFields,
@@ -764,7 +756,7 @@ export const ListCustomPagesForAccountRequest =
   ) as unknown as Schema.Codec<ListCustomPagesForAccountRequest>;
 
 export const ListCustomPagesForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...ListCustomPagesBaseFields,
@@ -785,7 +777,7 @@ export interface ListCustomPagesResponse {
 }
 
 export const ListCustomPagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListCustomPagesResponseResult),
     }),
@@ -798,7 +790,7 @@ export const listCustomPagesForAccount: API.PaginatedOperationMethod<
   ListCustomPagesResponse,
   ListCustomPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomPagesForAccountRequest,
   output: ListCustomPagesResponse,
   errors: [],
@@ -813,7 +805,7 @@ export const listCustomPagesForZone: API.PaginatedOperationMethod<
   ListCustomPagesResponse,
   ListCustomPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCustomPagesForZoneRequest,
   output: ListCustomPagesResponse,
   errors: [],
@@ -851,7 +843,7 @@ export interface PutCustomPageForZoneRequest extends PutCustomPageBaseRequest {
 }
 
 export const PutCustomPageForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       ...PutCustomPageBaseFields,
@@ -864,7 +856,7 @@ export const PutCustomPageForAccountRequest =
   ) as unknown as Schema.Codec<PutCustomPageForAccountRequest>;
 
 export const PutCustomPageForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       ...PutCustomPageBaseFields,
@@ -889,43 +881,40 @@ export interface PutCustomPageResponse {
   url?: string | null;
 }
 
-export const PutCustomPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      previewTarget: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      requiredTokens: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      state: Schema.optional(
+export const PutCustomPageResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    previewTarget: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    requiredTokens: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    state: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["default", "customized"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["default", "customized"]),
+          Schema.String,
         ]),
-      ),
-      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          description: "description",
-          modifiedOn: "modified_on",
-          previewTarget: "preview_target",
-          requiredTokens: "required_tokens",
-          state: "state",
-          url: "url",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        description: "description",
+        modifiedOn: "modified_on",
+        previewTarget: "preview_target",
+        requiredTokens: "required_tokens",
+        state: "state",
+        url: "url",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutCustomPageResponse>;
 
 export type PutCustomPageError = DefaultErrors;
@@ -935,7 +924,7 @@ export const putCustomPageForAccount: API.OperationMethod<
   PutCustomPageResponse,
   PutCustomPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutCustomPageForAccountRequest,
   output: PutCustomPageResponse,
   errors: [],
@@ -946,7 +935,7 @@ export const putCustomPageForZone: API.OperationMethod<
   PutCustomPageResponse,
   PutCustomPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutCustomPageForZoneRequest,
   output: PutCustomPageResponse,
   errors: [],

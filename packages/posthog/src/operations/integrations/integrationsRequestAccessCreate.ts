@@ -48,7 +48,7 @@ export interface IntegrationsRequestAccessCreateInput {
   reason: string;
 }
 export const IntegrationsRequestAccessCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     kind: Schema.Literals([
       "anthropic",
@@ -104,7 +104,7 @@ export interface IntegrationsRequestAccessCreateOutput {
   success: boolean;
 }
 export const IntegrationsRequestAccessCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     success: Schema.Boolean,
   }) as unknown as Schema.Codec<IntegrationsRequestAccessCreateOutput>;
 
@@ -115,7 +115,7 @@ export const IntegrationsRequestAccessCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const integrationsRequestAccessCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsRequestAccessCreateInput,
     outputSchema: IntegrationsRequestAccessCreateOutput,
   }));

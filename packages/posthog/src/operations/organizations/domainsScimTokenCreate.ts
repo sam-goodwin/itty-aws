@@ -27,7 +27,7 @@ export interface DomainsScimTokenCreateInput {
   id_jag_allowed_clients?: string[];
 }
 export const DomainsScimTokenCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
     domain: Schema.optional(Schema.String),
@@ -58,7 +58,7 @@ export const DomainsScimTokenCreateInput =
 // Output Schema
 export type DomainsScimTokenCreateOutput = void;
 export const DomainsScimTokenCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsScimTokenCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DomainsScimTokenCreateOutput>;
 
 // The operation
 /**
@@ -67,10 +67,8 @@ export const DomainsScimTokenCreateOutput =
  * @param id - A UUID string identifying this domain.
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const domainsScimTokenCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DomainsScimTokenCreateInput,
-    outputSchema: DomainsScimTokenCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const domainsScimTokenCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DomainsScimTokenCreateInput,
+  outputSchema: DomainsScimTokenCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

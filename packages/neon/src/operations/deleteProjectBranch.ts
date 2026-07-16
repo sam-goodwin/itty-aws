@@ -10,7 +10,7 @@ export interface DeleteProjectBranchInput {
   hard_delete?: boolean;
 }
 export const DeleteProjectBranchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     hard_delete: Schema.optional(Schema.Boolean),
@@ -116,7 +116,7 @@ export interface DeleteProjectBranchOutput {
   }[];
 }
 export const DeleteProjectBranchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     branch: Schema.Struct({
       id: Schema.String,
       project_id: Schema.String,
@@ -248,7 +248,7 @@ If false (default), the branch can be recovered within 7 days via the recover en
 This parameter is part of the Branch Recovery feature, which is in preview and not available to all users.
 
  */
-export const deleteProjectBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteProjectBranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteProjectBranchInput,
   outputSchema: DeleteProjectBranchOutput,
   errors: [NotFound, UnprocessableEntity] as const,

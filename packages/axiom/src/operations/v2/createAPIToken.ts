@@ -46,7 +46,7 @@ export interface CreateAPITokenInput {
     }
   >;
 }
-export const CreateAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateAPITokenInput = /*@__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.optional(
     Schema.Record(
       Schema.String,
@@ -179,7 +179,7 @@ export interface CreateAPITokenOutput {
   >;
   token?: string;
 }
-export const CreateAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateAPITokenOutput = /*@__PURE__*/ Schema.Struct({
   datasetCapabilities: Schema.Record(
     Schema.String,
     Schema.Struct({
@@ -265,7 +265,7 @@ export const CreateAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Create API token
  */
-export const createAPIToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createAPIToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateAPITokenInput,
   outputSchema: CreateAPITokenOutput,
   errors: [UnprocessableEntity] as const,

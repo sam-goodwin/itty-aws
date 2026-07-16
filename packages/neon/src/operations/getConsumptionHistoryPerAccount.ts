@@ -5,7 +5,7 @@ import { Forbidden, NotFound } from "../errors.ts";
 
 // Input Schema
 export const GetConsumptionHistoryPerAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     from: Schema.String,
     to: Schema.String,
     granularity: Schema.String,
@@ -18,7 +18,7 @@ export type GetConsumptionHistoryPerAccountInput =
 
 // Output Schema
 export const GetConsumptionHistoryPerAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     periods: Schema.Array(
       Schema.Struct({
         period_id: Schema.String,
@@ -98,7 +98,7 @@ A list of metrics can be specified as an array of parameter values or as a comma
 
  */
 export const getConsumptionHistoryPerAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetConsumptionHistoryPerAccountInput,
     outputSchema: GetConsumptionHistoryPerAccountOutput,
     errors: [Forbidden, NotFound] as const,

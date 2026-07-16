@@ -52,7 +52,7 @@ interface ListAppsResponseResult {
   /** Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes. */
   updatedBy: string;
 }
-const ListAppsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListAppsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -89,7 +89,7 @@ interface GetAppFlagResponseRuleCondition {
   value: unknown;
 }
 const GetAppFlagResponseRuleCondition =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       attribute: Schema.String,
       operator: Schema.Union([
@@ -183,7 +183,7 @@ interface GetAppFlagResponseRuleCondition1Claus1Claus1 {
   logicalOperator: "AND" | "OR" | (string & {});
 }
 const GetAppFlagResponseRuleCondition1Claus1Claus1 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clauses: Schema.Array(
         Schema.Union([
@@ -374,7 +374,7 @@ interface GetAppFlagResponseRuleCondition1Claus1 {
   logicalOperator: "AND" | "OR" | (string & {});
 }
 const GetAppFlagResponseRuleCondition1Claus1 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clauses: Schema.Array(
         Schema.Union([
@@ -465,7 +465,7 @@ interface GetAppFlagResponseRuleCondition1 {
   logicalOperator: "AND" | "OR" | (string & {});
 }
 const GetAppFlagResponseRuleCondition1 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clauses: Schema.Array(
         Schema.Union([
@@ -491,7 +491,7 @@ interface Rollout {
   /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
   attribute?: string | null;
 }
-const Rollout = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Rollout = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     percentage: Schema.Number,
     attribute: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -573,7 +573,7 @@ interface Rule {
   serveVariation: string;
   rollout?: { percentage: number; attribute?: string | null } | null;
 }
-const Rule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Rule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     conditions: Schema.Array(
       Schema.Union([
@@ -665,7 +665,7 @@ interface ListAppFlagsResponseResultRuleCondition1Claus1 {
   logicalOperator: "AND" | "OR" | (string & {});
 }
 const ListAppFlagsResponseResultRuleCondition1Claus1 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clauses: Schema.Array(
         Schema.Union([
@@ -856,7 +856,7 @@ interface ListAppFlagsResponseResultRuleCondition1 {
   logicalOperator: "AND" | "OR" | (string & {});
 }
 const ListAppFlagsResponseResultRuleCondition1 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       clauses: Schema.Array(
         Schema.Union([
@@ -951,7 +951,7 @@ interface Rule2 {
   serveVariation: string;
   rollout?: { percentage: number; attribute?: string | null } | null;
 }
-const Rule2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Rule2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     conditions: Schema.Array(
       Schema.Union([
@@ -1041,46 +1041,45 @@ interface ListAppFlagsResponseResult {
   updatedAt?: string | null;
   updatedBy?: string | null;
 }
-const ListAppFlagsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      defaultVariation: Schema.String,
-      enabled: Schema.Boolean,
-      key: Schema.String,
-      rules: Schema.Array(Rule2),
-      variations: Schema.Record(Schema.String, Schema.Unknown),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      type: Schema.optional(
+const ListAppFlagsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    defaultVariation: Schema.String,
+    enabled: Schema.Boolean,
+    key: Schema.String,
+    rules: Schema.Array(Rule2),
+    variations: Schema.Record(Schema.String, Schema.Unknown),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["boolean", "string", "number", "json"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["boolean", "string", "number", "json"]),
+          Schema.String,
         ]),
-      ),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        defaultVariation: "default_variation",
-        enabled: "enabled",
-        key: "key",
-        rules: "rules",
-        variations: "variations",
-        description: "description",
-        type: "type",
-        updatedAt: "updated_at",
-        updatedBy: "updated_by",
-      }),
+        Schema.Null,
+      ]),
     ),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      defaultVariation: "default_variation",
+      enabled: "enabled",
+      key: "key",
+      rules: "rules",
+      variations: "variations",
+      description: "description",
+      type: "type",
+      updatedAt: "updated_at",
+      updatedBy: "updated_by",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListAppFlagsResponseResult>;
 
 interface ListAppFlagsResponseResultInfoCursors {
   after?: string | null;
 }
 const ListAppFlagsResponseResultInfoCursors =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
@@ -1090,7 +1089,7 @@ interface ListAppFlagsResponseResultInfo {
   cursors?: { after?: string | null } | null;
 }
 const ListAppFlagsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       cursors: Schema.optional(
         Schema.Union([ListAppFlagsResponseResultInfoCursors, Schema.Null]),
@@ -1163,7 +1162,7 @@ interface ListAppFlagChangelogsResponseResult {
   flagKey: string;
 }
 const ListAppFlagChangelogsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       after: ListAppFlagsResponseResult,
       event: Schema.Literal("create"),
@@ -1242,7 +1241,7 @@ interface ListAppFlagChangelogsResponseResult1 {
   flagKey: string;
 }
 const ListAppFlagChangelogsResponseResult1 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       after: ListAppFlagsResponseResult,
       event: Schema.Literal("delete"),
@@ -1322,7 +1321,7 @@ interface ListAppFlagChangelogsResponseResult2 {
   flagKey: string;
 }
 const ListAppFlagChangelogsResponseResult2 =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       after: ListAppFlagsResponseResult,
       diff: Schema.Record(Schema.String, Schema.Unknown),
@@ -1348,7 +1347,7 @@ export interface GetAppRequest {
   accountId: string;
 }
 
-export const GetAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetAppRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     appId: Schema.String.pipe(T.HttpPath("appId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1369,7 +1368,7 @@ export interface GetAppResponse {
   updatedBy: string;
 }
 
-export const GetAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GetAppResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     createdAt: Schema.String,
@@ -1396,7 +1395,7 @@ export const getApp: API.OperationMethod<
   GetAppResponse,
   GetAppError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppRequest,
   output: GetAppResponse,
   errors: [FlagshipAppNotFound],
@@ -1407,7 +1406,7 @@ export interface ListAppsRequest {
   accountId: string;
 }
 
-export const ListAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListAppsRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(
@@ -1425,7 +1424,7 @@ export interface ListAppsResponse {
   }[];
 }
 
-export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListAppsResponse = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     result: Schema.Array(ListAppsResponseResult),
   }),
@@ -1438,7 +1437,7 @@ export const listApps: API.PaginatedOperationMethod<
   ListAppsResponse,
   ListAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppsRequest,
   output: ListAppsResponse,
   errors: [],
@@ -1455,7 +1454,7 @@ export interface CreateAppRequest {
   name: string;
 }
 
-export const CreateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const CreateAppRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     name: Schema.String,
@@ -1473,25 +1472,24 @@ export interface CreateAppResponse {
   updatedBy: string;
 }
 
-export const CreateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      name: Schema.String,
-      updatedAt: Schema.String,
-      updatedBy: Schema.String,
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          name: "name",
-          updatedAt: "updated_at",
-          updatedBy: "updated_by",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const CreateAppResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    name: Schema.String,
+    updatedAt: Schema.String,
+    updatedBy: Schema.String,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        name: "name",
+        updatedAt: "updated_at",
+        updatedBy: "updated_by",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateAppResponse>;
 
 export type CreateAppError = DefaultErrors;
@@ -1501,7 +1499,7 @@ export const createApp: API.OperationMethod<
   CreateAppResponse,
   CreateAppError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppRequest,
   output: CreateAppResponse,
   errors: [],
@@ -1515,7 +1513,7 @@ export interface UpdateAppRequest {
   name?: string;
 }
 
-export const UpdateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const UpdateAppRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     appId: Schema.String.pipe(T.HttpPath("appId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1537,25 +1535,24 @@ export interface UpdateAppResponse {
   updatedBy: string;
 }
 
-export const UpdateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      name: Schema.String,
-      updatedAt: Schema.String,
-      updatedBy: Schema.String,
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          name: "name",
-          updatedAt: "updated_at",
-          updatedBy: "updated_by",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const UpdateAppResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    name: Schema.String,
+    updatedAt: Schema.String,
+    updatedBy: Schema.String,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        name: "name",
+        updatedAt: "updated_at",
+        updatedBy: "updated_by",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateAppResponse>;
 
 export type UpdateAppError = DefaultErrors | FlagshipAppNotFound;
@@ -1565,7 +1562,7 @@ export const updateApp: API.OperationMethod<
   UpdateAppResponse,
   UpdateAppError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppRequest,
   output: UpdateAppResponse,
   errors: [FlagshipAppNotFound],
@@ -1577,7 +1574,7 @@ export interface DeleteAppRequest {
   accountId: string;
 }
 
-export const DeleteAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const DeleteAppRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     appId: Schema.String.pipe(T.HttpPath("appId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1593,11 +1590,10 @@ export interface DeleteAppResponse {
   id: string;
 }
 
-export const DeleteAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-    }).pipe(T.ResponsePath("result")),
+export const DeleteAppResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteAppResponse>;
 
 export type DeleteAppError = DefaultErrors | FlagshipAppNotFound;
@@ -1607,7 +1603,7 @@ export const deleteApp: API.OperationMethod<
   DeleteAppResponse,
   DeleteAppError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppRequest,
   output: DeleteAppResponse,
   errors: [FlagshipAppNotFound],
@@ -1627,21 +1623,20 @@ export interface GetAppEvaluateRequest {
   targetingKey?: string;
 }
 
-export const GetAppEvaluateRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      appId: Schema.String.pipe(T.HttpPath("appId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      flagKey: Schema.String.pipe(T.HttpQuery("flagKey")),
-      targetingKey: Schema.optional(Schema.String).pipe(
-        T.HttpQuery("targetingKey"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/flagship/apps/{appId}/evaluate",
-      }),
+export const GetAppEvaluateRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String.pipe(T.HttpPath("appId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    flagKey: Schema.String.pipe(T.HttpQuery("flagKey")),
+    targetingKey: Schema.optional(Schema.String).pipe(
+      T.HttpQuery("targetingKey"),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/flagship/apps/{appId}/evaluate",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetAppEvaluateRequest>;
 
 export interface GetAppEvaluateResponse {
@@ -1658,7 +1653,7 @@ export interface GetAppEvaluateResponse {
 }
 
 export const GetAppEvaluateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       flagKey: Schema.String,
       reason: Schema.Union([
@@ -1686,7 +1681,7 @@ export const getAppEvaluate: API.OperationMethod<
   GetAppEvaluateResponse,
   GetAppEvaluateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppEvaluateRequest,
   output: GetAppEvaluateResponse,
   errors: [],
@@ -1703,18 +1698,17 @@ export interface GetAppFlagRequest {
   accountId: string;
 }
 
-export const GetAppFlagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      appId: Schema.String.pipe(T.HttpPath("appId")),
-      flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/flagship/apps/{appId}/flags/{flagKey}",
-      }),
-    ),
+export const GetAppFlagRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String.pipe(T.HttpPath("appId")),
+    flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/flagship/apps/{appId}/flags/{flagKey}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetAppFlagRequest>;
 
 export interface GetAppFlagResponse {
@@ -1787,41 +1781,40 @@ export interface GetAppFlagResponse {
   updatedBy?: string | null;
 }
 
-export const GetAppFlagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      defaultVariation: Schema.String,
-      enabled: Schema.Boolean,
-      key: Schema.String,
-      rules: Schema.Array(Rule),
-      variations: Schema.Record(Schema.String, Schema.Unknown),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      type: Schema.optional(
+export const GetAppFlagResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    defaultVariation: Schema.String,
+    enabled: Schema.Boolean,
+    key: Schema.String,
+    rules: Schema.Array(Rule),
+    variations: Schema.Record(Schema.String, Schema.Unknown),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["boolean", "string", "number", "json"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["boolean", "string", "number", "json"]),
+          Schema.String,
         ]),
-      ),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          defaultVariation: "default_variation",
-          enabled: "enabled",
-          key: "key",
-          rules: "rules",
-          variations: "variations",
-          description: "description",
-          type: "type",
-          updatedAt: "updated_at",
-          updatedBy: "updated_by",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        defaultVariation: "default_variation",
+        enabled: "enabled",
+        key: "key",
+        rules: "rules",
+        variations: "variations",
+        description: "description",
+        type: "type",
+        updatedAt: "updated_at",
+        updatedBy: "updated_by",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetAppFlagResponse>;
 
 export type GetAppFlagError =
@@ -1834,7 +1827,7 @@ export const getAppFlag: API.OperationMethod<
   GetAppFlagResponse,
   GetAppFlagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAppFlagRequest,
   output: GetAppFlagResponse,
   errors: [FlagshipFlagNotFound, FlagshipAppNotFound],
@@ -1849,19 +1842,18 @@ export interface ListAppFlagsRequest {
   limit?: string;
 }
 
-export const ListAppFlagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      appId: Schema.String.pipe(T.HttpPath("appId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
-      limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/flagship/apps/{appId}/flags",
-      }),
-    ),
+export const ListAppFlagsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String.pipe(T.HttpPath("appId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+    limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/flagship/apps/{appId}/flags",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListAppFlagsRequest>;
 
 export interface ListAppFlagsResponse {
@@ -1913,14 +1905,13 @@ export interface ListAppFlagsResponse {
   resultInfo?: { cursors?: { after?: string | null } | null } | null;
 }
 
-export const ListAppFlagsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListAppFlagsResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListAppFlagsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListAppFlagsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListAppFlagsResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListAppFlagsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListAppFlagsResponse>;
 
 export type ListAppFlagsError = DefaultErrors | FlagshipAppNotFound;
@@ -1930,7 +1921,7 @@ export const listAppFlags: API.PaginatedOperationMethod<
   ListAppFlagsResponse,
   ListAppFlagsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppFlagsRequest,
   output: ListAppFlagsResponse,
   errors: [FlagshipAppNotFound],
@@ -2014,38 +2005,37 @@ export interface CreateAppFlagRequest {
   type?: "boolean" | "string" | "number" | "json" | (string & {});
 }
 
-export const CreateAppFlagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      appId: Schema.String.pipe(T.HttpPath("appId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      defaultVariation: Schema.String,
-      enabled: Schema.Boolean,
-      key: Schema.String,
-      rules: Schema.Array(Rule),
-      variations: Schema.Record(Schema.String, Schema.Unknown),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["boolean", "string", "number", "json"]),
-          Schema.String,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        defaultVariation: "default_variation",
-        enabled: "enabled",
-        key: "key",
-        rules: "rules",
-        variations: "variations",
-        description: "description",
-        type: "type",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/flagship/apps/{appId}/flags",
-      }),
+export const CreateAppFlagRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String.pipe(T.HttpPath("appId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    defaultVariation: Schema.String,
+    enabled: Schema.Boolean,
+    key: Schema.String,
+    rules: Schema.Array(Rule),
+    variations: Schema.Record(Schema.String, Schema.Unknown),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["boolean", "string", "number", "json"]),
+        Schema.String,
+      ]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      defaultVariation: "default_variation",
+      enabled: "enabled",
+      key: "key",
+      rules: "rules",
+      variations: "variations",
+      description: "description",
+      type: "type",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/flagship/apps/{appId}/flags",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateAppFlagRequest>;
 
 export interface CreateAppFlagResponse {
@@ -2118,41 +2108,40 @@ export interface CreateAppFlagResponse {
   updatedBy?: string | null;
 }
 
-export const CreateAppFlagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      defaultVariation: Schema.String,
-      enabled: Schema.Boolean,
-      key: Schema.String,
-      rules: Schema.Array(Rule),
-      variations: Schema.Record(Schema.String, Schema.Unknown),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      type: Schema.optional(
+export const CreateAppFlagResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    defaultVariation: Schema.String,
+    enabled: Schema.Boolean,
+    key: Schema.String,
+    rules: Schema.Array(Rule),
+    variations: Schema.Record(Schema.String, Schema.Unknown),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["boolean", "string", "number", "json"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["boolean", "string", "number", "json"]),
+          Schema.String,
         ]),
-      ),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          defaultVariation: "default_variation",
-          enabled: "enabled",
-          key: "key",
-          rules: "rules",
-          variations: "variations",
-          description: "description",
-          type: "type",
-          updatedAt: "updated_at",
-          updatedBy: "updated_by",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        defaultVariation: "default_variation",
+        enabled: "enabled",
+        key: "key",
+        rules: "rules",
+        variations: "variations",
+        description: "description",
+        type: "type",
+        updatedAt: "updated_at",
+        updatedBy: "updated_by",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<CreateAppFlagResponse>;
 
 export type CreateAppFlagError =
@@ -2165,7 +2154,7 @@ export const createAppFlag: API.OperationMethod<
   CreateAppFlagResponse,
   CreateAppFlagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAppFlagRequest,
   output: CreateAppFlagResponse,
   errors: [FlagshipFlagAlreadyExists, FlagshipAppNotFound],
@@ -2244,39 +2233,38 @@ export interface UpdateAppFlagRequest {
   type?: "boolean" | "string" | "number" | "json" | (string & {});
 }
 
-export const UpdateAppFlagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      appId: Schema.String.pipe(T.HttpPath("appId")),
-      flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      defaultVariation: Schema.String,
-      enabled: Schema.Boolean,
-      key: Schema.String,
-      rules: Schema.Array(Rule),
-      variations: Schema.Record(Schema.String, Schema.Unknown),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["boolean", "string", "number", "json"]),
-          Schema.String,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        defaultVariation: "default_variation",
-        enabled: "enabled",
-        key: "key",
-        rules: "rules",
-        variations: "variations",
-        description: "description",
-        type: "type",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/flagship/apps/{appId}/flags/{flagKey}",
-      }),
+export const UpdateAppFlagRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String.pipe(T.HttpPath("appId")),
+    flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    defaultVariation: Schema.String,
+    enabled: Schema.Boolean,
+    key: Schema.String,
+    rules: Schema.Array(Rule),
+    variations: Schema.Record(Schema.String, Schema.Unknown),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["boolean", "string", "number", "json"]),
+        Schema.String,
+      ]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      defaultVariation: "default_variation",
+      enabled: "enabled",
+      key: "key",
+      rules: "rules",
+      variations: "variations",
+      description: "description",
+      type: "type",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/flagship/apps/{appId}/flags/{flagKey}",
+    }),
+  ),
 ) as unknown as Schema.Codec<UpdateAppFlagRequest>;
 
 export interface UpdateAppFlagResponse {
@@ -2349,41 +2337,40 @@ export interface UpdateAppFlagResponse {
   updatedBy?: string | null;
 }
 
-export const UpdateAppFlagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      defaultVariation: Schema.String,
-      enabled: Schema.Boolean,
-      key: Schema.String,
-      rules: Schema.Array(Rule),
-      variations: Schema.Record(Schema.String, Schema.Unknown),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      type: Schema.optional(
+export const UpdateAppFlagResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    defaultVariation: Schema.String,
+    enabled: Schema.Boolean,
+    key: Schema.String,
+    rules: Schema.Array(Rule),
+    variations: Schema.Record(Schema.String, Schema.Unknown),
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["boolean", "string", "number", "json"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          Schema.Literals(["boolean", "string", "number", "json"]),
+          Schema.String,
         ]),
-      ),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          defaultVariation: "default_variation",
-          enabled: "enabled",
-          key: "key",
-          rules: "rules",
-          variations: "variations",
-          description: "description",
-          type: "type",
-          updatedAt: "updated_at",
-          updatedBy: "updated_by",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        defaultVariation: "default_variation",
+        enabled: "enabled",
+        key: "key",
+        rules: "rules",
+        variations: "variations",
+        description: "description",
+        type: "type",
+        updatedAt: "updated_at",
+        updatedBy: "updated_by",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<UpdateAppFlagResponse>;
 
 export type UpdateAppFlagError =
@@ -2396,7 +2383,7 @@ export const updateAppFlag: API.OperationMethod<
   UpdateAppFlagResponse,
   UpdateAppFlagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppFlagRequest,
   output: UpdateAppFlagResponse,
   errors: [FlagshipFlagNotFound, FlagshipAppNotFound],
@@ -2409,29 +2396,27 @@ export interface DeleteAppFlagRequest {
   accountId: string;
 }
 
-export const DeleteAppFlagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      appId: Schema.String.pipe(T.HttpPath("appId")),
-      flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/flagship/apps/{appId}/flags/{flagKey}",
-      }),
-    ),
+export const DeleteAppFlagRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String.pipe(T.HttpPath("appId")),
+    flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/flagship/apps/{appId}/flags/{flagKey}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteAppFlagRequest>;
 
 export interface DeleteAppFlagResponse {
   key: string;
 }
 
-export const DeleteAppFlagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      key: Schema.String,
-    }).pipe(T.ResponsePath("result")),
+export const DeleteAppFlagResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    key: Schema.String,
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<DeleteAppFlagResponse>;
 
 export type DeleteAppFlagError =
@@ -2444,7 +2429,7 @@ export const deleteAppFlag: API.OperationMethod<
   DeleteAppFlagResponse,
   DeleteAppFlagError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAppFlagRequest,
   output: DeleteAppFlagResponse,
   errors: [FlagshipFlagNotFound, FlagshipAppNotFound],
@@ -2465,7 +2450,7 @@ export interface ListAppFlagChangelogsRequest {
 }
 
 export const ListAppFlagChangelogsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       appId: Schema.String.pipe(T.HttpPath("appId")),
       flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
@@ -2632,7 +2617,7 @@ export interface ListAppFlagChangelogsResponse {
 }
 
 export const ListAppFlagChangelogsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(
         Schema.Union([
@@ -2654,7 +2639,7 @@ export const listAppFlagChangelogs: API.PaginatedOperationMethod<
   ListAppFlagChangelogsResponse,
   ListAppFlagChangelogsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAppFlagChangelogsRequest,
   output: ListAppFlagChangelogsResponse,
   errors: [],

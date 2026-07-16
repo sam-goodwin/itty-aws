@@ -32,7 +32,7 @@ export interface EvidenceCreateOrUpdateInput {
   };
 }
 export const EvidenceCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     evidenceName: Schema.String.pipe(T.PathParam()),
     offerGuid: Schema.optional(Schema.String),
@@ -81,7 +81,7 @@ export interface EvidenceCreateOrUpdateOutput {
   };
 }
 export const EvidenceCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -111,18 +111,16 @@ export const EvidenceCreateOrUpdateOutput =
  * @param reportName - Report Name.
  * @param evidenceName - The evidence name.
  */
-export const EvidenceCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EvidenceCreateOrUpdateInput,
-    outputSchema: EvidenceCreateOrUpdateOutput,
-  }),
-);
+export const EvidenceCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EvidenceCreateOrUpdateInput,
+  outputSchema: EvidenceCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface EvidenceDeleteInput {
   reportName: string;
   evidenceName: string;
 }
-export const EvidenceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EvidenceDeleteInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   evidenceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -136,7 +134,7 @@ export const EvidenceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type EvidenceDeleteOutput = void;
 export const EvidenceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EvidenceDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EvidenceDeleteOutput>;
 
 // The operation
 /**
@@ -146,7 +144,7 @@ export const EvidenceDeleteOutput =
  * @param reportName - Report Name.
  * @param evidenceName - The evidence name.
  */
-export const EvidenceDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EvidenceDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EvidenceDeleteInput,
   outputSchema: EvidenceDeleteOutput,
 }));
@@ -157,7 +155,7 @@ export interface EvidenceDownloadInput {
   reportCreatorTenantId?: string;
   offerGuid?: string;
 }
-export const EvidenceDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EvidenceDownloadInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   evidenceName: Schema.String.pipe(T.PathParam()),
   reportCreatorTenantId: Schema.optional(Schema.String),
@@ -174,15 +172,13 @@ export const EvidenceDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface EvidenceDownloadOutput {
   evidenceFile?: { url?: string };
 }
-export const EvidenceDownloadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    evidenceFile: Schema.optional(
-      Schema.Struct({
-        url: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<EvidenceDownloadOutput>;
+export const EvidenceDownloadOutput = /*@__PURE__*/ Schema.Struct({
+  evidenceFile: Schema.optional(
+    Schema.Struct({
+      url: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<EvidenceDownloadOutput>;
 
 // The operation
 /**
@@ -192,7 +188,7 @@ export const EvidenceDownloadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param reportName - Report Name.
  * @param evidenceName - The evidence name.
  */
-export const EvidenceDownload = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EvidenceDownload = /*@__PURE__*/ API.make(() => ({
   inputSchema: EvidenceDownloadInput,
   outputSchema: EvidenceDownloadOutput,
 }));
@@ -201,7 +197,7 @@ export interface EvidenceGetInput {
   reportName: string;
   evidenceName: string;
 }
-export const EvidenceGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EvidenceGetInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   evidenceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -226,7 +222,7 @@ export interface EvidenceGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const EvidenceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EvidenceGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -254,7 +250,7 @@ export const EvidenceGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param reportName - Report Name.
  * @param evidenceName - The evidence name.
  */
-export const EvidenceGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EvidenceGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EvidenceGetInput,
   outputSchema: EvidenceGetOutput,
 }));
@@ -270,7 +266,7 @@ export interface EvidenceListByReportInput {
   reportCreatorTenantId?: string;
 }
 export const EvidenceListByReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
     $top: Schema.optional(Schema.Number),
@@ -305,7 +301,7 @@ export interface EvidenceListByReportOutput {
   nextLink?: string;
 }
 export const EvidenceListByReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -354,17 +350,13 @@ export const EvidenceListByReportOutput =
  * @param reportCreatorTenantId - The tenant id of the report creator.
  * @param reportName - Report Name.
  */
-export const EvidenceListByReport = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EvidenceListByReportInput,
-    outputSchema: EvidenceListByReportOutput,
-  }),
-);
+export const EvidenceListByReport = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EvidenceListByReportInput,
+  outputSchema: EvidenceListByReportOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AppComplianceAutomation/operations",
@@ -388,7 +380,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -418,7 +410,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -428,7 +420,7 @@ export interface ProviderActionsCheckNameAvailabilityInput {
   type?: string;
 }
 export const ProviderActionsCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).pipe(
@@ -446,7 +438,7 @@ export interface ProviderActionsCheckNameAvailabilityOutput {
   message?: string;
 }
 export const ProviderActionsCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -461,7 +453,7 @@ export const ProviderActionsCheckNameAvailabilityOutput =
  * @param type - The resource type.
  */
 export const ProviderActionsCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderActionsCheckNameAvailabilityInput,
     outputSchema: ProviderActionsCheckNameAvailabilityOutput,
   }));
@@ -470,7 +462,7 @@ export interface ProviderActionsGetCollectionCountInput {
   type?: string;
 }
 export const ProviderActionsGetCollectionCountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -485,7 +477,7 @@ export interface ProviderActionsGetCollectionCountOutput {
   count?: number;
 }
 export const ProviderActionsGetCollectionCountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
   }) as unknown as Schema.Codec<ProviderActionsGetCollectionCountOutput>;
 
@@ -496,7 +488,7 @@ export const ProviderActionsGetCollectionCountOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ProviderActionsGetCollectionCount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderActionsGetCollectionCountInput,
     outputSchema: ProviderActionsGetCollectionCountOutput,
   }));
@@ -505,7 +497,7 @@ export interface ProviderActionsGetOverviewStatusInput {
   type?: string;
 }
 export const ProviderActionsGetOverviewStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -520,7 +512,7 @@ export interface ProviderActionsGetOverviewStatusOutput {
   statusList?: { statusName?: string; statusValue?: string }[];
 }
 export const ProviderActionsGetOverviewStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     statusList: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -538,7 +530,7 @@ export const ProviderActionsGetOverviewStatusOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ProviderActionsGetOverviewStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderActionsGetOverviewStatusInput,
     outputSchema: ProviderActionsGetOverviewStatusOutput,
   }));
@@ -547,7 +539,7 @@ export interface ProviderActionsListInUseStorageAccountsInput {
   subscriptionIds?: string[];
 }
 export const ProviderActionsListInUseStorageAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
     T.Http({
@@ -567,7 +559,7 @@ export interface ProviderActionsListInUseStorageAccountsOutput {
   }[];
 }
 export const ProviderActionsListInUseStorageAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     storageAccountList: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -587,7 +579,7 @@ export const ProviderActionsListInUseStorageAccountsOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ProviderActionsListInUseStorageAccounts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderActionsListInUseStorageAccountsInput,
     outputSchema: ProviderActionsListInUseStorageAccountsOutput,
   }));
@@ -596,7 +588,7 @@ export interface ProviderActionsOnboardInput {
   subscriptionIds: string[];
 }
 export const ProviderActionsOnboardInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionIds: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
@@ -611,7 +603,7 @@ export interface ProviderActionsOnboardOutput {
   subscriptionIds?: string[];
 }
 export const ProviderActionsOnboardOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionIds: Schema.optional(Schema.Array(Schema.String)),
   }) as unknown as Schema.Codec<ProviderActionsOnboardOutput>;
 
@@ -621,18 +613,16 @@ export const ProviderActionsOnboardOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const ProviderActionsOnboard = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProviderActionsOnboardInput,
-    outputSchema: ProviderActionsOnboardOutput,
-  }),
-);
+export const ProviderActionsOnboard = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProviderActionsOnboardInput,
+  outputSchema: ProviderActionsOnboardOutput,
+}));
 // Input Schema
 export interface ProviderActionsTriggerEvaluationInput {
   resourceIds: string[];
 }
 export const ProviderActionsTriggerEvaluationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceIds: Schema.Array(Schema.String),
   }).pipe(
     T.Http({
@@ -660,7 +650,7 @@ export interface ProviderActionsTriggerEvaluationOutput {
   };
 }
 export const ProviderActionsTriggerEvaluationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         triggerTime: Schema.optional(Schema.String),
@@ -692,7 +682,7 @@ export const ProviderActionsTriggerEvaluationOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const ProviderActionsTriggerEvaluation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderActionsTriggerEvaluationInput,
     outputSchema: ProviderActionsTriggerEvaluationOutput,
   }));
@@ -749,7 +739,7 @@ export interface ReportCreateOrUpdateInput {
   };
 }
 export const ReportCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       triggerTime: Schema.String,
@@ -848,7 +838,7 @@ export interface ReportCreateOrUpdateOutput {
   };
 }
 export const ReportCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -875,17 +865,15 @@ export const ReportCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportCreateOrUpdateInput,
-    outputSchema: ReportCreateOrUpdateOutput,
-  }),
-);
+export const ReportCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportCreateOrUpdateInput,
+  outputSchema: ReportCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ReportDeleteInput {
   reportName: string;
 }
-export const ReportDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportDeleteInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -898,7 +886,7 @@ export const ReportDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ReportDeleteOutput = void;
 export const ReportDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ReportDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ReportDeleteOutput>;
 
 // The operation
 /**
@@ -907,7 +895,7 @@ export const ReportDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportDeleteInput,
   outputSchema: ReportDeleteOutput,
 }));
@@ -915,7 +903,7 @@ export const ReportDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ReportFixInput {
   reportName: string;
 }
-export const ReportFixInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportFixInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -930,7 +918,7 @@ export interface ReportFixOutput {
   result?: "Succeeded" | "Failed";
   reason?: string;
 }
-export const ReportFixOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportFixOutput = /*@__PURE__*/ Schema.Struct({
   result: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
   reason: Schema.optional(Schema.String),
 }) as unknown as Schema.Codec<ReportFixOutput>;
@@ -942,7 +930,7 @@ export const ReportFixOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportFix = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportFix = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportFixInput,
   outputSchema: ReportFixOutput,
 }));
@@ -950,7 +938,7 @@ export const ReportFix = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ReportGetInput {
   reportName: string;
 }
-export const ReportGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportGetInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -974,7 +962,7 @@ export interface ReportGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ReportGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1001,7 +989,7 @@ export const ReportGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportGetInput,
   outputSchema: ReportGetOutput,
 }));
@@ -1010,7 +998,7 @@ export interface ReportGetScopingQuestionsInput {
   reportName: string;
 }
 export const ReportGetScopingQuestionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1065,7 +1053,7 @@ export interface ReportGetScopingQuestionsOutput {
   }[];
 }
 export const ReportGetScopingQuestionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     questions: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1123,12 +1111,10 @@ export const ReportGetScopingQuestionsOutput =
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportGetScopingQuestions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportGetScopingQuestionsInput,
-    outputSchema: ReportGetScopingQuestionsOutput,
-  }),
-);
+export const ReportGetScopingQuestions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportGetScopingQuestionsInput,
+  outputSchema: ReportGetScopingQuestionsOutput,
+}));
 // Input Schema
 export interface ReportListInput {
   $skipToken?: string;
@@ -1139,7 +1125,7 @@ export interface ReportListInput {
   offerGuid?: string;
   reportCreatorTenantId?: string;
 }
-export const ReportListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportListInput = /*@__PURE__*/ Schema.Struct({
   $skipToken: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
   $select: Schema.optional(Schema.String),
@@ -1172,7 +1158,7 @@ export interface ReportListOutput {
   }[];
   nextLink?: string;
 }
-export const ReportListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1210,7 +1196,7 @@ export const ReportListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param offerGuid - The offerGuid which mapping to the reports.
  * @param reportCreatorTenantId - The tenant id of the report creator.
  */
-export const ReportList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportListInput,
   outputSchema: ReportListOutput,
 }));
@@ -1221,7 +1207,7 @@ export interface ReportNestedResourceCheckNameAvailabilityInput {
   type?: string;
 }
 export const ReportNestedResourceCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1240,7 +1226,7 @@ export interface ReportNestedResourceCheckNameAvailabilityOutput {
   message?: string;
 }
 export const ReportNestedResourceCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -1256,7 +1242,7 @@ export const ReportNestedResourceCheckNameAvailabilityOutput =
  * @param type - The resource type.
  */
 export const ReportNestedResourceCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReportNestedResourceCheckNameAvailabilityInput,
     outputSchema: ReportNestedResourceCheckNameAvailabilityOutput,
   }));
@@ -1271,7 +1257,7 @@ export interface ReportSyncCertRecordInput {
   };
 }
 export const ReportSyncCertRecordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     certRecord: Schema.Struct({
       offerGuid: Schema.optional(Schema.String),
@@ -1304,7 +1290,7 @@ export interface ReportSyncCertRecordOutput {
   };
 }
 export const ReportSyncCertRecordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     certRecord: Schema.optional(
       Schema.Struct({
         offerGuid: Schema.optional(Schema.String),
@@ -1329,12 +1315,10 @@ export const ReportSyncCertRecordOutput =
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportSyncCertRecord = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ReportSyncCertRecordInput,
-    outputSchema: ReportSyncCertRecordOutput,
-  }),
-);
+export const ReportSyncCertRecord = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ReportSyncCertRecordInput,
+  outputSchema: ReportSyncCertRecordOutput,
+}));
 // Input Schema
 export interface ReportUpdateInput {
   reportName: string;
@@ -1387,7 +1371,7 @@ export interface ReportUpdateInput {
       | "Updating";
   };
 }
-export const ReportUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportUpdateInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
     Schema.Struct({
@@ -1489,7 +1473,7 @@ export interface ReportUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ReportUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1516,7 +1500,7 @@ export const ReportUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportUpdateInput,
   outputSchema: ReportUpdateOutput,
 }));
@@ -1524,7 +1508,7 @@ export const ReportUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ReportVerifyInput {
   reportName: string;
 }
-export const ReportVerifyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportVerifyInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1539,7 +1523,7 @@ export interface ReportVerifyOutput {
   result?: "Succeeded" | "Failed";
   reason?: string;
 }
-export const ReportVerifyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ReportVerifyOutput = /*@__PURE__*/ Schema.Struct({
   result: Schema.optional(Schema.Literals(["Succeeded", "Failed"])),
   reason: Schema.optional(Schema.String),
 }) as unknown as Schema.Codec<ReportVerifyOutput>;
@@ -1551,7 +1535,7 @@ export const ReportVerifyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ReportVerify = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ReportVerify = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportVerifyInput,
   outputSchema: ReportVerifyOutput,
 }));
@@ -1573,7 +1557,7 @@ export interface ScopingConfigurationCreateOrUpdateInput {
   };
 }
 export const ScopingConfigurationCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     scopingConfigurationName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
@@ -1621,7 +1605,7 @@ export interface ScopingConfigurationCreateOrUpdateOutput {
   };
 }
 export const ScopingConfigurationCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1650,7 +1634,7 @@ export const ScopingConfigurationCreateOrUpdateOutput =
  * @param scopingConfigurationName - The scoping configuration of the specific report.
  */
 export const ScopingConfigurationCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScopingConfigurationCreateOrUpdateInput,
     outputSchema: ScopingConfigurationCreateOrUpdateOutput,
   }));
@@ -1660,7 +1644,7 @@ export interface ScopingConfigurationDeleteInput {
   scopingConfigurationName: string;
 }
 export const ScopingConfigurationDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     scopingConfigurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1674,7 +1658,7 @@ export const ScopingConfigurationDeleteInput =
 // Output Schema
 export type ScopingConfigurationDeleteOutput = void;
 export const ScopingConfigurationDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScopingConfigurationDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ScopingConfigurationDeleteOutput>;
 
 // The operation
 /**
@@ -1684,19 +1668,17 @@ export const ScopingConfigurationDeleteOutput =
  * @param reportName - Report Name.
  * @param scopingConfigurationName - The scoping configuration of the specific report.
  */
-export const ScopingConfigurationDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScopingConfigurationDeleteInput,
-    outputSchema: ScopingConfigurationDeleteOutput,
-  }),
-);
+export const ScopingConfigurationDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScopingConfigurationDeleteInput,
+  outputSchema: ScopingConfigurationDeleteOutput,
+}));
 // Input Schema
 export interface ScopingConfigurationGetInput {
   reportName: string;
   scopingConfigurationName: string;
 }
 export const ScopingConfigurationGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     scopingConfigurationName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1722,7 +1704,7 @@ export interface ScopingConfigurationGetOutput {
   };
 }
 export const ScopingConfigurationGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1750,18 +1732,16 @@ export const ScopingConfigurationGetOutput =
  * @param reportName - Report Name.
  * @param scopingConfigurationName - The scoping configuration of the specific report.
  */
-export const ScopingConfigurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScopingConfigurationGetInput,
-    outputSchema: ScopingConfigurationGetOutput,
-  }),
-);
+export const ScopingConfigurationGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScopingConfigurationGetInput,
+  outputSchema: ScopingConfigurationGetOutput,
+}));
 // Input Schema
 export interface ScopingConfigurationListInput {
   reportName: string;
 }
 export const ScopingConfigurationListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1789,7 +1769,7 @@ export interface ScopingConfigurationListOutput {
   nextLink?: string;
 }
 export const ScopingConfigurationListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1831,12 +1811,10 @@ export const ScopingConfigurationListOutput =
  * @param api-version - The API version to use for this operation.
  * @param reportName - Report Name.
  */
-export const ScopingConfigurationList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScopingConfigurationListInput,
-    outputSchema: ScopingConfigurationListOutput,
-  }),
-);
+export const ScopingConfigurationList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScopingConfigurationListInput,
+  outputSchema: ScopingConfigurationListOutput,
+}));
 // Input Schema
 export interface SnapshotDownloadInput {
   reportName: string;
@@ -1849,7 +1827,7 @@ export interface SnapshotDownloadInput {
     | "ResourceList";
   offerGuid?: string;
 }
-export const SnapshotDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotDownloadInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
   reportCreatorTenantId: Schema.optional(Schema.String),
@@ -1893,59 +1871,57 @@ export interface SnapshotDownloadOutput {
   compliancePdfReport?: { sasUri?: string };
   complianceDetailedPdfReport?: { sasUri?: string };
 }
-export const SnapshotDownloadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceList: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          subscriptionId: Schema.optional(Schema.String),
-          resourceGroup: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    complianceReport: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          categoryName: Schema.optional(Schema.String),
-          controlFamilyName: Schema.optional(Schema.String),
-          controlId: Schema.optional(Schema.String),
-          controlName: Schema.optional(Schema.String),
-          controlStatus: Schema.optional(
-            Schema.Literals([
-              "Passed",
-              "Failed",
-              "NotApplicable",
-              "PendingApproval",
-            ]),
-          ),
-          responsibilityTitle: Schema.optional(Schema.String),
-          responsibilityDescription: Schema.optional(Schema.String),
-          resourceId: Schema.optional(Schema.String),
-          resourceType: Schema.optional(Schema.String),
-          resourceOrigin: Schema.optional(
-            Schema.Literals(["Azure", "AWS", "GCP"]),
-          ),
-          resourceStatus: Schema.optional(
-            Schema.Literals(["Healthy", "Unhealthy"]),
-          ),
-          resourceStatusChangeDate: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
-    compliancePdfReport: Schema.optional(
+export const SnapshotDownloadOutput = /*@__PURE__*/ Schema.Struct({
+  resourceList: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        sasUri: Schema.optional(Schema.String),
+        subscriptionId: Schema.optional(Schema.String),
+        resourceGroup: Schema.optional(Schema.String),
+        resourceType: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
       }),
     ),
-    complianceDetailedPdfReport: Schema.optional(
+  ),
+  complianceReport: Schema.optional(
+    Schema.Array(
       Schema.Struct({
-        sasUri: Schema.optional(Schema.String),
+        categoryName: Schema.optional(Schema.String),
+        controlFamilyName: Schema.optional(Schema.String),
+        controlId: Schema.optional(Schema.String),
+        controlName: Schema.optional(Schema.String),
+        controlStatus: Schema.optional(
+          Schema.Literals([
+            "Passed",
+            "Failed",
+            "NotApplicable",
+            "PendingApproval",
+          ]),
+        ),
+        responsibilityTitle: Schema.optional(Schema.String),
+        responsibilityDescription: Schema.optional(Schema.String),
+        resourceId: Schema.optional(Schema.String),
+        resourceType: Schema.optional(Schema.String),
+        resourceOrigin: Schema.optional(
+          Schema.Literals(["Azure", "AWS", "GCP"]),
+        ),
+        resourceStatus: Schema.optional(
+          Schema.Literals(["Healthy", "Unhealthy"]),
+        ),
+        resourceStatusChangeDate: Schema.optional(Schema.String),
       }),
     ),
-  },
-) as unknown as Schema.Codec<SnapshotDownloadOutput>;
+  ),
+  compliancePdfReport: Schema.optional(
+    Schema.Struct({
+      sasUri: Schema.optional(Schema.String),
+    }),
+  ),
+  complianceDetailedPdfReport: Schema.optional(
+    Schema.Struct({
+      sasUri: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<SnapshotDownloadOutput>;
 
 // The operation
 /**
@@ -1955,7 +1931,7 @@ export const SnapshotDownloadOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param reportName - Report Name.
  * @param snapshotName - Snapshot Name.
  */
-export const SnapshotDownload = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotDownload = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotDownloadInput,
   outputSchema: SnapshotDownloadOutput,
 }));
@@ -1964,7 +1940,7 @@ export interface SnapshotGetInput {
   reportName: string;
   snapshotName: string;
 }
-export const SnapshotGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotGetInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   snapshotName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1989,7 +1965,7 @@ export interface SnapshotGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SnapshotGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2017,7 +1993,7 @@ export const SnapshotGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param reportName - Report Name.
  * @param snapshotName - Snapshot Name.
  */
-export const SnapshotGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotGetInput,
   outputSchema: SnapshotGetOutput,
 }));
@@ -2032,7 +2008,7 @@ export interface SnapshotListInput {
   offerGuid?: string;
   reportCreatorTenantId?: string;
 }
-export const SnapshotListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotListInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   $skipToken: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -2066,7 +2042,7 @@ export interface SnapshotListOutput {
   }[];
   nextLink?: string;
 }
-export const SnapshotListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SnapshotListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2105,7 +2081,7 @@ export const SnapshotListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param reportCreatorTenantId - The tenant id of the report creator.
  * @param reportName - Report Name.
  */
-export const SnapshotList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SnapshotList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SnapshotListInput,
   outputSchema: SnapshotListOutput,
 }));
@@ -2144,7 +2120,7 @@ export interface WebhookCreateOrUpdateInput {
   };
 }
 export const WebhookCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reportName: Schema.String.pipe(T.PathParam()),
     webhookName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
@@ -2210,7 +2186,7 @@ export interface WebhookCreateOrUpdateOutput {
   };
 }
 export const WebhookCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2238,18 +2214,16 @@ export const WebhookCreateOrUpdateOutput =
  * @param reportName - Report Name.
  * @param webhookName - Webhook Name.
  */
-export const WebhookCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WebhookCreateOrUpdateInput,
-    outputSchema: WebhookCreateOrUpdateOutput,
-  }),
-);
+export const WebhookCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WebhookCreateOrUpdateInput,
+  outputSchema: WebhookCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface WebhookDeleteInput {
   reportName: string;
   webhookName: string;
 }
-export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookDeleteInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -2263,7 +2237,7 @@ export const WebhookDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type WebhookDeleteOutput = void;
 export const WebhookDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WebhookDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WebhookDeleteOutput>;
 
 // The operation
 /**
@@ -2273,7 +2247,7 @@ export const WebhookDeleteOutput =
  * @param reportName - Report Name.
  * @param webhookName - Webhook Name.
  */
-export const WebhookDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookDeleteInput,
   outputSchema: WebhookDeleteOutput,
 }));
@@ -2282,7 +2256,7 @@ export interface WebhookGetInput {
   reportName: string;
   webhookName: string;
 }
-export const WebhookGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookGetInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -2307,7 +2281,7 @@ export interface WebhookGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const WebhookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2335,7 +2309,7 @@ export const WebhookGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param reportName - Report Name.
  * @param webhookName - Webhook Name.
  */
-export const WebhookGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookGetInput,
   outputSchema: WebhookGetOutput,
 }));
@@ -2350,7 +2324,7 @@ export interface WebhookListInput {
   offerGuid?: string;
   reportCreatorTenantId?: string;
 }
-export const WebhookListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookListInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   $skipToken: Schema.optional(Schema.String),
   $top: Schema.optional(Schema.Number),
@@ -2384,7 +2358,7 @@ export interface WebhookListOutput {
   }[];
   nextLink?: string;
 }
-export const WebhookListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2423,7 +2397,7 @@ export const WebhookListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param reportCreatorTenantId - The tenant id of the report creator.
  * @param reportName - Report Name.
  */
-export const WebhookList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookList = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookListInput,
   outputSchema: WebhookListOutput,
 }));
@@ -2461,7 +2435,7 @@ export interface WebhookUpdateInput {
       | "Updating";
   };
 }
-export const WebhookUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookUpdateInput = /*@__PURE__*/ Schema.Struct({
   reportName: Schema.String.pipe(T.PathParam()),
   webhookName: Schema.String.pipe(T.PathParam()),
   properties: Schema.optional(
@@ -2528,7 +2502,7 @@ export interface WebhookUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const WebhookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const WebhookUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2556,7 +2530,7 @@ export const WebhookUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param reportName - Report Name.
  * @param webhookName - Webhook Name.
  */
-export const WebhookUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WebhookUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: WebhookUpdateInput,
   outputSchema: WebhookUpdateOutput,
 }));

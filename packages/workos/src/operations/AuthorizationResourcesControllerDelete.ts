@@ -9,7 +9,7 @@ export interface AuthorizationResourcesControllerDeleteInput {
   cascade_delete?: boolean;
 }
 export const AuthorizationResourcesControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource_id: Schema.String.pipe(T.PathParam()),
     cascade_delete: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -22,7 +22,7 @@ export const AuthorizationResourcesControllerDeleteInput =
 // Output Schema
 export type AuthorizationResourcesControllerDeleteOutput = void;
 export const AuthorizationResourcesControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationResourcesControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationResourcesControllerDeleteOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const AuthorizationResourcesControllerDeleteOutput =
  * @param cascade_delete - If true, deletes all descendant resources and role assignments. If not set and the resource has children or assignments, the request will fail.
  */
 export const AuthorizationResourcesControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationResourcesControllerDeleteInput,
     outputSchema: AuthorizationResourcesControllerDeleteOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

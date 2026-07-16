@@ -9,7 +9,7 @@ export interface AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssig
   role_assignment_id: string;
 }
 export const AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     group_id: Schema.String.pipe(T.PathParam()),
     role_assignment_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -23,7 +23,7 @@ export const AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmen
 export type AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentOutput =
   void;
 export const AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentOutput>;
 
 // The operation
 /**
@@ -35,7 +35,7 @@ export const AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmen
  * @param role_assignment_id - The ID of the group role assignment to remove.
  */
 export const AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationGroupRoleAssignmentsControllerRemoveGroupRoleAssignmentInput,
     outputSchema:

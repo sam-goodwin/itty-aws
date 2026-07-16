@@ -14,7 +14,7 @@ export interface AvailableGroundStationsListByCapabilityInput {
   capability: "EarthObservation" | "Communication";
 }
 export const AvailableGroundStationsListByCapabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     capability: Schema.Literals(["EarthObservation", "Communication"]),
   }).pipe(
@@ -44,7 +44,7 @@ export interface AvailableGroundStationsListByCapabilityOutput {
   nextLink?: string;
 }
 export const AvailableGroundStationsListByCapabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -75,7 +75,7 @@ export const AvailableGroundStationsListByCapabilityOutput =
  * @param capability - Ground Station Capability.
  */
 export const AvailableGroundStationsListByCapability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AvailableGroundStationsListByCapabilityInput,
     outputSchema: AvailableGroundStationsListByCapabilityOutput,
   }));
@@ -128,7 +128,7 @@ export interface ContactProfilesCreateOrUpdateInput {
   location: string;
 }
 export const ContactProfilesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     contactProfileName: Schema.String.pipe(T.PathParam()),
@@ -217,7 +217,7 @@ export interface ContactProfilesCreateOrUpdateOutput {
   };
 }
 export const ContactProfilesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -247,7 +247,7 @@ export const ContactProfilesCreateOrUpdateOutput =
  * @param contactProfileName - Contact Profile name.
  */
 export const ContactProfilesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ContactProfilesCreateOrUpdateInput,
     outputSchema: ContactProfilesCreateOrUpdateOutput,
   }));
@@ -258,7 +258,7 @@ export interface ContactProfilesDeleteInput {
   contactProfileName: string;
 }
 export const ContactProfilesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     contactProfileName: Schema.String.pipe(T.PathParam()),
@@ -273,7 +273,7 @@ export const ContactProfilesDeleteInput =
 // Output Schema
 export type ContactProfilesDeleteOutput = void;
 export const ContactProfilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContactProfilesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ContactProfilesDeleteOutput>;
 
 // The operation
 /**
@@ -284,12 +284,10 @@ export const ContactProfilesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param contactProfileName - Contact Profile name.
  */
-export const ContactProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContactProfilesDeleteInput,
-    outputSchema: ContactProfilesDeleteOutput,
-  }),
-);
+export const ContactProfilesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContactProfilesDeleteInput,
+  outputSchema: ContactProfilesDeleteOutput,
+}));
 // Input Schema
 export interface ContactProfilesGetInput {
   resourceGroupName: string;
@@ -297,7 +295,7 @@ export interface ContactProfilesGetInput {
   contactProfileName: string;
 }
 export const ContactProfilesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     contactProfileName: Schema.String.pipe(T.PathParam()),
@@ -324,7 +322,7 @@ export interface ContactProfilesGetOutput {
   };
 }
 export const ContactProfilesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -353,7 +351,7 @@ export const ContactProfilesGetOutput =
  * @param api-version - The API version to use for this operation.
  * @param contactProfileName - Contact Profile name.
  */
-export const ContactProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContactProfilesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContactProfilesGetInput,
   outputSchema: ContactProfilesGetOutput,
 }));
@@ -364,7 +362,7 @@ export interface ContactProfilesListInput {
   $skiptoken?: string;
 }
 export const ContactProfilesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $skiptoken: Schema.optional(Schema.String),
@@ -394,7 +392,7 @@ export interface ContactProfilesListOutput {
   nextLink?: string;
 }
 export const ContactProfilesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -440,7 +438,7 @@ export const ContactProfilesListOutput =
  * @param api-version - The API version to use for this operation.
  * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
-export const ContactProfilesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContactProfilesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContactProfilesListInput,
   outputSchema: ContactProfilesListOutput,
 }));
@@ -450,7 +448,7 @@ export interface ContactProfilesListBySubscriptionInput {
   $skiptoken?: string;
 }
 export const ContactProfilesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
@@ -479,7 +477,7 @@ export interface ContactProfilesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const ContactProfilesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -525,7 +523,7 @@ export const ContactProfilesListBySubscriptionOutput =
  * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const ContactProfilesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ContactProfilesListBySubscriptionInput,
     outputSchema: ContactProfilesListBySubscriptionOutput,
   }));
@@ -537,7 +535,7 @@ export interface ContactProfilesUpdateTagsInput {
   tags?: Record<string, string>;
 }
 export const ContactProfilesUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     contactProfileName: Schema.String.pipe(T.PathParam()),
@@ -565,7 +563,7 @@ export interface ContactProfilesUpdateTagsOutput {
   };
 }
 export const ContactProfilesUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -594,12 +592,10 @@ export const ContactProfilesUpdateTagsOutput =
  * @param api-version - The API version to use for this operation.
  * @param contactProfileName - Contact Profile name.
  */
-export const ContactProfilesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContactProfilesUpdateTagsInput,
-    outputSchema: ContactProfilesUpdateTagsOutput,
-  }),
-);
+export const ContactProfilesUpdateTags = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContactProfilesUpdateTagsInput,
+  outputSchema: ContactProfilesUpdateTagsOutput,
+}));
 // Input Schema
 export interface ContactsCreateInput {
   resourceGroupName: string;
@@ -637,7 +633,7 @@ export interface ContactsCreateInput {
     contactProfile: { id: string };
   };
 }
-export const ContactsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContactsCreateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   spacecraftName: Schema.String.pipe(T.PathParam()),
@@ -707,7 +703,7 @@ export interface ContactsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ContactsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContactsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -737,7 +733,7 @@ export const ContactsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param spacecraftName - Spacecraft ID.
  * @param contactName - Contact name.
  */
-export const ContactsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContactsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContactsCreateInput,
   outputSchema: ContactsCreateOutput,
 }));
@@ -748,7 +744,7 @@ export interface ContactsDeleteInput {
   spacecraftName: string;
   contactName: string;
 }
-export const ContactsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContactsDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   spacecraftName: Schema.String.pipe(T.PathParam()),
@@ -764,7 +760,7 @@ export const ContactsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ContactsDeleteOutput = void;
 export const ContactsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContactsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ContactsDeleteOutput>;
 
 // The operation
 /**
@@ -776,7 +772,7 @@ export const ContactsDeleteOutput =
  * @param spacecraftName - Spacecraft ID.
  * @param contactName - Contact name.
  */
-export const ContactsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContactsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContactsDeleteInput,
   outputSchema: ContactsDeleteOutput,
 }));
@@ -787,7 +783,7 @@ export interface ContactsGetInput {
   spacecraftName: string;
   contactName: string;
 }
-export const ContactsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContactsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   spacecraftName: Schema.String.pipe(T.PathParam()),
@@ -814,7 +810,7 @@ export interface ContactsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ContactsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContactsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -844,7 +840,7 @@ export const ContactsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param spacecraftName - Spacecraft ID.
  * @param contactName - Contact name.
  */
-export const ContactsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContactsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContactsGetInput,
   outputSchema: ContactsGetOutput,
 }));
@@ -855,7 +851,7 @@ export interface ContactsListInput {
   spacecraftName: string;
   $skiptoken?: string;
 }
-export const ContactsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContactsListInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   spacecraftName: Schema.String.pipe(T.PathParam()),
@@ -885,7 +881,7 @@ export interface ContactsListOutput {
   }[];
   nextLink?: string;
 }
-export const ContactsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContactsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -932,7 +928,7 @@ export const ContactsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param spacecraftName - Spacecraft ID.
  * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
-export const ContactsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContactsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContactsListInput,
   outputSchema: ContactsListOutput,
 }));
@@ -946,7 +942,7 @@ export interface EdgeSitesCreateOrUpdateInput {
   location: string;
 }
 export const EdgeSitesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     edgeSiteName: Schema.String.pipe(T.PathParam()),
@@ -980,7 +976,7 @@ export interface EdgeSitesCreateOrUpdateOutput {
   };
 }
 export const EdgeSitesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1009,19 +1005,17 @@ export const EdgeSitesCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param edgeSiteName - Edge site name.
  */
-export const EdgeSitesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EdgeSitesCreateOrUpdateInput,
-    outputSchema: EdgeSitesCreateOrUpdateOutput,
-  }),
-);
+export const EdgeSitesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EdgeSitesCreateOrUpdateInput,
+  outputSchema: EdgeSitesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface EdgeSitesDeleteInput {
   resourceGroupName: string;
   subscriptionId: string;
   edgeSiteName: string;
 }
-export const EdgeSitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EdgeSitesDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   edgeSiteName: Schema.String.pipe(T.PathParam()),
@@ -1036,7 +1030,7 @@ export const EdgeSitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type EdgeSitesDeleteOutput = void;
 export const EdgeSitesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EdgeSitesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EdgeSitesDeleteOutput>;
 
 // The operation
 /**
@@ -1047,7 +1041,7 @@ export const EdgeSitesDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param edgeSiteName - Edge site name.
  */
-export const EdgeSitesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EdgeSitesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EdgeSitesDeleteInput,
   outputSchema: EdgeSitesDeleteOutput,
 }));
@@ -1057,7 +1051,7 @@ export interface EdgeSitesGetInput {
   subscriptionId: string;
   edgeSiteName: string;
 }
-export const EdgeSitesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EdgeSitesGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   edgeSiteName: Schema.String.pipe(T.PathParam()),
@@ -1083,7 +1077,7 @@ export interface EdgeSitesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const EdgeSitesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EdgeSitesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1112,7 +1106,7 @@ export const EdgeSitesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param edgeSiteName - Edge site name.
  */
-export const EdgeSitesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EdgeSitesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EdgeSitesGetInput,
   outputSchema: EdgeSitesGetOutput,
 }));
@@ -1122,7 +1116,7 @@ export interface EdgeSitesListInput {
   resourceGroupName: string;
   $skiptoken?: string;
 }
-export const EdgeSitesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EdgeSitesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   $skiptoken: Schema.optional(Schema.String),
@@ -1151,7 +1145,7 @@ export interface EdgeSitesListOutput {
   }[];
   nextLink?: string;
 }
-export const EdgeSitesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EdgeSitesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -1197,7 +1191,7 @@ export const EdgeSitesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
-export const EdgeSitesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EdgeSitesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: EdgeSitesListInput,
   outputSchema: EdgeSitesListOutput,
 }));
@@ -1207,7 +1201,7 @@ export interface EdgeSitesListBySubscriptionInput {
   $skiptoken?: string;
 }
 export const EdgeSitesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
@@ -1236,7 +1230,7 @@ export interface EdgeSitesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const EdgeSitesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1281,12 +1275,10 @@ export const EdgeSitesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
-export const EdgeSitesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EdgeSitesListBySubscriptionInput,
-    outputSchema: EdgeSitesListBySubscriptionOutput,
-  }),
-);
+export const EdgeSitesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EdgeSitesListBySubscriptionInput,
+  outputSchema: EdgeSitesListBySubscriptionOutput,
+}));
 // Input Schema
 export interface EdgeSitesListL2ConnectionsInput {
   subscriptionId: string;
@@ -1294,7 +1286,7 @@ export interface EdgeSitesListL2ConnectionsInput {
   edgeSiteName: string;
 }
 export const EdgeSitesListL2ConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     edgeSiteName: Schema.String.pipe(T.PathParam()),
@@ -1312,7 +1304,7 @@ export interface EdgeSitesListL2ConnectionsOutput {
   nextLink?: string;
 }
 export const EdgeSitesListL2ConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1332,12 +1324,10 @@ export const EdgeSitesListL2ConnectionsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param edgeSiteName - Edge site name.
  */
-export const EdgeSitesListL2Connections = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EdgeSitesListL2ConnectionsInput,
-    outputSchema: EdgeSitesListL2ConnectionsOutput,
-  }),
-);
+export const EdgeSitesListL2Connections = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EdgeSitesListL2ConnectionsInput,
+  outputSchema: EdgeSitesListL2ConnectionsOutput,
+}));
 // Input Schema
 export interface EdgeSitesUpdateTagsInput {
   resourceGroupName: string;
@@ -1346,7 +1336,7 @@ export interface EdgeSitesUpdateTagsInput {
   tags?: Record<string, string>;
 }
 export const EdgeSitesUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     edgeSiteName: Schema.String.pipe(T.PathParam()),
@@ -1374,7 +1364,7 @@ export interface EdgeSitesUpdateTagsOutput {
   };
 }
 export const EdgeSitesUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1403,7 +1393,7 @@ export const EdgeSitesUpdateTagsOutput =
  * @param api-version - The API version to use for this operation.
  * @param edgeSiteName - Edge site name.
  */
-export const EdgeSitesUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EdgeSitesUpdateTags = /*@__PURE__*/ API.make(() => ({
   inputSchema: EdgeSitesUpdateTagsInput,
   outputSchema: EdgeSitesUpdateTagsOutput,
 }));
@@ -1412,7 +1402,7 @@ export interface GlobalCommunicationsSitesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const GlobalCommunicationsSitesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1440,7 +1430,7 @@ export interface GlobalCommunicationsSitesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const GlobalCommunicationsSitesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1485,7 +1475,7 @@ export const GlobalCommunicationsSitesListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const GlobalCommunicationsSitesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GlobalCommunicationsSitesListBySubscriptionInput,
     outputSchema: GlobalCommunicationsSitesListBySubscriptionOutput,
   }));
@@ -1508,7 +1498,7 @@ export interface GroundStationsCreateOrUpdateInput {
   location: string;
 }
 export const GroundStationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     groundStationName: Schema.String.pipe(T.PathParam()),
@@ -1553,7 +1543,7 @@ export interface GroundStationsCreateOrUpdateOutput {
   };
 }
 export const GroundStationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1583,7 +1573,7 @@ export const GroundStationsCreateOrUpdateOutput =
  * @param groundStationName - Ground Station name.
  */
 export const GroundStationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroundStationsCreateOrUpdateInput,
     outputSchema: GroundStationsCreateOrUpdateOutput,
   }));
@@ -1594,7 +1584,7 @@ export interface GroundStationsDeleteInput {
   groundStationName: string;
 }
 export const GroundStationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     groundStationName: Schema.String.pipe(T.PathParam()),
@@ -1609,7 +1599,7 @@ export const GroundStationsDeleteInput =
 // Output Schema
 export type GroundStationsDeleteOutput = void;
 export const GroundStationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroundStationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GroundStationsDeleteOutput>;
 
 // The operation
 /**
@@ -1620,25 +1610,21 @@ export const GroundStationsDeleteOutput =
  * @param groundStationName - Ground Station name.
  * @param api-version - The API version to use for this operation.
  */
-export const GroundStationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroundStationsDeleteInput,
-    outputSchema: GroundStationsDeleteOutput,
-  }),
-);
+export const GroundStationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroundStationsDeleteInput,
+  outputSchema: GroundStationsDeleteOutput,
+}));
 // Input Schema
 export interface GroundStationsGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   groundStationName: string;
 }
-export const GroundStationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    groundStationName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const GroundStationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  groundStationName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
@@ -1661,7 +1647,7 @@ export interface GroundStationsGetOutput {
   };
 }
 export const GroundStationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1690,7 +1676,7 @@ export const GroundStationsGetOutput =
  * @param groundStationName - Ground Station name.
  * @param api-version - The API version to use for this operation.
  */
-export const GroundStationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroundStationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroundStationsGetInput,
   outputSchema: GroundStationsGetOutput,
 }));
@@ -1701,7 +1687,7 @@ export interface GroundStationsListInput {
   $skiptoken?: string;
 }
 export const GroundStationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $skiptoken: Schema.optional(Schema.String),
@@ -1731,7 +1717,7 @@ export interface GroundStationsListOutput {
   nextLink?: string;
 }
 export const GroundStationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1777,7 +1763,7 @@ export const GroundStationsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
-export const GroundStationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GroundStationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: GroundStationsListInput,
   outputSchema: GroundStationsListOutput,
 }));
@@ -1787,7 +1773,7 @@ export interface GroundStationsListBySubscriptionInput {
   $skiptoken?: string;
 }
 export const GroundStationsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
@@ -1816,7 +1802,7 @@ export interface GroundStationsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const GroundStationsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1862,7 +1848,7 @@ export const GroundStationsListBySubscriptionOutput =
  * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const GroundStationsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroundStationsListBySubscriptionInput,
     outputSchema: GroundStationsListBySubscriptionOutput,
   }));
@@ -1873,7 +1859,7 @@ export interface GroundStationsListL2ConnectionsInput {
   groundStationName: string;
 }
 export const GroundStationsListL2ConnectionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     groundStationName: Schema.String.pipe(T.PathParam()),
@@ -1891,7 +1877,7 @@ export interface GroundStationsListL2ConnectionsOutput {
   nextLink?: string;
 }
 export const GroundStationsListL2ConnectionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1912,7 +1898,7 @@ export const GroundStationsListL2ConnectionsOutput =
  * @param groundStationName - Ground Station name.
  */
 export const GroundStationsListL2Connections =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GroundStationsListL2ConnectionsInput,
     outputSchema: GroundStationsListL2ConnectionsOutput,
   }));
@@ -1924,7 +1910,7 @@ export interface GroundStationsUpdateTagsInput {
   tags?: Record<string, string>;
 }
 export const GroundStationsUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     groundStationName: Schema.String.pipe(T.PathParam()),
@@ -1952,7 +1938,7 @@ export interface GroundStationsUpdateTagsOutput {
   };
 }
 export const GroundStationsUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1981,12 +1967,10 @@ export const GroundStationsUpdateTagsOutput =
  * @param api-version - The API version to use for this operation.
  * @param groundStationName - Ground Station name.
  */
-export const GroundStationsUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroundStationsUpdateTagsInput,
-    outputSchema: GroundStationsUpdateTagsOutput,
-  }),
-);
+export const GroundStationsUpdateTags = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroundStationsUpdateTagsInput,
+  outputSchema: GroundStationsUpdateTagsOutput,
+}));
 // Input Schema
 export interface L2ConnectionsCreateOrUpdateInput {
   resourceGroupName: string;
@@ -2011,7 +1995,7 @@ export interface L2ConnectionsCreateOrUpdateInput {
   location: string;
 }
 export const L2ConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     l2ConnectionName: Schema.String.pipe(T.PathParam()),
@@ -2066,7 +2050,7 @@ export interface L2ConnectionsCreateOrUpdateOutput {
   };
 }
 export const L2ConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2095,12 +2079,10 @@ export const L2ConnectionsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param l2ConnectionName - L2 Connection name.
  */
-export const L2ConnectionsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: L2ConnectionsCreateOrUpdateInput,
-    outputSchema: L2ConnectionsCreateOrUpdateOutput,
-  }),
-);
+export const L2ConnectionsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: L2ConnectionsCreateOrUpdateInput,
+  outputSchema: L2ConnectionsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface L2ConnectionsDeleteInput {
   resourceGroupName: string;
@@ -2108,7 +2090,7 @@ export interface L2ConnectionsDeleteInput {
   l2ConnectionName: string;
 }
 export const L2ConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     l2ConnectionName: Schema.String.pipe(T.PathParam()),
@@ -2123,7 +2105,7 @@ export const L2ConnectionsDeleteInput =
 // Output Schema
 export type L2ConnectionsDeleteOutput = void;
 export const L2ConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<L2ConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<L2ConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -2134,7 +2116,7 @@ export const L2ConnectionsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param l2ConnectionName - L2 Connection name.
  */
-export const L2ConnectionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const L2ConnectionsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: L2ConnectionsDeleteInput,
   outputSchema: L2ConnectionsDeleteOutput,
 }));
@@ -2144,7 +2126,7 @@ export interface L2ConnectionsGetInput {
   subscriptionId: string;
   l2ConnectionName: string;
 }
-export const L2ConnectionsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const L2ConnectionsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   l2ConnectionName: Schema.String.pipe(T.PathParam()),
@@ -2170,27 +2152,25 @@ export interface L2ConnectionsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const L2ConnectionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<L2ConnectionsGetOutput>;
+export const L2ConnectionsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<L2ConnectionsGetOutput>;
 
 // The operation
 /**
@@ -2201,7 +2181,7 @@ export const L2ConnectionsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - The API version to use for this operation.
  * @param l2ConnectionName - L2 Connection name.
  */
-export const L2ConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const L2ConnectionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: L2ConnectionsGetInput,
   outputSchema: L2ConnectionsGetOutput,
 }));
@@ -2211,13 +2191,11 @@ export interface L2ConnectionsListInput {
   resourceGroupName: string;
   $skiptoken?: string;
 }
-export const L2ConnectionsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    $skiptoken: Schema.optional(Schema.String),
-  },
-).pipe(
+export const L2ConnectionsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  $skiptoken: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections",
@@ -2243,7 +2221,7 @@ export interface L2ConnectionsListOutput {
   nextLink?: string;
 }
 export const L2ConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2289,7 +2267,7 @@ export const L2ConnectionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
-export const L2ConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const L2ConnectionsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: L2ConnectionsListInput,
   outputSchema: L2ConnectionsListOutput,
 }));
@@ -2299,7 +2277,7 @@ export interface L2ConnectionsListBySubscriptionInput {
   $skiptoken?: string;
 }
 export const L2ConnectionsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
@@ -2328,7 +2306,7 @@ export interface L2ConnectionsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const L2ConnectionsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2374,7 +2352,7 @@ export const L2ConnectionsListBySubscriptionOutput =
  * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const L2ConnectionsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L2ConnectionsListBySubscriptionInput,
     outputSchema: L2ConnectionsListBySubscriptionOutput,
   }));
@@ -2386,7 +2364,7 @@ export interface L2ConnectionsUpdateTagsInput {
   tags?: Record<string, string>;
 }
 export const L2ConnectionsUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     l2ConnectionName: Schema.String.pipe(T.PathParam()),
@@ -2414,7 +2392,7 @@ export interface L2ConnectionsUpdateTagsOutput {
   };
 }
 export const L2ConnectionsUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2443,17 +2421,13 @@ export const L2ConnectionsUpdateTagsOutput =
  * @param api-version - The API version to use for this operation.
  * @param l2ConnectionName - L2 Connection name.
  */
-export const L2ConnectionsUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: L2ConnectionsUpdateTagsInput,
-    outputSchema: L2ConnectionsUpdateTagsOutput,
-  }),
-);
+export const L2ConnectionsUpdateTags = /*@__PURE__*/ API.make(() => ({
+  inputSchema: L2ConnectionsUpdateTagsInput,
+  outputSchema: L2ConnectionsUpdateTagsOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Orbital/operations",
@@ -2477,7 +2451,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2507,7 +2481,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2518,7 +2492,7 @@ export interface OperationsResultsGetInput {
   operationId: string;
 }
 export const OperationsResultsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
@@ -2544,7 +2518,7 @@ export interface OperationsResultsGetOutput {
   error?: { code?: string; message?: string };
 }
 export const OperationsResultsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.optional(
@@ -2573,12 +2547,10 @@ export const OperationsResultsGetOutput =
  * @param location - The name of Azure region.
  * @param operationId - The ID of an ongoing async operation.
  */
-export const OperationsResultsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OperationsResultsGetInput,
-    outputSchema: OperationsResultsGetOutput,
-  }),
-);
+export const OperationsResultsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OperationsResultsGetInput,
+  outputSchema: OperationsResultsGetOutput,
+}));
 // Input Schema
 export interface SpacecraftsCreateOrUpdateInput {
   resourceGroupName: string;
@@ -2609,7 +2581,7 @@ export interface SpacecraftsCreateOrUpdateInput {
   location: string;
 }
 export const SpacecraftsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     spacecraftName: Schema.String.pipe(T.PathParam()),
@@ -2676,7 +2648,7 @@ export interface SpacecraftsCreateOrUpdateOutput {
   };
 }
 export const SpacecraftsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2705,25 +2677,21 @@ export const SpacecraftsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  * @param spacecraftName - Spacecraft ID.
  */
-export const SpacecraftsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SpacecraftsCreateOrUpdateInput,
-    outputSchema: SpacecraftsCreateOrUpdateOutput,
-  }),
-);
+export const SpacecraftsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SpacecraftsCreateOrUpdateInput,
+  outputSchema: SpacecraftsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface SpacecraftsDeleteInput {
   resourceGroupName: string;
   subscriptionId: string;
   spacecraftName: string;
 }
-export const SpacecraftsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    spacecraftName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const SpacecraftsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  spacecraftName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
@@ -2734,7 +2702,7 @@ export const SpacecraftsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type SpacecraftsDeleteOutput = void;
 export const SpacecraftsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SpacecraftsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SpacecraftsDeleteOutput>;
 
 // The operation
 /**
@@ -2745,7 +2713,7 @@ export const SpacecraftsDeleteOutput =
  * @param api-version - The API version to use for this operation.
  * @param spacecraftName - Spacecraft ID.
  */
-export const SpacecraftsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SpacecraftsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SpacecraftsDeleteInput,
   outputSchema: SpacecraftsDeleteOutput,
 }));
@@ -2755,7 +2723,7 @@ export interface SpacecraftsGetInput {
   subscriptionId: string;
   spacecraftName: string;
 }
-export const SpacecraftsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SpacecraftsGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   spacecraftName: Schema.String.pipe(T.PathParam()),
@@ -2781,7 +2749,7 @@ export interface SpacecraftsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SpacecraftsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SpacecraftsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2810,7 +2778,7 @@ export const SpacecraftsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param spacecraftName - Spacecraft ID.
  */
-export const SpacecraftsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SpacecraftsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SpacecraftsGetInput,
   outputSchema: SpacecraftsGetOutput,
 }));
@@ -2820,7 +2788,7 @@ export interface SpacecraftsListInput {
   subscriptionId: string;
   $skiptoken?: string;
 }
-export const SpacecraftsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SpacecraftsListInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $skiptoken: Schema.optional(Schema.String),
@@ -2849,7 +2817,7 @@ export interface SpacecraftsListOutput {
   }[];
   nextLink?: string;
 }
-export const SpacecraftsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SpacecraftsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2895,7 +2863,7 @@ export const SpacecraftsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
-export const SpacecraftsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SpacecraftsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SpacecraftsListInput,
   outputSchema: SpacecraftsListOutput,
 }));
@@ -2910,7 +2878,7 @@ export interface SpacecraftsListAvailableContactsInput {
   endTime: string;
 }
 export const SpacecraftsListAvailableContactsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     spacecraftName: Schema.String.pipe(T.PathParam()),
@@ -2948,7 +2916,7 @@ export interface SpacecraftsListAvailableContactsOutput {
   nextLink?: string;
 }
 export const SpacecraftsListAvailableContactsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2987,7 +2955,7 @@ export const SpacecraftsListAvailableContactsOutput =
  * @param spacecraftName - Spacecraft ID.
  */
 export const SpacecraftsListAvailableContacts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SpacecraftsListAvailableContactsInput,
     outputSchema: SpacecraftsListAvailableContactsOutput,
   }));
@@ -2997,7 +2965,7 @@ export interface SpacecraftsListBySubscriptionInput {
   $skiptoken?: string;
 }
 export const SpacecraftsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $skiptoken: Schema.optional(Schema.String),
   }).pipe(
@@ -3026,7 +2994,7 @@ export interface SpacecraftsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const SpacecraftsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3072,7 +3040,7 @@ export const SpacecraftsListBySubscriptionOutput =
  * @param $skiptoken - An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
  */
 export const SpacecraftsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SpacecraftsListBySubscriptionInput,
     outputSchema: SpacecraftsListBySubscriptionOutput,
   }));
@@ -3084,7 +3052,7 @@ export interface SpacecraftsUpdateTagsInput {
   tags?: Record<string, string>;
 }
 export const SpacecraftsUpdateTagsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     spacecraftName: Schema.String.pipe(T.PathParam()),
@@ -3112,7 +3080,7 @@ export interface SpacecraftsUpdateTagsOutput {
   };
 }
 export const SpacecraftsUpdateTagsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3141,9 +3109,7 @@ export const SpacecraftsUpdateTagsOutput =
  * @param api-version - The API version to use for this operation.
  * @param spacecraftName - Spacecraft ID.
  */
-export const SpacecraftsUpdateTags = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SpacecraftsUpdateTagsInput,
-    outputSchema: SpacecraftsUpdateTagsOutput,
-  }),
-);
+export const SpacecraftsUpdateTags = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SpacecraftsUpdateTagsInput,
+  outputSchema: SpacecraftsUpdateTagsOutput,
+}));

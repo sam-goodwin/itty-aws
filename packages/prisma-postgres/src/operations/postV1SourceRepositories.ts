@@ -16,7 +16,7 @@ export interface PostV1SourceRepositoriesInput {
   installationId?: string;
 }
 export const PostV1SourceRepositoriesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     projectId: Schema.String,
     provider: Schema.String,
     providerRepositoryId: Schema.Number,
@@ -44,7 +44,7 @@ export interface PostV1SourceRepositoriesOutput {
   };
 }
 export const PostV1SourceRepositoriesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Struct({
       id: Schema.String,
       type: Schema.String,
@@ -69,10 +69,8 @@ export const PostV1SourceRepositoriesOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Links a GitHub repository to a Prisma project via an existing SCM installation.
  */
-export const postV1SourceRepositories = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostV1SourceRepositoriesInput,
-    outputSchema: PostV1SourceRepositoriesOutput,
-    errors: [Forbidden, NotFound, Conflict, UnprocessableEntity] as const,
-  }),
-);
+export const postV1SourceRepositories = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostV1SourceRepositoriesInput,
+  outputSchema: PostV1SourceRepositoriesOutput,
+  errors: [Forbidden, NotFound, Conflict, UnprocessableEntity] as const,
+}));

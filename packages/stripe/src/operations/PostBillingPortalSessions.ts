@@ -82,7 +82,7 @@ export interface PostBillingPortalSessionsInput {
   return_url?: string;
 }
 export const PostBillingPortalSessionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.optional(Schema.String),
     customer: Schema.optional(Schema.String),
     customer_account: Schema.optional(Schema.String),
@@ -397,7 +397,7 @@ export interface PostBillingPortalSessionsOutput {
   url: string;
 }
 export const PostBillingPortalSessionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.Union([
       Schema.String,
       Schema.Struct({
@@ -662,9 +662,7 @@ export const PostBillingPortalSessionsOutput =
  *
  * <p>Creates a session of the customer portal.</p>
  */
-export const PostBillingPortalSessions = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostBillingPortalSessionsInput,
-    outputSchema: PostBillingPortalSessionsOutput,
-  }),
-);
+export const PostBillingPortalSessions = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostBillingPortalSessionsInput,
+  outputSchema: PostBillingPortalSessionsOutput,
+}));

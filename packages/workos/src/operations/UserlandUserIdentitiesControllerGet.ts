@@ -8,7 +8,7 @@ export interface UserlandUserIdentitiesControllerGetInput {
   id: string;
 }
 export const UserlandUserIdentitiesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/user_management/users/{id}/identities" }),
@@ -35,7 +35,7 @@ export type UserlandUserIdentitiesControllerGetOutput = ReadonlyArray<{
     | "XeroOAuth";
 }>;
 export const UserlandUserIdentitiesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       idp_id: Schema.String,
       type: Schema.String,
@@ -67,7 +67,7 @@ export const UserlandUserIdentitiesControllerGetOutput =
  * @param id - The unique ID of the user.
  */
 export const UserlandUserIdentitiesControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserIdentitiesControllerGetInput,
     outputSchema: UserlandUserIdentitiesControllerGetOutput,
     errors: [NotFound] as const,

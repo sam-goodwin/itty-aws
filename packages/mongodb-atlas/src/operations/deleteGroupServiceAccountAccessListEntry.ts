@@ -12,7 +12,7 @@ export interface DeleteGroupServiceAccountAccessListEntryInput {
   pretty?: boolean;
 }
 export const DeleteGroupServiceAccountAccessListEntryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clientId: Schema.String.pipe(T.PathParam()),
     ipAddress: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const DeleteGroupServiceAccountAccessListEntryInput =
 // Output Schema
 export type DeleteGroupServiceAccountAccessListEntryOutput = void;
 export const DeleteGroupServiceAccountAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupServiceAccountAccessListEntryOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupServiceAccountAccessListEntryOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const DeleteGroupServiceAccountAccessListEntryOutput =
  * @param ipAddress - One IP address or multiple IP addresses represented as one CIDR block. When specifying a CIDR block with a subnet mask, such as 192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
  */
 export const deleteGroupServiceAccountAccessListEntry =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupServiceAccountAccessListEntryInput,
     outputSchema: DeleteGroupServiceAccountAccessListEntryOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

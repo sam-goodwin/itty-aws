@@ -14,7 +14,7 @@ export interface ServersStartInput {
   resourceGroupName: string;
   serverName: string;
 }
-export const ServersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -29,7 +29,7 @@ export const ServersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ServersStartOutput = void;
 export const ServersStartOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersStartOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersStartOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ export const ServersStartOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const ServersStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersStartInput,
   outputSchema: ServersStartOutput,
 }));
@@ -50,7 +50,7 @@ export interface ServersStopInput {
   resourceGroupName: string;
   serverName: string;
 }
-export const ServersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServersStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   serverName: Schema.String.pipe(T.PathParam()),
@@ -65,7 +65,7 @@ export const ServersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ServersStopOutput = void;
 export const ServersStopOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersStopOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServersStopOutput>;
 
 // The operation
 /**
@@ -76,7 +76,7 @@ export const ServersStopOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param serverName - The name of the server.
  */
-export const ServersStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServersStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServersStopInput,
   outputSchema: ServersStopOutput,
 }));

@@ -150,7 +150,7 @@ interface Config {
   /** The hostname on the origin for which the client certificate uploaded will be used. */
   hostname?: string | null;
 }
-const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Config = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     certId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -216,81 +216,76 @@ interface PutHostnameResponseResult {
   /** The hostname certificate's private key. */
   privateKey?: string | null;
 }
-const PutHostnameResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      certId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      certStatus: Schema.optional(
+const PutHostnameResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    certId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    certStatus: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "initializing",
-              "pending_deployment",
-              "pending_deletion",
-              "active",
-              "deleted",
-              "deployment_timed_out",
-              "deletion_timed_out",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      certUpdatedAt: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      certUploadedOn: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "initializing",
-              "pending_deployment",
-              "pending_deletion",
-              "active",
-              "deleted",
-              "deployment_timed_out",
-              "deletion_timed_out",
-            ]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      privateKey: Schema.optional(Schema.Union([SensitiveString, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        certId: "cert_id",
-        certStatus: "cert_status",
-        certUpdatedAt: "cert_updated_at",
-        certUploadedOn: "cert_uploaded_on",
-        certificate: "certificate",
-        createdAt: "created_at",
-        enabled: "enabled",
-        expiresOn: "expires_on",
-        hostname: "hostname",
-        issuer: "issuer",
-        serialNumber: "serial_number",
-        signature: "signature",
-        status: "status",
-        updatedAt: "updated_at",
-        id: "id",
-        privateKey: "private_key",
-      }),
+        Schema.Null,
+      ]),
     ),
+    certUpdatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    certUploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    privateKey: Schema.optional(Schema.Union([SensitiveString, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      certId: "cert_id",
+      certStatus: "cert_status",
+      certUpdatedAt: "cert_updated_at",
+      certUploadedOn: "cert_uploaded_on",
+      certificate: "certificate",
+      createdAt: "created_at",
+      enabled: "enabled",
+      expiresOn: "expires_on",
+      hostname: "hostname",
+      issuer: "issuer",
+      serialNumber: "serial_number",
+      signature: "signature",
+      status: "status",
+      updatedAt: "updated_at",
+      id: "id",
+      privateKey: "private_key",
+    }),
+  ),
 ) as unknown as Schema.Codec<PutHostnameResponseResult>;
 
 interface ListHostnameCertificatesResponseResult {
@@ -321,7 +316,7 @@ interface ListHostnameCertificatesResponseResult {
   uploadedOn?: string | null;
 }
 const ListHostnameCertificatesResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -391,7 +386,7 @@ interface ListOriginTlsClientAuthsResponseResult {
   privateKey?: string | null;
 }
 const ListOriginTlsClientAuthsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -443,17 +438,16 @@ export interface GetHostnameRequest {
   zoneId: string;
 }
 
-export const GetHostnameRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      hostname: Schema.String.pipe(T.HttpPath("hostname")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/origin_tls_client_auth/hostnames/{hostname}",
-      }),
-    ),
+export const GetHostnameRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    hostname: Schema.String.pipe(T.HttpPath("hostname")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/origin_tls_client_auth/hostnames/{hostname}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetHostnameRequest>;
 
 export interface GetHostnameResponse {
@@ -505,79 +499,74 @@ export interface GetHostnameResponse {
   updatedAt?: string | null;
 }
 
-export const GetHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      certId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      certStatus: Schema.optional(
+export const GetHostnameResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    certId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    certStatus: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "initializing",
-              "pending_deployment",
-              "pending_deletion",
-              "active",
-              "deleted",
-              "deployment_timed_out",
-              "deletion_timed_out",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      certUpdatedAt: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      certUploadedOn: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(
+        Schema.Null,
+      ]),
+    ),
+    certUpdatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    certUploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "initializing",
-              "pending_deployment",
-              "pending_deletion",
-              "active",
-              "deleted",
-              "deployment_timed_out",
-              "deletion_timed_out",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          certId: "cert_id",
-          certStatus: "cert_status",
-          certUpdatedAt: "cert_updated_at",
-          certUploadedOn: "cert_uploaded_on",
-          certificate: "certificate",
-          createdAt: "created_at",
-          enabled: "enabled",
-          expiresOn: "expires_on",
-          hostname: "hostname",
-          issuer: "issuer",
-          serialNumber: "serial_number",
-          signature: "signature",
-          status: "status",
-          updatedAt: "updated_at",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        certId: "cert_id",
+        certStatus: "cert_status",
+        certUpdatedAt: "cert_updated_at",
+        certUploadedOn: "cert_uploaded_on",
+        certificate: "certificate",
+        createdAt: "created_at",
+        enabled: "enabled",
+        expiresOn: "expires_on",
+        hostname: "hostname",
+        issuer: "issuer",
+        serialNumber: "serial_number",
+        signature: "signature",
+        status: "status",
+        updatedAt: "updated_at",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetHostnameResponse>;
 
 export type GetHostnameError =
@@ -590,7 +579,7 @@ export const getHostname: API.OperationMethod<
   GetHostnameResponse,
   GetHostnameError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHostnameRequest,
   output: GetHostnameResponse,
   errors: [HostnameAssociationNotFound, Forbidden],
@@ -603,17 +592,16 @@ export interface PutHostnameRequest {
   config: { certId?: string; enabled?: boolean | null; hostname?: string }[];
 }
 
-export const PutHostnameRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      config: Schema.Array(Config),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/origin_tls_client_auth/hostnames",
-      }),
-    ),
+export const PutHostnameRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    config: Schema.Array(Config),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/origin_tls_client_auth/hostnames",
+    }),
+  ),
 ) as unknown as Schema.Codec<PutHostnameRequest>;
 
 export interface PutHostnameResponse {
@@ -655,11 +643,10 @@ export interface PutHostnameResponse {
   }[];
 }
 
-export const PutHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(PutHostnameResponseResult),
-    }),
+export const PutHostnameResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(PutHostnameResponseResult),
+  }),
 ) as unknown as Schema.Codec<PutHostnameResponse>;
 
 export type PutHostnameError =
@@ -673,7 +660,7 @@ export const putHostname: API.PaginatedOperationMethod<
   PutHostnameResponse,
   PutHostnameError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: PutHostnameRequest,
   output: PutHostnameResponse,
   errors: [HostnameCertificateIdRequired, InvalidHostnameConfig, Forbidden],
@@ -694,7 +681,7 @@ export interface GetHostnameCertificateRequest {
 }
 
 export const GetHostnameCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -735,7 +722,7 @@ export interface GetHostnameCertificateResponse {
 }
 
 export const GetHostnameCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -787,7 +774,7 @@ export const getHostnameCertificate: API.OperationMethod<
   GetHostnameCertificateResponse,
   GetHostnameCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetHostnameCertificateRequest,
   output: GetHostnameCertificateResponse,
   errors: [HostnameCertificateNotFound, Forbidden],
@@ -799,7 +786,7 @@ export interface ListHostnameCertificatesRequest {
 }
 
 export const ListHostnameCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -833,7 +820,7 @@ export interface ListHostnameCertificatesResponse {
 }
 
 export const ListHostnameCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListHostnameCertificatesResponseResult),
     }),
@@ -846,7 +833,7 @@ export const listHostnameCertificates: API.PaginatedOperationMethod<
   ListHostnameCertificatesResponse,
   ListHostnameCertificatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListHostnameCertificatesRequest,
   output: ListHostnameCertificatesResponse,
   errors: [Forbidden],
@@ -866,7 +853,7 @@ export interface CreateHostnameCertificateRequest {
 }
 
 export const CreateHostnameCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       certificate: Schema.String,
@@ -912,7 +899,7 @@ export interface CreateHostnameCertificateResponse {
 }
 
 export const CreateHostnameCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -965,7 +952,7 @@ export const createHostnameCertificate: API.OperationMethod<
   CreateHostnameCertificateResponse,
   CreateHostnameCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHostnameCertificateRequest,
   output: CreateHostnameCertificateResponse,
   errors: [CertificateAlreadyExists, InvalidCertificate, Forbidden],
@@ -978,7 +965,7 @@ export interface DeleteHostnameCertificateRequest {
 }
 
 export const DeleteHostnameCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1019,7 +1006,7 @@ export interface DeleteHostnameCertificateResponse {
 }
 
 export const DeleteHostnameCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1075,7 +1062,7 @@ export const deleteHostnameCertificate: API.OperationMethod<
   DeleteHostnameCertificateResponse,
   DeleteHostnameCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHostnameCertificateRequest,
   output: DeleteHostnameCertificateResponse,
   errors: [
@@ -1099,7 +1086,7 @@ export interface GetOriginTlsClientAuthRequest {
 }
 
 export const GetOriginTlsClientAuthRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1142,7 +1129,7 @@ export interface GetOriginTlsClientAuthResponse {
 }
 
 export const GetOriginTlsClientAuthResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1196,7 +1183,7 @@ export const getOriginTlsClientAuth: API.OperationMethod<
   GetOriginTlsClientAuthResponse,
   GetOriginTlsClientAuthError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOriginTlsClientAuthRequest,
   output: GetOriginTlsClientAuthResponse,
   errors: [CertificateNotFound, Forbidden],
@@ -1208,7 +1195,7 @@ export interface ListOriginTlsClientAuthsRequest {
 }
 
 export const ListOriginTlsClientAuthsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -1245,7 +1232,7 @@ export interface ListOriginTlsClientAuthsResponse {
 }
 
 export const ListOriginTlsClientAuthsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Union([
         Schema.Array(ListOriginTlsClientAuthsResponseResult),
@@ -1261,7 +1248,7 @@ export const listOriginTlsClientAuths: API.PaginatedOperationMethod<
   ListOriginTlsClientAuthsResponse,
   ListOriginTlsClientAuthsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOriginTlsClientAuthsRequest,
   output: ListOriginTlsClientAuthsResponse,
   errors: [Forbidden],
@@ -1281,7 +1268,7 @@ export interface CreateOriginTlsClientAuthRequest {
 }
 
 export const CreateOriginTlsClientAuthRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       certificate: Schema.String,
@@ -1329,7 +1316,7 @@ export interface CreateOriginTlsClientAuthResponse {
 }
 
 export const CreateOriginTlsClientAuthResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1385,7 +1372,7 @@ export const createOriginTlsClientAuth: API.OperationMethod<
   CreateOriginTlsClientAuthResponse,
   CreateOriginTlsClientAuthError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOriginTlsClientAuthRequest,
   output: CreateOriginTlsClientAuthResponse,
   errors: [
@@ -1403,7 +1390,7 @@ export interface DeleteOriginTlsClientAuthRequest {
 }
 
 export const DeleteOriginTlsClientAuthRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1446,7 +1433,7 @@ export interface DeleteOriginTlsClientAuthResponse {
 }
 
 export const DeleteOriginTlsClientAuthResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1503,7 +1490,7 @@ export const deleteOriginTlsClientAuth: API.OperationMethod<
   DeleteOriginTlsClientAuthResponse,
   DeleteOriginTlsClientAuthError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOriginTlsClientAuthRequest,
   output: DeleteOriginTlsClientAuthResponse,
   errors: [
@@ -1524,16 +1511,15 @@ export interface GetSettingRequest {
   zoneId: string;
 }
 
-export const GetSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/origin_tls_client_auth/settings",
-      }),
-    ),
+export const GetSettingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/origin_tls_client_auth/settings",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetSettingRequest>;
 
 export interface GetSettingResponse {
@@ -1541,11 +1527,10 @@ export interface GetSettingResponse {
   enabled?: boolean | null;
 }
 
-export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const GetSettingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetSettingResponse>;
 
 export type GetSettingError = DefaultErrors | Forbidden;
@@ -1555,7 +1540,7 @@ export const getSetting: API.OperationMethod<
   GetSettingResponse,
   GetSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSettingRequest,
   output: GetSettingResponse,
   errors: [Forbidden],
@@ -1568,17 +1553,16 @@ export interface PutSettingRequest {
   enabled: boolean;
 }
 
-export const PutSettingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      enabled: Schema.Boolean,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/zones/{zone_id}/origin_tls_client_auth/settings",
-      }),
-    ),
+export const PutSettingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    enabled: Schema.Boolean,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/origin_tls_client_auth/settings",
+    }),
+  ),
 ) as unknown as Schema.Codec<PutSettingRequest>;
 
 export interface PutSettingResponse {
@@ -1586,11 +1570,10 @@ export interface PutSettingResponse {
   enabled?: boolean | null;
 }
 
-export const PutSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const PutSettingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<PutSettingResponse>;
 
 export type PutSettingError = DefaultErrors | Forbidden;
@@ -1600,7 +1583,7 @@ export const putSetting: API.OperationMethod<
   PutSettingResponse,
   PutSettingError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSettingRequest,
   output: PutSettingResponse,
   errors: [Forbidden],
@@ -1617,7 +1600,7 @@ export interface GetZoneCertificateRequest {
 }
 
 export const GetZoneCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1660,7 +1643,7 @@ export interface GetZoneCertificateResponse {
 }
 
 export const GetZoneCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1711,7 +1694,7 @@ export const getZoneCertificate: API.OperationMethod<
   GetZoneCertificateResponse,
   GetZoneCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetZoneCertificateRequest,
   output: GetZoneCertificateResponse,
   errors: [],
@@ -1723,7 +1706,7 @@ export interface ListZoneCertificatesRequest {
 }
 
 export const ListZoneCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -1758,7 +1741,7 @@ export interface ListZoneCertificatesResponse {
 }
 
 export const ListZoneCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListOriginTlsClientAuthsResponseResult),
     }),
@@ -1771,7 +1754,7 @@ export const listZoneCertificates: API.PaginatedOperationMethod<
   ListZoneCertificatesResponse,
   ListZoneCertificatesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListZoneCertificatesRequest,
   output: ListZoneCertificatesResponse,
   errors: [],
@@ -1791,7 +1774,7 @@ export interface CreateZoneCertificateRequest {
 }
 
 export const CreateZoneCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       certificate: Schema.String,
@@ -1839,7 +1822,7 @@ export interface CreateZoneCertificateResponse {
 }
 
 export const CreateZoneCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1890,7 +1873,7 @@ export const createZoneCertificate: API.OperationMethod<
   CreateZoneCertificateResponse,
   CreateZoneCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateZoneCertificateRequest,
   output: CreateZoneCertificateResponse,
   errors: [],
@@ -1903,7 +1886,7 @@ export interface DeleteZoneCertificateRequest {
 }
 
 export const DeleteZoneCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1946,7 +1929,7 @@ export interface DeleteZoneCertificateResponse {
 }
 
 export const DeleteZoneCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1997,7 +1980,7 @@ export const deleteZoneCertificate: API.OperationMethod<
   DeleteZoneCertificateResponse,
   DeleteZoneCertificateError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteZoneCertificateRequest,
   output: DeleteZoneCertificateResponse,
   errors: [],

@@ -9,7 +9,7 @@ export interface MetricsValuesRetrieveInput {
   value?: string;
 }
 export const MetricsValuesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     value: Schema.optional(Schema.String),
@@ -25,7 +25,7 @@ export interface MetricsValuesRetrieveOutput {
   results: { name: string; metric_type: string }[];
 }
 export const MetricsValuesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         name: Schema.String,
@@ -42,9 +42,7 @@ export const MetricsValuesRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param value - Substring filter (case-insensitive) applied to metric names.
  */
-export const metricsValuesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MetricsValuesRetrieveInput,
-    outputSchema: MetricsValuesRetrieveOutput,
-  }),
-);
+export const metricsValuesRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MetricsValuesRetrieveInput,
+  outputSchema: MetricsValuesRetrieveOutput,
+}));

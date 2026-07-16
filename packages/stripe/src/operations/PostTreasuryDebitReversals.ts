@@ -9,7 +9,7 @@ export interface PostTreasuryDebitReversalsInput {
   received_debit: string;
 }
 export const PostTreasuryDebitReversalsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     received_debit: Schema.String,
@@ -127,7 +127,7 @@ export interface PostTreasuryDebitReversalsOutput {
     | null;
 }
 export const PostTreasuryDebitReversalsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     created: Schema.Number,
     currency: Schema.String,
@@ -255,9 +255,7 @@ export const PostTreasuryDebitReversalsOutput =
  *
  * <p>Reverses a ReceivedDebit and creates a DebitReversal object.</p>
  */
-export const PostTreasuryDebitReversals = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostTreasuryDebitReversalsInput,
-    outputSchema: PostTreasuryDebitReversalsOutput,
-  }),
-);
+export const PostTreasuryDebitReversals = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostTreasuryDebitReversalsInput,
+  outputSchema: PostTreasuryDebitReversalsOutput,
+}));

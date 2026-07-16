@@ -7,7 +7,7 @@ import { BadRequest, NotFound } from "../errors.ts";
 export interface GetProjectInput {
   project_id: string;
 }
-export const GetProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProjectInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/projects/{project_id}" }),
@@ -102,7 +102,7 @@ export interface GetProjectOutput {
       | null;
   };
 }
-export const GetProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetProjectOutput = /*@__PURE__*/ Schema.Struct({
   project: Schema.Struct({
     data_storage_bytes_hour: Schema.Number,
     data_transfer_bytes: Schema.Number,
@@ -222,7 +222,7 @@ export const GetProjectOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - The Neon project ID
  */
-export const getProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetProjectInput,
   outputSchema: GetProjectOutput,
   errors: [BadRequest, NotFound] as const,

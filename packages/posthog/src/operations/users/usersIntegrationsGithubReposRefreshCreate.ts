@@ -8,7 +8,7 @@ export interface UsersIntegrationsGithubReposRefreshCreateInput {
   uuid: string;
 }
 export const UsersIntegrationsGithubReposRefreshCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     installation_id: Schema.String.pipe(T.PathParam()),
     uuid: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -23,7 +23,7 @@ export interface UsersIntegrationsGithubReposRefreshCreateOutput {
   repositories?: { id?: number; name?: string; full_name?: string }[];
 }
 export const UsersIntegrationsGithubReposRefreshCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repositories: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -42,7 +42,7 @@ export const UsersIntegrationsGithubReposRefreshCreateOutput =
  * Refresh repositories accessible to a specific GitHub installation.
  */
 export const usersIntegrationsGithubReposRefreshCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersIntegrationsGithubReposRefreshCreateInput,
     outputSchema: UsersIntegrationsGithubReposRefreshCreateOutput,
   }));

@@ -9,7 +9,7 @@ export interface AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaInput
   role_slug: string;
 }
 export const AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
     role_slug: Schema.String,
   }).pipe(
@@ -23,7 +23,7 @@ export const AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaInput =
 export type AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaOutput =
   void;
 export const AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaOutput =
  * @param organization_membership_id - The ID of the organization membership.
  */
 export const AuthorizationRoleAssignmentsControllerRemoveRoleByCriteria =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaInput,
     outputSchema:

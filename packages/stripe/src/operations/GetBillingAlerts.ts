@@ -11,7 +11,7 @@ export interface GetBillingAlertsInput {
   meter?: string;
   starting_after?: string;
 }
-export const GetBillingAlertsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBillingAlertsInput = /*@__PURE__*/ Schema.Struct({
   alert_type: Schema.optional(Schema.Literals(["usage_threshold"])),
   ending_before: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.String),
@@ -62,68 +62,66 @@ export interface GetBillingAlertsOutput {
   object: "list";
   url: string;
 }
-export const GetBillingAlertsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    data: Schema.Array(
-      Schema.Struct({
-        alert_type: Schema.Literals(["usage_threshold"]),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["billing.alert"]),
-        status: Schema.NullOr(
-          Schema.Literals(["active", "archived", "inactive"]),
-        ),
-        title: Schema.String,
-        usage_threshold: Schema.NullOr(
-          Schema.Struct({
-            filters: Schema.NullOr(
-              Schema.Array(
-                Schema.Struct({
-                  customer: Schema.Unknown,
-                  type: Schema.Literals(["customer"]),
-                }),
-              ),
-            ),
-            gte: Schema.Number,
-            meter: Schema.Union([
-              Schema.String,
+export const GetBillingAlertsOutput = /*@__PURE__*/ Schema.Struct({
+  data: Schema.Array(
+    Schema.Struct({
+      alert_type: Schema.Literals(["usage_threshold"]),
+      id: Schema.String,
+      livemode: Schema.Boolean,
+      object: Schema.Literals(["billing.alert"]),
+      status: Schema.NullOr(
+        Schema.Literals(["active", "archived", "inactive"]),
+      ),
+      title: Schema.String,
+      usage_threshold: Schema.NullOr(
+        Schema.Struct({
+          filters: Schema.NullOr(
+            Schema.Array(
               Schema.Struct({
-                created: Schema.Number,
-                customer_mapping: Schema.Struct({
-                  event_payload_key: Schema.String,
-                  type: Schema.Literals(["by_id"]),
-                }),
-                default_aggregation: Schema.Struct({
-                  formula: Schema.Literals(["count", "last", "sum"]),
-                }),
-                display_name: Schema.String,
-                event_name: Schema.String,
-                event_time_window: Schema.NullOr(
-                  Schema.Literals(["day", "hour"]),
-                ),
-                id: Schema.String,
-                livemode: Schema.Boolean,
-                object: Schema.Literals(["billing.meter"]),
-                status: Schema.Literals(["active", "inactive"]),
-                status_transitions: Schema.Struct({
-                  deactivated_at: Schema.NullOr(Schema.Number),
-                }),
-                updated: Schema.Number,
-                value_settings: Schema.Struct({
-                  event_payload_key: Schema.String,
-                }),
+                customer: Schema.Unknown,
+                type: Schema.Literals(["customer"]),
               }),
-            ]),
-            recurrence: Schema.Literals(["one_time"]),
-          }),
-        ),
-      }),
-    ),
-    has_more: Schema.Boolean,
-    object: Schema.Literals(["list"]),
-    url: Schema.String,
-  },
-) as unknown as Schema.Codec<GetBillingAlertsOutput>;
+            ),
+          ),
+          gte: Schema.Number,
+          meter: Schema.Union([
+            Schema.String,
+            Schema.Struct({
+              created: Schema.Number,
+              customer_mapping: Schema.Struct({
+                event_payload_key: Schema.String,
+                type: Schema.Literals(["by_id"]),
+              }),
+              default_aggregation: Schema.Struct({
+                formula: Schema.Literals(["count", "last", "sum"]),
+              }),
+              display_name: Schema.String,
+              event_name: Schema.String,
+              event_time_window: Schema.NullOr(
+                Schema.Literals(["day", "hour"]),
+              ),
+              id: Schema.String,
+              livemode: Schema.Boolean,
+              object: Schema.Literals(["billing.meter"]),
+              status: Schema.Literals(["active", "inactive"]),
+              status_transitions: Schema.Struct({
+                deactivated_at: Schema.NullOr(Schema.Number),
+              }),
+              updated: Schema.Number,
+              value_settings: Schema.Struct({
+                event_payload_key: Schema.String,
+              }),
+            }),
+          ]),
+          recurrence: Schema.Literals(["one_time"]),
+        }),
+      ),
+    }),
+  ),
+  has_more: Schema.Boolean,
+  object: Schema.Literals(["list"]),
+  url: Schema.String,
+}) as unknown as Schema.Codec<GetBillingAlertsOutput>;
 
 // The operation
 /**
@@ -138,7 +136,7 @@ export const GetBillingAlertsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param meter - Filter results to only include alerts with the given meter.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetBillingAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetBillingAlerts = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBillingAlertsInput,
   outputSchema: GetBillingAlertsOutput,
 }));

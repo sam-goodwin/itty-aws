@@ -64,7 +64,7 @@ export interface AppliancesCreateOrUpdateInput {
   location: string;
 }
 export const AppliancesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -151,7 +151,7 @@ export interface AppliancesCreateOrUpdateOutput {
   };
 }
 export const AppliancesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -182,19 +182,17 @@ export const AppliancesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - Appliances name.
  */
-export const AppliancesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppliancesCreateOrUpdateInput,
-    outputSchema: AppliancesCreateOrUpdateOutput,
-  }),
-);
+export const AppliancesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppliancesCreateOrUpdateInput,
+  outputSchema: AppliancesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface AppliancesDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   resourceName: string;
 }
-export const AppliancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppliancesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -209,7 +207,7 @@ export const AppliancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AppliancesDeleteOutput = void;
 export const AppliancesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AppliancesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AppliancesDeleteOutput>;
 
 // The operation
 /**
@@ -222,7 +220,7 @@ export const AppliancesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - Appliances name.
  */
-export const AppliancesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppliancesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppliancesDeleteInput,
   outputSchema: AppliancesDeleteOutput,
 }));
@@ -232,7 +230,7 @@ export interface AppliancesGetInput {
   resourceGroupName: string;
   resourceName: string;
 }
-export const AppliancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppliancesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -258,7 +256,7 @@ export interface AppliancesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AppliancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppliancesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -289,7 +287,7 @@ export const AppliancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - Appliances name.
  */
-export const AppliancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppliancesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppliancesGetInput,
   outputSchema: AppliancesGetOutput,
 }));
@@ -298,7 +296,7 @@ export interface AppliancesGetTelemetryConfigInput {
   subscriptionId: string;
 }
 export const AppliancesGetTelemetryConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -313,7 +311,7 @@ export interface AppliancesGetTelemetryConfigOutput {
   telemetryInstrumentationKey?: string;
 }
 export const AppliancesGetTelemetryConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     telemetryInstrumentationKey: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<AppliancesGetTelemetryConfigOutput>;
 
@@ -325,7 +323,7 @@ export const AppliancesGetTelemetryConfigOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const AppliancesGetTelemetryConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppliancesGetTelemetryConfigInput,
     outputSchema: AppliancesGetTelemetryConfigOutput,
   }));
@@ -337,7 +335,7 @@ export interface AppliancesGetUpgradeGraphInput {
   upgradeGraph: string;
 }
 export const AppliancesGetUpgradeGraphInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -374,7 +372,7 @@ export interface AppliancesGetUpgradeGraphOutput {
   };
 }
 export const AppliancesGetUpgradeGraphOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -421,19 +419,17 @@ export const AppliancesGetUpgradeGraphOutput =
  * @param resourceName - Appliances name.
  * @param upgradeGraph - Upgrade graph version, ex - stable
  */
-export const AppliancesGetUpgradeGraph = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppliancesGetUpgradeGraphInput,
-    outputSchema: AppliancesGetUpgradeGraphOutput,
-  }),
-);
+export const AppliancesGetUpgradeGraph = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppliancesGetUpgradeGraphInput,
+  outputSchema: AppliancesGetUpgradeGraphOutput,
+}));
 // Input Schema
 export interface AppliancesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const AppliancesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -462,7 +458,7 @@ export interface AppliancesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AppliancesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -508,7 +504,7 @@ export const AppliancesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AppliancesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppliancesListByResourceGroupInput,
     outputSchema: AppliancesListByResourceGroupOutput,
   }));
@@ -517,7 +513,7 @@ export interface AppliancesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AppliancesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -545,7 +541,7 @@ export interface AppliancesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const AppliancesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -590,7 +586,7 @@ export const AppliancesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const AppliancesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppliancesListBySubscriptionInput,
     outputSchema: AppliancesListBySubscriptionOutput,
   }));
@@ -601,7 +597,7 @@ export interface AppliancesListClusterUserCredentialInput {
   resourceName: string;
 }
 export const AppliancesListClusterUserCredentialInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -627,7 +623,7 @@ export interface AppliancesListClusterUserCredentialOutput {
   }[];
 }
 export const AppliancesListClusterUserCredentialOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hybridConnectionConfig: Schema.optional(
       Schema.Struct({
         expirationTime: Schema.optional(Schema.Number),
@@ -660,7 +656,7 @@ export const AppliancesListClusterUserCredentialOutput =
  * @param resourceName - Appliances name.
  */
 export const AppliancesListClusterUserCredential =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AppliancesListClusterUserCredentialInput,
     outputSchema: AppliancesListClusterUserCredentialOutput,
   }));
@@ -672,7 +668,7 @@ export interface AppliancesListKeysInput {
   artifactType?: string;
 }
 export const AppliancesListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -704,7 +700,7 @@ export interface AppliancesListKeysOutput {
   >;
 }
 export const AppliancesListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     artifactProfiles: Schema.optional(
       Schema.Record(
         Schema.String,
@@ -749,14 +745,14 @@ export const AppliancesListKeysOutput =
  * @param resourceName - Appliances name.
  * @param artifactType - This sets the type of artifact being returned, when empty no artifact endpoint is returned.
  */
-export const AppliancesListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppliancesListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppliancesListKeysInput,
   outputSchema: AppliancesListKeysOutput,
 }));
 // Input Schema
 export interface AppliancesListOperationsInput {}
 export const AppliancesListOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.ResourceConnector/operations",
@@ -780,7 +776,7 @@ export interface AppliancesListOperationsOutput {
   nextLink?: string;
 }
 export const AppliancesListOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         display: Schema.optional(
@@ -805,12 +801,10 @@ export const AppliancesListOperationsOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const AppliancesListOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AppliancesListOperationsInput,
-    outputSchema: AppliancesListOperationsOutput,
-  }),
-);
+export const AppliancesListOperations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AppliancesListOperationsInput,
+  outputSchema: AppliancesListOperationsOutput,
+}));
 // Input Schema
 export interface AppliancesUpdateInput {
   subscriptionId: string;
@@ -818,7 +812,7 @@ export interface AppliancesUpdateInput {
   resourceName: string;
   tags?: Record<string, string>;
 }
-export const AppliancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AppliancesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   resourceName: Schema.String.pipe(T.PathParam()),
@@ -845,27 +839,25 @@ export interface AppliancesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const AppliancesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<AppliancesUpdateOutput>;
+export const AppliancesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<AppliancesUpdateOutput>;
 
 // The operation
 /**
@@ -878,7 +870,7 @@ export const AppliancesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - Appliances name.
  */
-export const AppliancesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AppliancesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AppliancesUpdateInput,
   outputSchema: AppliancesUpdateOutput,
 }));

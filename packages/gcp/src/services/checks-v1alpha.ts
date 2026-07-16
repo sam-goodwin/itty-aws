@@ -28,7 +28,7 @@ export interface GoogleChecksReportV1alphaSdk {
 }
 
 export const GoogleChecksReportV1alphaSdk: Schema.Codec<GoogleChecksReportV1alphaSdk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleChecksReportV1alphaSdk" });
 
@@ -38,7 +38,7 @@ export interface GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSd
 }
 
 export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails: Schema.Codec<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
   }).annotate({
     identifier:
@@ -51,7 +51,7 @@ export interface GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence {
 }
 
 export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence: Schema.Codec<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sdkDetails: Schema.optional(
       Schema.Array(
         GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails,
@@ -67,7 +67,7 @@ export interface WaitOperationRequest {
 }
 
 export const WaitOperationRequest: Schema.Codec<WaitOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timeout: Schema.optional(Schema.String),
   }).annotate({ identifier: "WaitOperationRequest" });
 
@@ -77,7 +77,7 @@ export interface GoogleChecksReportV1alphaEndpoint {
 }
 
 export const GoogleChecksReportV1alphaEndpoint: Schema.Codec<GoogleChecksReportV1alphaEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleChecksReportV1alphaEndpoint" });
 
@@ -87,7 +87,7 @@ export interface GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetail
 }
 
 export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails: Schema.Codec<GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoint: Schema.optional(GoogleChecksReportV1alphaEndpoint),
   }).annotate({
     identifier:
@@ -100,7 +100,7 @@ export interface GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk 
 }
 
 export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk: Schema.Codec<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
   }).annotate({
     identifier:
@@ -137,7 +137,7 @@ export interface GoogleChecksReportV1alphaDataTypeEndpointEvidence {
 }
 
 export const GoogleChecksReportV1alphaDataTypeEndpointEvidence: Schema.Codec<GoogleChecksReportV1alphaDataTypeEndpointEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointDetails: Schema.optional(
       Schema.Array(
         GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails,
@@ -161,7 +161,7 @@ export interface GoogleChecksRepoScanV1alphaPullRequest {
 }
 
 export const GoogleChecksRepoScanV1alphaPullRequest: Schema.Codec<GoogleChecksRepoScanV1alphaPullRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     prNumber: Schema.optional(Schema.String),
     baseBranch: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleChecksRepoScanV1alphaPullRequest" });
@@ -178,7 +178,7 @@ export interface GoogleChecksRepoScanV1alphaScmMetadata {
 }
 
 export const GoogleChecksRepoScanV1alphaScmMetadata: Schema.Codec<GoogleChecksRepoScanV1alphaScmMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     branch: Schema.optional(Schema.String),
     remoteUri: Schema.optional(Schema.String),
     pullRequest: Schema.optional(GoogleChecksRepoScanV1alphaPullRequest),
@@ -197,7 +197,7 @@ export interface GoogleChecksRepoScanV1alphaSourceCode {
 }
 
 export const GoogleChecksRepoScanV1alphaSourceCode: Schema.Codec<GoogleChecksRepoScanV1alphaSourceCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     code: Schema.optional(Schema.String),
     startLine: Schema.optional(Schema.Number),
@@ -252,7 +252,7 @@ export interface GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification {
 }
 
 export const GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification: Schema.Codec<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataType: Schema.optional(Schema.String),
     lineNumber: Schema.optional(Schema.Number),
   }).annotate({
@@ -267,7 +267,7 @@ export interface GoogleChecksRepoScanV1alphaCodeScan {
 }
 
 export const GoogleChecksRepoScanV1alphaCodeScan: Schema.Codec<GoogleChecksRepoScanV1alphaCodeScan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceCode: Schema.optional(GoogleChecksRepoScanV1alphaSourceCode),
     dataTypeClassifications: Schema.optional(
       Schema.Array(GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification),
@@ -286,7 +286,7 @@ export interface GoogleChecksRepoScanV1alphaCodeAttribution {
 }
 
 export const GoogleChecksRepoScanV1alphaCodeAttribution: Schema.Codec<GoogleChecksRepoScanV1alphaCodeAttribution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     path: Schema.optional(Schema.String),
     lineNumber: Schema.optional(Schema.Number),
     codeExcerpt: Schema.optional(Schema.String),
@@ -343,7 +343,7 @@ export interface GoogleChecksRepoScanV1alphaSource {
 }
 
 export const GoogleChecksRepoScanV1alphaSource: Schema.Codec<GoogleChecksRepoScanV1alphaSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     codeAttribution: Schema.optional(
       GoogleChecksRepoScanV1alphaCodeAttribution,
     ),
@@ -359,7 +359,7 @@ export interface GoogleChecksRepoScanV1alphaCliAnalysis {
 }
 
 export const GoogleChecksRepoScanV1alphaCliAnalysis: Schema.Codec<GoogleChecksRepoScanV1alphaCliAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     codeScans: Schema.optional(
       Schema.Array(GoogleChecksRepoScanV1alphaCodeScan),
     ),
@@ -378,7 +378,7 @@ export interface GoogleChecksRepoScanV1alphaGenerateScanRequest {
 }
 
 export const GoogleChecksRepoScanV1alphaGenerateScanRequest: Schema.Codec<GoogleChecksRepoScanV1alphaGenerateScanRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     localScanPath: Schema.optional(Schema.String),
     cliVersion: Schema.optional(Schema.String),
     scmMetadata: Schema.optional(GoogleChecksRepoScanV1alphaScmMetadata),
@@ -391,7 +391,7 @@ export interface GoogleChecksReportV1alphaPermission {
 }
 
 export const GoogleChecksReportV1alphaPermission: Schema.Codec<GoogleChecksReportV1alphaPermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleChecksReportV1alphaPermission" });
 
@@ -401,7 +401,7 @@ export interface GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvi
 }
 
 export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails: Schema.Codec<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permission: Schema.optional(GoogleChecksReportV1alphaPermission),
   }).annotate({
     identifier:
@@ -414,7 +414,7 @@ export interface GoogleChecksReportV1alphaCheckSdkEvidence {
 }
 
 export const GoogleChecksReportV1alphaCheckSdkEvidence: Schema.Codec<GoogleChecksReportV1alphaCheckSdkEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
   }).annotate({ identifier: "GoogleChecksReportV1alphaCheckSdkEvidence" });
 
@@ -424,7 +424,7 @@ export interface GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvi
 }
 
 export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence: Schema.Codec<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissionDetails: Schema.optional(
       Schema.Array(
         GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails,
@@ -443,7 +443,7 @@ export interface GoogleChecksReportV1alphaPolicyFragment {
 }
 
 export const GoogleChecksReportV1alphaPolicyFragment: Schema.Codec<GoogleChecksReportV1alphaPolicyFragment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sourceUri: Schema.optional(Schema.String),
     htmlContent: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleChecksReportV1alphaPolicyFragment" });
@@ -456,7 +456,7 @@ export interface GoogleChecksAccountV1alphaApp {
 }
 
 export const GoogleChecksAccountV1alphaApp: Schema.Codec<GoogleChecksAccountV1alphaApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     title: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleChecksAccountV1alphaApp" });
@@ -467,7 +467,7 @@ export interface GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence {
 }
 
 export const GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence: Schema.Codec<GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyFragment: Schema.optional(GoogleChecksReportV1alphaPolicyFragment),
   }).annotate({
     identifier: "GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence",
@@ -481,7 +481,7 @@ export interface GoogleChecksReportV1alphaCheckSdkIssueEvidence {
 }
 
 export const GoogleChecksReportV1alphaCheckSdkIssueEvidence: Schema.Codec<GoogleChecksReportV1alphaCheckSdkIssueEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sdkVersion: Schema.optional(Schema.String),
     sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
   }).annotate({ identifier: "GoogleChecksReportV1alphaCheckSdkIssueEvidence" });
@@ -511,7 +511,7 @@ export interface GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult 
 }
 
 export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult: Schema.Codec<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     score: Schema.optional(Schema.Number),
     policyType: Schema.optional(Schema.String),
     violationResult: Schema.optional(Schema.String),
@@ -528,7 +528,7 @@ export interface GoogleChecksAisafetyV1alphaTextInput {
 }
 
 export const GoogleChecksAisafetyV1alphaTextInput: Schema.Codec<GoogleChecksAisafetyV1alphaTextInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     content: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleChecksAisafetyV1alphaTextInput" });
@@ -539,7 +539,7 @@ export interface GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent {
 }
 
 export const GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent: Schema.Codec<GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     textInput: Schema.optional(GoogleChecksAisafetyV1alphaTextInput),
   }).annotate({
     identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent",
@@ -559,7 +559,7 @@ export interface GoogleChecksReportV1alphaDataMonitoringResultMetadata {
 }
 
 export const GoogleChecksReportV1alphaDataMonitoringResultMetadata: Schema.Codec<GoogleChecksReportV1alphaDataMonitoringResultMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     lastDetectedAppVersion: Schema.optional(Schema.String),
     lastDetectedTime: Schema.optional(Schema.String),
     badges: Schema.optional(Schema.Array(Schema.String)),
@@ -576,7 +576,7 @@ export interface GoogleChecksReportV1alphaDataMonitoringPermissionResult {
 }
 
 export const GoogleChecksReportV1alphaDataMonitoringPermissionResult: Schema.Codec<GoogleChecksReportV1alphaDataMonitoringPermissionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permission: Schema.optional(GoogleChecksReportV1alphaPermission),
     metadata: Schema.optional(
       GoogleChecksReportV1alphaDataMonitoringResultMetadata,
@@ -591,7 +591,7 @@ export interface GoogleChecksAisafetyV1alphaClassifyContentRequestContext {
 }
 
 export const GoogleChecksAisafetyV1alphaClassifyContentRequestContext: Schema.Codec<GoogleChecksAisafetyV1alphaClassifyContentRequestContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     prompt: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestContext",
@@ -603,7 +603,7 @@ export interface GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransit
 }
 
 export const GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo: Schema.Codec<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -616,7 +616,7 @@ export interface GoogleChecksReportV1alphaCheckDataSecurityEvidence {
 }
 
 export const GoogleChecksReportV1alphaCheckDataSecurityEvidence: Schema.Codec<GoogleChecksReportV1alphaCheckDataSecurityEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataInTransitInfo: Schema.optional(
       Schema.Array(
         GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo,
@@ -632,7 +632,7 @@ export interface GoogleChecksReportV1alphaDataTypePermissionEvidence {
 }
 
 export const GoogleChecksReportV1alphaDataTypePermissionEvidence: Schema.Codec<GoogleChecksReportV1alphaDataTypePermissionEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permission: Schema.optional(GoogleChecksReportV1alphaPermission),
   }).annotate({
     identifier: "GoogleChecksReportV1alphaDataTypePermissionEvidence",
@@ -644,7 +644,7 @@ export interface GoogleChecksReportV1alphaCheckEndpointEvidence {
 }
 
 export const GoogleChecksReportV1alphaCheckEndpointEvidence: Schema.Codec<GoogleChecksReportV1alphaCheckEndpointEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoint: Schema.optional(GoogleChecksReportV1alphaEndpoint),
   }).annotate({ identifier: "GoogleChecksReportV1alphaCheckEndpointEvidence" });
 
@@ -654,7 +654,7 @@ export interface GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvide
 }
 
 export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails: Schema.Codec<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoint: Schema.optional(GoogleChecksReportV1alphaEndpoint),
   }).annotate({
     identifier:
@@ -667,7 +667,7 @@ export interface GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvide
 }
 
 export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence: Schema.Codec<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpointDetails: Schema.optional(
       Schema.Array(
         GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails,
@@ -684,7 +684,7 @@ export interface GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence {
 }
 
 export const GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence: Schema.Codec<GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyFragment: Schema.optional(GoogleChecksReportV1alphaPolicyFragment),
   }).annotate({
     identifier: "GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence",
@@ -700,7 +700,7 @@ export interface GoogleChecksReportV1alphaDataTypeEvidence {
 }
 
 export const GoogleChecksReportV1alphaDataTypeEvidence: Schema.Codec<GoogleChecksReportV1alphaDataTypeEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     privacyPolicyTexts: Schema.optional(
       Schema.Array(GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence),
     ),
@@ -760,7 +760,7 @@ export interface GoogleChecksReportV1alphaCheckDataTypeEvidence {
 }
 
 export const GoogleChecksReportV1alphaCheckDataTypeEvidence: Schema.Codec<GoogleChecksReportV1alphaCheckDataTypeEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataType: Schema.optional(Schema.String),
     dataTypeEvidence: Schema.optional(
       GoogleChecksReportV1alphaDataTypeEvidence,
@@ -773,7 +773,7 @@ export interface GoogleChecksReportV1alphaCheckPermissionEvidence {
 }
 
 export const GoogleChecksReportV1alphaCheckPermissionEvidence: Schema.Codec<GoogleChecksReportV1alphaCheckPermissionEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permission: Schema.optional(GoogleChecksReportV1alphaPermission),
   }).annotate({
     identifier: "GoogleChecksReportV1alphaCheckPermissionEvidence",
@@ -803,7 +803,7 @@ export interface GoogleChecksReportV1alphaCheckEvidence {
 }
 
 export const GoogleChecksReportV1alphaCheckEvidence: Schema.Codec<GoogleChecksReportV1alphaCheckEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoints: Schema.optional(
       Schema.Array(GoogleChecksReportV1alphaCheckEndpointEvidence),
     ),
@@ -852,7 +852,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
@@ -874,7 +874,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     done: Schema.optional(Schema.Boolean),
     error: Schema.optional(Status),
@@ -898,7 +898,7 @@ export interface GoogleChecksRepoScanV1alphaRepoScan {
 }
 
 export const GoogleChecksRepoScanV1alphaRepoScan: Schema.Codec<GoogleChecksRepoScanV1alphaRepoScan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     localScanPath: Schema.optional(Schema.String),
     resultsUri: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -925,7 +925,7 @@ export interface GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig {
 }
 
 export const GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig: Schema.Codec<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyType: Schema.optional(Schema.String),
     threshold: Schema.optional(Schema.Number),
   }).annotate({
@@ -948,7 +948,7 @@ export interface GoogleChecksAisafetyV1alphaClassifyContentRequest {
 }
 
 export const GoogleChecksAisafetyV1alphaClassifyContentRequest: Schema.Codec<GoogleChecksAisafetyV1alphaClassifyContentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policies: Schema.optional(
       Schema.Array(
         GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig,
@@ -973,7 +973,7 @@ export interface GoogleChecksReportV1alphaDataMonitoringSdkResult {
 }
 
 export const GoogleChecksReportV1alphaDataMonitoringSdkResult: Schema.Codec<GoogleChecksReportV1alphaDataMonitoringSdkResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
     metadata: Schema.optional(
       GoogleChecksReportV1alphaDataMonitoringResultMetadata,
@@ -992,7 +992,7 @@ export interface GoogleChecksReportV1alphaDataMonitoringEndpointResult {
 }
 
 export const GoogleChecksReportV1alphaDataMonitoringEndpointResult: Schema.Codec<GoogleChecksReportV1alphaDataMonitoringEndpointResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hitCount: Schema.optional(Schema.Number),
     metadata: Schema.optional(
       GoogleChecksReportV1alphaDataMonitoringResultMetadata,
@@ -1052,7 +1052,7 @@ export interface GoogleChecksReportV1alphaDataMonitoringDataTypeResult {
 }
 
 export const GoogleChecksReportV1alphaDataMonitoringDataTypeResult: Schema.Codec<GoogleChecksReportV1alphaDataMonitoringDataTypeResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metadata: Schema.optional(
       GoogleChecksReportV1alphaDataMonitoringResultMetadata,
     ),
@@ -1076,7 +1076,7 @@ export interface GoogleChecksReportV1alphaDataMonitoring {
 }
 
 export const GoogleChecksReportV1alphaDataMonitoring: Schema.Codec<GoogleChecksReportV1alphaDataMonitoring> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(
       Schema.Array(GoogleChecksReportV1alphaDataMonitoringPermissionResult),
     ),
@@ -1109,7 +1109,7 @@ export interface GoogleChecksReportV1alphaAppBundle {
 }
 
 export const GoogleChecksReportV1alphaAppBundle: Schema.Codec<GoogleChecksReportV1alphaAppBundle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bundleId: Schema.optional(Schema.String),
     version: Schema.optional(Schema.String),
     codeReferenceId: Schema.optional(Schema.String),
@@ -1151,7 +1151,7 @@ export interface GoogleChecksReportV1alphaCheckCitation {
 }
 
 export const GoogleChecksReportV1alphaCheckCitation: Schema.Codec<GoogleChecksReportV1alphaCheckCitation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleChecksReportV1alphaCheckCitation" });
 
@@ -1171,7 +1171,7 @@ export interface GoogleChecksReportV1alphaCheckStateMetadata {
 }
 
 export const GoogleChecksReportV1alphaCheckStateMetadata: Schema.Codec<GoogleChecksReportV1alphaCheckStateMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     firstFailingTime: Schema.optional(Schema.String),
     badges: Schema.optional(Schema.Array(Schema.String)),
     lastFailingTime: Schema.optional(Schema.String),
@@ -1298,7 +1298,7 @@ export interface GoogleChecksReportV1alphaCheck {
 }
 
 export const GoogleChecksReportV1alphaCheck: Schema.Codec<GoogleChecksReportV1alphaCheck> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regionCodes: Schema.optional(Schema.Array(Schema.String)),
     evidence: Schema.optional(GoogleChecksReportV1alphaCheckEvidence),
     citations: Schema.optional(
@@ -1324,7 +1324,7 @@ export interface GoogleChecksReportV1alphaReport {
 }
 
 export const GoogleChecksReportV1alphaReport: Schema.Codec<GoogleChecksReportV1alphaReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataMonitoring: Schema.optional(GoogleChecksReportV1alphaDataMonitoring),
     name: Schema.optional(Schema.String),
     appBundle: Schema.optional(GoogleChecksReportV1alphaAppBundle),
@@ -1345,7 +1345,7 @@ export interface GoogleChecksReportV1alphaAnalyzeUploadRequest {
 }
 
 export const GoogleChecksReportV1alphaAnalyzeUploadRequest: Schema.Codec<GoogleChecksReportV1alphaAnalyzeUploadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     codeReferenceId: Schema.optional(Schema.String),
     appBinaryFileType: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleChecksReportV1alphaAnalyzeUploadRequest" });
@@ -1360,7 +1360,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(Operation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -1369,7 +1369,7 @@ export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -1379,7 +1379,7 @@ export interface GoogleChecksAisafetyV1alphaClassifyContentResponse {
 }
 
 export const GoogleChecksAisafetyV1alphaClassifyContentResponse: Schema.Codec<GoogleChecksAisafetyV1alphaClassifyContentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policyResults: Schema.optional(
       Schema.Array(
         GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult,
@@ -1392,7 +1392,7 @@ export const GoogleChecksAisafetyV1alphaClassifyContentResponse: Schema.Codec<Go
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -1404,7 +1404,7 @@ export interface GoogleChecksRepoScanV1alphaListRepoScansResponse {
 }
 
 export const GoogleChecksRepoScanV1alphaListRepoScansResponse: Schema.Codec<GoogleChecksRepoScanV1alphaListRepoScansResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repoScans: Schema.optional(
       Schema.Array(GoogleChecksRepoScanV1alphaRepoScan),
     ),
@@ -1421,7 +1421,7 @@ export interface GoogleChecksAccountV1alphaListAppsResponse {
 }
 
 export const GoogleChecksAccountV1alphaListAppsResponse: Schema.Codec<GoogleChecksAccountV1alphaListAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apps: Schema.optional(Schema.Array(GoogleChecksAccountV1alphaApp)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleChecksAccountV1alphaListAppsResponse" });
@@ -1434,7 +1434,7 @@ export interface GoogleChecksReportV1alphaListReportsResponse {
 }
 
 export const GoogleChecksReportV1alphaListReportsResponse: Schema.Codec<GoogleChecksReportV1alphaListReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reports: Schema.optional(Schema.Array(GoogleChecksReportV1alphaReport)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleChecksReportV1alphaListReportsResponse" });
@@ -1498,18 +1498,16 @@ export interface GetAccountsAppsRequest {
   name: string;
 }
 
-export const GetAccountsAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String.pipe(T.HttpPath("name")),
-  },
-).pipe(
+export const GetAccountsAppsRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+}).pipe(
   T.Http({ method: "GET", path: "v1alpha/{+name}" }),
   svc,
 ) as unknown as Schema.Codec<GetAccountsAppsRequest>;
 
 export type GetAccountsAppsResponse = GoogleChecksAccountV1alphaApp;
 export const GetAccountsAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChecksAccountV1alphaApp;
+  /*@__PURE__*/ GoogleChecksAccountV1alphaApp;
 
 export type GetAccountsAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1519,7 +1517,7 @@ export const getAccountsApps: API.OperationMethod<
   GetAccountsAppsResponse,
   GetAccountsAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsAppsRequest,
   output: GetAccountsAppsResponse,
   errors: [NotFound, Forbidden],
@@ -1535,7 +1533,7 @@ export interface ListAccountsAppsRequest {
 }
 
 export const ListAccountsAppsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1547,7 +1545,7 @@ export const ListAccountsAppsRequest =
 export type ListAccountsAppsResponse =
   GoogleChecksAccountV1alphaListAppsResponse;
 export const ListAccountsAppsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChecksAccountV1alphaListAppsResponse;
+  /*@__PURE__*/ GoogleChecksAccountV1alphaListAppsResponse;
 
 export type ListAccountsAppsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1557,7 +1555,7 @@ export const listAccountsApps: API.PaginatedOperationMethod<
   ListAccountsAppsResponse,
   ListAccountsAppsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAppsRequest,
   output: ListAccountsAppsResponse,
   errors: [NotFound, Forbidden],
@@ -1575,7 +1573,7 @@ export interface CancelAccountsAppsOperationsRequest {
 }
 
 export const CancelAccountsAppsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1584,8 +1582,7 @@ export const CancelAccountsAppsOperationsRequest =
   ) as unknown as Schema.Codec<CancelAccountsAppsOperationsRequest>;
 
 export type CancelAccountsAppsOperationsResponse = Empty;
-export const CancelAccountsAppsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelAccountsAppsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelAccountsAppsOperationsError =
   | DefaultErrors
@@ -1600,7 +1597,7 @@ export const cancelAccountsAppsOperations: API.OperationMethod<
   CancelAccountsAppsOperationsResponse,
   CancelAccountsAppsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelAccountsAppsOperationsRequest,
   output: CancelAccountsAppsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1612,7 +1609,7 @@ export interface GetAccountsAppsOperationsRequest {
 }
 
 export const GetAccountsAppsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -1620,8 +1617,7 @@ export const GetAccountsAppsOperationsRequest =
   ) as unknown as Schema.Codec<GetAccountsAppsOperationsRequest>;
 
 export type GetAccountsAppsOperationsResponse = Operation;
-export const GetAccountsAppsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetAccountsAppsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetAccountsAppsOperationsError =
   | DefaultErrors
@@ -1634,7 +1630,7 @@ export const getAccountsAppsOperations: API.OperationMethod<
   GetAccountsAppsOperationsResponse,
   GetAccountsAppsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsAppsOperationsRequest,
   output: GetAccountsAppsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1648,7 +1644,7 @@ export interface WaitAccountsAppsOperationsRequest {
 }
 
 export const WaitAccountsAppsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(WaitOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1657,8 +1653,7 @@ export const WaitAccountsAppsOperationsRequest =
   ) as unknown as Schema.Codec<WaitAccountsAppsOperationsRequest>;
 
 export type WaitAccountsAppsOperationsResponse = Operation;
-export const WaitAccountsAppsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const WaitAccountsAppsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type WaitAccountsAppsOperationsError =
   | DefaultErrors
@@ -1673,7 +1668,7 @@ export const waitAccountsAppsOperations: API.OperationMethod<
   WaitAccountsAppsOperationsResponse,
   WaitAccountsAppsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: WaitAccountsAppsOperationsRequest,
   output: WaitAccountsAppsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1693,7 +1688,7 @@ export interface ListAccountsAppsOperationsRequest {
 }
 
 export const ListAccountsAppsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("returnPartialSuccess"),
@@ -1708,7 +1703,7 @@ export const ListAccountsAppsOperationsRequest =
 
 export type ListAccountsAppsOperationsResponse = ListOperationsResponse;
 export const ListAccountsAppsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListAccountsAppsOperationsError =
   | DefaultErrors
@@ -1721,7 +1716,7 @@ export const listAccountsAppsOperations: API.PaginatedOperationMethod<
   ListAccountsAppsOperationsResponse,
   ListAccountsAppsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAppsOperationsRequest,
   output: ListAccountsAppsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -1737,7 +1732,7 @@ export interface DeleteAccountsAppsOperationsRequest {
 }
 
 export const DeleteAccountsAppsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
@@ -1745,8 +1740,7 @@ export const DeleteAccountsAppsOperationsRequest =
   ) as unknown as Schema.Codec<DeleteAccountsAppsOperationsRequest>;
 
 export type DeleteAccountsAppsOperationsResponse = Empty;
-export const DeleteAccountsAppsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteAccountsAppsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteAccountsAppsOperationsError =
   | DefaultErrors
@@ -1761,7 +1755,7 @@ export const deleteAccountsAppsOperations: API.OperationMethod<
   DeleteAccountsAppsOperationsResponse,
   DeleteAccountsAppsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsAppsOperationsRequest,
   output: DeleteAccountsAppsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1775,7 +1769,7 @@ export interface GetAccountsAppsReportsRequest {
 }
 
 export const GetAccountsAppsReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     checksFilter: Schema.optional(Schema.String).pipe(
       T.HttpQuery("checksFilter"),
     ),
@@ -1787,7 +1781,7 @@ export const GetAccountsAppsReportsRequest =
 
 export type GetAccountsAppsReportsResponse = GoogleChecksReportV1alphaReport;
 export const GetAccountsAppsReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChecksReportV1alphaReport;
+  /*@__PURE__*/ GoogleChecksReportV1alphaReport;
 
 export type GetAccountsAppsReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1797,7 +1791,7 @@ export const getAccountsAppsReports: API.OperationMethod<
   GetAccountsAppsReportsResponse,
   GetAccountsAppsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsAppsReportsRequest,
   output: GetAccountsAppsReportsResponse,
   errors: [NotFound, Forbidden],
@@ -1817,7 +1811,7 @@ export interface ListAccountsAppsReportsRequest {
 }
 
 export const ListAccountsAppsReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -1833,7 +1827,7 @@ export const ListAccountsAppsReportsRequest =
 export type ListAccountsAppsReportsResponse =
   GoogleChecksReportV1alphaListReportsResponse;
 export const ListAccountsAppsReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChecksReportV1alphaListReportsResponse;
+  /*@__PURE__*/ GoogleChecksReportV1alphaListReportsResponse;
 
 export type ListAccountsAppsReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1843,7 +1837,7 @@ export const listAccountsAppsReports: API.PaginatedOperationMethod<
   ListAccountsAppsReportsResponse,
   ListAccountsAppsReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAppsReportsRequest,
   output: ListAccountsAppsReportsResponse,
   errors: [NotFound, Forbidden],
@@ -1861,7 +1855,7 @@ export interface GenerateAccountsReposScansRequest {
 }
 
 export const GenerateAccountsReposScansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleChecksRepoScanV1alphaGenerateScanRequest).pipe(
       T.HttpBody(),
@@ -1876,8 +1870,7 @@ export const GenerateAccountsReposScansRequest =
   ) as unknown as Schema.Codec<GenerateAccountsReposScansRequest>;
 
 export type GenerateAccountsReposScansResponse = Operation;
-export const GenerateAccountsReposScansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GenerateAccountsReposScansResponse = /*@__PURE__*/ Operation;
 
 export type GenerateAccountsReposScansError =
   | DefaultErrors
@@ -1892,7 +1885,7 @@ export const generateAccountsReposScans: API.OperationMethod<
   GenerateAccountsReposScansResponse,
   GenerateAccountsReposScansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateAccountsReposScansRequest,
   output: GenerateAccountsReposScansResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1910,7 +1903,7 @@ export interface ListAccountsReposScansRequest {
 }
 
 export const ListAccountsReposScansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -1923,7 +1916,7 @@ export const ListAccountsReposScansRequest =
 export type ListAccountsReposScansResponse =
   GoogleChecksRepoScanV1alphaListRepoScansResponse;
 export const ListAccountsReposScansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChecksRepoScanV1alphaListRepoScansResponse;
+  /*@__PURE__*/ GoogleChecksRepoScanV1alphaListRepoScansResponse;
 
 export type ListAccountsReposScansError = DefaultErrors | NotFound | Forbidden;
 
@@ -1933,7 +1926,7 @@ export const listAccountsReposScans: API.PaginatedOperationMethod<
   ListAccountsReposScansResponse,
   ListAccountsReposScansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsReposScansRequest,
   output: ListAccountsReposScansResponse,
   errors: [NotFound, Forbidden],
@@ -1949,7 +1942,7 @@ export interface GetAccountsReposScansRequest {
 }
 
 export const GetAccountsReposScansRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -1958,7 +1951,7 @@ export const GetAccountsReposScansRequest =
 
 export type GetAccountsReposScansResponse = GoogleChecksRepoScanV1alphaRepoScan;
 export const GetAccountsReposScansResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChecksRepoScanV1alphaRepoScan;
+  /*@__PURE__*/ GoogleChecksRepoScanV1alphaRepoScan;
 
 export type GetAccountsReposScansError = DefaultErrors | NotFound | Forbidden;
 
@@ -1968,7 +1961,7 @@ export const getAccountsReposScans: API.OperationMethod<
   GetAccountsReposScansResponse,
   GetAccountsReposScansError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsReposScansRequest,
   output: GetAccountsReposScansResponse,
   errors: [NotFound, Forbidden],
@@ -1980,7 +1973,7 @@ export interface GetAccountsReposOperationsRequest {
 }
 
 export const GetAccountsReposOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -1988,8 +1981,7 @@ export const GetAccountsReposOperationsRequest =
   ) as unknown as Schema.Codec<GetAccountsReposOperationsRequest>;
 
 export type GetAccountsReposOperationsResponse = Operation;
-export const GetAccountsReposOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetAccountsReposOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetAccountsReposOperationsError =
   | DefaultErrors
@@ -2002,7 +1994,7 @@ export const getAccountsReposOperations: API.OperationMethod<
   GetAccountsReposOperationsResponse,
   GetAccountsReposOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsReposOperationsRequest,
   output: GetAccountsReposOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -2014,7 +2006,7 @@ export interface ClassifyContentAisafetyRequest {
 }
 
 export const ClassifyContentAisafetyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleChecksAisafetyV1alphaClassifyContentRequest,
     ).pipe(T.HttpBody()),
@@ -2030,7 +2022,7 @@ export const ClassifyContentAisafetyRequest =
 export type ClassifyContentAisafetyResponse =
   GoogleChecksAisafetyV1alphaClassifyContentResponse;
 export const ClassifyContentAisafetyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleChecksAisafetyV1alphaClassifyContentResponse;
+  /*@__PURE__*/ GoogleChecksAisafetyV1alphaClassifyContentResponse;
 
 export type ClassifyContentAisafetyError =
   | DefaultErrors
@@ -2045,7 +2037,7 @@ export const classifyContentAisafety: API.OperationMethod<
   ClassifyContentAisafetyResponse,
   ClassifyContentAisafetyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ClassifyContentAisafetyRequest,
   output: ClassifyContentAisafetyResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2058,7 +2050,7 @@ export interface UploadMediaRequest {
   body?: GoogleChecksReportV1alphaAnalyzeUploadRequest;
 }
 
-export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UploadMediaRequest = /*@__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   body: Schema.optional(GoogleChecksReportV1alphaAnalyzeUploadRequest).pipe(
     T.HttpBody(),
@@ -2073,7 +2065,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UploadMediaRequest>;
 
 export type UploadMediaResponse = Operation;
-export const UploadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const UploadMediaResponse = /*@__PURE__*/ Operation;
 
 export type UploadMediaError =
   | DefaultErrors
@@ -2088,7 +2080,7 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaResponse,
   UploadMediaError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UploadMediaRequest,
   output: UploadMediaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

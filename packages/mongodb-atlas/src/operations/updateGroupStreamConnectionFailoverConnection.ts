@@ -13,7 +13,7 @@ export interface UpdateGroupStreamConnectionFailoverConnectionInput {
   pretty?: boolean;
 }
 export const UpdateGroupStreamConnectionFailoverConnectionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     connectionName: Schema.String.pipe(T.PathParam()),
@@ -30,7 +30,7 @@ export const UpdateGroupStreamConnectionFailoverConnectionInput =
 // Output Schema
 export type UpdateGroupStreamConnectionFailoverConnectionOutput = void;
 export const UpdateGroupStreamConnectionFailoverConnectionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupStreamConnectionFailoverConnectionOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupStreamConnectionFailoverConnectionOutput>;
 
 // The operation
 /**
@@ -48,7 +48,7 @@ export const UpdateGroupStreamConnectionFailoverConnectionOutput =
  * @param failoverConnectionId - Label that identifies the stream failover connection id.
  */
 export const updateGroupStreamConnectionFailoverConnection =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateGroupStreamConnectionFailoverConnectionInput,
     outputSchema: UpdateGroupStreamConnectionFailoverConnectionOutput,
     errors: [Forbidden, NotFound] as const,

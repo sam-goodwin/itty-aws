@@ -7,11 +7,9 @@ import { BadRequest, NotFound } from "../errors.ts";
 export interface V1ListAllBranchesInput {
   ref: string;
 }
-export const V1ListAllBranchesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const V1ListAllBranchesInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({ method: "GET", path: "/v1/projects/{ref}/branches" }),
 ) as unknown as Schema.Codec<V1ListAllBranchesInput>;
 
@@ -56,7 +54,7 @@ export type V1ListAllBranchesOutput = {
     | "PAUSE_FAILED"
     | "RESIZING";
 }[];
-export const V1ListAllBranchesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const V1ListAllBranchesOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -111,7 +109,7 @@ export const V1ListAllBranchesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  *
  * @param ref - Project ref
  */
-export const v1ListAllBranches = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1ListAllBranches = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1ListAllBranchesInput,
   outputSchema: V1ListAllBranchesOutput,
   errors: [BadRequest, NotFound] as const,

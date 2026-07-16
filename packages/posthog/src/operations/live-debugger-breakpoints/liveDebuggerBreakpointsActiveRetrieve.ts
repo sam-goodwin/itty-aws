@@ -11,7 +11,7 @@ export interface LiveDebuggerBreakpointsActiveRetrieveInput {
   repository?: string;
 }
 export const LiveDebuggerBreakpointsActiveRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     enabled: Schema.optional(Schema.Boolean),
     filename: Schema.optional(Schema.String),
@@ -35,7 +35,7 @@ export interface LiveDebuggerBreakpointsActiveRetrieveOutput {
   }[];
 }
 export const LiveDebuggerBreakpointsActiveRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     breakpoints: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -63,7 +63,7 @@ export const LiveDebuggerBreakpointsActiveRetrieveOutput =
  * @param repository - Filter breakpoints for a specific repository (e.g., 'PostHog/posthog')
  */
 export const liveDebuggerBreakpointsActiveRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LiveDebuggerBreakpointsActiveRetrieveInput,
     outputSchema: LiveDebuggerBreakpointsActiveRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

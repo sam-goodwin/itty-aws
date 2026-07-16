@@ -10,7 +10,7 @@ export interface EngineeringAnalyticsWorkflowRunInput {
   source_id?: string;
 }
 export const EngineeringAnalyticsWorkflowRunInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     run_id: Schema.Number,
     source_id: Schema.optional(Schema.String),
@@ -37,7 +37,7 @@ export interface EngineeringAnalyticsWorkflowRunOutput {
   pr_number: number;
 }
 export const EngineeringAnalyticsWorkflowRunOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     repo: Schema.Struct({
       provider: Schema.String,
       owner: Schema.String,
@@ -65,7 +65,7 @@ export const EngineeringAnalyticsWorkflowRunOutput =
  * @param source_id - Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one.
  */
 export const engineeringAnalyticsWorkflowRun =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EngineeringAnalyticsWorkflowRunInput,
     outputSchema: EngineeringAnalyticsWorkflowRunOutput,
     errors: [BadRequest, NotFound] as const,

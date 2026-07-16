@@ -17,7 +17,7 @@ export interface GuestConfigurationAssignmentReportsGetInput {
   reportId: string;
 }
 export const GuestConfigurationAssignmentReportsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -62,7 +62,7 @@ export interface GuestConfigurationAssignmentReportsGetOutput {
   };
 }
 export const GuestConfigurationAssignmentReportsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -139,7 +139,7 @@ export const GuestConfigurationAssignmentReportsGetOutput =
  * @param reportId - The GUID for the guest configuration assignment report.
  */
 export const GuestConfigurationAssignmentReportsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationAssignmentReportsGetInput,
     outputSchema: GuestConfigurationAssignmentReportsGetOutput,
   }));
@@ -151,7 +151,7 @@ export interface GuestConfigurationAssignmentReportsListInput {
   guestConfigurationAssignmentName: string;
 }
 export const GuestConfigurationAssignmentReportsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -198,7 +198,7 @@ export interface GuestConfigurationAssignmentReportsListOutput {
   nextLink?: string;
 }
 export const GuestConfigurationAssignmentReportsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -285,7 +285,7 @@ export const GuestConfigurationAssignmentReportsListOutput =
  * @param guestConfigurationAssignmentName - The guest configuration assignment name.
  */
 export const GuestConfigurationAssignmentReportsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationAssignmentReportsListInput,
     outputSchema: GuestConfigurationAssignmentReportsListOutput,
   }));
@@ -298,7 +298,7 @@ export interface GuestConfigurationAssignmentReportsVMSSGetInput {
   id: string;
 }
 export const GuestConfigurationAssignmentReportsVMSSGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmssName: Schema.String.pipe(T.PathParam()),
@@ -343,7 +343,7 @@ export interface GuestConfigurationAssignmentReportsVMSSGetOutput {
   };
 }
 export const GuestConfigurationAssignmentReportsVMSSGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -420,7 +420,7 @@ export const GuestConfigurationAssignmentReportsVMSSGetOutput =
  * @param id - The GUID for the guest configuration assignment report.
  */
 export const GuestConfigurationAssignmentReportsVMSSGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationAssignmentReportsVMSSGetInput,
     outputSchema: GuestConfigurationAssignmentReportsVMSSGetOutput,
   }));
@@ -432,7 +432,7 @@ export interface GuestConfigurationAssignmentReportsVMSSListInput {
   name: string;
 }
 export const GuestConfigurationAssignmentReportsVMSSListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmssName: Schema.String.pipe(T.PathParam()),
@@ -479,7 +479,7 @@ export interface GuestConfigurationAssignmentReportsVMSSListOutput {
   nextLink?: string;
 }
 export const GuestConfigurationAssignmentReportsVMSSListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -566,7 +566,7 @@ export const GuestConfigurationAssignmentReportsVMSSListOutput =
  * @param name - The guest configuration assignment name.
  */
 export const GuestConfigurationAssignmentReportsVMSSList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationAssignmentReportsVMSSListInput,
     outputSchema: GuestConfigurationAssignmentReportsVMSSListOutput,
   }));
@@ -655,7 +655,7 @@ export interface GuestConfigurationAssignmentsCreateOrUpdateInput {
   type?: string;
 }
 export const GuestConfigurationAssignmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -835,7 +835,7 @@ export interface GuestConfigurationAssignmentsCreateOrUpdateOutput {
   type?: string;
 }
 export const GuestConfigurationAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
@@ -853,7 +853,7 @@ export const GuestConfigurationAssignmentsCreateOrUpdateOutput =
  * @param guestConfigurationAssignmentName - The guest configuration assignment name.
  */
 export const GuestConfigurationAssignmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationAssignmentsCreateOrUpdateInput,
     outputSchema: GuestConfigurationAssignmentsCreateOrUpdateOutput,
   }));
@@ -865,7 +865,7 @@ export interface GuestConfigurationAssignmentsDeleteInput {
   guestConfigurationAssignmentName: string;
 }
 export const GuestConfigurationAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -881,7 +881,7 @@ export const GuestConfigurationAssignmentsDeleteInput =
 // Output Schema
 export type GuestConfigurationAssignmentsDeleteOutput = void;
 export const GuestConfigurationAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestConfigurationAssignmentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestConfigurationAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -894,7 +894,7 @@ export const GuestConfigurationAssignmentsDeleteOutput =
  * @param guestConfigurationAssignmentName - The guest configuration assignment name.
  */
 export const GuestConfigurationAssignmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationAssignmentsDeleteInput,
     outputSchema: GuestConfigurationAssignmentsDeleteOutput,
   }));
@@ -906,7 +906,7 @@ export interface GuestConfigurationAssignmentsGetInput {
   guestConfigurationAssignmentName: string;
 }
 export const GuestConfigurationAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -927,7 +927,7 @@ export interface GuestConfigurationAssignmentsGetOutput {
   type?: string;
 }
 export const GuestConfigurationAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
@@ -945,7 +945,7 @@ export const GuestConfigurationAssignmentsGetOutput =
  * @param guestConfigurationAssignmentName - The guest configuration assignment name.
  */
 export const GuestConfigurationAssignmentsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationAssignmentsGetInput,
     outputSchema: GuestConfigurationAssignmentsGetOutput,
   }));
@@ -956,7 +956,7 @@ export interface GuestConfigurationAssignmentsListInput {
   vmName: string;
 }
 export const GuestConfigurationAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -974,7 +974,7 @@ export interface GuestConfigurationAssignmentsListOutput {
   nextLink?: string;
 }
 export const GuestConfigurationAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -998,7 +998,7 @@ export const GuestConfigurationAssignmentsListOutput =
  * @param vmName - The name of the virtual machine.
  */
 export const GuestConfigurationAssignmentsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationAssignmentsListInput,
     outputSchema: GuestConfigurationAssignmentsListOutput,
   }));
@@ -1008,7 +1008,7 @@ export interface GuestConfigurationAssignmentsRGListInput {
   subscriptionId: string;
 }
 export const GuestConfigurationAssignmentsRGListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1025,7 +1025,7 @@ export interface GuestConfigurationAssignmentsRGListOutput {
   nextLink?: string;
 }
 export const GuestConfigurationAssignmentsRGListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1048,7 +1048,7 @@ export const GuestConfigurationAssignmentsRGListOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const GuestConfigurationAssignmentsRGList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationAssignmentsRGListInput,
     outputSchema: GuestConfigurationAssignmentsRGListOutput,
   }));
@@ -1057,7 +1057,7 @@ export interface GuestConfigurationAssignmentsSubscriptionListInput {
   subscriptionId: string;
 }
 export const GuestConfigurationAssignmentsSubscriptionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1073,7 +1073,7 @@ export interface GuestConfigurationAssignmentsSubscriptionListOutput {
   nextLink?: string;
 }
 export const GuestConfigurationAssignmentsSubscriptionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1095,7 +1095,7 @@ export const GuestConfigurationAssignmentsSubscriptionListOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const GuestConfigurationAssignmentsSubscriptionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationAssignmentsSubscriptionListInput,
     outputSchema: GuestConfigurationAssignmentsSubscriptionListOutput,
   }));
@@ -1183,7 +1183,7 @@ export interface GuestConfigurationAssignmentsVMSSCreateOrUpdateInput {
   type?: string;
 }
 export const GuestConfigurationAssignmentsVMSSCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmssName: Schema.String.pipe(T.PathParam()),
@@ -1362,7 +1362,7 @@ export interface GuestConfigurationAssignmentsVMSSCreateOrUpdateOutput {
   type?: string;
 }
 export const GuestConfigurationAssignmentsVMSSCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
@@ -1380,7 +1380,7 @@ export const GuestConfigurationAssignmentsVMSSCreateOrUpdateOutput =
  * @param name - The guest configuration assignment name.
  */
 export const GuestConfigurationAssignmentsVMSSCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationAssignmentsVMSSCreateOrUpdateInput,
     outputSchema: GuestConfigurationAssignmentsVMSSCreateOrUpdateOutput,
   }));
@@ -1392,7 +1392,7 @@ export interface GuestConfigurationAssignmentsVMSSDeleteInput {
   name: string;
 }
 export const GuestConfigurationAssignmentsVMSSDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmssName: Schema.String.pipe(T.PathParam()),
@@ -1413,7 +1413,7 @@ export interface GuestConfigurationAssignmentsVMSSDeleteOutput {
   type?: string;
 }
 export const GuestConfigurationAssignmentsVMSSDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
@@ -1431,7 +1431,7 @@ export const GuestConfigurationAssignmentsVMSSDeleteOutput =
  * @param name - The guest configuration assignment name.
  */
 export const GuestConfigurationAssignmentsVMSSDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationAssignmentsVMSSDeleteInput,
     outputSchema: GuestConfigurationAssignmentsVMSSDeleteOutput,
   }));
@@ -1443,7 +1443,7 @@ export interface GuestConfigurationAssignmentsVMSSGetInput {
   name: string;
 }
 export const GuestConfigurationAssignmentsVMSSGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmssName: Schema.String.pipe(T.PathParam()),
@@ -1464,7 +1464,7 @@ export interface GuestConfigurationAssignmentsVMSSGetOutput {
   type?: string;
 }
 export const GuestConfigurationAssignmentsVMSSGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
@@ -1482,7 +1482,7 @@ export const GuestConfigurationAssignmentsVMSSGetOutput =
  * @param name - The guest configuration assignment name.
  */
 export const GuestConfigurationAssignmentsVMSSGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationAssignmentsVMSSGetInput,
     outputSchema: GuestConfigurationAssignmentsVMSSGetOutput,
   }));
@@ -1493,7 +1493,7 @@ export interface GuestConfigurationAssignmentsVMSSListInput {
   vmssName: string;
 }
 export const GuestConfigurationAssignmentsVMSSListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmssName: Schema.String.pipe(T.PathParam()),
@@ -1511,7 +1511,7 @@ export interface GuestConfigurationAssignmentsVMSSListOutput {
   nextLink?: string;
 }
 export const GuestConfigurationAssignmentsVMSSListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1535,7 +1535,7 @@ export const GuestConfigurationAssignmentsVMSSListOutput =
  * @param vmssName - The name of the virtual machine scale set.
  */
 export const GuestConfigurationAssignmentsVMSSList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationAssignmentsVMSSListInput,
     outputSchema: GuestConfigurationAssignmentsVMSSListOutput,
   }));
@@ -1624,7 +1624,7 @@ export interface GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpda
   type?: string;
 }
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -1804,7 +1804,7 @@ export interface GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpda
   type?: string;
 }
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
@@ -1822,7 +1822,7 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateOu
  * @param guestConfigurationAssignmentName - The guest configuration assignment name.
  */
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateInput,
     outputSchema:
@@ -1836,7 +1836,7 @@ export interface GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteInput 
   guestConfigurationAssignmentName: string;
 }
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -1853,7 +1853,7 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteInput =
 export type GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput =
   void;
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -1866,7 +1866,7 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput =
  * @param guestConfigurationAssignmentName - The guest configuration assignment name.
  */
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteInput,
     outputSchema:
       GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteOutput,
@@ -1879,7 +1879,7 @@ export interface GuestConfigurationConnectedVMwarevSphereAssignmentsGetInput {
   guestConfigurationAssignmentName: string;
 }
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -1900,7 +1900,7 @@ export interface GuestConfigurationConnectedVMwarevSphereAssignmentsGetOutput {
   type?: string;
 }
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
@@ -1918,7 +1918,7 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsGetOutput =
  * @param guestConfigurationAssignmentName - The guest configuration assignment name.
  */
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationConnectedVMwarevSphereAssignmentsGetInput,
     outputSchema: GuestConfigurationConnectedVMwarevSphereAssignmentsGetOutput,
   }));
@@ -1929,7 +1929,7 @@ export interface GuestConfigurationConnectedVMwarevSphereAssignmentsListInput {
   vmName: string;
 }
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -1947,7 +1947,7 @@ export interface GuestConfigurationConnectedVMwarevSphereAssignmentsListOutput {
   nextLink?: string;
 }
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1971,7 +1971,7 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsListOutput =
  * @param vmName - The name of the virtual machine.
  */
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationConnectedVMwarevSphereAssignmentsListInput,
     outputSchema: GuestConfigurationConnectedVMwarevSphereAssignmentsListOutput,
   }));
@@ -1984,7 +1984,7 @@ export interface GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetIn
   reportId: string;
 }
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -2029,7 +2029,7 @@ export interface GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetOu
   };
 }
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -2106,7 +2106,7 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetOutput
  * @param reportId - The GUID for the guest configuration assignment report.
  */
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetInput,
     outputSchema:
@@ -2120,7 +2120,7 @@ export interface GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListI
   guestConfigurationAssignmentName: string;
 }
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmName: Schema.String.pipe(T.PathParam()),
@@ -2167,7 +2167,7 @@ export interface GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListO
   nextLink?: string;
 }
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2254,7 +2254,7 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListOutpu
  * @param guestConfigurationAssignmentName - The guest configuration assignment name.
  */
 export const GuestConfigurationConnectedVMwarevSphereAssignmentsReportsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListInput,
     outputSchema:
@@ -2269,7 +2269,7 @@ export interface GuestConfigurationHCRPAssignmentReportsGetInput {
   reportId: string;
 }
 export const GuestConfigurationHCRPAssignmentReportsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -2314,7 +2314,7 @@ export interface GuestConfigurationHCRPAssignmentReportsGetOutput {
   };
 }
 export const GuestConfigurationHCRPAssignmentReportsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -2391,7 +2391,7 @@ export const GuestConfigurationHCRPAssignmentReportsGetOutput =
  * @param reportId - The GUID for the guest configuration assignment report.
  */
 export const GuestConfigurationHCRPAssignmentReportsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationHCRPAssignmentReportsGetInput,
     outputSchema: GuestConfigurationHCRPAssignmentReportsGetOutput,
   }));
@@ -2403,7 +2403,7 @@ export interface GuestConfigurationHCRPAssignmentReportsListInput {
   guestConfigurationAssignmentName: string;
 }
 export const GuestConfigurationHCRPAssignmentReportsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -2450,7 +2450,7 @@ export interface GuestConfigurationHCRPAssignmentReportsListOutput {
   nextLink?: string;
 }
 export const GuestConfigurationHCRPAssignmentReportsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2537,7 +2537,7 @@ export const GuestConfigurationHCRPAssignmentReportsListOutput =
  * @param guestConfigurationAssignmentName - The guest configuration assignment name.
  */
 export const GuestConfigurationHCRPAssignmentReportsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationHCRPAssignmentReportsListInput,
     outputSchema: GuestConfigurationHCRPAssignmentReportsListOutput,
   }));
@@ -2626,7 +2626,7 @@ export interface GuestConfigurationHCRPAssignmentsCreateOrUpdateInput {
   type?: string;
 }
 export const GuestConfigurationHCRPAssignmentsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -2806,7 +2806,7 @@ export interface GuestConfigurationHCRPAssignmentsCreateOrUpdateOutput {
   type?: string;
 }
 export const GuestConfigurationHCRPAssignmentsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
@@ -2824,7 +2824,7 @@ export const GuestConfigurationHCRPAssignmentsCreateOrUpdateOutput =
  * @param guestConfigurationAssignmentName - The guest configuration assignment name.
  */
 export const GuestConfigurationHCRPAssignmentsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationHCRPAssignmentsCreateOrUpdateInput,
     outputSchema: GuestConfigurationHCRPAssignmentsCreateOrUpdateOutput,
   }));
@@ -2836,7 +2836,7 @@ export interface GuestConfigurationHCRPAssignmentsDeleteInput {
   guestConfigurationAssignmentName: string;
 }
 export const GuestConfigurationHCRPAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -2852,7 +2852,7 @@ export const GuestConfigurationHCRPAssignmentsDeleteInput =
 // Output Schema
 export type GuestConfigurationHCRPAssignmentsDeleteOutput = void;
 export const GuestConfigurationHCRPAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestConfigurationHCRPAssignmentsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GuestConfigurationHCRPAssignmentsDeleteOutput>;
 
 // The operation
 /**
@@ -2865,7 +2865,7 @@ export const GuestConfigurationHCRPAssignmentsDeleteOutput =
  * @param guestConfigurationAssignmentName - The guest configuration assignment name.
  */
 export const GuestConfigurationHCRPAssignmentsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationHCRPAssignmentsDeleteInput,
     outputSchema: GuestConfigurationHCRPAssignmentsDeleteOutput,
   }));
@@ -2877,7 +2877,7 @@ export interface GuestConfigurationHCRPAssignmentsGetInput {
   guestConfigurationAssignmentName: string;
 }
 export const GuestConfigurationHCRPAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -2898,7 +2898,7 @@ export interface GuestConfigurationHCRPAssignmentsGetOutput {
   type?: string;
 }
 export const GuestConfigurationHCRPAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.String,
     location: Schema.optional(Schema.String),
@@ -2916,7 +2916,7 @@ export const GuestConfigurationHCRPAssignmentsGetOutput =
  * @param guestConfigurationAssignmentName - The guest configuration assignment name.
  */
 export const GuestConfigurationHCRPAssignmentsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationHCRPAssignmentsGetInput,
     outputSchema: GuestConfigurationHCRPAssignmentsGetOutput,
   }));
@@ -2927,7 +2927,7 @@ export interface GuestConfigurationHCRPAssignmentsListInput {
   machineName: string;
 }
 export const GuestConfigurationHCRPAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     machineName: Schema.String.pipe(T.PathParam()),
@@ -2945,7 +2945,7 @@ export interface GuestConfigurationHCRPAssignmentsListOutput {
   nextLink?: string;
 }
 export const GuestConfigurationHCRPAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2969,15 +2969,13 @@ export const GuestConfigurationHCRPAssignmentsListOutput =
  * @param machineName - The name of the ARC machine.
  */
 export const GuestConfigurationHCRPAssignmentsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GuestConfigurationHCRPAssignmentsListInput,
     outputSchema: GuestConfigurationHCRPAssignmentsListOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.GuestConfiguration/operations",
@@ -2999,7 +2997,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -3027,7 +3025,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

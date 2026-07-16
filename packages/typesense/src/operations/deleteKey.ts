@@ -7,7 +7,7 @@ import { BadRequest, NotFound } from "../errors.ts";
 export interface DeleteKeyInput {
   keyId: number;
 }
-export const DeleteKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteKeyInput = /*@__PURE__*/ Schema.Struct({
   keyId: Schema.Number.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "DELETE", path: "/keys/{keyId}" }),
@@ -17,7 +17,7 @@ export const DeleteKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface DeleteKeyOutput {
   id: number;
 }
-export const DeleteKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteKeyOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.Number,
 }) as unknown as Schema.Codec<DeleteKeyOutput>;
 
@@ -27,7 +27,7 @@ export const DeleteKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param keyId - The ID of the key to delete
  */
-export const deleteKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteKeyInput,
   outputSchema: DeleteKeyOutput,
   errors: [BadRequest, NotFound] as const,

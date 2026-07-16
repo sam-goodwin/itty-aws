@@ -21,7 +21,7 @@ export interface CreateAPITokenInput {
     | "full-access"
   )[];
 }
-export const CreateAPITokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateAPITokenInput = /*@__PURE__*/ Schema.Struct({
   tokenName: Schema.String.pipe(T.PathParam()),
   organization: Schema.optional(Schema.String),
   group: Schema.optional(Schema.String),
@@ -52,7 +52,7 @@ export interface CreateAPITokenOutput {
   id?: string;
   token?: string;
 }
-export const CreateAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateAPITokenOutput = /*@__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   id: Schema.optional(Schema.String),
   token: Schema.optional(Schema.String),
@@ -71,7 +71,7 @@ export const CreateAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param tokenName - The name of the api token.
  */
-export const createAPIToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createAPIToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateAPITokenInput,
   outputSchema: CreateAPITokenOutput,
 }));

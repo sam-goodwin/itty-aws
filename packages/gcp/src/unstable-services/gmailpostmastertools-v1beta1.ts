@@ -37,7 +37,7 @@ export interface Domain {
 }
 
 export const Domain: Schema.Codec<Domain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export interface ListDomainsResponse {
 }
 
 export const ListDomainsResponse: Schema.Codec<ListDomainsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domains: Schema.optional(Schema.Array(Domain)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListDomainsResponse" });
@@ -82,7 +82,7 @@ export interface DeliveryError {
 }
 
 export const DeliveryError: Schema.Codec<DeliveryError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     errorType: Schema.optional(Schema.String),
     errorClass: Schema.optional(Schema.String),
     errorRatio: Schema.optional(Schema.Number),
@@ -106,7 +106,7 @@ export interface IpReputation {
 }
 
 export const IpReputation: Schema.Codec<IpReputation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reputation: Schema.optional(Schema.String),
     numIps: Schema.optional(Schema.String),
     sampleIps: Schema.optional(Schema.Array(Schema.String)),
@@ -121,7 +121,7 @@ export interface FeedbackLoop {
 }
 
 export const FeedbackLoop: Schema.Codec<FeedbackLoop> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     spamRatio: Schema.optional(Schema.Number),
   }).annotate({ identifier: "FeedbackLoop" });
@@ -162,7 +162,7 @@ export interface TrafficStats {
 }
 
 export const TrafficStats: Schema.Codec<TrafficStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deliveryErrors: Schema.optional(Schema.Array(DeliveryError)),
     userReportedSpamRatio: Schema.optional(Schema.Number),
     dmarcSuccessRatio: Schema.optional(Schema.Number),
@@ -186,7 +186,7 @@ export interface ListTrafficStatsResponse {
 }
 
 export const ListTrafficStatsResponse: Schema.Codec<ListTrafficStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     trafficStats: Schema.optional(Schema.Array(TrafficStats)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListTrafficStatsResponse" });
@@ -229,7 +229,7 @@ export interface ListDomainsRequest {
   pageToken?: string;
 }
 
-export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListDomainsRequest = /*@__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
 }).pipe(
@@ -238,8 +238,7 @@ export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<ListDomainsRequest>;
 
 export type ListDomainsResponse_Op = ListDomainsResponse;
-export const ListDomainsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListDomainsResponse;
+export const ListDomainsResponse_Op = /*@__PURE__*/ ListDomainsResponse;
 
 export type ListDomainsError = DefaultErrors | NotFound | Forbidden;
 
@@ -249,7 +248,7 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsResponse_Op,
   ListDomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -264,7 +263,7 @@ export interface GetDomainsRequest {
   name: string;
 }
 
-export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDomainsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -272,7 +271,7 @@ export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetDomainsRequest>;
 
 export type GetDomainsResponse = Domain;
-export const GetDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
+export const GetDomainsResponse = /*@__PURE__*/ Domain;
 
 export type GetDomainsError = DefaultErrors | NotFound | Forbidden;
 
@@ -282,7 +281,7 @@ export const getDomains: API.OperationMethod<
   GetDomainsResponse,
   GetDomainsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainsRequest,
   output: GetDomainsResponse,
   errors: [NotFound, Forbidden],
@@ -294,7 +293,7 @@ export interface GetDomainsTrafficStatsRequest {
 }
 
 export const GetDomainsTrafficStatsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -302,8 +301,7 @@ export const GetDomainsTrafficStatsRequest =
   ) as unknown as Schema.Codec<GetDomainsTrafficStatsRequest>;
 
 export type GetDomainsTrafficStatsResponse = TrafficStats;
-export const GetDomainsTrafficStatsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TrafficStats;
+export const GetDomainsTrafficStatsResponse = /*@__PURE__*/ TrafficStats;
 
 export type GetDomainsTrafficStatsError = DefaultErrors | NotFound | Forbidden;
 
@@ -313,7 +311,7 @@ export const getDomainsTrafficStats: API.OperationMethod<
   GetDomainsTrafficStatsResponse,
   GetDomainsTrafficStatsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainsTrafficStatsRequest,
   output: GetDomainsTrafficStatsResponse,
   errors: [NotFound, Forbidden],
@@ -341,7 +339,7 @@ export interface ListDomainsTrafficStatsRequest {
 }
 
 export const ListDomainsTrafficStatsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "startDate.month": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("startDate.month"),
     ),
@@ -370,7 +368,7 @@ export const ListDomainsTrafficStatsRequest =
 
 export type ListDomainsTrafficStatsResponse = ListTrafficStatsResponse;
 export const ListDomainsTrafficStatsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListTrafficStatsResponse;
+  /*@__PURE__*/ ListTrafficStatsResponse;
 
 export type ListDomainsTrafficStatsError = DefaultErrors | NotFound | Forbidden;
 
@@ -380,7 +378,7 @@ export const listDomainsTrafficStats: API.PaginatedOperationMethod<
   ListDomainsTrafficStatsResponse,
   ListDomainsTrafficStatsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsTrafficStatsRequest,
   output: ListDomainsTrafficStatsResponse,
   errors: [NotFound, Forbidden],

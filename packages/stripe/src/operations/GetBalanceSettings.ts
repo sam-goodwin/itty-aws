@@ -7,7 +7,7 @@ export interface GetBalanceSettingsInput {
   expand?: string;
 }
 export const GetBalanceSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -54,7 +54,7 @@ export interface GetBalanceSettingsOutput {
   };
 }
 export const GetBalanceSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Literals(["balance_settings"]),
     payments: Schema.Struct({
       debit_negative_balances: Schema.NullOr(Schema.Boolean),
@@ -124,7 +124,7 @@ export const GetBalanceSettingsOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetBalanceSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetBalanceSettings = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBalanceSettingsInput,
   outputSchema: GetBalanceSettingsOutput,
 }));

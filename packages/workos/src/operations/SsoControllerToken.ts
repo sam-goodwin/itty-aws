@@ -13,7 +13,7 @@ export interface SsoControllerTokenInput {
   grant_type: string;
 }
 export const SsoControllerTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     client_id: Schema.String,
     client_secret: Schema.String,
     code: Schema.String,
@@ -104,7 +104,7 @@ export interface SsoControllerTokenOutput {
   };
 }
 export const SsoControllerTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token_type: Schema.optional(Schema.String),
     access_token: Schema.optional(SensitiveOutputString),
     expires_in: Schema.optional(Schema.Number),
@@ -221,7 +221,7 @@ export const SsoControllerTokenOutput =
  * @param code - The authorization code received from the authorization callback.
  * @param grant_type - The grant type for the token request.
  */
-export const SsoControllerToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SsoControllerToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: SsoControllerTokenInput,
   outputSchema: SsoControllerTokenOutput,
   errors: [BadRequest, NotFound, UnprocessableEntity] as const,

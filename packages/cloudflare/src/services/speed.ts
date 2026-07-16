@@ -58,7 +58,7 @@ interface Value {
   free?: number | null;
   pro?: number | null;
 }
-const Value = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Value = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     business: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     enterprise: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -76,7 +76,7 @@ interface QuotasPerPlan {
     pro?: number | null;
   } | null;
 }
-const QuotasPerPlan = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const QuotasPerPlan = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     value: Schema.optional(Schema.Union([Value, Schema.Null])),
   }),
@@ -108,7 +108,7 @@ interface Quota {
     } | null;
   } | null;
 }
-const Quota = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Quota = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     plan: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     quotasPerPlan: Schema.optional(Schema.Union([QuotasPerPlan, Schema.Null])),
@@ -150,7 +150,7 @@ interface LabeledRegion {
     | (string & {})
     | null;
 }
-const LabeledRegion = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LabeledRegion = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     value: Schema.optional(
@@ -305,7 +305,7 @@ interface RegionsPerPlan {
       }[]
     | null;
 }
-const RegionsPerPlan = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RegionsPerPlan = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     business: Schema.optional(
       Schema.Union([Schema.Array(LabeledRegion), Schema.Null]),
@@ -337,7 +337,7 @@ interface Error2 {
   /** The final URL displayed to the user. */
   finalDisplayedUrl?: string | null;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.optional(
       Schema.Union([
@@ -397,7 +397,7 @@ interface LighthouseReport {
   /** Time To Interactive. */
   tti?: number | null;
 }
-const LighthouseReport = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const LighthouseReport = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cls: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     deviceType: Schema.optional(
@@ -518,7 +518,7 @@ interface Test {
   /** A URL. */
   url?: string | null;
 }
-const Test = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Test = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -658,7 +658,7 @@ interface ListPagesResponseResult {
   /** A URL. */
   url?: string | null;
 }
-const ListPagesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ListPagesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     region: Schema.optional(Schema.Union([LabeledRegion, Schema.Null])),
     scheduleFrequency: Schema.optional(
@@ -679,7 +679,7 @@ interface ListPageTestsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListPageTestsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -726,7 +726,7 @@ interface Schedule {
   /** A URL. */
   url?: string | null;
 }
-const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Schedule = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     frequency: Schema.optional(
       Schema.Union([
@@ -779,7 +779,7 @@ export interface ListAvailabilitiesRequest {
 }
 
 export const ListAvailabilitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
@@ -963,7 +963,7 @@ export interface ListAvailabilitiesResponse {
 }
 
 export const ListAvailabilitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       quota: Schema.optional(Schema.Union([Quota, Schema.Null])),
       regions: Schema.optional(
@@ -982,7 +982,7 @@ export const listAvailabilities: API.OperationMethod<
   ListAvailabilitiesResponse,
   ListAvailabilitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAvailabilitiesRequest,
   output: ListAvailabilitiesResponse,
   errors: [],
@@ -997,7 +997,7 @@ export interface ListPagesRequest {
   zoneId: string;
 }
 
-export const ListPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ListPagesRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/speed_api/pages" })),
@@ -1122,11 +1122,10 @@ export interface ListPagesResponse {
   }[];
 }
 
-export const ListPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListPagesResponseResult),
-    }),
+export const ListPagesResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListPagesResponseResult),
+  }),
 ) as unknown as Schema.Codec<ListPagesResponse>;
 
 export type ListPagesError = DefaultErrors;
@@ -1136,7 +1135,7 @@ export const listPages: API.PaginatedOperationMethod<
   ListPagesResponse,
   ListPagesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPagesRequest,
   output: ListPagesResponse,
   errors: [],
@@ -1186,7 +1185,7 @@ export interface TrendPageRequest {
   end?: string;
 }
 
-export const TrendPageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const TrendPageRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     url: Schema.String.pipe(T.HttpPath("url")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
@@ -1251,58 +1250,57 @@ export interface TrendPageResponse {
   tti?: (number | null)[] | null;
 }
 
-export const TrendPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      cls: Schema.optional(
-        Schema.Union([
-          Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
-          Schema.Null,
-        ]),
-      ),
-      fcp: Schema.optional(
-        Schema.Union([
-          Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
-          Schema.Null,
-        ]),
-      ),
-      lcp: Schema.optional(
-        Schema.Union([
-          Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
-          Schema.Null,
-        ]),
-      ),
-      performanceScore: Schema.optional(
-        Schema.Union([
-          Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
-          Schema.Null,
-        ]),
-      ),
-      si: Schema.optional(
-        Schema.Union([
-          Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
-          Schema.Null,
-        ]),
-      ),
-      tbt: Schema.optional(
-        Schema.Union([
-          Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
-          Schema.Null,
-        ]),
-      ),
-      ttfb: Schema.optional(
-        Schema.Union([
-          Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
-          Schema.Null,
-        ]),
-      ),
-      tti: Schema.optional(
-        Schema.Union([
-          Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(T.ResponsePath("result")),
+export const TrendPageResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    cls: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+        Schema.Null,
+      ]),
+    ),
+    fcp: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+        Schema.Null,
+      ]),
+    ),
+    lcp: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+        Schema.Null,
+      ]),
+    ),
+    performanceScore: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+        Schema.Null,
+      ]),
+    ),
+    si: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+        Schema.Null,
+      ]),
+    ),
+    tbt: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+        Schema.Null,
+      ]),
+    ),
+    ttfb: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+        Schema.Null,
+      ]),
+    ),
+    tti: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Union([Schema.Number, Schema.Null])),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<TrendPageResponse>;
 
 export type TrendPageError = DefaultErrors;
@@ -1312,7 +1310,7 @@ export const trendPage: API.OperationMethod<
   TrendPageResponse,
   TrendPageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TrendPageRequest,
   output: TrendPageResponse,
   errors: [],
@@ -1329,18 +1327,17 @@ export interface GetPageTestRequest {
   zoneId: string;
 }
 
-export const GetPageTestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      url: Schema.String.pipe(T.HttpPath("url")),
-      testId: Schema.String.pipe(T.HttpPath("testId")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/speed_api/pages/{url}/tests/{testId}",
-      }),
-    ),
+export const GetPageTestRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    url: Schema.String.pipe(T.HttpPath("url")),
+    testId: Schema.String.pipe(T.HttpPath("testId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/speed_api/pages/{url}/tests/{testId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetPageTestRequest>;
 
 export interface GetPageTestResponse {
@@ -1433,26 +1430,25 @@ export interface GetPageTestResponse {
   url?: string | null;
 }
 
-export const GetPageTestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      desktopReport: Schema.optional(
-        Schema.Union([LighthouseReport, Schema.Null]),
-      ),
-      mobileReport: Schema.optional(
-        Schema.Union([LighthouseReport, Schema.Null]),
-      ),
-      region: Schema.optional(Schema.Union([LabeledRegion, Schema.Null])),
-      scheduleFrequency: Schema.optional(
-        Schema.Union([
-          Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
-          Schema.Null,
-        ]),
-      ),
-      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+export const GetPageTestResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    desktopReport: Schema.optional(
+      Schema.Union([LighthouseReport, Schema.Null]),
+    ),
+    mobileReport: Schema.optional(
+      Schema.Union([LighthouseReport, Schema.Null]),
+    ),
+    region: Schema.optional(Schema.Union([LabeledRegion, Schema.Null])),
+    scheduleFrequency: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetPageTestResponse>;
 
 export type GetPageTestError = DefaultErrors;
@@ -1462,7 +1458,7 @@ export const getPageTest: API.OperationMethod<
   GetPageTestResponse,
   GetPageTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPageTestRequest,
   output: GetPageTestResponse,
   errors: [],
@@ -1500,47 +1496,46 @@ export interface ListPageTestsRequest {
     | (string & {});
 }
 
-export const ListPageTestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      url: Schema.String.pipe(T.HttpPath("url")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      region: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "asia-east1",
-            "asia-northeast1",
-            "asia-northeast2",
-            "asia-south1",
-            "asia-southeast1",
-            "australia-southeast1",
-            "europe-north1",
-            "europe-southwest1",
-            "europe-west1",
-            "europe-west2",
-            "europe-west3",
-            "europe-west4",
-            "europe-west8",
-            "europe-west9",
-            "me-west1",
-            "southamerica-east1",
-            "us-central1",
-            "us-east1",
-            "us-east4",
-            "us-south1",
-            "us-west1",
-          ]),
-          Schema.String,
+export const ListPageTestsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    url: Schema.String.pipe(T.HttpPath("url")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    region: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "asia-east1",
+          "asia-northeast1",
+          "asia-northeast2",
+          "asia-south1",
+          "asia-southeast1",
+          "australia-southeast1",
+          "europe-north1",
+          "europe-southwest1",
+          "europe-west1",
+          "europe-west2",
+          "europe-west3",
+          "europe-west4",
+          "europe-west8",
+          "europe-west9",
+          "me-west1",
+          "southamerica-east1",
+          "us-central1",
+          "us-east1",
+          "us-east4",
+          "us-south1",
+          "us-west1",
         ]),
-      ).pipe(T.HttpQuery("region")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/speed_api/pages/{url}/tests",
-      }),
-    ),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("region")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/speed_api/pages/{url}/tests",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListPageTestsRequest>;
 
 export interface ListPageTestsResponse {
@@ -1635,14 +1630,13 @@ export interface ListPageTestsResponse {
   } | null;
 }
 
-export const ListPageTestsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(Test),
-      resultInfo: Schema.optional(
-        Schema.Union([ListPageTestsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListPageTestsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(Test),
+    resultInfo: Schema.optional(
+      Schema.Union([ListPageTestsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListPageTestsResponse>;
 
 export type ListPageTestsError = DefaultErrors;
@@ -1652,7 +1646,7 @@ export const listPageTests: API.PaginatedOperationMethod<
   ListPageTestsResponse,
   ListPageTestsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPageTestsRequest,
   output: ListPageTestsResponse,
   errors: [],
@@ -1695,45 +1689,44 @@ export interface CreatePageTestRequest {
     | (string & {});
 }
 
-export const CreatePageTestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      url: Schema.String.pipe(T.HttpPath("url")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      region: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "asia-east1",
-            "asia-northeast1",
-            "asia-northeast2",
-            "asia-south1",
-            "asia-southeast1",
-            "australia-southeast1",
-            "europe-north1",
-            "europe-southwest1",
-            "europe-west1",
-            "europe-west2",
-            "europe-west3",
-            "europe-west4",
-            "europe-west8",
-            "europe-west9",
-            "me-west1",
-            "southamerica-east1",
-            "us-central1",
-            "us-east1",
-            "us-east4",
-            "us-south1",
-            "us-west1",
-          ]),
-          Schema.String,
+export const CreatePageTestRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    url: Schema.String.pipe(T.HttpPath("url")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    region: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "asia-east1",
+          "asia-northeast1",
+          "asia-northeast2",
+          "asia-south1",
+          "asia-southeast1",
+          "australia-southeast1",
+          "europe-north1",
+          "europe-southwest1",
+          "europe-west1",
+          "europe-west2",
+          "europe-west3",
+          "europe-west4",
+          "europe-west8",
+          "europe-west9",
+          "me-west1",
+          "southamerica-east1",
+          "us-central1",
+          "us-east1",
+          "us-east4",
+          "us-south1",
+          "us-west1",
         ]),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/zones/{zone_id}/speed_api/pages/{url}/tests",
-      }),
+        Schema.String,
+      ]),
     ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/speed_api/pages/{url}/tests",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreatePageTestRequest>;
 
 export interface CreatePageTestResponse {
@@ -1827,7 +1820,7 @@ export interface CreatePageTestResponse {
 }
 
 export const CreatePageTestResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       date: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1855,7 +1848,7 @@ export const createPageTest: API.OperationMethod<
   CreatePageTestResponse,
   CreatePageTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePageTestRequest,
   output: CreatePageTestResponse,
   errors: [],
@@ -1891,45 +1884,44 @@ export interface DeletePageTestRequest {
     | (string & {});
 }
 
-export const DeletePageTestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      url: Schema.String.pipe(T.HttpPath("url")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      region: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "asia-east1",
-            "asia-northeast1",
-            "asia-northeast2",
-            "asia-south1",
-            "asia-southeast1",
-            "australia-southeast1",
-            "europe-north1",
-            "europe-southwest1",
-            "europe-west1",
-            "europe-west2",
-            "europe-west3",
-            "europe-west4",
-            "europe-west8",
-            "europe-west9",
-            "me-west1",
-            "southamerica-east1",
-            "us-central1",
-            "us-east1",
-            "us-east4",
-            "us-south1",
-            "us-west1",
-          ]),
-          Schema.String,
+export const DeletePageTestRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    url: Schema.String.pipe(T.HttpPath("url")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    region: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "asia-east1",
+          "asia-northeast1",
+          "asia-northeast2",
+          "asia-south1",
+          "asia-southeast1",
+          "australia-southeast1",
+          "europe-north1",
+          "europe-southwest1",
+          "europe-west1",
+          "europe-west2",
+          "europe-west3",
+          "europe-west4",
+          "europe-west8",
+          "europe-west9",
+          "me-west1",
+          "southamerica-east1",
+          "us-central1",
+          "us-east1",
+          "us-east4",
+          "us-south1",
+          "us-west1",
         ]),
-      ).pipe(T.HttpQuery("region")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/zones/{zone_id}/speed_api/pages/{url}/tests",
-      }),
-    ),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("region")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/speed_api/pages/{url}/tests",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeletePageTestRequest>;
 
 export interface DeletePageTestResponse {
@@ -1938,7 +1930,7 @@ export interface DeletePageTestResponse {
 }
 
 export const DeletePageTestResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -1951,7 +1943,7 @@ export const deletePageTest: API.OperationMethod<
   DeletePageTestResponse,
   DeletePageTestError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePageTestRequest,
   output: DeletePageTestResponse,
   errors: [],
@@ -1991,45 +1983,44 @@ export interface GetScheduleRequest {
     | (string & {});
 }
 
-export const GetScheduleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      url: Schema.String.pipe(T.HttpPath("url")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      region: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "asia-east1",
-            "asia-northeast1",
-            "asia-northeast2",
-            "asia-south1",
-            "asia-southeast1",
-            "australia-southeast1",
-            "europe-north1",
-            "europe-southwest1",
-            "europe-west1",
-            "europe-west2",
-            "europe-west3",
-            "europe-west4",
-            "europe-west8",
-            "europe-west9",
-            "me-west1",
-            "southamerica-east1",
-            "us-central1",
-            "us-east1",
-            "us-east4",
-            "us-south1",
-            "us-west1",
-          ]),
-          Schema.String,
+export const GetScheduleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    url: Schema.String.pipe(T.HttpPath("url")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    region: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "asia-east1",
+          "asia-northeast1",
+          "asia-northeast2",
+          "asia-south1",
+          "asia-southeast1",
+          "australia-southeast1",
+          "europe-north1",
+          "europe-southwest1",
+          "europe-west1",
+          "europe-west2",
+          "europe-west3",
+          "europe-west4",
+          "europe-west8",
+          "europe-west9",
+          "me-west1",
+          "southamerica-east1",
+          "us-central1",
+          "us-east1",
+          "us-east4",
+          "us-south1",
+          "us-west1",
         ]),
-      ).pipe(T.HttpQuery("region")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/speed_api/schedule/{url}",
-      }),
-    ),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("region")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/speed_api/schedule/{url}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetScheduleRequest>;
 
 export interface GetScheduleResponse {
@@ -2064,48 +2055,47 @@ export interface GetScheduleResponse {
   url?: string | null;
 }
 
-export const GetScheduleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      frequency: Schema.optional(
+export const GetScheduleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    frequency: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    region: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
-          Schema.Null,
-        ]),
-      ),
-      region: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "asia-east1",
-              "asia-northeast1",
-              "asia-northeast2",
-              "asia-south1",
-              "asia-southeast1",
-              "australia-southeast1",
-              "europe-north1",
-              "europe-southwest1",
-              "europe-west1",
-              "europe-west2",
-              "europe-west3",
-              "europe-west4",
-              "europe-west8",
-              "europe-west9",
-              "me-west1",
-              "southamerica-east1",
-              "us-central1",
-              "us-east1",
-              "us-east4",
-              "us-south1",
-              "us-west1",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "asia-east1",
+            "asia-northeast1",
+            "asia-northeast2",
+            "asia-south1",
+            "asia-southeast1",
+            "australia-southeast1",
+            "europe-north1",
+            "europe-southwest1",
+            "europe-west1",
+            "europe-west2",
+            "europe-west3",
+            "europe-west4",
+            "europe-west8",
+            "europe-west9",
+            "me-west1",
+            "southamerica-east1",
+            "us-central1",
+            "us-east1",
+            "us-east4",
+            "us-south1",
+            "us-west1",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
+        Schema.Null,
+      ]),
+    ),
+    url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetScheduleResponse>;
 
 export type GetScheduleError = DefaultErrors | TestScheduleNotFound | Forbidden;
@@ -2115,7 +2105,7 @@ export const getSchedule: API.OperationMethod<
   GetScheduleResponse,
   GetScheduleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetScheduleRequest,
   output: GetScheduleResponse,
   errors: [TestScheduleNotFound, Forbidden],
@@ -2153,48 +2143,47 @@ export interface CreateScheduleRequest {
     | (string & {});
 }
 
-export const CreateScheduleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      url: Schema.String.pipe(T.HttpPath("url")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      frequency: Schema.optional(
-        Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
-      ).pipe(T.HttpQuery("frequency")),
-      region: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "asia-east1",
-            "asia-northeast1",
-            "asia-northeast2",
-            "asia-south1",
-            "asia-southeast1",
-            "australia-southeast1",
-            "europe-north1",
-            "europe-southwest1",
-            "europe-west1",
-            "europe-west2",
-            "europe-west3",
-            "europe-west4",
-            "europe-west8",
-            "europe-west9",
-            "me-west1",
-            "southamerica-east1",
-            "us-central1",
-            "us-east1",
-            "us-east4",
-            "us-south1",
-            "us-west1",
-          ]),
-          Schema.String,
+export const CreateScheduleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    url: Schema.String.pipe(T.HttpPath("url")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    frequency: Schema.optional(
+      Schema.Union([Schema.Literals(["DAILY", "WEEKLY"]), Schema.String]),
+    ).pipe(T.HttpQuery("frequency")),
+    region: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "asia-east1",
+          "asia-northeast1",
+          "asia-northeast2",
+          "asia-south1",
+          "asia-southeast1",
+          "australia-southeast1",
+          "europe-north1",
+          "europe-southwest1",
+          "europe-west1",
+          "europe-west2",
+          "europe-west3",
+          "europe-west4",
+          "europe-west8",
+          "europe-west9",
+          "me-west1",
+          "southamerica-east1",
+          "us-central1",
+          "us-east1",
+          "us-east4",
+          "us-south1",
+          "us-west1",
         ]),
-      ).pipe(T.HttpQuery("region")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/zones/{zone_id}/speed_api/schedule/{url}",
-      }),
-    ),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("region")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/speed_api/schedule/{url}",
+    }),
+  ),
 ) as unknown as Schema.Codec<CreateScheduleRequest>;
 
 export interface CreateScheduleResponse {
@@ -2313,7 +2302,7 @@ export interface CreateScheduleResponse {
 }
 
 export const CreateScheduleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       schedule: Schema.optional(Schema.Union([Schedule, Schema.Null])),
       test: Schema.optional(Schema.Union([Test, Schema.Null])),
@@ -2331,7 +2320,7 @@ export const createSchedule: API.OperationMethod<
   CreateScheduleResponse,
   CreateScheduleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScheduleRequest,
   output: CreateScheduleResponse,
   errors: [TestScheduleAlreadyExists, TestScheduleQuotaReached, Forbidden],
@@ -2367,45 +2356,44 @@ export interface DeleteScheduleRequest {
     | (string & {});
 }
 
-export const DeleteScheduleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      url: Schema.String.pipe(T.HttpPath("url")),
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      region: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "asia-east1",
-            "asia-northeast1",
-            "asia-northeast2",
-            "asia-south1",
-            "asia-southeast1",
-            "australia-southeast1",
-            "europe-north1",
-            "europe-southwest1",
-            "europe-west1",
-            "europe-west2",
-            "europe-west3",
-            "europe-west4",
-            "europe-west8",
-            "europe-west9",
-            "me-west1",
-            "southamerica-east1",
-            "us-central1",
-            "us-east1",
-            "us-east4",
-            "us-south1",
-            "us-west1",
-          ]),
-          Schema.String,
+export const DeleteScheduleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    url: Schema.String.pipe(T.HttpPath("url")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    region: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "asia-east1",
+          "asia-northeast1",
+          "asia-northeast2",
+          "asia-south1",
+          "asia-southeast1",
+          "australia-southeast1",
+          "europe-north1",
+          "europe-southwest1",
+          "europe-west1",
+          "europe-west2",
+          "europe-west3",
+          "europe-west4",
+          "europe-west8",
+          "europe-west9",
+          "me-west1",
+          "southamerica-east1",
+          "us-central1",
+          "us-east1",
+          "us-east4",
+          "us-south1",
+          "us-west1",
         ]),
-      ).pipe(T.HttpQuery("region")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/zones/{zone_id}/speed_api/schedule/{url}",
-      }),
-    ),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("region")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/speed_api/schedule/{url}",
+    }),
+  ),
 ) as unknown as Schema.Codec<DeleteScheduleRequest>;
 
 export interface DeleteScheduleResponse {
@@ -2414,7 +2402,7 @@ export interface DeleteScheduleResponse {
 }
 
 export const DeleteScheduleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
@@ -2430,7 +2418,7 @@ export const deleteSchedule: API.OperationMethod<
   DeleteScheduleResponse,
   DeleteScheduleError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduleRequest,
   output: DeleteScheduleResponse,
   errors: [TestScheduleNotFound, Forbidden],

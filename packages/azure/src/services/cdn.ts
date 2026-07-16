@@ -71,7 +71,7 @@ export interface AFDCustomDomainsCreateInput {
   };
 }
 export const AFDCustomDomainsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -198,7 +198,7 @@ export interface AFDCustomDomainsCreateOutput {
   };
 }
 export const AFDCustomDomainsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -228,12 +228,10 @@ export const AFDCustomDomainsCreateOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param customDomainName - Name of the domain under the profile which is unique globally.
  */
-export const AFDCustomDomainsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AFDCustomDomainsCreateInput,
-    outputSchema: AFDCustomDomainsCreateOutput,
-  }),
-);
+export const AFDCustomDomainsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AFDCustomDomainsCreateInput,
+  outputSchema: AFDCustomDomainsCreateOutput,
+}));
 // Input Schema
 export interface AFDCustomDomainsDeleteInput {
   subscriptionId: string;
@@ -242,7 +240,7 @@ export interface AFDCustomDomainsDeleteInput {
   customDomainName: string;
 }
 export const AFDCustomDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -258,7 +256,7 @@ export const AFDCustomDomainsDeleteInput =
 // Output Schema
 export type AFDCustomDomainsDeleteOutput = void;
 export const AFDCustomDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AFDCustomDomainsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AFDCustomDomainsDeleteOutput>;
 
 // The operation
 /**
@@ -270,12 +268,10 @@ export const AFDCustomDomainsDeleteOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param customDomainName - Name of the domain under the profile which is unique globally.
  */
-export const AFDCustomDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AFDCustomDomainsDeleteInput,
-    outputSchema: AFDCustomDomainsDeleteOutput,
-  }),
-);
+export const AFDCustomDomainsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AFDCustomDomainsDeleteInput,
+  outputSchema: AFDCustomDomainsDeleteOutput,
+}));
 // Input Schema
 export interface AFDCustomDomainsGetInput {
   subscriptionId: string;
@@ -284,7 +280,7 @@ export interface AFDCustomDomainsGetInput {
   customDomainName: string;
 }
 export const AFDCustomDomainsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -312,7 +308,7 @@ export interface AFDCustomDomainsGetOutput {
   };
 }
 export const AFDCustomDomainsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -342,7 +338,7 @@ export const AFDCustomDomainsGetOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param customDomainName - Name of the domain under the profile which is unique globally.
  */
-export const AFDCustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AFDCustomDomainsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AFDCustomDomainsGetInput,
   outputSchema: AFDCustomDomainsGetOutput,
 }));
@@ -353,7 +349,7 @@ export interface AFDCustomDomainsListByProfileInput {
   profileName: string;
 }
 export const AFDCustomDomainsListByProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -383,7 +379,7 @@ export interface AFDCustomDomainsListByProfileOutput {
   nextLink?: string;
 }
 export const AFDCustomDomainsListByProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -428,7 +424,7 @@ export const AFDCustomDomainsListByProfileOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
 export const AFDCustomDomainsListByProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AFDCustomDomainsListByProfileInput,
     outputSchema: AFDCustomDomainsListByProfileOutput,
   }));
@@ -440,7 +436,7 @@ export interface AFDCustomDomainsRefreshValidationTokenInput {
   customDomainName: string;
 }
 export const AFDCustomDomainsRefreshValidationTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -456,7 +452,7 @@ export const AFDCustomDomainsRefreshValidationTokenInput =
 // Output Schema
 export type AFDCustomDomainsRefreshValidationTokenOutput = void;
 export const AFDCustomDomainsRefreshValidationTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AFDCustomDomainsRefreshValidationTokenOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AFDCustomDomainsRefreshValidationTokenOutput>;
 
 // The operation
 /**
@@ -469,7 +465,7 @@ export const AFDCustomDomainsRefreshValidationTokenOutput =
  * @param customDomainName - Name of the domain under the profile which is unique globally.
  */
 export const AFDCustomDomainsRefreshValidationToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AFDCustomDomainsRefreshValidationTokenInput,
     outputSchema: AFDCustomDomainsRefreshValidationTokenOutput,
   }));
@@ -513,7 +509,7 @@ export interface AFDCustomDomainsUpdateInput {
   };
 }
 export const AFDCustomDomainsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -605,7 +601,7 @@ export interface AFDCustomDomainsUpdateOutput {
   };
 }
 export const AFDCustomDomainsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -635,12 +631,10 @@ export const AFDCustomDomainsUpdateOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param customDomainName - Name of the domain under the profile which is unique globally.
  */
-export const AFDCustomDomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AFDCustomDomainsUpdateInput,
-    outputSchema: AFDCustomDomainsUpdateOutput,
-  }),
-);
+export const AFDCustomDomainsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AFDCustomDomainsUpdateInput,
+  outputSchema: AFDCustomDomainsUpdateOutput,
+}));
 // Input Schema
 export interface AFDEndpointsCreateInput {
   subscriptionId: string;
@@ -668,7 +662,7 @@ export interface AFDEndpointsCreateInput {
   location: string;
 }
 export const AFDEndpointsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -725,7 +719,7 @@ export interface AFDEndpointsCreateOutput {
   };
 }
 export const AFDEndpointsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -755,7 +749,7 @@ export const AFDEndpointsCreateOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const AFDEndpointsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AFDEndpointsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AFDEndpointsCreateInput,
   outputSchema: AFDEndpointsCreateOutput,
 }));
@@ -767,7 +761,7 @@ export interface AFDEndpointsDeleteInput {
   endpointName: string;
 }
 export const AFDEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -783,7 +777,7 @@ export const AFDEndpointsDeleteInput =
 // Output Schema
 export type AFDEndpointsDeleteOutput = void;
 export const AFDEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AFDEndpointsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AFDEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -795,7 +789,7 @@ export const AFDEndpointsDeleteOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const AFDEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AFDEndpointsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AFDEndpointsDeleteInput,
   outputSchema: AFDEndpointsDeleteOutput,
 }));
@@ -806,7 +800,7 @@ export interface AFDEndpointsGetInput {
   profileName: string;
   endpointName: string;
 }
-export const AFDEndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AFDEndpointsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -833,7 +827,7 @@ export interface AFDEndpointsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AFDEndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AFDEndpointsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -863,7 +857,7 @@ export const AFDEndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const AFDEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AFDEndpointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AFDEndpointsGetInput,
   outputSchema: AFDEndpointsGetOutput,
 }));
@@ -874,7 +868,7 @@ export interface AFDEndpointsListByProfileInput {
   profileName: string;
 }
 export const AFDEndpointsListByProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -904,7 +898,7 @@ export interface AFDEndpointsListByProfileOutput {
   nextLink?: string;
 }
 export const AFDEndpointsListByProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -948,12 +942,10 @@ export const AFDEndpointsListByProfileOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const AFDEndpointsListByProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AFDEndpointsListByProfileInput,
-    outputSchema: AFDEndpointsListByProfileOutput,
-  }),
-);
+export const AFDEndpointsListByProfile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AFDEndpointsListByProfileInput,
+  outputSchema: AFDEndpointsListByProfileOutput,
+}));
 // Input Schema
 export interface AFDEndpointsListResourceUsageInput {
   subscriptionId: string;
@@ -962,7 +954,7 @@ export interface AFDEndpointsListResourceUsageInput {
   endpointName: string;
 }
 export const AFDEndpointsListResourceUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -987,7 +979,7 @@ export interface AFDEndpointsListResourceUsageOutput {
   nextLink?: string;
 }
 export const AFDEndpointsListResourceUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1014,7 +1006,7 @@ export const AFDEndpointsListResourceUsageOutput =
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
 export const AFDEndpointsListResourceUsage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AFDEndpointsListResourceUsageInput,
     outputSchema: AFDEndpointsListResourceUsageOutput,
   }));
@@ -1028,7 +1020,7 @@ export interface AFDEndpointsPurgeContentInput {
   domains?: string[];
 }
 export const AFDEndpointsPurgeContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -1046,7 +1038,7 @@ export const AFDEndpointsPurgeContentInput =
 // Output Schema
 export type AFDEndpointsPurgeContentOutput = void;
 export const AFDEndpointsPurgeContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AFDEndpointsPurgeContentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AFDEndpointsPurgeContentOutput>;
 
 // The operation
 /**
@@ -1058,12 +1050,10 @@ export const AFDEndpointsPurgeContentOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const AFDEndpointsPurgeContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AFDEndpointsPurgeContentInput,
-    outputSchema: AFDEndpointsPurgeContentOutput,
-  }),
-);
+export const AFDEndpointsPurgeContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AFDEndpointsPurgeContentInput,
+  outputSchema: AFDEndpointsPurgeContentOutput,
+}));
 // Input Schema
 export interface AFDEndpointsUpdateInput {
   subscriptionId: string;
@@ -1074,7 +1064,7 @@ export interface AFDEndpointsUpdateInput {
   properties?: { profileName?: string; enabledState?: "Enabled" | "Disabled" };
 }
 export const AFDEndpointsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -1109,7 +1099,7 @@ export interface AFDEndpointsUpdateOutput {
   };
 }
 export const AFDEndpointsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1139,7 +1129,7 @@ export const AFDEndpointsUpdateOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const AFDEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AFDEndpointsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AFDEndpointsUpdateInput,
   outputSchema: AFDEndpointsUpdateOutput,
 }));
@@ -1152,7 +1142,7 @@ export interface AFDEndpointsValidateCustomDomainInput {
   hostName: string;
 }
 export const AFDEndpointsValidateCustomDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -1173,7 +1163,7 @@ export interface AFDEndpointsValidateCustomDomainOutput {
   message?: string;
 }
 export const AFDEndpointsValidateCustomDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customDomainValidated: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -1190,7 +1180,7 @@ export const AFDEndpointsValidateCustomDomainOutput =
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
 export const AFDEndpointsValidateCustomDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AFDEndpointsValidateCustomDomainInput,
     outputSchema: AFDEndpointsValidateCustomDomainOutput,
   }));
@@ -1230,7 +1220,7 @@ export interface AFDOriginGroupsCreateInput {
   };
 }
 export const AFDOriginGroupsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -1316,7 +1306,7 @@ export interface AFDOriginGroupsCreateOutput {
   };
 }
 export const AFDOriginGroupsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1346,12 +1336,10 @@ export const AFDOriginGroupsCreateOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param originGroupName - Name of the origin group which is unique within the endpoint.
  */
-export const AFDOriginGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AFDOriginGroupsCreateInput,
-    outputSchema: AFDOriginGroupsCreateOutput,
-  }),
-);
+export const AFDOriginGroupsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AFDOriginGroupsCreateInput,
+  outputSchema: AFDOriginGroupsCreateOutput,
+}));
 // Input Schema
 export interface AFDOriginGroupsDeleteInput {
   subscriptionId: string;
@@ -1360,7 +1348,7 @@ export interface AFDOriginGroupsDeleteInput {
   originGroupName: string;
 }
 export const AFDOriginGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -1376,7 +1364,7 @@ export const AFDOriginGroupsDeleteInput =
 // Output Schema
 export type AFDOriginGroupsDeleteOutput = void;
 export const AFDOriginGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AFDOriginGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AFDOriginGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -1388,12 +1376,10 @@ export const AFDOriginGroupsDeleteOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param originGroupName - Name of the origin group which is unique within the endpoint.
  */
-export const AFDOriginGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AFDOriginGroupsDeleteInput,
-    outputSchema: AFDOriginGroupsDeleteOutput,
-  }),
-);
+export const AFDOriginGroupsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AFDOriginGroupsDeleteInput,
+  outputSchema: AFDOriginGroupsDeleteOutput,
+}));
 // Input Schema
 export interface AFDOriginGroupsGetInput {
   subscriptionId: string;
@@ -1402,7 +1388,7 @@ export interface AFDOriginGroupsGetInput {
   originGroupName: string;
 }
 export const AFDOriginGroupsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -1430,7 +1416,7 @@ export interface AFDOriginGroupsGetOutput {
   };
 }
 export const AFDOriginGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1460,7 +1446,7 @@ export const AFDOriginGroupsGetOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param originGroupName - Name of the origin group which is unique within the endpoint.
  */
-export const AFDOriginGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AFDOriginGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AFDOriginGroupsGetInput,
   outputSchema: AFDOriginGroupsGetOutput,
 }));
@@ -1471,7 +1457,7 @@ export interface AFDOriginGroupsListByProfileInput {
   profileName: string;
 }
 export const AFDOriginGroupsListByProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -1501,7 +1487,7 @@ export interface AFDOriginGroupsListByProfileOutput {
   nextLink?: string;
 }
 export const AFDOriginGroupsListByProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1546,7 +1532,7 @@ export const AFDOriginGroupsListByProfileOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
 export const AFDOriginGroupsListByProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AFDOriginGroupsListByProfileInput,
     outputSchema: AFDOriginGroupsListByProfileOutput,
   }));
@@ -1558,7 +1544,7 @@ export interface AFDOriginGroupsListResourceUsageInput {
   originGroupName: string;
 }
 export const AFDOriginGroupsListResourceUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -1583,7 +1569,7 @@ export interface AFDOriginGroupsListResourceUsageOutput {
   nextLink?: string;
 }
 export const AFDOriginGroupsListResourceUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1610,7 +1596,7 @@ export const AFDOriginGroupsListResourceUsageOutput =
  * @param originGroupName - Name of the origin group which is unique within the endpoint.
  */
 export const AFDOriginGroupsListResourceUsage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AFDOriginGroupsListResourceUsageInput,
     outputSchema: AFDOriginGroupsListResourceUsageOutput,
   }));
@@ -1643,7 +1629,7 @@ export interface AFDOriginGroupsUpdateInput {
   };
 }
 export const AFDOriginGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -1717,7 +1703,7 @@ export interface AFDOriginGroupsUpdateOutput {
   };
 }
 export const AFDOriginGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1747,12 +1733,10 @@ export const AFDOriginGroupsUpdateOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param originGroupName - Name of the origin group which is unique within the endpoint.
  */
-export const AFDOriginGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AFDOriginGroupsUpdateInput,
-    outputSchema: AFDOriginGroupsUpdateOutput,
-  }),
-);
+export const AFDOriginGroupsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AFDOriginGroupsUpdateInput,
+  outputSchema: AFDOriginGroupsUpdateOutput,
+}));
 // Input Schema
 export interface AFDOriginsCreateInput {
   subscriptionId: string;
@@ -1787,7 +1771,7 @@ export interface AFDOriginsCreateInput {
     deploymentStatus?: "NotStarted" | "InProgress" | "Succeeded" | "Failed";
   };
 }
-export const AFDOriginsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AFDOriginsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -1866,27 +1850,25 @@ export interface AFDOriginsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const AFDOriginsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<AFDOriginsCreateOutput>;
+export const AFDOriginsCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<AFDOriginsCreateOutput>;
 
 // The operation
 /**
@@ -1899,7 +1881,7 @@ export const AFDOriginsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param originGroupName - Name of the origin group which is unique within the endpoint.
  * @param originName - Name of the origin which is unique within the profile.
  */
-export const AFDOriginsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AFDOriginsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AFDOriginsCreateInput,
   outputSchema: AFDOriginsCreateOutput,
 }));
@@ -1911,7 +1893,7 @@ export interface AFDOriginsDeleteInput {
   originGroupName: string;
   originName: string;
 }
-export const AFDOriginsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AFDOriginsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -1928,7 +1910,7 @@ export const AFDOriginsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AFDOriginsDeleteOutput = void;
 export const AFDOriginsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AFDOriginsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AFDOriginsDeleteOutput>;
 
 // The operation
 /**
@@ -1941,7 +1923,7 @@ export const AFDOriginsDeleteOutput =
  * @param originGroupName - Name of the origin group which is unique within the endpoint.
  * @param originName - Name of the origin which is unique within the profile.
  */
-export const AFDOriginsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AFDOriginsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AFDOriginsDeleteInput,
   outputSchema: AFDOriginsDeleteOutput,
 }));
@@ -1953,7 +1935,7 @@ export interface AFDOriginsGetInput {
   originGroupName: string;
   originName: string;
 }
-export const AFDOriginsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AFDOriginsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -1981,7 +1963,7 @@ export interface AFDOriginsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AFDOriginsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AFDOriginsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2012,7 +1994,7 @@ export const AFDOriginsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param originGroupName - Name of the origin group which is unique within the endpoint.
  * @param originName - Name of the origin which is unique within the profile.
  */
-export const AFDOriginsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AFDOriginsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AFDOriginsGetInput,
   outputSchema: AFDOriginsGetOutput,
 }));
@@ -2024,7 +2006,7 @@ export interface AFDOriginsListByOriginGroupInput {
   originGroupName: string;
 }
 export const AFDOriginsListByOriginGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -2055,7 +2037,7 @@ export interface AFDOriginsListByOriginGroupOutput {
   nextLink?: string;
 }
 export const AFDOriginsListByOriginGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2100,12 +2082,10 @@ export const AFDOriginsListByOriginGroupOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param originGroupName - Name of the origin group which is unique within the endpoint.
  */
-export const AFDOriginsListByOriginGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AFDOriginsListByOriginGroupInput,
-    outputSchema: AFDOriginsListByOriginGroupOutput,
-  }),
-);
+export const AFDOriginsListByOriginGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AFDOriginsListByOriginGroupInput,
+  outputSchema: AFDOriginsListByOriginGroupOutput,
+}));
 // Input Schema
 export interface AFDOriginsUpdateInput {
   subscriptionId: string;
@@ -2133,7 +2113,7 @@ export interface AFDOriginsUpdateInput {
     enforceCertificateNameCheck?: boolean;
   };
 }
-export const AFDOriginsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AFDOriginsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -2200,27 +2180,25 @@ export interface AFDOriginsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const AFDOriginsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<AFDOriginsUpdateOutput>;
+export const AFDOriginsUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<AFDOriginsUpdateOutput>;
 
 // The operation
 /**
@@ -2233,7 +2211,7 @@ export const AFDOriginsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param originGroupName - Name of the origin group which is unique within the endpoint.
  * @param originName - Name of the origin which is unique within the profile.
  */
-export const AFDOriginsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AFDOriginsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AFDOriginsUpdateInput,
   outputSchema: AFDOriginsUpdateOutput,
 }));
@@ -2253,7 +2231,7 @@ export interface AFDProfilesCheckEndpointNameAvailabilityInput {
     | "NoReuse";
 }
 export const AFDProfilesCheckEndpointNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -2286,7 +2264,7 @@ export interface AFDProfilesCheckEndpointNameAvailabilityOutput {
   message?: string;
 }
 export const AFDProfilesCheckEndpointNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     availableHostname: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -2303,7 +2281,7 @@ export const AFDProfilesCheckEndpointNameAvailabilityOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
 export const AFDProfilesCheckEndpointNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AFDProfilesCheckEndpointNameAvailabilityInput,
     outputSchema: AFDProfilesCheckEndpointNameAvailabilityOutput,
   }));
@@ -2315,7 +2293,7 @@ export interface AFDProfilesCheckHostNameAvailabilityInput {
   hostName: string;
 }
 export const AFDProfilesCheckHostNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -2335,7 +2313,7 @@ export interface AFDProfilesCheckHostNameAvailabilityOutput {
   message?: string;
 }
 export const AFDProfilesCheckHostNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -2351,7 +2329,7 @@ export const AFDProfilesCheckHostNameAvailabilityOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
 export const AFDProfilesCheckHostNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AFDProfilesCheckHostNameAvailabilityInput,
     outputSchema: AFDProfilesCheckHostNameAvailabilityOutput,
   }));
@@ -2362,7 +2340,7 @@ export interface AFDProfilesListResourceUsageInput {
   profileName: string;
 }
 export const AFDProfilesListResourceUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -2386,7 +2364,7 @@ export interface AFDProfilesListResourceUsageOutput {
   nextLink?: string;
 }
 export const AFDProfilesListResourceUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2412,7 +2390,7 @@ export const AFDProfilesListResourceUsageOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
 export const AFDProfilesListResourceUsage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AFDProfilesListResourceUsageInput,
     outputSchema: AFDProfilesListResourceUsageOutput,
   }));
@@ -2427,7 +2405,7 @@ export interface AFDProfilesUpgradeInput {
   }[];
 }
 export const AFDProfilesUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -2462,7 +2440,7 @@ export interface AFDProfilesUpgradeOutput {
   };
 }
 export const AFDProfilesUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2491,7 +2469,7 @@ export const AFDProfilesUpgradeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const AFDProfilesUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AFDProfilesUpgrade = /*@__PURE__*/ API.make(() => ({
   inputSchema: AFDProfilesUpgradeInput,
   outputSchema: AFDProfilesUpgradeOutput,
 }));
@@ -2509,7 +2487,7 @@ export interface AFDProfilesValidateSecretInput {
   secretVersion?: string;
 }
 export const AFDProfilesValidateSecretInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -2537,7 +2515,7 @@ export interface AFDProfilesValidateSecretOutput {
   message?: string;
 }
 export const AFDProfilesValidateSecretOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals([
         "Valid",
@@ -2558,12 +2536,10 @@ export const AFDProfilesValidateSecretOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const AFDProfilesValidateSecret = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AFDProfilesValidateSecretInput,
-    outputSchema: AFDProfilesValidateSecretOutput,
-  }),
-);
+export const AFDProfilesValidateSecret = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AFDProfilesValidateSecretInput,
+  outputSchema: AFDProfilesValidateSecretOutput,
+}));
 // Input Schema
 export interface CheckEndpointNameAvailabilityInput {
   subscriptionId: string;
@@ -2579,7 +2555,7 @@ export interface CheckEndpointNameAvailabilityInput {
     | "NoReuse";
 }
 export const CheckEndpointNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
@@ -2611,7 +2587,7 @@ export interface CheckEndpointNameAvailabilityOutput {
   message?: string;
 }
 export const CheckEndpointNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     availableHostname: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
@@ -2627,7 +2603,7 @@ export const CheckEndpointNameAvailabilityOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const CheckEndpointNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CheckEndpointNameAvailabilityInput,
     outputSchema: CheckEndpointNameAvailabilityOutput,
   }));
@@ -2639,7 +2615,7 @@ export interface CheckNameAvailabilityInput {
     | "Microsoft.Cdn/Profiles/AfdEndpoints";
 }
 export const CheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String,
     type: Schema.Literals([
       "Microsoft.Cdn/Profiles/Endpoints",
@@ -2660,7 +2636,7 @@ export interface CheckNameAvailabilityOutput {
   message?: string;
 }
 export const CheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -2672,12 +2648,10 @@ export const CheckNameAvailabilityOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const CheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CheckNameAvailabilityInput,
-    outputSchema: CheckNameAvailabilityOutput,
-  }),
-);
+export const CheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CheckNameAvailabilityInput,
+  outputSchema: CheckNameAvailabilityOutput,
+}));
 // Input Schema
 export interface CheckNameAvailabilityWithSubscriptionInput {
   subscriptionId: string;
@@ -2687,7 +2661,7 @@ export interface CheckNameAvailabilityWithSubscriptionInput {
     | "Microsoft.Cdn/Profiles/AfdEndpoints";
 }
 export const CheckNameAvailabilityWithSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.Literals([
@@ -2709,7 +2683,7 @@ export interface CheckNameAvailabilityWithSubscriptionOutput {
   message?: string;
 }
 export const CheckNameAvailabilityWithSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -2723,7 +2697,7 @@ export const CheckNameAvailabilityWithSubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const CheckNameAvailabilityWithSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CheckNameAvailabilityWithSubscriptionInput,
     outputSchema: CheckNameAvailabilityWithSubscriptionOutput,
   }));
@@ -2737,7 +2711,7 @@ export interface CustomDomainsCreateInput {
   properties?: { hostName: string };
 }
 export const CustomDomainsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -2771,7 +2745,7 @@ export interface CustomDomainsCreateOutput {
   };
 }
 export const CustomDomainsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2802,7 +2776,7 @@ export const CustomDomainsCreateOutput =
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param customDomainName - Name of the custom domain within an endpoint.
  */
-export const CustomDomainsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CustomDomainsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsCreateInput,
   outputSchema: CustomDomainsCreateOutput,
 }));
@@ -2815,7 +2789,7 @@ export interface CustomDomainsDeleteInput {
   customDomainName: string;
 }
 export const CustomDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -2832,7 +2806,7 @@ export const CustomDomainsDeleteInput =
 // Output Schema
 export type CustomDomainsDeleteOutput = void;
 export const CustomDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomDomainsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CustomDomainsDeleteOutput>;
 
 // The operation
 /**
@@ -2845,7 +2819,7 @@ export const CustomDomainsDeleteOutput =
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param customDomainName - Name of the custom domain within an endpoint.
  */
-export const CustomDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CustomDomainsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsDeleteInput,
   outputSchema: CustomDomainsDeleteOutput,
 }));
@@ -2858,7 +2832,7 @@ export interface CustomDomainsDisableCustomHttpsInput {
   customDomainName: string;
 }
 export const CustomDomainsDisableCustomHttpsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -2887,7 +2861,7 @@ export interface CustomDomainsDisableCustomHttpsOutput {
   };
 }
 export const CustomDomainsDisableCustomHttpsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2919,7 +2893,7 @@ export const CustomDomainsDisableCustomHttpsOutput =
  * @param customDomainName - Name of the custom domain within an endpoint.
  */
 export const CustomDomainsDisableCustomHttps =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CustomDomainsDisableCustomHttpsInput,
     outputSchema: CustomDomainsDisableCustomHttpsOutput,
   }));
@@ -2935,7 +2909,7 @@ export interface CustomDomainsEnableCustomHttpsInput {
   minimumTlsVersion?: "None" | "TLS10" | "TLS12";
 }
 export const CustomDomainsEnableCustomHttpsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -2969,7 +2943,7 @@ export interface CustomDomainsEnableCustomHttpsOutput {
   };
 }
 export const CustomDomainsEnableCustomHttpsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3001,7 +2975,7 @@ export const CustomDomainsEnableCustomHttpsOutput =
  * @param customDomainName - Name of the custom domain within an endpoint.
  */
 export const CustomDomainsEnableCustomHttps =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CustomDomainsEnableCustomHttpsInput,
     outputSchema: CustomDomainsEnableCustomHttpsOutput,
   }));
@@ -3013,7 +2987,7 @@ export interface CustomDomainsGetInput {
   endpointName: string;
   customDomainName: string;
 }
-export const CustomDomainsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CustomDomainsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -3041,27 +3015,25 @@ export interface CustomDomainsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const CustomDomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<CustomDomainsGetOutput>;
+export const CustomDomainsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<CustomDomainsGetOutput>;
 
 // The operation
 /**
@@ -3074,7 +3046,7 @@ export const CustomDomainsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param customDomainName - Name of the custom domain within an endpoint.
  */
-export const CustomDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CustomDomainsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CustomDomainsGetInput,
   outputSchema: CustomDomainsGetOutput,
 }));
@@ -3086,7 +3058,7 @@ export interface CustomDomainsListByEndpointInput {
   endpointName: string;
 }
 export const CustomDomainsListByEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -3117,7 +3089,7 @@ export interface CustomDomainsListByEndpointOutput {
   nextLink?: string;
 }
 export const CustomDomainsListByEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3162,17 +3134,13 @@ export const CustomDomainsListByEndpointOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const CustomDomainsListByEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CustomDomainsListByEndpointInput,
-    outputSchema: CustomDomainsListByEndpointOutput,
-  }),
-);
+export const CustomDomainsListByEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CustomDomainsListByEndpointInput,
+  outputSchema: CustomDomainsListByEndpointOutput,
+}));
 // Input Schema
 export interface EdgeNodesListInput {}
-export const EdgeNodesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const EdgeNodesListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Cdn/edgenodes",
@@ -3197,7 +3165,7 @@ export interface EdgeNodesListOutput {
   }[];
   nextLink?: string;
 }
-export const EdgeNodesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EdgeNodesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -3228,7 +3196,7 @@ export const EdgeNodesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const EdgeNodesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EdgeNodesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: EdgeNodesListInput,
   outputSchema: EdgeNodesListOutput,
 }));
@@ -3320,7 +3288,7 @@ export interface EndpointsCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const EndpointsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -3464,7 +3432,7 @@ export interface EndpointsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const EndpointsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3494,7 +3462,7 @@ export const EndpointsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const EndpointsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsCreateInput,
   outputSchema: EndpointsCreateOutput,
 }));
@@ -3505,7 +3473,7 @@ export interface EndpointsDeleteInput {
   profileName: string;
   endpointName: string;
 }
-export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -3521,7 +3489,7 @@ export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type EndpointsDeleteOutput = void;
 export const EndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -3533,7 +3501,7 @@ export const EndpointsDeleteOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const EndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsDeleteInput,
   outputSchema: EndpointsDeleteOutput,
 }));
@@ -3544,7 +3512,7 @@ export interface EndpointsGetInput {
   profileName: string;
   endpointName: string;
 }
-export const EndpointsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -3571,7 +3539,7 @@ export interface EndpointsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const EndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3601,7 +3569,7 @@ export const EndpointsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const EndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsGetInput,
   outputSchema: EndpointsGetOutput,
 }));
@@ -3612,7 +3580,7 @@ export interface EndpointsListByProfileInput {
   profileName: string;
 }
 export const EndpointsListByProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -3642,7 +3610,7 @@ export interface EndpointsListByProfileOutput {
   nextLink?: string;
 }
 export const EndpointsListByProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3686,12 +3654,10 @@ export const EndpointsListByProfileOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const EndpointsListByProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EndpointsListByProfileInput,
-    outputSchema: EndpointsListByProfileOutput,
-  }),
-);
+export const EndpointsListByProfile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EndpointsListByProfileInput,
+  outputSchema: EndpointsListByProfileOutput,
+}));
 // Input Schema
 export interface EndpointsListResourceUsageInput {
   subscriptionId: string;
@@ -3700,7 +3666,7 @@ export interface EndpointsListResourceUsageInput {
   endpointName: string;
 }
 export const EndpointsListResourceUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -3724,7 +3690,7 @@ export interface EndpointsListResourceUsageOutput {
   nextLink?: string;
 }
 export const EndpointsListResourceUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         resourceType: Schema.optional(Schema.String),
@@ -3746,12 +3712,10 @@ export const EndpointsListResourceUsageOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const EndpointsListResourceUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EndpointsListResourceUsageInput,
-    outputSchema: EndpointsListResourceUsageOutput,
-  }),
-);
+export const EndpointsListResourceUsage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EndpointsListResourceUsageInput,
+  outputSchema: EndpointsListResourceUsageOutput,
+}));
 // Input Schema
 export interface EndpointsLoadContentInput {
   subscriptionId: string;
@@ -3761,7 +3725,7 @@ export interface EndpointsLoadContentInput {
   contentPaths: string[];
 }
 export const EndpointsLoadContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -3778,7 +3742,7 @@ export const EndpointsLoadContentInput =
 // Output Schema
 export type EndpointsLoadContentOutput = void;
 export const EndpointsLoadContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsLoadContentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsLoadContentOutput>;
 
 // The operation
 /**
@@ -3790,12 +3754,10 @@ export const EndpointsLoadContentOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const EndpointsLoadContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EndpointsLoadContentInput,
-    outputSchema: EndpointsLoadContentOutput,
-  }),
-);
+export const EndpointsLoadContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EndpointsLoadContentInput,
+  outputSchema: EndpointsLoadContentOutput,
+}));
 // Input Schema
 export interface EndpointsPurgeContentInput {
   subscriptionId: string;
@@ -3805,7 +3767,7 @@ export interface EndpointsPurgeContentInput {
   contentPaths: string[];
 }
 export const EndpointsPurgeContentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -3822,7 +3784,7 @@ export const EndpointsPurgeContentInput =
 // Output Schema
 export type EndpointsPurgeContentOutput = void;
 export const EndpointsPurgeContentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsPurgeContentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EndpointsPurgeContentOutput>;
 
 // The operation
 /**
@@ -3834,12 +3796,10 @@ export const EndpointsPurgeContentOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const EndpointsPurgeContent = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: EndpointsPurgeContentInput,
-    outputSchema: EndpointsPurgeContentOutput,
-  }),
-);
+export const EndpointsPurgeContent = /*@__PURE__*/ API.make(() => ({
+  inputSchema: EndpointsPurgeContentInput,
+  outputSchema: EndpointsPurgeContentOutput,
+}));
 // Input Schema
 export interface EndpointsStartInput {
   subscriptionId: string;
@@ -3847,7 +3807,7 @@ export interface EndpointsStartInput {
   profileName: string;
   endpointName: string;
 }
-export const EndpointsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsStartInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -3874,7 +3834,7 @@ export interface EndpointsStartOutput {
     lastModifiedAt?: string;
   };
 }
-export const EndpointsStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsStartOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3904,7 +3864,7 @@ export const EndpointsStartOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const EndpointsStart = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsStart = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsStartInput,
   outputSchema: EndpointsStartOutput,
 }));
@@ -3915,7 +3875,7 @@ export interface EndpointsStopInput {
   profileName: string;
   endpointName: string;
 }
-export const EndpointsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsStopInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -3942,7 +3902,7 @@ export interface EndpointsStopOutput {
     lastModifiedAt?: string;
   };
 }
-export const EndpointsStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsStopOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3972,7 +3932,7 @@ export const EndpointsStopOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const EndpointsStop = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsStop = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsStopInput,
   outputSchema: EndpointsStopOutput,
 }));
@@ -4063,7 +4023,7 @@ export interface EndpointsUpdateInput {
     webApplicationFirewallPolicyLink?: { id?: string };
   };
 }
-export const EndpointsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -4206,7 +4166,7 @@ export interface EndpointsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const EndpointsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4236,7 +4196,7 @@ export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const EndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const EndpointsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: EndpointsUpdateInput,
   outputSchema: EndpointsUpdateOutput,
 }));
@@ -4249,7 +4209,7 @@ export interface EndpointsValidateCustomDomainInput {
   hostName: string;
 }
 export const EndpointsValidateCustomDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -4270,7 +4230,7 @@ export interface EndpointsValidateCustomDomainOutput {
   message?: string;
 }
 export const EndpointsValidateCustomDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customDomainValidated: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
@@ -4287,7 +4247,7 @@ export const EndpointsValidateCustomDomainOutput =
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
 export const EndpointsValidateCustomDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EndpointsValidateCustomDomainInput,
     outputSchema: EndpointsValidateCustomDomainOutput,
   }));
@@ -4298,7 +4258,7 @@ export interface LogAnalyticsGetLogAnalyticsLocationsInput {
   profileName: string;
 }
 export const LogAnalyticsGetLogAnalyticsLocationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -4316,7 +4276,7 @@ export interface LogAnalyticsGetLogAnalyticsLocationsOutput {
   countryOrRegions?: { id?: string; continentId?: string }[];
 }
 export const LogAnalyticsGetLogAnalyticsLocationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     continents: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4344,7 +4304,7 @@ export const LogAnalyticsGetLogAnalyticsLocationsOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
 export const LogAnalyticsGetLogAnalyticsLocations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LogAnalyticsGetLogAnalyticsLocationsInput,
     outputSchema: LogAnalyticsGetLogAnalyticsLocationsOutput,
   }));
@@ -4364,7 +4324,7 @@ export interface LogAnalyticsGetLogAnalyticsMetricsInput {
   protocols: string;
 }
 export const LogAnalyticsGetLogAnalyticsMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -4398,7 +4358,7 @@ export interface LogAnalyticsGetLogAnalyticsMetricsOutput {
   }[];
 }
 export const LogAnalyticsGetLogAnalyticsMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateTimeBegin: Schema.optional(Schema.String),
     dateTimeEnd: Schema.optional(Schema.String),
     granularity: Schema.optional(Schema.Literals(["PT5M", "PT1H", "P1D"])),
@@ -4445,7 +4405,7 @@ export const LogAnalyticsGetLogAnalyticsMetricsOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
 export const LogAnalyticsGetLogAnalyticsMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LogAnalyticsGetLogAnalyticsMetricsInput,
     outputSchema: LogAnalyticsGetLogAnalyticsMetricsOutput,
   }));
@@ -4462,7 +4422,7 @@ export interface LogAnalyticsGetLogAnalyticsRankingsInput {
   customDomains?: string;
 }
 export const LogAnalyticsGetLogAnalyticsRankingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -4493,7 +4453,7 @@ export interface LogAnalyticsGetLogAnalyticsRankingsOutput {
   }[];
 }
 export const LogAnalyticsGetLogAnalyticsRankingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateTimeBegin: Schema.optional(Schema.String),
     dateTimeEnd: Schema.optional(Schema.String),
     tables: Schema.optional(
@@ -4531,7 +4491,7 @@ export const LogAnalyticsGetLogAnalyticsRankingsOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
 export const LogAnalyticsGetLogAnalyticsRankings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LogAnalyticsGetLogAnalyticsRankingsInput,
     outputSchema: LogAnalyticsGetLogAnalyticsRankingsOutput,
   }));
@@ -4542,7 +4502,7 @@ export interface LogAnalyticsGetLogAnalyticsResourcesInput {
   profileName: string;
 }
 export const LogAnalyticsGetLogAnalyticsResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -4575,7 +4535,7 @@ export interface LogAnalyticsGetLogAnalyticsResourcesOutput {
   }[];
 }
 export const LogAnalyticsGetLogAnalyticsResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoints: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4617,7 +4577,7 @@ export const LogAnalyticsGetLogAnalyticsResourcesOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
 export const LogAnalyticsGetLogAnalyticsResources =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LogAnalyticsGetLogAnalyticsResourcesInput,
     outputSchema: LogAnalyticsGetLogAnalyticsResourcesOutput,
   }));
@@ -4635,7 +4595,7 @@ export interface LogAnalyticsGetWafLogAnalyticsMetricsInput {
   ruleTypes?: string;
 }
 export const LogAnalyticsGetWafLogAnalyticsMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -4667,7 +4627,7 @@ export interface LogAnalyticsGetWafLogAnalyticsMetricsOutput {
   }[];
 }
 export const LogAnalyticsGetWafLogAnalyticsMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateTimeBegin: Schema.optional(Schema.String),
     dateTimeEnd: Schema.optional(Schema.String),
     granularity: Schema.optional(Schema.Literals(["PT5M", "PT1H", "P1D"])),
@@ -4707,7 +4667,7 @@ export const LogAnalyticsGetWafLogAnalyticsMetricsOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
 export const LogAnalyticsGetWafLogAnalyticsMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LogAnalyticsGetWafLogAnalyticsMetricsInput,
     outputSchema: LogAnalyticsGetWafLogAnalyticsMetricsOutput,
   }));
@@ -4725,7 +4685,7 @@ export interface LogAnalyticsGetWafLogAnalyticsRankingsInput {
   ruleTypes?: string;
 }
 export const LogAnalyticsGetWafLogAnalyticsRankingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -4755,7 +4715,7 @@ export interface LogAnalyticsGetWafLogAnalyticsRankingsOutput {
   }[];
 }
 export const LogAnalyticsGetWafLogAnalyticsRankingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateTimeBegin: Schema.optional(Schema.String),
     dateTimeEnd: Schema.optional(Schema.String),
     groups: Schema.optional(Schema.Array(Schema.String)),
@@ -4787,7 +4747,7 @@ export const LogAnalyticsGetWafLogAnalyticsRankingsOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
 export const LogAnalyticsGetWafLogAnalyticsRankings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LogAnalyticsGetWafLogAnalyticsRankingsInput,
     outputSchema: LogAnalyticsGetWafLogAnalyticsRankingsOutput,
   }));
@@ -4796,7 +4756,7 @@ export interface ManagedRuleSetsListInput {
   subscriptionId: string;
 }
 export const ManagedRuleSetsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4824,7 +4784,7 @@ export interface ManagedRuleSetsListOutput {
   nextLink?: string;
 }
 export const ManagedRuleSetsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4866,15 +4826,13 @@ export const ManagedRuleSetsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ManagedRuleSetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ManagedRuleSetsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ManagedRuleSetsListInput,
   outputSchema: ManagedRuleSetsListOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Cdn/operations",
@@ -4924,7 +4882,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -5001,7 +4959,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -5032,7 +4990,7 @@ export interface OriginGroupsCreateInput {
   };
 }
 export const OriginGroupsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -5105,7 +5063,7 @@ export interface OriginGroupsCreateOutput {
   };
 }
 export const OriginGroupsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5136,7 +5094,7 @@ export const OriginGroupsCreateOutput =
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param originGroupName - Name of the origin group which is unique within the endpoint.
  */
-export const OriginGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OriginGroupsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: OriginGroupsCreateInput,
   outputSchema: OriginGroupsCreateOutput,
 }));
@@ -5149,7 +5107,7 @@ export interface OriginGroupsDeleteInput {
   originGroupName: string;
 }
 export const OriginGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -5166,7 +5124,7 @@ export const OriginGroupsDeleteInput =
 // Output Schema
 export type OriginGroupsDeleteOutput = void;
 export const OriginGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OriginGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OriginGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -5179,7 +5137,7 @@ export const OriginGroupsDeleteOutput =
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param originGroupName - Name of the origin group which is unique within the endpoint.
  */
-export const OriginGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OriginGroupsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: OriginGroupsDeleteInput,
   outputSchema: OriginGroupsDeleteOutput,
 }));
@@ -5191,7 +5149,7 @@ export interface OriginGroupsGetInput {
   endpointName: string;
   originGroupName: string;
 }
-export const OriginGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OriginGroupsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -5219,7 +5177,7 @@ export interface OriginGroupsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const OriginGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OriginGroupsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5250,7 +5208,7 @@ export const OriginGroupsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param originGroupName - Name of the origin group which is unique within the endpoint.
  */
-export const OriginGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OriginGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OriginGroupsGetInput,
   outputSchema: OriginGroupsGetOutput,
 }));
@@ -5262,7 +5220,7 @@ export interface OriginGroupsListByEndpointInput {
   endpointName: string;
 }
 export const OriginGroupsListByEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -5293,7 +5251,7 @@ export interface OriginGroupsListByEndpointOutput {
   nextLink?: string;
 }
 export const OriginGroupsListByEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5338,12 +5296,10 @@ export const OriginGroupsListByEndpointOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const OriginGroupsListByEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OriginGroupsListByEndpointInput,
-    outputSchema: OriginGroupsListByEndpointOutput,
-  }),
-);
+export const OriginGroupsListByEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OriginGroupsListByEndpointInput,
+  outputSchema: OriginGroupsListByEndpointOutput,
+}));
 // Input Schema
 export interface OriginGroupsUpdateInput {
   subscriptionId: string;
@@ -5371,7 +5327,7 @@ export interface OriginGroupsUpdateInput {
   };
 }
 export const OriginGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -5444,7 +5400,7 @@ export interface OriginGroupsUpdateOutput {
   };
 }
 export const OriginGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5475,7 +5431,7 @@ export const OriginGroupsUpdateOutput =
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param originGroupName - Name of the origin group which is unique within the endpoint.
  */
-export const OriginGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OriginGroupsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: OriginGroupsUpdateInput,
   outputSchema: OriginGroupsUpdateOutput,
 }));
@@ -5500,7 +5456,7 @@ export interface OriginsCreateInput {
     privateLinkApprovalMessage?: string;
   };
 }
-export const OriginsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OriginsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -5543,7 +5499,7 @@ export interface OriginsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const OriginsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OriginsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5574,7 +5530,7 @@ export const OriginsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param originName - Name of the origin which is unique within the endpoint.
  */
-export const OriginsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OriginsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: OriginsCreateInput,
   outputSchema: OriginsCreateOutput,
 }));
@@ -5586,7 +5542,7 @@ export interface OriginsDeleteInput {
   endpointName: string;
   originName: string;
 }
-export const OriginsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OriginsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -5603,7 +5559,7 @@ export const OriginsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type OriginsDeleteOutput = void;
 export const OriginsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OriginsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OriginsDeleteOutput>;
 
 // The operation
 /**
@@ -5616,7 +5572,7 @@ export const OriginsDeleteOutput =
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param originName - Name of the origin which is unique within the endpoint.
  */
-export const OriginsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OriginsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: OriginsDeleteInput,
   outputSchema: OriginsDeleteOutput,
 }));
@@ -5628,7 +5584,7 @@ export interface OriginsGetInput {
   endpointName: string;
   originName: string;
 }
-export const OriginsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OriginsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -5656,7 +5612,7 @@ export interface OriginsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const OriginsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OriginsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5687,7 +5643,7 @@ export const OriginsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param originName - Name of the origin which is unique within the endpoint.
  */
-export const OriginsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OriginsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OriginsGetInput,
   outputSchema: OriginsGetOutput,
 }));
@@ -5699,7 +5655,7 @@ export interface OriginsListByEndpointInput {
   endpointName: string;
 }
 export const OriginsListByEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -5730,7 +5686,7 @@ export interface OriginsListByEndpointOutput {
   nextLink?: string;
 }
 export const OriginsListByEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5775,12 +5731,10 @@ export const OriginsListByEndpointOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const OriginsListByEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OriginsListByEndpointInput,
-    outputSchema: OriginsListByEndpointOutput,
-  }),
-);
+export const OriginsListByEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OriginsListByEndpointInput,
+  outputSchema: OriginsListByEndpointOutput,
+}));
 // Input Schema
 export interface OriginsUpdateInput {
   subscriptionId: string;
@@ -5802,7 +5756,7 @@ export interface OriginsUpdateInput {
     privateLinkApprovalMessage?: string;
   };
 }
-export const OriginsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OriginsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -5845,7 +5799,7 @@ export interface OriginsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const OriginsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OriginsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5876,7 +5830,7 @@ export const OriginsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param originName - Name of the origin which is unique within the endpoint.
  */
-export const OriginsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OriginsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: OriginsUpdateInput,
   outputSchema: OriginsUpdateOutput,
 }));
@@ -6028,7 +5982,7 @@ export interface PoliciesCreateOrUpdateInput {
   location: string;
 }
 export const PoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     policyName: Schema.String.pipe(T.PathParam()),
@@ -6285,7 +6239,7 @@ export interface PoliciesCreateOrUpdateOutput {
   };
 }
 export const PoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6314,19 +6268,17 @@ export const PoliciesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param policyName - The name of the CdnWebApplicationFirewallPolicy.
  */
-export const PoliciesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PoliciesCreateOrUpdateInput,
-    outputSchema: PoliciesCreateOrUpdateOutput,
-  }),
-);
+export const PoliciesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PoliciesCreateOrUpdateInput,
+  outputSchema: PoliciesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface PoliciesDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   policyName: string;
 }
-export const PoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   policyName: Schema.String.pipe(T.PathParam()),
@@ -6341,7 +6293,7 @@ export const PoliciesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type PoliciesDeleteOutput = void;
 export const PoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -6352,7 +6304,7 @@ export const PoliciesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param policyName - The name of the CdnWebApplicationFirewallPolicy.
  */
-export const PoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoliciesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoliciesDeleteInput,
   outputSchema: PoliciesDeleteOutput,
 }));
@@ -6362,7 +6314,7 @@ export interface PoliciesGetInput {
   resourceGroupName: string;
   policyName: string;
 }
-export const PoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   policyName: Schema.String.pipe(T.PathParam()),
@@ -6388,7 +6340,7 @@ export interface PoliciesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const PoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6417,7 +6369,7 @@ export const PoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param policyName - The name of the CdnWebApplicationFirewallPolicy.
  */
-export const PoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoliciesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoliciesGetInput,
   outputSchema: PoliciesGetOutput,
 }));
@@ -6426,7 +6378,7 @@ export interface PoliciesListInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
-export const PoliciesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -6454,7 +6406,7 @@ export interface PoliciesListOutput {
   }[];
   nextLink?: string;
 }
-export const PoliciesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -6487,7 +6439,7 @@ export const PoliciesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoliciesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoliciesListInput,
   outputSchema: PoliciesListOutput,
 }));
@@ -6498,7 +6450,7 @@ export interface PoliciesUpdateInput {
   policyName: string;
   tags?: Record<string, string>;
 }
-export const PoliciesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   policyName: Schema.String.pipe(T.PathParam()),
@@ -6525,7 +6477,7 @@ export interface PoliciesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const PoliciesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PoliciesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6554,7 +6506,7 @@ export const PoliciesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param policyName - The name of the CdnWebApplicationFirewallPolicy.
  */
-export const PoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PoliciesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PoliciesUpdateInput,
   outputSchema: PoliciesUpdateOutput,
 }));
@@ -6565,7 +6517,7 @@ export interface ProfilesCanMigrateInput {
   classicResourceReference: { id?: string };
 }
 export const ProfilesCanMigrateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     classicResourceReference: Schema.Struct({
@@ -6595,7 +6547,7 @@ export interface ProfilesCanMigrateOutput {
   };
 }
 export const ProfilesCanMigrateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -6629,7 +6581,7 @@ export const ProfilesCanMigrateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProfilesCanMigrate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProfilesCanMigrate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProfilesCanMigrateInput,
   outputSchema: ProfilesCanMigrateOutput,
 }));
@@ -6640,7 +6592,7 @@ export interface ProfilesCdnCanMigrateToAfdInput {
   profileName: string;
 }
 export const ProfilesCdnCanMigrateToAfdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -6668,7 +6620,7 @@ export interface ProfilesCdnCanMigrateToAfdOutput {
   };
 }
 export const ProfilesCdnCanMigrateToAfdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -6703,12 +6655,10 @@ export const ProfilesCdnCanMigrateToAfdOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const ProfilesCdnCanMigrateToAfd = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProfilesCdnCanMigrateToAfdInput,
-    outputSchema: ProfilesCdnCanMigrateToAfdOutput,
-  }),
-);
+export const ProfilesCdnCanMigrateToAfd = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProfilesCdnCanMigrateToAfdInput,
+  outputSchema: ProfilesCdnCanMigrateToAfdOutput,
+}));
 // Input Schema
 export interface ProfilesCdnMigrateToAfdInput {
   subscriptionId: string;
@@ -6733,7 +6683,7 @@ export interface ProfilesCdnMigrateToAfdInput {
   migrationEndpointMappings?: { migratedFrom?: string; migratedTo?: string }[];
 }
 export const ProfilesCdnMigrateToAfdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -6779,7 +6729,7 @@ export interface ProfilesCdnMigrateToAfdOutput {
   properties?: { migratedProfileResourceId?: { id?: string } };
 }
 export const ProfilesCdnMigrateToAfdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
     properties: Schema.optional(
@@ -6802,12 +6752,10 @@ export const ProfilesCdnMigrateToAfdOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const ProfilesCdnMigrateToAfd = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProfilesCdnMigrateToAfdInput,
-    outputSchema: ProfilesCdnMigrateToAfdOutput,
-  }),
-);
+export const ProfilesCdnMigrateToAfd = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProfilesCdnMigrateToAfdInput,
+  outputSchema: ProfilesCdnMigrateToAfdOutput,
+}));
 // Input Schema
 export interface ProfilesCreateInput {
   subscriptionId: string;
@@ -6879,7 +6827,7 @@ export interface ProfilesCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const ProfilesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -7000,7 +6948,7 @@ export interface ProfilesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ProfilesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7029,7 +6977,7 @@ export const ProfilesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const ProfilesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProfilesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProfilesCreateInput,
   outputSchema: ProfilesCreateOutput,
 }));
@@ -7039,7 +6987,7 @@ export interface ProfilesDeleteInput {
   resourceGroupName: string;
   profileName: string;
 }
-export const ProfilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -7054,7 +7002,7 @@ export const ProfilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ProfilesDeleteOutput = void;
 export const ProfilesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProfilesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ProfilesDeleteOutput>;
 
 // The operation
 /**
@@ -7065,7 +7013,7 @@ export const ProfilesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const ProfilesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProfilesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProfilesDeleteInput,
   outputSchema: ProfilesDeleteOutput,
 }));
@@ -7076,7 +7024,7 @@ export interface ProfilesGenerateSsoUriInput {
   profileName: string;
 }
 export const ProfilesGenerateSsoUriInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -7093,7 +7041,7 @@ export interface ProfilesGenerateSsoUriOutput {
   ssoUriValue?: string;
 }
 export const ProfilesGenerateSsoUriOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ssoUriValue: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<ProfilesGenerateSsoUriOutput>;
 
@@ -7106,19 +7054,17 @@ export const ProfilesGenerateSsoUriOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const ProfilesGenerateSsoUri = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProfilesGenerateSsoUriInput,
-    outputSchema: ProfilesGenerateSsoUriOutput,
-  }),
-);
+export const ProfilesGenerateSsoUri = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProfilesGenerateSsoUriInput,
+  outputSchema: ProfilesGenerateSsoUriOutput,
+}));
 // Input Schema
 export interface ProfilesGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   profileName: string;
 }
-export const ProfilesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -7144,7 +7090,7 @@ export interface ProfilesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ProfilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7173,7 +7119,7 @@ export const ProfilesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const ProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProfilesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProfilesGetInput,
   outputSchema: ProfilesGetOutput,
 }));
@@ -7181,7 +7127,7 @@ export const ProfilesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ProfilesListInput {
   subscriptionId: string;
 }
-export const ProfilesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -7208,7 +7154,7 @@ export interface ProfilesListOutput {
   }[];
   nextLink?: string;
 }
-export const ProfilesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -7240,7 +7186,7 @@ export const ProfilesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProfilesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProfilesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProfilesListInput,
   outputSchema: ProfilesListOutput,
 }));
@@ -7250,7 +7196,7 @@ export interface ProfilesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const ProfilesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -7279,7 +7225,7 @@ export interface ProfilesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ProfilesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7322,12 +7268,10 @@ export const ProfilesListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const ProfilesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProfilesListByResourceGroupInput,
-    outputSchema: ProfilesListByResourceGroupOutput,
-  }),
-);
+export const ProfilesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProfilesListByResourceGroupInput,
+  outputSchema: ProfilesListByResourceGroupOutput,
+}));
 // Input Schema
 export interface ProfilesListResourceUsageInput {
   subscriptionId: string;
@@ -7335,7 +7279,7 @@ export interface ProfilesListResourceUsageInput {
   profileName: string;
 }
 export const ProfilesListResourceUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -7358,7 +7302,7 @@ export interface ProfilesListResourceUsageOutput {
   nextLink?: string;
 }
 export const ProfilesListResourceUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         resourceType: Schema.optional(Schema.String),
@@ -7379,12 +7323,10 @@ export const ProfilesListResourceUsageOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const ProfilesListResourceUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProfilesListResourceUsageInput,
-    outputSchema: ProfilesListResourceUsageOutput,
-  }),
-);
+export const ProfilesListResourceUsage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProfilesListResourceUsageInput,
+  outputSchema: ProfilesListResourceUsageOutput,
+}));
 // Input Schema
 export interface ProfilesListSupportedOptimizationTypesInput {
   subscriptionId: string;
@@ -7392,7 +7334,7 @@ export interface ProfilesListSupportedOptimizationTypesInput {
   profileName: string;
 }
 export const ProfilesListSupportedOptimizationTypesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -7415,7 +7357,7 @@ export interface ProfilesListSupportedOptimizationTypesOutput {
   )[];
 }
 export const ProfilesListSupportedOptimizationTypesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportedOptimizationTypes: Schema.optional(
       Schema.Array(
         Schema.Literals([
@@ -7439,7 +7381,7 @@ export const ProfilesListSupportedOptimizationTypesOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
 export const ProfilesListSupportedOptimizationTypes =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProfilesListSupportedOptimizationTypesInput,
     outputSchema: ProfilesListSupportedOptimizationTypesOutput,
   }));
@@ -7470,7 +7412,7 @@ export interface ProfilesMigrateInput {
     migratedTo?: { id?: string };
   }[];
 }
-export const ProfilesMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesMigrateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
   sku: Schema.Struct({
@@ -7526,7 +7468,7 @@ export interface ProfilesMigrateOutput {
   type?: string;
   properties?: { migratedProfileResourceId?: { id?: string } };
 }
-export const ProfilesMigrateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesMigrateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
   properties: Schema.optional(
@@ -7548,7 +7490,7 @@ export const ProfilesMigrateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ProfilesMigrate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProfilesMigrate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProfilesMigrateInput,
   outputSchema: ProfilesMigrateOutput,
 }));
@@ -7559,7 +7501,7 @@ export interface ProfilesMigrationAbortInput {
   profileName: string;
 }
 export const ProfilesMigrationAbortInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -7574,7 +7516,7 @@ export const ProfilesMigrationAbortInput =
 // Output Schema
 export type ProfilesMigrationAbortOutput = void;
 export const ProfilesMigrationAbortOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProfilesMigrationAbortOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ProfilesMigrationAbortOutput>;
 
 // The operation
 /**
@@ -7585,12 +7527,10 @@ export const ProfilesMigrationAbortOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const ProfilesMigrationAbort = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProfilesMigrationAbortInput,
-    outputSchema: ProfilesMigrationAbortOutput,
-  }),
-);
+export const ProfilesMigrationAbort = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProfilesMigrationAbortInput,
+  outputSchema: ProfilesMigrationAbortOutput,
+}));
 // Input Schema
 export interface ProfilesMigrationCommitInput {
   subscriptionId: string;
@@ -7598,7 +7538,7 @@ export interface ProfilesMigrationCommitInput {
   profileName: string;
 }
 export const ProfilesMigrationCommitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -7613,7 +7553,7 @@ export const ProfilesMigrationCommitInput =
 // Output Schema
 export type ProfilesMigrationCommitOutput = void;
 export const ProfilesMigrationCommitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProfilesMigrationCommitOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ProfilesMigrationCommitOutput>;
 
 // The operation
 /**
@@ -7624,12 +7564,10 @@ export const ProfilesMigrationCommitOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const ProfilesMigrationCommit = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProfilesMigrationCommitInput,
-    outputSchema: ProfilesMigrationCommitOutput,
-  }),
-);
+export const ProfilesMigrationCommit = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProfilesMigrationCommitInput,
+  outputSchema: ProfilesMigrationCommitOutput,
+}));
 // Input Schema
 export interface ProfilesUpdateInput {
   subscriptionId: string;
@@ -7665,7 +7603,7 @@ export interface ProfilesUpdateInput {
     };
   };
 }
-export const ProfilesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -7739,7 +7677,7 @@ export interface ProfilesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ProfilesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ProfilesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7768,7 +7706,7 @@ export const ProfilesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const ProfilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ProfilesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProfilesUpdateInput,
   outputSchema: ProfilesUpdateOutput,
 }));
@@ -7776,11 +7714,9 @@ export const ProfilesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ResourceUsageListInput {
   subscriptionId: string;
 }
-export const ResourceUsageListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ResourceUsageListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkResourceUsage",
@@ -7799,7 +7735,7 @@ export interface ResourceUsageListOutput {
   nextLink?: string;
 }
 export const ResourceUsageListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         resourceType: Schema.optional(Schema.String),
@@ -7818,7 +7754,7 @@ export const ResourceUsageListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ResourceUsageList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ResourceUsageList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ResourceUsageListInput,
   outputSchema: ResourceUsageListOutput,
 }));
@@ -7862,7 +7798,7 @@ export interface RoutesCreateInput {
     deploymentStatus?: "NotStarted" | "InProgress" | "Succeeded" | "Failed";
   };
 }
-export const RoutesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RoutesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -7961,7 +7897,7 @@ export interface RoutesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const RoutesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RoutesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -7992,7 +7928,7 @@ export const RoutesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param routeName - Name of the routing rule.
  */
-export const RoutesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RoutesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RoutesCreateInput,
   outputSchema: RoutesCreateOutput,
 }));
@@ -8004,7 +7940,7 @@ export interface RoutesDeleteInput {
   endpointName: string;
   routeName: string;
 }
-export const RoutesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RoutesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -8021,7 +7957,7 @@ export const RoutesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RoutesDeleteOutput = void;
 export const RoutesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RoutesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RoutesDeleteOutput>;
 
 // The operation
 /**
@@ -8034,7 +7970,7 @@ export const RoutesDeleteOutput =
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param routeName - Name of the routing rule.
  */
-export const RoutesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RoutesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RoutesDeleteInput,
   outputSchema: RoutesDeleteOutput,
 }));
@@ -8046,7 +7982,7 @@ export interface RoutesGetInput {
   endpointName: string;
   routeName: string;
 }
-export const RoutesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RoutesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -8074,7 +8010,7 @@ export interface RoutesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RoutesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RoutesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8105,7 +8041,7 @@ export const RoutesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param routeName - Name of the routing rule.
  */
-export const RoutesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RoutesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RoutesGetInput,
   outputSchema: RoutesGetOutput,
 }));
@@ -8117,7 +8053,7 @@ export interface RoutesListByEndpointInput {
   endpointName: string;
 }
 export const RoutesListByEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -8148,7 +8084,7 @@ export interface RoutesListByEndpointOutput {
   nextLink?: string;
 }
 export const RoutesListByEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8193,12 +8129,10 @@ export const RoutesListByEndpointOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  */
-export const RoutesListByEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RoutesListByEndpointInput,
-    outputSchema: RoutesListByEndpointOutput,
-  }),
-);
+export const RoutesListByEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RoutesListByEndpointInput,
+  outputSchema: RoutesListByEndpointOutput,
+}));
 // Input Schema
 export interface RoutesUpdateInput {
   subscriptionId: string;
@@ -8232,7 +8166,7 @@ export interface RoutesUpdateInput {
     enabledState?: "Enabled" | "Disabled";
   };
 }
-export const RoutesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RoutesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -8319,7 +8253,7 @@ export interface RoutesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const RoutesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RoutesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8350,7 +8284,7 @@ export const RoutesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param endpointName - Name of the endpoint under the profile which is unique globally.
  * @param routeName - Name of the routing rule.
  */
-export const RoutesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RoutesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RoutesUpdateInput,
   outputSchema: RoutesUpdateOutput,
 }));
@@ -8408,7 +8342,7 @@ export interface RulesCreateInput {
     deploymentStatus?: "NotStarted" | "InProgress" | "Succeeded" | "Failed";
   };
 }
-export const RulesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RulesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -8501,7 +8435,7 @@ export interface RulesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const RulesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RulesCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8532,7 +8466,7 @@ export const RulesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param ruleSetName - Name of the rule set under the profile which is unique globally.
  * @param ruleName - Name of the delivery rule which is unique within the endpoint.
  */
-export const RulesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RulesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RulesCreateInput,
   outputSchema: RulesCreateOutput,
 }));
@@ -8544,7 +8478,7 @@ export interface RulesDeleteInput {
   ruleSetName: string;
   ruleName: string;
 }
-export const RulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RulesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -8561,7 +8495,7 @@ export const RulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RulesDeleteOutput = void;
 export const RulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RulesDeleteOutput>;
 
 // The operation
 /**
@@ -8574,7 +8508,7 @@ export const RulesDeleteOutput =
  * @param ruleSetName - Name of the rule set under the profile which is unique globally.
  * @param ruleName - Name of the delivery rule which is unique within the endpoint.
  */
-export const RulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RulesDeleteInput,
   outputSchema: RulesDeleteOutput,
 }));
@@ -8594,7 +8528,7 @@ export interface RuleSetsCreateInput {
     deploymentStatus?: "NotStarted" | "InProgress" | "Succeeded" | "Failed";
   };
 }
-export const RuleSetsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RuleSetsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -8637,7 +8571,7 @@ export interface RuleSetsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const RuleSetsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RuleSetsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8667,7 +8601,7 @@ export const RuleSetsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param ruleSetName - Name of the rule set under the profile which is unique globally.
  */
-export const RuleSetsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RuleSetsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RuleSetsCreateInput,
   outputSchema: RuleSetsCreateOutput,
 }));
@@ -8678,7 +8612,7 @@ export interface RuleSetsDeleteInput {
   profileName: string;
   ruleSetName: string;
 }
-export const RuleSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RuleSetsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -8694,7 +8628,7 @@ export const RuleSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RuleSetsDeleteOutput = void;
 export const RuleSetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RuleSetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RuleSetsDeleteOutput>;
 
 // The operation
 /**
@@ -8706,7 +8640,7 @@ export const RuleSetsDeleteOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param ruleSetName - Name of the rule set under the profile which is unique globally.
  */
-export const RuleSetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RuleSetsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RuleSetsDeleteInput,
   outputSchema: RuleSetsDeleteOutput,
 }));
@@ -8717,7 +8651,7 @@ export interface RuleSetsGetInput {
   profileName: string;
   ruleSetName: string;
 }
-export const RuleSetsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RuleSetsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -8744,7 +8678,7 @@ export interface RuleSetsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RuleSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RuleSetsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8774,7 +8708,7 @@ export const RuleSetsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param ruleSetName - Name of the rule set under the profile which is unique globally.
  */
-export const RuleSetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RuleSetsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RuleSetsGetInput,
   outputSchema: RuleSetsGetOutput,
 }));
@@ -8785,7 +8719,7 @@ export interface RuleSetsListByProfileInput {
   profileName: string;
 }
 export const RuleSetsListByProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -8815,7 +8749,7 @@ export interface RuleSetsListByProfileOutput {
   nextLink?: string;
 }
 export const RuleSetsListByProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8859,12 +8793,10 @@ export const RuleSetsListByProfileOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const RuleSetsListByProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RuleSetsListByProfileInput,
-    outputSchema: RuleSetsListByProfileOutput,
-  }),
-);
+export const RuleSetsListByProfile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RuleSetsListByProfileInput,
+  outputSchema: RuleSetsListByProfileOutput,
+}));
 // Input Schema
 export interface RuleSetsListResourceUsageInput {
   subscriptionId: string;
@@ -8873,7 +8805,7 @@ export interface RuleSetsListResourceUsageInput {
   ruleSetName: string;
 }
 export const RuleSetsListResourceUsageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -8898,7 +8830,7 @@ export interface RuleSetsListResourceUsageOutput {
   nextLink?: string;
 }
 export const RuleSetsListResourceUsageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8924,12 +8856,10 @@ export const RuleSetsListResourceUsageOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param ruleSetName - Name of the rule set under the profile which is unique globally.
  */
-export const RuleSetsListResourceUsage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RuleSetsListResourceUsageInput,
-    outputSchema: RuleSetsListResourceUsageOutput,
-  }),
-);
+export const RuleSetsListResourceUsage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RuleSetsListResourceUsageInput,
+  outputSchema: RuleSetsListResourceUsageOutput,
+}));
 // Input Schema
 export interface RulesGetInput {
   subscriptionId: string;
@@ -8938,7 +8868,7 @@ export interface RulesGetInput {
   ruleSetName: string;
   ruleName: string;
 }
-export const RulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RulesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -8966,7 +8896,7 @@ export interface RulesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RulesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -8997,7 +8927,7 @@ export const RulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param ruleSetName - Name of the rule set under the profile which is unique globally.
  * @param ruleName - Name of the delivery rule which is unique within the endpoint.
  */
-export const RulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RulesGetInput,
   outputSchema: RulesGetOutput,
 }));
@@ -9009,7 +8939,7 @@ export interface RulesListByRuleSetInput {
   ruleSetName: string;
 }
 export const RulesListByRuleSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -9040,7 +8970,7 @@ export interface RulesListByRuleSetOutput {
   nextLink?: string;
 }
 export const RulesListByRuleSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9085,7 +9015,7 @@ export const RulesListByRuleSetOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param ruleSetName - Name of the rule set under the profile which is unique globally.
  */
-export const RulesListByRuleSet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RulesListByRuleSet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RulesListByRuleSetInput,
   outputSchema: RulesListByRuleSetOutput,
 }));
@@ -9136,7 +9066,7 @@ export interface RulesUpdateInput {
     matchProcessingBehavior?: "Continue" | "Stop";
   };
 }
-export const RulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RulesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -9217,7 +9147,7 @@ export interface RulesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const RulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RulesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -9248,7 +9178,7 @@ export const RulesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param ruleSetName - Name of the rule set under the profile which is unique globally.
  * @param ruleName - Name of the delivery rule which is unique within the endpoint.
  */
-export const RulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RulesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RulesUpdateInput,
   outputSchema: RulesUpdateOutput,
 }));
@@ -9268,7 +9198,7 @@ export interface SecretsCreateInput {
     deploymentStatus?: "NotStarted" | "InProgress" | "Succeeded" | "Failed";
   };
 }
-export const SecretsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -9311,7 +9241,7 @@ export interface SecretsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const SecretsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -9341,7 +9271,7 @@ export const SecretsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param secretName - Name of the Secret under the profile.
  */
-export const SecretsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretsCreateInput,
   outputSchema: SecretsCreateOutput,
 }));
@@ -9352,7 +9282,7 @@ export interface SecretsDeleteInput {
   profileName: string;
   secretName: string;
 }
-export const SecretsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -9368,7 +9298,7 @@ export const SecretsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SecretsDeleteOutput = void;
 export const SecretsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SecretsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SecretsDeleteOutput>;
 
 // The operation
 /**
@@ -9380,7 +9310,7 @@ export const SecretsDeleteOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param secretName - Name of the Secret under the profile.
  */
-export const SecretsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretsDeleteInput,
   outputSchema: SecretsDeleteOutput,
 }));
@@ -9391,7 +9321,7 @@ export interface SecretsGetInput {
   profileName: string;
   secretName: string;
 }
-export const SecretsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   profileName: Schema.String.pipe(T.PathParam()),
@@ -9418,7 +9348,7 @@ export interface SecretsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SecretsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -9448,7 +9378,7 @@ export const SecretsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param secretName - Name of the Secret under the profile.
  */
-export const SecretsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretsGetInput,
   outputSchema: SecretsGetOutput,
 }));
@@ -9459,7 +9389,7 @@ export interface SecretsListByProfileInput {
   profileName: string;
 }
 export const SecretsListByProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -9489,7 +9419,7 @@ export interface SecretsListByProfileOutput {
   nextLink?: string;
 }
 export const SecretsListByProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9533,12 +9463,10 @@ export const SecretsListByProfileOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
-export const SecretsListByProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SecretsListByProfileInput,
-    outputSchema: SecretsListByProfileOutput,
-  }),
-);
+export const SecretsListByProfile = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SecretsListByProfileInput,
+  outputSchema: SecretsListByProfileOutput,
+}));
 // Input Schema
 export interface SecurityPoliciesCreateInput {
   subscriptionId: string;
@@ -9556,7 +9484,7 @@ export interface SecurityPoliciesCreateInput {
   };
 }
 export const SecurityPoliciesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -9600,7 +9528,7 @@ export interface SecurityPoliciesCreateOutput {
   };
 }
 export const SecurityPoliciesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9630,12 +9558,10 @@ export const SecurityPoliciesCreateOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param securityPolicyName - Name of the security policy under the profile.
  */
-export const SecurityPoliciesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SecurityPoliciesCreateInput,
-    outputSchema: SecurityPoliciesCreateOutput,
-  }),
-);
+export const SecurityPoliciesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SecurityPoliciesCreateInput,
+  outputSchema: SecurityPoliciesCreateOutput,
+}));
 // Input Schema
 export interface SecurityPoliciesDeleteInput {
   subscriptionId: string;
@@ -9644,7 +9570,7 @@ export interface SecurityPoliciesDeleteInput {
   securityPolicyName: string;
 }
 export const SecurityPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -9660,7 +9586,7 @@ export const SecurityPoliciesDeleteInput =
 // Output Schema
 export type SecurityPoliciesDeleteOutput = void;
 export const SecurityPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SecurityPoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SecurityPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -9672,12 +9598,10 @@ export const SecurityPoliciesDeleteOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param securityPolicyName - Name of the security policy under the profile.
  */
-export const SecurityPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SecurityPoliciesDeleteInput,
-    outputSchema: SecurityPoliciesDeleteOutput,
-  }),
-);
+export const SecurityPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SecurityPoliciesDeleteInput,
+  outputSchema: SecurityPoliciesDeleteOutput,
+}));
 // Input Schema
 export interface SecurityPoliciesGetInput {
   subscriptionId: string;
@@ -9686,7 +9610,7 @@ export interface SecurityPoliciesGetInput {
   securityPolicyName: string;
 }
 export const SecurityPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -9714,7 +9638,7 @@ export interface SecurityPoliciesGetOutput {
   };
 }
 export const SecurityPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9744,7 +9668,7 @@ export const SecurityPoliciesGetOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param securityPolicyName - Name of the security policy under the profile.
  */
-export const SecurityPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecurityPoliciesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecurityPoliciesGetInput,
   outputSchema: SecurityPoliciesGetOutput,
 }));
@@ -9755,7 +9679,7 @@ export interface SecurityPoliciesListByProfileInput {
   profileName: string;
 }
 export const SecurityPoliciesListByProfileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -9785,7 +9709,7 @@ export interface SecurityPoliciesListByProfileOutput {
   nextLink?: string;
 }
 export const SecurityPoliciesListByProfileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9830,7 +9754,7 @@ export const SecurityPoliciesListByProfileOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  */
 export const SecurityPoliciesListByProfile =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SecurityPoliciesListByProfileInput,
     outputSchema: SecurityPoliciesListByProfileOutput,
   }));
@@ -9843,7 +9767,7 @@ export interface SecurityPoliciesPatchInput {
   properties?: { parameters?: { type: "WebApplicationFirewall" } };
 }
 export const SecurityPoliciesPatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     profileName: Schema.String.pipe(T.PathParam()),
@@ -9880,7 +9804,7 @@ export interface SecurityPoliciesPatchOutput {
   };
 }
 export const SecurityPoliciesPatchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9910,18 +9834,16 @@ export const SecurityPoliciesPatchOutput =
  * @param profileName - Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
  * @param securityPolicyName - Name of the security policy under the profile.
  */
-export const SecurityPoliciesPatch = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SecurityPoliciesPatchInput,
-    outputSchema: SecurityPoliciesPatchOutput,
-  }),
-);
+export const SecurityPoliciesPatch = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SecurityPoliciesPatchInput,
+  outputSchema: SecurityPoliciesPatchOutput,
+}));
 // Input Schema
 export interface ValidateProbeInput {
   subscriptionId: string;
   probeURL: string;
 }
-export const ValidateProbeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ValidateProbeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   probeURL: Schema.String,
 }).pipe(
@@ -9938,7 +9860,7 @@ export interface ValidateProbeOutput {
   errorCode?: string;
   message?: string;
 }
-export const ValidateProbeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ValidateProbeOutput = /*@__PURE__*/ Schema.Struct({
   isValid: Schema.optional(Schema.Boolean),
   errorCode: Schema.optional(Schema.String),
   message: Schema.optional(Schema.String),
@@ -9951,7 +9873,7 @@ export const ValidateProbeOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const ValidateProbe = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ValidateProbe = /*@__PURE__*/ API.make(() => ({
   inputSchema: ValidateProbeInput,
   outputSchema: ValidateProbeOutput,
 }));

@@ -8,7 +8,7 @@ export interface V1CreateProjectClaimTokenInput {
   ref: string;
 }
 export const V1CreateProjectClaimTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "POST", path: "/v1/projects/{ref}/claim-token" }),
@@ -23,7 +23,7 @@ export interface V1CreateProjectClaimTokenOutput {
   created_by: string;
 }
 export const V1CreateProjectClaimTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.String,
     token_alias: Schema.String,
     expires_at: Schema.String,
@@ -37,10 +37,8 @@ export const V1CreateProjectClaimTokenOutput =
  *
  * @param ref - Project ref
  */
-export const v1CreateProjectClaimToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1CreateProjectClaimTokenInput,
-    outputSchema: V1CreateProjectClaimTokenOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1CreateProjectClaimToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1CreateProjectClaimTokenInput,
+  outputSchema: V1CreateProjectClaimTokenOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

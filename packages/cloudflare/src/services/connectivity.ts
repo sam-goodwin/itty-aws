@@ -55,7 +55,7 @@ export class VpcTunnelNotFound extends T.applyErrorMatchers(
 interface Network {
   tunnelId: string;
 }
-const Network = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Network = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     tunnelId: Schema.String,
   }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
@@ -65,7 +65,7 @@ interface InfraIPv4Host {
   ipv4: string;
   network: { tunnelId: string };
 }
-const InfraIPv4Host = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const InfraIPv4Host = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ipv4: Schema.String,
     network: Network,
@@ -76,7 +76,7 @@ interface InfraIPv6Host {
   ipv6: string;
   network: { tunnelId: string };
 }
-const InfraIPv6Host = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const InfraIPv6Host = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ipv6: Schema.String,
     network: Network,
@@ -88,7 +88,7 @@ interface InfraDualStackHost {
   ipv6: string;
   network: { tunnelId: string };
 }
-const InfraDualStackHost = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const InfraDualStackHost = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ipv4: Schema.String,
     ipv6: Schema.String,
@@ -100,7 +100,7 @@ interface ResolverNetwork {
   tunnelId: string;
   resolverIps?: string[] | null;
 }
-const ResolverNetwork = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ResolverNetwork = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     tunnelId: Schema.String,
     resolverIps: Schema.optional(
@@ -115,7 +115,7 @@ interface InfraHostnameHost {
   hostname: string;
   resolverNetwork: { tunnelId: string; resolverIps?: string[] | null };
 }
-const InfraHostnameHost = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const InfraHostnameHost = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     hostname: Schema.String,
     resolverNetwork: ResolverNetwork,
@@ -131,7 +131,7 @@ interface Tlssettings {
   /** TLS certificate verification mode for the connection to the origin.  - `"verify_full"` — verify certificate chain and hostname (default) - `"verify_ca"` — verify certificate chain only, skip hostname  */
   certVerificationMode: string;
 }
-const Tlssettings = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Tlssettings = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     certVerificationMode: Schema.String,
   }).pipe(
@@ -160,7 +160,7 @@ interface InfraHTTPServiceConfig {
   tcpPort?: number | null;
   appProtocol?: "postgresql" | "mysql" | null;
 }
-const InfraHTTPServiceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const InfraHTTPServiceConfig = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     host: Schema.Union([
       InfraDualStackHost,
@@ -208,7 +208,7 @@ interface ListDirectoryServicesResponseResultInfo {
   totalCount?: number | null;
 }
 const ListDirectoryServicesResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -231,7 +231,7 @@ interface InfraIPv4Host2 {
   hostname?: string | null;
   resolverNetwork?: { tunnelId: string; resolverIps?: string[] | null } | null;
 }
-const InfraIPv4Host2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const InfraIPv4Host2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     ipv4: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     network: Schema.optional(Schema.Union([Network, Schema.Null])),
@@ -261,7 +261,7 @@ export interface GetDirectoryServiceRequest {
 }
 
 export const GetDirectoryServiceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       serviceId: Schema.String.pipe(T.HttpPath("serviceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -322,7 +322,7 @@ export type GetDirectoryServiceResponse =
     };
 
 export const GetDirectoryServiceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     InfraHTTPServiceConfig.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetDirectoryServiceResponse>;
 
@@ -336,7 +336,7 @@ export const getDirectoryService: API.OperationMethod<
   GetDirectoryServiceResponse,
   GetDirectoryServiceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDirectoryServiceRequest,
   output: GetDirectoryServiceResponse,
   errors: [VpcServiceNotFound, Forbidden],
@@ -352,7 +352,7 @@ export interface ListDirectoryServicesRequest {
 }
 
 export const ListDirectoryServicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -430,7 +430,7 @@ export interface ListDirectoryServicesResponse {
 }
 
 export const ListDirectoryServicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(InfraHTTPServiceConfig),
       resultInfo: Schema.optional(
@@ -446,7 +446,7 @@ export const listDirectoryServices: API.PaginatedOperationMethod<
   ListDirectoryServicesResponse,
   ListDirectoryServicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDirectoryServicesRequest,
   output: ListDirectoryServicesResponse,
   errors: [Forbidden],
@@ -487,7 +487,7 @@ export interface CreateDirectoryServiceRequest {
 }
 
 export const CreateDirectoryServiceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       host: InfraIPv4Host2,
@@ -571,7 +571,7 @@ export type CreateDirectoryServiceResponse =
     };
 
 export const CreateDirectoryServiceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     InfraHTTPServiceConfig.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<CreateDirectoryServiceResponse>;
 
@@ -586,7 +586,7 @@ export const createDirectoryService: API.OperationMethod<
   CreateDirectoryServiceResponse,
   CreateDirectoryServiceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDirectoryServiceRequest,
   output: CreateDirectoryServiceResponse,
   errors: [VpcServiceNameAlreadyExists, VpcTunnelNotFound, Forbidden],
@@ -621,7 +621,7 @@ export interface UpdateDirectoryServiceRequest {
 }
 
 export const UpdateDirectoryServiceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       serviceId: Schema.String.pipe(T.HttpPath("serviceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -706,7 +706,7 @@ export type UpdateDirectoryServiceResponse =
     };
 
 export const UpdateDirectoryServiceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     InfraHTTPServiceConfig.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<UpdateDirectoryServiceResponse>;
 
@@ -722,7 +722,7 @@ export const updateDirectoryService: API.OperationMethod<
   UpdateDirectoryServiceResponse,
   UpdateDirectoryServiceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDirectoryServiceRequest,
   output: UpdateDirectoryServiceResponse,
   errors: [
@@ -739,7 +739,7 @@ export interface DeleteDirectoryServiceRequest {
 }
 
 export const DeleteDirectoryServiceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       serviceId: Schema.String.pipe(T.HttpPath("serviceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -754,7 +754,7 @@ export const DeleteDirectoryServiceRequest =
 export type DeleteDirectoryServiceResponse = unknown;
 
 export const DeleteDirectoryServiceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<DeleteDirectoryServiceResponse>;
 
@@ -768,7 +768,7 @@ export const deleteDirectoryService: API.OperationMethod<
   DeleteDirectoryServiceResponse,
   DeleteDirectoryServiceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDirectoryServiceRequest,
   output: DeleteDirectoryServiceResponse,
   errors: [VpcServiceNotFound, Forbidden],

@@ -15,7 +15,7 @@ export interface PostTestHelpersIssuingAuthorizationsAuthorizationIncrementInput
   is_amount_controllable?: boolean;
 }
 export const PostTestHelpersIssuingAuthorizationsAuthorizationIncrementInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorization: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     increment_amount: Schema.Number,
@@ -2069,7 +2069,7 @@ export interface PostTestHelpersIssuingAuthorizationsAuthorizationIncrementOutpu
   wallet: string | null;
 }
 export const PostTestHelpersIssuingAuthorizationsAuthorizationIncrementOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.NullOr(
       Schema.Struct({
@@ -4366,7 +4366,7 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationIncrementOutput =
  * <p>Increment a test-mode Authorization.</p>
  */
 export const PostTestHelpersIssuingAuthorizationsAuthorizationIncrement =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PostTestHelpersIssuingAuthorizationsAuthorizationIncrementInput,
     outputSchema:

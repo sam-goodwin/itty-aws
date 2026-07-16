@@ -9,7 +9,7 @@ export interface FeatureFlagsRetrieveInput {
   project_id: string;
 }
 export const FeatureFlagsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -105,7 +105,7 @@ export interface FeatureFlagsRetrieveOutput {
   is_used_in_replay_settings?: boolean;
 }
 export const FeatureFlagsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.String),
     key: Schema.optional(Schema.String),
@@ -249,10 +249,8 @@ export const FeatureFlagsRetrieveOutput =
  * @param id - A unique integer value identifying this feature flag.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const featureFlagsRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FeatureFlagsRetrieveInput,
-    outputSchema: FeatureFlagsRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const featureFlagsRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FeatureFlagsRetrieveInput,
+  outputSchema: FeatureFlagsRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

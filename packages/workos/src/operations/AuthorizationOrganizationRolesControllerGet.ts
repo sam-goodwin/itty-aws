@@ -9,7 +9,7 @@ export interface AuthorizationOrganizationRolesControllerGetInput {
   slug: string;
 }
 export const AuthorizationOrganizationRolesControllerGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     slug: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -33,7 +33,7 @@ export interface AuthorizationOrganizationRolesControllerGetOutput {
   updated_at: string;
 }
 export const AuthorizationOrganizationRolesControllerGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String,
     object: Schema.String,
     id: Schema.String,
@@ -56,7 +56,7 @@ export const AuthorizationOrganizationRolesControllerGetOutput =
  * @param slug - The slug of the role.
  */
 export const AuthorizationOrganizationRolesControllerGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationOrganizationRolesControllerGetInput,
     outputSchema: AuthorizationOrganizationRolesControllerGetOutput,
     errors: [Forbidden, NotFound] as const,

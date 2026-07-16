@@ -9,7 +9,7 @@ export interface PropertyDefinitionsDestroyInput {
   project_id: string;
 }
 export const PropertyDefinitionsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const PropertyDefinitionsDestroyInput =
 // Output Schema
 export type PropertyDefinitionsDestroyOutput = void;
 export const PropertyDefinitionsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PropertyDefinitionsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PropertyDefinitionsDestroyOutput>;
 
 // The operation
 /**
@@ -30,10 +30,8 @@ export const PropertyDefinitionsDestroyOutput =
  * @param id - A UUID string identifying this property definition.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const propertyDefinitionsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PropertyDefinitionsDestroyInput,
-    outputSchema: PropertyDefinitionsDestroyOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const propertyDefinitionsDestroy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PropertyDefinitionsDestroyInput,
+  outputSchema: PropertyDefinitionsDestroyOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

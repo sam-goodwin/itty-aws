@@ -6,11 +6,9 @@ import * as T from "../../traits.ts";
 export interface UpdateCurrentUserInput {
   name: string;
 }
-export const UpdateCurrentUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String,
-  },
-).pipe(
+export const UpdateCurrentUserInput = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String,
+}).pipe(
   T.Http({ method: "PUT", path: "/v2/user" }),
 ) as unknown as Schema.Codec<UpdateCurrentUserInput>;
 
@@ -22,7 +20,7 @@ export interface UpdateCurrentUserOutput {
   role?: { id: string; name: string };
 }
 export const UpdateCurrentUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.String,
     id: Schema.String,
     name: Schema.String,
@@ -38,7 +36,7 @@ export const UpdateCurrentUserOutput =
 /**
  * Update current user
  */
-export const updateCurrentUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateCurrentUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateCurrentUserInput,
   outputSchema: UpdateCurrentUserOutput,
 }));

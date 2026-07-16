@@ -104,21 +104,20 @@ interface ListNamespacesResponseResult {
   /** True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?". */
   supportsUrlEncoding?: boolean | null;
 }
-const ListNamespacesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      title: Schema.String,
-      supportsUrlEncoding: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        title: "title",
-        supportsUrlEncoding: "supports_url_encoding",
-      }),
+const ListNamespacesResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    title: Schema.String,
+    supportsUrlEncoding: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
     ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      title: "title",
+      supportsUrlEncoding: "supports_url_encoding",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListNamespacesResponseResult>;
 
 interface ListNamespacesResponseResultInfo {
@@ -128,7 +127,7 @@ interface ListNamespacesResponseResultInfo {
   totalCount?: number | null;
 }
 const ListNamespacesResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -148,7 +147,7 @@ interface WorkersKVBulkGetResult {
   /** Requested keys are paired with their values in an object. */
   values?: Record<string, unknown> | null;
 }
-const WorkersKVBulkGetResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const WorkersKVBulkGetResult = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     values: Schema.optional(
       Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
@@ -165,7 +164,7 @@ interface ListNamespaceKeysResponseResult {
   metadata?: unknown | null;
 }
 const ListNamespaceKeysResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       expiration: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -179,7 +178,7 @@ interface ListNamespaceKeysResponseResultInfo {
   perPage?: number | null;
 }
 const ListNamespaceKeysResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -207,7 +206,7 @@ interface Body {
   /** Arbitrary JSON that is associated with a key. */
   metadata?: unknown | null;
 }
-const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Body = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     key: Schema.String,
     value: Schema.String,
@@ -237,17 +236,16 @@ export interface GetNamespaceRequest {
   accountId: string;
 }
 
-export const GetNamespaceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/storage/kv/namespaces/{namespaceId}",
-      }),
-    ),
+export const GetNamespaceRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/storage/kv/namespaces/{namespaceId}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetNamespaceRequest>;
 
 export interface GetNamespaceResponse {
@@ -259,23 +257,22 @@ export interface GetNamespaceResponse {
   supportsUrlEncoding?: boolean | null;
 }
 
-export const GetNamespaceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.String,
-      title: Schema.String,
-      supportsUrlEncoding: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          title: "title",
-          supportsUrlEncoding: "supports_url_encoding",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetNamespaceResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    title: Schema.String,
+    supportsUrlEncoding: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        title: "title",
+        supportsUrlEncoding: "supports_url_encoding",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetNamespaceResponse>;
 
 export type GetNamespaceError =
@@ -288,7 +285,7 @@ export const getNamespace: API.OperationMethod<
   GetNamespaceResponse,
   GetNamespaceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNamespaceRequest,
   output: GetNamespaceResponse,
   errors: [NamespaceNotFound, InvalidObjectIdentifier],
@@ -305,24 +302,23 @@ export interface ListNamespacesRequest {
   order?: "id" | "title" | (string & {});
 }
 
-export const ListNamespacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      direction: Schema.optional(
-        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-      ).pipe(T.HttpQuery("direction")),
-      order: Schema.optional(
-        Schema.Union([Schema.Literals(["id", "title"]), Schema.String]),
-      ).pipe(T.HttpQuery("order")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/storage/kv/namespaces",
-      }),
-    ),
+export const ListNamespacesRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    order: Schema.optional(
+      Schema.Union([Schema.Literals(["id", "title"]), Schema.String]),
+    ).pipe(T.HttpQuery("order")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/storage/kv/namespaces",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListNamespacesRequest>;
 
 export interface ListNamespacesResponse {
@@ -336,7 +332,7 @@ export interface ListNamespacesResponse {
 }
 
 export const ListNamespacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListNamespacesResponseResult),
       resultInfo: Schema.optional(
@@ -352,7 +348,7 @@ export const listNamespaces: API.PaginatedOperationMethod<
   ListNamespacesResponse,
   ListNamespacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [],
@@ -373,7 +369,7 @@ export interface CreateNamespaceRequest {
 }
 
 export const CreateNamespaceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       title: Schema.String,
@@ -395,7 +391,7 @@ export interface CreateNamespaceResponse {
 }
 
 export const CreateNamespaceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       title: Schema.String,
@@ -424,7 +420,7 @@ export const createNamespace: API.OperationMethod<
   CreateNamespaceResponse,
   CreateNamespaceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNamespaceRequest,
   output: CreateNamespaceResponse,
   errors: [TitleRequired, InvalidObjectIdentifier, NamespaceTitleAlreadyExists],
@@ -439,7 +435,7 @@ export interface UpdateNamespaceRequest {
 }
 
 export const UpdateNamespaceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -462,7 +458,7 @@ export interface UpdateNamespaceResponse {
 }
 
 export const UpdateNamespaceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       title: Schema.String,
@@ -492,7 +488,7 @@ export const updateNamespace: API.OperationMethod<
   UpdateNamespaceResponse,
   UpdateNamespaceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNamespaceRequest,
   output: UpdateNamespaceResponse,
   errors: [
@@ -510,7 +506,7 @@ export interface DeleteNamespaceRequest {
 }
 
 export const DeleteNamespaceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -525,7 +521,7 @@ export const DeleteNamespaceRequest =
 export interface DeleteNamespaceResponse {}
 
 export const DeleteNamespaceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({}).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteNamespaceResponse>;
 
@@ -540,7 +536,7 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceResponse,
   DeleteNamespaceError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
   errors: [MethodNotAllowed, NamespaceNotFound, InvalidObjectIdentifier],
@@ -559,7 +555,7 @@ export interface BulkGetNamespacesRequest {
 }
 
 export const BulkGetNamespacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -581,7 +577,7 @@ export type BulkGetNamespacesResponse = {
 };
 
 export const BulkGetNamespacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     WorkersKVBulkGetResult.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<BulkGetNamespacesResponse>;
 
@@ -597,7 +593,7 @@ export const bulkGetNamespaces: API.OperationMethod<
   BulkGetNamespacesResponse,
   BulkGetNamespacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkGetNamespacesRequest,
   output: BulkGetNamespacesResponse,
   errors: [
@@ -617,7 +613,7 @@ export interface BulkDeleteNamespacesRequest {
 }
 
 export const BulkDeleteNamespacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -638,7 +634,7 @@ export interface BulkDeleteNamespacesResponse {
 }
 
 export const BulkDeleteNamespacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       successfulKeyCount: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -667,7 +663,7 @@ export const bulkDeleteNamespaces: API.OperationMethod<
   BulkDeleteNamespacesResponse,
   BulkDeleteNamespacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteNamespacesRequest,
   output: BulkDeleteNamespacesResponse,
   errors: [NamespaceNotFound, InvalidRequestBody, InvalidObjectIdentifier],
@@ -688,7 +684,7 @@ export interface ListNamespaceKeysRequest {
 }
 
 export const ListNamespaceKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -717,7 +713,7 @@ export interface ListNamespaceKeysResponse {
 }
 
 export const ListNamespaceKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListNamespaceKeysResponseResult),
       resultInfo: Schema.optional(
@@ -733,7 +729,7 @@ export const listNamespaceKeys: API.PaginatedOperationMethod<
   ListNamespaceKeysResponse,
   ListNamespaceKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespaceKeysRequest,
   output: ListNamespaceKeysResponse,
   errors: [],
@@ -759,7 +755,7 @@ export interface BulkGetNamespaceKeysRequest {
 }
 
 export const BulkGetNamespaceKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -781,7 +777,7 @@ export type BulkGetNamespaceKeysResponse = {
 };
 
 export const BulkGetNamespaceKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     WorkersKVBulkGetResult.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<BulkGetNamespaceKeysResponse>;
 
@@ -796,7 +792,7 @@ export const bulkGetNamespaceKeys: API.OperationMethod<
   BulkGetNamespaceKeysResponse,
   BulkGetNamespaceKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkGetNamespaceKeysRequest,
   output: BulkGetNamespaceKeysResponse,
   errors: [InvalidRequestBody, NamespaceNotFound, InvalidObjectIdentifier],
@@ -811,7 +807,7 @@ export interface BulkDeleteNamespaceKeysRequest {
 }
 
 export const BulkDeleteNamespaceKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -832,7 +828,7 @@ export interface BulkDeleteNamespaceKeysResponse {
 }
 
 export const BulkDeleteNamespaceKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       successfulKeyCount: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -861,7 +857,7 @@ export const bulkDeleteNamespaceKeys: API.OperationMethod<
   BulkDeleteNamespaceKeysResponse,
   BulkDeleteNamespaceKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkDeleteNamespaceKeysRequest,
   output: BulkDeleteNamespaceKeysResponse,
   errors: [NamespaceNotFound, InvalidRequestBody, InvalidObjectIdentifier],
@@ -879,7 +875,7 @@ export interface GetNamespaceMetadataRequest {
 }
 
 export const GetNamespaceMetadataRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
       keyName: Schema.String.pipe(T.HttpPath("keyName")),
@@ -895,7 +891,7 @@ export const GetNamespaceMetadataRequest =
 export type GetNamespaceMetadataResponse = unknown;
 
 export const GetNamespaceMetadataResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetNamespaceMetadataResponse>;
 
@@ -910,7 +906,7 @@ export const getNamespaceMetadata: API.OperationMethod<
   GetNamespaceMetadataResponse,
   GetNamespaceMetadataError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNamespaceMetadataRequest,
   output: GetNamespaceMetadataResponse,
   errors: [KeyNotFound, NamespaceNotFound, InvalidObjectIdentifier],
@@ -928,7 +924,7 @@ export interface GetNamespaceValueRequest {
 }
 
 export const GetNamespaceValueRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
       keyName: Schema.String.pipe(T.HttpPath("keyName")),
@@ -944,7 +940,7 @@ export const GetNamespaceValueRequest =
 export type GetNamespaceValueResponse = unknown;
 
 export const GetNamespaceValueResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<GetNamespaceValueResponse>;
 
@@ -959,7 +955,7 @@ export const getNamespaceValue: API.OperationMethod<
   GetNamespaceValueResponse,
   GetNamespaceValueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNamespaceValueRequest,
   output: GetNamespaceValueResponse,
   errors: [KeyNotFound, NamespaceNotFound, InvalidObjectIdentifier],
@@ -981,7 +977,7 @@ export interface PutNamespaceValueRequest {
 }
 
 export const PutNamespaceValueRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
       keyName: Schema.String.pipe(T.HttpPath("keyName")),
@@ -1009,7 +1005,7 @@ export const PutNamespaceValueRequest =
 export interface PutNamespaceValueResponse {}
 
 export const PutNamespaceValueResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({}).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<PutNamespaceValueResponse>;
 
@@ -1024,7 +1020,7 @@ export const putNamespaceValue: API.OperationMethod<
   PutNamespaceValueResponse,
   PutNamespaceValueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutNamespaceValueRequest,
   output: PutNamespaceValueResponse,
   errors: [NamespaceNotFound, InvalidObjectIdentifier, InvalidExpirationTtl],
@@ -1038,7 +1034,7 @@ export interface DeleteNamespaceValueRequest {
 }
 
 export const DeleteNamespaceValueRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
       keyName: Schema.String.pipe(T.HttpPath("keyName")),
@@ -1054,7 +1050,7 @@ export const DeleteNamespaceValueRequest =
 export interface DeleteNamespaceValueResponse {}
 
 export const DeleteNamespaceValueResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({}).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<DeleteNamespaceValueResponse>;
 
@@ -1068,7 +1064,7 @@ export const deleteNamespaceValue: API.OperationMethod<
   DeleteNamespaceValueResponse,
   DeleteNamespaceValueError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNamespaceValueRequest,
   output: DeleteNamespaceValueResponse,
   errors: [NamespaceNotFound, InvalidObjectIdentifier],
@@ -1094,7 +1090,7 @@ export interface BulkPutNamespacesRequest {
 }
 
 export const BulkPutNamespacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1115,7 +1111,7 @@ export interface BulkPutNamespacesResponse {
 }
 
 export const BulkPutNamespacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       successfulKeyCount: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -1144,7 +1140,7 @@ export const bulkPutNamespaces: API.OperationMethod<
   BulkPutNamespacesResponse,
   BulkPutNamespacesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkPutNamespacesRequest,
   output: BulkPutNamespacesResponse,
   errors: [InvalidRequestBody, NamespaceNotFound, InvalidObjectIdentifier],
@@ -1170,7 +1166,7 @@ export interface BulkPutNamespaceKeysRequest {
 }
 
 export const BulkPutNamespaceKeysRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1191,7 +1187,7 @@ export interface BulkPutNamespaceKeysResponse {
 }
 
 export const BulkPutNamespaceKeysResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       successfulKeyCount: Schema.optional(
         Schema.Union([Schema.Number, Schema.Null]),
@@ -1220,7 +1216,7 @@ export const bulkPutNamespaceKeys: API.OperationMethod<
   BulkPutNamespaceKeysResponse,
   BulkPutNamespaceKeysError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BulkPutNamespaceKeysRequest,
   output: BulkPutNamespaceKeysResponse,
   errors: [InvalidRequestBody, NamespaceNotFound, InvalidObjectIdentifier],

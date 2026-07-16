@@ -12,7 +12,7 @@ export interface UpdateDeployRequestThrottlerInput {
   configurations?: ReadonlyArray<string>;
 }
 export const UpdateDeployRequestThrottlerInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -38,7 +38,7 @@ export interface UpdateDeployRequestThrottlerOutput {
   configurations: ReadonlyArray<{ keyspace_name: string; ratio: number }>;
 }
 export const UpdateDeployRequestThrottlerOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyspaces: Schema.Array(Schema.String),
     configurable: Schema.Struct({
       id: Schema.String,
@@ -66,7 +66,7 @@ export const UpdateDeployRequestThrottlerOutput =
  * @param configurations - If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace
  */
 export const updateDeployRequestThrottler =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateDeployRequestThrottlerInput,
     outputSchema: UpdateDeployRequestThrottlerOutput,
     errors: [Forbidden, NotFound] as const,

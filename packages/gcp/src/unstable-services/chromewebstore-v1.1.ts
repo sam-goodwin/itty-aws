@@ -30,7 +30,7 @@ export interface ItemError {
 }
 
 export const ItemError: Schema.Codec<ItemError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error_code: Schema.optional(Schema.String),
     error_detail: Schema.optional(Schema.String),
   }).annotate({ identifier: "ItemError" });
@@ -51,7 +51,7 @@ export interface Item {
 }
 
 export const Item: Schema.Codec<Item> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     crxVersion: Schema.optional(Schema.String),
     uploadState: Schema.optional(Schema.String),
@@ -70,7 +70,7 @@ export interface PublishRequest {
 }
 
 export const PublishRequest: Schema.Codec<PublishRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deployPercentage: Schema.optional(Schema.Number),
     target: Schema.optional(Schema.String),
     reviewExemption: Schema.optional(Schema.Boolean),
@@ -88,7 +88,7 @@ export interface Item2 {
 }
 
 export const Item2: Schema.Codec<Item2> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     item_id: Schema.optional(Schema.String),
     status: Schema.optional(Schema.Array(Schema.String)),
     statusDetail: Schema.optional(Schema.Array(Schema.String)),
@@ -156,7 +156,7 @@ export interface UpdateItemsRequest {
   body?: Item;
 }
 
-export const UpdateItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateItemsRequest = /*@__PURE__*/ Schema.Struct({
   itemId: Schema.String.pipe(T.HttpPath("itemId")),
   body: Schema.optional(Item).pipe(T.HttpBody()),
 }).pipe(
@@ -169,7 +169,7 @@ export const UpdateItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdateItemsRequest>;
 
 export type UpdateItemsResponse = Item;
-export const UpdateItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Item;
+export const UpdateItemsResponse = /*@__PURE__*/ Item;
 
 export type UpdateItemsError =
   | DefaultErrors
@@ -184,7 +184,7 @@ export const updateItems: API.OperationMethod<
   UpdateItemsResponse,
   UpdateItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateItemsRequest,
   output: UpdateItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -197,7 +197,7 @@ export interface GetItemsRequest {
   projection?: "DRAFT" | "PUBLISHED" | (string & {});
 }
 
-export const GetItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetItemsRequest = /*@__PURE__*/ Schema.Struct({
   itemId: Schema.String.pipe(T.HttpPath("itemId")),
   projection: Schema.optional(Schema.String).pipe(T.HttpQuery("projection")),
 }).pipe(
@@ -206,7 +206,7 @@ export const GetItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetItemsRequest>;
 
 export type GetItemsResponse = Item;
-export const GetItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Item;
+export const GetItemsResponse = /*@__PURE__*/ Item;
 
 export type GetItemsError = DefaultErrors | NotFound | Forbidden;
 
@@ -216,7 +216,7 @@ export const getItems: API.OperationMethod<
   GetItemsResponse,
   GetItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetItemsRequest,
   output: GetItemsResponse,
   errors: [NotFound, Forbidden],
@@ -227,7 +227,7 @@ export interface InsertItemsRequest {
   publisherEmail?: string;
 }
 
-export const InsertItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const InsertItemsRequest = /*@__PURE__*/ Schema.Struct({
   publisherEmail: Schema.optional(Schema.String).pipe(
     T.HttpQuery("publisherEmail"),
   ),
@@ -237,7 +237,7 @@ export const InsertItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<InsertItemsRequest>;
 
 export type InsertItemsResponse = Item;
-export const InsertItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Item;
+export const InsertItemsResponse = /*@__PURE__*/ Item;
 
 export type InsertItemsError =
   | DefaultErrors
@@ -252,7 +252,7 @@ export const insertItems: API.OperationMethod<
   InsertItemsResponse,
   InsertItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InsertItemsRequest,
   output: InsertItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -271,7 +271,7 @@ export interface PublishItemsRequest {
   body?: PublishRequest;
 }
 
-export const PublishItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PublishItemsRequest = /*@__PURE__*/ Schema.Struct({
   itemId: Schema.String.pipe(T.HttpPath("itemId")),
   publishTarget: Schema.optional(Schema.String).pipe(
     T.HttpQuery("publishTarget"),
@@ -293,7 +293,7 @@ export const PublishItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<PublishItemsRequest>;
 
 export type PublishItemsResponse = Item2;
-export const PublishItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Item2;
+export const PublishItemsResponse = /*@__PURE__*/ Item2;
 
 export type PublishItemsError =
   | DefaultErrors
@@ -308,7 +308,7 @@ export const publishItems: API.OperationMethod<
   PublishItemsResponse,
   PublishItemsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishItemsRequest,
   output: PublishItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

@@ -683,7 +683,7 @@ export interface ExternalDataSourcesPartialUpdateInput {
   supports_column_selection?: boolean;
 }
 export const ExternalDataSourcesPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     created_at: Schema.optional(Schema.String),
@@ -2053,7 +2053,7 @@ export interface ExternalDataSourcesPartialUpdateOutput {
   supports_column_selection?: boolean;
 }
 export const ExternalDataSourcesPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(Schema.NullOr(Schema.String)),
@@ -2748,7 +2748,7 @@ export const ExternalDataSourcesPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const externalDataSourcesPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalDataSourcesPartialUpdateInput,
     outputSchema: ExternalDataSourcesPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

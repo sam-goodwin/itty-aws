@@ -9,7 +9,7 @@ export interface GetGroupConfigurationInput {
   groupName: string;
 }
 export const GetGroupConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -24,7 +24,7 @@ export interface GetGroupConfigurationOutput {
   delete_protection?: boolean;
 }
 export const GetGroupConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delete_protection: Schema.optional(Schema.Boolean),
   }) as unknown as Schema.Codec<GetGroupConfigurationOutput>;
 
@@ -37,10 +37,8 @@ export const GetGroupConfigurationOutput =
  * @param organizationSlug - The slug of the organization or user account.
  * @param groupName - The name of the group.
  */
-export const getGroupConfiguration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupConfigurationInput,
-    outputSchema: GetGroupConfigurationOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const getGroupConfiguration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupConfigurationInput,
+  outputSchema: GetGroupConfigurationOutput,
+  errors: [NotFound] as const,
+}));

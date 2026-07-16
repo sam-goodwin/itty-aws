@@ -9,7 +9,7 @@ export interface SuspendProjectEndpointInput {
   endpoint_id: string;
 }
 export const SuspendProjectEndpointInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     endpoint_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -112,7 +112,7 @@ export interface SuspendProjectEndpointOutput {
   }[];
 }
 export const SuspendProjectEndpointOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endpoint: Schema.Struct({
       host: Schema.String,
       id: Schema.String,
@@ -227,10 +227,8 @@ export const SuspendProjectEndpointOutput =
  * @param project_id - The Neon project ID
  * @param endpoint_id - The endpoint ID
  */
-export const suspendProjectEndpoint = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SuspendProjectEndpointInput,
-    outputSchema: SuspendProjectEndpointOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const suspendProjectEndpoint = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SuspendProjectEndpointInput,
+  outputSchema: SuspendProjectEndpointOutput,
+  errors: [NotFound] as const,
+}));

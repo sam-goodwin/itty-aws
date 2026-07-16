@@ -10,7 +10,7 @@ export interface V1AuthorizeJitAccessInput {
   rhost: string;
 }
 export const V1AuthorizeJitAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     role: Schema.String,
     rhost: Schema.String,
@@ -32,7 +32,7 @@ export interface V1AuthorizeJitAccessOutput {
   };
 }
 export const V1AuthorizeJitAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     user_id: Schema.String,
     user_role: Schema.Struct({
       role: Schema.String,
@@ -67,10 +67,8 @@ export const V1AuthorizeJitAccessOutput =
  *
  * @param ref - Project ref
  */
-export const v1AuthorizeJitAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1AuthorizeJitAccessInput,
-    outputSchema: V1AuthorizeJitAccessOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1AuthorizeJitAccess = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1AuthorizeJitAccessInput,
+  outputSchema: V1AuthorizeJitAccessOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

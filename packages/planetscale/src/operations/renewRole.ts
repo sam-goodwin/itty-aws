@@ -12,7 +12,7 @@ export interface RenewRoleInput {
   branch: string;
   id: string;
 }
-export const RenewRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RenewRoleInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -74,7 +74,7 @@ export interface RenewRoleOutput {
     require_where_on_update: "off" | "warn" | "on";
   };
 }
-export const RenewRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RenewRoleOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   access_host_url: Schema.String,
@@ -139,7 +139,7 @@ export const RenewRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param branch - Branch name from `list_branches`. Example: `main`.
  * @param id - The ID of the role
  */
-export const renewRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const renewRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: RenewRoleInput,
   outputSchema: RenewRoleOutput,
   errors: [Forbidden, NotFound] as const,

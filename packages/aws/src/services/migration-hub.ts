@@ -113,7 +113,7 @@ export interface CreatedArtifact {
   Name: string;
   Description?: string;
 }
-export const CreatedArtifact = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreatedArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Description: S.optional(S.String) }),
 ).annotate({
   identifier: "CreatedArtifact",
@@ -125,7 +125,7 @@ export interface AssociateCreatedArtifactRequest {
   DryRun?: boolean;
 }
 export const AssociateCreatedArtifactRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStream: S.String,
       MigrationTaskName: S.String,
@@ -139,14 +139,14 @@ export const AssociateCreatedArtifactRequest =
   }) as any as S.Schema<AssociateCreatedArtifactRequest>;
 export interface AssociateCreatedArtifactResult {}
 export const AssociateCreatedArtifactResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateCreatedArtifactResult",
   }) as any as S.Schema<AssociateCreatedArtifactResult>;
 export interface DiscoveredResource {
   ConfigurationId: string;
   Description?: string;
 }
-export const DiscoveredResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DiscoveredResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ConfigurationId: S.String, Description: S.optional(S.String) }),
 ).annotate({
   identifier: "DiscoveredResource",
@@ -158,7 +158,7 @@ export interface AssociateDiscoveredResourceRequest {
   DryRun?: boolean;
 }
 export const AssociateDiscoveredResourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStream: S.String,
       MigrationTaskName: S.String,
@@ -172,7 +172,7 @@ export const AssociateDiscoveredResourceRequest =
   }) as any as S.Schema<AssociateDiscoveredResourceRequest>;
 export interface AssociateDiscoveredResourceResult {}
 export const AssociateDiscoveredResourceResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateDiscoveredResourceResult",
   }) as any as S.Schema<AssociateDiscoveredResourceResult>;
 export interface SourceResource {
@@ -180,7 +180,7 @@ export interface SourceResource {
   Description?: string;
   StatusDetail?: string;
 }
-export const SourceResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SourceResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     Description: S.optional(S.String),
@@ -194,7 +194,7 @@ export interface AssociateSourceResourceRequest {
   DryRun?: boolean;
 }
 export const AssociateSourceResourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStream: S.String,
       MigrationTaskName: S.String,
@@ -208,7 +208,7 @@ export const AssociateSourceResourceRequest =
   }) as any as S.Schema<AssociateSourceResourceRequest>;
 export interface AssociateSourceResourceResult {}
 export const AssociateSourceResourceResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateSourceResourceResult",
   }) as any as S.Schema<AssociateSourceResourceResult>;
 export interface CreateProgressUpdateStreamRequest {
@@ -216,7 +216,7 @@ export interface CreateProgressUpdateStreamRequest {
   DryRun?: boolean;
 }
 export const CreateProgressUpdateStreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStreamName: S.String,
       DryRun: S.optional(S.Boolean),
@@ -228,7 +228,7 @@ export const CreateProgressUpdateStreamRequest =
   }) as any as S.Schema<CreateProgressUpdateStreamRequest>;
 export interface CreateProgressUpdateStreamResult {}
 export const CreateProgressUpdateStreamResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "CreateProgressUpdateStreamResult",
   }) as any as S.Schema<CreateProgressUpdateStreamResult>;
 export interface DeleteProgressUpdateStreamRequest {
@@ -236,7 +236,7 @@ export interface DeleteProgressUpdateStreamRequest {
   DryRun?: boolean;
 }
 export const DeleteProgressUpdateStreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStreamName: S.String,
       DryRun: S.optional(S.Boolean),
@@ -248,14 +248,14 @@ export const DeleteProgressUpdateStreamRequest =
   }) as any as S.Schema<DeleteProgressUpdateStreamRequest>;
 export interface DeleteProgressUpdateStreamResult {}
 export const DeleteProgressUpdateStreamResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteProgressUpdateStreamResult",
   }) as any as S.Schema<DeleteProgressUpdateStreamResult>;
 export interface DescribeApplicationStateRequest {
   ApplicationId: string;
 }
 export const DescribeApplicationStateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ApplicationId: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -267,13 +267,13 @@ export type ApplicationStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | (string & {});
-export const ApplicationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ApplicationStatus = /*@__PURE__*/ S.String;
 export interface DescribeApplicationStateResult {
   ApplicationStatus?: ApplicationStatus;
   LastUpdatedTime?: Date;
 }
 export const DescribeApplicationStateResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ApplicationStatus: S.optional(ApplicationStatus),
       LastUpdatedTime: S.optional(
@@ -288,7 +288,7 @@ export interface DescribeMigrationTaskRequest {
   MigrationTaskName: string;
 }
 export const DescribeMigrationTaskRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStream: S.String,
       MigrationTaskName: S.String,
@@ -304,13 +304,13 @@ export type Status =
   | "FAILED"
   | "COMPLETED"
   | (string & {});
-export const Status = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Status = /*@__PURE__*/ S.String;
 export interface Task {
   Status: Status;
   StatusDetail?: string;
   ProgressPercent?: number;
 }
-export const Task = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Task = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status: Status,
     StatusDetail: S.optional(S.String),
@@ -329,19 +329,19 @@ export type ResourceAttributeType =
   | "BIOS_ID"
   | "MOTHERBOARD_SERIAL_NUMBER"
   | (string & {});
-export const ResourceAttributeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceAttributeType = /*@__PURE__*/ S.String;
 export interface ResourceAttribute {
   Type: ResourceAttributeType;
   Value: string;
 }
-export const ResourceAttribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: ResourceAttributeType, Value: S.String }),
 ).annotate({
   identifier: "ResourceAttribute",
 }) as any as S.Schema<ResourceAttribute>;
 export type LatestResourceAttributeList = ResourceAttribute[];
 export const LatestResourceAttributeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceAttribute);
+  /*@__PURE__*/ S.Array(ResourceAttribute);
 export interface MigrationTask {
   ProgressUpdateStream?: string;
   MigrationTaskName?: string;
@@ -349,7 +349,7 @@ export interface MigrationTask {
   UpdateDateTime?: Date;
   ResourceAttributeList?: ResourceAttribute[];
 }
-export const MigrationTask = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MigrationTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProgressUpdateStream: S.optional(S.String),
     MigrationTaskName: S.optional(S.String),
@@ -362,7 +362,7 @@ export interface DescribeMigrationTaskResult {
   MigrationTask?: MigrationTask;
 }
 export const DescribeMigrationTaskResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ MigrationTask: S.optional(MigrationTask) }),
   ).annotate({
     identifier: "DescribeMigrationTaskResult",
@@ -374,7 +374,7 @@ export interface DisassociateCreatedArtifactRequest {
   DryRun?: boolean;
 }
 export const DisassociateCreatedArtifactRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStream: S.String,
       MigrationTaskName: S.String,
@@ -388,7 +388,7 @@ export const DisassociateCreatedArtifactRequest =
   }) as any as S.Schema<DisassociateCreatedArtifactRequest>;
 export interface DisassociateCreatedArtifactResult {}
 export const DisassociateCreatedArtifactResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DisassociateCreatedArtifactResult",
   }) as any as S.Schema<DisassociateCreatedArtifactResult>;
 export interface DisassociateDiscoveredResourceRequest {
@@ -398,7 +398,7 @@ export interface DisassociateDiscoveredResourceRequest {
   DryRun?: boolean;
 }
 export const DisassociateDiscoveredResourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStream: S.String,
       MigrationTaskName: S.String,
@@ -412,7 +412,7 @@ export const DisassociateDiscoveredResourceRequest =
   }) as any as S.Schema<DisassociateDiscoveredResourceRequest>;
 export interface DisassociateDiscoveredResourceResult {}
 export const DisassociateDiscoveredResourceResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DisassociateDiscoveredResourceResult",
   }) as any as S.Schema<DisassociateDiscoveredResourceResult>;
 export interface DisassociateSourceResourceRequest {
@@ -422,7 +422,7 @@ export interface DisassociateSourceResourceRequest {
   DryRun?: boolean;
 }
 export const DisassociateSourceResourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStream: S.String,
       MigrationTaskName: S.String,
@@ -436,7 +436,7 @@ export const DisassociateSourceResourceRequest =
   }) as any as S.Schema<DisassociateSourceResourceRequest>;
 export interface DisassociateSourceResourceResult {}
 export const DisassociateSourceResourceResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DisassociateSourceResourceResult",
   }) as any as S.Schema<DisassociateSourceResourceResult>;
 export interface ImportMigrationTaskRequest {
@@ -444,33 +444,32 @@ export interface ImportMigrationTaskRequest {
   MigrationTaskName: string;
   DryRun?: boolean;
 }
-export const ImportMigrationTaskRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProgressUpdateStream: S.String,
-      MigrationTaskName: S.String,
-      DryRun: S.optional(S.Boolean),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ImportMigrationTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProgressUpdateStream: S.String,
+    MigrationTaskName: S.String,
+    DryRun: S.optional(S.Boolean),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ImportMigrationTaskRequest",
 }) as any as S.Schema<ImportMigrationTaskRequest>;
 export interface ImportMigrationTaskResult {}
-export const ImportMigrationTaskResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const ImportMigrationTaskResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "ImportMigrationTaskResult",
 }) as any as S.Schema<ImportMigrationTaskResult>;
 export type ApplicationIds = string[];
-export const ApplicationIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ApplicationIds = /*@__PURE__*/ S.Array(S.String);
 export interface ListApplicationStatesRequest {
   ApplicationIds?: string[];
   NextToken?: string;
   MaxResults?: number;
 }
 export const ListApplicationStatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ApplicationIds: S.optional(ApplicationIds),
       NextToken: S.optional(S.String),
@@ -486,7 +485,7 @@ export interface ApplicationState {
   ApplicationStatus?: ApplicationStatus;
   LastUpdatedTime?: Date;
 }
-export const ApplicationState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ApplicationState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ApplicationId: S.optional(S.String),
     ApplicationStatus: S.optional(ApplicationStatus),
@@ -498,14 +497,13 @@ export const ApplicationState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ApplicationState",
 }) as any as S.Schema<ApplicationState>;
 export type ApplicationStateList = ApplicationState[];
-export const ApplicationStateList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ApplicationState);
+export const ApplicationStateList = /*@__PURE__*/ S.Array(ApplicationState);
 export interface ListApplicationStatesResult {
   ApplicationStateList?: ApplicationState[];
   NextToken?: string;
 }
 export const ListApplicationStatesResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ApplicationStateList: S.optional(ApplicationStateList),
       NextToken: S.optional(S.String),
@@ -520,7 +518,7 @@ export interface ListCreatedArtifactsRequest {
   MaxResults?: number;
 }
 export const ListCreatedArtifactsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStream: S.String,
       MigrationTaskName: S.String,
@@ -533,18 +531,16 @@ export const ListCreatedArtifactsRequest =
     identifier: "ListCreatedArtifactsRequest",
   }) as any as S.Schema<ListCreatedArtifactsRequest>;
 export type CreatedArtifactList = CreatedArtifact[];
-export const CreatedArtifactList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CreatedArtifact);
+export const CreatedArtifactList = /*@__PURE__*/ S.Array(CreatedArtifact);
 export interface ListCreatedArtifactsResult {
   NextToken?: string;
   CreatedArtifactList?: CreatedArtifact[];
 }
-export const ListCreatedArtifactsResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      CreatedArtifactList: S.optional(CreatedArtifactList),
-    }),
+export const ListCreatedArtifactsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    CreatedArtifactList: S.optional(CreatedArtifactList),
+  }),
 ).annotate({
   identifier: "ListCreatedArtifactsResult",
 }) as any as S.Schema<ListCreatedArtifactsResult>;
@@ -555,7 +551,7 @@ export interface ListDiscoveredResourcesRequest {
   MaxResults?: number;
 }
 export const ListDiscoveredResourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStream: S.String,
       MigrationTaskName: S.String,
@@ -568,14 +564,13 @@ export const ListDiscoveredResourcesRequest =
     identifier: "ListDiscoveredResourcesRequest",
   }) as any as S.Schema<ListDiscoveredResourcesRequest>;
 export type DiscoveredResourceList = DiscoveredResource[];
-export const DiscoveredResourceList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DiscoveredResource);
+export const DiscoveredResourceList = /*@__PURE__*/ S.Array(DiscoveredResource);
 export interface ListDiscoveredResourcesResult {
   NextToken?: string;
   DiscoveredResourceList?: DiscoveredResource[];
 }
 export const ListDiscoveredResourcesResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextToken: S.optional(S.String),
       DiscoveredResourceList: S.optional(DiscoveredResourceList),
@@ -588,15 +583,14 @@ export interface ListMigrationTasksRequest {
   MaxResults?: number;
   ResourceName?: string;
 }
-export const ListMigrationTasksRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      ResourceName: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListMigrationTasksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    ResourceName: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListMigrationTasksRequest",
 }) as any as S.Schema<ListMigrationTasksRequest>;
@@ -608,7 +602,7 @@ export interface MigrationTaskSummary {
   StatusDetail?: string;
   UpdateDateTime?: Date;
 }
-export const MigrationTaskSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MigrationTaskSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProgressUpdateStream: S.optional(S.String),
     MigrationTaskName: S.optional(S.String),
@@ -622,17 +616,16 @@ export const MigrationTaskSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrationTaskSummary>;
 export type MigrationTaskSummaryList = MigrationTaskSummary[];
 export const MigrationTaskSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MigrationTaskSummary);
+  /*@__PURE__*/ S.Array(MigrationTaskSummary);
 export interface ListMigrationTasksResult {
   NextToken?: string;
   MigrationTaskSummaryList?: MigrationTaskSummary[];
 }
-export const ListMigrationTasksResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MigrationTaskSummaryList: S.optional(MigrationTaskSummaryList),
-    }),
+export const ListMigrationTasksResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MigrationTaskSummaryList: S.optional(MigrationTaskSummaryList),
+  }),
 ).annotate({
   identifier: "ListMigrationTasksResult",
 }) as any as S.Schema<ListMigrationTasksResult>;
@@ -643,7 +636,7 @@ export interface ListMigrationTaskUpdatesRequest {
   MaxResults?: number;
 }
 export const ListMigrationTaskUpdatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStream: S.String,
       MigrationTaskName: S.String,
@@ -656,13 +649,13 @@ export const ListMigrationTaskUpdatesRequest =
     identifier: "ListMigrationTaskUpdatesRequest",
   }) as any as S.Schema<ListMigrationTaskUpdatesRequest>;
 export type UpdateType = "MIGRATION_TASK_STATE_UPDATED" | (string & {});
-export const UpdateType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UpdateType = /*@__PURE__*/ S.String;
 export interface MigrationTaskUpdate {
   UpdateDateTime?: Date;
   UpdateType?: UpdateType;
   MigrationTaskState?: Task;
 }
-export const MigrationTaskUpdate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MigrationTaskUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     UpdateType: S.optional(UpdateType),
@@ -673,13 +666,13 @@ export const MigrationTaskUpdate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrationTaskUpdate>;
 export type MigrationTaskUpdateList = MigrationTaskUpdate[];
 export const MigrationTaskUpdateList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MigrationTaskUpdate);
+  /*@__PURE__*/ S.Array(MigrationTaskUpdate);
 export interface ListMigrationTaskUpdatesResult {
   NextToken?: string;
   MigrationTaskUpdateList?: MigrationTaskUpdate[];
 }
 export const ListMigrationTaskUpdatesResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextToken: S.optional(S.String),
       MigrationTaskUpdateList: S.optional(MigrationTaskUpdateList),
@@ -692,7 +685,7 @@ export interface ListProgressUpdateStreamsRequest {
   MaxResults?: number;
 }
 export const ListProgressUpdateStreamsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       NextToken: S.optional(S.String),
       MaxResults: S.optional(S.Number),
@@ -706,20 +699,20 @@ export interface ProgressUpdateStreamSummary {
   ProgressUpdateStreamName?: string;
 }
 export const ProgressUpdateStreamSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ ProgressUpdateStreamName: S.optional(S.String) }),
   ).annotate({
     identifier: "ProgressUpdateStreamSummary",
   }) as any as S.Schema<ProgressUpdateStreamSummary>;
 export type ProgressUpdateStreamSummaryList = ProgressUpdateStreamSummary[];
 export const ProgressUpdateStreamSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ProgressUpdateStreamSummary);
+  /*@__PURE__*/ S.Array(ProgressUpdateStreamSummary);
 export interface ListProgressUpdateStreamsResult {
   ProgressUpdateStreamSummaryList?: ProgressUpdateStreamSummary[];
   NextToken?: string;
 }
 export const ListProgressUpdateStreamsResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStreamSummaryList: S.optional(
         ProgressUpdateStreamSummaryList,
@@ -735,32 +728,29 @@ export interface ListSourceResourcesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListSourceResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProgressUpdateStream: S.String,
-      MigrationTaskName: S.String,
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListSourceResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProgressUpdateStream: S.String,
+    MigrationTaskName: S.String,
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListSourceResourcesRequest",
 }) as any as S.Schema<ListSourceResourcesRequest>;
 export type SourceResourceList = SourceResource[];
-export const SourceResourceList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SourceResource);
+export const SourceResourceList = /*@__PURE__*/ S.Array(SourceResource);
 export interface ListSourceResourcesResult {
   NextToken?: string;
   SourceResourceList?: SourceResource[];
 }
-export const ListSourceResourcesResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      SourceResourceList: S.optional(SourceResourceList),
-    }),
+export const ListSourceResourcesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    SourceResourceList: S.optional(SourceResourceList),
+  }),
 ).annotate({
   identifier: "ListSourceResourcesResult",
 }) as any as S.Schema<ListSourceResourcesResult>;
@@ -771,7 +761,7 @@ export interface NotifyApplicationStateRequest {
   DryRun?: boolean;
 }
 export const NotifyApplicationStateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ApplicationId: S.String,
       Status: ApplicationStatus,
@@ -787,7 +777,7 @@ export const NotifyApplicationStateRequest =
   }) as any as S.Schema<NotifyApplicationStateRequest>;
 export interface NotifyApplicationStateResult {}
 export const NotifyApplicationStateResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "NotifyApplicationStateResult",
   }) as any as S.Schema<NotifyApplicationStateResult>;
 export interface NotifyMigrationTaskStateRequest {
@@ -799,7 +789,7 @@ export interface NotifyMigrationTaskStateRequest {
   DryRun?: boolean;
 }
 export const NotifyMigrationTaskStateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStream: S.String,
       MigrationTaskName: S.String,
@@ -815,12 +805,11 @@ export const NotifyMigrationTaskStateRequest =
   }) as any as S.Schema<NotifyMigrationTaskStateRequest>;
 export interface NotifyMigrationTaskStateResult {}
 export const NotifyMigrationTaskStateResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "NotifyMigrationTaskStateResult",
   }) as any as S.Schema<NotifyMigrationTaskStateResult>;
 export type ResourceAttributeList = ResourceAttribute[];
-export const ResourceAttributeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceAttribute);
+export const ResourceAttributeList = /*@__PURE__*/ S.Array(ResourceAttribute);
 export interface PutResourceAttributesRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
@@ -828,7 +817,7 @@ export interface PutResourceAttributesRequest {
   DryRun?: boolean;
 }
 export const PutResourceAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ProgressUpdateStream: S.String,
       MigrationTaskName: S.String,
@@ -842,7 +831,7 @@ export const PutResourceAttributesRequest =
   }) as any as S.Schema<PutResourceAttributesRequest>;
 export interface PutResourceAttributesResult {}
 export const PutResourceAttributesResult =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutResourceAttributesResult",
   }) as any as S.Schema<PutResourceAttributesResult>;
 
@@ -923,7 +912,7 @@ export const associateCreatedArtifact: API.OperationMethod<
   AssociateCreatedArtifactResult,
   AssociateCreatedArtifactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateCreatedArtifactRequest,
   output: AssociateCreatedArtifactResult,
   errors: [
@@ -960,7 +949,7 @@ export const associateDiscoveredResource: API.OperationMethod<
   AssociateDiscoveredResourceResult,
   AssociateDiscoveredResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateDiscoveredResourceRequest,
   output: AssociateDiscoveredResourceResult,
   errors: [
@@ -996,7 +985,7 @@ export const associateSourceResource: API.OperationMethod<
   AssociateSourceResourceResult,
   AssociateSourceResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateSourceResourceRequest,
   output: AssociateSourceResourceResult,
   errors: [
@@ -1033,7 +1022,7 @@ export const createProgressUpdateStream: API.OperationMethod<
   CreateProgressUpdateStreamResult,
   CreateProgressUpdateStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProgressUpdateStreamRequest,
   output: CreateProgressUpdateStreamResult,
   errors: [
@@ -1089,7 +1078,7 @@ export const deleteProgressUpdateStream: API.OperationMethod<
   DeleteProgressUpdateStreamResult,
   DeleteProgressUpdateStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProgressUpdateStreamRequest,
   output: DeleteProgressUpdateStreamResult,
   errors: [
@@ -1123,7 +1112,7 @@ export const describeApplicationState: API.OperationMethod<
   DescribeApplicationStateResult,
   DescribeApplicationStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeApplicationStateRequest,
   output: DescribeApplicationStateResult,
   errors: [
@@ -1155,7 +1144,7 @@ export const describeMigrationTask: API.OperationMethod<
   DescribeMigrationTaskResult,
   DescribeMigrationTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeMigrationTaskRequest,
   output: DescribeMigrationTaskResult,
   errors: [
@@ -1199,7 +1188,7 @@ export const disassociateCreatedArtifact: API.OperationMethod<
   DisassociateCreatedArtifactResult,
   DisassociateCreatedArtifactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateCreatedArtifactRequest,
   output: DisassociateCreatedArtifactResult,
   errors: [
@@ -1235,7 +1224,7 @@ export const disassociateDiscoveredResource: API.OperationMethod<
   DisassociateDiscoveredResourceResult,
   DisassociateDiscoveredResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateDiscoveredResourceRequest,
   output: DisassociateDiscoveredResourceResult,
   errors: [
@@ -1269,7 +1258,7 @@ export const disassociateSourceResource: API.OperationMethod<
   DisassociateSourceResourceResult,
   DisassociateSourceResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateSourceResourceRequest,
   output: DisassociateSourceResourceResult,
   errors: [
@@ -1307,7 +1296,7 @@ export const importMigrationTask: API.OperationMethod<
   ImportMigrationTaskResult,
   ImportMigrationTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ImportMigrationTaskRequest,
   output: ImportMigrationTaskResult,
   errors: [
@@ -1356,7 +1345,7 @@ export const listApplicationStates: API.OperationMethod<
     ListApplicationStatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationStatesRequest,
   output: ListApplicationStatesResult,
   errors: [
@@ -1416,7 +1405,7 @@ export const listCreatedArtifacts: API.OperationMethod<
     ListCreatedArtifactsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCreatedArtifactsRequest,
   output: ListCreatedArtifactsResult,
   errors: [
@@ -1468,7 +1457,7 @@ export const listDiscoveredResources: API.OperationMethod<
     ListDiscoveredResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDiscoveredResourcesRequest,
   output: ListDiscoveredResourcesResult,
   errors: [
@@ -1529,7 +1518,7 @@ export const listMigrationTasks: API.OperationMethod<
     ListMigrationTasksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMigrationTasksRequest,
   output: ListMigrationTasksResult,
   errors: [
@@ -1582,7 +1571,7 @@ export const listMigrationTaskUpdates: API.OperationMethod<
     ListMigrationTaskUpdatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMigrationTaskUpdatesRequest,
   output: ListMigrationTaskUpdatesResult,
   errors: [
@@ -1632,7 +1621,7 @@ export const listProgressUpdateStreams: API.OperationMethod<
     ListProgressUpdateStreamsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProgressUpdateStreamsRequest,
   output: ListProgressUpdateStreamsResult,
   errors: [
@@ -1683,7 +1672,7 @@ export const listSourceResources: API.OperationMethod<
     ListSourceResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSourceResourcesRequest,
   output: ListSourceResourcesResult,
   errors: [
@@ -1725,7 +1714,7 @@ export const notifyApplicationState: API.OperationMethod<
   NotifyApplicationStateResult,
   NotifyApplicationStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: NotifyApplicationStateRequest,
   output: NotifyApplicationStateResult,
   errors: [
@@ -1771,7 +1760,7 @@ export const notifyMigrationTaskState: API.OperationMethod<
   NotifyMigrationTaskStateResult,
   NotifyMigrationTaskStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: NotifyMigrationTaskStateRequest,
   output: NotifyMigrationTaskStateResult,
   errors: [
@@ -1823,7 +1812,7 @@ export const putResourceAttributes: API.OperationMethod<
   PutResourceAttributesResult,
   PutResourceAttributesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourceAttributesRequest,
   output: PutResourceAttributesResult,
   errors: [

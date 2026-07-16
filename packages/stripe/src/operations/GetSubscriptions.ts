@@ -35,7 +35,7 @@ export interface GetSubscriptionsInput {
     | "unpaid";
   test_clock?: string;
 }
-export const GetSubscriptionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSubscriptionsInput = /*@__PURE__*/ Schema.Struct({
   automatic_tax: Schema.optional(Schema.String),
   collection_method: Schema.optional(
     Schema.Literals(["charge_automatically", "send_invoice"]),
@@ -832,719 +832,578 @@ export interface GetSubscriptionsOutput {
   object: "list";
   url: string;
 }
-export const GetSubscriptionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    data: Schema.Array(
-      Schema.Struct({
-        application: Schema.NullOr(
-          Schema.Union([
-            Schema.String,
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.NullOr(Schema.String),
-              object: Schema.Literals(["application"]),
-            }),
-            Schema.Struct({
-              deleted: Schema.Literals([true]),
-              id: Schema.String,
-              name: Schema.NullOr(Schema.String),
-              object: Schema.Literals(["application"]),
-            }),
-          ]),
-        ),
-        application_fee_percent: Schema.NullOr(Schema.Number),
-        automatic_tax: Schema.Struct({
-          disabled_reason: Schema.NullOr(
-            Schema.Literals(["requires_location_inputs"]),
-          ),
-          enabled: Schema.Boolean,
-          liability: Schema.NullOr(
-            Schema.Struct({
-              account: Schema.optional(Schema.Unknown),
-              type: Schema.Literals(["account", "self"]),
-            }),
-          ),
-        }),
-        billing_cycle_anchor: Schema.Number,
-        billing_cycle_anchor_config: Schema.NullOr(
+export const GetSubscriptionsOutput = /*@__PURE__*/ Schema.Struct({
+  data: Schema.Array(
+    Schema.Struct({
+      application: Schema.NullOr(
+        Schema.Union([
+          Schema.String,
           Schema.Struct({
-            day_of_month: Schema.Number,
-            hour: Schema.NullOr(Schema.Number),
-            minute: Schema.NullOr(Schema.Number),
-            month: Schema.NullOr(Schema.Number),
-            second: Schema.NullOr(Schema.Number),
+            id: Schema.String,
+            name: Schema.NullOr(Schema.String),
+            object: Schema.Literals(["application"]),
           }),
-        ),
-        billing_mode: Schema.Struct({
-          flexible: Schema.NullOr(
-            Schema.Struct({
-              proration_discounts: Schema.optional(
-                Schema.Literals(["included", "itemized"]),
-              ),
-            }),
-          ),
-          type: Schema.Literals(["classic", "flexible"]),
-          updated_at: Schema.optional(Schema.Number),
-        }),
-        billing_schedules: Schema.Array(
           Schema.Struct({
-            applies_to: Schema.NullOr(
-              Schema.Array(
-                Schema.Struct({
-                  price: Schema.Unknown,
-                  type: Schema.Literals(["price"]),
-                }),
-              ),
-            ),
-            bill_until: Schema.Struct({
-              computed_timestamp: Schema.Number,
-              duration: Schema.NullOr(
-                Schema.Struct({
-                  interval: Schema.Literals(["day", "month", "week", "year"]),
-                  interval_count: Schema.NullOr(Schema.Number),
-                }),
-              ),
-              timestamp: Schema.NullOr(Schema.Number),
-              type: Schema.Literals(["duration", "timestamp"]),
-            }),
-            key: Schema.String,
+            deleted: Schema.Literals([true]),
+            id: Schema.String,
+            name: Schema.NullOr(Schema.String),
+            object: Schema.Literals(["application"]),
           }),
-        ),
-        billing_thresholds: Schema.NullOr(
-          Schema.Struct({
-            amount_gte: Schema.NullOr(Schema.Number),
-            reset_billing_cycle_anchor: Schema.NullOr(Schema.Boolean),
-          }),
-        ),
-        cancel_at: Schema.NullOr(Schema.Number),
-        cancel_at_period_end: Schema.Boolean,
-        canceled_at: Schema.NullOr(Schema.Number),
-        cancellation_details: Schema.NullOr(
-          Schema.Struct({
-            comment: Schema.NullOr(Schema.String),
-            feedback: Schema.NullOr(
-              Schema.Literals([
-                "customer_service",
-                "low_quality",
-                "missing_features",
-                "other",
-                "switched_service",
-                "too_complex",
-                "too_expensive",
-                "unused",
-              ]),
-            ),
-            reason: Schema.NullOr(
-              Schema.Literals([
-                "canceled_by_retention_policy",
-                "cancellation_requested",
-                "payment_disputed",
-                "payment_failed",
-              ]),
-            ),
-          }),
-        ),
-        collection_method: Schema.Literals([
-          "charge_automatically",
-          "send_invoice",
         ]),
-        created: Schema.Number,
-        currency: Schema.String,
-        customer: Schema.Unknown,
-        customer_account: Schema.NullOr(Schema.String),
-        days_until_due: Schema.NullOr(Schema.Number),
-        default_payment_method: Schema.Unknown,
-        default_source: Schema.NullOr(
-          Schema.Union([Schema.String, Schema.Unknown]),
+      ),
+      application_fee_percent: Schema.NullOr(Schema.Number),
+      automatic_tax: Schema.Struct({
+        disabled_reason: Schema.NullOr(
+          Schema.Literals(["requires_location_inputs"]),
         ),
-        default_tax_rates: Schema.optional(
-          Schema.NullOr(
-            Schema.Array(
-              Schema.Struct({
-                active: Schema.Boolean,
-                country: Schema.NullOr(Schema.String),
-                created: Schema.Number,
-                description: Schema.NullOr(Schema.String),
-                display_name: Schema.String,
-                effective_percentage: Schema.NullOr(Schema.Number),
-                flat_amount: Schema.NullOr(
-                  Schema.Struct({
-                    amount: Schema.Number,
-                    currency: Schema.String,
-                  }),
-                ),
-                id: Schema.String,
-                inclusive: Schema.Boolean,
-                jurisdiction: Schema.NullOr(Schema.String),
-                jurisdiction_level: Schema.NullOr(
-                  Schema.Literals([
-                    "city",
-                    "country",
-                    "county",
-                    "district",
-                    "multiple",
-                    "state",
-                  ]),
-                ),
-                livemode: Schema.Boolean,
-                metadata: Schema.NullOr(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                object: Schema.Literals(["tax_rate"]),
-                percentage: Schema.Number,
-                rate_type: Schema.NullOr(
-                  Schema.Literals(["flat_amount", "percentage"]),
-                ),
-                state: Schema.NullOr(Schema.String),
-                tax_type: Schema.NullOr(
-                  Schema.Literals([
-                    "amusement_tax",
-                    "communications_tax",
-                    "gst",
-                    "hst",
-                    "igst",
-                    "jct",
-                    "lease_tax",
-                    "pst",
-                    "qst",
-                    "retail_delivery_fee",
-                    "rst",
-                    "sales_tax",
-                    "service_tax",
-                    "vat",
-                  ]),
-                ),
-              }),
-            ),
-          ),
-        ),
-        description: Schema.NullOr(Schema.String),
-        discounts: Schema.Array(
-          Schema.Union([
-            Schema.String,
-            Schema.Struct({
-              checkout_session: Schema.NullOr(Schema.String),
-              customer: Schema.Unknown,
-              customer_account: Schema.NullOr(Schema.String),
-              end: Schema.NullOr(Schema.Number),
-              id: Schema.String,
-              invoice: Schema.NullOr(Schema.String),
-              invoice_item: Schema.NullOr(Schema.String),
-              object: Schema.Literals(["discount"]),
-              promotion_code: Schema.NullOr(
-                Schema.Union([
-                  Schema.String,
-                  Schema.Struct({
-                    active: Schema.Boolean,
-                    code: Schema.String,
-                    created: Schema.Number,
-                    customer: Schema.Unknown,
-                    customer_account: Schema.NullOr(Schema.String),
-                    expires_at: Schema.NullOr(Schema.Number),
-                    id: Schema.String,
-                    livemode: Schema.Boolean,
-                    max_redemptions: Schema.NullOr(Schema.Number),
-                    metadata: Schema.NullOr(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                    object: Schema.Literals(["promotion_code"]),
-                    promotion: Schema.Struct({
-                      coupon: Schema.NullOr(
-                        Schema.Union([
-                          Schema.String,
-                          Schema.Struct({
-                            amount_off: Schema.NullOr(Schema.Number),
-                            applies_to: Schema.optional(
-                              Schema.Struct({
-                                products: Schema.Array(Schema.String),
-                              }),
-                            ),
-                            created: Schema.Number,
-                            currency: Schema.NullOr(Schema.String),
-                            currency_options: Schema.optional(
-                              Schema.Record(
-                                Schema.String,
-                                Schema.Struct({
-                                  amount_off: Schema.Number,
-                                }),
-                              ),
-                            ),
-                            duration: Schema.Literals([
-                              "forever",
-                              "once",
-                              "repeating",
-                            ]),
-                            duration_in_months: Schema.NullOr(Schema.Number),
-                            id: Schema.String,
-                            livemode: Schema.Boolean,
-                            max_redemptions: Schema.NullOr(Schema.Number),
-                            metadata: Schema.NullOr(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                            name: Schema.NullOr(Schema.String),
-                            object: Schema.Literals(["coupon"]),
-                            percent_off: Schema.NullOr(Schema.Number),
-                            redeem_by: Schema.NullOr(Schema.Number),
-                            times_redeemed: Schema.Number,
-                            valid: Schema.Boolean,
-                          }),
-                        ]),
-                      ),
-                      type: Schema.Literals(["coupon"]),
-                    }),
-                    restrictions: Schema.Struct({
-                      currency_options: Schema.optional(
-                        Schema.Record(
-                          Schema.String,
-                          Schema.Struct({
-                            minimum_amount: Schema.Number,
-                          }),
-                        ),
-                      ),
-                      first_time_transaction: Schema.Boolean,
-                      minimum_amount: Schema.NullOr(Schema.Number),
-                      minimum_amount_currency: Schema.NullOr(Schema.String),
-                    }),
-                    times_redeemed: Schema.Number,
-                  }),
-                ]),
-              ),
-              source: Schema.Struct({
-                coupon: Schema.NullOr(
-                  Schema.Union([
-                    Schema.String,
-                    Schema.Struct({
-                      amount_off: Schema.NullOr(Schema.Number),
-                      applies_to: Schema.optional(
-                        Schema.Struct({
-                          products: Schema.Array(Schema.String),
-                        }),
-                      ),
-                      created: Schema.Number,
-                      currency: Schema.NullOr(Schema.String),
-                      currency_options: Schema.optional(
-                        Schema.Record(
-                          Schema.String,
-                          Schema.Struct({
-                            amount_off: Schema.Number,
-                          }),
-                        ),
-                      ),
-                      duration: Schema.Literals([
-                        "forever",
-                        "once",
-                        "repeating",
-                      ]),
-                      duration_in_months: Schema.NullOr(Schema.Number),
-                      id: Schema.String,
-                      livemode: Schema.Boolean,
-                      max_redemptions: Schema.NullOr(Schema.Number),
-                      metadata: Schema.NullOr(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                      name: Schema.NullOr(Schema.String),
-                      object: Schema.Literals(["coupon"]),
-                      percent_off: Schema.NullOr(Schema.Number),
-                      redeem_by: Schema.NullOr(Schema.Number),
-                      times_redeemed: Schema.Number,
-                      valid: Schema.Boolean,
-                    }),
-                  ]),
-                ),
-                type: Schema.Literals(["coupon"]),
-              }),
-              start: Schema.Number,
-              subscription: Schema.NullOr(Schema.String),
-              subscription_item: Schema.NullOr(Schema.String),
-            }),
-          ]),
-        ),
-        ended_at: Schema.NullOr(Schema.Number),
-        id: Schema.String,
-        invoice_settings: Schema.Struct({
-          account_tax_ids: Schema.NullOr(Schema.Array(Schema.Unknown)),
-          custom_fields: Schema.NullOr(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                value: Schema.String,
-              }),
-            ),
-          ),
-          description: Schema.NullOr(Schema.String),
-          footer: Schema.NullOr(Schema.String),
-          issuer: Schema.Struct({
+        enabled: Schema.Boolean,
+        liability: Schema.NullOr(
+          Schema.Struct({
             account: Schema.optional(Schema.Unknown),
             type: Schema.Literals(["account", "self"]),
           }),
+        ),
+      }),
+      billing_cycle_anchor: Schema.Number,
+      billing_cycle_anchor_config: Schema.NullOr(
+        Schema.Struct({
+          day_of_month: Schema.Number,
+          hour: Schema.NullOr(Schema.Number),
+          minute: Schema.NullOr(Schema.Number),
+          month: Schema.NullOr(Schema.Number),
+          second: Schema.NullOr(Schema.Number),
         }),
-        items: Schema.Struct({
-          data: Schema.Array(
+      ),
+      billing_mode: Schema.Struct({
+        flexible: Schema.NullOr(
+          Schema.Struct({
+            proration_discounts: Schema.optional(
+              Schema.Literals(["included", "itemized"]),
+            ),
+          }),
+        ),
+        type: Schema.Literals(["classic", "flexible"]),
+        updated_at: Schema.optional(Schema.Number),
+      }),
+      billing_schedules: Schema.Array(
+        Schema.Struct({
+          applies_to: Schema.NullOr(
+            Schema.Array(
+              Schema.Struct({
+                price: Schema.Unknown,
+                type: Schema.Literals(["price"]),
+              }),
+            ),
+          ),
+          bill_until: Schema.Struct({
+            computed_timestamp: Schema.Number,
+            duration: Schema.NullOr(
+              Schema.Struct({
+                interval: Schema.Literals(["day", "month", "week", "year"]),
+                interval_count: Schema.NullOr(Schema.Number),
+              }),
+            ),
+            timestamp: Schema.NullOr(Schema.Number),
+            type: Schema.Literals(["duration", "timestamp"]),
+          }),
+          key: Schema.String,
+        }),
+      ),
+      billing_thresholds: Schema.NullOr(
+        Schema.Struct({
+          amount_gte: Schema.NullOr(Schema.Number),
+          reset_billing_cycle_anchor: Schema.NullOr(Schema.Boolean),
+        }),
+      ),
+      cancel_at: Schema.NullOr(Schema.Number),
+      cancel_at_period_end: Schema.Boolean,
+      canceled_at: Schema.NullOr(Schema.Number),
+      cancellation_details: Schema.NullOr(
+        Schema.Struct({
+          comment: Schema.NullOr(Schema.String),
+          feedback: Schema.NullOr(
+            Schema.Literals([
+              "customer_service",
+              "low_quality",
+              "missing_features",
+              "other",
+              "switched_service",
+              "too_complex",
+              "too_expensive",
+              "unused",
+            ]),
+          ),
+          reason: Schema.NullOr(
+            Schema.Literals([
+              "canceled_by_retention_policy",
+              "cancellation_requested",
+              "payment_disputed",
+              "payment_failed",
+            ]),
+          ),
+        }),
+      ),
+      collection_method: Schema.Literals([
+        "charge_automatically",
+        "send_invoice",
+      ]),
+      created: Schema.Number,
+      currency: Schema.String,
+      customer: Schema.Unknown,
+      customer_account: Schema.NullOr(Schema.String),
+      days_until_due: Schema.NullOr(Schema.Number),
+      default_payment_method: Schema.Unknown,
+      default_source: Schema.NullOr(
+        Schema.Union([Schema.String, Schema.Unknown]),
+      ),
+      default_tax_rates: Schema.optional(
+        Schema.NullOr(
+          Schema.Array(
             Schema.Struct({
-              billed_until: Schema.optional(Schema.Number),
-              billing_thresholds: Schema.NullOr(
+              active: Schema.Boolean,
+              country: Schema.NullOr(Schema.String),
+              created: Schema.Number,
+              description: Schema.NullOr(Schema.String),
+              display_name: Schema.String,
+              effective_percentage: Schema.NullOr(Schema.Number),
+              flat_amount: Schema.NullOr(
                 Schema.Struct({
-                  usage_gte: Schema.NullOr(Schema.Number),
+                  amount: Schema.Number,
+                  currency: Schema.String,
                 }),
               ),
-              created: Schema.Number,
-              current_period_end: Schema.Number,
-              current_period_start: Schema.Number,
-              discounts: Schema.Array(
-                Schema.Union([
-                  Schema.String,
-                  Schema.Struct({
-                    checkout_session: Schema.NullOr(Schema.String),
-                    customer: Schema.Unknown,
-                    customer_account: Schema.NullOr(Schema.String),
-                    end: Schema.NullOr(Schema.Number),
-                    id: Schema.String,
-                    invoice: Schema.NullOr(Schema.String),
-                    invoice_item: Schema.NullOr(Schema.String),
-                    object: Schema.Literals(["discount"]),
-                    promotion_code: Schema.NullOr(
+              id: Schema.String,
+              inclusive: Schema.Boolean,
+              jurisdiction: Schema.NullOr(Schema.String),
+              jurisdiction_level: Schema.NullOr(
+                Schema.Literals([
+                  "city",
+                  "country",
+                  "county",
+                  "district",
+                  "multiple",
+                  "state",
+                ]),
+              ),
+              livemode: Schema.Boolean,
+              metadata: Schema.NullOr(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              object: Schema.Literals(["tax_rate"]),
+              percentage: Schema.Number,
+              rate_type: Schema.NullOr(
+                Schema.Literals(["flat_amount", "percentage"]),
+              ),
+              state: Schema.NullOr(Schema.String),
+              tax_type: Schema.NullOr(
+                Schema.Literals([
+                  "amusement_tax",
+                  "communications_tax",
+                  "gst",
+                  "hst",
+                  "igst",
+                  "jct",
+                  "lease_tax",
+                  "pst",
+                  "qst",
+                  "retail_delivery_fee",
+                  "rst",
+                  "sales_tax",
+                  "service_tax",
+                  "vat",
+                ]),
+              ),
+            }),
+          ),
+        ),
+      ),
+      description: Schema.NullOr(Schema.String),
+      discounts: Schema.Array(
+        Schema.Union([
+          Schema.String,
+          Schema.Struct({
+            checkout_session: Schema.NullOr(Schema.String),
+            customer: Schema.Unknown,
+            customer_account: Schema.NullOr(Schema.String),
+            end: Schema.NullOr(Schema.Number),
+            id: Schema.String,
+            invoice: Schema.NullOr(Schema.String),
+            invoice_item: Schema.NullOr(Schema.String),
+            object: Schema.Literals(["discount"]),
+            promotion_code: Schema.NullOr(
+              Schema.Union([
+                Schema.String,
+                Schema.Struct({
+                  active: Schema.Boolean,
+                  code: Schema.String,
+                  created: Schema.Number,
+                  customer: Schema.Unknown,
+                  customer_account: Schema.NullOr(Schema.String),
+                  expires_at: Schema.NullOr(Schema.Number),
+                  id: Schema.String,
+                  livemode: Schema.Boolean,
+                  max_redemptions: Schema.NullOr(Schema.Number),
+                  metadata: Schema.NullOr(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  object: Schema.Literals(["promotion_code"]),
+                  promotion: Schema.Struct({
+                    coupon: Schema.NullOr(
                       Schema.Union([
                         Schema.String,
                         Schema.Struct({
-                          active: Schema.Boolean,
-                          code: Schema.String,
+                          amount_off: Schema.NullOr(Schema.Number),
+                          applies_to: Schema.optional(
+                            Schema.Struct({
+                              products: Schema.Array(Schema.String),
+                            }),
+                          ),
                           created: Schema.Number,
-                          customer: Schema.Unknown,
-                          customer_account: Schema.NullOr(Schema.String),
-                          expires_at: Schema.NullOr(Schema.Number),
+                          currency: Schema.NullOr(Schema.String),
+                          currency_options: Schema.optional(
+                            Schema.Record(
+                              Schema.String,
+                              Schema.Struct({
+                                amount_off: Schema.Number,
+                              }),
+                            ),
+                          ),
+                          duration: Schema.Literals([
+                            "forever",
+                            "once",
+                            "repeating",
+                          ]),
+                          duration_in_months: Schema.NullOr(Schema.Number),
                           id: Schema.String,
                           livemode: Schema.Boolean,
                           max_redemptions: Schema.NullOr(Schema.Number),
                           metadata: Schema.NullOr(
                             Schema.Record(Schema.String, Schema.String),
                           ),
-                          object: Schema.Literals(["promotion_code"]),
-                          promotion: Schema.Struct({
-                            coupon: Schema.Unknown,
-                            type: Schema.Literals(["coupon"]),
-                          }),
-                          restrictions: Schema.Struct({
-                            currency_options: Schema.optional(
-                              Schema.Record(
-                                Schema.String,
-                                Schema.Struct({
-                                  minimum_amount: Schema.Number,
-                                }),
-                              ),
-                            ),
-                            first_time_transaction: Schema.Boolean,
-                            minimum_amount: Schema.NullOr(Schema.Number),
-                            minimum_amount_currency: Schema.NullOr(
-                              Schema.String,
-                            ),
-                          }),
+                          name: Schema.NullOr(Schema.String),
+                          object: Schema.Literals(["coupon"]),
+                          percent_off: Schema.NullOr(Schema.Number),
+                          redeem_by: Schema.NullOr(Schema.Number),
                           times_redeemed: Schema.Number,
+                          valid: Schema.Boolean,
                         }),
                       ]),
                     ),
-                    source: Schema.Struct({
-                      coupon: Schema.NullOr(
-                        Schema.Union([
-                          Schema.String,
-                          Schema.Struct({
-                            amount_off: Schema.NullOr(Schema.Number),
-                            applies_to: Schema.optional(
-                              Schema.Struct({
-                                products: Schema.Array(Schema.String),
-                              }),
-                            ),
-                            created: Schema.Number,
-                            currency: Schema.NullOr(Schema.String),
-                            currency_options: Schema.optional(
-                              Schema.Record(
-                                Schema.String,
-                                Schema.Struct({
-                                  amount_off: Schema.Number,
-                                }),
-                              ),
-                            ),
-                            duration: Schema.Literals([
-                              "forever",
-                              "once",
-                              "repeating",
-                            ]),
-                            duration_in_months: Schema.NullOr(Schema.Number),
-                            id: Schema.String,
-                            livemode: Schema.Boolean,
-                            max_redemptions: Schema.NullOr(Schema.Number),
-                            metadata: Schema.NullOr(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                            name: Schema.NullOr(Schema.String),
-                            object: Schema.Literals(["coupon"]),
-                            percent_off: Schema.NullOr(Schema.Number),
-                            redeem_by: Schema.NullOr(Schema.Number),
-                            times_redeemed: Schema.Number,
-                            valid: Schema.Boolean,
-                          }),
-                        ]),
+                    type: Schema.Literals(["coupon"]),
+                  }),
+                  restrictions: Schema.Struct({
+                    currency_options: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          minimum_amount: Schema.Number,
+                        }),
                       ),
-                      type: Schema.Literals(["coupon"]),
-                    }),
-                    start: Schema.Number,
-                    subscription: Schema.NullOr(Schema.String),
-                    subscription_item: Schema.NullOr(Schema.String),
+                    ),
+                    first_time_transaction: Schema.Boolean,
+                    minimum_amount: Schema.NullOr(Schema.Number),
+                    minimum_amount_currency: Schema.NullOr(Schema.String),
+                  }),
+                  times_redeemed: Schema.Number,
+                }),
+              ]),
+            ),
+            source: Schema.Struct({
+              coupon: Schema.NullOr(
+                Schema.Union([
+                  Schema.String,
+                  Schema.Struct({
+                    amount_off: Schema.NullOr(Schema.Number),
+                    applies_to: Schema.optional(
+                      Schema.Struct({
+                        products: Schema.Array(Schema.String),
+                      }),
+                    ),
+                    created: Schema.Number,
+                    currency: Schema.NullOr(Schema.String),
+                    currency_options: Schema.optional(
+                      Schema.Record(
+                        Schema.String,
+                        Schema.Struct({
+                          amount_off: Schema.Number,
+                        }),
+                      ),
+                    ),
+                    duration: Schema.Literals(["forever", "once", "repeating"]),
+                    duration_in_months: Schema.NullOr(Schema.Number),
+                    id: Schema.String,
+                    livemode: Schema.Boolean,
+                    max_redemptions: Schema.NullOr(Schema.Number),
+                    metadata: Schema.NullOr(
+                      Schema.Record(Schema.String, Schema.String),
+                    ),
+                    name: Schema.NullOr(Schema.String),
+                    object: Schema.Literals(["coupon"]),
+                    percent_off: Schema.NullOr(Schema.Number),
+                    redeem_by: Schema.NullOr(Schema.Number),
+                    times_redeemed: Schema.Number,
+                    valid: Schema.Boolean,
                   }),
                 ]),
               ),
-              id: Schema.String,
-              metadata: Schema.Record(Schema.String, Schema.String),
-              object: Schema.Literals(["subscription_item"]),
-              plan: Schema.Struct({
-                active: Schema.Boolean,
-                amount: Schema.NullOr(Schema.Number),
-                amount_decimal: Schema.NullOr(Schema.String),
-                billing_scheme: Schema.Literals(["per_unit", "tiered"]),
-                created: Schema.Number,
-                currency: Schema.String,
-                id: Schema.String,
-                interval: Schema.Literals(["day", "month", "week", "year"]),
-                interval_count: Schema.Number,
-                livemode: Schema.Boolean,
-                metadata: Schema.NullOr(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                meter: Schema.NullOr(Schema.String),
-                nickname: Schema.NullOr(Schema.String),
-                object: Schema.Literals(["plan"]),
-                product: Schema.NullOr(
-                  Schema.Union([
-                    Schema.String,
-                    Schema.Struct({
-                      active: Schema.Boolean,
-                      created: Schema.Number,
-                      default_price: Schema.optional(
-                        Schema.NullOr(
-                          Schema.Union([
-                            Schema.String,
-                            Schema.Struct({
-                              active: Schema.Boolean,
-                              billing_scheme: Schema.Literals([
-                                "per_unit",
-                                "tiered",
-                              ]),
-                              created: Schema.Number,
-                              currency: Schema.String,
-                              currency_options: Schema.optional(
-                                Schema.Record(
-                                  Schema.String,
-                                  Schema.Struct({
-                                    custom_unit_amount: Schema.Unknown,
-                                    tax_behavior: Schema.NullOr(
-                                      Schema.Literals([
-                                        "exclusive",
-                                        "inclusive",
-                                        "unspecified",
-                                      ]),
-                                    ),
-                                    tiers: Schema.optional(
-                                      Schema.Array(
-                                        Schema.Struct({
-                                          flat_amount: Schema.NullOr(
-                                            Schema.Number,
-                                          ),
-                                          flat_amount_decimal: Schema.NullOr(
-                                            Schema.String,
-                                          ),
-                                          unit_amount: Schema.NullOr(
-                                            Schema.Number,
-                                          ),
-                                          unit_amount_decimal: Schema.NullOr(
-                                            Schema.String,
-                                          ),
-                                          up_to: Schema.NullOr(Schema.Number),
-                                        }),
-                                      ),
-                                    ),
-                                    unit_amount: Schema.NullOr(Schema.Number),
-                                    unit_amount_decimal: Schema.NullOr(
-                                      Schema.String,
-                                    ),
-                                  }),
-                                ),
-                              ),
-                              custom_unit_amount: Schema.Unknown,
-                              id: Schema.String,
-                              livemode: Schema.Boolean,
-                              lookup_key: Schema.NullOr(Schema.String),
-                              metadata: Schema.Record(
-                                Schema.String,
-                                Schema.String,
-                              ),
-                              nickname: Schema.NullOr(Schema.String),
-                              object: Schema.Literals(["price"]),
-                              product: Schema.Unknown,
-                              recurring: Schema.Unknown,
-                              tax_behavior: Schema.NullOr(
-                                Schema.Literals([
-                                  "exclusive",
-                                  "inclusive",
-                                  "unspecified",
-                                ]),
-                              ),
-                              tiers: Schema.optional(
-                                Schema.Array(
-                                  Schema.Struct({
-                                    flat_amount: Schema.NullOr(Schema.Number),
-                                    flat_amount_decimal: Schema.NullOr(
-                                      Schema.String,
-                                    ),
-                                    unit_amount: Schema.NullOr(Schema.Number),
-                                    unit_amount_decimal: Schema.NullOr(
-                                      Schema.String,
-                                    ),
-                                    up_to: Schema.NullOr(Schema.Number),
-                                  }),
-                                ),
-                              ),
-                              tiers_mode: Schema.NullOr(
-                                Schema.Literals(["graduated", "volume"]),
-                              ),
-                              transform_quantity: Schema.Unknown,
-                              type: Schema.Literals(["one_time", "recurring"]),
-                              unit_amount: Schema.NullOr(Schema.Number),
-                              unit_amount_decimal: Schema.NullOr(Schema.String),
-                            }),
-                          ]),
-                        ),
-                      ),
-                      description: Schema.NullOr(Schema.String),
-                      id: Schema.String,
-                      images: Schema.Array(Schema.String),
-                      livemode: Schema.Boolean,
-                      marketing_features: Schema.Array(
-                        Schema.Struct({
-                          name: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      metadata: Schema.Record(Schema.String, Schema.String),
-                      name: Schema.String,
-                      object: Schema.Literals(["product"]),
-                      package_dimensions: Schema.NullOr(
-                        Schema.Struct({
-                          height: Schema.Number,
-                          length: Schema.Number,
-                          weight: Schema.Number,
-                          width: Schema.Number,
-                        }),
-                      ),
-                      shippable: Schema.NullOr(Schema.Boolean),
-                      statement_descriptor: Schema.optional(
-                        Schema.NullOr(Schema.String),
-                      ),
-                      tax_code: Schema.optional(
-                        Schema.NullOr(
-                          Schema.Union([
-                            Schema.String,
-                            Schema.Struct({
-                              description: Schema.String,
-                              id: Schema.String,
-                              name: Schema.String,
-                              object: Schema.Literals(["tax_code"]),
-                            }),
-                          ]),
-                        ),
-                      ),
-                      type: Schema.Literals(["good", "service"]),
-                      unit_label: Schema.optional(Schema.NullOr(Schema.String)),
-                      updated: Schema.Number,
-                      url: Schema.NullOr(Schema.String),
-                    }),
-                    Schema.Struct({
-                      deleted: Schema.Literals([true]),
-                      id: Schema.String,
-                      object: Schema.Literals(["product"]),
-                    }),
-                  ]),
-                ),
-                tiers: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      flat_amount: Schema.NullOr(Schema.Number),
-                      flat_amount_decimal: Schema.NullOr(Schema.String),
-                      unit_amount: Schema.NullOr(Schema.Number),
-                      unit_amount_decimal: Schema.NullOr(Schema.String),
-                      up_to: Schema.NullOr(Schema.Number),
-                    }),
-                  ),
-                ),
-                tiers_mode: Schema.NullOr(
-                  Schema.Literals(["graduated", "volume"]),
-                ),
-                transform_usage: Schema.NullOr(
-                  Schema.Struct({
-                    divide_by: Schema.Number,
-                    round: Schema.Literals(["down", "up"]),
-                  }),
-                ),
-                trial_period_days: Schema.NullOr(Schema.Number),
-                usage_type: Schema.Literals(["licensed", "metered"]),
+              type: Schema.Literals(["coupon"]),
+            }),
+            start: Schema.Number,
+            subscription: Schema.NullOr(Schema.String),
+            subscription_item: Schema.NullOr(Schema.String),
+          }),
+        ]),
+      ),
+      ended_at: Schema.NullOr(Schema.Number),
+      id: Schema.String,
+      invoice_settings: Schema.Struct({
+        account_tax_ids: Schema.NullOr(Schema.Array(Schema.Unknown)),
+        custom_fields: Schema.NullOr(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+        description: Schema.NullOr(Schema.String),
+        footer: Schema.NullOr(Schema.String),
+        issuer: Schema.Struct({
+          account: Schema.optional(Schema.Unknown),
+          type: Schema.Literals(["account", "self"]),
+        }),
+      }),
+      items: Schema.Struct({
+        data: Schema.Array(
+          Schema.Struct({
+            billed_until: Schema.optional(Schema.Number),
+            billing_thresholds: Schema.NullOr(
+              Schema.Struct({
+                usage_gte: Schema.NullOr(Schema.Number),
               }),
-              price: Schema.Struct({
-                active: Schema.Boolean,
-                billing_scheme: Schema.Literals(["per_unit", "tiered"]),
-                created: Schema.Number,
-                currency: Schema.String,
-                currency_options: Schema.optional(
-                  Schema.Record(
-                    Schema.String,
-                    Schema.Struct({
-                      custom_unit_amount: Schema.NullOr(
-                        Schema.Struct({
-                          maximum: Schema.NullOr(Schema.Number),
-                          minimum: Schema.NullOr(Schema.Number),
-                          preset: Schema.NullOr(Schema.Number),
-                        }),
-                      ),
-                      tax_behavior: Schema.NullOr(
-                        Schema.Literals([
-                          "exclusive",
-                          "inclusive",
-                          "unspecified",
-                        ]),
-                      ),
-                      tiers: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            flat_amount: Schema.NullOr(Schema.Number),
-                            flat_amount_decimal: Schema.NullOr(Schema.String),
-                            unit_amount: Schema.NullOr(Schema.Number),
-                            unit_amount_decimal: Schema.NullOr(Schema.String),
-                            up_to: Schema.NullOr(Schema.Number),
-                          }),
+            ),
+            created: Schema.Number,
+            current_period_end: Schema.Number,
+            current_period_start: Schema.Number,
+            discounts: Schema.Array(
+              Schema.Union([
+                Schema.String,
+                Schema.Struct({
+                  checkout_session: Schema.NullOr(Schema.String),
+                  customer: Schema.Unknown,
+                  customer_account: Schema.NullOr(Schema.String),
+                  end: Schema.NullOr(Schema.Number),
+                  id: Schema.String,
+                  invoice: Schema.NullOr(Schema.String),
+                  invoice_item: Schema.NullOr(Schema.String),
+                  object: Schema.Literals(["discount"]),
+                  promotion_code: Schema.NullOr(
+                    Schema.Union([
+                      Schema.String,
+                      Schema.Struct({
+                        active: Schema.Boolean,
+                        code: Schema.String,
+                        created: Schema.Number,
+                        customer: Schema.Unknown,
+                        customer_account: Schema.NullOr(Schema.String),
+                        expires_at: Schema.NullOr(Schema.Number),
+                        id: Schema.String,
+                        livemode: Schema.Boolean,
+                        max_redemptions: Schema.NullOr(Schema.Number),
+                        metadata: Schema.NullOr(
+                          Schema.Record(Schema.String, Schema.String),
                         ),
-                      ),
-                      unit_amount: Schema.NullOr(Schema.Number),
-                      unit_amount_decimal: Schema.NullOr(Schema.String),
-                    }),
+                        object: Schema.Literals(["promotion_code"]),
+                        promotion: Schema.Struct({
+                          coupon: Schema.Unknown,
+                          type: Schema.Literals(["coupon"]),
+                        }),
+                        restrictions: Schema.Struct({
+                          currency_options: Schema.optional(
+                            Schema.Record(
+                              Schema.String,
+                              Schema.Struct({
+                                minimum_amount: Schema.Number,
+                              }),
+                            ),
+                          ),
+                          first_time_transaction: Schema.Boolean,
+                          minimum_amount: Schema.NullOr(Schema.Number),
+                          minimum_amount_currency: Schema.NullOr(Schema.String),
+                        }),
+                        times_redeemed: Schema.Number,
+                      }),
+                    ]),
                   ),
-                ),
-                custom_unit_amount: Schema.NullOr(
-                  Schema.Struct({
-                    maximum: Schema.NullOr(Schema.Number),
-                    minimum: Schema.NullOr(Schema.Number),
-                    preset: Schema.NullOr(Schema.Number),
+                  source: Schema.Struct({
+                    coupon: Schema.NullOr(
+                      Schema.Union([
+                        Schema.String,
+                        Schema.Struct({
+                          amount_off: Schema.NullOr(Schema.Number),
+                          applies_to: Schema.optional(
+                            Schema.Struct({
+                              products: Schema.Array(Schema.String),
+                            }),
+                          ),
+                          created: Schema.Number,
+                          currency: Schema.NullOr(Schema.String),
+                          currency_options: Schema.optional(
+                            Schema.Record(
+                              Schema.String,
+                              Schema.Struct({
+                                amount_off: Schema.Number,
+                              }),
+                            ),
+                          ),
+                          duration: Schema.Literals([
+                            "forever",
+                            "once",
+                            "repeating",
+                          ]),
+                          duration_in_months: Schema.NullOr(Schema.Number),
+                          id: Schema.String,
+                          livemode: Schema.Boolean,
+                          max_redemptions: Schema.NullOr(Schema.Number),
+                          metadata: Schema.NullOr(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                          name: Schema.NullOr(Schema.String),
+                          object: Schema.Literals(["coupon"]),
+                          percent_off: Schema.NullOr(Schema.Number),
+                          redeem_by: Schema.NullOr(Schema.Number),
+                          times_redeemed: Schema.Number,
+                          valid: Schema.Boolean,
+                        }),
+                      ]),
+                    ),
+                    type: Schema.Literals(["coupon"]),
                   }),
-                ),
-                id: Schema.String,
-                livemode: Schema.Boolean,
-                lookup_key: Schema.NullOr(Schema.String),
-                metadata: Schema.Record(Schema.String, Schema.String),
-                nickname: Schema.NullOr(Schema.String),
-                object: Schema.Literals(["price"]),
-                product: Schema.Union([
+                  start: Schema.Number,
+                  subscription: Schema.NullOr(Schema.String),
+                  subscription_item: Schema.NullOr(Schema.String),
+                }),
+              ]),
+            ),
+            id: Schema.String,
+            metadata: Schema.Record(Schema.String, Schema.String),
+            object: Schema.Literals(["subscription_item"]),
+            plan: Schema.Struct({
+              active: Schema.Boolean,
+              amount: Schema.NullOr(Schema.Number),
+              amount_decimal: Schema.NullOr(Schema.String),
+              billing_scheme: Schema.Literals(["per_unit", "tiered"]),
+              created: Schema.Number,
+              currency: Schema.String,
+              id: Schema.String,
+              interval: Schema.Literals(["day", "month", "week", "year"]),
+              interval_count: Schema.Number,
+              livemode: Schema.Boolean,
+              metadata: Schema.NullOr(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              meter: Schema.NullOr(Schema.String),
+              nickname: Schema.NullOr(Schema.String),
+              object: Schema.Literals(["plan"]),
+              product: Schema.NullOr(
+                Schema.Union([
                   Schema.String,
                   Schema.Struct({
                     active: Schema.Boolean,
                     created: Schema.Number,
                     default_price: Schema.optional(
                       Schema.NullOr(
-                        Schema.Union([Schema.String, Schema.Unknown]),
+                        Schema.Union([
+                          Schema.String,
+                          Schema.Struct({
+                            active: Schema.Boolean,
+                            billing_scheme: Schema.Literals([
+                              "per_unit",
+                              "tiered",
+                            ]),
+                            created: Schema.Number,
+                            currency: Schema.String,
+                            currency_options: Schema.optional(
+                              Schema.Record(
+                                Schema.String,
+                                Schema.Struct({
+                                  custom_unit_amount: Schema.Unknown,
+                                  tax_behavior: Schema.NullOr(
+                                    Schema.Literals([
+                                      "exclusive",
+                                      "inclusive",
+                                      "unspecified",
+                                    ]),
+                                  ),
+                                  tiers: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        flat_amount: Schema.NullOr(
+                                          Schema.Number,
+                                        ),
+                                        flat_amount_decimal: Schema.NullOr(
+                                          Schema.String,
+                                        ),
+                                        unit_amount: Schema.NullOr(
+                                          Schema.Number,
+                                        ),
+                                        unit_amount_decimal: Schema.NullOr(
+                                          Schema.String,
+                                        ),
+                                        up_to: Schema.NullOr(Schema.Number),
+                                      }),
+                                    ),
+                                  ),
+                                  unit_amount: Schema.NullOr(Schema.Number),
+                                  unit_amount_decimal: Schema.NullOr(
+                                    Schema.String,
+                                  ),
+                                }),
+                              ),
+                            ),
+                            custom_unit_amount: Schema.Unknown,
+                            id: Schema.String,
+                            livemode: Schema.Boolean,
+                            lookup_key: Schema.NullOr(Schema.String),
+                            metadata: Schema.Record(
+                              Schema.String,
+                              Schema.String,
+                            ),
+                            nickname: Schema.NullOr(Schema.String),
+                            object: Schema.Literals(["price"]),
+                            product: Schema.Unknown,
+                            recurring: Schema.Unknown,
+                            tax_behavior: Schema.NullOr(
+                              Schema.Literals([
+                                "exclusive",
+                                "inclusive",
+                                "unspecified",
+                              ]),
+                            ),
+                            tiers: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  flat_amount: Schema.NullOr(Schema.Number),
+                                  flat_amount_decimal: Schema.NullOr(
+                                    Schema.String,
+                                  ),
+                                  unit_amount: Schema.NullOr(Schema.Number),
+                                  unit_amount_decimal: Schema.NullOr(
+                                    Schema.String,
+                                  ),
+                                  up_to: Schema.NullOr(Schema.Number),
+                                }),
+                              ),
+                            ),
+                            tiers_mode: Schema.NullOr(
+                              Schema.Literals(["graduated", "volume"]),
+                            ),
+                            transform_quantity: Schema.Unknown,
+                            type: Schema.Literals(["one_time", "recurring"]),
+                            unit_amount: Schema.NullOr(Schema.Number),
+                            unit_amount_decimal: Schema.NullOr(Schema.String),
+                          }),
+                        ]),
                       ),
                     ),
                     description: Schema.NullOr(Schema.String),
@@ -1595,208 +1454,337 @@ export const GetSubscriptionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                     object: Schema.Literals(["product"]),
                   }),
                 ]),
-                recurring: Schema.NullOr(
-                  Schema.Struct({
-                    interval: Schema.Literals(["day", "month", "week", "year"]),
-                    interval_count: Schema.Number,
-                    meter: Schema.NullOr(Schema.String),
-                    trial_period_days: Schema.NullOr(Schema.Number),
-                    usage_type: Schema.Literals(["licensed", "metered"]),
-                  }),
-                ),
-                tax_behavior: Schema.NullOr(
-                  Schema.Literals(["exclusive", "inclusive", "unspecified"]),
-                ),
-                tiers: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      flat_amount: Schema.NullOr(Schema.Number),
-                      flat_amount_decimal: Schema.NullOr(Schema.String),
-                      unit_amount: Schema.NullOr(Schema.Number),
-                      unit_amount_decimal: Schema.NullOr(Schema.String),
-                      up_to: Schema.NullOr(Schema.Number),
-                    }),
-                  ),
-                ),
-                tiers_mode: Schema.NullOr(
-                  Schema.Literals(["graduated", "volume"]),
-                ),
-                transform_quantity: Schema.NullOr(
-                  Schema.Struct({
-                    divide_by: Schema.Number,
-                    round: Schema.Literals(["down", "up"]),
-                  }),
-                ),
-                type: Schema.Literals(["one_time", "recurring"]),
-                unit_amount: Schema.NullOr(Schema.Number),
-                unit_amount_decimal: Schema.NullOr(Schema.String),
-              }),
-              quantity: Schema.optional(Schema.Number),
-              subscription: Schema.String,
-              tax_rates: Schema.NullOr(
+              ),
+              tiers: Schema.optional(
                 Schema.Array(
                   Schema.Struct({
-                    active: Schema.Boolean,
-                    country: Schema.NullOr(Schema.String),
-                    created: Schema.Number,
-                    description: Schema.NullOr(Schema.String),
-                    display_name: Schema.String,
-                    effective_percentage: Schema.NullOr(Schema.Number),
-                    flat_amount: Schema.NullOr(
-                      Schema.Struct({
-                        amount: Schema.Number,
-                        currency: Schema.String,
-                      }),
-                    ),
-                    id: Schema.String,
-                    inclusive: Schema.Boolean,
-                    jurisdiction: Schema.NullOr(Schema.String),
-                    jurisdiction_level: Schema.NullOr(
-                      Schema.Literals([
-                        "city",
-                        "country",
-                        "county",
-                        "district",
-                        "multiple",
-                        "state",
-                      ]),
-                    ),
-                    livemode: Schema.Boolean,
-                    metadata: Schema.NullOr(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                    object: Schema.Literals(["tax_rate"]),
-                    percentage: Schema.Number,
-                    rate_type: Schema.NullOr(
-                      Schema.Literals(["flat_amount", "percentage"]),
-                    ),
-                    state: Schema.NullOr(Schema.String),
-                    tax_type: Schema.NullOr(
-                      Schema.Literals([
-                        "amusement_tax",
-                        "communications_tax",
-                        "gst",
-                        "hst",
-                        "igst",
-                        "jct",
-                        "lease_tax",
-                        "pst",
-                        "qst",
-                        "retail_delivery_fee",
-                        "rst",
-                        "sales_tax",
-                        "service_tax",
-                        "vat",
-                      ]),
-                    ),
+                    flat_amount: Schema.NullOr(Schema.Number),
+                    flat_amount_decimal: Schema.NullOr(Schema.String),
+                    unit_amount: Schema.NullOr(Schema.Number),
+                    unit_amount_decimal: Schema.NullOr(Schema.String),
+                    up_to: Schema.NullOr(Schema.Number),
                   }),
                 ),
               ),
+              tiers_mode: Schema.NullOr(
+                Schema.Literals(["graduated", "volume"]),
+              ),
+              transform_usage: Schema.NullOr(
+                Schema.Struct({
+                  divide_by: Schema.Number,
+                  round: Schema.Literals(["down", "up"]),
+                }),
+              ),
+              trial_period_days: Schema.NullOr(Schema.Number),
+              usage_type: Schema.Literals(["licensed", "metered"]),
             }),
-          ),
-          has_more: Schema.Boolean,
-          object: Schema.Literals(["list"]),
-          url: Schema.String,
-        }),
-        latest_invoice: Schema.Unknown,
-        livemode: Schema.Boolean,
-        managed_payments: Schema.NullOr(
-          Schema.Struct({
-            enabled: Schema.Boolean,
-          }),
-        ),
-        metadata: Schema.Record(Schema.String, Schema.String),
-        next_pending_invoice_item_invoice: Schema.NullOr(Schema.Number),
-        object: Schema.Literals(["subscription"]),
-        on_behalf_of: Schema.Unknown,
-        pause_collection: Schema.NullOr(
-          Schema.Struct({
-            behavior: Schema.Literals([
-              "keep_as_draft",
-              "mark_uncollectible",
-              "void",
-            ]),
-            resumes_at: Schema.NullOr(Schema.Number),
-          }),
-        ),
-        payment_settings: Schema.Unknown,
-        pending_invoice_item_interval: Schema.NullOr(
-          Schema.Struct({
-            interval: Schema.Literals(["day", "month", "week", "year"]),
-            interval_count: Schema.Number,
-          }),
-        ),
-        pending_setup_intent: Schema.Unknown,
-        pending_update: Schema.Unknown,
-        presentment_details: Schema.optional(
-          Schema.Struct({
-            presentment_currency: Schema.String,
-          }),
-        ),
-        schedule: Schema.Unknown,
-        start_date: Schema.Number,
-        status: Schema.Literals([
-          "active",
-          "canceled",
-          "incomplete",
-          "incomplete_expired",
-          "past_due",
-          "paused",
-          "trialing",
-          "unpaid",
-        ]),
-        test_clock: Schema.NullOr(
-          Schema.Union([
-            Schema.String,
-            Schema.Struct({
+            price: Schema.Struct({
+              active: Schema.Boolean,
+              billing_scheme: Schema.Literals(["per_unit", "tiered"]),
               created: Schema.Number,
-              deletes_after: Schema.Number,
-              frozen_time: Schema.Number,
-              id: Schema.String,
-              livemode: Schema.Boolean,
-              name: Schema.NullOr(Schema.String),
-              object: Schema.Literals(["test_helpers.test_clock"]),
-              status: Schema.Literals([
-                "advancing",
-                "internal_failure",
-                "ready",
-              ]),
-              status_details: Schema.Struct({
-                advancing: Schema.optional(
+              currency: Schema.String,
+              currency_options: Schema.optional(
+                Schema.Record(
+                  Schema.String,
                   Schema.Struct({
-                    target_frozen_time: Schema.Number,
+                    custom_unit_amount: Schema.NullOr(
+                      Schema.Struct({
+                        maximum: Schema.NullOr(Schema.Number),
+                        minimum: Schema.NullOr(Schema.Number),
+                        preset: Schema.NullOr(Schema.Number),
+                      }),
+                    ),
+                    tax_behavior: Schema.NullOr(
+                      Schema.Literals([
+                        "exclusive",
+                        "inclusive",
+                        "unspecified",
+                      ]),
+                    ),
+                    tiers: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          flat_amount: Schema.NullOr(Schema.Number),
+                          flat_amount_decimal: Schema.NullOr(Schema.String),
+                          unit_amount: Schema.NullOr(Schema.Number),
+                          unit_amount_decimal: Schema.NullOr(Schema.String),
+                          up_to: Schema.NullOr(Schema.Number),
+                        }),
+                      ),
+                    ),
+                    unit_amount: Schema.NullOr(Schema.Number),
+                    unit_amount_decimal: Schema.NullOr(Schema.String),
                   }),
                 ),
-              }),
-            }),
-          ]),
-        ),
-        transfer_data: Schema.NullOr(
-          Schema.Struct({
-            amount_percent: Schema.NullOr(Schema.Number),
-            destination: Schema.Unknown,
-          }),
-        ),
-        trial_end: Schema.NullOr(Schema.Number),
-        trial_settings: Schema.NullOr(
-          Schema.Struct({
-            end_behavior: Schema.Struct({
-              missing_payment_method: Schema.Literals([
-                "cancel",
-                "create_invoice",
-                "pause",
+              ),
+              custom_unit_amount: Schema.NullOr(
+                Schema.Struct({
+                  maximum: Schema.NullOr(Schema.Number),
+                  minimum: Schema.NullOr(Schema.Number),
+                  preset: Schema.NullOr(Schema.Number),
+                }),
+              ),
+              id: Schema.String,
+              livemode: Schema.Boolean,
+              lookup_key: Schema.NullOr(Schema.String),
+              metadata: Schema.Record(Schema.String, Schema.String),
+              nickname: Schema.NullOr(Schema.String),
+              object: Schema.Literals(["price"]),
+              product: Schema.Union([
+                Schema.String,
+                Schema.Struct({
+                  active: Schema.Boolean,
+                  created: Schema.Number,
+                  default_price: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Union([Schema.String, Schema.Unknown]),
+                    ),
+                  ),
+                  description: Schema.NullOr(Schema.String),
+                  id: Schema.String,
+                  images: Schema.Array(Schema.String),
+                  livemode: Schema.Boolean,
+                  marketing_features: Schema.Array(
+                    Schema.Struct({
+                      name: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  metadata: Schema.Record(Schema.String, Schema.String),
+                  name: Schema.String,
+                  object: Schema.Literals(["product"]),
+                  package_dimensions: Schema.NullOr(
+                    Schema.Struct({
+                      height: Schema.Number,
+                      length: Schema.Number,
+                      weight: Schema.Number,
+                      width: Schema.Number,
+                    }),
+                  ),
+                  shippable: Schema.NullOr(Schema.Boolean),
+                  statement_descriptor: Schema.optional(
+                    Schema.NullOr(Schema.String),
+                  ),
+                  tax_code: Schema.optional(
+                    Schema.NullOr(
+                      Schema.Union([
+                        Schema.String,
+                        Schema.Struct({
+                          description: Schema.String,
+                          id: Schema.String,
+                          name: Schema.String,
+                          object: Schema.Literals(["tax_code"]),
+                        }),
+                      ]),
+                    ),
+                  ),
+                  type: Schema.Literals(["good", "service"]),
+                  unit_label: Schema.optional(Schema.NullOr(Schema.String)),
+                  updated: Schema.Number,
+                  url: Schema.NullOr(Schema.String),
+                }),
+                Schema.Struct({
+                  deleted: Schema.Literals([true]),
+                  id: Schema.String,
+                  object: Schema.Literals(["product"]),
+                }),
               ]),
+              recurring: Schema.NullOr(
+                Schema.Struct({
+                  interval: Schema.Literals(["day", "month", "week", "year"]),
+                  interval_count: Schema.Number,
+                  meter: Schema.NullOr(Schema.String),
+                  trial_period_days: Schema.NullOr(Schema.Number),
+                  usage_type: Schema.Literals(["licensed", "metered"]),
+                }),
+              ),
+              tax_behavior: Schema.NullOr(
+                Schema.Literals(["exclusive", "inclusive", "unspecified"]),
+              ),
+              tiers: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    flat_amount: Schema.NullOr(Schema.Number),
+                    flat_amount_decimal: Schema.NullOr(Schema.String),
+                    unit_amount: Schema.NullOr(Schema.Number),
+                    unit_amount_decimal: Schema.NullOr(Schema.String),
+                    up_to: Schema.NullOr(Schema.Number),
+                  }),
+                ),
+              ),
+              tiers_mode: Schema.NullOr(
+                Schema.Literals(["graduated", "volume"]),
+              ),
+              transform_quantity: Schema.NullOr(
+                Schema.Struct({
+                  divide_by: Schema.Number,
+                  round: Schema.Literals(["down", "up"]),
+                }),
+              ),
+              type: Schema.Literals(["one_time", "recurring"]),
+              unit_amount: Schema.NullOr(Schema.Number),
+              unit_amount_decimal: Schema.NullOr(Schema.String),
             }),
+            quantity: Schema.optional(Schema.Number),
+            subscription: Schema.String,
+            tax_rates: Schema.NullOr(
+              Schema.Array(
+                Schema.Struct({
+                  active: Schema.Boolean,
+                  country: Schema.NullOr(Schema.String),
+                  created: Schema.Number,
+                  description: Schema.NullOr(Schema.String),
+                  display_name: Schema.String,
+                  effective_percentage: Schema.NullOr(Schema.Number),
+                  flat_amount: Schema.NullOr(
+                    Schema.Struct({
+                      amount: Schema.Number,
+                      currency: Schema.String,
+                    }),
+                  ),
+                  id: Schema.String,
+                  inclusive: Schema.Boolean,
+                  jurisdiction: Schema.NullOr(Schema.String),
+                  jurisdiction_level: Schema.NullOr(
+                    Schema.Literals([
+                      "city",
+                      "country",
+                      "county",
+                      "district",
+                      "multiple",
+                      "state",
+                    ]),
+                  ),
+                  livemode: Schema.Boolean,
+                  metadata: Schema.NullOr(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  object: Schema.Literals(["tax_rate"]),
+                  percentage: Schema.Number,
+                  rate_type: Schema.NullOr(
+                    Schema.Literals(["flat_amount", "percentage"]),
+                  ),
+                  state: Schema.NullOr(Schema.String),
+                  tax_type: Schema.NullOr(
+                    Schema.Literals([
+                      "amusement_tax",
+                      "communications_tax",
+                      "gst",
+                      "hst",
+                      "igst",
+                      "jct",
+                      "lease_tax",
+                      "pst",
+                      "qst",
+                      "retail_delivery_fee",
+                      "rst",
+                      "sales_tax",
+                      "service_tax",
+                      "vat",
+                    ]),
+                  ),
+                }),
+              ),
+            ),
           }),
         ),
-        trial_start: Schema.NullOr(Schema.Number),
+        has_more: Schema.Boolean,
+        object: Schema.Literals(["list"]),
+        url: Schema.String,
       }),
-    ),
-    has_more: Schema.Boolean,
-    object: Schema.Literals(["list"]),
-    url: Schema.String,
-  },
-) as unknown as Schema.Codec<GetSubscriptionsOutput>;
+      latest_invoice: Schema.Unknown,
+      livemode: Schema.Boolean,
+      managed_payments: Schema.NullOr(
+        Schema.Struct({
+          enabled: Schema.Boolean,
+        }),
+      ),
+      metadata: Schema.Record(Schema.String, Schema.String),
+      next_pending_invoice_item_invoice: Schema.NullOr(Schema.Number),
+      object: Schema.Literals(["subscription"]),
+      on_behalf_of: Schema.Unknown,
+      pause_collection: Schema.NullOr(
+        Schema.Struct({
+          behavior: Schema.Literals([
+            "keep_as_draft",
+            "mark_uncollectible",
+            "void",
+          ]),
+          resumes_at: Schema.NullOr(Schema.Number),
+        }),
+      ),
+      payment_settings: Schema.Unknown,
+      pending_invoice_item_interval: Schema.NullOr(
+        Schema.Struct({
+          interval: Schema.Literals(["day", "month", "week", "year"]),
+          interval_count: Schema.Number,
+        }),
+      ),
+      pending_setup_intent: Schema.Unknown,
+      pending_update: Schema.Unknown,
+      presentment_details: Schema.optional(
+        Schema.Struct({
+          presentment_currency: Schema.String,
+        }),
+      ),
+      schedule: Schema.Unknown,
+      start_date: Schema.Number,
+      status: Schema.Literals([
+        "active",
+        "canceled",
+        "incomplete",
+        "incomplete_expired",
+        "past_due",
+        "paused",
+        "trialing",
+        "unpaid",
+      ]),
+      test_clock: Schema.NullOr(
+        Schema.Union([
+          Schema.String,
+          Schema.Struct({
+            created: Schema.Number,
+            deletes_after: Schema.Number,
+            frozen_time: Schema.Number,
+            id: Schema.String,
+            livemode: Schema.Boolean,
+            name: Schema.NullOr(Schema.String),
+            object: Schema.Literals(["test_helpers.test_clock"]),
+            status: Schema.Literals(["advancing", "internal_failure", "ready"]),
+            status_details: Schema.Struct({
+              advancing: Schema.optional(
+                Schema.Struct({
+                  target_frozen_time: Schema.Number,
+                }),
+              ),
+            }),
+          }),
+        ]),
+      ),
+      transfer_data: Schema.NullOr(
+        Schema.Struct({
+          amount_percent: Schema.NullOr(Schema.Number),
+          destination: Schema.Unknown,
+        }),
+      ),
+      trial_end: Schema.NullOr(Schema.Number),
+      trial_settings: Schema.NullOr(
+        Schema.Struct({
+          end_behavior: Schema.Struct({
+            missing_payment_method: Schema.Literals([
+              "cancel",
+              "create_invoice",
+              "pause",
+            ]),
+          }),
+        }),
+      ),
+      trial_start: Schema.NullOr(Schema.Number),
+    }),
+  ),
+  has_more: Schema.Boolean,
+  object: Schema.Literals(["list"]),
+  url: Schema.String,
+}) as unknown as Schema.Codec<GetSubscriptionsOutput>;
 
 // The operation
 /**
@@ -1820,7 +1808,7 @@ export const GetSubscriptionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param status - The status of the subscriptions to retrieve. Passing in a value of `canceled` will return all canceled subscriptions, including those belonging to deleted customers. Pass `ended` to find subscriptions that are canceled and subscriptions that are expired due to [incomplete payment](https://docs.stripe.com/billing/subscriptions/overview#subscription-statuses). Passing in a value of `all` will return subscriptions of all statuses. If no value is supplied, all subscriptions that have not been canceled are returned.
  * @param test_clock - Filter for subscriptions that are associated with the specified test clock. The response will not include subscriptions with test clocks if this and the customer parameter is not set.
  */
-export const GetSubscriptions = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetSubscriptions = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetSubscriptionsInput,
   outputSchema: GetSubscriptionsOutput,
 }));

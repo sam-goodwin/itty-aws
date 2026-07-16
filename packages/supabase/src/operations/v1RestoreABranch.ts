@@ -7,7 +7,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 export interface V1RestoreABranchInput {
   branch_id_or_ref: string;
 }
-export const V1RestoreABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1RestoreABranchInput = /*@__PURE__*/ Schema.Struct({
   branch_id_or_ref: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "POST", path: "/v1/branches/{branch_id_or_ref}/restore" }),
@@ -17,11 +17,9 @@ export const V1RestoreABranchInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface V1RestoreABranchOutput {
   message: "Branch restoration initiated";
 }
-export const V1RestoreABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    message: Schema.Literals(["Branch restoration initiated"]),
-  },
-) as unknown as Schema.Codec<V1RestoreABranchOutput>;
+export const V1RestoreABranchOutput = /*@__PURE__*/ Schema.Struct({
+  message: Schema.Literals(["Branch restoration initiated"]),
+}) as unknown as Schema.Codec<V1RestoreABranchOutput>;
 
 // The operation
 /**
@@ -31,7 +29,7 @@ export const V1RestoreABranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  *
  * @param branch_id_or_ref - Branch ref or deprecated branch ID
  */
-export const v1RestoreABranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1RestoreABranch = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1RestoreABranchInput,
   outputSchema: V1RestoreABranchOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

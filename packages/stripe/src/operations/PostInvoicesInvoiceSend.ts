@@ -13,7 +13,7 @@ export interface PostInvoicesInvoiceSendInput {
   expand?: string[];
 }
 export const PostInvoicesInvoiceSendInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invoice: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -2210,7 +2210,7 @@ export interface PostInvoicesInvoiceSendOutput {
   webhooks_delivered_at: number | null;
 }
 export const PostInvoicesInvoiceSendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_country: Schema.NullOr(Schema.String),
     account_name: Schema.NullOr(Schema.String),
     account_tax_ids: Schema.NullOr(
@@ -3920,9 +3920,7 @@ export const PostInvoicesInvoiceSendOutput =
  * <p>Stripe will automatically send invoices to customers according to your <a href="https://dashboard.stripe.com/account/billing/automatic">subscriptions settings</a>. However, if you’d like to manually send an invoice to your customer out of the normal schedule, you can do so. When sending invoices that have already been paid, there will be no reference to the payment in the email.</p>
  * <p>Requests made in test-mode result in no emails being sent, despite sending an <code>invoice.sent</code> event.</p>
  */
-export const PostInvoicesInvoiceSend = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostInvoicesInvoiceSendInput,
-    outputSchema: PostInvoicesInvoiceSendOutput,
-  }),
-);
+export const PostInvoicesInvoiceSend = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostInvoicesInvoiceSendInput,
+  outputSchema: PostInvoicesInvoiceSendOutput,
+}));

@@ -12,7 +12,7 @@ export interface PublicHogFunctionTemplatesListInput {
   types?: string;
 }
 export const PublicHogFunctionTemplatesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
     template_id: Schema.optional(Schema.String),
@@ -54,7 +54,7 @@ export interface PublicHogFunctionTemplatesListOutput {
   }[];
 }
 export const PublicHogFunctionTemplatesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -107,7 +107,7 @@ export const PublicHogFunctionTemplatesListOutput =
  * @param types - Comma-separated list of template types to include (e.g. destination,email,sms_provider).
  */
 export const publicHogFunctionTemplatesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PublicHogFunctionTemplatesListInput,
     outputSchema: PublicHogFunctionTemplatesListOutput,
     errors: [BadRequest, Forbidden] as const,

@@ -6,11 +6,9 @@ import * as T from "../traits.ts";
 export interface GetV2CoreEventsIdInput {
   id: string;
 }
-export const GetV2CoreEventsIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const GetV2CoreEventsIdInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({ method: "GET", path: "/v2/core/events/{id}" }),
 ) as unknown as Schema.Codec<GetV2CoreEventsIdInput>;
 
@@ -29,7 +27,7 @@ export interface GetV2CoreEventsIdOutput {
   type: string;
 }
 export const GetV2CoreEventsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     changes: Schema.optional(Schema.Unknown),
     context: Schema.optional(Schema.String),
     created: Schema.String,
@@ -59,7 +57,7 @@ export const GetV2CoreEventsIdOutput =
  *
  * @param id - Unique identifier for the object.
  */
-export const GetV2CoreEventsId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetV2CoreEventsId = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetV2CoreEventsIdInput,
   outputSchema: GetV2CoreEventsIdOutput,
 }));

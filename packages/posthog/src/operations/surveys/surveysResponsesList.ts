@@ -16,7 +16,7 @@ export interface SurveysResponsesListInput {
   until?: string;
 }
 export const SurveysResponsesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     exclude_archived: Schema.optional(Schema.Boolean),
@@ -64,7 +64,7 @@ export interface SurveysResponsesListOutput {
   offset: number;
 }
 export const SurveysResponsesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         uuid: Schema.String,
@@ -112,9 +112,7 @@ export const SurveysResponsesListOutput =
  * @param since - Only return responses submitted on or after this ISO 8601 timestamp.
  * @param until - Only return responses submitted on or before this ISO 8601 timestamp.
  */
-export const surveysResponsesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SurveysResponsesListInput,
-    outputSchema: SurveysResponsesListOutput,
-  }),
-);
+export const surveysResponsesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SurveysResponsesListInput,
+  outputSchema: SurveysResponsesListOutput,
+}));

@@ -32,7 +32,7 @@ export interface Deployment {
 }
 
 export const Deployment: Schema.Codec<Deployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     target: Schema.optional(Schema.String),
     projectId: Schema.optional(Schema.String),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -65,7 +65,7 @@ export interface Profile {
 }
 
 export const Profile: Schema.Codec<Profile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     profileBytes: Schema.optional(Schema.String),
     profileType: Schema.optional(Schema.String),
@@ -85,7 +85,7 @@ export interface ListProfilesResponse {
 }
 
 export const ListProfilesResponse: Schema.Codec<ListProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     skippedProfiles: Schema.optional(Schema.Number),
     nextPageToken: Schema.optional(Schema.String),
     profiles: Schema.optional(Schema.Array(Profile)),
@@ -109,7 +109,7 @@ export interface CreateProfileRequest {
 }
 
 export const CreateProfileRequest: Schema.Codec<CreateProfileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deployment: Schema.optional(Deployment),
     profileType: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CreateProfileRequest" });
@@ -176,7 +176,7 @@ export interface CreateProjectsProfilesRequest {
 }
 
 export const CreateProjectsProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateProfileRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -185,8 +185,7 @@ export const CreateProjectsProfilesRequest =
   ) as unknown as Schema.Codec<CreateProjectsProfilesRequest>;
 
 export type CreateProjectsProfilesResponse = Profile;
-export const CreateProjectsProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Profile;
+export const CreateProjectsProfilesResponse = /*@__PURE__*/ Profile;
 
 export type CreateProjectsProfilesError =
   | DefaultErrors
@@ -201,7 +200,7 @@ export const createProjectsProfiles: API.OperationMethod<
   CreateProjectsProfilesResponse,
   CreateProjectsProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsProfilesRequest,
   output: CreateProjectsProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -217,7 +216,7 @@ export interface PatchProjectsProfilesRequest {
 }
 
 export const PatchProjectsProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Profile).pipe(T.HttpBody()),
@@ -227,8 +226,7 @@ export const PatchProjectsProfilesRequest =
   ) as unknown as Schema.Codec<PatchProjectsProfilesRequest>;
 
 export type PatchProjectsProfilesResponse = Profile;
-export const PatchProjectsProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Profile;
+export const PatchProjectsProfilesResponse = /*@__PURE__*/ Profile;
 
 export type PatchProjectsProfilesError =
   | DefaultErrors
@@ -243,7 +241,7 @@ export const patchProjectsProfiles: API.OperationMethod<
   PatchProjectsProfilesResponse,
   PatchProjectsProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsProfilesRequest,
   output: PatchProjectsProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -259,7 +257,7 @@ export interface ListProjectsProfilesRequest {
 }
 
 export const ListProjectsProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -269,8 +267,7 @@ export const ListProjectsProfilesRequest =
   ) as unknown as Schema.Codec<ListProjectsProfilesRequest>;
 
 export type ListProjectsProfilesResponse = ListProfilesResponse;
-export const ListProjectsProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListProfilesResponse;
+export const ListProjectsProfilesResponse = /*@__PURE__*/ ListProfilesResponse;
 
 export type ListProjectsProfilesError = DefaultErrors | NotFound | Forbidden;
 
@@ -280,7 +277,7 @@ export const listProjectsProfiles: API.PaginatedOperationMethod<
   ListProjectsProfilesResponse,
   ListProjectsProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsProfilesRequest,
   output: ListProjectsProfilesResponse,
   errors: [NotFound, Forbidden],
@@ -298,7 +295,7 @@ export interface CreateOfflineProjectsProfilesRequest {
 }
 
 export const CreateOfflineProjectsProfilesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Profile).pipe(T.HttpBody()),
   }).pipe(
@@ -311,8 +308,7 @@ export const CreateOfflineProjectsProfilesRequest =
   ) as unknown as Schema.Codec<CreateOfflineProjectsProfilesRequest>;
 
 export type CreateOfflineProjectsProfilesResponse = Profile;
-export const CreateOfflineProjectsProfilesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Profile;
+export const CreateOfflineProjectsProfilesResponse = /*@__PURE__*/ Profile;
 
 export type CreateOfflineProjectsProfilesError =
   | DefaultErrors
@@ -327,7 +323,7 @@ export const createOfflineProjectsProfiles: API.OperationMethod<
   CreateOfflineProjectsProfilesResponse,
   CreateOfflineProjectsProfilesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOfflineProjectsProfilesRequest,
   output: CreateOfflineProjectsProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

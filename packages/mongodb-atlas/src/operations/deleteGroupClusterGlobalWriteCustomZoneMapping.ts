@@ -11,7 +11,7 @@ export interface DeleteGroupClusterGlobalWriteCustomZoneMappingInput {
   pretty?: boolean;
 }
 export const DeleteGroupClusterGlobalWriteCustomZoneMappingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const DeleteGroupClusterGlobalWriteCustomZoneMappingInput =
 // Output Schema
 export type DeleteGroupClusterGlobalWriteCustomZoneMappingOutput = void;
 export const DeleteGroupClusterGlobalWriteCustomZoneMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterGlobalWriteCustomZoneMappingOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupClusterGlobalWriteCustomZoneMappingOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const DeleteGroupClusterGlobalWriteCustomZoneMappingOutput =
  * @param clusterName - Human-readable label that identifies this cluster.
  */
 export const deleteGroupClusterGlobalWriteCustomZoneMapping =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupClusterGlobalWriteCustomZoneMappingInput,
     outputSchema: DeleteGroupClusterGlobalWriteCustomZoneMappingOutput,
     errors: [Forbidden, NotFound] as const,

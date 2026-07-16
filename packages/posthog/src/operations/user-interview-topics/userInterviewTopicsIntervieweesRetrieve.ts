@@ -9,7 +9,7 @@ export interface UserInterviewTopicsIntervieweesRetrieveInput {
   topic_id: string;
 }
 export const UserInterviewTopicsIntervieweesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     topic_id: Schema.String.pipe(T.PathParam()),
@@ -49,7 +49,7 @@ export interface UserInterviewTopicsIntervieweesRetrieveOutput {
   agent_context: string;
 }
 export const UserInterviewTopicsIntervieweesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     created_by: Schema.Struct({
       id: Schema.optional(Schema.Number),
@@ -93,7 +93,7 @@ export const UserInterviewTopicsIntervieweesRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const userInterviewTopicsIntervieweesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserInterviewTopicsIntervieweesRetrieveInput,
     outputSchema: UserInterviewTopicsIntervieweesRetrieveOutput,
   }));

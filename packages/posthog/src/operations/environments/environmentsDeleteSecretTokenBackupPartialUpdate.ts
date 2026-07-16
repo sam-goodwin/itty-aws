@@ -1092,7 +1092,7 @@ export interface EnvironmentsDeleteSecretTokenBackupPartialUpdateInput {
   events_retention_enforced?: boolean;
 }
 export const EnvironmentsDeleteSecretTokenBackupPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     uuid: Schema.optional(Schema.String),
@@ -2269,7 +2269,7 @@ export const EnvironmentsDeleteSecretTokenBackupPartialUpdateInput =
 // Output Schema
 export type EnvironmentsDeleteSecretTokenBackupPartialUpdateOutput = void;
 export const EnvironmentsDeleteSecretTokenBackupPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDeleteSecretTokenBackupPartialUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsDeleteSecretTokenBackupPartialUpdateOutput>;
 
 // The operation
 /**
@@ -2279,7 +2279,7 @@ export const EnvironmentsDeleteSecretTokenBackupPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const environmentsDeleteSecretTokenBackupPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsDeleteSecretTokenBackupPartialUpdateInput,
     outputSchema: EnvironmentsDeleteSecretTokenBackupPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

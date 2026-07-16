@@ -8,7 +8,7 @@ export interface GetV1AppsByAppIdDomainsInput {
   appId: string;
 }
 export const GetV1AppsByAppIdDomainsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     appId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/apps/{appId}/domains" }),
@@ -47,7 +47,7 @@ export interface GetV1AppsByAppIdDomainsOutput {
   pagination: { hasMore: boolean; nextCursor: unknown };
 }
 export const GetV1AppsByAppIdDomainsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -96,10 +96,8 @@ export const GetV1AppsByAppIdDomainsOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Returns all custom domains attached to any deployment of the app. Domains are aggregated across all deployments since Foundry lists per deployment.
  */
-export const getV1AppsByAppIdDomains = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV1AppsByAppIdDomainsInput,
-    outputSchema: GetV1AppsByAppIdDomainsOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getV1AppsByAppIdDomains = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1AppsByAppIdDomainsInput,
+  outputSchema: GetV1AppsByAppIdDomainsOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

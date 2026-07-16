@@ -13,7 +13,7 @@ export interface CreateAnnotationInput {
   type: string;
   url?: string;
 }
-export const CreateAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateAnnotationInput = /*@__PURE__*/ Schema.Struct({
   datasets: Schema.Array(Schema.String),
   description: Schema.optional(Schema.String),
   endTime: Schema.optional(Schema.String),
@@ -36,24 +36,22 @@ export interface CreateAnnotationOutput {
   type: string;
   url?: string;
 }
-export const CreateAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    datasets: Schema.Array(Schema.String),
-    description: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.NullOr(Schema.String)),
-    id: Schema.String,
-    time: Schema.String,
-    title: Schema.optional(Schema.String),
-    type: Schema.String,
-    url: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<CreateAnnotationOutput>;
+export const CreateAnnotationOutput = /*@__PURE__*/ Schema.Struct({
+  datasets: Schema.Array(Schema.String),
+  description: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.NullOr(Schema.String)),
+  id: Schema.String,
+  time: Schema.String,
+  title: Schema.optional(Schema.String),
+  type: Schema.String,
+  url: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<CreateAnnotationOutput>;
 
 // The operation
 /**
  * Create annotation
  */
-export const createAnnotation = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createAnnotation = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateAnnotationInput,
   outputSchema: CreateAnnotationOutput,
   errors: [BadRequest, UnprocessableEntity] as const,

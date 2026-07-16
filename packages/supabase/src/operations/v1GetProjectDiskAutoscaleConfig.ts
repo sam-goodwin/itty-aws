@@ -8,7 +8,7 @@ export interface V1GetProjectDiskAutoscaleConfigInput {
   ref: string;
 }
 export const V1GetProjectDiskAutoscaleConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/config/disk/autoscale" }),
@@ -21,7 +21,7 @@ export interface V1GetProjectDiskAutoscaleConfigOutput {
   max_size_gb: number | null;
 }
 export const V1GetProjectDiskAutoscaleConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     growth_percent: Schema.NullOr(Schema.Number),
     min_increment_gb: Schema.NullOr(Schema.Number),
     max_size_gb: Schema.NullOr(Schema.Number),
@@ -34,7 +34,7 @@ export const V1GetProjectDiskAutoscaleConfigOutput =
  * @param ref - Project ref
  */
 export const v1GetProjectDiskAutoscaleConfig =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1GetProjectDiskAutoscaleConfigInput,
     outputSchema: V1GetProjectDiskAutoscaleConfigOutput,
     errors: [BadRequest, Forbidden] as const,

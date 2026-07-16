@@ -10,7 +10,7 @@ export interface ToggleGroupPrivateEndpointRegionalModeInput {
   pretty?: boolean;
 }
 export const ToggleGroupPrivateEndpointRegionalModeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const ToggleGroupPrivateEndpointRegionalModeInput =
 // Output Schema
 export type ToggleGroupPrivateEndpointRegionalModeOutput = void;
 export const ToggleGroupPrivateEndpointRegionalModeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ToggleGroupPrivateEndpointRegionalModeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ToggleGroupPrivateEndpointRegionalModeOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const ToggleGroupPrivateEndpointRegionalModeOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const toggleGroupPrivateEndpointRegionalMode =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ToggleGroupPrivateEndpointRegionalModeInput,
     outputSchema: ToggleGroupPrivateEndpointRegionalModeOutput,
     errors: [Forbidden, NotFound, Conflict] as const,

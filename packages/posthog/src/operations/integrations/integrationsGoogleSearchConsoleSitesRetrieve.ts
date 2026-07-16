@@ -8,7 +8,7 @@ export interface IntegrationsGoogleSearchConsoleSitesRetrieveInput {
   project_id: string;
 }
 export const IntegrationsGoogleSearchConsoleSitesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -23,7 +23,7 @@ export interface IntegrationsGoogleSearchConsoleSitesRetrieveOutput {
   sites: { siteUrl: string; permissionLevel: string }[];
 }
 export const IntegrationsGoogleSearchConsoleSitesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sites: Schema.Array(
       Schema.Struct({
         siteUrl: Schema.String,
@@ -40,7 +40,7 @@ export const IntegrationsGoogleSearchConsoleSitesRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const integrationsGoogleSearchConsoleSitesRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsGoogleSearchConsoleSitesRetrieveInput,
     outputSchema: IntegrationsGoogleSearchConsoleSitesRetrieveOutput,
   }));

@@ -9,7 +9,7 @@ export interface GetAppsSecretsFindInput {
   scope: string;
 }
 export const GetAppsSecretsFindInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.String),
     name: Schema.String,
     scope: Schema.String,
@@ -34,7 +34,7 @@ export interface GetAppsSecretsFindOutput {
   scope: { type: "account" | "user"; user?: string };
 }
 export const GetAppsSecretsFindOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.Number,
     deleted: Schema.optional(Schema.Boolean),
     expires_at: Schema.NullOr(Schema.Number),
@@ -59,7 +59,7 @@ export const GetAppsSecretsFindOutput =
  * @param name - A name for the secret that's unique within the scope.
  * @param scope - Specifies the scoping of the secret. Requests originating from UI extensions can only access account-scoped secrets or secrets scoped to their own user.
  */
-export const GetAppsSecretsFind = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetAppsSecretsFind = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAppsSecretsFindInput,
   outputSchema: GetAppsSecretsFindOutput,
 }));

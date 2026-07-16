@@ -9,7 +9,7 @@ export interface LogsAlertsResetCreateInput {
   project_id: string;
 }
 export const LogsAlertsResetCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -93,7 +93,7 @@ export interface LogsAlertsResetCreateOutput {
   updated_at?: string | null;
 }
 export const LogsAlertsResetCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     enabled: Schema.optional(Schema.Boolean),
@@ -223,10 +223,8 @@ export const LogsAlertsResetCreateOutput =
  * @param id - A UUID string identifying this logs alert configuration.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const logsAlertsResetCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LogsAlertsResetCreateInput,
-    outputSchema: LogsAlertsResetCreateOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const logsAlertsResetCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LogsAlertsResetCreateInput,
+  outputSchema: LogsAlertsResetCreateOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

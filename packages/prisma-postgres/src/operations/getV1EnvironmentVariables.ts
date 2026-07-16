@@ -13,7 +13,7 @@ export interface GetV1EnvironmentVariablesInput {
   branchId?: string;
 }
 export const GetV1EnvironmentVariablesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     projectId: Schema.optional(Schema.String),
@@ -42,7 +42,7 @@ export interface GetV1EnvironmentVariablesOutput {
   pagination: { nextCursor: string | null; hasMore: boolean };
 }
 export const GetV1EnvironmentVariablesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -71,10 +71,8 @@ export const GetV1EnvironmentVariablesOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Returns a paginated list of environment variables. All filters are optional; combine `projectId`, `class`, and `key` to look up a specific variable by name.
  */
-export const getV1EnvironmentVariables = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV1EnvironmentVariablesInput,
-    outputSchema: GetV1EnvironmentVariablesOutput,
-    errors: [UnprocessableEntity] as const,
-  }),
-);
+export const getV1EnvironmentVariables = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1EnvironmentVariablesInput,
+  outputSchema: GetV1EnvironmentVariablesOutput,
+  errors: [UnprocessableEntity] as const,
+}));

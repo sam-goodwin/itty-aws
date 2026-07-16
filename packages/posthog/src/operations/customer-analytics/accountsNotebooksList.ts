@@ -12,7 +12,7 @@ export interface AccountsNotebooksListInput {
   search?: string;
 }
 export const AccountsNotebooksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
@@ -91,7 +91,7 @@ export interface AccountsNotebooksListOutput {
   }[];
 }
 export const AccountsNotebooksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.Number,
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -176,9 +176,7 @@ export const AccountsNotebooksListOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param search - Full-text search across notebook title and content.
  */
-export const accountsNotebooksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccountsNotebooksListInput,
-    outputSchema: AccountsNotebooksListOutput,
-  }),
-);
+export const accountsNotebooksList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccountsNotebooksListInput,
+  outputSchema: AccountsNotebooksListOutput,
+}));

@@ -10,7 +10,7 @@ export interface GetPaymentAttemptRecordsInput {
   starting_after?: string;
 }
 export const GetPaymentAttemptRecordsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expand: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
     payment_record: Schema.String,
@@ -72,7 +72,7 @@ export interface GetPaymentAttemptRecordsOutput {
   url: string;
 }
 export const GetPaymentAttemptRecordsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amount: Schema.Struct({
@@ -164,9 +164,7 @@ export const GetPaymentAttemptRecordsOutput =
  * @param payment_record - The ID of the Payment Record.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetPaymentAttemptRecords = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetPaymentAttemptRecordsInput,
-    outputSchema: GetPaymentAttemptRecordsOutput,
-  }),
-);
+export const GetPaymentAttemptRecords = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetPaymentAttemptRecordsInput,
+  outputSchema: GetPaymentAttemptRecordsOutput,
+}));

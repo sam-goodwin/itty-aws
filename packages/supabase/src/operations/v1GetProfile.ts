@@ -4,9 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface V1GetProfileInput {}
-export const V1GetProfileInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const V1GetProfileInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v1/profile" }),
 ) as unknown as Schema.Codec<V1GetProfileInput>;
 
@@ -16,7 +14,7 @@ export interface V1GetProfileOutput {
   primary_email: string;
   username: string;
 }
-export const V1GetProfileOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1GetProfileOutput = /*@__PURE__*/ Schema.Struct({
   gotrue_id: Schema.String,
   primary_email: Schema.String,
   username: Schema.String,
@@ -26,7 +24,7 @@ export const V1GetProfileOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Gets the user's profile
  */
-export const v1GetProfile = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetProfile = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetProfileInput,
   outputSchema: V1GetProfileOutput,
 }));

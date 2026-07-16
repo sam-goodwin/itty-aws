@@ -7,18 +7,16 @@ import { Forbidden } from "../errors.ts";
 export interface V1RestartAProjectInput {
   ref: string;
 }
-export const V1RestartAProjectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const V1RestartAProjectInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({ method: "POST", path: "/v1/projects/{ref}/restart" }),
 ) as unknown as Schema.Codec<V1RestartAProjectInput>;
 
 // Output Schema
 export type V1RestartAProjectOutput = void;
 export const V1RestartAProjectOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RestartAProjectOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1RestartAProjectOutput>;
 
 // The operation
 /**
@@ -26,7 +24,7 @@ export const V1RestartAProjectOutput =
  *
  * @param ref - Project ref
  */
-export const v1RestartAProject = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1RestartAProject = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1RestartAProjectInput,
   outputSchema: V1RestartAProjectOutput,
   errors: [Forbidden] as const,

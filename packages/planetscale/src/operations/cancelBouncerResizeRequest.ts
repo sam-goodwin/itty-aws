@@ -11,7 +11,7 @@ export interface CancelBouncerResizeRequestInput {
   bouncer: string;
 }
 export const CancelBouncerResizeRequestInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     branch: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export const CancelBouncerResizeRequestInput =
 // Output Schema
 export type CancelBouncerResizeRequestOutput = void;
 export const CancelBouncerResizeRequestOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CancelBouncerResizeRequestOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CancelBouncerResizeRequestOutput>;
 
 // The operation
 /**
@@ -37,10 +37,8 @@ export const CancelBouncerResizeRequestOutput =
  * @param branch - Branch name from `list_branches`. Example: `main`.
  * @param bouncer - The name of the bouncer
  */
-export const cancelBouncerResizeRequest = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CancelBouncerResizeRequestInput,
-    outputSchema: CancelBouncerResizeRequestOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const cancelBouncerResizeRequest = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CancelBouncerResizeRequestInput,
+  outputSchema: CancelBouncerResizeRequestOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

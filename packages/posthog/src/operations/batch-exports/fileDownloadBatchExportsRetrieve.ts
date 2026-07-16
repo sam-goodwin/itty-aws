@@ -8,7 +8,7 @@ export interface FileDownloadBatchExportsRetrieveInput {
   project_id: string;
 }
 export const FileDownloadBatchExportsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -32,7 +32,7 @@ export type FileDownloadBatchExportsRetrieveOutput =
       error: string;
     };
 export const FileDownloadBatchExportsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       status: Schema.Literals(["Starting", "Running", "Cancelled"]),
     }),
@@ -63,7 +63,7 @@ export const FileDownloadBatchExportsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const fileDownloadBatchExportsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FileDownloadBatchExportsRetrieveInput,
     outputSchema: FileDownloadBatchExportsRetrieveOutput,
   }));

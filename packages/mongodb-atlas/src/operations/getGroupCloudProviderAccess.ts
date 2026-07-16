@@ -11,7 +11,7 @@ export interface GetGroupCloudProviderAccessInput {
   pretty?: boolean;
 }
 export const GetGroupCloudProviderAccessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     roleId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const GetGroupCloudProviderAccessInput =
 // Output Schema
 export type GetGroupCloudProviderAccessOutput = void;
 export const GetGroupCloudProviderAccessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupCloudProviderAccessOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupCloudProviderAccessOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const GetGroupCloudProviderAccessOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param roleId - Unique 24-hexadecimal digit string that identifies the role.
  */
-export const getGroupCloudProviderAccess = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetGroupCloudProviderAccessInput,
-    outputSchema: GetGroupCloudProviderAccessOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const getGroupCloudProviderAccess = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetGroupCloudProviderAccessInput,
+  outputSchema: GetGroupCloudProviderAccessOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

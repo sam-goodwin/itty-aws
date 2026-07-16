@@ -94,47 +94,46 @@ export type MetricName =
   | "Unit"
   | "Cost"
   | (string & {});
-export const MetricName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MetricName = /*@__PURE__*/ S.String;
 export type MetricNames = MetricName[];
-export const MetricNames = /*@__PURE__*/ /*#__PURE__*/ S.Array(MetricName);
+export const MetricNames = /*@__PURE__*/ S.Array(MetricName);
 export type DateTimeType = "ABSOLUTE" | "RELATIVE" | (string & {});
-export const DateTimeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DateTimeType = /*@__PURE__*/ S.String;
 export interface DateTimeValue {
   type: DateTimeType;
   value: string;
 }
-export const DateTimeValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DateTimeValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: DateTimeType, value: S.String }),
 ).annotate({ identifier: "DateTimeValue" }) as any as S.Schema<DateTimeValue>;
 export interface DateTimeRange {
   startTime: DateTimeValue;
   endTime: DateTimeValue;
 }
-export const DateTimeRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DateTimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ startTime: DateTimeValue, endTime: DateTimeValue }),
 ).annotate({ identifier: "DateTimeRange" }) as any as S.Schema<DateTimeRange>;
 export type Granularity = "HOURLY" | "DAILY" | "MONTHLY" | (string & {});
-export const Granularity = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Granularity = /*@__PURE__*/ S.String;
 export type GroupDefinitionType =
   | "DIMENSION"
   | "TAG"
   | "COST_CATEGORY"
   | (string & {});
-export const GroupDefinitionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GroupDefinitionType = /*@__PURE__*/ S.String;
 export interface GroupDefinition {
   key: string;
   type?: GroupDefinitionType;
 }
-export const GroupDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GroupDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.String, type: S.optional(GroupDefinitionType) }),
 ).annotate({
   identifier: "GroupDefinition",
 }) as any as S.Schema<GroupDefinition>;
 export type GroupDefinitions = GroupDefinition[];
-export const GroupDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GroupDefinition);
+export const GroupDefinitions = /*@__PURE__*/ S.Array(GroupDefinition);
 export type Expressions = Expression[];
-export const Expressions = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const Expressions = /*@__PURE__*/ S.Array(
   S.suspend((): S.Schema<Expression> => Expression).annotate({
     identifier: "Expression",
   }),
@@ -167,9 +166,9 @@ export type Dimension =
   | "SCOPE"
   | "PLATFORM"
   | (string & {});
-export const Dimension = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Dimension = /*@__PURE__*/ S.String;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StringList = /*@__PURE__*/ S.Array(S.String);
 export type MatchOption =
   | "EQUALS"
   | "ABSENT"
@@ -180,15 +179,15 @@ export type MatchOption =
   | "CASE_SENSITIVE"
   | "CASE_INSENSITIVE"
   | (string & {});
-export const MatchOption = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MatchOption = /*@__PURE__*/ S.String;
 export type MatchOptions = MatchOption[];
-export const MatchOptions = /*@__PURE__*/ /*#__PURE__*/ S.Array(MatchOption);
+export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface DimensionValues {
   key: Dimension;
   values: string[];
   matchOptions?: MatchOption[];
 }
-export const DimensionValues = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DimensionValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: Dimension,
     values: StringList,
@@ -202,7 +201,7 @@ export interface TagValues {
   values?: string[];
   matchOptions?: MatchOption[];
 }
-export const TagValues = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     values: S.optional(StringList),
@@ -214,7 +213,7 @@ export interface CostCategoryValues {
   values?: string[];
   matchOptions?: MatchOption[];
 }
-export const CostCategoryValues = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CostCategoryValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     values: S.optional(StringList),
@@ -231,7 +230,7 @@ export interface Expression {
   tags?: TagValues;
   costCategories?: CostCategoryValues;
 }
-export const Expression = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Expression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     or: S.optional(
       S.suspend(() => Expressions).annotate({ identifier: "Expressions" }),
@@ -256,7 +255,7 @@ export interface CostAndUsageQuery {
   groupBy?: GroupDefinition[];
   filter?: Expression;
 }
-export const CostAndUsageQuery = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CostAndUsageQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metrics: MetricNames,
     timeRange: DateTimeRange,
@@ -274,15 +273,14 @@ export interface SavingsPlansCoverageQuery {
   groupBy?: GroupDefinition[];
   filter?: Expression;
 }
-export const SavingsPlansCoverageQuery = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      timeRange: DateTimeRange,
-      metrics: S.optional(MetricNames),
-      granularity: S.optional(Granularity),
-      groupBy: S.optional(GroupDefinitions),
-      filter: S.optional(Expression),
-    }),
+export const SavingsPlansCoverageQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timeRange: DateTimeRange,
+    metrics: S.optional(MetricNames),
+    granularity: S.optional(Granularity),
+    groupBy: S.optional(GroupDefinitions),
+    filter: S.optional(Expression),
+  }),
 ).annotate({
   identifier: "SavingsPlansCoverageQuery",
 }) as any as S.Schema<SavingsPlansCoverageQuery>;
@@ -292,7 +290,7 @@ export interface SavingsPlansUtilizationQuery {
   filter?: Expression;
 }
 export const SavingsPlansUtilizationQuery =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeRange: DateTimeRange,
       granularity: S.optional(Granularity),
@@ -308,15 +306,14 @@ export interface ReservationCoverageQuery {
   filter?: Expression;
   metrics?: MetricName[];
 }
-export const ReservationCoverageQuery = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      timeRange: DateTimeRange,
-      groupBy: S.optional(GroupDefinitions),
-      granularity: S.optional(Granularity),
-      filter: S.optional(Expression),
-      metrics: S.optional(MetricNames),
-    }),
+export const ReservationCoverageQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timeRange: DateTimeRange,
+    groupBy: S.optional(GroupDefinitions),
+    granularity: S.optional(Granularity),
+    filter: S.optional(Expression),
+    metrics: S.optional(MetricNames),
+  }),
 ).annotate({
   identifier: "ReservationCoverageQuery",
 }) as any as S.Schema<ReservationCoverageQuery>;
@@ -327,7 +324,7 @@ export interface ReservationUtilizationQuery {
   filter?: Expression;
 }
 export const ReservationUtilizationQuery =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeRange: DateTimeRange,
       groupBy: S.optional(GroupDefinitions),
@@ -373,7 +370,7 @@ export type QueryParameters =
       reservationCoverage?: never;
       reservationUtilization: ReservationUtilizationQuery;
     };
-export const QueryParameters = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const QueryParameters = /*@__PURE__*/ S.Union([
   S.Struct({ costAndUsage: CostAndUsageQuery }),
   S.Struct({ savingsPlansCoverage: SavingsPlansCoverageQuery }),
   S.Struct({ savingsPlansUtilization: SavingsPlansUtilizationQuery }),
@@ -381,11 +378,11 @@ export const QueryParameters = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ reservationUtilization: ReservationUtilizationQuery }),
 ]);
 export type VisualType = "LINE" | "BAR" | "STACK" | (string & {});
-export const VisualType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const VisualType = /*@__PURE__*/ S.String;
 export interface GraphDisplayConfig {
   visualType: VisualType;
 }
-export const GraphDisplayConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GraphDisplayConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ visualType: VisualType }),
 ).annotate({
   identifier: "GraphDisplayConfig",
@@ -393,20 +390,20 @@ export const GraphDisplayConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type GraphDisplayConfigMap = {
   [key: string]: GraphDisplayConfig | undefined;
 };
-export const GraphDisplayConfigMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const GraphDisplayConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   GraphDisplayConfig.pipe(S.optional),
 );
 export interface TableDisplayConfigStruct {}
-export const TableDisplayConfigStruct = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const TableDisplayConfigStruct = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "TableDisplayConfigStruct",
 }) as any as S.Schema<TableDisplayConfigStruct>;
 export type DisplayConfig =
   | { graph: { [key: string]: GraphDisplayConfig | undefined }; table?: never }
   | { graph?: never; table: TableDisplayConfigStruct };
-export const DisplayConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const DisplayConfig = /*@__PURE__*/ S.Union([
   S.Struct({ graph: GraphDisplayConfigMap }),
   S.Struct({ table: TableDisplayConfigStruct }),
 ]);
@@ -414,12 +411,11 @@ export interface WidgetConfig {
   queryParameters: QueryParameters;
   displayConfig: DisplayConfig;
 }
-export const WidgetConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const WidgetConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ queryParameters: QueryParameters, displayConfig: DisplayConfig }),
 ).annotate({ identifier: "WidgetConfig" }) as any as S.Schema<WidgetConfig>;
 export type WidgetConfigList = WidgetConfig[];
-export const WidgetConfigList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(WidgetConfig);
+export const WidgetConfigList = /*@__PURE__*/ S.Array(WidgetConfig);
 export interface Widget {
   id?: string;
   title: string;
@@ -429,7 +425,7 @@ export interface Widget {
   horizontalOffset?: number;
   configs: WidgetConfig[];
 }
-export const Widget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Widget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.String,
@@ -441,40 +437,39 @@ export const Widget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Widget" }) as any as S.Schema<Widget>;
 export type WidgetList = Widget[];
-export const WidgetList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Widget);
+export const WidgetList = /*@__PURE__*/ S.Array(Widget);
 export interface ResourceTag {
   key: string;
   value: string;
 }
-export const ResourceTag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.String, value: S.String }),
 ).annotate({ identifier: "ResourceTag" }) as any as S.Schema<ResourceTag>;
 export type ResourceTagList = ResourceTag[];
-export const ResourceTagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceTag);
+export const ResourceTagList = /*@__PURE__*/ S.Array(ResourceTag);
 export interface CreateDashboardRequest {
   name: string;
   description?: string;
   widgets: Widget[];
   resourceTags?: ResourceTag[];
 }
-export const CreateDashboardRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      description: S.optional(S.String),
-      widgets: WidgetList,
-      resourceTags: S.optional(ResourceTagList),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(S.String),
+    widgets: WidgetList,
+    resourceTags: S.optional(ResourceTagList),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "CreateDashboardRequest",
 }) as any as S.Schema<CreateDashboardRequest>;
 export interface CreateDashboardResponse {
   arn: string;
 }
-export const CreateDashboardResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ arn: S.String }),
+export const CreateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }),
 ).annotate({
   identifier: "CreateDashboardResponse",
 }) as any as S.Schema<CreateDashboardResponse>;
@@ -482,21 +477,21 @@ export interface SchedulePeriod {
   startTime?: Date;
   endTime?: Date;
 }
-export const SchedulePeriod = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SchedulePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "SchedulePeriod" }) as any as S.Schema<SchedulePeriod>;
 export type ScheduleState = "ENABLED" | "DISABLED" | (string & {});
-export const ScheduleState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ScheduleState = /*@__PURE__*/ S.String;
 export interface ScheduleConfig {
   scheduleExpression?: string;
   scheduleExpressionTimeZone?: string;
   schedulePeriod?: SchedulePeriod;
   state?: ScheduleState;
 }
-export const ScheduleConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ScheduleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduleExpression: S.optional(S.String),
     scheduleExpressionTimeZone: S.optional(S.String),
@@ -505,7 +500,7 @@ export const ScheduleConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScheduleConfig" }) as any as S.Schema<ScheduleConfig>;
 export type WidgetIdList = string[];
-export const WidgetIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const WidgetIdList = /*@__PURE__*/ S.Array(S.String);
 export interface ScheduledReportInput {
   name: string;
   dashboardArn: string;
@@ -515,7 +510,7 @@ export interface ScheduledReportInput {
   widgetIds?: string[];
   widgetDateRangeOverride?: DateTimeRange;
 }
-export const ScheduledReportInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ScheduledReportInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     dashboardArn: S.String,
@@ -534,7 +529,7 @@ export interface CreateScheduledReportRequest {
   clientToken?: string;
 }
 export const CreateScheduledReportRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scheduledReport: ScheduledReportInput,
       resourceTags: S.optional(ResourceTagList),
@@ -552,27 +547,24 @@ export interface CreateScheduledReportResponse {
   arn: string;
 }
 export const CreateScheduledReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ arn: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ arn: S.String })).annotate({
     identifier: "CreateScheduledReportResponse",
   }) as any as S.Schema<CreateScheduledReportResponse>;
 export interface DeleteDashboardRequest {
   arn: string;
 }
-export const DeleteDashboardRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ arn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DeleteDashboardRequest",
 }) as any as S.Schema<DeleteDashboardRequest>;
 export interface DeleteDashboardResponse {
   arn: string;
 }
-export const DeleteDashboardResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ arn: S.String }),
+export const DeleteDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }),
 ).annotate({
   identifier: "DeleteDashboardResponse",
 }) as any as S.Schema<DeleteDashboardResponse>;
@@ -580,7 +572,7 @@ export interface DeleteScheduledReportRequest {
   arn: string;
 }
 export const DeleteScheduledReportRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ arn: S.String }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -591,9 +583,7 @@ export interface DeleteScheduledReportResponse {
   arn: string;
 }
 export const DeleteScheduledReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ arn: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ arn: S.String })).annotate({
     identifier: "DeleteScheduledReportResponse",
   }) as any as S.Schema<DeleteScheduledReportResponse>;
 export interface ExecuteScheduledReportRequest {
@@ -602,7 +592,7 @@ export interface ExecuteScheduledReportRequest {
   dryRun?: boolean;
 }
 export const ExecuteScheduledReportRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       clientToken: S.optional(S.String).pipe(
@@ -617,7 +607,7 @@ export const ExecuteScheduledReportRequest =
     identifier: "ExecuteScheduledReportRequest",
   }) as any as S.Schema<ExecuteScheduledReportRequest>;
 export type HealthStatusCode = "HEALTHY" | "UNHEALTHY" | (string & {});
-export const HealthStatusCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const HealthStatusCode = /*@__PURE__*/ S.String;
 export type StatusReason =
   | "DATA_SOURCE_ACCESS_DENIED"
   | "EXECUTION_ROLE_ASSUME_FAILED"
@@ -627,16 +617,15 @@ export type StatusReason =
   | "INTERNAL_FAILURE"
   | "WIDGET_ID_NOT_FOUND"
   | (string & {});
-export const StatusReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StatusReason = /*@__PURE__*/ S.String;
 export type StatusReasonList = StatusReason[];
-export const StatusReasonList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(StatusReason);
+export const StatusReasonList = /*@__PURE__*/ S.Array(StatusReason);
 export interface HealthStatus {
   statusCode: HealthStatusCode;
   lastRefreshedAt?: Date;
   statusReasons?: StatusReason[];
 }
-export const HealthStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HealthStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusCode: HealthStatusCode,
     lastRefreshedAt: S.optional(
@@ -650,7 +639,7 @@ export interface ExecuteScheduledReportResponse {
   executionTriggered?: boolean;
 }
 export const ExecuteScheduledReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       healthStatus: S.optional(HealthStatus),
       executionTriggered: S.optional(S.Boolean),
@@ -661,7 +650,7 @@ export const ExecuteScheduledReportResponse =
 export interface GetDashboardRequest {
   arn: string;
 }
-export const GetDashboardRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -669,7 +658,7 @@ export const GetDashboardRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetDashboardRequest",
 }) as any as S.Schema<GetDashboardRequest>;
 export type DashboardType = "CUSTOM" | (string & {});
-export const DashboardType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DashboardType = /*@__PURE__*/ S.String;
 export interface GetDashboardResponse {
   arn: string;
   name: string;
@@ -679,7 +668,7 @@ export interface GetDashboardResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-export const GetDashboardResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDashboardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: S.String,
@@ -695,11 +684,10 @@ export const GetDashboardResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetResourcePolicyRequest {
   resourceArn: string;
 }
-export const GetResourcePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
@@ -707,19 +695,18 @@ export interface GetResourcePolicyResponse {
   resourceArn: string;
   policyDocument: string;
 }
-export const GetResourcePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ resourceArn: S.String, policyDocument: S.String }),
+export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String, policyDocument: S.String }),
 ).annotate({
   identifier: "GetResourcePolicyResponse",
 }) as any as S.Schema<GetResourcePolicyResponse>;
 export interface GetScheduledReportRequest {
   arn: string;
 }
-export const GetScheduledReportRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ arn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetScheduledReportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetScheduledReportRequest",
 }) as any as S.Schema<GetScheduledReportRequest>;
@@ -737,7 +724,7 @@ export interface ScheduledReport {
   lastExecutionAt?: Date;
   healthStatus?: HealthStatus;
 }
-export const ScheduledReport = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ScheduledReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     name: S.String,
@@ -760,8 +747,8 @@ export const ScheduledReport = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetScheduledReportResponse {
   scheduledReport: ScheduledReport;
 }
-export const GetScheduledReportResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ scheduledReport: ScheduledReport }),
+export const GetScheduledReportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ scheduledReport: ScheduledReport }),
 ).annotate({
   identifier: "GetScheduledReportResponse",
 }) as any as S.Schema<GetScheduledReportResponse>;
@@ -769,7 +756,7 @@ export interface ListDashboardsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListDashboardsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number),
     nextToken: S.optional(S.String),
@@ -787,7 +774,7 @@ export interface DashboardReference {
   createdAt: Date;
   updatedAt: Date;
 }
-export const DashboardReference = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DashboardReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: S.String,
@@ -800,18 +787,16 @@ export const DashboardReference = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DashboardReference",
 }) as any as S.Schema<DashboardReference>;
 export type DashboardReferenceList = DashboardReference[];
-export const DashboardReferenceList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DashboardReference);
+export const DashboardReferenceList = /*@__PURE__*/ S.Array(DashboardReference);
 export interface ListDashboardsResponse {
   dashboards: DashboardReference[];
   nextToken?: string;
 }
-export const ListDashboardsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dashboards: DashboardReferenceList,
-      nextToken: S.optional(S.String),
-    }),
+export const ListDashboardsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dashboards: DashboardReferenceList,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListDashboardsResponse",
 }) as any as S.Schema<ListDashboardsResponse>;
@@ -820,7 +805,7 @@ export interface ListScheduledReportsRequest {
   maxResults?: number;
 }
 export const ListScheduledReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextToken: S.optional(S.String),
       maxResults: S.optional(S.Number),
@@ -840,23 +825,22 @@ export interface ScheduledReportSummary {
   scheduleExpressionTimeZone?: string;
   widgetIds?: string[];
 }
-export const ScheduledReportSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.String,
-      name: S.String,
-      dashboardArn: S.String,
-      scheduleExpression: S.String,
-      state: ScheduleState,
-      healthStatus: HealthStatus,
-      scheduleExpressionTimeZone: S.optional(S.String),
-      widgetIds: S.optional(WidgetIdList),
-    }),
+export const ScheduledReportSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    name: S.String,
+    dashboardArn: S.String,
+    scheduleExpression: S.String,
+    state: ScheduleState,
+    healthStatus: HealthStatus,
+    scheduleExpressionTimeZone: S.optional(S.String),
+    widgetIds: S.optional(WidgetIdList),
+  }),
 ).annotate({
   identifier: "ScheduledReportSummary",
 }) as any as S.Schema<ScheduledReportSummary>;
 export type ScheduledReportSummaryList = ScheduledReportSummary[];
-export const ScheduledReportSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ScheduledReportSummaryList = /*@__PURE__*/ S.Array(
   ScheduledReportSummary,
 );
 export interface ListScheduledReportsResponse {
@@ -864,7 +848,7 @@ export interface ListScheduledReportsResponse {
   nextToken?: string;
 }
 export const ListScheduledReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scheduledReports: ScheduledReportSummaryList,
       nextToken: S.optional(S.String),
@@ -875,11 +859,10 @@ export const ListScheduledReportsResponse =
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -887,7 +870,7 @@ export interface ListTagsForResourceResponse {
   resourceTags?: ResourceTag[];
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ resourceTags: S.optional(ResourceTagList) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -896,7 +879,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   resourceTags: ResourceTag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, resourceTags: ResourceTagList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -904,18 +887,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type ResourceTagKeyList = string[];
-export const ResourceTagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ResourceTagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   resourceTagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, resourceTagKeys: ResourceTagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -923,7 +906,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -934,24 +917,23 @@ export interface UpdateDashboardRequest {
   description?: string;
   widgets?: Widget[];
 }
-export const UpdateDashboardRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.String,
-      name: S.String,
-      description: S.optional(S.String),
-      widgets: S.optional(WidgetList),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const UpdateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    name: S.String,
+    description: S.optional(S.String),
+    widgets: S.optional(WidgetList),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "UpdateDashboardRequest",
 }) as any as S.Schema<UpdateDashboardRequest>;
 export interface UpdateDashboardResponse {
   arn: string;
 }
-export const UpdateDashboardResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ arn: S.String }),
+export const UpdateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }),
 ).annotate({
   identifier: "UpdateDashboardResponse",
 }) as any as S.Schema<UpdateDashboardResponse>;
@@ -968,7 +950,7 @@ export interface UpdateScheduledReportRequest {
   clearWidgetDateRangeOverride?: boolean;
 }
 export const UpdateScheduledReportRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       arn: S.String,
       name: S.optional(S.String),
@@ -990,9 +972,7 @@ export interface UpdateScheduledReportResponse {
   arn: string;
 }
 export const UpdateScheduledReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ arn: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ arn: S.String })).annotate({
     identifier: "UpdateScheduledReportResponse",
   }) as any as S.Schema<UpdateScheduledReportResponse>;
 
@@ -1042,7 +1022,7 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardResponse,
   CreateDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDashboardRequest,
   output: CreateDashboardResponse,
   errors: [
@@ -1070,7 +1050,7 @@ export const createScheduledReport: API.OperationMethod<
   CreateScheduledReportResponse,
   CreateScheduledReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScheduledReportRequest,
   output: CreateScheduledReportResponse,
   errors: [
@@ -1097,7 +1077,7 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardResponse,
   DeleteDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDashboardRequest,
   output: DeleteDashboardResponse,
   errors: [
@@ -1123,7 +1103,7 @@ export const deleteScheduledReport: API.OperationMethod<
   DeleteScheduledReportResponse,
   DeleteScheduledReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduledReportRequest,
   output: DeleteScheduledReportResponse,
   errors: [
@@ -1153,7 +1133,7 @@ export const executeScheduledReport: API.OperationMethod<
   ExecuteScheduledReportResponse,
   ExecuteScheduledReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteScheduledReportRequest,
   output: ExecuteScheduledReportResponse,
   errors: [
@@ -1181,7 +1161,7 @@ export const getDashboard: API.OperationMethod<
   GetDashboardResponse,
   GetDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDashboardRequest,
   output: GetDashboardResponse,
   errors: [
@@ -1208,7 +1188,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyResponse,
   GetResourcePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
   errors: [
@@ -1235,7 +1215,7 @@ export const getScheduledReport: API.OperationMethod<
   GetScheduledReportResponse,
   GetScheduledReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetScheduledReportRequest,
   output: GetScheduledReportResponse,
   errors: [
@@ -1276,7 +1256,7 @@ export const listDashboards: API.OperationMethod<
     ListDashboardsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDashboardsRequest,
   output: ListDashboardsResponse,
   errors: [
@@ -1322,7 +1302,7 @@ export const listScheduledReports: API.OperationMethod<
     ListScheduledReportsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScheduledReportsRequest,
   output: ListScheduledReportsResponse,
   errors: [
@@ -1353,7 +1333,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1378,7 +1358,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1403,7 +1383,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1429,7 +1409,7 @@ export const updateDashboard: API.OperationMethod<
   UpdateDashboardResponse,
   UpdateDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDashboardRequest,
   output: UpdateDashboardResponse,
   errors: [
@@ -1457,7 +1437,7 @@ export const updateScheduledReport: API.OperationMethod<
   UpdateScheduledReportResponse,
   UpdateScheduledReportError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateScheduledReportRequest,
   output: UpdateScheduledReportResponse,
   errors: [

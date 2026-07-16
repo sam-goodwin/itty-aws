@@ -12,7 +12,7 @@ export interface DataIntegrationsControllerGetUserlandUserTokenInput {
   organization_id?: string;
 }
 export const DataIntegrationsControllerGetUserlandUserTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slug: Schema.String.pipe(T.PathParam()),
     user_id: Schema.String,
     organization_id: Schema.optional(Schema.String),
@@ -34,7 +34,7 @@ export type DataIntegrationsControllerGetUserlandUserTokenOutput =
     }
   | { active: boolean; error: "needs_reauthorization" | "not_installed" };
 export const DataIntegrationsControllerGetUserlandUserTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       active: Schema.Boolean,
       access_token: Schema.Struct({
@@ -60,7 +60,7 @@ export const DataIntegrationsControllerGetUserlandUserTokenOutput =
  * @param slug - The identifier of the integration.
  */
 export const DataIntegrationsControllerGetUserlandUserToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DataIntegrationsControllerGetUserlandUserTokenInput,
     outputSchema: DataIntegrationsControllerGetUserlandUserTokenOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

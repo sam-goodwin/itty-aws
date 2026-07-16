@@ -13,7 +13,7 @@ export interface PostPayoutsPayoutCancelInput {
   expand?: string[];
 }
 export const PostPayoutsPayoutCancelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payout: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -480,7 +480,7 @@ export interface PostPayoutsPayoutCancelOutput {
   type: "bank_account" | "card";
 }
 export const PostPayoutsPayoutCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     application_fee: Schema.Unknown,
     application_fee_amount: Schema.NullOr(Schema.Number),
@@ -800,9 +800,7 @@ export const PostPayoutsPayoutCancelOutput =
  *
  * <p>You can cancel a previously created payout if its status is <code>pending</code>. Stripe refunds the funds to your available balance. You can’t cancel automatic Stripe payouts.</p>
  */
-export const PostPayoutsPayoutCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostPayoutsPayoutCancelInput,
-    outputSchema: PostPayoutsPayoutCancelOutput,
-  }),
-);
+export const PostPayoutsPayoutCancel = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostPayoutsPayoutCancelInput,
+  outputSchema: PostPayoutsPayoutCancelOutput,
+}));

@@ -10,7 +10,7 @@ export interface GetBouncerInput {
   branch: string;
   bouncer: string;
 }
-export const GetBouncerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBouncerInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   branch: Schema.String.pipe(T.PathParam()),
@@ -69,7 +69,7 @@ export interface GetBouncerOutput {
     actor: { id: string; display_name: string; avatar_url: string };
   }>;
 }
-export const GetBouncerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBouncerOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   name: Schema.String,
   sku: Schema.Struct({
@@ -141,7 +141,7 @@ export const GetBouncerOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param branch - Branch name from `list_branches`. Example: `main`.
  * @param bouncer - The name of the bouncer
  */
-export const getBouncer = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getBouncer = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBouncerInput,
   outputSchema: GetBouncerOutput,
   errors: [Forbidden, NotFound] as const,

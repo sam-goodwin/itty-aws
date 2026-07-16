@@ -13,7 +13,7 @@ export interface GetTerminalReadersReaderInput {
   expand?: string;
 }
 export const GetTerminalReadersReaderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -126,7 +126,7 @@ export type GetTerminalReadersReaderOutput =
       serial_number: string;
     };
 export const GetTerminalReadersReaderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       action: Schema.Unknown,
       device_sw_version: Schema.NullOr(Schema.String),
@@ -244,9 +244,7 @@ export const GetTerminalReadersReaderOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTerminalReadersReader = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetTerminalReadersReaderInput,
-    outputSchema: GetTerminalReadersReaderOutput,
-  }),
-);
+export const GetTerminalReadersReader = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetTerminalReadersReaderInput,
+  outputSchema: GetTerminalReadersReaderOutput,
+}));

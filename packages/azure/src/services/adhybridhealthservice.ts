@@ -19,7 +19,7 @@ export interface AdDomainServiceMembersListInput {
   takeCount?: number;
 }
 export const AdDomainServiceMembersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     isGroupbySite: Schema.Boolean,
@@ -86,7 +86,7 @@ export interface AdDomainServiceMembersListOutput {
   continuationToken?: string;
 }
 export const AdDomainServiceMembersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -193,12 +193,10 @@ export const AdDomainServiceMembersListOutput =
  * @param takeCount - The take count , which specifies the number of elements that can be returned from a sequence.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const adDomainServiceMembersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AdDomainServiceMembersListInput,
-    outputSchema: AdDomainServiceMembersListOutput,
-  }),
-);
+export const adDomainServiceMembersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AdDomainServiceMembersListInput,
+  outputSchema: AdDomainServiceMembersListOutput,
+}));
 // Input Schema
 export interface AddsServiceGetMetricsInput {
   serviceName: string;
@@ -209,7 +207,7 @@ export interface AddsServiceGetMetricsInput {
   toDate?: string;
 }
 export const AddsServiceGetMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     metricName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
@@ -230,7 +228,7 @@ export interface AddsServiceGetMetricsOutput {
   timeStamps?: string[];
 }
 export const AddsServiceGetMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sets: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -254,12 +252,10 @@ export const AddsServiceGetMetricsOutput =
  * @param toDate - The end date.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const addsServiceGetMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AddsServiceGetMetricsInput,
-    outputSchema: AddsServiceGetMetricsOutput,
-  }),
-);
+export const addsServiceGetMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AddsServiceGetMetricsInput,
+  outputSchema: AddsServiceGetMetricsOutput,
+}));
 // Input Schema
 export interface AddsServiceMembersDeleteInput {
   serviceName: string;
@@ -267,7 +263,7 @@ export interface AddsServiceMembersDeleteInput {
   confirm?: boolean;
 }
 export const AddsServiceMembersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     serviceMemberId: Schema.String.pipe(T.PathParam()),
     confirm: Schema.optional(Schema.Boolean),
@@ -282,7 +278,7 @@ export const AddsServiceMembersDeleteInput =
 // Output Schema
 export type AddsServiceMembersDeleteOutput = void;
 export const AddsServiceMembersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddsServiceMembersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AddsServiceMembersDeleteOutput>;
 
 // The operation
 /**
@@ -293,19 +289,17 @@ export const AddsServiceMembersDeleteOutput =
  * @param confirm - Indicates if the server will be permanently deleted or disabled. True indicates that the server will be permanently deleted and False indicates that the server will be marked disabled and then deleted after 30 days, if it is not re-registered.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const addsServiceMembersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AddsServiceMembersDeleteInput,
-    outputSchema: AddsServiceMembersDeleteOutput,
-  }),
-);
+export const addsServiceMembersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AddsServiceMembersDeleteInput,
+  outputSchema: AddsServiceMembersDeleteOutput,
+}));
 // Input Schema
 export interface AddsServiceMembersGetInput {
   serviceName: string;
   serviceMemberId: string;
 }
 export const AddsServiceMembersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     serviceMemberId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -346,7 +340,7 @@ export interface AddsServiceMembersGetOutput {
   status?: string;
 }
 export const AddsServiceMembersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceMemberId: Schema.optional(Schema.String),
     serviceId: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
@@ -385,19 +379,17 @@ export const AddsServiceMembersGetOutput =
  * @param serviceMemberId - The server Id.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const addsServiceMembersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AddsServiceMembersGetInput,
-    outputSchema: AddsServiceMembersGetOutput,
-  }),
-);
+export const addsServiceMembersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AddsServiceMembersGetInput,
+  outputSchema: AddsServiceMembersGetOutput,
+}));
 // Input Schema
 export interface AddsServiceMembersListInput {
   serviceName: string;
   $filter?: string;
 }
 export const AddsServiceMembersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -459,7 +451,7 @@ export interface AddsServiceMembersListOutput {
   continuationToken?: string;
 }
 export const AddsServiceMembersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -561,12 +553,10 @@ export const AddsServiceMembersListOutput =
  * @param $filter - The server property filter to apply.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const addsServiceMembersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AddsServiceMembersListInput,
-    outputSchema: AddsServiceMembersListOutput,
-  }),
-);
+export const addsServiceMembersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AddsServiceMembersListInput,
+  outputSchema: AddsServiceMembersListOutput,
+}));
 // Input Schema
 export interface AddsServiceMembersListCredentialsInput {
   serviceName: string;
@@ -574,7 +564,7 @@ export interface AddsServiceMembersListCredentialsInput {
   $filter?: string;
 }
 export const AddsServiceMembersListCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     serviceMemberId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -591,7 +581,7 @@ export interface AddsServiceMembersListCredentialsOutput {
   value?: { identifier?: string; type?: string; credentialData?: string[] }[];
 }
 export const AddsServiceMembersListCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -613,7 +603,7 @@ export const AddsServiceMembersListCredentialsOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServiceMembersListCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServiceMembersListCredentialsInput,
     outputSchema: AddsServiceMembersListCredentialsOutput,
   }));
@@ -644,7 +634,7 @@ export interface AddsServicesAddInput {
   tenantId?: string;
   type?: string;
 }
-export const AddsServicesAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddsServicesAddInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
   additionalInformation: Schema.optional(Schema.String),
@@ -704,7 +694,7 @@ export interface AddsServicesAddOutput {
   tenantId?: string;
   type?: string;
 }
-export const AddsServicesAddOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddsServicesAddOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
   additionalInformation: Schema.optional(Schema.String),
@@ -737,7 +727,7 @@ export const AddsServicesAddOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The version of the API to be used with the client request.
  */
-export const addsServicesAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const addsServicesAdd = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddsServicesAddInput,
   outputSchema: AddsServicesAddOutput,
 }));
@@ -747,7 +737,7 @@ export interface AddsServicesDeleteInput {
   confirm?: boolean;
 }
 export const AddsServicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     confirm: Schema.optional(Schema.Boolean),
   }).pipe(
@@ -761,7 +751,7 @@ export const AddsServicesDeleteInput =
 // Output Schema
 export type AddsServicesDeleteOutput = void;
 export const AddsServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddsServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AddsServicesDeleteOutput>;
 
 // The operation
 /**
@@ -771,7 +761,7 @@ export const AddsServicesDeleteOutput =
  * @param confirm - Indicates if the service will be permanently deleted or disabled. True indicates that the service will be permanently deleted and False indicates that the service will be marked disabled and then deleted after 30 days, if it is not re-registered.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const addsServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const addsServicesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddsServicesDeleteInput,
   outputSchema: AddsServicesDeleteOutput,
 }));
@@ -779,7 +769,7 @@ export const addsServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface AddsServicesGetInput {
   serviceName: string;
 }
-export const AddsServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddsServicesGetInput = /*@__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -816,7 +806,7 @@ export interface AddsServicesGetOutput {
   tenantId?: string;
   type?: string;
 }
-export const AddsServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddsServicesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
   additionalInformation: Schema.optional(Schema.String),
@@ -850,7 +840,7 @@ export const AddsServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param serviceName - The name of the service.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const addsServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const addsServicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddsServicesGetInput,
   outputSchema: AddsServicesGetOutput,
 }));
@@ -859,7 +849,7 @@ export interface AddsServicesGetForestSummaryInput {
   serviceName: string;
 }
 export const AddsServicesGetForestSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -880,7 +870,7 @@ export interface AddsServicesGetForestSummaryOutput {
   sites?: string[];
 }
 export const AddsServicesGetForestSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     forestName: Schema.optional(Schema.String),
     domainCount: Schema.optional(Schema.Number),
     siteCount: Schema.optional(Schema.Number),
@@ -898,7 +888,7 @@ export const AddsServicesGetForestSummaryOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesGetForestSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesGetForestSummaryInput,
     outputSchema: AddsServicesGetForestSummaryOutput,
   }));
@@ -908,7 +898,7 @@ export interface AddsServicesGetMetricMetadataInput {
   metricName: string;
 }
 export const AddsServicesGetMetricMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     metricName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -938,7 +928,7 @@ export interface AddsServicesGetMetricMetadataOutput {
   isDevOps?: boolean;
 }
 export const AddsServicesGetMetricMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metricsProcessorClassName: Schema.optional(Schema.String),
     metricName: Schema.optional(Schema.String),
     groupings: Schema.optional(
@@ -969,7 +959,7 @@ export const AddsServicesGetMetricMetadataOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesGetMetricMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesGetMetricMetadataInput,
     outputSchema: AddsServicesGetMetricMetadataOutput,
   }));
@@ -983,7 +973,7 @@ export interface AddsServicesGetMetricMetadataForGroupInput {
   toDate?: string;
 }
 export const AddsServicesGetMetricMetadataForGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     metricName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
@@ -1004,7 +994,7 @@ export interface AddsServicesGetMetricMetadataForGroupOutput {
   timeStamps?: string[];
 }
 export const AddsServicesGetMetricMetadataForGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sets: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1029,7 +1019,7 @@ export const AddsServicesGetMetricMetadataForGroupOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesGetMetricMetadataForGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesGetMetricMetadataForGroupInput,
     outputSchema: AddsServicesGetMetricMetadataForGroupOutput,
   }));
@@ -1040,7 +1030,7 @@ export interface AddsServicesListInput {
   skipCount?: number;
   takeCount?: number;
 }
-export const AddsServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddsServicesListInput = /*@__PURE__*/ Schema.Struct({
   $filter: Schema.optional(Schema.String),
   serviceType: Schema.optional(Schema.String),
   skipCount: Schema.optional(Schema.Number),
@@ -1085,49 +1075,45 @@ export interface AddsServicesListOutput {
   totalCount?: number;
   continuationToken?: string;
 }
-export const AddsServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    nextLink: Schema.optional(Schema.String),
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          activeAlerts: Schema.optional(Schema.Number),
-          additionalInformation: Schema.optional(Schema.String),
-          createdDate: Schema.optional(Schema.String),
-          customNotificationEmails: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          disabled: Schema.optional(Schema.Boolean),
-          displayName: Schema.optional(Schema.String),
-          health: Schema.optional(Schema.String),
-          lastDisabled: Schema.optional(Schema.String),
-          lastUpdated: Schema.optional(Schema.String),
-          monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
-          monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
-          notificationEmailEnabled: Schema.optional(Schema.Boolean),
-          notificationEmailEnabledForGlobalAdmins: Schema.optional(
-            Schema.Boolean,
-          ),
-          notificationEmailsEnabledForGlobalAdmins: Schema.optional(
-            Schema.Boolean,
-          ),
-          notificationEmails: Schema.optional(Schema.Array(Schema.String)),
-          originalDisabledState: Schema.optional(Schema.Boolean),
-          resolvedAlerts: Schema.optional(Schema.Number),
-          serviceId: Schema.optional(Schema.String),
-          serviceName: Schema.optional(Schema.String),
-          signature: Schema.optional(Schema.String),
-          simpleProperties: Schema.optional(Schema.Unknown),
-          tenantId: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+export const AddsServicesListOutput = /*@__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        activeAlerts: Schema.optional(Schema.Number),
+        additionalInformation: Schema.optional(Schema.String),
+        createdDate: Schema.optional(Schema.String),
+        customNotificationEmails: Schema.optional(Schema.Array(Schema.String)),
+        disabled: Schema.optional(Schema.Boolean),
+        displayName: Schema.optional(Schema.String),
+        health: Schema.optional(Schema.String),
+        lastDisabled: Schema.optional(Schema.String),
+        lastUpdated: Schema.optional(Schema.String),
+        monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
+        monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
+        notificationEmailEnabled: Schema.optional(Schema.Boolean),
+        notificationEmailEnabledForGlobalAdmins: Schema.optional(
+          Schema.Boolean,
+        ),
+        notificationEmailsEnabledForGlobalAdmins: Schema.optional(
+          Schema.Boolean,
+        ),
+        notificationEmails: Schema.optional(Schema.Array(Schema.String)),
+        originalDisabledState: Schema.optional(Schema.Boolean),
+        resolvedAlerts: Schema.optional(Schema.Number),
+        serviceId: Schema.optional(Schema.String),
+        serviceName: Schema.optional(Schema.String),
+        signature: Schema.optional(Schema.String),
+        simpleProperties: Schema.optional(Schema.Unknown),
+        tenantId: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
     ),
-    totalCount: Schema.optional(Schema.Number),
-    continuationToken: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<AddsServicesListOutput>;
+  ),
+  totalCount: Schema.optional(Schema.Number),
+  continuationToken: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<AddsServicesListOutput>;
 
 // The operation
 /**
@@ -1139,7 +1125,7 @@ export const AddsServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param takeCount - The take count , which specifies the number of elements that can be returned from a sequence.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const addsServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const addsServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddsServicesListInput,
   outputSchema: AddsServicesListOutput,
 }));
@@ -1150,7 +1136,7 @@ export interface AddsServicesListMetricMetadataInput {
   perfCounter?: boolean;
 }
 export const AddsServicesListMetricMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     perfCounter: Schema.optional(Schema.Boolean),
@@ -1186,7 +1172,7 @@ export interface AddsServicesListMetricMetadataOutput {
   continuationToken?: string;
 }
 export const AddsServicesListMetricMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1227,7 +1213,7 @@ export const AddsServicesListMetricMetadataOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesListMetricMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesListMetricMetadataInput,
     outputSchema: AddsServicesListMetricMetadataOutput,
   }));
@@ -1238,7 +1224,7 @@ export interface AddsServicesListMetricsAverageInput {
   groupName: string;
 }
 export const AddsServicesListMetricsAverageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     metricName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
@@ -1258,7 +1244,7 @@ export interface AddsServicesListMetricsAverageOutput {
   continuationToken?: string;
 }
 export const AddsServicesListMetricsAverageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1282,7 +1268,7 @@ export const AddsServicesListMetricsAverageOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesListMetricsAverage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesListMetricsAverageInput,
     outputSchema: AddsServicesListMetricsAverageOutput,
   }));
@@ -1293,7 +1279,7 @@ export interface AddsServicesListMetricsSumInput {
   groupName: string;
 }
 export const AddsServicesListMetricsSumInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     metricName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
@@ -1313,7 +1299,7 @@ export interface AddsServicesListMetricsSumOutput {
   continuationToken?: string;
 }
 export const AddsServicesListMetricsSumOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1336,12 +1322,10 @@ export const AddsServicesListMetricsSumOutput =
  * @param groupName - The group name
  * @param api-version - The version of the API to be used with the client request.
  */
-export const addsServicesListMetricsSum = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AddsServicesListMetricsSumInput,
-    outputSchema: AddsServicesListMetricsSumOutput,
-  }),
-);
+export const addsServicesListMetricsSum = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AddsServicesListMetricsSumInput,
+  outputSchema: AddsServicesListMetricsSumOutput,
+}));
 // Input Schema
 export interface AddsServicesListPremiumServicesInput {
   $filter?: string;
@@ -1350,7 +1334,7 @@ export interface AddsServicesListPremiumServicesInput {
   takeCount?: number;
 }
 export const AddsServicesListPremiumServicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
     serviceType: Schema.optional(Schema.String),
     skipCount: Schema.optional(Schema.Number),
@@ -1396,7 +1380,7 @@ export interface AddsServicesListPremiumServicesOutput {
   continuationToken?: string;
 }
 export const AddsServicesListPremiumServicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -1449,7 +1433,7 @@ export const AddsServicesListPremiumServicesOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesListPremiumServices =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesListPremiumServicesInput,
     outputSchema: AddsServicesListPremiumServicesOutput,
   }));
@@ -1460,7 +1444,7 @@ export interface AddsServicesListReplicationDetailsInput {
   withDetails?: boolean;
 }
 export const AddsServicesListReplicationDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     withDetails: Schema.optional(Schema.Boolean),
@@ -1502,7 +1486,7 @@ export interface AddsServicesListReplicationDetailsOutput {
   nextLink?: string;
 }
 export const AddsServicesListReplicationDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1549,7 +1533,7 @@ export const AddsServicesListReplicationDetailsOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesListReplicationDetails =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesListReplicationDetailsInput,
     outputSchema: AddsServicesListReplicationDetailsOutput,
   }));
@@ -1564,7 +1548,7 @@ export interface AddsServicesListReplicationSummaryInput {
   takeCount?: number;
 }
 export const AddsServicesListReplicationSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     isGroupbySite: Schema.Boolean,
@@ -1607,7 +1591,7 @@ export interface AddsServicesListReplicationSummaryOutput {
   }[];
 }
 export const AddsServicesListReplicationSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1655,7 +1639,7 @@ export const AddsServicesListReplicationSummaryOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesListReplicationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesListReplicationSummaryInput,
     outputSchema: AddsServicesListReplicationSummaryOutput,
   }));
@@ -1669,7 +1653,7 @@ export interface AddsServicesListServerAlertsInput {
   to?: string;
 }
 export const AddsServicesListServerAlertsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceMemberId: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -1722,7 +1706,7 @@ export interface AddsServicesListServerAlertsOutput {
   continuationToken?: string;
 }
 export const AddsServicesListServerAlertsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1806,7 +1790,7 @@ export const AddsServicesListServerAlertsOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesListServerAlerts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesListServerAlertsInput,
     outputSchema: AddsServicesListServerAlertsOutput,
   }));
@@ -1815,7 +1799,7 @@ export interface AddsServicesReplicationStatusGetInput {
   serviceName: string;
 }
 export const AddsServicesReplicationStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -1832,7 +1816,7 @@ export interface AddsServicesReplicationStatusGetOutput {
   errorDcCount?: number;
 }
 export const AddsServicesReplicationStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     forestName: Schema.optional(Schema.String),
     totalDcCount: Schema.optional(Schema.Number),
     errorDcCount: Schema.optional(Schema.Number),
@@ -1846,7 +1830,7 @@ export const AddsServicesReplicationStatusGetOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesReplicationStatusGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesReplicationStatusGetInput,
     outputSchema: AddsServicesReplicationStatusGetOutput,
   }));
@@ -1881,7 +1865,7 @@ export interface AddsServicesServiceMembersAddInput {
   status?: string;
 }
 export const AddsServicesServiceMembersAddInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     serviceMemberId: Schema.optional(Schema.String),
     serviceId: Schema.optional(Schema.String),
@@ -1949,7 +1933,7 @@ export interface AddsServicesServiceMembersAddOutput {
   status?: string;
 }
 export const AddsServicesServiceMembersAddOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceMemberId: Schema.optional(Schema.String),
     serviceId: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
@@ -1988,7 +1972,7 @@ export const AddsServicesServiceMembersAddOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesServiceMembersAdd =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesServiceMembersAddInput,
     outputSchema: AddsServicesServiceMembersAddOutput,
   }));
@@ -2000,7 +1984,7 @@ export interface AddsServicesServiceMembersListInput {
   dimensionSignature?: string;
 }
 export const AddsServicesServiceMembersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     dimensionType: Schema.optional(Schema.String),
@@ -2048,7 +2032,7 @@ export interface AddsServicesServiceMembersListOutput {
   continuationToken?: string;
 }
 export const AddsServicesServiceMembersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -2101,7 +2085,7 @@ export const AddsServicesServiceMembersListOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesServiceMembersList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesServiceMembersListInput,
     outputSchema: AddsServicesServiceMembersListOutput,
   }));
@@ -2133,7 +2117,7 @@ export interface AddsServicesUpdateInput {
   type?: string;
 }
 export const AddsServicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     activeAlerts: Schema.optional(Schema.Number),
@@ -2194,7 +2178,7 @@ export interface AddsServicesUpdateOutput {
   type?: string;
 }
 export const AddsServicesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     activeAlerts: Schema.optional(Schema.Number),
     additionalInformation: Schema.optional(Schema.String),
@@ -2228,7 +2212,7 @@ export const AddsServicesUpdateOutput =
  * @param serviceName - The name of the service which needs to be deleted.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const addsServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const addsServicesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddsServicesUpdateInput,
   outputSchema: AddsServicesUpdateOutput,
 }));
@@ -2239,7 +2223,7 @@ export interface AddsServicesUserPreferenceAddInput {
   metricNames?: string[];
 }
 export const AddsServicesUserPreferenceAddInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     featureName: Schema.String.pipe(T.PathParam()),
     metricNames: Schema.optional(Schema.Array(Schema.String)),
@@ -2254,7 +2238,7 @@ export const AddsServicesUserPreferenceAddInput =
 // Output Schema
 export type AddsServicesUserPreferenceAddOutput = void;
 export const AddsServicesUserPreferenceAddOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddsServicesUserPreferenceAddOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AddsServicesUserPreferenceAddOutput>;
 
 // The operation
 /**
@@ -2265,7 +2249,7 @@ export const AddsServicesUserPreferenceAddOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesUserPreferenceAdd =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesUserPreferenceAddInput,
     outputSchema: AddsServicesUserPreferenceAddOutput,
   }));
@@ -2275,7 +2259,7 @@ export interface AddsServicesUserPreferenceDeleteInput {
   featureName: string;
 }
 export const AddsServicesUserPreferenceDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     featureName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2289,7 +2273,7 @@ export const AddsServicesUserPreferenceDeleteInput =
 // Output Schema
 export type AddsServicesUserPreferenceDeleteOutput = void;
 export const AddsServicesUserPreferenceDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddsServicesUserPreferenceDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AddsServicesUserPreferenceDeleteOutput>;
 
 // The operation
 /**
@@ -2300,7 +2284,7 @@ export const AddsServicesUserPreferenceDeleteOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesUserPreferenceDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesUserPreferenceDeleteInput,
     outputSchema: AddsServicesUserPreferenceDeleteOutput,
   }));
@@ -2310,7 +2294,7 @@ export interface AddsServicesUserPreferenceGetInput {
   featureName: string;
 }
 export const AddsServicesUserPreferenceGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     featureName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2326,7 +2310,7 @@ export interface AddsServicesUserPreferenceGetOutput {
   metricNames?: string[];
 }
 export const AddsServicesUserPreferenceGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metricNames: Schema.optional(Schema.Array(Schema.String)),
   }) as unknown as Schema.Codec<AddsServicesUserPreferenceGetOutput>;
 
@@ -2339,7 +2323,7 @@ export const AddsServicesUserPreferenceGetOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const addsServicesUserPreferenceGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AddsServicesUserPreferenceGetInput,
     outputSchema: AddsServicesUserPreferenceGetOutput,
   }));
@@ -2352,7 +2336,7 @@ export interface AlertsListAddsAlertsInput {
   to?: string;
 }
 export const AlertsListAddsAlertsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -2404,7 +2388,7 @@ export interface AlertsListAddsAlertsOutput {
   continuationToken?: string;
 }
 export const AlertsListAddsAlertsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2486,17 +2470,13 @@ export const AlertsListAddsAlertsOutput =
  * @param to - The end date till when to query for.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const alertsListAddsAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AlertsListAddsAlertsInput,
-    outputSchema: AlertsListAddsAlertsOutput,
-  }),
-);
+export const alertsListAddsAlerts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AlertsListAddsAlertsInput,
+  outputSchema: AlertsListAddsAlertsOutput,
+}));
 // Input Schema
 export interface ConfigurationAddInput {}
-export const ConfigurationAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ConfigurationAddInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.ADHybridHealthService/configuration",
@@ -2528,31 +2508,29 @@ export interface ConfigurationAddOutput {
   tenantInQuarantine?: boolean;
   tenantName?: string;
 }
-export const ConfigurationAddOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    tenantId: Schema.optional(Schema.String),
-    aadLicense: Schema.optional(Schema.String),
-    aadPremium: Schema.optional(Schema.Boolean),
-    agentAutoUpdate: Schema.optional(Schema.Boolean),
-    alertSuppressionTimeInMins: Schema.optional(Schema.Number),
-    consentedToMicrosoftDevOps: Schema.optional(Schema.Boolean),
-    countryLetterCode: Schema.optional(Schema.String),
-    createdDate: Schema.optional(Schema.String),
-    devOpsTtl: Schema.optional(Schema.String),
-    disabled: Schema.optional(Schema.Boolean),
-    disabledReason: Schema.optional(Schema.Number),
-    globalAdminsEmail: Schema.optional(Schema.Array(Schema.String)),
-    initialDomain: Schema.optional(Schema.String),
-    lastDisabled: Schema.optional(Schema.String),
-    lastVerified: Schema.optional(Schema.String),
-    onboardingAllowed: Schema.optional(Schema.Boolean),
-    onboarded: Schema.optional(Schema.Boolean),
-    pksCertificate: Schema.optional(Schema.Unknown),
-    privatePreviewTenant: Schema.optional(Schema.Boolean),
-    tenantInQuarantine: Schema.optional(Schema.Boolean),
-    tenantName: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<ConfigurationAddOutput>;
+export const ConfigurationAddOutput = /*@__PURE__*/ Schema.Struct({
+  tenantId: Schema.optional(Schema.String),
+  aadLicense: Schema.optional(Schema.String),
+  aadPremium: Schema.optional(Schema.Boolean),
+  agentAutoUpdate: Schema.optional(Schema.Boolean),
+  alertSuppressionTimeInMins: Schema.optional(Schema.Number),
+  consentedToMicrosoftDevOps: Schema.optional(Schema.Boolean),
+  countryLetterCode: Schema.optional(Schema.String),
+  createdDate: Schema.optional(Schema.String),
+  devOpsTtl: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  disabledReason: Schema.optional(Schema.Number),
+  globalAdminsEmail: Schema.optional(Schema.Array(Schema.String)),
+  initialDomain: Schema.optional(Schema.String),
+  lastDisabled: Schema.optional(Schema.String),
+  lastVerified: Schema.optional(Schema.String),
+  onboardingAllowed: Schema.optional(Schema.Boolean),
+  onboarded: Schema.optional(Schema.Boolean),
+  pksCertificate: Schema.optional(Schema.Unknown),
+  privatePreviewTenant: Schema.optional(Schema.Boolean),
+  tenantInQuarantine: Schema.optional(Schema.Boolean),
+  tenantName: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<ConfigurationAddOutput>;
 
 // The operation
 /**
@@ -2560,15 +2538,13 @@ export const ConfigurationAddOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  *
  * @param api-version - The version of the API to be used with the client request.
  */
-export const configurationAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const configurationAdd = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationAddInput,
   outputSchema: ConfigurationAddOutput,
 }));
 // Input Schema
 export interface ConfigurationGetInput {}
-export const ConfigurationGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ConfigurationGetInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ADHybridHealthService/configuration",
@@ -2600,31 +2576,29 @@ export interface ConfigurationGetOutput {
   tenantInQuarantine?: boolean;
   tenantName?: string;
 }
-export const ConfigurationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    tenantId: Schema.optional(Schema.String),
-    aadLicense: Schema.optional(Schema.String),
-    aadPremium: Schema.optional(Schema.Boolean),
-    agentAutoUpdate: Schema.optional(Schema.Boolean),
-    alertSuppressionTimeInMins: Schema.optional(Schema.Number),
-    consentedToMicrosoftDevOps: Schema.optional(Schema.Boolean),
-    countryLetterCode: Schema.optional(Schema.String),
-    createdDate: Schema.optional(Schema.String),
-    devOpsTtl: Schema.optional(Schema.String),
-    disabled: Schema.optional(Schema.Boolean),
-    disabledReason: Schema.optional(Schema.Number),
-    globalAdminsEmail: Schema.optional(Schema.Array(Schema.String)),
-    initialDomain: Schema.optional(Schema.String),
-    lastDisabled: Schema.optional(Schema.String),
-    lastVerified: Schema.optional(Schema.String),
-    onboardingAllowed: Schema.optional(Schema.Boolean),
-    onboarded: Schema.optional(Schema.Boolean),
-    pksCertificate: Schema.optional(Schema.Unknown),
-    privatePreviewTenant: Schema.optional(Schema.Boolean),
-    tenantInQuarantine: Schema.optional(Schema.Boolean),
-    tenantName: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<ConfigurationGetOutput>;
+export const ConfigurationGetOutput = /*@__PURE__*/ Schema.Struct({
+  tenantId: Schema.optional(Schema.String),
+  aadLicense: Schema.optional(Schema.String),
+  aadPremium: Schema.optional(Schema.Boolean),
+  agentAutoUpdate: Schema.optional(Schema.Boolean),
+  alertSuppressionTimeInMins: Schema.optional(Schema.Number),
+  consentedToMicrosoftDevOps: Schema.optional(Schema.Boolean),
+  countryLetterCode: Schema.optional(Schema.String),
+  createdDate: Schema.optional(Schema.String),
+  devOpsTtl: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  disabledReason: Schema.optional(Schema.Number),
+  globalAdminsEmail: Schema.optional(Schema.Array(Schema.String)),
+  initialDomain: Schema.optional(Schema.String),
+  lastDisabled: Schema.optional(Schema.String),
+  lastVerified: Schema.optional(Schema.String),
+  onboardingAllowed: Schema.optional(Schema.Boolean),
+  onboarded: Schema.optional(Schema.Boolean),
+  pksCertificate: Schema.optional(Schema.Unknown),
+  privatePreviewTenant: Schema.optional(Schema.Boolean),
+  tenantInQuarantine: Schema.optional(Schema.Boolean),
+  tenantName: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<ConfigurationGetOutput>;
 
 // The operation
 /**
@@ -2632,7 +2606,7 @@ export const ConfigurationGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  *
  * @param api-version - The version of the API to be used with the client request.
  */
-export const configurationGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const configurationGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationGetInput,
   outputSchema: ConfigurationGetOutput,
 }));
@@ -2642,7 +2616,7 @@ export interface ConfigurationListAddsConfigurationsInput {
   grouping?: string;
 }
 export const ConfigurationListAddsConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     grouping: Schema.optional(Schema.String),
   }).pipe(
@@ -2661,7 +2635,7 @@ export interface ConfigurationListAddsConfigurationsOutput {
   continuationToken?: string;
 }
 export const ConfigurationListAddsConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -2683,7 +2657,7 @@ export const ConfigurationListAddsConfigurationsOutput =
  * @param grouping - The grouping for configurations.
  */
 export const configurationListAddsConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConfigurationListAddsConfigurationsInput,
     outputSchema: ConfigurationListAddsConfigurationsOutput,
   }));
@@ -2712,7 +2686,7 @@ export interface ConfigurationUpdateInput {
   tenantName?: string;
 }
 export const ConfigurationUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tenantId: Schema.optional(Schema.String),
     aadLicense: Schema.optional(Schema.String),
     aadPremium: Schema.optional(Schema.Boolean),
@@ -2767,7 +2741,7 @@ export interface ConfigurationUpdateOutput {
   tenantName?: string;
 }
 export const ConfigurationUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tenantId: Schema.optional(Schema.String),
     aadLicense: Schema.optional(Schema.String),
     aadPremium: Schema.optional(Schema.Boolean),
@@ -2797,7 +2771,7 @@ export const ConfigurationUpdateOutput =
  *
  * @param api-version - The version of the API to be used with the client request.
  */
-export const configurationUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const configurationUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ConfigurationUpdateInput,
   outputSchema: ConfigurationUpdateOutput,
 }));
@@ -2807,7 +2781,7 @@ export interface DimensionsListAddsDimensionsInput {
   dimension: string;
 }
 export const DimensionsListAddsDimensionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     dimension: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2836,7 +2810,7 @@ export interface DimensionsListAddsDimensionsOutput {
   continuationToken?: string;
 }
 export const DimensionsListAddsDimensionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -2874,7 +2848,7 @@ export const DimensionsListAddsDimensionsOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const dimensionsListAddsDimensions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DimensionsListAddsDimensionsInput,
     outputSchema: DimensionsListAddsDimensionsOutput,
   }));
@@ -2884,7 +2858,7 @@ export interface ListIPAddressAggregatesByServiceInput {
   skiptoken?: string;
 }
 export const ListIPAddressAggregatesByServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     skiptoken: Schema.optional(Schema.String),
   }).pipe(
@@ -2921,7 +2895,7 @@ export interface ListIPAddressAggregatesByServiceOutput {
   continuationToken?: string;
 }
 export const ListIPAddressAggregatesByServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2959,7 +2933,7 @@ export const ListIPAddressAggregatesByServiceOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const listIPAddressAggregatesByService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListIPAddressAggregatesByServiceInput,
     outputSchema: ListIPAddressAggregatesByServiceOutput,
   }));
@@ -2968,7 +2942,7 @@ export interface ListIPAddressAggregateSettingsInput {
   serviceName: string;
 }
 export const ListIPAddressAggregateSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2988,7 +2962,7 @@ export interface ListIPAddressAggregateSettingsOutput {
   emailNotificationEnabled?: boolean;
 }
 export const ListIPAddressAggregateSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     badPasswordAndExtranetLockoutCombinedDailyThreshold: Schema.optional(
       Schema.Number,
@@ -3009,15 +2983,13 @@ export const ListIPAddressAggregateSettingsOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const listIPAddressAggregateSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListIPAddressAggregateSettingsInput,
     outputSchema: ListIPAddressAggregateSettingsOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ADHybridHealthService/operations",
@@ -3032,7 +3004,7 @@ export interface OperationsListOutput {
   totalCount?: number;
   continuationToken?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -3052,15 +3024,13 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The version of the API to be used with the client request.
  */
-export const operationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const operationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
 // Input Schema
 export interface ReportsGetDevOpsInput {}
-export const ReportsGetDevOpsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ReportsGetDevOpsInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ADHybridHealthService/reports/DevOps/IsDevOps",
@@ -3072,11 +3042,9 @@ export const ReportsGetDevOpsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export interface ReportsGetDevOpsOutput {
   value?: boolean;
 }
-export const ReportsGetDevOpsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(Schema.Boolean),
-  },
-) as unknown as Schema.Codec<ReportsGetDevOpsOutput>;
+export const ReportsGetDevOpsOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.Boolean),
+}) as unknown as Schema.Codec<ReportsGetDevOpsOutput>;
 
 // The operation
 /**
@@ -3084,7 +3052,7 @@ export const ReportsGetDevOpsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  *
  * @param api-version - The version of the API to be used with the client request.
  */
-export const reportsGetDevOps = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const reportsGetDevOps = /*@__PURE__*/ API.make(() => ({
   inputSchema: ReportsGetDevOpsInput,
   outputSchema: ReportsGetDevOpsOutput,
 }));
@@ -3097,16 +3065,14 @@ export interface ServiceGetMetricsInput {
   fromDate?: string;
   toDate?: string;
 }
-export const ServiceGetMetricsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    serviceName: Schema.String.pipe(T.PathParam()),
-    metricName: Schema.String.pipe(T.PathParam()),
-    groupName: Schema.String.pipe(T.PathParam()),
-    groupKey: Schema.optional(Schema.String),
-    fromDate: Schema.optional(Schema.String),
-    toDate: Schema.optional(Schema.String),
-  },
-).pipe(
+export const ServiceGetMetricsInput = /*@__PURE__*/ Schema.Struct({
+  serviceName: Schema.String.pipe(T.PathParam()),
+  metricName: Schema.String.pipe(T.PathParam()),
+  groupName: Schema.String.pipe(T.PathParam()),
+  groupKey: Schema.optional(Schema.String),
+  fromDate: Schema.optional(Schema.String),
+  toDate: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}",
@@ -3120,7 +3086,7 @@ export interface ServiceGetMetricsOutput {
   timeStamps?: string[];
 }
 export const ServiceGetMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sets: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3144,7 +3110,7 @@ export const ServiceGetMetricsOutput =
  * @param toDate - The end date.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const serviceGetMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const serviceGetMetrics = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceGetMetricsInput,
   outputSchema: ServiceGetMetricsOutput,
 }));
@@ -3178,39 +3144,37 @@ export interface ServiceMembersAddInput {
   serverReportedMonitoringLevel?: "Partial" | "Full" | "Off";
   status?: string;
 }
-export const ServiceMembersAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    serviceName: Schema.String.pipe(T.PathParam()),
-    serviceMemberId: Schema.optional(Schema.String),
-    serviceId: Schema.optional(Schema.String),
-    tenantId: Schema.optional(Schema.String),
-    activeAlerts: Schema.optional(Schema.Number),
-    additionalInformation: Schema.optional(Schema.String),
-    createdDate: Schema.optional(Schema.String),
-    dimensions: Schema.optional(Schema.Unknown),
-    disabled: Schema.optional(Schema.Boolean),
-    disabledReason: Schema.optional(Schema.Number),
-    installedQfes: Schema.optional(Schema.Unknown),
-    lastDisabled: Schema.optional(Schema.String),
-    lastReboot: Schema.optional(Schema.String),
-    lastServerReportedMonitoringLevelChange: Schema.optional(Schema.String),
-    lastUpdated: Schema.optional(Schema.String),
-    machineId: Schema.optional(Schema.String),
-    machineName: Schema.optional(Schema.String),
-    monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
-    monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
-    osName: Schema.optional(Schema.String),
-    osVersion: Schema.optional(Schema.String),
-    properties: Schema.optional(Schema.Unknown),
-    recommendedQfes: Schema.optional(Schema.Unknown),
-    resolvedAlerts: Schema.optional(Schema.Number),
-    role: Schema.optional(Schema.String),
-    serverReportedMonitoringLevel: Schema.optional(
-      Schema.Literals(["Partial", "Full", "Off"]),
-    ),
-    status: Schema.optional(Schema.String),
-  },
-).pipe(
+export const ServiceMembersAddInput = /*@__PURE__*/ Schema.Struct({
+  serviceName: Schema.String.pipe(T.PathParam()),
+  serviceMemberId: Schema.optional(Schema.String),
+  serviceId: Schema.optional(Schema.String),
+  tenantId: Schema.optional(Schema.String),
+  activeAlerts: Schema.optional(Schema.Number),
+  additionalInformation: Schema.optional(Schema.String),
+  createdDate: Schema.optional(Schema.String),
+  dimensions: Schema.optional(Schema.Unknown),
+  disabled: Schema.optional(Schema.Boolean),
+  disabledReason: Schema.optional(Schema.Number),
+  installedQfes: Schema.optional(Schema.Unknown),
+  lastDisabled: Schema.optional(Schema.String),
+  lastReboot: Schema.optional(Schema.String),
+  lastServerReportedMonitoringLevelChange: Schema.optional(Schema.String),
+  lastUpdated: Schema.optional(Schema.String),
+  machineId: Schema.optional(Schema.String),
+  machineName: Schema.optional(Schema.String),
+  monitoringConfigurationsComputed: Schema.optional(Schema.Unknown),
+  monitoringConfigurationsCustomized: Schema.optional(Schema.Unknown),
+  osName: Schema.optional(Schema.String),
+  osVersion: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Unknown),
+  recommendedQfes: Schema.optional(Schema.Unknown),
+  resolvedAlerts: Schema.optional(Schema.Number),
+  role: Schema.optional(Schema.String),
+  serverReportedMonitoringLevel: Schema.optional(
+    Schema.Literals(["Partial", "Full", "Off"]),
+  ),
+  status: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers",
@@ -3248,7 +3212,7 @@ export interface ServiceMembersAddOutput {
   status?: string;
 }
 export const ServiceMembersAddOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceMemberId: Schema.optional(Schema.String),
     serviceId: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
@@ -3286,7 +3250,7 @@ export const ServiceMembersAddOutput =
  * @param serviceName - The name of the service under which the server is to be onboarded.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const serviceMembersAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const serviceMembersAdd = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceMembersAddInput,
   outputSchema: ServiceMembersAddOutput,
 }));
@@ -3297,7 +3261,7 @@ export interface ServiceMembersDeleteInput {
   confirm?: boolean;
 }
 export const ServiceMembersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     serviceMemberId: Schema.String.pipe(T.PathParam()),
     confirm: Schema.optional(Schema.Boolean),
@@ -3312,7 +3276,7 @@ export const ServiceMembersDeleteInput =
 // Output Schema
 export type ServiceMembersDeleteOutput = void;
 export const ServiceMembersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceMembersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceMembersDeleteOutput>;
 
 // The operation
 /**
@@ -3323,19 +3287,17 @@ export const ServiceMembersDeleteOutput =
  * @param confirm - Indicates if the server will be permanently deleted or disabled. True indicates that the server will be permanently deleted and False indicates that the server will be marked disabled and then deleted after 30 days, if it is not re-registered.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const serviceMembersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceMembersDeleteInput,
-    outputSchema: ServiceMembersDeleteOutput,
-  }),
-);
+export const serviceMembersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceMembersDeleteInput,
+  outputSchema: ServiceMembersDeleteOutput,
+}));
 // Input Schema
 export interface ServiceMembersDeleteDataInput {
   serviceName: string;
   serviceMemberId: string;
 }
 export const ServiceMembersDeleteDataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     serviceMemberId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -3349,7 +3311,7 @@ export const ServiceMembersDeleteDataInput =
 // Output Schema
 export type ServiceMembersDeleteDataOutput = void;
 export const ServiceMembersDeleteDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceMembersDeleteDataOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceMembersDeleteDataOutput>;
 
 // The operation
 /**
@@ -3359,23 +3321,19 @@ export const ServiceMembersDeleteDataOutput =
  * @param serviceMemberId - The server Id.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const serviceMembersDeleteData = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceMembersDeleteDataInput,
-    outputSchema: ServiceMembersDeleteDataOutput,
-  }),
-);
+export const serviceMembersDeleteData = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceMembersDeleteDataInput,
+  outputSchema: ServiceMembersDeleteDataOutput,
+}));
 // Input Schema
 export interface ServiceMembersGetInput {
   serviceName: string;
   serviceMemberId: string;
 }
-export const ServiceMembersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    serviceName: Schema.String.pipe(T.PathParam()),
-    serviceMemberId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ServiceMembersGetInput = /*@__PURE__*/ Schema.Struct({
+  serviceName: Schema.String.pipe(T.PathParam()),
+  serviceMemberId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}",
@@ -3413,7 +3371,7 @@ export interface ServiceMembersGetOutput {
   status?: string;
 }
 export const ServiceMembersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceMemberId: Schema.optional(Schema.String),
     serviceId: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
@@ -3452,7 +3410,7 @@ export const ServiceMembersGetOutput =
  * @param serviceMemberId - The server Id.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const serviceMembersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const serviceMembersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceMembersGetInput,
   outputSchema: ServiceMembersGetOutput,
 }));
@@ -3463,7 +3421,7 @@ export interface ServiceMembersGetConnectorMetadataInput {
   metricName: string;
 }
 export const ServiceMembersGetConnectorMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     serviceMemberId: Schema.String.pipe(T.PathParam()),
     metricName: Schema.String.pipe(T.PathParam()),
@@ -3481,7 +3439,7 @@ export interface ServiceMembersGetConnectorMetadataOutput {
   runProfileNames?: string[];
 }
 export const ServiceMembersGetConnectorMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     connectors: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3503,7 +3461,7 @@ export const ServiceMembersGetConnectorMetadataOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersGetConnectorMetadata =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceMembersGetConnectorMetadataInput,
     outputSchema: ServiceMembersGetConnectorMetadataOutput,
   }));
@@ -3518,7 +3476,7 @@ export interface ServiceMembersGetMetricsInput {
   toDate?: string;
 }
 export const ServiceMembersGetMetricsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     metricName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
@@ -3540,7 +3498,7 @@ export interface ServiceMembersGetMetricsOutput {
   timeStamps?: string[];
 }
 export const ServiceMembersGetMetricsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sets: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3565,19 +3523,17 @@ export const ServiceMembersGetMetricsOutput =
  * @param toDate - The end date.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const serviceMembersGetMetrics = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceMembersGetMetricsInput,
-    outputSchema: ServiceMembersGetMetricsOutput,
-  }),
-);
+export const serviceMembersGetMetrics = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceMembersGetMetricsInput,
+  outputSchema: ServiceMembersGetMetricsOutput,
+}));
 // Input Schema
 export interface ServiceMembersGetServiceConfigurationInput {
   serviceName: string;
   serviceMemberId: string;
 }
 export const ServiceMembersGetServiceConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     serviceMemberId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -3601,7 +3557,7 @@ export interface ServiceMembersGetServiceConfigurationOutput {
   sqlDatabaseSize?: number;
 }
 export const ServiceMembersGetServiceConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     serviceType: Schema.optional(Schema.Number),
     serviceAccount: Schema.optional(Schema.String),
@@ -3622,7 +3578,7 @@ export const ServiceMembersGetServiceConfigurationOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersGetServiceConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceMembersGetServiceConfigurationInput,
     outputSchema: ServiceMembersGetServiceConfigurationOutput,
   }));
@@ -3634,7 +3590,7 @@ export interface ServiceMembersListInput {
   dimensionSignature?: string;
 }
 export const ServiceMembersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     dimensionType: Schema.optional(Schema.String),
@@ -3682,7 +3638,7 @@ export interface ServiceMembersListOutput {
   continuationToken?: string;
 }
 export const ServiceMembersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -3734,7 +3690,7 @@ export const ServiceMembersListOutput =
  * @param dimensionSignature - The value of the dimension.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const serviceMembersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const serviceMembersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServiceMembersListInput,
   outputSchema: ServiceMembersListOutput,
 }));
@@ -3748,7 +3704,7 @@ export interface ServiceMembersListAlertsInput {
   to?: string;
 }
 export const ServiceMembersListAlertsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceMemberId: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -3801,7 +3757,7 @@ export interface ServiceMembersListAlertsOutput {
   continuationToken?: string;
 }
 export const ServiceMembersListAlertsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -3884,19 +3840,17 @@ export const ServiceMembersListAlertsOutput =
  * @param to - The end date till when to query for.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const serviceMembersListAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceMembersListAlertsInput,
-    outputSchema: ServiceMembersListAlertsOutput,
-  }),
-);
+export const serviceMembersListAlerts = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceMembersListAlertsInput,
+  outputSchema: ServiceMembersListAlertsOutput,
+}));
 // Input Schema
 export interface ServiceMembersListConnectorsInput {
   serviceName: string;
   serviceMemberId: string;
 }
 export const ServiceMembersListConnectorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     serviceMemberId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -3955,7 +3909,7 @@ export interface ServiceMembersListConnectorsOutput {
   }[];
 }
 export const ServiceMembersListConnectorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4033,7 +3987,7 @@ export const ServiceMembersListConnectorsOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersListConnectors =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceMembersListConnectorsInput,
     outputSchema: ServiceMembersListConnectorsOutput,
   }));
@@ -4044,7 +3998,7 @@ export interface ServiceMembersListCredentialsInput {
   $filter?: string;
 }
 export const ServiceMembersListCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     serviceMemberId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -4061,7 +4015,7 @@ export interface ServiceMembersListCredentialsOutput {
   value?: { identifier?: string; type?: string; credentialData?: string[] }[];
 }
 export const ServiceMembersListCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4083,7 +4037,7 @@ export const ServiceMembersListCredentialsOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersListCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceMembersListCredentialsInput,
     outputSchema: ServiceMembersListCredentialsOutput,
   }));
@@ -4093,7 +4047,7 @@ export interface ServiceMembersListDataFreshnessInput {
   serviceMemberId: string;
 }
 export const ServiceMembersListDataFreshnessInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     serviceMemberId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4109,7 +4063,7 @@ export interface ServiceMembersListDataFreshnessOutput {
   value?: { key?: string; value?: string }[];
 }
 export const ServiceMembersListDataFreshnessOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4129,7 +4083,7 @@ export const ServiceMembersListDataFreshnessOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersListDataFreshness =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceMembersListDataFreshnessInput,
     outputSchema: ServiceMembersListDataFreshnessOutput,
   }));
@@ -4139,7 +4093,7 @@ export interface ServiceMembersListExportStatusInput {
   serviceMemberId: string;
 }
 export const ServiceMembersListExportStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     serviceMemberId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4163,7 +4117,7 @@ export interface ServiceMembersListExportStatusOutput {
   continuationToken?: string;
 }
 export const ServiceMembersListExportStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -4188,7 +4142,7 @@ export const ServiceMembersListExportStatusOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersListExportStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceMembersListExportStatusInput,
     outputSchema: ServiceMembersListExportStatusOutput,
   }));
@@ -4198,7 +4152,7 @@ export interface ServiceMembersListGlobalConfigurationInput {
   serviceMemberId: string;
 }
 export const ServiceMembersListGlobalConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     serviceMemberId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4220,7 +4174,7 @@ export interface ServiceMembersListGlobalConfigurationOutput {
   }[];
 }
 export const ServiceMembersListGlobalConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4250,7 +4204,7 @@ export const ServiceMembersListGlobalConfigurationOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const serviceMembersListGlobalConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceMembersListGlobalConfigurationInput,
     outputSchema: ServiceMembersListGlobalConfigurationOutput,
   }));
@@ -4281,7 +4235,7 @@ export interface ServicesAddInput {
   tenantId?: string;
   type?: string;
 }
-export const ServicesAddInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesAddInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
   additionalInformation: Schema.optional(Schema.String),
@@ -4341,7 +4295,7 @@ export interface ServicesAddOutput {
   tenantId?: string;
   type?: string;
 }
-export const ServicesAddOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesAddOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
   additionalInformation: Schema.optional(Schema.String),
@@ -4374,7 +4328,7 @@ export const ServicesAddOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesAdd = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const servicesAdd = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesAddInput,
   outputSchema: ServicesAddOutput,
 }));
@@ -4391,7 +4345,7 @@ export interface ServicesAddAlertFeedbackInput {
   createdDate?: string;
 }
 export const ServicesAddAlertFeedbackInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     level: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -4421,7 +4375,7 @@ export interface ServicesAddAlertFeedbackOutput {
   createdDate?: string;
 }
 export const ServicesAddAlertFeedbackOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     level: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
     shortName: Schema.optional(Schema.String),
@@ -4439,18 +4393,16 @@ export const ServicesAddAlertFeedbackOutput =
  * @param serviceName - The name of the service.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesAddAlertFeedback = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesAddAlertFeedbackInput,
-    outputSchema: ServicesAddAlertFeedbackOutput,
-  }),
-);
+export const servicesAddAlertFeedback = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesAddAlertFeedbackInput,
+  outputSchema: ServicesAddAlertFeedbackOutput,
+}));
 // Input Schema
 export interface ServicesDeleteInput {
   serviceName: string;
   confirm?: boolean;
 }
-export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   confirm: Schema.optional(Schema.Boolean),
 }).pipe(
@@ -4464,7 +4416,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ServicesDeleteOutput = void;
 export const ServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
 
 // The operation
 /**
@@ -4474,7 +4426,7 @@ export const ServicesDeleteOutput =
  * @param confirm - Indicates if the service will be permanently deleted or disabled. True indicates that the service will be permanently deleted and False indicates that the service will be marked disabled and then deleted after 30 days, if it is not re-registered.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const servicesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesDeleteInput,
   outputSchema: ServicesDeleteOutput,
 }));
@@ -4482,7 +4434,7 @@ export const servicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ServicesGetInput {
   serviceName: string;
 }
-export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetInput = /*@__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -4519,7 +4471,7 @@ export interface ServicesGetOutput {
   tenantId?: string;
   type?: string;
 }
-export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
   additionalInformation: Schema.optional(Schema.String),
@@ -4553,7 +4505,7 @@ export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param serviceName - The name of the service.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const servicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesGetInput,
   outputSchema: ServicesGetOutput,
 }));
@@ -4563,7 +4515,7 @@ export interface ServicesGetFeatureAvailibilityInput {
   featureName: string;
 }
 export const ServicesGetFeatureAvailibilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     featureName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4579,7 +4531,7 @@ export interface ServicesGetFeatureAvailibilityOutput {
   value?: boolean;
 }
 export const ServicesGetFeatureAvailibilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Boolean),
   }) as unknown as Schema.Codec<ServicesGetFeatureAvailibilityOutput>;
 
@@ -4592,7 +4544,7 @@ export const ServicesGetFeatureAvailibilityOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesGetFeatureAvailibility =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServicesGetFeatureAvailibilityInput,
     outputSchema: ServicesGetFeatureAvailibilityOutput,
   }));
@@ -4602,7 +4554,7 @@ export interface ServicesGetMetricMetadataInput {
   metricName: string;
 }
 export const ServicesGetMetricMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     metricName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4632,7 +4584,7 @@ export interface ServicesGetMetricMetadataOutput {
   isDevOps?: boolean;
 }
 export const ServicesGetMetricMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metricsProcessorClassName: Schema.optional(Schema.String),
     metricName: Schema.optional(Schema.String),
     groupings: Schema.optional(
@@ -4662,12 +4614,10 @@ export const ServicesGetMetricMetadataOutput =
  * @param metricName - The metric name
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesGetMetricMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesGetMetricMetadataInput,
-    outputSchema: ServicesGetMetricMetadataOutput,
-  }),
-);
+export const servicesGetMetricMetadata = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesGetMetricMetadataInput,
+  outputSchema: ServicesGetMetricMetadataOutput,
+}));
 // Input Schema
 export interface ServicesGetMetricMetadataForGroupInput {
   serviceName: string;
@@ -4678,7 +4628,7 @@ export interface ServicesGetMetricMetadataForGroupInput {
   toDate?: string;
 }
 export const ServicesGetMetricMetadataForGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     metricName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
@@ -4699,7 +4649,7 @@ export interface ServicesGetMetricMetadataForGroupOutput {
   timeStamps?: string[];
 }
 export const ServicesGetMetricMetadataForGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sets: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4724,7 +4674,7 @@ export const ServicesGetMetricMetadataForGroupOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesGetMetricMetadataForGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServicesGetMetricMetadataForGroupInput,
     outputSchema: ServicesGetMetricMetadataForGroupOutput,
   }));
@@ -4734,7 +4684,7 @@ export interface ServicesGetTenantWhitelistingInput {
   featureName: string;
 }
 export const ServicesGetTenantWhitelistingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     featureName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4750,7 +4700,7 @@ export interface ServicesGetTenantWhitelistingOutput {
   value?: boolean;
 }
 export const ServicesGetTenantWhitelistingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Boolean),
   }) as unknown as Schema.Codec<ServicesGetTenantWhitelistingOutput>;
 
@@ -4763,7 +4713,7 @@ export const ServicesGetTenantWhitelistingOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesGetTenantWhitelisting =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServicesGetTenantWhitelistingInput,
     outputSchema: ServicesGetTenantWhitelistingOutput,
   }));
@@ -4774,7 +4724,7 @@ export interface ServicesListInput {
   skipCount?: number;
   takeCount?: number;
 }
-export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesListInput = /*@__PURE__*/ Schema.Struct({
   $filter: Schema.optional(Schema.String),
   serviceType: Schema.optional(Schema.String),
   skipCount: Schema.optional(Schema.Number),
@@ -4819,7 +4769,7 @@ export interface ServicesListOutput {
   totalCount?: number;
   continuationToken?: string;
 }
-export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesListOutput = /*@__PURE__*/ Schema.Struct({
   nextLink: Schema.optional(Schema.String),
   value: Schema.optional(
     Schema.Array(
@@ -4869,7 +4819,7 @@ export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param takeCount - The take count , which specifies the number of elements that can be returned from a sequence.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const servicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesListInput,
   outputSchema: ServicesListOutput,
 }));
@@ -4879,7 +4829,7 @@ export interface ServicesListAlertFeedbackInput {
   shortName: string;
 }
 export const ServicesListAlertFeedbackInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     shortName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4904,7 +4854,7 @@ export interface ServicesListAlertFeedbackOutput {
   }[];
 }
 export const ServicesListAlertFeedbackOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -4929,12 +4879,10 @@ export const ServicesListAlertFeedbackOutput =
  * @param shortName - The name of the alert.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesListAlertFeedback = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesListAlertFeedbackInput,
-    outputSchema: ServicesListAlertFeedbackOutput,
-  }),
-);
+export const servicesListAlertFeedback = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListAlertFeedbackInput,
+  outputSchema: ServicesListAlertFeedbackOutput,
+}));
 // Input Schema
 export interface ServicesListAlertsInput {
   serviceName: string;
@@ -4944,7 +4892,7 @@ export interface ServicesListAlertsInput {
   to?: string;
 }
 export const ServicesListAlertsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -4996,7 +4944,7 @@ export interface ServicesListAlertsOutput {
   continuationToken?: string;
 }
 export const ServicesListAlertsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5078,7 +5026,7 @@ export const ServicesListAlertsOutput =
  * @param to - The end date till when to query for.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesListAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const servicesListAlerts = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesListAlertsInput,
   outputSchema: ServicesListAlertsOutput,
 }));
@@ -5087,7 +5035,7 @@ export interface ServicesListAllRiskyIpDownloadReportInput {
   serviceName: string;
 }
 export const ServicesListAllRiskyIpDownloadReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5109,7 +5057,7 @@ export interface ServicesListAllRiskyIpDownloadReportOutput {
   }[];
 }
 export const ServicesListAllRiskyIpDownloadReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5132,7 +5080,7 @@ export const ServicesListAllRiskyIpDownloadReportOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListAllRiskyIpDownloadReport =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServicesListAllRiskyIpDownloadReportInput,
     outputSchema: ServicesListAllRiskyIpDownloadReportOutput,
   }));
@@ -5141,7 +5089,7 @@ export interface ServicesListCurrentRiskyIpDownloadReportInput {
   serviceName: string;
 }
 export const ServicesListCurrentRiskyIpDownloadReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5163,7 +5111,7 @@ export interface ServicesListCurrentRiskyIpDownloadReportOutput {
   }[];
 }
 export const ServicesListCurrentRiskyIpDownloadReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5186,7 +5134,7 @@ export const ServicesListCurrentRiskyIpDownloadReportOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListCurrentRiskyIpDownloadReport =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServicesListCurrentRiskyIpDownloadReportInput,
     outputSchema: ServicesListCurrentRiskyIpDownloadReportOutput,
   }));
@@ -5195,7 +5143,7 @@ export interface ServicesListExportErrorsInput {
   serviceName: string;
 }
 export const ServicesListExportErrorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5210,7 +5158,7 @@ export interface ServicesListExportErrorsOutput {
   value?: { errorBucket?: string; count?: number; truncated?: boolean }[];
 }
 export const ServicesListExportErrorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5229,19 +5177,17 @@ export const ServicesListExportErrorsOutput =
  * @param serviceName - The name of the service.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesListExportErrors = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesListExportErrorsInput,
-    outputSchema: ServicesListExportErrorsOutput,
-  }),
-);
+export const servicesListExportErrors = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListExportErrorsInput,
+  outputSchema: ServicesListExportErrorsOutput,
+}));
 // Input Schema
 export interface ServicesListExportErrorsV2Input {
   serviceName: string;
   errorBucket: string;
 }
 export const ServicesListExportErrorsV2Input =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     errorBucket: Schema.String,
   }).pipe(
@@ -5306,7 +5252,7 @@ export interface ServicesListExportErrorsV2Output {
   }[];
 }
 export const ServicesListExportErrorsV2Output =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5375,18 +5321,16 @@ export const ServicesListExportErrorsV2Output =
  * @param errorBucket - The error category to query for.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesListExportErrorsV2 = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesListExportErrorsV2Input,
-    outputSchema: ServicesListExportErrorsV2Output,
-  }),
-);
+export const servicesListExportErrorsV2 = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListExportErrorsV2Input,
+  outputSchema: ServicesListExportErrorsV2Output,
+}));
 // Input Schema
 export interface ServicesListExportStatusInput {
   serviceName: string;
 }
 export const ServicesListExportStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5409,7 +5353,7 @@ export interface ServicesListExportStatusOutput {
   continuationToken?: string;
 }
 export const ServicesListExportStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -5432,12 +5376,10 @@ export const ServicesListExportStatusOutput =
  * @param serviceName - The name of the service.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesListExportStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesListExportStatusInput,
-    outputSchema: ServicesListExportStatusOutput,
-  }),
-);
+export const servicesListExportStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListExportStatusInput,
+  outputSchema: ServicesListExportStatusOutput,
+}));
 // Input Schema
 export interface ServicesListMetricMetadataInput {
   serviceName: string;
@@ -5445,7 +5387,7 @@ export interface ServicesListMetricMetadataInput {
   perfCounter?: boolean;
 }
 export const ServicesListMetricMetadataInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     perfCounter: Schema.optional(Schema.Boolean),
@@ -5481,7 +5423,7 @@ export interface ServicesListMetricMetadataOutput {
   continuationToken?: string;
 }
 export const ServicesListMetricMetadataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -5521,12 +5463,10 @@ export const ServicesListMetricMetadataOutput =
  * @param perfCounter - Indicates if only performance counter metrics are requested.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesListMetricMetadata = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesListMetricMetadataInput,
-    outputSchema: ServicesListMetricMetadataOutput,
-  }),
-);
+export const servicesListMetricMetadata = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListMetricMetadataInput,
+  outputSchema: ServicesListMetricMetadataOutput,
+}));
 // Input Schema
 export interface ServicesListMetricsAverageInput {
   serviceName: string;
@@ -5534,7 +5474,7 @@ export interface ServicesListMetricsAverageInput {
   groupName: string;
 }
 export const ServicesListMetricsAverageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     metricName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
@@ -5554,7 +5494,7 @@ export interface ServicesListMetricsAverageOutput {
   continuationToken?: string;
 }
 export const ServicesListMetricsAverageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -5577,12 +5517,10 @@ export const ServicesListMetricsAverageOutput =
  * @param groupName - The group name
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesListMetricsAverage = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesListMetricsAverageInput,
-    outputSchema: ServicesListMetricsAverageOutput,
-  }),
-);
+export const servicesListMetricsAverage = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListMetricsAverageInput,
+  outputSchema: ServicesListMetricsAverageOutput,
+}));
 // Input Schema
 export interface ServicesListMetricsSumInput {
   serviceName: string;
@@ -5590,7 +5528,7 @@ export interface ServicesListMetricsSumInput {
   groupName: string;
 }
 export const ServicesListMetricsSumInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     metricName: Schema.String.pipe(T.PathParam()),
     groupName: Schema.String.pipe(T.PathParam()),
@@ -5610,7 +5548,7 @@ export interface ServicesListMetricsSumOutput {
   continuationToken?: string;
 }
 export const ServicesListMetricsSumOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -5633,18 +5571,16 @@ export const ServicesListMetricsSumOutput =
  * @param groupName - The group name
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesListMetricsSum = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesListMetricsSumInput,
-    outputSchema: ServicesListMetricsSumOutput,
-  }),
-);
+export const servicesListMetricsSum = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesListMetricsSumInput,
+  outputSchema: ServicesListMetricsSumOutput,
+}));
 // Input Schema
 export interface ServicesListMonitoringConfigurationsInput {
   serviceName: string;
 }
 export const ServicesListMonitoringConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5659,7 +5595,7 @@ export interface ServicesListMonitoringConfigurationsOutput {
   value?: { key?: string; value?: string }[];
 }
 export const ServicesListMonitoringConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5678,7 +5614,7 @@ export const ServicesListMonitoringConfigurationsOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListMonitoringConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServicesListMonitoringConfigurationsInput,
     outputSchema: ServicesListMonitoringConfigurationsOutput,
   }));
@@ -5690,7 +5626,7 @@ export interface ServicesListPremiumInput {
   takeCount?: number;
 }
 export const ServicesListPremiumInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $filter: Schema.optional(Schema.String),
     serviceType: Schema.optional(Schema.String),
     skipCount: Schema.optional(Schema.Number),
@@ -5736,7 +5672,7 @@ export interface ServicesListPremiumOutput {
   continuationToken?: string;
 }
 export const ServicesListPremiumOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextLink: Schema.optional(Schema.String),
     value: Schema.optional(
       Schema.Array(
@@ -5788,7 +5724,7 @@ export const ServicesListPremiumOutput =
  * @param takeCount - The take count , which specifies the number of elements that can be returned from a sequence.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesListPremium = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const servicesListPremium = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesListPremiumInput,
   outputSchema: ServicesListPremiumOutput,
 }));
@@ -5798,7 +5734,7 @@ export interface ServicesListUserBadPasswordReportInput {
   dataSource?: string;
 }
 export const ServicesListUserBadPasswordReportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     dataSource: Schema.optional(Schema.String),
   }).pipe(
@@ -5820,7 +5756,7 @@ export interface ServicesListUserBadPasswordReportOutput {
   }[];
 }
 export const ServicesListUserBadPasswordReportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -5843,7 +5779,7 @@ export const ServicesListUserBadPasswordReportOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesListUserBadPasswordReport =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServicesListUserBadPasswordReportInput,
     outputSchema: ServicesListUserBadPasswordReportOutput,
   }));
@@ -5874,7 +5810,7 @@ export interface ServicesUpdateInput {
   tenantId?: string;
   type?: string;
 }
-export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesUpdateInput = /*@__PURE__*/ Schema.Struct({
   serviceName: Schema.String.pipe(T.PathParam()),
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
@@ -5934,7 +5870,7 @@ export interface ServicesUpdateOutput {
   tenantId?: string;
   type?: string;
 }
-export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   activeAlerts: Schema.optional(Schema.Number),
   additionalInformation: Schema.optional(Schema.String),
@@ -5968,7 +5904,7 @@ export const ServicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param serviceName - The name of the service which needs to be deleted.
  * @param api-version - The version of the API to be used with the client request.
  */
-export const servicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const servicesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesUpdateInput,
   outputSchema: ServicesUpdateOutput,
 }));
@@ -5979,7 +5915,7 @@ export interface ServicesUpdateMonitoringConfigurationInput {
   value?: string;
 }
 export const ServicesUpdateMonitoringConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     key: Schema.optional(Schema.String),
     value: Schema.optional(Schema.String),
@@ -5994,7 +5930,7 @@ export const ServicesUpdateMonitoringConfigurationInput =
 // Output Schema
 export type ServicesUpdateMonitoringConfigurationOutput = void;
 export const ServicesUpdateMonitoringConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesUpdateMonitoringConfigurationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesUpdateMonitoringConfigurationOutput>;
 
 // The operation
 /**
@@ -6004,7 +5940,7 @@ export const ServicesUpdateMonitoringConfigurationOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const servicesUpdateMonitoringConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServicesUpdateMonitoringConfigurationInput,
     outputSchema: ServicesUpdateMonitoringConfigurationOutput,
   }));
@@ -6019,7 +5955,7 @@ export interface UpdateIPAddressAggregateSettingsInput {
   emailNotificationEnabled?: boolean;
 }
 export const UpdateIPAddressAggregateSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceName: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     badPasswordAndExtranetLockoutCombinedDailyThreshold: Schema.optional(
@@ -6049,7 +5985,7 @@ export interface UpdateIPAddressAggregateSettingsOutput {
   emailNotificationEnabled?: boolean;
 }
 export const UpdateIPAddressAggregateSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     badPasswordAndExtranetLockoutCombinedDailyThreshold: Schema.optional(
       Schema.Number,
@@ -6070,7 +6006,7 @@ export const UpdateIPAddressAggregateSettingsOutput =
  * @param api-version - The version of the API to be used with the client request.
  */
 export const updateIPAddressAggregateSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateIPAddressAggregateSettingsInput,
     outputSchema: UpdateIPAddressAggregateSettingsOutput,
   }));

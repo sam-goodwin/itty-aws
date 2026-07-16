@@ -9,7 +9,7 @@ export interface LlmPromptsNameDuplicateCreateInput {
   new_name?: string;
 }
 export const LlmPromptsNameDuplicateCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     prompt_name: Schema.String.pipe(T.PathParam()),
     new_name: Schema.optional(Schema.String),
@@ -57,7 +57,7 @@ export interface LlmPromptsNameDuplicateCreateOutput {
   outline?: { level?: number; text?: string }[];
 }
 export const LlmPromptsNameDuplicateCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     prompt: Schema.optional(Schema.Unknown),
@@ -118,7 +118,7 @@ export const LlmPromptsNameDuplicateCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const llmPromptsNameDuplicateCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmPromptsNameDuplicateCreateInput,
     outputSchema: LlmPromptsNameDuplicateCreateOutput,
   }));

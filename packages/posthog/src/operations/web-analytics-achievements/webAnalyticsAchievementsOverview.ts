@@ -7,7 +7,7 @@ export interface WebAnalyticsAchievementsOverviewInput {
   project_id: string;
 }
 export const WebAnalyticsAchievementsOverviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -47,7 +47,7 @@ export interface WebAnalyticsAchievementsOverviewOutput {
   }[];
 }
 export const WebAnalyticsAchievementsOverviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     definitions: Schema.Array(
       Schema.Struct({
         key: Schema.String,
@@ -100,7 +100,7 @@ export const WebAnalyticsAchievementsOverviewOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const webAnalyticsAchievementsOverview =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WebAnalyticsAchievementsOverviewInput,
     outputSchema: WebAnalyticsAchievementsOverviewOutput,
   }));

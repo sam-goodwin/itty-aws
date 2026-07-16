@@ -10,7 +10,7 @@ export interface WarehouseColumnAnnotationsListInput {
   table_id?: string;
 }
 export const WarehouseColumnAnnotationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     limit: Schema.optional(Schema.Number),
     offset: Schema.optional(Schema.Number),
@@ -40,7 +40,7 @@ export interface WarehouseColumnAnnotationsListOutput {
   }[];
 }
 export const WarehouseColumnAnnotationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.Number,
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -76,7 +76,7 @@ export const WarehouseColumnAnnotationsListOutput =
  * @param table_id - Only return annotations for this data warehouse table.
  */
 export const warehouseColumnAnnotationsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WarehouseColumnAnnotationsListInput,
     outputSchema: WarehouseColumnAnnotationsListOutput,
   }));

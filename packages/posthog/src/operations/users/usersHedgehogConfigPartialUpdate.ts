@@ -723,7 +723,7 @@ export interface UsersHedgehogConfigPartialUpdateInput {
   requires_credential_review?: boolean;
 }
 export const UsersHedgehogConfigPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     date_joined: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1524,11 +1524,11 @@ export const UsersHedgehogConfigPartialUpdateInput =
 // Output Schema
 export type UsersHedgehogConfigPartialUpdateOutput = void;
 export const UsersHedgehogConfigPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersHedgehogConfigPartialUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersHedgehogConfigPartialUpdateOutput>;
 
 // The operation
 export const usersHedgehogConfigPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersHedgehogConfigPartialUpdateInput,
     outputSchema: UsersHedgehogConfigPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

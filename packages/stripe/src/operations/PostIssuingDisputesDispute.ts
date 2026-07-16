@@ -92,7 +92,7 @@ export interface PostIssuingDisputesDisputeInput {
   metadata?: Record<string, string> | "";
 }
 export const PostIssuingDisputesDisputeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dispute: Schema.String.pipe(T.PathParam()),
     amount: Schema.optional(Schema.Number),
     evidence: Schema.optional(
@@ -1043,7 +1043,7 @@ export interface PostIssuingDisputesDisputeOutput {
   treasury?: { debit_reversal: string | null; received_debit: string } | null;
 }
 export const PostIssuingDisputesDisputeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transactions: Schema.optional(
       Schema.NullOr(
@@ -1943,9 +1943,7 @@ export const PostIssuingDisputesDisputeOutput =
  *
  * <p>Updates the specified Issuing <code>Dispute</code> object by setting the values of the parameters passed. Any parameters not provided will be left unchanged. Properties on the <code>evidence</code> object can be unset by passing in an empty string.</p>
  */
-export const PostIssuingDisputesDispute = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostIssuingDisputesDisputeInput,
-    outputSchema: PostIssuingDisputesDisputeOutput,
-  }),
-);
+export const PostIssuingDisputesDispute = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostIssuingDisputesDisputeInput,
+  outputSchema: PostIssuingDisputesDisputeOutput,
+}));

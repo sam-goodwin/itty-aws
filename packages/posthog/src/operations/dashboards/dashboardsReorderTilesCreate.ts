@@ -12,7 +12,7 @@ export interface DashboardsReorderTilesCreateInput {
   layout?: "preserve" | "two_column" | "full_width";
 }
 export const DashboardsReorderTilesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["json", "txt"])),
@@ -83,7 +83,7 @@ export interface DashboardsReorderTilesCreateOutput {
   _create_in_folder?: string;
 }
 export const DashboardsReorderTilesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
     name: Schema.optional(Schema.NullOr(Schema.String)),
     description: Schema.optional(Schema.String),
@@ -169,7 +169,7 @@ export const DashboardsReorderTilesCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const dashboardsReorderTilesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DashboardsReorderTilesCreateInput,
     outputSchema: DashboardsReorderTilesCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -10,7 +10,7 @@ export interface CreateGroupClusterBackupExportInput {
   envelope?: boolean;
 }
 export const CreateGroupClusterBackupExportInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const CreateGroupClusterBackupExportInput =
 // Output Schema
 export type CreateGroupClusterBackupExportOutput = void;
 export const CreateGroupClusterBackupExportOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterBackupExportOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupClusterBackupExportOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const CreateGroupClusterBackupExportOutput =
  * @param clusterName - Human-readable label that identifies the cluster.
  */
 export const createGroupClusterBackupExport =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateGroupClusterBackupExportInput,
     outputSchema: CreateGroupClusterBackupExportOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

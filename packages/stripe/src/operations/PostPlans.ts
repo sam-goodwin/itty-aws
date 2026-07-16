@@ -39,7 +39,7 @@ export interface PostPlansInput {
   trial_period_days?: number;
   usage_type?: "licensed" | "metered";
 }
-export const PostPlansInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPlansInput = /*@__PURE__*/ Schema.Struct({
   active: Schema.optional(Schema.Boolean),
   amount: Schema.optional(Schema.Number),
   amount_decimal: Schema.optional(Schema.String),
@@ -231,7 +231,7 @@ export interface PostPlansOutput {
   trial_period_days: number | null;
   usage_type: "licensed" | "metered";
 }
-export const PostPlansOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostPlansOutput = /*@__PURE__*/ Schema.Struct({
   active: Schema.Boolean,
   amount: Schema.NullOr(Schema.Number),
   amount_decimal: Schema.NullOr(Schema.String),
@@ -275,7 +275,7 @@ export const PostPlansOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * <p>You can now model subscriptions more flexibly using the <a href="#prices">Prices API</a>. It replaces the Plans API and is backwards compatible to simplify your migration.</p>
  */
-export const PostPlans = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostPlans = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostPlansInput,
   outputSchema: PostPlansOutput,
 }));

@@ -12,7 +12,7 @@ export interface CreateProjectBranchRoleInput {
   role: { name: string; no_login?: boolean };
 }
 export const CreateProjectBranchRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
     role: Schema.Struct({
@@ -93,7 +93,7 @@ export interface CreateProjectBranchRoleOutput {
   }[];
 }
 export const CreateProjectBranchRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     role: Schema.Struct({
       branch_id: Schema.String,
       name: Schema.String,
@@ -175,10 +175,8 @@ export const CreateProjectBranchRoleOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
  */
-export const createProjectBranchRole = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateProjectBranchRoleInput,
-    outputSchema: CreateProjectBranchRoleOutput,
-    errors: [NotFound, Conflict] as const,
-  }),
-);
+export const createProjectBranchRole = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateProjectBranchRoleInput,
+  outputSchema: CreateProjectBranchRoleOutput,
+  errors: [NotFound, Conflict] as const,
+}));

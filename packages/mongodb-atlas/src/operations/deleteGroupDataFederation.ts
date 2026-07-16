@@ -11,7 +11,7 @@ export interface DeleteGroupDataFederationInput {
   pretty?: boolean;
 }
 export const DeleteGroupDataFederationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     tenantName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const DeleteGroupDataFederationInput =
 // Output Schema
 export type DeleteGroupDataFederationOutput = void;
 export const DeleteGroupDataFederationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupDataFederationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupDataFederationOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const DeleteGroupDataFederationOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param tenantName - Human-readable label that identifies the federated database instance to remove.
  */
-export const deleteGroupDataFederation = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteGroupDataFederationInput,
-    outputSchema: DeleteGroupDataFederationOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const deleteGroupDataFederation = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteGroupDataFederationInput,
+  outputSchema: DeleteGroupDataFederationOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

@@ -9,7 +9,7 @@ export interface ProxyRecordsDestroyInput {
   organization_id: string;
 }
 export const ProxyRecordsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     organization_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const ProxyRecordsDestroyInput =
 // Output Schema
 export type ProxyRecordsDestroyOutput = void;
 export const ProxyRecordsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ProxyRecordsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ProxyRecordsDestroyOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const ProxyRecordsDestroyOutput =
  * @param id - A UUID string identifying this proxy record.
  * @param organization_id - ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/.
  */
-export const proxyRecordsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const proxyRecordsDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: ProxyRecordsDestroyInput,
   outputSchema: ProxyRecordsDestroyOutput,
   errors: [Forbidden, NotFound] as const,

@@ -14,7 +14,7 @@ export interface CreateEvmSwapQuoteInput {
   slippageBps?: number;
 }
 export const CreateEvmSwapQuoteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     network: Schema.Literals([
       "base",
       "ethereum",
@@ -81,7 +81,7 @@ export type CreateEvmSwapQuoteOutput =
     }
   | { liquidityAvailable: false };
 export const CreateEvmSwapQuoteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  /*@__PURE__*/ Schema.Union([
     Schema.Struct({
       permit2: Schema.NullOr(
         Schema.Struct({
@@ -161,7 +161,7 @@ When included, duplicate requests with the same key will return identical respon
 Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/idempotency) for more information on using idempotency keys.
 
  */
-export const createEvmSwapQuote = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createEvmSwapQuote = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateEvmSwapQuoteInput,
   outputSchema: CreateEvmSwapQuoteOutput,
 }));

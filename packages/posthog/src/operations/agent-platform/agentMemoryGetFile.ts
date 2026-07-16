@@ -9,7 +9,7 @@ export interface AgentMemoryGetFileInput {
   path: string;
 }
 export const AgentMemoryGetFileInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     path: Schema.String,
@@ -25,7 +25,7 @@ export interface AgentMemoryGetFileOutput {
   content: string;
 }
 export const AgentMemoryGetFileOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     content: Schema.String,
   }) as unknown as Schema.Codec<AgentMemoryGetFileOutput>;
 
@@ -36,7 +36,7 @@ export const AgentMemoryGetFileOutput =
  * @param path - Memory path returned by the list endpoint, e.g. 'incidents/db.md'.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const agentMemoryGetFile = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const agentMemoryGetFile = /*@__PURE__*/ API.make(() => ({
   inputSchema: AgentMemoryGetFileInput,
   outputSchema: AgentMemoryGetFileOutput,
 }));

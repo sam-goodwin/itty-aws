@@ -9,7 +9,7 @@ export interface GetOnrampUserLimitsInput {
   userIdType: "phone_number";
 }
 export const GetOnrampUserLimitsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     paymentMethodType: Schema.Literals([
       "GUEST_CHECKOUT_APPLE_PAY",
       "GUEST_CHECKOUT_GOOGLE_PAY",
@@ -30,7 +30,7 @@ export interface GetOnrampUserLimitsOutput {
   }[];
 }
 export const GetOnrampUserLimitsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     limits: Schema.Array(
       Schema.Struct({
         limitType: Schema.Literals([
@@ -51,7 +51,7 @@ export const GetOnrampUserLimitsOutput =
  * Returns the transaction limits for an onramp user based on their payment method and user identifier. Use this API to show users their remaining purchase capacity before initiating an onramp transaction.
  * Currently supports `GUEST_CHECKOUT_APPLE_PAY` payment method with phone number identification. The phone number must have been previously verified via OTP.
  */
-export const getOnrampUserLimits = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOnrampUserLimits = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOnrampUserLimitsInput,
   outputSchema: GetOnrampUserLimitsOutput,
 }));

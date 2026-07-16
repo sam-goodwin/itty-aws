@@ -16,7 +16,7 @@ export interface FabricCapacitiesCheckNameAvailabilityInput {
   type?: string;
 }
 export const FabricCapacitiesCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
@@ -36,7 +36,7 @@ export interface FabricCapacitiesCheckNameAvailabilityOutput {
   message?: string;
 }
 export const FabricCapacitiesCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nameAvailable: Schema.optional(Schema.Boolean),
     reason: Schema.optional(Schema.Literals(["Invalid", "AlreadyExists"])),
     message: Schema.optional(Schema.String),
@@ -53,7 +53,7 @@ export const FabricCapacitiesCheckNameAvailabilityOutput =
  * @param type - The resource type.
  */
 export const FabricCapacitiesCheckNameAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FabricCapacitiesCheckNameAvailabilityInput,
     outputSchema: FabricCapacitiesCheckNameAvailabilityOutput,
   }));
@@ -90,7 +90,7 @@ export interface FabricCapacitiesCreateOrUpdateInput {
   location: string;
 }
 export const FabricCapacitiesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
@@ -154,7 +154,7 @@ export interface FabricCapacitiesCreateOrUpdateOutput {
   };
 }
 export const FabricCapacitiesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -184,7 +184,7 @@ export const FabricCapacitiesCreateOrUpdateOutput =
  * @param capacityName - The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
 export const FabricCapacitiesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FabricCapacitiesCreateOrUpdateInput,
     outputSchema: FabricCapacitiesCreateOrUpdateOutput,
   }));
@@ -195,7 +195,7 @@ export interface FabricCapacitiesDeleteInput {
   capacityName: string;
 }
 export const FabricCapacitiesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
@@ -210,7 +210,7 @@ export const FabricCapacitiesDeleteInput =
 // Output Schema
 export type FabricCapacitiesDeleteOutput = void;
 export const FabricCapacitiesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FabricCapacitiesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FabricCapacitiesDeleteOutput>;
 
 // The operation
 /**
@@ -221,12 +221,10 @@ export const FabricCapacitiesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param capacityName - The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const FabricCapacitiesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FabricCapacitiesDeleteInput,
-    outputSchema: FabricCapacitiesDeleteOutput,
-  }),
-);
+export const FabricCapacitiesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FabricCapacitiesDeleteInput,
+  outputSchema: FabricCapacitiesDeleteOutput,
+}));
 // Input Schema
 export interface FabricCapacitiesGetInput {
   subscriptionId: string;
@@ -234,7 +232,7 @@ export interface FabricCapacitiesGetInput {
   capacityName: string;
 }
 export const FabricCapacitiesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
@@ -261,7 +259,7 @@ export interface FabricCapacitiesGetOutput {
   };
 }
 export const FabricCapacitiesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -290,7 +288,7 @@ export const FabricCapacitiesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param capacityName - The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const FabricCapacitiesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FabricCapacitiesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FabricCapacitiesGetInput,
   outputSchema: FabricCapacitiesGetOutput,
 }));
@@ -300,7 +298,7 @@ export interface FabricCapacitiesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const FabricCapacitiesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -329,7 +327,7 @@ export interface FabricCapacitiesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const FabricCapacitiesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -373,7 +371,7 @@ export const FabricCapacitiesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const FabricCapacitiesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FabricCapacitiesListByResourceGroupInput,
     outputSchema: FabricCapacitiesListByResourceGroupOutput,
   }));
@@ -382,7 +380,7 @@ export interface FabricCapacitiesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const FabricCapacitiesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -410,7 +408,7 @@ export interface FabricCapacitiesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const FabricCapacitiesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -453,7 +451,7 @@ export const FabricCapacitiesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const FabricCapacitiesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FabricCapacitiesListBySubscriptionInput,
     outputSchema: FabricCapacitiesListBySubscriptionOutput,
   }));
@@ -462,7 +460,7 @@ export interface FabricCapacitiesListSkusInput {
   subscriptionId: string;
 }
 export const FabricCapacitiesListSkusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -478,7 +476,7 @@ export interface FabricCapacitiesListSkusOutput {
   nextLink?: string;
 }
 export const FabricCapacitiesListSkusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         resourceType: Schema.String,
@@ -496,12 +494,10 @@ export const FabricCapacitiesListSkusOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const FabricCapacitiesListSkus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FabricCapacitiesListSkusInput,
-    outputSchema: FabricCapacitiesListSkusOutput,
-  }),
-);
+export const FabricCapacitiesListSkus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FabricCapacitiesListSkusInput,
+  outputSchema: FabricCapacitiesListSkusOutput,
+}));
 // Input Schema
 export interface FabricCapacitiesListSkusForCapacityInput {
   subscriptionId: string;
@@ -509,7 +505,7 @@ export interface FabricCapacitiesListSkusForCapacityInput {
   capacityName: string;
 }
 export const FabricCapacitiesListSkusForCapacityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
@@ -527,7 +523,7 @@ export interface FabricCapacitiesListSkusForCapacityOutput {
   nextLink?: string;
 }
 export const FabricCapacitiesListSkusForCapacityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         resourceType: Schema.String,
@@ -550,7 +546,7 @@ export const FabricCapacitiesListSkusForCapacityOutput =
  * @param capacityName - The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
 export const FabricCapacitiesListSkusForCapacity =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FabricCapacitiesListSkusForCapacityInput,
     outputSchema: FabricCapacitiesListSkusForCapacityOutput,
   }));
@@ -561,7 +557,7 @@ export interface FabricCapacitiesResumeInput {
   capacityName: string;
 }
 export const FabricCapacitiesResumeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
@@ -576,7 +572,7 @@ export const FabricCapacitiesResumeInput =
 // Output Schema
 export type FabricCapacitiesResumeOutput = void;
 export const FabricCapacitiesResumeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FabricCapacitiesResumeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FabricCapacitiesResumeOutput>;
 
 // The operation
 /**
@@ -587,12 +583,10 @@ export const FabricCapacitiesResumeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param capacityName - The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const FabricCapacitiesResume = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FabricCapacitiesResumeInput,
-    outputSchema: FabricCapacitiesResumeOutput,
-  }),
-);
+export const FabricCapacitiesResume = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FabricCapacitiesResumeInput,
+  outputSchema: FabricCapacitiesResumeOutput,
+}));
 // Input Schema
 export interface FabricCapacitiesSuspendInput {
   subscriptionId: string;
@@ -600,7 +594,7 @@ export interface FabricCapacitiesSuspendInput {
   capacityName: string;
 }
 export const FabricCapacitiesSuspendInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
@@ -615,7 +609,7 @@ export const FabricCapacitiesSuspendInput =
 // Output Schema
 export type FabricCapacitiesSuspendOutput = void;
 export const FabricCapacitiesSuspendOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FabricCapacitiesSuspendOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FabricCapacitiesSuspendOutput>;
 
 // The operation
 /**
@@ -626,12 +620,10 @@ export const FabricCapacitiesSuspendOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param capacityName - The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const FabricCapacitiesSuspend = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FabricCapacitiesSuspendInput,
-    outputSchema: FabricCapacitiesSuspendOutput,
-  }),
-);
+export const FabricCapacitiesSuspend = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FabricCapacitiesSuspendInput,
+  outputSchema: FabricCapacitiesSuspendOutput,
+}));
 // Input Schema
 export interface FabricCapacitiesUpdateInput {
   subscriptionId: string;
@@ -642,7 +634,7 @@ export interface FabricCapacitiesUpdateInput {
   properties?: { administration?: { members: string[] } };
 }
 export const FabricCapacitiesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     capacityName: Schema.String.pipe(T.PathParam()),
@@ -685,7 +677,7 @@ export interface FabricCapacitiesUpdateOutput {
   };
 }
 export const FabricCapacitiesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -714,17 +706,13 @@ export const FabricCapacitiesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param capacityName - The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63.
  */
-export const FabricCapacitiesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FabricCapacitiesUpdateInput,
-    outputSchema: FabricCapacitiesUpdateOutput,
-  }),
-);
+export const FabricCapacitiesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FabricCapacitiesUpdateInput,
+  outputSchema: FabricCapacitiesUpdateOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Fabric/operations",
@@ -748,7 +736,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -778,7 +766,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));

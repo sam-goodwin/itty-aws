@@ -9,7 +9,7 @@ export interface GetBackupPolicyInput {
   organization: string;
   database: string;
 }
-export const GetBackupPolicyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBackupPolicyInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
@@ -39,7 +39,7 @@ export interface GetBackupPolicyOutput {
   next_run_at: string | null;
   required: boolean;
 }
-export const GetBackupPolicyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetBackupPolicyOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   display_name: Schema.String,
   name: Schema.String,
@@ -66,7 +66,7 @@ export const GetBackupPolicyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param organization - Organization name slug from `list_organizations`. Example: `acme`.
  * @param database - Database name slug from `list_databases`. Example: `app-db`.
  */
-export const getBackupPolicy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getBackupPolicy = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetBackupPolicyInput,
   outputSchema: GetBackupPolicyOutput,
   errors: [Forbidden, NotFound] as const,

@@ -9,7 +9,7 @@ export interface V1DeleteASsoProviderInput {
   provider_id: string;
 }
 export const V1DeleteASsoProviderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     provider_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -54,7 +54,7 @@ export interface V1DeleteASsoProviderOutput {
   updated_at?: string;
 }
 export const V1DeleteASsoProviderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     saml: Schema.optional(
       Schema.Struct({
@@ -112,10 +112,8 @@ export const V1DeleteASsoProviderOutput =
  *
  * @param ref - Project ref
  */
-export const v1DeleteASsoProvider = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1DeleteASsoProviderInput,
-    outputSchema: V1DeleteASsoProviderOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const v1DeleteASsoProvider = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1DeleteASsoProviderInput,
+  outputSchema: V1DeleteASsoProviderOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

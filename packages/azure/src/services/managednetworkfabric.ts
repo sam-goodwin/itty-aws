@@ -140,7 +140,7 @@ export interface AccessControlListsCreateInput {
   location: string;
 }
 export const AccessControlListsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accessControlListName: Schema.String.pipe(T.PathParam()),
@@ -448,7 +448,7 @@ export interface AccessControlListsCreateOutput {
   };
 }
 export const AccessControlListsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -477,12 +477,10 @@ export const AccessControlListsCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accessControlListName - Name of the Access Control List.
  */
-export const AccessControlListsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessControlListsCreateInput,
-    outputSchema: AccessControlListsCreateOutput,
-  }),
-);
+export const AccessControlListsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessControlListsCreateInput,
+  outputSchema: AccessControlListsCreateOutput,
+}));
 // Input Schema
 export interface AccessControlListsDeleteInput {
   subscriptionId: string;
@@ -490,7 +488,7 @@ export interface AccessControlListsDeleteInput {
   accessControlListName: string;
 }
 export const AccessControlListsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accessControlListName: Schema.String.pipe(T.PathParam()),
@@ -505,7 +503,7 @@ export const AccessControlListsDeleteInput =
 // Output Schema
 export type AccessControlListsDeleteOutput = void;
 export const AccessControlListsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessControlListsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessControlListsDeleteOutput>;
 
 // The operation
 /**
@@ -516,12 +514,10 @@ export const AccessControlListsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accessControlListName - Name of the Access Control List.
  */
-export const AccessControlListsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessControlListsDeleteInput,
-    outputSchema: AccessControlListsDeleteOutput,
-  }),
-);
+export const AccessControlListsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessControlListsDeleteInput,
+  outputSchema: AccessControlListsDeleteOutput,
+}));
 // Input Schema
 export interface AccessControlListsGetInput {
   subscriptionId: string;
@@ -529,7 +525,7 @@ export interface AccessControlListsGetInput {
   accessControlListName: string;
 }
 export const AccessControlListsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accessControlListName: Schema.String.pipe(T.PathParam()),
@@ -556,7 +552,7 @@ export interface AccessControlListsGetOutput {
   };
 }
 export const AccessControlListsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -585,19 +581,17 @@ export const AccessControlListsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accessControlListName - Name of the Access Control List.
  */
-export const AccessControlListsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessControlListsGetInput,
-    outputSchema: AccessControlListsGetOutput,
-  }),
-);
+export const AccessControlListsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessControlListsGetInput,
+  outputSchema: AccessControlListsGetOutput,
+}));
 // Input Schema
 export interface AccessControlListsListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const AccessControlListsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -626,7 +620,7 @@ export interface AccessControlListsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const AccessControlListsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -670,7 +664,7 @@ export const AccessControlListsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const AccessControlListsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccessControlListsListByResourceGroupInput,
     outputSchema: AccessControlListsListByResourceGroupOutput,
   }));
@@ -679,7 +673,7 @@ export interface AccessControlListsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const AccessControlListsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -707,7 +701,7 @@ export interface AccessControlListsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const AccessControlListsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -750,7 +744,7 @@ export const AccessControlListsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const AccessControlListsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccessControlListsListBySubscriptionInput,
     outputSchema: AccessControlListsListBySubscriptionOutput,
   }));
@@ -761,7 +755,7 @@ export interface AccessControlListsResyncInput {
   accessControlListName: string;
 }
 export const AccessControlListsResyncInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accessControlListName: Schema.String.pipe(T.PathParam()),
@@ -784,7 +778,7 @@ export interface AccessControlListsResyncOutput {
   };
 }
 export const AccessControlListsResyncOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -812,12 +806,10 @@ export const AccessControlListsResyncOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accessControlListName - Name of the Access Control List.
  */
-export const AccessControlListsResync = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessControlListsResyncInput,
-    outputSchema: AccessControlListsResyncOutput,
-  }),
-);
+export const AccessControlListsResync = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessControlListsResyncInput,
+  outputSchema: AccessControlListsResyncOutput,
+}));
 // Input Schema
 export interface AccessControlListsUpdateInput {
   subscriptionId: string;
@@ -916,7 +908,7 @@ export interface AccessControlListsUpdateInput {
   tags?: Record<string, string>;
 }
 export const AccessControlListsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accessControlListName: Schema.String.pipe(T.PathParam()),
@@ -1183,7 +1175,7 @@ export interface AccessControlListsUpdateOutput {
   };
 }
 export const AccessControlListsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1212,12 +1204,10 @@ export const AccessControlListsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param accessControlListName - Name of the Access Control List.
  */
-export const AccessControlListsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessControlListsUpdateInput,
-    outputSchema: AccessControlListsUpdateOutput,
-  }),
-);
+export const AccessControlListsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessControlListsUpdateInput,
+  outputSchema: AccessControlListsUpdateOutput,
+}));
 // Input Schema
 export interface AccessControlListsUpdateAdministrativeStateInput {
   subscriptionId: string;
@@ -1227,7 +1217,7 @@ export interface AccessControlListsUpdateAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const AccessControlListsUpdateAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accessControlListName: Schema.String.pipe(T.PathParam()),
@@ -1301,7 +1291,7 @@ export interface AccessControlListsUpdateAdministrativeStateOutput {
   properties?: { successfulResources?: string[]; failedResources?: string[] };
 }
 export const AccessControlListsUpdateAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -1419,7 +1409,7 @@ export const AccessControlListsUpdateAdministrativeStateOutput =
  * @param accessControlListName - Name of the Access Control List.
  */
 export const AccessControlListsUpdateAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccessControlListsUpdateAdministrativeStateInput,
     outputSchema: AccessControlListsUpdateAdministrativeStateOutput,
   }));
@@ -1430,7 +1420,7 @@ export interface AccessControlListsValidateConfigurationInput {
   accessControlListName: string;
 }
 export const AccessControlListsValidateConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     accessControlListName: Schema.String.pipe(T.PathParam()),
@@ -1453,7 +1443,7 @@ export interface AccessControlListsValidateConfigurationOutput {
   };
 }
 export const AccessControlListsValidateConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -1482,7 +1472,7 @@ export const AccessControlListsValidateConfigurationOutput =
  * @param accessControlListName - Name of the Access Control List.
  */
 export const AccessControlListsValidateConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccessControlListsValidateConfigurationInput,
     outputSchema: AccessControlListsValidateConfigurationOutput,
   }));
@@ -1590,7 +1580,7 @@ export interface ExternalNetworksCreateInput {
   };
 }
 export const ExternalNetworksCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -1791,7 +1781,7 @@ export interface ExternalNetworksCreateOutput {
   };
 }
 export const ExternalNetworksCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1821,12 +1811,10 @@ export const ExternalNetworksCreateOutput =
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  * @param externalNetworkName - Name of the External Network.
  */
-export const ExternalNetworksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExternalNetworksCreateInput,
-    outputSchema: ExternalNetworksCreateOutput,
-  }),
-);
+export const ExternalNetworksCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExternalNetworksCreateInput,
+  outputSchema: ExternalNetworksCreateOutput,
+}));
 // Input Schema
 export interface ExternalNetworksDeleteInput {
   subscriptionId: string;
@@ -1835,7 +1823,7 @@ export interface ExternalNetworksDeleteInput {
   externalNetworkName: string;
 }
 export const ExternalNetworksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -1851,7 +1839,7 @@ export const ExternalNetworksDeleteInput =
 // Output Schema
 export type ExternalNetworksDeleteOutput = void;
 export const ExternalNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalNetworksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExternalNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -1863,12 +1851,10 @@ export const ExternalNetworksDeleteOutput =
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  * @param externalNetworkName - Name of the External Network.
  */
-export const ExternalNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExternalNetworksDeleteInput,
-    outputSchema: ExternalNetworksDeleteOutput,
-  }),
-);
+export const ExternalNetworksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExternalNetworksDeleteInput,
+  outputSchema: ExternalNetworksDeleteOutput,
+}));
 // Input Schema
 export interface ExternalNetworksGetInput {
   subscriptionId: string;
@@ -1877,7 +1863,7 @@ export interface ExternalNetworksGetInput {
   externalNetworkName: string;
 }
 export const ExternalNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -1905,7 +1891,7 @@ export interface ExternalNetworksGetOutput {
   };
 }
 export const ExternalNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1935,7 +1921,7 @@ export const ExternalNetworksGetOutput =
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  * @param externalNetworkName - Name of the External Network.
  */
-export const ExternalNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ExternalNetworksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExternalNetworksGetInput,
   outputSchema: ExternalNetworksGetOutput,
 }));
@@ -1946,7 +1932,7 @@ export interface ExternalNetworksListByL3IsolationDomainInput {
   l3IsolationDomainName: string;
 }
 export const ExternalNetworksListByL3IsolationDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -1976,7 +1962,7 @@ export interface ExternalNetworksListByL3IsolationDomainOutput {
   nextLink?: string;
 }
 export const ExternalNetworksListByL3IsolationDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2021,7 +2007,7 @@ export const ExternalNetworksListByL3IsolationDomainOutput =
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
 export const ExternalNetworksListByL3IsolationDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalNetworksListByL3IsolationDomainInput,
     outputSchema: ExternalNetworksListByL3IsolationDomainOutput,
   }));
@@ -2099,7 +2085,7 @@ export interface ExternalNetworksUpdateInput {
   };
 }
 export const ExternalNetworksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -2259,7 +2245,7 @@ export interface ExternalNetworksUpdateOutput {
   };
 }
 export const ExternalNetworksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2289,12 +2275,10 @@ export const ExternalNetworksUpdateOutput =
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  * @param externalNetworkName - Name of the External Network.
  */
-export const ExternalNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExternalNetworksUpdateInput,
-    outputSchema: ExternalNetworksUpdateOutput,
-  }),
-);
+export const ExternalNetworksUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExternalNetworksUpdateInput,
+  outputSchema: ExternalNetworksUpdateOutput,
+}));
 // Input Schema
 export interface ExternalNetworksUpdateAdministrativeStateInput {
   subscriptionId: string;
@@ -2305,7 +2289,7 @@ export interface ExternalNetworksUpdateAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const ExternalNetworksUpdateAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -2380,7 +2364,7 @@ export interface ExternalNetworksUpdateAdministrativeStateOutput {
   properties?: { successfulResources?: string[]; failedResources?: string[] };
 }
 export const ExternalNetworksUpdateAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -2499,7 +2483,7 @@ export const ExternalNetworksUpdateAdministrativeStateOutput =
  * @param externalNetworkName - Name of the External Network.
  */
 export const ExternalNetworksUpdateAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalNetworksUpdateAdministrativeStateInput,
     outputSchema: ExternalNetworksUpdateAdministrativeStateOutput,
   }));
@@ -2513,7 +2497,7 @@ export interface ExternalNetworksUpdateBfdAdministrativeStateInput {
   administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
 }
 export const ExternalNetworksUpdateBfdAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -2591,7 +2575,7 @@ export interface ExternalNetworksUpdateBfdAdministrativeStateOutput {
   };
 }
 export const ExternalNetworksUpdateBfdAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -2712,7 +2696,7 @@ export const ExternalNetworksUpdateBfdAdministrativeStateOutput =
  * @param externalNetworkName - Name of the External Network.
  */
 export const ExternalNetworksUpdateBfdAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalNetworksUpdateBfdAdministrativeStateInput,
     outputSchema: ExternalNetworksUpdateBfdAdministrativeStateOutput,
   }));
@@ -2726,7 +2710,7 @@ export interface ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -2801,7 +2785,7 @@ export interface ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput {
   properties?: { successfulResources?: string[]; failedResources?: string[] };
 }
 export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -2920,7 +2904,7 @@ export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
  * @param externalNetworkName - Name of the External Network.
  */
 export const ExternalNetworksUpdateStaticRouteBfdAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput,
     outputSchema: ExternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput,
   }));
@@ -3006,7 +2990,7 @@ export interface InternalNetworksCreateInput {
   };
 }
 export const InternalNetworksCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -3173,7 +3157,7 @@ export interface InternalNetworksCreateOutput {
   };
 }
 export const InternalNetworksCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3203,12 +3187,10 @@ export const InternalNetworksCreateOutput =
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  * @param internalNetworkName - Name of the Internal Network.
  */
-export const InternalNetworksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InternalNetworksCreateInput,
-    outputSchema: InternalNetworksCreateOutput,
-  }),
-);
+export const InternalNetworksCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InternalNetworksCreateInput,
+  outputSchema: InternalNetworksCreateOutput,
+}));
 // Input Schema
 export interface InternalNetworksDeleteInput {
   subscriptionId: string;
@@ -3217,7 +3199,7 @@ export interface InternalNetworksDeleteInput {
   internalNetworkName: string;
 }
 export const InternalNetworksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -3233,7 +3215,7 @@ export const InternalNetworksDeleteInput =
 // Output Schema
 export type InternalNetworksDeleteOutput = void;
 export const InternalNetworksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InternalNetworksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InternalNetworksDeleteOutput>;
 
 // The operation
 /**
@@ -3245,12 +3227,10 @@ export const InternalNetworksDeleteOutput =
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  * @param internalNetworkName - Name of the Internal Network.
  */
-export const InternalNetworksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InternalNetworksDeleteInput,
-    outputSchema: InternalNetworksDeleteOutput,
-  }),
-);
+export const InternalNetworksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InternalNetworksDeleteInput,
+  outputSchema: InternalNetworksDeleteOutput,
+}));
 // Input Schema
 export interface InternalNetworksGetInput {
   subscriptionId: string;
@@ -3259,7 +3239,7 @@ export interface InternalNetworksGetInput {
   internalNetworkName: string;
 }
 export const InternalNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -3287,7 +3267,7 @@ export interface InternalNetworksGetOutput {
   };
 }
 export const InternalNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3317,7 +3297,7 @@ export const InternalNetworksGetOutput =
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  * @param internalNetworkName - Name of the Internal Network.
  */
-export const InternalNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InternalNetworksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InternalNetworksGetInput,
   outputSchema: InternalNetworksGetOutput,
 }));
@@ -3328,7 +3308,7 @@ export interface InternalNetworksListByL3IsolationDomainInput {
   l3IsolationDomainName: string;
 }
 export const InternalNetworksListByL3IsolationDomainInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -3358,7 +3338,7 @@ export interface InternalNetworksListByL3IsolationDomainOutput {
   nextLink?: string;
 }
 export const InternalNetworksListByL3IsolationDomainOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3403,7 +3383,7 @@ export const InternalNetworksListByL3IsolationDomainOutput =
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
 export const InternalNetworksListByL3IsolationDomain =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InternalNetworksListByL3IsolationDomainInput,
     outputSchema: InternalNetworksListByL3IsolationDomainOutput,
   }));
@@ -3456,7 +3436,7 @@ export interface InternalNetworksUpdateInput {
   };
 }
 export const InternalNetworksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -3581,7 +3561,7 @@ export interface InternalNetworksUpdateOutput {
   };
 }
 export const InternalNetworksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3611,12 +3591,10 @@ export const InternalNetworksUpdateOutput =
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  * @param internalNetworkName - Name of the Internal Network.
  */
-export const InternalNetworksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InternalNetworksUpdateInput,
-    outputSchema: InternalNetworksUpdateOutput,
-  }),
-);
+export const InternalNetworksUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InternalNetworksUpdateInput,
+  outputSchema: InternalNetworksUpdateOutput,
+}));
 // Input Schema
 export interface InternalNetworksUpdateAdministrativeStateInput {
   subscriptionId: string;
@@ -3627,7 +3605,7 @@ export interface InternalNetworksUpdateAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const InternalNetworksUpdateAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -3702,7 +3680,7 @@ export interface InternalNetworksUpdateAdministrativeStateOutput {
   properties?: { successfulResources?: string[]; failedResources?: string[] };
 }
 export const InternalNetworksUpdateAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -3821,7 +3799,7 @@ export const InternalNetworksUpdateAdministrativeStateOutput =
  * @param internalNetworkName - Name of the Internal Network.
  */
 export const InternalNetworksUpdateAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InternalNetworksUpdateAdministrativeStateInput,
     outputSchema: InternalNetworksUpdateAdministrativeStateOutput,
   }));
@@ -3836,7 +3814,7 @@ export interface InternalNetworksUpdateBfdAdministrativeStateInput {
   administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
 }
 export const InternalNetworksUpdateBfdAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -3918,7 +3896,7 @@ export interface InternalNetworksUpdateBfdAdministrativeStateOutput {
   };
 }
 export const InternalNetworksUpdateBfdAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -4046,7 +4024,7 @@ export const InternalNetworksUpdateBfdAdministrativeStateOutput =
  * @param internalNetworkName - Name of the Internal Network.
  */
 export const InternalNetworksUpdateBfdAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InternalNetworksUpdateBfdAdministrativeStateInput,
     outputSchema: InternalNetworksUpdateBfdAdministrativeStateOutput,
   }));
@@ -4060,7 +4038,7 @@ export interface InternalNetworksUpdateBgpAdministrativeStateInput {
   administrativeState?: "Enabled" | "Disabled";
 }
 export const InternalNetworksUpdateBgpAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -4141,7 +4119,7 @@ export interface InternalNetworksUpdateBgpAdministrativeStateOutput {
   };
 }
 export const InternalNetworksUpdateBgpAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -4269,7 +4247,7 @@ export const InternalNetworksUpdateBgpAdministrativeStateOutput =
  * @param internalNetworkName - Name of the Internal Network.
  */
 export const InternalNetworksUpdateBgpAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InternalNetworksUpdateBgpAdministrativeStateInput,
     outputSchema: InternalNetworksUpdateBgpAdministrativeStateOutput,
   }));
@@ -4283,7 +4261,7 @@ export interface InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -4358,7 +4336,7 @@ export interface InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput {
   properties?: { successfulResources?: string[]; failedResources?: string[] };
 }
 export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -4477,7 +4455,7 @@ export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput =
  * @param internalNetworkName - Name of the Internal Network.
  */
 export const InternalNetworksUpdateStaticRouteBfdAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput,
     outputSchema: InternalNetworksUpdateStaticRouteBfdAdministrativeStateOutput,
   }));
@@ -4491,7 +4469,7 @@ export interface InternetGatewayRulesCreateInput {
   location: string;
 }
 export const InternetGatewayRulesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     internetGatewayRuleName: Schema.String.pipe(T.PathParam()),
@@ -4523,7 +4501,7 @@ export interface InternetGatewayRulesCreateOutput {
   };
 }
 export const InternetGatewayRulesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4552,12 +4530,10 @@ export const InternetGatewayRulesCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param internetGatewayRuleName - Name of the Internet Gateway rule.
  */
-export const InternetGatewayRulesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InternetGatewayRulesCreateInput,
-    outputSchema: InternetGatewayRulesCreateOutput,
-  }),
-);
+export const InternetGatewayRulesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InternetGatewayRulesCreateInput,
+  outputSchema: InternetGatewayRulesCreateOutput,
+}));
 // Input Schema
 export interface InternetGatewayRulesDeleteInput {
   subscriptionId: string;
@@ -4565,7 +4541,7 @@ export interface InternetGatewayRulesDeleteInput {
   internetGatewayRuleName: string;
 }
 export const InternetGatewayRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     internetGatewayRuleName: Schema.String.pipe(T.PathParam()),
@@ -4580,7 +4556,7 @@ export const InternetGatewayRulesDeleteInput =
 // Output Schema
 export type InternetGatewayRulesDeleteOutput = void;
 export const InternetGatewayRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InternetGatewayRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InternetGatewayRulesDeleteOutput>;
 
 // The operation
 /**
@@ -4591,12 +4567,10 @@ export const InternetGatewayRulesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param internetGatewayRuleName - Name of the Internet Gateway rule.
  */
-export const InternetGatewayRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InternetGatewayRulesDeleteInput,
-    outputSchema: InternetGatewayRulesDeleteOutput,
-  }),
-);
+export const InternetGatewayRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InternetGatewayRulesDeleteInput,
+  outputSchema: InternetGatewayRulesDeleteOutput,
+}));
 // Input Schema
 export interface InternetGatewayRulesGetInput {
   subscriptionId: string;
@@ -4604,7 +4578,7 @@ export interface InternetGatewayRulesGetInput {
   internetGatewayRuleName: string;
 }
 export const InternetGatewayRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     internetGatewayRuleName: Schema.String.pipe(T.PathParam()),
@@ -4631,7 +4605,7 @@ export interface InternetGatewayRulesGetOutput {
   };
 }
 export const InternetGatewayRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4660,19 +4634,17 @@ export const InternetGatewayRulesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param internetGatewayRuleName - Name of the Internet Gateway rule.
  */
-export const InternetGatewayRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InternetGatewayRulesGetInput,
-    outputSchema: InternetGatewayRulesGetOutput,
-  }),
-);
+export const InternetGatewayRulesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InternetGatewayRulesGetInput,
+  outputSchema: InternetGatewayRulesGetOutput,
+}));
 // Input Schema
 export interface InternetGatewayRulesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const InternetGatewayRulesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -4701,7 +4673,7 @@ export interface InternetGatewayRulesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const InternetGatewayRulesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4745,7 +4717,7 @@ export const InternetGatewayRulesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const InternetGatewayRulesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InternetGatewayRulesListByResourceGroupInput,
     outputSchema: InternetGatewayRulesListByResourceGroupOutput,
   }));
@@ -4754,7 +4726,7 @@ export interface InternetGatewayRulesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const InternetGatewayRulesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4782,7 +4754,7 @@ export interface InternetGatewayRulesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const InternetGatewayRulesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4825,7 +4797,7 @@ export const InternetGatewayRulesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const InternetGatewayRulesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InternetGatewayRulesListBySubscriptionInput,
     outputSchema: InternetGatewayRulesListBySubscriptionOutput,
   }));
@@ -4837,7 +4809,7 @@ export interface InternetGatewayRulesUpdateInput {
   tags?: Record<string, string>;
 }
 export const InternetGatewayRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     internetGatewayRuleName: Schema.String.pipe(T.PathParam()),
@@ -4865,7 +4837,7 @@ export interface InternetGatewayRulesUpdateOutput {
   };
 }
 export const InternetGatewayRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4894,12 +4866,10 @@ export const InternetGatewayRulesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param internetGatewayRuleName - Name of the Internet Gateway rule.
  */
-export const InternetGatewayRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InternetGatewayRulesUpdateInput,
-    outputSchema: InternetGatewayRulesUpdateOutput,
-  }),
-);
+export const InternetGatewayRulesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InternetGatewayRulesUpdateInput,
+  outputSchema: InternetGatewayRulesUpdateOutput,
+}));
 // Input Schema
 export interface InternetGatewaysCreateInput {
   subscriptionId: string;
@@ -4926,7 +4896,7 @@ export interface InternetGatewaysCreateInput {
   location: string;
 }
 export const InternetGatewaysCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     internetGatewayName: Schema.String.pipe(T.PathParam()),
@@ -4981,7 +4951,7 @@ export interface InternetGatewaysCreateOutput {
   };
 }
 export const InternetGatewaysCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5010,12 +4980,10 @@ export const InternetGatewaysCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param internetGatewayName - Name of the Internet Gateway.
  */
-export const InternetGatewaysCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InternetGatewaysCreateInput,
-    outputSchema: InternetGatewaysCreateOutput,
-  }),
-);
+export const InternetGatewaysCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InternetGatewaysCreateInput,
+  outputSchema: InternetGatewaysCreateOutput,
+}));
 // Input Schema
 export interface InternetGatewaysDeleteInput {
   subscriptionId: string;
@@ -5023,7 +4991,7 @@ export interface InternetGatewaysDeleteInput {
   internetGatewayName: string;
 }
 export const InternetGatewaysDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     internetGatewayName: Schema.String.pipe(T.PathParam()),
@@ -5038,7 +5006,7 @@ export const InternetGatewaysDeleteInput =
 // Output Schema
 export type InternetGatewaysDeleteOutput = void;
 export const InternetGatewaysDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InternetGatewaysDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InternetGatewaysDeleteOutput>;
 
 // The operation
 /**
@@ -5049,12 +5017,10 @@ export const InternetGatewaysDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param internetGatewayName - Name of the Internet Gateway.
  */
-export const InternetGatewaysDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InternetGatewaysDeleteInput,
-    outputSchema: InternetGatewaysDeleteOutput,
-  }),
-);
+export const InternetGatewaysDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InternetGatewaysDeleteInput,
+  outputSchema: InternetGatewaysDeleteOutput,
+}));
 // Input Schema
 export interface InternetGatewaysGetInput {
   subscriptionId: string;
@@ -5062,7 +5028,7 @@ export interface InternetGatewaysGetInput {
   internetGatewayName: string;
 }
 export const InternetGatewaysGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     internetGatewayName: Schema.String.pipe(T.PathParam()),
@@ -5089,7 +5055,7 @@ export interface InternetGatewaysGetOutput {
   };
 }
 export const InternetGatewaysGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5118,7 +5084,7 @@ export const InternetGatewaysGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param internetGatewayName - Name of the Internet Gateway.
  */
-export const InternetGatewaysGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InternetGatewaysGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InternetGatewaysGetInput,
   outputSchema: InternetGatewaysGetOutput,
 }));
@@ -5128,7 +5094,7 @@ export interface InternetGatewaysListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const InternetGatewaysListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5157,7 +5123,7 @@ export interface InternetGatewaysListByResourceGroupOutput {
   nextLink?: string;
 }
 export const InternetGatewaysListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5201,7 +5167,7 @@ export const InternetGatewaysListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const InternetGatewaysListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InternetGatewaysListByResourceGroupInput,
     outputSchema: InternetGatewaysListByResourceGroupOutput,
   }));
@@ -5210,7 +5176,7 @@ export interface InternetGatewaysListBySubscriptionInput {
   subscriptionId: string;
 }
 export const InternetGatewaysListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5238,7 +5204,7 @@ export interface InternetGatewaysListBySubscriptionOutput {
   nextLink?: string;
 }
 export const InternetGatewaysListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5281,7 +5247,7 @@ export const InternetGatewaysListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const InternetGatewaysListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InternetGatewaysListBySubscriptionInput,
     outputSchema: InternetGatewaysListBySubscriptionOutput,
   }));
@@ -5294,7 +5260,7 @@ export interface InternetGatewaysUpdateInput {
   tags?: Record<string, string>;
 }
 export const InternetGatewaysUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     internetGatewayName: Schema.String.pipe(T.PathParam()),
@@ -5327,7 +5293,7 @@ export interface InternetGatewaysUpdateOutput {
   };
 }
 export const InternetGatewaysUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5356,12 +5322,10 @@ export const InternetGatewaysUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param internetGatewayName - Name of the Internet Gateway.
  */
-export const InternetGatewaysUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InternetGatewaysUpdateInput,
-    outputSchema: InternetGatewaysUpdateOutput,
-  }),
-);
+export const InternetGatewaysUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InternetGatewaysUpdateInput,
+  outputSchema: InternetGatewaysUpdateOutput,
+}));
 // Input Schema
 export interface IpCommunitiesCreateInput {
   subscriptionId: string;
@@ -5416,7 +5380,7 @@ export interface IpCommunitiesCreateInput {
   location: string;
 }
 export const IpCommunitiesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ipCommunityName: Schema.String.pipe(T.PathParam()),
@@ -5509,7 +5473,7 @@ export interface IpCommunitiesCreateOutput {
   };
 }
 export const IpCommunitiesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5538,7 +5502,7 @@ export const IpCommunitiesCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ipCommunityName - Name of the IP Community.
  */
-export const IpCommunitiesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IpCommunitiesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: IpCommunitiesCreateInput,
   outputSchema: IpCommunitiesCreateOutput,
 }));
@@ -5549,7 +5513,7 @@ export interface IpCommunitiesDeleteInput {
   ipCommunityName: string;
 }
 export const IpCommunitiesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ipCommunityName: Schema.String.pipe(T.PathParam()),
@@ -5564,7 +5528,7 @@ export const IpCommunitiesDeleteInput =
 // Output Schema
 export type IpCommunitiesDeleteOutput = void;
 export const IpCommunitiesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IpCommunitiesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IpCommunitiesDeleteOutput>;
 
 // The operation
 /**
@@ -5575,7 +5539,7 @@ export const IpCommunitiesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ipCommunityName - Name of the IP Community.
  */
-export const IpCommunitiesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IpCommunitiesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: IpCommunitiesDeleteInput,
   outputSchema: IpCommunitiesDeleteOutput,
 }));
@@ -5585,7 +5549,7 @@ export interface IpCommunitiesGetInput {
   resourceGroupName: string;
   ipCommunityName: string;
 }
-export const IpCommunitiesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IpCommunitiesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ipCommunityName: Schema.String.pipe(T.PathParam()),
@@ -5611,27 +5575,25 @@ export interface IpCommunitiesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const IpCommunitiesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<IpCommunitiesGetOutput>;
+export const IpCommunitiesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<IpCommunitiesGetOutput>;
 
 // The operation
 /**
@@ -5642,7 +5604,7 @@ export const IpCommunitiesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ipCommunityName - Name of the IP Community.
  */
-export const IpCommunitiesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IpCommunitiesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IpCommunitiesGetInput,
   outputSchema: IpCommunitiesGetOutput,
 }));
@@ -5652,7 +5614,7 @@ export interface IpCommunitiesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const IpCommunitiesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -5681,7 +5643,7 @@ export interface IpCommunitiesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const IpCommunitiesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5725,7 +5687,7 @@ export const IpCommunitiesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const IpCommunitiesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IpCommunitiesListByResourceGroupInput,
     outputSchema: IpCommunitiesListByResourceGroupOutput,
   }));
@@ -5734,7 +5696,7 @@ export interface IpCommunitiesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const IpCommunitiesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -5762,7 +5724,7 @@ export interface IpCommunitiesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const IpCommunitiesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5805,7 +5767,7 @@ export const IpCommunitiesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const IpCommunitiesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IpCommunitiesListBySubscriptionInput,
     outputSchema: IpCommunitiesListBySubscriptionOutput,
   }));
@@ -5831,7 +5793,7 @@ export interface IpCommunitiesUpdateInput {
   tags?: Record<string, string>;
 }
 export const IpCommunitiesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ipCommunityName: Schema.String.pipe(T.PathParam()),
@@ -5883,7 +5845,7 @@ export interface IpCommunitiesUpdateOutput {
   };
 }
 export const IpCommunitiesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5912,7 +5874,7 @@ export const IpCommunitiesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ipCommunityName - Name of the IP Community.
  */
-export const IpCommunitiesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IpCommunitiesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: IpCommunitiesUpdateInput,
   outputSchema: IpCommunitiesUpdateOutput,
 }));
@@ -5963,7 +5925,7 @@ export interface IpExtendedCommunitiesCreateInput {
   location: string;
 }
 export const IpExtendedCommunitiesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ipExtendedCommunityName: Schema.String.pipe(T.PathParam()),
@@ -6045,7 +6007,7 @@ export interface IpExtendedCommunitiesCreateOutput {
   };
 }
 export const IpExtendedCommunitiesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6074,12 +6036,10 @@ export const IpExtendedCommunitiesCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ipExtendedCommunityName - Name of the IP Extended Community.
  */
-export const IpExtendedCommunitiesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IpExtendedCommunitiesCreateInput,
-    outputSchema: IpExtendedCommunitiesCreateOutput,
-  }),
-);
+export const IpExtendedCommunitiesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IpExtendedCommunitiesCreateInput,
+  outputSchema: IpExtendedCommunitiesCreateOutput,
+}));
 // Input Schema
 export interface IpExtendedCommunitiesDeleteInput {
   subscriptionId: string;
@@ -6087,7 +6047,7 @@ export interface IpExtendedCommunitiesDeleteInput {
   ipExtendedCommunityName: string;
 }
 export const IpExtendedCommunitiesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ipExtendedCommunityName: Schema.String.pipe(T.PathParam()),
@@ -6102,7 +6062,7 @@ export const IpExtendedCommunitiesDeleteInput =
 // Output Schema
 export type IpExtendedCommunitiesDeleteOutput = void;
 export const IpExtendedCommunitiesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IpExtendedCommunitiesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IpExtendedCommunitiesDeleteOutput>;
 
 // The operation
 /**
@@ -6113,12 +6073,10 @@ export const IpExtendedCommunitiesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ipExtendedCommunityName - Name of the IP Extended Community.
  */
-export const IpExtendedCommunitiesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IpExtendedCommunitiesDeleteInput,
-    outputSchema: IpExtendedCommunitiesDeleteOutput,
-  }),
-);
+export const IpExtendedCommunitiesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IpExtendedCommunitiesDeleteInput,
+  outputSchema: IpExtendedCommunitiesDeleteOutput,
+}));
 // Input Schema
 export interface IpExtendedCommunitiesGetInput {
   subscriptionId: string;
@@ -6126,7 +6084,7 @@ export interface IpExtendedCommunitiesGetInput {
   ipExtendedCommunityName: string;
 }
 export const IpExtendedCommunitiesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ipExtendedCommunityName: Schema.String.pipe(T.PathParam()),
@@ -6153,7 +6111,7 @@ export interface IpExtendedCommunitiesGetOutput {
   };
 }
 export const IpExtendedCommunitiesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6182,19 +6140,17 @@ export const IpExtendedCommunitiesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ipExtendedCommunityName - Name of the IP Extended Community.
  */
-export const IpExtendedCommunitiesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IpExtendedCommunitiesGetInput,
-    outputSchema: IpExtendedCommunitiesGetOutput,
-  }),
-);
+export const IpExtendedCommunitiesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IpExtendedCommunitiesGetInput,
+  outputSchema: IpExtendedCommunitiesGetOutput,
+}));
 // Input Schema
 export interface IpExtendedCommunitiesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const IpExtendedCommunitiesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6223,7 +6179,7 @@ export interface IpExtendedCommunitiesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const IpExtendedCommunitiesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6267,7 +6223,7 @@ export const IpExtendedCommunitiesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const IpExtendedCommunitiesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IpExtendedCommunitiesListByResourceGroupInput,
     outputSchema: IpExtendedCommunitiesListByResourceGroupOutput,
   }));
@@ -6276,7 +6232,7 @@ export interface IpExtendedCommunitiesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const IpExtendedCommunitiesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -6304,7 +6260,7 @@ export interface IpExtendedCommunitiesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const IpExtendedCommunitiesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6347,7 +6303,7 @@ export const IpExtendedCommunitiesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const IpExtendedCommunitiesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IpExtendedCommunitiesListBySubscriptionInput,
     outputSchema: IpExtendedCommunitiesListBySubscriptionOutput,
   }));
@@ -6367,7 +6323,7 @@ export interface IpExtendedCommunitiesUpdateInput {
   tags?: Record<string, string>;
 }
 export const IpExtendedCommunitiesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     ipExtendedCommunityName: Schema.String.pipe(T.PathParam()),
@@ -6409,7 +6365,7 @@ export interface IpExtendedCommunitiesUpdateOutput {
   };
 }
 export const IpExtendedCommunitiesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6438,12 +6394,10 @@ export const IpExtendedCommunitiesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ipExtendedCommunityName - Name of the IP Extended Community.
  */
-export const IpExtendedCommunitiesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IpExtendedCommunitiesUpdateInput,
-    outputSchema: IpExtendedCommunitiesUpdateOutput,
-  }),
-);
+export const IpExtendedCommunitiesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IpExtendedCommunitiesUpdateInput,
+  outputSchema: IpExtendedCommunitiesUpdateOutput,
+}));
 // Input Schema
 export interface IpPrefixesCreateInput {
   subscriptionId: string;
@@ -6496,7 +6450,7 @@ export interface IpPrefixesCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const IpPrefixesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IpPrefixesCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ipPrefixName: Schema.String.pipe(T.PathParam()),
@@ -6586,27 +6540,25 @@ export interface IpPrefixesCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const IpPrefixesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<IpPrefixesCreateOutput>;
+export const IpPrefixesCreateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<IpPrefixesCreateOutput>;
 
 // The operation
 /**
@@ -6617,7 +6569,7 @@ export const IpPrefixesCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ipPrefixName - Name of the IP Prefix.
  */
-export const IpPrefixesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IpPrefixesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: IpPrefixesCreateInput,
   outputSchema: IpPrefixesCreateOutput,
 }));
@@ -6627,7 +6579,7 @@ export interface IpPrefixesDeleteInput {
   resourceGroupName: string;
   ipPrefixName: string;
 }
-export const IpPrefixesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IpPrefixesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ipPrefixName: Schema.String.pipe(T.PathParam()),
@@ -6642,7 +6594,7 @@ export const IpPrefixesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type IpPrefixesDeleteOutput = void;
 export const IpPrefixesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IpPrefixesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IpPrefixesDeleteOutput>;
 
 // The operation
 /**
@@ -6653,7 +6605,7 @@ export const IpPrefixesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ipPrefixName - Name of the IP Prefix.
  */
-export const IpPrefixesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IpPrefixesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: IpPrefixesDeleteInput,
   outputSchema: IpPrefixesDeleteOutput,
 }));
@@ -6663,7 +6615,7 @@ export interface IpPrefixesGetInput {
   resourceGroupName: string;
   ipPrefixName: string;
 }
-export const IpPrefixesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IpPrefixesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ipPrefixName: Schema.String.pipe(T.PathParam()),
@@ -6689,7 +6641,7 @@ export interface IpPrefixesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const IpPrefixesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IpPrefixesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6718,7 +6670,7 @@ export const IpPrefixesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ipPrefixName - Name of the IP Prefix.
  */
-export const IpPrefixesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IpPrefixesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IpPrefixesGetInput,
   outputSchema: IpPrefixesGetOutput,
 }));
@@ -6728,7 +6680,7 @@ export interface IpPrefixesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const IpPrefixesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -6757,7 +6709,7 @@ export interface IpPrefixesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const IpPrefixesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6801,7 +6753,7 @@ export const IpPrefixesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const IpPrefixesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IpPrefixesListByResourceGroupInput,
     outputSchema: IpPrefixesListByResourceGroupOutput,
   }));
@@ -6810,7 +6762,7 @@ export interface IpPrefixesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const IpPrefixesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -6838,7 +6790,7 @@ export interface IpPrefixesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const IpPrefixesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6881,7 +6833,7 @@ export const IpPrefixesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const IpPrefixesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IpPrefixesListBySubscriptionInput,
     outputSchema: IpPrefixesListBySubscriptionOutput,
   }));
@@ -6906,7 +6858,7 @@ export interface IpPrefixesUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const IpPrefixesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IpPrefixesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   ipPrefixName: Schema.String.pipe(T.PathParam()),
@@ -6956,27 +6908,25 @@ export interface IpPrefixesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const IpPrefixesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<IpPrefixesUpdateOutput>;
+export const IpPrefixesUpdateOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<IpPrefixesUpdateOutput>;
 
 // The operation
 /**
@@ -6987,7 +6937,7 @@ export const IpPrefixesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param ipPrefixName - Name of the IP Prefix.
  */
-export const IpPrefixesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IpPrefixesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: IpPrefixesUpdateInput,
   outputSchema: IpPrefixesUpdateOutput,
 }));
@@ -6998,7 +6948,7 @@ export interface L2IsolationDomainsCommitConfigurationInput {
   l2IsolationDomainName: string;
 }
 export const L2IsolationDomainsCommitConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -7021,7 +6971,7 @@ export interface L2IsolationDomainsCommitConfigurationOutput {
   };
 }
 export const L2IsolationDomainsCommitConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -7050,7 +7000,7 @@ export const L2IsolationDomainsCommitConfigurationOutput =
  * @param l2IsolationDomainName - Name of the L2 Isolation Domain.
  */
 export const L2IsolationDomainsCommitConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L2IsolationDomainsCommitConfigurationInput,
     outputSchema: L2IsolationDomainsCommitConfigurationOutput,
   }));
@@ -7077,7 +7027,7 @@ export interface L2IsolationDomainsCreateInput {
   location: string;
 }
 export const L2IsolationDomainsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -7130,7 +7080,7 @@ export interface L2IsolationDomainsCreateOutput {
   };
 }
 export const L2IsolationDomainsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7159,12 +7109,10 @@ export const L2IsolationDomainsCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l2IsolationDomainName - Name of the L2 Isolation Domain.
  */
-export const L2IsolationDomainsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: L2IsolationDomainsCreateInput,
-    outputSchema: L2IsolationDomainsCreateOutput,
-  }),
-);
+export const L2IsolationDomainsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: L2IsolationDomainsCreateInput,
+  outputSchema: L2IsolationDomainsCreateOutput,
+}));
 // Input Schema
 export interface L2IsolationDomainsDeleteInput {
   subscriptionId: string;
@@ -7172,7 +7120,7 @@ export interface L2IsolationDomainsDeleteInput {
   l2IsolationDomainName: string;
 }
 export const L2IsolationDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -7187,7 +7135,7 @@ export const L2IsolationDomainsDeleteInput =
 // Output Schema
 export type L2IsolationDomainsDeleteOutput = void;
 export const L2IsolationDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<L2IsolationDomainsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<L2IsolationDomainsDeleteOutput>;
 
 // The operation
 /**
@@ -7198,12 +7146,10 @@ export const L2IsolationDomainsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l2IsolationDomainName - Name of the L2 Isolation Domain.
  */
-export const L2IsolationDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: L2IsolationDomainsDeleteInput,
-    outputSchema: L2IsolationDomainsDeleteOutput,
-  }),
-);
+export const L2IsolationDomainsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: L2IsolationDomainsDeleteInput,
+  outputSchema: L2IsolationDomainsDeleteOutput,
+}));
 // Input Schema
 export interface L2IsolationDomainsGetInput {
   subscriptionId: string;
@@ -7211,7 +7157,7 @@ export interface L2IsolationDomainsGetInput {
   l2IsolationDomainName: string;
 }
 export const L2IsolationDomainsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -7238,7 +7184,7 @@ export interface L2IsolationDomainsGetOutput {
   };
 }
 export const L2IsolationDomainsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7267,19 +7213,17 @@ export const L2IsolationDomainsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l2IsolationDomainName - Name of the L2 Isolation Domain.
  */
-export const L2IsolationDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: L2IsolationDomainsGetInput,
-    outputSchema: L2IsolationDomainsGetOutput,
-  }),
-);
+export const L2IsolationDomainsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: L2IsolationDomainsGetInput,
+  outputSchema: L2IsolationDomainsGetOutput,
+}));
 // Input Schema
 export interface L2IsolationDomainsListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const L2IsolationDomainsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -7308,7 +7252,7 @@ export interface L2IsolationDomainsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const L2IsolationDomainsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7352,7 +7296,7 @@ export const L2IsolationDomainsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const L2IsolationDomainsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L2IsolationDomainsListByResourceGroupInput,
     outputSchema: L2IsolationDomainsListByResourceGroupOutput,
   }));
@@ -7361,7 +7305,7 @@ export interface L2IsolationDomainsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const L2IsolationDomainsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -7389,7 +7333,7 @@ export interface L2IsolationDomainsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const L2IsolationDomainsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -7432,7 +7376,7 @@ export const L2IsolationDomainsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const L2IsolationDomainsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L2IsolationDomainsListBySubscriptionInput,
     outputSchema: L2IsolationDomainsListBySubscriptionOutput,
   }));
@@ -7456,7 +7400,7 @@ export interface L2IsolationDomainsUpdateInput {
   tags?: Record<string, string>;
 }
 export const L2IsolationDomainsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -7510,7 +7454,7 @@ export interface L2IsolationDomainsUpdateOutput {
   };
 }
 export const L2IsolationDomainsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7539,12 +7483,10 @@ export const L2IsolationDomainsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l2IsolationDomainName - Name of the L2 Isolation Domain.
  */
-export const L2IsolationDomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: L2IsolationDomainsUpdateInput,
-    outputSchema: L2IsolationDomainsUpdateOutput,
-  }),
-);
+export const L2IsolationDomainsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: L2IsolationDomainsUpdateInput,
+  outputSchema: L2IsolationDomainsUpdateOutput,
+}));
 // Input Schema
 export interface L2IsolationDomainsUpdateAdministrativeStateInput {
   subscriptionId: string;
@@ -7554,7 +7496,7 @@ export interface L2IsolationDomainsUpdateAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const L2IsolationDomainsUpdateAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -7628,7 +7570,7 @@ export interface L2IsolationDomainsUpdateAdministrativeStateOutput {
   properties?: { successfulResources?: string[]; failedResources?: string[] };
 }
 export const L2IsolationDomainsUpdateAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -7746,7 +7688,7 @@ export const L2IsolationDomainsUpdateAdministrativeStateOutput =
  * @param l2IsolationDomainName - Name of the L2 Isolation Domain.
  */
 export const L2IsolationDomainsUpdateAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L2IsolationDomainsUpdateAdministrativeStateInput,
     outputSchema: L2IsolationDomainsUpdateAdministrativeStateOutput,
   }));
@@ -7757,7 +7699,7 @@ export interface L2IsolationDomainsValidateConfigurationInput {
   l2IsolationDomainName: string;
 }
 export const L2IsolationDomainsValidateConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l2IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -7780,7 +7722,7 @@ export interface L2IsolationDomainsValidateConfigurationOutput {
   };
 }
 export const L2IsolationDomainsValidateConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -7809,7 +7751,7 @@ export const L2IsolationDomainsValidateConfigurationOutput =
  * @param l2IsolationDomainName - Name of the L2 Isolation Domain.
  */
 export const L2IsolationDomainsValidateConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L2IsolationDomainsValidateConfigurationInput,
     outputSchema: L2IsolationDomainsValidateConfigurationOutput,
   }));
@@ -7820,7 +7762,7 @@ export interface L3IsolationDomainsCommitConfigurationInput {
   l3IsolationDomainName: string;
 }
 export const L3IsolationDomainsCommitConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -7843,7 +7785,7 @@ export interface L3IsolationDomainsCommitConfigurationOutput {
   };
 }
 export const L3IsolationDomainsCommitConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -7872,7 +7814,7 @@ export const L3IsolationDomainsCommitConfigurationOutput =
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
 export const L3IsolationDomainsCommitConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L3IsolationDomainsCommitConfigurationInput,
     outputSchema: L3IsolationDomainsCommitConfigurationOutput,
   }));
@@ -7955,7 +7897,7 @@ export interface L3IsolationDomainsCreateInput {
   location: string;
 }
 export const L3IsolationDomainsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -8121,7 +8063,7 @@ export interface L3IsolationDomainsCreateOutput {
   };
 }
 export const L3IsolationDomainsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8150,12 +8092,10 @@ export const L3IsolationDomainsCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
-export const L3IsolationDomainsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: L3IsolationDomainsCreateInput,
-    outputSchema: L3IsolationDomainsCreateOutput,
-  }),
-);
+export const L3IsolationDomainsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: L3IsolationDomainsCreateInput,
+  outputSchema: L3IsolationDomainsCreateOutput,
+}));
 // Input Schema
 export interface L3IsolationDomainsDeleteInput {
   subscriptionId: string;
@@ -8163,7 +8103,7 @@ export interface L3IsolationDomainsDeleteInput {
   l3IsolationDomainName: string;
 }
 export const L3IsolationDomainsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -8178,7 +8118,7 @@ export const L3IsolationDomainsDeleteInput =
 // Output Schema
 export type L3IsolationDomainsDeleteOutput = void;
 export const L3IsolationDomainsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<L3IsolationDomainsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<L3IsolationDomainsDeleteOutput>;
 
 // The operation
 /**
@@ -8189,12 +8129,10 @@ export const L3IsolationDomainsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
-export const L3IsolationDomainsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: L3IsolationDomainsDeleteInput,
-    outputSchema: L3IsolationDomainsDeleteOutput,
-  }),
-);
+export const L3IsolationDomainsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: L3IsolationDomainsDeleteInput,
+  outputSchema: L3IsolationDomainsDeleteOutput,
+}));
 // Input Schema
 export interface L3IsolationDomainsGetInput {
   subscriptionId: string;
@@ -8202,7 +8140,7 @@ export interface L3IsolationDomainsGetInput {
   l3IsolationDomainName: string;
 }
 export const L3IsolationDomainsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -8229,7 +8167,7 @@ export interface L3IsolationDomainsGetOutput {
   };
 }
 export const L3IsolationDomainsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8258,19 +8196,17 @@ export const L3IsolationDomainsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
-export const L3IsolationDomainsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: L3IsolationDomainsGetInput,
-    outputSchema: L3IsolationDomainsGetOutput,
-  }),
-);
+export const L3IsolationDomainsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: L3IsolationDomainsGetInput,
+  outputSchema: L3IsolationDomainsGetOutput,
+}));
 // Input Schema
 export interface L3IsolationDomainsListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const L3IsolationDomainsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -8299,7 +8235,7 @@ export interface L3IsolationDomainsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const L3IsolationDomainsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8343,7 +8279,7 @@ export const L3IsolationDomainsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const L3IsolationDomainsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L3IsolationDomainsListByResourceGroupInput,
     outputSchema: L3IsolationDomainsListByResourceGroupOutput,
   }));
@@ -8352,7 +8288,7 @@ export interface L3IsolationDomainsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const L3IsolationDomainsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -8380,7 +8316,7 @@ export interface L3IsolationDomainsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const L3IsolationDomainsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8423,7 +8359,7 @@ export const L3IsolationDomainsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const L3IsolationDomainsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L3IsolationDomainsListBySubscriptionInput,
     outputSchema: L3IsolationDomainsListBySubscriptionOutput,
   }));
@@ -8472,7 +8408,7 @@ export interface L3IsolationDomainsUpdateInput {
   tags?: Record<string, string>;
 }
 export const L3IsolationDomainsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -8596,7 +8532,7 @@ export interface L3IsolationDomainsUpdateOutput {
   };
 }
 export const L3IsolationDomainsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8625,12 +8561,10 @@ export const L3IsolationDomainsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
-export const L3IsolationDomainsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: L3IsolationDomainsUpdateInput,
-    outputSchema: L3IsolationDomainsUpdateOutput,
-  }),
-);
+export const L3IsolationDomainsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: L3IsolationDomainsUpdateInput,
+  outputSchema: L3IsolationDomainsUpdateOutput,
+}));
 // Input Schema
 export interface L3IsolationDomainsUpdateAdministrativeStateInput {
   subscriptionId: string;
@@ -8640,7 +8574,7 @@ export interface L3IsolationDomainsUpdateAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const L3IsolationDomainsUpdateAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -8714,7 +8648,7 @@ export interface L3IsolationDomainsUpdateAdministrativeStateOutput {
   properties?: { successfulResources?: string[]; failedResources?: string[] };
 }
 export const L3IsolationDomainsUpdateAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -8832,7 +8766,7 @@ export const L3IsolationDomainsUpdateAdministrativeStateOutput =
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
 export const L3IsolationDomainsUpdateAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L3IsolationDomainsUpdateAdministrativeStateInput,
     outputSchema: L3IsolationDomainsUpdateAdministrativeStateOutput,
   }));
@@ -8843,7 +8777,7 @@ export interface L3IsolationDomainsValidateConfigurationInput {
   l3IsolationDomainName: string;
 }
 export const L3IsolationDomainsValidateConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     l3IsolationDomainName: Schema.String.pipe(T.PathParam()),
@@ -8866,7 +8800,7 @@ export interface L3IsolationDomainsValidateConfigurationOutput {
   };
 }
 export const L3IsolationDomainsValidateConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -8895,7 +8829,7 @@ export const L3IsolationDomainsValidateConfigurationOutput =
  * @param l3IsolationDomainName - Name of the L3 Isolation Domain.
  */
 export const L3IsolationDomainsValidateConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: L3IsolationDomainsValidateConfigurationInput,
     outputSchema: L3IsolationDomainsValidateConfigurationOutput,
   }));
@@ -8950,7 +8884,7 @@ export interface NeighborGroupsCreateInput {
   location: string;
 }
 export const NeighborGroupsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     neighborGroupName: Schema.String.pipe(T.PathParam()),
@@ -9042,7 +8976,7 @@ export interface NeighborGroupsCreateOutput {
   };
 }
 export const NeighborGroupsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9071,12 +9005,10 @@ export const NeighborGroupsCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param neighborGroupName - Name of the Neighbor Group.
  */
-export const NeighborGroupsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NeighborGroupsCreateInput,
-    outputSchema: NeighborGroupsCreateOutput,
-  }),
-);
+export const NeighborGroupsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NeighborGroupsCreateInput,
+  outputSchema: NeighborGroupsCreateOutput,
+}));
 // Input Schema
 export interface NeighborGroupsDeleteInput {
   subscriptionId: string;
@@ -9084,7 +9016,7 @@ export interface NeighborGroupsDeleteInput {
   neighborGroupName: string;
 }
 export const NeighborGroupsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     neighborGroupName: Schema.String.pipe(T.PathParam()),
@@ -9099,7 +9031,7 @@ export const NeighborGroupsDeleteInput =
 // Output Schema
 export type NeighborGroupsDeleteOutput = void;
 export const NeighborGroupsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NeighborGroupsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NeighborGroupsDeleteOutput>;
 
 // The operation
 /**
@@ -9110,25 +9042,21 @@ export const NeighborGroupsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param neighborGroupName - Name of the Neighbor Group.
  */
-export const NeighborGroupsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NeighborGroupsDeleteInput,
-    outputSchema: NeighborGroupsDeleteOutput,
-  }),
-);
+export const NeighborGroupsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NeighborGroupsDeleteInput,
+  outputSchema: NeighborGroupsDeleteOutput,
+}));
 // Input Schema
 export interface NeighborGroupsGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   neighborGroupName: string;
 }
-export const NeighborGroupsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    neighborGroupName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const NeighborGroupsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  neighborGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}",
@@ -9151,7 +9079,7 @@ export interface NeighborGroupsGetOutput {
   };
 }
 export const NeighborGroupsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9180,7 +9108,7 @@ export const NeighborGroupsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param neighborGroupName - Name of the Neighbor Group.
  */
-export const NeighborGroupsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NeighborGroupsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NeighborGroupsGetInput,
   outputSchema: NeighborGroupsGetOutput,
 }));
@@ -9190,7 +9118,7 @@ export interface NeighborGroupsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const NeighborGroupsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -9219,7 +9147,7 @@ export interface NeighborGroupsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const NeighborGroupsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9263,7 +9191,7 @@ export const NeighborGroupsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const NeighborGroupsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NeighborGroupsListByResourceGroupInput,
     outputSchema: NeighborGroupsListByResourceGroupOutput,
   }));
@@ -9272,7 +9200,7 @@ export interface NeighborGroupsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const NeighborGroupsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -9300,7 +9228,7 @@ export interface NeighborGroupsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const NeighborGroupsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9343,7 +9271,7 @@ export const NeighborGroupsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NeighborGroupsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NeighborGroupsListBySubscriptionInput,
     outputSchema: NeighborGroupsListBySubscriptionOutput,
   }));
@@ -9354,7 +9282,7 @@ export interface NeighborGroupsResyncInput {
   neighborGroupName: string;
 }
 export const NeighborGroupsResyncInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     neighborGroupName: Schema.String.pipe(T.PathParam()),
@@ -9423,7 +9351,7 @@ export interface NeighborGroupsResyncOutput {
   resourceId?: string;
 }
 export const NeighborGroupsResyncOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -9534,12 +9462,10 @@ export const NeighborGroupsResyncOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param neighborGroupName - Name of the Neighbor Group.
  */
-export const NeighborGroupsResync = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NeighborGroupsResyncInput,
-    outputSchema: NeighborGroupsResyncOutput,
-  }),
-);
+export const NeighborGroupsResync = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NeighborGroupsResyncInput,
+  outputSchema: NeighborGroupsResyncOutput,
+}));
 // Input Schema
 export interface NeighborGroupsUpdateInput {
   subscriptionId: string;
@@ -9563,7 +9489,7 @@ export interface NeighborGroupsUpdateInput {
   tags?: Record<string, string>;
 }
 export const NeighborGroupsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     neighborGroupName: Schema.String.pipe(T.PathParam()),
@@ -9623,7 +9549,7 @@ export interface NeighborGroupsUpdateOutput {
   };
 }
 export const NeighborGroupsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9652,12 +9578,10 @@ export const NeighborGroupsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param neighborGroupName - Name of the Neighbor Group.
  */
-export const NeighborGroupsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NeighborGroupsUpdateInput,
-    outputSchema: NeighborGroupsUpdateOutput,
-  }),
-);
+export const NeighborGroupsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NeighborGroupsUpdateInput,
+  outputSchema: NeighborGroupsUpdateOutput,
+}));
 // Input Schema
 export interface NetworkBootstrapDevicesCreateInput {
   subscriptionId: string;
@@ -9721,7 +9645,7 @@ export interface NetworkBootstrapDevicesCreateInput {
   location: string;
 }
 export const NetworkBootstrapDevicesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -9821,7 +9745,7 @@ export interface NetworkBootstrapDevicesCreateOutput {
   };
 }
 export const NetworkBootstrapDevicesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9851,7 +9775,7 @@ export const NetworkBootstrapDevicesCreateOutput =
  * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
  */
 export const NetworkBootstrapDevicesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapDevicesCreateInput,
     outputSchema: NetworkBootstrapDevicesCreateOutput,
   }));
@@ -9862,7 +9786,7 @@ export interface NetworkBootstrapDevicesDeleteInput {
   networkBootstrapDeviceName: string;
 }
 export const NetworkBootstrapDevicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -9877,7 +9801,7 @@ export const NetworkBootstrapDevicesDeleteInput =
 // Output Schema
 export type NetworkBootstrapDevicesDeleteOutput = void;
 export const NetworkBootstrapDevicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkBootstrapDevicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkBootstrapDevicesDeleteOutput>;
 
 // The operation
 /**
@@ -9889,7 +9813,7 @@ export const NetworkBootstrapDevicesDeleteOutput =
  * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
  */
 export const NetworkBootstrapDevicesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapDevicesDeleteInput,
     outputSchema: NetworkBootstrapDevicesDeleteOutput,
   }));
@@ -9900,7 +9824,7 @@ export interface NetworkBootstrapDevicesGetInput {
   networkBootstrapDeviceName: string;
 }
 export const NetworkBootstrapDevicesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -9927,7 +9851,7 @@ export interface NetworkBootstrapDevicesGetOutput {
   };
 }
 export const NetworkBootstrapDevicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9956,19 +9880,17 @@ export const NetworkBootstrapDevicesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
  */
-export const NetworkBootstrapDevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkBootstrapDevicesGetInput,
-    outputSchema: NetworkBootstrapDevicesGetOutput,
-  }),
-);
+export const NetworkBootstrapDevicesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkBootstrapDevicesGetInput,
+  outputSchema: NetworkBootstrapDevicesGetOutput,
+}));
 // Input Schema
 export interface NetworkBootstrapDevicesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const NetworkBootstrapDevicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -9997,7 +9919,7 @@ export interface NetworkBootstrapDevicesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const NetworkBootstrapDevicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10041,7 +9963,7 @@ export const NetworkBootstrapDevicesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const NetworkBootstrapDevicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapDevicesListByResourceGroupInput,
     outputSchema: NetworkBootstrapDevicesListByResourceGroupOutput,
   }));
@@ -10050,7 +9972,7 @@ export interface NetworkBootstrapDevicesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const NetworkBootstrapDevicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -10078,7 +10000,7 @@ export interface NetworkBootstrapDevicesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const NetworkBootstrapDevicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -10121,7 +10043,7 @@ export const NetworkBootstrapDevicesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkBootstrapDevicesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapDevicesListBySubscriptionInput,
     outputSchema: NetworkBootstrapDevicesListBySubscriptionOutput,
   }));
@@ -10132,7 +10054,7 @@ export interface NetworkBootstrapDevicesRebootInput {
   networkBootstrapDeviceName: string;
 }
 export const NetworkBootstrapDevicesRebootInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -10201,7 +10123,7 @@ export interface NetworkBootstrapDevicesRebootOutput {
   resourceId?: string;
 }
 export const NetworkBootstrapDevicesRebootOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -10313,7 +10235,7 @@ export const NetworkBootstrapDevicesRebootOutput =
  * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
  */
 export const NetworkBootstrapDevicesReboot =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapDevicesRebootInput,
     outputSchema: NetworkBootstrapDevicesRebootOutput,
   }));
@@ -10324,7 +10246,7 @@ export interface NetworkBootstrapDevicesRefreshConfigurationInput {
   networkBootstrapDeviceName: string;
 }
 export const NetworkBootstrapDevicesRefreshConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -10393,7 +10315,7 @@ export interface NetworkBootstrapDevicesRefreshConfigurationOutput {
   resourceId?: string;
 }
 export const NetworkBootstrapDevicesRefreshConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -10505,7 +10427,7 @@ export const NetworkBootstrapDevicesRefreshConfigurationOutput =
  * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
  */
 export const NetworkBootstrapDevicesRefreshConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapDevicesRefreshConfigurationInput,
     outputSchema: NetworkBootstrapDevicesRefreshConfigurationOutput,
   }));
@@ -10516,7 +10438,7 @@ export interface NetworkBootstrapDevicesResyncPasswordsInput {
   networkBootstrapDeviceName: string;
 }
 export const NetworkBootstrapDevicesResyncPasswordsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -10585,7 +10507,7 @@ export interface NetworkBootstrapDevicesResyncPasswordsOutput {
   resourceId?: string;
 }
 export const NetworkBootstrapDevicesResyncPasswordsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -10699,7 +10621,7 @@ export const NetworkBootstrapDevicesResyncPasswordsOutput =
  * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
  */
 export const NetworkBootstrapDevicesResyncPasswords =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapDevicesResyncPasswordsInput,
     outputSchema: NetworkBootstrapDevicesResyncPasswordsOutput,
   }));
@@ -10727,7 +10649,7 @@ export interface NetworkBootstrapDevicesUpdateInput {
   tags?: Record<string, string>;
 }
 export const NetworkBootstrapDevicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -10783,7 +10705,7 @@ export interface NetworkBootstrapDevicesUpdateOutput {
   };
 }
 export const NetworkBootstrapDevicesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -10813,7 +10735,7 @@ export const NetworkBootstrapDevicesUpdateOutput =
  * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
  */
 export const NetworkBootstrapDevicesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapDevicesUpdateInput,
     outputSchema: NetworkBootstrapDevicesUpdateOutput,
   }));
@@ -10835,7 +10757,7 @@ export interface NetworkBootstrapDevicesUpdateAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const NetworkBootstrapDevicesUpdateAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -10918,7 +10840,7 @@ export interface NetworkBootstrapDevicesUpdateAdministrativeStateOutput {
   resourceId?: string;
 }
 export const NetworkBootstrapDevicesUpdateAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -11030,7 +10952,7 @@ export const NetworkBootstrapDevicesUpdateAdministrativeStateOutput =
  * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
  */
 export const NetworkBootstrapDevicesUpdateAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapDevicesUpdateAdministrativeStateInput,
     outputSchema: NetworkBootstrapDevicesUpdateAdministrativeStateOutput,
   }));
@@ -11042,7 +10964,7 @@ export interface NetworkBootstrapDevicesUpgradeInput {
   version?: string;
 }
 export const NetworkBootstrapDevicesUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -11112,7 +11034,7 @@ export interface NetworkBootstrapDevicesUpgradeOutput {
   resourceId?: string;
 }
 export const NetworkBootstrapDevicesUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -11224,7 +11146,7 @@ export const NetworkBootstrapDevicesUpgradeOutput =
  * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
  */
 export const NetworkBootstrapDevicesUpgrade =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapDevicesUpgradeInput,
     outputSchema: NetworkBootstrapDevicesUpgradeOutput,
   }));
@@ -11237,7 +11159,7 @@ export interface NetworkBootstrapInterfacesCreateInput {
   properties: { annotation?: string };
 }
 export const NetworkBootstrapInterfacesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -11268,7 +11190,7 @@ export interface NetworkBootstrapInterfacesCreateOutput {
   };
 }
 export const NetworkBootstrapInterfacesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11299,7 +11221,7 @@ export const NetworkBootstrapInterfacesCreateOutput =
  * @param networkBootstrapInterfaceName - Name of the Network Bootstrap Interface.
  */
 export const NetworkBootstrapInterfacesCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapInterfacesCreateInput,
     outputSchema: NetworkBootstrapInterfacesCreateOutput,
   }));
@@ -11311,7 +11233,7 @@ export interface NetworkBootstrapInterfacesDeleteInput {
   networkBootstrapInterfaceName: string;
 }
 export const NetworkBootstrapInterfacesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -11327,7 +11249,7 @@ export const NetworkBootstrapInterfacesDeleteInput =
 // Output Schema
 export type NetworkBootstrapInterfacesDeleteOutput = void;
 export const NetworkBootstrapInterfacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkBootstrapInterfacesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkBootstrapInterfacesDeleteOutput>;
 
 // The operation
 /**
@@ -11340,7 +11262,7 @@ export const NetworkBootstrapInterfacesDeleteOutput =
  * @param networkBootstrapInterfaceName - Name of the Network Bootstrap Interface.
  */
 export const NetworkBootstrapInterfacesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapInterfacesDeleteInput,
     outputSchema: NetworkBootstrapInterfacesDeleteOutput,
   }));
@@ -11352,7 +11274,7 @@ export interface NetworkBootstrapInterfacesGetInput {
   networkBootstrapInterfaceName: string;
 }
 export const NetworkBootstrapInterfacesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -11380,7 +11302,7 @@ export interface NetworkBootstrapInterfacesGetOutput {
   };
 }
 export const NetworkBootstrapInterfacesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11411,7 +11333,7 @@ export const NetworkBootstrapInterfacesGetOutput =
  * @param networkBootstrapInterfaceName - Name of the Network Bootstrap Interface.
  */
 export const NetworkBootstrapInterfacesGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapInterfacesGetInput,
     outputSchema: NetworkBootstrapInterfacesGetOutput,
   }));
@@ -11422,7 +11344,7 @@ export interface NetworkBootstrapInterfacesListByNetworkBootstrapDeviceInput {
   networkBootstrapDeviceName: string;
 }
 export const NetworkBootstrapInterfacesListByNetworkBootstrapDeviceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -11452,7 +11374,7 @@ export interface NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput {
   nextLink?: string;
 }
 export const NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -11497,7 +11419,7 @@ export const NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput =
  * @param networkBootstrapDeviceName - Name of the Network Bootstrap Device.
  */
 export const NetworkBootstrapInterfacesListByNetworkBootstrapDevice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapInterfacesListByNetworkBootstrapDeviceInput,
     outputSchema: NetworkBootstrapInterfacesListByNetworkBootstrapDeviceOutput,
   }));
@@ -11510,7 +11432,7 @@ export interface NetworkBootstrapInterfacesUpdateInput {
   properties?: { annotation?: string };
 }
 export const NetworkBootstrapInterfacesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -11543,7 +11465,7 @@ export interface NetworkBootstrapInterfacesUpdateOutput {
   };
 }
 export const NetworkBootstrapInterfacesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11574,7 +11496,7 @@ export const NetworkBootstrapInterfacesUpdateOutput =
  * @param networkBootstrapInterfaceName - Name of the Network Bootstrap Interface.
  */
 export const NetworkBootstrapInterfacesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapInterfacesUpdateInput,
     outputSchema: NetworkBootstrapInterfacesUpdateOutput,
   }));
@@ -11588,7 +11510,7 @@ export interface NetworkBootstrapInterfacesUpdateAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const NetworkBootstrapInterfacesUpdateAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkBootstrapDeviceName: Schema.String.pipe(T.PathParam()),
@@ -11616,7 +11538,7 @@ export interface NetworkBootstrapInterfacesUpdateAdministrativeStateOutput {
   };
 }
 export const NetworkBootstrapInterfacesUpdateAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -11646,7 +11568,7 @@ export const NetworkBootstrapInterfacesUpdateAdministrativeStateOutput =
  * @param networkBootstrapInterfaceName - Name of the Network Bootstrap Interface.
  */
 export const NetworkBootstrapInterfacesUpdateAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkBootstrapInterfacesUpdateAdministrativeStateInput,
     outputSchema: NetworkBootstrapInterfacesUpdateAdministrativeStateOutput,
   }));
@@ -11741,7 +11663,7 @@ export interface NetworkDevicesCreateInput {
   location: string;
 }
 export const NetworkDevicesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -11896,7 +11818,7 @@ export interface NetworkDevicesCreateOutput {
   };
 }
 export const NetworkDevicesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -11925,12 +11847,10 @@ export const NetworkDevicesCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkDeviceName - Name of the Network Device.
  */
-export const NetworkDevicesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkDevicesCreateInput,
-    outputSchema: NetworkDevicesCreateOutput,
-  }),
-);
+export const NetworkDevicesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkDevicesCreateInput,
+  outputSchema: NetworkDevicesCreateOutput,
+}));
 // Input Schema
 export interface NetworkDevicesDeleteInput {
   subscriptionId: string;
@@ -11938,7 +11858,7 @@ export interface NetworkDevicesDeleteInput {
   networkDeviceName: string;
 }
 export const NetworkDevicesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -11953,7 +11873,7 @@ export const NetworkDevicesDeleteInput =
 // Output Schema
 export type NetworkDevicesDeleteOutput = void;
 export const NetworkDevicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkDevicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkDevicesDeleteOutput>;
 
 // The operation
 /**
@@ -11964,25 +11884,21 @@ export const NetworkDevicesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkDeviceName - Name of the Network Device.
  */
-export const NetworkDevicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkDevicesDeleteInput,
-    outputSchema: NetworkDevicesDeleteOutput,
-  }),
-);
+export const NetworkDevicesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkDevicesDeleteInput,
+  outputSchema: NetworkDevicesDeleteOutput,
+}));
 // Input Schema
 export interface NetworkDevicesGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   networkDeviceName: string;
 }
-export const NetworkDevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    networkDeviceName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const NetworkDevicesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  networkDeviceName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}",
@@ -12005,7 +11921,7 @@ export interface NetworkDevicesGetOutput {
   };
 }
 export const NetworkDevicesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12034,7 +11950,7 @@ export const NetworkDevicesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkDeviceName - Name of the Network Device.
  */
-export const NetworkDevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkDevicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkDevicesGetInput,
   outputSchema: NetworkDevicesGetOutput,
 }));
@@ -12044,7 +11960,7 @@ export interface NetworkDeviceSkusGetInput {
   networkDeviceSkuName: string;
 }
 export const NetworkDeviceSkusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     networkDeviceSkuName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -12070,7 +11986,7 @@ export interface NetworkDeviceSkusGetOutput {
   };
 }
 export const NetworkDeviceSkusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -12098,18 +12014,16 @@ export const NetworkDeviceSkusGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param networkDeviceSkuName - Name of the Network Device SKU.
  */
-export const NetworkDeviceSkusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkDeviceSkusGetInput,
-    outputSchema: NetworkDeviceSkusGetOutput,
-  }),
-);
+export const NetworkDeviceSkusGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkDeviceSkusGetInput,
+  outputSchema: NetworkDeviceSkusGetOutput,
+}));
 // Input Schema
 export interface NetworkDeviceSkusListBySubscriptionInput {
   subscriptionId: string;
 }
 export const NetworkDeviceSkusListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -12137,7 +12051,7 @@ export interface NetworkDeviceSkusListBySubscriptionOutput {
   nextLink?: string;
 }
 export const NetworkDeviceSkusListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12180,7 +12094,7 @@ export const NetworkDeviceSkusListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkDeviceSkusListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkDeviceSkusListBySubscriptionInput,
     outputSchema: NetworkDeviceSkusListBySubscriptionOutput,
   }));
@@ -12190,7 +12104,7 @@ export interface NetworkDevicesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const NetworkDevicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -12219,7 +12133,7 @@ export interface NetworkDevicesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const NetworkDevicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12263,7 +12177,7 @@ export const NetworkDevicesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const NetworkDevicesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkDevicesListByResourceGroupInput,
     outputSchema: NetworkDevicesListByResourceGroupOutput,
   }));
@@ -12272,7 +12186,7 @@ export interface NetworkDevicesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const NetworkDevicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -12300,7 +12214,7 @@ export interface NetworkDevicesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const NetworkDevicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -12343,7 +12257,7 @@ export const NetworkDevicesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkDevicesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkDevicesListBySubscriptionInput,
     outputSchema: NetworkDevicesListBySubscriptionOutput,
   }));
@@ -12359,7 +12273,7 @@ export interface NetworkDevicesRebootInput {
     | "UngracefulRebootWithoutZTP";
 }
 export const NetworkDevicesRebootInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -12414,7 +12328,7 @@ export interface NetworkDevicesRebootOutput {
   };
 }
 export const NetworkDevicesRebootOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -12479,12 +12393,10 @@ export const NetworkDevicesRebootOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkDeviceName - Name of the Network Device.
  */
-export const NetworkDevicesReboot = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkDevicesRebootInput,
-    outputSchema: NetworkDevicesRebootOutput,
-  }),
-);
+export const NetworkDevicesReboot = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkDevicesRebootInput,
+  outputSchema: NetworkDevicesRebootOutput,
+}));
 // Input Schema
 export interface NetworkDevicesRefreshConfigurationInput {
   subscriptionId: string;
@@ -12492,7 +12404,7 @@ export interface NetworkDevicesRefreshConfigurationInput {
   networkDeviceName: string;
 }
 export const NetworkDevicesRefreshConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -12561,7 +12473,7 @@ export interface NetworkDevicesRefreshConfigurationOutput {
   resourceId?: string;
 }
 export const NetworkDevicesRefreshConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -12673,7 +12585,7 @@ export const NetworkDevicesRefreshConfigurationOutput =
  * @param networkDeviceName - Name of the Network Device.
  */
 export const NetworkDevicesRefreshConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkDevicesRefreshConfigurationInput,
     outputSchema: NetworkDevicesRefreshConfigurationOutput,
   }));
@@ -12684,7 +12596,7 @@ export interface NetworkDevicesResyncCertificatesInput {
   networkDeviceName: string;
 }
 export const NetworkDevicesResyncCertificatesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -12753,7 +12665,7 @@ export interface NetworkDevicesResyncCertificatesOutput {
   resourceId?: string;
 }
 export const NetworkDevicesResyncCertificatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -12867,7 +12779,7 @@ export const NetworkDevicesResyncCertificatesOutput =
  * @param networkDeviceName - Name of the Network Device.
  */
 export const NetworkDevicesResyncCertificates =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkDevicesResyncCertificatesInput,
     outputSchema: NetworkDevicesResyncCertificatesOutput,
   }));
@@ -12878,7 +12790,7 @@ export interface NetworkDevicesResyncPasswordsInput {
   networkDeviceName: string;
 }
 export const NetworkDevicesResyncPasswordsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -12947,7 +12859,7 @@ export interface NetworkDevicesResyncPasswordsOutput {
   resourceId?: string;
 }
 export const NetworkDevicesResyncPasswordsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -13061,7 +12973,7 @@ export const NetworkDevicesResyncPasswordsOutput =
  * @param networkDeviceName - Name of the Network Device.
  */
 export const NetworkDevicesResyncPasswords =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkDevicesResyncPasswordsInput,
     outputSchema: NetworkDevicesResyncPasswordsOutput,
   }));
@@ -13073,7 +12985,7 @@ export interface NetworkDevicesRunRoCommandInput {
   command?: string;
 }
 export const NetworkDevicesRunRoCommandInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -13097,7 +13009,7 @@ export interface NetworkDevicesRunRoCommandOutput {
   };
 }
 export const NetworkDevicesRunRoCommandOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -13125,12 +13037,10 @@ export const NetworkDevicesRunRoCommandOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkDeviceName - Name of the Network Device.
  */
-export const NetworkDevicesRunRoCommand = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkDevicesRunRoCommandInput,
-    outputSchema: NetworkDevicesRunRoCommandOutput,
-  }),
-);
+export const NetworkDevicesRunRoCommand = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkDevicesRunRoCommandInput,
+  outputSchema: NetworkDevicesRunRoCommandOutput,
+}));
 // Input Schema
 export interface NetworkDevicesRunRwCommandInput {
   subscriptionId: string;
@@ -13140,7 +13050,7 @@ export interface NetworkDevicesRunRwCommandInput {
   commandUrl?: string;
 }
 export const NetworkDevicesRunRwCommandInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -13228,7 +13138,7 @@ export interface NetworkDevicesRunRwCommandOutput {
   };
 }
 export const NetworkDevicesRunRwCommandOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -13361,12 +13271,10 @@ export const NetworkDevicesRunRwCommandOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkDeviceName - Name of the Network Device.
  */
-export const NetworkDevicesRunRwCommand = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkDevicesRunRwCommandInput,
-    outputSchema: NetworkDevicesRunRwCommandOutput,
-  }),
-);
+export const NetworkDevicesRunRwCommand = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkDevicesRunRwCommandInput,
+  outputSchema: NetworkDevicesRunRwCommandOutput,
+}));
 // Input Schema
 export interface NetworkDevicesUpdateInput {
   subscriptionId: string;
@@ -13395,7 +13303,7 @@ export interface NetworkDevicesUpdateInput {
   tags?: Record<string, string>;
 }
 export const NetworkDevicesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -13462,7 +13370,7 @@ export interface NetworkDevicesUpdateOutput {
   };
 }
 export const NetworkDevicesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -13491,12 +13399,10 @@ export const NetworkDevicesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkDeviceName - Name of the Network Device.
  */
-export const NetworkDevicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkDevicesUpdateInput,
-    outputSchema: NetworkDevicesUpdateOutput,
-  }),
-);
+export const NetworkDevicesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkDevicesUpdateInput,
+  outputSchema: NetworkDevicesUpdateOutput,
+}));
 // Input Schema
 export interface NetworkDevicesUpdateAdministrativeStateInput {
   subscriptionId: string;
@@ -13515,7 +13421,7 @@ export interface NetworkDevicesUpdateAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const NetworkDevicesUpdateAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -13598,7 +13504,7 @@ export interface NetworkDevicesUpdateAdministrativeStateOutput {
   resourceId?: string;
 }
 export const NetworkDevicesUpdateAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -13710,7 +13616,7 @@ export const NetworkDevicesUpdateAdministrativeStateOutput =
  * @param networkDeviceName - Name of the Network Device.
  */
 export const NetworkDevicesUpdateAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkDevicesUpdateAdministrativeStateInput,
     outputSchema: NetworkDevicesUpdateAdministrativeStateOutput,
   }));
@@ -13723,7 +13629,7 @@ export interface NetworkDevicesUpgradeInput {
   rwDeviceConfigUrl?: string;
 }
 export const NetworkDevicesUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -13794,7 +13700,7 @@ export interface NetworkDevicesUpgradeOutput {
   resourceId?: string;
 }
 export const NetworkDevicesUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -13905,12 +13811,10 @@ export const NetworkDevicesUpgradeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkDeviceName - Name of the Network Device.
  */
-export const NetworkDevicesUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkDevicesUpgradeInput,
-    outputSchema: NetworkDevicesUpgradeOutput,
-  }),
-);
+export const NetworkDevicesUpgrade = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkDevicesUpgradeInput,
+  outputSchema: NetworkDevicesUpgradeOutput,
+}));
 // Input Schema
 export interface NetworkFabricControllersCreateInput {
   subscriptionId: string;
@@ -13967,7 +13871,7 @@ export interface NetworkFabricControllersCreateInput {
   location: string;
 }
 export const NetworkFabricControllersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricControllerName: Schema.String.pipe(T.PathParam()),
@@ -14079,7 +13983,7 @@ export interface NetworkFabricControllersCreateOutput {
   };
 }
 export const NetworkFabricControllersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14109,7 +14013,7 @@ export const NetworkFabricControllersCreateOutput =
  * @param networkFabricControllerName - Name of the Network Fabric Controller.
  */
 export const NetworkFabricControllersCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricControllersCreateInput,
     outputSchema: NetworkFabricControllersCreateOutput,
   }));
@@ -14120,7 +14024,7 @@ export interface NetworkFabricControllersDeleteInput {
   networkFabricControllerName: string;
 }
 export const NetworkFabricControllersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricControllerName: Schema.String.pipe(T.PathParam()),
@@ -14135,7 +14039,7 @@ export const NetworkFabricControllersDeleteInput =
 // Output Schema
 export type NetworkFabricControllersDeleteOutput = void;
 export const NetworkFabricControllersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFabricControllersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFabricControllersDeleteOutput>;
 
 // The operation
 /**
@@ -14147,7 +14051,7 @@ export const NetworkFabricControllersDeleteOutput =
  * @param networkFabricControllerName - Name of the Network Fabric Controller.
  */
 export const NetworkFabricControllersDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricControllersDeleteInput,
     outputSchema: NetworkFabricControllersDeleteOutput,
   }));
@@ -14158,7 +14062,7 @@ export interface NetworkFabricControllersGetInput {
   networkFabricControllerName: string;
 }
 export const NetworkFabricControllersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricControllerName: Schema.String.pipe(T.PathParam()),
@@ -14185,7 +14089,7 @@ export interface NetworkFabricControllersGetOutput {
   };
 }
 export const NetworkFabricControllersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14214,19 +14118,17 @@ export const NetworkFabricControllersGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkFabricControllerName - Name of the Network Fabric Controller.
  */
-export const NetworkFabricControllersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkFabricControllersGetInput,
-    outputSchema: NetworkFabricControllersGetOutput,
-  }),
-);
+export const NetworkFabricControllersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkFabricControllersGetInput,
+  outputSchema: NetworkFabricControllersGetOutput,
+}));
 // Input Schema
 export interface NetworkFabricControllersListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const NetworkFabricControllersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -14255,7 +14157,7 @@ export interface NetworkFabricControllersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const NetworkFabricControllersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -14299,7 +14201,7 @@ export const NetworkFabricControllersListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const NetworkFabricControllersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricControllersListByResourceGroupInput,
     outputSchema: NetworkFabricControllersListByResourceGroupOutput,
   }));
@@ -14308,7 +14210,7 @@ export interface NetworkFabricControllersListBySubscriptionInput {
   subscriptionId: string;
 }
 export const NetworkFabricControllersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -14336,7 +14238,7 @@ export interface NetworkFabricControllersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const NetworkFabricControllersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -14379,7 +14281,7 @@ export const NetworkFabricControllersListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkFabricControllersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricControllersListBySubscriptionInput,
     outputSchema: NetworkFabricControllersListBySubscriptionOutput,
   }));
@@ -14412,7 +14314,7 @@ export interface NetworkFabricControllersUpdateInput {
   tags?: Record<string, string>;
 }
 export const NetworkFabricControllersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricControllerName: Schema.String.pipe(T.PathParam()),
@@ -14481,7 +14383,7 @@ export interface NetworkFabricControllersUpdateOutput {
   };
 }
 export const NetworkFabricControllersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -14511,7 +14413,7 @@ export const NetworkFabricControllersUpdateOutput =
  * @param networkFabricControllerName - Name of the Network Fabric Controller.
  */
 export const NetworkFabricControllersUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricControllersUpdateInput,
     outputSchema: NetworkFabricControllersUpdateOutput,
   }));
@@ -14522,7 +14424,7 @@ export interface NetworkFabricsArmConfigurationDiffInput {
   networkFabricName: string;
 }
 export const NetworkFabricsArmConfigurationDiffInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -14592,7 +14494,7 @@ export interface NetworkFabricsArmConfigurationDiffOutput {
   properties?: { configurationDiffUrl?: string };
 }
 export const NetworkFabricsArmConfigurationDiffOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -14709,7 +14611,7 @@ export const NetworkFabricsArmConfigurationDiffOutput =
  * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsArmConfigurationDiff =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsArmConfigurationDiffInput,
     outputSchema: NetworkFabricsArmConfigurationDiffOutput,
   }));
@@ -14721,7 +14623,7 @@ export interface NetworkFabricsCommitBatchStatusInput {
   commitBatchId?: string;
 }
 export const NetworkFabricsCommitBatchStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -14796,7 +14698,7 @@ export interface NetworkFabricsCommitBatchStatusOutput {
   };
 }
 export const NetworkFabricsCommitBatchStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -14921,7 +14823,7 @@ export const NetworkFabricsCommitBatchStatusOutput =
  * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsCommitBatchStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsCommitBatchStatusInput,
     outputSchema: NetworkFabricsCommitBatchStatusOutput,
   }));
@@ -14935,7 +14837,7 @@ export interface NetworkFabricsCommitConfigurationInput {
   devices?: string[];
 }
 export const NetworkFabricsCommitConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -15009,7 +14911,7 @@ export interface NetworkFabricsCommitConfigurationOutput {
   resourceId?: string;
 }
 export const NetworkFabricsCommitConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -15121,7 +15023,7 @@ export const NetworkFabricsCommitConfigurationOutput =
  * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsCommitConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsCommitConfigurationInput,
     outputSchema: NetworkFabricsCommitConfigurationOutput,
   }));
@@ -15148,7 +15050,7 @@ export interface NetworkFabricsCreateInput {
   location: string;
 }
 export const NetworkFabricsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -15201,7 +15103,7 @@ export interface NetworkFabricsCreateOutput {
   };
 }
 export const NetworkFabricsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15230,12 +15132,10 @@ export const NetworkFabricsCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkFabricName - Name of the Network Fabric.
  */
-export const NetworkFabricsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkFabricsCreateInput,
-    outputSchema: NetworkFabricsCreateOutput,
-  }),
-);
+export const NetworkFabricsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkFabricsCreateInput,
+  outputSchema: NetworkFabricsCreateOutput,
+}));
 // Input Schema
 export interface NetworkFabricsDeleteInput {
   subscriptionId: string;
@@ -15243,7 +15143,7 @@ export interface NetworkFabricsDeleteInput {
   networkFabricName: string;
 }
 export const NetworkFabricsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -15258,7 +15158,7 @@ export const NetworkFabricsDeleteInput =
 // Output Schema
 export type NetworkFabricsDeleteOutput = void;
 export const NetworkFabricsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFabricsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkFabricsDeleteOutput>;
 
 // The operation
 /**
@@ -15269,12 +15169,10 @@ export const NetworkFabricsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkFabricName - Name of the Network Fabric.
  */
-export const NetworkFabricsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkFabricsDeleteInput,
-    outputSchema: NetworkFabricsDeleteOutput,
-  }),
-);
+export const NetworkFabricsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkFabricsDeleteInput,
+  outputSchema: NetworkFabricsDeleteOutput,
+}));
 // Input Schema
 export interface NetworkFabricsDeprovisionInput {
   subscriptionId: string;
@@ -15282,7 +15180,7 @@ export interface NetworkFabricsDeprovisionInput {
   networkFabricName: string;
 }
 export const NetworkFabricsDeprovisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -15329,7 +15227,7 @@ export interface NetworkFabricsDeprovisionOutput {
   };
 }
 export const NetworkFabricsDeprovisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -15394,12 +15292,10 @@ export const NetworkFabricsDeprovisionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkFabricName - Name of the Network Fabric.
  */
-export const NetworkFabricsDeprovision = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkFabricsDeprovisionInput,
-    outputSchema: NetworkFabricsDeprovisionOutput,
-  }),
-);
+export const NetworkFabricsDeprovision = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkFabricsDeprovisionInput,
+  outputSchema: NetworkFabricsDeprovisionOutput,
+}));
 // Input Schema
 export interface NetworkFabricsDiscardCommitBatchInput {
   subscriptionId: string;
@@ -15408,7 +15304,7 @@ export interface NetworkFabricsDiscardCommitBatchInput {
   commitBatchId?: string;
 }
 export const NetworkFabricsDiscardCommitBatchInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -15479,7 +15375,7 @@ export interface NetworkFabricsDiscardCommitBatchOutput {
   properties?: { commitBatchId?: string };
 }
 export const NetworkFabricsDiscardCommitBatchOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -15596,7 +15492,7 @@ export const NetworkFabricsDiscardCommitBatchOutput =
  * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsDiscardCommitBatch =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsDiscardCommitBatchInput,
     outputSchema: NetworkFabricsDiscardCommitBatchOutput,
   }));
@@ -15606,13 +15502,11 @@ export interface NetworkFabricsGetInput {
   resourceGroupName: string;
   networkFabricName: string;
 }
-export const NetworkFabricsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    networkFabricName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const NetworkFabricsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  networkFabricName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}",
@@ -15635,7 +15529,7 @@ export interface NetworkFabricsGetOutput {
   };
 }
 export const NetworkFabricsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15664,7 +15558,7 @@ export const NetworkFabricsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkFabricName - Name of the Network Fabric.
  */
-export const NetworkFabricsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkFabricsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkFabricsGetInput,
   outputSchema: NetworkFabricsGetOutput,
 }));
@@ -15675,7 +15569,7 @@ export interface NetworkFabricsGetTopologyInput {
   networkFabricName: string;
 }
 export const NetworkFabricsGetTopologyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -15745,7 +15639,7 @@ export interface NetworkFabricsGetTopologyOutput {
   properties?: { url?: string };
 }
 export const NetworkFabricsGetTopologyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -15861,19 +15755,17 @@ export const NetworkFabricsGetTopologyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkFabricName - Name of the Network Fabric.
  */
-export const NetworkFabricsGetTopology = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkFabricsGetTopologyInput,
-    outputSchema: NetworkFabricsGetTopologyOutput,
-  }),
-);
+export const NetworkFabricsGetTopology = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkFabricsGetTopologyInput,
+  outputSchema: NetworkFabricsGetTopologyOutput,
+}));
 // Input Schema
 export interface NetworkFabricSkusGetInput {
   subscriptionId: string;
   networkFabricSkuName: string;
 }
 export const NetworkFabricSkusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     networkFabricSkuName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -15899,7 +15791,7 @@ export interface NetworkFabricSkusGetOutput {
   };
 }
 export const NetworkFabricSkusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -15927,18 +15819,16 @@ export const NetworkFabricSkusGetOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param networkFabricSkuName - Name of the Network Fabric SKU.
  */
-export const NetworkFabricSkusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkFabricSkusGetInput,
-    outputSchema: NetworkFabricSkusGetOutput,
-  }),
-);
+export const NetworkFabricSkusGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkFabricSkusGetInput,
+  outputSchema: NetworkFabricSkusGetOutput,
+}));
 // Input Schema
 export interface NetworkFabricSkusListBySubscriptionInput {
   subscriptionId: string;
 }
 export const NetworkFabricSkusListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -15966,7 +15856,7 @@ export interface NetworkFabricSkusListBySubscriptionOutput {
   nextLink?: string;
 }
 export const NetworkFabricSkusListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -16009,7 +15899,7 @@ export const NetworkFabricSkusListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkFabricSkusListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricSkusListBySubscriptionInput,
     outputSchema: NetworkFabricSkusListBySubscriptionOutput,
   }));
@@ -16019,7 +15909,7 @@ export interface NetworkFabricsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const NetworkFabricsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -16048,7 +15938,7 @@ export interface NetworkFabricsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const NetworkFabricsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -16092,7 +15982,7 @@ export const NetworkFabricsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const NetworkFabricsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsListByResourceGroupInput,
     outputSchema: NetworkFabricsListByResourceGroupOutput,
   }));
@@ -16101,7 +15991,7 @@ export interface NetworkFabricsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const NetworkFabricsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -16129,7 +16019,7 @@ export interface NetworkFabricsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const NetworkFabricsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -16172,7 +16062,7 @@ export const NetworkFabricsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkFabricsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsListBySubscriptionInput,
     outputSchema: NetworkFabricsListBySubscriptionOutput,
   }));
@@ -16185,7 +16075,7 @@ export interface NetworkFabricsLockFabricInput {
   action?: "Lock" | "Unlock";
 }
 export const NetworkFabricsLockFabricInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -16236,7 +16126,7 @@ export interface NetworkFabricsLockFabricOutput {
   };
 }
 export const NetworkFabricsLockFabricOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -16301,12 +16191,10 @@ export const NetworkFabricsLockFabricOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkFabricName - Name of the Network Fabric.
  */
-export const NetworkFabricsLockFabric = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkFabricsLockFabricInput,
-    outputSchema: NetworkFabricsLockFabricOutput,
-  }),
-);
+export const NetworkFabricsLockFabric = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkFabricsLockFabricInput,
+  outputSchema: NetworkFabricsLockFabricOutput,
+}));
 // Input Schema
 export interface NetworkFabricsProvisionInput {
   subscriptionId: string;
@@ -16314,7 +16202,7 @@ export interface NetworkFabricsProvisionInput {
   networkFabricName: string;
 }
 export const NetworkFabricsProvisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -16361,7 +16249,7 @@ export interface NetworkFabricsProvisionOutput {
   };
 }
 export const NetworkFabricsProvisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -16426,12 +16314,10 @@ export const NetworkFabricsProvisionOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkFabricName - Name of the Network Fabric.
  */
-export const NetworkFabricsProvision = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkFabricsProvisionInput,
-    outputSchema: NetworkFabricsProvisionOutput,
-  }),
-);
+export const NetworkFabricsProvision = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkFabricsProvisionInput,
+  outputSchema: NetworkFabricsProvisionOutput,
+}));
 // Input Schema
 export interface NetworkFabricsRefreshConfigurationInput {
   subscriptionId: string;
@@ -16439,7 +16325,7 @@ export interface NetworkFabricsRefreshConfigurationInput {
   networkFabricName: string;
 }
 export const NetworkFabricsRefreshConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -16486,7 +16372,7 @@ export interface NetworkFabricsRefreshConfigurationOutput {
   };
 }
 export const NetworkFabricsRefreshConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -16552,7 +16438,7 @@ export const NetworkFabricsRefreshConfigurationOutput =
  * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsRefreshConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsRefreshConfigurationInput,
     outputSchema: NetworkFabricsRefreshConfigurationOutput,
   }));
@@ -16563,7 +16449,7 @@ export interface NetworkFabricsResyncCertificatesInput {
   networkFabricName: string;
 }
 export const NetworkFabricsResyncCertificatesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -16632,7 +16518,7 @@ export interface NetworkFabricsResyncCertificatesOutput {
   resourceId?: string;
 }
 export const NetworkFabricsResyncCertificatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -16746,7 +16632,7 @@ export const NetworkFabricsResyncCertificatesOutput =
  * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsResyncCertificates =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsResyncCertificatesInput,
     outputSchema: NetworkFabricsResyncCertificatesOutput,
   }));
@@ -16757,7 +16643,7 @@ export interface NetworkFabricsResyncPasswordsInput {
   networkFabricName: string;
 }
 export const NetworkFabricsResyncPasswordsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -16826,7 +16712,7 @@ export interface NetworkFabricsResyncPasswordsOutput {
   resourceId?: string;
 }
 export const NetworkFabricsResyncPasswordsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -16941,7 +16827,7 @@ export const NetworkFabricsResyncPasswordsOutput =
  * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsResyncPasswords =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsResyncPasswordsInput,
     outputSchema: NetworkFabricsResyncPasswordsOutput,
   }));
@@ -16952,7 +16838,7 @@ export interface NetworkFabricsRotateCertificatesInput {
   networkFabricName: string;
 }
 export const NetworkFabricsRotateCertificatesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -17021,7 +16907,7 @@ export interface NetworkFabricsRotateCertificatesOutput {
   resourceId?: string;
 }
 export const NetworkFabricsRotateCertificatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -17135,7 +17021,7 @@ export const NetworkFabricsRotateCertificatesOutput =
  * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsRotateCertificates =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsRotateCertificatesInput,
     outputSchema: NetworkFabricsRotateCertificatesOutput,
   }));
@@ -17146,7 +17032,7 @@ export interface NetworkFabricsRotatePasswordsInput {
   networkFabricName: string;
 }
 export const NetworkFabricsRotatePasswordsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -17215,7 +17101,7 @@ export interface NetworkFabricsRotatePasswordsOutput {
   resourceId?: string;
 }
 export const NetworkFabricsRotatePasswordsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -17332,7 +17218,7 @@ export const NetworkFabricsRotatePasswordsOutput =
  * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsRotatePasswords =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsRotatePasswordsInput,
     outputSchema: NetworkFabricsRotatePasswordsOutput,
   }));
@@ -17431,7 +17317,7 @@ export interface NetworkFabricsUpdateInput {
   tags?: Record<string, string>;
 }
 export const NetworkFabricsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -17639,7 +17525,7 @@ export interface NetworkFabricsUpdateOutput {
   };
 }
 export const NetworkFabricsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -17668,12 +17554,10 @@ export const NetworkFabricsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkFabricName - Name of the Network Fabric.
  */
-export const NetworkFabricsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkFabricsUpdateInput,
-    outputSchema: NetworkFabricsUpdateOutput,
-  }),
-);
+export const NetworkFabricsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkFabricsUpdateInput,
+  outputSchema: NetworkFabricsUpdateOutput,
+}));
 // Input Schema
 export interface NetworkFabricsUpdateInfraManagementBfdConfigurationInput {
   subscriptionId: string;
@@ -17683,7 +17567,7 @@ export interface NetworkFabricsUpdateInfraManagementBfdConfigurationInput {
   resourceIds?: string[];
 }
 export const NetworkFabricsUpdateInfraManagementBfdConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -17757,7 +17641,7 @@ export interface NetworkFabricsUpdateInfraManagementBfdConfigurationOutput {
   properties?: { successfulResources?: string[]; failedResources?: string[] };
 }
 export const NetworkFabricsUpdateInfraManagementBfdConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -17875,7 +17759,7 @@ export const NetworkFabricsUpdateInfraManagementBfdConfigurationOutput =
  * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsUpdateInfraManagementBfdConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsUpdateInfraManagementBfdConfigurationInput,
     outputSchema: NetworkFabricsUpdateInfraManagementBfdConfigurationOutput,
   }));
@@ -17888,7 +17772,7 @@ export interface NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput {
   resourceIds?: string[];
 }
 export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -17962,7 +17846,7 @@ export interface NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput {
   properties?: { successfulResources?: string[]; failedResources?: string[] };
 }
 export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -18080,7 +17964,7 @@ export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput =
  * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsUpdateWorkloadManagementBfdConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput,
     outputSchema: NetworkFabricsUpdateWorkloadManagementBfdConfigurationOutput,
   }));
@@ -18093,7 +17977,7 @@ export interface NetworkFabricsUpgradeInput {
   version?: string;
 }
 export const NetworkFabricsUpgradeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -18142,7 +18026,7 @@ export interface NetworkFabricsUpgradeOutput {
   };
 }
 export const NetworkFabricsUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     resourceId: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -18207,12 +18091,10 @@ export const NetworkFabricsUpgradeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkFabricName - Name of the Network Fabric.
  */
-export const NetworkFabricsUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkFabricsUpgradeInput,
-    outputSchema: NetworkFabricsUpgradeOutput,
-  }),
-);
+export const NetworkFabricsUpgrade = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkFabricsUpgradeInput,
+  outputSchema: NetworkFabricsUpgradeOutput,
+}));
 // Input Schema
 export interface NetworkFabricsValidateConfigurationInput {
   subscriptionId: string;
@@ -18221,7 +18103,7 @@ export interface NetworkFabricsValidateConfigurationInput {
   validateAction?: "Cabling" | "Configuration" | "Connectivity";
 }
 export const NetworkFabricsValidateConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -18247,7 +18129,7 @@ export interface NetworkFabricsValidateConfigurationOutput {
   };
 }
 export const NetworkFabricsValidateConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -18276,7 +18158,7 @@ export const NetworkFabricsValidateConfigurationOutput =
  * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsValidateConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsValidateConfigurationInput,
     outputSchema: NetworkFabricsValidateConfigurationOutput,
   }));
@@ -18287,7 +18169,7 @@ export interface NetworkFabricsViewDeviceConfigurationInput {
   networkFabricName: string;
 }
 export const NetworkFabricsViewDeviceConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -18357,7 +18239,7 @@ export interface NetworkFabricsViewDeviceConfigurationOutput {
   properties?: { deviceConfigurationUrl?: string };
 }
 export const NetworkFabricsViewDeviceConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -18474,7 +18356,7 @@ export const NetworkFabricsViewDeviceConfigurationOutput =
  * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkFabricsViewDeviceConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkFabricsViewDeviceConfigurationInput,
     outputSchema: NetworkFabricsViewDeviceConfigurationOutput,
   }));
@@ -18500,7 +18382,7 @@ export interface NetworkInterfacesCreateInput {
   };
 }
 export const NetworkInterfacesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -18552,7 +18434,7 @@ export interface NetworkInterfacesCreateOutput {
   };
 }
 export const NetworkInterfacesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18582,12 +18464,10 @@ export const NetworkInterfacesCreateOutput =
  * @param networkDeviceName - Name of the Network Device.
  * @param networkInterfaceName - Name of the Network Interface.
  */
-export const NetworkInterfacesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkInterfacesCreateInput,
-    outputSchema: NetworkInterfacesCreateOutput,
-  }),
-);
+export const NetworkInterfacesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkInterfacesCreateInput,
+  outputSchema: NetworkInterfacesCreateOutput,
+}));
 // Input Schema
 export interface NetworkInterfacesDeleteInput {
   subscriptionId: string;
@@ -18596,7 +18476,7 @@ export interface NetworkInterfacesDeleteInput {
   networkInterfaceName: string;
 }
 export const NetworkInterfacesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -18612,7 +18492,7 @@ export const NetworkInterfacesDeleteInput =
 // Output Schema
 export type NetworkInterfacesDeleteOutput = void;
 export const NetworkInterfacesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkInterfacesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkInterfacesDeleteOutput>;
 
 // The operation
 /**
@@ -18624,12 +18504,10 @@ export const NetworkInterfacesDeleteOutput =
  * @param networkDeviceName - Name of the Network Device.
  * @param networkInterfaceName - Name of the Network Interface.
  */
-export const NetworkInterfacesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkInterfacesDeleteInput,
-    outputSchema: NetworkInterfacesDeleteOutput,
-  }),
-);
+export const NetworkInterfacesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkInterfacesDeleteInput,
+  outputSchema: NetworkInterfacesDeleteOutput,
+}));
 // Input Schema
 export interface NetworkInterfacesGetInput {
   subscriptionId: string;
@@ -18638,7 +18516,7 @@ export interface NetworkInterfacesGetInput {
   networkInterfaceName: string;
 }
 export const NetworkInterfacesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -18666,7 +18544,7 @@ export interface NetworkInterfacesGetOutput {
   };
 }
 export const NetworkInterfacesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18696,12 +18574,10 @@ export const NetworkInterfacesGetOutput =
  * @param networkDeviceName - Name of the Network Device.
  * @param networkInterfaceName - Name of the Network Interface.
  */
-export const NetworkInterfacesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkInterfacesGetInput,
-    outputSchema: NetworkInterfacesGetOutput,
-  }),
-);
+export const NetworkInterfacesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkInterfacesGetInput,
+  outputSchema: NetworkInterfacesGetOutput,
+}));
 // Input Schema
 export interface NetworkInterfacesListByNetworkDeviceInput {
   subscriptionId: string;
@@ -18709,7 +18585,7 @@ export interface NetworkInterfacesListByNetworkDeviceInput {
   networkDeviceName: string;
 }
 export const NetworkInterfacesListByNetworkDeviceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -18739,7 +18615,7 @@ export interface NetworkInterfacesListByNetworkDeviceOutput {
   nextLink?: string;
 }
 export const NetworkInterfacesListByNetworkDeviceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -18784,7 +18660,7 @@ export const NetworkInterfacesListByNetworkDeviceOutput =
  * @param networkDeviceName - Name of the Network Device.
  */
 export const NetworkInterfacesListByNetworkDevice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkInterfacesListByNetworkDeviceInput,
     outputSchema: NetworkInterfacesListByNetworkDeviceOutput,
   }));
@@ -18808,7 +18684,7 @@ export interface NetworkInterfacesUpdateInput {
   };
 }
 export const NetworkInterfacesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -18862,7 +18738,7 @@ export interface NetworkInterfacesUpdateOutput {
   };
 }
 export const NetworkInterfacesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -18892,12 +18768,10 @@ export const NetworkInterfacesUpdateOutput =
  * @param networkDeviceName - Name of the Network Device.
  * @param networkInterfaceName - Name of the Network Interface.
  */
-export const NetworkInterfacesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkInterfacesUpdateInput,
-    outputSchema: NetworkInterfacesUpdateOutput,
-  }),
-);
+export const NetworkInterfacesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkInterfacesUpdateInput,
+  outputSchema: NetworkInterfacesUpdateOutput,
+}));
 // Input Schema
 export interface NetworkInterfacesUpdateAdministrativeStateInput {
   subscriptionId: string;
@@ -18908,7 +18782,7 @@ export interface NetworkInterfacesUpdateAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const NetworkInterfacesUpdateAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkDeviceName: Schema.String.pipe(T.PathParam()),
@@ -18983,7 +18857,7 @@ export interface NetworkInterfacesUpdateAdministrativeStateOutput {
   properties?: { successfulResources?: string[]; failedResources?: string[] };
 }
 export const NetworkInterfacesUpdateAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -19102,7 +18976,7 @@ export const NetworkInterfacesUpdateAdministrativeStateOutput =
  * @param networkInterfaceName - Name of the Network Interface.
  */
 export const NetworkInterfacesUpdateAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkInterfacesUpdateAdministrativeStateInput,
     outputSchema: NetworkInterfacesUpdateAdministrativeStateOutput,
   }));
@@ -19116,7 +18990,7 @@ export interface NetworkMonitorsCreateInput {
   location: string;
 }
 export const NetworkMonitorsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkMonitorName: Schema.String.pipe(T.PathParam()),
@@ -19148,7 +19022,7 @@ export interface NetworkMonitorsCreateOutput {
   };
 }
 export const NetworkMonitorsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19177,12 +19051,10 @@ export const NetworkMonitorsCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkMonitorName - Name of the Network Monitor.
  */
-export const NetworkMonitorsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkMonitorsCreateInput,
-    outputSchema: NetworkMonitorsCreateOutput,
-  }),
-);
+export const NetworkMonitorsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkMonitorsCreateInput,
+  outputSchema: NetworkMonitorsCreateOutput,
+}));
 // Input Schema
 export interface NetworkMonitorsDeleteInput {
   subscriptionId: string;
@@ -19190,7 +19062,7 @@ export interface NetworkMonitorsDeleteInput {
   networkMonitorName: string;
 }
 export const NetworkMonitorsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkMonitorName: Schema.String.pipe(T.PathParam()),
@@ -19205,7 +19077,7 @@ export const NetworkMonitorsDeleteInput =
 // Output Schema
 export type NetworkMonitorsDeleteOutput = void;
 export const NetworkMonitorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkMonitorsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkMonitorsDeleteOutput>;
 
 // The operation
 /**
@@ -19216,12 +19088,10 @@ export const NetworkMonitorsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkMonitorName - Name of the Network Monitor.
  */
-export const NetworkMonitorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkMonitorsDeleteInput,
-    outputSchema: NetworkMonitorsDeleteOutput,
-  }),
-);
+export const NetworkMonitorsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkMonitorsDeleteInput,
+  outputSchema: NetworkMonitorsDeleteOutput,
+}));
 // Input Schema
 export interface NetworkMonitorsGetInput {
   subscriptionId: string;
@@ -19229,7 +19099,7 @@ export interface NetworkMonitorsGetInput {
   networkMonitorName: string;
 }
 export const NetworkMonitorsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkMonitorName: Schema.String.pipe(T.PathParam()),
@@ -19256,7 +19126,7 @@ export interface NetworkMonitorsGetOutput {
   };
 }
 export const NetworkMonitorsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19285,7 +19155,7 @@ export const NetworkMonitorsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkMonitorName - Name of the Network Monitor.
  */
-export const NetworkMonitorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkMonitorsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkMonitorsGetInput,
   outputSchema: NetworkMonitorsGetOutput,
 }));
@@ -19295,7 +19165,7 @@ export interface NetworkMonitorsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const NetworkMonitorsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19324,7 +19194,7 @@ export interface NetworkMonitorsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const NetworkMonitorsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -19368,7 +19238,7 @@ export const NetworkMonitorsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const NetworkMonitorsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkMonitorsListByResourceGroupInput,
     outputSchema: NetworkMonitorsListByResourceGroupOutput,
   }));
@@ -19377,7 +19247,7 @@ export interface NetworkMonitorsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const NetworkMonitorsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -19405,7 +19275,7 @@ export interface NetworkMonitorsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const NetworkMonitorsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -19448,7 +19318,7 @@ export const NetworkMonitorsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkMonitorsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkMonitorsListBySubscriptionInput,
     outputSchema: NetworkMonitorsListBySubscriptionOutput,
   }));
@@ -19488,7 +19358,7 @@ export interface NetworkMonitorsUpdateInput {
   tags?: Record<string, string>;
 }
 export const NetworkMonitorsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkMonitorName: Schema.String.pipe(T.PathParam()),
@@ -19571,7 +19441,7 @@ export interface NetworkMonitorsUpdateOutput {
   };
 }
 export const NetworkMonitorsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19600,12 +19470,10 @@ export const NetworkMonitorsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkMonitorName - Name of the Network Monitor.
  */
-export const NetworkMonitorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkMonitorsUpdateInput,
-    outputSchema: NetworkMonitorsUpdateOutput,
-  }),
-);
+export const NetworkMonitorsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkMonitorsUpdateInput,
+  outputSchema: NetworkMonitorsUpdateOutput,
+}));
 // Input Schema
 export interface NetworkMonitorsUpdateAdministrativeStateInput {
   subscriptionId: string;
@@ -19615,7 +19483,7 @@ export interface NetworkMonitorsUpdateAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const NetworkMonitorsUpdateAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkMonitorName: Schema.String.pipe(T.PathParam()),
@@ -19642,7 +19510,7 @@ export interface NetworkMonitorsUpdateAdministrativeStateOutput {
   };
 }
 export const NetworkMonitorsUpdateAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -19671,7 +19539,7 @@ export const NetworkMonitorsUpdateAdministrativeStateOutput =
  * @param networkMonitorName - Name of the Network Monitor.
  */
 export const NetworkMonitorsUpdateAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkMonitorsUpdateAdministrativeStateInput,
     outputSchema: NetworkMonitorsUpdateAdministrativeStateOutput,
   }));
@@ -19726,7 +19594,7 @@ export interface NetworkPacketBrokersCreateInput {
   location: string;
 }
 export const NetworkPacketBrokersCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkPacketBrokerName: Schema.String.pipe(T.PathParam()),
@@ -19815,7 +19683,7 @@ export interface NetworkPacketBrokersCreateOutput {
   };
 }
 export const NetworkPacketBrokersCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19844,12 +19712,10 @@ export const NetworkPacketBrokersCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkPacketBrokerName - Name of the Network Packet Broker.
  */
-export const NetworkPacketBrokersCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkPacketBrokersCreateInput,
-    outputSchema: NetworkPacketBrokersCreateOutput,
-  }),
-);
+export const NetworkPacketBrokersCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkPacketBrokersCreateInput,
+  outputSchema: NetworkPacketBrokersCreateOutput,
+}));
 // Input Schema
 export interface NetworkPacketBrokersDeleteInput {
   subscriptionId: string;
@@ -19857,7 +19723,7 @@ export interface NetworkPacketBrokersDeleteInput {
   networkPacketBrokerName: string;
 }
 export const NetworkPacketBrokersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkPacketBrokerName: Schema.String.pipe(T.PathParam()),
@@ -19872,7 +19738,7 @@ export const NetworkPacketBrokersDeleteInput =
 // Output Schema
 export type NetworkPacketBrokersDeleteOutput = void;
 export const NetworkPacketBrokersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkPacketBrokersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkPacketBrokersDeleteOutput>;
 
 // The operation
 /**
@@ -19883,12 +19749,10 @@ export const NetworkPacketBrokersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkPacketBrokerName - Name of the Network Packet Broker.
  */
-export const NetworkPacketBrokersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkPacketBrokersDeleteInput,
-    outputSchema: NetworkPacketBrokersDeleteOutput,
-  }),
-);
+export const NetworkPacketBrokersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkPacketBrokersDeleteInput,
+  outputSchema: NetworkPacketBrokersDeleteOutput,
+}));
 // Input Schema
 export interface NetworkPacketBrokersGetInput {
   subscriptionId: string;
@@ -19896,7 +19760,7 @@ export interface NetworkPacketBrokersGetInput {
   networkPacketBrokerName: string;
 }
 export const NetworkPacketBrokersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkPacketBrokerName: Schema.String.pipe(T.PathParam()),
@@ -19923,7 +19787,7 @@ export interface NetworkPacketBrokersGetOutput {
   };
 }
 export const NetworkPacketBrokersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -19952,19 +19816,17 @@ export const NetworkPacketBrokersGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkPacketBrokerName - Name of the Network Packet Broker.
  */
-export const NetworkPacketBrokersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkPacketBrokersGetInput,
-    outputSchema: NetworkPacketBrokersGetOutput,
-  }),
-);
+export const NetworkPacketBrokersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkPacketBrokersGetInput,
+  outputSchema: NetworkPacketBrokersGetOutput,
+}));
 // Input Schema
 export interface NetworkPacketBrokersListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const NetworkPacketBrokersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -19993,7 +19855,7 @@ export interface NetworkPacketBrokersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const NetworkPacketBrokersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -20037,7 +19899,7 @@ export const NetworkPacketBrokersListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const NetworkPacketBrokersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkPacketBrokersListByResourceGroupInput,
     outputSchema: NetworkPacketBrokersListByResourceGroupOutput,
   }));
@@ -20046,7 +19908,7 @@ export interface NetworkPacketBrokersListBySubscriptionInput {
   subscriptionId: string;
 }
 export const NetworkPacketBrokersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20074,7 +19936,7 @@ export interface NetworkPacketBrokersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const NetworkPacketBrokersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -20117,7 +19979,7 @@ export const NetworkPacketBrokersListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkPacketBrokersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkPacketBrokersListBySubscriptionInput,
     outputSchema: NetworkPacketBrokersListBySubscriptionOutput,
   }));
@@ -20140,7 +20002,7 @@ export interface NetworkPacketBrokersUpdateInput {
   tags?: Record<string, string>;
 }
 export const NetworkPacketBrokersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkPacketBrokerName: Schema.String.pipe(T.PathParam()),
@@ -20189,7 +20051,7 @@ export interface NetworkPacketBrokersUpdateOutput {
   };
 }
 export const NetworkPacketBrokersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20218,12 +20080,10 @@ export const NetworkPacketBrokersUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkPacketBrokerName - Name of the Network Packet Broker.
  */
-export const NetworkPacketBrokersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkPacketBrokersUpdateInput,
-    outputSchema: NetworkPacketBrokersUpdateOutput,
-  }),
-);
+export const NetworkPacketBrokersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkPacketBrokersUpdateInput,
+  outputSchema: NetworkPacketBrokersUpdateOutput,
+}));
 // Input Schema
 export interface NetworkRacksCreateInput {
   subscriptionId: string;
@@ -20234,7 +20094,7 @@ export interface NetworkRacksCreateInput {
   location: string;
 }
 export const NetworkRacksCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkRackName: Schema.String.pipe(T.PathParam()),
@@ -20266,7 +20126,7 @@ export interface NetworkRacksCreateOutput {
   };
 }
 export const NetworkRacksCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20295,7 +20155,7 @@ export const NetworkRacksCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkRackName - Name of the Network Rack.
  */
-export const NetworkRacksCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkRacksCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkRacksCreateInput,
   outputSchema: NetworkRacksCreateOutput,
 }));
@@ -20306,7 +20166,7 @@ export interface NetworkRacksDeleteInput {
   networkRackName: string;
 }
 export const NetworkRacksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkRackName: Schema.String.pipe(T.PathParam()),
@@ -20321,7 +20181,7 @@ export const NetworkRacksDeleteInput =
 // Output Schema
 export type NetworkRacksDeleteOutput = void;
 export const NetworkRacksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkRacksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkRacksDeleteOutput>;
 
 // The operation
 /**
@@ -20332,7 +20192,7 @@ export const NetworkRacksDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkRackName - Name of the Network Rack.
  */
-export const NetworkRacksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkRacksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkRacksDeleteInput,
   outputSchema: NetworkRacksDeleteOutput,
 }));
@@ -20342,7 +20202,7 @@ export interface NetworkRacksGetInput {
   resourceGroupName: string;
   networkRackName: string;
 }
-export const NetworkRacksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NetworkRacksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   networkRackName: Schema.String.pipe(T.PathParam()),
@@ -20368,7 +20228,7 @@ export interface NetworkRacksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const NetworkRacksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NetworkRacksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -20397,7 +20257,7 @@ export const NetworkRacksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkRackName - Name of the Network Rack.
  */
-export const NetworkRacksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkRacksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkRacksGetInput,
   outputSchema: NetworkRacksGetOutput,
 }));
@@ -20407,7 +20267,7 @@ export interface NetworkRacksListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const NetworkRacksListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -20436,7 +20296,7 @@ export interface NetworkRacksListByResourceGroupOutput {
   nextLink?: string;
 }
 export const NetworkRacksListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -20480,7 +20340,7 @@ export const NetworkRacksListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const NetworkRacksListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkRacksListByResourceGroupInput,
     outputSchema: NetworkRacksListByResourceGroupOutput,
   }));
@@ -20489,7 +20349,7 @@ export interface NetworkRacksListBySubscriptionInput {
   subscriptionId: string;
 }
 export const NetworkRacksListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20517,7 +20377,7 @@ export interface NetworkRacksListBySubscriptionOutput {
   nextLink?: string;
 }
 export const NetworkRacksListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -20560,7 +20420,7 @@ export const NetworkRacksListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkRacksListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkRacksListBySubscriptionInput,
     outputSchema: NetworkRacksListBySubscriptionOutput,
   }));
@@ -20572,7 +20432,7 @@ export interface NetworkRacksUpdateInput {
   tags?: Record<string, string>;
 }
 export const NetworkRacksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkRackName: Schema.String.pipe(T.PathParam()),
@@ -20600,7 +20460,7 @@ export interface NetworkRacksUpdateOutput {
   };
 }
 export const NetworkRacksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20629,7 +20489,7 @@ export const NetworkRacksUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkRackName - Name of the Network Rack.
  */
-export const NetworkRacksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkRacksUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkRacksUpdateInput,
   outputSchema: NetworkRacksUpdateOutput,
 }));
@@ -20744,7 +20604,7 @@ export interface NetworkTapRulesCreateInput {
   location: string;
 }
 export const NetworkTapRulesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkTapRuleName: Schema.String.pipe(T.PathParam()),
@@ -20962,7 +20822,7 @@ export interface NetworkTapRulesCreateOutput {
   };
 }
 export const NetworkTapRulesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -20991,12 +20851,10 @@ export const NetworkTapRulesCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkTapRuleName - Name of the Network Tap Rule.
  */
-export const NetworkTapRulesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkTapRulesCreateInput,
-    outputSchema: NetworkTapRulesCreateOutput,
-  }),
-);
+export const NetworkTapRulesCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkTapRulesCreateInput,
+  outputSchema: NetworkTapRulesCreateOutput,
+}));
 // Input Schema
 export interface NetworkTapRulesDeleteInput {
   subscriptionId: string;
@@ -21004,7 +20862,7 @@ export interface NetworkTapRulesDeleteInput {
   networkTapRuleName: string;
 }
 export const NetworkTapRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkTapRuleName: Schema.String.pipe(T.PathParam()),
@@ -21019,7 +20877,7 @@ export const NetworkTapRulesDeleteInput =
 // Output Schema
 export type NetworkTapRulesDeleteOutput = void;
 export const NetworkTapRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkTapRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkTapRulesDeleteOutput>;
 
 // The operation
 /**
@@ -21030,12 +20888,10 @@ export const NetworkTapRulesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkTapRuleName - Name of the Network Tap Rule.
  */
-export const NetworkTapRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkTapRulesDeleteInput,
-    outputSchema: NetworkTapRulesDeleteOutput,
-  }),
-);
+export const NetworkTapRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkTapRulesDeleteInput,
+  outputSchema: NetworkTapRulesDeleteOutput,
+}));
 // Input Schema
 export interface NetworkTapRulesGetInput {
   subscriptionId: string;
@@ -21043,7 +20899,7 @@ export interface NetworkTapRulesGetInput {
   networkTapRuleName: string;
 }
 export const NetworkTapRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkTapRuleName: Schema.String.pipe(T.PathParam()),
@@ -21070,7 +20926,7 @@ export interface NetworkTapRulesGetOutput {
   };
 }
 export const NetworkTapRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21099,7 +20955,7 @@ export const NetworkTapRulesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkTapRuleName - Name of the Network Tap Rule.
  */
-export const NetworkTapRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkTapRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkTapRulesGetInput,
   outputSchema: NetworkTapRulesGetOutput,
 }));
@@ -21109,7 +20965,7 @@ export interface NetworkTapRulesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const NetworkTapRulesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21138,7 +20994,7 @@ export interface NetworkTapRulesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const NetworkTapRulesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -21182,7 +21038,7 @@ export const NetworkTapRulesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const NetworkTapRulesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkTapRulesListByResourceGroupInput,
     outputSchema: NetworkTapRulesListByResourceGroupOutput,
   }));
@@ -21191,7 +21047,7 @@ export interface NetworkTapRulesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const NetworkTapRulesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -21219,7 +21075,7 @@ export interface NetworkTapRulesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const NetworkTapRulesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -21262,7 +21118,7 @@ export const NetworkTapRulesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkTapRulesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkTapRulesListBySubscriptionInput,
     outputSchema: NetworkTapRulesListBySubscriptionOutput,
   }));
@@ -21273,7 +21129,7 @@ export interface NetworkTapRulesResyncInput {
   networkTapRuleName: string;
 }
 export const NetworkTapRulesResyncInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkTapRuleName: Schema.String.pipe(T.PathParam()),
@@ -21342,7 +21198,7 @@ export interface NetworkTapRulesResyncOutput {
   resourceId?: string;
 }
 export const NetworkTapRulesResyncOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -21453,12 +21309,10 @@ export const NetworkTapRulesResyncOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkTapRuleName - Name of the Network Tap Rule.
  */
-export const NetworkTapRulesResync = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkTapRulesResyncInput,
-    outputSchema: NetworkTapRulesResyncOutput,
-  }),
-);
+export const NetworkTapRulesResync = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkTapRulesResyncInput,
+  outputSchema: NetworkTapRulesResyncOutput,
+}));
 // Input Schema
 export interface NetworkTapRulesUpdateInput {
   subscriptionId: string;
@@ -21533,7 +21387,7 @@ export interface NetworkTapRulesUpdateInput {
   tags?: Record<string, string>;
 }
 export const NetworkTapRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkTapRuleName: Schema.String.pipe(T.PathParam()),
@@ -21709,7 +21563,7 @@ export interface NetworkTapRulesUpdateOutput {
   };
 }
 export const NetworkTapRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21738,12 +21592,10 @@ export const NetworkTapRulesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkTapRuleName - Name of the Network Tap Rule.
  */
-export const NetworkTapRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: NetworkTapRulesUpdateInput,
-    outputSchema: NetworkTapRulesUpdateOutput,
-  }),
-);
+export const NetworkTapRulesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: NetworkTapRulesUpdateInput,
+  outputSchema: NetworkTapRulesUpdateOutput,
+}));
 // Input Schema
 export interface NetworkTapRulesUpdateAdministrativeStateInput {
   subscriptionId: string;
@@ -21753,7 +21605,7 @@ export interface NetworkTapRulesUpdateAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const NetworkTapRulesUpdateAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkTapRuleName: Schema.String.pipe(T.PathParam()),
@@ -21780,7 +21632,7 @@ export interface NetworkTapRulesUpdateAdministrativeStateOutput {
   };
 }
 export const NetworkTapRulesUpdateAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -21809,7 +21661,7 @@ export const NetworkTapRulesUpdateAdministrativeStateOutput =
  * @param networkTapRuleName - Name of the Network Tap Rule.
  */
 export const NetworkTapRulesUpdateAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkTapRulesUpdateAdministrativeStateInput,
     outputSchema: NetworkTapRulesUpdateAdministrativeStateOutput,
   }));
@@ -21820,7 +21672,7 @@ export interface NetworkTapRulesValidateConfigurationInput {
   networkTapRuleName: string;
 }
 export const NetworkTapRulesValidateConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkTapRuleName: Schema.String.pipe(T.PathParam()),
@@ -21843,7 +21695,7 @@ export interface NetworkTapRulesValidateConfigurationOutput {
   };
 }
 export const NetworkTapRulesValidateConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -21872,7 +21724,7 @@ export const NetworkTapRulesValidateConfigurationOutput =
  * @param networkTapRuleName - Name of the Network Tap Rule.
  */
 export const NetworkTapRulesValidateConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkTapRulesValidateConfigurationInput,
     outputSchema: NetworkTapRulesValidateConfigurationOutput,
   }));
@@ -21898,39 +21750,37 @@ export interface NetworkTapsCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const NetworkTapsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    networkTapName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.Struct({
-      annotation: Schema.optional(Schema.String),
-    }),
-    identity: Schema.optional(
-      Schema.Struct({
-        principalId: Schema.optional(Schema.String),
-        tenantId: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "None",
-          "SystemAssigned",
-          "UserAssigned",
-          "SystemAssigned,UserAssigned",
-        ]),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
+export const NetworkTapsCreateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  networkTapName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.Struct({
+    annotation: Schema.optional(Schema.String),
+  }),
+  identity: Schema.optional(
+    Schema.Struct({
+      principalId: Schema.optional(Schema.String),
+      tenantId: Schema.optional(Schema.String),
+      type: Schema.Literals([
+        "None",
+        "SystemAssigned",
+        "UserAssigned",
+        "SystemAssigned,UserAssigned",
+      ]),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
         ),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    location: Schema.String,
-  },
-).pipe(
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  location: Schema.String,
+}).pipe(
   T.Http({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",
@@ -21953,7 +21803,7 @@ export interface NetworkTapsCreateOutput {
   };
 }
 export const NetworkTapsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -21982,7 +21832,7 @@ export const NetworkTapsCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkTapName - Name of the Network Tap.
  */
-export const NetworkTapsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkTapsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkTapsCreateInput,
   outputSchema: NetworkTapsCreateOutput,
 }));
@@ -21992,13 +21842,11 @@ export interface NetworkTapsDeleteInput {
   resourceGroupName: string;
   networkTapName: string;
 }
-export const NetworkTapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    networkTapName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const NetworkTapsDeleteInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  networkTapName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",
@@ -22009,7 +21857,7 @@ export const NetworkTapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type NetworkTapsDeleteOutput = void;
 export const NetworkTapsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkTapsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkTapsDeleteOutput>;
 
 // The operation
 /**
@@ -22020,7 +21868,7 @@ export const NetworkTapsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkTapName - Name of the Network Tap.
  */
-export const NetworkTapsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkTapsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkTapsDeleteInput,
   outputSchema: NetworkTapsDeleteOutput,
 }));
@@ -22030,7 +21878,7 @@ export interface NetworkTapsGetInput {
   resourceGroupName: string;
   networkTapName: string;
 }
-export const NetworkTapsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NetworkTapsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   networkTapName: Schema.String.pipe(T.PathParam()),
@@ -22056,7 +21904,7 @@ export interface NetworkTapsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const NetworkTapsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const NetworkTapsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -22085,7 +21933,7 @@ export const NetworkTapsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkTapName - Name of the Network Tap.
  */
-export const NetworkTapsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkTapsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkTapsGetInput,
   outputSchema: NetworkTapsGetOutput,
 }));
@@ -22095,7 +21943,7 @@ export interface NetworkTapsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const NetworkTapsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22124,7 +21972,7 @@ export interface NetworkTapsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const NetworkTapsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -22168,7 +22016,7 @@ export const NetworkTapsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const NetworkTapsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkTapsListByResourceGroupInput,
     outputSchema: NetworkTapsListByResourceGroupOutput,
   }));
@@ -22177,7 +22025,7 @@ export interface NetworkTapsListBySubscriptionInput {
   subscriptionId: string;
 }
 export const NetworkTapsListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -22205,7 +22053,7 @@ export interface NetworkTapsListBySubscriptionOutput {
   nextLink?: string;
 }
 export const NetworkTapsListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -22248,7 +22096,7 @@ export const NetworkTapsListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const NetworkTapsListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkTapsListBySubscriptionInput,
     outputSchema: NetworkTapsListBySubscriptionOutput,
   }));
@@ -22258,13 +22106,11 @@ export interface NetworkTapsResyncInput {
   resourceGroupName: string;
   networkTapName: string;
 }
-export const NetworkTapsResyncInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    networkTapName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const NetworkTapsResyncInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  networkTapName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}/resync",
@@ -22329,7 +22175,7 @@ export interface NetworkTapsResyncOutput {
   resourceId?: string;
 }
 export const NetworkTapsResyncOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -22440,7 +22286,7 @@ export const NetworkTapsResyncOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkTapName - Name of the Network Tap.
  */
-export const NetworkTapsResync = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkTapsResync = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkTapsResyncInput,
   outputSchema: NetworkTapsResyncOutput,
 }));
@@ -22463,40 +22309,38 @@ export interface NetworkTapsUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const NetworkTapsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    networkTapName: Schema.String.pipe(T.PathParam()),
-    properties: Schema.optional(
-      Schema.Struct({
-        annotation: Schema.optional(Schema.String),
-      }),
-    ),
-    identity: Schema.optional(
-      Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssigned,UserAssigned",
-          ]),
+export const NetworkTapsUpdateInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  networkTapName: Schema.String.pipe(T.PathParam()),
+  properties: Schema.optional(
+    Schema.Struct({
+      annotation: Schema.optional(Schema.String),
+    }),
+  ),
+  identity: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(
+        Schema.Literals([
+          "None",
+          "SystemAssigned",
+          "UserAssigned",
+          "SystemAssigned,UserAssigned",
+        ]),
+      ),
+      userAssignedIdentities: Schema.optional(
+        Schema.Record(
+          Schema.String,
+          Schema.Struct({
+            principalId: Schema.optional(Schema.String),
+            clientId: Schema.optional(Schema.String),
+          }),
         ),
-        userAssignedIdentities: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              principalId: Schema.optional(Schema.String),
-              clientId: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
-    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  },
-).pipe(
+      ),
+    }),
+  ),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",
@@ -22519,7 +22363,7 @@ export interface NetworkTapsUpdateOutput {
   };
 }
 export const NetworkTapsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -22548,7 +22392,7 @@ export const NetworkTapsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param networkTapName - Name of the Network Tap.
  */
-export const NetworkTapsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const NetworkTapsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: NetworkTapsUpdateInput,
   outputSchema: NetworkTapsUpdateOutput,
 }));
@@ -22561,7 +22405,7 @@ export interface NetworkTapsUpdateAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const NetworkTapsUpdateAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkTapName: Schema.String.pipe(T.PathParam()),
@@ -22635,7 +22479,7 @@ export interface NetworkTapsUpdateAdministrativeStateOutput {
   properties?: { successfulResources?: string[]; failedResources?: string[] };
 }
 export const NetworkTapsUpdateAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -22753,7 +22597,7 @@ export const NetworkTapsUpdateAdministrativeStateOutput =
  * @param networkTapName - Name of the Network Tap.
  */
 export const NetworkTapsUpdateAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkTapsUpdateAdministrativeStateInput,
     outputSchema: NetworkTapsUpdateAdministrativeStateOutput,
   }));
@@ -22839,7 +22683,7 @@ export interface NetworkToNetworkInterconnectsCreateInput {
   };
 }
 export const NetworkToNetworkInterconnectsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -23021,7 +22865,7 @@ export interface NetworkToNetworkInterconnectsCreateOutput {
   };
 }
 export const NetworkToNetworkInterconnectsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23052,7 +22896,7 @@ export const NetworkToNetworkInterconnectsCreateOutput =
  * @param networkToNetworkInterconnectName - Name of the Network to Network Interconnect.
  */
 export const NetworkToNetworkInterconnectsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkToNetworkInterconnectsCreateInput,
     outputSchema: NetworkToNetworkInterconnectsCreateOutput,
   }));
@@ -23064,7 +22908,7 @@ export interface NetworkToNetworkInterconnectsDeleteInput {
   networkToNetworkInterconnectName: string;
 }
 export const NetworkToNetworkInterconnectsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -23080,7 +22924,7 @@ export const NetworkToNetworkInterconnectsDeleteInput =
 // Output Schema
 export type NetworkToNetworkInterconnectsDeleteOutput = void;
 export const NetworkToNetworkInterconnectsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkToNetworkInterconnectsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<NetworkToNetworkInterconnectsDeleteOutput>;
 
 // The operation
 /**
@@ -23093,7 +22937,7 @@ export const NetworkToNetworkInterconnectsDeleteOutput =
  * @param networkToNetworkInterconnectName - Name of the Network to Network Interconnect.
  */
 export const NetworkToNetworkInterconnectsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkToNetworkInterconnectsDeleteInput,
     outputSchema: NetworkToNetworkInterconnectsDeleteOutput,
   }));
@@ -23105,7 +22949,7 @@ export interface NetworkToNetworkInterconnectsGetInput {
   networkToNetworkInterconnectName: string;
 }
 export const NetworkToNetworkInterconnectsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -23133,7 +22977,7 @@ export interface NetworkToNetworkInterconnectsGetOutput {
   };
 }
 export const NetworkToNetworkInterconnectsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23164,7 +23008,7 @@ export const NetworkToNetworkInterconnectsGetOutput =
  * @param networkToNetworkInterconnectName - Name of the Network to Network Interconnect.
  */
 export const NetworkToNetworkInterconnectsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkToNetworkInterconnectsGetInput,
     outputSchema: NetworkToNetworkInterconnectsGetOutput,
   }));
@@ -23175,7 +23019,7 @@ export interface NetworkToNetworkInterconnectsListByNetworkFabricInput {
   networkFabricName: string;
 }
 export const NetworkToNetworkInterconnectsListByNetworkFabricInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -23205,7 +23049,7 @@ export interface NetworkToNetworkInterconnectsListByNetworkFabricOutput {
   nextLink?: string;
 }
 export const NetworkToNetworkInterconnectsListByNetworkFabricOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -23250,7 +23094,7 @@ export const NetworkToNetworkInterconnectsListByNetworkFabricOutput =
  * @param networkFabricName - Name of the Network Fabric.
  */
 export const NetworkToNetworkInterconnectsListByNetworkFabric =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkToNetworkInterconnectsListByNetworkFabricInput,
     outputSchema: NetworkToNetworkInterconnectsListByNetworkFabricOutput,
   }));
@@ -23310,7 +23154,7 @@ export interface NetworkToNetworkInterconnectsUpdateInput {
   };
 }
 export const NetworkToNetworkInterconnectsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -23447,7 +23291,7 @@ export interface NetworkToNetworkInterconnectsUpdateOutput {
   };
 }
 export const NetworkToNetworkInterconnectsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -23478,7 +23322,7 @@ export const NetworkToNetworkInterconnectsUpdateOutput =
  * @param networkToNetworkInterconnectName - Name of the Network to Network Interconnect.
  */
 export const NetworkToNetworkInterconnectsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkToNetworkInterconnectsUpdateInput,
     outputSchema: NetworkToNetworkInterconnectsUpdateOutput,
   }));
@@ -23492,7 +23336,7 @@ export interface NetworkToNetworkInterconnectsUpdateAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const NetworkToNetworkInterconnectsUpdateAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -23567,7 +23411,7 @@ export interface NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput {
   properties?: { successfulResources?: string[]; failedResources?: string[] };
 }
 export const NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -23686,7 +23530,7 @@ export const NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput =
  * @param networkToNetworkInterconnectName - Name of the Network to Network Interconnect.
  */
 export const NetworkToNetworkInterconnectsUpdateAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkToNetworkInterconnectsUpdateAdministrativeStateInput,
     outputSchema: NetworkToNetworkInterconnectsUpdateAdministrativeStateOutput,
   }));
@@ -23700,7 +23544,7 @@ export interface NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput 
   administrativeState?: "Enabled" | "Disabled" | "MAT" | "RMA";
 }
 export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -23778,7 +23622,7 @@ export interface NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput
   };
 }
 export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -23899,7 +23743,7 @@ export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput =
  * @param networkToNetworkInterconnectName - Name of the Network to Network Interconnect.
  */
 export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput,
     outputSchema:
       NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateOutput,
@@ -23914,7 +23758,7 @@ export interface NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrat
   resourceIds?: string[];
 }
 export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     networkFabricName: Schema.String.pipe(T.PathParam()),
@@ -23989,7 +23833,7 @@ export interface NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrat
   properties?: { successfulResources?: string[]; failedResources?: string[] };
 }
 export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -24108,7 +23952,7 @@ export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeS
  * @param networkToNetworkInterconnectName - Name of the Network to Network Interconnect.
  */
 export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateInput,
     outputSchema:
@@ -24116,9 +23960,7 @@ export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeS
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ManagedNetworkFabric/operations",
@@ -24142,7 +23984,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -24172,7 +24014,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -24183,7 +24025,7 @@ export interface RoutePoliciesCommitConfigurationInput {
   routePolicyName: string;
 }
 export const RoutePoliciesCommitConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     routePolicyName: Schema.String.pipe(T.PathParam()),
@@ -24206,7 +24048,7 @@ export interface RoutePoliciesCommitConfigurationOutput {
   };
 }
 export const RoutePoliciesCommitConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -24235,7 +24077,7 @@ export const RoutePoliciesCommitConfigurationOutput =
  * @param routePolicyName - Name of the Route Policy.
  */
 export const RoutePoliciesCommitConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RoutePoliciesCommitConfigurationInput,
     outputSchema: RoutePoliciesCommitConfigurationOutput,
   }));
@@ -24284,7 +24126,7 @@ export interface RoutePoliciesCreateInput {
   location: string;
 }
 export const RoutePoliciesCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     routePolicyName: Schema.String.pipe(T.PathParam()),
@@ -24366,7 +24208,7 @@ export interface RoutePoliciesCreateOutput {
   };
 }
 export const RoutePoliciesCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24395,7 +24237,7 @@ export const RoutePoliciesCreateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param routePolicyName - Name of the Route Policy.
  */
-export const RoutePoliciesCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RoutePoliciesCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RoutePoliciesCreateInput,
   outputSchema: RoutePoliciesCreateOutput,
 }));
@@ -24406,7 +24248,7 @@ export interface RoutePoliciesDeleteInput {
   routePolicyName: string;
 }
 export const RoutePoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     routePolicyName: Schema.String.pipe(T.PathParam()),
@@ -24421,7 +24263,7 @@ export const RoutePoliciesDeleteInput =
 // Output Schema
 export type RoutePoliciesDeleteOutput = void;
 export const RoutePoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RoutePoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RoutePoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -24432,7 +24274,7 @@ export const RoutePoliciesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param routePolicyName - Name of the Route Policy.
  */
-export const RoutePoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RoutePoliciesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RoutePoliciesDeleteInput,
   outputSchema: RoutePoliciesDeleteOutput,
 }));
@@ -24442,7 +24284,7 @@ export interface RoutePoliciesGetInput {
   resourceGroupName: string;
   routePolicyName: string;
 }
-export const RoutePoliciesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RoutePoliciesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   routePolicyName: Schema.String.pipe(T.PathParam()),
@@ -24468,27 +24310,25 @@ export interface RoutePoliciesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RoutePoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<RoutePoliciesGetOutput>;
+export const RoutePoliciesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<RoutePoliciesGetOutput>;
 
 // The operation
 /**
@@ -24499,7 +24339,7 @@ export const RoutePoliciesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param routePolicyName - Name of the Route Policy.
  */
-export const RoutePoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RoutePoliciesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RoutePoliciesGetInput,
   outputSchema: RoutePoliciesGetOutput,
 }));
@@ -24509,7 +24349,7 @@ export interface RoutePoliciesListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const RoutePoliciesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -24538,7 +24378,7 @@ export interface RoutePoliciesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const RoutePoliciesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -24582,7 +24422,7 @@ export const RoutePoliciesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const RoutePoliciesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RoutePoliciesListByResourceGroupInput,
     outputSchema: RoutePoliciesListByResourceGroupOutput,
   }));
@@ -24591,7 +24431,7 @@ export interface RoutePoliciesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const RoutePoliciesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -24619,7 +24459,7 @@ export interface RoutePoliciesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const RoutePoliciesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -24662,7 +24502,7 @@ export const RoutePoliciesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const RoutePoliciesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RoutePoliciesListBySubscriptionInput,
     outputSchema: RoutePoliciesListBySubscriptionOutput,
   }));
@@ -24678,7 +24518,7 @@ export interface RoutePoliciesUpdateInput {
   tags?: Record<string, string>;
 }
 export const RoutePoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     routePolicyName: Schema.String.pipe(T.PathParam()),
@@ -24718,7 +24558,7 @@ export interface RoutePoliciesUpdateOutput {
   };
 }
 export const RoutePoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -24747,7 +24587,7 @@ export const RoutePoliciesUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param routePolicyName - Name of the Route Policy.
  */
-export const RoutePoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RoutePoliciesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RoutePoliciesUpdateInput,
   outputSchema: RoutePoliciesUpdateOutput,
 }));
@@ -24760,7 +24600,7 @@ export interface RoutePoliciesUpdateAdministrativeStateInput {
   resourceIds?: string[];
 }
 export const RoutePoliciesUpdateAdministrativeStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     routePolicyName: Schema.String.pipe(T.PathParam()),
@@ -24834,7 +24674,7 @@ export interface RoutePoliciesUpdateAdministrativeStateOutput {
   properties?: { successfulResources?: string[]; failedResources?: string[] };
 }
 export const RoutePoliciesUpdateAdministrativeStateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -24952,7 +24792,7 @@ export const RoutePoliciesUpdateAdministrativeStateOutput =
  * @param routePolicyName - Name of the Route Policy.
  */
 export const RoutePoliciesUpdateAdministrativeState =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RoutePoliciesUpdateAdministrativeStateInput,
     outputSchema: RoutePoliciesUpdateAdministrativeStateOutput,
   }));
@@ -24963,7 +24803,7 @@ export interface RoutePoliciesValidateConfigurationInput {
   routePolicyName: string;
 }
 export const RoutePoliciesValidateConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     routePolicyName: Schema.String.pipe(T.PathParam()),
@@ -24986,7 +24826,7 @@ export interface RoutePoliciesValidateConfigurationOutput {
   };
 }
 export const RoutePoliciesValidateConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(
       Schema.Struct({
         code: Schema.optional(Schema.String),
@@ -25015,7 +24855,7 @@ export const RoutePoliciesValidateConfigurationOutput =
  * @param routePolicyName - Name of the Route Policy.
  */
 export const RoutePoliciesValidateConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RoutePoliciesValidateConfigurationInput,
     outputSchema: RoutePoliciesValidateConfigurationOutput,
   }));

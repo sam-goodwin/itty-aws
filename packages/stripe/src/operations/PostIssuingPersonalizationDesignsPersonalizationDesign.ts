@@ -23,7 +23,7 @@ export interface PostIssuingPersonalizationDesignsPersonalizationDesignInput {
   transfer_lookup_key?: boolean;
 }
 export const PostIssuingPersonalizationDesignsPersonalizationDesignInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     personalization_design: Schema.String.pipe(T.PathParam()),
     card_logo: Schema.optional(
       Schema.Union([Schema.String, Schema.Literals([""])]),
@@ -179,7 +179,7 @@ export interface PostIssuingPersonalizationDesignsPersonalizationDesignOutput {
   status: "active" | "inactive" | "rejected" | "review";
 }
 export const PostIssuingPersonalizationDesignsPersonalizationDesignOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     card_logo: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -319,7 +319,7 @@ export const PostIssuingPersonalizationDesignsPersonalizationDesignOutput =
  * <p>Updates a card personalization object.</p>
  */
 export const PostIssuingPersonalizationDesignsPersonalizationDesign =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostIssuingPersonalizationDesignsPersonalizationDesignInput,
     outputSchema: PostIssuingPersonalizationDesignsPersonalizationDesignOutput,
   }));

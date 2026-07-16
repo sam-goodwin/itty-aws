@@ -30,7 +30,7 @@ export interface ApproveEntitlementRequest {
 }
 
 export const ApproveEntitlementRequest: Schema.Codec<ApproveEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entitlementMigrated: Schema.optional(Schema.String),
     properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "ApproveEntitlementRequest" });
@@ -41,14 +41,14 @@ export interface RejectEntitlementRequest {
 }
 
 export const RejectEntitlementRequest: Schema.Codec<RejectEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "RejectEntitlementRequest" });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -62,7 +62,7 @@ export interface ApproveAccountRequest {
 }
 
 export const ApproveAccountRequest: Schema.Codec<ApproveAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     approvalName: Schema.optional(Schema.String),
     properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
     reason: Schema.optional(Schema.String),
@@ -74,7 +74,7 @@ export interface Consumer {
 }
 
 export const Consumer: Schema.Codec<Consumer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project: Schema.optional(Schema.String),
   }).annotate({ identifier: "Consumer" });
 
@@ -143,7 +143,7 @@ export interface Entitlement {
 }
 
 export const Entitlement: Schema.Codec<Entitlement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     usageReportingId: Schema.optional(Schema.String),
     messageToUser: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -182,7 +182,7 @@ export interface ListEntitlementsResponse {
 }
 
 export const ListEntitlementsResponse: Schema.Codec<ListEntitlementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     entitlements: Schema.optional(Schema.Array(Entitlement)),
   }).annotate({ identifier: "ListEntitlementsResponse" });
@@ -195,7 +195,7 @@ export interface RejectEntitlementPlanChangeRequest {
 }
 
 export const RejectEntitlementPlanChangeRequest: Schema.Codec<RejectEntitlementPlanChangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
     pendingPlanName: Schema.optional(Schema.String),
   }).annotate({ identifier: "RejectEntitlementPlanChangeRequest" });
@@ -208,7 +208,7 @@ export interface RejectAccountRequest {
 }
 
 export const RejectAccountRequest: Schema.Codec<RejectAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     approvalName: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "RejectAccountRequest" });
@@ -230,7 +230,7 @@ export interface Approval {
 }
 
 export const Approval: Schema.Codec<Approval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
@@ -261,7 +261,7 @@ export interface Account {
 }
 
 export const Account: Schema.Codec<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     inputProperties: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
@@ -282,7 +282,7 @@ export interface ListAccountsResponse {
 }
 
 export const ListAccountsResponse: Schema.Codec<ListAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     accounts: Schema.optional(Schema.Array(Account)),
   }).annotate({ identifier: "ListAccountsResponse" });
@@ -293,14 +293,14 @@ export interface ApproveEntitlementPlanChangeRequest {
 }
 
 export const ApproveEntitlementPlanChangeRequest: Schema.Codec<ApproveEntitlementPlanChangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pendingPlanName: Schema.optional(Schema.String),
   }).annotate({ identifier: "ApproveEntitlementPlanChangeRequest" });
 
 export interface ResetAccountRequest {}
 
 export const ResetAccountRequest: Schema.Codec<ResetAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResetAccountRequest",
   });
 
@@ -310,7 +310,7 @@ export interface SuspendEntitlementRequest {
 }
 
 export const SuspendEntitlementRequest: Schema.Codec<SuspendEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reason: Schema.optional(Schema.String),
   }).annotate({ identifier: "SuspendEntitlementRequest" });
 
@@ -376,7 +376,7 @@ export interface RejectProvidersAccountsRequest {
 }
 
 export const RejectProvidersAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RejectAccountRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -385,8 +385,7 @@ export const RejectProvidersAccountsRequest =
   ) as unknown as Schema.Codec<RejectProvidersAccountsRequest>;
 
 export type RejectProvidersAccountsResponse = Empty;
-export const RejectProvidersAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const RejectProvidersAccountsResponse = /*@__PURE__*/ Empty;
 
 export type RejectProvidersAccountsError =
   | DefaultErrors
@@ -401,7 +400,7 @@ export const rejectProvidersAccounts: API.OperationMethod<
   RejectProvidersAccountsResponse,
   RejectProvidersAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectProvidersAccountsRequest,
   output: RejectProvidersAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -419,7 +418,7 @@ export interface GetProvidersAccountsRequest {
 }
 
 export const GetProvidersAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
@@ -428,7 +427,7 @@ export const GetProvidersAccountsRequest =
   ) as unknown as Schema.Codec<GetProvidersAccountsRequest>;
 
 export type GetProvidersAccountsResponse = Account;
-export const GetProvidersAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
+export const GetProvidersAccountsResponse = /*@__PURE__*/ Account;
 
 export type GetProvidersAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -438,7 +437,7 @@ export const getProvidersAccounts: API.OperationMethod<
   GetProvidersAccountsResponse,
   GetProvidersAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProvidersAccountsRequest,
   output: GetProvidersAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -454,7 +453,7 @@ export interface ListProvidersAccountsRequest {
 }
 
 export const ListProvidersAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -464,8 +463,7 @@ export const ListProvidersAccountsRequest =
   ) as unknown as Schema.Codec<ListProvidersAccountsRequest>;
 
 export type ListProvidersAccountsResponse = ListAccountsResponse;
-export const ListProvidersAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAccountsResponse;
+export const ListProvidersAccountsResponse = /*@__PURE__*/ ListAccountsResponse;
 
 export type ListProvidersAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -475,7 +473,7 @@ export const listProvidersAccounts: API.PaginatedOperationMethod<
   ListProvidersAccountsResponse,
   ListProvidersAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvidersAccountsRequest,
   output: ListProvidersAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -493,7 +491,7 @@ export interface ApproveProvidersAccountsRequest {
 }
 
 export const ApproveProvidersAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveAccountRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -502,8 +500,7 @@ export const ApproveProvidersAccountsRequest =
   ) as unknown as Schema.Codec<ApproveProvidersAccountsRequest>;
 
 export type ApproveProvidersAccountsResponse = Empty;
-export const ApproveProvidersAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const ApproveProvidersAccountsResponse = /*@__PURE__*/ Empty;
 
 export type ApproveProvidersAccountsError =
   | DefaultErrors
@@ -518,7 +515,7 @@ export const approveProvidersAccounts: API.OperationMethod<
   ApproveProvidersAccountsResponse,
   ApproveProvidersAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApproveProvidersAccountsRequest,
   output: ApproveProvidersAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -532,7 +529,7 @@ export interface ResetProvidersAccountsRequest {
 }
 
 export const ResetProvidersAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResetAccountRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -541,7 +538,7 @@ export const ResetProvidersAccountsRequest =
   ) as unknown as Schema.Codec<ResetProvidersAccountsRequest>;
 
 export type ResetProvidersAccountsResponse = Empty;
-export const ResetProvidersAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const ResetProvidersAccountsResponse = /*@__PURE__*/ Empty;
 
 export type ResetProvidersAccountsError =
   | DefaultErrors
@@ -556,7 +553,7 @@ export const resetProvidersAccounts: API.OperationMethod<
   ResetProvidersAccountsResponse,
   ResetProvidersAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetProvidersAccountsRequest,
   output: ResetProvidersAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -568,7 +565,7 @@ export interface GetProvidersEntitlementsRequest {
 }
 
 export const GetProvidersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -576,8 +573,7 @@ export const GetProvidersEntitlementsRequest =
   ) as unknown as Schema.Codec<GetProvidersEntitlementsRequest>;
 
 export type GetProvidersEntitlementsResponse = Entitlement;
-export const GetProvidersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Entitlement;
+export const GetProvidersEntitlementsResponse = /*@__PURE__*/ Entitlement;
 
 export type GetProvidersEntitlementsError =
   | DefaultErrors
@@ -590,7 +586,7 @@ export const getProvidersEntitlements: API.OperationMethod<
   GetProvidersEntitlementsResponse,
   GetProvidersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProvidersEntitlementsRequest,
   output: GetProvidersEntitlementsResponse,
   errors: [NotFound, Forbidden],
@@ -606,7 +602,7 @@ export interface PatchProvidersEntitlementsRequest {
 }
 
 export const PatchProvidersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Entitlement).pipe(T.HttpBody()),
@@ -616,8 +612,7 @@ export const PatchProvidersEntitlementsRequest =
   ) as unknown as Schema.Codec<PatchProvidersEntitlementsRequest>;
 
 export type PatchProvidersEntitlementsResponse = Entitlement;
-export const PatchProvidersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Entitlement;
+export const PatchProvidersEntitlementsResponse = /*@__PURE__*/ Entitlement;
 
 export type PatchProvidersEntitlementsError =
   | DefaultErrors
@@ -632,7 +627,7 @@ export const patchProvidersEntitlements: API.OperationMethod<
   PatchProvidersEntitlementsResponse,
   PatchProvidersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchProvidersEntitlementsRequest,
   output: PatchProvidersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -650,7 +645,7 @@ export interface ListProvidersEntitlementsRequest {
 }
 
 export const ListProvidersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -662,7 +657,7 @@ export const ListProvidersEntitlementsRequest =
 
 export type ListProvidersEntitlementsResponse = ListEntitlementsResponse;
 export const ListProvidersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListEntitlementsResponse;
+  /*@__PURE__*/ ListEntitlementsResponse;
 
 export type ListProvidersEntitlementsError =
   | DefaultErrors
@@ -675,7 +670,7 @@ export const listProvidersEntitlements: API.PaginatedOperationMethod<
   ListProvidersEntitlementsResponse,
   ListProvidersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProvidersEntitlementsRequest,
   output: ListProvidersEntitlementsResponse,
   errors: [NotFound, Forbidden],
@@ -693,7 +688,7 @@ export interface RejectPlanChangeProvidersEntitlementsRequest {
 }
 
 export const RejectPlanChangeProvidersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RejectEntitlementPlanChangeRequest).pipe(
       T.HttpBody(),
@@ -709,7 +704,7 @@ export const RejectPlanChangeProvidersEntitlementsRequest =
 
 export type RejectPlanChangeProvidersEntitlementsResponse = Empty;
 export const RejectPlanChangeProvidersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type RejectPlanChangeProvidersEntitlementsError =
   | DefaultErrors
@@ -724,7 +719,7 @@ export const rejectPlanChangeProvidersEntitlements: API.OperationMethod<
   RejectPlanChangeProvidersEntitlementsResponse,
   RejectPlanChangeProvidersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectPlanChangeProvidersEntitlementsRequest,
   output: RejectPlanChangeProvidersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -738,7 +733,7 @@ export interface ApproveProvidersEntitlementsRequest {
 }
 
 export const ApproveProvidersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveEntitlementRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -747,8 +742,7 @@ export const ApproveProvidersEntitlementsRequest =
   ) as unknown as Schema.Codec<ApproveProvidersEntitlementsRequest>;
 
 export type ApproveProvidersEntitlementsResponse = Empty;
-export const ApproveProvidersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const ApproveProvidersEntitlementsResponse = /*@__PURE__*/ Empty;
 
 export type ApproveProvidersEntitlementsError =
   | DefaultErrors
@@ -763,7 +757,7 @@ export const approveProvidersEntitlements: API.OperationMethod<
   ApproveProvidersEntitlementsResponse,
   ApproveProvidersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApproveProvidersEntitlementsRequest,
   output: ApproveProvidersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -777,7 +771,7 @@ export interface SuspendProvidersEntitlementsRequest {
 }
 
 export const SuspendProvidersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SuspendEntitlementRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -786,8 +780,7 @@ export const SuspendProvidersEntitlementsRequest =
   ) as unknown as Schema.Codec<SuspendProvidersEntitlementsRequest>;
 
 export type SuspendProvidersEntitlementsResponse = Empty;
-export const SuspendProvidersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const SuspendProvidersEntitlementsResponse = /*@__PURE__*/ Empty;
 
 export type SuspendProvidersEntitlementsError =
   | DefaultErrors
@@ -802,7 +795,7 @@ export const suspendProvidersEntitlements: API.OperationMethod<
   SuspendProvidersEntitlementsResponse,
   SuspendProvidersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SuspendProvidersEntitlementsRequest,
   output: SuspendProvidersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -816,7 +809,7 @@ export interface RejectProvidersEntitlementsRequest {
 }
 
 export const RejectProvidersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RejectEntitlementRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -825,8 +818,7 @@ export const RejectProvidersEntitlementsRequest =
   ) as unknown as Schema.Codec<RejectProvidersEntitlementsRequest>;
 
 export type RejectProvidersEntitlementsResponse = Empty;
-export const RejectProvidersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const RejectProvidersEntitlementsResponse = /*@__PURE__*/ Empty;
 
 export type RejectProvidersEntitlementsError =
   | DefaultErrors
@@ -841,7 +833,7 @@ export const rejectProvidersEntitlements: API.OperationMethod<
   RejectProvidersEntitlementsResponse,
   RejectProvidersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectProvidersEntitlementsRequest,
   output: RejectProvidersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -855,7 +847,7 @@ export interface ApprovePlanChangeProvidersEntitlementsRequest {
 }
 
 export const ApprovePlanChangeProvidersEntitlementsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApproveEntitlementPlanChangeRequest).pipe(
       T.HttpBody(),
@@ -871,7 +863,7 @@ export const ApprovePlanChangeProvidersEntitlementsRequest =
 
 export type ApprovePlanChangeProvidersEntitlementsResponse = Empty;
 export const ApprovePlanChangeProvidersEntitlementsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type ApprovePlanChangeProvidersEntitlementsError =
   | DefaultErrors
@@ -886,7 +878,7 @@ export const approvePlanChangeProvidersEntitlements: API.OperationMethod<
   ApprovePlanChangeProvidersEntitlementsResponse,
   ApprovePlanChangeProvidersEntitlementsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ApprovePlanChangeProvidersEntitlementsRequest,
   output: ApprovePlanChangeProvidersEntitlementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

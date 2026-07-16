@@ -9,7 +9,7 @@ export interface AgentApplicationsRevisionsArchiveCreateInput {
   project_id: string;
 }
 export const AgentApplicationsRevisionsArchiveCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
@@ -215,7 +215,7 @@ export interface AgentApplicationsRevisionsArchiveCreateOutput {
   updated_at: string;
 }
 export const AgentApplicationsRevisionsArchiveCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     application: Schema.String,
     parent_revision: Schema.optional(Schema.NullOr(Schema.String)),
@@ -555,7 +555,7 @@ export const AgentApplicationsRevisionsArchiveCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const agentApplicationsRevisionsArchiveCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AgentApplicationsRevisionsArchiveCreateInput,
     outputSchema: AgentApplicationsRevisionsArchiveCreateOutput,
   }));

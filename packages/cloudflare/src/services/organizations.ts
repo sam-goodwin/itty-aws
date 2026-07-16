@@ -104,7 +104,7 @@ interface UsageGetResponseItem {
   /** The display name of the Cloudflare zone. Cloudflare extension. */
   xZoneName?: string | null;
 }
-const UsageGetResponseItem = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const UsageGetResponseItem = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     billingAccountId: Schema.String,
     billingAccountName: Schema.String,
@@ -204,7 +204,7 @@ interface Action {
   /** A short string that describes the action that was performed. */
   type?: string | null;
 }
-const Action = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Action = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     result: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -235,7 +235,7 @@ interface Actor {
   /** The type of actor. */
   type?: "cloudflare_admin" | "system" | "user" | (string & {}) | null;
 }
-const Actor = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Actor = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     context: Schema.optional(
@@ -283,7 +283,7 @@ interface Organization {
   /** A unique identifier for the organization. */
   id?: string | null;
 }
-const Organization = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Organization = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   }),
@@ -301,7 +301,7 @@ interface Raw {
   /** The client's user agent string sent with the request. */
   userAgent?: string | null;
 }
-const Raw = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Raw = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     cfRayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     method: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -331,7 +331,7 @@ interface Resource {
   /** The type of the resource. */
   type?: string | null;
 }
-const Resource = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Resource = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     product: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -389,23 +389,22 @@ interface ListLogAuditsResponseResult {
     type?: string | null;
   } | null;
 }
-const ListLogAuditsResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(Schema.Union([Action, Schema.Null])),
-      actor: Schema.optional(Schema.Union([Actor, Schema.Null])),
-      organization: Schema.optional(Schema.Union([Organization, Schema.Null])),
-      raw: Schema.optional(Schema.Union([Raw, Schema.Null])),
-      resource: Schema.optional(Schema.Union([Resource, Schema.Null])),
-    }),
+const ListLogAuditsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    action: Schema.optional(Schema.Union([Action, Schema.Null])),
+    actor: Schema.optional(Schema.Union([Actor, Schema.Null])),
+    organization: Schema.optional(Schema.Union([Organization, Schema.Null])),
+    raw: Schema.optional(Schema.Union([Raw, Schema.Null])),
+    resource: Schema.optional(Schema.Union([Resource, Schema.Null])),
+  }),
 ) as unknown as Schema.Codec<ListLogAuditsResponseResult>;
 
 interface ListLogAuditsResponseResultInfoCursors {
   after?: string | null;
 }
 const ListLogAuditsResponseResultInfoCursors =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
@@ -415,7 +414,7 @@ interface ListLogAuditsResponseResultInfo {
   cursors?: { after?: string | null } | null;
 }
 const ListLogAuditsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       cursors: Schema.optional(
         Schema.Union([ListLogAuditsResponseResultInfoCursors, Schema.Null]),
@@ -430,7 +429,7 @@ interface Flags {
   accountMobility: string;
   subOrgCreation: string;
 }
-const Flags = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Flags = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountCreation: Schema.String,
     accountDeletion: Schema.String,
@@ -461,7 +460,7 @@ interface Meta {
   hierarchyTags?: string[] | null;
   managedBy?: string | null;
 }
-const Meta = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Meta = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     flags: Schema.optional(Schema.Union([Flags, Schema.Null])),
     hierarchyTags: Schema.optional(
@@ -481,7 +480,7 @@ interface Parent {
   id: string;
   name: string;
 }
-const Parent = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Parent = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     name: Schema.String,
@@ -495,7 +494,7 @@ interface OrganizationProfile {
   businessPhone: string;
   externalMetadata: string;
 }
-const OrganizationProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const OrganizationProfile = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     businessAddress: Schema.String,
     businessEmail: Schema.String,
@@ -538,7 +537,7 @@ interface ListOrganizationsResponseResult {
   } | null;
 }
 const ListOrganizationsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createTime: Schema.String,
@@ -563,7 +562,7 @@ const ListOrganizationsResponseResult =
 interface Parent2 {
   id: string;
 }
-const Parent2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Parent2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
   }),
@@ -584,7 +583,7 @@ export interface GetBillingUsageRequest {
 }
 
 export const GetBillingUsageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       organizationId: Schema.String.pipe(T.HttpPath("organizationId")),
       from: Schema.optional(Schema.String),
@@ -635,7 +634,7 @@ export type GetBillingUsageResponse = {
 }[];
 
 export const GetBillingUsageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Array(UsageGetResponseItem).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetBillingUsageResponse>;
 
@@ -646,7 +645,7 @@ export const getBillingUsage: API.OperationMethod<
   GetBillingUsageResponse,
   GetBillingUsageError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBillingUsageRequest,
   output: GetBillingUsageResponse,
   errors: [],
@@ -700,147 +699,146 @@ export interface ListLogAuditsRequest {
   resourceType?: { not?: string[] };
 }
 
-export const ListLogAuditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      organizationId: Schema.String.pipe(T.HttpPath("organizationId")),
-      cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
-      before: Schema.String.pipe(T.HttpQuery("before")),
-      since: Schema.String.pipe(T.HttpQuery("since")),
-      id: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("id")),
-      actionResult: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(
-            Schema.Array(
-              Schema.Union([
-                Schema.Literals(["success", "failure"]),
-                Schema.String,
-              ]),
-            ),
-          ),
-        }),
-      ).pipe(T.HttpQuery("action_result")),
-      actionType: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(
-            Schema.Array(
-              Schema.Union([
-                Schema.Literals(["create", "delete", "view", "update"]),
-                Schema.String,
-              ]),
-            ),
-          ),
-        }),
-      ).pipe(T.HttpQuery("action_type")),
-      actorContext: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(
-            Schema.Array(
-              Schema.Union([
-                Schema.Literals([
-                  "api_key",
-                  "api_token",
-                  "dash",
-                  "oauth",
-                  "origin_ca_key",
-                ]),
-                Schema.String,
-              ]),
-            ),
-          ),
-        }),
-      ).pipe(T.HttpQuery("actor_context")),
-      actorEmail: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("actor_email")),
-      actorId: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("actor_id")),
-      actorIpAddress: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("actor_ip_address")),
-      actorTokenId: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("actor_token_id")),
-      actorTokenName: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("actor_token_name")),
-      actorType: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(
-            Schema.Array(
-              Schema.Union([
-                Schema.Literals(["cloudflare_admin", "system", "user"]),
-                Schema.String,
-              ]),
-            ),
-          ),
-        }),
-      ).pipe(T.HttpQuery("actor_type")),
-      direction: Schema.optional(
-        Schema.Union([Schema.Literals(["desc", "asc"]), Schema.String]),
-      ).pipe(T.HttpQuery("direction")),
-      limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
-      rawCfRayId: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("raw_cf_ray_id")),
-      rawMethod: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("raw_method")),
-      rawStatusCode: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.Number)),
-        }),
-      ).pipe(T.HttpQuery("raw_status_code")),
-      rawUri: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("raw_uri")),
-      resourceId: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("resource_id")),
-      resourceProduct: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("resource_product")),
-      resourceScope: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.Literal("organizations"))),
-        }),
-      ).pipe(T.HttpQuery("resource_scope")),
-      resourceType: Schema.optional(
-        Schema.Struct({
-          not: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ).pipe(T.HttpQuery("resource_type")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/organizations/{organizationId}/logs/audit",
+export const ListLogAuditsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    organizationId: Schema.String.pipe(T.HttpPath("organizationId")),
+    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+    before: Schema.String.pipe(T.HttpQuery("before")),
+    since: Schema.String.pipe(T.HttpQuery("since")),
+    id: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
       }),
-    ),
+    ).pipe(T.HttpQuery("id")),
+    actionResult: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals(["success", "failure"]),
+              Schema.String,
+            ]),
+          ),
+        ),
+      }),
+    ).pipe(T.HttpQuery("action_result")),
+    actionType: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals(["create", "delete", "view", "update"]),
+              Schema.String,
+            ]),
+          ),
+        ),
+      }),
+    ).pipe(T.HttpQuery("action_type")),
+    actorContext: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals([
+                "api_key",
+                "api_token",
+                "dash",
+                "oauth",
+                "origin_ca_key",
+              ]),
+              Schema.String,
+            ]),
+          ),
+        ),
+      }),
+    ).pipe(T.HttpQuery("actor_context")),
+    actorEmail: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("actor_email")),
+    actorId: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("actor_id")),
+    actorIpAddress: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("actor_ip_address")),
+    actorTokenId: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("actor_token_id")),
+    actorTokenName: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("actor_token_name")),
+    actorType: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(
+          Schema.Array(
+            Schema.Union([
+              Schema.Literals(["cloudflare_admin", "system", "user"]),
+              Schema.String,
+            ]),
+          ),
+        ),
+      }),
+    ).pipe(T.HttpQuery("actor_type")),
+    direction: Schema.optional(
+      Schema.Union([Schema.Literals(["desc", "asc"]), Schema.String]),
+    ).pipe(T.HttpQuery("direction")),
+    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+    rawCfRayId: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("raw_cf_ray_id")),
+    rawMethod: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("raw_method")),
+    rawStatusCode: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.Number)),
+      }),
+    ).pipe(T.HttpQuery("raw_status_code")),
+    rawUri: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("raw_uri")),
+    resourceId: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("resource_id")),
+    resourceProduct: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("resource_product")),
+    resourceScope: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.Literal("organizations"))),
+      }),
+    ).pipe(T.HttpQuery("resource_scope")),
+    resourceType: Schema.optional(
+      Schema.Struct({
+        not: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ).pipe(T.HttpQuery("resource_type")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/organizations/{organizationId}/logs/audit",
+    }),
+  ),
 ) as unknown as Schema.Codec<ListLogAuditsRequest>;
 
 export interface ListLogAuditsResponse {
@@ -888,14 +886,13 @@ export interface ListLogAuditsResponse {
   resultInfo?: { cursors?: { after?: string | null } | null } | null;
 }
 
-export const ListLogAuditsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      result: Schema.Array(ListLogAuditsResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListLogAuditsResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+export const ListLogAuditsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListLogAuditsResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListLogAuditsResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Codec<ListLogAuditsResponse>;
 
 export type ListLogAuditsError = DefaultErrors;
@@ -905,7 +902,7 @@ export const listLogAudits: API.PaginatedOperationMethod<
   ListLogAuditsResponse,
   ListLogAuditsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListLogAuditsRequest,
   output: ListLogAuditsResponse,
   errors: [],
@@ -926,7 +923,7 @@ export interface GetOrganizationRequest {
 }
 
 export const GetOrganizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       organizationId: Schema.String.pipe(T.HttpPath("organizationId")),
     }).pipe(T.Http({ method: "GET", path: "/organizations/{organizationId}" })),
@@ -958,7 +955,7 @@ export interface GetOrganizationResponse {
 }
 
 export const GetOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createTime: Schema.String,
@@ -992,7 +989,7 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationResponse,
   GetOrganizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationRequest,
   output: GetOrganizationResponse,
   errors: [OrganizationNotFound, Forbidden],
@@ -1011,7 +1008,7 @@ export interface ListOrganizationsRequest {
 }
 
 export const ListOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("id")),
       containing: Schema.optional(
@@ -1066,7 +1063,7 @@ export interface ListOrganizationsResponse {
 }
 
 export const ListOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(ListOrganizationsResponseResult),
     }),
@@ -1079,7 +1076,7 @@ export const listOrganizations: API.PaginatedOperationMethod<
   ListOrganizationsResponse,
   ListOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse,
   errors: [Forbidden],
@@ -1102,7 +1099,7 @@ export interface CreateOrganizationRequest {
 }
 
 export const CreateOrganizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       name: Schema.String,
       parent: Schema.optional(Parent2),
@@ -1136,7 +1133,7 @@ export interface CreateOrganizationResponse {
 }
 
 export const CreateOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createTime: Schema.String,
@@ -1167,7 +1164,7 @@ export const createOrganization: API.OperationMethod<
   CreateOrganizationResponse,
   CreateOrganizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationRequest,
   output: CreateOrganizationResponse,
   errors: [Forbidden],
@@ -1187,7 +1184,7 @@ export interface UpdateOrganizationRequest {
 }
 
 export const UpdateOrganizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       organizationId: Schema.String.pipe(T.HttpPath("organizationId")),
       name: Schema.String,
@@ -1222,7 +1219,7 @@ export interface UpdateOrganizationResponse {
 }
 
 export const UpdateOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       createTime: Schema.String,
@@ -1256,7 +1253,7 @@ export const updateOrganization: API.OperationMethod<
   UpdateOrganizationResponse,
   UpdateOrganizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateOrganizationRequest,
   output: UpdateOrganizationResponse,
   errors: [OrganizationNotFound, Forbidden],
@@ -1267,7 +1264,7 @@ export interface DeleteOrganizationRequest {
 }
 
 export const DeleteOrganizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       organizationId: Schema.String.pipe(T.HttpPath("organizationId")),
     }).pipe(
@@ -1280,7 +1277,7 @@ export interface DeleteOrganizationResponse {
 }
 
 export const DeleteOrganizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
     }).pipe(T.ResponsePath("result")),
@@ -1296,7 +1293,7 @@ export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationResponse,
   DeleteOrganizationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationRequest,
   output: DeleteOrganizationResponse,
   errors: [OrganizationNotFound, Forbidden],
@@ -1311,7 +1308,7 @@ export interface GetOrganizationProfileRequest {
 }
 
 export const GetOrganizationProfileRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       organizationId: Schema.String.pipe(T.HttpPath("organizationId")),
     }).pipe(
@@ -1331,7 +1328,7 @@ export interface GetOrganizationProfileResponse {
 }
 
 export const GetOrganizationProfileResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       businessAddress: Schema.String,
       businessEmail: Schema.String,
@@ -1361,7 +1358,7 @@ export const getOrganizationProfile: API.OperationMethod<
   GetOrganizationProfileResponse,
   GetOrganizationProfileError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationProfileRequest,
   output: GetOrganizationProfileResponse,
   errors: [OrganizationNotFound, Forbidden],
@@ -1377,7 +1374,7 @@ export interface PutOrganizationProfileRequest {
 }
 
 export const PutOrganizationProfileRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       organizationId: Schema.String.pipe(T.HttpPath("organizationId")),
       businessAddress: Schema.String,
@@ -1403,7 +1400,7 @@ export const PutOrganizationProfileRequest =
 export type PutOrganizationProfileResponse = unknown;
 
 export const PutOrganizationProfileResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  /*@__PURE__*/ Schema.suspend(
     () => Schema.Unknown,
   ) as unknown as Schema.Codec<PutOrganizationProfileResponse>;
 
@@ -1417,7 +1414,7 @@ export const putOrganizationProfile: API.OperationMethod<
   PutOrganizationProfileResponse,
   PutOrganizationProfileError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutOrganizationProfileRequest,
   output: PutOrganizationProfileResponse,
   errors: [OrganizationNotFound, Forbidden],

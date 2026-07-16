@@ -13,7 +13,7 @@ export interface FeatureFlagsTestEvaluationCreateInput {
   groups?: unknown;
 }
 export const FeatureFlagsTestEvaluationCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     distinct_id: Schema.optional(Schema.String),
@@ -56,7 +56,7 @@ export interface FeatureFlagsTestEvaluationCreateOutput {
   }[];
 }
 export const FeatureFlagsTestEvaluationCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     flag_key: Schema.String,
     result: Schema.Unknown,
     reason: Schema.String,
@@ -99,7 +99,7 @@ export const FeatureFlagsTestEvaluationCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const featureFlagsTestEvaluationCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FeatureFlagsTestEvaluationCreateInput,
     outputSchema: FeatureFlagsTestEvaluationCreateOutput,
     errors: [BadRequest, NotFound] as const,

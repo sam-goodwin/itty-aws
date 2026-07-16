@@ -55,7 +55,7 @@ export interface PostPaymentRecordsReportPaymentInput {
   };
 }
 export const PostPaymentRecordsReportPaymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount_requested: Schema.Struct({
       currency: Schema.String,
       value: Schema.Number,
@@ -196,7 +196,7 @@ export interface PostPaymentRecordsReportPaymentOutput {
   } | null;
 }
 export const PostPaymentRecordsReportPaymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
       currency: Schema.String,
       value: Schema.Number,
@@ -279,7 +279,7 @@ export const PostPaymentRecordsReportPaymentOutput =
  * Records in a terminal state directly, through this method.</p>
  */
 export const PostPaymentRecordsReportPayment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentRecordsReportPaymentInput,
     outputSchema: PostPaymentRecordsReportPaymentOutput,
   }));

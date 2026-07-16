@@ -28,7 +28,7 @@ export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
 }
 
 export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse: Schema.Codec<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({
     identifier: "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse",
@@ -42,7 +42,7 @@ export interface GoogleHomeEnterpriseSdmV1ParentRelation {
 }
 
 export const GoogleHomeEnterpriseSdmV1ParentRelation: Schema.Codec<GoogleHomeEnterpriseSdmV1ParentRelation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ParentRelation" });
@@ -59,7 +59,7 @@ export interface GoogleHomeEnterpriseSdmV1Device {
 }
 
 export const GoogleHomeEnterpriseSdmV1Device: Schema.Codec<GoogleHomeEnterpriseSdmV1Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -74,7 +74,7 @@ export interface GoogleHomeEnterpriseSdmV1ListDevicesResponse {
 }
 
 export const GoogleHomeEnterpriseSdmV1ListDevicesResponse: Schema.Codec<GoogleHomeEnterpriseSdmV1ListDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     devices: Schema.optional(Schema.Array(GoogleHomeEnterpriseSdmV1Device)),
   }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ListDevicesResponse" });
 
@@ -86,7 +86,7 @@ export interface GoogleHomeEnterpriseSdmV1Structure {
 }
 
 export const GoogleHomeEnterpriseSdmV1Structure: Schema.Codec<GoogleHomeEnterpriseSdmV1Structure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1Structure" });
@@ -97,7 +97,7 @@ export interface GoogleHomeEnterpriseSdmV1ListStructuresResponse {
 }
 
 export const GoogleHomeEnterpriseSdmV1ListStructuresResponse: Schema.Codec<GoogleHomeEnterpriseSdmV1ListStructuresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     structures: Schema.optional(
       Schema.Array(GoogleHomeEnterpriseSdmV1Structure),
     ),
@@ -113,7 +113,7 @@ export interface GoogleHomeEnterpriseSdmV1Room {
 }
 
 export const GoogleHomeEnterpriseSdmV1Room: Schema.Codec<GoogleHomeEnterpriseSdmV1Room> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1Room" });
@@ -126,7 +126,7 @@ export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
 }
 
 export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest: Schema.Codec<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     command: Schema.optional(Schema.String),
   }).annotate({
@@ -139,7 +139,7 @@ export interface GoogleHomeEnterpriseSdmV1ListRoomsResponse {
 }
 
 export const GoogleHomeEnterpriseSdmV1ListRoomsResponse: Schema.Codec<GoogleHomeEnterpriseSdmV1ListRoomsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rooms: Schema.optional(Schema.Array(GoogleHomeEnterpriseSdmV1Room)),
   }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ListRoomsResponse" });
 
@@ -205,7 +205,7 @@ export interface ListEnterprisesDevicesRequest {
 }
 
 export const ListEnterprisesDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
@@ -216,7 +216,7 @@ export const ListEnterprisesDevicesRequest =
 export type ListEnterprisesDevicesResponse =
   GoogleHomeEnterpriseSdmV1ListDevicesResponse;
 export const ListEnterprisesDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1ListDevicesResponse;
+  /*@__PURE__*/ GoogleHomeEnterpriseSdmV1ListDevicesResponse;
 
 export type ListEnterprisesDevicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -226,7 +226,7 @@ export const listEnterprisesDevices: API.OperationMethod<
   ListEnterprisesDevicesResponse,
   ListEnterprisesDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEnterprisesDevicesRequest,
   output: ListEnterprisesDevicesResponse,
   errors: [NotFound, Forbidden],
@@ -240,7 +240,7 @@ export interface ExecuteCommandEnterprisesDevicesRequest {
 }
 
 export const ExecuteCommandEnterprisesDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest,
@@ -257,7 +257,7 @@ export const ExecuteCommandEnterprisesDevicesRequest =
 export type ExecuteCommandEnterprisesDevicesResponse =
   GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse;
 export const ExecuteCommandEnterprisesDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse;
+  /*@__PURE__*/ GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse;
 
 export type ExecuteCommandEnterprisesDevicesError =
   | DefaultErrors
@@ -272,7 +272,7 @@ export const executeCommandEnterprisesDevices: API.OperationMethod<
   ExecuteCommandEnterprisesDevicesResponse,
   ExecuteCommandEnterprisesDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExecuteCommandEnterprisesDevicesRequest,
   output: ExecuteCommandEnterprisesDevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -284,7 +284,7 @@ export interface GetEnterprisesDevicesRequest {
 }
 
 export const GetEnterprisesDevicesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -293,7 +293,7 @@ export const GetEnterprisesDevicesRequest =
 
 export type GetEnterprisesDevicesResponse = GoogleHomeEnterpriseSdmV1Device;
 export const GetEnterprisesDevicesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1Device;
+  /*@__PURE__*/ GoogleHomeEnterpriseSdmV1Device;
 
 export type GetEnterprisesDevicesError = DefaultErrors | NotFound | Forbidden;
 
@@ -303,7 +303,7 @@ export const getEnterprisesDevices: API.OperationMethod<
   GetEnterprisesDevicesResponse,
   GetEnterprisesDevicesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnterprisesDevicesRequest,
   output: GetEnterprisesDevicesResponse,
   errors: [NotFound, Forbidden],
@@ -315,7 +315,7 @@ export interface GetEnterprisesStructuresRequest {
 }
 
 export const GetEnterprisesStructuresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -325,7 +325,7 @@ export const GetEnterprisesStructuresRequest =
 export type GetEnterprisesStructuresResponse =
   GoogleHomeEnterpriseSdmV1Structure;
 export const GetEnterprisesStructuresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1Structure;
+  /*@__PURE__*/ GoogleHomeEnterpriseSdmV1Structure;
 
 export type GetEnterprisesStructuresError =
   | DefaultErrors
@@ -338,7 +338,7 @@ export const getEnterprisesStructures: API.OperationMethod<
   GetEnterprisesStructuresResponse,
   GetEnterprisesStructuresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnterprisesStructuresRequest,
   output: GetEnterprisesStructuresResponse,
   errors: [NotFound, Forbidden],
@@ -352,7 +352,7 @@ export interface ListEnterprisesStructuresRequest {
 }
 
 export const ListEnterprisesStructuresRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
@@ -363,7 +363,7 @@ export const ListEnterprisesStructuresRequest =
 export type ListEnterprisesStructuresResponse =
   GoogleHomeEnterpriseSdmV1ListStructuresResponse;
 export const ListEnterprisesStructuresResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1ListStructuresResponse;
+  /*@__PURE__*/ GoogleHomeEnterpriseSdmV1ListStructuresResponse;
 
 export type ListEnterprisesStructuresError =
   | DefaultErrors
@@ -376,7 +376,7 @@ export const listEnterprisesStructures: API.OperationMethod<
   ListEnterprisesStructuresResponse,
   ListEnterprisesStructuresError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEnterprisesStructuresRequest,
   output: ListEnterprisesStructuresResponse,
   errors: [NotFound, Forbidden],
@@ -388,7 +388,7 @@ export interface GetEnterprisesStructuresRoomsRequest {
 }
 
 export const GetEnterprisesStructuresRoomsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}" }),
@@ -398,7 +398,7 @@ export const GetEnterprisesStructuresRoomsRequest =
 export type GetEnterprisesStructuresRoomsResponse =
   GoogleHomeEnterpriseSdmV1Room;
 export const GetEnterprisesStructuresRoomsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1Room;
+  /*@__PURE__*/ GoogleHomeEnterpriseSdmV1Room;
 
 export type GetEnterprisesStructuresRoomsError =
   | DefaultErrors
@@ -411,7 +411,7 @@ export const getEnterprisesStructuresRooms: API.OperationMethod<
   GetEnterprisesStructuresRoomsResponse,
   GetEnterprisesStructuresRoomsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnterprisesStructuresRoomsRequest,
   output: GetEnterprisesStructuresRoomsResponse,
   errors: [NotFound, Forbidden],
@@ -423,7 +423,7 @@ export interface ListEnterprisesStructuresRoomsRequest {
 }
 
 export const ListEnterprisesStructuresRoomsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+parent}/rooms" }),
@@ -433,7 +433,7 @@ export const ListEnterprisesStructuresRoomsRequest =
 export type ListEnterprisesStructuresRoomsResponse =
   GoogleHomeEnterpriseSdmV1ListRoomsResponse;
 export const ListEnterprisesStructuresRoomsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1ListRoomsResponse;
+  /*@__PURE__*/ GoogleHomeEnterpriseSdmV1ListRoomsResponse;
 
 export type ListEnterprisesStructuresRoomsError =
   | DefaultErrors
@@ -446,7 +446,7 @@ export const listEnterprisesStructuresRooms: API.OperationMethod<
   ListEnterprisesStructuresRoomsResponse,
   ListEnterprisesStructuresRoomsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListEnterprisesStructuresRoomsRequest,
   output: ListEnterprisesStructuresRoomsResponse,
   errors: [NotFound, Forbidden],

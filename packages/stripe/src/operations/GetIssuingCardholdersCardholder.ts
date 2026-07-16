@@ -8,7 +8,7 @@ export interface GetIssuingCardholdersCardholderInput {
   expand?: string;
 }
 export const GetIssuingCardholdersCardholderInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cardholder: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -191,7 +191,7 @@ export interface GetIssuingCardholdersCardholderOutput {
   type: "company" | "individual";
 }
 export const GetIssuingCardholdersCardholderOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billing: Schema.Struct({
       address: Schema.Struct({
         city: Schema.NullOr(Schema.String),
@@ -258,7 +258,7 @@ export const GetIssuingCardholdersCardholderOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetIssuingCardholdersCardholder =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetIssuingCardholdersCardholderInput,
     outputSchema: GetIssuingCardholdersCardholderOutput,
   }));

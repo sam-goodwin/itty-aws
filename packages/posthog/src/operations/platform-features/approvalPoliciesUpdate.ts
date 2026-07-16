@@ -39,7 +39,7 @@ export interface ApprovalPoliciesUpdateInput {
   updated_at?: string | null;
 }
 export const ApprovalPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     action_key: Schema.optional(Schema.String),
@@ -128,7 +128,7 @@ export interface ApprovalPoliciesUpdateOutput {
   updated_at?: string | null;
 }
 export const ApprovalPoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     action_key: Schema.optional(Schema.String),
     conditions: Schema.optional(Schema.Unknown),
@@ -181,9 +181,7 @@ export const ApprovalPoliciesUpdateOutput =
  * @param id - A UUID string identifying this approval policy.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const approvalPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApprovalPoliciesUpdateInput,
-    outputSchema: ApprovalPoliciesUpdateOutput,
-  }),
-);
+export const approvalPoliciesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApprovalPoliciesUpdateInput,
+  outputSchema: ApprovalPoliciesUpdateOutput,
+}));

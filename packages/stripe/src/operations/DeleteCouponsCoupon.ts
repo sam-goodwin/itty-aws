@@ -7,7 +7,7 @@ export interface DeleteCouponsCouponInput {
   coupon: string;
 }
 export const DeleteCouponsCouponInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     coupon: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -24,7 +24,7 @@ export interface DeleteCouponsCouponOutput {
   object: "coupon";
 }
 export const DeleteCouponsCouponOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.Literals([true]),
     id: Schema.String,
     object: Schema.Literals(["coupon"]),
@@ -36,7 +36,7 @@ export const DeleteCouponsCouponOutput =
  *
  * <p>You can delete coupons via the <a href="https://dashboard.stripe.com/coupons">coupon management</a> page of the Stripe dashboard. However, deleting a coupon does not affect any customers who have already applied the coupon; it means that new customers can’t redeem the coupon. You can also delete coupons via the API.</p>
  */
-export const DeleteCouponsCoupon = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeleteCouponsCoupon = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteCouponsCouponInput,
   outputSchema: DeleteCouponsCouponOutput,
 }));

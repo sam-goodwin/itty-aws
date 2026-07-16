@@ -8,7 +8,7 @@ export interface GetTreasuryReceivedCreditsIdInput {
   expand?: string;
 }
 export const GetTreasuryReceivedCreditsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -174,7 +174,7 @@ export interface GetTreasuryReceivedCreditsIdOutput {
     | null;
 }
 export const GetTreasuryReceivedCreditsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     created: Schema.Number,
     currency: Schema.String,
@@ -362,7 +362,7 @@ export const GetTreasuryReceivedCreditsIdOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetTreasuryReceivedCreditsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTreasuryReceivedCreditsIdInput,
     outputSchema: GetTreasuryReceivedCreditsIdOutput,
   }));

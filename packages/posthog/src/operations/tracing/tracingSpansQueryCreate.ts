@@ -38,7 +38,7 @@ export interface TracingSpansQueryCreateInput {
   };
 }
 export const TracingSpansQueryCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     query: Schema.Struct({
       dateRange: Schema.optional(
@@ -95,16 +95,14 @@ export const TracingSpansQueryCreateInput =
 // Output Schema
 export type TracingSpansQueryCreateOutput = void;
 export const TracingSpansQueryCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansQueryCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TracingSpansQueryCreateOutput>;
 
 // The operation
 /**
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const tracingSpansQueryCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TracingSpansQueryCreateInput,
-    outputSchema: TracingSpansQueryCreateOutput,
-  }),
-);
+export const tracingSpansQueryCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TracingSpansQueryCreateInput,
+  outputSchema: TracingSpansQueryCreateOutput,
+}));

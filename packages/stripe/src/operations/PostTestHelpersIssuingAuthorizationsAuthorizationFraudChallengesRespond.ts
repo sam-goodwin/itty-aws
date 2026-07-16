@@ -14,7 +14,7 @@ export interface PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallenge
   expand?: string[];
 }
 export const PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesRespondInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authorization: Schema.String.pipe(T.PathParam()),
     confirmed: Schema.Boolean,
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -2067,7 +2067,7 @@ export interface PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallenge
   wallet: string | null;
 }
 export const PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesRespondOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.NullOr(
       Schema.Struct({
@@ -4364,7 +4364,7 @@ export const PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesRes
  * <p>Respond to a fraud challenge on a testmode Issuing authorization, simulating either a confirmation of fraud or a correction of legitimacy.</p>
  */
 export const PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesRespond =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesRespondInput,
     outputSchema:

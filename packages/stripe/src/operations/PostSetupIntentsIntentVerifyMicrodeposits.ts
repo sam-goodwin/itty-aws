@@ -15,7 +15,7 @@ export interface PostSetupIntentsIntentVerifyMicrodepositsInput {
   expand?: string[];
 }
 export const PostSetupIntentsIntentVerifyMicrodepositsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     amounts: Schema.optional(Schema.Array(Schema.Number)),
     descriptor_code: Schema.optional(Schema.String),
@@ -507,7 +507,7 @@ export interface PostSetupIntentsIntentVerifyMicrodepositsOutput {
   usage: string;
 }
 export const PostSetupIntentsIntentVerifyMicrodepositsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application: Schema.NullOr(
       Schema.Union([
         Schema.String,
@@ -690,7 +690,7 @@ export const PostSetupIntentsIntentVerifyMicrodepositsOutput =
  * <p>Verifies microdeposits on a SetupIntent object.</p>
  */
 export const PostSetupIntentsIntentVerifyMicrodeposits =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostSetupIntentsIntentVerifyMicrodepositsInput,
     outputSchema: PostSetupIntentsIntentVerifyMicrodepositsOutput,
   }));

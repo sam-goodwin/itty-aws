@@ -16,7 +16,7 @@ export interface FluidRelayContainersDeleteInput {
   fluidRelayContainerName: string;
 }
 export const FluidRelayContainersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     fluidRelayServerName: Schema.String.pipe(T.PathParam()),
@@ -32,7 +32,7 @@ export const FluidRelayContainersDeleteInput =
 // Output Schema
 export type FluidRelayContainersDeleteOutput = void;
 export const FluidRelayContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FluidRelayContainersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FluidRelayContainersDeleteOutput>;
 
 // The operation
 /**
@@ -44,12 +44,10 @@ export const FluidRelayContainersDeleteOutput =
  * @param fluidRelayContainerName - The Fluid Relay container resource name.
  * @param api-version - The API version to use for this operation.
  */
-export const FluidRelayContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FluidRelayContainersDeleteInput,
-    outputSchema: FluidRelayContainersDeleteOutput,
-  }),
-);
+export const FluidRelayContainersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FluidRelayContainersDeleteInput,
+  outputSchema: FluidRelayContainersDeleteOutput,
+}));
 // Input Schema
 export interface FluidRelayContainersGetInput {
   subscriptionId: string;
@@ -58,7 +56,7 @@ export interface FluidRelayContainersGetInput {
   fluidRelayContainerName: string;
 }
 export const FluidRelayContainersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     fluidRelayServerName: Schema.String.pipe(T.PathParam()),
@@ -78,7 +76,7 @@ export interface FluidRelayContainersGetOutput {
   type?: string;
 }
 export const FluidRelayContainersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -94,12 +92,10 @@ export const FluidRelayContainersGetOutput =
  * @param fluidRelayContainerName - The Fluid Relay container resource name.
  * @param api-version - The API version to use for this operation.
  */
-export const FluidRelayContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FluidRelayContainersGetInput,
-    outputSchema: FluidRelayContainersGetOutput,
-  }),
-);
+export const FluidRelayContainersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FluidRelayContainersGetInput,
+  outputSchema: FluidRelayContainersGetOutput,
+}));
 // Input Schema
 export interface FluidRelayContainersListByFluidRelayServersInput {
   subscriptionId: string;
@@ -107,7 +103,7 @@ export interface FluidRelayContainersListByFluidRelayServersInput {
   fluidRelayServerName: string;
 }
 export const FluidRelayContainersListByFluidRelayServersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     fluidRelayServerName: Schema.String.pipe(T.PathParam()),
@@ -125,7 +121,7 @@ export interface FluidRelayContainersListByFluidRelayServersOutput {
   nextLink?: string;
 }
 export const FluidRelayContainersListByFluidRelayServersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -148,14 +144,14 @@ export const FluidRelayContainersListByFluidRelayServersOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayContainersListByFluidRelayServers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FluidRelayContainersListByFluidRelayServersInput,
     outputSchema: FluidRelayContainersListByFluidRelayServersOutput,
   }));
 // Input Schema
 export interface FluidRelayOperationsListInput {}
 export const FluidRelayOperationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({
       method: "GET",
       path: "/providers/Microsoft.FluidRelay/operations",
@@ -178,7 +174,7 @@ export interface FluidRelayOperationsListOutput {
   nextLink?: string;
 }
 export const FluidRelayOperationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -204,12 +200,10 @@ export const FluidRelayOperationsListOutput =
  *
  * @param api-version - The API version to use for this operation.
  */
-export const FluidRelayOperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FluidRelayOperationsListInput,
-    outputSchema: FluidRelayOperationsListOutput,
-  }),
-);
+export const FluidRelayOperationsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FluidRelayOperationsListInput,
+  outputSchema: FluidRelayOperationsListOutput,
+}));
 // Input Schema
 export interface FluidRelayServersCreateOrUpdateInput {
   subscriptionId: string;
@@ -259,7 +253,7 @@ export interface FluidRelayServersCreateOrUpdateInput {
   location: string;
 }
 export const FluidRelayServersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     fluidRelayServerName: Schema.String.pipe(T.PathParam()),
@@ -352,7 +346,7 @@ export interface FluidRelayServersCreateOrUpdateOutput {
   type?: string;
 }
 export const FluidRelayServersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -368,7 +362,7 @@ export const FluidRelayServersCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayServersCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FluidRelayServersCreateOrUpdateInput,
     outputSchema: FluidRelayServersCreateOrUpdateOutput,
   }));
@@ -379,7 +373,7 @@ export interface FluidRelayServersDeleteInput {
   fluidRelayServerName: string;
 }
 export const FluidRelayServersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     fluidRelayServerName: Schema.String.pipe(T.PathParam()),
@@ -394,7 +388,7 @@ export const FluidRelayServersDeleteInput =
 // Output Schema
 export type FluidRelayServersDeleteOutput = void;
 export const FluidRelayServersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FluidRelayServersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FluidRelayServersDeleteOutput>;
 
 // The operation
 /**
@@ -405,12 +399,10 @@ export const FluidRelayServersDeleteOutput =
  * @param fluidRelayServerName - The Fluid Relay server resource name.
  * @param api-version - The API version to use for this operation.
  */
-export const FluidRelayServersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FluidRelayServersDeleteInput,
-    outputSchema: FluidRelayServersDeleteOutput,
-  }),
-);
+export const FluidRelayServersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FluidRelayServersDeleteInput,
+  outputSchema: FluidRelayServersDeleteOutput,
+}));
 // Input Schema
 export interface FluidRelayServersGetInput {
   subscriptionId: string;
@@ -418,7 +410,7 @@ export interface FluidRelayServersGetInput {
   fluidRelayServerName: string;
 }
 export const FluidRelayServersGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     fluidRelayServerName: Schema.String.pipe(T.PathParam()),
@@ -437,7 +429,7 @@ export interface FluidRelayServersGetOutput {
   type?: string;
 }
 export const FluidRelayServersGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -452,19 +444,17 @@ export const FluidRelayServersGetOutput =
  * @param fluidRelayServerName - The Fluid Relay server resource name.
  * @param api-version - The API version to use for this operation.
  */
-export const FluidRelayServersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FluidRelayServersGetInput,
-    outputSchema: FluidRelayServersGetOutput,
-  }),
-);
+export const FluidRelayServersGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FluidRelayServersGetInput,
+  outputSchema: FluidRelayServersGetOutput,
+}));
 // Input Schema
 export interface FluidRelayServersListByResourceGroupInput {
   subscriptionId: string;
   resourceGroup: string;
 }
 export const FluidRelayServersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -481,7 +471,7 @@ export interface FluidRelayServersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const FluidRelayServersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -501,7 +491,7 @@ export const FluidRelayServersListByResourceGroupOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayServersListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FluidRelayServersListByResourceGroupInput,
     outputSchema: FluidRelayServersListByResourceGroupOutput,
   }));
@@ -510,7 +500,7 @@ export interface FluidRelayServersListBySubscriptionInput {
   subscriptionId: string;
 }
 export const FluidRelayServersListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -526,7 +516,7 @@ export interface FluidRelayServersListBySubscriptionOutput {
   nextLink?: string;
 }
 export const FluidRelayServersListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -545,7 +535,7 @@ export const FluidRelayServersListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayServersListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FluidRelayServersListBySubscriptionInput,
     outputSchema: FluidRelayServersListBySubscriptionOutput,
   }));
@@ -556,7 +546,7 @@ export interface FluidRelayServersListKeysInput {
   fluidRelayServerName: string;
 }
 export const FluidRelayServersListKeysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     fluidRelayServerName: Schema.String.pipe(T.PathParam()),
@@ -574,7 +564,7 @@ export interface FluidRelayServersListKeysOutput {
   key2?: string;
 }
 export const FluidRelayServersListKeysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<FluidRelayServersListKeysOutput>;
@@ -588,12 +578,10 @@ export const FluidRelayServersListKeysOutput =
  * @param fluidRelayServerName - The Fluid Relay server resource name.
  * @param api-version - The API version to use for this operation.
  */
-export const FluidRelayServersListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FluidRelayServersListKeysInput,
-    outputSchema: FluidRelayServersListKeysOutput,
-  }),
-);
+export const FluidRelayServersListKeys = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FluidRelayServersListKeysInput,
+  outputSchema: FluidRelayServersListKeysOutput,
+}));
 // Input Schema
 export interface FluidRelayServersRegenerateKeyInput {
   subscriptionId: string;
@@ -602,7 +590,7 @@ export interface FluidRelayServersRegenerateKeyInput {
   keyName: "key1" | "key2";
 }
 export const FluidRelayServersRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     fluidRelayServerName: Schema.String.pipe(T.PathParam()),
@@ -621,7 +609,7 @@ export interface FluidRelayServersRegenerateKeyOutput {
   key2?: string;
 }
 export const FluidRelayServersRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     key1: Schema.optional(Schema.String),
     key2: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<FluidRelayServersRegenerateKeyOutput>;
@@ -636,7 +624,7 @@ export const FluidRelayServersRegenerateKeyOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const FluidRelayServersRegenerateKey =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FluidRelayServersRegenerateKeyInput,
     outputSchema: FluidRelayServersRegenerateKeyOutput,
   }));
@@ -673,7 +661,7 @@ export interface FluidRelayServersUpdateInput {
   location?: string;
 }
 export const FluidRelayServersUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroup: Schema.String.pipe(T.PathParam()),
     fluidRelayServerName: Schema.String.pipe(T.PathParam()),
@@ -740,7 +728,7 @@ export interface FluidRelayServersUpdateOutput {
   type?: string;
 }
 export const FluidRelayServersUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -755,9 +743,7 @@ export const FluidRelayServersUpdateOutput =
  * @param fluidRelayServerName - The Fluid Relay server resource name.
  * @param api-version - The API version to use for this operation.
  */
-export const FluidRelayServersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FluidRelayServersUpdateInput,
-    outputSchema: FluidRelayServersUpdateOutput,
-  }),
-);
+export const FluidRelayServersUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FluidRelayServersUpdateInput,
+  outputSchema: FluidRelayServersUpdateOutput,
+}));

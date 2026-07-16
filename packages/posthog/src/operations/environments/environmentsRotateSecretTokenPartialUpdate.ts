@@ -1092,7 +1092,7 @@ export interface EnvironmentsRotateSecretTokenPartialUpdateInput {
   events_retention_enforced?: boolean;
 }
 export const EnvironmentsRotateSecretTokenPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     uuid: Schema.optional(Schema.String),
@@ -2269,7 +2269,7 @@ export const EnvironmentsRotateSecretTokenPartialUpdateInput =
 // Output Schema
 export type EnvironmentsRotateSecretTokenPartialUpdateOutput = void;
 export const EnvironmentsRotateSecretTokenPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsRotateSecretTokenPartialUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsRotateSecretTokenPartialUpdateOutput>;
 
 // The operation
 /**
@@ -2279,7 +2279,7 @@ export const EnvironmentsRotateSecretTokenPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const environmentsRotateSecretTokenPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsRotateSecretTokenPartialUpdateInput,
     outputSchema: EnvironmentsRotateSecretTokenPartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -8,7 +8,7 @@ export interface V1UndoInput {
   ref: string;
   name: string;
 }
-export const V1UndoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const V1UndoInput = /*@__PURE__*/ Schema.Struct({
   ref: Schema.String.pipe(T.PathParam()),
   name: Schema.String,
 }).pipe(
@@ -18,7 +18,7 @@ export const V1UndoInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type V1UndoOutput = void;
 export const V1UndoOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1UndoOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1UndoOutput>;
 
 // The operation
 /**
@@ -26,7 +26,7 @@ export const V1UndoOutput =
  *
  * @param ref - Project ref
  */
-export const v1Undo = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1Undo = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1UndoInput,
   outputSchema: V1UndoOutput,
   errors: [BadRequest, Forbidden] as const,

@@ -8,7 +8,7 @@ export interface UsersIntegrationsSlackDestroyInput {
   uuid: string;
 }
 export const UsersIntegrationsSlackDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     slack_user_id: Schema.String.pipe(T.PathParam()),
     uuid: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const UsersIntegrationsSlackDestroyInput =
 // Output Schema
 export type UsersIntegrationsSlackDestroyOutput = void;
 export const UsersIntegrationsSlackDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersIntegrationsSlackDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersIntegrationsSlackDestroyOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const UsersIntegrationsSlackDestroyOutput =
  * feature flag is turned off.
  */
 export const usersIntegrationsSlackDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersIntegrationsSlackDestroyInput,
     outputSchema: UsersIntegrationsSlackDestroyOutput,
   }));

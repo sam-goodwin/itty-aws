@@ -4,9 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface ListApiKeysInput {}
-export const ListApiKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ListApiKeysInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/api_keys" }),
 ) as unknown as Schema.Codec<ListApiKeysInput>;
 
@@ -19,7 +17,7 @@ export type ListApiKeysOutput = {
   last_used_at?: string | null;
   last_used_from_addr: string;
 }[];
-export const ListApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const ListApiKeysOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     id: Schema.Number,
     name: Schema.String,
@@ -43,7 +41,7 @@ export const ListApiKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  * API keys can also be managed in the Neon Console.
  * For more information, see [Manage API keys](https://neon.com/docs/manage/api-keys/).
  */
-export const listApiKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listApiKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListApiKeysInput,
   outputSchema: ListApiKeysOutput,
 }));

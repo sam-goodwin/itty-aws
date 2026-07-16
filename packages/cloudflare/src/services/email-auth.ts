@@ -36,7 +36,7 @@ interface ApprovedSource {
   /** Source UUID */
   tag?: string | null;
 }
-const ApprovedSource = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const ApprovedSource = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     created: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -76,7 +76,7 @@ interface BimiRecord {
   /** Record type */
   type?: string | null;
 }
-const BimiRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const BimiRecord = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     content: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -158,7 +158,7 @@ interface Records {
       }[]
     | null;
 }
-const Records = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Records = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     bimiRecords: Schema.optional(
       Schema.Union([Schema.Array(BimiRecord), Schema.Null]),
@@ -204,7 +204,7 @@ interface Error2 {
   /** Additional error-specific details (optional).  - For `invalid_domain` errors: the invalid domain string - For `invalid_mechanism` errors: the invalid mechanism text (e.g., "invalidmech123") - For `loo */
   details?: string | null;
 }
-const Error2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Error2 = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     code: Schema.String,
     domain: Schema.String,
@@ -222,16 +222,15 @@ export interface GetDmarcReportRequest {
   zoneId: string;
 }
 
-export const GetDmarcReportRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/email/auth/dmarc-reports",
-      }),
-    ),
+export const GetDmarcReportRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/email/auth/dmarc-reports",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetDmarcReportRequest>;
 
 export interface GetDmarcReportResponse {
@@ -344,7 +343,7 @@ export interface GetDmarcReportResponse {
 }
 
 export const GetDmarcReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       approvedSources: Schema.optional(
         Schema.Union([Schema.Array(ApprovedSource), Schema.Null]),
@@ -400,7 +399,7 @@ export const getDmarcReport: API.OperationMethod<
   GetDmarcReportResponse,
   GetDmarcReportError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDmarcReportRequest,
   output: GetDmarcReportResponse,
   errors: [],
@@ -416,7 +415,7 @@ export interface PatchDmarcReportRequest {
 }
 
 export const PatchDmarcReportRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
       enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -540,7 +539,7 @@ export interface PatchDmarcReportResponse {
 }
 
 export const PatchDmarcReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       approvedSources: Schema.optional(
         Schema.Union([Schema.Array(ApprovedSource), Schema.Null]),
@@ -596,7 +595,7 @@ export const patchDmarcReport: API.OperationMethod<
   PatchDmarcReportResponse,
   PatchDmarcReportError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchDmarcReportRequest,
   output: PatchDmarcReportResponse,
   errors: [],
@@ -613,17 +612,16 @@ export interface GetSpfInspectRequest {
   id: string;
 }
 
-export const GetSpfInspectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-      id: Schema.String.pipe(T.HttpQuery("id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/zones/{zone_id}/email/auth/spf/inspect",
-      }),
-    ),
+export const GetSpfInspectRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    id: Schema.String.pipe(T.HttpQuery("id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/email/auth/spf/inspect",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetSpfInspectRequest>;
 
 export interface GetSpfInspectResponse {
@@ -646,27 +644,24 @@ export interface GetSpfInspectResponse {
     | null;
 }
 
-export const GetSpfInspectResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      components: Schema.Array(Schema.Unknown),
-      domain: Schema.String,
-      record: Schema.String,
-      totalLookups: Schema.Number,
-      errors: Schema.optional(
-        Schema.Union([Schema.Array(Error2), Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          components: "components",
-          domain: "domain",
-          record: "record",
-          totalLookups: "total_lookups",
-          errors: "errors",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
+export const GetSpfInspectResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    components: Schema.Array(Schema.Unknown),
+    domain: Schema.String,
+    record: Schema.String,
+    totalLookups: Schema.Number,
+    errors: Schema.optional(Schema.Union([Schema.Array(Error2), Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        components: "components",
+        domain: "domain",
+        record: "record",
+        totalLookups: "total_lookups",
+        errors: "errors",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Codec<GetSpfInspectResponse>;
 
 export type GetSpfInspectError = DefaultErrors;
@@ -676,7 +671,7 @@ export const getSpfInspect: API.OperationMethod<
   GetSpfInspectResponse,
   GetSpfInspectError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpfInspectRequest,
   output: GetSpfInspectResponse,
   errors: [],

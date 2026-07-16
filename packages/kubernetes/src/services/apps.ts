@@ -54,7 +54,7 @@ export interface CreateAppsV1NamespacedControllerRevisionInput {
   revision?: number;
 }
 export const CreateAppsV1NamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -155,7 +155,7 @@ export interface CreateAppsV1NamespacedControllerRevisionOutput {
   revision?: number;
 }
 export const CreateAppsV1NamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.Unknown,
     kind: Schema.optional(Schema.String),
@@ -217,7 +217,7 @@ export const CreateAppsV1NamespacedControllerRevisionOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedControllerRevisionInput,
     outputSchema: CreateAppsV1NamespacedControllerRevisionOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -1362,7 +1362,7 @@ export interface CreateAppsV1NamespacedDaemonSetInput {
   };
 }
 export const CreateAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -4966,7 +4966,7 @@ export interface CreateAppsV1NamespacedDaemonSetOutput {
   };
 }
 export const CreateAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -7436,7 +7436,7 @@ export const CreateAppsV1NamespacedDaemonSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedDaemonSetInput,
     outputSchema: CreateAppsV1NamespacedDaemonSetOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -8584,7 +8584,7 @@ export interface CreateAppsV1NamespacedDeploymentInput {
   };
 }
 export const CreateAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -12194,7 +12194,7 @@ export interface CreateAppsV1NamespacedDeploymentOutput {
   };
 }
 export const CreateAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -14667,7 +14667,7 @@ export const CreateAppsV1NamespacedDeploymentOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAppsV1NamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedDeploymentInput,
     outputSchema: CreateAppsV1NamespacedDeploymentOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -15805,7 +15805,7 @@ export interface CreateAppsV1NamespacedReplicaSetInput {
   };
 }
 export const CreateAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -19438,7 +19438,7 @@ export interface CreateAppsV1NamespacedReplicaSetOutput {
   };
 }
 export const CreateAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -21944,7 +21944,7 @@ export const CreateAppsV1NamespacedReplicaSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedReplicaSetInput,
     outputSchema: CreateAppsV1NamespacedReplicaSetOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -23179,7 +23179,7 @@ export interface CreateAppsV1NamespacedStatefulSetInput {
   };
 }
 export const CreateAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
@@ -27029,7 +27029,7 @@ export interface CreateAppsV1NamespacedStatefulSetOutput {
   };
 }
 export const CreateAppsV1NamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -29655,7 +29655,7 @@ export const CreateAppsV1NamespacedStatefulSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAppsV1NamespacedStatefulSetInput,
     outputSchema: CreateAppsV1NamespacedStatefulSetOutput,
     errors: [Conflict, UnprocessableEntity] as const,
@@ -29683,7 +29683,7 @@ export interface DeleteAppsV1CollectionNamespacedControllerRevisionInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAppsV1CollectionNamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -29742,7 +29742,7 @@ export interface DeleteAppsV1CollectionNamespacedControllerRevisionOutput {
   status?: string;
 }
 export const DeleteAppsV1CollectionNamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -29845,7 +29845,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAppsV1CollectionNamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1CollectionNamespacedControllerRevisionInput,
     outputSchema: DeleteAppsV1CollectionNamespacedControllerRevisionOutput,
   }));
@@ -29872,7 +29872,7 @@ export interface DeleteAppsV1CollectionNamespacedDaemonSetInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAppsV1CollectionNamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -29931,7 +29931,7 @@ export interface DeleteAppsV1CollectionNamespacedDaemonSetOutput {
   status?: string;
 }
 export const DeleteAppsV1CollectionNamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -30034,7 +30034,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAppsV1CollectionNamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1CollectionNamespacedDaemonSetInput,
     outputSchema: DeleteAppsV1CollectionNamespacedDaemonSetOutput,
   }));
@@ -30061,7 +30061,7 @@ export interface DeleteAppsV1CollectionNamespacedDeploymentInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAppsV1CollectionNamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -30120,7 +30120,7 @@ export interface DeleteAppsV1CollectionNamespacedDeploymentOutput {
   status?: string;
 }
 export const DeleteAppsV1CollectionNamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -30223,7 +30223,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAppsV1CollectionNamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1CollectionNamespacedDeploymentInput,
     outputSchema: DeleteAppsV1CollectionNamespacedDeploymentOutput,
   }));
@@ -30250,7 +30250,7 @@ export interface DeleteAppsV1CollectionNamespacedReplicaSetInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAppsV1CollectionNamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -30309,7 +30309,7 @@ export interface DeleteAppsV1CollectionNamespacedReplicaSetOutput {
   status?: string;
 }
 export const DeleteAppsV1CollectionNamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -30412,7 +30412,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAppsV1CollectionNamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1CollectionNamespacedReplicaSetInput,
     outputSchema: DeleteAppsV1CollectionNamespacedReplicaSetOutput,
   }));
@@ -30439,7 +30439,7 @@ export interface DeleteAppsV1CollectionNamespacedStatefulSetInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAppsV1CollectionNamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     continue: Schema.optional(Schema.String),
@@ -30498,7 +30498,7 @@ export interface DeleteAppsV1CollectionNamespacedStatefulSetOutput {
   status?: string;
 }
 export const DeleteAppsV1CollectionNamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -30601,7 +30601,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteAppsV1CollectionNamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1CollectionNamespacedStatefulSetInput,
     outputSchema: DeleteAppsV1CollectionNamespacedStatefulSetOutput,
   }));
@@ -30620,7 +30620,7 @@ export interface DeleteAppsV1NamespacedControllerRevisionInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAppsV1NamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -30671,7 +30671,7 @@ export interface DeleteAppsV1NamespacedControllerRevisionOutput {
   status?: string;
 }
 export const DeleteAppsV1NamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -30725,7 +30725,7 @@ export const DeleteAppsV1NamespacedControllerRevisionOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedControllerRevisionInput,
     outputSchema: DeleteAppsV1NamespacedControllerRevisionOutput,
     errors: [NotFound, Conflict] as const,
@@ -30745,7 +30745,7 @@ export interface DeleteAppsV1NamespacedDaemonSetInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -30796,7 +30796,7 @@ export interface DeleteAppsV1NamespacedDaemonSetOutput {
   status?: string;
 }
 export const DeleteAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -30850,7 +30850,7 @@ export const DeleteAppsV1NamespacedDaemonSetOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedDaemonSetInput,
     outputSchema: DeleteAppsV1NamespacedDaemonSetOutput,
     errors: [NotFound, Conflict] as const,
@@ -30870,7 +30870,7 @@ export interface DeleteAppsV1NamespacedDeploymentInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -30921,7 +30921,7 @@ export interface DeleteAppsV1NamespacedDeploymentOutput {
   status?: string;
 }
 export const DeleteAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -30975,7 +30975,7 @@ export const DeleteAppsV1NamespacedDeploymentOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAppsV1NamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedDeploymentInput,
     outputSchema: DeleteAppsV1NamespacedDeploymentOutput,
     errors: [NotFound, Conflict] as const,
@@ -30995,7 +30995,7 @@ export interface DeleteAppsV1NamespacedReplicaSetInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -31046,7 +31046,7 @@ export interface DeleteAppsV1NamespacedReplicaSetOutput {
   status?: string;
 }
 export const DeleteAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -31100,7 +31100,7 @@ export const DeleteAppsV1NamespacedReplicaSetOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedReplicaSetInput,
     outputSchema: DeleteAppsV1NamespacedReplicaSetOutput,
     errors: [NotFound, Conflict] as const,
@@ -31120,7 +31120,7 @@ export interface DeleteAppsV1NamespacedStatefulSetInput {
   preconditions?: { resourceVersion?: string; uid?: string };
 }
 export const DeleteAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -31171,7 +31171,7 @@ export interface DeleteAppsV1NamespacedStatefulSetOutput {
   status?: string;
 }
 export const DeleteAppsV1NamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
@@ -31225,16 +31225,14 @@ export const DeleteAppsV1NamespacedStatefulSetOutput =
  * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteAppsV1NamespacedStatefulSetInput,
     outputSchema: DeleteAppsV1NamespacedStatefulSetOutput,
     errors: [NotFound, Conflict] as const,
   }));
 // Input Schema
 export interface GetAppsAPIGroupInput {}
-export const GetAppsAPIGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const GetAppsAPIGroupInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/apis/apps/" }),
 ) as unknown as Schema.Codec<GetAppsAPIGroupInput>;
 
@@ -31247,7 +31245,7 @@ export interface GetAppsAPIGroupOutput {
   serverAddressByClientCIDRs?: { clientCIDR: string; serverAddress: string }[];
   versions: { groupVersion: string; version: string }[];
 }
-export const GetAppsAPIGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAppsAPIGroupOutput = /*@__PURE__*/ Schema.Struct({
   apiVersion: Schema.optional(Schema.String),
   kind: Schema.optional(Schema.String),
   name: Schema.String,
@@ -31277,14 +31275,14 @@ export const GetAppsAPIGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * get information of a group
  */
-export const getAppsAPIGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getAppsAPIGroup = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetAppsAPIGroupInput,
   outputSchema: GetAppsAPIGroupOutput,
 }));
 // Input Schema
 export interface GetAppsV1APIResourcesInput {}
 export const GetAppsV1APIResourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/apis/apps/v1/" }),
   ) as unknown as Schema.Codec<GetAppsV1APIResourcesInput>;
 
@@ -31307,7 +31305,7 @@ export interface GetAppsV1APIResourcesOutput {
   }[];
 }
 export const GetAppsV1APIResourcesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
@@ -31331,12 +31329,10 @@ export const GetAppsV1APIResourcesOutput =
 /**
  * get available resources
  */
-export const getAppsV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetAppsV1APIResourcesInput,
-    outputSchema: GetAppsV1APIResourcesOutput,
-  }),
-);
+export const getAppsV1APIResources = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetAppsV1APIResourcesInput,
+  outputSchema: GetAppsV1APIResourcesOutput,
+}));
 // Input Schema
 export interface ListAppsV1ControllerRevisionForAllNamespacesInput {
   allowWatchBookmarks?: boolean;
@@ -31353,7 +31349,7 @@ export interface ListAppsV1ControllerRevisionForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListAppsV1ControllerRevisionForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -31421,7 +31417,7 @@ export interface ListAppsV1ControllerRevisionForAllNamespacesOutput {
   };
 }
 export const ListAppsV1ControllerRevisionForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -31552,7 +31548,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAppsV1ControllerRevisionForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1ControllerRevisionForAllNamespacesInput,
     outputSchema: ListAppsV1ControllerRevisionForAllNamespacesOutput,
   }));
@@ -31572,7 +31568,7 @@ export interface ListAppsV1DaemonSetForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListAppsV1DaemonSetForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -32755,7 +32751,7 @@ export interface ListAppsV1DaemonSetForAllNamespacesOutput {
   };
 }
 export const ListAppsV1DaemonSetForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -35400,7 +35396,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAppsV1DaemonSetForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1DaemonSetForAllNamespacesInput,
     outputSchema: ListAppsV1DaemonSetForAllNamespacesOutput,
   }));
@@ -35420,7 +35416,7 @@ export interface ListAppsV1DeploymentForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListAppsV1DeploymentForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -36606,7 +36602,7 @@ export interface ListAppsV1DeploymentForAllNamespacesOutput {
   };
 }
 export const ListAppsV1DeploymentForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -39254,7 +39250,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAppsV1DeploymentForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1DeploymentForAllNamespacesInput,
     outputSchema: ListAppsV1DeploymentForAllNamespacesOutput,
   }));
@@ -39275,7 +39271,7 @@ export interface ListAppsV1NamespacedControllerRevisionInput {
   watch?: boolean;
 }
 export const ListAppsV1NamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -39347,7 +39343,7 @@ export interface ListAppsV1NamespacedControllerRevisionOutput {
   };
 }
 export const ListAppsV1NamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -39479,7 +39475,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1NamespacedControllerRevisionInput,
     outputSchema: ListAppsV1NamespacedControllerRevisionOutput,
   }));
@@ -39500,7 +39496,7 @@ export interface ListAppsV1NamespacedDaemonSetInput {
   watch?: boolean;
 }
 export const ListAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -40687,7 +40683,7 @@ export interface ListAppsV1NamespacedDaemonSetOutput {
   };
 }
 export const ListAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -43333,7 +43329,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1NamespacedDaemonSetInput,
     outputSchema: ListAppsV1NamespacedDaemonSetOutput,
   }));
@@ -43354,7 +43350,7 @@ export interface ListAppsV1NamespacedDeploymentInput {
   watch?: boolean;
 }
 export const ListAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -44544,7 +44540,7 @@ export interface ListAppsV1NamespacedDeploymentOutput {
   };
 }
 export const ListAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -47193,7 +47189,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAppsV1NamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1NamespacedDeploymentInput,
     outputSchema: ListAppsV1NamespacedDeploymentOutput,
   }));
@@ -47214,7 +47210,7 @@ export interface ListAppsV1NamespacedReplicaSetInput {
   watch?: boolean;
 }
 export const ListAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -48394,7 +48390,7 @@ export interface ListAppsV1NamespacedReplicaSetOutput {
   };
 }
 export const ListAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -51082,7 +51078,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1NamespacedReplicaSetInput,
     outputSchema: ListAppsV1NamespacedReplicaSetOutput,
   }));
@@ -51103,7 +51099,7 @@ export interface ListAppsV1NamespacedStatefulSetInput {
   watch?: boolean;
 }
 export const ListAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -52380,7 +52376,7 @@ export interface ListAppsV1NamespacedStatefulSetOutput {
   };
 }
 export const ListAppsV1NamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -55184,7 +55180,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1NamespacedStatefulSetInput,
     outputSchema: ListAppsV1NamespacedStatefulSetOutput,
   }));
@@ -55204,7 +55200,7 @@ export interface ListAppsV1ReplicaSetForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListAppsV1ReplicaSetForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -56380,7 +56376,7 @@ export interface ListAppsV1ReplicaSetForAllNamespacesOutput {
   };
 }
 export const ListAppsV1ReplicaSetForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -59067,7 +59063,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAppsV1ReplicaSetForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1ReplicaSetForAllNamespacesInput,
     outputSchema: ListAppsV1ReplicaSetForAllNamespacesOutput,
   }));
@@ -59087,7 +59083,7 @@ export interface ListAppsV1StatefulSetForAllNamespacesInput {
   watch?: boolean;
 }
 export const ListAppsV1StatefulSetForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -60360,7 +60356,7 @@ export interface ListAppsV1StatefulSetForAllNamespacesOutput {
   };
 }
 export const ListAppsV1StatefulSetForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
       Schema.Struct({
@@ -63163,7 +63159,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listAppsV1StatefulSetForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAppsV1StatefulSetForAllNamespacesInput,
     outputSchema: ListAppsV1StatefulSetForAllNamespacesOutput,
   }));
@@ -63178,7 +63174,7 @@ export interface PatchAppsV1NamespacedControllerRevisionInput {
   force?: boolean;
 }
 export const PatchAppsV1NamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -63233,7 +63229,7 @@ export interface PatchAppsV1NamespacedControllerRevisionOutput {
   revision?: number;
 }
 export const PatchAppsV1NamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.Unknown,
     kind: Schema.optional(Schema.String),
@@ -63297,7 +63293,7 @@ export const PatchAppsV1NamespacedControllerRevisionOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedControllerRevisionInput,
     outputSchema: PatchAppsV1NamespacedControllerRevisionOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -63313,7 +63309,7 @@ export interface PatchAppsV1NamespacedDaemonSetInput {
   force?: boolean;
 }
 export const PatchAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -64463,7 +64459,7 @@ export interface PatchAppsV1NamespacedDaemonSetOutput {
   };
 }
 export const PatchAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -66935,7 +66931,7 @@ export const PatchAppsV1NamespacedDaemonSetOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDaemonSetInput,
     outputSchema: PatchAppsV1NamespacedDaemonSetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -66951,7 +66947,7 @@ export interface PatchAppsV1NamespacedDaemonSetStatusInput {
   force?: boolean;
 }
 export const PatchAppsV1NamespacedDaemonSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -68101,7 +68097,7 @@ export interface PatchAppsV1NamespacedDaemonSetStatusOutput {
   };
 }
 export const PatchAppsV1NamespacedDaemonSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -70573,7 +70569,7 @@ export const PatchAppsV1NamespacedDaemonSetStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAppsV1NamespacedDaemonSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDaemonSetStatusInput,
     outputSchema: PatchAppsV1NamespacedDaemonSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -70589,7 +70585,7 @@ export interface PatchAppsV1NamespacedDeploymentInput {
   force?: boolean;
 }
 export const PatchAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -71742,7 +71738,7 @@ export interface PatchAppsV1NamespacedDeploymentOutput {
   };
 }
 export const PatchAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -74217,7 +74213,7 @@ export const PatchAppsV1NamespacedDeploymentOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAppsV1NamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDeploymentInput,
     outputSchema: PatchAppsV1NamespacedDeploymentOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -74233,7 +74229,7 @@ export interface PatchAppsV1NamespacedDeploymentScaleInput {
   force?: boolean;
 }
 export const PatchAppsV1NamespacedDeploymentScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -74288,7 +74284,7 @@ export interface PatchAppsV1NamespacedDeploymentScaleOutput {
   status?: { replicas: number; selector?: string };
 }
 export const PatchAppsV1NamespacedDeploymentScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -74361,7 +74357,7 @@ export const PatchAppsV1NamespacedDeploymentScaleOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAppsV1NamespacedDeploymentScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDeploymentScaleInput,
     outputSchema: PatchAppsV1NamespacedDeploymentScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -74377,7 +74373,7 @@ export interface PatchAppsV1NamespacedDeploymentStatusInput {
   force?: boolean;
 }
 export const PatchAppsV1NamespacedDeploymentStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -75530,7 +75526,7 @@ export interface PatchAppsV1NamespacedDeploymentStatusOutput {
   };
 }
 export const PatchAppsV1NamespacedDeploymentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -78005,7 +78001,7 @@ export const PatchAppsV1NamespacedDeploymentStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAppsV1NamespacedDeploymentStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedDeploymentStatusInput,
     outputSchema: PatchAppsV1NamespacedDeploymentStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -78021,7 +78017,7 @@ export interface PatchAppsV1NamespacedReplicaSetInput {
   force?: boolean;
 }
 export const PatchAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -79164,7 +79160,7 @@ export interface PatchAppsV1NamespacedReplicaSetOutput {
   };
 }
 export const PatchAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -81672,7 +81668,7 @@ export const PatchAppsV1NamespacedReplicaSetOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedReplicaSetInput,
     outputSchema: PatchAppsV1NamespacedReplicaSetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -81688,7 +81684,7 @@ export interface PatchAppsV1NamespacedReplicaSetScaleInput {
   force?: boolean;
 }
 export const PatchAppsV1NamespacedReplicaSetScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -81743,7 +81739,7 @@ export interface PatchAppsV1NamespacedReplicaSetScaleOutput {
   status?: { replicas: number; selector?: string };
 }
 export const PatchAppsV1NamespacedReplicaSetScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -81816,7 +81812,7 @@ export const PatchAppsV1NamespacedReplicaSetScaleOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAppsV1NamespacedReplicaSetScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedReplicaSetScaleInput,
     outputSchema: PatchAppsV1NamespacedReplicaSetScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -81832,7 +81828,7 @@ export interface PatchAppsV1NamespacedReplicaSetStatusInput {
   force?: boolean;
 }
 export const PatchAppsV1NamespacedReplicaSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -82975,7 +82971,7 @@ export interface PatchAppsV1NamespacedReplicaSetStatusOutput {
   };
 }
 export const PatchAppsV1NamespacedReplicaSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -85483,7 +85479,7 @@ export const PatchAppsV1NamespacedReplicaSetStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAppsV1NamespacedReplicaSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedReplicaSetStatusInput,
     outputSchema: PatchAppsV1NamespacedReplicaSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -85499,7 +85495,7 @@ export interface PatchAppsV1NamespacedStatefulSetInput {
   force?: boolean;
 }
 export const PatchAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -86739,7 +86735,7 @@ export interface PatchAppsV1NamespacedStatefulSetOutput {
   };
 }
 export const PatchAppsV1NamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -89367,7 +89363,7 @@ export const PatchAppsV1NamespacedStatefulSetOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedStatefulSetInput,
     outputSchema: PatchAppsV1NamespacedStatefulSetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -89383,7 +89379,7 @@ export interface PatchAppsV1NamespacedStatefulSetScaleInput {
   force?: boolean;
 }
 export const PatchAppsV1NamespacedStatefulSetScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -89438,7 +89434,7 @@ export interface PatchAppsV1NamespacedStatefulSetScaleOutput {
   status?: { replicas: number; selector?: string };
 }
 export const PatchAppsV1NamespacedStatefulSetScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -89511,7 +89507,7 @@ export const PatchAppsV1NamespacedStatefulSetScaleOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAppsV1NamespacedStatefulSetScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedStatefulSetScaleInput,
     outputSchema: PatchAppsV1NamespacedStatefulSetScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -89527,7 +89523,7 @@ export interface PatchAppsV1NamespacedStatefulSetStatusInput {
   force?: boolean;
 }
 export const PatchAppsV1NamespacedStatefulSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -90767,7 +90763,7 @@ export interface PatchAppsV1NamespacedStatefulSetStatusOutput {
   };
 }
 export const PatchAppsV1NamespacedStatefulSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -93395,7 +93391,7 @@ export const PatchAppsV1NamespacedStatefulSetStatusOutput =
  * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchAppsV1NamespacedStatefulSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchAppsV1NamespacedStatefulSetStatusInput,
     outputSchema: PatchAppsV1NamespacedStatefulSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -93407,7 +93403,7 @@ export interface ReadAppsV1NamespacedControllerRevisionInput {
   pretty?: string;
 }
 export const ReadAppsV1NamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -93458,7 +93454,7 @@ export interface ReadAppsV1NamespacedControllerRevisionOutput {
   revision?: number;
 }
 export const ReadAppsV1NamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.Unknown,
     kind: Schema.optional(Schema.String),
@@ -93518,7 +93514,7 @@ export const ReadAppsV1NamespacedControllerRevisionOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedControllerRevisionInput,
     outputSchema: ReadAppsV1NamespacedControllerRevisionOutput,
     errors: [NotFound] as const,
@@ -93530,7 +93526,7 @@ export interface ReadAppsV1NamespacedDaemonSetInput {
   pretty?: string;
 }
 export const ReadAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -94676,7 +94672,7 @@ export interface ReadAppsV1NamespacedDaemonSetOutput {
   };
 }
 export const ReadAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -97144,7 +97140,7 @@ export const ReadAppsV1NamespacedDaemonSetOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDaemonSetInput,
     outputSchema: ReadAppsV1NamespacedDaemonSetOutput,
     errors: [NotFound] as const,
@@ -97156,7 +97152,7 @@ export interface ReadAppsV1NamespacedDaemonSetStatusInput {
   pretty?: string;
 }
 export const ReadAppsV1NamespacedDaemonSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -98302,7 +98298,7 @@ export interface ReadAppsV1NamespacedDaemonSetStatusOutput {
   };
 }
 export const ReadAppsV1NamespacedDaemonSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -100770,7 +100766,7 @@ export const ReadAppsV1NamespacedDaemonSetStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAppsV1NamespacedDaemonSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDaemonSetStatusInput,
     outputSchema: ReadAppsV1NamespacedDaemonSetStatusOutput,
     errors: [NotFound] as const,
@@ -100782,7 +100778,7 @@ export interface ReadAppsV1NamespacedDeploymentInput {
   pretty?: string;
 }
 export const ReadAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -101931,7 +101927,7 @@ export interface ReadAppsV1NamespacedDeploymentOutput {
   };
 }
 export const ReadAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -104402,7 +104398,7 @@ export const ReadAppsV1NamespacedDeploymentOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAppsV1NamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDeploymentInput,
     outputSchema: ReadAppsV1NamespacedDeploymentOutput,
     errors: [NotFound] as const,
@@ -104414,7 +104410,7 @@ export interface ReadAppsV1NamespacedDeploymentScaleInput {
   pretty?: string;
 }
 export const ReadAppsV1NamespacedDeploymentScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -104465,7 +104461,7 @@ export interface ReadAppsV1NamespacedDeploymentScaleOutput {
   status?: { replicas: number; selector?: string };
 }
 export const ReadAppsV1NamespacedDeploymentScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -104534,7 +104530,7 @@ export const ReadAppsV1NamespacedDeploymentScaleOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAppsV1NamespacedDeploymentScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDeploymentScaleInput,
     outputSchema: ReadAppsV1NamespacedDeploymentScaleOutput,
     errors: [NotFound] as const,
@@ -104546,7 +104542,7 @@ export interface ReadAppsV1NamespacedDeploymentStatusInput {
   pretty?: string;
 }
 export const ReadAppsV1NamespacedDeploymentStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -105695,7 +105691,7 @@ export interface ReadAppsV1NamespacedDeploymentStatusOutput {
   };
 }
 export const ReadAppsV1NamespacedDeploymentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -108166,7 +108162,7 @@ export const ReadAppsV1NamespacedDeploymentStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAppsV1NamespacedDeploymentStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedDeploymentStatusInput,
     outputSchema: ReadAppsV1NamespacedDeploymentStatusOutput,
     errors: [NotFound] as const,
@@ -108178,7 +108174,7 @@ export interface ReadAppsV1NamespacedReplicaSetInput {
   pretty?: string;
 }
 export const ReadAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -109317,7 +109313,7 @@ export interface ReadAppsV1NamespacedReplicaSetOutput {
   };
 }
 export const ReadAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -111821,7 +111817,7 @@ export const ReadAppsV1NamespacedReplicaSetOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedReplicaSetInput,
     outputSchema: ReadAppsV1NamespacedReplicaSetOutput,
     errors: [NotFound] as const,
@@ -111833,7 +111829,7 @@ export interface ReadAppsV1NamespacedReplicaSetScaleInput {
   pretty?: string;
 }
 export const ReadAppsV1NamespacedReplicaSetScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -111884,7 +111880,7 @@ export interface ReadAppsV1NamespacedReplicaSetScaleOutput {
   status?: { replicas: number; selector?: string };
 }
 export const ReadAppsV1NamespacedReplicaSetScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -111953,7 +111949,7 @@ export const ReadAppsV1NamespacedReplicaSetScaleOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAppsV1NamespacedReplicaSetScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedReplicaSetScaleInput,
     outputSchema: ReadAppsV1NamespacedReplicaSetScaleOutput,
     errors: [NotFound] as const,
@@ -111965,7 +111961,7 @@ export interface ReadAppsV1NamespacedReplicaSetStatusInput {
   pretty?: string;
 }
 export const ReadAppsV1NamespacedReplicaSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -113104,7 +113100,7 @@ export interface ReadAppsV1NamespacedReplicaSetStatusOutput {
   };
 }
 export const ReadAppsV1NamespacedReplicaSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -115608,7 +115604,7 @@ export const ReadAppsV1NamespacedReplicaSetStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAppsV1NamespacedReplicaSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedReplicaSetStatusInput,
     outputSchema: ReadAppsV1NamespacedReplicaSetStatusOutput,
     errors: [NotFound] as const,
@@ -115620,7 +115616,7 @@ export interface ReadAppsV1NamespacedStatefulSetInput {
   pretty?: string;
 }
 export const ReadAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -116856,7 +116852,7 @@ export interface ReadAppsV1NamespacedStatefulSetOutput {
   };
 }
 export const ReadAppsV1NamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -119480,7 +119476,7 @@ export const ReadAppsV1NamespacedStatefulSetOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedStatefulSetInput,
     outputSchema: ReadAppsV1NamespacedStatefulSetOutput,
     errors: [NotFound] as const,
@@ -119492,7 +119488,7 @@ export interface ReadAppsV1NamespacedStatefulSetScaleInput {
   pretty?: string;
 }
 export const ReadAppsV1NamespacedStatefulSetScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -119543,7 +119539,7 @@ export interface ReadAppsV1NamespacedStatefulSetScaleOutput {
   status?: { replicas: number; selector?: string };
 }
 export const ReadAppsV1NamespacedStatefulSetScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -119612,7 +119608,7 @@ export const ReadAppsV1NamespacedStatefulSetScaleOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAppsV1NamespacedStatefulSetScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedStatefulSetScaleInput,
     outputSchema: ReadAppsV1NamespacedStatefulSetScaleOutput,
     errors: [NotFound] as const,
@@ -119624,7 +119620,7 @@ export interface ReadAppsV1NamespacedStatefulSetStatusInput {
   pretty?: string;
 }
 export const ReadAppsV1NamespacedStatefulSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -120860,7 +120856,7 @@ export interface ReadAppsV1NamespacedStatefulSetStatusOutput {
   };
 }
 export const ReadAppsV1NamespacedStatefulSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -123484,7 +123480,7 @@ export const ReadAppsV1NamespacedStatefulSetStatusOutput =
  * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readAppsV1NamespacedStatefulSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReadAppsV1NamespacedStatefulSetStatusInput,
     outputSchema: ReadAppsV1NamespacedStatefulSetStatusOutput,
     errors: [NotFound] as const,
@@ -123535,7 +123531,7 @@ export interface ReplaceAppsV1NamespacedControllerRevisionInput {
   revision?: number;
 }
 export const ReplaceAppsV1NamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -123637,7 +123633,7 @@ export interface ReplaceAppsV1NamespacedControllerRevisionOutput {
   revision?: number;
 }
 export const ReplaceAppsV1NamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     data: Schema.Unknown,
     kind: Schema.optional(Schema.String),
@@ -123700,7 +123696,7 @@ export const ReplaceAppsV1NamespacedControllerRevisionOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedControllerRevisionInput,
     outputSchema: ReplaceAppsV1NamespacedControllerRevisionOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -124846,7 +124842,7 @@ export interface ReplaceAppsV1NamespacedDaemonSetInput {
   };
 }
 export const ReplaceAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -128451,7 +128447,7 @@ export interface ReplaceAppsV1NamespacedDaemonSetOutput {
   };
 }
 export const ReplaceAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -130922,7 +130918,7 @@ export const ReplaceAppsV1NamespacedDaemonSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDaemonSetInput,
     outputSchema: ReplaceAppsV1NamespacedDaemonSetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -132068,7 +132064,7 @@ export interface ReplaceAppsV1NamespacedDaemonSetStatusInput {
   };
 }
 export const ReplaceAppsV1NamespacedDaemonSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -135673,7 +135669,7 @@ export interface ReplaceAppsV1NamespacedDaemonSetStatusOutput {
   };
 }
 export const ReplaceAppsV1NamespacedDaemonSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -138144,7 +138140,7 @@ export const ReplaceAppsV1NamespacedDaemonSetStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedDaemonSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDaemonSetStatusInput,
     outputSchema: ReplaceAppsV1NamespacedDaemonSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -139293,7 +139289,7 @@ export interface ReplaceAppsV1NamespacedDeploymentInput {
   };
 }
 export const ReplaceAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -142904,7 +142900,7 @@ export interface ReplaceAppsV1NamespacedDeploymentOutput {
   };
 }
 export const ReplaceAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -145378,7 +145374,7 @@ export const ReplaceAppsV1NamespacedDeploymentOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDeploymentInput,
     outputSchema: ReplaceAppsV1NamespacedDeploymentOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -145429,7 +145425,7 @@ export interface ReplaceAppsV1NamespacedDeploymentScaleInput {
   status?: { replicas: number; selector?: string };
 }
 export const ReplaceAppsV1NamespacedDeploymentScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -145540,7 +145536,7 @@ export interface ReplaceAppsV1NamespacedDeploymentScaleOutput {
   status?: { replicas: number; selector?: string };
 }
 export const ReplaceAppsV1NamespacedDeploymentScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -145612,7 +145608,7 @@ export const ReplaceAppsV1NamespacedDeploymentScaleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedDeploymentScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDeploymentScaleInput,
     outputSchema: ReplaceAppsV1NamespacedDeploymentScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -146761,7 +146757,7 @@ export interface ReplaceAppsV1NamespacedDeploymentStatusInput {
   };
 }
 export const ReplaceAppsV1NamespacedDeploymentStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -150372,7 +150368,7 @@ export interface ReplaceAppsV1NamespacedDeploymentStatusOutput {
   };
 }
 export const ReplaceAppsV1NamespacedDeploymentStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -152846,7 +152842,7 @@ export const ReplaceAppsV1NamespacedDeploymentStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedDeploymentStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedDeploymentStatusInput,
     outputSchema: ReplaceAppsV1NamespacedDeploymentStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -153985,7 +153981,7 @@ export interface ReplaceAppsV1NamespacedReplicaSetInput {
   };
 }
 export const ReplaceAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -157619,7 +157615,7 @@ export interface ReplaceAppsV1NamespacedReplicaSetOutput {
   };
 }
 export const ReplaceAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -160126,7 +160122,7 @@ export const ReplaceAppsV1NamespacedReplicaSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedReplicaSetInput,
     outputSchema: ReplaceAppsV1NamespacedReplicaSetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -160177,7 +160173,7 @@ export interface ReplaceAppsV1NamespacedReplicaSetScaleInput {
   status?: { replicas: number; selector?: string };
 }
 export const ReplaceAppsV1NamespacedReplicaSetScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -160288,7 +160284,7 @@ export interface ReplaceAppsV1NamespacedReplicaSetScaleOutput {
   status?: { replicas: number; selector?: string };
 }
 export const ReplaceAppsV1NamespacedReplicaSetScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -160360,7 +160356,7 @@ export const ReplaceAppsV1NamespacedReplicaSetScaleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedReplicaSetScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedReplicaSetScaleInput,
     outputSchema: ReplaceAppsV1NamespacedReplicaSetScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -161499,7 +161495,7 @@ export interface ReplaceAppsV1NamespacedReplicaSetStatusInput {
   };
 }
 export const ReplaceAppsV1NamespacedReplicaSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -165133,7 +165129,7 @@ export interface ReplaceAppsV1NamespacedReplicaSetStatusOutput {
   };
 }
 export const ReplaceAppsV1NamespacedReplicaSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -167640,7 +167636,7 @@ export const ReplaceAppsV1NamespacedReplicaSetStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedReplicaSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedReplicaSetStatusInput,
     outputSchema: ReplaceAppsV1NamespacedReplicaSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -168876,7 +168872,7 @@ export interface ReplaceAppsV1NamespacedStatefulSetInput {
   };
 }
 export const ReplaceAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -172727,7 +172723,7 @@ export interface ReplaceAppsV1NamespacedStatefulSetOutput {
   };
 }
 export const ReplaceAppsV1NamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -175354,7 +175350,7 @@ export const ReplaceAppsV1NamespacedStatefulSetOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedStatefulSetInput,
     outputSchema: ReplaceAppsV1NamespacedStatefulSetOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -175405,7 +175401,7 @@ export interface ReplaceAppsV1NamespacedStatefulSetScaleInput {
   status?: { replicas: number; selector?: string };
 }
 export const ReplaceAppsV1NamespacedStatefulSetScaleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -175516,7 +175512,7 @@ export interface ReplaceAppsV1NamespacedStatefulSetScaleOutput {
   status?: { replicas: number; selector?: string };
 }
 export const ReplaceAppsV1NamespacedStatefulSetScaleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -175588,7 +175584,7 @@ export const ReplaceAppsV1NamespacedStatefulSetScaleOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedStatefulSetScale =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedStatefulSetScaleInput,
     outputSchema: ReplaceAppsV1NamespacedStatefulSetScaleOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -176824,7 +176820,7 @@ export interface ReplaceAppsV1NamespacedStatefulSetStatusInput {
   };
 }
 export const ReplaceAppsV1NamespacedStatefulSetStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     pretty: Schema.optional(Schema.String),
@@ -180675,7 +180671,7 @@ export interface ReplaceAppsV1NamespacedStatefulSetStatusOutput {
   };
 }
 export const ReplaceAppsV1NamespacedStatefulSetStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
@@ -183302,7 +183298,7 @@ export const ReplaceAppsV1NamespacedStatefulSetStatusOutput =
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceAppsV1NamespacedStatefulSetStatus =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ReplaceAppsV1NamespacedStatefulSetStatusInput,
     outputSchema: ReplaceAppsV1NamespacedStatefulSetStatusOutput,
     errors: [NotFound, Conflict, UnprocessableEntity] as const,
@@ -183323,7 +183319,7 @@ export interface WatchAppsV1ControllerRevisionListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchAppsV1ControllerRevisionListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -183346,7 +183342,7 @@ export interface WatchAppsV1ControllerRevisionListForAllNamespacesOutput {
   type: string;
 }
 export const WatchAppsV1ControllerRevisionListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1ControllerRevisionListForAllNamespacesOutput>;
@@ -183410,7 +183406,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1ControllerRevisionListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1ControllerRevisionListForAllNamespacesInput,
     outputSchema: WatchAppsV1ControllerRevisionListForAllNamespacesOutput,
   }));
@@ -183430,7 +183426,7 @@ export interface WatchAppsV1DaemonSetListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchAppsV1DaemonSetListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -183453,7 +183449,7 @@ export interface WatchAppsV1DaemonSetListForAllNamespacesOutput {
   type: string;
 }
 export const WatchAppsV1DaemonSetListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1DaemonSetListForAllNamespacesOutput>;
@@ -183517,7 +183513,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1DaemonSetListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1DaemonSetListForAllNamespacesInput,
     outputSchema: WatchAppsV1DaemonSetListForAllNamespacesOutput,
   }));
@@ -183537,7 +183533,7 @@ export interface WatchAppsV1DeploymentListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchAppsV1DeploymentListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -183560,7 +183556,7 @@ export interface WatchAppsV1DeploymentListForAllNamespacesOutput {
   type: string;
 }
 export const WatchAppsV1DeploymentListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1DeploymentListForAllNamespacesOutput>;
@@ -183624,7 +183620,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1DeploymentListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1DeploymentListForAllNamespacesInput,
     outputSchema: WatchAppsV1DeploymentListForAllNamespacesOutput,
   }));
@@ -183646,7 +183642,7 @@ export interface WatchAppsV1NamespacedControllerRevisionInput {
   watch?: boolean;
 }
 export const WatchAppsV1NamespacedControllerRevisionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -183674,7 +183670,7 @@ export interface WatchAppsV1NamespacedControllerRevisionOutput {
   type: string;
 }
 export const WatchAppsV1NamespacedControllerRevisionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1NamespacedControllerRevisionOutput>;
@@ -183740,7 +183736,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1NamespacedControllerRevision =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedControllerRevisionInput,
     outputSchema: WatchAppsV1NamespacedControllerRevisionOutput,
   }));
@@ -183761,7 +183757,7 @@ export interface WatchAppsV1NamespacedControllerRevisionListInput {
   watch?: boolean;
 }
 export const WatchAppsV1NamespacedControllerRevisionListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -183788,7 +183784,7 @@ export interface WatchAppsV1NamespacedControllerRevisionListOutput {
   type: string;
 }
 export const WatchAppsV1NamespacedControllerRevisionListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1NamespacedControllerRevisionListOutput>;
@@ -183853,7 +183849,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1NamespacedControllerRevisionList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedControllerRevisionListInput,
     outputSchema: WatchAppsV1NamespacedControllerRevisionListOutput,
   }));
@@ -183875,7 +183871,7 @@ export interface WatchAppsV1NamespacedDaemonSetInput {
   watch?: boolean;
 }
 export const WatchAppsV1NamespacedDaemonSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -183903,7 +183899,7 @@ export interface WatchAppsV1NamespacedDaemonSetOutput {
   type: string;
 }
 export const WatchAppsV1NamespacedDaemonSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1NamespacedDaemonSetOutput>;
@@ -183969,7 +183965,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1NamespacedDaemonSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedDaemonSetInput,
     outputSchema: WatchAppsV1NamespacedDaemonSetOutput,
   }));
@@ -183990,7 +183986,7 @@ export interface WatchAppsV1NamespacedDaemonSetListInput {
   watch?: boolean;
 }
 export const WatchAppsV1NamespacedDaemonSetListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -184017,7 +184013,7 @@ export interface WatchAppsV1NamespacedDaemonSetListOutput {
   type: string;
 }
 export const WatchAppsV1NamespacedDaemonSetListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1NamespacedDaemonSetListOutput>;
@@ -184082,7 +184078,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1NamespacedDaemonSetList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedDaemonSetListInput,
     outputSchema: WatchAppsV1NamespacedDaemonSetListOutput,
   }));
@@ -184104,7 +184100,7 @@ export interface WatchAppsV1NamespacedDeploymentInput {
   watch?: boolean;
 }
 export const WatchAppsV1NamespacedDeploymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -184132,7 +184128,7 @@ export interface WatchAppsV1NamespacedDeploymentOutput {
   type: string;
 }
 export const WatchAppsV1NamespacedDeploymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1NamespacedDeploymentOutput>;
@@ -184198,7 +184194,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1NamespacedDeployment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedDeploymentInput,
     outputSchema: WatchAppsV1NamespacedDeploymentOutput,
   }));
@@ -184219,7 +184215,7 @@ export interface WatchAppsV1NamespacedDeploymentListInput {
   watch?: boolean;
 }
 export const WatchAppsV1NamespacedDeploymentListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -184246,7 +184242,7 @@ export interface WatchAppsV1NamespacedDeploymentListOutput {
   type: string;
 }
 export const WatchAppsV1NamespacedDeploymentListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1NamespacedDeploymentListOutput>;
@@ -184311,7 +184307,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1NamespacedDeploymentList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedDeploymentListInput,
     outputSchema: WatchAppsV1NamespacedDeploymentListOutput,
   }));
@@ -184333,7 +184329,7 @@ export interface WatchAppsV1NamespacedReplicaSetInput {
   watch?: boolean;
 }
 export const WatchAppsV1NamespacedReplicaSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -184361,7 +184357,7 @@ export interface WatchAppsV1NamespacedReplicaSetOutput {
   type: string;
 }
 export const WatchAppsV1NamespacedReplicaSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1NamespacedReplicaSetOutput>;
@@ -184427,7 +184423,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1NamespacedReplicaSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedReplicaSetInput,
     outputSchema: WatchAppsV1NamespacedReplicaSetOutput,
   }));
@@ -184448,7 +184444,7 @@ export interface WatchAppsV1NamespacedReplicaSetListInput {
   watch?: boolean;
 }
 export const WatchAppsV1NamespacedReplicaSetListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -184475,7 +184471,7 @@ export interface WatchAppsV1NamespacedReplicaSetListOutput {
   type: string;
 }
 export const WatchAppsV1NamespacedReplicaSetListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1NamespacedReplicaSetListOutput>;
@@ -184540,7 +184536,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1NamespacedReplicaSetList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedReplicaSetListInput,
     outputSchema: WatchAppsV1NamespacedReplicaSetListOutput,
   }));
@@ -184562,7 +184558,7 @@ export interface WatchAppsV1NamespacedStatefulSetInput {
   watch?: boolean;
 }
 export const WatchAppsV1NamespacedStatefulSetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
@@ -184590,7 +184586,7 @@ export interface WatchAppsV1NamespacedStatefulSetOutput {
   type: string;
 }
 export const WatchAppsV1NamespacedStatefulSetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1NamespacedStatefulSetOutput>;
@@ -184656,7 +184652,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1NamespacedStatefulSet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedStatefulSetInput,
     outputSchema: WatchAppsV1NamespacedStatefulSetOutput,
   }));
@@ -184677,7 +184673,7 @@ export interface WatchAppsV1NamespacedStatefulSetListInput {
   watch?: boolean;
 }
 export const WatchAppsV1NamespacedStatefulSetListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namespace: Schema.String.pipe(T.PathParam()),
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
@@ -184704,7 +184700,7 @@ export interface WatchAppsV1NamespacedStatefulSetListOutput {
   type: string;
 }
 export const WatchAppsV1NamespacedStatefulSetListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1NamespacedStatefulSetListOutput>;
@@ -184769,7 +184765,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1NamespacedStatefulSetList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1NamespacedStatefulSetListInput,
     outputSchema: WatchAppsV1NamespacedStatefulSetListOutput,
   }));
@@ -184789,7 +184785,7 @@ export interface WatchAppsV1ReplicaSetListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchAppsV1ReplicaSetListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -184812,7 +184808,7 @@ export interface WatchAppsV1ReplicaSetListForAllNamespacesOutput {
   type: string;
 }
 export const WatchAppsV1ReplicaSetListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1ReplicaSetListForAllNamespacesOutput>;
@@ -184876,7 +184872,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1ReplicaSetListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1ReplicaSetListForAllNamespacesInput,
     outputSchema: WatchAppsV1ReplicaSetListForAllNamespacesOutput,
   }));
@@ -184896,7 +184892,7 @@ export interface WatchAppsV1StatefulSetListForAllNamespacesInput {
   watch?: boolean;
 }
 export const WatchAppsV1StatefulSetListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     allowWatchBookmarks: Schema.optional(Schema.Boolean),
     continue: Schema.optional(Schema.String),
     fieldSelector: Schema.optional(Schema.String),
@@ -184919,7 +184915,7 @@ export interface WatchAppsV1StatefulSetListForAllNamespacesOutput {
   type: string;
 }
 export const WatchAppsV1StatefulSetListForAllNamespacesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.Unknown,
     type: Schema.String,
   }) as unknown as Schema.Codec<WatchAppsV1StatefulSetListForAllNamespacesOutput>;
@@ -184983,7 +184979,7 @@ This is an alpha field and requires enabling the ShardedListAndWatch feature gat
  * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchAppsV1StatefulSetListForAllNamespaces =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WatchAppsV1StatefulSetListForAllNamespacesInput,
     outputSchema: WatchAppsV1StatefulSetListForAllNamespacesOutput,
   }));

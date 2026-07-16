@@ -12,7 +12,7 @@ export interface AuditLogValidatorVersionsControllerSchemasInput {
   order?: string;
 }
 export const AuditLogValidatorVersionsControllerSchemasInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     actionName: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -39,7 +39,7 @@ export interface AuditLogValidatorVersionsControllerSchemasOutput {
   }>;
 }
 export const AuditLogValidatorVersionsControllerSchemasOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     list_metadata: Schema.optional(
       Schema.Struct({
@@ -89,7 +89,7 @@ export const AuditLogValidatorVersionsControllerSchemasOutput =
  * @param order - Order the results by the creation time.
  */
 export const AuditLogValidatorVersionsControllerSchemas =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuditLogValidatorVersionsControllerSchemasInput,
     outputSchema: AuditLogValidatorVersionsControllerSchemasOutput,
     errors: [NotFound, UnprocessableEntity] as const,

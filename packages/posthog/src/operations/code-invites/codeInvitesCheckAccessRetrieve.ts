@@ -6,14 +6,14 @@ import { Forbidden } from "../../errors.ts";
 // Input Schema
 export interface CodeInvitesCheckAccessRetrieveInput {}
 export const CodeInvitesCheckAccessRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ Schema.Struct({}).pipe(
     T.Http({ method: "GET", path: "/api/code/invites/check-access/" }),
   ) as unknown as Schema.Codec<CodeInvitesCheckAccessRetrieveInput>;
 
 // Output Schema
 export type CodeInvitesCheckAccessRetrieveOutput = void;
 export const CodeInvitesCheckAccessRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CodeInvitesCheckAccessRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CodeInvitesCheckAccessRetrieveOutput>;
 
 // The operation
 /**
@@ -22,7 +22,7 @@ export const CodeInvitesCheckAccessRetrieveOutput =
  * Check whether the authenticated user has access to PostHog Code.
  */
 export const codeInvitesCheckAccessRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CodeInvitesCheckAccessRetrieveInput,
     outputSchema: CodeInvitesCheckAccessRetrieveOutput,
     errors: [Forbidden] as const,

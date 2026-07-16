@@ -15,7 +15,7 @@ export interface GetTaxIdsInput {
   owner?: string;
   starting_after?: string;
 }
-export const GetTaxIdsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTaxIdsInput = /*@__PURE__*/ Schema.Struct({
   ending_before: Schema.optional(Schema.String),
   expand: Schema.optional(Schema.String),
   limit: Schema.optional(Schema.Number),
@@ -177,7 +177,7 @@ export interface GetTaxIdsOutput {
   object: "list";
   url: string;
 }
-export const GetTaxIdsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetTaxIdsOutput = /*@__PURE__*/ Schema.Struct({
   data: Schema.Array(
     Schema.Struct({
       country: Schema.NullOr(Schema.String),
@@ -356,7 +356,7 @@ export const GetTaxIdsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param owner - The account or customer the tax ID belongs to. Defaults to `owner[type]=self`.
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
-export const GetTaxIds = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const GetTaxIds = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetTaxIdsInput,
   outputSchema: GetTaxIdsOutput,
 }));

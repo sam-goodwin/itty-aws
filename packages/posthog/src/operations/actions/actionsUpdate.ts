@@ -232,7 +232,7 @@ export interface ActionsUpdateInput {
   _create_in_folder?: string;
   user_access_level?: string | null;
 }
-export const ActionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActionsUpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.Number.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
   format: Schema.optional(Schema.Literals(["csv", "json"])),
@@ -753,7 +753,7 @@ export interface ActionsUpdateOutput {
   _create_in_folder?: string;
   user_access_level?: string | null;
 }
-export const ActionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ActionsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Number),
   name: Schema.optional(Schema.NullOr(Schema.String)),
   description: Schema.optional(Schema.String),
@@ -1049,7 +1049,7 @@ export const ActionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param id - A unique integer value identifying this action.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const actionsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const actionsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ActionsUpdateInput,
   outputSchema: ActionsUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

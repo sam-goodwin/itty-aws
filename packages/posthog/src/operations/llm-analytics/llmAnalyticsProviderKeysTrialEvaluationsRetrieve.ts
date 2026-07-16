@@ -9,7 +9,7 @@ export interface LlmAnalyticsProviderKeysTrialEvaluationsRetrieveInput {
   project_id: string;
 }
 export const LlmAnalyticsProviderKeysTrialEvaluationsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -64,7 +64,7 @@ export interface LlmAnalyticsProviderKeysTrialEvaluationsRetrieveOutput {
   last_used_at?: string | null;
 }
 export const LlmAnalyticsProviderKeysTrialEvaluationsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     provider: Schema.optional(
       Schema.Literals([
@@ -133,7 +133,7 @@ export const LlmAnalyticsProviderKeysTrialEvaluationsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const llmAnalyticsProviderKeysTrialEvaluationsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsProviderKeysTrialEvaluationsRetrieveInput,
     outputSchema: LlmAnalyticsProviderKeysTrialEvaluationsRetrieveOutput,
   }));

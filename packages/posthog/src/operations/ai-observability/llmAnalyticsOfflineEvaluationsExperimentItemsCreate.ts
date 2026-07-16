@@ -11,7 +11,7 @@ export interface LlmAnalyticsOfflineEvaluationsExperimentItemsCreateInput {
   date_to?: string | null;
 }
 export const LlmAnalyticsOfflineEvaluationsExperimentItemsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     experiment_id: Schema.String,
     date_from: Schema.optional(Schema.NullOr(Schema.String)),
@@ -28,7 +28,7 @@ export interface LlmAnalyticsOfflineEvaluationsExperimentItemsCreateOutput {
   results: unknown[][];
 }
 export const LlmAnalyticsOfflineEvaluationsExperimentItemsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(Schema.Array(Schema.Unknown)),
   }) as unknown as Schema.Codec<LlmAnalyticsOfflineEvaluationsExperimentItemsCreateOutput>;
 
@@ -38,7 +38,7 @@ export const LlmAnalyticsOfflineEvaluationsExperimentItemsCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const llmAnalyticsOfflineEvaluationsExperimentItemsCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmAnalyticsOfflineEvaluationsExperimentItemsCreateInput,
     outputSchema: LlmAnalyticsOfflineEvaluationsExperimentItemsCreateOutput,
     errors: [BadRequest] as const,

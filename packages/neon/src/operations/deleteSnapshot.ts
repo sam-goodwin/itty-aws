@@ -7,7 +7,7 @@ export interface DeleteSnapshotInput {
   project_id: string;
   snapshot_id: string;
 }
-export const DeleteSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteSnapshotInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   snapshot_id: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -20,7 +20,7 @@ export const DeleteSnapshotInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DeleteSnapshotOutput = void;
 export const DeleteSnapshotOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteSnapshotOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteSnapshotOutput>;
 
 // The operation
 /**
@@ -32,7 +32,7 @@ export const DeleteSnapshotOutput =
  * @param project_id - The Neon project ID
  * @param snapshot_id - The snapshot ID
  */
-export const deleteSnapshot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const deleteSnapshot = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeleteSnapshotInput,
   outputSchema: DeleteSnapshotOutput,
 }));

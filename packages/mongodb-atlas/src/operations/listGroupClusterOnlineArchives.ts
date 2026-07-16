@@ -14,7 +14,7 @@ export interface ListGroupClusterOnlineArchivesInput {
   pretty?: boolean;
 }
 export const ListGroupClusterOnlineArchivesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const ListGroupClusterOnlineArchivesInput =
 // Output Schema
 export type ListGroupClusterOnlineArchivesOutput = void;
 export const ListGroupClusterOnlineArchivesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterOnlineArchivesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterOnlineArchivesOutput>;
 
 // The operation
 /**
@@ -51,7 +51,7 @@ export const ListGroupClusterOnlineArchivesOutput =
  * @param clusterName - Human-readable label that identifies the cluster that contains the collection for which you want to return the online archives.
  */
 export const listGroupClusterOnlineArchives =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupClusterOnlineArchivesInput,
     outputSchema: ListGroupClusterOnlineArchivesOutput,
     errors: [Forbidden, NotFound] as const,

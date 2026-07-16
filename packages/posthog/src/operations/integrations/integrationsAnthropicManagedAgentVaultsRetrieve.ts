@@ -8,7 +8,7 @@ export interface IntegrationsAnthropicManagedAgentVaultsRetrieveInput {
   project_id: string;
 }
 export const IntegrationsAnthropicManagedAgentVaultsRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -21,7 +21,7 @@ export const IntegrationsAnthropicManagedAgentVaultsRetrieveInput =
 // Output Schema
 export type IntegrationsAnthropicManagedAgentVaultsRetrieveOutput = void;
 export const IntegrationsAnthropicManagedAgentVaultsRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsAnthropicManagedAgentVaultsRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IntegrationsAnthropicManagedAgentVaultsRetrieveOutput>;
 
 // The operation
 /**
@@ -30,7 +30,7 @@ export const IntegrationsAnthropicManagedAgentVaultsRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const integrationsAnthropicManagedAgentVaultsRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IntegrationsAnthropicManagedAgentVaultsRetrieveInput,
     outputSchema: IntegrationsAnthropicManagedAgentVaultsRetrieveOutput,
   }));

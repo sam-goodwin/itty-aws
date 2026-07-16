@@ -29,7 +29,7 @@ export interface BgpPeersCreateOrUpdateInput {
   };
 }
 export const BgpPeersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     bgpPeerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -73,7 +73,7 @@ export interface BgpPeersCreateOrUpdateOutput {
   };
 }
 export const BgpPeersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -101,18 +101,16 @@ export const BgpPeersCreateOrUpdateOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param bgpPeerName - The name of the BgpPeer
  */
-export const BgpPeersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BgpPeersCreateOrUpdateInput,
-    outputSchema: BgpPeersCreateOrUpdateOutput,
-  }),
-);
+export const BgpPeersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BgpPeersCreateOrUpdateInput,
+  outputSchema: BgpPeersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface BgpPeersDeleteInput {
   resourceUri: string;
   bgpPeerName: string;
 }
-export const BgpPeersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BgpPeersDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   bgpPeerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -126,7 +124,7 @@ export const BgpPeersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type BgpPeersDeleteOutput = void;
 export const BgpPeersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BgpPeersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BgpPeersDeleteOutput>;
 
 // The operation
 /**
@@ -136,7 +134,7 @@ export const BgpPeersDeleteOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param bgpPeerName - The name of the BgpPeer
  */
-export const BgpPeersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BgpPeersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: BgpPeersDeleteInput,
   outputSchema: BgpPeersDeleteOutput,
 }));
@@ -145,7 +143,7 @@ export interface BgpPeersGetInput {
   resourceUri: string;
   bgpPeerName: string;
 }
-export const BgpPeersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BgpPeersGetInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   bgpPeerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -170,7 +168,7 @@ export interface BgpPeersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const BgpPeersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BgpPeersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -198,7 +196,7 @@ export const BgpPeersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param bgpPeerName - The name of the BgpPeer
  */
-export const BgpPeersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BgpPeersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BgpPeersGetInput,
   outputSchema: BgpPeersGetOutput,
 }));
@@ -206,7 +204,7 @@ export const BgpPeersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface BgpPeersListInput {
   resourceUri: string;
 }
-export const BgpPeersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BgpPeersListInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -233,7 +231,7 @@ export interface BgpPeersListOutput {
   }[];
   nextLink?: string;
 }
-export const BgpPeersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BgpPeersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -265,7 +263,7 @@ export const BgpPeersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
-export const BgpPeersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BgpPeersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: BgpPeersListInput,
   outputSchema: BgpPeersListOutput,
 }));
@@ -289,7 +287,7 @@ export interface LoadBalancersCreateOrUpdateInput {
   };
 }
 export const LoadBalancersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     loadBalancerName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -336,7 +334,7 @@ export interface LoadBalancersCreateOrUpdateOutput {
   };
 }
 export const LoadBalancersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -364,19 +362,17 @@ export const LoadBalancersCreateOrUpdateOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param loadBalancerName - The name of the LoadBalancer
  */
-export const LoadBalancersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LoadBalancersCreateOrUpdateInput,
-    outputSchema: LoadBalancersCreateOrUpdateOutput,
-  }),
-);
+export const LoadBalancersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LoadBalancersCreateOrUpdateInput,
+  outputSchema: LoadBalancersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface LoadBalancersDeleteInput {
   resourceUri: string;
   loadBalancerName: string;
 }
 export const LoadBalancersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     loadBalancerName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -390,7 +386,7 @@ export const LoadBalancersDeleteInput =
 // Output Schema
 export type LoadBalancersDeleteOutput = void;
 export const LoadBalancersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LoadBalancersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LoadBalancersDeleteOutput>;
 
 // The operation
 /**
@@ -400,7 +396,7 @@ export const LoadBalancersDeleteOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param loadBalancerName - The name of the LoadBalancer
  */
-export const LoadBalancersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LoadBalancersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LoadBalancersDeleteInput,
   outputSchema: LoadBalancersDeleteOutput,
 }));
@@ -409,7 +405,7 @@ export interface LoadBalancersGetInput {
   resourceUri: string;
   loadBalancerName: string;
 }
-export const LoadBalancersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LoadBalancersGetInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   loadBalancerName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -434,27 +430,25 @@ export interface LoadBalancersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const LoadBalancersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<LoadBalancersGetOutput>;
+export const LoadBalancersGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<LoadBalancersGetOutput>;
 
 // The operation
 /**
@@ -464,7 +458,7 @@ export const LoadBalancersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param loadBalancerName - The name of the LoadBalancer
  */
-export const LoadBalancersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LoadBalancersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LoadBalancersGetInput,
   outputSchema: LoadBalancersGetOutput,
 }));
@@ -472,11 +466,9 @@ export const LoadBalancersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface LoadBalancersListInput {
   resourceUri: string;
 }
-export const LoadBalancersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    resourceUri: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const LoadBalancersListInput = /*@__PURE__*/ Schema.Struct({
+  resourceUri: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers",
@@ -502,7 +494,7 @@ export interface LoadBalancersListOutput {
   nextLink?: string;
 }
 export const LoadBalancersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -544,15 +536,13 @@ export const LoadBalancersListOutput =
  * @param api-version - The API version to use for this operation.
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
-export const LoadBalancersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LoadBalancersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LoadBalancersListInput,
   outputSchema: LoadBalancersListOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.KubernetesRuntime/operations",
@@ -576,7 +566,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -606,7 +596,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -627,7 +617,7 @@ export interface ServicesCreateOrUpdateInput {
   };
 }
 export const ServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     serviceName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -669,7 +659,7 @@ export interface ServicesCreateOrUpdateOutput {
   };
 }
 export const ServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -697,18 +687,16 @@ export const ServicesCreateOrUpdateOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param serviceName - The name of the the service
  */
-export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesCreateOrUpdateInput,
-    outputSchema: ServicesCreateOrUpdateOutput,
-  }),
-);
+export const ServicesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesCreateOrUpdateInput,
+  outputSchema: ServicesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ServicesDeleteInput {
   resourceUri: string;
   serviceName: string;
 }
-export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -722,7 +710,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ServicesDeleteOutput = void;
 export const ServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
 
 // The operation
 /**
@@ -732,7 +720,7 @@ export const ServicesDeleteOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param serviceName - The name of the the service
  */
-export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesDeleteInput,
   outputSchema: ServicesDeleteOutput,
 }));
@@ -741,7 +729,7 @@ export interface ServicesGetInput {
   resourceUri: string;
   serviceName: string;
 }
-export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   serviceName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -766,7 +754,7 @@ export interface ServicesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -794,7 +782,7 @@ export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param serviceName - The name of the the service
  */
-export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesGetInput,
   outputSchema: ServicesGetOutput,
 }));
@@ -802,7 +790,7 @@ export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ServicesListInput {
   resourceUri: string;
 }
-export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesListInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -829,7 +817,7 @@ export interface ServicesListOutput {
   }[];
   nextLink?: string;
 }
-export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -861,7 +849,7 @@ export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
-export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesListInput,
   outputSchema: ServicesListOutput,
 }));
@@ -892,7 +880,7 @@ export interface StorageClassCreateOrUpdateInput {
   };
 }
 export const StorageClassCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     storageClassName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -964,7 +952,7 @@ export interface StorageClassCreateOrUpdateOutput {
   };
 }
 export const StorageClassCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -992,19 +980,17 @@ export const StorageClassCreateOrUpdateOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param storageClassName - The name of the the storage class
  */
-export const StorageClassCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageClassCreateOrUpdateInput,
-    outputSchema: StorageClassCreateOrUpdateOutput,
-  }),
-);
+export const StorageClassCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageClassCreateOrUpdateInput,
+  outputSchema: StorageClassCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface StorageClassDeleteInput {
   resourceUri: string;
   storageClassName: string;
 }
 export const StorageClassDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     storageClassName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1018,7 +1004,7 @@ export const StorageClassDeleteInput =
 // Output Schema
 export type StorageClassDeleteOutput = void;
 export const StorageClassDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageClassDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageClassDeleteOutput>;
 
 // The operation
 /**
@@ -1028,7 +1014,7 @@ export const StorageClassDeleteOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param storageClassName - The name of the the storage class
  */
-export const StorageClassDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageClassDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageClassDeleteInput,
   outputSchema: StorageClassDeleteOutput,
 }));
@@ -1037,7 +1023,7 @@ export interface StorageClassGetInput {
   resourceUri: string;
   storageClassName: string;
 }
-export const StorageClassGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StorageClassGetInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
   storageClassName: Schema.String.pipe(T.PathParam()),
 }).pipe(
@@ -1062,7 +1048,7 @@ export interface StorageClassGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const StorageClassGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StorageClassGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1090,7 +1076,7 @@ export const StorageClassGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param storageClassName - The name of the the storage class
  */
-export const StorageClassGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageClassGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageClassGetInput,
   outputSchema: StorageClassGetOutput,
 }));
@@ -1098,7 +1084,7 @@ export const StorageClassGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface StorageClassListInput {
   resourceUri: string;
 }
-export const StorageClassListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const StorageClassListInput = /*@__PURE__*/ Schema.Struct({
   resourceUri: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1125,42 +1111,30 @@ export interface StorageClassListOutput {
   }[];
   nextLink?: string;
 }
-export const StorageClassListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<StorageClassListOutput>;
+export const StorageClassListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<StorageClassListOutput>;
 
 // The operation
 /**
@@ -1169,7 +1143,7 @@ export const StorageClassListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param api-version - The API version to use for this operation.
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  */
-export const StorageClassList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageClassList = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageClassListInput,
   outputSchema: StorageClassListOutput,
 }));
@@ -1203,7 +1177,7 @@ export interface StorageClassUpdateInput {
   };
 }
 export const StorageClassUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceUri: Schema.String.pipe(T.PathParam()),
     storageClassName: Schema.String.pipe(T.PathParam()),
     properties: Schema.optional(
@@ -1273,7 +1247,7 @@ export interface StorageClassUpdateOutput {
   };
 }
 export const StorageClassUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1301,7 +1275,7 @@ export const StorageClassUpdateOutput =
  * @param resourceUri - The fully qualified Azure Resource manager identifier of the resource.
  * @param storageClassName - The name of the the storage class
  */
-export const StorageClassUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageClassUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageClassUpdateInput,
   outputSchema: StorageClassUpdateOutput,
 }));

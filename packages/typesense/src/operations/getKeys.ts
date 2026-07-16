@@ -4,7 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface GetKeysInput {}
-export const GetKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+export const GetKeysInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/keys" }),
 ) as unknown as Schema.Codec<GetKeysInput>;
 
@@ -20,7 +20,7 @@ export interface GetKeysOutput {
     value_prefix?: string;
   }[];
 }
-export const GetKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetKeysOutput = /*@__PURE__*/ Schema.Struct({
   keys: Schema.Array(
     Schema.Struct({
       value: Schema.optional(Schema.String),
@@ -38,7 +38,7 @@ export const GetKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 /**
  * Retrieve (metadata about) all keys.
  */
-export const getKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetKeysInput,
   outputSchema: GetKeysOutput,
 }));

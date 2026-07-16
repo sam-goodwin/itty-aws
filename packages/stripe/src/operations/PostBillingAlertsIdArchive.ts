@@ -13,7 +13,7 @@ export interface PostBillingAlertsIdArchiveInput {
   expand?: string[];
 }
 export const PostBillingAlertsIdArchiveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -56,7 +56,7 @@ export interface PostBillingAlertsIdArchiveOutput {
   } | null;
 }
 export const PostBillingAlertsIdArchiveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alert_type: Schema.Literals(["usage_threshold"]),
     id: Schema.String,
     livemode: Schema.Boolean,
@@ -112,9 +112,7 @@ export const PostBillingAlertsIdArchiveOutput =
  *
  * <p>Archives this alert, removing it from the list view and APIs. This is non-reversible.</p>
  */
-export const PostBillingAlertsIdArchive = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostBillingAlertsIdArchiveInput,
-    outputSchema: PostBillingAlertsIdArchiveOutput,
-  }),
-);
+export const PostBillingAlertsIdArchive = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostBillingAlertsIdArchiveInput,
+  outputSchema: PostBillingAlertsIdArchiveOutput,
+}));

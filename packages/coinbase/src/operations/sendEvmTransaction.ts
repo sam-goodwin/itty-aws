@@ -20,7 +20,7 @@ export interface SendEvmTransactionInput {
   transaction: string;
 }
 export const SendEvmTransactionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
     network: Schema.Literals([
       "base",
@@ -48,7 +48,7 @@ export interface SendEvmTransactionOutput {
   transactionHash: string;
 }
 export const SendEvmTransactionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     transactionHash: Schema.String,
   }) as unknown as Schema.Codec<SendEvmTransactionOutput>;
 
@@ -84,7 +84,7 @@ Refer to our [Idempotency docs](https://docs.cdp.coinbase.com/api-reference/v2/i
 
  * @param address - The 0x-prefixed address of the Ethereum account.
  */
-export const sendEvmTransaction = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const sendEvmTransaction = /*@__PURE__*/ API.make(() => ({
   inputSchema: SendEvmTransactionInput,
   outputSchema: SendEvmTransactionOutput,
 }));

@@ -11,7 +11,7 @@ export interface DownloadGroupFlexClusterBackupInput {
   pretty?: boolean;
 }
 export const DownloadGroupFlexClusterBackupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const DownloadGroupFlexClusterBackupInput =
 // Output Schema
 export type DownloadGroupFlexClusterBackupOutput = void;
 export const DownloadGroupFlexClusterBackupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupFlexClusterBackupOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DownloadGroupFlexClusterBackupOutput>;
 
 // The operation
 /**
@@ -42,7 +42,7 @@ export const DownloadGroupFlexClusterBackupOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
 export const downloadGroupFlexClusterBackup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DownloadGroupFlexClusterBackupInput,
     outputSchema: DownloadGroupFlexClusterBackupOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

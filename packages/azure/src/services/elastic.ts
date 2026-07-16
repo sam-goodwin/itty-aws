@@ -17,7 +17,7 @@ export interface AllTrafficFiltersListInput {
   monitorName: string;
 }
 export const AllTrafficFiltersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -48,7 +48,7 @@ export interface AllTrafficFiltersListOutput {
   }[];
 }
 export const AllTrafficFiltersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rulesets: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -85,12 +85,10 @@ export const AllTrafficFiltersListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const AllTrafficFiltersList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AllTrafficFiltersListInput,
-    outputSchema: AllTrafficFiltersListOutput,
-  }),
-);
+export const AllTrafficFiltersList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AllTrafficFiltersListInput,
+  outputSchema: AllTrafficFiltersListOutput,
+}));
 // Input Schema
 export interface AssociateTrafficFilterAssociateInput {
   subscriptionId: string;
@@ -99,7 +97,7 @@ export interface AssociateTrafficFilterAssociateInput {
   rulesetId?: string;
 }
 export const AssociateTrafficFilterAssociateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -115,7 +113,7 @@ export const AssociateTrafficFilterAssociateInput =
 // Output Schema
 export type AssociateTrafficFilterAssociateOutput = void;
 export const AssociateTrafficFilterAssociateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AssociateTrafficFilterAssociateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AssociateTrafficFilterAssociateOutput>;
 
 // The operation
 /**
@@ -128,7 +126,7 @@ export const AssociateTrafficFilterAssociateOutput =
  * @param rulesetId - Ruleset Id of the filter
  */
 export const AssociateTrafficFilterAssociate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AssociateTrafficFilterAssociateInput,
     outputSchema: AssociateTrafficFilterAssociateOutput,
   }));
@@ -138,7 +136,7 @@ export interface BillingInfoGetInput {
   resourceGroupName: string;
   monitorName: string;
 }
-export const BillingInfoGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BillingInfoGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -170,7 +168,7 @@ export interface BillingInfoGetOutput {
     partnerEntityUri?: string;
   };
 }
-export const BillingInfoGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const BillingInfoGetOutput = /*@__PURE__*/ Schema.Struct({
   marketplaceSaasInfo: Schema.optional(
     Schema.Struct({
       marketplaceSubscription: Schema.optional(
@@ -205,7 +203,7 @@ export const BillingInfoGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const BillingInfoGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const BillingInfoGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: BillingInfoGetInput,
   outputSchema: BillingInfoGetOutput,
 }));
@@ -216,7 +214,7 @@ export interface ConnectedPartnerResourcesListInput {
   monitorName: string;
 }
 export const ConnectedPartnerResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -242,7 +240,7 @@ export interface ConnectedPartnerResourcesListOutput {
   nextLink?: string;
 }
 export const ConnectedPartnerResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         properties: Schema.optional(
@@ -269,7 +267,7 @@ export const ConnectedPartnerResourcesListOutput =
  * @param monitorName - Monitor resource name
  */
 export const ConnectedPartnerResourcesList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConnectedPartnerResourcesListInput,
     outputSchema: ConnectedPartnerResourcesListOutput,
   }));
@@ -282,7 +280,7 @@ export interface CreateAndAssociateIPFilterCreateInput {
   name?: string;
 }
 export const CreateAndAssociateIPFilterCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -299,7 +297,7 @@ export const CreateAndAssociateIPFilterCreateInput =
 // Output Schema
 export type CreateAndAssociateIPFilterCreateOutput = void;
 export const CreateAndAssociateIPFilterCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateAndAssociateIPFilterCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateAndAssociateIPFilterCreateOutput>;
 
 // The operation
 /**
@@ -313,7 +311,7 @@ export const CreateAndAssociateIPFilterCreateOutput =
  * @param name - Name of the traffic filter
  */
 export const createAndAssociateIPFilterCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAndAssociateIPFilterCreateInput,
     outputSchema: CreateAndAssociateIPFilterCreateOutput,
   }));
@@ -327,7 +325,7 @@ export interface CreateAndAssociatePLFilterCreateInput {
   privateEndpointName?: string;
 }
 export const CreateAndAssociatePLFilterCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -345,7 +343,7 @@ export const CreateAndAssociatePLFilterCreateInput =
 // Output Schema
 export type CreateAndAssociatePLFilterCreateOutput = void;
 export const CreateAndAssociatePLFilterCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateAndAssociatePLFilterCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateAndAssociatePLFilterCreateOutput>;
 
 // The operation
 /**
@@ -360,7 +358,7 @@ export const CreateAndAssociatePLFilterCreateOutput =
  * @param privateEndpointName - Name of the private endpoint
  */
 export const createAndAssociatePLFilterCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateAndAssociatePLFilterCreateInput,
     outputSchema: CreateAndAssociatePLFilterCreateOutput,
   }));
@@ -371,7 +369,7 @@ export interface DeploymentInfoListInput {
   monitorName: string;
 }
 export const DeploymentInfoListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -407,7 +405,7 @@ export interface DeploymentInfoListOutput {
   configurationType?: string;
 }
 export const DeploymentInfoListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(Schema.Literals(["Healthy", "Unhealthy"])),
     version: Schema.optional(Schema.String),
     memoryCapacity: Schema.optional(Schema.String),
@@ -443,7 +441,7 @@ export const DeploymentInfoListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const DeploymentInfoList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DeploymentInfoList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DeploymentInfoListInput,
   outputSchema: DeploymentInfoListOutput,
 }));
@@ -455,7 +453,7 @@ export interface DetachAndDeleteTrafficFilterDeleteInput {
   rulesetId?: string;
 }
 export const DetachAndDeleteTrafficFilterDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -471,7 +469,7 @@ export const DetachAndDeleteTrafficFilterDeleteInput =
 // Output Schema
 export type DetachAndDeleteTrafficFilterDeleteOutput = void;
 export const DetachAndDeleteTrafficFilterDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DetachAndDeleteTrafficFilterDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DetachAndDeleteTrafficFilterDeleteOutput>;
 
 // The operation
 /**
@@ -484,7 +482,7 @@ export const DetachAndDeleteTrafficFilterDeleteOutput =
  * @param rulesetId - Ruleset Id of the filter
  */
 export const DetachAndDeleteTrafficFilterDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DetachAndDeleteTrafficFilterDeleteInput,
     outputSchema: DetachAndDeleteTrafficFilterDeleteOutput,
   }));
@@ -496,7 +494,7 @@ export interface DetachTrafficFilterUpdateInput {
   rulesetId?: string;
 }
 export const DetachTrafficFilterUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -512,7 +510,7 @@ export const DetachTrafficFilterUpdateInput =
 // Output Schema
 export type DetachTrafficFilterUpdateOutput = void;
 export const DetachTrafficFilterUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DetachTrafficFilterUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DetachTrafficFilterUpdateOutput>;
 
 // The operation
 /**
@@ -524,19 +522,17 @@ export const DetachTrafficFilterUpdateOutput =
  * @param monitorName - Monitor resource name
  * @param rulesetId - Ruleset Id of the filter
  */
-export const DetachTrafficFilterUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DetachTrafficFilterUpdateInput,
-    outputSchema: DetachTrafficFilterUpdateOutput,
-  }),
-);
+export const DetachTrafficFilterUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DetachTrafficFilterUpdateInput,
+  outputSchema: DetachTrafficFilterUpdateOutput,
+}));
 // Input Schema
 export interface ElasticVersionsListInput {
   subscriptionId: string;
   region: string;
 }
 export const ElasticVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     region: Schema.String,
   }).pipe(
@@ -553,7 +549,7 @@ export interface ElasticVersionsListOutput {
   nextLink?: string;
 }
 export const ElasticVersionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         properties: Schema.optional(
@@ -574,7 +570,7 @@ export const ElasticVersionsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param region - Region where elastic deployment will take place.
  */
-export const ElasticVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ElasticVersionsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ElasticVersionsListInput,
   outputSchema: ElasticVersionsListOutput,
 }));
@@ -590,7 +586,7 @@ export interface ExternalUserCreateOrUpdateInput {
   roles?: string[];
 }
 export const ExternalUserCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -612,7 +608,7 @@ export interface ExternalUserCreateOrUpdateOutput {
   created?: boolean;
 }
 export const ExternalUserCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.Boolean),
   }) as unknown as Schema.Codec<ExternalUserCreateOrUpdateOutput>;
 
@@ -625,12 +621,10 @@ export const ExternalUserCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const ExternalUserCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ExternalUserCreateOrUpdateInput,
-    outputSchema: ExternalUserCreateOrUpdateOutput,
-  }),
-);
+export const ExternalUserCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ExternalUserCreateOrUpdateInput,
+  outputSchema: ExternalUserCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ListAssociatedTrafficFiltersListInput {
   subscriptionId: string;
@@ -638,7 +632,7 @@ export interface ListAssociatedTrafficFiltersListInput {
   monitorName: string;
 }
 export const ListAssociatedTrafficFiltersListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -669,7 +663,7 @@ export interface ListAssociatedTrafficFiltersListOutput {
   }[];
 }
 export const ListAssociatedTrafficFiltersListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rulesets: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -707,7 +701,7 @@ export const ListAssociatedTrafficFiltersListOutput =
  * @param monitorName - Monitor resource name
  */
 export const listAssociatedTrafficFiltersList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListAssociatedTrafficFiltersListInput,
     outputSchema: ListAssociatedTrafficFiltersListOutput,
   }));
@@ -718,7 +712,7 @@ export interface MonitoredResourcesListInput {
   monitorName: string;
 }
 export const MonitoredResourcesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -740,7 +734,7 @@ export interface MonitoredResourcesListOutput {
   nextLink?: string;
 }
 export const MonitoredResourcesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -760,12 +754,10 @@ export const MonitoredResourcesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitoredResourcesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitoredResourcesListInput,
-    outputSchema: MonitoredResourcesListOutput,
-  }),
-);
+export const MonitoredResourcesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitoredResourcesListInput,
+  outputSchema: MonitoredResourcesListOutput,
+}));
 // Input Schema
 export interface MonitoredSubscriptionsCreateorUpdateInput {
   subscriptionId: string;
@@ -819,7 +811,7 @@ export interface MonitoredSubscriptionsCreateorUpdateInput {
   };
 }
 export const MonitoredSubscriptionsCreateorUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -919,7 +911,7 @@ export interface MonitoredSubscriptionsCreateorUpdateOutput {
   };
 }
 export const MonitoredSubscriptionsCreateorUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -948,7 +940,7 @@ export const MonitoredSubscriptionsCreateorUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const MonitoredSubscriptionsCreateorUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MonitoredSubscriptionsCreateorUpdateInput,
     outputSchema: MonitoredSubscriptionsCreateorUpdateOutput,
   }));
@@ -960,7 +952,7 @@ export interface MonitoredSubscriptionsDeleteInput {
   configurationName: string;
 }
 export const MonitoredSubscriptionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -976,7 +968,7 @@ export const MonitoredSubscriptionsDeleteInput =
 // Output Schema
 export type MonitoredSubscriptionsDeleteOutput = void;
 export const MonitoredSubscriptionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MonitoredSubscriptionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MonitoredSubscriptionsDeleteOutput>;
 
 // The operation
 /**
@@ -989,7 +981,7 @@ export const MonitoredSubscriptionsDeleteOutput =
  * @param configurationName - The configuration name. Only 'default' value is supported.
  */
 export const MonitoredSubscriptionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MonitoredSubscriptionsDeleteInput,
     outputSchema: MonitoredSubscriptionsDeleteOutput,
   }));
@@ -1001,7 +993,7 @@ export interface MonitoredSubscriptionsGetInput {
   configurationName: string;
 }
 export const MonitoredSubscriptionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -1029,7 +1021,7 @@ export interface MonitoredSubscriptionsGetOutput {
   };
 }
 export const MonitoredSubscriptionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1059,12 +1051,10 @@ export const MonitoredSubscriptionsGetOutput =
  * @param monitorName - Monitor resource name
  * @param configurationName - The configuration name. Only 'default' value is supported.
  */
-export const MonitoredSubscriptionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitoredSubscriptionsGetInput,
-    outputSchema: MonitoredSubscriptionsGetOutput,
-  }),
-);
+export const MonitoredSubscriptionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitoredSubscriptionsGetInput,
+  outputSchema: MonitoredSubscriptionsGetOutput,
+}));
 // Input Schema
 export interface MonitoredSubscriptionsListInput {
   subscriptionId: string;
@@ -1072,7 +1062,7 @@ export interface MonitoredSubscriptionsListInput {
   monitorName: string;
 }
 export const MonitoredSubscriptionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -1102,7 +1092,7 @@ export interface MonitoredSubscriptionsListOutput {
   nextLink?: string;
 }
 export const MonitoredSubscriptionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1146,12 +1136,10 @@ export const MonitoredSubscriptionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitoredSubscriptionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitoredSubscriptionsListInput,
-    outputSchema: MonitoredSubscriptionsListOutput,
-  }),
-);
+export const MonitoredSubscriptionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitoredSubscriptionsListInput,
+  outputSchema: MonitoredSubscriptionsListOutput,
+}));
 // Input Schema
 export interface MonitoredSubscriptionsUpdateInput {
   subscriptionId: string;
@@ -1205,7 +1193,7 @@ export interface MonitoredSubscriptionsUpdateInput {
   };
 }
 export const MonitoredSubscriptionsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -1305,7 +1293,7 @@ export interface MonitoredSubscriptionsUpdateOutput {
   };
 }
 export const MonitoredSubscriptionsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1334,7 +1322,7 @@ export const MonitoredSubscriptionsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const MonitoredSubscriptionsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MonitoredSubscriptionsUpdateInput,
     outputSchema: MonitoredSubscriptionsUpdateOutput,
   }));
@@ -1423,7 +1411,7 @@ export interface MonitorsCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -1563,7 +1551,7 @@ export interface MonitorsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const MonitorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1591,7 +1579,7 @@ export const MonitorsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const MonitorsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MonitorsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsCreateInput,
   outputSchema: MonitorsCreateOutput,
 }));
@@ -1601,7 +1589,7 @@ export interface MonitorsDeleteInput {
   resourceGroupName: string;
   monitorName: string;
 }
-export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -1616,7 +1604,7 @@ export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type MonitorsDeleteOutput = void;
 export const MonitorsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MonitorsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MonitorsDeleteOutput>;
 
 // The operation
 /**
@@ -1627,7 +1615,7 @@ export const MonitorsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitorsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MonitorsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsDeleteInput,
   outputSchema: MonitorsDeleteOutput,
 }));
@@ -1637,7 +1625,7 @@ export interface MonitorsGetInput {
   resourceGroupName: string;
   monitorName: string;
 }
-export const MonitorsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -1663,7 +1651,7 @@ export interface MonitorsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const MonitorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1692,7 +1680,7 @@ export const MonitorsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MonitorsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsGetInput,
   outputSchema: MonitorsGetOutput,
 }));
@@ -1700,7 +1688,7 @@ export const MonitorsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface MonitorsListInput {
   subscriptionId: string;
 }
-export const MonitorsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -1727,7 +1715,7 @@ export interface MonitorsListOutput {
   }[];
   nextLink?: string;
 }
-export const MonitorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1759,7 +1747,7 @@ export const MonitorsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const MonitorsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MonitorsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsListInput,
   outputSchema: MonitorsListOutput,
 }));
@@ -1769,7 +1757,7 @@ export interface MonitorsListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const MonitorsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -1798,7 +1786,7 @@ export interface MonitorsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const MonitorsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1841,12 +1829,10 @@ export const MonitorsListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const MonitorsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitorsListByResourceGroupInput,
-    outputSchema: MonitorsListByResourceGroupOutput,
-  }),
-);
+export const MonitorsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitorsListByResourceGroupInput,
+  outputSchema: MonitorsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface MonitorsUpdateInput {
   subscriptionId: string;
@@ -1854,7 +1840,7 @@ export interface MonitorsUpdateInput {
   monitorName: string;
   tags?: Record<string, string>;
 }
-export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -1881,7 +1867,7 @@ export interface MonitorsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const MonitorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1909,7 +1895,7 @@ export const MonitorsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const MonitorsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MonitorsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorsUpdateInput,
   outputSchema: MonitorsUpdateOutput,
 }));
@@ -1920,7 +1906,7 @@ export interface MonitorUpgradeInput {
   monitorName: string;
   version?: string;
 }
-export const MonitorUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MonitorUpgradeInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -1936,7 +1922,7 @@ export const MonitorUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type MonitorUpgradeOutput = void;
 export const MonitorUpgradeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MonitorUpgradeOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MonitorUpgradeOutput>;
 
 // The operation
 /**
@@ -1947,7 +1933,7 @@ export const MonitorUpgradeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const MonitorUpgrade = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MonitorUpgrade = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitorUpgradeInput,
   outputSchema: MonitorUpgradeOutput,
 }));
@@ -1966,7 +1952,7 @@ export interface OpenAICreateOrUpdateInput {
   };
 }
 export const OpenAICreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -2003,7 +1989,7 @@ export interface OpenAICreateOrUpdateOutput {
   };
 }
 export const OpenAICreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2031,12 +2017,10 @@ export const OpenAICreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const OpenAICreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OpenAICreateOrUpdateInput,
-    outputSchema: OpenAICreateOrUpdateOutput,
-  }),
-);
+export const OpenAICreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OpenAICreateOrUpdateInput,
+  outputSchema: OpenAICreateOrUpdateOutput,
+}));
 // Input Schema
 export interface OpenAIDeleteInput {
   subscriptionId: string;
@@ -2044,7 +2028,7 @@ export interface OpenAIDeleteInput {
   monitorName: string;
   integrationName: string;
 }
-export const OpenAIDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OpenAIDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -2060,7 +2044,7 @@ export const OpenAIDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type OpenAIDeleteOutput = void;
 export const OpenAIDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OpenAIDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OpenAIDeleteOutput>;
 
 // The operation
 /**
@@ -2072,7 +2056,7 @@ export const OpenAIDeleteOutput =
  * @param monitorName - Monitor resource name
  * @param integrationName - OpenAI Integration name
  */
-export const OpenAIDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OpenAIDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: OpenAIDeleteInput,
   outputSchema: OpenAIDeleteOutput,
 }));
@@ -2083,7 +2067,7 @@ export interface OpenAIGetInput {
   monitorName: string;
   integrationName: string;
 }
-export const OpenAIGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OpenAIGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -2110,7 +2094,7 @@ export interface OpenAIGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const OpenAIGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OpenAIGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2140,7 +2124,7 @@ export const OpenAIGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param monitorName - Monitor resource name
  * @param integrationName - OpenAI Integration name
  */
-export const OpenAIGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OpenAIGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OpenAIGetInput,
   outputSchema: OpenAIGetOutput,
 }));
@@ -2151,7 +2135,7 @@ export interface OpenAIGetStatusInput {
   monitorName: string;
   integrationName: string;
 }
-export const OpenAIGetStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OpenAIGetStatusInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -2168,7 +2152,7 @@ export const OpenAIGetStatusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface OpenAIGetStatusOutput {
   properties?: { status?: string };
 }
-export const OpenAIGetStatusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OpenAIGetStatusOutput = /*@__PURE__*/ Schema.Struct({
   properties: Schema.optional(
     Schema.Struct({
       status: Schema.optional(Schema.String),
@@ -2186,7 +2170,7 @@ export const OpenAIGetStatusOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param monitorName - Monitor resource name
  * @param integrationName - OpenAI Integration name
  */
-export const OpenAIGetStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OpenAIGetStatus = /*@__PURE__*/ API.make(() => ({
   inputSchema: OpenAIGetStatusInput,
   outputSchema: OpenAIGetStatusOutput,
 }));
@@ -2196,7 +2180,7 @@ export interface OpenAIListInput {
   resourceGroupName: string;
   monitorName: string;
 }
-export const OpenAIListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OpenAIListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -2225,7 +2209,7 @@ export interface OpenAIListOutput {
   }[];
   nextLink?: string;
 }
-export const OpenAIListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OpenAIListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2259,15 +2243,13 @@ export const OpenAIListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const OpenAIList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OpenAIList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OpenAIListInput,
   outputSchema: OpenAIListOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Elastic/operations",
@@ -2290,7 +2272,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -2315,7 +2297,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2325,7 +2307,7 @@ export interface OrganizationsGetApiKeyInput {
   emailId?: string;
 }
 export const OrganizationsGetApiKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     emailId: Schema.optional(Schema.String),
   }).pipe(
@@ -2341,7 +2323,7 @@ export interface OrganizationsGetApiKeyOutput {
   properties?: { apiKey?: Redacted.Redacted<string> };
 }
 export const OrganizationsGetApiKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         apiKey: Schema.optional(SensitiveOutputString),
@@ -2356,18 +2338,16 @@ export const OrganizationsGetApiKeyOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const OrganizationsGetApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrganizationsGetApiKeyInput,
-    outputSchema: OrganizationsGetApiKeyOutput,
-  }),
-);
+export const OrganizationsGetApiKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrganizationsGetApiKeyInput,
+  outputSchema: OrganizationsGetApiKeyOutput,
+}));
 // Input Schema
 export interface OrganizationsGetElasticToAzureSubscriptionMappingInput {
   subscriptionId: string;
 }
 export const OrganizationsGetElasticToAzureSubscriptionMappingInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2398,7 +2378,7 @@ export interface OrganizationsGetElasticToAzureSubscriptionMappingOutput {
   };
 }
 export const OrganizationsGetElasticToAzureSubscriptionMappingOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         billedAzureSubscriptionId: Schema.optional(Schema.String),
@@ -2436,7 +2416,7 @@ export const OrganizationsGetElasticToAzureSubscriptionMappingOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const OrganizationsGetElasticToAzureSubscriptionMapping =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationsGetElasticToAzureSubscriptionMappingInput,
     outputSchema: OrganizationsGetElasticToAzureSubscriptionMappingOutput,
   }));
@@ -2451,7 +2431,7 @@ export interface OrganizationsResubscribeInput {
   organizationId?: string;
 }
 export const OrganizationsResubscribeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -2482,7 +2462,7 @@ export interface OrganizationsResubscribeOutput {
   };
 }
 export const OrganizationsResubscribeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2511,12 +2491,10 @@ export const OrganizationsResubscribeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const OrganizationsResubscribe = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrganizationsResubscribeInput,
-    outputSchema: OrganizationsResubscribeOutput,
-  }),
-);
+export const OrganizationsResubscribe = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrganizationsResubscribeInput,
+  outputSchema: OrganizationsResubscribeOutput,
+}));
 // Input Schema
 export interface TagRulesCreateOrUpdateInput {
   subscriptionId: string;
@@ -2547,7 +2525,7 @@ export interface TagRulesCreateOrUpdateInput {
   };
 }
 export const TagRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -2610,7 +2588,7 @@ export interface TagRulesCreateOrUpdateOutput {
   };
 }
 export const TagRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2638,12 +2616,10 @@ export const TagRulesCreateOrUpdateOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const TagRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TagRulesCreateOrUpdateInput,
-    outputSchema: TagRulesCreateOrUpdateOutput,
-  }),
-);
+export const TagRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TagRulesCreateOrUpdateInput,
+  outputSchema: TagRulesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface TagRulesDeleteInput {
   subscriptionId: string;
@@ -2651,7 +2627,7 @@ export interface TagRulesDeleteInput {
   monitorName: string;
   ruleSetName: string;
 }
-export const TagRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagRulesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -2667,7 +2643,7 @@ export const TagRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TagRulesDeleteOutput = void;
 export const TagRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TagRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TagRulesDeleteOutput>;
 
 // The operation
 /**
@@ -2679,7 +2655,7 @@ export const TagRulesDeleteOutput =
  * @param monitorName - Monitor resource name
  * @param ruleSetName - Tag Rule Set resource name
  */
-export const TagRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagRulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagRulesDeleteInput,
   outputSchema: TagRulesDeleteOutput,
 }));
@@ -2690,7 +2666,7 @@ export interface TagRulesGetInput {
   monitorName: string;
   ruleSetName: string;
 }
-export const TagRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagRulesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -2717,7 +2693,7 @@ export interface TagRulesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TagRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagRulesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2747,7 +2723,7 @@ export const TagRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param monitorName - Monitor resource name
  * @param ruleSetName - Tag Rule Set resource name
  */
-export const TagRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagRulesGetInput,
   outputSchema: TagRulesGetOutput,
 }));
@@ -2757,7 +2733,7 @@ export interface TagRulesListInput {
   resourceGroupName: string;
   monitorName: string;
 }
-export const TagRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagRulesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -2786,7 +2762,7 @@ export interface TagRulesListOutput {
   }[];
   nextLink?: string;
 }
-export const TagRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TagRulesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2820,7 +2796,7 @@ export const TagRulesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const TagRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TagRulesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: TagRulesListInput,
   outputSchema: TagRulesListOutput,
 }));
@@ -2832,7 +2808,7 @@ export interface TrafficFiltersDeleteInput {
   rulesetId?: string;
 }
 export const TrafficFiltersDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -2848,7 +2824,7 @@ export const TrafficFiltersDeleteInput =
 // Output Schema
 export type TrafficFiltersDeleteOutput = void;
 export const TrafficFiltersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TrafficFiltersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TrafficFiltersDeleteOutput>;
 
 // The operation
 /**
@@ -2860,12 +2836,10 @@ export const TrafficFiltersDeleteOutput =
  * @param monitorName - Monitor resource name
  * @param rulesetId - Ruleset Id of the filter
  */
-export const TrafficFiltersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TrafficFiltersDeleteInput,
-    outputSchema: TrafficFiltersDeleteOutput,
-  }),
-);
+export const TrafficFiltersDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TrafficFiltersDeleteInput,
+  outputSchema: TrafficFiltersDeleteOutput,
+}));
 // Input Schema
 export interface UpgradableVersionsDetailsInput {
   subscriptionId: string;
@@ -2873,7 +2847,7 @@ export interface UpgradableVersionsDetailsInput {
   monitorName: string;
 }
 export const UpgradableVersionsDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -2891,7 +2865,7 @@ export interface UpgradableVersionsDetailsOutput {
   upgradableVersions?: string[];
 }
 export const UpgradableVersionsDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currentVersion: Schema.optional(Schema.String),
     upgradableVersions: Schema.optional(Schema.Array(Schema.String)),
   }) as unknown as Schema.Codec<UpgradableVersionsDetailsOutput>;
@@ -2905,12 +2879,10 @@ export const UpgradableVersionsDetailsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const UpgradableVersionsDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpgradableVersionsDetailsInput,
-    outputSchema: UpgradableVersionsDetailsOutput,
-  }),
-);
+export const UpgradableVersionsDetails = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpgradableVersionsDetailsInput,
+  outputSchema: UpgradableVersionsDetailsOutput,
+}));
 // Input Schema
 export interface VMCollectionUpdateInput {
   subscriptionId: string;
@@ -2920,7 +2892,7 @@ export interface VMCollectionUpdateInput {
   operationName?: "Add" | "Delete";
 }
 export const VMCollectionUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -2937,7 +2909,7 @@ export const VMCollectionUpdateInput =
 // Output Schema
 export type VMCollectionUpdateOutput = void;
 export const VMCollectionUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VMCollectionUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VMCollectionUpdateOutput>;
 
 // The operation
 /**
@@ -2948,7 +2920,7 @@ export const VMCollectionUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const VMCollectionUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VMCollectionUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: VMCollectionUpdateInput,
   outputSchema: VMCollectionUpdateOutput,
 }));
@@ -2958,7 +2930,7 @@ export interface VMHostListInput {
   resourceGroupName: string;
   monitorName: string;
 }
-export const VMHostListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VMHostListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   monitorName: Schema.String.pipe(T.PathParam()),
@@ -2975,7 +2947,7 @@ export interface VMHostListOutput {
   value: { vmResourceId?: string }[];
   nextLink?: string;
 }
-export const VMHostListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const VMHostListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       vmResourceId: Schema.optional(Schema.String),
@@ -2993,7 +2965,7 @@ export const VMHostListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const VMHostList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VMHostList = /*@__PURE__*/ API.make(() => ({
   inputSchema: VMHostListInput,
   outputSchema: VMHostListOutput,
 }));
@@ -3004,7 +2976,7 @@ export interface VMIngestionDetailsInput {
   monitorName: string;
 }
 export const VMIngestionDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     monitorName: Schema.String.pipe(T.PathParam()),
@@ -3022,7 +2994,7 @@ export interface VMIngestionDetailsOutput {
   ingestionKey?: string;
 }
 export const VMIngestionDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cloudId: Schema.optional(Schema.String),
     ingestionKey: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<VMIngestionDetailsOutput>;
@@ -3036,7 +3008,7 @@ export const VMIngestionDetailsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param monitorName - Monitor resource name
  */
-export const VMIngestionDetails = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VMIngestionDetails = /*@__PURE__*/ API.make(() => ({
   inputSchema: VMIngestionDetailsInput,
   outputSchema: VMIngestionDetailsOutput,
 }));

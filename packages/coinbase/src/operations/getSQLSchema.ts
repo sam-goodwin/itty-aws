@@ -7,7 +7,7 @@ export interface GetSQLSchemaInput {
   database?: "base" | "base_sepolia" | "solana" | "hyperevm";
   table?: string;
 }
-export const GetSQLSchemaInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSQLSchemaInput = /*@__PURE__*/ Schema.Struct({
   database: Schema.optional(
     Schema.Literals(["base", "base_sepolia", "solana", "hyperevm"]),
   ),
@@ -30,7 +30,7 @@ export interface GetSQLSchemaOutput {
     }[];
   }[];
 }
-export const GetSQLSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetSQLSchemaOutput = /*@__PURE__*/ Schema.Struct({
   tables: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -62,7 +62,7 @@ export const GetSQLSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param database - The name of the database to query. Defaults to "base" when not specified.
  * @param table - Get the schema for a specific table.
  */
-export const getSQLSchema = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getSQLSchema = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetSQLSchemaInput,
   outputSchema: GetSQLSchemaOutput,
 }));

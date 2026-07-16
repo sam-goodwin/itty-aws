@@ -38,7 +38,7 @@ export interface ContainerAccess {
 }
 
 export const ContainerAccess: Schema.Codec<ContainerAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.optional(Schema.String),
     permission: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ContainerAccess" });
@@ -65,7 +65,7 @@ export interface Parameter {
 }
 
 export const Parameter: Schema.Codec<Parameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       map: Schema.optional(Schema.Array(Parameter)),
       type: Schema.optional(Schema.String),
@@ -95,7 +95,7 @@ export interface ContainerVersionHeader {
 }
 
 export const ContainerVersionHeader: Schema.Codec<ContainerVersionHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     numVariables: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     numTags: Schema.optional(Schema.String),
@@ -114,7 +114,7 @@ export interface TeardownTag {
 }
 
 export const TeardownTag: Schema.Codec<TeardownTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tagName: Schema.optional(Schema.String),
     stopTeardownOnFailure: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "TeardownTag" });
@@ -127,7 +127,7 @@ export interface SetupTag {
 }
 
 export const SetupTag: Schema.Codec<SetupTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tagName: Schema.optional(Schema.String),
     stopOnSetupFailure: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "SetupTag" });
@@ -177,29 +177,27 @@ export interface Tag {
   scheduleStartMs?: string;
 }
 
-export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    blockingTriggerId: Schema.optional(Schema.Array(Schema.String)),
-    accountId: Schema.optional(Schema.String),
-    containerId: Schema.optional(Schema.String),
-    paused: Schema.optional(Schema.Boolean),
-    parameter: Schema.optional(Schema.Array(Parameter)),
-    fingerprint: Schema.optional(Schema.String),
-    notes: Schema.optional(Schema.String),
-    scheduleEndMs: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    teardownTag: Schema.optional(Schema.Array(TeardownTag)),
-    tagId: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    priority: Schema.optional(Parameter),
-    liveOnly: Schema.optional(Schema.Boolean),
-    setupTag: Schema.optional(Schema.Array(SetupTag)),
-    tagFiringOption: Schema.optional(Schema.String),
-    parentFolderId: Schema.optional(Schema.String),
-    firingTriggerId: Schema.optional(Schema.Array(Schema.String)),
-    scheduleStartMs: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Tag" });
+export const Tag: Schema.Codec<Tag> = /*@__PURE__*/ Schema.Struct({
+  blockingTriggerId: Schema.optional(Schema.Array(Schema.String)),
+  accountId: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  paused: Schema.optional(Schema.Boolean),
+  parameter: Schema.optional(Schema.Array(Parameter)),
+  fingerprint: Schema.optional(Schema.String),
+  notes: Schema.optional(Schema.String),
+  scheduleEndMs: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  teardownTag: Schema.optional(Schema.Array(TeardownTag)),
+  tagId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  priority: Schema.optional(Parameter),
+  liveOnly: Schema.optional(Schema.Boolean),
+  setupTag: Schema.optional(Schema.Array(SetupTag)),
+  tagFiringOption: Schema.optional(Schema.String),
+  parentFolderId: Schema.optional(Schema.String),
+  firingTriggerId: Schema.optional(Schema.Array(Schema.String)),
+  scheduleStartMs: Schema.optional(Schema.String),
+}).annotate({ identifier: "Tag" });
 
 export interface Variable {
   /** The Variable ID uniquely identifies the GTM Variable. */
@@ -231,7 +229,7 @@ export interface Variable {
 }
 
 export const Variable: Schema.Codec<Variable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     variableId: Schema.optional(Schema.String),
     parentFolderId: Schema.optional(Schema.String),
     scheduleStartMs: Schema.optional(Schema.String),
@@ -267,7 +265,7 @@ export interface Condition {
 }
 
 export const Condition: Schema.Codec<Condition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.optional(Schema.String),
     parameter: Schema.optional(Schema.Array(Parameter)),
   }).annotate({ identifier: "Condition" });
@@ -352,7 +350,7 @@ export interface Trigger {
 }
 
 export const Trigger: Schema.Codec<Trigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     continuousTimeMinMilliseconds: Schema.optional(Parameter),
     intervalSeconds: Schema.optional(Parameter),
     waitForTags: Schema.optional(Parameter),
@@ -393,7 +391,7 @@ export interface FolderEntities {
 }
 
 export const FolderEntities: Schema.Codec<FolderEntities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tag: Schema.optional(Schema.Array(Tag)),
     variable: Schema.optional(Schema.Array(Variable)),
     trigger: Schema.optional(Schema.Array(Trigger)),
@@ -411,7 +409,7 @@ export interface Account {
 }
 
 export const Account: Schema.Codec<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.optional(Schema.String),
     shareData: Schema.optional(Schema.Boolean),
     fingerprint: Schema.optional(Schema.String),
@@ -432,7 +430,7 @@ export interface AccountAccess {
 }
 
 export const AccountAccess: Schema.Codec<AccountAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permission: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "AccountAccess" });
 
@@ -450,7 +448,7 @@ export interface UserAccess {
 }
 
 export const UserAccess: Schema.Codec<UserAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissionId: Schema.optional(Schema.String),
     emailAddress: Schema.optional(Schema.String),
     containerAccess: Schema.optional(Schema.Array(ContainerAccess)),
@@ -464,7 +462,7 @@ export interface ListAccountUsersResponse {
 }
 
 export const ListAccountUsersResponse: Schema.Codec<ListAccountUsersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userAccess: Schema.optional(Schema.Array(UserAccess)),
   }).annotate({ identifier: "ListAccountUsersResponse" });
 
@@ -474,7 +472,7 @@ export interface ListTriggersResponse {
 }
 
 export const ListTriggersResponse: Schema.Codec<ListTriggersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     triggers: Schema.optional(Schema.Array(Trigger)),
   }).annotate({ identifier: "ListTriggersResponse" });
 
@@ -492,7 +490,7 @@ export interface Folder {
 }
 
 export const Folder: Schema.Codec<Folder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.optional(Schema.String),
     folderId: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
@@ -644,7 +642,7 @@ export interface Container {
 }
 
 export const Container: Schema.Codec<Container> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.optional(Schema.String),
     timeZoneCountryId: Schema.optional(Schema.String),
     accountId: Schema.optional(Schema.String),
@@ -686,7 +684,7 @@ export interface ContainerVersion {
 }
 
 export const ContainerVersion: Schema.Codec<ContainerVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.optional(Schema.Boolean),
     tag: Schema.optional(Schema.Array(Tag)),
     accountId: Schema.optional(Schema.String),
@@ -709,7 +707,7 @@ export interface PublishContainerVersionResponse {
 }
 
 export const PublishContainerVersionResponse: Schema.Codec<PublishContainerVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerVersion: Schema.optional(ContainerVersion),
     compilerError: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "PublishContainerVersionResponse" });
@@ -724,7 +722,7 @@ export interface CreateContainerVersionRequestVersionOptions {
 }
 
 export const CreateContainerVersionRequestVersionOptions: Schema.Codec<CreateContainerVersionRequestVersionOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quickPreview: Schema.optional(Schema.Boolean),
     notes: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -738,7 +736,7 @@ export interface ListContainerVersionsResponse {
 }
 
 export const ListContainerVersionsResponse: Schema.Codec<ListContainerVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerVersion: Schema.optional(Schema.Array(ContainerVersion)),
     containerVersionHeader: Schema.optional(
       Schema.Array(ContainerVersionHeader),
@@ -753,7 +751,7 @@ export interface CreateContainerVersionResponse {
 }
 
 export const CreateContainerVersionResponse: Schema.Codec<CreateContainerVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerVersion: Schema.optional(ContainerVersion),
     compilerError: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CreateContainerVersionResponse" });
@@ -764,7 +762,7 @@ export interface ListContainersResponse {
 }
 
 export const ListContainersResponse: Schema.Codec<ListContainersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containers: Schema.optional(Schema.Array(Container)),
   }).annotate({ identifier: "ListContainersResponse" });
 
@@ -774,7 +772,7 @@ export interface ListVariablesResponse {
 }
 
 export const ListVariablesResponse: Schema.Codec<ListVariablesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     variables: Schema.optional(Schema.Array(Variable)),
   }).annotate({ identifier: "ListVariablesResponse" });
 
@@ -805,7 +803,7 @@ export interface Environment {
 }
 
 export const Environment: Schema.Codec<Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.optional(Schema.String),
     enableDebug: Schema.optional(Schema.Boolean),
     accountId: Schema.optional(Schema.String),
@@ -826,7 +824,7 @@ export interface ListEnvironmentsResponse {
 }
 
 export const ListEnvironmentsResponse: Schema.Codec<ListEnvironmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environments: Schema.optional(Schema.Array(Environment)),
   }).annotate({ identifier: "ListEnvironmentsResponse" });
 
@@ -836,7 +834,7 @@ export interface ListTagsResponse {
 }
 
 export const ListTagsResponse: Schema.Codec<ListTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tags: Schema.optional(Schema.Array(Tag)),
   }).annotate({ identifier: "ListTagsResponse" });
 
@@ -846,7 +844,7 @@ export interface ListAccountsResponse {
 }
 
 export const ListAccountsResponse: Schema.Codec<ListAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accounts: Schema.optional(Schema.Array(Account)),
   }).annotate({ identifier: "ListAccountsResponse" });
 
@@ -856,7 +854,7 @@ export interface ListFoldersResponse {
 }
 
 export const ListFoldersResponse: Schema.Codec<ListFoldersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     folders: Schema.optional(Schema.Array(Folder)),
   }).annotate({ identifier: "ListFoldersResponse" });
 
@@ -916,16 +914,13 @@ T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 
 export interface ListAccountsRequest {}
 
-export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ListAccountsRequest = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "tagmanager/v1/accounts" }),
   svc,
 ) as unknown as Schema.Codec<ListAccountsRequest>;
 
 export type ListAccountsResponse_Op = ListAccountsResponse;
-export const ListAccountsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListAccountsResponse;
+export const ListAccountsResponse_Op = /*@__PURE__*/ ListAccountsResponse;
 
 export type ListAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -935,7 +930,7 @@ export const listAccounts: API.OperationMethod<
   ListAccountsResponse_Op,
   ListAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -946,7 +941,7 @@ export interface GetAccountsRequest {
   accountId: string;
 }
 
-export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAccountsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("accountId")),
 }).pipe(
   T.Http({ method: "GET", path: "tagmanager/v1/accounts/{accountId}" }),
@@ -954,7 +949,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetAccountsRequest>;
 
 export type GetAccountsResponse = Account;
-export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
+export const GetAccountsResponse = /*@__PURE__*/ Account;
 
 export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -964,7 +959,7 @@ export const getAccounts: API.OperationMethod<
   GetAccountsResponse,
   GetAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -979,7 +974,7 @@ export interface UpdateAccountsRequest {
   body?: Account;
 }
 
-export const UpdateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UpdateAccountsRequest = /*@__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("accountId")),
   fingerprint: Schema.optional(Schema.String).pipe(T.HttpQuery("fingerprint")),
   body: Schema.optional(Account).pipe(T.HttpBody()),
@@ -993,7 +988,7 @@ export const UpdateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdateAccountsRequest>;
 
 export type UpdateAccountsResponse = Account;
-export const UpdateAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
+export const UpdateAccountsResponse = /*@__PURE__*/ Account;
 
 export type UpdateAccountsError =
   | DefaultErrors
@@ -1008,7 +1003,7 @@ export const updateAccounts: API.OperationMethod<
   UpdateAccountsResponse,
   UpdateAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountsRequest,
   output: UpdateAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1020,7 +1015,7 @@ export interface ListAccountsPermissionsRequest {
 }
 
 export const ListAccountsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
   }).pipe(
     T.Http({
@@ -1032,7 +1027,7 @@ export const ListAccountsPermissionsRequest =
 
 export type ListAccountsPermissionsResponse = ListAccountUsersResponse;
 export const ListAccountsPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAccountUsersResponse;
+  /*@__PURE__*/ ListAccountUsersResponse;
 
 export type ListAccountsPermissionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1042,7 +1037,7 @@ export const listAccountsPermissions: API.OperationMethod<
   ListAccountsPermissionsResponse,
   ListAccountsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccountsPermissionsRequest,
   output: ListAccountsPermissionsResponse,
   errors: [NotFound, Forbidden],
@@ -1056,7 +1051,7 @@ export interface CreateAccountsPermissionsRequest {
 }
 
 export const CreateAccountsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     body: Schema.optional(UserAccess).pipe(T.HttpBody()),
   }).pipe(
@@ -1069,8 +1064,7 @@ export const CreateAccountsPermissionsRequest =
   ) as unknown as Schema.Codec<CreateAccountsPermissionsRequest>;
 
 export type CreateAccountsPermissionsResponse = UserAccess;
-export const CreateAccountsPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UserAccess;
+export const CreateAccountsPermissionsResponse = /*@__PURE__*/ UserAccess;
 
 export type CreateAccountsPermissionsError =
   | DefaultErrors
@@ -1085,7 +1079,7 @@ export const createAccountsPermissions: API.OperationMethod<
   CreateAccountsPermissionsResponse,
   CreateAccountsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsPermissionsRequest,
   output: CreateAccountsPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1099,7 +1093,7 @@ export interface GetAccountsPermissionsRequest {
 }
 
 export const GetAccountsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     permissionId: Schema.String.pipe(T.HttpPath("permissionId")),
   }).pipe(
@@ -1111,8 +1105,7 @@ export const GetAccountsPermissionsRequest =
   ) as unknown as Schema.Codec<GetAccountsPermissionsRequest>;
 
 export type GetAccountsPermissionsResponse = UserAccess;
-export const GetAccountsPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UserAccess;
+export const GetAccountsPermissionsResponse = /*@__PURE__*/ UserAccess;
 
 export type GetAccountsPermissionsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1122,7 +1115,7 @@ export const getAccountsPermissions: API.OperationMethod<
   GetAccountsPermissionsResponse,
   GetAccountsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsPermissionsRequest,
   output: GetAccountsPermissionsResponse,
   errors: [NotFound, Forbidden],
@@ -1138,7 +1131,7 @@ export interface UpdateAccountsPermissionsRequest {
 }
 
 export const UpdateAccountsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     permissionId: Schema.String.pipe(T.HttpPath("permissionId")),
     body: Schema.optional(UserAccess).pipe(T.HttpBody()),
@@ -1152,8 +1145,7 @@ export const UpdateAccountsPermissionsRequest =
   ) as unknown as Schema.Codec<UpdateAccountsPermissionsRequest>;
 
 export type UpdateAccountsPermissionsResponse = UserAccess;
-export const UpdateAccountsPermissionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UserAccess;
+export const UpdateAccountsPermissionsResponse = /*@__PURE__*/ UserAccess;
 
 export type UpdateAccountsPermissionsError =
   | DefaultErrors
@@ -1168,7 +1160,7 @@ export const updateAccountsPermissions: API.OperationMethod<
   UpdateAccountsPermissionsResponse,
   UpdateAccountsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountsPermissionsRequest,
   output: UpdateAccountsPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1182,7 +1174,7 @@ export interface DeleteAccountsPermissionsRequest {
 }
 
 export const DeleteAccountsPermissionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     permissionId: Schema.String.pipe(T.HttpPath("permissionId")),
   }).pipe(
@@ -1195,7 +1187,7 @@ export const DeleteAccountsPermissionsRequest =
 
 export interface DeleteAccountsPermissionsResponse {}
 export const DeleteAccountsPermissionsResponse: Schema.Codec<DeleteAccountsPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteAccountsPermissionsResponse>;
 
@@ -1212,7 +1204,7 @@ export const deleteAccountsPermissions: API.OperationMethod<
   DeleteAccountsPermissionsResponse,
   DeleteAccountsPermissionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsPermissionsRequest,
   output: DeleteAccountsPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1226,7 +1218,7 @@ export interface GetAccountsContainersRequest {
 }
 
 export const GetAccountsContainersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
   }).pipe(
@@ -1238,8 +1230,7 @@ export const GetAccountsContainersRequest =
   ) as unknown as Schema.Codec<GetAccountsContainersRequest>;
 
 export type GetAccountsContainersResponse = Container;
-export const GetAccountsContainersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Container;
+export const GetAccountsContainersResponse = /*@__PURE__*/ Container;
 
 export type GetAccountsContainersError = DefaultErrors | NotFound | Forbidden;
 
@@ -1249,7 +1240,7 @@ export const getAccountsContainers: API.OperationMethod<
   GetAccountsContainersResponse,
   GetAccountsContainersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsContainersRequest,
   output: GetAccountsContainersResponse,
   errors: [NotFound, Forbidden],
@@ -1267,7 +1258,7 @@ export interface UpdateAccountsContainersRequest {
 }
 
 export const UpdateAccountsContainersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     fingerprint: Schema.optional(Schema.String).pipe(
@@ -1284,8 +1275,7 @@ export const UpdateAccountsContainersRequest =
   ) as unknown as Schema.Codec<UpdateAccountsContainersRequest>;
 
 export type UpdateAccountsContainersResponse = Container;
-export const UpdateAccountsContainersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Container;
+export const UpdateAccountsContainersResponse = /*@__PURE__*/ Container;
 
 export type UpdateAccountsContainersError =
   | DefaultErrors
@@ -1300,7 +1290,7 @@ export const updateAccountsContainers: API.OperationMethod<
   UpdateAccountsContainersResponse,
   UpdateAccountsContainersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersRequest,
   output: UpdateAccountsContainersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1314,7 +1304,7 @@ export interface DeleteAccountsContainersRequest {
 }
 
 export const DeleteAccountsContainersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
   }).pipe(
@@ -1327,7 +1317,7 @@ export const DeleteAccountsContainersRequest =
 
 export interface DeleteAccountsContainersResponse {}
 export const DeleteAccountsContainersResponse: Schema.Codec<DeleteAccountsContainersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteAccountsContainersResponse>;
 
@@ -1344,7 +1334,7 @@ export const deleteAccountsContainers: API.OperationMethod<
   DeleteAccountsContainersResponse,
   DeleteAccountsContainersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersRequest,
   output: DeleteAccountsContainersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1358,7 +1348,7 @@ export interface CreateAccountsContainersRequest {
 }
 
 export const CreateAccountsContainersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     body: Schema.optional(Container).pipe(T.HttpBody()),
   }).pipe(
@@ -1371,8 +1361,7 @@ export const CreateAccountsContainersRequest =
   ) as unknown as Schema.Codec<CreateAccountsContainersRequest>;
 
 export type CreateAccountsContainersResponse = Container;
-export const CreateAccountsContainersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Container;
+export const CreateAccountsContainersResponse = /*@__PURE__*/ Container;
 
 export type CreateAccountsContainersError =
   | DefaultErrors
@@ -1387,7 +1376,7 @@ export const createAccountsContainers: API.OperationMethod<
   CreateAccountsContainersResponse,
   CreateAccountsContainersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersRequest,
   output: CreateAccountsContainersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1399,7 +1388,7 @@ export interface ListAccountsContainersRequest {
 }
 
 export const ListAccountsContainersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
   }).pipe(
     T.Http({
@@ -1411,7 +1400,7 @@ export const ListAccountsContainersRequest =
 
 export type ListAccountsContainersResponse = ListContainersResponse;
 export const ListAccountsContainersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListContainersResponse;
+  /*@__PURE__*/ ListContainersResponse;
 
 export type ListAccountsContainersError = DefaultErrors | NotFound | Forbidden;
 
@@ -1421,7 +1410,7 @@ export const listAccountsContainers: API.OperationMethod<
   ListAccountsContainersResponse,
   ListAccountsContainersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccountsContainersRequest,
   output: ListAccountsContainersResponse,
   errors: [NotFound, Forbidden],
@@ -1435,7 +1424,7 @@ export interface ListAccountsContainersFoldersRequest {
 }
 
 export const ListAccountsContainersFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
   }).pipe(
@@ -1448,7 +1437,7 @@ export const ListAccountsContainersFoldersRequest =
 
 export type ListAccountsContainersFoldersResponse = ListFoldersResponse;
 export const ListAccountsContainersFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListFoldersResponse;
+  /*@__PURE__*/ ListFoldersResponse;
 
 export type ListAccountsContainersFoldersError =
   | DefaultErrors
@@ -1461,7 +1450,7 @@ export const listAccountsContainersFolders: API.OperationMethod<
   ListAccountsContainersFoldersResponse,
   ListAccountsContainersFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccountsContainersFoldersRequest,
   output: ListAccountsContainersFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -1477,7 +1466,7 @@ export interface CreateAccountsContainersFoldersRequest {
 }
 
 export const CreateAccountsContainersFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     body: Schema.optional(Folder).pipe(T.HttpBody()),
@@ -1491,8 +1480,7 @@ export const CreateAccountsContainersFoldersRequest =
   ) as unknown as Schema.Codec<CreateAccountsContainersFoldersRequest>;
 
 export type CreateAccountsContainersFoldersResponse = Folder;
-export const CreateAccountsContainersFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Folder;
+export const CreateAccountsContainersFoldersResponse = /*@__PURE__*/ Folder;
 
 export type CreateAccountsContainersFoldersError =
   | DefaultErrors
@@ -1507,7 +1495,7 @@ export const createAccountsContainersFolders: API.OperationMethod<
   CreateAccountsContainersFoldersResponse,
   CreateAccountsContainersFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersFoldersRequest,
   output: CreateAccountsContainersFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1523,7 +1511,7 @@ export interface GetAccountsContainersFoldersRequest {
 }
 
 export const GetAccountsContainersFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     folderId: Schema.String.pipe(T.HttpPath("folderId")),
@@ -1536,8 +1524,7 @@ export const GetAccountsContainersFoldersRequest =
   ) as unknown as Schema.Codec<GetAccountsContainersFoldersRequest>;
 
 export type GetAccountsContainersFoldersResponse = Folder;
-export const GetAccountsContainersFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Folder;
+export const GetAccountsContainersFoldersResponse = /*@__PURE__*/ Folder;
 
 export type GetAccountsContainersFoldersError =
   | DefaultErrors
@@ -1550,7 +1537,7 @@ export const getAccountsContainersFolders: API.OperationMethod<
   GetAccountsContainersFoldersResponse,
   GetAccountsContainersFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsContainersFoldersRequest,
   output: GetAccountsContainersFoldersResponse,
   errors: [NotFound, Forbidden],
@@ -1570,7 +1557,7 @@ export interface UpdateAccountsContainersFoldersRequest {
 }
 
 export const UpdateAccountsContainersFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     folderId: Schema.String.pipe(T.HttpPath("folderId")),
     fingerprint: Schema.optional(Schema.String).pipe(
@@ -1588,8 +1575,7 @@ export const UpdateAccountsContainersFoldersRequest =
   ) as unknown as Schema.Codec<UpdateAccountsContainersFoldersRequest>;
 
 export type UpdateAccountsContainersFoldersResponse = Folder;
-export const UpdateAccountsContainersFoldersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Folder;
+export const UpdateAccountsContainersFoldersResponse = /*@__PURE__*/ Folder;
 
 export type UpdateAccountsContainersFoldersError =
   | DefaultErrors
@@ -1604,7 +1590,7 @@ export const updateAccountsContainersFolders: API.OperationMethod<
   UpdateAccountsContainersFoldersResponse,
   UpdateAccountsContainersFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersFoldersRequest,
   output: UpdateAccountsContainersFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1620,7 +1606,7 @@ export interface DeleteAccountsContainersFoldersRequest {
 }
 
 export const DeleteAccountsContainersFoldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     folderId: Schema.String.pipe(T.HttpPath("folderId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
@@ -1634,7 +1620,7 @@ export const DeleteAccountsContainersFoldersRequest =
 
 export interface DeleteAccountsContainersFoldersResponse {}
 export const DeleteAccountsContainersFoldersResponse: Schema.Codec<DeleteAccountsContainersFoldersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteAccountsContainersFoldersResponse>;
 
@@ -1651,7 +1637,7 @@ export const deleteAccountsContainersFolders: API.OperationMethod<
   DeleteAccountsContainersFoldersResponse,
   DeleteAccountsContainersFoldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersFoldersRequest,
   output: DeleteAccountsContainersFoldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1667,7 +1653,7 @@ export interface ListAccountsContainersFoldersEntitiesRequest {
 }
 
 export const ListAccountsContainersFoldersEntitiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     folderId: Schema.String.pipe(T.HttpPath("folderId")),
@@ -1681,7 +1667,7 @@ export const ListAccountsContainersFoldersEntitiesRequest =
 
 export type ListAccountsContainersFoldersEntitiesResponse = FolderEntities;
 export const ListAccountsContainersFoldersEntitiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FolderEntities;
+  /*@__PURE__*/ FolderEntities;
 
 export type ListAccountsContainersFoldersEntitiesError =
   | DefaultErrors
@@ -1694,7 +1680,7 @@ export const listAccountsContainersFoldersEntities: API.OperationMethod<
   ListAccountsContainersFoldersEntitiesResponse,
   ListAccountsContainersFoldersEntitiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccountsContainersFoldersEntitiesRequest,
   output: ListAccountsContainersFoldersEntitiesResponse,
   errors: [NotFound, Forbidden],
@@ -1718,7 +1704,7 @@ export interface UpdateAccountsContainersMove_foldersRequest {
 }
 
 export const UpdateAccountsContainersMove_foldersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     variableId: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("variableId"),
     ),
@@ -1743,7 +1729,7 @@ export const UpdateAccountsContainersMove_foldersRequest =
 
 export interface UpdateAccountsContainersMove_foldersResponse {}
 export const UpdateAccountsContainersMove_foldersResponse: Schema.Codec<UpdateAccountsContainersMove_foldersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<UpdateAccountsContainersMove_foldersResponse>;
 
@@ -1760,7 +1746,7 @@ export const updateAccountsContainersMove_folders: API.OperationMethod<
   UpdateAccountsContainersMove_foldersResponse,
   UpdateAccountsContainersMove_foldersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersMove_foldersRequest,
   output: UpdateAccountsContainersMove_foldersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1776,7 +1762,7 @@ export interface CreateAccountsContainersVersionsRequest {
 }
 
 export const CreateAccountsContainersVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     body: Schema.optional(CreateContainerVersionRequestVersionOptions).pipe(
@@ -1794,7 +1780,7 @@ export const CreateAccountsContainersVersionsRequest =
 export type CreateAccountsContainersVersionsResponse =
   CreateContainerVersionResponse;
 export const CreateAccountsContainersVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CreateContainerVersionResponse;
+  /*@__PURE__*/ CreateContainerVersionResponse;
 
 export type CreateAccountsContainersVersionsError =
   | DefaultErrors
@@ -1809,7 +1795,7 @@ export const createAccountsContainersVersions: API.OperationMethod<
   CreateAccountsContainersVersionsResponse,
   CreateAccountsContainersVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersVersionsRequest,
   output: CreateAccountsContainersVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1825,7 +1811,7 @@ export interface UndeleteAccountsContainersVersionsRequest {
 }
 
 export const UndeleteAccountsContainersVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerVersionId: Schema.String.pipe(T.HttpPath("containerVersionId")),
@@ -1840,7 +1826,7 @@ export const UndeleteAccountsContainersVersionsRequest =
 
 export type UndeleteAccountsContainersVersionsResponse = ContainerVersion;
 export const UndeleteAccountsContainersVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerVersion;
+  /*@__PURE__*/ ContainerVersion;
 
 export type UndeleteAccountsContainersVersionsError =
   | DefaultErrors
@@ -1855,7 +1841,7 @@ export const undeleteAccountsContainersVersions: API.OperationMethod<
   UndeleteAccountsContainersVersionsResponse,
   UndeleteAccountsContainersVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UndeleteAccountsContainersVersionsRequest,
   output: UndeleteAccountsContainersVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1871,7 +1857,7 @@ export interface RestoreAccountsContainersVersionsRequest {
 }
 
 export const RestoreAccountsContainersVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerVersionId: Schema.String.pipe(T.HttpPath("containerVersionId")),
@@ -1886,7 +1872,7 @@ export const RestoreAccountsContainersVersionsRequest =
 
 export type RestoreAccountsContainersVersionsResponse = ContainerVersion;
 export const RestoreAccountsContainersVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerVersion;
+  /*@__PURE__*/ ContainerVersion;
 
 export type RestoreAccountsContainersVersionsError =
   | DefaultErrors
@@ -1901,7 +1887,7 @@ export const restoreAccountsContainersVersions: API.OperationMethod<
   RestoreAccountsContainersVersionsResponse,
   RestoreAccountsContainersVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreAccountsContainersVersionsRequest,
   output: RestoreAccountsContainersVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1919,7 +1905,7 @@ export interface ListAccountsContainersVersionsRequest {
 }
 
 export const ListAccountsContainersVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     headers: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("headers")),
@@ -1937,7 +1923,7 @@ export const ListAccountsContainersVersionsRequest =
 export type ListAccountsContainersVersionsResponse =
   ListContainerVersionsResponse;
 export const ListAccountsContainersVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListContainerVersionsResponse;
+  /*@__PURE__*/ ListContainerVersionsResponse;
 
 export type ListAccountsContainersVersionsError =
   | DefaultErrors
@@ -1950,7 +1936,7 @@ export const listAccountsContainersVersions: API.OperationMethod<
   ListAccountsContainersVersionsResponse,
   ListAccountsContainersVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccountsContainersVersionsRequest,
   output: ListAccountsContainersVersionsResponse,
   errors: [NotFound, Forbidden],
@@ -1966,7 +1952,7 @@ export interface GetAccountsContainersVersionsRequest {
 }
 
 export const GetAccountsContainersVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerVersionId: Schema.String.pipe(T.HttpPath("containerVersionId")),
@@ -1980,7 +1966,7 @@ export const GetAccountsContainersVersionsRequest =
 
 export type GetAccountsContainersVersionsResponse = ContainerVersion;
 export const GetAccountsContainersVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerVersion;
+  /*@__PURE__*/ ContainerVersion;
 
 export type GetAccountsContainersVersionsError =
   | DefaultErrors
@@ -1993,7 +1979,7 @@ export const getAccountsContainersVersions: API.OperationMethod<
   GetAccountsContainersVersionsResponse,
   GetAccountsContainersVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsContainersVersionsRequest,
   output: GetAccountsContainersVersionsResponse,
   errors: [NotFound, Forbidden],
@@ -2013,7 +1999,7 @@ export interface UpdateAccountsContainersVersionsRequest {
 }
 
 export const UpdateAccountsContainersVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerVersionId: Schema.String.pipe(T.HttpPath("containerVersionId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
@@ -2032,7 +2018,7 @@ export const UpdateAccountsContainersVersionsRequest =
 
 export type UpdateAccountsContainersVersionsResponse = ContainerVersion;
 export const UpdateAccountsContainersVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ContainerVersion;
+  /*@__PURE__*/ ContainerVersion;
 
 export type UpdateAccountsContainersVersionsError =
   | DefaultErrors
@@ -2047,7 +2033,7 @@ export const updateAccountsContainersVersions: API.OperationMethod<
   UpdateAccountsContainersVersionsResponse,
   UpdateAccountsContainersVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersVersionsRequest,
   output: UpdateAccountsContainersVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2063,7 +2049,7 @@ export interface DeleteAccountsContainersVersionsRequest {
 }
 
 export const DeleteAccountsContainersVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerVersionId: Schema.String.pipe(T.HttpPath("containerVersionId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
@@ -2077,7 +2063,7 @@ export const DeleteAccountsContainersVersionsRequest =
 
 export interface DeleteAccountsContainersVersionsResponse {}
 export const DeleteAccountsContainersVersionsResponse: Schema.Codec<DeleteAccountsContainersVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteAccountsContainersVersionsResponse>;
 
@@ -2094,7 +2080,7 @@ export const deleteAccountsContainersVersions: API.OperationMethod<
   DeleteAccountsContainersVersionsResponse,
   DeleteAccountsContainersVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersVersionsRequest,
   output: DeleteAccountsContainersVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2112,7 +2098,7 @@ export interface PublishAccountsContainersVersionsRequest {
 }
 
 export const PublishAccountsContainersVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     fingerprint: Schema.optional(Schema.String).pipe(
       T.HttpQuery("fingerprint"),
@@ -2131,7 +2117,7 @@ export const PublishAccountsContainersVersionsRequest =
 export type PublishAccountsContainersVersionsResponse =
   PublishContainerVersionResponse;
 export const PublishAccountsContainersVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ PublishContainerVersionResponse;
+  /*@__PURE__*/ PublishContainerVersionResponse;
 
 export type PublishAccountsContainersVersionsError =
   | DefaultErrors
@@ -2146,7 +2132,7 @@ export const publishAccountsContainersVersions: API.OperationMethod<
   PublishAccountsContainersVersionsResponse,
   PublishAccountsContainersVersionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PublishAccountsContainersVersionsRequest,
   output: PublishAccountsContainersVersionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2160,7 +2146,7 @@ export interface ListAccountsContainersVariablesRequest {
 }
 
 export const ListAccountsContainersVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
   }).pipe(
@@ -2173,7 +2159,7 @@ export const ListAccountsContainersVariablesRequest =
 
 export type ListAccountsContainersVariablesResponse = ListVariablesResponse;
 export const ListAccountsContainersVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListVariablesResponse;
+  /*@__PURE__*/ ListVariablesResponse;
 
 export type ListAccountsContainersVariablesError =
   | DefaultErrors
@@ -2186,7 +2172,7 @@ export const listAccountsContainersVariables: API.OperationMethod<
   ListAccountsContainersVariablesResponse,
   ListAccountsContainersVariablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccountsContainersVariablesRequest,
   output: ListAccountsContainersVariablesResponse,
   errors: [NotFound, Forbidden],
@@ -2202,7 +2188,7 @@ export interface CreateAccountsContainersVariablesRequest {
 }
 
 export const CreateAccountsContainersVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     body: Schema.optional(Variable).pipe(T.HttpBody()),
@@ -2216,8 +2202,7 @@ export const CreateAccountsContainersVariablesRequest =
   ) as unknown as Schema.Codec<CreateAccountsContainersVariablesRequest>;
 
 export type CreateAccountsContainersVariablesResponse = Variable;
-export const CreateAccountsContainersVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Variable;
+export const CreateAccountsContainersVariablesResponse = /*@__PURE__*/ Variable;
 
 export type CreateAccountsContainersVariablesError =
   | DefaultErrors
@@ -2232,7 +2217,7 @@ export const createAccountsContainersVariables: API.OperationMethod<
   CreateAccountsContainersVariablesResponse,
   CreateAccountsContainersVariablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersVariablesRequest,
   output: CreateAccountsContainersVariablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2248,7 +2233,7 @@ export interface GetAccountsContainersVariablesRequest {
 }
 
 export const GetAccountsContainersVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     variableId: Schema.String.pipe(T.HttpPath("variableId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
@@ -2261,8 +2246,7 @@ export const GetAccountsContainersVariablesRequest =
   ) as unknown as Schema.Codec<GetAccountsContainersVariablesRequest>;
 
 export type GetAccountsContainersVariablesResponse = Variable;
-export const GetAccountsContainersVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Variable;
+export const GetAccountsContainersVariablesResponse = /*@__PURE__*/ Variable;
 
 export type GetAccountsContainersVariablesError =
   | DefaultErrors
@@ -2275,7 +2259,7 @@ export const getAccountsContainersVariables: API.OperationMethod<
   GetAccountsContainersVariablesResponse,
   GetAccountsContainersVariablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsContainersVariablesRequest,
   output: GetAccountsContainersVariablesResponse,
   errors: [NotFound, Forbidden],
@@ -2295,7 +2279,7 @@ export interface UpdateAccountsContainersVariablesRequest {
 }
 
 export const UpdateAccountsContainersVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     variableId: Schema.String.pipe(T.HttpPath("variableId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
@@ -2313,8 +2297,7 @@ export const UpdateAccountsContainersVariablesRequest =
   ) as unknown as Schema.Codec<UpdateAccountsContainersVariablesRequest>;
 
 export type UpdateAccountsContainersVariablesResponse = Variable;
-export const UpdateAccountsContainersVariablesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Variable;
+export const UpdateAccountsContainersVariablesResponse = /*@__PURE__*/ Variable;
 
 export type UpdateAccountsContainersVariablesError =
   | DefaultErrors
@@ -2329,7 +2312,7 @@ export const updateAccountsContainersVariables: API.OperationMethod<
   UpdateAccountsContainersVariablesResponse,
   UpdateAccountsContainersVariablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersVariablesRequest,
   output: UpdateAccountsContainersVariablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2345,7 +2328,7 @@ export interface DeleteAccountsContainersVariablesRequest {
 }
 
 export const DeleteAccountsContainersVariablesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     variableId: Schema.String.pipe(T.HttpPath("variableId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
@@ -2359,7 +2342,7 @@ export const DeleteAccountsContainersVariablesRequest =
 
 export interface DeleteAccountsContainersVariablesResponse {}
 export const DeleteAccountsContainersVariablesResponse: Schema.Codec<DeleteAccountsContainersVariablesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteAccountsContainersVariablesResponse>;
 
@@ -2376,7 +2359,7 @@ export const deleteAccountsContainersVariables: API.OperationMethod<
   DeleteAccountsContainersVariablesResponse,
   DeleteAccountsContainersVariablesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersVariablesRequest,
   output: DeleteAccountsContainersVariablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2392,7 +2375,7 @@ export interface GetAccountsContainersTagsRequest {
 }
 
 export const GetAccountsContainersTagsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     tagId: Schema.String.pipe(T.HttpPath("tagId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
@@ -2405,8 +2388,7 @@ export const GetAccountsContainersTagsRequest =
   ) as unknown as Schema.Codec<GetAccountsContainersTagsRequest>;
 
 export type GetAccountsContainersTagsResponse = Tag;
-export const GetAccountsContainersTagsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Tag;
+export const GetAccountsContainersTagsResponse = /*@__PURE__*/ Tag;
 
 export type GetAccountsContainersTagsError =
   | DefaultErrors
@@ -2419,7 +2401,7 @@ export const getAccountsContainersTags: API.OperationMethod<
   GetAccountsContainersTagsResponse,
   GetAccountsContainersTagsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsContainersTagsRequest,
   output: GetAccountsContainersTagsResponse,
   errors: [NotFound, Forbidden],
@@ -2439,7 +2421,7 @@ export interface UpdateAccountsContainersTagsRequest {
 }
 
 export const UpdateAccountsContainersTagsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     tagId: Schema.String.pipe(T.HttpPath("tagId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
@@ -2457,8 +2439,7 @@ export const UpdateAccountsContainersTagsRequest =
   ) as unknown as Schema.Codec<UpdateAccountsContainersTagsRequest>;
 
 export type UpdateAccountsContainersTagsResponse = Tag;
-export const UpdateAccountsContainersTagsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Tag;
+export const UpdateAccountsContainersTagsResponse = /*@__PURE__*/ Tag;
 
 export type UpdateAccountsContainersTagsError =
   | DefaultErrors
@@ -2473,7 +2454,7 @@ export const updateAccountsContainersTags: API.OperationMethod<
   UpdateAccountsContainersTagsResponse,
   UpdateAccountsContainersTagsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersTagsRequest,
   output: UpdateAccountsContainersTagsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2489,7 +2470,7 @@ export interface DeleteAccountsContainersTagsRequest {
 }
 
 export const DeleteAccountsContainersTagsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     tagId: Schema.String.pipe(T.HttpPath("tagId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
@@ -2503,7 +2484,7 @@ export const DeleteAccountsContainersTagsRequest =
 
 export interface DeleteAccountsContainersTagsResponse {}
 export const DeleteAccountsContainersTagsResponse: Schema.Codec<DeleteAccountsContainersTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteAccountsContainersTagsResponse>;
 
@@ -2520,7 +2501,7 @@ export const deleteAccountsContainersTags: API.OperationMethod<
   DeleteAccountsContainersTagsResponse,
   DeleteAccountsContainersTagsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersTagsRequest,
   output: DeleteAccountsContainersTagsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2536,7 +2517,7 @@ export interface CreateAccountsContainersTagsRequest {
 }
 
 export const CreateAccountsContainersTagsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     body: Schema.optional(Tag).pipe(T.HttpBody()),
@@ -2550,8 +2531,7 @@ export const CreateAccountsContainersTagsRequest =
   ) as unknown as Schema.Codec<CreateAccountsContainersTagsRequest>;
 
 export type CreateAccountsContainersTagsResponse = Tag;
-export const CreateAccountsContainersTagsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Tag;
+export const CreateAccountsContainersTagsResponse = /*@__PURE__*/ Tag;
 
 export type CreateAccountsContainersTagsError =
   | DefaultErrors
@@ -2566,7 +2546,7 @@ export const createAccountsContainersTags: API.OperationMethod<
   CreateAccountsContainersTagsResponse,
   CreateAccountsContainersTagsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersTagsRequest,
   output: CreateAccountsContainersTagsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2580,7 +2560,7 @@ export interface ListAccountsContainersTagsRequest {
 }
 
 export const ListAccountsContainersTagsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
   }).pipe(
@@ -2593,7 +2573,7 @@ export const ListAccountsContainersTagsRequest =
 
 export type ListAccountsContainersTagsResponse = ListTagsResponse;
 export const ListAccountsContainersTagsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListTagsResponse;
+  /*@__PURE__*/ ListTagsResponse;
 
 export type ListAccountsContainersTagsError =
   | DefaultErrors
@@ -2606,7 +2586,7 @@ export const listAccountsContainersTags: API.OperationMethod<
   ListAccountsContainersTagsResponse,
   ListAccountsContainersTagsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccountsContainersTagsRequest,
   output: ListAccountsContainersTagsResponse,
   errors: [NotFound, Forbidden],
@@ -2624,7 +2604,7 @@ export interface UpdateAccountsContainersReauthorize_environmentsRequest {
 }
 
 export const UpdateAccountsContainersReauthorize_environmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environmentId: Schema.String.pipe(T.HttpPath("environmentId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
@@ -2641,7 +2621,7 @@ export const UpdateAccountsContainersReauthorize_environmentsRequest =
 export type UpdateAccountsContainersReauthorize_environmentsResponse =
   Environment;
 export const UpdateAccountsContainersReauthorize_environmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Environment;
+  /*@__PURE__*/ Environment;
 
 export type UpdateAccountsContainersReauthorize_environmentsError =
   | DefaultErrors
@@ -2656,7 +2636,7 @@ export const updateAccountsContainersReauthorize_environments: API.OperationMeth
   UpdateAccountsContainersReauthorize_environmentsResponse,
   UpdateAccountsContainersReauthorize_environmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersReauthorize_environmentsRequest,
   output: UpdateAccountsContainersReauthorize_environmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2672,7 +2652,7 @@ export interface GetAccountsContainersEnvironmentsRequest {
 }
 
 export const GetAccountsContainersEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environmentId: Schema.String.pipe(T.HttpPath("environmentId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
@@ -2686,7 +2666,7 @@ export const GetAccountsContainersEnvironmentsRequest =
 
 export type GetAccountsContainersEnvironmentsResponse = Environment;
 export const GetAccountsContainersEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Environment;
+  /*@__PURE__*/ Environment;
 
 export type GetAccountsContainersEnvironmentsError =
   | DefaultErrors
@@ -2699,7 +2679,7 @@ export const getAccountsContainersEnvironments: API.OperationMethod<
   GetAccountsContainersEnvironmentsResponse,
   GetAccountsContainersEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsContainersEnvironmentsRequest,
   output: GetAccountsContainersEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -2719,7 +2699,7 @@ export interface UpdateAccountsContainersEnvironmentsRequest {
 }
 
 export const UpdateAccountsContainersEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     environmentId: Schema.String.pipe(T.HttpPath("environmentId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     fingerprint: Schema.optional(Schema.String).pipe(
@@ -2738,7 +2718,7 @@ export const UpdateAccountsContainersEnvironmentsRequest =
 
 export type UpdateAccountsContainersEnvironmentsResponse = Environment;
 export const UpdateAccountsContainersEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Environment;
+  /*@__PURE__*/ Environment;
 
 export type UpdateAccountsContainersEnvironmentsError =
   | DefaultErrors
@@ -2753,7 +2733,7 @@ export const updateAccountsContainersEnvironments: API.OperationMethod<
   UpdateAccountsContainersEnvironmentsResponse,
   UpdateAccountsContainersEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersEnvironmentsRequest,
   output: UpdateAccountsContainersEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2769,7 +2749,7 @@ export interface DeleteAccountsContainersEnvironmentsRequest {
 }
 
 export const DeleteAccountsContainersEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     environmentId: Schema.String.pipe(T.HttpPath("environmentId")),
@@ -2783,7 +2763,7 @@ export const DeleteAccountsContainersEnvironmentsRequest =
 
 export interface DeleteAccountsContainersEnvironmentsResponse {}
 export const DeleteAccountsContainersEnvironmentsResponse: Schema.Codec<DeleteAccountsContainersEnvironmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteAccountsContainersEnvironmentsResponse>;
 
@@ -2800,7 +2780,7 @@ export const deleteAccountsContainersEnvironments: API.OperationMethod<
   DeleteAccountsContainersEnvironmentsResponse,
   DeleteAccountsContainersEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersEnvironmentsRequest,
   output: DeleteAccountsContainersEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2816,7 +2796,7 @@ export interface CreateAccountsContainersEnvironmentsRequest {
 }
 
 export const CreateAccountsContainersEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     body: Schema.optional(Environment).pipe(T.HttpBody()),
@@ -2831,7 +2811,7 @@ export const CreateAccountsContainersEnvironmentsRequest =
 
 export type CreateAccountsContainersEnvironmentsResponse = Environment;
 export const CreateAccountsContainersEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Environment;
+  /*@__PURE__*/ Environment;
 
 export type CreateAccountsContainersEnvironmentsError =
   | DefaultErrors
@@ -2846,7 +2826,7 @@ export const createAccountsContainersEnvironments: API.OperationMethod<
   CreateAccountsContainersEnvironmentsResponse,
   CreateAccountsContainersEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersEnvironmentsRequest,
   output: CreateAccountsContainersEnvironmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2860,7 +2840,7 @@ export interface ListAccountsContainersEnvironmentsRequest {
 }
 
 export const ListAccountsContainersEnvironmentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
   }).pipe(
@@ -2874,7 +2854,7 @@ export const ListAccountsContainersEnvironmentsRequest =
 export type ListAccountsContainersEnvironmentsResponse =
   ListEnvironmentsResponse;
 export const ListAccountsContainersEnvironmentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListEnvironmentsResponse;
+  /*@__PURE__*/ ListEnvironmentsResponse;
 
 export type ListAccountsContainersEnvironmentsError =
   | DefaultErrors
@@ -2887,7 +2867,7 @@ export const listAccountsContainersEnvironments: API.OperationMethod<
   ListAccountsContainersEnvironmentsResponse,
   ListAccountsContainersEnvironmentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccountsContainersEnvironmentsRequest,
   output: ListAccountsContainersEnvironmentsResponse,
   errors: [NotFound, Forbidden],
@@ -2903,7 +2883,7 @@ export interface GetAccountsContainersTriggersRequest {
 }
 
 export const GetAccountsContainersTriggersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     triggerId: Schema.String.pipe(T.HttpPath("triggerId")),
@@ -2916,8 +2896,7 @@ export const GetAccountsContainersTriggersRequest =
   ) as unknown as Schema.Codec<GetAccountsContainersTriggersRequest>;
 
 export type GetAccountsContainersTriggersResponse = Trigger;
-export const GetAccountsContainersTriggersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Trigger;
+export const GetAccountsContainersTriggersResponse = /*@__PURE__*/ Trigger;
 
 export type GetAccountsContainersTriggersError =
   | DefaultErrors
@@ -2930,7 +2909,7 @@ export const getAccountsContainersTriggers: API.OperationMethod<
   GetAccountsContainersTriggersResponse,
   GetAccountsContainersTriggersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsContainersTriggersRequest,
   output: GetAccountsContainersTriggersResponse,
   errors: [NotFound, Forbidden],
@@ -2950,7 +2929,7 @@ export interface UpdateAccountsContainersTriggersRequest {
 }
 
 export const UpdateAccountsContainersTriggersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     fingerprint: Schema.optional(Schema.String).pipe(
       T.HttpQuery("fingerprint"),
@@ -2968,8 +2947,7 @@ export const UpdateAccountsContainersTriggersRequest =
   ) as unknown as Schema.Codec<UpdateAccountsContainersTriggersRequest>;
 
 export type UpdateAccountsContainersTriggersResponse = Trigger;
-export const UpdateAccountsContainersTriggersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Trigger;
+export const UpdateAccountsContainersTriggersResponse = /*@__PURE__*/ Trigger;
 
 export type UpdateAccountsContainersTriggersError =
   | DefaultErrors
@@ -2984,7 +2962,7 @@ export const updateAccountsContainersTriggers: API.OperationMethod<
   UpdateAccountsContainersTriggersResponse,
   UpdateAccountsContainersTriggersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersTriggersRequest,
   output: UpdateAccountsContainersTriggersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3000,7 +2978,7 @@ export interface DeleteAccountsContainersTriggersRequest {
 }
 
 export const DeleteAccountsContainersTriggersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     triggerId: Schema.String.pipe(T.HttpPath("triggerId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
@@ -3014,7 +2992,7 @@ export const DeleteAccountsContainersTriggersRequest =
 
 export interface DeleteAccountsContainersTriggersResponse {}
 export const DeleteAccountsContainersTriggersResponse: Schema.Codec<DeleteAccountsContainersTriggersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as any as Schema.Codec<DeleteAccountsContainersTriggersResponse>;
 
@@ -3031,7 +3009,7 @@ export const deleteAccountsContainersTriggers: API.OperationMethod<
   DeleteAccountsContainersTriggersResponse,
   DeleteAccountsContainersTriggersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersTriggersRequest,
   output: DeleteAccountsContainersTriggersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3047,7 +3025,7 @@ export interface CreateAccountsContainersTriggersRequest {
 }
 
 export const CreateAccountsContainersTriggersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     body: Schema.optional(Trigger).pipe(T.HttpBody()),
@@ -3061,8 +3039,7 @@ export const CreateAccountsContainersTriggersRequest =
   ) as unknown as Schema.Codec<CreateAccountsContainersTriggersRequest>;
 
 export type CreateAccountsContainersTriggersResponse = Trigger;
-export const CreateAccountsContainersTriggersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Trigger;
+export const CreateAccountsContainersTriggersResponse = /*@__PURE__*/ Trigger;
 
 export type CreateAccountsContainersTriggersError =
   | DefaultErrors
@@ -3077,7 +3054,7 @@ export const createAccountsContainersTriggers: API.OperationMethod<
   CreateAccountsContainersTriggersResponse,
   CreateAccountsContainersTriggersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersTriggersRequest,
   output: CreateAccountsContainersTriggersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3091,7 +3068,7 @@ export interface ListAccountsContainersTriggersRequest {
 }
 
 export const ListAccountsContainersTriggersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     containerId: Schema.String.pipe(T.HttpPath("containerId")),
     accountId: Schema.String.pipe(T.HttpPath("accountId")),
   }).pipe(
@@ -3104,7 +3081,7 @@ export const ListAccountsContainersTriggersRequest =
 
 export type ListAccountsContainersTriggersResponse = ListTriggersResponse;
 export const ListAccountsContainersTriggersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListTriggersResponse;
+  /*@__PURE__*/ ListTriggersResponse;
 
 export type ListAccountsContainersTriggersError =
   | DefaultErrors
@@ -3117,7 +3094,7 @@ export const listAccountsContainersTriggers: API.OperationMethod<
   ListAccountsContainersTriggersResponse,
   ListAccountsContainersTriggersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListAccountsContainersTriggersRequest,
   output: ListAccountsContainersTriggersResponse,
   errors: [NotFound, Forbidden],

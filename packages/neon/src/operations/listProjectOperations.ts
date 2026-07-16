@@ -10,7 +10,7 @@ export interface ListProjectOperationsInput {
   limit?: number;
 }
 export const ListProjectOperationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     cursor: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.Number),
@@ -77,7 +77,7 @@ export interface ListProjectOperationsOutput {
   pagination?: { cursor: string };
 }
 export const ListProjectOperationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operations: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -159,7 +159,7 @@ export const ListProjectOperationsOutput =
  * @param project_id - The Neon project ID
  */
 export const listProjectOperations =
-  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  /*@__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListProjectOperationsInput,
     outputSchema: ListProjectOperationsOutput,
     errors: [NotFound] as const,

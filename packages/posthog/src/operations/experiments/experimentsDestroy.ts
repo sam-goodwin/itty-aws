@@ -9,7 +9,7 @@ export interface ExperimentsDestroyInput {
   project_id: string;
 }
 export const ExperimentsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const ExperimentsDestroyInput =
 // Output Schema
 export type ExperimentsDestroyOutput = void;
 export const ExperimentsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsDestroyOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ExperimentsDestroyOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const ExperimentsDestroyOutput =
  * @param id - A unique integer value identifying this experiment.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const experimentsDestroy = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const experimentsDestroy = /*@__PURE__*/ API.make(() => ({
   inputSchema: ExperimentsDestroyInput,
   outputSchema: ExperimentsDestroyOutput,
   errors: [Forbidden, NotFound] as const,

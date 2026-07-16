@@ -14,14 +14,12 @@ export interface PostCreditNotesIdInput {
   memo?: string;
   metadata?: Record<string, string>;
 }
-export const PostCreditNotesIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String.pipe(T.PathParam()),
-    expand: Schema.optional(Schema.Array(Schema.String)),
-    memo: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-  },
-).pipe(
+export const PostCreditNotesIdInput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String.pipe(T.PathParam()),
+  expand: Schema.optional(Schema.Array(Schema.String)),
+  memo: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/v1/credit_notes/{id}",
@@ -1232,7 +1230,7 @@ export interface PostCreditNotesIdOutput {
   voided_at: number | null;
 }
 export const PostCreditNotesIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_shipping: Schema.Number,
     created: Schema.Number,
@@ -2069,7 +2067,7 @@ export const PostCreditNotesIdOutput =
  *
  * <p>Updates an existing credit note.</p>
  */
-export const PostCreditNotesId = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostCreditNotesId = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostCreditNotesIdInput,
   outputSchema: PostCreditNotesIdOutput,
 }));

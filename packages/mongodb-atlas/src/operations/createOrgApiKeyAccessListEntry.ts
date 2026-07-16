@@ -14,7 +14,7 @@ export interface CreateOrgApiKeyAccessListEntryInput {
   pretty?: boolean;
 }
 export const CreateOrgApiKeyAccessListEntryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     apiUserId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const CreateOrgApiKeyAccessListEntryInput =
 // Output Schema
 export type CreateOrgApiKeyAccessListEntryOutput = void;
 export const CreateOrgApiKeyAccessListEntryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgApiKeyAccessListEntryOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateOrgApiKeyAccessListEntryOutput>;
 
 // The operation
 /**
@@ -49,7 +49,7 @@ export const CreateOrgApiKeyAccessListEntryOutput =
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key for which you want to create a new access list entry.
  */
 export const createOrgApiKeyAccessListEntry =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: CreateOrgApiKeyAccessListEntryInput,
     outputSchema: CreateOrgApiKeyAccessListEntryOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

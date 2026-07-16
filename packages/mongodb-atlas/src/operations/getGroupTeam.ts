@@ -10,7 +10,7 @@ export interface GetGroupTeamInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const GetGroupTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupTeamInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   teamId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -25,7 +25,7 @@ export const GetGroupTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetGroupTeamOutput = void;
 export const GetGroupTeamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupTeamOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupTeamOutput>;
 
 // The operation
 /**
@@ -40,7 +40,7 @@ export const GetGroupTeamOutput =
  * @param teamId - Unique 24-hexadecimal digit string that identifies the team for which you want to get.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const getGroupTeam = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupTeam = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupTeamInput,
   outputSchema: GetGroupTeamOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

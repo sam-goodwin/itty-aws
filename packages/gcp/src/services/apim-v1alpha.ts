@@ -32,7 +32,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -57,7 +57,7 @@ export interface HttpOperationHeader {
 }
 
 export const HttpOperationHeader: Schema.Codec<HttpOperationHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
     dataType: Schema.optional(Schema.String),
@@ -71,7 +71,7 @@ export interface HttpOperationHttpResponse {
 }
 
 export const HttpOperationHttpResponse: Schema.Codec<HttpOperationHttpResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headers: Schema.optional(Schema.Record(Schema.String, HttpOperationHeader)),
     responseCodes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).annotate({ identifier: "HttpOperationHttpResponse" });
@@ -82,7 +82,7 @@ export interface HttpOperationHttpRequest {
 }
 
 export const HttpOperationHttpRequest: Schema.Codec<HttpOperationHttpRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     headers: Schema.optional(Schema.Record(Schema.String, HttpOperationHeader)),
   }).annotate({ identifier: "HttpOperationHttpRequest" });
 
@@ -94,7 +94,7 @@ export interface TagAction {
 }
 
 export const TagAction: Schema.Codec<TagAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     tag: Schema.optional(Schema.String),
   }).annotate({ identifier: "TagAction" });
@@ -107,7 +107,7 @@ export interface GclbObservationSourcePscNetworkConfig {
 }
 
 export const GclbObservationSourcePscNetworkConfig: Schema.Codec<GclbObservationSourcePscNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     network: Schema.optional(Schema.String),
     subnetwork: Schema.optional(Schema.String),
   }).annotate({ identifier: "GclbObservationSourcePscNetworkConfig" });
@@ -120,7 +120,7 @@ export interface ListApiObservationTagsResponse {
 }
 
 export const ListApiObservationTagsResponse: Schema.Codec<ListApiObservationTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     apiObservationTags: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "ListApiObservationTagsResponse" });
@@ -131,7 +131,7 @@ export interface GclbObservationSource {
 }
 
 export const GclbObservationSource: Schema.Codec<GclbObservationSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pscNetworkConfigs: Schema.optional(
       Schema.Array(GclbObservationSourcePscNetworkConfig),
     ),
@@ -152,7 +152,7 @@ export interface HttpOperationPathParam {
 }
 
 export const HttpOperationPathParam: Schema.Codec<HttpOperationPathParam> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     position: Schema.optional(Schema.Number),
     dataType: Schema.optional(Schema.String),
   }).annotate({ identifier: "HttpOperationPathParam" });
@@ -174,7 +174,7 @@ export interface HttpOperationQueryParam {
 }
 
 export const HttpOperationQueryParam: Schema.Codec<HttpOperationQueryParam> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
     dataType: Schema.optional(Schema.String),
@@ -207,7 +207,7 @@ export interface HttpOperation {
 }
 
 export const HttpOperation: Schema.Codec<HttpOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pathParams: Schema.optional(Schema.Array(HttpOperationPathParam)),
     queryParams: Schema.optional(
       Schema.Record(Schema.String, HttpOperationQueryParam),
@@ -232,7 +232,7 @@ export interface ApiOperation {
 }
 
 export const ApiOperation: Schema.Codec<ApiOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     firstSeenTime: Schema.optional(Schema.String),
     lastSeenTime: Schema.optional(Schema.String),
     httpOperation: Schema.optional(HttpOperation),
@@ -258,7 +258,7 @@ export interface OperationMetadata {
 }
 
 export const OperationMetadata: Schema.Codec<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     verb: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     endTime: Schema.optional(Schema.String),
@@ -292,7 +292,7 @@ export interface ApiObservation {
 }
 
 export const ApiObservation: Schema.Codec<ApiObservation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     style: Schema.optional(Schema.String),
     apiOperationCount: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -311,14 +311,14 @@ export interface BatchEditTagsApiObservationsResponse {
 }
 
 export const BatchEditTagsApiObservationsResponse: Schema.Codec<BatchEditTagsApiObservationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiObservations: Schema.optional(Schema.Array(ApiObservation)),
   }).annotate({ identifier: "BatchEditTagsApiObservationsResponse" });
 
 export interface DisableObservationJobRequest {}
 
 export const DisableObservationJobRequest: Schema.Codec<DisableObservationJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableObservationJobRequest",
   });
 
@@ -330,7 +330,7 @@ export interface ListApiOperationsResponse {
 }
 
 export const ListApiOperationsResponse: Schema.Codec<ListApiOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     apiOperations: Schema.optional(Schema.Array(ApiOperation)),
   }).annotate({ identifier: "ListApiOperationsResponse" });
@@ -349,7 +349,7 @@ export interface Entitlement {
 }
 
 export const Entitlement: Schema.Codec<Entitlement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     apiObservationEntitled: Schema.optional(Schema.Boolean),
     updateTime: Schema.optional(Schema.String),
@@ -380,7 +380,7 @@ export interface ObservationJob {
 }
 
 export const ObservationJob: Schema.Codec<ObservationJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     sources: Schema.optional(Schema.Array(Schema.String)),
@@ -398,7 +398,7 @@ export interface ListObservationJobsResponse {
 }
 
 export const ListObservationJobsResponse: Schema.Codec<ListObservationJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     observationJobs: Schema.optional(Schema.Array(ObservationJob)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -418,7 +418,7 @@ export interface Location {
 }
 
 export const Location: Schema.Codec<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locationId: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -446,7 +446,7 @@ export interface ObservationSource {
 }
 
 export const ObservationSource: Schema.Codec<ObservationSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
     gclbObservationSource: Schema.optional(GclbObservationSource),
@@ -464,7 +464,7 @@ export interface ListObservationSourcesResponse {
 }
 
 export const ListObservationSourcesResponse: Schema.Codec<ListObservationSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     unreachable: Schema.optional(Schema.Array(Schema.String)),
     observationSources: Schema.optional(Schema.Array(ObservationSource)),
     nextPageToken: Schema.optional(Schema.String),
@@ -478,7 +478,7 @@ export interface ListLocationsResponse {
 }
 
 export const ListLocationsResponse: Schema.Codec<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Location)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListLocationsResponse" });
@@ -497,7 +497,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
@@ -508,14 +508,14 @@ export const Operation: Schema.Codec<Operation> =
 export interface EnableObservationJobRequest {}
 
 export const EnableObservationJobRequest: Schema.Codec<EnableObservationJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnableObservationJobRequest",
   });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -529,7 +529,7 @@ export interface ListOperationsResponse {
 }
 
 export const ListOperationsResponse: Schema.Codec<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     operations: Schema.optional(Schema.Array(Operation)),
     unreachable: Schema.optional(Schema.Array(Schema.String)),
@@ -543,7 +543,7 @@ export interface EditTagsApiObservationsRequest {
 }
 
 export const EditTagsApiObservationsRequest: Schema.Codec<EditTagsApiObservationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tagActions: Schema.optional(Schema.Array(TagAction)),
     apiObservationId: Schema.optional(Schema.String),
   }).annotate({ identifier: "EditTagsApiObservationsRequest" });
@@ -554,14 +554,14 @@ export interface BatchEditTagsApiObservationsRequest {
 }
 
 export const BatchEditTagsApiObservationsRequest: Schema.Codec<BatchEditTagsApiObservationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(EditTagsApiObservationsRequest)),
   }).annotate({ identifier: "BatchEditTagsApiObservationsRequest" });
 
 export interface CancelOperationRequest {}
 
 export const CancelOperationRequest: Schema.Codec<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelOperationRequest",
   });
 
@@ -573,7 +573,7 @@ export interface ListApiObservationsResponse {
 }
 
 export const ListApiObservationsResponse: Schema.Codec<ListApiObservationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     apiObservations: Schema.optional(Schema.Array(ApiObservation)),
   }).annotate({ identifier: "ListApiObservationsResponse" });
@@ -642,7 +642,7 @@ export interface ListApiObservationTagsProjectsLocationsRequest {
 }
 
 export const ListApiObservationTagsProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -654,7 +654,7 @@ export const ListApiObservationTagsProjectsLocationsRequest =
 export type ListApiObservationTagsProjectsLocationsResponse =
   ListApiObservationTagsResponse;
 export const ListApiObservationTagsProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApiObservationTagsResponse;
+  /*@__PURE__*/ ListApiObservationTagsResponse;
 
 export type ListApiObservationTagsProjectsLocationsError =
   | DefaultErrors
@@ -667,7 +667,7 @@ export const listApiObservationTagsProjectsLocations: API.PaginatedOperationMeth
   ListApiObservationTagsProjectsLocationsResponse,
   ListApiObservationTagsProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApiObservationTagsProjectsLocationsRequest,
   output: ListApiObservationTagsProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -683,7 +683,7 @@ export interface GetEntitlementProjectsLocationsRequest {
 }
 
 export const GetEntitlementProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -692,7 +692,7 @@ export const GetEntitlementProjectsLocationsRequest =
 
 export type GetEntitlementProjectsLocationsResponse = Entitlement;
 export const GetEntitlementProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Entitlement;
+  /*@__PURE__*/ Entitlement;
 
 export type GetEntitlementProjectsLocationsError =
   | DefaultErrors
@@ -705,7 +705,7 @@ export const getEntitlementProjectsLocations: API.OperationMethod<
   GetEntitlementProjectsLocationsResponse,
   GetEntitlementProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEntitlementProjectsLocationsRequest,
   output: GetEntitlementProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -725,7 +725,7 @@ export interface ListProjectsLocationsRequest {
 }
 
 export const ListProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     extraLocationTypes: Schema.optional(Schema.Array(Schema.String)).pipe(
@@ -740,7 +740,7 @@ export const ListProjectsLocationsRequest =
 
 export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
+  /*@__PURE__*/ ListLocationsResponse;
 
 export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -750,7 +750,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsResponse,
   ListProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -766,7 +766,7 @@ export interface GetProjectsLocationsRequest {
 }
 
 export const GetProjectsLocationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -774,8 +774,7 @@ export const GetProjectsLocationsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsRequest>;
 
 export type GetProjectsLocationsResponse = Location;
-export const GetProjectsLocationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Location;
+export const GetProjectsLocationsResponse = /*@__PURE__*/ Location;
 
 export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -785,7 +784,7 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsResponse,
   GetProjectsLocationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
   errors: [NotFound, Forbidden],
@@ -805,7 +804,7 @@ export interface ListProjectsLocationsOperationsRequest {
 }
 
 export const ListProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     returnPartialSuccess: Schema.optional(Schema.Boolean).pipe(
@@ -820,7 +819,7 @@ export const ListProjectsLocationsOperationsRequest =
 
 export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
+  /*@__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsOperationsError =
   | DefaultErrors
@@ -833,7 +832,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsResponse,
   ListProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -849,7 +848,7 @@ export interface GetProjectsLocationsOperationsRequest {
 }
 
 export const GetProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -857,8 +856,7 @@ export const GetProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<GetProjectsLocationsOperationsRequest>;
 
 export type GetProjectsLocationsOperationsResponse = Operation;
-export const GetProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GetProjectsLocationsOperationsResponse = /*@__PURE__*/ Operation;
 
 export type GetProjectsLocationsOperationsError =
   | DefaultErrors
@@ -871,7 +869,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsResponse,
   GetProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden],
@@ -885,7 +883,7 @@ export interface CancelProjectsLocationsOperationsRequest {
 }
 
 export const CancelProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -894,8 +892,7 @@ export const CancelProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<CancelProjectsLocationsOperationsRequest>;
 
 export type CancelProjectsLocationsOperationsResponse = Empty;
-export const CancelProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const CancelProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type CancelProjectsLocationsOperationsError =
   | DefaultErrors
@@ -910,7 +907,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsResponse,
   CancelProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -922,7 +919,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
 }
 
 export const DeleteProjectsLocationsOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
@@ -930,8 +927,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsLocationsOperationsRequest>;
 
 export type DeleteProjectsLocationsOperationsResponse = Empty;
-export const DeleteProjectsLocationsOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsLocationsOperationsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsOperationsError =
   | DefaultErrors
@@ -946,7 +942,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsResponse,
   DeleteProjectsLocationsOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -958,7 +954,7 @@ export interface GetProjectsLocationsObservationSourcesRequest {
 }
 
 export const GetProjectsLocationsObservationSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -967,7 +963,7 @@ export const GetProjectsLocationsObservationSourcesRequest =
 
 export type GetProjectsLocationsObservationSourcesResponse = ObservationSource;
 export const GetProjectsLocationsObservationSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ObservationSource;
+  /*@__PURE__*/ ObservationSource;
 
 export type GetProjectsLocationsObservationSourcesError =
   | DefaultErrors
@@ -980,7 +976,7 @@ export const getProjectsLocationsObservationSources: API.OperationMethod<
   GetProjectsLocationsObservationSourcesResponse,
   GetProjectsLocationsObservationSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsObservationSourcesRequest,
   output: GetProjectsLocationsObservationSourcesResponse,
   errors: [NotFound, Forbidden],
@@ -996,7 +992,7 @@ export interface ListProjectsLocationsObservationSourcesRequest {
 }
 
 export const ListProjectsLocationsObservationSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1008,7 +1004,7 @@ export const ListProjectsLocationsObservationSourcesRequest =
 export type ListProjectsLocationsObservationSourcesResponse =
   ListObservationSourcesResponse;
 export const ListProjectsLocationsObservationSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListObservationSourcesResponse;
+  /*@__PURE__*/ ListObservationSourcesResponse;
 
 export type ListProjectsLocationsObservationSourcesError =
   | DefaultErrors
@@ -1021,7 +1017,7 @@ export const listProjectsLocationsObservationSources: API.PaginatedOperationMeth
   ListProjectsLocationsObservationSourcesResponse,
   ListProjectsLocationsObservationSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsObservationSourcesRequest,
   output: ListProjectsLocationsObservationSourcesResponse,
   errors: [NotFound, Forbidden],
@@ -1043,7 +1039,7 @@ export interface CreateProjectsLocationsObservationSourcesRequest {
 }
 
 export const CreateProjectsLocationsObservationSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     observationSourceId: Schema.optional(Schema.String).pipe(
@@ -1061,7 +1057,7 @@ export const CreateProjectsLocationsObservationSourcesRequest =
 
 export type CreateProjectsLocationsObservationSourcesResponse = Operation;
 export const CreateProjectsLocationsObservationSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsObservationSourcesError =
   | DefaultErrors
@@ -1076,7 +1072,7 @@ export const createProjectsLocationsObservationSources: API.OperationMethod<
   CreateProjectsLocationsObservationSourcesResponse,
   CreateProjectsLocationsObservationSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsObservationSourcesRequest,
   output: CreateProjectsLocationsObservationSourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1088,7 +1084,7 @@ export interface DeleteProjectsLocationsObservationSourcesRequest {
 }
 
 export const DeleteProjectsLocationsObservationSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
@@ -1097,7 +1093,7 @@ export const DeleteProjectsLocationsObservationSourcesRequest =
 
 export type DeleteProjectsLocationsObservationSourcesResponse = Operation;
 export const DeleteProjectsLocationsObservationSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsObservationSourcesError =
   | DefaultErrors
@@ -1112,7 +1108,7 @@ export const deleteProjectsLocationsObservationSources: API.OperationMethod<
   DeleteProjectsLocationsObservationSourcesResponse,
   DeleteProjectsLocationsObservationSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsObservationSourcesRequest,
   output: DeleteProjectsLocationsObservationSourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1126,7 +1122,7 @@ export interface EnableProjectsLocationsObservationJobsRequest {
 }
 
 export const EnableProjectsLocationsObservationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(EnableObservationJobRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1136,7 +1132,7 @@ export const EnableProjectsLocationsObservationJobsRequest =
 
 export type EnableProjectsLocationsObservationJobsResponse = Operation;
 export const EnableProjectsLocationsObservationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type EnableProjectsLocationsObservationJobsError =
   | DefaultErrors
@@ -1151,7 +1147,7 @@ export const enableProjectsLocationsObservationJobs: API.OperationMethod<
   EnableProjectsLocationsObservationJobsResponse,
   EnableProjectsLocationsObservationJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableProjectsLocationsObservationJobsRequest,
   output: EnableProjectsLocationsObservationJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1167,7 +1163,7 @@ export interface ListProjectsLocationsObservationJobsRequest {
 }
 
 export const ListProjectsLocationsObservationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1179,7 +1175,7 @@ export const ListProjectsLocationsObservationJobsRequest =
 export type ListProjectsLocationsObservationJobsResponse =
   ListObservationJobsResponse;
 export const ListProjectsLocationsObservationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListObservationJobsResponse;
+  /*@__PURE__*/ ListObservationJobsResponse;
 
 export type ListProjectsLocationsObservationJobsError =
   | DefaultErrors
@@ -1192,7 +1188,7 @@ export const listProjectsLocationsObservationJobs: API.PaginatedOperationMethod<
   ListProjectsLocationsObservationJobsResponse,
   ListProjectsLocationsObservationJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsObservationJobsRequest,
   output: ListProjectsLocationsObservationJobsResponse,
   errors: [NotFound, Forbidden],
@@ -1214,7 +1210,7 @@ export interface CreateProjectsLocationsObservationJobsRequest {
 }
 
 export const CreateProjectsLocationsObservationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     observationJobId: Schema.optional(Schema.String).pipe(
       T.HttpQuery("observationJobId"),
@@ -1232,7 +1228,7 @@ export const CreateProjectsLocationsObservationJobsRequest =
 
 export type CreateProjectsLocationsObservationJobsResponse = Operation;
 export const CreateProjectsLocationsObservationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsObservationJobsError =
   | DefaultErrors
@@ -1247,7 +1243,7 @@ export const createProjectsLocationsObservationJobs: API.OperationMethod<
   CreateProjectsLocationsObservationJobsResponse,
   CreateProjectsLocationsObservationJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsObservationJobsRequest,
   output: CreateProjectsLocationsObservationJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1259,7 +1255,7 @@ export interface DeleteProjectsLocationsObservationJobsRequest {
 }
 
 export const DeleteProjectsLocationsObservationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
@@ -1268,7 +1264,7 @@ export const DeleteProjectsLocationsObservationJobsRequest =
 
 export type DeleteProjectsLocationsObservationJobsResponse = Operation;
 export const DeleteProjectsLocationsObservationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsObservationJobsError =
   | DefaultErrors
@@ -1283,7 +1279,7 @@ export const deleteProjectsLocationsObservationJobs: API.OperationMethod<
   DeleteProjectsLocationsObservationJobsResponse,
   DeleteProjectsLocationsObservationJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsObservationJobsRequest,
   output: DeleteProjectsLocationsObservationJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1297,7 +1293,7 @@ export interface DisableProjectsLocationsObservationJobsRequest {
 }
 
 export const DisableProjectsLocationsObservationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DisableObservationJobRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1307,7 +1303,7 @@ export const DisableProjectsLocationsObservationJobsRequest =
 
 export type DisableProjectsLocationsObservationJobsResponse = Operation;
 export const DisableProjectsLocationsObservationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+  /*@__PURE__*/ Operation;
 
 export type DisableProjectsLocationsObservationJobsError =
   | DefaultErrors
@@ -1322,7 +1318,7 @@ export const disableProjectsLocationsObservationJobs: API.OperationMethod<
   DisableProjectsLocationsObservationJobsResponse,
   DisableProjectsLocationsObservationJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableProjectsLocationsObservationJobsRequest,
   output: DisableProjectsLocationsObservationJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1334,7 +1330,7 @@ export interface GetProjectsLocationsObservationJobsRequest {
 }
 
 export const GetProjectsLocationsObservationJobsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -1343,7 +1339,7 @@ export const GetProjectsLocationsObservationJobsRequest =
 
 export type GetProjectsLocationsObservationJobsResponse = ObservationJob;
 export const GetProjectsLocationsObservationJobsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ObservationJob;
+  /*@__PURE__*/ ObservationJob;
 
 export type GetProjectsLocationsObservationJobsError =
   | DefaultErrors
@@ -1356,7 +1352,7 @@ export const getProjectsLocationsObservationJobs: API.OperationMethod<
   GetProjectsLocationsObservationJobsResponse,
   GetProjectsLocationsObservationJobsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsObservationJobsRequest,
   output: GetProjectsLocationsObservationJobsResponse,
   errors: [NotFound, Forbidden],
@@ -1368,7 +1364,7 @@ export interface GetProjectsLocationsObservationJobsApiObservationsRequest {
 }
 
 export const GetProjectsLocationsObservationJobsApiObservationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -1378,7 +1374,7 @@ export const GetProjectsLocationsObservationJobsApiObservationsRequest =
 export type GetProjectsLocationsObservationJobsApiObservationsResponse =
   ApiObservation;
 export const GetProjectsLocationsObservationJobsApiObservationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiObservation;
+  /*@__PURE__*/ ApiObservation;
 
 export type GetProjectsLocationsObservationJobsApiObservationsError =
   | DefaultErrors
@@ -1391,7 +1387,7 @@ export const getProjectsLocationsObservationJobsApiObservations: API.OperationMe
   GetProjectsLocationsObservationJobsApiObservationsResponse,
   GetProjectsLocationsObservationJobsApiObservationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsObservationJobsApiObservationsRequest,
   output: GetProjectsLocationsObservationJobsApiObservationsResponse,
   errors: [NotFound, Forbidden],
@@ -1407,7 +1403,7 @@ export interface ListProjectsLocationsObservationJobsApiObservationsRequest {
 }
 
 export const ListProjectsLocationsObservationJobsApiObservationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1419,7 +1415,7 @@ export const ListProjectsLocationsObservationJobsApiObservationsRequest =
 export type ListProjectsLocationsObservationJobsApiObservationsResponse =
   ListApiObservationsResponse;
 export const ListProjectsLocationsObservationJobsApiObservationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApiObservationsResponse;
+  /*@__PURE__*/ ListApiObservationsResponse;
 
 export type ListProjectsLocationsObservationJobsApiObservationsError =
   | DefaultErrors
@@ -1432,7 +1428,7 @@ export const listProjectsLocationsObservationJobsApiObservations: API.PaginatedO
   ListProjectsLocationsObservationJobsApiObservationsResponse,
   ListProjectsLocationsObservationJobsApiObservationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsObservationJobsApiObservationsRequest,
   output: ListProjectsLocationsObservationJobsApiObservationsResponse,
   errors: [NotFound, Forbidden],
@@ -1450,7 +1446,7 @@ export interface BatchEditTagsProjectsLocationsObservationJobsApiObservationsReq
 }
 
 export const BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(BatchEditTagsApiObservationsRequest).pipe(
       T.HttpBody(),
@@ -1467,7 +1463,7 @@ export const BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest
 export type BatchEditTagsProjectsLocationsObservationJobsApiObservationsResponse =
   BatchEditTagsApiObservationsResponse;
 export const BatchEditTagsProjectsLocationsObservationJobsApiObservationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchEditTagsApiObservationsResponse;
+  /*@__PURE__*/ BatchEditTagsApiObservationsResponse;
 
 export type BatchEditTagsProjectsLocationsObservationJobsApiObservationsError =
   | DefaultErrors
@@ -1482,7 +1478,7 @@ export const batchEditTagsProjectsLocationsObservationJobsApiObservations: API.O
   BatchEditTagsProjectsLocationsObservationJobsApiObservationsResponse,
   BatchEditTagsProjectsLocationsObservationJobsApiObservationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest,
   output: BatchEditTagsProjectsLocationsObservationJobsApiObservationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1494,7 +1490,7 @@ export interface GetProjectsLocationsObservationJobsApiObservationsApiOperations
 }
 
 export const GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -1504,7 +1500,7 @@ export const GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequ
 export type GetProjectsLocationsObservationJobsApiObservationsApiOperationsResponse =
   ApiOperation;
 export const GetProjectsLocationsObservationJobsApiObservationsApiOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ApiOperation;
+  /*@__PURE__*/ ApiOperation;
 
 export type GetProjectsLocationsObservationJobsApiObservationsApiOperationsError =
   | DefaultErrors
@@ -1517,7 +1513,7 @@ export const getProjectsLocationsObservationJobsApiObservationsApiOperations: AP
   GetProjectsLocationsObservationJobsApiObservationsApiOperationsResponse,
   GetProjectsLocationsObservationJobsApiObservationsApiOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest,
   output:
     GetProjectsLocationsObservationJobsApiObservationsApiOperationsResponse,
@@ -1534,7 +1530,7 @@ export interface ListProjectsLocationsObservationJobsApiObservationsApiOperation
 }
 
 export const ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1546,7 +1542,7 @@ export const ListProjectsLocationsObservationJobsApiObservationsApiOperationsReq
 export type ListProjectsLocationsObservationJobsApiObservationsApiOperationsResponse =
   ListApiOperationsResponse;
 export const ListProjectsLocationsObservationJobsApiObservationsApiOperationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListApiOperationsResponse;
+  /*@__PURE__*/ ListApiOperationsResponse;
 
 export type ListProjectsLocationsObservationJobsApiObservationsApiOperationsError =
   | DefaultErrors
@@ -1559,7 +1555,7 @@ export const listProjectsLocationsObservationJobsApiObservationsApiOperations: A
   ListProjectsLocationsObservationJobsApiObservationsApiOperationsResponse,
   ListProjectsLocationsObservationJobsApiObservationsApiOperationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input:
     ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest,
   output:

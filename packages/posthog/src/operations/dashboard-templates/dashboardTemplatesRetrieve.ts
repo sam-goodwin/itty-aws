@@ -9,7 +9,7 @@ export interface DashboardTemplatesRetrieveInput {
   project_id: string;
 }
 export const DashboardTemplatesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -63,7 +63,7 @@ export interface DashboardTemplatesRetrieveOutput {
   };
 }
 export const DashboardTemplatesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     template_name: Schema.optional(Schema.NullOr(Schema.String)),
     dashboard_description: Schema.optional(Schema.NullOr(Schema.String)),
@@ -135,10 +135,8 @@ export const DashboardTemplatesRetrieveOutput =
  * @param id - A UUID string identifying this dashboard template.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const dashboardTemplatesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DashboardTemplatesRetrieveInput,
-    outputSchema: DashboardTemplatesRetrieveOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const dashboardTemplatesRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DashboardTemplatesRetrieveInput,
+  outputSchema: DashboardTemplatesRetrieveOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

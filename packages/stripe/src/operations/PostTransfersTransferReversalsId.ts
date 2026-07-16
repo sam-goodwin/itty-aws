@@ -15,7 +15,7 @@ export interface PostTransfersTransferReversalsIdInput {
   metadata?: Record<string, string> | "";
 }
 export const PostTransfersTransferReversalsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     transfer: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -323,7 +323,7 @@ export interface PostTransfersTransferReversalsIdOutput {
       };
 }
 export const PostTransfersTransferReversalsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transaction: Schema.NullOr(
       Schema.Union([
@@ -430,7 +430,7 @@ export const PostTransfersTransferReversalsIdOutput =
  * <p>This request only accepts metadata and description as arguments.</p>
  */
 export const PostTransfersTransferReversalsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTransfersTransferReversalsIdInput,
     outputSchema: PostTransfersTransferReversalsIdOutput,
   }));

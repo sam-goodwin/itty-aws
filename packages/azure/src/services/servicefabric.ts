@@ -92,7 +92,7 @@ export interface ApplicationsCreateOrUpdateInput {
   };
 }
 export const ApplicationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -238,7 +238,7 @@ export const ApplicationsCreateOrUpdateInput =
 // Output Schema
 export type ApplicationsCreateOrUpdateOutput = void;
 export const ApplicationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsCreateOrUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -252,12 +252,10 @@ export const ApplicationsCreateOrUpdateOutput =
  * @param applicationName - The name of the application resource.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ApplicationsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationsCreateOrUpdateInput,
-    outputSchema: ApplicationsCreateOrUpdateOutput,
-  }),
-);
+export const ApplicationsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationsCreateOrUpdateInput,
+  outputSchema: ApplicationsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ApplicationsDeleteInput {
   subscriptionId: string;
@@ -266,7 +264,7 @@ export interface ApplicationsDeleteInput {
   applicationName: string;
 }
 export const ApplicationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -282,7 +280,7 @@ export const ApplicationsDeleteInput =
 // Output Schema
 export type ApplicationsDeleteOutput = void;
 export const ApplicationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsDeleteOutput>;
 
 // The operation
 /**
@@ -296,7 +294,7 @@ export const ApplicationsDeleteOutput =
  * @param applicationName - The name of the application resource.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ApplicationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsDeleteInput,
   outputSchema: ApplicationsDeleteOutput,
 }));
@@ -307,7 +305,7 @@ export interface ApplicationsGetInput {
   clusterName: string;
   applicationName: string;
 }
-export const ApplicationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApplicationsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -337,7 +335,7 @@ export interface ApplicationsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApplicationsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -368,7 +366,7 @@ export const ApplicationsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param applicationName - The name of the application resource.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ApplicationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsGetInput,
   outputSchema: ApplicationsGetOutput,
 }));
@@ -378,7 +376,7 @@ export interface ApplicationsListInput {
   resourceGroupName: string;
   clusterName: string;
 }
-export const ApplicationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ApplicationsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -410,33 +408,31 @@ export interface ApplicationsListOutput {
   }[];
   nextLink?: string;
 }
-export const ApplicationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          location: Schema.optional(Schema.String),
-          tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          etag: Schema.optional(Schema.String),
-          systemData: Schema.optional(
-            Schema.Struct({
-              createdBy: Schema.optional(Schema.String),
-              createdByType: Schema.optional(Schema.String),
-              createdAt: Schema.optional(Schema.String),
-              lastModifiedBy: Schema.optional(Schema.String),
-              lastModifiedByType: Schema.optional(Schema.String),
-              lastModifiedAt: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
+export const ApplicationsListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        location: Schema.optional(Schema.String),
+        tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        etag: Schema.optional(Schema.String),
+        systemData: Schema.optional(
+          Schema.Struct({
+            createdBy: Schema.optional(Schema.String),
+            createdByType: Schema.optional(Schema.String),
+            createdAt: Schema.optional(Schema.String),
+            lastModifiedBy: Schema.optional(Schema.String),
+            lastModifiedByType: Schema.optional(Schema.String),
+            lastModifiedAt: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
     ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<ApplicationsListOutput>;
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<ApplicationsListOutput>;
 
 // The operation
 /**
@@ -449,7 +445,7 @@ export const ApplicationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param clusterName - The name of the cluster resource.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ApplicationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsListInput,
   outputSchema: ApplicationsListOutput,
 }));
@@ -524,7 +520,7 @@ export interface ApplicationsUpdateInput {
   };
 }
 export const ApplicationsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -647,7 +643,7 @@ export const ApplicationsUpdateInput =
 // Output Schema
 export type ApplicationsUpdateOutput = void;
 export const ApplicationsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationsUpdateOutput>;
 
 // The operation
 /**
@@ -661,7 +657,7 @@ export const ApplicationsUpdateOutput =
  * @param applicationName - The name of the application resource.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ApplicationsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplicationsUpdateInput,
   outputSchema: ApplicationsUpdateOutput,
 }));
@@ -688,7 +684,7 @@ export interface ApplicationTypesCreateOrUpdateInput {
   };
 }
 export const ApplicationTypesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -740,7 +736,7 @@ export interface ApplicationTypesCreateOrUpdateOutput {
   };
 }
 export const ApplicationTypesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -772,7 +768,7 @@ export const ApplicationTypesCreateOrUpdateOutput =
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
 export const ApplicationTypesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApplicationTypesCreateOrUpdateInput,
     outputSchema: ApplicationTypesCreateOrUpdateOutput,
   }));
@@ -784,7 +780,7 @@ export interface ApplicationTypesDeleteInput {
   applicationTypeName: string;
 }
 export const ApplicationTypesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -800,7 +796,7 @@ export const ApplicationTypesDeleteInput =
 // Output Schema
 export type ApplicationTypesDeleteOutput = void;
 export const ApplicationTypesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationTypesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationTypesDeleteOutput>;
 
 // The operation
 /**
@@ -814,12 +810,10 @@ export const ApplicationTypesDeleteOutput =
  * @param applicationTypeName - The name of the application type name resource.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ApplicationTypesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationTypesDeleteInput,
-    outputSchema: ApplicationTypesDeleteOutput,
-  }),
-);
+export const ApplicationTypesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationTypesDeleteInput,
+  outputSchema: ApplicationTypesDeleteOutput,
+}));
 // Input Schema
 export interface ApplicationTypesGetInput {
   subscriptionId: string;
@@ -828,7 +822,7 @@ export interface ApplicationTypesGetInput {
   applicationTypeName: string;
 }
 export const ApplicationTypesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -859,7 +853,7 @@ export interface ApplicationTypesGetOutput {
   };
 }
 export const ApplicationTypesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -890,7 +884,7 @@ export const ApplicationTypesGetOutput =
  * @param applicationTypeName - The name of the application type name resource.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ApplicationTypesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ApplicationTypesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ApplicationTypesGetInput,
   outputSchema: ApplicationTypesGetOutput,
 }));
@@ -901,7 +895,7 @@ export interface ApplicationTypesListInput {
   clusterName: string;
 }
 export const ApplicationTypesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -934,7 +928,7 @@ export interface ApplicationTypesListOutput {
   nextLink?: string;
 }
 export const ApplicationTypesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -971,12 +965,10 @@ export const ApplicationTypesListOutput =
  * @param clusterName - The name of the cluster resource.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ApplicationTypesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationTypesListInput,
-    outputSchema: ApplicationTypesListOutput,
-  }),
-);
+export const ApplicationTypesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationTypesListInput,
+  outputSchema: ApplicationTypesListOutput,
+}));
 // Input Schema
 export interface ApplicationTypeVersionsCreateOrUpdateInput {
   subscriptionId: string;
@@ -1005,7 +997,7 @@ export interface ApplicationTypeVersionsCreateOrUpdateInput {
   };
 }
 export const ApplicationTypeVersionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1047,7 +1039,7 @@ export const ApplicationTypeVersionsCreateOrUpdateInput =
 // Output Schema
 export type ApplicationTypeVersionsCreateOrUpdateOutput = void;
 export const ApplicationTypeVersionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationTypeVersionsCreateOrUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationTypeVersionsCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -1063,7 +1055,7 @@ export const ApplicationTypeVersionsCreateOrUpdateOutput =
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
 export const ApplicationTypeVersionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApplicationTypeVersionsCreateOrUpdateInput,
     outputSchema: ApplicationTypeVersionsCreateOrUpdateOutput,
   }));
@@ -1076,7 +1068,7 @@ export interface ApplicationTypeVersionsDeleteInput {
   version: string;
 }
 export const ApplicationTypeVersionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1093,7 +1085,7 @@ export const ApplicationTypeVersionsDeleteInput =
 // Output Schema
 export type ApplicationTypeVersionsDeleteOutput = void;
 export const ApplicationTypeVersionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationTypeVersionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ApplicationTypeVersionsDeleteOutput>;
 
 // The operation
 /**
@@ -1109,7 +1101,7 @@ export const ApplicationTypeVersionsDeleteOutput =
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
 export const ApplicationTypeVersionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ApplicationTypeVersionsDeleteInput,
     outputSchema: ApplicationTypeVersionsDeleteOutput,
   }));
@@ -1122,7 +1114,7 @@ export interface ApplicationTypeVersionsGetInput {
   version: string;
 }
 export const ApplicationTypeVersionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1154,7 +1146,7 @@ export interface ApplicationTypeVersionsGetOutput {
   };
 }
 export const ApplicationTypeVersionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1186,12 +1178,10 @@ export const ApplicationTypeVersionsGetOutput =
  * @param version - The application type version.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ApplicationTypeVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationTypeVersionsGetInput,
-    outputSchema: ApplicationTypeVersionsGetOutput,
-  }),
-);
+export const ApplicationTypeVersionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationTypeVersionsGetInput,
+  outputSchema: ApplicationTypeVersionsGetOutput,
+}));
 // Input Schema
 export interface ApplicationTypeVersionsListInput {
   subscriptionId: string;
@@ -1200,7 +1190,7 @@ export interface ApplicationTypeVersionsListInput {
   applicationTypeName: string;
 }
 export const ApplicationTypeVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -1234,7 +1224,7 @@ export interface ApplicationTypeVersionsListOutput {
   nextLink?: string;
 }
 export const ApplicationTypeVersionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1272,12 +1262,10 @@ export const ApplicationTypeVersionsListOutput =
  * @param applicationTypeName - The name of the application type name resource.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ApplicationTypeVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ApplicationTypeVersionsListInput,
-    outputSchema: ApplicationTypeVersionsListOutput,
-  }),
-);
+export const ApplicationTypeVersionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ApplicationTypeVersionsListInput,
+  outputSchema: ApplicationTypeVersionsListOutput,
+}));
 // Input Schema
 export interface ClustersCreateOrUpdateInput {
   resourceGroupName: string;
@@ -1488,7 +1476,7 @@ export interface ClustersCreateOrUpdateInput {
   };
 }
 export const ClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1856,7 +1844,7 @@ export interface ClustersCreateOrUpdateOutput {
   };
 }
 export const ClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1886,19 +1874,17 @@ export const ClustersCreateOrUpdateOutput =
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  * @param subscriptionId - The customer subscription identifier.
  */
-export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersCreateOrUpdateInput,
-    outputSchema: ClustersCreateOrUpdateOutput,
-  }),
-);
+export const ClustersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersCreateOrUpdateInput,
+  outputSchema: ClustersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ClustersDeleteInput {
   resourceGroupName: string;
   clusterName: string;
   subscriptionId: string;
 }
-export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1913,7 +1899,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClustersDeleteOutput = void;
 export const ClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
 
 // The operation
 /**
@@ -1926,7 +1912,7 @@ export const ClustersDeleteOutput =
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  * @param subscriptionId - The customer subscription identifier.
  */
-export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
   outputSchema: ClustersDeleteOutput,
 }));
@@ -1936,7 +1922,7 @@ export interface ClustersGetInput {
   clusterName: string;
   subscriptionId: string;
 }
-export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -1965,7 +1951,7 @@ export interface ClustersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1995,7 +1981,7 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  * @param subscriptionId - The customer subscription identifier.
  */
-export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
   outputSchema: ClustersGetOutput,
 }));
@@ -2003,7 +1989,7 @@ export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
 export interface ClustersListInput {
   subscriptionId: string;
 }
-export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -2033,7 +2019,7 @@ export interface ClustersListOutput {
   }[];
   nextLink?: string;
 }
-export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2068,7 +2054,7 @@ export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  * @param subscriptionId - The customer subscription identifier.
  */
-export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersListInput,
   outputSchema: ClustersListOutput,
 }));
@@ -2078,7 +2064,7 @@ export interface ClustersListByResourceGroupInput {
   subscriptionId: string;
 }
 export const ClustersListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2110,7 +2096,7 @@ export interface ClustersListByResourceGroupOutput {
   nextLink?: string;
 }
 export const ClustersListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2146,12 +2132,10 @@ export const ClustersListByResourceGroupOutput =
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  * @param subscriptionId - The customer subscription identifier.
  */
-export const ClustersListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersListByResourceGroupInput,
-    outputSchema: ClustersListByResourceGroupOutput,
-  }),
-);
+export const ClustersListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersListByResourceGroupInput,
+  outputSchema: ClustersListByResourceGroupOutput,
+}));
 // Input Schema
 export interface ClustersListUpgradableVersionsInput {
   subscriptionId: string;
@@ -2160,7 +2144,7 @@ export interface ClustersListUpgradableVersionsInput {
   targetVersion: string;
 }
 export const ClustersListUpgradableVersionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -2178,7 +2162,7 @@ export interface ClustersListUpgradableVersionsOutput {
   supportedPath?: string[];
 }
 export const ClustersListUpgradableVersionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     supportedPath: Schema.optional(Schema.Array(Schema.String)),
   }) as unknown as Schema.Codec<ClustersListUpgradableVersionsOutput>;
 
@@ -2194,7 +2178,7 @@ export const ClustersListUpgradableVersionsOutput =
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
 export const ClustersListUpgradableVersions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClustersListUpgradableVersionsInput,
     outputSchema: ClustersListUpgradableVersionsOutput,
   }));
@@ -2345,7 +2329,7 @@ export interface ClustersUpdateInput {
   };
   tags?: Record<string, string>;
 }
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
   subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2626,7 +2610,7 @@ export interface ClustersUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2656,7 +2640,7 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  * @param subscriptionId - The customer subscription identifier.
  */
-export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
   outputSchema: ClustersUpdateOutput,
 }));
@@ -2667,7 +2651,7 @@ export interface ClusterVersionsGetInput {
   clusterVersion: string;
 }
 export const ClusterVersionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
     clusterVersion: Schema.String.pipe(T.PathParam()),
@@ -2694,7 +2678,7 @@ export interface ClusterVersionsGetOutput {
   nextLink?: string;
 }
 export const ClusterVersionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2727,7 +2711,7 @@ export const ClusterVersionsGetOutput =
  * @param subscriptionId - The customer subscription identifier.
  * @param clusterVersion - The cluster code version.
  */
-export const ClusterVersionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClusterVersionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClusterVersionsGetInput,
   outputSchema: ClusterVersionsGetOutput,
 }));
@@ -2739,7 +2723,7 @@ export interface ClusterVersionsGetByEnvironmentInput {
   clusterVersion: string;
 }
 export const ClusterVersionsGetByEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     environment: Schema.Literals(["Windows", "Linux"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2767,7 +2751,7 @@ export interface ClusterVersionsGetByEnvironmentOutput {
   nextLink?: string;
 }
 export const ClusterVersionsGetByEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2802,7 +2786,7 @@ export const ClusterVersionsGetByEnvironmentOutput =
  * @param clusterVersion - The cluster code version.
  */
 export const ClusterVersionsGetByEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClusterVersionsGetByEnvironmentInput,
     outputSchema: ClusterVersionsGetByEnvironmentOutput,
   }));
@@ -2812,7 +2796,7 @@ export interface ClusterVersionsListInput {
   subscriptionId: string;
 }
 export const ClusterVersionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2838,7 +2822,7 @@ export interface ClusterVersionsListOutput {
   nextLink?: string;
 }
 export const ClusterVersionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2870,7 +2854,7 @@ export const ClusterVersionsListOutput =
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  * @param subscriptionId - The customer subscription identifier.
  */
-export const ClusterVersionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClusterVersionsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClusterVersionsListInput,
   outputSchema: ClusterVersionsListOutput,
 }));
@@ -2881,7 +2865,7 @@ export interface ClusterVersionsListByEnvironmentInput {
   subscriptionId: string;
 }
 export const ClusterVersionsListByEnvironmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     environment: Schema.Literals(["Windows", "Linux"]).pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -2908,7 +2892,7 @@ export interface ClusterVersionsListByEnvironmentOutput {
   nextLink?: string;
 }
 export const ClusterVersionsListByEnvironmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2942,15 +2926,13 @@ export const ClusterVersionsListByEnvironmentOutput =
  * @param subscriptionId - The customer subscription identifier.
  */
 export const ClusterVersionsListByEnvironment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ClusterVersionsListByEnvironmentInput,
     outputSchema: ClusterVersionsListByEnvironmentOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ServiceFabric/operations",
@@ -2974,7 +2956,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3004,7 +2986,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The version of the Service Fabric resource provider API
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -3055,7 +3037,7 @@ export interface ServicesCreateOrUpdateInput {
   };
 }
 export const ServicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
@@ -3136,7 +3118,7 @@ export const ServicesCreateOrUpdateInput =
 // Output Schema
 export type ServicesCreateOrUpdateOutput = void;
 export const ServicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesCreateOrUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesCreateOrUpdateOutput>;
 
 // The operation
 /**
@@ -3151,12 +3133,10 @@ export const ServicesCreateOrUpdateOutput =
  * @param serviceName - The name of the service resource in the format of {applicationName}~{serviceName}.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ServicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServicesCreateOrUpdateInput,
-    outputSchema: ServicesCreateOrUpdateOutput,
-  }),
-);
+export const ServicesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServicesCreateOrUpdateInput,
+  outputSchema: ServicesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ServicesDeleteInput {
   subscriptionId: string;
@@ -3165,7 +3145,7 @@ export interface ServicesDeleteInput {
   applicationName: string;
   serviceName: string;
 }
-export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -3182,7 +3162,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ServicesDeleteOutput = void;
 export const ServicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesDeleteOutput>;
 
 // The operation
 /**
@@ -3197,7 +3177,7 @@ export const ServicesDeleteOutput =
  * @param serviceName - The name of the service resource in the format of {applicationName}~{serviceName}.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ServicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesDeleteInput,
   outputSchema: ServicesDeleteOutput,
 }));
@@ -3209,7 +3189,7 @@ export interface ServicesGetInput {
   applicationName: string;
   serviceName: string;
 }
-export const ServicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -3240,7 +3220,7 @@ export interface ServicesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3272,7 +3252,7 @@ export const ServicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param serviceName - The name of the service resource in the format of {applicationName}~{serviceName}.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ServicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesGetInput,
   outputSchema: ServicesGetOutput,
 }));
@@ -3283,7 +3263,7 @@ export interface ServicesListInput {
   clusterName: string;
   applicationName: string;
 }
-export const ServicesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -3316,7 +3296,7 @@ export interface ServicesListOutput {
   }[];
   nextLink?: string;
 }
-export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3354,7 +3334,7 @@ export const ServicesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param applicationName - The name of the application resource.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ServicesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesListInput,
   outputSchema: ServicesListOutput,
 }));
@@ -3404,7 +3384,7 @@ export interface ServicesUpdateInput {
     lastModifiedAt?: string;
   };
 }
-export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ServicesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   clusterName: Schema.String.pipe(T.PathParam()),
@@ -3485,7 +3465,7 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ServicesUpdateOutput = void;
 export const ServicesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServicesUpdateOutput>;
 
 // The operation
 /**
@@ -3500,7 +3480,7 @@ export const ServicesUpdateOutput =
  * @param serviceName - The name of the service resource in the format of {applicationName}~{serviceName}.
  * @param api-version - The version of the Service Fabric resource provider API. This is a required parameter and it's value must be "2021-06-01" for this specification.
  */
-export const ServicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ServicesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ServicesUpdateInput,
   outputSchema: ServicesUpdateOutput,
 }));

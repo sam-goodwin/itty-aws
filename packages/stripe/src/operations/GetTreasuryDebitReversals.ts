@@ -14,7 +14,7 @@ export interface GetTreasuryDebitReversalsInput {
   status?: "canceled" | "completed" | "processing";
 }
 export const GetTreasuryDebitReversalsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
     financial_account: Schema.String,
@@ -144,7 +144,7 @@ export interface GetTreasuryDebitReversalsOutput {
   url: string;
 }
 export const GetTreasuryDebitReversalsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amount: Schema.Number,
@@ -291,9 +291,7 @@ export const GetTreasuryDebitReversalsOutput =
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  * @param status - Only return DebitReversals for a given status.
  */
-export const GetTreasuryDebitReversals = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetTreasuryDebitReversalsInput,
-    outputSchema: GetTreasuryDebitReversalsOutput,
-  }),
-);
+export const GetTreasuryDebitReversals = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetTreasuryDebitReversalsInput,
+  outputSchema: GetTreasuryDebitReversalsOutput,
+}));

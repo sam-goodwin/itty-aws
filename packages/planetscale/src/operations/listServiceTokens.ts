@@ -11,13 +11,11 @@ export interface ListServiceTokensInput {
   page?: number;
   per_page?: number;
 }
-export const ListServiceTokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    organization: Schema.String.pipe(T.PathParam()),
-    page: Schema.optional(Schema.Number),
-    per_page: Schema.optional(Schema.Number),
-  },
-).pipe(
+export const ListServiceTokensInput = /*@__PURE__*/ Schema.Struct({
+  organization: Schema.String.pipe(T.PathParam()),
+  page: Schema.optional(Schema.Number),
+  per_page: Schema.optional(Schema.Number),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/organizations/{organization}/service-tokens",
@@ -93,7 +91,7 @@ export interface ListServiceTokensOutput {
   }>;
 }
 export const ListServiceTokensOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -220,16 +218,14 @@ export const ListServiceTokensOutput =
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listServiceTokens = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListServiceTokensInput,
-    outputSchema: ListServiceTokensOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listServiceTokens = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListServiceTokensInput,
+  outputSchema: ListServiceTokensOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

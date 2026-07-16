@@ -8,7 +8,7 @@ export interface UserlandUsersControllerGetEmailVerificationInput {
   id: string;
 }
 export const UserlandUsersControllerGetEmailVerificationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/user_management/email_verification/{id}" }),
@@ -26,7 +26,7 @@ export interface UserlandUsersControllerGetEmailVerificationOutput {
   code?: string;
 }
 export const UserlandUsersControllerGetEmailVerificationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     user_id: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export const UserlandUsersControllerGetEmailVerificationOutput =
  * @param id - The ID of the email verification code.
  */
 export const UserlandUsersControllerGetEmailVerification =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerGetEmailVerificationInput,
     outputSchema: UserlandUsersControllerGetEmailVerificationOutput,
     errors: [NotFound] as const,

@@ -10,7 +10,7 @@ export interface VisualReviewRunsTolerateCreateInput {
   snapshot_id?: string;
 }
 export const VisualReviewRunsTolerateCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     snapshot_id: Schema.optional(Schema.String),
@@ -76,7 +76,7 @@ export interface VisualReviewRunsTolerateCreateOutput {
   size_mismatch?: boolean;
 }
 export const VisualReviewRunsTolerateCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     current_artifact: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -163,7 +163,7 @@ export const VisualReviewRunsTolerateCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const visualReviewRunsTolerateCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VisualReviewRunsTolerateCreateInput,
     outputSchema: VisualReviewRunsTolerateCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

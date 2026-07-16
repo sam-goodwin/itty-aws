@@ -35,7 +35,7 @@ export interface Suffix {
 }
 
 export const Suffix: Schema.Codec<Suffix> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     option: Schema.optional(Schema.String),
     customSuffix: Schema.optional(Schema.String),
   }).annotate({ identifier: "Suffix" });
@@ -46,7 +46,7 @@ export interface DesktopInfo {
 }
 
 export const DesktopInfo: Schema.Codec<DesktopInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     desktopFallbackLink: Schema.optional(Schema.String),
   }).annotate({ identifier: "DesktopInfo" });
 
@@ -60,7 +60,7 @@ export interface SocialMetaTagInfo {
 }
 
 export const SocialMetaTagInfo: Schema.Codec<SocialMetaTagInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     socialDescription: Schema.optional(Schema.String),
     socialTitle: Schema.optional(Schema.String),
     socialImageLink: Schema.optional(Schema.String),
@@ -72,7 +72,7 @@ export interface NavigationInfo {
 }
 
 export const NavigationInfo: Schema.Codec<NavigationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enableForcedRedirect: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "NavigationInfo" });
 
@@ -88,7 +88,7 @@ export interface AndroidInfo {
 }
 
 export const AndroidInfo: Schema.Codec<AndroidInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     androidFallbackLink: Schema.optional(Schema.String),
     androidPackageName: Schema.optional(Schema.String),
     androidLink: Schema.optional(Schema.String),
@@ -107,7 +107,7 @@ export interface ITunesConnectAnalytics {
 }
 
 export const ITunesConnectAnalytics: Schema.Codec<ITunesConnectAnalytics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     at: Schema.optional(Schema.String),
     ct: Schema.optional(Schema.String),
     mt: Schema.optional(Schema.String),
@@ -130,7 +130,7 @@ export interface GooglePlayAnalytics {
 }
 
 export const GooglePlayAnalytics: Schema.Codec<GooglePlayAnalytics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     utmCampaign: Schema.optional(Schema.String),
     gclid: Schema.optional(Schema.String),
     utmTerm: Schema.optional(Schema.String),
@@ -147,7 +147,7 @@ export interface AnalyticsInfo {
 }
 
 export const AnalyticsInfo: Schema.Codec<AnalyticsInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     itunesConnectAnalytics: Schema.optional(ITunesConnectAnalytics),
     googlePlayAnalytics: Schema.optional(GooglePlayAnalytics),
   }).annotate({ identifier: "AnalyticsInfo" });
@@ -170,7 +170,7 @@ export interface IosInfo {
 }
 
 export const IosInfo: Schema.Codec<IosInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     iosIpadBundleId: Schema.optional(Schema.String),
     iosBundleId: Schema.optional(Schema.String),
     iosIpadFallbackLink: Schema.optional(Schema.String),
@@ -202,7 +202,7 @@ export interface DynamicLinkInfo {
 }
 
 export const DynamicLinkInfo: Schema.Codec<DynamicLinkInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     desktopInfo: Schema.optional(DesktopInfo),
     socialMetaTagInfo: Schema.optional(SocialMetaTagInfo),
     link: Schema.optional(Schema.String),
@@ -226,7 +226,7 @@ export interface CreateShortDynamicLinkRequest {
 }
 
 export const CreateShortDynamicLinkRequest: Schema.Codec<CreateShortDynamicLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     longDynamicLink: Schema.optional(Schema.String),
     suffix: Schema.optional(Suffix),
     dynamicLinkInfo: Schema.optional(DynamicLinkInfo),
@@ -256,7 +256,7 @@ export interface DynamicLinkEventStat {
 }
 
 export const DynamicLinkEventStat: Schema.Codec<DynamicLinkEventStat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     count: Schema.optional(Schema.String),
     event: Schema.optional(Schema.String),
     platform: Schema.optional(Schema.String),
@@ -285,7 +285,7 @@ export interface ManagedShortLink {
 }
 
 export const ManagedShortLink: Schema.Codec<ManagedShortLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     visibility: Schema.optional(Schema.String),
     info: Schema.optional(DynamicLinkInfo),
     link: Schema.optional(Schema.String),
@@ -335,7 +335,7 @@ export interface DynamicLinkWarning {
 }
 
 export const DynamicLinkWarning: Schema.Codec<DynamicLinkWarning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     warningCode: Schema.optional(Schema.String),
     warningDocumentLink: Schema.optional(Schema.String),
     warningMessage: Schema.optional(Schema.String),
@@ -351,7 +351,7 @@ export interface CreateShortDynamicLinkResponse {
 }
 
 export const CreateShortDynamicLinkResponse: Schema.Codec<CreateShortDynamicLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     shortLink: Schema.optional(Schema.String),
     warning: Schema.optional(Schema.Array(DynamicLinkWarning)),
     previewLink: Schema.optional(Schema.String),
@@ -365,7 +365,7 @@ export interface DynamicLinkStats {
 }
 
 export const DynamicLinkStats: Schema.Codec<DynamicLinkStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     warnings: Schema.optional(Schema.Array(DynamicLinkWarning)),
     linkEventStats: Schema.optional(Schema.Array(DynamicLinkEventStat)),
   }).annotate({ identifier: "DynamicLinkStats" });
@@ -394,7 +394,7 @@ export interface GetIosReopenAttributionResponse {
 }
 
 export const GetIosReopenAttributionResponse: Schema.Codec<GetIosReopenAttributionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resolvedLink: Schema.optional(Schema.String),
     warning: Schema.optional(Schema.Array(DynamicLinkWarning)),
     iosMinAppVersion: Schema.optional(Schema.String),
@@ -425,7 +425,7 @@ export interface DeviceInfo {
 }
 
 export const DeviceInfo: Schema.Codec<DeviceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     screenResolutionWidth: Schema.optional(Schema.String),
     languageCodeFromWebview: Schema.optional(Schema.String),
@@ -464,7 +464,7 @@ export interface GetIosPostInstallAttributionRequest {
 }
 
 export const GetIosPostInstallAttributionRequest: Schema.Codec<GetIosPostInstallAttributionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     bundleId: Schema.optional(Schema.String),
     visualStyle: Schema.optional(Schema.String),
     retrievalMethod: Schema.optional(Schema.String),
@@ -516,7 +516,7 @@ export interface GetIosPostInstallAttributionResponse {
 }
 
 export const GetIosPostInstallAttributionResponse: Schema.Codec<GetIosPostInstallAttributionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requestedLink: Schema.optional(Schema.String),
     invitationId: Schema.optional(Schema.String),
     utmSource: Schema.optional(Schema.String),
@@ -549,7 +549,7 @@ export interface CreateManagedShortLinkRequest {
 }
 
 export const CreateManagedShortLinkRequest: Schema.Codec<CreateManagedShortLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dynamicLinkInfo: Schema.optional(DynamicLinkInfo),
     name: Schema.optional(Schema.String),
     sdkVersion: Schema.optional(Schema.String),
@@ -567,7 +567,7 @@ export interface CreateManagedShortLinkResponse {
 }
 
 export const CreateManagedShortLinkResponse: Schema.Codec<CreateManagedShortLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     managedShortLink: Schema.optional(ManagedShortLink),
     warning: Schema.optional(Schema.Array(DynamicLinkWarning)),
     previewLink: Schema.optional(Schema.String),
@@ -583,7 +583,7 @@ export interface GetIosReopenAttributionRequest {
 }
 
 export const GetIosReopenAttributionRequest: Schema.Codec<GetIosReopenAttributionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sdkVersion: Schema.optional(Schema.String),
     requestedLink: Schema.optional(Schema.String),
     bundleId: Schema.optional(Schema.String),
@@ -649,7 +649,7 @@ export interface ReopenAttributionV1Request {
 }
 
 export const ReopenAttributionV1Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(GetIosReopenAttributionRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1/reopenAttribution", hasBody: true }),
@@ -658,7 +658,7 @@ export const ReopenAttributionV1Request =
 
 export type ReopenAttributionV1Response = GetIosReopenAttributionResponse;
 export const ReopenAttributionV1Response =
-  /*@__PURE__*/ /*#__PURE__*/ GetIosReopenAttributionResponse;
+  /*@__PURE__*/ GetIosReopenAttributionResponse;
 
 export type ReopenAttributionV1Error =
   | DefaultErrors
@@ -673,7 +673,7 @@ export const reopenAttributionV1: API.OperationMethod<
   ReopenAttributionV1Response,
   ReopenAttributionV1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReopenAttributionV1Request,
   output: ReopenAttributionV1Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -688,7 +688,7 @@ export interface GetLinkStatsV1Request {
   durationDays?: string;
 }
 
-export const GetLinkStatsV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetLinkStatsV1Request = /*@__PURE__*/ Schema.Struct({
   sdkVersion: Schema.optional(Schema.String).pipe(T.HttpQuery("sdkVersion")),
   dynamicLink: Schema.String.pipe(T.HttpPath("dynamicLink")),
   durationDays: Schema.optional(Schema.String).pipe(
@@ -700,8 +700,7 @@ export const GetLinkStatsV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetLinkStatsV1Request>;
 
 export type GetLinkStatsV1Response = DynamicLinkStats;
-export const GetLinkStatsV1Response =
-  /*@__PURE__*/ /*#__PURE__*/ DynamicLinkStats;
+export const GetLinkStatsV1Response = /*@__PURE__*/ DynamicLinkStats;
 
 export type GetLinkStatsV1Error = DefaultErrors | NotFound | Forbidden;
 
@@ -711,7 +710,7 @@ export const getLinkStatsV1: API.OperationMethod<
   GetLinkStatsV1Response,
   GetLinkStatsV1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetLinkStatsV1Request,
   output: GetLinkStatsV1Response,
   errors: [NotFound, Forbidden],
@@ -723,7 +722,7 @@ export interface InstallAttributionV1Request {
 }
 
 export const InstallAttributionV1Request =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(GetIosPostInstallAttributionRequest).pipe(
       T.HttpBody(),
     ),
@@ -734,7 +733,7 @@ export const InstallAttributionV1Request =
 
 export type InstallAttributionV1Response = GetIosPostInstallAttributionResponse;
 export const InstallAttributionV1Response =
-  /*@__PURE__*/ /*#__PURE__*/ GetIosPostInstallAttributionResponse;
+  /*@__PURE__*/ GetIosPostInstallAttributionResponse;
 
 export type InstallAttributionV1Error =
   | DefaultErrors
@@ -749,7 +748,7 @@ export const installAttributionV1: API.OperationMethod<
   InstallAttributionV1Response,
   InstallAttributionV1Error,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InstallAttributionV1Request,
   output: InstallAttributionV1Response,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -761,7 +760,7 @@ export interface CreateShortLinksRequest {
 }
 
 export const CreateShortLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(CreateShortDynamicLinkRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({ method: "POST", path: "v1/shortLinks", hasBody: true }),
@@ -770,7 +769,7 @@ export const CreateShortLinksRequest =
 
 export type CreateShortLinksResponse = CreateShortDynamicLinkResponse;
 export const CreateShortLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CreateShortDynamicLinkResponse;
+  /*@__PURE__*/ CreateShortDynamicLinkResponse;
 
 export type CreateShortLinksError =
   | DefaultErrors
@@ -785,7 +784,7 @@ export const createShortLinks: API.OperationMethod<
   CreateShortLinksResponse,
   CreateShortLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateShortLinksRequest,
   output: CreateShortLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -797,7 +796,7 @@ export interface CreateManagedShortLinksRequest {
 }
 
 export const CreateManagedShortLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(CreateManagedShortLinkRequest).pipe(T.HttpBody()),
   }).pipe(
     T.Http({
@@ -810,7 +809,7 @@ export const CreateManagedShortLinksRequest =
 
 export type CreateManagedShortLinksResponse = CreateManagedShortLinkResponse;
 export const CreateManagedShortLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CreateManagedShortLinkResponse;
+  /*@__PURE__*/ CreateManagedShortLinkResponse;
 
 export type CreateManagedShortLinksError =
   | DefaultErrors
@@ -825,7 +824,7 @@ export const createManagedShortLinks: API.OperationMethod<
   CreateManagedShortLinksResponse,
   CreateManagedShortLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateManagedShortLinksRequest,
   output: CreateManagedShortLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

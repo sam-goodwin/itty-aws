@@ -8,7 +8,7 @@ export interface V1GetStorageConfigInput {
   ref: string;
 }
 export const V1GetStorageConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/config/storage" }),
@@ -35,7 +35,7 @@ export interface V1GetStorageConfigOutput {
   databasePoolMode: string;
 }
 export const V1GetStorageConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileSizeLimit: Schema.Number,
     features: Schema.Struct({
       imageTransformation: Schema.Struct({
@@ -76,7 +76,7 @@ export const V1GetStorageConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetStorageConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetStorageConfig = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetStorageConfigInput,
   outputSchema: V1GetStorageConfigOutput,
   errors: [BadRequest, Forbidden] as const,

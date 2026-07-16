@@ -15,7 +15,7 @@ export interface PostApplicationFeesFeeRefundsIdInput {
   metadata?: Record<string, string> | "";
 }
 export const PostApplicationFeesFeeRefundsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fee: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
@@ -323,7 +323,7 @@ export interface PostApplicationFeesFeeRefundsIdOutput {
   object: "fee_refund";
 }
 export const PostApplicationFeesFeeRefundsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     balance_transaction: Schema.NullOr(
       Schema.Union([
@@ -428,7 +428,7 @@ export const PostApplicationFeesFeeRefundsIdOutput =
  * <p>This request only accepts metadata as an argument.</p>
  */
 export const PostApplicationFeesFeeRefundsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostApplicationFeesFeeRefundsIdInput,
     outputSchema: PostApplicationFeesFeeRefundsIdOutput,
   }));

@@ -10,7 +10,7 @@ export interface DeleteGroupBackupExportBucketInput {
   envelope?: boolean;
 }
 export const DeleteGroupBackupExportBucketInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     exportBucketId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const DeleteGroupBackupExportBucketInput =
 // Output Schema
 export type DeleteGroupBackupExportBucketOutput = void;
 export const DeleteGroupBackupExportBucketOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupBackupExportBucketOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteGroupBackupExportBucketOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const DeleteGroupBackupExportBucketOutput =
  * @param exportBucketId - Unique 24-hexadecimal character string that identifies the Export Bucket.
  */
 export const deleteGroupBackupExportBucket =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteGroupBackupExportBucketInput,
     outputSchema: DeleteGroupBackupExportBucketOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

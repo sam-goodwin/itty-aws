@@ -10,7 +10,7 @@ export interface GetV1BuildsByBuildIdLogsInput {
   cursor?: string;
 }
 export const GetV1BuildsByBuildIdLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     buildId: Schema.String.pipe(T.PathParam()),
     follow: Schema.optional(Schema.Literals(["true", "false"])),
     cursor: Schema.optional(Schema.String),
@@ -21,7 +21,7 @@ export const GetV1BuildsByBuildIdLogsInput =
 // Output Schema
 export type GetV1BuildsByBuildIdLogsOutput = void;
 export const GetV1BuildsByBuildIdLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetV1BuildsByBuildIdLogsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetV1BuildsByBuildIdLogsOutput>;
 
 // The operation
 /**
@@ -30,10 +30,8 @@ export const GetV1BuildsByBuildIdLogsOutput =
  * ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️
  * Streams the full build log for a build as newline-delimited JSON (`application/x-ndjson`). Each line is a JSON object discriminated by `type`: `log` (a build output line) or `terminal` (end-of-stream marker with a `cursor` for resumption). The default is a finite dump that ends once the stream is drained; pass `follow=true` to keep the connection open for an in-flight build, and `cursor` to resume from a prior terminal cursor.
  */
-export const getV1BuildsByBuildIdLogs = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetV1BuildsByBuildIdLogsInput,
-    outputSchema: GetV1BuildsByBuildIdLogsOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const getV1BuildsByBuildIdLogs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetV1BuildsByBuildIdLogsInput,
+  outputSchema: GetV1BuildsByBuildIdLogsOutput,
+  errors: [NotFound] as const,
+}));

@@ -4,9 +4,7 @@ import * as T from "../traits.ts";
 
 // Input Schema
 export interface ListAPITokensInput {}
-export const ListAPITokensInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const ListAPITokensInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({ method: "GET", path: "/v1/auth/api-tokens" }),
 ) as unknown as Schema.Codec<ListAPITokensInput>;
 
@@ -21,7 +19,7 @@ export interface ListAPITokensOutput {
     created_at?: string;
   }[];
 }
-export const ListAPITokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAPITokensOutput = /*@__PURE__*/ Schema.Struct({
   tokens: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -42,7 +40,7 @@ export const ListAPITokensOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * Returns a list of API tokens belonging to a user.
  */
-export const listAPITokens = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listAPITokens = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListAPITokensInput,
   outputSchema: ListAPITokensOutput,
 }));

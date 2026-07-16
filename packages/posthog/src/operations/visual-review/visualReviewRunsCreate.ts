@@ -26,7 +26,7 @@ export interface VisualReviewRunsCreateInput {
   is_partial?: boolean;
 }
 export const VisualReviewRunsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     repo_id: Schema.optional(Schema.String),
     run_type: Schema.optional(Schema.String),
@@ -71,7 +71,7 @@ export interface VisualReviewRunsCreateOutput {
   }[];
 }
 export const VisualReviewRunsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     run_id: Schema.optional(Schema.String),
     uploads: Schema.optional(
       Schema.Array(
@@ -90,10 +90,8 @@ export const VisualReviewRunsCreateOutput =
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const visualReviewRunsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VisualReviewRunsCreateInput,
-    outputSchema: VisualReviewRunsCreateOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const visualReviewRunsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VisualReviewRunsCreateInput,
+  outputSchema: VisualReviewRunsCreateOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

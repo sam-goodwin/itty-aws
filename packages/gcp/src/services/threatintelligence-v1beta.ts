@@ -32,7 +32,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     message: Schema.optional(Schema.String),
     details: Schema.optional(
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
@@ -48,7 +48,7 @@ export interface CustomerProfileCompany {
 }
 
 export const CustomerProfileCompany: Schema.Codec<CustomerProfileCompany> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     company: Schema.optional(Schema.String),
     citationIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CustomerProfileCompany" });
@@ -59,7 +59,7 @@ export interface UpsertConfigurationResponse {
 }
 
 export const UpsertConfigurationResponse: Schema.Codec<UpsertConfigurationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configuration: Schema.optional(Schema.String),
   }).annotate({ identifier: "UpsertConfigurationResponse" });
 
@@ -83,7 +83,7 @@ export interface SeverityAnalysis {
 }
 
 export const SeverityAnalysis: Schema.Codec<SeverityAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     confidence: Schema.optional(Schema.String),
     reasoning: Schema.optional(Schema.String),
     severityLevel: Schema.optional(Schema.String),
@@ -118,7 +118,7 @@ export interface PublicExploit {
 }
 
 export const PublicExploit: Schema.Codec<PublicExploit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uri: Schema.optional(Schema.String),
     exploitGrade: Schema.optional(Schema.String),
     exploitName: Schema.optional(Schema.String),
@@ -139,7 +139,7 @@ export interface ProductFix {
 }
 
 export const ProductFix: Schema.Codec<ProductFix> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     sourceId: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -163,7 +163,7 @@ export interface Association {
 }
 
 export const Association: Schema.Codec<Association> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "Association" });
@@ -262,7 +262,7 @@ export interface VulnerabilityMatch {
 }
 
 export const VulnerabilityMatch: Schema.Codec<VulnerabilityMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matchedTechnologies: Schema.optional(Schema.Array(Schema.String)),
     exploitationVectors: Schema.optional(Schema.Array(Schema.String)),
     description: Schema.optional(Schema.String),
@@ -288,7 +288,7 @@ export interface TargetTechnologyFindingDetail {
 }
 
 export const TargetTechnologyFindingDetail: Schema.Codec<TargetTechnologyFindingDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vulnerabilityMatch: Schema.optional(VulnerabilityMatch),
   }).annotate({ identifier: "TargetTechnologyFindingDetail" });
 
@@ -300,7 +300,7 @@ export interface AlertDocumentTranslation {
 }
 
 export const AlertDocumentTranslation: Schema.Codec<AlertDocumentTranslation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     translatedTitle: Schema.optional(Schema.String),
     translatedContent: Schema.optional(Schema.String),
   }).annotate({ identifier: "AlertDocumentTranslation" });
@@ -319,7 +319,7 @@ export interface CustomerProfileCitation {
 }
 
 export const CustomerProfileCitation: Schema.Codec<CustomerProfileCitation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     source: Schema.optional(Schema.String),
     document: Schema.optional(Schema.String),
     uri: Schema.optional(Schema.String),
@@ -343,7 +343,7 @@ export interface CustomerProfileContactInfo {
 }
 
 export const CustomerProfileContactInfo: Schema.Codec<CustomerProfileContactInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     address: Schema.optional(Schema.String),
     email: Schema.optional(Schema.String),
     label: Schema.optional(Schema.String),
@@ -360,7 +360,7 @@ export interface CustomerProfileWebPresence {
 }
 
 export const CustomerProfileWebPresence: Schema.Codec<CustomerProfileWebPresence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     citationIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CustomerProfileWebPresence" });
@@ -373,7 +373,7 @@ export interface CustomerProfileIndustry {
 }
 
 export const CustomerProfileIndustry: Schema.Codec<CustomerProfileIndustry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     industry: Schema.optional(Schema.String),
     citationIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CustomerProfileIndustry" });
@@ -388,7 +388,7 @@ export interface CustomerProfilePerson {
 }
 
 export const CustomerProfilePerson: Schema.Codec<CustomerProfilePerson> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     citationIds: Schema.optional(Schema.Array(Schema.String)),
     name: Schema.optional(Schema.String),
@@ -402,7 +402,7 @@ export interface CustomerProfileSecurityConsiderations {
 }
 
 export const CustomerProfileSecurityConsiderations: Schema.Codec<CustomerProfileSecurityConsiderations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     note: Schema.optional(Schema.String),
     considerations: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CustomerProfileSecurityConsiderations" });
@@ -415,7 +415,7 @@ export interface CustomerProfileCitedString {
 }
 
 export const CustomerProfileCitedString: Schema.Codec<CustomerProfileCitedString> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     citationIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "CustomerProfileCitedString" });
@@ -448,7 +448,7 @@ export interface CustomerProfileSummary {
 }
 
 export const CustomerProfileSummary: Schema.Codec<CustomerProfileSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryWebsite: Schema.optional(CustomerProfileCitedString),
     keyPeopleSummary: Schema.optional(CustomerProfileCitedString),
     brands: Schema.optional(CustomerProfileCitedString),
@@ -473,7 +473,7 @@ export interface CustomerProfileProduct {
 }
 
 export const CustomerProfileProduct: Schema.Codec<CustomerProfileProduct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     citationIds: Schema.optional(Schema.Array(Schema.String)),
     brand: Schema.optional(Schema.String),
     product: Schema.optional(Schema.String),
@@ -491,7 +491,7 @@ export interface CustomerProfileLocation {
 }
 
 export const CustomerProfileLocation: Schema.Codec<CustomerProfileLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     facilityType: Schema.optional(Schema.String),
     address: Schema.optional(Schema.String),
     citationIds: Schema.optional(Schema.Array(Schema.String)),
@@ -528,7 +528,7 @@ export interface CustomerProfileConfig {
 }
 
 export const CustomerProfileConfig: Schema.Codec<CustomerProfileConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     citations: Schema.optional(Schema.Array(CustomerProfileCitation)),
     parentCompanies: Schema.optional(Schema.Array(CustomerProfileCompany)),
     contactInfo: Schema.optional(Schema.Array(CustomerProfileContactInfo)),
@@ -582,7 +582,7 @@ export interface TechnologyWatchListAlertThreshold {
 }
 
 export const TechnologyWatchListAlertThreshold: Schema.Codec<TechnologyWatchListAlertThreshold> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     priorityMinimum: Schema.optional(Schema.String),
     epssScoreMinimum: Schema.optional(Schema.Number),
     exploitationStates: Schema.optional(Schema.Array(Schema.String)),
@@ -598,7 +598,7 @@ export interface TechnologyWatchListConfig {
 }
 
 export const TechnologyWatchListConfig: Schema.Codec<TechnologyWatchListConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     technologies: Schema.optional(Schema.Array(Schema.String)),
     alertThreshold: Schema.optional(TechnologyWatchListAlertThreshold),
   }).annotate({ identifier: "TechnologyWatchListConfig" });
@@ -613,7 +613,7 @@ export interface ConfigurationDetail {
 }
 
 export const ConfigurationDetail: Schema.Codec<ConfigurationDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     customerProfile: Schema.optional(CustomerProfileConfig),
     detailType: Schema.optional(Schema.String),
     technologyWatchlist: Schema.optional(TechnologyWatchListConfig),
@@ -631,7 +631,7 @@ export interface Audit {
 }
 
 export const Audit: Schema.Codec<Audit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     updateTime: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
     creator: Schema.optional(Schema.String),
@@ -665,7 +665,7 @@ export interface Configuration {
 }
 
 export const Configuration: Schema.Codec<Configuration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detail: Schema.optional(ConfigurationDetail),
     description: Schema.optional(Schema.String),
     provider: Schema.optional(Schema.String),
@@ -687,7 +687,7 @@ export interface ConfigurationRevision {
 }
 
 export const ConfigurationRevision: Schema.Codec<ConfigurationRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     snapshot: Schema.optional(Configuration),
     createTime: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -699,14 +699,14 @@ export interface TargetTechnologyAlertDetail {
 }
 
 export const TargetTechnologyAlertDetail: Schema.Codec<TargetTechnologyAlertDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     vulnerabilityMatch: Schema.optional(VulnerabilityMatch),
   }).annotate({ identifier: "TargetTechnologyAlertDetail" });
 
 export interface MarkAlertAsTriagedRequest {}
 
 export const MarkAlertAsTriagedRequest: Schema.Codec<MarkAlertAsTriagedRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsTriagedRequest",
   });
 
@@ -718,7 +718,7 @@ export interface InsiderThreatAlertDetail {
 }
 
 export const InsiderThreatAlertDetail: Schema.Codec<InsiderThreatAlertDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     discoveryDocumentIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "InsiderThreatAlertDetail" });
@@ -731,7 +731,7 @@ export interface ListConfigurationsResponse {
 }
 
 export const ListConfigurationsResponse: Schema.Codec<ListConfigurationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     configurations: Schema.optional(Schema.Array(Configuration)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListConfigurationsResponse" });
@@ -752,7 +752,7 @@ export interface InsiderThreatFindingDetail {
 }
 
 export const InsiderThreatFindingDetail: Schema.Codec<InsiderThreatFindingDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     matchScore: Schema.optional(Schema.Number),
     documentId: Schema.optional(Schema.String),
@@ -761,7 +761,7 @@ export const InsiderThreatFindingDetail: Schema.Codec<InsiderThreatFindingDetail
 export interface MarkAlertAsFalsePositiveRequest {}
 
 export const MarkAlertAsFalsePositiveRequest: Schema.Codec<MarkAlertAsFalsePositiveRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsFalsePositiveRequest",
   });
 
@@ -781,7 +781,7 @@ export interface InitialAccessBrokerFindingDetail {
 }
 
 export const InitialAccessBrokerFindingDetail: Schema.Codec<InitialAccessBrokerFindingDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matchScore: Schema.optional(Schema.Number),
     documentId: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -803,7 +803,7 @@ export interface DataLeakFindingDetail {
 }
 
 export const DataLeakFindingDetail: Schema.Codec<DataLeakFindingDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matchScore: Schema.optional(Schema.Number),
     documentId: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -823,7 +823,7 @@ export interface FindingDetail {
 }
 
 export const FindingDetail: Schema.Codec<FindingDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detailType: Schema.optional(Schema.String),
     initialAccessBroker: Schema.optional(InitialAccessBrokerFindingDetail),
     targetTechnology: Schema.optional(TargetTechnologyFindingDetail),
@@ -861,7 +861,7 @@ export interface AlertDocument {
 }
 
 export const AlertDocument: Schema.Codec<AlertDocument> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     languageCode: Schema.optional(Schema.String),
     aiSummary: Schema.optional(Schema.String),
     ingestTime: Schema.optional(Schema.String),
@@ -885,7 +885,7 @@ export interface Evidence {
 }
 
 export const Evidence: Schema.Codec<Evidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     commonThemes: Schema.optional(Schema.Array(Schema.String)),
     distinctThemes: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "Evidence" });
@@ -914,7 +914,7 @@ export interface RelevanceAnalysis {
 }
 
 export const RelevanceAnalysis: Schema.Codec<RelevanceAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     relevanceLevel: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.String),
     reasoning: Schema.optional(Schema.String),
@@ -950,7 +950,7 @@ export interface Finding {
 }
 
 export const Finding: Schema.Codec<Finding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reoccurrenceTimes: Schema.optional(Schema.Array(Schema.String)),
     displayName: Schema.optional(Schema.String),
     severityAnalysis: Schema.optional(SeverityAnalysis),
@@ -968,7 +968,7 @@ export const Finding: Schema.Codec<Finding> =
 export interface MarkAlertAsBenignRequest {}
 
 export const MarkAlertAsBenignRequest: Schema.Codec<MarkAlertAsBenignRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsBenignRequest",
   });
 
@@ -986,7 +986,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     error: Schema.optional(Status),
@@ -1002,7 +1002,7 @@ export interface DataLeakAlertDetail {
 }
 
 export const DataLeakAlertDetail: Schema.Codec<DataLeakAlertDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     discoveryDocumentIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "DataLeakAlertDetail" });
@@ -1015,7 +1015,7 @@ export interface GenerateOrgProfileConfigurationRequest {
 }
 
 export const GenerateOrgProfileConfigurationRequest: Schema.Codec<GenerateOrgProfileConfigurationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     domain: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateOrgProfileConfigurationRequest" });
@@ -1028,7 +1028,7 @@ export interface FacetCount {
 }
 
 export const FacetCount: Schema.Codec<FacetCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     count: Schema.optional(Schema.Number),
   }).annotate({ identifier: "FacetCount" });
@@ -1049,7 +1049,7 @@ export interface Facet {
 }
 
 export const Facet: Schema.Codec<Facet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     facetCounts: Schema.optional(Schema.Array(FacetCount)),
     facetType: Schema.optional(Schema.String),
     facet: Schema.optional(Schema.String),
@@ -1061,7 +1061,7 @@ export const Facet: Schema.Codec<Facet> =
 export interface MarkAlertAsTrackedExternallyRequest {}
 
 export const MarkAlertAsTrackedExternallyRequest: Schema.Codec<MarkAlertAsTrackedExternallyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsTrackedExternallyRequest",
   });
 
@@ -1073,7 +1073,7 @@ export interface ListConfigurationRevisionsResponse {
 }
 
 export const ListConfigurationRevisionsResponse: Schema.Codec<ListConfigurationRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     revisions: Schema.optional(Schema.Array(ConfigurationRevision)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListConfigurationRevisionsResponse" });
@@ -1086,7 +1086,7 @@ export interface SearchFindingsResponse {
 }
 
 export const SearchFindingsResponse: Schema.Codec<SearchFindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     findings: Schema.optional(Schema.Array(Finding)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "SearchFindingsResponse" });
@@ -1112,7 +1112,7 @@ export interface PriorityAnalysis {
 }
 
 export const PriorityAnalysis: Schema.Codec<PriorityAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     priorityLevel: Schema.optional(Schema.String),
     confidence: Schema.optional(Schema.String),
     reasoning: Schema.optional(Schema.String),
@@ -1126,7 +1126,7 @@ export interface InitialAccessBrokerAlertDetail {
 }
 
 export const InitialAccessBrokerAlertDetail: Schema.Codec<InitialAccessBrokerAlertDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     severity: Schema.optional(Schema.String),
     discoveryDocumentIds: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "InitialAccessBrokerAlertDetail" });
@@ -1145,7 +1145,7 @@ export interface AlertDetail {
 }
 
 export const AlertDetail: Schema.Codec<AlertDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetTechnology: Schema.optional(TargetTechnologyAlertDetail),
     detailType: Schema.optional(Schema.String),
     initialAccessBroker: Schema.optional(InitialAccessBrokerAlertDetail),
@@ -1201,7 +1201,7 @@ export interface Alert {
 }
 
 export const Alert: Schema.Codec<Alert> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     state: Schema.optional(Schema.String),
     findings: Schema.optional(Schema.Array(Schema.String)),
     displayName: Schema.optional(Schema.String),
@@ -1226,14 +1226,14 @@ export interface EnumerateAlertFacetsResponse {
 }
 
 export const EnumerateAlertFacetsResponse: Schema.Codec<EnumerateAlertFacetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     facets: Schema.optional(Schema.Array(Facet)),
   }).annotate({ identifier: "EnumerateAlertFacetsResponse" });
 
 export interface MarkAlertAsReadRequest {}
 
 export const MarkAlertAsReadRequest: Schema.Codec<MarkAlertAsReadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsReadRequest",
   });
 
@@ -1245,7 +1245,7 @@ export interface ListAlertsResponse {
 }
 
 export const ListAlertsResponse: Schema.Codec<ListAlertsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     alerts: Schema.optional(Schema.Array(Alert)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAlertsResponse" });
@@ -1256,7 +1256,7 @@ export interface MarkAlertAsDuplicateRequest {
 }
 
 export const MarkAlertAsDuplicateRequest: Schema.Codec<MarkAlertAsDuplicateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     duplicateOf: Schema.optional(Schema.String),
   }).annotate({ identifier: "MarkAlertAsDuplicateRequest" });
 
@@ -1268,7 +1268,7 @@ export interface ListFindingsResponse {
 }
 
 export const ListFindingsResponse: Schema.Codec<ListFindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     findings: Schema.optional(Schema.Array(Finding)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListFindingsResponse" });
@@ -1276,21 +1276,21 @@ export const ListFindingsResponse: Schema.Codec<ListFindingsResponse> =
 export interface MarkAlertAsEscalatedRequest {}
 
 export const MarkAlertAsEscalatedRequest: Schema.Codec<MarkAlertAsEscalatedRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsEscalatedRequest",
   });
 
 export interface MarkAlertAsResolvedRequest {}
 
 export const MarkAlertAsResolvedRequest: Schema.Codec<MarkAlertAsResolvedRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsResolvedRequest",
   });
 
 export interface MarkAlertAsNotActionableRequest {}
 
 export const MarkAlertAsNotActionableRequest: Schema.Codec<MarkAlertAsNotActionableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsNotActionableRequest",
   });
 
@@ -1356,7 +1356,7 @@ export interface GenerateOrgProfileProjectsRequest {
 }
 
 export const GenerateOrgProfileProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GenerateOrgProfileConfigurationRequest).pipe(
       T.HttpBody(),
@@ -1371,8 +1371,7 @@ export const GenerateOrgProfileProjectsRequest =
   ) as unknown as Schema.Codec<GenerateOrgProfileProjectsRequest>;
 
 export type GenerateOrgProfileProjectsResponse = Operation;
-export const GenerateOrgProfileProjectsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const GenerateOrgProfileProjectsResponse = /*@__PURE__*/ Operation;
 
 export type GenerateOrgProfileProjectsError =
   | DefaultErrors
@@ -1387,7 +1386,7 @@ export const generateOrgProfileProjects: API.OperationMethod<
   GenerateOrgProfileProjectsResponse,
   GenerateOrgProfileProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateOrgProfileProjectsRequest,
   output: GenerateOrgProfileProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1399,7 +1398,7 @@ export interface GetProjectsAlertsRequest {
 }
 
 export const GetProjectsAlertsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1407,7 +1406,7 @@ export const GetProjectsAlertsRequest =
   ) as unknown as Schema.Codec<GetProjectsAlertsRequest>;
 
 export type GetProjectsAlertsResponse = Alert;
-export const GetProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
+export const GetProjectsAlertsResponse = /*@__PURE__*/ Alert;
 
 export type GetProjectsAlertsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1417,7 +1416,7 @@ export const getProjectsAlerts: API.OperationMethod<
   GetProjectsAlertsResponse,
   GetProjectsAlertsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsAlertsRequest,
   output: GetProjectsAlertsResponse,
   errors: [NotFound, Forbidden],
@@ -1431,7 +1430,7 @@ export interface EscalateProjectsAlertsRequest {
 }
 
 export const EscalateProjectsAlertsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsEscalatedRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1440,7 +1439,7 @@ export const EscalateProjectsAlertsRequest =
   ) as unknown as Schema.Codec<EscalateProjectsAlertsRequest>;
 
 export type EscalateProjectsAlertsResponse = Alert;
-export const EscalateProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
+export const EscalateProjectsAlertsResponse = /*@__PURE__*/ Alert;
 
 export type EscalateProjectsAlertsError =
   | DefaultErrors
@@ -1455,7 +1454,7 @@ export const escalateProjectsAlerts: API.OperationMethod<
   EscalateProjectsAlertsResponse,
   EscalateProjectsAlertsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EscalateProjectsAlertsRequest,
   output: EscalateProjectsAlertsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1469,7 +1468,7 @@ export interface FalsePositiveProjectsAlertsRequest {
 }
 
 export const FalsePositiveProjectsAlertsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsFalsePositiveRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1482,8 +1481,7 @@ export const FalsePositiveProjectsAlertsRequest =
   ) as unknown as Schema.Codec<FalsePositiveProjectsAlertsRequest>;
 
 export type FalsePositiveProjectsAlertsResponse = Alert;
-export const FalsePositiveProjectsAlertsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Alert;
+export const FalsePositiveProjectsAlertsResponse = /*@__PURE__*/ Alert;
 
 export type FalsePositiveProjectsAlertsError =
   | DefaultErrors
@@ -1498,7 +1496,7 @@ export const falsePositiveProjectsAlerts: API.OperationMethod<
   FalsePositiveProjectsAlertsResponse,
   FalsePositiveProjectsAlertsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FalsePositiveProjectsAlertsRequest,
   output: FalsePositiveProjectsAlertsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1512,7 +1510,7 @@ export interface EnumerateFacetsProjectsAlertsRequest {
 }
 
 export const EnumerateFacetsProjectsAlertsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
@@ -1523,7 +1521,7 @@ export const EnumerateFacetsProjectsAlertsRequest =
 export type EnumerateFacetsProjectsAlertsResponse =
   EnumerateAlertFacetsResponse;
 export const EnumerateFacetsProjectsAlertsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ EnumerateAlertFacetsResponse;
+  /*@__PURE__*/ EnumerateAlertFacetsResponse;
 
 export type EnumerateFacetsProjectsAlertsError =
   | DefaultErrors
@@ -1536,7 +1534,7 @@ export const enumerateFacetsProjectsAlerts: API.OperationMethod<
   EnumerateFacetsProjectsAlertsResponse,
   EnumerateFacetsProjectsAlertsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnumerateFacetsProjectsAlertsRequest,
   output: EnumerateFacetsProjectsAlertsResponse,
   errors: [NotFound, Forbidden],
@@ -1550,7 +1548,7 @@ export interface BenignProjectsAlertsRequest {
 }
 
 export const BenignProjectsAlertsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsBenignRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1559,7 +1557,7 @@ export const BenignProjectsAlertsRequest =
   ) as unknown as Schema.Codec<BenignProjectsAlertsRequest>;
 
 export type BenignProjectsAlertsResponse = Alert;
-export const BenignProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
+export const BenignProjectsAlertsResponse = /*@__PURE__*/ Alert;
 
 export type BenignProjectsAlertsError =
   | DefaultErrors
@@ -1574,7 +1572,7 @@ export const benignProjectsAlerts: API.OperationMethod<
   BenignProjectsAlertsResponse,
   BenignProjectsAlertsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BenignProjectsAlertsRequest,
   output: BenignProjectsAlertsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1588,7 +1586,7 @@ export interface ReadProjectsAlertsRequest {
 }
 
 export const ReadProjectsAlertsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsReadRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1597,7 +1595,7 @@ export const ReadProjectsAlertsRequest =
   ) as unknown as Schema.Codec<ReadProjectsAlertsRequest>;
 
 export type ReadProjectsAlertsResponse = Alert;
-export const ReadProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
+export const ReadProjectsAlertsResponse = /*@__PURE__*/ Alert;
 
 export type ReadProjectsAlertsError =
   | DefaultErrors
@@ -1612,7 +1610,7 @@ export const readProjectsAlerts: API.OperationMethod<
   ReadProjectsAlertsResponse,
   ReadProjectsAlertsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReadProjectsAlertsRequest,
   output: ReadProjectsAlertsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1626,7 +1624,7 @@ export interface NotActionableProjectsAlertsRequest {
 }
 
 export const NotActionableProjectsAlertsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsNotActionableRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1639,8 +1637,7 @@ export const NotActionableProjectsAlertsRequest =
   ) as unknown as Schema.Codec<NotActionableProjectsAlertsRequest>;
 
 export type NotActionableProjectsAlertsResponse = Alert;
-export const NotActionableProjectsAlertsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Alert;
+export const NotActionableProjectsAlertsResponse = /*@__PURE__*/ Alert;
 
 export type NotActionableProjectsAlertsError =
   | DefaultErrors
@@ -1655,7 +1652,7 @@ export const notActionableProjectsAlerts: API.OperationMethod<
   NotActionableProjectsAlertsResponse,
   NotActionableProjectsAlertsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: NotActionableProjectsAlertsRequest,
   output: NotActionableProjectsAlertsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1669,7 +1666,7 @@ export interface TriageProjectsAlertsRequest {
 }
 
 export const TriageProjectsAlertsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsTriagedRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1678,7 +1675,7 @@ export const TriageProjectsAlertsRequest =
   ) as unknown as Schema.Codec<TriageProjectsAlertsRequest>;
 
 export type TriageProjectsAlertsResponse = Alert;
-export const TriageProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
+export const TriageProjectsAlertsResponse = /*@__PURE__*/ Alert;
 
 export type TriageProjectsAlertsError =
   | DefaultErrors
@@ -1693,7 +1690,7 @@ export const triageProjectsAlerts: API.OperationMethod<
   TriageProjectsAlertsResponse,
   TriageProjectsAlertsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TriageProjectsAlertsRequest,
   output: TriageProjectsAlertsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1707,7 +1704,7 @@ export interface ResolveProjectsAlertsRequest {
 }
 
 export const ResolveProjectsAlertsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsResolvedRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1716,7 +1713,7 @@ export const ResolveProjectsAlertsRequest =
   ) as unknown as Schema.Codec<ResolveProjectsAlertsRequest>;
 
 export type ResolveProjectsAlertsResponse = Alert;
-export const ResolveProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
+export const ResolveProjectsAlertsResponse = /*@__PURE__*/ Alert;
 
 export type ResolveProjectsAlertsError =
   | DefaultErrors
@@ -1731,7 +1728,7 @@ export const resolveProjectsAlerts: API.OperationMethod<
   ResolveProjectsAlertsResponse,
   ResolveProjectsAlertsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResolveProjectsAlertsRequest,
   output: ResolveProjectsAlertsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1745,7 +1742,7 @@ export interface TrackExternallyProjectsAlertsRequest {
 }
 
 export const TrackExternallyProjectsAlertsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsTrackedExternallyRequest).pipe(
       T.HttpBody(),
@@ -1760,8 +1757,7 @@ export const TrackExternallyProjectsAlertsRequest =
   ) as unknown as Schema.Codec<TrackExternallyProjectsAlertsRequest>;
 
 export type TrackExternallyProjectsAlertsResponse = Alert;
-export const TrackExternallyProjectsAlertsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Alert;
+export const TrackExternallyProjectsAlertsResponse = /*@__PURE__*/ Alert;
 
 export type TrackExternallyProjectsAlertsError =
   | DefaultErrors
@@ -1776,7 +1772,7 @@ export const trackExternallyProjectsAlerts: API.OperationMethod<
   TrackExternallyProjectsAlertsResponse,
   TrackExternallyProjectsAlertsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TrackExternallyProjectsAlertsRequest,
   output: TrackExternallyProjectsAlertsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1790,7 +1786,7 @@ export interface DuplicateProjectsAlertsRequest {
 }
 
 export const DuplicateProjectsAlertsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MarkAlertAsDuplicateRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1799,8 +1795,7 @@ export const DuplicateProjectsAlertsRequest =
   ) as unknown as Schema.Codec<DuplicateProjectsAlertsRequest>;
 
 export type DuplicateProjectsAlertsResponse = Alert;
-export const DuplicateProjectsAlertsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Alert;
+export const DuplicateProjectsAlertsResponse = /*@__PURE__*/ Alert;
 
 export type DuplicateProjectsAlertsError =
   | DefaultErrors
@@ -1815,7 +1810,7 @@ export const duplicateProjectsAlerts: API.OperationMethod<
   DuplicateProjectsAlertsResponse,
   DuplicateProjectsAlertsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DuplicateProjectsAlertsRequest,
   output: DuplicateProjectsAlertsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1835,7 +1830,7 @@ export interface ListProjectsAlertsRequest {
 }
 
 export const ListProjectsAlertsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -1847,8 +1842,7 @@ export const ListProjectsAlertsRequest =
   ) as unknown as Schema.Codec<ListProjectsAlertsRequest>;
 
 export type ListProjectsAlertsResponse = ListAlertsResponse;
-export const ListProjectsAlertsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAlertsResponse;
+export const ListProjectsAlertsResponse = /*@__PURE__*/ ListAlertsResponse;
 
 export type ListProjectsAlertsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1858,7 +1852,7 @@ export const listProjectsAlerts: API.PaginatedOperationMethod<
   ListProjectsAlertsResponse,
   ListProjectsAlertsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAlertsRequest,
   output: ListProjectsAlertsResponse,
   errors: [NotFound, Forbidden],
@@ -1874,7 +1868,7 @@ export interface GetProjectsAlertsDocumentsRequest {
 }
 
 export const GetProjectsAlertsDocumentsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1882,8 +1876,7 @@ export const GetProjectsAlertsDocumentsRequest =
   ) as unknown as Schema.Codec<GetProjectsAlertsDocumentsRequest>;
 
 export type GetProjectsAlertsDocumentsResponse = AlertDocument;
-export const GetProjectsAlertsDocumentsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AlertDocument;
+export const GetProjectsAlertsDocumentsResponse = /*@__PURE__*/ AlertDocument;
 
 export type GetProjectsAlertsDocumentsError =
   | DefaultErrors
@@ -1896,7 +1889,7 @@ export const getProjectsAlertsDocuments: API.OperationMethod<
   GetProjectsAlertsDocumentsResponse,
   GetProjectsAlertsDocumentsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsAlertsDocumentsRequest,
   output: GetProjectsAlertsDocumentsResponse,
   errors: [NotFound, Forbidden],
@@ -1916,7 +1909,7 @@ export interface ListProjectsFindingsRequest {
 }
 
 export const ListProjectsFindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1928,8 +1921,7 @@ export const ListProjectsFindingsRequest =
   ) as unknown as Schema.Codec<ListProjectsFindingsRequest>;
 
 export type ListProjectsFindingsResponse = ListFindingsResponse;
-export const ListProjectsFindingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListFindingsResponse;
+export const ListProjectsFindingsResponse = /*@__PURE__*/ ListFindingsResponse;
 
 export type ListProjectsFindingsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1939,7 +1931,7 @@ export const listProjectsFindings: API.PaginatedOperationMethod<
   ListProjectsFindingsResponse,
   ListProjectsFindingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsFindingsRequest,
   output: ListProjectsFindingsResponse,
   errors: [NotFound, Forbidden],
@@ -1963,7 +1955,7 @@ export interface SearchProjectsFindingsRequest {
 }
 
 export const SearchProjectsFindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1976,7 +1968,7 @@ export const SearchProjectsFindingsRequest =
 
 export type SearchProjectsFindingsResponse = SearchFindingsResponse;
 export const SearchProjectsFindingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SearchFindingsResponse;
+  /*@__PURE__*/ SearchFindingsResponse;
 
 export type SearchProjectsFindingsError = DefaultErrors | NotFound | Forbidden;
 
@@ -1986,7 +1978,7 @@ export const searchProjectsFindings: API.PaginatedOperationMethod<
   SearchProjectsFindingsResponse,
   SearchProjectsFindingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsFindingsRequest,
   output: SearchProjectsFindingsResponse,
   errors: [NotFound, Forbidden],
@@ -2002,7 +1994,7 @@ export interface GetProjectsFindingsRequest {
 }
 
 export const GetProjectsFindingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -2010,7 +2002,7 @@ export const GetProjectsFindingsRequest =
   ) as unknown as Schema.Codec<GetProjectsFindingsRequest>;
 
 export type GetProjectsFindingsResponse = Finding;
-export const GetProjectsFindingsResponse = /*@__PURE__*/ /*#__PURE__*/ Finding;
+export const GetProjectsFindingsResponse = /*@__PURE__*/ Finding;
 
 export type GetProjectsFindingsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2020,7 +2012,7 @@ export const getProjectsFindings: API.OperationMethod<
   GetProjectsFindingsResponse,
   GetProjectsFindingsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsFindingsRequest,
   output: GetProjectsFindingsResponse,
   errors: [NotFound, Forbidden],
@@ -2032,7 +2024,7 @@ export interface GetProjectsConfigurationsRequest {
 }
 
 export const GetProjectsConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -2040,8 +2032,7 @@ export const GetProjectsConfigurationsRequest =
   ) as unknown as Schema.Codec<GetProjectsConfigurationsRequest>;
 
 export type GetProjectsConfigurationsResponse = Configuration;
-export const GetProjectsConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Configuration;
+export const GetProjectsConfigurationsResponse = /*@__PURE__*/ Configuration;
 
 export type GetProjectsConfigurationsError =
   | DefaultErrors
@@ -2054,7 +2045,7 @@ export const getProjectsConfigurations: API.OperationMethod<
   GetProjectsConfigurationsResponse,
   GetProjectsConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsConfigurationsRequest,
   output: GetProjectsConfigurationsResponse,
   errors: [NotFound, Forbidden],
@@ -2074,7 +2065,7 @@ export interface ListProjectsConfigurationsRequest {
 }
 
 export const ListProjectsConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
@@ -2087,7 +2078,7 @@ export const ListProjectsConfigurationsRequest =
 
 export type ListProjectsConfigurationsResponse = ListConfigurationsResponse;
 export const ListProjectsConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListConfigurationsResponse;
+  /*@__PURE__*/ ListConfigurationsResponse;
 
 export type ListProjectsConfigurationsError =
   | DefaultErrors
@@ -2100,7 +2091,7 @@ export const listProjectsConfigurations: API.PaginatedOperationMethod<
   ListProjectsConfigurationsResponse,
   ListProjectsConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigurationsRequest,
   output: ListProjectsConfigurationsResponse,
   errors: [NotFound, Forbidden],
@@ -2120,7 +2111,7 @@ export interface UpsertProjectsConfigurationsRequest {
 }
 
 export const UpsertProjectsConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     publishTime: Schema.optional(Schema.String).pipe(
       T.HttpQuery("publishTime"),
@@ -2137,7 +2128,7 @@ export const UpsertProjectsConfigurationsRequest =
 
 export type UpsertProjectsConfigurationsResponse = UpsertConfigurationResponse;
 export const UpsertProjectsConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ UpsertConfigurationResponse;
+  /*@__PURE__*/ UpsertConfigurationResponse;
 
 export type UpsertProjectsConfigurationsError =
   | DefaultErrors
@@ -2152,7 +2143,7 @@ export const upsertProjectsConfigurations: API.OperationMethod<
   UpsertProjectsConfigurationsResponse,
   UpsertProjectsConfigurationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpsertProjectsConfigurationsRequest,
   output: UpsertProjectsConfigurationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2172,7 +2163,7 @@ export interface ListProjectsConfigurationsRevisionsRequest {
 }
 
 export const ListProjectsConfigurationsRevisionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
@@ -2186,7 +2177,7 @@ export const ListProjectsConfigurationsRevisionsRequest =
 export type ListProjectsConfigurationsRevisionsResponse =
   ListConfigurationRevisionsResponse;
 export const ListProjectsConfigurationsRevisionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListConfigurationRevisionsResponse;
+  /*@__PURE__*/ ListConfigurationRevisionsResponse;
 
 export type ListProjectsConfigurationsRevisionsError =
   | DefaultErrors
@@ -2199,7 +2190,7 @@ export const listProjectsConfigurationsRevisions: API.PaginatedOperationMethod<
   ListProjectsConfigurationsRevisionsResponse,
   ListProjectsConfigurationsRevisionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigurationsRevisionsRequest,
   output: ListProjectsConfigurationsRevisionsResponse,
   errors: [NotFound, Forbidden],

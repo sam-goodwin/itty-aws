@@ -15,7 +15,7 @@ export interface ListGroupClusterQueryShapesInput {
   pretty?: boolean;
 }
 export const ListGroupClusterQueryShapesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     status: Schema.optional(Schema.Literals(["REJECTED"])),
@@ -34,7 +34,7 @@ export const ListGroupClusterQueryShapesInput =
 // Output Schema
 export type ListGroupClusterQueryShapesOutput = void;
 export const ListGroupClusterQueryShapesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterQueryShapesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupClusterQueryShapesOutput>;
 
 // The operation
 /**
@@ -53,10 +53,8 @@ export const ListGroupClusterQueryShapesOutput =
  * @param pageNum - Number of the page that displays the current set of the total objects that the response returns.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const listGroupClusterQueryShapes = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupClusterQueryShapesInput,
-    outputSchema: ListGroupClusterQueryShapesOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const listGroupClusterQueryShapes = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupClusterQueryShapesInput,
+  outputSchema: ListGroupClusterQueryShapesOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -14,7 +14,7 @@ export interface ListOrgApiKeyAccessListEntriesInput {
   pretty?: boolean;
 }
 export const ListOrgApiKeyAccessListEntriesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orgId: Schema.String.pipe(T.PathParam()),
     apiUserId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const ListOrgApiKeyAccessListEntriesInput =
 // Output Schema
 export type ListOrgApiKeyAccessListEntriesOutput = void;
 export const ListOrgApiKeyAccessListEntriesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgApiKeyAccessListEntriesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListOrgApiKeyAccessListEntriesOutput>;
 
 // The operation
 /**
@@ -49,7 +49,7 @@ export const ListOrgApiKeyAccessListEntriesOutput =
  * @param apiUserId - Unique 24-hexadecimal digit string that identifies this organization API key for which you want to return access list entries.
  */
 export const listOrgApiKeyAccessListEntries =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListOrgApiKeyAccessListEntriesInput,
     outputSchema: ListOrgApiKeyAccessListEntriesOutput,
     errors: [Forbidden, NotFound] as const,

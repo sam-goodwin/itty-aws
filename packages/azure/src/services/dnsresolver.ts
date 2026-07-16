@@ -29,7 +29,7 @@ export interface DnsForwardingRulesetsCreateOrUpdateInput {
   location: string;
 }
 export const DnsForwardingRulesetsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -77,7 +77,7 @@ export interface DnsForwardingRulesetsCreateOrUpdateOutput {
   };
 }
 export const DnsForwardingRulesetsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -109,7 +109,7 @@ export const DnsForwardingRulesetsCreateOrUpdateOutput =
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
 export const DnsForwardingRulesetsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsForwardingRulesetsCreateOrUpdateInput,
     outputSchema: DnsForwardingRulesetsCreateOrUpdateOutput,
   }));
@@ -120,7 +120,7 @@ export interface DnsForwardingRulesetsDeleteInput {
   dnsForwardingRulesetName: string;
 }
 export const DnsForwardingRulesetsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -135,7 +135,7 @@ export const DnsForwardingRulesetsDeleteInput =
 // Output Schema
 export type DnsForwardingRulesetsDeleteOutput = void;
 export const DnsForwardingRulesetsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsForwardingRulesetsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsForwardingRulesetsDeleteOutput>;
 
 // The operation
 /**
@@ -147,12 +147,10 @@ export const DnsForwardingRulesetsDeleteOutput =
  * @param dnsForwardingRulesetName - The name of the DNS forwarding ruleset.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsForwardingRulesetsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsForwardingRulesetsDeleteInput,
-    outputSchema: DnsForwardingRulesetsDeleteOutput,
-  }),
-);
+export const DnsForwardingRulesetsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsForwardingRulesetsDeleteInput,
+  outputSchema: DnsForwardingRulesetsDeleteOutput,
+}));
 // Input Schema
 export interface DnsForwardingRulesetsGetInput {
   subscriptionId: string;
@@ -160,7 +158,7 @@ export interface DnsForwardingRulesetsGetInput {
   dnsForwardingRulesetName: string;
 }
 export const DnsForwardingRulesetsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -187,7 +185,7 @@ export interface DnsForwardingRulesetsGetOutput {
   };
 }
 export const DnsForwardingRulesetsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -216,19 +214,17 @@ export const DnsForwardingRulesetsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dnsForwardingRulesetName - The name of the DNS forwarding ruleset.
  */
-export const DnsForwardingRulesetsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsForwardingRulesetsGetInput,
-    outputSchema: DnsForwardingRulesetsGetOutput,
-  }),
-);
+export const DnsForwardingRulesetsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsForwardingRulesetsGetInput,
+  outputSchema: DnsForwardingRulesetsGetOutput,
+}));
 // Input Schema
 export interface DnsForwardingRulesetsListInput {
   subscriptionId: string;
   $top?: number;
 }
 export const DnsForwardingRulesetsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -257,7 +253,7 @@ export interface DnsForwardingRulesetsListOutput {
   nextLink?: string;
 }
 export const DnsForwardingRulesetsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -300,12 +296,10 @@ export const DnsForwardingRulesetsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsForwardingRulesetsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsForwardingRulesetsListInput,
-    outputSchema: DnsForwardingRulesetsListOutput,
-  }),
-);
+export const DnsForwardingRulesetsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsForwardingRulesetsListInput,
+  outputSchema: DnsForwardingRulesetsListOutput,
+}));
 // Input Schema
 export interface DnsForwardingRulesetsListByResourceGroupInput {
   subscriptionId: string;
@@ -313,7 +307,7 @@ export interface DnsForwardingRulesetsListByResourceGroupInput {
   $top?: number;
 }
 export const DnsForwardingRulesetsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -343,7 +337,7 @@ export interface DnsForwardingRulesetsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DnsForwardingRulesetsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -388,7 +382,7 @@ export const DnsForwardingRulesetsListByResourceGroupOutput =
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
 export const DnsForwardingRulesetsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsForwardingRulesetsListByResourceGroupInput,
     outputSchema: DnsForwardingRulesetsListByResourceGroupOutput,
   }));
@@ -400,7 +394,7 @@ export interface DnsForwardingRulesetsListByVirtualNetworkInput {
   $top?: number;
 }
 export const DnsForwardingRulesetsListByVirtualNetworkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
@@ -422,7 +416,7 @@ export interface DnsForwardingRulesetsListByVirtualNetworkOutput {
   nextLink?: string;
 }
 export const DnsForwardingRulesetsListByVirtualNetworkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -451,7 +445,7 @@ export const DnsForwardingRulesetsListByVirtualNetworkOutput =
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
 export const DnsForwardingRulesetsListByVirtualNetwork =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsForwardingRulesetsListByVirtualNetworkInput,
     outputSchema: DnsForwardingRulesetsListByVirtualNetworkOutput,
   }));
@@ -464,7 +458,7 @@ export interface DnsForwardingRulesetsUpdateInput {
   tags?: Record<string, string>;
 }
 export const DnsForwardingRulesetsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -499,7 +493,7 @@ export interface DnsForwardingRulesetsUpdateOutput {
   };
 }
 export const DnsForwardingRulesetsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -529,12 +523,10 @@ export const DnsForwardingRulesetsUpdateOutput =
  * @param dnsForwardingRulesetName - The name of the DNS forwarding ruleset.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsForwardingRulesetsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsForwardingRulesetsUpdateInput,
-    outputSchema: DnsForwardingRulesetsUpdateOutput,
-  }),
-);
+export const DnsForwardingRulesetsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsForwardingRulesetsUpdateInput,
+  outputSchema: DnsForwardingRulesetsUpdateOutput,
+}));
 // Input Schema
 export interface DnsResolverDomainListsBulkInput {
   subscriptionId: string;
@@ -543,7 +535,7 @@ export interface DnsResolverDomainListsBulkInput {
   properties: { storageUrl: string; action: "Upload" | "Download" };
 }
 export const DnsResolverDomainListsBulkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
@@ -574,7 +566,7 @@ export interface DnsResolverDomainListsBulkOutput {
   };
 }
 export const DnsResolverDomainListsBulkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -605,12 +597,10 @@ export const DnsResolverDomainListsBulkOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
-export const DnsResolverDomainListsBulk = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolverDomainListsBulkInput,
-    outputSchema: DnsResolverDomainListsBulkOutput,
-  }),
-);
+export const DnsResolverDomainListsBulk = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverDomainListsBulkInput,
+  outputSchema: DnsResolverDomainListsBulkOutput,
+}));
 // Input Schema
 export interface DnsResolverDomainListsCreateOrUpdateInput {
   subscriptionId: string;
@@ -633,7 +623,7 @@ export interface DnsResolverDomainListsCreateOrUpdateInput {
   location: string;
 }
 export const DnsResolverDomainListsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
@@ -680,7 +670,7 @@ export interface DnsResolverDomainListsCreateOrUpdateOutput {
   };
 }
 export const DnsResolverDomainListsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -712,7 +702,7 @@ export const DnsResolverDomainListsCreateOrUpdateOutput =
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
 export const DnsResolverDomainListsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverDomainListsCreateOrUpdateInput,
     outputSchema: DnsResolverDomainListsCreateOrUpdateOutput,
   }));
@@ -723,7 +713,7 @@ export interface DnsResolverDomainListsDeleteInput {
   dnsResolverDomainListName: string;
 }
 export const DnsResolverDomainListsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
@@ -738,7 +728,7 @@ export const DnsResolverDomainListsDeleteInput =
 // Output Schema
 export type DnsResolverDomainListsDeleteOutput = void;
 export const DnsResolverDomainListsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsResolverDomainListsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsResolverDomainListsDeleteOutput>;
 
 // The operation
 /**
@@ -751,7 +741,7 @@ export const DnsResolverDomainListsDeleteOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
 export const DnsResolverDomainListsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverDomainListsDeleteInput,
     outputSchema: DnsResolverDomainListsDeleteOutput,
   }));
@@ -762,7 +752,7 @@ export interface DnsResolverDomainListsGetInput {
   dnsResolverDomainListName: string;
 }
 export const DnsResolverDomainListsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
@@ -789,7 +779,7 @@ export interface DnsResolverDomainListsGetOutput {
   };
 }
 export const DnsResolverDomainListsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -818,19 +808,17 @@ export const DnsResolverDomainListsGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dnsResolverDomainListName - The name of the DNS resolver domain list.
  */
-export const DnsResolverDomainListsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolverDomainListsGetInput,
-    outputSchema: DnsResolverDomainListsGetOutput,
-  }),
-);
+export const DnsResolverDomainListsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverDomainListsGetInput,
+  outputSchema: DnsResolverDomainListsGetOutput,
+}));
 // Input Schema
 export interface DnsResolverDomainListsListInput {
   subscriptionId: string;
   $top?: number;
 }
 export const DnsResolverDomainListsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -859,7 +847,7 @@ export interface DnsResolverDomainListsListOutput {
   nextLink?: string;
 }
 export const DnsResolverDomainListsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -902,12 +890,10 @@ export const DnsResolverDomainListsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsResolverDomainListsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolverDomainListsListInput,
-    outputSchema: DnsResolverDomainListsListOutput,
-  }),
-);
+export const DnsResolverDomainListsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverDomainListsListInput,
+  outputSchema: DnsResolverDomainListsListOutput,
+}));
 // Input Schema
 export interface DnsResolverDomainListsListByResourceGroupInput {
   subscriptionId: string;
@@ -915,7 +901,7 @@ export interface DnsResolverDomainListsListByResourceGroupInput {
   $top?: number;
 }
 export const DnsResolverDomainListsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -945,7 +931,7 @@ export interface DnsResolverDomainListsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DnsResolverDomainListsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -990,7 +976,7 @@ export const DnsResolverDomainListsListByResourceGroupOutput =
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
 export const DnsResolverDomainListsListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverDomainListsListByResourceGroupInput,
     outputSchema: DnsResolverDomainListsListByResourceGroupOutput,
   }));
@@ -1003,7 +989,7 @@ export interface DnsResolverDomainListsUpdateInput {
   tags?: Record<string, string>;
 }
 export const DnsResolverDomainListsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverDomainListName: Schema.String.pipe(T.PathParam()),
@@ -1036,7 +1022,7 @@ export interface DnsResolverDomainListsUpdateOutput {
   };
 }
 export const DnsResolverDomainListsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1067,7 +1053,7 @@ export const DnsResolverDomainListsUpdateOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
 export const DnsResolverDomainListsUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverDomainListsUpdateInput,
     outputSchema: DnsResolverDomainListsUpdateOutput,
   }));
@@ -1091,7 +1077,7 @@ export interface DnsResolverPoliciesCreateOrUpdateInput {
   location: string;
 }
 export const DnsResolverPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -1136,7 +1122,7 @@ export interface DnsResolverPoliciesCreateOrUpdateOutput {
   };
 }
 export const DnsResolverPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1168,7 +1154,7 @@ export const DnsResolverPoliciesCreateOrUpdateOutput =
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
 export const DnsResolverPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverPoliciesCreateOrUpdateInput,
     outputSchema: DnsResolverPoliciesCreateOrUpdateOutput,
   }));
@@ -1179,7 +1165,7 @@ export interface DnsResolverPoliciesDeleteInput {
   dnsResolverPolicyName: string;
 }
 export const DnsResolverPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -1194,7 +1180,7 @@ export const DnsResolverPoliciesDeleteInput =
 // Output Schema
 export type DnsResolverPoliciesDeleteOutput = void;
 export const DnsResolverPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsResolverPoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsResolverPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -1206,12 +1192,10 @@ export const DnsResolverPoliciesDeleteOutput =
  * @param dnsResolverPolicyName - The name of the DNS resolver policy.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsResolverPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolverPoliciesDeleteInput,
-    outputSchema: DnsResolverPoliciesDeleteOutput,
-  }),
-);
+export const DnsResolverPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverPoliciesDeleteInput,
+  outputSchema: DnsResolverPoliciesDeleteOutput,
+}));
 // Input Schema
 export interface DnsResolverPoliciesGetInput {
   subscriptionId: string;
@@ -1219,7 +1203,7 @@ export interface DnsResolverPoliciesGetInput {
   dnsResolverPolicyName: string;
 }
 export const DnsResolverPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -1246,7 +1230,7 @@ export interface DnsResolverPoliciesGetOutput {
   };
 }
 export const DnsResolverPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1275,19 +1259,17 @@ export const DnsResolverPoliciesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dnsResolverPolicyName - The name of the DNS resolver policy.
  */
-export const DnsResolverPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolverPoliciesGetInput,
-    outputSchema: DnsResolverPoliciesGetOutput,
-  }),
-);
+export const DnsResolverPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverPoliciesGetInput,
+  outputSchema: DnsResolverPoliciesGetOutput,
+}));
 // Input Schema
 export interface DnsResolverPoliciesListInput {
   subscriptionId: string;
   $top?: number;
 }
 export const DnsResolverPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
   }).pipe(
@@ -1316,7 +1298,7 @@ export interface DnsResolverPoliciesListOutput {
   nextLink?: string;
 }
 export const DnsResolverPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1359,12 +1341,10 @@ export const DnsResolverPoliciesListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsResolverPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolverPoliciesListInput,
-    outputSchema: DnsResolverPoliciesListOutput,
-  }),
-);
+export const DnsResolverPoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverPoliciesListInput,
+  outputSchema: DnsResolverPoliciesListOutput,
+}));
 // Input Schema
 export interface DnsResolverPoliciesListByResourceGroupInput {
   subscriptionId: string;
@@ -1372,7 +1352,7 @@ export interface DnsResolverPoliciesListByResourceGroupInput {
   $top?: number;
 }
 export const DnsResolverPoliciesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -1402,7 +1382,7 @@ export interface DnsResolverPoliciesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DnsResolverPoliciesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1447,7 +1427,7 @@ export const DnsResolverPoliciesListByResourceGroupOutput =
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
 export const DnsResolverPoliciesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverPoliciesListByResourceGroupInput,
     outputSchema: DnsResolverPoliciesListByResourceGroupOutput,
   }));
@@ -1458,7 +1438,7 @@ export interface DnsResolverPoliciesListByVirtualNetworkInput {
   virtualNetworkName: string;
 }
 export const DnsResolverPoliciesListByVirtualNetworkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
@@ -1476,7 +1456,7 @@ export interface DnsResolverPoliciesListByVirtualNetworkOutput {
   nextLink?: string;
 }
 export const DnsResolverPoliciesListByVirtualNetworkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -1495,7 +1475,7 @@ export const DnsResolverPoliciesListByVirtualNetworkOutput =
  * @param virtualNetworkName - The name of the VirtualNetwork
  */
 export const DnsResolverPoliciesListByVirtualNetwork =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverPoliciesListByVirtualNetworkInput,
     outputSchema: DnsResolverPoliciesListByVirtualNetworkOutput,
   }));
@@ -1507,7 +1487,7 @@ export interface DnsResolverPoliciesUpdateInput {
   tags?: Record<string, string>;
 }
 export const DnsResolverPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -1535,7 +1515,7 @@ export interface DnsResolverPoliciesUpdateOutput {
   };
 }
 export const DnsResolverPoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1565,12 +1545,10 @@ export const DnsResolverPoliciesUpdateOutput =
  * @param dnsResolverPolicyName - The name of the DNS resolver policy.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsResolverPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolverPoliciesUpdateInput,
-    outputSchema: DnsResolverPoliciesUpdateOutput,
-  }),
-);
+export const DnsResolverPoliciesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolverPoliciesUpdateInput,
+  outputSchema: DnsResolverPoliciesUpdateOutput,
+}));
 // Input Schema
 export interface DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput {
   subscriptionId: string;
@@ -1592,7 +1570,7 @@ export interface DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput {
   location: string;
 }
 export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -1638,7 +1616,7 @@ export interface DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput {
   };
 }
 export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1671,7 +1649,7 @@ export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput =
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
 export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput,
     outputSchema: DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateOutput,
   }));
@@ -1683,7 +1661,7 @@ export interface DnsResolverPolicyVirtualNetworkLinksDeleteInput {
   dnsResolverPolicyVirtualNetworkLinkName: string;
 }
 export const DnsResolverPolicyVirtualNetworkLinksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -1699,7 +1677,7 @@ export const DnsResolverPolicyVirtualNetworkLinksDeleteInput =
 // Output Schema
 export type DnsResolverPolicyVirtualNetworkLinksDeleteOutput = void;
 export const DnsResolverPolicyVirtualNetworkLinksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsResolverPolicyVirtualNetworkLinksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsResolverPolicyVirtualNetworkLinksDeleteOutput>;
 
 // The operation
 /**
@@ -1713,7 +1691,7 @@ export const DnsResolverPolicyVirtualNetworkLinksDeleteOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
 export const DnsResolverPolicyVirtualNetworkLinksDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverPolicyVirtualNetworkLinksDeleteInput,
     outputSchema: DnsResolverPolicyVirtualNetworkLinksDeleteOutput,
   }));
@@ -1725,7 +1703,7 @@ export interface DnsResolverPolicyVirtualNetworkLinksGetInput {
   dnsResolverPolicyVirtualNetworkLinkName: string;
 }
 export const DnsResolverPolicyVirtualNetworkLinksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -1753,7 +1731,7 @@ export interface DnsResolverPolicyVirtualNetworkLinksGetOutput {
   };
 }
 export const DnsResolverPolicyVirtualNetworkLinksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1784,7 +1762,7 @@ export const DnsResolverPolicyVirtualNetworkLinksGetOutput =
  * @param dnsResolverPolicyVirtualNetworkLinkName - The name of the DNS resolver policy virtual network link for the DNS resolver policy.
  */
 export const DnsResolverPolicyVirtualNetworkLinksGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverPolicyVirtualNetworkLinksGetInput,
     outputSchema: DnsResolverPolicyVirtualNetworkLinksGetOutput,
   }));
@@ -1796,7 +1774,7 @@ export interface DnsResolverPolicyVirtualNetworkLinksListInput {
   $top?: number;
 }
 export const DnsResolverPolicyVirtualNetworkLinksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -1827,7 +1805,7 @@ export interface DnsResolverPolicyVirtualNetworkLinksListOutput {
   nextLink?: string;
 }
 export const DnsResolverPolicyVirtualNetworkLinksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1873,7 +1851,7 @@ export const DnsResolverPolicyVirtualNetworkLinksListOutput =
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
 export const DnsResolverPolicyVirtualNetworkLinksList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverPolicyVirtualNetworkLinksListInput,
     outputSchema: DnsResolverPolicyVirtualNetworkLinksListOutput,
   }));
@@ -1886,7 +1864,7 @@ export interface DnsResolverPolicyVirtualNetworkLinksUpdateInput {
   tags?: Record<string, string>;
 }
 export const DnsResolverPolicyVirtualNetworkLinksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -1915,7 +1893,7 @@ export interface DnsResolverPolicyVirtualNetworkLinksUpdateOutput {
   };
 }
 export const DnsResolverPolicyVirtualNetworkLinksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1947,7 +1925,7 @@ export const DnsResolverPolicyVirtualNetworkLinksUpdateOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
 export const DnsResolverPolicyVirtualNetworkLinksUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolverPolicyVirtualNetworkLinksUpdateInput,
     outputSchema: DnsResolverPolicyVirtualNetworkLinksUpdateOutput,
   }));
@@ -1973,7 +1951,7 @@ export interface DnsResolversCreateOrUpdateInput {
   location: string;
 }
 export const DnsResolversCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -2022,7 +2000,7 @@ export interface DnsResolversCreateOrUpdateOutput {
   };
 }
 export const DnsResolversCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2053,12 +2031,10 @@ export const DnsResolversCreateOrUpdateOutput =
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
-export const DnsResolversCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsResolversCreateOrUpdateInput,
-    outputSchema: DnsResolversCreateOrUpdateOutput,
-  }),
-);
+export const DnsResolversCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsResolversCreateOrUpdateInput,
+  outputSchema: DnsResolversCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DnsResolversDeleteInput {
   subscriptionId: string;
@@ -2066,7 +2042,7 @@ export interface DnsResolversDeleteInput {
   dnsResolverName: string;
 }
 export const DnsResolversDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -2081,7 +2057,7 @@ export const DnsResolversDeleteInput =
 // Output Schema
 export type DnsResolversDeleteOutput = void;
 export const DnsResolversDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsResolversDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsResolversDeleteOutput>;
 
 // The operation
 /**
@@ -2093,7 +2069,7 @@ export const DnsResolversDeleteOutput =
  * @param dnsResolverName - The name of the DNS resolver.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsResolversDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsResolversDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DnsResolversDeleteInput,
   outputSchema: DnsResolversDeleteOutput,
 }));
@@ -2103,7 +2079,7 @@ export interface DnsResolversGetInput {
   resourceGroupName: string;
   dnsResolverName: string;
 }
-export const DnsResolversGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DnsResolversGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -2129,7 +2105,7 @@ export interface DnsResolversGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DnsResolversGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DnsResolversGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2158,7 +2134,7 @@ export const DnsResolversGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param dnsResolverName - The name of the DNS resolver.
  */
-export const DnsResolversGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsResolversGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DnsResolversGetInput,
   outputSchema: DnsResolversGetOutput,
 }));
@@ -2167,7 +2143,7 @@ export interface DnsResolversListInput {
   subscriptionId: string;
   $top?: number;
 }
-export const DnsResolversListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DnsResolversListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $top: Schema.optional(Schema.Number),
 }).pipe(
@@ -2195,42 +2171,30 @@ export interface DnsResolversListOutput {
   }[];
   nextLink?: string;
 }
-export const DnsResolversListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<DnsResolversListOutput>;
+export const DnsResolversListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<DnsResolversListOutput>;
 
 // The operation
 /**
@@ -2240,7 +2204,7 @@ export const DnsResolversListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsResolversList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsResolversList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DnsResolversListInput,
   outputSchema: DnsResolversListOutput,
 }));
@@ -2251,7 +2215,7 @@ export interface DnsResolversListByResourceGroupInput {
   $top?: number;
 }
 export const DnsResolversListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $top: Schema.optional(Schema.Number),
@@ -2281,7 +2245,7 @@ export interface DnsResolversListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DnsResolversListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2326,7 +2290,7 @@ export const DnsResolversListByResourceGroupOutput =
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
 export const DnsResolversListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolversListByResourceGroupInput,
     outputSchema: DnsResolversListByResourceGroupOutput,
   }));
@@ -2338,7 +2302,7 @@ export interface DnsResolversListByVirtualNetworkInput {
   $top?: number;
 }
 export const DnsResolversListByVirtualNetworkInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     virtualNetworkName: Schema.String.pipe(T.PathParam()),
@@ -2357,7 +2321,7 @@ export interface DnsResolversListByVirtualNetworkOutput {
   nextLink?: string;
 }
 export const DnsResolversListByVirtualNetworkOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.String,
@@ -2377,7 +2341,7 @@ export const DnsResolversListByVirtualNetworkOutput =
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
 export const DnsResolversListByVirtualNetwork =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsResolversListByVirtualNetworkInput,
     outputSchema: DnsResolversListByVirtualNetworkOutput,
   }));
@@ -2389,7 +2353,7 @@ export interface DnsResolversUpdateInput {
   tags?: Record<string, string>;
 }
 export const DnsResolversUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -2417,7 +2381,7 @@ export interface DnsResolversUpdateOutput {
   };
 }
 export const DnsResolversUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2447,7 +2411,7 @@ export const DnsResolversUpdateOutput =
  * @param dnsResolverName - The name of the DNS resolver.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsResolversUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsResolversUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DnsResolversUpdateInput,
   outputSchema: DnsResolversUpdateOutput,
 }));
@@ -2475,7 +2439,7 @@ export interface DnsSecurityRulesCreateOrUpdateInput {
   location: string;
 }
 export const DnsSecurityRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -2532,7 +2496,7 @@ export interface DnsSecurityRulesCreateOrUpdateOutput {
   };
 }
 export const DnsSecurityRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2565,7 +2529,7 @@ export const DnsSecurityRulesCreateOrUpdateOutput =
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
 export const DnsSecurityRulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DnsSecurityRulesCreateOrUpdateInput,
     outputSchema: DnsSecurityRulesCreateOrUpdateOutput,
   }));
@@ -2577,7 +2541,7 @@ export interface DnsSecurityRulesDeleteInput {
   dnsSecurityRuleName: string;
 }
 export const DnsSecurityRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -2593,7 +2557,7 @@ export const DnsSecurityRulesDeleteInput =
 // Output Schema
 export type DnsSecurityRulesDeleteOutput = void;
 export const DnsSecurityRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsSecurityRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DnsSecurityRulesDeleteOutput>;
 
 // The operation
 /**
@@ -2606,12 +2570,10 @@ export const DnsSecurityRulesDeleteOutput =
  * @param dnsSecurityRuleName - The name of the DNS security rule.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsSecurityRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsSecurityRulesDeleteInput,
-    outputSchema: DnsSecurityRulesDeleteOutput,
-  }),
-);
+export const DnsSecurityRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsSecurityRulesDeleteInput,
+  outputSchema: DnsSecurityRulesDeleteOutput,
+}));
 // Input Schema
 export interface DnsSecurityRulesGetInput {
   subscriptionId: string;
@@ -2620,7 +2582,7 @@ export interface DnsSecurityRulesGetInput {
   dnsSecurityRuleName: string;
 }
 export const DnsSecurityRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -2648,7 +2610,7 @@ export interface DnsSecurityRulesGetOutput {
   };
 }
 export const DnsSecurityRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2678,7 +2640,7 @@ export const DnsSecurityRulesGetOutput =
  * @param dnsResolverPolicyName - The name of the DNS resolver policy.
  * @param dnsSecurityRuleName - The name of the DNS security rule.
  */
-export const DnsSecurityRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DnsSecurityRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DnsSecurityRulesGetInput,
   outputSchema: DnsSecurityRulesGetOutput,
 }));
@@ -2690,7 +2652,7 @@ export interface DnsSecurityRulesListInput {
   $top?: number;
 }
 export const DnsSecurityRulesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -2721,7 +2683,7 @@ export interface DnsSecurityRulesListOutput {
   nextLink?: string;
 }
 export const DnsSecurityRulesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2766,12 +2728,10 @@ export const DnsSecurityRulesListOutput =
  * @param dnsResolverPolicyName - The name of the DNS resolver policy.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const DnsSecurityRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsSecurityRulesListInput,
-    outputSchema: DnsSecurityRulesListOutput,
-  }),
-);
+export const DnsSecurityRulesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsSecurityRulesListInput,
+  outputSchema: DnsSecurityRulesListOutput,
+}));
 // Input Schema
 export interface DnsSecurityRulesUpdateInput {
   subscriptionId: string;
@@ -2787,7 +2747,7 @@ export interface DnsSecurityRulesUpdateInput {
   tags?: Record<string, string>;
 }
 export const DnsSecurityRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverPolicyName: Schema.String.pipe(T.PathParam()),
@@ -2838,7 +2798,7 @@ export interface DnsSecurityRulesUpdateOutput {
   };
 }
 export const DnsSecurityRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2869,12 +2829,10 @@ export const DnsSecurityRulesUpdateOutput =
  * @param dnsSecurityRuleName - The name of the DNS security rule.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const DnsSecurityRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DnsSecurityRulesUpdateInput,
-    outputSchema: DnsSecurityRulesUpdateOutput,
-  }),
-);
+export const DnsSecurityRulesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DnsSecurityRulesUpdateInput,
+  outputSchema: DnsSecurityRulesUpdateOutput,
+}));
 // Input Schema
 export interface ForwardingRulesCreateOrUpdateInput {
   subscriptionId: string;
@@ -2897,7 +2855,7 @@ export interface ForwardingRulesCreateOrUpdateInput {
   etag?: string;
 }
 export const ForwardingRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -2949,7 +2907,7 @@ export interface ForwardingRulesCreateOrUpdateOutput {
   };
 }
 export const ForwardingRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2982,7 +2940,7 @@ export const ForwardingRulesCreateOrUpdateOutput =
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
 export const ForwardingRulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ForwardingRulesCreateOrUpdateInput,
     outputSchema: ForwardingRulesCreateOrUpdateOutput,
   }));
@@ -2994,7 +2952,7 @@ export interface ForwardingRulesDeleteInput {
   forwardingRuleName: string;
 }
 export const ForwardingRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -3010,7 +2968,7 @@ export const ForwardingRulesDeleteInput =
 // Output Schema
 export type ForwardingRulesDeleteOutput = void;
 export const ForwardingRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ForwardingRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ForwardingRulesDeleteOutput>;
 
 // The operation
 /**
@@ -3023,12 +2981,10 @@ export const ForwardingRulesDeleteOutput =
  * @param forwardingRuleName - The name of the forwarding rule.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const ForwardingRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ForwardingRulesDeleteInput,
-    outputSchema: ForwardingRulesDeleteOutput,
-  }),
-);
+export const ForwardingRulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ForwardingRulesDeleteInput,
+  outputSchema: ForwardingRulesDeleteOutput,
+}));
 // Input Schema
 export interface ForwardingRulesGetInput {
   subscriptionId: string;
@@ -3037,7 +2993,7 @@ export interface ForwardingRulesGetInput {
   forwardingRuleName: string;
 }
 export const ForwardingRulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -3065,7 +3021,7 @@ export interface ForwardingRulesGetOutput {
   };
 }
 export const ForwardingRulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3095,7 +3051,7 @@ export const ForwardingRulesGetOutput =
  * @param dnsForwardingRulesetName - The name of the DNS forwarding ruleset.
  * @param forwardingRuleName - The name of the forwarding rule.
  */
-export const ForwardingRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ForwardingRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ForwardingRulesGetInput,
   outputSchema: ForwardingRulesGetOutput,
 }));
@@ -3107,7 +3063,7 @@ export interface ForwardingRulesListInput {
   $top?: number;
 }
 export const ForwardingRulesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -3138,7 +3094,7 @@ export interface ForwardingRulesListOutput {
   nextLink?: string;
 }
 export const ForwardingRulesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3183,7 +3139,7 @@ export const ForwardingRulesListOutput =
  * @param dnsForwardingRulesetName - The name of the DNS forwarding ruleset.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const ForwardingRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ForwardingRulesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ForwardingRulesListInput,
   outputSchema: ForwardingRulesListOutput,
 }));
@@ -3200,7 +3156,7 @@ export interface ForwardingRulesUpdateInput {
   };
 }
 export const ForwardingRulesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -3244,7 +3200,7 @@ export interface ForwardingRulesUpdateOutput {
   };
 }
 export const ForwardingRulesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3275,12 +3231,10 @@ export const ForwardingRulesUpdateOutput =
  * @param forwardingRuleName - The name of the forwarding rule.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const ForwardingRulesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ForwardingRulesUpdateInput,
-    outputSchema: ForwardingRulesUpdateOutput,
-  }),
-);
+export const ForwardingRulesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ForwardingRulesUpdateInput,
+  outputSchema: ForwardingRulesUpdateOutput,
+}));
 // Input Schema
 export interface InboundEndpointsCreateOrUpdateInput {
   subscriptionId: string;
@@ -3307,7 +3261,7 @@ export interface InboundEndpointsCreateOrUpdateInput {
   location: string;
 }
 export const InboundEndpointsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -3362,7 +3316,7 @@ export interface InboundEndpointsCreateOrUpdateOutput {
   };
 }
 export const InboundEndpointsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3395,7 +3349,7 @@ export const InboundEndpointsCreateOrUpdateOutput =
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
 export const InboundEndpointsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: InboundEndpointsCreateOrUpdateInput,
     outputSchema: InboundEndpointsCreateOrUpdateOutput,
   }));
@@ -3407,7 +3361,7 @@ export interface InboundEndpointsDeleteInput {
   inboundEndpointName: string;
 }
 export const InboundEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -3423,7 +3377,7 @@ export const InboundEndpointsDeleteInput =
 // Output Schema
 export type InboundEndpointsDeleteOutput = void;
 export const InboundEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<InboundEndpointsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<InboundEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -3436,12 +3390,10 @@ export const InboundEndpointsDeleteOutput =
  * @param inboundEndpointName - The name of the inbound endpoint for the DNS resolver.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const InboundEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InboundEndpointsDeleteInput,
-    outputSchema: InboundEndpointsDeleteOutput,
-  }),
-);
+export const InboundEndpointsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InboundEndpointsDeleteInput,
+  outputSchema: InboundEndpointsDeleteOutput,
+}));
 // Input Schema
 export interface InboundEndpointsGetInput {
   subscriptionId: string;
@@ -3450,7 +3402,7 @@ export interface InboundEndpointsGetInput {
   inboundEndpointName: string;
 }
 export const InboundEndpointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -3478,7 +3430,7 @@ export interface InboundEndpointsGetOutput {
   };
 }
 export const InboundEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3508,7 +3460,7 @@ export const InboundEndpointsGetOutput =
  * @param dnsResolverName - The name of the DNS resolver.
  * @param inboundEndpointName - The name of the inbound endpoint for the DNS resolver.
  */
-export const InboundEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const InboundEndpointsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: InboundEndpointsGetInput,
   outputSchema: InboundEndpointsGetOutput,
 }));
@@ -3520,7 +3472,7 @@ export interface InboundEndpointsListInput {
   $top?: number;
 }
 export const InboundEndpointsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -3551,7 +3503,7 @@ export interface InboundEndpointsListOutput {
   nextLink?: string;
 }
 export const InboundEndpointsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3596,12 +3548,10 @@ export const InboundEndpointsListOutput =
  * @param dnsResolverName - The name of the DNS resolver.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const InboundEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InboundEndpointsListInput,
-    outputSchema: InboundEndpointsListOutput,
-  }),
-);
+export const InboundEndpointsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InboundEndpointsListInput,
+  outputSchema: InboundEndpointsListOutput,
+}));
 // Input Schema
 export interface InboundEndpointsUpdateInput {
   subscriptionId: string;
@@ -3611,7 +3561,7 @@ export interface InboundEndpointsUpdateInput {
   tags?: Record<string, string>;
 }
 export const InboundEndpointsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -3640,7 +3590,7 @@ export interface InboundEndpointsUpdateOutput {
   };
 }
 export const InboundEndpointsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3671,12 +3621,10 @@ export const InboundEndpointsUpdateOutput =
  * @param inboundEndpointName - The name of the inbound endpoint for the DNS resolver.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const InboundEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: InboundEndpointsUpdateInput,
-    outputSchema: InboundEndpointsUpdateOutput,
-  }),
-);
+export const InboundEndpointsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: InboundEndpointsUpdateInput,
+  outputSchema: InboundEndpointsUpdateOutput,
+}));
 // Input Schema
 export interface OutboundEndpointsCreateOrUpdateInput {
   subscriptionId: string;
@@ -3699,7 +3647,7 @@ export interface OutboundEndpointsCreateOrUpdateInput {
   location: string;
 }
 export const OutboundEndpointsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -3746,7 +3694,7 @@ export interface OutboundEndpointsCreateOrUpdateOutput {
   };
 }
 export const OutboundEndpointsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3779,7 +3727,7 @@ export const OutboundEndpointsCreateOrUpdateOutput =
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
 export const OutboundEndpointsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OutboundEndpointsCreateOrUpdateInput,
     outputSchema: OutboundEndpointsCreateOrUpdateOutput,
   }));
@@ -3791,7 +3739,7 @@ export interface OutboundEndpointsDeleteInput {
   outboundEndpointName: string;
 }
 export const OutboundEndpointsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -3807,7 +3755,7 @@ export const OutboundEndpointsDeleteInput =
 // Output Schema
 export type OutboundEndpointsDeleteOutput = void;
 export const OutboundEndpointsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OutboundEndpointsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OutboundEndpointsDeleteOutput>;
 
 // The operation
 /**
@@ -3820,12 +3768,10 @@ export const OutboundEndpointsDeleteOutput =
  * @param outboundEndpointName - The name of the outbound endpoint for the DNS resolver.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const OutboundEndpointsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OutboundEndpointsDeleteInput,
-    outputSchema: OutboundEndpointsDeleteOutput,
-  }),
-);
+export const OutboundEndpointsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OutboundEndpointsDeleteInput,
+  outputSchema: OutboundEndpointsDeleteOutput,
+}));
 // Input Schema
 export interface OutboundEndpointsGetInput {
   subscriptionId: string;
@@ -3834,7 +3780,7 @@ export interface OutboundEndpointsGetInput {
   outboundEndpointName: string;
 }
 export const OutboundEndpointsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -3862,7 +3808,7 @@ export interface OutboundEndpointsGetOutput {
   };
 }
 export const OutboundEndpointsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3892,12 +3838,10 @@ export const OutboundEndpointsGetOutput =
  * @param dnsResolverName - The name of the DNS resolver.
  * @param outboundEndpointName - The name of the outbound endpoint for the DNS resolver.
  */
-export const OutboundEndpointsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OutboundEndpointsGetInput,
-    outputSchema: OutboundEndpointsGetOutput,
-  }),
-);
+export const OutboundEndpointsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OutboundEndpointsGetInput,
+  outputSchema: OutboundEndpointsGetOutput,
+}));
 // Input Schema
 export interface OutboundEndpointsListInput {
   subscriptionId: string;
@@ -3906,7 +3850,7 @@ export interface OutboundEndpointsListInput {
   $top?: number;
 }
 export const OutboundEndpointsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -3937,7 +3881,7 @@ export interface OutboundEndpointsListOutput {
   nextLink?: string;
 }
 export const OutboundEndpointsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3982,12 +3926,10 @@ export const OutboundEndpointsListOutput =
  * @param dnsResolverName - The name of the DNS resolver.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const OutboundEndpointsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OutboundEndpointsListInput,
-    outputSchema: OutboundEndpointsListOutput,
-  }),
-);
+export const OutboundEndpointsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OutboundEndpointsListInput,
+  outputSchema: OutboundEndpointsListOutput,
+}));
 // Input Schema
 export interface OutboundEndpointsUpdateInput {
   subscriptionId: string;
@@ -3997,7 +3939,7 @@ export interface OutboundEndpointsUpdateInput {
   tags?: Record<string, string>;
 }
 export const OutboundEndpointsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsResolverName: Schema.String.pipe(T.PathParam()),
@@ -4026,7 +3968,7 @@ export interface OutboundEndpointsUpdateOutput {
   };
 }
 export const OutboundEndpointsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4057,12 +3999,10 @@ export const OutboundEndpointsUpdateOutput =
  * @param outboundEndpointName - The name of the outbound endpoint for the DNS resolver.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const OutboundEndpointsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OutboundEndpointsUpdateInput,
-    outputSchema: OutboundEndpointsUpdateOutput,
-  }),
-);
+export const OutboundEndpointsUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OutboundEndpointsUpdateInput,
+  outputSchema: OutboundEndpointsUpdateOutput,
+}));
 // Input Schema
 export interface VirtualNetworkLinksCreateOrUpdateInput {
   subscriptionId: string;
@@ -4083,7 +4023,7 @@ export interface VirtualNetworkLinksCreateOrUpdateInput {
   etag?: string;
 }
 export const VirtualNetworkLinksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -4128,7 +4068,7 @@ export interface VirtualNetworkLinksCreateOrUpdateOutput {
   };
 }
 export const VirtualNetworkLinksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4161,7 +4101,7 @@ export const VirtualNetworkLinksCreateOrUpdateOutput =
  * @param if-none-match - Set to '*' to allow a new resource to be created, but to prevent updating an existing resource. Other values will be ignored.
  */
 export const VirtualNetworkLinksCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualNetworkLinksCreateOrUpdateInput,
     outputSchema: VirtualNetworkLinksCreateOrUpdateOutput,
   }));
@@ -4173,7 +4113,7 @@ export interface VirtualNetworkLinksDeleteInput {
   virtualNetworkLinkName: string;
 }
 export const VirtualNetworkLinksDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -4189,7 +4129,7 @@ export const VirtualNetworkLinksDeleteInput =
 // Output Schema
 export type VirtualNetworkLinksDeleteOutput = void;
 export const VirtualNetworkLinksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworkLinksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualNetworkLinksDeleteOutput>;
 
 // The operation
 /**
@@ -4202,12 +4142,10 @@ export const VirtualNetworkLinksDeleteOutput =
  * @param virtualNetworkLinkName - The name of the virtual network link.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const VirtualNetworkLinksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkLinksDeleteInput,
-    outputSchema: VirtualNetworkLinksDeleteOutput,
-  }),
-);
+export const VirtualNetworkLinksDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkLinksDeleteInput,
+  outputSchema: VirtualNetworkLinksDeleteOutput,
+}));
 // Input Schema
 export interface VirtualNetworkLinksGetInput {
   subscriptionId: string;
@@ -4216,7 +4154,7 @@ export interface VirtualNetworkLinksGetInput {
   virtualNetworkLinkName: string;
 }
 export const VirtualNetworkLinksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -4244,7 +4182,7 @@ export interface VirtualNetworkLinksGetOutput {
   };
 }
 export const VirtualNetworkLinksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4274,12 +4212,10 @@ export const VirtualNetworkLinksGetOutput =
  * @param dnsForwardingRulesetName - The name of the DNS forwarding ruleset.
  * @param virtualNetworkLinkName - The name of the virtual network link.
  */
-export const VirtualNetworkLinksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkLinksGetInput,
-    outputSchema: VirtualNetworkLinksGetOutput,
-  }),
-);
+export const VirtualNetworkLinksGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkLinksGetInput,
+  outputSchema: VirtualNetworkLinksGetOutput,
+}));
 // Input Schema
 export interface VirtualNetworkLinksListInput {
   subscriptionId: string;
@@ -4288,7 +4224,7 @@ export interface VirtualNetworkLinksListInput {
   $top?: number;
 }
 export const VirtualNetworkLinksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -4319,7 +4255,7 @@ export interface VirtualNetworkLinksListOutput {
   nextLink?: string;
 }
 export const VirtualNetworkLinksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4364,12 +4300,10 @@ export const VirtualNetworkLinksListOutput =
  * @param dnsForwardingRulesetName - The name of the DNS forwarding ruleset.
  * @param $top - The maximum number of results to return. If not specified, returns up to 100 results.
  */
-export const VirtualNetworkLinksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkLinksListInput,
-    outputSchema: VirtualNetworkLinksListOutput,
-  }),
-);
+export const VirtualNetworkLinksList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkLinksListInput,
+  outputSchema: VirtualNetworkLinksListOutput,
+}));
 // Input Schema
 export interface VirtualNetworkLinksUpdateInput {
   subscriptionId: string;
@@ -4379,7 +4313,7 @@ export interface VirtualNetworkLinksUpdateInput {
   properties?: { metadata?: Record<string, string> };
 }
 export const VirtualNetworkLinksUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsForwardingRulesetName: Schema.String.pipe(T.PathParam()),
@@ -4412,7 +4346,7 @@ export interface VirtualNetworkLinksUpdateOutput {
   };
 }
 export const VirtualNetworkLinksUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4443,9 +4377,7 @@ export const VirtualNetworkLinksUpdateOutput =
  * @param virtualNetworkLinkName - The name of the virtual network link.
  * @param if-match - ETag of the resource. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
  */
-export const VirtualNetworkLinksUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: VirtualNetworkLinksUpdateInput,
-    outputSchema: VirtualNetworkLinksUpdateOutput,
-  }),
-);
+export const VirtualNetworkLinksUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: VirtualNetworkLinksUpdateInput,
+  outputSchema: VirtualNetworkLinksUpdateOutput,
+}));

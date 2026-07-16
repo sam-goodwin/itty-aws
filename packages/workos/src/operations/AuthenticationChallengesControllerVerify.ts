@@ -9,7 +9,7 @@ export interface AuthenticationChallengesControllerVerifyInput {
   code: string;
 }
 export const AuthenticationChallengesControllerVerifyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     code: Schema.String,
   }).pipe(
@@ -30,7 +30,7 @@ export interface AuthenticationChallengesControllerVerifyOutput {
   valid?: boolean;
 }
 export const AuthenticationChallengesControllerVerifyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     challenge: Schema.optional(
       Schema.Struct({
         object: Schema.optional(Schema.String),
@@ -54,7 +54,7 @@ export const AuthenticationChallengesControllerVerifyOutput =
  * @param id - The unique ID of the Authentication Challenge.
  */
 export const AuthenticationChallengesControllerVerify =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthenticationChallengesControllerVerifyInput,
     outputSchema: AuthenticationChallengesControllerVerifyOutput,
     errors: [BadRequest, NotFound, UnprocessableEntity] as const,

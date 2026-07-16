@@ -30,7 +30,7 @@ export interface Organization {
 }
 
 export const Organization: Schema.Codec<Organization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
   }).annotate({ identifier: "Organization" });
@@ -43,7 +43,7 @@ export interface ListOrganizationsResponse {
 }
 
 export const ListOrganizationsResponse: Schema.Codec<ListOrganizationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizations: Schema.optional(Schema.Array(Organization)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListOrganizationsResponse" });
@@ -64,7 +64,7 @@ export interface AnalyticsAccountLink {
 }
 
 export const AnalyticsAccountLink: Schema.Codec<AnalyticsAccountLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     analyticsAccount: Schema.optional(Schema.String),
@@ -79,7 +79,7 @@ export interface ListAnalyticsAccountLinksResponse {
 }
 
 export const ListAnalyticsAccountLinksResponse: Schema.Codec<ListAnalyticsAccountLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyticsAccountLinks: Schema.optional(Schema.Array(AnalyticsAccountLink)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAnalyticsAccountLinksResponse" });
@@ -111,7 +111,7 @@ export interface PropertyUsage {
 }
 
 export const PropertyUsage: Schema.Codec<PropertyUsage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serviceLevel: Schema.optional(Schema.String),
     propertyType: Schema.optional(Schema.String),
     totalEventCount: Schema.optional(Schema.String),
@@ -127,7 +127,7 @@ export interface ReportPropertyUsageRequest {
 }
 
 export const ReportPropertyUsageRequest: Schema.Codec<ReportPropertyUsageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     month: Schema.optional(Schema.String),
   }).annotate({ identifier: "ReportPropertyUsageRequest" });
 
@@ -141,7 +141,7 @@ export interface Marketingplatformadmin_Date {
 }
 
 export const Marketingplatformadmin_Date: Schema.Codec<Marketingplatformadmin_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     year: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
     day: Schema.optional(Schema.Number),
@@ -157,7 +157,7 @@ export interface ClientData {
 }
 
 export const ClientData: Schema.Codec<ClientData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startDate: Schema.optional(Marketingplatformadmin_Date),
     organization: Schema.optional(Organization),
     endDate: Schema.optional(Marketingplatformadmin_Date),
@@ -169,14 +169,14 @@ export interface FindSalesPartnerManagedClientsResponse {
 }
 
 export const FindSalesPartnerManagedClientsResponse: Schema.Codec<FindSalesPartnerManagedClientsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     clientData: Schema.optional(Schema.Array(ClientData)),
   }).annotate({ identifier: "FindSalesPartnerManagedClientsResponse" });
 
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -190,7 +190,7 @@ export interface Money {
 }
 
 export const Money: Schema.Codec<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     units: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
     currencyCode: Schema.optional(Schema.String),
@@ -208,7 +208,7 @@ export interface BillInfo {
 }
 
 export const BillInfo: Schema.Codec<BillInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventFee: Schema.optional(Money),
     baseFee: Schema.optional(Money),
     total: Schema.optional(Money),
@@ -223,7 +223,7 @@ export interface ReportPropertyUsageResponse {
 }
 
 export const ReportPropertyUsageResponse: Schema.Codec<ReportPropertyUsageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     billInfo: Schema.optional(BillInfo),
     propertyUsages: Schema.optional(Schema.Array(PropertyUsage)),
   }).annotate({ identifier: "ReportPropertyUsageResponse" });
@@ -234,14 +234,14 @@ export interface FindSalesPartnerManagedClientsRequest {
 }
 
 export const FindSalesPartnerManagedClientsRequest: Schema.Codec<FindSalesPartnerManagedClientsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     isActive: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "FindSalesPartnerManagedClientsRequest" });
 
 export interface SetPropertyServiceLevelResponse {}
 
 export const SetPropertyServiceLevelResponse: Schema.Codec<SetPropertyServiceLevelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SetPropertyServiceLevelResponse",
   });
 
@@ -257,7 +257,7 @@ export interface SetPropertyServiceLevelRequest {
 }
 
 export const SetPropertyServiceLevelRequest: Schema.Codec<SetPropertyServiceLevelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyticsProperty: Schema.optional(Schema.String),
     serviceLevel: Schema.optional(Schema.String),
   }).annotate({ identifier: "SetPropertyServiceLevelRequest" });
@@ -324,7 +324,7 @@ export interface ReportPropertyUsageOrganizationsRequest {
 }
 
 export const ReportPropertyUsageOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.HttpPath("organization")),
     body: Schema.optional(ReportPropertyUsageRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -339,7 +339,7 @@ export const ReportPropertyUsageOrganizationsRequest =
 export type ReportPropertyUsageOrganizationsResponse =
   ReportPropertyUsageResponse;
 export const ReportPropertyUsageOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ReportPropertyUsageResponse;
+  /*@__PURE__*/ ReportPropertyUsageResponse;
 
 export type ReportPropertyUsageOrganizationsError =
   | DefaultErrors
@@ -354,7 +354,7 @@ export const reportPropertyUsageOrganizations: API.OperationMethod<
   ReportPropertyUsageOrganizationsResponse,
   ReportPropertyUsageOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ReportPropertyUsageOrganizationsRequest,
   output: ReportPropertyUsageOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -368,7 +368,7 @@ export interface FindSalesPartnerManagedClientsOrganizationsRequest {
 }
 
 export const FindSalesPartnerManagedClientsOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.HttpPath("organization")),
     body: Schema.optional(FindSalesPartnerManagedClientsRequest).pipe(
       T.HttpBody(),
@@ -385,7 +385,7 @@ export const FindSalesPartnerManagedClientsOrganizationsRequest =
 export type FindSalesPartnerManagedClientsOrganizationsResponse =
   FindSalesPartnerManagedClientsResponse;
 export const FindSalesPartnerManagedClientsOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FindSalesPartnerManagedClientsResponse;
+  /*@__PURE__*/ FindSalesPartnerManagedClientsResponse;
 
 export type FindSalesPartnerManagedClientsOrganizationsError =
   | DefaultErrors
@@ -400,7 +400,7 @@ export const findSalesPartnerManagedClientsOrganizations: API.OperationMethod<
   FindSalesPartnerManagedClientsOrganizationsResponse,
   FindSalesPartnerManagedClientsOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FindSalesPartnerManagedClientsOrganizationsRequest,
   output: FindSalesPartnerManagedClientsOrganizationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -412,7 +412,7 @@ export interface GetOrganizationsRequest {
 }
 
 export const GetOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1alpha/{+name}" }),
@@ -420,8 +420,7 @@ export const GetOrganizationsRequest =
   ) as unknown as Schema.Codec<GetOrganizationsRequest>;
 
 export type GetOrganizationsResponse = Organization;
-export const GetOrganizationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Organization;
+export const GetOrganizationsResponse = /*@__PURE__*/ Organization;
 
 export type GetOrganizationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -431,7 +430,7 @@ export const getOrganizations: API.OperationMethod<
   GetOrganizationsResponse,
   GetOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOrganizationsRequest,
   output: GetOrganizationsResponse,
   errors: [NotFound, Forbidden],
@@ -445,7 +444,7 @@ export interface ListOrganizationsRequest {
 }
 
 export const ListOrganizationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
@@ -455,7 +454,7 @@ export const ListOrganizationsRequest =
 
 export type ListOrganizationsResponse_Op = ListOrganizationsResponse;
 export const ListOrganizationsResponse_Op =
-  /*@__PURE__*/ /*#__PURE__*/ ListOrganizationsResponse;
+  /*@__PURE__*/ ListOrganizationsResponse;
 
 export type ListOrganizationsError = DefaultErrors | NotFound | Forbidden;
 
@@ -465,7 +464,7 @@ export const listOrganizations: API.PaginatedOperationMethod<
   ListOrganizationsResponse_Op,
   ListOrganizationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse_Op,
   errors: [NotFound, Forbidden],
@@ -483,7 +482,7 @@ export interface CreateOrganizationsAnalyticsAccountLinksRequest {
 }
 
 export const CreateOrganizationsAnalyticsAccountLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AnalyticsAccountLink).pipe(T.HttpBody()),
   }).pipe(
@@ -498,7 +497,7 @@ export const CreateOrganizationsAnalyticsAccountLinksRequest =
 export type CreateOrganizationsAnalyticsAccountLinksResponse =
   AnalyticsAccountLink;
 export const CreateOrganizationsAnalyticsAccountLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AnalyticsAccountLink;
+  /*@__PURE__*/ AnalyticsAccountLink;
 
 export type CreateOrganizationsAnalyticsAccountLinksError =
   | DefaultErrors
@@ -513,7 +512,7 @@ export const createOrganizationsAnalyticsAccountLinks: API.OperationMethod<
   CreateOrganizationsAnalyticsAccountLinksResponse,
   CreateOrganizationsAnalyticsAccountLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateOrganizationsAnalyticsAccountLinksRequest,
   output: CreateOrganizationsAnalyticsAccountLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -527,7 +526,7 @@ export interface SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksReques
 }
 
 export const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     analyticsAccountLink: Schema.String.pipe(
       T.HttpPath("analyticsAccountLink"),
     ),
@@ -544,7 +543,7 @@ export const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest =
 export type SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse =
   SetPropertyServiceLevelResponse;
 export const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SetPropertyServiceLevelResponse;
+  /*@__PURE__*/ SetPropertyServiceLevelResponse;
 
 export type SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksError =
   | DefaultErrors
@@ -559,7 +558,7 @@ export const setPropertyServiceLevelOrganizationsAnalyticsAccountLinks: API.Oper
   SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse,
   SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest,
   output: SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -575,7 +574,7 @@ export interface ListOrganizationsAnalyticsAccountLinksRequest {
 }
 
 export const ListOrganizationsAnalyticsAccountLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -587,7 +586,7 @@ export const ListOrganizationsAnalyticsAccountLinksRequest =
 export type ListOrganizationsAnalyticsAccountLinksResponse =
   ListAnalyticsAccountLinksResponse;
 export const ListOrganizationsAnalyticsAccountLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAnalyticsAccountLinksResponse;
+  /*@__PURE__*/ ListAnalyticsAccountLinksResponse;
 
 export type ListOrganizationsAnalyticsAccountLinksError =
   | DefaultErrors
@@ -600,7 +599,7 @@ export const listOrganizationsAnalyticsAccountLinks: API.PaginatedOperationMetho
   ListOrganizationsAnalyticsAccountLinksResponse,
   ListOrganizationsAnalyticsAccountLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAnalyticsAccountLinksRequest,
   output: ListOrganizationsAnalyticsAccountLinksResponse,
   errors: [NotFound, Forbidden],
@@ -616,7 +615,7 @@ export interface DeleteOrganizationsAnalyticsAccountLinksRequest {
 }
 
 export const DeleteOrganizationsAnalyticsAccountLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1alpha/{+name}" }),
@@ -625,7 +624,7 @@ export const DeleteOrganizationsAnalyticsAccountLinksRequest =
 
 export type DeleteOrganizationsAnalyticsAccountLinksResponse = Empty;
 export const DeleteOrganizationsAnalyticsAccountLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+  /*@__PURE__*/ Empty;
 
 export type DeleteOrganizationsAnalyticsAccountLinksError =
   | DefaultErrors
@@ -640,7 +639,7 @@ export const deleteOrganizationsAnalyticsAccountLinks: API.OperationMethod<
   DeleteOrganizationsAnalyticsAccountLinksResponse,
   DeleteOrganizationsAnalyticsAccountLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsAnalyticsAccountLinksRequest,
   output: DeleteOrganizationsAnalyticsAccountLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

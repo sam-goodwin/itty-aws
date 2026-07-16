@@ -9,7 +9,7 @@ export interface HogFlowsBatchJobsListInput {
   project_id: string;
 }
 export const HogFlowsBatchJobsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -57,7 +57,7 @@ export type HogFlowsBatchJobsListOutput = {
   updated_at: string;
 }[];
 export const HogFlowsBatchJobsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.String,
       status: Schema.optional(
@@ -113,10 +113,8 @@ export const HogFlowsBatchJobsListOutput =
  * @param id - A UUID string identifying this hog flow.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const hogFlowsBatchJobsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HogFlowsBatchJobsListInput,
-    outputSchema: HogFlowsBatchJobsListOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const hogFlowsBatchJobsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HogFlowsBatchJobsListInput,
+  outputSchema: HogFlowsBatchJobsListOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

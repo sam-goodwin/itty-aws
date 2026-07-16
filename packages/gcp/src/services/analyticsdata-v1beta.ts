@@ -28,7 +28,7 @@ export interface FilterExpressionList {
 }
 
 export const FilterExpressionList: Schema.Codec<FilterExpressionList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       expressions: Schema.optional(Schema.Array(FilterExpression)),
     }),
@@ -44,7 +44,7 @@ export interface NumericValue {
 }
 
 export const NumericValue: Schema.Codec<NumericValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     int64Value: Schema.optional(Schema.String),
     doubleValue: Schema.optional(Schema.Number),
   }).annotate({ identifier: "NumericValue" });
@@ -64,7 +64,7 @@ export interface NumericFilter {
 }
 
 export const NumericFilter: Schema.Codec<NumericFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(NumericValue),
     operation: Schema.optional(Schema.String),
   }).annotate({ identifier: "NumericFilter" });
@@ -77,7 +77,7 @@ export interface InListFilter {
 }
 
 export const InListFilter: Schema.Codec<InListFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     caseSensitive: Schema.optional(Schema.Boolean),
     values: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "InListFilter" });
@@ -85,7 +85,7 @@ export const InListFilter: Schema.Codec<InListFilter> =
 export interface EmptyFilter {}
 
 export const EmptyFilter: Schema.Codec<EmptyFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EmptyFilter",
   });
 
@@ -107,7 +107,7 @@ export interface StringFilter {
 }
 
 export const StringFilter: Schema.Codec<StringFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     matchType: Schema.optional(Schema.String),
     caseSensitive: Schema.optional(Schema.Boolean),
     value: Schema.optional(Schema.String),
@@ -121,7 +121,7 @@ export interface BetweenFilter {
 }
 
 export const BetweenFilter: Schema.Codec<BetweenFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     toValue: Schema.optional(NumericValue),
     fromValue: Schema.optional(NumericValue),
   }).annotate({ identifier: "BetweenFilter" });
@@ -142,7 +142,7 @@ export interface Filter {
 }
 
 export const Filter: Schema.Codec<Filter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     numericFilter: Schema.optional(NumericFilter),
     fieldName: Schema.optional(Schema.String),
     inListFilter: Schema.optional(InListFilter),
@@ -163,7 +163,7 @@ export interface FilterExpression {
 }
 
 export const FilterExpression: Schema.Codec<FilterExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       orGroup: Schema.optional(FilterExpressionList),
       andGroup: Schema.optional(FilterExpressionList),
@@ -184,7 +184,7 @@ export interface Comparison {
 }
 
 export const Comparison: Schema.Codec<Comparison> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionFilter: Schema.optional(FilterExpression),
     comparison: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -231,7 +231,7 @@ export interface MetricMetadata {
 }
 
 export const MetricMetadata: Schema.Codec<MetricMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expression: Schema.optional(Schema.String),
     apiName: Schema.optional(Schema.String),
     blockedReasons: Schema.optional(Schema.Array(Schema.String)),
@@ -255,7 +255,7 @@ export interface MetricCompatibility {
 }
 
 export const MetricCompatibility: Schema.Codec<MetricCompatibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     compatibility: Schema.optional(Schema.String),
     metricMetadata: Schema.optional(MetricMetadata),
   }).annotate({ identifier: "MetricCompatibility" });
@@ -276,7 +276,7 @@ export interface DimensionMetadata {
 }
 
 export const DimensionMetadata: Schema.Codec<DimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     apiName: Schema.optional(Schema.String),
     uiName: Schema.optional(Schema.String),
     category: Schema.optional(Schema.String),
@@ -297,7 +297,7 @@ export interface DimensionCompatibility {
 }
 
 export const DimensionCompatibility: Schema.Codec<DimensionCompatibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionMetadata: Schema.optional(DimensionMetadata),
     compatibility: Schema.optional(Schema.String),
   }).annotate({ identifier: "DimensionCompatibility" });
@@ -310,7 +310,7 @@ export interface CheckCompatibilityResponse {
 }
 
 export const CheckCompatibilityResponse: Schema.Codec<CheckCompatibilityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metricCompatibilities: Schema.optional(Schema.Array(MetricCompatibility)),
     dimensionCompatibilities: Schema.optional(
       Schema.Array(DimensionCompatibility),
@@ -323,7 +323,7 @@ export interface DimensionValue {
 }
 
 export const DimensionValue: Schema.Codec<DimensionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "DimensionValue" });
 
@@ -333,7 +333,7 @@ export interface PivotDimensionHeader {
 }
 
 export const PivotDimensionHeader: Schema.Codec<PivotDimensionHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionValues: Schema.optional(Schema.Array(DimensionValue)),
   }).annotate({ identifier: "PivotDimensionHeader" });
 
@@ -345,7 +345,7 @@ export interface ConcatenateExpression {
 }
 
 export const ConcatenateExpression: Schema.Codec<ConcatenateExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionNames: Schema.optional(Schema.Array(Schema.String)),
     delimiter: Schema.optional(Schema.String),
   }).annotate({ identifier: "ConcatenateExpression" });
@@ -356,7 +356,7 @@ export interface CaseExpression {
 }
 
 export const CaseExpression: Schema.Codec<CaseExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "CaseExpression" });
 
@@ -370,7 +370,7 @@ export interface DimensionExpression {
 }
 
 export const DimensionExpression: Schema.Codec<DimensionExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     concatenate: Schema.optional(ConcatenateExpression),
     lowerCase: Schema.optional(CaseExpression),
     upperCase: Schema.optional(CaseExpression),
@@ -382,7 +382,7 @@ export interface MetricValue {
 }
 
 export const MetricValue: Schema.Codec<MetricValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "MetricValue" });
 
@@ -393,12 +393,10 @@ export interface Row {
   metricValues?: ReadonlyArray<MetricValue>;
 }
 
-export const Row: Schema.Codec<Row> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    dimensionValues: Schema.optional(Schema.Array(DimensionValue)),
-    metricValues: Schema.optional(Schema.Array(MetricValue)),
-  },
-).annotate({ identifier: "Row" });
+export const Row: Schema.Codec<Row> = /*@__PURE__*/ Schema.Struct({
+  dimensionValues: Schema.optional(Schema.Array(DimensionValue)),
+  metricValues: Schema.optional(Schema.Array(MetricValue)),
+}).annotate({ identifier: "Row" });
 
 export interface MinuteRange {
   /** Assigns a name to this minute range. The dimension `dateRange` is valued to this name in a report response. If set, cannot begin with `date_range_` or `RESERVED_`. If not set, minute ranges are named by their zero based index in the request: `date_range_0`, `date_range_1`, etc. */
@@ -410,7 +408,7 @@ export interface MinuteRange {
 }
 
 export const MinuteRange: Schema.Codec<MinuteRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     startMinutesAgo: Schema.optional(Schema.Number),
     endMinutesAgo: Schema.optional(Schema.Number),
@@ -426,7 +424,7 @@ export interface Status {
 }
 
 export const Status: Schema.Codec<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     code: Schema.optional(Schema.Number),
     message: Schema.optional(Schema.String),
     details: Schema.optional(
@@ -440,7 +438,7 @@ export interface DimensionHeader {
 }
 
 export const DimensionHeader: Schema.Codec<DimensionHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "DimensionHeader" });
 
@@ -452,7 +450,7 @@ export interface QuotaStatus {
 }
 
 export const QuotaStatus: Schema.Codec<QuotaStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consumed: Schema.optional(Schema.Number),
     remaining: Schema.optional(Schema.Number),
   }).annotate({ identifier: "QuotaStatus" });
@@ -473,7 +471,7 @@ export interface PropertyQuota {
 }
 
 export const PropertyQuota: Schema.Codec<PropertyQuota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     concurrentRequests: Schema.optional(QuotaStatus),
     potentiallyThresholdedRequestsPerHour: Schema.optional(QuotaStatus),
     tokensPerDay: Schema.optional(QuotaStatus),
@@ -504,7 +502,7 @@ export interface MetricHeader {
 }
 
 export const MetricHeader: Schema.Codec<MetricHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
   }).annotate({ identifier: "MetricHeader" });
@@ -522,7 +520,7 @@ export interface ActiveMetricRestriction {
 }
 
 export const ActiveMetricRestriction: Schema.Codec<ActiveMetricRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     restrictedMetricTypes: Schema.optional(Schema.Array(Schema.String)),
     metricName: Schema.optional(Schema.String),
   }).annotate({ identifier: "ActiveMetricRestriction" });
@@ -533,7 +531,7 @@ export interface SchemaRestrictionResponse {
 }
 
 export const SchemaRestrictionResponse: Schema.Codec<SchemaRestrictionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     activeMetricRestrictions: Schema.optional(
       Schema.Array(ActiveMetricRestriction),
     ),
@@ -547,7 +545,7 @@ export interface SamplingMetadata {
 }
 
 export const SamplingMetadata: Schema.Codec<SamplingMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     samplesReadCount: Schema.optional(Schema.String),
     samplingSpaceSize: Schema.optional(Schema.String),
   }).annotate({ identifier: "SamplingMetadata" });
@@ -570,7 +568,7 @@ export interface ResponseMetaData {
 }
 
 export const ResponseMetaData: Schema.Codec<ResponseMetaData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     schemaRestrictionResponse: Schema.optional(SchemaRestrictionResponse),
     currencyCode: Schema.optional(Schema.String),
     emptyReason: Schema.optional(Schema.String),
@@ -604,7 +602,7 @@ export interface RunReportResponse {
 }
 
 export const RunReportResponse: Schema.Codec<RunReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionHeaders: Schema.optional(Schema.Array(DimensionHeader)),
     maximums: Schema.optional(Schema.Array(Row)),
     propertyQuota: Schema.optional(PropertyQuota),
@@ -625,7 +623,7 @@ export interface BatchRunReportsResponse {
 }
 
 export const BatchRunReportsResponse: Schema.Codec<BatchRunReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reports: Schema.optional(Schema.Array(RunReportResponse)),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "BatchRunReportsResponse" });
@@ -636,7 +634,7 @@ export interface V1betaAudienceDimension {
 }
 
 export const V1betaAudienceDimension: Schema.Codec<V1betaAudienceDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "V1betaAudienceDimension" });
 
@@ -669,7 +667,7 @@ export interface AudienceExport {
 }
 
 export const AudienceExport: Schema.Codec<AudienceExport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     percentageCompleted: Schema.optional(Schema.Number),
     beginCreatingTime: Schema.optional(Schema.String),
     creationQuotaTokensCharged: Schema.optional(Schema.Number),
@@ -690,7 +688,7 @@ export interface ListAudienceExportsResponse {
 }
 
 export const ListAudienceExportsResponse: Schema.Codec<ListAudienceExportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     audienceExports: Schema.optional(Schema.Array(AudienceExport)),
   }).annotate({ identifier: "ListAudienceExportsResponse" });
@@ -705,7 +703,7 @@ export interface ComparisonMetadata {
 }
 
 export const ComparisonMetadata: Schema.Codec<ComparisonMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     description: Schema.optional(Schema.String),
     apiName: Schema.optional(Schema.String),
     uiName: Schema.optional(Schema.String),
@@ -723,7 +721,7 @@ export interface Metadata {
 }
 
 export const Metadata: Schema.Codec<Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensions: Schema.optional(Schema.Array(DimensionMetadata)),
     metrics: Schema.optional(Schema.Array(MetricMetadata)),
     name: Schema.optional(Schema.String),
@@ -738,7 +736,7 @@ export interface PivotHeader {
 }
 
 export const PivotHeader: Schema.Codec<PivotHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pivotDimensionHeaders: Schema.optional(Schema.Array(PivotDimensionHeader)),
     rowCount: Schema.optional(Schema.Number),
   }).annotate({ identifier: "PivotHeader" });
@@ -763,7 +761,7 @@ export interface RunPivotReportResponse {
 }
 
 export const RunPivotReportResponse: Schema.Codec<RunPivotReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aggregates: Schema.optional(Schema.Array(Row)),
     rows: Schema.optional(Schema.Array(Row)),
     pivotHeaders: Schema.optional(Schema.Array(PivotHeader)),
@@ -780,7 +778,7 @@ export interface V1betaAudienceDimensionValue {
 }
 
 export const V1betaAudienceDimensionValue: Schema.Codec<V1betaAudienceDimensionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "V1betaAudienceDimensionValue" });
 
@@ -797,7 +795,7 @@ export interface DimensionOrderBy {
 }
 
 export const DimensionOrderBy: Schema.Codec<DimensionOrderBy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orderType: Schema.optional(Schema.String),
     dimensionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "DimensionOrderBy" });
@@ -808,7 +806,7 @@ export interface MetricOrderBy {
 }
 
 export const MetricOrderBy: Schema.Codec<MetricOrderBy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metricName: Schema.optional(Schema.String),
   }).annotate({ identifier: "MetricOrderBy" });
 
@@ -820,7 +818,7 @@ export interface PivotSelection {
 }
 
 export const PivotSelection: Schema.Codec<PivotSelection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionName: Schema.optional(Schema.String),
     dimensionValue: Schema.optional(Schema.String),
   }).annotate({ identifier: "PivotSelection" });
@@ -833,7 +831,7 @@ export interface PivotOrderBy {
 }
 
 export const PivotOrderBy: Schema.Codec<PivotOrderBy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pivotSelections: Schema.optional(Schema.Array(PivotSelection)),
     metricName: Schema.optional(Schema.String),
   }).annotate({ identifier: "PivotOrderBy" });
@@ -850,7 +848,7 @@ export interface OrderBy {
 }
 
 export const OrderBy: Schema.Codec<OrderBy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     desc: Schema.optional(Schema.Boolean),
     dimension: Schema.optional(DimensionOrderBy),
     metric: Schema.optional(MetricOrderBy),
@@ -878,7 +876,7 @@ export interface Pivot {
 }
 
 export const Pivot: Schema.Codec<Pivot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     offset: Schema.optional(Schema.String),
     limit: Schema.optional(Schema.String),
     fieldNames: Schema.optional(Schema.Array(Schema.String)),
@@ -908,7 +906,7 @@ export interface RunRealtimeReportResponse {
 }
 
 export const RunRealtimeReportResponse: Schema.Codec<RunRealtimeReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionHeaders: Schema.optional(Schema.Array(DimensionHeader)),
     maximums: Schema.optional(Schema.Array(Row)),
     propertyQuota: Schema.optional(PropertyQuota),
@@ -923,7 +921,7 @@ export const RunRealtimeReportResponse: Schema.Codec<RunRealtimeReportResponse> 
 export interface AudienceListMetadata {}
 
 export const AudienceListMetadata: Schema.Codec<AudienceListMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AudienceListMetadata",
   });
 
@@ -937,7 +935,7 @@ export interface Metric {
 }
 
 export const Metric: Schema.Codec<Metric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     invisible: Schema.optional(Schema.Boolean),
     expression: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -951,7 +949,7 @@ export interface BatchRunPivotReportsResponse {
 }
 
 export const BatchRunPivotReportsResponse: Schema.Codec<BatchRunPivotReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pivotReports: Schema.optional(Schema.Array(RunPivotReportResponse)),
     kind: Schema.optional(Schema.String),
   }).annotate({ identifier: "BatchRunPivotReportsResponse" });
@@ -966,7 +964,7 @@ export interface DateRange {
 }
 
 export const DateRange: Schema.Codec<DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     startDate: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     endDate: Schema.optional(Schema.String),
@@ -982,7 +980,7 @@ export interface Cohort {
 }
 
 export const Cohort: Schema.Codec<Cohort> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dateRange: Schema.optional(DateRange),
     dimension: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -994,7 +992,7 @@ export interface CohortReportSettings {
 }
 
 export const CohortReportSettings: Schema.Codec<CohortReportSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accumulate: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "CohortReportSettings" });
 
@@ -1013,7 +1011,7 @@ export interface CohortsRange {
 }
 
 export const CohortsRange: Schema.Codec<CohortsRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     granularity: Schema.optional(Schema.String),
     endOffset: Schema.optional(Schema.Number),
     startOffset: Schema.optional(Schema.Number),
@@ -1029,7 +1027,7 @@ export interface CohortSpec {
 }
 
 export const CohortSpec: Schema.Codec<CohortSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     cohortReportSettings: Schema.optional(CohortReportSettings),
     cohortsRange: Schema.optional(CohortsRange),
     cohorts: Schema.optional(Schema.Array(Cohort)),
@@ -1043,7 +1041,7 @@ export interface Dimension {
 }
 
 export const Dimension: Schema.Codec<Dimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionExpression: Schema.optional(DimensionExpression),
     name: Schema.optional(Schema.String),
   }).annotate({ identifier: "Dimension" });
@@ -1076,7 +1074,7 @@ export interface RunPivotReportRequest {
 }
 
 export const RunPivotReportRequest: Schema.Codec<RunPivotReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keepEmptyRows: Schema.optional(Schema.Boolean),
     dateRanges: Schema.optional(Schema.Array(DateRange)),
     metricFilter: Schema.optional(FilterExpression),
@@ -1097,7 +1095,7 @@ export interface BatchRunPivotReportsRequest {
 }
 
 export const BatchRunPivotReportsRequest: Schema.Codec<BatchRunPivotReportsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(RunPivotReportRequest)),
   }).annotate({ identifier: "BatchRunPivotReportsRequest" });
 
@@ -1115,7 +1113,7 @@ export interface Operation {
 }
 
 export const Operation: Schema.Codec<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     error: Schema.optional(Status),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     done: Schema.optional(Schema.Boolean),
@@ -1164,7 +1162,7 @@ export interface RunReportRequest {
 }
 
 export const RunReportRequest: Schema.Codec<RunReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keepEmptyRows: Schema.optional(Schema.Boolean),
     limit: Schema.optional(Schema.String),
     orderBys: Schema.optional(Schema.Array(OrderBy)),
@@ -1188,7 +1186,7 @@ export interface V1betaAudienceRow {
 }
 
 export const V1betaAudienceRow: Schema.Codec<V1betaAudienceRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionValues: Schema.optional(
       Schema.Array(V1betaAudienceDimensionValue),
     ),
@@ -1223,7 +1221,7 @@ export interface RunRealtimeReportRequest {
 }
 
 export const RunRealtimeReportRequest: Schema.Codec<RunRealtimeReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orderBys: Schema.optional(Schema.Array(OrderBy)),
     limit: Schema.optional(Schema.String),
     metricFilter: Schema.optional(FilterExpression),
@@ -1241,7 +1239,7 @@ export interface BatchRunReportsRequest {
 }
 
 export const BatchRunReportsRequest: Schema.Codec<BatchRunReportsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     requests: Schema.optional(Schema.Array(RunReportRequest)),
   }).annotate({ identifier: "BatchRunReportsRequest" });
 
@@ -1253,7 +1251,7 @@ export interface QueryAudienceExportRequest {
 }
 
 export const QueryAudienceExportRequest: Schema.Codec<QueryAudienceExportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     limit: Schema.optional(Schema.String),
     offset: Schema.optional(Schema.String),
   }).annotate({ identifier: "QueryAudienceExportRequest" });
@@ -1268,7 +1266,7 @@ export interface QueryAudienceExportResponse {
 }
 
 export const QueryAudienceExportResponse: Schema.Codec<QueryAudienceExportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     audienceExport: Schema.optional(AudienceExport),
     audienceRows: Schema.optional(Schema.Array(V1betaAudienceRow)),
     rowCount: Schema.optional(Schema.Number),
@@ -1292,7 +1290,7 @@ export interface CheckCompatibilityRequest {
 }
 
 export const CheckCompatibilityRequest: Schema.Codec<CheckCompatibilityRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionFilter: Schema.optional(FilterExpression),
     metrics: Schema.optional(Schema.Array(Metric)),
     dimensions: Schema.optional(Schema.Array(Dimension)),
@@ -1362,7 +1360,7 @@ export interface BatchRunPivotReportsPropertiesRequest {
 }
 
 export const BatchRunPivotReportsPropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.String.pipe(T.HttpPath("property")),
     body: Schema.optional(BatchRunPivotReportsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1377,7 +1375,7 @@ export const BatchRunPivotReportsPropertiesRequest =
 export type BatchRunPivotReportsPropertiesResponse =
   BatchRunPivotReportsResponse;
 export const BatchRunPivotReportsPropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchRunPivotReportsResponse;
+  /*@__PURE__*/ BatchRunPivotReportsResponse;
 
 export type BatchRunPivotReportsPropertiesError =
   | DefaultErrors
@@ -1392,7 +1390,7 @@ export const batchRunPivotReportsProperties: API.OperationMethod<
   BatchRunPivotReportsPropertiesResponse,
   BatchRunPivotReportsPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchRunPivotReportsPropertiesRequest,
   output: BatchRunPivotReportsPropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1404,7 +1402,7 @@ export interface GetMetadataPropertiesRequest {
 }
 
 export const GetMetadataPropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1412,8 +1410,7 @@ export const GetMetadataPropertiesRequest =
   ) as unknown as Schema.Codec<GetMetadataPropertiesRequest>;
 
 export type GetMetadataPropertiesResponse = Metadata;
-export const GetMetadataPropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Metadata;
+export const GetMetadataPropertiesResponse = /*@__PURE__*/ Metadata;
 
 export type GetMetadataPropertiesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1423,7 +1420,7 @@ export const getMetadataProperties: API.OperationMethod<
   GetMetadataPropertiesResponse,
   GetMetadataPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetadataPropertiesRequest,
   output: GetMetadataPropertiesResponse,
   errors: [NotFound, Forbidden],
@@ -1437,7 +1434,7 @@ export interface BatchRunReportsPropertiesRequest {
 }
 
 export const BatchRunReportsPropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.String.pipe(T.HttpPath("property")),
     body: Schema.optional(BatchRunReportsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1451,7 +1448,7 @@ export const BatchRunReportsPropertiesRequest =
 
 export type BatchRunReportsPropertiesResponse = BatchRunReportsResponse;
 export const BatchRunReportsPropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BatchRunReportsResponse;
+  /*@__PURE__*/ BatchRunReportsResponse;
 
 export type BatchRunReportsPropertiesError =
   | DefaultErrors
@@ -1466,7 +1463,7 @@ export const batchRunReportsProperties: API.OperationMethod<
   BatchRunReportsPropertiesResponse,
   BatchRunReportsPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchRunReportsPropertiesRequest,
   output: BatchRunReportsPropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1480,7 +1477,7 @@ export interface RunRealtimeReportPropertiesRequest {
 }
 
 export const RunRealtimeReportPropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.String.pipe(T.HttpPath("property")),
     body: Schema.optional(RunRealtimeReportRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1494,7 +1491,7 @@ export const RunRealtimeReportPropertiesRequest =
 
 export type RunRealtimeReportPropertiesResponse = RunRealtimeReportResponse;
 export const RunRealtimeReportPropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RunRealtimeReportResponse;
+  /*@__PURE__*/ RunRealtimeReportResponse;
 
 export type RunRealtimeReportPropertiesError =
   | DefaultErrors
@@ -1509,7 +1506,7 @@ export const runRealtimeReportProperties: API.OperationMethod<
   RunRealtimeReportPropertiesResponse,
   RunRealtimeReportPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunRealtimeReportPropertiesRequest,
   output: RunRealtimeReportPropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1523,7 +1520,7 @@ export interface RunReportPropertiesRequest {
 }
 
 export const RunReportPropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.String.pipe(T.HttpPath("property")),
     body: Schema.optional(RunReportRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1536,8 +1533,7 @@ export const RunReportPropertiesRequest =
   ) as unknown as Schema.Codec<RunReportPropertiesRequest>;
 
 export type RunReportPropertiesResponse = RunReportResponse;
-export const RunReportPropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RunReportResponse;
+export const RunReportPropertiesResponse = /*@__PURE__*/ RunReportResponse;
 
 export type RunReportPropertiesError =
   | DefaultErrors
@@ -1552,7 +1548,7 @@ export const runReportProperties: API.OperationMethod<
   RunReportPropertiesResponse,
   RunReportPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunReportPropertiesRequest,
   output: RunReportPropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1566,7 +1562,7 @@ export interface RunPivotReportPropertiesRequest {
 }
 
 export const RunPivotReportPropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.String.pipe(T.HttpPath("property")),
     body: Schema.optional(RunPivotReportRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1580,7 +1576,7 @@ export const RunPivotReportPropertiesRequest =
 
 export type RunPivotReportPropertiesResponse = RunPivotReportResponse;
 export const RunPivotReportPropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ RunPivotReportResponse;
+  /*@__PURE__*/ RunPivotReportResponse;
 
 export type RunPivotReportPropertiesError =
   | DefaultErrors
@@ -1595,7 +1591,7 @@ export const runPivotReportProperties: API.OperationMethod<
   RunPivotReportPropertiesResponse,
   RunPivotReportPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunPivotReportPropertiesRequest,
   output: RunPivotReportPropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1609,7 +1605,7 @@ export interface CheckCompatibilityPropertiesRequest {
 }
 
 export const CheckCompatibilityPropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.String.pipe(T.HttpPath("property")),
     body: Schema.optional(CheckCompatibilityRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1623,7 +1619,7 @@ export const CheckCompatibilityPropertiesRequest =
 
 export type CheckCompatibilityPropertiesResponse = CheckCompatibilityResponse;
 export const CheckCompatibilityPropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ CheckCompatibilityResponse;
+  /*@__PURE__*/ CheckCompatibilityResponse;
 
 export type CheckCompatibilityPropertiesError =
   | DefaultErrors
@@ -1638,7 +1634,7 @@ export const checkCompatibilityProperties: API.OperationMethod<
   CheckCompatibilityPropertiesResponse,
   CheckCompatibilityPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckCompatibilityPropertiesRequest,
   output: CheckCompatibilityPropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1652,7 +1648,7 @@ export interface QueryPropertiesAudienceExportsRequest {
 }
 
 export const QueryPropertiesAudienceExportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(QueryAudienceExportRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -1663,7 +1659,7 @@ export const QueryPropertiesAudienceExportsRequest =
 export type QueryPropertiesAudienceExportsResponse =
   QueryAudienceExportResponse;
 export const QueryPropertiesAudienceExportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ QueryAudienceExportResponse;
+  /*@__PURE__*/ QueryAudienceExportResponse;
 
 export type QueryPropertiesAudienceExportsError =
   | DefaultErrors
@@ -1678,7 +1674,7 @@ export const queryPropertiesAudienceExports: API.OperationMethod<
   QueryPropertiesAudienceExportsResponse,
   QueryPropertiesAudienceExportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: QueryPropertiesAudienceExportsRequest,
   output: QueryPropertiesAudienceExportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1690,7 +1686,7 @@ export interface GetPropertiesAudienceExportsRequest {
 }
 
 export const GetPropertiesAudienceExportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1699,7 +1695,7 @@ export const GetPropertiesAudienceExportsRequest =
 
 export type GetPropertiesAudienceExportsResponse = AudienceExport;
 export const GetPropertiesAudienceExportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ AudienceExport;
+  /*@__PURE__*/ AudienceExport;
 
 export type GetPropertiesAudienceExportsError =
   | DefaultErrors
@@ -1712,7 +1708,7 @@ export const getPropertiesAudienceExports: API.OperationMethod<
   GetPropertiesAudienceExportsResponse,
   GetPropertiesAudienceExportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPropertiesAudienceExportsRequest,
   output: GetPropertiesAudienceExportsResponse,
   errors: [NotFound, Forbidden],
@@ -1728,7 +1724,7 @@ export interface ListPropertiesAudienceExportsRequest {
 }
 
 export const ListPropertiesAudienceExportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -1739,7 +1735,7 @@ export const ListPropertiesAudienceExportsRequest =
 
 export type ListPropertiesAudienceExportsResponse = ListAudienceExportsResponse;
 export const ListPropertiesAudienceExportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAudienceExportsResponse;
+  /*@__PURE__*/ ListAudienceExportsResponse;
 
 export type ListPropertiesAudienceExportsError =
   | DefaultErrors
@@ -1752,7 +1748,7 @@ export const listPropertiesAudienceExports: API.PaginatedOperationMethod<
   ListPropertiesAudienceExportsResponse,
   ListPropertiesAudienceExportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesAudienceExportsRequest,
   output: ListPropertiesAudienceExportsResponse,
   errors: [NotFound, Forbidden],
@@ -1770,7 +1766,7 @@ export interface CreatePropertiesAudienceExportsRequest {
 }
 
 export const CreatePropertiesAudienceExportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AudienceExport).pipe(T.HttpBody()),
   }).pipe(
@@ -1783,8 +1779,7 @@ export const CreatePropertiesAudienceExportsRequest =
   ) as unknown as Schema.Codec<CreatePropertiesAudienceExportsRequest>;
 
 export type CreatePropertiesAudienceExportsResponse = Operation;
-export const CreatePropertiesAudienceExportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Operation;
+export const CreatePropertiesAudienceExportsResponse = /*@__PURE__*/ Operation;
 
 export type CreatePropertiesAudienceExportsError =
   | DefaultErrors
@@ -1799,7 +1794,7 @@ export const createPropertiesAudienceExports: API.OperationMethod<
   CreatePropertiesAudienceExportsResponse,
   CreatePropertiesAudienceExportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePropertiesAudienceExportsRequest,
   output: CreatePropertiesAudienceExportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],

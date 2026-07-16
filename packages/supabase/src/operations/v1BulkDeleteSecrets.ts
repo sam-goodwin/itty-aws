@@ -8,7 +8,7 @@ export interface V1BulkDeleteSecretsInput {
   ref: string;
 }
 export const V1BulkDeleteSecretsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/projects/{ref}/secrets" }),
@@ -17,7 +17,7 @@ export const V1BulkDeleteSecretsInput =
 // Output Schema
 export type V1BulkDeleteSecretsOutput = void;
 export const V1BulkDeleteSecretsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1BulkDeleteSecretsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1BulkDeleteSecretsOutput>;
 
 // The operation
 /**
@@ -27,7 +27,7 @@ export const V1BulkDeleteSecretsOutput =
  *
  * @param ref - Project ref
  */
-export const v1BulkDeleteSecrets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1BulkDeleteSecrets = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1BulkDeleteSecretsInput,
   outputSchema: V1BulkDeleteSecretsOutput,
   errors: [BadRequest, Forbidden] as const,

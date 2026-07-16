@@ -34,7 +34,7 @@ export interface TimeOfDay {
 }
 
 export const TimeOfDay: Schema.Codec<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nanos: Schema.optional(Schema.Number),
     minutes: Schema.optional(Schema.Number),
     seconds: Schema.optional(Schema.Number),
@@ -77,7 +77,7 @@ export interface FetchSettings {
 }
 
 export const FetchSettings: Schema.Codec<FetchSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.optional(Schema.Boolean),
     dayOfMonth: Schema.optional(Schema.Number),
     username: Schema.optional(Schema.String),
@@ -111,7 +111,7 @@ export interface Destination {
 }
 
 export const Destination: Schema.Codec<Destination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     destination: Schema.optional(Schema.String),
     state: Schema.optional(Schema.String),
   }).annotate({ identifier: "Destination" });
@@ -126,7 +126,7 @@ export interface DataSourceReference {
 }
 
 export const DataSourceReference: Schema.Codec<DataSourceReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     self: Schema.optional(Schema.Boolean),
     primaryDataSourceName: Schema.optional(Schema.String),
     supplementalDataSourceName: Schema.optional(Schema.String),
@@ -138,7 +138,7 @@ export interface DefaultRule {
 }
 
 export const DefaultRule: Schema.Codec<DefaultRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     takeFromDataSources: Schema.optional(Schema.Array(DataSourceReference)),
   }).annotate({ identifier: "DefaultRule" });
 
@@ -163,7 +163,7 @@ export interface PrimaryProductDataSource {
 }
 
 export const PrimaryProductDataSource: Schema.Codec<PrimaryProductDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     countries: Schema.optional(Schema.Array(Schema.String)),
     contentLanguage: Schema.optional(Schema.String),
     destinations: Schema.optional(Schema.Array(Destination)),
@@ -188,7 +188,7 @@ export interface Issue {
 }
 
 export const Issue: Schema.Codec<Issue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     count: Schema.optional(Schema.String),
     severity: Schema.optional(Schema.String),
@@ -205,7 +205,7 @@ export interface RegionalInventoryDataSource {
 }
 
 export const RegionalInventoryDataSource: Schema.Codec<RegionalInventoryDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     feedLabel: Schema.optional(Schema.String),
     contentLanguage: Schema.optional(Schema.String),
   }).annotate({ identifier: "RegionalInventoryDataSource" });
@@ -218,7 +218,7 @@ export interface PromotionDataSource {
 }
 
 export const PromotionDataSource: Schema.Codec<PromotionDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     targetCountry: Schema.optional(Schema.String),
     contentLanguage: Schema.optional(Schema.String),
   }).annotate({ identifier: "PromotionDataSource" });
@@ -226,14 +226,14 @@ export const PromotionDataSource: Schema.Codec<PromotionDataSource> =
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
 export interface FetchDataSourceRequest {}
 
 export const FetchDataSourceRequest: Schema.Codec<FetchDataSourceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FetchDataSourceRequest",
   });
 
@@ -252,7 +252,7 @@ export interface FileInput {
 }
 
 export const FileInput: Schema.Codec<FileInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fileName: Schema.optional(Schema.String),
     fileInputType: Schema.optional(Schema.String),
     fetchSettings: Schema.optional(FetchSettings),
@@ -268,7 +268,7 @@ export interface SupplementalProductDataSource {
 }
 
 export const SupplementalProductDataSource: Schema.Codec<SupplementalProductDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     feedLabel: Schema.optional(Schema.String),
     contentLanguage: Schema.optional(Schema.String),
     referencingPrimaryDataSources: Schema.optional(
@@ -309,7 +309,7 @@ export interface ProductChange {
 }
 
 export const ProductChange: Schema.Codec<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     newValue: Schema.optional(Schema.String),
     regionCode: Schema.optional(Schema.String),
     oldValue: Schema.optional(Schema.String),
@@ -342,7 +342,7 @@ export interface ProductStatusChangeMessage {
 }
 
 export const ProductStatusChangeMessage: Schema.Codec<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceType: Schema.optional(Schema.String),
     account: Schema.optional(Schema.String),
     attribute: Schema.optional(Schema.String),
@@ -362,7 +362,7 @@ export interface LocalInventoryDataSource {
 }
 
 export const LocalInventoryDataSource: Schema.Codec<LocalInventoryDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     feedLabel: Schema.optional(Schema.String),
     contentLanguage: Schema.optional(Schema.String),
   }).annotate({ identifier: "LocalInventoryDataSource" });
@@ -370,14 +370,14 @@ export const LocalInventoryDataSource: Schema.Codec<LocalInventoryDataSource> =
 export interface ProductReviewDataSource {}
 
 export const ProductReviewDataSource: Schema.Codec<ProductReviewDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ProductReviewDataSource",
   });
 
 export interface MerchantReviewDataSource {}
 
 export const MerchantReviewDataSource: Schema.Codec<MerchantReviewDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MerchantReviewDataSource",
   });
 
@@ -415,7 +415,7 @@ export interface DataSource {
 }
 
 export const DataSource: Schema.Codec<DataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataSourceId: Schema.optional(Schema.String),
     regionalInventoryDataSource: Schema.optional(RegionalInventoryDataSource),
     productReviewDataSource: Schema.optional(ProductReviewDataSource),
@@ -440,7 +440,7 @@ export interface ListDataSourcesResponse {
 }
 
 export const ListDataSourcesResponse: Schema.Codec<ListDataSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataSources: Schema.optional(Schema.Array(DataSource)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListDataSourcesResponse" });
@@ -470,7 +470,7 @@ export interface FileUpload {
 }
 
 export const FileUpload: Schema.Codec<FileUpload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     processingState: Schema.optional(Schema.String),
     itemsCreated: Schema.optional(Schema.String),
     issues: Schema.optional(Schema.Array(Issue)),
@@ -541,7 +541,7 @@ export interface GetAccountsDataSourcesRequest {
 }
 
 export const GetAccountsDataSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "datasources/v1beta/{+name}" }),
@@ -549,8 +549,7 @@ export const GetAccountsDataSourcesRequest =
   ) as unknown as Schema.Codec<GetAccountsDataSourcesRequest>;
 
 export type GetAccountsDataSourcesResponse = DataSource;
-export const GetAccountsDataSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataSource;
+export const GetAccountsDataSourcesResponse = /*@__PURE__*/ DataSource;
 
 export type GetAccountsDataSourcesError = DefaultErrors | NotFound | Forbidden;
 
@@ -560,7 +559,7 @@ export const getAccountsDataSources: API.OperationMethod<
   GetAccountsDataSourcesResponse,
   GetAccountsDataSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsDataSourcesRequest,
   output: GetAccountsDataSourcesResponse,
   errors: [NotFound, Forbidden],
@@ -576,7 +575,7 @@ export interface ListAccountsDataSourcesRequest {
 }
 
 export const ListAccountsDataSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -587,7 +586,7 @@ export const ListAccountsDataSourcesRequest =
 
 export type ListAccountsDataSourcesResponse = ListDataSourcesResponse;
 export const ListAccountsDataSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListDataSourcesResponse;
+  /*@__PURE__*/ ListDataSourcesResponse;
 
 export type ListAccountsDataSourcesError = DefaultErrors | NotFound | Forbidden;
 
@@ -597,7 +596,7 @@ export const listAccountsDataSources: API.PaginatedOperationMethod<
   ListAccountsDataSourcesResponse,
   ListAccountsDataSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsDataSourcesRequest,
   output: ListAccountsDataSourcesResponse,
   errors: [NotFound, Forbidden],
@@ -613,7 +612,7 @@ export interface DeleteAccountsDataSourcesRequest {
 }
 
 export const DeleteAccountsDataSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "datasources/v1beta/{+name}" }),
@@ -621,8 +620,7 @@ export const DeleteAccountsDataSourcesRequest =
   ) as unknown as Schema.Codec<DeleteAccountsDataSourcesRequest>;
 
 export type DeleteAccountsDataSourcesResponse = Empty;
-export const DeleteAccountsDataSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteAccountsDataSourcesResponse = /*@__PURE__*/ Empty;
 
 export type DeleteAccountsDataSourcesError =
   | DefaultErrors
@@ -637,7 +635,7 @@ export const deleteAccountsDataSources: API.OperationMethod<
   DeleteAccountsDataSourcesResponse,
   DeleteAccountsDataSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsDataSourcesRequest,
   output: DeleteAccountsDataSourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -651,7 +649,7 @@ export interface FetchAccountsDataSourcesRequest {
 }
 
 export const FetchAccountsDataSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(FetchDataSourceRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -664,8 +662,7 @@ export const FetchAccountsDataSourcesRequest =
   ) as unknown as Schema.Codec<FetchAccountsDataSourcesRequest>;
 
 export type FetchAccountsDataSourcesResponse = Empty;
-export const FetchAccountsDataSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const FetchAccountsDataSourcesResponse = /*@__PURE__*/ Empty;
 
 export type FetchAccountsDataSourcesError =
   | DefaultErrors
@@ -680,7 +677,7 @@ export const fetchAccountsDataSources: API.OperationMethod<
   FetchAccountsDataSourcesResponse,
   FetchAccountsDataSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FetchAccountsDataSourcesRequest,
   output: FetchAccountsDataSourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -696,7 +693,7 @@ export interface PatchAccountsDataSourcesRequest {
 }
 
 export const PatchAccountsDataSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(DataSource).pipe(T.HttpBody()),
@@ -710,8 +707,7 @@ export const PatchAccountsDataSourcesRequest =
   ) as unknown as Schema.Codec<PatchAccountsDataSourcesRequest>;
 
 export type PatchAccountsDataSourcesResponse = DataSource;
-export const PatchAccountsDataSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataSource;
+export const PatchAccountsDataSourcesResponse = /*@__PURE__*/ DataSource;
 
 export type PatchAccountsDataSourcesError =
   | DefaultErrors
@@ -726,7 +722,7 @@ export const patchAccountsDataSources: API.OperationMethod<
   PatchAccountsDataSourcesResponse,
   PatchAccountsDataSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsDataSourcesRequest,
   output: PatchAccountsDataSourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -740,7 +736,7 @@ export interface CreateAccountsDataSourcesRequest {
 }
 
 export const CreateAccountsDataSourcesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(DataSource).pipe(T.HttpBody()),
   }).pipe(
@@ -753,8 +749,7 @@ export const CreateAccountsDataSourcesRequest =
   ) as unknown as Schema.Codec<CreateAccountsDataSourcesRequest>;
 
 export type CreateAccountsDataSourcesResponse = DataSource;
-export const CreateAccountsDataSourcesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ DataSource;
+export const CreateAccountsDataSourcesResponse = /*@__PURE__*/ DataSource;
 
 export type CreateAccountsDataSourcesError =
   | DefaultErrors
@@ -769,7 +764,7 @@ export const createAccountsDataSources: API.OperationMethod<
   CreateAccountsDataSourcesResponse,
   CreateAccountsDataSourcesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountsDataSourcesRequest,
   output: CreateAccountsDataSourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -781,7 +776,7 @@ export interface GetAccountsDataSourcesFileUploadsRequest {
 }
 
 export const GetAccountsDataSourcesFileUploadsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "datasources/v1beta/{+name}" }),
@@ -790,7 +785,7 @@ export const GetAccountsDataSourcesFileUploadsRequest =
 
 export type GetAccountsDataSourcesFileUploadsResponse = FileUpload;
 export const GetAccountsDataSourcesFileUploadsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ FileUpload;
+  /*@__PURE__*/ FileUpload;
 
 export type GetAccountsDataSourcesFileUploadsError =
   | DefaultErrors
@@ -803,7 +798,7 @@ export const getAccountsDataSourcesFileUploads: API.OperationMethod<
   GetAccountsDataSourcesFileUploadsResponse,
   GetAccountsDataSourcesFileUploadsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsDataSourcesFileUploadsRequest,
   output: GetAccountsDataSourcesFileUploadsResponse,
   errors: [NotFound, Forbidden],

@@ -9,7 +9,7 @@ export interface V1UpdatePgsodiumConfigInput {
   root_key: string;
 }
 export const V1UpdatePgsodiumConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     root_key: Schema.String,
   }).pipe(
@@ -21,7 +21,7 @@ export interface V1UpdatePgsodiumConfigOutput {
   root_key: string;
 }
 export const V1UpdatePgsodiumConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     root_key: Schema.String,
   }) as unknown as Schema.Codec<V1UpdatePgsodiumConfigOutput>;
 
@@ -31,10 +31,8 @@ export const V1UpdatePgsodiumConfigOutput =
  *
  * @param ref - Project ref
  */
-export const v1UpdatePgsodiumConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1UpdatePgsodiumConfigInput,
-    outputSchema: V1UpdatePgsodiumConfigOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1UpdatePgsodiumConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1UpdatePgsodiumConfigInput,
+  outputSchema: V1UpdatePgsodiumConfigOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

@@ -28,7 +28,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1AggregatorInfo {
 }
 
 export const GoogleAdsHomeservicesLocalservicesV1AggregatorInfo: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1AggregatorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     aggregatorProviderId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo",
@@ -72,7 +72,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1AccountReport {
 }
 
 export const GoogleAdsHomeservicesLocalservicesV1AccountReport: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1AccountReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     phoneLeadResponsiveness: Schema.optional(Schema.Number),
     accountId: Schema.optional(Schema.String),
     currentPeriodConnectedPhoneCalls: Schema.optional(Schema.String),
@@ -104,7 +104,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsRespons
 }
 
 export const GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountReports: Schema.optional(
       Schema.Array(GoogleAdsHomeservicesLocalservicesV1AccountReport),
     ),
@@ -122,7 +122,7 @@ export interface GoogleTypeTimeZone {
 }
 
 export const GoogleTypeTimeZone: Schema.Codec<GoogleTypeTimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     version: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleTypeTimeZone" });
@@ -139,7 +139,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1MessageLead {
 }
 
 export const GoogleAdsHomeservicesLocalservicesV1MessageLead: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1MessageLead> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     jobType: Schema.optional(Schema.String),
     postalCode: Schema.optional(Schema.String),
     consumerPhoneNumber: Schema.optional(Schema.String),
@@ -158,7 +158,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1PhoneLead {
 }
 
 export const GoogleAdsHomeservicesLocalservicesV1PhoneLead: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1PhoneLead> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     chargedCallTimestamp: Schema.optional(Schema.String),
     chargedConnectedCallDurationSeconds: Schema.optional(Schema.String),
     consumerPhoneNumber: Schema.optional(Schema.String),
@@ -178,7 +178,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1BookingLead {
 }
 
 export const GoogleAdsHomeservicesLocalservicesV1BookingLead: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1BookingLead> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     consumerPhoneNumber: Schema.optional(Schema.String),
     consumerEmail: Schema.optional(Schema.String),
     customerName: Schema.optional(Schema.String),
@@ -235,7 +235,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
 }
 
 export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     timezone: Schema.optional(GoogleTypeTimeZone),
     accountId: Schema.optional(Schema.String),
     googleAdsLeadId: Schema.optional(Schema.String),
@@ -271,7 +271,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsRe
 }
 
 export const GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse: Schema.Codec<GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     detailedLeadReports: Schema.optional(
       Schema.Array(GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport),
@@ -334,7 +334,7 @@ export interface SearchDetailedLeadReportsRequest {
 }
 
 export const SearchDetailedLeadReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     "startDate.month": Schema.optional(Schema.Number).pipe(
@@ -364,7 +364,7 @@ export const SearchDetailedLeadReportsRequest =
 export type SearchDetailedLeadReportsResponse =
   GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse;
 export const SearchDetailedLeadReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse;
+  /*@__PURE__*/ GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse;
 
 export type SearchDetailedLeadReportsError =
   | DefaultErrors
@@ -377,7 +377,7 @@ export const searchDetailedLeadReports: API.PaginatedOperationMethod<
   SearchDetailedLeadReportsResponse,
   SearchDetailedLeadReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchDetailedLeadReportsRequest,
   output: SearchDetailedLeadReportsResponse,
   errors: [NotFound, Forbidden],
@@ -409,7 +409,7 @@ export interface SearchAccountReportsRequest {
 }
 
 export const SearchAccountReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     "startDate.month": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("startDate.month"),
     ),
@@ -439,7 +439,7 @@ export const SearchAccountReportsRequest =
 export type SearchAccountReportsResponse =
   GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse;
 export const SearchAccountReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse;
+  /*@__PURE__*/ GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse;
 
 export type SearchAccountReportsError = DefaultErrors | NotFound | Forbidden;
 
@@ -449,7 +449,7 @@ export const searchAccountReports: API.PaginatedOperationMethod<
   SearchAccountReportsResponse,
   SearchAccountReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAccountReportsRequest,
   output: SearchAccountReportsResponse,
   errors: [NotFound, Forbidden],

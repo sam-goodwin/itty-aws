@@ -8,7 +8,7 @@ export interface V1GetReadonlyModeStatusInput {
   ref: string;
 }
 export const V1GetReadonlyModeStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/projects/{ref}/readonly" }),
@@ -21,7 +21,7 @@ export interface V1GetReadonlyModeStatusOutput {
   override_active_until: string;
 }
 export const V1GetReadonlyModeStatusOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
     override_enabled: Schema.Boolean,
     override_active_until: Schema.String,
@@ -33,10 +33,8 @@ export const V1GetReadonlyModeStatusOutput =
  *
  * @param ref - Project ref
  */
-export const v1GetReadonlyModeStatus = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1GetReadonlyModeStatusInput,
-    outputSchema: V1GetReadonlyModeStatusOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1GetReadonlyModeStatus = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1GetReadonlyModeStatusInput,
+  outputSchema: V1GetReadonlyModeStatusOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

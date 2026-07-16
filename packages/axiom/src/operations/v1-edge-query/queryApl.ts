@@ -53,7 +53,7 @@ export interface QueryAplInput {
   startTime?: string;
   variables?: Record<string, unknown>;
 }
-export const QueryAplInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const QueryAplInput = /*@__PURE__*/ Schema.Struct({
   format: Schema.Literals(["legacy", "tabular", "tabular-rows"]),
   nocache: Schema.optional(Schema.Boolean),
   saveAsKind: Schema.optional(Schema.String),
@@ -118,7 +118,7 @@ export const QueryAplInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type QueryAplOutput = unknown;
 export const QueryAplOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Codec<QueryAplOutput>;
+  /*@__PURE__*/ Schema.Unknown as unknown as Schema.Codec<QueryAplOutput>;
 
 // The operation
 /**
@@ -128,7 +128,7 @@ export const QueryAplOutput =
  * @param apl-source-id - contains the id of the source, for example dashboard_id
  * @param totals - Include a totals table (only supported in MetricsDB)
  */
-export const queryApl = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const queryApl = /*@__PURE__*/ API.make(() => ({
   inputSchema: QueryAplInput,
   outputSchema: QueryAplOutput,
 }));

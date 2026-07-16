@@ -19,7 +19,7 @@ export interface AuthorizationResourcesControllerListOrganizationMembershipsForR
   assignment?: "direct" | "indirect";
 }
 export const AuthorizationResourcesControllerListOrganizationMembershipsForResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource_id: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -68,7 +68,7 @@ export interface AuthorizationResourcesControllerListOrganizationMembershipsForR
   list_metadata: { before: string | null; after: string | null };
 }
 export const AuthorizationResourcesControllerListOrganizationMembershipsForResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     data: Schema.Array(
       Schema.Struct({
@@ -125,7 +125,7 @@ export const AuthorizationResourcesControllerListOrganizationMembershipsForResou
  * @param assignment - Filter by assignment type. Use `direct` for direct assignments only, or `indirect` to include inherited assignments.
  */
 export const AuthorizationResourcesControllerListOrganizationMembershipsForResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       AuthorizationResourcesControllerListOrganizationMembershipsForResourceInput,
     outputSchema:

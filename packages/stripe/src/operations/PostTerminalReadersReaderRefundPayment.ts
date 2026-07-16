@@ -20,7 +20,7 @@ export interface PostTerminalReadersReaderRefundPaymentInput {
   reverse_transfer?: boolean;
 }
 export const PostTerminalReadersReaderRefundPaymentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     reader: Schema.String.pipe(T.PathParam()),
     amount: Schema.optional(Schema.Number),
     charge: Schema.optional(Schema.String),
@@ -117,7 +117,7 @@ export interface PostTerminalReadersReaderRefundPaymentOutput {
   status: "offline" | "online" | null;
 }
 export const PostTerminalReadersReaderRefundPaymentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.Unknown,
     device_sw_version: Schema.NullOr(Schema.String),
     device_type: Schema.Literals([
@@ -205,7 +205,7 @@ export const PostTerminalReadersReaderRefundPaymentOutput =
  * <p>Initiates an in-person refund on a Reader. See <a href="/docs/terminal/payments/regional?integration-country=CA#refund-an-interac-payment">Refund an Interac Payment</a> for more details.</p>
  */
 export const PostTerminalReadersReaderRefundPayment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostTerminalReadersReaderRefundPaymentInput,
     outputSchema: PostTerminalReadersReaderRefundPaymentOutput,
   }));

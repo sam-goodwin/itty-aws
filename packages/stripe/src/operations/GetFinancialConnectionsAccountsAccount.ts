@@ -13,7 +13,7 @@ export interface GetFinancialConnectionsAccountsAccountInput {
   expand?: string;
 }
 export const GetFinancialConnectionsAccountsAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -116,7 +116,7 @@ export interface GetFinancialConnectionsAccountsAccountOutput {
   } | null;
 }
 export const GetFinancialConnectionsAccountsAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_holder: Schema.NullOr(
       Schema.Struct({
         account: Schema.optional(Schema.Unknown),
@@ -267,7 +267,7 @@ export const GetFinancialConnectionsAccountsAccountOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetFinancialConnectionsAccountsAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetFinancialConnectionsAccountsAccountInput,
     outputSchema: GetFinancialConnectionsAccountsAccountOutput,
   }));

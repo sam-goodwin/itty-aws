@@ -14,7 +14,7 @@ export interface ListGroupFlexClusterBackupRestoreJobsInput {
   pretty?: boolean;
 }
 export const ListGroupFlexClusterBackupRestoreJobsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const ListGroupFlexClusterBackupRestoreJobsInput =
 // Output Schema
 export type ListGroupFlexClusterBackupRestoreJobsOutput = void;
 export const ListGroupFlexClusterBackupRestoreJobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupFlexClusterBackupRestoreJobsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupFlexClusterBackupRestoreJobsOutput>;
 
 // The operation
 /**
@@ -51,7 +51,7 @@ export const ListGroupFlexClusterBackupRestoreJobsOutput =
  * @param name - Human-readable label that identifies the flex cluster.
  */
 export const listGroupFlexClusterBackupRestoreJobs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ListGroupFlexClusterBackupRestoreJobsInput,
     outputSchema: ListGroupFlexClusterBackupRestoreJobsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

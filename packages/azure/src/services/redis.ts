@@ -28,7 +28,7 @@ export interface AccessPolicyAssignmentCreateUpdateInput {
   };
 }
 export const AccessPolicyAssignmentCreateUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -73,7 +73,7 @@ export interface AccessPolicyAssignmentCreateUpdateOutput {
   };
 }
 export const AccessPolicyAssignmentCreateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -104,7 +104,7 @@ export const AccessPolicyAssignmentCreateUpdateOutput =
  * @param accessPolicyAssignmentName - The name of the access policy assignment.
  */
 export const AccessPolicyAssignmentCreateUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccessPolicyAssignmentCreateUpdateInput,
     outputSchema: AccessPolicyAssignmentCreateUpdateOutput,
   }));
@@ -116,7 +116,7 @@ export interface AccessPolicyAssignmentDeleteInput {
   accessPolicyAssignmentName: string;
 }
 export const AccessPolicyAssignmentDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -132,7 +132,7 @@ export const AccessPolicyAssignmentDeleteInput =
 // Output Schema
 export type AccessPolicyAssignmentDeleteOutput = void;
 export const AccessPolicyAssignmentDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessPolicyAssignmentDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessPolicyAssignmentDeleteOutput>;
 
 // The operation
 /**
@@ -145,7 +145,7 @@ export const AccessPolicyAssignmentDeleteOutput =
  * @param accessPolicyAssignmentName - The name of the access policy assignment.
  */
 export const AccessPolicyAssignmentDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AccessPolicyAssignmentDeleteInput,
     outputSchema: AccessPolicyAssignmentDeleteOutput,
   }));
@@ -157,7 +157,7 @@ export interface AccessPolicyAssignmentGetInput {
   accessPolicyAssignmentName: string;
 }
 export const AccessPolicyAssignmentGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -185,7 +185,7 @@ export interface AccessPolicyAssignmentGetOutput {
   };
 }
 export const AccessPolicyAssignmentGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -215,12 +215,10 @@ export const AccessPolicyAssignmentGetOutput =
  * @param cacheName - The name of the Redis cache.
  * @param accessPolicyAssignmentName - The name of the access policy assignment.
  */
-export const AccessPolicyAssignmentGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessPolicyAssignmentGetInput,
-    outputSchema: AccessPolicyAssignmentGetOutput,
-  }),
-);
+export const AccessPolicyAssignmentGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPolicyAssignmentGetInput,
+  outputSchema: AccessPolicyAssignmentGetOutput,
+}));
 // Input Schema
 export interface AccessPolicyAssignmentListInput {
   subscriptionId: string;
@@ -228,7 +226,7 @@ export interface AccessPolicyAssignmentListInput {
   cacheName: string;
 }
 export const AccessPolicyAssignmentListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -258,7 +256,7 @@ export interface AccessPolicyAssignmentListOutput {
   nextLink?: string;
 }
 export const AccessPolicyAssignmentListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -302,12 +300,10 @@ export const AccessPolicyAssignmentListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - The name of the Redis cache.
  */
-export const AccessPolicyAssignmentList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessPolicyAssignmentListInput,
-    outputSchema: AccessPolicyAssignmentListOutput,
-  }),
-);
+export const AccessPolicyAssignmentList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPolicyAssignmentListInput,
+  outputSchema: AccessPolicyAssignmentListOutput,
+}));
 // Input Schema
 export interface AccessPolicyCreateUpdateInput {
   subscriptionId: string;
@@ -327,7 +323,7 @@ export interface AccessPolicyCreateUpdateInput {
   };
 }
 export const AccessPolicyCreateUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -371,7 +367,7 @@ export interface AccessPolicyCreateUpdateOutput {
   };
 }
 export const AccessPolicyCreateUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -401,12 +397,10 @@ export const AccessPolicyCreateUpdateOutput =
  * @param cacheName - The name of the Redis cache.
  * @param accessPolicyName - The name of the access policy that is being added to the Redis cache.
  */
-export const AccessPolicyCreateUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AccessPolicyCreateUpdateInput,
-    outputSchema: AccessPolicyCreateUpdateOutput,
-  }),
-);
+export const AccessPolicyCreateUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AccessPolicyCreateUpdateInput,
+  outputSchema: AccessPolicyCreateUpdateOutput,
+}));
 // Input Schema
 export interface AccessPolicyDeleteInput {
   subscriptionId: string;
@@ -415,7 +409,7 @@ export interface AccessPolicyDeleteInput {
   accessPolicyName: string;
 }
 export const AccessPolicyDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -431,7 +425,7 @@ export const AccessPolicyDeleteInput =
 // Output Schema
 export type AccessPolicyDeleteOutput = void;
 export const AccessPolicyDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessPolicyDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AccessPolicyDeleteOutput>;
 
 // The operation
 /**
@@ -443,7 +437,7 @@ export const AccessPolicyDeleteOutput =
  * @param cacheName - The name of the Redis cache.
  * @param accessPolicyName - The name of the access policy that is being added to the Redis cache.
  */
-export const AccessPolicyDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessPolicyDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccessPolicyDeleteInput,
   outputSchema: AccessPolicyDeleteOutput,
 }));
@@ -454,7 +448,7 @@ export interface AccessPolicyGetInput {
   cacheName: string;
   accessPolicyName: string;
 }
-export const AccessPolicyGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccessPolicyGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -481,7 +475,7 @@ export interface AccessPolicyGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AccessPolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccessPolicyGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -511,7 +505,7 @@ export const AccessPolicyGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param cacheName - The name of the Redis cache.
  * @param accessPolicyName - The name of the access policy that is being added to the Redis cache.
  */
-export const AccessPolicyGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessPolicyGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccessPolicyGetInput,
   outputSchema: AccessPolicyGetOutput,
 }));
@@ -521,7 +515,7 @@ export interface AccessPolicyListInput {
   resourceGroupName: string;
   cacheName: string;
 }
-export const AccessPolicyListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AccessPolicyListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -550,42 +544,30 @@ export interface AccessPolicyListOutput {
   }[];
   nextLink?: string;
 }
-export const AccessPolicyListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<AccessPolicyListOutput>;
+export const AccessPolicyListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<AccessPolicyListOutput>;
 
 // The operation
 /**
@@ -596,7 +578,7 @@ export const AccessPolicyListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - The name of the Redis cache.
  */
-export const AccessPolicyList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AccessPolicyList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AccessPolicyListInput,
   outputSchema: AccessPolicyListOutput,
 }));
@@ -607,7 +589,7 @@ export interface AsyncOperationStatusGetInput {
   subscriptionId: string;
 }
 export const AsyncOperationStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     location: Schema.String.pipe(T.PathParam()),
     operationId: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
@@ -652,7 +634,7 @@ export interface AsyncOperationStatusGetOutput {
   };
 }
 export const AsyncOperationStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     status: Schema.String,
@@ -715,12 +697,10 @@ export const AsyncOperationStatusGetOutput =
  * @param operationId - The ID of asynchronous operation
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const AsyncOperationStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AsyncOperationStatusGetInput,
-    outputSchema: AsyncOperationStatusGetOutput,
-  }),
-);
+export const AsyncOperationStatusGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AsyncOperationStatusGetInput,
+  outputSchema: AsyncOperationStatusGetOutput,
+}));
 // Input Schema
 export interface FirewallRulesCreateOrUpdateInput {
   subscriptionId: string;
@@ -730,7 +710,7 @@ export interface FirewallRulesCreateOrUpdateInput {
   properties: { startIP: string; endIP: string };
 }
 export const FirewallRulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -762,7 +742,7 @@ export interface FirewallRulesCreateOrUpdateOutput {
   };
 }
 export const FirewallRulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -792,12 +772,10 @@ export const FirewallRulesCreateOrUpdateOutput =
  * @param cacheName - The name of the Redis cache.
  * @param ruleName - The name of the firewall rule.
  */
-export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: FirewallRulesCreateOrUpdateInput,
-    outputSchema: FirewallRulesCreateOrUpdateOutput,
-  }),
-);
+export const FirewallRulesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: FirewallRulesCreateOrUpdateInput,
+  outputSchema: FirewallRulesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface FirewallRulesDeleteInput {
   subscriptionId: string;
@@ -806,7 +784,7 @@ export interface FirewallRulesDeleteInput {
   ruleName: string;
 }
 export const FirewallRulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -822,7 +800,7 @@ export const FirewallRulesDeleteInput =
 // Output Schema
 export type FirewallRulesDeleteOutput = void;
 export const FirewallRulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FirewallRulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FirewallRulesDeleteOutput>;
 
 // The operation
 /**
@@ -834,7 +812,7 @@ export const FirewallRulesDeleteOutput =
  * @param cacheName - The name of the Redis cache.
  * @param ruleName - The name of the firewall rule.
  */
-export const FirewallRulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesDeleteInput,
   outputSchema: FirewallRulesDeleteOutput,
 }));
@@ -845,7 +823,7 @@ export interface FirewallRulesGetInput {
   cacheName: string;
   ruleName: string;
 }
-export const FirewallRulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const FirewallRulesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -872,27 +850,25 @@ export interface FirewallRulesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<FirewallRulesGetOutput>;
+export const FirewallRulesGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<FirewallRulesGetOutput>;
 
 // The operation
 /**
@@ -904,7 +880,7 @@ export const FirewallRulesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param cacheName - The name of the Redis cache.
  * @param ruleName - The name of the firewall rule.
  */
-export const FirewallRulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesGetInput,
   outputSchema: FirewallRulesGetOutput,
 }));
@@ -914,13 +890,11 @@ export interface FirewallRulesListInput {
   resourceGroupName: string;
   cacheName: string;
 }
-export const FirewallRulesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    cacheName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const FirewallRulesListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  cacheName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules",
@@ -946,7 +920,7 @@ export interface FirewallRulesListOutput {
   nextLink?: string;
 }
 export const FirewallRulesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -990,7 +964,7 @@ export const FirewallRulesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - The name of the Redis cache.
  */
-export const FirewallRulesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const FirewallRulesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: FirewallRulesListInput,
   outputSchema: FirewallRulesListOutput,
 }));
@@ -1009,7 +983,7 @@ export interface LinkedServerCreateInput {
   };
 }
 export const LinkedServerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1044,7 +1018,7 @@ export interface LinkedServerCreateOutput {
   };
 }
 export const LinkedServerCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1074,7 +1048,7 @@ export const LinkedServerCreateOutput =
  * @param name - The name of the redis cache.
  * @param linkedServerName - The name of the RedisLinkedServerWithProperties
  */
-export const LinkedServerCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkedServerCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkedServerCreateInput,
   outputSchema: LinkedServerCreateOutput,
 }));
@@ -1086,7 +1060,7 @@ export interface LinkedServerDeleteInput {
   linkedServerName: string;
 }
 export const LinkedServerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1102,7 +1076,7 @@ export const LinkedServerDeleteInput =
 // Output Schema
 export type LinkedServerDeleteOutput = void;
 export const LinkedServerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LinkedServerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LinkedServerDeleteOutput>;
 
 // The operation
 /**
@@ -1114,7 +1088,7 @@ export const LinkedServerDeleteOutput =
  * @param name - The name of the redis cache.
  * @param linkedServerName - The name of the RedisLinkedServerWithProperties
  */
-export const LinkedServerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkedServerDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkedServerDeleteInput,
   outputSchema: LinkedServerDeleteOutput,
 }));
@@ -1125,7 +1099,7 @@ export interface LinkedServerGetInput {
   name: string;
   linkedServerName: string;
 }
-export const LinkedServerGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkedServerGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -1152,7 +1126,7 @@ export interface LinkedServerGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const LinkedServerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkedServerGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1182,7 +1156,7 @@ export const LinkedServerGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param name - The name of the redis cache.
  * @param linkedServerName - The name of the RedisLinkedServerWithProperties
  */
-export const LinkedServerGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkedServerGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkedServerGetInput,
   outputSchema: LinkedServerGetOutput,
 }));
@@ -1192,7 +1166,7 @@ export interface LinkedServerListInput {
   resourceGroupName: string;
   name: string;
 }
-export const LinkedServerListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LinkedServerListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -1221,42 +1195,30 @@ export interface LinkedServerListOutput {
   }[];
   nextLink?: string;
 }
-export const LinkedServerListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<LinkedServerListOutput>;
+export const LinkedServerListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<LinkedServerListOutput>;
 
 // The operation
 /**
@@ -1267,15 +1229,13 @@ export const LinkedServerListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the redis cache.
  */
-export const LinkedServerList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LinkedServerList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LinkedServerListInput,
   outputSchema: LinkedServerListOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.Cache/operations",
@@ -1296,7 +1256,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -1319,7 +1279,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -1348,7 +1308,7 @@ export interface PatchSchedulesCreateOrUpdateInput {
   location?: string;
 }
 export const PatchSchedulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1396,7 +1356,7 @@ export interface PatchSchedulesCreateOrUpdateOutput {
   };
 }
 export const PatchSchedulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1427,7 +1387,7 @@ export const PatchSchedulesCreateOrUpdateOutput =
  * @param default - The name of the RedisPatchSchedule
  */
 export const PatchSchedulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchSchedulesCreateOrUpdateInput,
     outputSchema: PatchSchedulesCreateOrUpdateOutput,
   }));
@@ -1439,7 +1399,7 @@ export interface PatchSchedulesDeleteInput {
   default: "default";
 }
 export const PatchSchedulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -1455,7 +1415,7 @@ export const PatchSchedulesDeleteInput =
 // Output Schema
 export type PatchSchedulesDeleteOutput = void;
 export const PatchSchedulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PatchSchedulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PatchSchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -1467,12 +1427,10 @@ export const PatchSchedulesDeleteOutput =
  * @param name - The name of the redis cache.
  * @param default - The name of the RedisPatchSchedule
  */
-export const PatchSchedulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PatchSchedulesDeleteInput,
-    outputSchema: PatchSchedulesDeleteOutput,
-  }),
-);
+export const PatchSchedulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PatchSchedulesDeleteInput,
+  outputSchema: PatchSchedulesDeleteOutput,
+}));
 // Input Schema
 export interface PatchSchedulesGetInput {
   subscriptionId: string;
@@ -1480,14 +1438,12 @@ export interface PatchSchedulesGetInput {
   name: string;
   default: "default";
 }
-export const PatchSchedulesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    name: Schema.String.pipe(T.PathParam()),
-    default: Schema.Literals(["default"]).pipe(T.PathParam()),
-  },
-).pipe(
+export const PatchSchedulesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  name: Schema.String.pipe(T.PathParam()),
+  default: Schema.Literals(["default"]).pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/patchSchedules/{default}",
@@ -1510,7 +1466,7 @@ export interface PatchSchedulesGetOutput {
   };
 }
 export const PatchSchedulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1540,7 +1496,7 @@ export const PatchSchedulesGetOutput =
  * @param name - The name of the redis cache.
  * @param default - The name of the RedisPatchSchedule
  */
-export const PatchSchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PatchSchedulesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PatchSchedulesGetInput,
   outputSchema: PatchSchedulesGetOutput,
 }));
@@ -1551,7 +1507,7 @@ export interface PatchSchedulesListByRedisResourceInput {
   cacheName: string;
 }
 export const PatchSchedulesListByRedisResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -1581,7 +1537,7 @@ export interface PatchSchedulesListByRedisResourceOutput {
   nextLink?: string;
 }
 export const PatchSchedulesListByRedisResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1626,7 +1582,7 @@ export const PatchSchedulesListByRedisResourceOutput =
  * @param cacheName - The name of the Redis cache.
  */
 export const PatchSchedulesListByRedisResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PatchSchedulesListByRedisResourceInput,
     outputSchema: PatchSchedulesListByRedisResourceOutput,
   }));
@@ -1638,7 +1594,7 @@ export interface PrivateEndpointConnectionsDeleteInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -1654,7 +1610,7 @@ export const PrivateEndpointConnectionsDeleteInput =
 // Output Schema
 export type PrivateEndpointConnectionsDeleteOutput = void;
 export const PrivateEndpointConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateEndpointConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1667,7 +1623,7 @@ export const PrivateEndpointConnectionsDeleteOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsDeleteInput,
     outputSchema: PrivateEndpointConnectionsDeleteOutput,
   }));
@@ -1679,7 +1635,7 @@ export interface PrivateEndpointConnectionsGetInput {
   privateEndpointConnectionName: string;
 }
 export const PrivateEndpointConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -1707,7 +1663,7 @@ export interface PrivateEndpointConnectionsGetOutput {
   };
 }
 export const PrivateEndpointConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1738,7 +1694,7 @@ export const PrivateEndpointConnectionsGetOutput =
  * @param privateEndpointConnectionName - The name of the private endpoint connection associated with the Azure resource.
  */
 export const PrivateEndpointConnectionsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsGetInput,
     outputSchema: PrivateEndpointConnectionsGetOutput,
   }));
@@ -1749,7 +1705,7 @@ export interface PrivateEndpointConnectionsListInput {
   cacheName: string;
 }
 export const PrivateEndpointConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -1779,7 +1735,7 @@ export interface PrivateEndpointConnectionsListOutput {
   nextLink?: string;
 }
 export const PrivateEndpointConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1824,7 +1780,7 @@ export const PrivateEndpointConnectionsListOutput =
  * @param cacheName - The name of the Redis cache.
  */
 export const PrivateEndpointConnectionsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsListInput,
     outputSchema: PrivateEndpointConnectionsListOutput,
   }));
@@ -1857,7 +1813,7 @@ export interface PrivateEndpointConnectionsPutInput {
   };
 }
 export const PrivateEndpointConnectionsPutInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -1922,7 +1878,7 @@ export interface PrivateEndpointConnectionsPutOutput {
   };
 }
 export const PrivateEndpointConnectionsPutOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1954,7 +1910,7 @@ export const PrivateEndpointConnectionsPutOutput =
  * @param properties - Resource properties.
  */
 export const PrivateEndpointConnectionsPut =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateEndpointConnectionsPutInput,
     outputSchema: PrivateEndpointConnectionsPutOutput,
   }));
@@ -1965,7 +1921,7 @@ export interface PrivateLinkResourcesListByRedisCacheInput {
   cacheName: string;
 }
 export const PrivateLinkResourcesListByRedisCacheInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     cacheName: Schema.String.pipe(T.PathParam()),
@@ -1995,7 +1951,7 @@ export interface PrivateLinkResourcesListByRedisCacheOutput {
   nextLink?: string;
 }
 export const PrivateLinkResourcesListByRedisCacheOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2040,7 +1996,7 @@ export const PrivateLinkResourcesListByRedisCacheOutput =
  * @param cacheName - The name of the Redis cache.
  */
 export const PrivateLinkResourcesListByRedisCache =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateLinkResourcesListByRedisCacheInput,
     outputSchema: PrivateLinkResourcesListByRedisCacheOutput,
   }));
@@ -2051,7 +2007,7 @@ export interface RedisCheckNameAvailabilityInput {
   type: string;
 }
 export const RedisCheckNameAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
     type: Schema.String,
@@ -2066,7 +2022,7 @@ export const RedisCheckNameAvailabilityInput =
 // Output Schema
 export type RedisCheckNameAvailabilityOutput = void;
 export const RedisCheckNameAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RedisCheckNameAvailabilityOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RedisCheckNameAvailabilityOutput>;
 
 // The operation
 /**
@@ -2075,12 +2031,10 @@ export const RedisCheckNameAvailabilityOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const RedisCheckNameAvailability = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RedisCheckNameAvailabilityInput,
-    outputSchema: RedisCheckNameAvailabilityOutput,
-  }),
-);
+export const RedisCheckNameAvailability = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedisCheckNameAvailabilityInput,
+  outputSchema: RedisCheckNameAvailabilityOutput,
+}));
 // Input Schema
 export interface RedisCreateInput {
   subscriptionId: string;
@@ -2137,7 +2091,7 @@ export interface RedisCreateInput {
     >;
   };
 }
-export const RedisCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -2231,7 +2185,7 @@ export interface RedisCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const RedisCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2260,7 +2214,7 @@ export const RedisCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisCreateInput,
   outputSchema: RedisCreateOutput,
 }));
@@ -2270,7 +2224,7 @@ export interface RedisDeleteInput {
   resourceGroupName: string;
   name: string;
 }
-export const RedisDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -2285,7 +2239,7 @@ export const RedisDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RedisDeleteOutput = void;
 export const RedisDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RedisDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RedisDeleteOutput>;
 
 // The operation
 /**
@@ -2296,7 +2250,7 @@ export const RedisDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisDeleteInput,
   outputSchema: RedisDeleteOutput,
 }));
@@ -2311,7 +2265,7 @@ export interface RedisExportDataInput {
   "preferred-data-archive-auth-method"?: string;
   "storage-subscription-id"?: string;
 }
-export const RedisExportDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisExportDataInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -2331,7 +2285,7 @@ export const RedisExportDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RedisExportDataOutput = void;
 export const RedisExportDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RedisExportDataOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RedisExportDataOutput>;
 
 // The operation
 /**
@@ -2342,7 +2296,7 @@ export const RedisExportDataOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisExportData = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisExportData = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisExportDataInput,
   outputSchema: RedisExportDataOutput,
 }));
@@ -2352,7 +2306,7 @@ export interface RedisFlushCacheInput {
   resourceGroupName: string;
   cacheName: string;
 }
-export const RedisFlushCacheInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisFlushCacheInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   cacheName: Schema.String.pipe(T.PathParam()),
@@ -2396,7 +2350,7 @@ export interface RedisFlushCacheOutput {
     additionalInfo?: { type?: string; info?: unknown }[];
   };
 }
-export const RedisFlushCacheOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisFlushCacheOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   status: Schema.String,
@@ -2459,7 +2413,7 @@ export const RedisFlushCacheOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param cacheName - The name of the Redis cache.
  */
-export const RedisFlushCache = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisFlushCache = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisFlushCacheInput,
   outputSchema: RedisFlushCacheOutput,
 }));
@@ -2472,7 +2426,7 @@ export interface RedisForceRebootInput {
   shardId?: number;
   ports?: number[];
 }
-export const RedisForceRebootInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisForceRebootInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -2493,11 +2447,9 @@ export const RedisForceRebootInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface RedisForceRebootOutput {
   message?: string;
 }
-export const RedisForceRebootOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    message: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<RedisForceRebootOutput>;
+export const RedisForceRebootOutput = /*@__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<RedisForceRebootOutput>;
 
 // The operation
 /**
@@ -2508,7 +2460,7 @@ export const RedisForceRebootOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisForceReboot = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisForceReboot = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisForceRebootInput,
   outputSchema: RedisForceRebootOutput,
 }));
@@ -2518,7 +2470,7 @@ export interface RedisGetInput {
   resourceGroupName: string;
   name: string;
 }
-export const RedisGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -2544,7 +2496,7 @@ export interface RedisGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RedisGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2573,7 +2525,7 @@ export const RedisGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisGetInput,
   outputSchema: RedisGetOutput,
 }));
@@ -2587,7 +2539,7 @@ export interface RedisImportDataInput {
   "preferred-data-archive-auth-method"?: string;
   "storage-subscription-id"?: string;
 }
-export const RedisImportDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisImportDataInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -2606,7 +2558,7 @@ export const RedisImportDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RedisImportDataOutput = void;
 export const RedisImportDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RedisImportDataOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RedisImportDataOutput>;
 
 // The operation
 /**
@@ -2617,7 +2569,7 @@ export const RedisImportDataOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisImportData = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisImportData = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisImportDataInput,
   outputSchema: RedisImportDataOutput,
 }));
@@ -2627,7 +2579,7 @@ export interface RedisListByResourceGroupInput {
   resourceGroupName: string;
 }
 export const RedisListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2656,7 +2608,7 @@ export interface RedisListByResourceGroupOutput {
   nextLink?: string;
 }
 export const RedisListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2699,18 +2651,16 @@ export const RedisListByResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const RedisListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RedisListByResourceGroupInput,
-    outputSchema: RedisListByResourceGroupOutput,
-  }),
-);
+export const RedisListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedisListByResourceGroupInput,
+  outputSchema: RedisListByResourceGroupOutput,
+}));
 // Input Schema
 export interface RedisListBySubscriptionInput {
   subscriptionId: string;
 }
 export const RedisListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -2738,7 +2688,7 @@ export interface RedisListBySubscriptionOutput {
   nextLink?: string;
 }
 export const RedisListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2780,19 +2730,17 @@ export const RedisListBySubscriptionOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const RedisListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RedisListBySubscriptionInput,
-    outputSchema: RedisListBySubscriptionOutput,
-  }),
-);
+export const RedisListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RedisListBySubscriptionInput,
+  outputSchema: RedisListBySubscriptionOutput,
+}));
 // Input Schema
 export interface RedisListKeysInput {
   subscriptionId: string;
   resourceGroupName: string;
   name: string;
 }
-export const RedisListKeysInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisListKeysInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -2809,7 +2757,7 @@ export interface RedisListKeysOutput {
   primaryKey?: string;
   secondaryKey?: string;
 }
-export const RedisListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisListKeysOutput = /*@__PURE__*/ Schema.Struct({
   primaryKey: Schema.optional(Schema.String),
   secondaryKey: Schema.optional(Schema.String),
 }) as unknown as Schema.Codec<RedisListKeysOutput>;
@@ -2823,7 +2771,7 @@ export const RedisListKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisListKeys = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisListKeys = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisListKeysInput,
   outputSchema: RedisListKeysOutput,
 }));
@@ -2835,7 +2783,7 @@ export interface RedisListUpgradeNotificationsInput {
   history: number;
 }
 export const RedisListUpgradeNotificationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2858,7 +2806,7 @@ export interface RedisListUpgradeNotificationsOutput {
   nextLink?: string;
 }
 export const RedisListUpgradeNotificationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         name: Schema.optional(Schema.String),
@@ -2882,7 +2830,7 @@ export const RedisListUpgradeNotificationsOutput =
  * @param history - how many minutes in past to look for upgrade notifications
  */
 export const RedisListUpgradeNotifications =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RedisListUpgradeNotificationsInput,
     outputSchema: RedisListUpgradeNotificationsOutput,
   }));
@@ -2894,7 +2842,7 @@ export interface RedisRegenerateKeyInput {
   keyType: "Primary" | "Secondary";
 }
 export const RedisRegenerateKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     name: Schema.String.pipe(T.PathParam()),
@@ -2913,7 +2861,7 @@ export interface RedisRegenerateKeyOutput {
   secondaryKey?: string;
 }
 export const RedisRegenerateKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     primaryKey: Schema.optional(Schema.String),
     secondaryKey: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<RedisRegenerateKeyOutput>;
@@ -2927,7 +2875,7 @@ export const RedisRegenerateKeyOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisRegenerateKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisRegenerateKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisRegenerateKeyInput,
   outputSchema: RedisRegenerateKeyOutput,
 }));
@@ -2985,7 +2933,7 @@ export interface RedisUpdateInput {
     >;
   };
 }
-export const RedisUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   name: Schema.String.pipe(T.PathParam()),
@@ -3081,7 +3029,7 @@ export interface RedisUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const RedisUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RedisUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3110,7 +3058,7 @@ export const RedisUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param name - The name of the RedisResource
  */
-export const RedisUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RedisUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RedisUpdateInput,
   outputSchema: RedisUpdateOutput,
 }));

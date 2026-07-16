@@ -32,7 +32,7 @@ export interface Money {
 }
 
 export const Money: Schema.Codec<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     nanos: Schema.optional(Schema.Number),
     units: Schema.optional(Schema.String),
@@ -54,7 +54,7 @@ export interface SavingsOverTime {
 }
 
 export const SavingsOverTime: Schema.Codec<SavingsOverTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     financiallyViable: Schema.optional(Schema.Boolean),
     presentValueOfSavingsLifetime: Schema.optional(Money),
     presentValueOfSavingsYear20: Schema.optional(Money),
@@ -75,7 +75,7 @@ export interface LeasingSavings {
 }
 
 export const LeasingSavings: Schema.Codec<LeasingSavings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     savings: Schema.optional(SavingsOverTime),
     leasesAllowed: Schema.optional(Schema.Boolean),
     leasesSupported: Schema.optional(Schema.Boolean),
@@ -90,7 +90,7 @@ export interface LatLng {
 }
 
 export const LatLng: Schema.Codec<LatLng> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     latitude: Schema.optional(Schema.Number),
     longitude: Schema.optional(Schema.Number),
   }).annotate({ identifier: "LatLng" });
@@ -103,7 +103,7 @@ export interface LatLngBox {
 }
 
 export const LatLngBox: Schema.Codec<LatLngBox> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     sw: Schema.optional(LatLng),
     ne: Schema.optional(LatLng),
   }).annotate({ identifier: "LatLngBox" });
@@ -118,7 +118,7 @@ export interface SizeAndSunshineStats {
 }
 
 export const SizeAndSunshineStats: Schema.Codec<SizeAndSunshineStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     areaMeters2: Schema.optional(Schema.Number),
     sunshineQuantiles: Schema.optional(Schema.Array(Schema.Number)),
     groundAreaMeters2: Schema.optional(Schema.Number),
@@ -140,7 +140,7 @@ export interface RoofSegmentSizeAndSunshineStats {
 }
 
 export const RoofSegmentSizeAndSunshineStats: Schema.Codec<RoofSegmentSizeAndSunshineStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pitchDegrees: Schema.optional(Schema.Number),
     stats: Schema.optional(SizeAndSunshineStats),
     center: Schema.optional(LatLng),
@@ -161,7 +161,7 @@ export interface FinancedPurchaseSavings {
 }
 
 export const FinancedPurchaseSavings: Schema.Codec<FinancedPurchaseSavings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rebateValue: Schema.optional(Money),
     annualLoanPayment: Schema.optional(Money),
     loanInterestRate: Schema.optional(Schema.Number),
@@ -192,7 +192,7 @@ export interface FinancialDetails {
 }
 
 export const FinancialDetails: Schema.Codec<FinancialDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     costOfElectricityWithoutSolar: Schema.optional(Money),
     initialAcKwhPerYear: Schema.optional(Schema.Number),
     percentageExportedToGrid: Schema.optional(Schema.Number),
@@ -219,7 +219,7 @@ export interface CashPurchaseSavings {
 }
 
 export const CashPurchaseSavings: Schema.Codec<CashPurchaseSavings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     rebateValue: Schema.optional(Money),
     upfrontCost: Schema.optional(Money),
     outOfPocketCost: Schema.optional(Money),
@@ -247,7 +247,7 @@ export interface FinancialAnalysis {
 }
 
 export const FinancialAnalysis: Schema.Codec<FinancialAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     leasingSavings: Schema.optional(LeasingSavings),
     panelConfigIndex: Schema.optional(Schema.Number),
     financedPurchaseSavings: Schema.optional(FinancedPurchaseSavings),
@@ -274,7 +274,7 @@ export interface SolarPanel {
 }
 
 export const SolarPanel: Schema.Codec<SolarPanel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     orientation: Schema.optional(Schema.String),
     yearlyEnergyDcKwh: Schema.optional(Schema.Number),
     segmentIndex: Schema.optional(Schema.Number),
@@ -295,7 +295,7 @@ export interface RoofSegmentSummary {
 }
 
 export const RoofSegmentSummary: Schema.Codec<RoofSegmentSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     segmentIndex: Schema.optional(Schema.Number),
     pitchDegrees: Schema.optional(Schema.Number),
     panelsCount: Schema.optional(Schema.Number),
@@ -313,7 +313,7 @@ export interface SolarPanelConfig {
 }
 
 export const SolarPanelConfig: Schema.Codec<SolarPanelConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     yearlyEnergyDcKwh: Schema.optional(Schema.Number),
     roofSegmentSummaries: Schema.optional(Schema.Array(RoofSegmentSummary)),
     panelsCount: Schema.optional(Schema.Number),
@@ -351,7 +351,7 @@ export interface SolarPotential {
 }
 
 export const SolarPotential: Schema.Codec<SolarPotential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     maxArrayAreaMeters2: Schema.optional(Schema.Number),
     panelWidthMeters: Schema.optional(Schema.Number),
     buildingStats: Schema.optional(SizeAndSunshineStats),
@@ -380,7 +380,7 @@ export interface Solar_Date {
 }
 
 export const Solar_Date: Schema.Codec<Solar_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     day: Schema.optional(Schema.Number),
     month: Schema.optional(Schema.Number),
     year: Schema.optional(Schema.Number),
@@ -399,7 +399,7 @@ export interface BuildingInsightsDetectedArrays {
 }
 
 export const BuildingInsightsDetectedArrays: Schema.Codec<BuildingInsightsDetectedArrays> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     detectionStatus: Schema.optional(Schema.String),
     latestCaptureDate: Schema.optional(Solar_Date),
   }).annotate({ identifier: "BuildingInsightsDetectedArrays" });
@@ -438,7 +438,7 @@ export interface BuildingInsights {
 }
 
 export const BuildingInsights: Schema.Codec<BuildingInsights> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     administrativeArea: Schema.optional(Schema.String),
     postalCode: Schema.optional(Schema.String),
     boundingBox: Schema.optional(LatLngBox),
@@ -481,7 +481,7 @@ export interface DataLayers {
 }
 
 export const DataLayers: Schema.Codec<DataLayers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     imageryProcessedDate: Schema.optional(Solar_Date),
     imageryDate: Schema.optional(Solar_Date),
     monthlyFluxUrl: Schema.optional(Schema.String),
@@ -503,7 +503,7 @@ export interface HttpBody {
 }
 
 export const HttpBody: Schema.Codec<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     contentType: Schema.optional(Schema.String),
     data: Schema.optional(Schema.String),
     extensions: Schema.optional(
@@ -577,7 +577,7 @@ export interface GetDataLayersRequest {
     | (string & {})[];
 }
 
-export const GetDataLayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDataLayersRequest = /*@__PURE__*/ Schema.Struct({
   "location.latitude": Schema.optional(Schema.Number).pipe(
     T.HttpQuery("location.latitude"),
   ),
@@ -606,7 +606,7 @@ export const GetDataLayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetDataLayersRequest>;
 
 export type GetDataLayersResponse = DataLayers;
-export const GetDataLayersResponse = /*@__PURE__*/ /*#__PURE__*/ DataLayers;
+export const GetDataLayersResponse = /*@__PURE__*/ DataLayers;
 
 export type GetDataLayersError = DefaultErrors | NotFound | Forbidden;
 
@@ -616,7 +616,7 @@ export const getDataLayers: API.OperationMethod<
   GetDataLayersResponse,
   GetDataLayersError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataLayersRequest,
   output: GetDataLayersResponse,
   errors: [NotFound, Forbidden],
@@ -627,7 +627,7 @@ export interface GetGeoTiffRequest {
   id?: string;
 }
 
-export const GetGeoTiffRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGeoTiffRequest = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
 }).pipe(
   T.Http({ method: "GET", path: "v1/geoTiff:get" }),
@@ -635,7 +635,7 @@ export const GetGeoTiffRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetGeoTiffRequest>;
 
 export type GetGeoTiffResponse = HttpBody;
-export const GetGeoTiffResponse = /*@__PURE__*/ /*#__PURE__*/ HttpBody;
+export const GetGeoTiffResponse = /*@__PURE__*/ HttpBody;
 
 export type GetGeoTiffError = DefaultErrors | NotFound | Forbidden;
 
@@ -645,7 +645,7 @@ export const getGeoTiff: API.OperationMethod<
   GetGeoTiffResponse,
   GetGeoTiffError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGeoTiffRequest,
   output: GetGeoTiffResponse,
   errors: [NotFound, Forbidden],
@@ -679,7 +679,7 @@ export interface FindClosestBuildingInsightsRequest {
 }
 
 export const FindClosestBuildingInsightsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     experiments: Schema.optional(Schema.Array(Schema.String)).pipe(
       T.HttpQuery("experiments"),
     ),
@@ -705,7 +705,7 @@ export const FindClosestBuildingInsightsRequest =
 
 export type FindClosestBuildingInsightsResponse = BuildingInsights;
 export const FindClosestBuildingInsightsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ BuildingInsights;
+  /*@__PURE__*/ BuildingInsights;
 
 export type FindClosestBuildingInsightsError =
   | DefaultErrors
@@ -718,7 +718,7 @@ export const findClosestBuildingInsights: API.OperationMethod<
   FindClosestBuildingInsightsResponse,
   FindClosestBuildingInsightsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: FindClosestBuildingInsightsRequest,
   output: FindClosestBuildingInsightsResponse,
   errors: [NotFound, Forbidden],

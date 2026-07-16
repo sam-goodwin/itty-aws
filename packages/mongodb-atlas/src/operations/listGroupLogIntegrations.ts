@@ -14,7 +14,7 @@ export interface ListGroupLogIntegrationsInput {
   integrationType?: string;
 }
 export const ListGroupLogIntegrationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     includeCount: Schema.optional(Schema.Boolean),
@@ -32,7 +32,7 @@ export const ListGroupLogIntegrationsInput =
 // Output Schema
 export type ListGroupLogIntegrationsOutput = void;
 export const ListGroupLogIntegrationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupLogIntegrationsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupLogIntegrationsOutput>;
 
 // The operation
 /**
@@ -50,10 +50,8 @@ export const ListGroupLogIntegrationsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param integrationType - Optional filter by integration type (e.g., `S3_LOG_EXPORT`).
  */
-export const listGroupLogIntegrations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListGroupLogIntegrationsInput,
-    outputSchema: ListGroupLogIntegrationsOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const listGroupLogIntegrations = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListGroupLogIntegrationsInput,
+  outputSchema: ListGroupLogIntegrationsOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

@@ -177,7 +177,7 @@ export interface CreateExperimentTemplateStopConditionInput {
   value?: string;
 }
 export const CreateExperimentTemplateStopConditionInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ source: S.String, value: S.optional(S.String) }),
   ).annotate({
     identifier: "CreateExperimentTemplateStopConditionInput",
@@ -185,25 +185,23 @@ export const CreateExperimentTemplateStopConditionInput =
 export type CreateExperimentTemplateStopConditionInputList =
   CreateExperimentTemplateStopConditionInput[];
 export const CreateExperimentTemplateStopConditionInputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    CreateExperimentTemplateStopConditionInput,
-  );
+  /*@__PURE__*/ S.Array(CreateExperimentTemplateStopConditionInput);
 export type ResourceArnList = string[];
-export const ResourceArnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ResourceArnList = /*@__PURE__*/ S.Array(S.String);
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export type ExperimentTemplateTargetFilterValues = string[];
 export const ExperimentTemplateTargetFilterValues =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+  /*@__PURE__*/ S.Array(S.String);
 export interface ExperimentTemplateTargetInputFilter {
   path: string;
   values: string[];
 }
 export const ExperimentTemplateTargetInputFilter =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ path: S.String, values: ExperimentTemplateTargetFilterValues }),
   ).annotate({
     identifier: "ExperimentTemplateTargetInputFilter",
@@ -211,12 +209,12 @@ export const ExperimentTemplateTargetInputFilter =
 export type ExperimentTemplateTargetFilterInputList =
   ExperimentTemplateTargetInputFilter[];
 export const ExperimentTemplateTargetFilterInputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ExperimentTemplateTargetInputFilter);
+  /*@__PURE__*/ S.Array(ExperimentTemplateTargetInputFilter);
 export type ExperimentTemplateTargetParameterMap = {
   [key: string]: string | undefined;
 };
 export const ExperimentTemplateTargetParameterMap =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CreateExperimentTemplateTargetInput {
   resourceType: string;
   resourceArns?: string[];
@@ -226,7 +224,7 @@ export interface CreateExperimentTemplateTargetInput {
   parameters?: { [key: string]: string | undefined };
 }
 export const CreateExperimentTemplateTargetInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceType: S.String,
       resourceArns: S.optional(ResourceArnList),
@@ -242,7 +240,7 @@ export type CreateExperimentTemplateTargetInputMap = {
   [key: string]: CreateExperimentTemplateTargetInput | undefined;
 };
 export const CreateExperimentTemplateTargetInputMap =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  /*@__PURE__*/ S.Record(
     S.String,
     CreateExperimentTemplateTargetInput.pipe(S.optional),
   );
@@ -250,15 +248,15 @@ export type ExperimentTemplateActionParameterMap = {
   [key: string]: string | undefined;
 };
 export const ExperimentTemplateActionParameterMap =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export type ExperimentTemplateActionTargetMap = {
   [key: string]: string | undefined;
 };
 export const ExperimentTemplateActionTargetMap =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export type ExperimentTemplateActionStartAfterList = string[];
 export const ExperimentTemplateActionStartAfterList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+  /*@__PURE__*/ S.Array(S.String);
 export interface CreateExperimentTemplateActionInput {
   actionId: string;
   description?: string;
@@ -267,7 +265,7 @@ export interface CreateExperimentTemplateActionInput {
   startAfter?: string[];
 }
 export const CreateExperimentTemplateActionInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       actionId: S.String,
       description: S.optional(S.String),
@@ -282,7 +280,7 @@ export type CreateExperimentTemplateActionInputMap = {
   [key: string]: CreateExperimentTemplateActionInput | undefined;
 };
 export const CreateExperimentTemplateActionInputMap =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  /*@__PURE__*/ S.Record(
     S.String,
     CreateExperimentTemplateActionInput.pipe(S.optional),
   );
@@ -290,9 +288,7 @@ export interface ExperimentTemplateCloudWatchLogsLogConfigurationInput {
   logGroupArn: string;
 }
 export const ExperimentTemplateCloudWatchLogsLogConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ logGroupArn: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ logGroupArn: S.String })).annotate({
     identifier: "ExperimentTemplateCloudWatchLogsLogConfigurationInput",
   }) as any as S.Schema<ExperimentTemplateCloudWatchLogsLogConfigurationInput>;
 export interface ExperimentTemplateS3LogConfigurationInput {
@@ -300,7 +296,7 @@ export interface ExperimentTemplateS3LogConfigurationInput {
   prefix?: string;
 }
 export const ExperimentTemplateS3LogConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ bucketName: S.String, prefix: S.optional(S.String) }),
   ).annotate({
     identifier: "ExperimentTemplateS3LogConfigurationInput",
@@ -311,7 +307,7 @@ export interface CreateExperimentTemplateLogConfigurationInput {
   logSchemaVersion: number;
 }
 export const CreateExperimentTemplateLogConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cloudWatchLogsConfiguration: S.optional(
         ExperimentTemplateCloudWatchLogsLogConfigurationInput,
@@ -326,15 +322,15 @@ export type AccountTargeting =
   | "single-account"
   | "multi-account"
   | (string & {});
-export const AccountTargeting = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccountTargeting = /*@__PURE__*/ S.String;
 export type EmptyTargetResolutionMode = "fail" | "skip" | (string & {});
-export const EmptyTargetResolutionMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EmptyTargetResolutionMode = /*@__PURE__*/ S.String;
 export interface CreateExperimentTemplateExperimentOptionsInput {
   accountTargeting?: AccountTargeting;
   emptyTargetResolutionMode?: EmptyTargetResolutionMode;
 }
 export const CreateExperimentTemplateExperimentOptionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountTargeting: S.optional(AccountTargeting),
       emptyTargetResolutionMode: S.optional(EmptyTargetResolutionMode),
@@ -347,7 +343,7 @@ export interface ReportConfigurationS3OutputInput {
   prefix?: string;
 }
 export const ReportConfigurationS3OutputInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bucketName: S.optional(S.String),
       prefix: S.optional(S.String),
@@ -359,7 +355,7 @@ export interface ExperimentTemplateReportConfigurationOutputsInput {
   s3Configuration?: ReportConfigurationS3OutputInput;
 }
 export const ExperimentTemplateReportConfigurationOutputsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ s3Configuration: S.optional(ReportConfigurationS3OutputInput) }),
   ).annotate({
     identifier: "ExperimentTemplateReportConfigurationOutputsInput",
@@ -368,7 +364,7 @@ export interface ReportConfigurationCloudWatchDashboardInput {
   dashboardIdentifier?: string;
 }
 export const ReportConfigurationCloudWatchDashboardInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ dashboardIdentifier: S.optional(S.String) }),
   ).annotate({
     identifier: "ReportConfigurationCloudWatchDashboardInput",
@@ -376,14 +372,12 @@ export const ReportConfigurationCloudWatchDashboardInput =
 export type ReportConfigurationCloudWatchDashboardInputList =
   ReportConfigurationCloudWatchDashboardInput[];
 export const ReportConfigurationCloudWatchDashboardInputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    ReportConfigurationCloudWatchDashboardInput,
-  );
+  /*@__PURE__*/ S.Array(ReportConfigurationCloudWatchDashboardInput);
 export interface ExperimentTemplateReportConfigurationDataSourcesInput {
   cloudWatchDashboards?: ReportConfigurationCloudWatchDashboardInput[];
 }
 export const ExperimentTemplateReportConfigurationDataSourcesInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cloudWatchDashboards: S.optional(
         ReportConfigurationCloudWatchDashboardInputList,
@@ -399,7 +393,7 @@ export interface CreateExperimentTemplateReportConfigurationInput {
   postExperimentDuration?: string;
 }
 export const CreateExperimentTemplateReportConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       outputs: S.optional(ExperimentTemplateReportConfigurationOutputsInput),
       dataSources: S.optional(
@@ -424,7 +418,7 @@ export interface CreateExperimentTemplateRequest {
   experimentReportConfiguration?: CreateExperimentTemplateReportConfigurationInput;
 }
 export const CreateExperimentTemplateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clientToken: S.String.pipe(T.IdempotencyToken()),
       description: S.String,
@@ -460,7 +454,7 @@ export interface ExperimentTemplateTargetFilter {
   values?: string[];
 }
 export const ExperimentTemplateTargetFilter =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       path: S.optional(S.String),
       values: S.optional(ExperimentTemplateTargetFilterValues),
@@ -471,7 +465,7 @@ export const ExperimentTemplateTargetFilter =
 export type ExperimentTemplateTargetFilterList =
   ExperimentTemplateTargetFilter[];
 export const ExperimentTemplateTargetFilterList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ExperimentTemplateTargetFilter);
+  /*@__PURE__*/ S.Array(ExperimentTemplateTargetFilter);
 export interface ExperimentTemplateTarget {
   resourceType?: string;
   resourceArns?: string[];
@@ -480,23 +474,22 @@ export interface ExperimentTemplateTarget {
   selectionMode?: string;
   parameters?: { [key: string]: string | undefined };
 }
-export const ExperimentTemplateTarget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceType: S.optional(S.String),
-      resourceArns: S.optional(ResourceArnList),
-      resourceTags: S.optional(TagMap),
-      filters: S.optional(ExperimentTemplateTargetFilterList),
-      selectionMode: S.optional(S.String),
-      parameters: S.optional(ExperimentTemplateTargetParameterMap),
-    }),
+export const ExperimentTemplateTarget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceType: S.optional(S.String),
+    resourceArns: S.optional(ResourceArnList),
+    resourceTags: S.optional(TagMap),
+    filters: S.optional(ExperimentTemplateTargetFilterList),
+    selectionMode: S.optional(S.String),
+    parameters: S.optional(ExperimentTemplateTargetParameterMap),
+  }),
 ).annotate({
   identifier: "ExperimentTemplateTarget",
 }) as any as S.Schema<ExperimentTemplateTarget>;
 export type ExperimentTemplateTargetMap = {
   [key: string]: ExperimentTemplateTarget | undefined;
 };
-export const ExperimentTemplateTargetMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ExperimentTemplateTargetMap = /*@__PURE__*/ S.Record(
   S.String,
   ExperimentTemplateTarget.pipe(S.optional),
 );
@@ -507,22 +500,21 @@ export interface ExperimentTemplateAction {
   targets?: { [key: string]: string | undefined };
   startAfter?: string[];
 }
-export const ExperimentTemplateAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      actionId: S.optional(S.String),
-      description: S.optional(S.String),
-      parameters: S.optional(ExperimentTemplateActionParameterMap),
-      targets: S.optional(ExperimentTemplateActionTargetMap),
-      startAfter: S.optional(ExperimentTemplateActionStartAfterList),
-    }),
+export const ExperimentTemplateAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actionId: S.optional(S.String),
+    description: S.optional(S.String),
+    parameters: S.optional(ExperimentTemplateActionParameterMap),
+    targets: S.optional(ExperimentTemplateActionTargetMap),
+    startAfter: S.optional(ExperimentTemplateActionStartAfterList),
+  }),
 ).annotate({
   identifier: "ExperimentTemplateAction",
 }) as any as S.Schema<ExperimentTemplateAction>;
 export type ExperimentTemplateActionMap = {
   [key: string]: ExperimentTemplateAction | undefined;
 };
-export const ExperimentTemplateActionMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ExperimentTemplateActionMap = /*@__PURE__*/ S.Record(
   S.String,
   ExperimentTemplateAction.pipe(S.optional),
 );
@@ -531,7 +523,7 @@ export interface ExperimentTemplateStopCondition {
   value?: string;
 }
 export const ExperimentTemplateStopCondition =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ source: S.optional(S.String), value: S.optional(S.String) }),
   ).annotate({
     identifier: "ExperimentTemplateStopCondition",
@@ -539,12 +531,12 @@ export const ExperimentTemplateStopCondition =
 export type ExperimentTemplateStopConditionList =
   ExperimentTemplateStopCondition[];
 export const ExperimentTemplateStopConditionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ExperimentTemplateStopCondition);
+  /*@__PURE__*/ S.Array(ExperimentTemplateStopCondition);
 export interface ExperimentTemplateCloudWatchLogsLogConfiguration {
   logGroupArn?: string;
 }
 export const ExperimentTemplateCloudWatchLogsLogConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ logGroupArn: S.optional(S.String) }),
   ).annotate({
     identifier: "ExperimentTemplateCloudWatchLogsLogConfiguration",
@@ -554,7 +546,7 @@ export interface ExperimentTemplateS3LogConfiguration {
   prefix?: string;
 }
 export const ExperimentTemplateS3LogConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bucketName: S.optional(S.String),
       prefix: S.optional(S.String),
@@ -568,7 +560,7 @@ export interface ExperimentTemplateLogConfiguration {
   logSchemaVersion?: number;
 }
 export const ExperimentTemplateLogConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cloudWatchLogsConfiguration: S.optional(
         ExperimentTemplateCloudWatchLogsLogConfiguration,
@@ -584,7 +576,7 @@ export interface ExperimentTemplateExperimentOptions {
   emptyTargetResolutionMode?: EmptyTargetResolutionMode;
 }
 export const ExperimentTemplateExperimentOptions =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountTargeting: S.optional(AccountTargeting),
       emptyTargetResolutionMode: S.optional(EmptyTargetResolutionMode),
@@ -597,7 +589,7 @@ export interface ReportConfigurationS3Output {
   prefix?: string;
 }
 export const ReportConfigurationS3Output =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bucketName: S.optional(S.String),
       prefix: S.optional(S.String),
@@ -609,7 +601,7 @@ export interface ExperimentTemplateReportConfigurationOutputs {
   s3Configuration?: ReportConfigurationS3Output;
 }
 export const ExperimentTemplateReportConfigurationOutputs =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ s3Configuration: S.optional(ReportConfigurationS3Output) }),
   ).annotate({
     identifier: "ExperimentTemplateReportConfigurationOutputs",
@@ -618,7 +610,7 @@ export interface ExperimentTemplateReportConfigurationCloudWatchDashboard {
   dashboardIdentifier?: string;
 }
 export const ExperimentTemplateReportConfigurationCloudWatchDashboard =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ dashboardIdentifier: S.optional(S.String) }),
   ).annotate({
     identifier: "ExperimentTemplateReportConfigurationCloudWatchDashboard",
@@ -626,14 +618,14 @@ export const ExperimentTemplateReportConfigurationCloudWatchDashboard =
 export type ExperimentTemplateReportConfigurationCloudWatchDashboardList =
   ExperimentTemplateReportConfigurationCloudWatchDashboard[];
 export const ExperimentTemplateReportConfigurationCloudWatchDashboardList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  /*@__PURE__*/ S.Array(
     ExperimentTemplateReportConfigurationCloudWatchDashboard,
   );
 export interface ExperimentTemplateReportConfigurationDataSources {
   cloudWatchDashboards?: ExperimentTemplateReportConfigurationCloudWatchDashboard[];
 }
 export const ExperimentTemplateReportConfigurationDataSources =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cloudWatchDashboards: S.optional(
         ExperimentTemplateReportConfigurationCloudWatchDashboardList,
@@ -649,7 +641,7 @@ export interface ExperimentTemplateReportConfiguration {
   postExperimentDuration?: string;
 }
 export const ExperimentTemplateReportConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       outputs: S.optional(ExperimentTemplateReportConfigurationOutputs),
       dataSources: S.optional(ExperimentTemplateReportConfigurationDataSources),
@@ -675,7 +667,7 @@ export interface ExperimentTemplate {
   targetAccountConfigurationsCount?: number;
   experimentReportConfiguration?: ExperimentTemplateReportConfiguration;
 }
-export const ExperimentTemplate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExperimentTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -701,7 +693,7 @@ export interface CreateExperimentTemplateResponse {
   experimentTemplate?: ExperimentTemplate;
 }
 export const CreateExperimentTemplateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ experimentTemplate: S.optional(ExperimentTemplate) }),
   ).annotate({
     identifier: "CreateExperimentTemplateResponse",
@@ -714,7 +706,7 @@ export interface CreateTargetAccountConfigurationRequest {
   description?: string;
 }
 export const CreateTargetAccountConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       experimentTemplateId: S.String.pipe(T.HttpLabel("experimentTemplateId")),
@@ -742,13 +734,12 @@ export interface TargetAccountConfiguration {
   accountId?: string;
   description?: string;
 }
-export const TargetAccountConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      roleArn: S.optional(S.String),
-      accountId: S.optional(S.String),
-      description: S.optional(S.String),
-    }),
+export const TargetAccountConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    roleArn: S.optional(S.String),
+    accountId: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "TargetAccountConfiguration",
 }) as any as S.Schema<TargetAccountConfiguration>;
@@ -756,7 +747,7 @@ export interface CreateTargetAccountConfigurationResponse {
   targetAccountConfiguration?: TargetAccountConfiguration;
 }
 export const CreateTargetAccountConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetAccountConfiguration: S.optional(TargetAccountConfiguration),
     }),
@@ -767,7 +758,7 @@ export interface DeleteExperimentTemplateRequest {
   id: string;
 }
 export const DeleteExperimentTemplateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
       T.all(
         T.Http({ method: "DELETE", uri: "/experimentTemplates/{id}" }),
@@ -785,7 +776,7 @@ export interface DeleteExperimentTemplateResponse {
   experimentTemplate?: ExperimentTemplate;
 }
 export const DeleteExperimentTemplateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ experimentTemplate: S.optional(ExperimentTemplate) }),
   ).annotate({
     identifier: "DeleteExperimentTemplateResponse",
@@ -795,7 +786,7 @@ export interface DeleteTargetAccountConfigurationRequest {
   accountId: string;
 }
 export const DeleteTargetAccountConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       experimentTemplateId: S.String.pipe(T.HttpLabel("experimentTemplateId")),
       accountId: S.String.pipe(T.HttpLabel("accountId")),
@@ -819,7 +810,7 @@ export interface DeleteTargetAccountConfigurationResponse {
   targetAccountConfiguration?: TargetAccountConfiguration;
 }
 export const DeleteTargetAccountConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetAccountConfiguration: S.optional(TargetAccountConfiguration),
     }),
@@ -829,7 +820,7 @@ export const DeleteTargetAccountConfigurationResponse =
 export interface GetActionRequest {
   id: string;
 }
-export const GetActionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/actions/{id}" }),
@@ -847,7 +838,7 @@ export interface ActionParameter {
   description?: string;
   required?: boolean;
 }
-export const ActionParameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     required: S.optional(S.Boolean),
@@ -856,18 +847,18 @@ export const ActionParameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ActionParameter",
 }) as any as S.Schema<ActionParameter>;
 export type ActionParameterMap = { [key: string]: ActionParameter | undefined };
-export const ActionParameterMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ActionParameterMap = /*@__PURE__*/ S.Record(
   S.String,
   ActionParameter.pipe(S.optional),
 );
 export interface ActionTarget {
   resourceType?: string;
 }
-export const ActionTarget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceType: S.optional(S.String) }),
 ).annotate({ identifier: "ActionTarget" }) as any as S.Schema<ActionTarget>;
 export type ActionTargetMap = { [key: string]: ActionTarget | undefined };
-export const ActionTargetMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ActionTargetMap = /*@__PURE__*/ S.Record(
   S.String,
   ActionTarget.pipe(S.optional),
 );
@@ -879,7 +870,7 @@ export interface Action {
   targets?: { [key: string]: ActionTarget | undefined };
   tags?: { [key: string]: string | undefined };
 }
-export const Action = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -892,7 +883,7 @@ export const Action = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetActionResponse {
   action?: Action;
 }
-export const GetActionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ action: S.optional(Action) }),
 ).annotate({
   identifier: "GetActionResponse",
@@ -900,7 +891,7 @@ export const GetActionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetExperimentRequest {
   id: string;
 }
-export const GetExperimentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/experiments/{id}" }),
@@ -924,13 +915,13 @@ export type ExperimentStatus =
   | "failed"
   | "cancelled"
   | (string & {});
-export const ExperimentStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExperimentStatus = /*@__PURE__*/ S.String;
 export interface ExperimentError {
   accountId?: string;
   code?: string;
   location?: string;
 }
-export const ExperimentError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExperimentError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     code: S.optional(S.String),
@@ -944,7 +935,7 @@ export interface ExperimentState {
   reason?: string;
   error?: ExperimentError;
 }
-export const ExperimentState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExperimentState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ExperimentStatus),
     reason: S.optional(S.String),
@@ -954,31 +945,28 @@ export const ExperimentState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ExperimentState",
 }) as any as S.Schema<ExperimentState>;
 export type ExperimentTargetFilterValues = string[];
-export const ExperimentTargetFilterValues = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const ExperimentTargetFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface ExperimentTargetFilter {
   path?: string;
   values?: string[];
 }
-export const ExperimentTargetFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      path: S.optional(S.String),
-      values: S.optional(ExperimentTargetFilterValues),
-    }),
+export const ExperimentTargetFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.optional(S.String),
+    values: S.optional(ExperimentTargetFilterValues),
+  }),
 ).annotate({
   identifier: "ExperimentTargetFilter",
 }) as any as S.Schema<ExperimentTargetFilter>;
 export type ExperimentTargetFilterList = ExperimentTargetFilter[];
-export const ExperimentTargetFilterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ExperimentTargetFilterList = /*@__PURE__*/ S.Array(
   ExperimentTargetFilter,
 );
 export type ExperimentTargetParameterMap = {
   [key: string]: string | undefined;
 };
 export const ExperimentTargetParameterMap =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface ExperimentTarget {
   resourceType?: string;
   resourceArns?: string[];
@@ -987,7 +975,7 @@ export interface ExperimentTarget {
   selectionMode?: string;
   parameters?: { [key: string]: string | undefined };
 }
-export const ExperimentTarget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExperimentTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.optional(S.String),
     resourceArns: S.optional(ResourceArnList),
@@ -1002,7 +990,7 @@ export const ExperimentTarget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type ExperimentTargetMap = {
   [key: string]: ExperimentTarget | undefined;
 };
-export const ExperimentTargetMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ExperimentTargetMap = /*@__PURE__*/ S.Record(
   S.String,
   ExperimentTarget.pipe(S.optional),
 );
@@ -1010,15 +998,14 @@ export type ExperimentActionParameterMap = {
   [key: string]: string | undefined;
 };
 export const ExperimentActionParameterMap =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export type ExperimentActionTargetMap = { [key: string]: string | undefined };
-export const ExperimentActionTargetMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ExperimentActionTargetMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export type ExperimentActionStartAfterList = string[];
-export const ExperimentActionStartAfterList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ExperimentActionStartAfterList = /*@__PURE__*/ S.Array(S.String);
 export type ExperimentActionStatus =
   | "pending"
   | "initiating"
@@ -1030,12 +1017,12 @@ export type ExperimentActionStatus =
   | "failed"
   | "skipped"
   | (string & {});
-export const ExperimentActionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExperimentActionStatus = /*@__PURE__*/ S.String;
 export interface ExperimentActionState {
   status?: ExperimentActionStatus;
   reason?: string;
 }
-export const ExperimentActionState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExperimentActionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ExperimentActionStatus),
     reason: S.optional(S.String),
@@ -1053,7 +1040,7 @@ export interface ExperimentAction {
   startTime?: Date;
   endTime?: Date;
 }
-export const ExperimentAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExperimentAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionId: S.optional(S.String),
     description: S.optional(S.String),
@@ -1070,7 +1057,7 @@ export const ExperimentAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type ExperimentActionMap = {
   [key: string]: ExperimentAction | undefined;
 };
-export const ExperimentActionMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ExperimentActionMap = /*@__PURE__*/ S.Record(
   S.String,
   ExperimentAction.pipe(S.optional),
 );
@@ -1078,20 +1065,20 @@ export interface ExperimentStopCondition {
   source?: string;
   value?: string;
 }
-export const ExperimentStopCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ source: S.optional(S.String), value: S.optional(S.String) }),
+export const ExperimentStopCondition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ source: S.optional(S.String), value: S.optional(S.String) }),
 ).annotate({
   identifier: "ExperimentStopCondition",
 }) as any as S.Schema<ExperimentStopCondition>;
 export type ExperimentStopConditionList = ExperimentStopCondition[];
-export const ExperimentStopConditionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ExperimentStopConditionList = /*@__PURE__*/ S.Array(
   ExperimentStopCondition,
 );
 export interface ExperimentCloudWatchLogsLogConfiguration {
   logGroupArn?: string;
 }
 export const ExperimentCloudWatchLogsLogConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ logGroupArn: S.optional(S.String) }),
   ).annotate({
     identifier: "ExperimentCloudWatchLogsLogConfiguration",
@@ -1101,7 +1088,7 @@ export interface ExperimentS3LogConfiguration {
   prefix?: string;
 }
 export const ExperimentS3LogConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bucketName: S.optional(S.String),
       prefix: S.optional(S.String),
@@ -1114,26 +1101,25 @@ export interface ExperimentLogConfiguration {
   s3Configuration?: ExperimentS3LogConfiguration;
   logSchemaVersion?: number;
 }
-export const ExperimentLogConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      cloudWatchLogsConfiguration: S.optional(
-        ExperimentCloudWatchLogsLogConfiguration,
-      ),
-      s3Configuration: S.optional(ExperimentS3LogConfiguration),
-      logSchemaVersion: S.optional(S.Number),
-    }),
+export const ExperimentLogConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cloudWatchLogsConfiguration: S.optional(
+      ExperimentCloudWatchLogsLogConfiguration,
+    ),
+    s3Configuration: S.optional(ExperimentS3LogConfiguration),
+    logSchemaVersion: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "ExperimentLogConfiguration",
 }) as any as S.Schema<ExperimentLogConfiguration>;
 export type ActionsMode = "skip-all" | "run-all" | (string & {});
-export const ActionsMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ActionsMode = /*@__PURE__*/ S.String;
 export interface ExperimentOptions {
   accountTargeting?: AccountTargeting;
   emptyTargetResolutionMode?: EmptyTargetResolutionMode;
   actionsMode?: ActionsMode;
 }
-export const ExperimentOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExperimentOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountTargeting: S.optional(AccountTargeting),
     emptyTargetResolutionMode: S.optional(EmptyTargetResolutionMode),
@@ -1147,7 +1133,7 @@ export interface ExperimentReportConfigurationOutputsS3Configuration {
   prefix?: string;
 }
 export const ExperimentReportConfigurationOutputsS3Configuration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bucketName: S.optional(S.String),
       prefix: S.optional(S.String),
@@ -1159,7 +1145,7 @@ export interface ExperimentReportConfigurationOutputs {
   s3Configuration?: ExperimentReportConfigurationOutputsS3Configuration;
 }
 export const ExperimentReportConfigurationOutputs =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       s3Configuration: S.optional(
         ExperimentReportConfigurationOutputsS3Configuration,
@@ -1172,7 +1158,7 @@ export interface ExperimentReportConfigurationCloudWatchDashboard {
   dashboardIdentifier?: string;
 }
 export const ExperimentReportConfigurationCloudWatchDashboard =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ dashboardIdentifier: S.optional(S.String) }),
   ).annotate({
     identifier: "ExperimentReportConfigurationCloudWatchDashboard",
@@ -1180,14 +1166,12 @@ export const ExperimentReportConfigurationCloudWatchDashboard =
 export type ExperimentReportConfigurationCloudWatchDashboardList =
   ExperimentReportConfigurationCloudWatchDashboard[];
 export const ExperimentReportConfigurationCloudWatchDashboardList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    ExperimentReportConfigurationCloudWatchDashboard,
-  );
+  /*@__PURE__*/ S.Array(ExperimentReportConfigurationCloudWatchDashboard);
 export interface ExperimentReportConfigurationDataSources {
   cloudWatchDashboards?: ExperimentReportConfigurationCloudWatchDashboard[];
 }
 export const ExperimentReportConfigurationDataSources =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cloudWatchDashboards: S.optional(
         ExperimentReportConfigurationCloudWatchDashboardList,
@@ -1203,7 +1187,7 @@ export interface ExperimentReportConfiguration {
   postExperimentDuration?: string;
 }
 export const ExperimentReportConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       outputs: S.optional(ExperimentReportConfigurationOutputs),
       dataSources: S.optional(ExperimentReportConfigurationDataSources),
@@ -1220,11 +1204,11 @@ export type ExperimentReportStatus =
   | "cancelled"
   | "failed"
   | (string & {});
-export const ExperimentReportStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExperimentReportStatus = /*@__PURE__*/ S.String;
 export interface ExperimentReportError {
   code?: string;
 }
-export const ExperimentReportError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExperimentReportError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ code: S.optional(S.String) }),
 ).annotate({
   identifier: "ExperimentReportError",
@@ -1234,7 +1218,7 @@ export interface ExperimentReportState {
   reason?: string;
   error?: ExperimentReportError;
 }
-export const ExperimentReportState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExperimentReportState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ExperimentReportStatus),
     reason: S.optional(S.String),
@@ -1247,21 +1231,20 @@ export interface ExperimentReportS3Report {
   arn?: string;
   reportType?: string;
 }
-export const ExperimentReportS3Report = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ arn: S.optional(S.String), reportType: S.optional(S.String) }),
+export const ExperimentReportS3Report = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.optional(S.String), reportType: S.optional(S.String) }),
 ).annotate({
   identifier: "ExperimentReportS3Report",
 }) as any as S.Schema<ExperimentReportS3Report>;
 export type ExperimentReportS3ReportList = ExperimentReportS3Report[];
-export const ExperimentReportS3ReportList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ExperimentReportS3ReportList = /*@__PURE__*/ S.Array(
   ExperimentReportS3Report,
 );
 export interface ExperimentReport {
   state?: ExperimentReportState;
   s3Reports?: ExperimentReportS3Report[];
 }
-export const ExperimentReport = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExperimentReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(ExperimentReportState),
     s3Reports: S.optional(ExperimentReportS3ReportList),
@@ -1288,7 +1271,7 @@ export interface Experiment {
   experimentReportConfiguration?: ExperimentReportConfiguration;
   experimentReport?: ExperimentReport;
 }
-export const Experiment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Experiment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -1312,7 +1295,7 @@ export const Experiment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetExperimentResponse {
   experiment?: Experiment;
 }
-export const GetExperimentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetExperimentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ experiment: S.optional(Experiment) }),
 ).annotate({
   identifier: "GetExperimentResponse",
@@ -1322,7 +1305,7 @@ export interface GetExperimentTargetAccountConfigurationRequest {
   accountId: string;
 }
 export const GetExperimentTargetAccountConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       experimentId: S.String.pipe(T.HttpLabel("experimentId")),
       accountId: S.String.pipe(T.HttpLabel("accountId")),
@@ -1348,7 +1331,7 @@ export interface ExperimentTargetAccountConfiguration {
   description?: string;
 }
 export const ExperimentTargetAccountConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       roleArn: S.optional(S.String),
       accountId: S.optional(S.String),
@@ -1361,7 +1344,7 @@ export interface GetExperimentTargetAccountConfigurationResponse {
   targetAccountConfiguration?: ExperimentTargetAccountConfiguration;
 }
 export const GetExperimentTargetAccountConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetAccountConfiguration: S.optional(
         ExperimentTargetAccountConfiguration,
@@ -1374,7 +1357,7 @@ export interface GetExperimentTemplateRequest {
   id: string;
 }
 export const GetExperimentTemplateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/experimentTemplates/{id}" }),
@@ -1392,7 +1375,7 @@ export interface GetExperimentTemplateResponse {
   experimentTemplate?: ExperimentTemplate;
 }
 export const GetExperimentTemplateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ experimentTemplate: S.optional(ExperimentTemplate) }),
   ).annotate({
     identifier: "GetExperimentTemplateResponse",
@@ -1400,7 +1383,7 @@ export const GetExperimentTemplateResponse =
 export interface GetSafetyLeverRequest {
   id: string;
 }
-export const GetSafetyLeverRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSafetyLeverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/safetyLevers/{id}" }),
@@ -1419,12 +1402,12 @@ export type SafetyLeverStatus =
   | "engaged"
   | "engaging"
   | (string & {});
-export const SafetyLeverStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SafetyLeverStatus = /*@__PURE__*/ S.String;
 export interface SafetyLeverState {
   status?: SafetyLeverStatus;
   reason?: string;
 }
-export const SafetyLeverState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SafetyLeverState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(SafetyLeverStatus),
     reason: S.optional(S.String),
@@ -1437,7 +1420,7 @@ export interface SafetyLever {
   arn?: string;
   state?: SafetyLeverState;
 }
-export const SafetyLever = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SafetyLever = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -1447,8 +1430,8 @@ export const SafetyLever = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetSafetyLeverResponse {
   safetyLever?: SafetyLever;
 }
-export const GetSafetyLeverResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ safetyLever: S.optional(SafetyLever) }),
+export const GetSafetyLeverResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ safetyLever: S.optional(SafetyLever) }),
 ).annotate({
   identifier: "GetSafetyLeverResponse",
 }) as any as S.Schema<GetSafetyLeverResponse>;
@@ -1457,7 +1440,7 @@ export interface GetTargetAccountConfigurationRequest {
   accountId: string;
 }
 export const GetTargetAccountConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       experimentTemplateId: S.String.pipe(T.HttpLabel("experimentTemplateId")),
       accountId: S.String.pipe(T.HttpLabel("accountId")),
@@ -1481,7 +1464,7 @@ export interface GetTargetAccountConfigurationResponse {
   targetAccountConfiguration?: TargetAccountConfiguration;
 }
 export const GetTargetAccountConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetAccountConfiguration: S.optional(TargetAccountConfiguration),
     }),
@@ -1492,7 +1475,7 @@ export interface GetTargetResourceTypeRequest {
   resourceType: string;
 }
 export const GetTargetResourceTypeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ resourceType: S.String.pipe(T.HttpLabel("resourceType")) }).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/targetResourceTypes/{resourceType}" }),
@@ -1511,7 +1494,7 @@ export interface TargetResourceTypeParameter {
   required?: boolean;
 }
 export const TargetResourceTypeParameter =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       description: S.optional(S.String),
       required: S.optional(S.Boolean),
@@ -1523,7 +1506,7 @@ export type TargetResourceTypeParameterMap = {
   [key: string]: TargetResourceTypeParameter | undefined;
 };
 export const TargetResourceTypeParameterMap =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  /*@__PURE__*/ S.Record(
     S.String,
     TargetResourceTypeParameter.pipe(S.optional),
   );
@@ -1532,7 +1515,7 @@ export interface TargetResourceType {
   description?: string;
   parameters?: { [key: string]: TargetResourceTypeParameter | undefined };
 }
-export const TargetResourceType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TargetResourceType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.optional(S.String),
     description: S.optional(S.String),
@@ -1545,7 +1528,7 @@ export interface GetTargetResourceTypeResponse {
   targetResourceType?: TargetResourceType;
 }
 export const GetTargetResourceTypeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ targetResourceType: S.optional(TargetResourceType) }),
   ).annotate({
     identifier: "GetTargetResourceTypeResponse",
@@ -1554,7 +1537,7 @@ export interface ListActionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListActionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1578,7 +1561,7 @@ export interface ActionSummary {
   targets?: { [key: string]: ActionTarget | undefined };
   tags?: { [key: string]: string | undefined };
 }
-export const ActionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -1588,13 +1571,12 @@ export const ActionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActionSummary" }) as any as S.Schema<ActionSummary>;
 export type ActionSummaryList = ActionSummary[];
-export const ActionSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ActionSummary);
+export const ActionSummaryList = /*@__PURE__*/ S.Array(ActionSummary);
 export interface ListActionsResponse {
   actions?: ActionSummary[];
   nextToken?: string;
 }
-export const ListActionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(ActionSummaryList),
     nextToken: S.optional(S.String),
@@ -1609,7 +1591,7 @@ export interface ListExperimentResolvedTargetsRequest {
   targetName?: string;
 }
 export const ListExperimentResolvedTargetsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       experimentId: S.String.pipe(T.HttpLabel("experimentId")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1632,7 +1614,7 @@ export const ListExperimentResolvedTargetsRequest =
     identifier: "ListExperimentResolvedTargetsRequest",
   }) as any as S.Schema<ListExperimentResolvedTargetsRequest>;
 export type TargetInformationMap = { [key: string]: string | undefined };
-export const TargetInformationMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TargetInformationMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -1641,7 +1623,7 @@ export interface ResolvedTarget {
   targetName?: string;
   targetInformation?: { [key: string]: string | undefined };
 }
-export const ResolvedTarget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResolvedTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.optional(S.String),
     targetName: S.optional(S.String),
@@ -1649,14 +1631,13 @@ export const ResolvedTarget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResolvedTarget" }) as any as S.Schema<ResolvedTarget>;
 export type ResolvedTargetList = ResolvedTarget[];
-export const ResolvedTargetList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResolvedTarget);
+export const ResolvedTargetList = /*@__PURE__*/ S.Array(ResolvedTarget);
 export interface ListExperimentResolvedTargetsResponse {
   resolvedTargets?: ResolvedTarget[];
   nextToken?: string;
 }
 export const ListExperimentResolvedTargetsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resolvedTargets: S.optional(ResolvedTargetList),
       nextToken: S.optional(S.String),
@@ -1669,24 +1650,23 @@ export interface ListExperimentsRequest {
   nextToken?: string;
   experimentTemplateId?: string;
 }
-export const ListExperimentsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      experimentTemplateId: S.optional(S.String).pipe(
-        T.HttpQuery("experimentTemplateId"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/experiments" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    experimentTemplateId: S.optional(S.String).pipe(
+      T.HttpQuery("experimentTemplateId"),
     ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/experiments" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "ListExperimentsRequest",
 }) as any as S.Schema<ListExperimentsRequest>;
@@ -1699,7 +1679,7 @@ export interface ExperimentSummary {
   tags?: { [key: string]: string | undefined };
   experimentOptions?: ExperimentOptions;
 }
-export const ExperimentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExperimentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     arn: S.optional(S.String),
@@ -1713,18 +1693,16 @@ export const ExperimentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ExperimentSummary",
 }) as any as S.Schema<ExperimentSummary>;
 export type ExperimentSummaryList = ExperimentSummary[];
-export const ExperimentSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ExperimentSummary);
+export const ExperimentSummaryList = /*@__PURE__*/ S.Array(ExperimentSummary);
 export interface ListExperimentsResponse {
   experiments?: ExperimentSummary[];
   nextToken?: string;
 }
-export const ListExperimentsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      experiments: S.optional(ExperimentSummaryList),
-      nextToken: S.optional(S.String),
-    }),
+export const ListExperimentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    experiments: S.optional(ExperimentSummaryList),
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListExperimentsResponse",
 }) as any as S.Schema<ListExperimentsResponse>;
@@ -1733,7 +1711,7 @@ export interface ListExperimentTargetAccountConfigurationsRequest {
   nextToken?: string;
 }
 export const ListExperimentTargetAccountConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       experimentId: S.String.pipe(T.HttpLabel("experimentId")),
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1759,7 +1737,7 @@ export interface ExperimentTargetAccountConfigurationSummary {
   description?: string;
 }
 export const ExperimentTargetAccountConfigurationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       roleArn: S.optional(S.String),
       accountId: S.optional(S.String),
@@ -1771,15 +1749,13 @@ export const ExperimentTargetAccountConfigurationSummary =
 export type ExperimentTargetAccountConfigurationList =
   ExperimentTargetAccountConfigurationSummary[];
 export const ExperimentTargetAccountConfigurationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    ExperimentTargetAccountConfigurationSummary,
-  );
+  /*@__PURE__*/ S.Array(ExperimentTargetAccountConfigurationSummary);
 export interface ListExperimentTargetAccountConfigurationsResponse {
   targetAccountConfigurations?: ExperimentTargetAccountConfigurationSummary[];
   nextToken?: string;
 }
 export const ListExperimentTargetAccountConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetAccountConfigurations: S.optional(
         ExperimentTargetAccountConfigurationList,
@@ -1794,7 +1770,7 @@ export interface ListExperimentTemplatesRequest {
   nextToken?: string;
 }
 export const ListExperimentTemplatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1819,30 +1795,27 @@ export interface ExperimentTemplateSummary {
   lastUpdateTime?: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const ExperimentTemplateSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      arn: S.optional(S.String),
-      description: S.optional(S.String),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      lastUpdateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      tags: S.optional(TagMap),
-    }),
+export const ExperimentTemplateSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    arn: S.optional(S.String),
+    description: S.optional(S.String),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    tags: S.optional(TagMap),
+  }),
 ).annotate({
   identifier: "ExperimentTemplateSummary",
 }) as any as S.Schema<ExperimentTemplateSummary>;
 export type ExperimentTemplateSummaryList = ExperimentTemplateSummary[];
 export const ExperimentTemplateSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ExperimentTemplateSummary);
+  /*@__PURE__*/ S.Array(ExperimentTemplateSummary);
 export interface ListExperimentTemplatesResponse {
   experimentTemplates?: ExperimentTemplateSummary[];
   nextToken?: string;
 }
 export const ListExperimentTemplatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       experimentTemplates: S.optional(ExperimentTemplateSummaryList),
       nextToken: S.optional(S.String),
@@ -1853,18 +1826,17 @@ export const ListExperimentTemplatesResponse =
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
@@ -1872,7 +1844,7 @@ export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
 export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ tags: S.optional(TagMap) }),
   ).annotate({
     identifier: "ListTagsForResourceResponse",
@@ -1883,7 +1855,7 @@ export interface ListTargetAccountConfigurationsRequest {
   nextToken?: string;
 }
 export const ListTargetAccountConfigurationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       experimentTemplateId: S.String.pipe(T.HttpLabel("experimentTemplateId")),
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1910,7 +1882,7 @@ export interface TargetAccountConfigurationSummary {
   description?: string;
 }
 export const TargetAccountConfigurationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       roleArn: S.optional(S.String),
       accountId: S.optional(S.String),
@@ -1922,13 +1894,13 @@ export const TargetAccountConfigurationSummary =
 export type TargetAccountConfigurationList =
   TargetAccountConfigurationSummary[];
 export const TargetAccountConfigurationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TargetAccountConfigurationSummary);
+  /*@__PURE__*/ S.Array(TargetAccountConfigurationSummary);
 export interface ListTargetAccountConfigurationsResponse {
   targetAccountConfigurations?: TargetAccountConfigurationSummary[];
   nextToken?: string;
 }
 export const ListTargetAccountConfigurationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetAccountConfigurations: S.optional(TargetAccountConfigurationList),
       nextToken: S.optional(S.String),
@@ -1941,7 +1913,7 @@ export interface ListTargetResourceTypesRequest {
   nextToken?: string;
 }
 export const ListTargetResourceTypesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1962,24 +1934,23 @@ export interface TargetResourceTypeSummary {
   resourceType?: string;
   description?: string;
 }
-export const TargetResourceTypeSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceType: S.optional(S.String),
-      description: S.optional(S.String),
-    }),
+export const TargetResourceTypeSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceType: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "TargetResourceTypeSummary",
 }) as any as S.Schema<TargetResourceTypeSummary>;
 export type TargetResourceTypeSummaryList = TargetResourceTypeSummary[];
 export const TargetResourceTypeSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TargetResourceTypeSummary);
+  /*@__PURE__*/ S.Array(TargetResourceTypeSummary);
 export interface ListTargetResourceTypesResponse {
   targetResourceTypes?: TargetResourceTypeSummary[];
   nextToken?: string;
 }
 export const ListTargetResourceTypesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetResourceTypes: S.optional(TargetResourceTypeSummaryList),
       nextToken: S.optional(S.String),
@@ -1991,7 +1962,7 @@ export interface StartExperimentExperimentOptionsInput {
   actionsMode?: ActionsMode;
 }
 export const StartExperimentExperimentOptionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ actionsMode: S.optional(ActionsMode) }),
   ).annotate({
     identifier: "StartExperimentExperimentOptionsInput",
@@ -2002,38 +1973,37 @@ export interface StartExperimentRequest {
   experimentOptions?: StartExperimentExperimentOptionsInput;
   tags?: { [key: string]: string | undefined };
 }
-export const StartExperimentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientToken: S.String.pipe(T.IdempotencyToken()),
-      experimentTemplateId: S.String,
-      experimentOptions: S.optional(StartExperimentExperimentOptionsInput),
-      tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/experiments" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.String.pipe(T.IdempotencyToken()),
+    experimentTemplateId: S.String,
+    experimentOptions: S.optional(StartExperimentExperimentOptionsInput),
+    tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/experiments" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "StartExperimentRequest",
 }) as any as S.Schema<StartExperimentRequest>;
 export interface StartExperimentResponse {
   experiment?: Experiment;
 }
-export const StartExperimentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ experiment: S.optional(Experiment) }),
+export const StartExperimentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ experiment: S.optional(Experiment) }),
 ).annotate({
   identifier: "StartExperimentResponse",
 }) as any as S.Schema<StartExperimentResponse>;
 export interface StopExperimentRequest {
   id: string;
 }
-export const StopExperimentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/experiments/{id}" }),
@@ -2050,8 +2020,8 @@ export const StopExperimentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface StopExperimentResponse {
   experiment?: Experiment;
 }
-export const StopExperimentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ experiment: S.optional(Experiment) }),
+export const StopExperimentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ experiment: S.optional(Experiment) }),
 ).annotate({
   identifier: "StopExperimentResponse",
 }) as any as S.Schema<StopExperimentResponse>;
@@ -2059,7 +2029,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagMap,
@@ -2077,18 +2047,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys?: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: S.optional(TagKeyList).pipe(T.HttpQuery("tagKeys")),
@@ -2106,7 +2076,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -2116,7 +2086,7 @@ export interface UpdateExperimentTemplateStopConditionInput {
   value?: string;
 }
 export const UpdateExperimentTemplateStopConditionInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ source: S.String, value: S.optional(S.String) }),
   ).annotate({
     identifier: "UpdateExperimentTemplateStopConditionInput",
@@ -2124,9 +2094,7 @@ export const UpdateExperimentTemplateStopConditionInput =
 export type UpdateExperimentTemplateStopConditionInputList =
   UpdateExperimentTemplateStopConditionInput[];
 export const UpdateExperimentTemplateStopConditionInputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    UpdateExperimentTemplateStopConditionInput,
-  );
+  /*@__PURE__*/ S.Array(UpdateExperimentTemplateStopConditionInput);
 export interface UpdateExperimentTemplateTargetInput {
   resourceType: string;
   resourceArns?: string[];
@@ -2136,7 +2104,7 @@ export interface UpdateExperimentTemplateTargetInput {
   parameters?: { [key: string]: string | undefined };
 }
 export const UpdateExperimentTemplateTargetInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceType: S.String,
       resourceArns: S.optional(ResourceArnList),
@@ -2152,7 +2120,7 @@ export type UpdateExperimentTemplateTargetInputMap = {
   [key: string]: UpdateExperimentTemplateTargetInput | undefined;
 };
 export const UpdateExperimentTemplateTargetInputMap =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  /*@__PURE__*/ S.Record(
     S.String,
     UpdateExperimentTemplateTargetInput.pipe(S.optional),
   );
@@ -2164,7 +2132,7 @@ export interface UpdateExperimentTemplateActionInputItem {
   startAfter?: string[];
 }
 export const UpdateExperimentTemplateActionInputItem =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       actionId: S.optional(S.String),
       description: S.optional(S.String),
@@ -2179,7 +2147,7 @@ export type UpdateExperimentTemplateActionInputMap = {
   [key: string]: UpdateExperimentTemplateActionInputItem | undefined;
 };
 export const UpdateExperimentTemplateActionInputMap =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  /*@__PURE__*/ S.Record(
     S.String,
     UpdateExperimentTemplateActionInputItem.pipe(S.optional),
   );
@@ -2189,7 +2157,7 @@ export interface UpdateExperimentTemplateLogConfigurationInput {
   logSchemaVersion?: number;
 }
 export const UpdateExperimentTemplateLogConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cloudWatchLogsConfiguration: S.optional(
         ExperimentTemplateCloudWatchLogsLogConfigurationInput,
@@ -2204,7 +2172,7 @@ export interface UpdateExperimentTemplateExperimentOptionsInput {
   emptyTargetResolutionMode?: EmptyTargetResolutionMode;
 }
 export const UpdateExperimentTemplateExperimentOptionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       emptyTargetResolutionMode: S.optional(EmptyTargetResolutionMode),
     }),
@@ -2218,7 +2186,7 @@ export interface UpdateExperimentTemplateReportConfigurationInput {
   postExperimentDuration?: string;
 }
 export const UpdateExperimentTemplateReportConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       outputs: S.optional(ExperimentTemplateReportConfigurationOutputsInput),
       dataSources: S.optional(
@@ -2244,7 +2212,7 @@ export interface UpdateExperimentTemplateRequest {
   experimentReportConfiguration?: UpdateExperimentTemplateReportConfigurationInput;
 }
 export const UpdateExperimentTemplateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String.pipe(T.HttpLabel("id")),
       description: S.optional(S.String),
@@ -2280,19 +2248,19 @@ export interface UpdateExperimentTemplateResponse {
   experimentTemplate?: ExperimentTemplate;
 }
 export const UpdateExperimentTemplateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ experimentTemplate: S.optional(ExperimentTemplate) }),
   ).annotate({
     identifier: "UpdateExperimentTemplateResponse",
   }) as any as S.Schema<UpdateExperimentTemplateResponse>;
 export type SafetyLeverStatusInput = "disengaged" | "engaged" | (string & {});
-export const SafetyLeverStatusInput = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SafetyLeverStatusInput = /*@__PURE__*/ S.String;
 export interface UpdateSafetyLeverStateInput {
   status: SafetyLeverStatusInput;
   reason: string;
 }
 export const UpdateSafetyLeverStateInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ status: SafetyLeverStatusInput, reason: S.String }),
   ).annotate({
     identifier: "UpdateSafetyLeverStateInput",
@@ -2302,7 +2270,7 @@ export interface UpdateSafetyLeverStateRequest {
   state: UpdateSafetyLeverStateInput;
 }
 export const UpdateSafetyLeverStateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String.pipe(T.HttpLabel("id")),
       state: UpdateSafetyLeverStateInput,
@@ -2323,7 +2291,7 @@ export interface UpdateSafetyLeverStateResponse {
   safetyLever?: SafetyLever;
 }
 export const UpdateSafetyLeverStateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ safetyLever: S.optional(SafetyLever) }),
   ).annotate({
     identifier: "UpdateSafetyLeverStateResponse",
@@ -2335,7 +2303,7 @@ export interface UpdateTargetAccountConfigurationRequest {
   description?: string;
 }
 export const UpdateTargetAccountConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       experimentTemplateId: S.String.pipe(T.HttpLabel("experimentTemplateId")),
       accountId: S.String.pipe(T.HttpLabel("accountId")),
@@ -2361,7 +2329,7 @@ export interface UpdateTargetAccountConfigurationResponse {
   targetAccountConfiguration?: TargetAccountConfiguration;
 }
 export const UpdateTargetAccountConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetAccountConfiguration: S.optional(TargetAccountConfiguration),
     }),
@@ -2425,7 +2393,7 @@ export const createExperimentTemplate: API.OperationMethod<
   CreateExperimentTemplateResponse,
   CreateExperimentTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateExperimentTemplateRequest,
   output: CreateExperimentTemplateResponse,
   errors: [
@@ -2453,7 +2421,7 @@ export const createTargetAccountConfiguration: API.OperationMethod<
   CreateTargetAccountConfigurationResponse,
   CreateTargetAccountConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTargetAccountConfigurationRequest,
   output: CreateTargetAccountConfigurationResponse,
   errors: [
@@ -2476,7 +2444,7 @@ export const deleteExperimentTemplate: API.OperationMethod<
   DeleteExperimentTemplateResponse,
   DeleteExperimentTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteExperimentTemplateRequest,
   output: DeleteExperimentTemplateResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -2494,7 +2462,7 @@ export const deleteTargetAccountConfiguration: API.OperationMethod<
   DeleteTargetAccountConfigurationResponse,
   DeleteTargetAccountConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTargetAccountConfigurationRequest,
   output: DeleteTargetAccountConfigurationResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -2512,7 +2480,7 @@ export const getAction: API.OperationMethod<
   GetActionResponse,
   GetActionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetActionRequest,
   output: GetActionResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -2530,7 +2498,7 @@ export const getExperiment: API.OperationMethod<
   GetExperimentResponse,
   GetExperimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExperimentRequest,
   output: GetExperimentResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -2548,7 +2516,7 @@ export const getExperimentTargetAccountConfiguration: API.OperationMethod<
   GetExperimentTargetAccountConfigurationResponse,
   GetExperimentTargetAccountConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExperimentTargetAccountConfigurationRequest,
   output: GetExperimentTargetAccountConfigurationResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -2566,7 +2534,7 @@ export const getExperimentTemplate: API.OperationMethod<
   GetExperimentTemplateResponse,
   GetExperimentTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetExperimentTemplateRequest,
   output: GetExperimentTemplateResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -2581,7 +2549,7 @@ export const getSafetyLever: API.OperationMethod<
   GetSafetyLeverResponse,
   GetSafetyLeverError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSafetyLeverRequest,
   output: GetSafetyLeverResponse,
   errors: [ResourceNotFoundException],
@@ -2599,7 +2567,7 @@ export const getTargetAccountConfiguration: API.OperationMethod<
   GetTargetAccountConfigurationResponse,
   GetTargetAccountConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTargetAccountConfigurationRequest,
   output: GetTargetAccountConfigurationResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -2617,7 +2585,7 @@ export const getTargetResourceType: API.OperationMethod<
   GetTargetResourceTypeResponse,
   GetTargetResourceTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTargetResourceTypeRequest,
   output: GetTargetResourceTypeResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -2647,7 +2615,7 @@ export const listActions: API.OperationMethod<
     ListActionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActionsRequest,
   output: ListActionsResponse,
   errors: [ValidationException],
@@ -2686,7 +2654,7 @@ export const listExperimentResolvedTargets: API.OperationMethod<
     ListExperimentResolvedTargetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentResolvedTargetsRequest,
   output: ListExperimentResolvedTargetsResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -2722,7 +2690,7 @@ export const listExperiments: API.OperationMethod<
     ListExperimentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentsRequest,
   output: ListExperimentsResponse,
   errors: [ValidationException],
@@ -2746,7 +2714,7 @@ export const listExperimentTargetAccountConfigurations: API.OperationMethod<
   ListExperimentTargetAccountConfigurationsResponse,
   ListExperimentTargetAccountConfigurationsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListExperimentTargetAccountConfigurationsRequest,
   output: ListExperimentTargetAccountConfigurationsResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -2776,7 +2744,7 @@ export const listExperimentTemplates: API.OperationMethod<
     ListExperimentTemplatesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListExperimentTemplatesRequest,
   output: ListExperimentTemplatesResponse,
   errors: [ValidationException],
@@ -2797,7 +2765,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
@@ -2830,7 +2798,7 @@ export const listTargetAccountConfigurations: API.OperationMethod<
     ListTargetAccountConfigurationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetAccountConfigurationsRequest,
   output: ListTargetAccountConfigurationsResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -2866,7 +2834,7 @@ export const listTargetResourceTypes: API.OperationMethod<
     ListTargetResourceTypesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTargetResourceTypesRequest,
   output: ListTargetResourceTypesResponse,
   errors: [ValidationException],
@@ -2892,7 +2860,7 @@ export const startExperiment: API.OperationMethod<
   StartExperimentResponse,
   StartExperimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartExperimentRequest,
   output: StartExperimentResponse,
   errors: [
@@ -2915,7 +2883,7 @@ export const stopExperiment: API.OperationMethod<
   StopExperimentResponse,
   StopExperimentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopExperimentRequest,
   output: StopExperimentResponse,
   errors: [ResourceNotFoundException, ValidationException],
@@ -2930,7 +2898,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
@@ -2945,7 +2913,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
@@ -2964,7 +2932,7 @@ export const updateExperimentTemplate: API.OperationMethod<
   UpdateExperimentTemplateResponse,
   UpdateExperimentTemplateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateExperimentTemplateRequest,
   output: UpdateExperimentTemplateResponse,
   errors: [
@@ -2987,7 +2955,7 @@ export const updateSafetyLeverState: API.OperationMethod<
   UpdateSafetyLeverStateResponse,
   UpdateSafetyLeverStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSafetyLeverStateRequest,
   output: UpdateSafetyLeverStateResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
@@ -3005,7 +2973,7 @@ export const updateTargetAccountConfiguration: API.OperationMethod<
   UpdateTargetAccountConfigurationResponse,
   UpdateTargetAccountConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTargetAccountConfigurationRequest,
   output: UpdateTargetAccountConfigurationResponse,
   errors: [ResourceNotFoundException, ValidationException],

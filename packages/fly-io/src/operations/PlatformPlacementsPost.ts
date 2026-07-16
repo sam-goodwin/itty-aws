@@ -24,7 +24,7 @@ export interface PlatformPlacementsPostInput {
   weights?: Record<string, number>;
 }
 export const PlatformPlacementsPostInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     compute: Schema.optional(
       Schema.Struct({
         cpu_kind: Schema.optional(Schema.String),
@@ -55,7 +55,7 @@ export interface PlatformPlacementsPostOutput {
   regions?: { concurrency?: number; count?: number; region?: string }[];
 }
 export const PlatformPlacementsPostOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     regions: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -73,10 +73,8 @@ export const PlatformPlacementsPostOutput =
  *
  * Simulates placing the specified number of machines into regions, depending on available capacity and limits.
  */
-export const PlatformPlacementsPost = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PlatformPlacementsPostInput,
-    outputSchema: PlatformPlacementsPostOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const PlatformPlacementsPost = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PlatformPlacementsPostInput,
+  outputSchema: PlatformPlacementsPostOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

@@ -13,7 +13,7 @@ export interface LlmPromptsResolveNameRetrieveInput {
   version_id?: string;
 }
 export const LlmPromptsResolveNameRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     prompt_name: Schema.String.pipe(T.PathParam()),
     before_version: Schema.optional(Schema.Number),
@@ -95,7 +95,7 @@ export interface LlmPromptsResolveNameRetrieveOutput {
   has_more?: boolean;
 }
 export const LlmPromptsResolveNameRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     prompt: Schema.optional(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -211,7 +211,7 @@ export const LlmPromptsResolveNameRetrieveOutput =
  * @param version_id - Exact prompt version UUID to resolve. Can be used together with version for extra safety.
  */
 export const llmPromptsResolveNameRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LlmPromptsResolveNameRetrieveInput,
     outputSchema: LlmPromptsResolveNameRetrieveOutput,
   }));

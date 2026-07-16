@@ -13,7 +13,7 @@ export interface GetRadarValueListItemsInput {
   value_list: string;
 }
 export const GetRadarValueListItemsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     created: Schema.optional(Schema.String),
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -45,7 +45,7 @@ export interface GetRadarValueListItemsOutput {
   url: string;
 }
 export const GetRadarValueListItemsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         created: Schema.Number,
@@ -76,9 +76,7 @@ export const GetRadarValueListItemsOutput =
  * @param value - Return items belonging to the parent list whose value matches the specified value (using an "is like" match).
  * @param value_list - Identifier for the parent value list this item belongs to.
  */
-export const GetRadarValueListItems = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetRadarValueListItemsInput,
-    outputSchema: GetRadarValueListItemsOutput,
-  }),
-);
+export const GetRadarValueListItems = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetRadarValueListItemsInput,
+  outputSchema: GetRadarValueListItemsOutput,
+}));

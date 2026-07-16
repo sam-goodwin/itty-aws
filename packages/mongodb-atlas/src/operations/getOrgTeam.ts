@@ -10,7 +10,7 @@ export interface GetOrgTeamInput {
   envelope?: boolean;
   pretty?: boolean;
 }
-export const GetOrgTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetOrgTeamInput = /*@__PURE__*/ Schema.Struct({
   orgId: Schema.String.pipe(T.PathParam()),
   teamId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -22,7 +22,7 @@ export const GetOrgTeamInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetOrgTeamOutput = void;
 export const GetOrgTeamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgTeamOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetOrgTeamOutput>;
 
 // The operation
 /**
@@ -35,7 +35,7 @@ export const GetOrgTeamOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param teamId - Unique 24-hexadecimal digit string that identifies the team whose information you want to return.
  */
-export const getOrgTeam = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getOrgTeam = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetOrgTeamInput,
   outputSchema: GetOrgTeamOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

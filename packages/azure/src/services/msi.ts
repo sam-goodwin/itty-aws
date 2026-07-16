@@ -17,7 +17,7 @@ export interface FederatedIdentityCredentialsCreateOrUpdateInput {
   properties?: { issuer: string; subject: string; audiences: string[] };
 }
 export const FederatedIdentityCredentialsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -52,7 +52,7 @@ export interface FederatedIdentityCredentialsCreateOrUpdateOutput {
   };
 }
 export const FederatedIdentityCredentialsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -83,7 +83,7 @@ export const FederatedIdentityCredentialsCreateOrUpdateOutput =
  * @param federatedIdentityCredentialResourceName - The name of the federated identity credential resource.
  */
 export const FederatedIdentityCredentialsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FederatedIdentityCredentialsCreateOrUpdateInput,
     outputSchema: FederatedIdentityCredentialsCreateOrUpdateOutput,
   }));
@@ -95,7 +95,7 @@ export interface FederatedIdentityCredentialsDeleteInput {
   federatedIdentityCredentialResourceName: string;
 }
 export const FederatedIdentityCredentialsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -111,7 +111,7 @@ export const FederatedIdentityCredentialsDeleteInput =
 // Output Schema
 export type FederatedIdentityCredentialsDeleteOutput = void;
 export const FederatedIdentityCredentialsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<FederatedIdentityCredentialsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<FederatedIdentityCredentialsDeleteOutput>;
 
 // The operation
 /**
@@ -124,7 +124,7 @@ export const FederatedIdentityCredentialsDeleteOutput =
  * @param federatedIdentityCredentialResourceName - The name of the federated identity credential resource.
  */
 export const FederatedIdentityCredentialsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FederatedIdentityCredentialsDeleteInput,
     outputSchema: FederatedIdentityCredentialsDeleteOutput,
   }));
@@ -136,7 +136,7 @@ export interface FederatedIdentityCredentialsGetInput {
   federatedIdentityCredentialResourceName: string;
 }
 export const FederatedIdentityCredentialsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -164,7 +164,7 @@ export interface FederatedIdentityCredentialsGetOutput {
   };
 }
 export const FederatedIdentityCredentialsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -195,7 +195,7 @@ export const FederatedIdentityCredentialsGetOutput =
  * @param federatedIdentityCredentialResourceName - The name of the federated identity credential resource.
  */
 export const FederatedIdentityCredentialsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FederatedIdentityCredentialsGetInput,
     outputSchema: FederatedIdentityCredentialsGetOutput,
   }));
@@ -208,7 +208,7 @@ export interface FederatedIdentityCredentialsListInput {
   $skiptoken?: string;
 }
 export const FederatedIdentityCredentialsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -240,7 +240,7 @@ export interface FederatedIdentityCredentialsListOutput {
   nextLink?: string;
 }
 export const FederatedIdentityCredentialsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -287,15 +287,13 @@ export const FederatedIdentityCredentialsListOutput =
  * @param $skiptoken - A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
  */
 export const FederatedIdentityCredentialsList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: FederatedIdentityCredentialsListInput,
     outputSchema: FederatedIdentityCredentialsListOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.ManagedIdentity/operations",
@@ -316,7 +314,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -339,7 +337,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -348,7 +346,7 @@ export interface SystemAssignedIdentitiesGetByScopeInput {
   scope: string;
 }
 export const SystemAssignedIdentitiesGetByScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -373,7 +371,7 @@ export interface SystemAssignedIdentitiesGetByScopeOutput {
   };
 }
 export const SystemAssignedIdentitiesGetByScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -401,7 +399,7 @@ export const SystemAssignedIdentitiesGetByScopeOutput =
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  */
 export const SystemAssignedIdentitiesGetByScope =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SystemAssignedIdentitiesGetByScopeInput,
     outputSchema: SystemAssignedIdentitiesGetByScopeOutput,
   }));
@@ -420,7 +418,7 @@ export interface UserAssignedIdentitiesCreateOrUpdateInput {
   location: string;
 }
 export const UserAssignedIdentitiesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -457,7 +455,7 @@ export interface UserAssignedIdentitiesCreateOrUpdateOutput {
   };
 }
 export const UserAssignedIdentitiesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -487,7 +485,7 @@ export const UserAssignedIdentitiesCreateOrUpdateOutput =
  * @param resourceName - The name of the identity resource.
  */
 export const UserAssignedIdentitiesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserAssignedIdentitiesCreateOrUpdateInput,
     outputSchema: UserAssignedIdentitiesCreateOrUpdateOutput,
   }));
@@ -498,7 +496,7 @@ export interface UserAssignedIdentitiesDeleteInput {
   resourceName: string;
 }
 export const UserAssignedIdentitiesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -513,7 +511,7 @@ export const UserAssignedIdentitiesDeleteInput =
 // Output Schema
 export type UserAssignedIdentitiesDeleteOutput = void;
 export const UserAssignedIdentitiesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UserAssignedIdentitiesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UserAssignedIdentitiesDeleteOutput>;
 
 // The operation
 /**
@@ -525,7 +523,7 @@ export const UserAssignedIdentitiesDeleteOutput =
  * @param resourceName - The name of the identity resource.
  */
 export const UserAssignedIdentitiesDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserAssignedIdentitiesDeleteInput,
     outputSchema: UserAssignedIdentitiesDeleteOutput,
   }));
@@ -536,7 +534,7 @@ export interface UserAssignedIdentitiesGetInput {
   resourceName: string;
 }
 export const UserAssignedIdentitiesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -563,7 +561,7 @@ export interface UserAssignedIdentitiesGetOutput {
   };
 }
 export const UserAssignedIdentitiesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -592,19 +590,17 @@ export const UserAssignedIdentitiesGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param resourceName - The name of the identity resource.
  */
-export const UserAssignedIdentitiesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UserAssignedIdentitiesGetInput,
-    outputSchema: UserAssignedIdentitiesGetOutput,
-  }),
-);
+export const UserAssignedIdentitiesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UserAssignedIdentitiesGetInput,
+  outputSchema: UserAssignedIdentitiesGetOutput,
+}));
 // Input Schema
 export interface UserAssignedIdentitiesListByResourceGroupInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
 export const UserAssignedIdentitiesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -633,7 +629,7 @@ export interface UserAssignedIdentitiesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const UserAssignedIdentitiesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -677,7 +673,7 @@ export const UserAssignedIdentitiesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
 export const UserAssignedIdentitiesListByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserAssignedIdentitiesListByResourceGroupInput,
     outputSchema: UserAssignedIdentitiesListByResourceGroupOutput,
   }));
@@ -686,7 +682,7 @@ export interface UserAssignedIdentitiesListBySubscriptionInput {
   subscriptionId: string;
 }
 export const UserAssignedIdentitiesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -714,7 +710,7 @@ export interface UserAssignedIdentitiesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const UserAssignedIdentitiesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -757,7 +753,7 @@ export const UserAssignedIdentitiesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const UserAssignedIdentitiesListBySubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserAssignedIdentitiesListBySubscriptionInput,
     outputSchema: UserAssignedIdentitiesListBySubscriptionOutput,
   }));
@@ -787,7 +783,7 @@ export interface UserAssignedIdentitiesUpdateInput {
   };
 }
 export const UserAssignedIdentitiesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceName: Schema.String.pipe(T.PathParam()),
@@ -841,7 +837,7 @@ export interface UserAssignedIdentitiesUpdateOutput {
   };
 }
 export const UserAssignedIdentitiesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -871,7 +867,7 @@ export const UserAssignedIdentitiesUpdateOutput =
  * @param resourceName - The name of the identity resource.
  */
 export const UserAssignedIdentitiesUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserAssignedIdentitiesUpdateInput,
     outputSchema: UserAssignedIdentitiesUpdateOutput,
   }));

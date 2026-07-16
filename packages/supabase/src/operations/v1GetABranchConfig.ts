@@ -10,7 +10,7 @@ export interface V1GetABranchConfigInput {
   branch_id_or_ref: string;
 }
 export const V1GetABranchConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     branch_id_or_ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/branches/{branch_id_or_ref}" }),
@@ -45,7 +45,7 @@ export interface V1GetABranchConfigOutput {
   jwt_secret?: Redacted.Redacted<string>;
 }
 export const V1GetABranchConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String,
     postgres_version: Schema.String,
     postgres_engine: Schema.String,
@@ -82,7 +82,7 @@ export const V1GetABranchConfigOutput =
  *
  * @param branch_id_or_ref - Branch ref or deprecated branch ID
  */
-export const v1GetABranchConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1GetABranchConfig = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1GetABranchConfigInput,
   outputSchema: V1GetABranchConfigOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

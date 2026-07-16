@@ -16,20 +16,18 @@ export interface V1UpdateAFunctionInput {
   ezbr_sha256?: string;
   body?: string;
 }
-export const V1UpdateAFunctionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-    function_slug: Schema.String.pipe(T.PathParam()),
-    slug: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    verify_jwt: Schema.optional(Schema.Boolean),
-    import_map: Schema.optional(Schema.Boolean),
-    entrypoint_path: Schema.optional(Schema.String),
-    import_map_path: Schema.optional(Schema.String),
-    ezbr_sha256: Schema.optional(Schema.String),
-    body: Schema.optional(Schema.String),
-  },
-).pipe(
+export const V1UpdateAFunctionInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  function_slug: Schema.String.pipe(T.PathParam()),
+  slug: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  verify_jwt: Schema.optional(Schema.Boolean),
+  import_map: Schema.optional(Schema.Boolean),
+  entrypoint_path: Schema.optional(Schema.String),
+  import_map_path: Schema.optional(Schema.String),
+  ezbr_sha256: Schema.optional(Schema.String),
+  body: Schema.optional(Schema.String),
+}).pipe(
   T.Http({
     method: "PATCH",
     path: "/v1/projects/{ref}/functions/{function_slug}",
@@ -52,7 +50,7 @@ export interface V1UpdateAFunctionOutput {
   ezbr_sha256?: string;
 }
 export const V1UpdateAFunctionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     slug: Schema.String,
     name: Schema.String,
@@ -78,7 +76,7 @@ export const V1UpdateAFunctionOutput =
  * @param verify_jwt - Boolean string, true or false
  * @param import_map - Boolean string, true or false
  */
-export const v1UpdateAFunction = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1UpdateAFunction = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1UpdateAFunctionInput,
   outputSchema: V1UpdateAFunctionOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

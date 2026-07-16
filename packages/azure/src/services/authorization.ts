@@ -14,7 +14,7 @@ export interface DenyAssignmentsGetInput {
   denyAssignmentId: string;
 }
 export const DenyAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     denyAssignmentId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -65,7 +65,7 @@ export interface DenyAssignmentsGetOutput {
   };
 }
 export const DenyAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -126,7 +126,7 @@ export const DenyAssignmentsGetOutput =
  * @param denyAssignmentId - The ID of the deny assignment to get.
  * @param api-version - The API version to use for this operation.
  */
-export const DenyAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DenyAssignmentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DenyAssignmentsGetInput,
   outputSchema: DenyAssignmentsGetOutput,
 }));
@@ -135,7 +135,7 @@ export interface DenyAssignmentsGetByIdInput {
   denyAssignmentId: string;
 }
 export const DenyAssignmentsGetByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     denyAssignmentId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -185,7 +185,7 @@ export interface DenyAssignmentsGetByIdOutput {
   };
 }
 export const DenyAssignmentsGetByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -245,19 +245,17 @@ export const DenyAssignmentsGetByIdOutput =
  * @param denyAssignmentId - The fully qualified deny assignment ID. For example, use the format, /subscriptions/{guid}/providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId} for subscription level deny assignments, or /providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId} for tenant level deny assignments.
  * @param api-version - The API version to use for this operation.
  */
-export const DenyAssignmentsGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DenyAssignmentsGetByIdInput,
-    outputSchema: DenyAssignmentsGetByIdOutput,
-  }),
-);
+export const DenyAssignmentsGetById = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DenyAssignmentsGetByIdInput,
+  outputSchema: DenyAssignmentsGetByIdOutput,
+}));
 // Input Schema
 export interface DenyAssignmentsListInput {
   subscriptionId: string;
   $filter?: string;
 }
 export const DenyAssignmentsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -311,7 +309,7 @@ export interface DenyAssignmentsListOutput {
   nextLink?: string;
 }
 export const DenyAssignmentsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -381,7 +379,7 @@ export const DenyAssignmentsListOutput =
  * @param api-version - The API version to use for this operation.
  * @param $filter - The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned.
  */
-export const DenyAssignmentsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DenyAssignmentsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DenyAssignmentsListInput,
   outputSchema: DenyAssignmentsListOutput,
 }));
@@ -396,7 +394,7 @@ export interface DenyAssignmentsListForResourceInput {
   $filter?: string;
 }
 export const DenyAssignmentsListForResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -455,7 +453,7 @@ export interface DenyAssignmentsListForResourceOutput {
   nextLink?: string;
 }
 export const DenyAssignmentsListForResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -531,7 +529,7 @@ export const DenyAssignmentsListForResourceOutput =
  * @param $filter - The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned.
  */
 export const DenyAssignmentsListForResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DenyAssignmentsListForResourceInput,
     outputSchema: DenyAssignmentsListForResourceOutput,
   }));
@@ -542,7 +540,7 @@ export interface DenyAssignmentsListForResourceGroupInput {
   $filter?: string;
 }
 export const DenyAssignmentsListForResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -597,7 +595,7 @@ export interface DenyAssignmentsListForResourceGroupOutput {
   nextLink?: string;
 }
 export const DenyAssignmentsListForResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -669,7 +667,7 @@ export const DenyAssignmentsListForResourceGroupOutput =
  * @param $filter - The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned.
  */
 export const DenyAssignmentsListForResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DenyAssignmentsListForResourceGroupInput,
     outputSchema: DenyAssignmentsListForResourceGroupOutput,
   }));
@@ -679,7 +677,7 @@ export interface DenyAssignmentsListForScopeInput {
   $filter?: string;
 }
 export const DenyAssignmentsListForScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -733,7 +731,7 @@ export interface DenyAssignmentsListForScopeOutput {
   nextLink?: string;
 }
 export const DenyAssignmentsListForScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -803,12 +801,10 @@ export const DenyAssignmentsListForScopeOutput =
  * @param api-version - The API version to use for this operation.
  * @param $filter - The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned.
  */
-export const DenyAssignmentsListForScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DenyAssignmentsListForScopeInput,
-    outputSchema: DenyAssignmentsListForScopeOutput,
-  }),
-);
+export const DenyAssignmentsListForScope = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DenyAssignmentsListForScopeInput,
+  outputSchema: DenyAssignmentsListForScopeOutput,
+}));
 // Input Schema
 export interface PermissionsListForResourceInput {
   resourceGroupName: string;
@@ -819,7 +815,7 @@ export interface PermissionsListForResourceInput {
   subscriptionId: string;
 }
 export const PermissionsListForResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
     parentResourcePath: Schema.String.pipe(T.PathParam()),
@@ -845,7 +841,7 @@ export interface PermissionsListForResourceOutput {
   nextLink?: string;
 }
 export const PermissionsListForResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -871,19 +867,17 @@ export const PermissionsListForResourceOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const PermissionsListForResource = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PermissionsListForResourceInput,
-    outputSchema: PermissionsListForResourceOutput,
-  }),
-);
+export const PermissionsListForResource = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PermissionsListForResourceInput,
+  outputSchema: PermissionsListForResourceOutput,
+}));
 // Input Schema
 export interface PermissionsListForResourceGroupInput {
   resourceGroupName: string;
   subscriptionId: string;
 }
 export const PermissionsListForResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -905,7 +899,7 @@ export interface PermissionsListForResourceGroupOutput {
   nextLink?: string;
 }
 export const PermissionsListForResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -928,7 +922,7 @@ export const PermissionsListForResourceGroupOutput =
  * @param subscriptionId - The ID of the target subscription.
  */
 export const PermissionsListForResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PermissionsListForResourceGroupInput,
     outputSchema: PermissionsListForResourceGroupOutput,
   }));
@@ -938,7 +932,7 @@ export interface ProviderOperationsMetadataGetInput {
   $expand?: string;
 }
 export const ProviderOperationsMetadataGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
   }).pipe(
@@ -956,7 +950,7 @@ export interface ProviderOperationsMetadataGetOutput {
   type?: string;
 }
 export const ProviderOperationsMetadataGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -971,7 +965,7 @@ export const ProviderOperationsMetadataGetOutput =
  * @param $expand - Specifies whether to expand the values.
  */
 export const ProviderOperationsMetadataGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderOperationsMetadataGetInput,
     outputSchema: ProviderOperationsMetadataGetOutput,
   }));
@@ -980,7 +974,7 @@ export interface ProviderOperationsMetadataListInput {
   $expand?: string;
 }
 export const ProviderOperationsMetadataListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     $expand: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
@@ -996,7 +990,7 @@ export interface ProviderOperationsMetadataListOutput {
   nextLink?: string;
 }
 export const ProviderOperationsMetadataListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1015,7 +1009,7 @@ export const ProviderOperationsMetadataListOutput =
  * @param $expand - Specifies whether to expand the values.
  */
 export const ProviderOperationsMetadataList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ProviderOperationsMetadataListInput,
     outputSchema: ProviderOperationsMetadataListOutput,
   }));
@@ -1044,7 +1038,7 @@ export interface RoleAssignmentsCreateInput {
   };
 }
 export const RoleAssignmentsCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     roleAssignmentName: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
@@ -1092,7 +1086,7 @@ export interface RoleAssignmentsCreateOutput {
   };
 }
 export const RoleAssignmentsCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1120,12 +1114,10 @@ export const RoleAssignmentsCreateOutput =
  * @param scope - The fully qualified Azure Resource manager identifier of the resource.
  * @param roleAssignmentName - The name of the role assignment. It can be any valid GUID.
  */
-export const RoleAssignmentsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RoleAssignmentsCreateInput,
-    outputSchema: RoleAssignmentsCreateOutput,
-  }),
-);
+export const RoleAssignmentsCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RoleAssignmentsCreateInput,
+  outputSchema: RoleAssignmentsCreateOutput,
+}));
 // Input Schema
 export interface RoleAssignmentsCreateByIdInput {
   roleAssignmentId: string;
@@ -1150,7 +1142,7 @@ export interface RoleAssignmentsCreateByIdInput {
   };
 }
 export const RoleAssignmentsCreateByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     roleAssignmentId: Schema.String.pipe(T.PathParam()),
     properties: Schema.Struct({
       scope: Schema.optional(Schema.String),
@@ -1197,7 +1189,7 @@ export interface RoleAssignmentsCreateByIdOutput {
   };
 }
 export const RoleAssignmentsCreateByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1224,12 +1216,10 @@ export const RoleAssignmentsCreateByIdOutput =
  * @param api-version - The API version to use for this operation.
  * @param roleAssignmentId - The fully qualified ID of the role assignment including scope, resource name, and resource type. Format: /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}. Example: /subscriptions/<SUB_ID>/resourcegroups/<RESOURCE_GROUP>/providers/Microsoft.Authorization/roleAssignments/<ROLE_ASSIGNMENT_NAME>
  */
-export const RoleAssignmentsCreateById = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RoleAssignmentsCreateByIdInput,
-    outputSchema: RoleAssignmentsCreateByIdOutput,
-  }),
-);
+export const RoleAssignmentsCreateById = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RoleAssignmentsCreateByIdInput,
+  outputSchema: RoleAssignmentsCreateByIdOutput,
+}));
 // Input Schema
 export interface RoleAssignmentsDeleteInput {
   scope: string;
@@ -1237,7 +1227,7 @@ export interface RoleAssignmentsDeleteInput {
   tenantId?: string;
 }
 export const RoleAssignmentsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     roleAssignmentName: Schema.String.pipe(T.PathParam()),
     tenantId: Schema.optional(Schema.String),
@@ -1264,7 +1254,7 @@ export interface RoleAssignmentsDeleteOutput {
   };
 }
 export const RoleAssignmentsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1293,19 +1283,17 @@ export const RoleAssignmentsDeleteOutput =
  * @param tenantId - Tenant ID for cross-tenant request
  * @param roleAssignmentName - The name of the role assignment. It can be any valid GUID.
  */
-export const RoleAssignmentsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RoleAssignmentsDeleteInput,
-    outputSchema: RoleAssignmentsDeleteOutput,
-  }),
-);
+export const RoleAssignmentsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RoleAssignmentsDeleteInput,
+  outputSchema: RoleAssignmentsDeleteOutput,
+}));
 // Input Schema
 export interface RoleAssignmentsDeleteByIdInput {
   roleAssignmentId: string;
   tenantId?: string;
 }
 export const RoleAssignmentsDeleteByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     roleAssignmentId: Schema.String.pipe(T.PathParam()),
     tenantId: Schema.optional(Schema.String),
   }).pipe(
@@ -1331,7 +1319,7 @@ export interface RoleAssignmentsDeleteByIdOutput {
   };
 }
 export const RoleAssignmentsDeleteByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1359,12 +1347,10 @@ export const RoleAssignmentsDeleteByIdOutput =
  * @param roleAssignmentId - The fully qualified ID of the role assignment including scope, resource name, and resource type. Format: /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}. Example: /subscriptions/<SUB_ID>/resourcegroups/<RESOURCE_GROUP>/providers/Microsoft.Authorization/roleAssignments/<ROLE_ASSIGNMENT_NAME>
  * @param tenantId - Tenant ID for cross-tenant request
  */
-export const RoleAssignmentsDeleteById = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RoleAssignmentsDeleteByIdInput,
-    outputSchema: RoleAssignmentsDeleteByIdOutput,
-  }),
-);
+export const RoleAssignmentsDeleteById = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RoleAssignmentsDeleteByIdInput,
+  outputSchema: RoleAssignmentsDeleteByIdOutput,
+}));
 // Input Schema
 export interface RoleAssignmentsGetInput {
   scope: string;
@@ -1372,7 +1358,7 @@ export interface RoleAssignmentsGetInput {
   tenantId?: string;
 }
 export const RoleAssignmentsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     roleAssignmentName: Schema.String.pipe(T.PathParam()),
     tenantId: Schema.optional(Schema.String),
@@ -1399,7 +1385,7 @@ export interface RoleAssignmentsGetOutput {
   };
 }
 export const RoleAssignmentsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1428,7 +1414,7 @@ export const RoleAssignmentsGetOutput =
  * @param tenantId - Tenant ID for cross-tenant request
  * @param roleAssignmentName - The name of the role assignment. It can be any valid GUID.
  */
-export const RoleAssignmentsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RoleAssignmentsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RoleAssignmentsGetInput,
   outputSchema: RoleAssignmentsGetOutput,
 }));
@@ -1438,7 +1424,7 @@ export interface RoleAssignmentsGetByIdInput {
   tenantId?: string;
 }
 export const RoleAssignmentsGetByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     roleAssignmentId: Schema.String.pipe(T.PathParam()),
     tenantId: Schema.optional(Schema.String),
   }).pipe(
@@ -1464,7 +1450,7 @@ export interface RoleAssignmentsGetByIdOutput {
   };
 }
 export const RoleAssignmentsGetByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1492,12 +1478,10 @@ export const RoleAssignmentsGetByIdOutput =
  * @param roleAssignmentId - The fully qualified ID of the role assignment including scope, resource name, and resource type. Format: /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}. Example: /subscriptions/<SUB_ID>/resourcegroups/<RESOURCE_GROUP>/providers/Microsoft.Authorization/roleAssignments/<ROLE_ASSIGNMENT_NAME>
  * @param tenantId - Tenant ID for cross-tenant request
  */
-export const RoleAssignmentsGetById = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RoleAssignmentsGetByIdInput,
-    outputSchema: RoleAssignmentsGetByIdOutput,
-  }),
-);
+export const RoleAssignmentsGetById = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RoleAssignmentsGetByIdInput,
+  outputSchema: RoleAssignmentsGetByIdOutput,
+}));
 // Input Schema
 export interface RoleAssignmentsListForResourceInput {
   subscriptionId: string;
@@ -1509,7 +1493,7 @@ export interface RoleAssignmentsListForResourceInput {
   tenantId?: string;
 }
 export const RoleAssignmentsListForResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     resourceProviderNamespace: Schema.String.pipe(T.PathParam()),
@@ -1543,7 +1527,7 @@ export interface RoleAssignmentsListForResourceOutput {
   nextLink?: string;
 }
 export const RoleAssignmentsListForResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1592,7 +1576,7 @@ export const RoleAssignmentsListForResourceOutput =
  * @param tenantId - Tenant ID for cross-tenant request
  */
 export const RoleAssignmentsListForResource =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RoleAssignmentsListForResourceInput,
     outputSchema: RoleAssignmentsListForResourceOutput,
   }));
@@ -1604,7 +1588,7 @@ export interface RoleAssignmentsListForResourceGroupInput {
   tenantId?: string;
 }
 export const RoleAssignmentsListForResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
@@ -1635,7 +1619,7 @@ export interface RoleAssignmentsListForResourceGroupOutput {
   nextLink?: string;
 }
 export const RoleAssignmentsListForResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1681,7 +1665,7 @@ export const RoleAssignmentsListForResourceGroupOutput =
  * @param tenantId - Tenant ID for cross-tenant request
  */
 export const RoleAssignmentsListForResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RoleAssignmentsListForResourceGroupInput,
     outputSchema: RoleAssignmentsListForResourceGroupOutput,
   }));
@@ -1693,7 +1677,7 @@ export interface RoleAssignmentsListForScopeInput {
   $skipToken?: string;
 }
 export const RoleAssignmentsListForScopeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
@@ -1724,7 +1708,7 @@ export interface RoleAssignmentsListForScopeOutput {
   nextLink?: string;
 }
 export const RoleAssignmentsListForScopeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1769,12 +1753,10 @@ export const RoleAssignmentsListForScopeOutput =
  * @param tenantId - Tenant ID for cross-tenant request
  * @param $skipToken - The skipToken to apply on the operation. Use $skipToken={skiptoken} to return paged role assignments following the skipToken passed. Only supported on provider level calls.
  */
-export const RoleAssignmentsListForScope = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RoleAssignmentsListForScopeInput,
-    outputSchema: RoleAssignmentsListForScopeOutput,
-  }),
-);
+export const RoleAssignmentsListForScope = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RoleAssignmentsListForScopeInput,
+  outputSchema: RoleAssignmentsListForScopeOutput,
+}));
 // Input Schema
 export interface RoleAssignmentsListForSubscriptionInput {
   subscriptionId: string;
@@ -1782,7 +1764,7 @@ export interface RoleAssignmentsListForSubscriptionInput {
   tenantId?: string;
 }
 export const RoleAssignmentsListForSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
     tenantId: Schema.optional(Schema.String),
@@ -1812,7 +1794,7 @@ export interface RoleAssignmentsListForSubscriptionOutput {
   nextLink?: string;
 }
 export const RoleAssignmentsListForSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1857,7 +1839,7 @@ export const RoleAssignmentsListForSubscriptionOutput =
  * @param tenantId - Tenant ID for cross-tenant request
  */
 export const RoleAssignmentsListForSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RoleAssignmentsListForSubscriptionInput,
     outputSchema: RoleAssignmentsListForSubscriptionOutput,
   }));
@@ -1886,7 +1868,7 @@ export interface RoleDefinitionsCreateOrUpdateInput {
   };
 }
 export const RoleDefinitionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     roleDefinitionId: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
@@ -1945,7 +1927,7 @@ export interface RoleDefinitionsCreateOrUpdateOutput {
   };
 }
 export const RoleDefinitionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1982,7 +1964,7 @@ export const RoleDefinitionsCreateOrUpdateOutput =
  * @param api-version - The API version to use for this operation.
  */
 export const RoleDefinitionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RoleDefinitionsCreateOrUpdateInput,
     outputSchema: RoleDefinitionsCreateOrUpdateOutput,
   }));
@@ -1992,7 +1974,7 @@ export interface RoleDefinitionsDeleteInput {
   roleDefinitionId: string;
 }
 export const RoleDefinitionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     roleDefinitionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2026,7 +2008,7 @@ export interface RoleDefinitionsDeleteOutput {
   };
 }
 export const RoleDefinitionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2062,19 +2044,17 @@ export const RoleDefinitionsDeleteOutput =
  * @param roleDefinitionId - The ID of the role definition to delete.
  * @param api-version - The API version to use for this operation.
  */
-export const RoleDefinitionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RoleDefinitionsDeleteInput,
-    outputSchema: RoleDefinitionsDeleteOutput,
-  }),
-);
+export const RoleDefinitionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RoleDefinitionsDeleteInput,
+  outputSchema: RoleDefinitionsDeleteOutput,
+}));
 // Input Schema
 export interface RoleDefinitionsGetInput {
   scope: string;
   roleDefinitionId: string;
 }
 export const RoleDefinitionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     roleDefinitionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2108,7 +2088,7 @@ export interface RoleDefinitionsGetOutput {
   };
 }
 export const RoleDefinitionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2144,7 +2124,7 @@ export const RoleDefinitionsGetOutput =
  * @param roleDefinitionId - The ID of the role definition.
  * @param api-version - The API version to use for this operation.
  */
-export const RoleDefinitionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RoleDefinitionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RoleDefinitionsGetInput,
   outputSchema: RoleDefinitionsGetOutput,
 }));
@@ -2154,7 +2134,7 @@ export interface RoleDefinitionsListInput {
   $filter?: string;
 }
 export const RoleDefinitionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scope: Schema.String.pipe(T.PathParam()),
     $filter: Schema.optional(Schema.String),
   }).pipe(
@@ -2191,7 +2171,7 @@ export interface RoleDefinitionsListOutput {
   nextLink?: string;
 }
 export const RoleDefinitionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -2236,7 +2216,7 @@ export const RoleDefinitionsListOutput =
  * @param $filter - The filter to apply on the operation. Use atScopeAndBelow filter to search below the given scope as well.
  * @param api-version - The API version to use for this operation.
  */
-export const RoleDefinitionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RoleDefinitionsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: RoleDefinitionsListInput,
   outputSchema: RoleDefinitionsListOutput,
 }));

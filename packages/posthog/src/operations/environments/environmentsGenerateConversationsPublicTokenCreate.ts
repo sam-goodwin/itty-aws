@@ -1092,7 +1092,7 @@ export interface EnvironmentsGenerateConversationsPublicTokenCreateInput {
   events_retention_enforced?: boolean;
 }
 export const EnvironmentsGenerateConversationsPublicTokenCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     uuid: Schema.optional(Schema.String),
@@ -2269,7 +2269,7 @@ export const EnvironmentsGenerateConversationsPublicTokenCreateInput =
 // Output Schema
 export type EnvironmentsGenerateConversationsPublicTokenCreateOutput = void;
 export const EnvironmentsGenerateConversationsPublicTokenCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsGenerateConversationsPublicTokenCreateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<EnvironmentsGenerateConversationsPublicTokenCreateOutput>;
 
 // The operation
 /**
@@ -2279,7 +2279,7 @@ export const EnvironmentsGenerateConversationsPublicTokenCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const environmentsGenerateConversationsPublicTokenCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsGenerateConversationsPublicTokenCreateInput,
     outputSchema: EnvironmentsGenerateConversationsPublicTokenCreateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

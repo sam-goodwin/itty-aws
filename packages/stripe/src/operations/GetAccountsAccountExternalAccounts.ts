@@ -17,7 +17,7 @@ export interface GetAccountsAccountExternalAccountsInput {
   starting_after?: string;
 }
 export const GetAccountsAccountExternalAccountsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
@@ -98,7 +98,7 @@ export interface GetAccountsAccountExternalAccountsOutput {
   url: string;
 }
 export const GetAccountsAccountExternalAccountsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Union([
         Schema.Struct({
@@ -198,7 +198,7 @@ export const GetAccountsAccountExternalAccountsOutput =
  * @param starting_after - A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
  */
 export const GetAccountsAccountExternalAccounts =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAccountsAccountExternalAccountsInput,
     outputSchema: GetAccountsAccountExternalAccountsOutput,
   }));

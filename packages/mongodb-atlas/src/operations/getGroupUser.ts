@@ -11,7 +11,7 @@ export interface GetGroupUserInput {
   pretty?: boolean;
   orgMembershipStatuses?: string;
 }
-export const GetGroupUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetGroupUserInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   userId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
@@ -27,7 +27,7 @@ export const GetGroupUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetGroupUserOutput = void;
 export const GetGroupUserOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupUserOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupUserOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const GetGroupUserOutput =
  * @param userId - Unique 24-hexadecimal digit string that identifies the pending or active user in the project. If you need to lookup a user's `userId` or verify a user's status in the organization, use the Return All MongoDB Cloud Users in One Project resource and filter by `username`.
  * @param orgMembershipStatuses - Organization membership status to filter users by. You can supply this parameter multiple times. Allowed values: `ACTIVE`, `PENDING`, `INVITATION_EXPIRED`, `INVITATION_REJECTED`. If you exclude this parameter, this resource returns ACTIVE and PENDING users. Not supported in deprecated versions.
  */
-export const getGroupUser = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getGroupUser = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetGroupUserInput,
   outputSchema: GetGroupUserOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -13,7 +13,7 @@ export interface GetBalanceTransactionsIdInput {
   expand?: string;
 }
 export const GetBalanceTransactionsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -104,7 +104,7 @@ export interface GetBalanceTransactionsIdOutput {
     | "transfer_refund";
 }
 export const GetBalanceTransactionsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     available_on: Schema.Number,
     balance_type: Schema.Literals([
@@ -196,9 +196,7 @@ export const GetBalanceTransactionsIdOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetBalanceTransactionsId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetBalanceTransactionsIdInput,
-    outputSchema: GetBalanceTransactionsIdOutput,
-  }),
-);
+export const GetBalanceTransactionsId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetBalanceTransactionsIdInput,
+  outputSchema: GetBalanceTransactionsIdOutput,
+}));

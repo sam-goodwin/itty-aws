@@ -7,7 +7,7 @@ export interface DeleteOrganizationSpendingLimitInput {
   org_id: string;
 }
 export const DeleteOrganizationSpendingLimitInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -19,7 +19,7 @@ export const DeleteOrganizationSpendingLimitInput =
 // Output Schema
 export interface DeleteOrganizationSpendingLimitOutput {}
 export const DeleteOrganizationSpendingLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  /*@__PURE__*/ Schema.Struct(
     {},
   ) as unknown as Schema.Codec<DeleteOrganizationSpendingLimitOutput>;
 
@@ -34,7 +34,7 @@ export const DeleteOrganizationSpendingLimitOutput =
  * @param org_id - The Neon organization ID
  */
 export const deleteOrganizationSpendingLimit =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeleteOrganizationSpendingLimitInput,
     outputSchema: DeleteOrganizationSpendingLimitOutput,
   }));

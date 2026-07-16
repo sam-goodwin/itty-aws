@@ -13,7 +13,7 @@ export interface GetRateLimitInput {
   userId?: string;
   ipAddress?: string;
 }
-export const GetRateLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetRateLimitInput = /*@__PURE__*/ Schema.Struct({
   endpointSetId: Schema.String.pipe(T.PathParam()),
   pretty: Schema.optional(Schema.Boolean),
   envelope: Schema.optional(Schema.Boolean),
@@ -28,7 +28,7 @@ export const GetRateLimitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type GetRateLimitOutput = void;
 export const GetRateLimitOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetRateLimitOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetRateLimitOutput>;
 
 // The operation
 /**
@@ -44,7 +44,7 @@ export const GetRateLimitOutput =
  * @param userId - A string that identifies the Atlas user to request rate limits for. The ID can for example be the Service Account Client ID or the API Public Key. When this parameter is provided, the limits returned are applicable to the specified  user. The requesting user must be the same as the specified user.
  * @param ipAddress - An IP address to request rate limits for. When this parameter is provided, the limits returned are applicable to the specified IP address. The requesting user must have the same IP address as the one provided in the request.
  */
-export const getRateLimit = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getRateLimit = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetRateLimitInput,
   outputSchema: GetRateLimitOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

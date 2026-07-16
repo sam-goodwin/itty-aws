@@ -29,7 +29,7 @@ export interface GetCreditNotesPreviewInput {
   shipping_cost?: string;
 }
 export const GetCreditNotesPreviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.optional(Schema.Number),
     credit_amount: Schema.optional(Schema.Number),
     effective_at: Schema.optional(Schema.Number),
@@ -1262,7 +1262,7 @@ export interface GetCreditNotesPreviewOutput {
   voided_at: number | null;
 }
 export const GetCreditNotesPreviewOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_shipping: Schema.Number,
     created: Schema.Number,
@@ -2114,9 +2114,7 @@ export const GetCreditNotesPreviewOutput =
  * @param refunds - Refunds to link to this credit note.
  * @param shipping_cost - When shipping_cost contains the shipping_rate from the invoice, the shipping_cost is included in the credit note. One of `amount`, `lines`, or `shipping_cost` must be provided.
  */
-export const GetCreditNotesPreview = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetCreditNotesPreviewInput,
-    outputSchema: GetCreditNotesPreviewOutput,
-  }),
-);
+export const GetCreditNotesPreview = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetCreditNotesPreviewInput,
+  outputSchema: GetCreditNotesPreviewOutput,
+}));

@@ -56,7 +56,7 @@ interface MitigationSummary {
   /** How many mitigations are pending their effective date. */
   pendingCount: number;
 }
-const MitigationSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const MitigationSummary = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     acceptedUrlCount: Schema.Number,
     activeCount: Schema.Number,
@@ -80,7 +80,7 @@ interface Submitter {
   name?: string | null;
   telephone?: string | null;
 }
-const Submitter = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Submitter = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     company: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -131,7 +131,7 @@ interface Report {
   } | null;
   urls?: string[] | null;
 }
-const Report = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Report = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     cdate: Schema.String,
@@ -213,7 +213,7 @@ interface ListAbuseReportsResponseResultItem {
   }[];
 }
 const ListAbuseReportsResponseResultItem =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       reports: Schema.Array(Report),
     }),
@@ -259,7 +259,7 @@ interface ListAbuseReportsResponseResult {
     | null;
 }
 const ListAbuseReportsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       items: Schema.optional(
         Schema.Union([
@@ -277,7 +277,7 @@ interface ListAbuseReportsResponseResultInfo {
   totalCount?: number | null;
 }
 const ListAbuseReportsResponseResultInfo =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
@@ -333,7 +333,7 @@ interface RegWhoRequest {
     | (string & {})
     | null;
 }
-const RegWhoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const RegWhoRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     regWhoGoodFaithAffirmation: Schema.Boolean,
     regWhoLawfulProcessingAgreement: Schema.Boolean,
@@ -430,7 +430,7 @@ interface Mitigation {
     | "workers_takedown_by_zone_id"
     | (string & {});
 }
-const Mitigation = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Mitigation = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     effectiveDate: Schema.String,
@@ -522,7 +522,7 @@ interface ListMitigationsResponseResultItem {
   }[];
 }
 const ListMitigationsResponseResultItem =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       mitigations: Schema.Array(Mitigation),
     }),
@@ -569,7 +569,7 @@ interface ListMitigationsResponseResult {
     | null;
 }
 const ListMitigationsResponseResult =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       items: Schema.optional(
         Schema.Union([
@@ -586,7 +586,7 @@ interface Appeal {
   /** Reason why the customer is appealing. */
   reason: "removed" | "misclassified" | (string & {});
 }
-const Appeal = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+const Appeal = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     id: Schema.String,
     reason: Schema.Union([
@@ -606,17 +606,16 @@ export interface GetAbuseReportRequest {
   accountId: string;
 }
 
-export const GetAbuseReportRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      reportParam: Schema.String.pipe(T.HttpPath("reportParam")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/abuse-reports/{reportParam}",
-      }),
-    ),
+export const GetAbuseReportRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    reportParam: Schema.String.pipe(T.HttpPath("reportParam")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/abuse-reports/{reportParam}",
+    }),
+  ),
 ) as unknown as Schema.Codec<GetAbuseReportRequest>;
 
 export interface GetAbuseReportResponse {
@@ -663,7 +662,7 @@ export interface GetAbuseReportResponse {
 }
 
 export const GetAbuseReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       cdate: Schema.String,
@@ -723,7 +722,7 @@ export const getAbuseReport: API.OperationMethod<
   GetAbuseReportResponse,
   GetAbuseReportError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAbuseReportRequest,
   output: GetAbuseReportResponse,
   errors: [InvalidAccountId, AbuseReportNotFound],
@@ -767,7 +766,7 @@ export interface ListAbuseReportsRequest {
 }
 
 export const ListAbuseReportsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
@@ -868,7 +867,7 @@ export interface ListAbuseReportsResponse {
 }
 
 export const ListAbuseReportsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: ListAbuseReportsResponseResult,
       resultInfo: Schema.optional(
@@ -884,7 +883,7 @@ export const listAbuseReports: API.PaginatedOperationMethod<
   ListAbuseReportsResponse,
   ListAbuseReportsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAbuseReportsRequest,
   output: ListAbuseReportsResponse,
   errors: [InvalidAccountId],
@@ -1006,7 +1005,7 @@ export interface CreateAbuseReportRequest {
 }
 
 export const CreateAbuseReportRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       reportParam: Schema.String.pipe(T.HttpPath("reportParam")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1104,7 +1103,7 @@ export const CreateAbuseReportRequest =
 export type CreateAbuseReportResponse = string;
 
 export const CreateAbuseReportResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.String.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<CreateAbuseReportResponse>;
 
@@ -1115,7 +1114,7 @@ export const createAbuseReport: API.OperationMethod<
   CreateAbuseReportResponse,
   CreateAbuseReportError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAbuseReportRequest,
   output: CreateAbuseReportResponse,
   errors: [InvalidRequest],
@@ -1181,7 +1180,7 @@ export interface ListMitigationsRequest {
 }
 
 export const ListMitigationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       reportId: Schema.String.pipe(T.HttpPath("reportId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1310,7 +1309,7 @@ export interface ListMitigationsResponse {
 }
 
 export const ListMitigationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: ListMitigationsResponseResult,
       resultInfo: Schema.optional(
@@ -1326,7 +1325,7 @@ export const listMitigations: API.PaginatedOperationMethod<
   ListMitigationsResponse,
   ListMitigationsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMitigationsRequest,
   output: ListMitigationsResponse,
   errors: [],
@@ -1351,7 +1350,7 @@ export interface ReviewMitigationRequest {
 }
 
 export const ReviewMitigationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       reportId: Schema.String.pipe(T.HttpPath("reportId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -1402,7 +1401,7 @@ export interface ReviewMitigationResponse {
 }
 
 export const ReviewMitigationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       result: Schema.Array(Mitigation),
     }),
@@ -1415,7 +1414,7 @@ export const reviewMitigation: API.PaginatedOperationMethod<
   ReviewMitigationResponse,
   ReviewMitigationError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ReviewMitigationRequest,
   output: ReviewMitigationResponse,
   errors: [],

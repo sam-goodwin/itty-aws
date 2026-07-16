@@ -17,7 +17,7 @@ export interface AddOrganizationTeamMemberInput {
   user_id: string;
 }
 export const AddOrganizationTeamMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     team: Schema.String.pipe(T.PathParam()),
     user_id: Schema.String,
@@ -98,7 +98,7 @@ export interface AddOrganizationTeamMemberOutput {
   }>;
 }
 export const AddOrganizationTeamMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     user: Schema.Struct({
       id: Schema.String,
@@ -191,10 +191,8 @@ export const AddOrganizationTeamMemberOutput =
  * @param team - The slug of the team
  * @param user_id - The ID of the organization member to add to the team
  */
-export const addOrganizationTeamMember = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AddOrganizationTeamMemberInput,
-    outputSchema: AddOrganizationTeamMemberOutput,
-    errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const addOrganizationTeamMember = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AddOrganizationTeamMemberInput,
+  outputSchema: AddOrganizationTeamMemberOutput,
+  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity] as const,
+}));

@@ -10,7 +10,7 @@ export interface MachinesGetMetadataKeyInput {
   key: string;
 }
 export const MachinesGetMetadataKeyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     app_name: Schema.String.pipe(T.PathParam()),
     machine_id: Schema.String.pipe(T.PathParam()),
     key: Schema.String.pipe(T.PathParam()),
@@ -26,7 +26,7 @@ export interface MachinesGetMetadataKeyOutput {
   value?: string;
 }
 export const MachinesGetMetadataKeyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<MachinesGetMetadataKeyOutput>;
 
@@ -40,10 +40,8 @@ export const MachinesGetMetadataKeyOutput =
  * @param machine_id - Machine ID
  * @param key - Metadata Key
  */
-export const MachinesGetMetadataKey = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MachinesGetMetadataKeyInput,
-    outputSchema: MachinesGetMetadataKeyOutput,
-    errors: [NotFound] as const,
-  }),
-);
+export const MachinesGetMetadataKey = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MachinesGetMetadataKeyInput,
+  outputSchema: MachinesGetMetadataKeyOutput,
+  errors: [NotFound] as const,
+}));

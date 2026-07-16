@@ -13,7 +13,7 @@ export interface PostQuotesQuoteAcceptInput {
   expand?: string[];
 }
 export const PostQuotesQuoteAcceptInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quote: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(
@@ -961,7 +961,7 @@ export interface PostQuotesQuoteAcceptOutput {
   } | null;
 }
 export const PostQuotesQuoteAcceptOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount_subtotal: Schema.Number,
     amount_total: Schema.Number,
     application: Schema.NullOr(
@@ -2013,9 +2013,7 @@ export const PostQuotesQuoteAcceptOutput =
  *
  * <p>Accepts the specified quote.</p>
  */
-export const PostQuotesQuoteAccept = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostQuotesQuoteAcceptInput,
-    outputSchema: PostQuotesQuoteAcceptOutput,
-  }),
-);
+export const PostQuotesQuoteAccept = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostQuotesQuoteAcceptInput,
+  outputSchema: PostQuotesQuoteAcceptOutput,
+}));

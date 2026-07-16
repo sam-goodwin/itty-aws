@@ -10,7 +10,7 @@ export interface UserlandUsersControllerCreatePasswordResetTokenInput {
   email?: string;
 }
 export const UserlandUsersControllerCreatePasswordResetTokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     email: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "POST", path: "/user_management/password_reset" }),
@@ -28,7 +28,7 @@ export interface UserlandUsersControllerCreatePasswordResetTokenOutput {
   password_reset_url?: Redacted.Redacted<string>;
 }
 export const UserlandUsersControllerCreatePasswordResetTokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     user_id: Schema.optional(Schema.String),
@@ -46,7 +46,7 @@ export const UserlandUsersControllerCreatePasswordResetTokenOutput =
  * Creates a one-time token that can be used to reset a user's password.
  */
 export const UserlandUsersControllerCreatePasswordResetToken =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUsersControllerCreatePasswordResetTokenInput,
     outputSchema: UserlandUsersControllerCreatePasswordResetTokenOutput,
     errors: [Forbidden, NotFound, UnprocessableEntity] as const,

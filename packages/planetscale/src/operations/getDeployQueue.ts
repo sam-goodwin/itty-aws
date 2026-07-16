@@ -10,7 +10,7 @@ export interface GetDeployQueueInput {
   page?: number;
   per_page?: number;
 }
-export const GetDeployQueueInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDeployQueueInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   page: Schema.optional(Schema.Number),
@@ -156,7 +156,7 @@ export interface GetDeployQueueOutput {
     queue_pause_reason: string | null;
   }>;
 }
-export const GetDeployQueueOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetDeployQueueOutput = /*@__PURE__*/ Schema.Struct({
   type: Schema.String,
   current_page: Schema.Number,
   next_page: Schema.NullOr(Schema.Number),
@@ -344,16 +344,14 @@ export const GetDeployQueueOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const getDeployQueue = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: GetDeployQueueInput,
-    outputSchema: GetDeployQueueOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const getDeployQueue = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: GetDeployQueueInput,
+  outputSchema: GetDeployQueueOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

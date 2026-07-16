@@ -8,7 +8,7 @@ export interface DeleteV1ConnectionsByIdInput {
   id: string;
 }
 export const DeleteV1ConnectionsByIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/connections/{id}" }),
@@ -17,7 +17,7 @@ export const DeleteV1ConnectionsByIdInput =
 // Output Schema
 export type DeleteV1ConnectionsByIdOutput = void;
 export const DeleteV1ConnectionsByIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1ConnectionsByIdOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeleteV1ConnectionsByIdOutput>;
 
 // The operation
 /**
@@ -25,10 +25,8 @@ export const DeleteV1ConnectionsByIdOutput =
  *
  * Deletes the connection with the given ID.
  */
-export const deleteV1ConnectionsById = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DeleteV1ConnectionsByIdInput,
-    outputSchema: DeleteV1ConnectionsByIdOutput,
-    errors: [NotFound, UnprocessableEntity] as const,
-  }),
-);
+export const deleteV1ConnectionsById = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DeleteV1ConnectionsByIdInput,
+  outputSchema: DeleteV1ConnectionsByIdOutput,
+  errors: [NotFound, UnprocessableEntity] as const,
+}));

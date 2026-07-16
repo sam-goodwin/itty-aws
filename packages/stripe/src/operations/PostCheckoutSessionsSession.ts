@@ -91,7 +91,7 @@ export interface PostCheckoutSessionsSessionInput {
     | "";
 }
 export const PostCheckoutSessionsSessionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     session: Schema.String.pipe(T.PathParam()),
     collected_information: Schema.optional(
       Schema.Struct({
@@ -1589,7 +1589,7 @@ export interface PostCheckoutSessionsSessionOutput {
   wallet_options: { link?: { display?: "auto" | "never" } } | null;
 }
 export const PostCheckoutSessionsSessionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     adaptive_pricing: Schema.NullOr(
       Schema.Struct({
         enabled: Schema.Boolean,
@@ -3276,9 +3276,7 @@ export const PostCheckoutSessionsSessionOutput =
  * <p>Updates a Checkout Session object.</p>
  * <p>Related guide: <a href="/payments/advanced/dynamic-updates">Dynamically update a Checkout Session</a></p>
  */
-export const PostCheckoutSessionsSession = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostCheckoutSessionsSessionInput,
-    outputSchema: PostCheckoutSessionsSessionOutput,
-  }),
-);
+export const PostCheckoutSessionsSession = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostCheckoutSessionsSessionInput,
+  outputSchema: PostCheckoutSessionsSessionOutput,
+}));

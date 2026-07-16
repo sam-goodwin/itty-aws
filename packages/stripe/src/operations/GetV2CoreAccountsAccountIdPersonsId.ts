@@ -8,7 +8,7 @@ export interface GetV2CoreAccountsAccountIdPersonsIdInput {
   id: string;
 }
 export const GetV2CoreAccountsAccountIdPersonsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -192,7 +192,7 @@ export interface GetV2CoreAccountsAccountIdPersonsIdOutput {
   updated: string;
 }
 export const GetV2CoreAccountsAccountIdPersonsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String,
     additional_addresses: Schema.optional(
       Schema.Array(
@@ -451,7 +451,7 @@ export const GetV2CoreAccountsAccountIdPersonsIdOutput =
  * @param id - The ID of the Person to retrieve.
  */
 export const GetV2CoreAccountsAccountIdPersonsId =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetV2CoreAccountsAccountIdPersonsIdInput,
     outputSchema: GetV2CoreAccountsAccountIdPersonsIdOutput,
   }));

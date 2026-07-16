@@ -30,7 +30,7 @@ export interface ServiceAccountAllowedLocations {
 }
 
 export const ServiceAccountAllowedLocations: Schema.Codec<ServiceAccountAllowedLocations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Schema.String)),
     encodedLocations: Schema.optional(Schema.String),
   }).annotate({ identifier: "ServiceAccountAllowedLocations" });
@@ -43,7 +43,7 @@ export interface GenerateAccessTokenResponse {
 }
 
 export const GenerateAccessTokenResponse: Schema.Codec<GenerateAccessTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     expireTime: Schema.optional(Schema.String),
     accessToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateAccessTokenResponse" });
@@ -60,7 +60,7 @@ export interface GenerateIdTokenRequest {
 }
 
 export const GenerateIdTokenRequest: Schema.Codec<GenerateIdTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegates: Schema.optional(Schema.Array(Schema.String)),
     includeEmail: Schema.optional(Schema.Boolean),
     organizationNumberIncluded: Schema.optional(Schema.Boolean),
@@ -75,7 +75,7 @@ export interface SignBlobRequest {
 }
 
 export const SignBlobRequest: Schema.Codec<SignBlobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegates: Schema.optional(Schema.Array(Schema.String)),
     payload: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignBlobRequest" });
@@ -88,7 +88,7 @@ export interface SignJwtResponse {
 }
 
 export const SignJwtResponse: Schema.Codec<SignJwtResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyId: Schema.optional(Schema.String),
     signedJwt: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignJwtResponse" });
@@ -99,7 +99,7 @@ export interface GenerateIdTokenResponse {
 }
 
 export const GenerateIdTokenResponse: Schema.Codec<GenerateIdTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
   }).annotate({ identifier: "GenerateIdTokenResponse" });
 
@@ -111,7 +111,7 @@ export interface SignBlobResponse {
 }
 
 export const SignBlobResponse: Schema.Codec<SignBlobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     keyId: Schema.optional(Schema.String),
     signedBlob: Schema.optional(Schema.String),
   }).annotate({ identifier: "SignBlobResponse" });
@@ -124,7 +124,7 @@ export interface WorkforcePoolAllowedLocations {
 }
 
 export const WorkforcePoolAllowedLocations: Schema.Codec<WorkforcePoolAllowedLocations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Schema.String)),
     encodedLocations: Schema.optional(Schema.String),
   }).annotate({ identifier: "WorkforcePoolAllowedLocations" });
@@ -139,7 +139,7 @@ export interface GenerateAccessTokenRequest {
 }
 
 export const GenerateAccessTokenRequest: Schema.Codec<GenerateAccessTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegates: Schema.optional(Schema.Array(Schema.String)),
     lifetime: Schema.optional(Schema.String),
     scope: Schema.optional(Schema.Array(Schema.String)),
@@ -153,7 +153,7 @@ export interface SignJwtRequest {
 }
 
 export const SignJwtRequest: Schema.Codec<SignJwtRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     payload: Schema.optional(Schema.String),
     delegates: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "SignJwtRequest" });
@@ -166,7 +166,7 @@ export interface WorkloadIdentityPoolAllowedLocations {
 }
 
 export const WorkloadIdentityPoolAllowedLocations: Schema.Codec<WorkloadIdentityPoolAllowedLocations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     locations: Schema.optional(Schema.Array(Schema.String)),
     encodedLocations: Schema.optional(Schema.String),
   }).annotate({ identifier: "WorkloadIdentityPoolAllowedLocations" });
@@ -233,7 +233,7 @@ export interface SignJwtProjectsServiceAccountsRequest {
 }
 
 export const SignJwtProjectsServiceAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SignJwtRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -243,7 +243,7 @@ export const SignJwtProjectsServiceAccountsRequest =
 
 export type SignJwtProjectsServiceAccountsResponse = SignJwtResponse;
 export const SignJwtProjectsServiceAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SignJwtResponse;
+  /*@__PURE__*/ SignJwtResponse;
 
 export type SignJwtProjectsServiceAccountsError =
   | DefaultErrors
@@ -258,7 +258,7 @@ export const signJwtProjectsServiceAccounts: API.OperationMethod<
   SignJwtProjectsServiceAccountsResponse,
   SignJwtProjectsServiceAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SignJwtProjectsServiceAccountsRequest,
   output: SignJwtProjectsServiceAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -272,7 +272,7 @@ export interface GenerateIdTokenProjectsServiceAccountsRequest {
 }
 
 export const GenerateIdTokenProjectsServiceAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GenerateIdTokenRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -287,7 +287,7 @@ export const GenerateIdTokenProjectsServiceAccountsRequest =
 export type GenerateIdTokenProjectsServiceAccountsResponse =
   GenerateIdTokenResponse;
 export const GenerateIdTokenProjectsServiceAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenerateIdTokenResponse;
+  /*@__PURE__*/ GenerateIdTokenResponse;
 
 export type GenerateIdTokenProjectsServiceAccountsError =
   | DefaultErrors
@@ -302,7 +302,7 @@ export const generateIdTokenProjectsServiceAccounts: API.OperationMethod<
   GenerateIdTokenProjectsServiceAccountsResponse,
   GenerateIdTokenProjectsServiceAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateIdTokenProjectsServiceAccountsRequest,
   output: GenerateIdTokenProjectsServiceAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -316,7 +316,7 @@ export interface SignBlobProjectsServiceAccountsRequest {
 }
 
 export const SignBlobProjectsServiceAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SignBlobRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -326,7 +326,7 @@ export const SignBlobProjectsServiceAccountsRequest =
 
 export type SignBlobProjectsServiceAccountsResponse = SignBlobResponse;
 export const SignBlobProjectsServiceAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ SignBlobResponse;
+  /*@__PURE__*/ SignBlobResponse;
 
 export type SignBlobProjectsServiceAccountsError =
   | DefaultErrors
@@ -341,7 +341,7 @@ export const signBlobProjectsServiceAccounts: API.OperationMethod<
   SignBlobProjectsServiceAccountsResponse,
   SignBlobProjectsServiceAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SignBlobProjectsServiceAccountsRequest,
   output: SignBlobProjectsServiceAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -355,7 +355,7 @@ export interface GenerateAccessTokenProjectsServiceAccountsRequest {
 }
 
 export const GenerateAccessTokenProjectsServiceAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GenerateAccessTokenRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -370,7 +370,7 @@ export const GenerateAccessTokenProjectsServiceAccountsRequest =
 export type GenerateAccessTokenProjectsServiceAccountsResponse =
   GenerateAccessTokenResponse;
 export const GenerateAccessTokenProjectsServiceAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GenerateAccessTokenResponse;
+  /*@__PURE__*/ GenerateAccessTokenResponse;
 
 export type GenerateAccessTokenProjectsServiceAccountsError =
   | DefaultErrors
@@ -385,7 +385,7 @@ export const generateAccessTokenProjectsServiceAccounts: API.OperationMethod<
   GenerateAccessTokenProjectsServiceAccountsResponse,
   GenerateAccessTokenProjectsServiceAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GenerateAccessTokenProjectsServiceAccountsRequest,
   output: GenerateAccessTokenProjectsServiceAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -397,7 +397,7 @@ export interface GetAllowedLocationsProjectsServiceAccountsRequest {
 }
 
 export const GetAllowedLocationsProjectsServiceAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/allowedLocations" }),
@@ -407,7 +407,7 @@ export const GetAllowedLocationsProjectsServiceAccountsRequest =
 export type GetAllowedLocationsProjectsServiceAccountsResponse =
   ServiceAccountAllowedLocations;
 export const GetAllowedLocationsProjectsServiceAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ServiceAccountAllowedLocations;
+  /*@__PURE__*/ ServiceAccountAllowedLocations;
 
 export type GetAllowedLocationsProjectsServiceAccountsError =
   | DefaultErrors
@@ -420,7 +420,7 @@ export const getAllowedLocationsProjectsServiceAccounts: API.OperationMethod<
   GetAllowedLocationsProjectsServiceAccountsResponse,
   GetAllowedLocationsProjectsServiceAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAllowedLocationsProjectsServiceAccountsRequest,
   output: GetAllowedLocationsProjectsServiceAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -432,7 +432,7 @@ export interface GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsReques
 }
 
 export const GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/allowedLocations" }),
@@ -442,7 +442,7 @@ export const GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest =
 export type GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsResponse =
   WorkloadIdentityPoolAllowedLocations;
 export const GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WorkloadIdentityPoolAllowedLocations;
+  /*@__PURE__*/ WorkloadIdentityPoolAllowedLocations;
 
 export type GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsError =
   | DefaultErrors
@@ -455,7 +455,7 @@ export const getAllowedLocationsProjectsLocationsWorkloadIdentityPools: API.Oper
   GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsResponse,
   GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest,
   output: GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsResponse,
   errors: [NotFound, Forbidden],
@@ -467,7 +467,7 @@ export interface GetAllowedLocationsLocationsWorkforcePoolsRequest {
 }
 
 export const GetAllowedLocationsLocationsWorkforcePoolsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1/{+name}/allowedLocations" }),
@@ -477,7 +477,7 @@ export const GetAllowedLocationsLocationsWorkforcePoolsRequest =
 export type GetAllowedLocationsLocationsWorkforcePoolsResponse =
   WorkforcePoolAllowedLocations;
 export const GetAllowedLocationsLocationsWorkforcePoolsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ WorkforcePoolAllowedLocations;
+  /*@__PURE__*/ WorkforcePoolAllowedLocations;
 
 export type GetAllowedLocationsLocationsWorkforcePoolsError =
   | DefaultErrors
@@ -490,7 +490,7 @@ export const getAllowedLocationsLocationsWorkforcePools: API.OperationMethod<
   GetAllowedLocationsLocationsWorkforcePoolsResponse,
   GetAllowedLocationsLocationsWorkforcePoolsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAllowedLocationsLocationsWorkforcePoolsRequest,
   output: GetAllowedLocationsLocationsWorkforcePoolsResponse,
   errors: [NotFound, Forbidden],

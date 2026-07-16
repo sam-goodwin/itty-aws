@@ -8,7 +8,7 @@ export interface GetNeonAuthWebhookConfigInput {
   branch_id: string;
 }
 export const GetNeonAuthWebhookConfigInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -34,7 +34,7 @@ export interface GetNeonAuthWebhookConfigOutput {
   timeout_seconds?: number;
 }
 export const GetNeonAuthWebhookConfigOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
     webhook_url: Schema.optional(Schema.String),
     enabled_events: Schema.optional(
@@ -63,9 +63,7 @@ export const GetNeonAuthWebhookConfigOutput =
  * @param project_id - The Neon project ID
  * @param branch_id - The Neon branch ID
  */
-export const getNeonAuthWebhookConfig = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetNeonAuthWebhookConfigInput,
-    outputSchema: GetNeonAuthWebhookConfigOutput,
-  }),
-);
+export const getNeonAuthWebhookConfig = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetNeonAuthWebhookConfigInput,
+  outputSchema: GetNeonAuthWebhookConfigOutput,
+}));

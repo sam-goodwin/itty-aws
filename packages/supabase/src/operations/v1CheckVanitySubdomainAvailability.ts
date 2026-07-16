@@ -9,7 +9,7 @@ export interface V1CheckVanitySubdomainAvailabilityInput {
   vanity_subdomain: string;
 }
 export const V1CheckVanitySubdomainAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
     vanity_subdomain: Schema.String,
   }).pipe(
@@ -24,7 +24,7 @@ export interface V1CheckVanitySubdomainAvailabilityOutput {
   available: boolean;
 }
 export const V1CheckVanitySubdomainAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     available: Schema.Boolean,
   }) as unknown as Schema.Codec<V1CheckVanitySubdomainAvailabilityOutput>;
 
@@ -35,7 +35,7 @@ export const V1CheckVanitySubdomainAvailabilityOutput =
  * @param ref - Project ref
  */
 export const v1CheckVanitySubdomainAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: V1CheckVanitySubdomainAvailabilityInput,
     outputSchema: V1CheckVanitySubdomainAvailabilityOutput,
     errors: [BadRequest, Forbidden] as const,

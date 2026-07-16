@@ -8,7 +8,7 @@ export interface RevokeOrganizationAPITokenInput {
   tokenId: string;
 }
 export const RevokeOrganizationAPITokenInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
     tokenId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -23,7 +23,7 @@ export interface RevokeOrganizationAPITokenOutput {
   token?: string;
 }
 export const RevokeOrganizationAPITokenOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     token: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<RevokeOrganizationAPITokenOutput>;
 
@@ -41,9 +41,7 @@ export const RevokeOrganizationAPITokenOutput =
  * @param organizationSlug - The slug of the organization or user account.
  * @param tokenId - The ID of the token to revoke (from the list endpoint).
  */
-export const revokeOrganizationAPIToken = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: RevokeOrganizationAPITokenInput,
-    outputSchema: RevokeOrganizationAPITokenOutput,
-  }),
-);
+export const revokeOrganizationAPIToken = /*@__PURE__*/ API.make(() => ({
+  inputSchema: RevokeOrganizationAPITokenInput,
+  outputSchema: RevokeOrganizationAPITokenOutput,
+}));

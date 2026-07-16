@@ -9,7 +9,7 @@ export interface GroupsControllerDeleteInput {
   groupId: string;
 }
 export const GroupsControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationId: Schema.String.pipe(T.PathParam()),
     groupId: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -22,7 +22,7 @@ export const GroupsControllerDeleteInput =
 // Output Schema
 export type GroupsControllerDeleteOutput = void;
 export const GroupsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GroupsControllerDeleteOutput>;
 
 // The operation
 /**
@@ -33,10 +33,8 @@ export const GroupsControllerDeleteOutput =
  * @param organizationId - The ID of the organization.
  * @param groupId - The ID of the group.
  */
-export const GroupsControllerDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GroupsControllerDeleteInput,
-    outputSchema: GroupsControllerDeleteOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const GroupsControllerDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GroupsControllerDeleteInput,
+  outputSchema: GroupsControllerDeleteOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

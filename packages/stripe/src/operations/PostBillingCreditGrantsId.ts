@@ -15,7 +15,7 @@ export interface PostBillingCreditGrantsIdInput {
   metadata?: Record<string, string>;
 }
 export const PostBillingCreditGrantsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.Array(Schema.String)),
     expires_at: Schema.optional(
@@ -69,7 +69,7 @@ export interface PostBillingCreditGrantsIdOutput {
   voided_at: number | null;
 }
 export const PostBillingCreditGrantsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Struct({
       monetary: Schema.NullOr(
         Schema.Struct({
@@ -137,9 +137,7 @@ export const PostBillingCreditGrantsIdOutput =
  *
  * @param id - Unique identifier for the object.
  */
-export const PostBillingCreditGrantsId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PostBillingCreditGrantsIdInput,
-    outputSchema: PostBillingCreditGrantsIdOutput,
-  }),
-);
+export const PostBillingCreditGrantsId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PostBillingCreditGrantsIdInput,
+  outputSchema: PostBillingCreditGrantsIdOutput,
+}));

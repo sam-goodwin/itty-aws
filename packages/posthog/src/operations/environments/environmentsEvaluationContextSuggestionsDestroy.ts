@@ -9,7 +9,7 @@ export interface EnvironmentsEvaluationContextSuggestionsDestroyInput {
   context_name: string;
 }
 export const EnvironmentsEvaluationContextSuggestionsDestroyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     context_name: Schema.String,
@@ -27,7 +27,7 @@ export interface EnvironmentsEvaluationContextSuggestionsDestroyOutput {
   hidden_from_suggestions: boolean;
 }
 export const EnvironmentsEvaluationContextSuggestionsDestroyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     success: Schema.Boolean,
     name: Schema.String,
     hidden_from_suggestions: Schema.Boolean,
@@ -44,7 +44,7 @@ export const EnvironmentsEvaluationContextSuggestionsDestroyOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const environmentsEvaluationContextSuggestionsDestroy =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: EnvironmentsEvaluationContextSuggestionsDestroyInput,
     outputSchema: EnvironmentsEvaluationContextSuggestionsDestroyOutput,
   }));

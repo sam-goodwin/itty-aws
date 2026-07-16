@@ -8,7 +8,7 @@ export interface V1EnableDatabaseWebhookInput {
   ref: string;
 }
 export const V1EnableDatabaseWebhookInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ref: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20,7 +20,7 @@ export const V1EnableDatabaseWebhookInput =
 // Output Schema
 export type V1EnableDatabaseWebhookOutput = void;
 export const V1EnableDatabaseWebhookOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1EnableDatabaseWebhookOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1EnableDatabaseWebhookOutput>;
 
 // The operation
 /**
@@ -28,10 +28,8 @@ export const V1EnableDatabaseWebhookOutput =
  *
  * @param ref - Project ref
  */
-export const v1EnableDatabaseWebhook = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: V1EnableDatabaseWebhookInput,
-    outputSchema: V1EnableDatabaseWebhookOutput,
-    errors: [BadRequest, Forbidden] as const,
-  }),
-);
+export const v1EnableDatabaseWebhook = /*@__PURE__*/ API.make(() => ({
+  inputSchema: V1EnableDatabaseWebhookInput,
+  outputSchema: V1EnableDatabaseWebhookOutput,
+  errors: [BadRequest, Forbidden] as const,
+}));

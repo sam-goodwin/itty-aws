@@ -7,7 +7,7 @@ export interface RevokeOrgApiKeyInput {
   org_id: string;
   key_id: number;
 }
-export const RevokeOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RevokeOrgApiKeyInput = /*@__PURE__*/ Schema.Struct({
   org_id: Schema.String.pipe(T.PathParam()),
   key_id: Schema.Number.pipe(T.PathParam()),
 }).pipe(
@@ -28,7 +28,7 @@ export interface RevokeOrgApiKeyOutput {
   revoked: boolean;
   project_id?: string;
 }
-export const RevokeOrgApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RevokeOrgApiKeyOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.Number,
   name: Schema.String,
   created_at: Schema.String,
@@ -52,7 +52,7 @@ export const RevokeOrgApiKeyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param org_id - The Neon organization ID
  * @param key_id - The API key ID
  */
-export const revokeOrgApiKey = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const revokeOrgApiKey = /*@__PURE__*/ API.make(() => ({
   inputSchema: RevokeOrgApiKeyInput,
   outputSchema: RevokeOrgApiKeyOutput,
 }));

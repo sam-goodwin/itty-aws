@@ -9,7 +9,7 @@ export interface HogFunctionsRearrangePartialUpdateInput {
   orders?: Record<string, number>;
 }
 export const HogFunctionsRearrangePartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     orders: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
   }).pipe(
@@ -212,7 +212,7 @@ export type HogFunctionsRearrangePartialUpdateOutput = {
   search_match_type?: "exact" | "similar" | null;
 }[];
 export const HogFunctionsRearrangePartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
       type: Schema.optional(
@@ -524,7 +524,7 @@ export const HogFunctionsRearrangePartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const hogFunctionsRearrangePartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HogFunctionsRearrangePartialUpdateInput,
     outputSchema: HogFunctionsRearrangePartialUpdateOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

@@ -30,7 +30,7 @@ export interface GoogleAnalyticsAdminV1betaNumericValue {
 }
 
 export const GoogleAnalyticsAdminV1betaNumericValue: Schema.Codec<GoogleAnalyticsAdminV1betaNumericValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     doubleValue: Schema.optional(Schema.Number),
     int64Value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1betaNumericValue" });
@@ -41,7 +41,7 @@ export interface GoogleAnalyticsAdminV1betaAccessDimension {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessDimension: Schema.Codec<GoogleAnalyticsAdminV1betaAccessDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1betaAccessDimension" });
 
@@ -60,7 +60,7 @@ export interface GoogleAnalyticsAdminV1betaAccessNumericFilter {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessNumericFilter: Schema.Codec<GoogleAnalyticsAdminV1betaAccessNumericFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     operation: Schema.optional(Schema.String),
     value: Schema.optional(GoogleAnalyticsAdminV1betaNumericValue),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1betaAccessNumericFilter" });
@@ -83,7 +83,7 @@ export interface GoogleAnalyticsAdminV1betaAccessStringFilter {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessStringFilter: Schema.Codec<GoogleAnalyticsAdminV1betaAccessStringFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
     matchType: Schema.optional(Schema.String),
     caseSensitive: Schema.optional(Schema.Boolean),
@@ -97,7 +97,7 @@ export interface GoogleAnalyticsAdminV1betaAccessInListFilter {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessInListFilter: Schema.Codec<GoogleAnalyticsAdminV1betaAccessInListFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     values: Schema.optional(Schema.Array(Schema.String)),
     caseSensitive: Schema.optional(Schema.Boolean),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1betaAccessInListFilter" });
@@ -110,7 +110,7 @@ export interface GoogleAnalyticsAdminV1betaAccessBetweenFilter {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessBetweenFilter: Schema.Codec<GoogleAnalyticsAdminV1betaAccessBetweenFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     fromValue: Schema.optional(GoogleAnalyticsAdminV1betaNumericValue),
     toValue: Schema.optional(GoogleAnalyticsAdminV1betaNumericValue),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1betaAccessBetweenFilter" });
@@ -129,7 +129,7 @@ export interface GoogleAnalyticsAdminV1betaAccessFilter {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessFilter: Schema.Codec<GoogleAnalyticsAdminV1betaAccessFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     numericFilter: Schema.optional(
       GoogleAnalyticsAdminV1betaAccessNumericFilter,
     ),
@@ -147,7 +147,7 @@ export interface GoogleAnalyticsAdminV1betaAccessFilterExpressionList {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessFilterExpressionList: Schema.Codec<GoogleAnalyticsAdminV1betaAccessFilterExpressionList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       expressions: Schema.optional(
         Schema.Array(GoogleAnalyticsAdminV1betaAccessFilterExpression),
@@ -169,7 +169,7 @@ export interface GoogleAnalyticsAdminV1betaAccessFilterExpression {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessFilterExpression: Schema.Codec<GoogleAnalyticsAdminV1betaAccessFilterExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  /*@__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       accessFilter: Schema.optional(GoogleAnalyticsAdminV1betaAccessFilter),
       andGroup: Schema.optional(
@@ -194,7 +194,7 @@ export interface GoogleAnalyticsAdminV1betaAccessDateRange {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessDateRange: Schema.Codec<GoogleAnalyticsAdminV1betaAccessDateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     endDate: Schema.optional(Schema.String),
     startDate: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1betaAccessDateRange" });
@@ -205,7 +205,7 @@ export interface GoogleAnalyticsAdminV1betaAccessMetric {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessMetric: Schema.Codec<GoogleAnalyticsAdminV1betaAccessMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metricName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1betaAccessMetric" });
 
@@ -215,7 +215,7 @@ export interface GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy: Schema.Codec<GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metricName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy",
@@ -234,7 +234,7 @@ export interface GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy: Schema.Codec<GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionName: Schema.optional(Schema.String),
     orderType: Schema.optional(Schema.String),
   }).annotate({
@@ -251,7 +251,7 @@ export interface GoogleAnalyticsAdminV1betaAccessOrderBy {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessOrderBy: Schema.Codec<GoogleAnalyticsAdminV1betaAccessOrderBy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     desc: Schema.optional(Schema.Boolean),
     metric: Schema.optional(
       GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy,
@@ -289,7 +289,7 @@ export interface GoogleAnalyticsAdminV1betaRunAccessReportRequest {
 }
 
 export const GoogleAnalyticsAdminV1betaRunAccessReportRequest: Schema.Codec<GoogleAnalyticsAdminV1betaRunAccessReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     offset: Schema.optional(Schema.String),
     dimensions: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1betaAccessDimension),
@@ -324,7 +324,7 @@ export interface GoogleAnalyticsAdminV1betaAccessMetricValue {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessMetricValue: Schema.Codec<GoogleAnalyticsAdminV1betaAccessMetricValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1betaAccessMetricValue" });
 
@@ -336,7 +336,7 @@ export interface GoogleAnalyticsAdminV1betaAccessQuotaStatus {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessQuotaStatus: Schema.Codec<GoogleAnalyticsAdminV1betaAccessQuotaStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     remaining: Schema.optional(Schema.Number),
     consumed: Schema.optional(Schema.Number),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1betaAccessQuotaStatus" });
@@ -355,7 +355,7 @@ export interface GoogleAnalyticsAdminV1betaAccessQuota {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessQuota: Schema.Codec<GoogleAnalyticsAdminV1betaAccessQuota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     tokensPerDay: Schema.optional(GoogleAnalyticsAdminV1betaAccessQuotaStatus),
     serverErrorsPerProjectPerHour: Schema.optional(
       GoogleAnalyticsAdminV1betaAccessQuotaStatus,
@@ -436,7 +436,7 @@ export interface GoogleAnalyticsAdminV1betaProperty {
 }
 
 export const GoogleAnalyticsAdminV1betaProperty: Schema.Codec<GoogleAnalyticsAdminV1betaProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     currencyCode: Schema.optional(Schema.String),
     expireTime: Schema.optional(Schema.String),
     timeZone: Schema.optional(Schema.String),
@@ -455,7 +455,7 @@ export const GoogleAnalyticsAdminV1betaProperty: Schema.Codec<GoogleAnalyticsAdm
 export interface GoogleAnalyticsAdminV1betaArchiveCustomMetricRequest {}
 
 export const GoogleAnalyticsAdminV1betaArchiveCustomMetricRequest: Schema.Codec<GoogleAnalyticsAdminV1betaArchiveCustomMetricRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAnalyticsAdminV1betaArchiveCustomMetricRequest",
   });
 
@@ -467,7 +467,7 @@ export interface GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData {
 }
 
 export const GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData: Schema.Codec<GoogleAnalyticsAdminV1betaDataStreamAndroidAppStreamData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     firebaseAppId: Schema.optional(Schema.String),
     packageName: Schema.optional(Schema.String),
   }).annotate({
@@ -480,7 +480,7 @@ export interface GoogleAnalyticsAdminV1betaAccessDimensionHeader {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessDimensionHeader: Schema.Codec<GoogleAnalyticsAdminV1betaAccessDimensionHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionName: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAnalyticsAdminV1betaAccessDimensionHeader",
@@ -492,7 +492,7 @@ export interface GoogleAnalyticsAdminV1betaAccessDimensionValue {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessDimensionValue: Schema.Codec<GoogleAnalyticsAdminV1betaAccessDimensionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1betaAccessDimensionValue" });
 
@@ -504,7 +504,7 @@ export interface GoogleAnalyticsAdminV1betaAccessRow {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessRow: Schema.Codec<GoogleAnalyticsAdminV1betaAccessRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dimensionValues: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1betaAccessDimensionValue),
     ),
@@ -531,7 +531,7 @@ export interface GoogleAnalyticsAdminV1betaAccount {
 }
 
 export const GoogleAnalyticsAdminV1betaAccount: Schema.Codec<GoogleAnalyticsAdminV1betaAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     deleted: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -567,7 +567,7 @@ export interface GoogleAnalyticsAdminV1betaDataRetentionSettings {
 }
 
 export const GoogleAnalyticsAdminV1betaDataRetentionSettings: Schema.Codec<GoogleAnalyticsAdminV1betaDataRetentionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     eventDataRetention: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     resetUserDataOnNewActivity: Schema.optional(Schema.Boolean),
@@ -611,7 +611,7 @@ export interface GoogleAnalyticsAdminV1betaCustomMetric {
 }
 
 export const GoogleAnalyticsAdminV1betaCustomMetric: Schema.Codec<GoogleAnalyticsAdminV1betaCustomMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     measurementUnit: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -629,7 +629,7 @@ export interface GoogleAnalyticsAdminV1betaListCustomMetricsResponse {
 }
 
 export const GoogleAnalyticsAdminV1betaListCustomMetricsResponse: Schema.Codec<GoogleAnalyticsAdminV1betaListCustomMetricsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     customMetrics: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1betaCustomMetric),
@@ -641,7 +641,7 @@ export const GoogleAnalyticsAdminV1betaListCustomMetricsResponse: Schema.Codec<G
 export interface GoogleProtobufEmpty {}
 
 export const GoogleProtobufEmpty: Schema.Codec<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleProtobufEmpty",
   });
 
@@ -653,7 +653,7 @@ export interface GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData {
 }
 
 export const GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData: Schema.Codec<GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     firebaseAppId: Schema.optional(Schema.String),
     bundleId: Schema.optional(Schema.String),
   }).annotate({
@@ -681,7 +681,7 @@ export interface GoogleAnalyticsAdminV1betaCustomDimension {
 }
 
 export const GoogleAnalyticsAdminV1betaCustomDimension: Schema.Codec<GoogleAnalyticsAdminV1betaCustomDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
     scope: Schema.optional(Schema.String),
@@ -698,7 +698,7 @@ export interface GoogleAnalyticsAdminV1betaListCustomDimensionsResponse {
 }
 
 export const GoogleAnalyticsAdminV1betaListCustomDimensionsResponse: Schema.Codec<GoogleAnalyticsAdminV1betaListCustomDimensionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     customDimensions: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1betaCustomDimension),
@@ -717,7 +717,7 @@ export interface GoogleAnalyticsAdminV1betaDataStreamWebStreamData {
 }
 
 export const GoogleAnalyticsAdminV1betaDataStreamWebStreamData: Schema.Codec<GoogleAnalyticsAdminV1betaDataStreamWebStreamData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     firebaseAppId: Schema.optional(Schema.String),
     measurementId: Schema.optional(Schema.String),
     defaultUri: Schema.optional(Schema.String),
@@ -731,14 +731,14 @@ export interface GoogleAnalyticsAdminV1betaAccessMetricHeader {
 }
 
 export const GoogleAnalyticsAdminV1betaAccessMetricHeader: Schema.Codec<GoogleAnalyticsAdminV1betaAccessMetricHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     metricName: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1betaAccessMetricHeader" });
 
 export interface GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest {}
 
 export const GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest: Schema.Codec<GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest",
   });
 
@@ -750,7 +750,7 @@ export interface GoogleAnalyticsAdminV1betaListAccountsResponse {
 }
 
 export const GoogleAnalyticsAdminV1betaListAccountsResponse: Schema.Codec<GoogleAnalyticsAdminV1betaListAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accounts: Schema.optional(Schema.Array(GoogleAnalyticsAdminV1betaAccount)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1betaListAccountsResponse" });
@@ -765,7 +765,7 @@ export interface GoogleAnalyticsAdminV1betaMeasurementProtocolSecret {
 }
 
 export const GoogleAnalyticsAdminV1betaMeasurementProtocolSecret: Schema.Codec<GoogleAnalyticsAdminV1betaMeasurementProtocolSecret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     secretValue: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     displayName: Schema.optional(Schema.String),
@@ -781,7 +781,7 @@ export interface GoogleAnalyticsAdminV1betaKeyEventDefaultValue {
 }
 
 export const GoogleAnalyticsAdminV1betaKeyEventDefaultValue: Schema.Codec<GoogleAnalyticsAdminV1betaKeyEventDefaultValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     numericValue: Schema.optional(Schema.Number),
     currencyCode: Schema.optional(Schema.String),
   }).annotate({ identifier: "GoogleAnalyticsAdminV1betaKeyEventDefaultValue" });
@@ -808,7 +808,7 @@ export interface GoogleAnalyticsAdminV1betaKeyEvent {
 }
 
 export const GoogleAnalyticsAdminV1betaKeyEvent: Schema.Codec<GoogleAnalyticsAdminV1betaKeyEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     custom: Schema.optional(Schema.Boolean),
     name: Schema.optional(Schema.String),
@@ -828,7 +828,7 @@ export interface GoogleAnalyticsAdminV1betaListKeyEventsResponse {
 }
 
 export const GoogleAnalyticsAdminV1betaListKeyEventsResponse: Schema.Codec<GoogleAnalyticsAdminV1betaListKeyEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     keyEvents: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1betaKeyEvent),
@@ -856,7 +856,7 @@ export interface GoogleAnalyticsAdminV1betaPropertySummary {
 }
 
 export const GoogleAnalyticsAdminV1betaPropertySummary: Schema.Codec<GoogleAnalyticsAdminV1betaPropertySummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     displayName: Schema.optional(Schema.String),
     canEdit: Schema.optional(Schema.Boolean),
     propertyType: Schema.optional(Schema.String),
@@ -876,7 +876,7 @@ export interface GoogleAnalyticsAdminV1betaAccountSummary {
 }
 
 export const GoogleAnalyticsAdminV1betaAccountSummary: Schema.Codec<GoogleAnalyticsAdminV1betaAccountSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     propertySummaries: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1betaPropertySummary),
     ),
@@ -893,7 +893,7 @@ export interface GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue
 }
 
 export const GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue: Schema.Codec<GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.optional(Schema.Number),
     currencyCode: Schema.optional(Schema.String),
   }).annotate({
@@ -919,7 +919,7 @@ export interface GoogleAnalyticsAdminV1betaGoogleAdsLink {
 }
 
 export const GoogleAnalyticsAdminV1betaGoogleAdsLink: Schema.Codec<GoogleAnalyticsAdminV1betaGoogleAdsLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     creatorEmailAddress: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
@@ -937,7 +937,7 @@ export interface GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse {
 }
 
 export const GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse: Schema.Codec<GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     googleAdsLinks: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1betaGoogleAdsLink),
@@ -956,7 +956,7 @@ export interface GoogleAnalyticsAdminV1betaFirebaseLink {
 }
 
 export const GoogleAnalyticsAdminV1betaFirebaseLink: Schema.Codec<GoogleAnalyticsAdminV1betaFirebaseLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     project: Schema.optional(Schema.String),
     createTime: Schema.optional(Schema.String),
@@ -970,7 +970,7 @@ export interface GoogleAnalyticsAdminV1betaListFirebaseLinksResponse {
 }
 
 export const GoogleAnalyticsAdminV1betaListFirebaseLinksResponse: Schema.Codec<GoogleAnalyticsAdminV1betaListFirebaseLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     firebaseLinks: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1betaFirebaseLink),
@@ -987,7 +987,7 @@ export interface GoogleAnalyticsAdminV1betaListAccountSummariesResponse {
 }
 
 export const GoogleAnalyticsAdminV1betaListAccountSummariesResponse: Schema.Codec<GoogleAnalyticsAdminV1betaListAccountSummariesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountSummaries: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1betaAccountSummary),
     ),
@@ -1018,7 +1018,7 @@ export interface GoogleAnalyticsAdminV1betaConversionEvent {
 }
 
 export const GoogleAnalyticsAdminV1betaConversionEvent: Schema.Codec<GoogleAnalyticsAdminV1betaConversionEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     custom: Schema.optional(Schema.Boolean),
     defaultConversionValue: Schema.optional(
@@ -1055,7 +1055,7 @@ export interface GoogleAnalyticsAdminV1betaDataStream {
 }
 
 export const GoogleAnalyticsAdminV1betaDataStream: Schema.Codec<GoogleAnalyticsAdminV1betaDataStream> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     createTime: Schema.optional(Schema.String),
     updateTime: Schema.optional(Schema.String),
     androidAppStreamData: Schema.optional(
@@ -1092,7 +1092,7 @@ export interface GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResou
 }
 
 export const GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource: Schema.Codec<GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.optional(GoogleAnalyticsAdminV1betaProperty),
     firebaseLink: Schema.optional(GoogleAnalyticsAdminV1betaFirebaseLink),
     conversionEvent: Schema.optional(GoogleAnalyticsAdminV1betaConversionEvent),
@@ -1127,7 +1127,7 @@ export interface GoogleAnalyticsAdminV1betaChangeHistoryChange {
 }
 
 export const GoogleAnalyticsAdminV1betaChangeHistoryChange: Schema.Codec<GoogleAnalyticsAdminV1betaChangeHistoryChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     action: Schema.optional(Schema.String),
     resourceAfterChange: Schema.optional(
       GoogleAnalyticsAdminV1betaChangeHistoryChangeChangeHistoryResource,
@@ -1141,7 +1141,7 @@ export const GoogleAnalyticsAdminV1betaChangeHistoryChange: Schema.Codec<GoogleA
 export interface GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse {}
 
 export const GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse: Schema.Codec<GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse",
   });
@@ -1152,7 +1152,7 @@ export interface GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest 
 }
 
 export const GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest: Schema.Codec<GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     acknowledgement: Schema.optional(Schema.String),
   }).annotate({
     identifier:
@@ -1167,7 +1167,7 @@ export interface GoogleAnalyticsAdminV1betaListPropertiesResponse {
 }
 
 export const GoogleAnalyticsAdminV1betaListPropertiesResponse: Schema.Codec<GoogleAnalyticsAdminV1betaListPropertiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     properties: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1betaProperty),
@@ -1197,7 +1197,7 @@ export interface GoogleAnalyticsAdminV1betaChangeHistoryEvent {
 }
 
 export const GoogleAnalyticsAdminV1betaChangeHistoryEvent: Schema.Codec<GoogleAnalyticsAdminV1betaChangeHistoryEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     userActorEmail: Schema.optional(Schema.String),
     changesFiltered: Schema.optional(Schema.Boolean),
@@ -1216,7 +1216,7 @@ export interface GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse {
 }
 
 export const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse: Schema.Codec<GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     changeHistoryEvents: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1betaChangeHistoryEvent),
     ),
@@ -1233,7 +1233,7 @@ export interface GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest {
 }
 
 export const GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest: Schema.Codec<GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.optional(GoogleAnalyticsAdminV1betaAccount),
     redirectUri: Schema.optional(Schema.String),
   }).annotate({
@@ -1248,7 +1248,7 @@ export interface GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsRespons
 }
 
 export const GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse: Schema.Codec<GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     measurementProtocolSecrets: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1betaMeasurementProtocolSecret),
     ),
@@ -1274,7 +1274,7 @@ export interface GoogleAnalyticsAdminV1betaDataSharingSettings {
 }
 
 export const GoogleAnalyticsAdminV1betaDataSharingSettings: Schema.Codec<GoogleAnalyticsAdminV1betaDataSharingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.optional(Schema.String),
     sharingWithGoogleAnySalesEnabled: Schema.optional(Schema.Boolean),
     sharingWithGoogleProductsEnabled: Schema.optional(Schema.Boolean),
@@ -1297,7 +1297,7 @@ export interface GoogleAnalyticsAdminV1betaRunAccessReportResponse {
 }
 
 export const GoogleAnalyticsAdminV1betaRunAccessReportResponse: Schema.Codec<GoogleAnalyticsAdminV1betaRunAccessReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     quota: Schema.optional(GoogleAnalyticsAdminV1betaAccessQuota),
     rowCount: Schema.optional(Schema.Number),
     metricHeaders: Schema.optional(
@@ -1317,7 +1317,7 @@ export interface GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse {
 }
 
 export const GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse: Schema.Codec<GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     accountTicketId: Schema.optional(Schema.String),
   }).annotate({
     identifier: "GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse",
@@ -1366,7 +1366,7 @@ export interface GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest {
 }
 
 export const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest: Schema.Codec<GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     earliestChangeTime: Schema.optional(Schema.String),
     action: Schema.optional(Schema.Array(Schema.String)),
     pageSize: Schema.optional(Schema.Number),
@@ -1387,7 +1387,7 @@ export interface GoogleAnalyticsAdminV1betaListDataStreamsResponse {
 }
 
 export const GoogleAnalyticsAdminV1betaListDataStreamsResponse: Schema.Codec<GoogleAnalyticsAdminV1betaListDataStreamsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     dataStreams: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1betaDataStream),
     ),
@@ -1404,7 +1404,7 @@ export interface GoogleAnalyticsAdminV1betaListConversionEventsResponse {
 }
 
 export const GoogleAnalyticsAdminV1betaListConversionEventsResponse: Schema.Codec<GoogleAnalyticsAdminV1betaListConversionEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nextPageToken: Schema.optional(Schema.String),
     conversionEvents: Schema.optional(
       Schema.Array(GoogleAnalyticsAdminV1betaConversionEvent),
@@ -1476,22 +1476,18 @@ export interface PatchPropertiesRequest {
   body?: GoogleAnalyticsAdminV1betaProperty;
 }
 
-export const PatchPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    name: Schema.String.pipe(T.HttpPath("name")),
-    updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
-    body: Schema.optional(GoogleAnalyticsAdminV1betaProperty).pipe(
-      T.HttpBody(),
-    ),
-  },
-).pipe(
+export const PatchPropertiesRequest = /*@__PURE__*/ Schema.Struct({
+  name: Schema.String.pipe(T.HttpPath("name")),
+  updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
+  body: Schema.optional(GoogleAnalyticsAdminV1betaProperty).pipe(T.HttpBody()),
+}).pipe(
   T.Http({ method: "PATCH", path: "v1beta/{+name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Codec<PatchPropertiesRequest>;
 
 export type PatchPropertiesResponse = GoogleAnalyticsAdminV1betaProperty;
 export const PatchPropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaProperty;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaProperty;
 
 export type PatchPropertiesError =
   | DefaultErrors
@@ -1506,7 +1502,7 @@ export const patchProperties: API.OperationMethod<
   PatchPropertiesResponse,
   PatchPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPropertiesRequest,
   output: PatchPropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1520,7 +1516,7 @@ export interface AcknowledgeUserDataCollectionPropertiesRequest {
 }
 
 export const AcknowledgeUserDataCollectionPropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     property: Schema.String.pipe(T.HttpPath("property")),
     body: Schema.optional(
       GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionRequest,
@@ -1537,7 +1533,7 @@ export const AcknowledgeUserDataCollectionPropertiesRequest =
 export type AcknowledgeUserDataCollectionPropertiesResponse =
   GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse;
 export const AcknowledgeUserDataCollectionPropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse;
 
 export type AcknowledgeUserDataCollectionPropertiesError =
   | DefaultErrors
@@ -1552,7 +1548,7 @@ export const acknowledgeUserDataCollectionProperties: API.OperationMethod<
   AcknowledgeUserDataCollectionPropertiesResponse,
   AcknowledgeUserDataCollectionPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcknowledgeUserDataCollectionPropertiesRequest,
   output: AcknowledgeUserDataCollectionPropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1564,7 +1560,7 @@ export interface GetDataRetentionSettingsPropertiesRequest {
 }
 
 export const GetDataRetentionSettingsPropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1574,7 +1570,7 @@ export const GetDataRetentionSettingsPropertiesRequest =
 export type GetDataRetentionSettingsPropertiesResponse =
   GoogleAnalyticsAdminV1betaDataRetentionSettings;
 export const GetDataRetentionSettingsPropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaDataRetentionSettings;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaDataRetentionSettings;
 
 export type GetDataRetentionSettingsPropertiesError =
   | DefaultErrors
@@ -1587,7 +1583,7 @@ export const getDataRetentionSettingsProperties: API.OperationMethod<
   GetDataRetentionSettingsPropertiesResponse,
   GetDataRetentionSettingsPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataRetentionSettingsPropertiesRequest,
   output: GetDataRetentionSettingsPropertiesResponse,
   errors: [NotFound, Forbidden],
@@ -1601,7 +1597,7 @@ export interface RunAccessReportPropertiesRequest {
 }
 
 export const RunAccessReportPropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entity: Schema.String.pipe(T.HttpPath("entity")),
     body: Schema.optional(
       GoogleAnalyticsAdminV1betaRunAccessReportRequest,
@@ -1618,7 +1614,7 @@ export const RunAccessReportPropertiesRequest =
 export type RunAccessReportPropertiesResponse =
   GoogleAnalyticsAdminV1betaRunAccessReportResponse;
 export const RunAccessReportPropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaRunAccessReportResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaRunAccessReportResponse;
 
 export type RunAccessReportPropertiesError =
   | DefaultErrors
@@ -1633,7 +1629,7 @@ export const runAccessReportProperties: API.OperationMethod<
   RunAccessReportPropertiesResponse,
   RunAccessReportPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunAccessReportPropertiesRequest,
   output: RunAccessReportPropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1650,7 +1646,7 @@ export interface ListPropertiesRequest {
   pageToken?: string;
 }
 
-export const ListPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListPropertiesRequest = /*@__PURE__*/ Schema.Struct({
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   showDeleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("showDeleted")),
@@ -1663,7 +1659,7 @@ export const ListPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListPropertiesResponse =
   GoogleAnalyticsAdminV1betaListPropertiesResponse;
 export const ListPropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListPropertiesResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaListPropertiesResponse;
 
 export type ListPropertiesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1673,7 +1669,7 @@ export const listProperties: API.PaginatedOperationMethod<
   ListPropertiesResponse,
   ListPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesRequest,
   output: ListPropertiesResponse,
   errors: [NotFound, Forbidden],
@@ -1689,7 +1685,7 @@ export interface CreatePropertiesRequest {
 }
 
 export const CreatePropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(GoogleAnalyticsAdminV1betaProperty).pipe(
       T.HttpBody(),
     ),
@@ -1700,7 +1696,7 @@ export const CreatePropertiesRequest =
 
 export type CreatePropertiesResponse = GoogleAnalyticsAdminV1betaProperty;
 export const CreatePropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaProperty;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaProperty;
 
 export type CreatePropertiesError =
   | DefaultErrors
@@ -1715,7 +1711,7 @@ export const createProperties: API.OperationMethod<
   CreatePropertiesResponse,
   CreatePropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePropertiesRequest,
   output: CreatePropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1727,7 +1723,7 @@ export interface DeletePropertiesRequest {
 }
 
 export const DeletePropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
@@ -1736,7 +1732,7 @@ export const DeletePropertiesRequest =
 
 export type DeletePropertiesResponse = GoogleAnalyticsAdminV1betaProperty;
 export const DeletePropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaProperty;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaProperty;
 
 export type DeletePropertiesError =
   | DefaultErrors
@@ -1751,7 +1747,7 @@ export const deleteProperties: API.OperationMethod<
   DeletePropertiesResponse,
   DeletePropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePropertiesRequest,
   output: DeletePropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1762,7 +1758,7 @@ export interface GetPropertiesRequest {
   name: string;
 }
 
-export const GetPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetPropertiesRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -1771,7 +1767,7 @@ export const GetPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetPropertiesResponse = GoogleAnalyticsAdminV1betaProperty;
 export const GetPropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaProperty;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaProperty;
 
 export type GetPropertiesError = DefaultErrors | NotFound | Forbidden;
 
@@ -1781,7 +1777,7 @@ export const getProperties: API.OperationMethod<
   GetPropertiesResponse,
   GetPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPropertiesRequest,
   output: GetPropertiesResponse,
   errors: [NotFound, Forbidden],
@@ -1797,7 +1793,7 @@ export interface UpdateDataRetentionSettingsPropertiesRequest {
 }
 
 export const UpdateDataRetentionSettingsPropertiesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleAnalyticsAdminV1betaDataRetentionSettings).pipe(
@@ -1811,7 +1807,7 @@ export const UpdateDataRetentionSettingsPropertiesRequest =
 export type UpdateDataRetentionSettingsPropertiesResponse =
   GoogleAnalyticsAdminV1betaDataRetentionSettings;
 export const UpdateDataRetentionSettingsPropertiesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaDataRetentionSettings;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaDataRetentionSettings;
 
 export type UpdateDataRetentionSettingsPropertiesError =
   | DefaultErrors
@@ -1826,7 +1822,7 @@ export const updateDataRetentionSettingsProperties: API.OperationMethod<
   UpdateDataRetentionSettingsPropertiesResponse,
   UpdateDataRetentionSettingsPropertiesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataRetentionSettingsPropertiesRequest,
   output: UpdateDataRetentionSettingsPropertiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1840,7 +1836,7 @@ export interface CreatePropertiesDataStreamsRequest {
 }
 
 export const CreatePropertiesDataStreamsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleAnalyticsAdminV1betaDataStream).pipe(
       T.HttpBody(),
@@ -1857,7 +1853,7 @@ export const CreatePropertiesDataStreamsRequest =
 export type CreatePropertiesDataStreamsResponse =
   GoogleAnalyticsAdminV1betaDataStream;
 export const CreatePropertiesDataStreamsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaDataStream;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaDataStream;
 
 export type CreatePropertiesDataStreamsError =
   | DefaultErrors
@@ -1872,7 +1868,7 @@ export const createPropertiesDataStreams: API.OperationMethod<
   CreatePropertiesDataStreamsResponse,
   CreatePropertiesDataStreamsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePropertiesDataStreamsRequest,
   output: CreatePropertiesDataStreamsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1884,7 +1880,7 @@ export interface DeletePropertiesDataStreamsRequest {
 }
 
 export const DeletePropertiesDataStreamsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
@@ -1893,7 +1889,7 @@ export const DeletePropertiesDataStreamsRequest =
 
 export type DeletePropertiesDataStreamsResponse = GoogleProtobufEmpty;
 export const DeletePropertiesDataStreamsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeletePropertiesDataStreamsError =
   | DefaultErrors
@@ -1908,7 +1904,7 @@ export const deletePropertiesDataStreams: API.OperationMethod<
   DeletePropertiesDataStreamsResponse,
   DeletePropertiesDataStreamsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePropertiesDataStreamsRequest,
   output: DeletePropertiesDataStreamsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1924,7 +1920,7 @@ export interface PatchPropertiesDataStreamsRequest {
 }
 
 export const PatchPropertiesDataStreamsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleAnalyticsAdminV1betaDataStream).pipe(
@@ -1938,7 +1934,7 @@ export const PatchPropertiesDataStreamsRequest =
 export type PatchPropertiesDataStreamsResponse =
   GoogleAnalyticsAdminV1betaDataStream;
 export const PatchPropertiesDataStreamsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaDataStream;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaDataStream;
 
 export type PatchPropertiesDataStreamsError =
   | DefaultErrors
@@ -1953,7 +1949,7 @@ export const patchPropertiesDataStreams: API.OperationMethod<
   PatchPropertiesDataStreamsResponse,
   PatchPropertiesDataStreamsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPropertiesDataStreamsRequest,
   output: PatchPropertiesDataStreamsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -1969,7 +1965,7 @@ export interface ListPropertiesDataStreamsRequest {
 }
 
 export const ListPropertiesDataStreamsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -1981,7 +1977,7 @@ export const ListPropertiesDataStreamsRequest =
 export type ListPropertiesDataStreamsResponse =
   GoogleAnalyticsAdminV1betaListDataStreamsResponse;
 export const ListPropertiesDataStreamsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListDataStreamsResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaListDataStreamsResponse;
 
 export type ListPropertiesDataStreamsError =
   | DefaultErrors
@@ -1994,7 +1990,7 @@ export const listPropertiesDataStreams: API.PaginatedOperationMethod<
   ListPropertiesDataStreamsResponse,
   ListPropertiesDataStreamsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesDataStreamsRequest,
   output: ListPropertiesDataStreamsResponse,
   errors: [NotFound, Forbidden],
@@ -2010,7 +2006,7 @@ export interface GetPropertiesDataStreamsRequest {
 }
 
 export const GetPropertiesDataStreamsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -2020,7 +2016,7 @@ export const GetPropertiesDataStreamsRequest =
 export type GetPropertiesDataStreamsResponse =
   GoogleAnalyticsAdminV1betaDataStream;
 export const GetPropertiesDataStreamsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaDataStream;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaDataStream;
 
 export type GetPropertiesDataStreamsError =
   | DefaultErrors
@@ -2033,7 +2029,7 @@ export const getPropertiesDataStreams: API.OperationMethod<
   GetPropertiesDataStreamsResponse,
   GetPropertiesDataStreamsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPropertiesDataStreamsRequest,
   output: GetPropertiesDataStreamsResponse,
   errors: [NotFound, Forbidden],
@@ -2045,7 +2041,7 @@ export interface GetPropertiesDataStreamsMeasurementProtocolSecretsRequest {
 }
 
 export const GetPropertiesDataStreamsMeasurementProtocolSecretsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -2055,7 +2051,7 @@ export const GetPropertiesDataStreamsMeasurementProtocolSecretsRequest =
 export type GetPropertiesDataStreamsMeasurementProtocolSecretsResponse =
   GoogleAnalyticsAdminV1betaMeasurementProtocolSecret;
 export const GetPropertiesDataStreamsMeasurementProtocolSecretsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaMeasurementProtocolSecret;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaMeasurementProtocolSecret;
 
 export type GetPropertiesDataStreamsMeasurementProtocolSecretsError =
   | DefaultErrors
@@ -2068,7 +2064,7 @@ export const getPropertiesDataStreamsMeasurementProtocolSecrets: API.OperationMe
   GetPropertiesDataStreamsMeasurementProtocolSecretsResponse,
   GetPropertiesDataStreamsMeasurementProtocolSecretsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPropertiesDataStreamsMeasurementProtocolSecretsRequest,
   output: GetPropertiesDataStreamsMeasurementProtocolSecretsResponse,
   errors: [NotFound, Forbidden],
@@ -2084,7 +2080,7 @@ export interface ListPropertiesDataStreamsMeasurementProtocolSecretsRequest {
 }
 
 export const ListPropertiesDataStreamsMeasurementProtocolSecretsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2099,7 +2095,7 @@ export const ListPropertiesDataStreamsMeasurementProtocolSecretsRequest =
 export type ListPropertiesDataStreamsMeasurementProtocolSecretsResponse =
   GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse;
 export const ListPropertiesDataStreamsMeasurementProtocolSecretsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse;
 
 export type ListPropertiesDataStreamsMeasurementProtocolSecretsError =
   | DefaultErrors
@@ -2112,7 +2108,7 @@ export const listPropertiesDataStreamsMeasurementProtocolSecrets: API.PaginatedO
   ListPropertiesDataStreamsMeasurementProtocolSecretsResponse,
   ListPropertiesDataStreamsMeasurementProtocolSecretsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesDataStreamsMeasurementProtocolSecretsRequest,
   output: ListPropertiesDataStreamsMeasurementProtocolSecretsResponse,
   errors: [NotFound, Forbidden],
@@ -2130,7 +2126,7 @@ export interface CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest {
 }
 
 export const CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(
       GoogleAnalyticsAdminV1betaMeasurementProtocolSecret,
@@ -2147,7 +2143,7 @@ export const CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest =
 export type CreatePropertiesDataStreamsMeasurementProtocolSecretsResponse =
   GoogleAnalyticsAdminV1betaMeasurementProtocolSecret;
 export const CreatePropertiesDataStreamsMeasurementProtocolSecretsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaMeasurementProtocolSecret;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaMeasurementProtocolSecret;
 
 export type CreatePropertiesDataStreamsMeasurementProtocolSecretsError =
   | DefaultErrors
@@ -2162,7 +2158,7 @@ export const createPropertiesDataStreamsMeasurementProtocolSecrets: API.Operatio
   CreatePropertiesDataStreamsMeasurementProtocolSecretsResponse,
   CreatePropertiesDataStreamsMeasurementProtocolSecretsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest,
   output: CreatePropertiesDataStreamsMeasurementProtocolSecretsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2174,7 +2170,7 @@ export interface DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest {
 }
 
 export const DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
@@ -2184,7 +2180,7 @@ export const DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest =
 export type DeletePropertiesDataStreamsMeasurementProtocolSecretsResponse =
   GoogleProtobufEmpty;
 export const DeletePropertiesDataStreamsMeasurementProtocolSecretsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeletePropertiesDataStreamsMeasurementProtocolSecretsError =
   | DefaultErrors
@@ -2199,7 +2195,7 @@ export const deletePropertiesDataStreamsMeasurementProtocolSecrets: API.Operatio
   DeletePropertiesDataStreamsMeasurementProtocolSecretsResponse,
   DeletePropertiesDataStreamsMeasurementProtocolSecretsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest,
   output: DeletePropertiesDataStreamsMeasurementProtocolSecretsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2215,7 +2211,7 @@ export interface PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest {
 }
 
 export const PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(
@@ -2229,7 +2225,7 @@ export const PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest =
 export type PatchPropertiesDataStreamsMeasurementProtocolSecretsResponse =
   GoogleAnalyticsAdminV1betaMeasurementProtocolSecret;
 export const PatchPropertiesDataStreamsMeasurementProtocolSecretsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaMeasurementProtocolSecret;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaMeasurementProtocolSecret;
 
 export type PatchPropertiesDataStreamsMeasurementProtocolSecretsError =
   | DefaultErrors
@@ -2244,7 +2240,7 @@ export const patchPropertiesDataStreamsMeasurementProtocolSecrets: API.Operation
   PatchPropertiesDataStreamsMeasurementProtocolSecretsResponse,
   PatchPropertiesDataStreamsMeasurementProtocolSecretsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest,
   output: PatchPropertiesDataStreamsMeasurementProtocolSecretsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2260,7 +2256,7 @@ export interface ListPropertiesGoogleAdsLinksRequest {
 }
 
 export const ListPropertiesGoogleAdsLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2272,7 +2268,7 @@ export const ListPropertiesGoogleAdsLinksRequest =
 export type ListPropertiesGoogleAdsLinksResponse =
   GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse;
 export const ListPropertiesGoogleAdsLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse;
 
 export type ListPropertiesGoogleAdsLinksError =
   | DefaultErrors
@@ -2285,7 +2281,7 @@ export const listPropertiesGoogleAdsLinks: API.PaginatedOperationMethod<
   ListPropertiesGoogleAdsLinksResponse,
   ListPropertiesGoogleAdsLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesGoogleAdsLinksRequest,
   output: ListPropertiesGoogleAdsLinksResponse,
   errors: [NotFound, Forbidden],
@@ -2303,7 +2299,7 @@ export interface CreatePropertiesGoogleAdsLinksRequest {
 }
 
 export const CreatePropertiesGoogleAdsLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleAnalyticsAdminV1betaGoogleAdsLink).pipe(
       T.HttpBody(),
@@ -2320,7 +2316,7 @@ export const CreatePropertiesGoogleAdsLinksRequest =
 export type CreatePropertiesGoogleAdsLinksResponse =
   GoogleAnalyticsAdminV1betaGoogleAdsLink;
 export const CreatePropertiesGoogleAdsLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaGoogleAdsLink;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaGoogleAdsLink;
 
 export type CreatePropertiesGoogleAdsLinksError =
   | DefaultErrors
@@ -2335,7 +2331,7 @@ export const createPropertiesGoogleAdsLinks: API.OperationMethod<
   CreatePropertiesGoogleAdsLinksResponse,
   CreatePropertiesGoogleAdsLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePropertiesGoogleAdsLinksRequest,
   output: CreatePropertiesGoogleAdsLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2351,7 +2347,7 @@ export interface PatchPropertiesGoogleAdsLinksRequest {
 }
 
 export const PatchPropertiesGoogleAdsLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleAnalyticsAdminV1betaGoogleAdsLink).pipe(
@@ -2365,7 +2361,7 @@ export const PatchPropertiesGoogleAdsLinksRequest =
 export type PatchPropertiesGoogleAdsLinksResponse =
   GoogleAnalyticsAdminV1betaGoogleAdsLink;
 export const PatchPropertiesGoogleAdsLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaGoogleAdsLink;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaGoogleAdsLink;
 
 export type PatchPropertiesGoogleAdsLinksError =
   | DefaultErrors
@@ -2380,7 +2376,7 @@ export const patchPropertiesGoogleAdsLinks: API.OperationMethod<
   PatchPropertiesGoogleAdsLinksResponse,
   PatchPropertiesGoogleAdsLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPropertiesGoogleAdsLinksRequest,
   output: PatchPropertiesGoogleAdsLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2392,7 +2388,7 @@ export interface DeletePropertiesGoogleAdsLinksRequest {
 }
 
 export const DeletePropertiesGoogleAdsLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
@@ -2401,7 +2397,7 @@ export const DeletePropertiesGoogleAdsLinksRequest =
 
 export type DeletePropertiesGoogleAdsLinksResponse = GoogleProtobufEmpty;
 export const DeletePropertiesGoogleAdsLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeletePropertiesGoogleAdsLinksError =
   | DefaultErrors
@@ -2416,7 +2412,7 @@ export const deletePropertiesGoogleAdsLinks: API.OperationMethod<
   DeletePropertiesGoogleAdsLinksResponse,
   DeletePropertiesGoogleAdsLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePropertiesGoogleAdsLinksRequest,
   output: DeletePropertiesGoogleAdsLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2430,7 +2426,7 @@ export interface CreatePropertiesCustomDimensionsRequest {
 }
 
 export const CreatePropertiesCustomDimensionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleAnalyticsAdminV1betaCustomDimension).pipe(
       T.HttpBody(),
@@ -2447,7 +2443,7 @@ export const CreatePropertiesCustomDimensionsRequest =
 export type CreatePropertiesCustomDimensionsResponse =
   GoogleAnalyticsAdminV1betaCustomDimension;
 export const CreatePropertiesCustomDimensionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaCustomDimension;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaCustomDimension;
 
 export type CreatePropertiesCustomDimensionsError =
   | DefaultErrors
@@ -2462,7 +2458,7 @@ export const createPropertiesCustomDimensions: API.OperationMethod<
   CreatePropertiesCustomDimensionsResponse,
   CreatePropertiesCustomDimensionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePropertiesCustomDimensionsRequest,
   output: CreatePropertiesCustomDimensionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2478,7 +2474,7 @@ export interface PatchPropertiesCustomDimensionsRequest {
 }
 
 export const PatchPropertiesCustomDimensionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleAnalyticsAdminV1betaCustomDimension).pipe(
@@ -2492,7 +2488,7 @@ export const PatchPropertiesCustomDimensionsRequest =
 export type PatchPropertiesCustomDimensionsResponse =
   GoogleAnalyticsAdminV1betaCustomDimension;
 export const PatchPropertiesCustomDimensionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaCustomDimension;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaCustomDimension;
 
 export type PatchPropertiesCustomDimensionsError =
   | DefaultErrors
@@ -2507,7 +2503,7 @@ export const patchPropertiesCustomDimensions: API.OperationMethod<
   PatchPropertiesCustomDimensionsResponse,
   PatchPropertiesCustomDimensionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPropertiesCustomDimensionsRequest,
   output: PatchPropertiesCustomDimensionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2519,7 +2515,7 @@ export interface GetPropertiesCustomDimensionsRequest {
 }
 
 export const GetPropertiesCustomDimensionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -2529,7 +2525,7 @@ export const GetPropertiesCustomDimensionsRequest =
 export type GetPropertiesCustomDimensionsResponse =
   GoogleAnalyticsAdminV1betaCustomDimension;
 export const GetPropertiesCustomDimensionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaCustomDimension;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaCustomDimension;
 
 export type GetPropertiesCustomDimensionsError =
   | DefaultErrors
@@ -2542,7 +2538,7 @@ export const getPropertiesCustomDimensions: API.OperationMethod<
   GetPropertiesCustomDimensionsResponse,
   GetPropertiesCustomDimensionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPropertiesCustomDimensionsRequest,
   output: GetPropertiesCustomDimensionsResponse,
   errors: [NotFound, Forbidden],
@@ -2558,7 +2554,7 @@ export interface ListPropertiesCustomDimensionsRequest {
 }
 
 export const ListPropertiesCustomDimensionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2570,7 +2566,7 @@ export const ListPropertiesCustomDimensionsRequest =
 export type ListPropertiesCustomDimensionsResponse =
   GoogleAnalyticsAdminV1betaListCustomDimensionsResponse;
 export const ListPropertiesCustomDimensionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListCustomDimensionsResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaListCustomDimensionsResponse;
 
 export type ListPropertiesCustomDimensionsError =
   | DefaultErrors
@@ -2583,7 +2579,7 @@ export const listPropertiesCustomDimensions: API.PaginatedOperationMethod<
   ListPropertiesCustomDimensionsResponse,
   ListPropertiesCustomDimensionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesCustomDimensionsRequest,
   output: ListPropertiesCustomDimensionsResponse,
   errors: [NotFound, Forbidden],
@@ -2601,7 +2597,7 @@ export interface ArchivePropertiesCustomDimensionsRequest {
 }
 
 export const ArchivePropertiesCustomDimensionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest,
@@ -2613,7 +2609,7 @@ export const ArchivePropertiesCustomDimensionsRequest =
 
 export type ArchivePropertiesCustomDimensionsResponse = GoogleProtobufEmpty;
 export const ArchivePropertiesCustomDimensionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type ArchivePropertiesCustomDimensionsError =
   | DefaultErrors
@@ -2628,7 +2624,7 @@ export const archivePropertiesCustomDimensions: API.OperationMethod<
   ArchivePropertiesCustomDimensionsResponse,
   ArchivePropertiesCustomDimensionsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ArchivePropertiesCustomDimensionsRequest,
   output: ArchivePropertiesCustomDimensionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2642,7 +2638,7 @@ export interface CreatePropertiesKeyEventsRequest {
 }
 
 export const CreatePropertiesKeyEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleAnalyticsAdminV1betaKeyEvent).pipe(
       T.HttpBody(),
@@ -2659,7 +2655,7 @@ export const CreatePropertiesKeyEventsRequest =
 export type CreatePropertiesKeyEventsResponse =
   GoogleAnalyticsAdminV1betaKeyEvent;
 export const CreatePropertiesKeyEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaKeyEvent;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaKeyEvent;
 
 export type CreatePropertiesKeyEventsError =
   | DefaultErrors
@@ -2674,7 +2670,7 @@ export const createPropertiesKeyEvents: API.OperationMethod<
   CreatePropertiesKeyEventsResponse,
   CreatePropertiesKeyEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePropertiesKeyEventsRequest,
   output: CreatePropertiesKeyEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2690,7 +2686,7 @@ export interface PatchPropertiesKeyEventsRequest {
 }
 
 export const PatchPropertiesKeyEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleAnalyticsAdminV1betaKeyEvent).pipe(
@@ -2704,7 +2700,7 @@ export const PatchPropertiesKeyEventsRequest =
 export type PatchPropertiesKeyEventsResponse =
   GoogleAnalyticsAdminV1betaKeyEvent;
 export const PatchPropertiesKeyEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaKeyEvent;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaKeyEvent;
 
 export type PatchPropertiesKeyEventsError =
   | DefaultErrors
@@ -2719,7 +2715,7 @@ export const patchPropertiesKeyEvents: API.OperationMethod<
   PatchPropertiesKeyEventsResponse,
   PatchPropertiesKeyEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPropertiesKeyEventsRequest,
   output: PatchPropertiesKeyEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2731,7 +2727,7 @@ export interface DeletePropertiesKeyEventsRequest {
 }
 
 export const DeletePropertiesKeyEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
@@ -2740,7 +2736,7 @@ export const DeletePropertiesKeyEventsRequest =
 
 export type DeletePropertiesKeyEventsResponse = GoogleProtobufEmpty;
 export const DeletePropertiesKeyEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeletePropertiesKeyEventsError =
   | DefaultErrors
@@ -2755,7 +2751,7 @@ export const deletePropertiesKeyEvents: API.OperationMethod<
   DeletePropertiesKeyEventsResponse,
   DeletePropertiesKeyEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePropertiesKeyEventsRequest,
   output: DeletePropertiesKeyEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2767,7 +2763,7 @@ export interface GetPropertiesKeyEventsRequest {
 }
 
 export const GetPropertiesKeyEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -2776,7 +2772,7 @@ export const GetPropertiesKeyEventsRequest =
 
 export type GetPropertiesKeyEventsResponse = GoogleAnalyticsAdminV1betaKeyEvent;
 export const GetPropertiesKeyEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaKeyEvent;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaKeyEvent;
 
 export type GetPropertiesKeyEventsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2786,7 +2782,7 @@ export const getPropertiesKeyEvents: API.OperationMethod<
   GetPropertiesKeyEventsResponse,
   GetPropertiesKeyEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPropertiesKeyEventsRequest,
   output: GetPropertiesKeyEventsResponse,
   errors: [NotFound, Forbidden],
@@ -2802,7 +2798,7 @@ export interface ListPropertiesKeyEventsRequest {
 }
 
 export const ListPropertiesKeyEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
@@ -2814,7 +2810,7 @@ export const ListPropertiesKeyEventsRequest =
 export type ListPropertiesKeyEventsResponse =
   GoogleAnalyticsAdminV1betaListKeyEventsResponse;
 export const ListPropertiesKeyEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListKeyEventsResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaListKeyEventsResponse;
 
 export type ListPropertiesKeyEventsError = DefaultErrors | NotFound | Forbidden;
 
@@ -2824,7 +2820,7 @@ export const listPropertiesKeyEvents: API.PaginatedOperationMethod<
   ListPropertiesKeyEventsResponse,
   ListPropertiesKeyEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesKeyEventsRequest,
   output: ListPropertiesKeyEventsResponse,
   errors: [NotFound, Forbidden],
@@ -2844,7 +2840,7 @@ export interface ListPropertiesFirebaseLinksRequest {
 }
 
 export const ListPropertiesFirebaseLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2856,7 +2852,7 @@ export const ListPropertiesFirebaseLinksRequest =
 export type ListPropertiesFirebaseLinksResponse =
   GoogleAnalyticsAdminV1betaListFirebaseLinksResponse;
 export const ListPropertiesFirebaseLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListFirebaseLinksResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaListFirebaseLinksResponse;
 
 export type ListPropertiesFirebaseLinksError =
   | DefaultErrors
@@ -2869,7 +2865,7 @@ export const listPropertiesFirebaseLinks: API.PaginatedOperationMethod<
   ListPropertiesFirebaseLinksResponse,
   ListPropertiesFirebaseLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesFirebaseLinksRequest,
   output: ListPropertiesFirebaseLinksResponse,
   errors: [NotFound, Forbidden],
@@ -2887,7 +2883,7 @@ export interface CreatePropertiesFirebaseLinksRequest {
 }
 
 export const CreatePropertiesFirebaseLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleAnalyticsAdminV1betaFirebaseLink).pipe(
       T.HttpBody(),
@@ -2904,7 +2900,7 @@ export const CreatePropertiesFirebaseLinksRequest =
 export type CreatePropertiesFirebaseLinksResponse =
   GoogleAnalyticsAdminV1betaFirebaseLink;
 export const CreatePropertiesFirebaseLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaFirebaseLink;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaFirebaseLink;
 
 export type CreatePropertiesFirebaseLinksError =
   | DefaultErrors
@@ -2919,7 +2915,7 @@ export const createPropertiesFirebaseLinks: API.OperationMethod<
   CreatePropertiesFirebaseLinksResponse,
   CreatePropertiesFirebaseLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePropertiesFirebaseLinksRequest,
   output: CreatePropertiesFirebaseLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2931,7 +2927,7 @@ export interface DeletePropertiesFirebaseLinksRequest {
 }
 
 export const DeletePropertiesFirebaseLinksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
@@ -2940,7 +2936,7 @@ export const DeletePropertiesFirebaseLinksRequest =
 
 export type DeletePropertiesFirebaseLinksResponse = GoogleProtobufEmpty;
 export const DeletePropertiesFirebaseLinksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeletePropertiesFirebaseLinksError =
   | DefaultErrors
@@ -2955,7 +2951,7 @@ export const deletePropertiesFirebaseLinks: API.OperationMethod<
   DeletePropertiesFirebaseLinksResponse,
   DeletePropertiesFirebaseLinksError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePropertiesFirebaseLinksRequest,
   output: DeletePropertiesFirebaseLinksResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -2971,7 +2967,7 @@ export interface ListPropertiesConversionEventsRequest {
 }
 
 export const ListPropertiesConversionEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -2983,7 +2979,7 @@ export const ListPropertiesConversionEventsRequest =
 export type ListPropertiesConversionEventsResponse =
   GoogleAnalyticsAdminV1betaListConversionEventsResponse;
 export const ListPropertiesConversionEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListConversionEventsResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaListConversionEventsResponse;
 
 export type ListPropertiesConversionEventsError =
   | DefaultErrors
@@ -2996,7 +2992,7 @@ export const listPropertiesConversionEvents: API.PaginatedOperationMethod<
   ListPropertiesConversionEventsResponse,
   ListPropertiesConversionEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesConversionEventsRequest,
   output: ListPropertiesConversionEventsResponse,
   errors: [NotFound, Forbidden],
@@ -3012,7 +3008,7 @@ export interface GetPropertiesConversionEventsRequest {
 }
 
 export const GetPropertiesConversionEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -3022,7 +3018,7 @@ export const GetPropertiesConversionEventsRequest =
 export type GetPropertiesConversionEventsResponse =
   GoogleAnalyticsAdminV1betaConversionEvent;
 export const GetPropertiesConversionEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaConversionEvent;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaConversionEvent;
 
 export type GetPropertiesConversionEventsError =
   | DefaultErrors
@@ -3035,7 +3031,7 @@ export const getPropertiesConversionEvents: API.OperationMethod<
   GetPropertiesConversionEventsResponse,
   GetPropertiesConversionEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPropertiesConversionEventsRequest,
   output: GetPropertiesConversionEventsResponse,
   errors: [NotFound, Forbidden],
@@ -3049,7 +3045,7 @@ export interface CreatePropertiesConversionEventsRequest {
 }
 
 export const CreatePropertiesConversionEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleAnalyticsAdminV1betaConversionEvent).pipe(
       T.HttpBody(),
@@ -3066,7 +3062,7 @@ export const CreatePropertiesConversionEventsRequest =
 export type CreatePropertiesConversionEventsResponse =
   GoogleAnalyticsAdminV1betaConversionEvent;
 export const CreatePropertiesConversionEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaConversionEvent;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaConversionEvent;
 
 export type CreatePropertiesConversionEventsError =
   | DefaultErrors
@@ -3081,7 +3077,7 @@ export const createPropertiesConversionEvents: API.OperationMethod<
   CreatePropertiesConversionEventsResponse,
   CreatePropertiesConversionEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePropertiesConversionEventsRequest,
   output: CreatePropertiesConversionEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3097,7 +3093,7 @@ export interface PatchPropertiesConversionEventsRequest {
 }
 
 export const PatchPropertiesConversionEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleAnalyticsAdminV1betaConversionEvent).pipe(
@@ -3111,7 +3107,7 @@ export const PatchPropertiesConversionEventsRequest =
 export type PatchPropertiesConversionEventsResponse =
   GoogleAnalyticsAdminV1betaConversionEvent;
 export const PatchPropertiesConversionEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaConversionEvent;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaConversionEvent;
 
 export type PatchPropertiesConversionEventsError =
   | DefaultErrors
@@ -3126,7 +3122,7 @@ export const patchPropertiesConversionEvents: API.OperationMethod<
   PatchPropertiesConversionEventsResponse,
   PatchPropertiesConversionEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPropertiesConversionEventsRequest,
   output: PatchPropertiesConversionEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3138,7 +3134,7 @@ export interface DeletePropertiesConversionEventsRequest {
 }
 
 export const DeletePropertiesConversionEventsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
@@ -3147,7 +3143,7 @@ export const DeletePropertiesConversionEventsRequest =
 
 export type DeletePropertiesConversionEventsResponse = GoogleProtobufEmpty;
 export const DeletePropertiesConversionEventsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeletePropertiesConversionEventsError =
   | DefaultErrors
@@ -3162,7 +3158,7 @@ export const deletePropertiesConversionEvents: API.OperationMethod<
   DeletePropertiesConversionEventsResponse,
   DeletePropertiesConversionEventsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePropertiesConversionEventsRequest,
   output: DeletePropertiesConversionEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3178,7 +3174,7 @@ export interface ListPropertiesCustomMetricsRequest {
 }
 
 export const ListPropertiesCustomMetricsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
@@ -3190,7 +3186,7 @@ export const ListPropertiesCustomMetricsRequest =
 export type ListPropertiesCustomMetricsResponse =
   GoogleAnalyticsAdminV1betaListCustomMetricsResponse;
 export const ListPropertiesCustomMetricsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListCustomMetricsResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaListCustomMetricsResponse;
 
 export type ListPropertiesCustomMetricsError =
   | DefaultErrors
@@ -3203,7 +3199,7 @@ export const listPropertiesCustomMetrics: API.PaginatedOperationMethod<
   ListPropertiesCustomMetricsResponse,
   ListPropertiesCustomMetricsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesCustomMetricsRequest,
   output: ListPropertiesCustomMetricsResponse,
   errors: [NotFound, Forbidden],
@@ -3221,7 +3217,7 @@ export interface ArchivePropertiesCustomMetricsRequest {
 }
 
 export const ArchivePropertiesCustomMetricsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(
       GoogleAnalyticsAdminV1betaArchiveCustomMetricRequest,
@@ -3233,7 +3229,7 @@ export const ArchivePropertiesCustomMetricsRequest =
 
 export type ArchivePropertiesCustomMetricsResponse = GoogleProtobufEmpty;
 export const ArchivePropertiesCustomMetricsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+  /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type ArchivePropertiesCustomMetricsError =
   | DefaultErrors
@@ -3248,7 +3244,7 @@ export const archivePropertiesCustomMetrics: API.OperationMethod<
   ArchivePropertiesCustomMetricsResponse,
   ArchivePropertiesCustomMetricsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ArchivePropertiesCustomMetricsRequest,
   output: ArchivePropertiesCustomMetricsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3260,7 +3256,7 @@ export interface GetPropertiesCustomMetricsRequest {
 }
 
 export const GetPropertiesCustomMetricsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -3270,7 +3266,7 @@ export const GetPropertiesCustomMetricsRequest =
 export type GetPropertiesCustomMetricsResponse =
   GoogleAnalyticsAdminV1betaCustomMetric;
 export const GetPropertiesCustomMetricsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaCustomMetric;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaCustomMetric;
 
 export type GetPropertiesCustomMetricsError =
   | DefaultErrors
@@ -3283,7 +3279,7 @@ export const getPropertiesCustomMetrics: API.OperationMethod<
   GetPropertiesCustomMetricsResponse,
   GetPropertiesCustomMetricsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPropertiesCustomMetricsRequest,
   output: GetPropertiesCustomMetricsResponse,
   errors: [NotFound, Forbidden],
@@ -3297,7 +3293,7 @@ export interface CreatePropertiesCustomMetricsRequest {
 }
 
 export const CreatePropertiesCustomMetricsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleAnalyticsAdminV1betaCustomMetric).pipe(
       T.HttpBody(),
@@ -3314,7 +3310,7 @@ export const CreatePropertiesCustomMetricsRequest =
 export type CreatePropertiesCustomMetricsResponse =
   GoogleAnalyticsAdminV1betaCustomMetric;
 export const CreatePropertiesCustomMetricsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaCustomMetric;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaCustomMetric;
 
 export type CreatePropertiesCustomMetricsError =
   | DefaultErrors
@@ -3329,7 +3325,7 @@ export const createPropertiesCustomMetrics: API.OperationMethod<
   CreatePropertiesCustomMetricsResponse,
   CreatePropertiesCustomMetricsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePropertiesCustomMetricsRequest,
   output: CreatePropertiesCustomMetricsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3345,7 +3341,7 @@ export interface PatchPropertiesCustomMetricsRequest {
 }
 
 export const PatchPropertiesCustomMetricsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleAnalyticsAdminV1betaCustomMetric).pipe(
@@ -3359,7 +3355,7 @@ export const PatchPropertiesCustomMetricsRequest =
 export type PatchPropertiesCustomMetricsResponse =
   GoogleAnalyticsAdminV1betaCustomMetric;
 export const PatchPropertiesCustomMetricsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaCustomMetric;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaCustomMetric;
 
 export type PatchPropertiesCustomMetricsError =
   | DefaultErrors
@@ -3374,7 +3370,7 @@ export const patchPropertiesCustomMetrics: API.OperationMethod<
   PatchPropertiesCustomMetricsResponse,
   PatchPropertiesCustomMetricsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchPropertiesCustomMetricsRequest,
   output: PatchPropertiesCustomMetricsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3386,7 +3382,7 @@ export interface ProvisionAccountTicketAccountsRequest {
 }
 
 export const ProvisionAccountTicketAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     body: Schema.optional(
       GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest,
     ).pipe(T.HttpBody()),
@@ -3402,7 +3398,7 @@ export const ProvisionAccountTicketAccountsRequest =
 export type ProvisionAccountTicketAccountsResponse =
   GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse;
 export const ProvisionAccountTicketAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse;
 
 export type ProvisionAccountTicketAccountsError =
   | DefaultErrors
@@ -3417,7 +3413,7 @@ export const provisionAccountTicketAccounts: API.OperationMethod<
   ProvisionAccountTicketAccountsResponse,
   ProvisionAccountTicketAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ProvisionAccountTicketAccountsRequest,
   output: ProvisionAccountTicketAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3428,7 +3424,7 @@ export interface DeleteAccountsRequest {
   name: string;
 }
 
-export const DeleteAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DeleteAccountsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "DELETE", path: "v1beta/{+name}" }),
@@ -3436,8 +3432,7 @@ export const DeleteAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<DeleteAccountsRequest>;
 
 export type DeleteAccountsResponse = GoogleProtobufEmpty;
-export const DeleteAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
+export const DeleteAccountsResponse = /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteAccountsError =
   | DefaultErrors
@@ -3452,7 +3447,7 @@ export const deleteAccounts: API.OperationMethod<
   DeleteAccountsResponse,
   DeleteAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountsRequest,
   output: DeleteAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3467,7 +3462,7 @@ export interface PatchAccountsRequest {
   body?: GoogleAnalyticsAdminV1betaAccount;
 }
 
-export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PatchAccountsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(GoogleAnalyticsAdminV1betaAccount).pipe(T.HttpBody()),
@@ -3478,7 +3473,7 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type PatchAccountsResponse = GoogleAnalyticsAdminV1betaAccount;
 export const PatchAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaAccount;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaAccount;
 
 export type PatchAccountsError =
   | DefaultErrors
@@ -3493,7 +3488,7 @@ export const patchAccounts: API.OperationMethod<
   PatchAccountsResponse,
   PatchAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PatchAccountsRequest,
   output: PatchAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3505,7 +3500,7 @@ export interface GetDataSharingSettingsAccountsRequest {
 }
 
 export const GetDataSharingSettingsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -3515,7 +3510,7 @@ export const GetDataSharingSettingsAccountsRequest =
 export type GetDataSharingSettingsAccountsResponse =
   GoogleAnalyticsAdminV1betaDataSharingSettings;
 export const GetDataSharingSettingsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaDataSharingSettings;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaDataSharingSettings;
 
 export type GetDataSharingSettingsAccountsError =
   | DefaultErrors
@@ -3528,7 +3523,7 @@ export const getDataSharingSettingsAccounts: API.OperationMethod<
   GetDataSharingSettingsAccountsResponse,
   GetDataSharingSettingsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataSharingSettingsAccountsRequest,
   output: GetDataSharingSettingsAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -3543,7 +3538,7 @@ export interface ListAccountsRequest {
   showDeleted?: boolean;
 }
 
-export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListAccountsRequest = /*@__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   showDeleted: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("showDeleted")),
@@ -3555,7 +3550,7 @@ export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListAccountsResponse =
   GoogleAnalyticsAdminV1betaListAccountsResponse;
 export const ListAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListAccountsResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaListAccountsResponse;
 
 export type ListAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3565,7 +3560,7 @@ export const listAccounts: API.PaginatedOperationMethod<
   ListAccountsResponse,
   ListAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -3583,7 +3578,7 @@ export interface SearchChangeHistoryEventsAccountsRequest {
 }
 
 export const SearchChangeHistoryEventsAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.HttpPath("account")),
     body: Schema.optional(
       GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest,
@@ -3600,7 +3595,7 @@ export const SearchChangeHistoryEventsAccountsRequest =
 export type SearchChangeHistoryEventsAccountsResponse =
   GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse;
 export const SearchChangeHistoryEventsAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse;
 
 export type SearchChangeHistoryEventsAccountsError =
   | DefaultErrors
@@ -3615,7 +3610,7 @@ export const searchChangeHistoryEventsAccounts: API.OperationMethod<
   SearchChangeHistoryEventsAccountsResponse,
   SearchChangeHistoryEventsAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SearchChangeHistoryEventsAccountsRequest,
   output: SearchChangeHistoryEventsAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3629,7 +3624,7 @@ export interface RunAccessReportAccountsRequest {
 }
 
 export const RunAccessReportAccountsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     entity: Schema.String.pipe(T.HttpPath("entity")),
     body: Schema.optional(
       GoogleAnalyticsAdminV1betaRunAccessReportRequest,
@@ -3646,7 +3641,7 @@ export const RunAccessReportAccountsRequest =
 export type RunAccessReportAccountsResponse =
   GoogleAnalyticsAdminV1betaRunAccessReportResponse;
 export const RunAccessReportAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaRunAccessReportResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaRunAccessReportResponse;
 
 export type RunAccessReportAccountsError =
   | DefaultErrors
@@ -3661,7 +3656,7 @@ export const runAccessReportAccounts: API.OperationMethod<
   RunAccessReportAccountsResponse,
   RunAccessReportAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RunAccessReportAccountsRequest,
   output: RunAccessReportAccountsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -3672,7 +3667,7 @@ export interface GetAccountsRequest {
   name: string;
 }
 
-export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetAccountsRequest = /*@__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
   T.Http({ method: "GET", path: "v1beta/{+name}" }),
@@ -3681,7 +3676,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetAccountsResponse = GoogleAnalyticsAdminV1betaAccount;
 export const GetAccountsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaAccount;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaAccount;
 
 export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
@@ -3691,7 +3686,7 @@ export const getAccounts: API.OperationMethod<
   GetAccountsResponse,
   GetAccountsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
   errors: [NotFound, Forbidden],
@@ -3705,7 +3700,7 @@ export interface ListAccountSummariesRequest {
 }
 
 export const ListAccountSummariesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
@@ -3716,7 +3711,7 @@ export const ListAccountSummariesRequest =
 export type ListAccountSummariesResponse =
   GoogleAnalyticsAdminV1betaListAccountSummariesResponse;
 export const ListAccountSummariesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListAccountSummariesResponse;
+  /*@__PURE__*/ GoogleAnalyticsAdminV1betaListAccountSummariesResponse;
 
 export type ListAccountSummariesError = DefaultErrors | NotFound | Forbidden;
 
@@ -3726,7 +3721,7 @@ export const listAccountSummaries: API.PaginatedOperationMethod<
   ListAccountSummariesResponse,
   ListAccountSummariesError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountSummariesRequest,
   output: ListAccountSummariesResponse,
   errors: [NotFound, Forbidden],

@@ -19,7 +19,7 @@ export interface CreateOauthTokenInput {
   redirect_uri?: string;
   refresh_token?: string | Redacted.Redacted<string>;
 }
-export const CreateOauthTokenInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CreateOauthTokenInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   id: Schema.String.pipe(T.PathParam()),
   client_id: Schema.String,
@@ -95,112 +95,110 @@ export interface CreateOauthTokenOutput {
     };
   } | null;
 }
-export const CreateOauthTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String,
-    name: Schema.optional(Schema.NullOr(Schema.String)),
-    display_name: Schema.String,
-    token: Schema.optional(SensitiveOutputNullableString),
-    plain_text_refresh_token: Schema.optional(SensitiveOutputNullableString),
-    avatar_url: Schema.String,
-    created_at: Schema.String,
-    updated_at: Schema.String,
-    expires_at: Schema.optional(Schema.NullOr(Schema.String)),
-    last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
-    actor_id: Schema.NullOr(Schema.String),
-    actor_display_name: Schema.NullOr(Schema.String),
-    actor_type: Schema.NullOr(Schema.String),
-    service_token_accesses: Schema.optional(
-      Schema.NullOr(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            access: Schema.String,
-            description: Schema.String,
-            resource_name: Schema.String,
-            resource_id: Schema.String,
-            resource_type: Schema.String,
-            resource: Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-              created_at: Schema.String,
-              updated_at: Schema.String,
-              deleted_at: Schema.NullOr(Schema.String),
-            }),
-          }),
-        ),
-      ),
-    ),
-    oauth_accesses_by_resource: Schema.optional(
-      Schema.NullOr(
+export const CreateOauthTokenOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.String,
+  name: Schema.optional(Schema.NullOr(Schema.String)),
+  display_name: Schema.String,
+  token: Schema.optional(SensitiveOutputNullableString),
+  plain_text_refresh_token: Schema.optional(SensitiveOutputNullableString),
+  avatar_url: Schema.String,
+  created_at: Schema.String,
+  updated_at: Schema.String,
+  expires_at: Schema.optional(Schema.NullOr(Schema.String)),
+  last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
+  actor_id: Schema.NullOr(Schema.String),
+  actor_display_name: Schema.NullOr(Schema.String),
+  actor_type: Schema.NullOr(Schema.String),
+  service_token_accesses: Schema.optional(
+    Schema.NullOr(
+      Schema.Array(
         Schema.Struct({
-          database: Schema.Struct({
-            databases: Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                id: Schema.String,
-                organization: Schema.String,
-                url: Schema.String,
-              }),
-            ),
-            accesses: Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                description: Schema.String,
-              }),
-            ),
-          }),
-          organization: Schema.Struct({
-            organizations: Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                id: Schema.String,
-                url: Schema.String,
-              }),
-            ),
-            accesses: Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                description: Schema.String,
-              }),
-            ),
-          }),
-          branch: Schema.Struct({
-            branches: Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                id: Schema.String,
-                database: Schema.String,
-                organization: Schema.String,
-                url: Schema.String,
-              }),
-            ),
-            accesses: Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                description: Schema.String,
-              }),
-            ),
-          }),
-          user: Schema.Struct({
-            users: Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                id: Schema.String,
-              }),
-            ),
-            accesses: Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                description: Schema.String,
-              }),
-            ),
+          id: Schema.String,
+          access: Schema.String,
+          description: Schema.String,
+          resource_name: Schema.String,
+          resource_id: Schema.String,
+          resource_type: Schema.String,
+          resource: Schema.Struct({
+            id: Schema.String,
+            name: Schema.String,
+            created_at: Schema.String,
+            updated_at: Schema.String,
+            deleted_at: Schema.NullOr(Schema.String),
           }),
         }),
       ),
     ),
-  },
-) as unknown as Schema.Codec<CreateOauthTokenOutput>;
+  ),
+  oauth_accesses_by_resource: Schema.optional(
+    Schema.NullOr(
+      Schema.Struct({
+        database: Schema.Struct({
+          databases: Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              id: Schema.String,
+              organization: Schema.String,
+              url: Schema.String,
+            }),
+          ),
+          accesses: Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              description: Schema.String,
+            }),
+          ),
+        }),
+        organization: Schema.Struct({
+          organizations: Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              id: Schema.String,
+              url: Schema.String,
+            }),
+          ),
+          accesses: Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              description: Schema.String,
+            }),
+          ),
+        }),
+        branch: Schema.Struct({
+          branches: Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              id: Schema.String,
+              database: Schema.String,
+              organization: Schema.String,
+              url: Schema.String,
+            }),
+          ),
+          accesses: Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              description: Schema.String,
+            }),
+          ),
+        }),
+        user: Schema.Struct({
+          users: Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              id: Schema.String,
+            }),
+          ),
+          accesses: Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              description: Schema.String,
+            }),
+          ),
+        }),
+      }),
+    ),
+  ),
+}) as unknown as Schema.Codec<CreateOauthTokenOutput>;
 
 // The operation
 /**
@@ -217,7 +215,7 @@ export const CreateOauthTokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param redirect_uri - The OAuth application's redirect URI. Required when grant_type is authorization_code
  * @param refresh_token - The refresh token from the original OAuth token grant. Required when grant_type is refresh_token
  */
-export const createOauthToken = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const createOauthToken = /*@__PURE__*/ API.make(() => ({
   inputSchema: CreateOauthTokenInput,
   outputSchema: CreateOauthTokenOutput,
   errors: [Forbidden, NotFound, UnprocessableEntity] as const,

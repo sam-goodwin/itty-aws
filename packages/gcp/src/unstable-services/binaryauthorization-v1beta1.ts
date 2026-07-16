@@ -34,7 +34,7 @@ export interface Expr {
 }
 
 export const Expr: Schema.Codec<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     title: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
     expression: Schema.optional(Schema.String),
@@ -51,7 +51,7 @@ export interface Binding {
 }
 
 export const Binding: Schema.Codec<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     members: Schema.optional(Schema.Array(Schema.String)),
     role: Schema.optional(Schema.String),
     condition: Schema.optional(Expr),
@@ -69,7 +69,7 @@ export interface ValidateAttestationOccurrenceResponse {
 }
 
 export const ValidateAttestationOccurrenceResponse: Schema.Codec<ValidateAttestationOccurrenceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     result: Schema.optional(Schema.String),
     denialReason: Schema.optional(Schema.String),
   }).annotate({ identifier: "ValidateAttestationOccurrenceResponse" });
@@ -102,7 +102,7 @@ export interface PkixPublicKey {
 }
 
 export const PkixPublicKey: Schema.Codec<PkixPublicKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     publicKeyPem: Schema.optional(Schema.String),
     signatureAlgorithm: Schema.optional(Schema.String),
   }).annotate({ identifier: "PkixPublicKey" });
@@ -119,7 +119,7 @@ export interface AttestorPublicKey {
 }
 
 export const AttestorPublicKey: Schema.Codec<AttestorPublicKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     comment: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
     asciiArmoredPgpPublicKey: Schema.optional(Schema.String),
@@ -136,7 +136,7 @@ export interface UserOwnedDrydockNote {
 }
 
 export const UserOwnedDrydockNote: Schema.Codec<UserOwnedDrydockNote> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     delegationServiceAccountEmail: Schema.optional(Schema.String),
     noteReference: Schema.optional(Schema.String),
     publicKeys: Schema.optional(Schema.Array(AttestorPublicKey)),
@@ -156,7 +156,7 @@ export interface Attestor {
 }
 
 export const Attestor: Schema.Codec<Attestor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     userOwnedDrydockNote: Schema.optional(UserOwnedDrydockNote),
     etag: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
@@ -170,7 +170,7 @@ export interface TestIamPermissionsRequest {
 }
 
 export const TestIamPermissionsRequest: Schema.Codec<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
 
@@ -182,7 +182,7 @@ export interface ListAttestorsResponse {
 }
 
 export const ListAttestorsResponse: Schema.Codec<ListAttestorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attestors: Schema.optional(Schema.Array(Attestor)),
     nextPageToken: Schema.optional(Schema.String),
   }).annotate({ identifier: "ListAttestorsResponse" });
@@ -197,7 +197,7 @@ export interface IamPolicy {
 }
 
 export const IamPolicy: Schema.Codec<IamPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     etag: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
     bindings: Schema.optional(Schema.Array(Binding)),
@@ -208,11 +208,9 @@ export interface Jwt {
   compactJwt?: string;
 }
 
-export const Jwt: Schema.Codec<Jwt> = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    compactJwt: Schema.optional(Schema.String),
-  },
-).annotate({ identifier: "Jwt" });
+export const Jwt: Schema.Codec<Jwt> = /*@__PURE__*/ Schema.Struct({
+  compactJwt: Schema.optional(Schema.String),
+}).annotate({ identifier: "Jwt" });
 
 export interface AdmissionWhitelistPattern {
   /** An image name pattern to allowlist, in the form `registry/path/to/image`. This supports a trailing `*` as a wildcard, but this is allowed only in text after the `registry/` part. `*` wildcard does not match `/`, i.e., `gcr.io/nginx*` matches `gcr.io/nginx@latest`, but it does not match `gcr.io/nginx/image`. This also supports a trailing `**` wildcard which matches subdirectories, i.e., `gcr.io/nginx**` matches `gcr.io/nginx/image`. */
@@ -220,7 +218,7 @@ export interface AdmissionWhitelistPattern {
 }
 
 export const AdmissionWhitelistPattern: Schema.Codec<AdmissionWhitelistPattern> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     namePattern: Schema.optional(Schema.String),
   }).annotate({ identifier: "AdmissionWhitelistPattern" });
 
@@ -232,7 +230,7 @@ export interface Signature {
 }
 
 export const Signature: Schema.Codec<Signature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     signature: Schema.optional(Schema.String),
     publicKeyId: Schema.optional(Schema.String),
   }).annotate({ identifier: "Signature" });
@@ -247,7 +245,7 @@ export interface AttestationOccurrence {
 }
 
 export const AttestationOccurrence: Schema.Codec<AttestationOccurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     serializedPayload: Schema.optional(Schema.String),
     signatures: Schema.optional(Schema.Array(Signature)),
     jwts: Schema.optional(Schema.Array(Jwt)),
@@ -259,7 +257,7 @@ export interface TestIamPermissionsResponse {
 }
 
 export const TestIamPermissionsResponse: Schema.Codec<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
@@ -273,7 +271,7 @@ export interface ValidateAttestationOccurrenceRequest {
 }
 
 export const ValidateAttestationOccurrenceRequest: Schema.Codec<ValidateAttestationOccurrenceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     occurrenceResourceUri: Schema.optional(Schema.String),
     attestation: Schema.optional(AttestationOccurrence),
     occurrenceNote: Schema.optional(Schema.String),
@@ -282,7 +280,7 @@ export const ValidateAttestationOccurrenceRequest: Schema.Codec<ValidateAttestat
 export interface Empty {}
 
 export const Empty: Schema.Codec<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  /*@__PURE__*/ Schema.Struct({}).annotate({
     identifier: "Empty",
   });
 
@@ -304,7 +302,7 @@ export interface AdmissionRule {
 }
 
 export const AdmissionRule: Schema.Codec<AdmissionRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enforcementMode: Schema.optional(Schema.String),
     evaluationMode: Schema.optional(Schema.String),
     requireAttestationsBy: Schema.optional(Schema.Array(Schema.String)),
@@ -340,7 +338,7 @@ export interface Policy {
 }
 
 export const Policy: Schema.Codec<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     istioServiceIdentityAdmissionRules: Schema.optional(
       Schema.Record(Schema.String, AdmissionRule),
     ),
@@ -370,7 +368,7 @@ export interface SetIamPolicyRequest {
 }
 
 export const SetIamPolicyRequest: Schema.Codec<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     policy: Schema.optional(IamPolicy),
   }).annotate({ identifier: "SetIamPolicyRequest" });
 
@@ -434,7 +432,7 @@ export interface GetPolicyProjectsRequest {
 }
 
 export const GetPolicyProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -442,7 +440,7 @@ export const GetPolicyProjectsRequest =
   ) as unknown as Schema.Codec<GetPolicyProjectsRequest>;
 
 export type GetPolicyProjectsResponse = Policy;
-export const GetPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetPolicyProjectsResponse = /*@__PURE__*/ Policy;
 
 export type GetPolicyProjectsError = DefaultErrors | NotFound | Forbidden;
 
@@ -452,7 +450,7 @@ export const getPolicyProjects: API.OperationMethod<
   GetPolicyProjectsResponse,
   GetPolicyProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicyProjectsRequest,
   output: GetPolicyProjectsResponse,
   errors: [NotFound, Forbidden],
@@ -466,7 +464,7 @@ export interface UpdatePolicyProjectsRequest {
 }
 
 export const UpdatePolicyProjectsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Policy).pipe(T.HttpBody()),
   }).pipe(
@@ -475,7 +473,7 @@ export const UpdatePolicyProjectsRequest =
   ) as unknown as Schema.Codec<UpdatePolicyProjectsRequest>;
 
 export type UpdatePolicyProjectsResponse = Policy;
-export const UpdatePolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const UpdatePolicyProjectsResponse = /*@__PURE__*/ Policy;
 
 export type UpdatePolicyProjectsError =
   | DefaultErrors
@@ -490,7 +488,7 @@ export const updatePolicyProjects: API.OperationMethod<
   UpdatePolicyProjectsResponse,
   UpdatePolicyProjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePolicyProjectsRequest,
   output: UpdatePolicyProjectsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -504,7 +502,7 @@ export interface ValidateAttestationOccurrenceProjectsAttestorsRequest {
 }
 
 export const ValidateAttestationOccurrenceProjectsAttestorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     attestor: Schema.String.pipe(T.HttpPath("attestor")),
     body: Schema.optional(ValidateAttestationOccurrenceRequest).pipe(
       T.HttpBody(),
@@ -521,7 +519,7 @@ export const ValidateAttestationOccurrenceProjectsAttestorsRequest =
 export type ValidateAttestationOccurrenceProjectsAttestorsResponse =
   ValidateAttestationOccurrenceResponse;
 export const ValidateAttestationOccurrenceProjectsAttestorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ValidateAttestationOccurrenceResponse;
+  /*@__PURE__*/ ValidateAttestationOccurrenceResponse;
 
 export type ValidateAttestationOccurrenceProjectsAttestorsError =
   | DefaultErrors
@@ -536,7 +534,7 @@ export const validateAttestationOccurrenceProjectsAttestors: API.OperationMethod
   ValidateAttestationOccurrenceProjectsAttestorsResponse,
   ValidateAttestationOccurrenceProjectsAttestorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ValidateAttestationOccurrenceProjectsAttestorsRequest,
   output: ValidateAttestationOccurrenceProjectsAttestorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -552,7 +550,7 @@ export interface CreateProjectsAttestorsRequest {
 }
 
 export const CreateProjectsAttestorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
     attestorId: Schema.optional(Schema.String).pipe(T.HttpQuery("attestorId")),
     body: Schema.optional(Attestor).pipe(T.HttpBody()),
@@ -566,8 +564,7 @@ export const CreateProjectsAttestorsRequest =
   ) as unknown as Schema.Codec<CreateProjectsAttestorsRequest>;
 
 export type CreateProjectsAttestorsResponse = Attestor;
-export const CreateProjectsAttestorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Attestor;
+export const CreateProjectsAttestorsResponse = /*@__PURE__*/ Attestor;
 
 export type CreateProjectsAttestorsError =
   | DefaultErrors
@@ -582,7 +579,7 @@ export const createProjectsAttestors: API.OperationMethod<
   CreateProjectsAttestorsResponse,
   CreateProjectsAttestorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsAttestorsRequest,
   output: CreateProjectsAttestorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -596,7 +593,7 @@ export interface UpdateProjectsAttestorsRequest {
 }
 
 export const UpdateProjectsAttestorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Attestor).pipe(T.HttpBody()),
   }).pipe(
@@ -605,8 +602,7 @@ export const UpdateProjectsAttestorsRequest =
   ) as unknown as Schema.Codec<UpdateProjectsAttestorsRequest>;
 
 export type UpdateProjectsAttestorsResponse = Attestor;
-export const UpdateProjectsAttestorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Attestor;
+export const UpdateProjectsAttestorsResponse = /*@__PURE__*/ Attestor;
 
 export type UpdateProjectsAttestorsError =
   | DefaultErrors
@@ -621,7 +617,7 @@ export const updateProjectsAttestors: API.OperationMethod<
   UpdateProjectsAttestorsResponse,
   UpdateProjectsAttestorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateProjectsAttestorsRequest,
   output: UpdateProjectsAttestorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -633,7 +629,7 @@ export interface DeleteProjectsAttestorsRequest {
 }
 
 export const DeleteProjectsAttestorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "DELETE", path: "v1beta1/{+name}" }),
@@ -641,8 +637,7 @@ export const DeleteProjectsAttestorsRequest =
   ) as unknown as Schema.Codec<DeleteProjectsAttestorsRequest>;
 
 export type DeleteProjectsAttestorsResponse = Empty;
-export const DeleteProjectsAttestorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Empty;
+export const DeleteProjectsAttestorsResponse = /*@__PURE__*/ Empty;
 
 export type DeleteProjectsAttestorsError =
   | DefaultErrors
@@ -657,7 +652,7 @@ export const deleteProjectsAttestors: API.OperationMethod<
   DeleteProjectsAttestorsResponse,
   DeleteProjectsAttestorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsAttestorsRequest,
   output: DeleteProjectsAttestorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -669,7 +664,7 @@ export interface GetProjectsAttestorsRequest {
 }
 
 export const GetProjectsAttestorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -677,8 +672,7 @@ export const GetProjectsAttestorsRequest =
   ) as unknown as Schema.Codec<GetProjectsAttestorsRequest>;
 
 export type GetProjectsAttestorsResponse = Attestor;
-export const GetProjectsAttestorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Attestor;
+export const GetProjectsAttestorsResponse = /*@__PURE__*/ Attestor;
 
 export type GetProjectsAttestorsError = DefaultErrors | NotFound | Forbidden;
 
@@ -688,7 +682,7 @@ export const getProjectsAttestors: API.OperationMethod<
   GetProjectsAttestorsResponse,
   GetProjectsAttestorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProjectsAttestorsRequest,
   output: GetProjectsAttestorsResponse,
   errors: [NotFound, Forbidden],
@@ -702,7 +696,7 @@ export interface TestIamPermissionsProjectsAttestorsRequest {
 }
 
 export const TestIamPermissionsProjectsAttestorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -717,7 +711,7 @@ export const TestIamPermissionsProjectsAttestorsRequest =
 export type TestIamPermissionsProjectsAttestorsResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsAttestorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsAttestorsError =
   | DefaultErrors
@@ -732,7 +726,7 @@ export const testIamPermissionsProjectsAttestors: API.OperationMethod<
   TestIamPermissionsProjectsAttestorsResponse,
   TestIamPermissionsProjectsAttestorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsAttestorsRequest,
   output: TestIamPermissionsProjectsAttestorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -746,7 +740,7 @@ export interface GetIamPolicyProjectsAttestorsRequest {
 }
 
 export const GetIamPolicyProjectsAttestorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -757,8 +751,7 @@ export const GetIamPolicyProjectsAttestorsRequest =
   ) as unknown as Schema.Codec<GetIamPolicyProjectsAttestorsRequest>;
 
 export type GetIamPolicyProjectsAttestorsResponse = IamPolicy;
-export const GetIamPolicyProjectsAttestorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ IamPolicy;
+export const GetIamPolicyProjectsAttestorsResponse = /*@__PURE__*/ IamPolicy;
 
 export type GetIamPolicyProjectsAttestorsError =
   | DefaultErrors
@@ -771,7 +764,7 @@ export const getIamPolicyProjectsAttestors: API.OperationMethod<
   GetIamPolicyProjectsAttestorsResponse,
   GetIamPolicyProjectsAttestorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsAttestorsRequest,
   output: GetIamPolicyProjectsAttestorsResponse,
   errors: [NotFound, Forbidden],
@@ -787,7 +780,7 @@ export interface ListProjectsAttestorsRequest {
 }
 
 export const ListProjectsAttestorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
@@ -798,7 +791,7 @@ export const ListProjectsAttestorsRequest =
 
 export type ListProjectsAttestorsResponse = ListAttestorsResponse;
 export const ListProjectsAttestorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ ListAttestorsResponse;
+  /*@__PURE__*/ ListAttestorsResponse;
 
 export type ListProjectsAttestorsError = DefaultErrors | NotFound | Forbidden;
 
@@ -808,7 +801,7 @@ export const listProjectsAttestors: API.PaginatedOperationMethod<
   ListProjectsAttestorsResponse,
   ListProjectsAttestorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAttestorsRequest,
   output: ListProjectsAttestorsResponse,
   errors: [NotFound, Forbidden],
@@ -826,7 +819,7 @@ export interface SetIamPolicyProjectsAttestorsRequest {
 }
 
 export const SetIamPolicyProjectsAttestorsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -839,8 +832,7 @@ export const SetIamPolicyProjectsAttestorsRequest =
   ) as unknown as Schema.Codec<SetIamPolicyProjectsAttestorsRequest>;
 
 export type SetIamPolicyProjectsAttestorsResponse = IamPolicy;
-export const SetIamPolicyProjectsAttestorsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ IamPolicy;
+export const SetIamPolicyProjectsAttestorsResponse = /*@__PURE__*/ IamPolicy;
 
 export type SetIamPolicyProjectsAttestorsError =
   | DefaultErrors
@@ -855,7 +847,7 @@ export const setIamPolicyProjectsAttestors: API.OperationMethod<
   SetIamPolicyProjectsAttestorsResponse,
   SetIamPolicyProjectsAttestorsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsAttestorsRequest,
   output: SetIamPolicyProjectsAttestorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -869,7 +861,7 @@ export interface SetIamPolicyProjectsPolicyRequest {
 }
 
 export const SetIamPolicyProjectsPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(SetIamPolicyRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -882,8 +874,7 @@ export const SetIamPolicyProjectsPolicyRequest =
   ) as unknown as Schema.Codec<SetIamPolicyProjectsPolicyRequest>;
 
 export type SetIamPolicyProjectsPolicyResponse = IamPolicy;
-export const SetIamPolicyProjectsPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ IamPolicy;
+export const SetIamPolicyProjectsPolicyResponse = /*@__PURE__*/ IamPolicy;
 
 export type SetIamPolicyProjectsPolicyError =
   | DefaultErrors
@@ -898,7 +889,7 @@ export const setIamPolicyProjectsPolicy: API.OperationMethod<
   SetIamPolicyProjectsPolicyResponse,
   SetIamPolicyProjectsPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsPolicyRequest,
   output: SetIamPolicyProjectsPolicyResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -912,7 +903,7 @@ export interface GetIamPolicyProjectsPolicyRequest {
 }
 
 export const GetIamPolicyProjectsPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     "options.requestedPolicyVersion": Schema.optional(Schema.Number).pipe(
       T.HttpQuery("options.requestedPolicyVersion"),
@@ -923,8 +914,7 @@ export const GetIamPolicyProjectsPolicyRequest =
   ) as unknown as Schema.Codec<GetIamPolicyProjectsPolicyRequest>;
 
 export type GetIamPolicyProjectsPolicyResponse = IamPolicy;
-export const GetIamPolicyProjectsPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ IamPolicy;
+export const GetIamPolicyProjectsPolicyResponse = /*@__PURE__*/ IamPolicy;
 
 export type GetIamPolicyProjectsPolicyError =
   | DefaultErrors
@@ -937,7 +927,7 @@ export const getIamPolicyProjectsPolicy: API.OperationMethod<
   GetIamPolicyProjectsPolicyResponse,
   GetIamPolicyProjectsPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsPolicyRequest,
   output: GetIamPolicyProjectsPolicyResponse,
   errors: [NotFound, Forbidden],
@@ -951,7 +941,7 @@ export interface TestIamPermissionsProjectsPolicyRequest {
 }
 
 export const TestIamPermissionsProjectsPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
     body: Schema.optional(TestIamPermissionsRequest).pipe(T.HttpBody()),
   }).pipe(
@@ -966,7 +956,7 @@ export const TestIamPermissionsProjectsPolicyRequest =
 export type TestIamPermissionsProjectsPolicyResponse =
   TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
+  /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsPolicyError =
   | DefaultErrors
@@ -981,7 +971,7 @@ export const testIamPermissionsProjectsPolicy: API.OperationMethod<
   TestIamPermissionsProjectsPolicyResponse,
   TestIamPermissionsProjectsPolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsPolicyRequest,
   output: TestIamPermissionsProjectsPolicyResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict],
@@ -993,7 +983,7 @@ export interface GetPolicySystempolicyRequest {
 }
 
 export const GetPolicySystempolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
     T.Http({ method: "GET", path: "v1beta1/{+name}" }),
@@ -1001,7 +991,7 @@ export const GetPolicySystempolicyRequest =
   ) as unknown as Schema.Codec<GetPolicySystempolicyRequest>;
 
 export type GetPolicySystempolicyResponse = Policy;
-export const GetPolicySystempolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
+export const GetPolicySystempolicyResponse = /*@__PURE__*/ Policy;
 
 export type GetPolicySystempolicyError = DefaultErrors | NotFound | Forbidden;
 
@@ -1011,7 +1001,7 @@ export const getPolicySystempolicy: API.OperationMethod<
   GetPolicySystempolicyResponse,
   GetPolicySystempolicyError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPolicySystempolicyRequest,
   output: GetPolicySystempolicyResponse,
   errors: [NotFound, Forbidden],

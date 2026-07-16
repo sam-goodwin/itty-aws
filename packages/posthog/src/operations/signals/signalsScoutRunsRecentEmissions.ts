@@ -11,7 +11,7 @@ export interface SignalsScoutRunsRecentEmissionsInput {
   skill_name?: string;
 }
 export const SignalsScoutRunsRecentEmissionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     date_from: Schema.optional(Schema.String),
     date_to: Schema.optional(Schema.String),
@@ -38,7 +38,7 @@ export type SignalsScoutRunsRecentEmissionsOutput = {
   emitted_at: string;
 }[];
 export const SignalsScoutRunsRecentEmissionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ Schema.Array(
     Schema.Struct({
       id: Schema.String,
       run_id: Schema.String,
@@ -66,7 +66,7 @@ export const SignalsScoutRunsRecentEmissionsOutput =
  * @param skill_name - Exact-match filter on the emitting scout's skill (e.g. `signals-scout-errors`). Narrows to findings one specialist surfaced; omit to span every scout on the team.
  */
 export const signalsScoutRunsRecentEmissions =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SignalsScoutRunsRecentEmissionsInput,
     outputSchema: SignalsScoutRunsRecentEmissionsOutput,
   }));

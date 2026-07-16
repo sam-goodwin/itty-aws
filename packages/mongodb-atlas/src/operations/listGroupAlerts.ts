@@ -13,7 +13,7 @@ export interface ListGroupAlertsInput {
   pretty?: boolean;
   status?: "OPEN" | "TRACKING" | "CLOSED";
 }
-export const ListGroupAlertsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ListGroupAlertsInput = /*@__PURE__*/ Schema.Struct({
   groupId: Schema.String.pipe(T.PathParam()),
   envelope: Schema.optional(Schema.Boolean),
   includeCount: Schema.optional(Schema.Boolean),
@@ -28,7 +28,7 @@ export const ListGroupAlertsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ListGroupAlertsOutput = void;
 export const ListGroupAlertsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupAlertsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ListGroupAlertsOutput>;
 
 // The operation
 /**
@@ -47,7 +47,7 @@ export const ListGroupAlertsOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param status - Status of the alerts to return. Omit this parameter to return all alerts in all statuses. TRACKING indicates the alert condition exists but has not persisted for the minimum notification delay. OPEN indicates the alert condition currently exists. CLOSED indicates the alert condition has been resolved.
  */
-export const listGroupAlerts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listGroupAlerts = /*@__PURE__*/ API.make(() => ({
   inputSchema: ListGroupAlertsInput,
   outputSchema: ListGroupAlertsOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

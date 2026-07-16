@@ -16,7 +16,7 @@ export interface LogsAttributesRetrieveInput {
   serviceNames?: string;
 }
 export const LogsAttributesRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     attribute_type: Schema.optional(Schema.Literals(["log", "resource"])),
     dateRange: Schema.optional(Schema.String),
@@ -44,7 +44,7 @@ export interface LogsAttributesRetrieveOutput {
   count?: number;
 }
 export const LogsAttributesRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -74,10 +74,8 @@ export const LogsAttributesRetrieveOutput =
  * @param search_values - When true, the search query also matches attribute values (not just keys). Each result indicates whether it matched on key or value.
  * @param serviceNames - Filter attributes to those appearing in logs from these services.
  */
-export const logsAttributesRetrieve = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LogsAttributesRetrieveInput,
-    outputSchema: LogsAttributesRetrieveOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const logsAttributesRetrieve = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LogsAttributesRetrieveInput,
+  outputSchema: LogsAttributesRetrieveOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));

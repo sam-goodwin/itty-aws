@@ -88,7 +88,7 @@ export interface ConversationsCancelPartialUpdateInput {
   } | null;
 }
 export const ConversationsCancelPartialUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     conversation: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
@@ -220,7 +220,7 @@ export const ConversationsCancelPartialUpdateInput =
 // Output Schema
 export type ConversationsCancelPartialUpdateOutput = void;
 export const ConversationsCancelPartialUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ConversationsCancelPartialUpdateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ConversationsCancelPartialUpdateOutput>;
 
 // The operation
 /**
@@ -230,7 +230,7 @@ export const ConversationsCancelPartialUpdateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const conversationsCancelPartialUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ConversationsCancelPartialUpdateInput,
     outputSchema: ConversationsCancelPartialUpdateOutput,
     errors: [UnprocessableEntity] as const,

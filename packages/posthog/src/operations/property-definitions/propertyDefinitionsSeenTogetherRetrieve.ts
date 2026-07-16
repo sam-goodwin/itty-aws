@@ -8,7 +8,7 @@ export interface PropertyDefinitionsSeenTogetherRetrieveInput {
   project_id: string;
 }
 export const PropertyDefinitionsSeenTogetherRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20,7 +20,7 @@ export const PropertyDefinitionsSeenTogetherRetrieveInput =
 // Output Schema
 export type PropertyDefinitionsSeenTogetherRetrieveOutput = void;
 export const PropertyDefinitionsSeenTogetherRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PropertyDefinitionsSeenTogetherRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PropertyDefinitionsSeenTogetherRetrieveOutput>;
 
 // The operation
 /**
@@ -30,7 +30,7 @@ export const PropertyDefinitionsSeenTogetherRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const propertyDefinitionsSeenTogetherRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PropertyDefinitionsSeenTogetherRetrieveInput,
     outputSchema: PropertyDefinitionsSeenTogetherRetrieveOutput,
     errors: [Forbidden, NotFound] as const,

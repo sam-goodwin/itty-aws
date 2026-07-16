@@ -9,7 +9,7 @@ import * as Redacted from "effect/Redacted";
 export interface GetNotifierInput {
   id: string;
 }
-export const GetNotifierInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetNotifierInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({ method: "GET", path: "/v2/notifiers/{id}" }),
@@ -40,7 +40,7 @@ export interface GetNotifierOutput {
   updatedAt?: string;
   id?: string;
 }
-export const GetNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const GetNotifierOutput = /*@__PURE__*/ Schema.Struct({
   createdAt: Schema.optional(Schema.String),
   createdBy: Schema.optional(Schema.String),
   disabledUntil: Schema.optional(Schema.String),
@@ -110,7 +110,7 @@ export const GetNotifierOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param id - Unique identifier of the notifier (format: notify_*)
  */
-export const getNotifier = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const getNotifier = /*@__PURE__*/ API.make(() => ({
   inputSchema: GetNotifierInput,
   outputSchema: GetNotifierOutput,
   errors: [NotFound] as const,

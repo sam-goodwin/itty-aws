@@ -12,7 +12,7 @@ export interface UpdateGroupClusterSearchIndexInput {
   pretty?: boolean;
 }
 export const UpdateGroupClusterSearchIndexInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     clusterName: Schema.String.pipe(T.PathParam()),
     indexId: Schema.String.pipe(T.PathParam()),
@@ -28,7 +28,7 @@ export const UpdateGroupClusterSearchIndexInput =
 // Output Schema
 export type UpdateGroupClusterSearchIndexOutput = void;
 export const UpdateGroupClusterSearchIndexOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterSearchIndexOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupClusterSearchIndexOutput>;
 
 // The operation
 /**
@@ -45,7 +45,7 @@ export const UpdateGroupClusterSearchIndexOutput =
  * @param indexId - Unique 24-hexadecimal digit string that identifies the Atlas Search [index](https://dochub.mongodb.org/core/index-definitions-fts). Use the [Get All Atlas Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Atlas Search indexes.
  */
 export const updateGroupClusterSearchIndex =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UpdateGroupClusterSearchIndexInput,
     outputSchema: UpdateGroupClusterSearchIndexOutput,
     errors: [BadRequest, Forbidden, NotFound, Conflict] as const,

@@ -76,7 +76,7 @@ export type SearchFilterValue = string;
 export interface GetListingInput {
   listingId: string;
 }
-export const GetListingInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetListingInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ listingId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/2026-02-05/getListing" }),
@@ -94,7 +94,7 @@ export interface SellerInformation {
   sellerProfileId: string;
   displayName: string;
 }
-export const SellerInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SellerInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sellerProfileId: S.String, displayName: S.String }),
 ).annotate({
   identifier: "SellerInformation",
@@ -104,7 +104,7 @@ export interface ProductInformation {
   productName: string;
   manufacturer: SellerInformation;
 }
-export const ProductInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ProductInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String,
     productName: S.String,
@@ -118,7 +118,7 @@ export interface OfferInformation {
   offerName?: string;
   sellerOfRecord: SellerInformation;
 }
-export const OfferInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OfferInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.String,
     offerName: S.optional(S.String),
@@ -131,17 +131,16 @@ export interface ListingAssociatedEntity {
   product?: ProductInformation;
   offer?: OfferInformation;
 }
-export const ListingAssociatedEntity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      product: S.optional(ProductInformation),
-      offer: S.optional(OfferInformation),
-    }),
+export const ListingAssociatedEntity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    product: S.optional(ProductInformation),
+    offer: S.optional(OfferInformation),
+  }),
 ).annotate({
   identifier: "ListingAssociatedEntity",
 }) as any as S.Schema<ListingAssociatedEntity>;
 export type ListingAssociatedEntityList = ListingAssociatedEntity[];
-export const ListingAssociatedEntityList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ListingAssociatedEntityList = /*@__PURE__*/ S.Array(
   ListingAssociatedEntity,
 );
 export type ListingBadgeType =
@@ -151,26 +150,25 @@ export type ListingBadgeType =
   | "QUICK_LAUNCH"
   | "MULTI_PRODUCT"
   | (string & {});
-export const ListingBadgeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ListingBadgeType = /*@__PURE__*/ S.String;
 export interface ListingBadge {
   displayName: string;
   badgeType: ListingBadgeType;
 }
-export const ListingBadge = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListingBadge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ displayName: S.String, badgeType: ListingBadgeType }),
 ).annotate({ identifier: "ListingBadge" }) as any as S.Schema<ListingBadge>;
 export type ListingBadgeList = ListingBadge[];
-export const ListingBadgeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ListingBadge);
+export const ListingBadgeList = /*@__PURE__*/ S.Array(ListingBadge);
 export interface Category {
   categoryId: string;
   displayName: string;
 }
-export const Category = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Category = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ categoryId: S.String, displayName: S.String }),
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
 export type CategoryList = Category[];
-export const CategoryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Category);
+export const CategoryList = /*@__PURE__*/ S.Array(Category);
 export type FulfillmentOptionType =
   | "AMAZON_MACHINE_IMAGE"
   | "API"
@@ -185,43 +183,41 @@ export type FulfillmentOptionType =
   | "SAGEMAKER_ALGORITHM"
   | "SAGEMAKER_MODEL"
   | (string & {});
-export const FulfillmentOptionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FulfillmentOptionType = /*@__PURE__*/ S.String;
 export interface FulfillmentOptionSummary {
   fulfillmentOptionType: FulfillmentOptionType;
   displayName: string;
 }
-export const FulfillmentOptionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fulfillmentOptionType: FulfillmentOptionType,
-      displayName: S.String,
-    }),
+export const FulfillmentOptionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fulfillmentOptionType: FulfillmentOptionType,
+    displayName: S.String,
+  }),
 ).annotate({
   identifier: "FulfillmentOptionSummary",
 }) as any as S.Schema<FulfillmentOptionSummary>;
 export type FulfillmentOptionSummaryList = FulfillmentOptionSummary[];
-export const FulfillmentOptionSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const FulfillmentOptionSummaryList = /*@__PURE__*/ S.Array(
   FulfillmentOptionSummary,
 );
 export type HighlightList = string[];
-export const HighlightList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const HighlightList = /*@__PURE__*/ S.Array(S.String);
 export type PricingModelType =
   | "USAGE"
   | "CONTRACT"
   | "BYOL"
   | "FREE"
   | (string & {});
-export const PricingModelType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PricingModelType = /*@__PURE__*/ S.String;
 export interface PricingModel {
   pricingModelType: PricingModelType;
   displayName: string;
 }
-export const PricingModel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PricingModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ pricingModelType: PricingModelType, displayName: S.String }),
 ).annotate({ identifier: "PricingModel" }) as any as S.Schema<PricingModel>;
 export type PricingModelList = PricingModel[];
-export const PricingModelList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PricingModel);
+export const PricingModelList = /*@__PURE__*/ S.Array(PricingModel);
 export type PricingUnitType =
   | "USERS"
   | "HOSTS"
@@ -231,28 +227,27 @@ export type PricingUnitType =
   | "REQUESTS"
   | "UNITS"
   | (string & {});
-export const PricingUnitType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PricingUnitType = /*@__PURE__*/ S.String;
 export interface PricingUnit {
   pricingUnitType: PricingUnitType;
   displayName: string;
 }
-export const PricingUnit = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PricingUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ pricingUnitType: PricingUnitType, displayName: S.String }),
 ).annotate({ identifier: "PricingUnit" }) as any as S.Schema<PricingUnit>;
 export type PricingUnitList = PricingUnit[];
-export const PricingUnitList = /*@__PURE__*/ /*#__PURE__*/ S.Array(PricingUnit);
+export const PricingUnitList = /*@__PURE__*/ S.Array(PricingUnit);
 export interface PromotionalEmbeddedImage {
   title: string;
   url: string;
   description?: string;
 }
-export const PromotionalEmbeddedImage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      title: S.String,
-      url: S.String,
-      description: S.optional(S.String),
-    }),
+export const PromotionalEmbeddedImage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    title: S.String,
+    url: S.String,
+    description: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "PromotionalEmbeddedImage",
 }) as any as S.Schema<PromotionalEmbeddedImage>;
@@ -263,47 +258,45 @@ export interface PromotionalEmbeddedVideo {
   thumbnail: string;
   description?: string;
 }
-export const PromotionalEmbeddedVideo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      title: S.String,
-      url: S.String,
-      preview: S.String,
-      thumbnail: S.String,
-      description: S.optional(S.String),
-    }),
+export const PromotionalEmbeddedVideo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    title: S.String,
+    url: S.String,
+    preview: S.String,
+    thumbnail: S.String,
+    description: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "PromotionalEmbeddedVideo",
 }) as any as S.Schema<PromotionalEmbeddedVideo>;
 export type PromotionalMedia =
   | { embeddedImage: PromotionalEmbeddedImage; embeddedVideo?: never }
   | { embeddedImage?: never; embeddedVideo: PromotionalEmbeddedVideo };
-export const PromotionalMedia = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const PromotionalMedia = /*@__PURE__*/ S.Union([
   S.Struct({ embeddedImage: PromotionalEmbeddedImage }),
   S.Struct({ embeddedVideo: PromotionalEmbeddedVideo }),
 ]);
 export type PromotionalMediaList = PromotionalMedia[];
-export const PromotionalMediaList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PromotionalMedia);
+export const PromotionalMediaList = /*@__PURE__*/ S.Array(PromotionalMedia);
 export type ResourceType =
   | "MANUFACTURER_SUPPORT"
   | "MANUFACTURER_INSTRUCTIONS"
   | (string & {});
-export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceType = /*@__PURE__*/ S.String;
 export type ResourceContentType =
   | "EMAIL"
   | "PHONE_NUMBER"
   | "LINK"
   | "OTHER"
   | (string & {});
-export const ResourceContentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ResourceContentType = /*@__PURE__*/ S.String;
 export interface Resource {
   resourceType: ResourceType;
   contentType: ResourceContentType;
   value: string;
   displayName?: string;
 }
-export const Resource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: ResourceType,
     contentType: ResourceContentType,
@@ -312,9 +305,9 @@ export const Resource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 export type ResourceList = Resource[];
-export const ResourceList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Resource);
+export const ResourceList = /*@__PURE__*/ S.Array(Resource);
 export type ReviewSourceId = "AWS_MARKETPLACE" | (string & {});
-export const ReviewSourceId = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ReviewSourceId = /*@__PURE__*/ S.String;
 export interface ReviewSourceSummary {
   sourceName: string;
   sourceId: ReviewSourceId;
@@ -322,7 +315,7 @@ export interface ReviewSourceSummary {
   averageRating: string;
   totalReviews: number;
 }
-export const ReviewSourceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReviewSourceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceName: S.String,
     sourceId: ReviewSourceId,
@@ -335,26 +328,26 @@ export const ReviewSourceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReviewSourceSummary>;
 export type ReviewSourceSummaryList = ReviewSourceSummary[];
 export const ReviewSourceSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ReviewSourceSummary);
+  /*@__PURE__*/ S.Array(ReviewSourceSummary);
 export interface ReviewSummary {
   reviewSourceSummaries: ReviewSourceSummary[];
 }
-export const ReviewSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ReviewSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ reviewSourceSummaries: ReviewSourceSummaryList }),
 ).annotate({ identifier: "ReviewSummary" }) as any as S.Schema<ReviewSummary>;
 export type SellerEngagementType =
   | "REQUEST_FOR_PRIVATE_OFFER"
   | "REQUEST_FOR_DEMO"
   | (string & {});
-export const SellerEngagementType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SellerEngagementType = /*@__PURE__*/ S.String;
 export type SellerEngagementContentType = "LINK" | (string & {});
-export const SellerEngagementContentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SellerEngagementContentType = /*@__PURE__*/ S.String;
 export interface SellerEngagement {
   engagementType: SellerEngagementType;
   contentType: SellerEngagementContentType;
   value: string;
 }
-export const SellerEngagement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SellerEngagement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     engagementType: SellerEngagementType,
     contentType: SellerEngagementContentType,
@@ -364,24 +357,23 @@ export const SellerEngagement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "SellerEngagement",
 }) as any as S.Schema<SellerEngagement>;
 export type SellerEngagementList = SellerEngagement[];
-export const SellerEngagementList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SellerEngagement);
+export const SellerEngagementList = /*@__PURE__*/ S.Array(SellerEngagement);
 export interface UseCase {
   description: string;
   displayName: string;
   value: string;
 }
-export const UseCase = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UseCase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ description: S.String, displayName: S.String, value: S.String }),
 ).annotate({ identifier: "UseCase" }) as any as S.Schema<UseCase>;
 export interface UseCaseEntry {
   useCase: UseCase;
 }
-export const UseCaseEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UseCaseEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ useCase: UseCase }),
 ).annotate({ identifier: "UseCaseEntry" }) as any as S.Schema<UseCaseEntry>;
 export type UseCaseList = UseCaseEntry[];
-export const UseCaseList = /*@__PURE__*/ /*#__PURE__*/ S.Array(UseCaseEntry);
+export const UseCaseList = /*@__PURE__*/ S.Array(UseCaseEntry);
 export interface GetListingOutput {
   associatedEntities: ListingAssociatedEntity[];
   badges: ListingBadge[];
@@ -404,7 +396,7 @@ export interface GetListingOutput {
   shortDescription: string;
   useCases: UseCaseEntry[];
 }
-export const GetListingOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetListingOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     associatedEntities: ListingAssociatedEntityList,
     badges: ListingBadgeList,
@@ -433,7 +425,7 @@ export const GetListingOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetOfferInput {
   offerId: string;
 }
-export const GetOfferInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetOfferInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ offerId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/2026-02-05/getOffer" }),
@@ -450,24 +442,24 @@ export type PurchaseOptionBadgeType =
   | "FUTURE_DATED"
   | "REPLACEMENT_OFFER"
   | (string & {});
-export const PurchaseOptionBadgeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PurchaseOptionBadgeType = /*@__PURE__*/ S.String;
 export interface PurchaseOptionBadge {
   displayName: string;
   badgeType: PurchaseOptionBadgeType;
 }
-export const PurchaseOptionBadge = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PurchaseOptionBadge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ displayName: S.String, badgeType: PurchaseOptionBadgeType }),
 ).annotate({
   identifier: "PurchaseOptionBadge",
 }) as any as S.Schema<PurchaseOptionBadge>;
 export type PurchaseOptionBadgeList = PurchaseOptionBadge[];
 export const PurchaseOptionBadgeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PurchaseOptionBadge);
+  /*@__PURE__*/ S.Array(PurchaseOptionBadge);
 export interface OfferSetInformation {
   offerSetId: string;
   sellerOfRecord: SellerInformation;
 }
-export const OfferSetInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OfferSetInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ offerSetId: S.String, sellerOfRecord: SellerInformation }),
 ).annotate({
   identifier: "OfferSetInformation",
@@ -476,7 +468,7 @@ export interface OfferAssociatedEntity {
   product: ProductInformation;
   offerSet?: OfferSetInformation;
 }
-export const OfferAssociatedEntity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OfferAssociatedEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product: ProductInformation,
     offerSet: S.optional(OfferSetInformation),
@@ -485,7 +477,7 @@ export const OfferAssociatedEntity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "OfferAssociatedEntity",
 }) as any as S.Schema<OfferAssociatedEntity>;
 export type OfferAssociatedEntityList = OfferAssociatedEntity[];
-export const OfferAssociatedEntityList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const OfferAssociatedEntityList = /*@__PURE__*/ S.Array(
   OfferAssociatedEntity,
 );
 export interface GetOfferOutput {
@@ -501,7 +493,7 @@ export interface GetOfferOutput {
   badges: PurchaseOptionBadge[];
   associatedEntities: OfferAssociatedEntity[];
 }
-export const GetOfferOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetOfferOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.String,
     catalog: S.String,
@@ -521,7 +513,7 @@ export const GetOfferOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetOfferSetInput {
   offerSetId: string;
 }
-export const GetOfferSetInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetOfferSetInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ offerSetId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/2026-02-05/getOfferSet" }),
@@ -539,13 +531,13 @@ export interface OfferSetAssociatedEntity {
   product: ProductInformation;
   offer: OfferInformation;
 }
-export const OfferSetAssociatedEntity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ product: ProductInformation, offer: OfferInformation }),
+export const OfferSetAssociatedEntity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ product: ProductInformation, offer: OfferInformation }),
 ).annotate({
   identifier: "OfferSetAssociatedEntity",
 }) as any as S.Schema<OfferSetAssociatedEntity>;
 export type OfferSetAssociatedEntityList = OfferSetAssociatedEntity[];
-export const OfferSetAssociatedEntityList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const OfferSetAssociatedEntityList = /*@__PURE__*/ S.Array(
   OfferSetAssociatedEntity,
 );
 export interface GetOfferSetOutput {
@@ -559,7 +551,7 @@ export interface GetOfferSetOutput {
   badges: PurchaseOptionBadge[];
   associatedEntities: OfferSetAssociatedEntity[];
 }
-export const GetOfferSetOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetOfferSetOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerSetId: S.String,
     catalog: S.String,
@@ -581,7 +573,7 @@ export interface GetOfferTermsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const GetOfferTermsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetOfferTermsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.String,
     maxResults: S.optional(S.Number),
@@ -613,45 +605,45 @@ export type TermType =
   | "ValidityTerm"
   | "VariablePaymentTerm"
   | (string & {});
-export const TermType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TermType = /*@__PURE__*/ S.String;
 export interface ByolPricingTerm {
   id: string;
   type: TermType;
 }
-export const ByolPricingTerm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ByolPricingTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String, type: TermType }),
 ).annotate({
   identifier: "ByolPricingTerm",
 }) as any as S.Schema<ByolPricingTerm>;
 export type SelectorType = "Duration" | (string & {});
-export const SelectorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SelectorType = /*@__PURE__*/ S.String;
 export interface Selector {
   type: SelectorType;
   value: string;
 }
-export const Selector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Selector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: SelectorType, value: S.String }),
 ).annotate({ identifier: "Selector" }) as any as S.Schema<Selector>;
 export type RateCardConstraintType = "Allowed" | "Disallowed" | (string & {});
-export const RateCardConstraintType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RateCardConstraintType = /*@__PURE__*/ S.String;
 export interface Constraints {
   multipleDimensionSelection: RateCardConstraintType;
   quantityConfiguration: RateCardConstraintType;
 }
-export const Constraints = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Constraints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     multipleDimensionSelection: RateCardConstraintType,
     quantityConfiguration: RateCardConstraintType,
   }),
 ).annotate({ identifier: "Constraints" }) as any as S.Schema<Constraints>;
 export type DimensionLabelType = "Region" | "SagemakerOption" | (string & {});
-export const DimensionLabelType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DimensionLabelType = /*@__PURE__*/ S.String;
 export interface DimensionLabel {
   labelType: DimensionLabelType;
   labelValue: string;
   displayName?: string;
 }
-export const DimensionLabel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DimensionLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labelType: DimensionLabelType,
     labelValue: S.String,
@@ -659,8 +651,7 @@ export const DimensionLabel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DimensionLabel" }) as any as S.Schema<DimensionLabel>;
 export type DimensionLabelList = DimensionLabel[];
-export const DimensionLabelList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DimensionLabel);
+export const DimensionLabelList = /*@__PURE__*/ S.Array(DimensionLabel);
 export interface RateCardItem {
   dimensionKey: string;
   displayName: string;
@@ -669,7 +660,7 @@ export interface RateCardItem {
   unit: string;
   price: string;
 }
-export const RateCardItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RateCardItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensionKey: S.String,
     displayName: S.String,
@@ -680,14 +671,14 @@ export const RateCardItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RateCardItem" }) as any as S.Schema<RateCardItem>;
 export type RateCardList = RateCardItem[];
-export const RateCardList = /*@__PURE__*/ /*#__PURE__*/ S.Array(RateCardItem);
+export const RateCardList = /*@__PURE__*/ S.Array(RateCardItem);
 export interface ConfigurableUpfrontRateCardItem {
   selector: Selector;
   constraints: Constraints;
   rateCard: RateCardItem[];
 }
 export const ConfigurableUpfrontRateCardItem =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       selector: Selector,
       constraints: Constraints,
@@ -698,7 +689,7 @@ export const ConfigurableUpfrontRateCardItem =
   }) as any as S.Schema<ConfigurableUpfrontRateCardItem>;
 export type ConfigurableUpfrontRateCardList = ConfigurableUpfrontRateCardItem[];
 export const ConfigurableUpfrontRateCardList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ConfigurableUpfrontRateCardItem);
+  /*@__PURE__*/ S.Array(ConfigurableUpfrontRateCardItem);
 export interface ConfigurableUpfrontPricingTerm {
   id: string;
   type: TermType;
@@ -706,7 +697,7 @@ export interface ConfigurableUpfrontPricingTerm {
   rateCards?: ConfigurableUpfrontRateCardItem[];
 }
 export const ConfigurableUpfrontPricingTerm =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
       type: TermType,
@@ -724,7 +715,7 @@ export interface GrantItem {
   unit: string;
   maxQuantity?: number;
 }
-export const GrantItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GrantItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensionKey: S.String,
     displayName: S.String,
@@ -735,7 +726,7 @@ export const GrantItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GrantItem" }) as any as S.Schema<GrantItem>;
 export type GrantList = GrantItem[];
-export const GrantList = /*@__PURE__*/ /*#__PURE__*/ S.Array(GrantItem);
+export const GrantList = /*@__PURE__*/ S.Array(GrantItem);
 export interface FixedUpfrontPricingTerm {
   id: string;
   type: TermType;
@@ -744,16 +735,15 @@ export interface FixedUpfrontPricingTerm {
   price: string;
   grants: GrantItem[];
 }
-export const FixedUpfrontPricingTerm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      type: TermType,
-      currencyCode: S.String,
-      duration: S.optional(S.String),
-      price: S.String,
-      grants: GrantList,
-    }),
+export const FixedUpfrontPricingTerm = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    type: TermType,
+    currencyCode: S.String,
+    duration: S.optional(S.String),
+    price: S.String,
+    grants: GrantList,
+  }),
 ).annotate({
   identifier: "FixedUpfrontPricingTerm",
 }) as any as S.Schema<FixedUpfrontPricingTerm>;
@@ -763,7 +753,7 @@ export interface FreeTrialPricingTerm {
   duration?: string;
   grants: GrantItem[];
 }
-export const FreeTrialPricingTerm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FreeTrialPricingTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: TermType,
@@ -780,13 +770,13 @@ export type LegalDocumentType =
   | "StandardEula"
   | "StandardDsa"
   | (string & {});
-export const LegalDocumentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LegalDocumentType = /*@__PURE__*/ S.String;
 export interface DocumentItem {
   type: LegalDocumentType;
   url: string;
   version?: string;
 }
-export const DocumentItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DocumentItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: LegalDocumentType,
     url: S.String,
@@ -794,34 +784,34 @@ export const DocumentItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DocumentItem" }) as any as S.Schema<DocumentItem>;
 export type DocumentList = DocumentItem[];
-export const DocumentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(DocumentItem);
+export const DocumentList = /*@__PURE__*/ S.Array(DocumentItem);
 export interface LegalTerm {
   id: string;
   type: TermType;
   documents: DocumentItem[];
 }
-export const LegalTerm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LegalTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String, type: TermType, documents: DocumentList }),
 ).annotate({ identifier: "LegalTerm" }) as any as S.Schema<LegalTerm>;
 export interface ScheduleItem {
   chargeDate: Date;
   chargeAmount: string;
 }
-export const ScheduleItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ScheduleItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chargeDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     chargeAmount: S.String,
   }),
 ).annotate({ identifier: "ScheduleItem" }) as any as S.Schema<ScheduleItem>;
 export type ScheduleList = ScheduleItem[];
-export const ScheduleList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ScheduleItem);
+export const ScheduleList = /*@__PURE__*/ S.Array(ScheduleItem);
 export interface PaymentScheduleTerm {
   id: string;
   type: TermType;
   currencyCode: string;
   schedule: ScheduleItem[];
 }
-export const PaymentScheduleTerm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PaymentScheduleTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: TermType,
@@ -832,7 +822,7 @@ export const PaymentScheduleTerm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PaymentScheduleTerm",
 }) as any as S.Schema<PaymentScheduleTerm>;
 export type BillingPeriodType = "Monthly" | (string & {});
-export const BillingPeriodType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const BillingPeriodType = /*@__PURE__*/ S.String;
 export interface RecurringPaymentTerm {
   id: string;
   type: TermType;
@@ -840,7 +830,7 @@ export interface RecurringPaymentTerm {
   billingPeriod: BillingPeriodType;
   price: string;
 }
-export const RecurringPaymentTerm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RecurringPaymentTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: TermType,
@@ -855,7 +845,7 @@ export interface RenewalTerm {
   id: string;
   type: TermType;
 }
-export const RenewalTerm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RenewalTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String, type: TermType }),
 ).annotate({ identifier: "RenewalTerm" }) as any as S.Schema<RenewalTerm>;
 export interface SupportTerm {
@@ -863,19 +853,19 @@ export interface SupportTerm {
   type: TermType;
   refundPolicy: string;
 }
-export const SupportTerm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SupportTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String, type: TermType, refundPolicy: S.String }),
 ).annotate({ identifier: "SupportTerm" }) as any as S.Schema<SupportTerm>;
 export interface UsageBasedRateCardItem {
   rateCard: RateCardItem[];
 }
-export const UsageBasedRateCardItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ rateCard: RateCardList }),
+export const UsageBasedRateCardItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ rateCard: RateCardList }),
 ).annotate({
   identifier: "UsageBasedRateCardItem",
 }) as any as S.Schema<UsageBasedRateCardItem>;
 export type UsageBasedRateCardList = UsageBasedRateCardItem[];
-export const UsageBasedRateCardList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const UsageBasedRateCardList = /*@__PURE__*/ S.Array(
   UsageBasedRateCardItem,
 );
 export interface UsageBasedPricingTerm {
@@ -884,7 +874,7 @@ export interface UsageBasedPricingTerm {
   currencyCode: string;
   rateCards: UsageBasedRateCardItem[];
 }
-export const UsageBasedPricingTerm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UsageBasedPricingTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: TermType,
@@ -901,7 +891,7 @@ export interface ValidityTerm {
   agreementEndDate?: Date;
   agreementStartDate?: Date;
 }
-export const ValidityTerm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ValidityTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: TermType,
@@ -920,7 +910,7 @@ export interface VariablePaymentTerm {
   currencyCode: string;
   maxTotalChargeAmount: string;
 }
-export const VariablePaymentTerm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VariablePaymentTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: TermType,
@@ -1099,7 +1089,7 @@ export type OfferTerm =
       validityTerm?: never;
       variablePaymentTerm: VariablePaymentTerm;
     };
-export const OfferTerm = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const OfferTerm = /*@__PURE__*/ S.Union([
   S.Struct({ byolPricingTerm: ByolPricingTerm }),
   S.Struct({ configurableUpfrontPricingTerm: ConfigurableUpfrontPricingTerm }),
   S.Struct({ fixedUpfrontPricingTerm: FixedUpfrontPricingTerm }),
@@ -1114,12 +1104,12 @@ export const OfferTerm = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ variablePaymentTerm: VariablePaymentTerm }),
 ]);
 export type OfferTermsList = OfferTerm[];
-export const OfferTermsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(OfferTerm);
+export const OfferTermsList = /*@__PURE__*/ S.Array(OfferTerm);
 export interface GetOfferTermsOutput {
   offerTerms: OfferTerm[];
   nextToken?: string;
 }
-export const GetOfferTermsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetOfferTermsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ offerTerms: OfferTermsList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "GetOfferTermsOutput",
@@ -1127,7 +1117,7 @@ export const GetOfferTermsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetProductInput {
   productId: string;
 }
-export const GetProductInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetProductInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ productId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/2026-02-05/getProduct" }),
@@ -1146,7 +1136,7 @@ export type DeployedOnAwsStatus =
   | "NOT_DEPLOYED"
   | "NOT_APPLICABLE"
   | (string & {});
-export const DeployedOnAwsStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DeployedOnAwsStatus = /*@__PURE__*/ S.String;
 export interface GetProductOutput {
   productId: string;
   catalog: string;
@@ -1163,7 +1153,7 @@ export interface GetProductOutput {
   resources: Resource[];
   sellerEngagements: SellerEngagement[];
 }
-export const GetProductOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetProductOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String,
     catalog: S.String,
@@ -1189,7 +1179,7 @@ export interface ListFulfillmentOptionsInput {
   nextToken?: string;
 }
 export const ListFulfillmentOptionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       productId: S.String,
       maxResults: S.optional(S.Number),
@@ -1213,7 +1203,7 @@ export interface AmazonMachineImageOperatingSystem {
   operatingSystemVersion?: string;
 }
 export const AmazonMachineImageOperatingSystem =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operatingSystemFamilyName: S.String,
       operatingSystemName: S.String,
@@ -1225,14 +1215,12 @@ export const AmazonMachineImageOperatingSystem =
 export type AmazonMachineImageOperatingSystemList =
   AmazonMachineImageOperatingSystem[];
 export const AmazonMachineImageOperatingSystemList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AmazonMachineImageOperatingSystem);
+  /*@__PURE__*/ S.Array(AmazonMachineImageOperatingSystem);
 export interface AmazonMachineImageRecommendation {
   instanceType: string;
 }
 export const AmazonMachineImageRecommendation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ instanceType: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ instanceType: S.String })).annotate({
     identifier: "AmazonMachineImageRecommendation",
   }) as any as S.Schema<AmazonMachineImageRecommendation>;
 export interface AmazonMachineImageFulfillmentOption {
@@ -1247,7 +1235,7 @@ export interface AmazonMachineImageFulfillmentOption {
   usageInstructions?: string;
 }
 export const AmazonMachineImageFulfillmentOption =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fulfillmentOptionId: S.String,
       fulfillmentOptionName: S.String,
@@ -1267,7 +1255,7 @@ export interface AwsSupportedService {
   displayName: string;
   description: string;
 }
-export const AwsSupportedService = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AwsSupportedService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportedServiceType: S.String,
     displayName: S.String,
@@ -1278,7 +1266,7 @@ export const AwsSupportedService = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AwsSupportedService>;
 export type AwsSupportedServiceList = AwsSupportedService[];
 export const AwsSupportedServiceList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AwsSupportedService);
+  /*@__PURE__*/ S.Array(AwsSupportedService);
 export interface ApiFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionType: FulfillmentOptionType;
@@ -1286,7 +1274,7 @@ export interface ApiFulfillmentOption {
   usageInstructions?: string;
   awsSupportedServices: AwsSupportedService[];
 }
-export const ApiFulfillmentOption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ApiFulfillmentOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fulfillmentOptionId: S.String,
     fulfillmentOptionType: FulfillmentOptionType,
@@ -1307,7 +1295,7 @@ export interface CloudFormationFulfillmentOption {
   usageInstructions?: string;
 }
 export const CloudFormationFulfillmentOption =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fulfillmentOptionId: S.String,
       fulfillmentOptionName: S.String,
@@ -1324,17 +1312,16 @@ export interface ContainerOperatingSystem {
   operatingSystemFamilyName: string;
   operatingSystemName: string;
 }
-export const ContainerOperatingSystem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      operatingSystemFamilyName: S.String,
-      operatingSystemName: S.String,
-    }),
+export const ContainerOperatingSystem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operatingSystemFamilyName: S.String,
+    operatingSystemName: S.String,
+  }),
 ).annotate({
   identifier: "ContainerOperatingSystem",
 }) as any as S.Schema<ContainerOperatingSystem>;
 export type ContainerOperatingSystemList = ContainerOperatingSystem[];
-export const ContainerOperatingSystemList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ContainerOperatingSystemList = /*@__PURE__*/ S.Array(
   ContainerOperatingSystem,
 );
 export interface ContainerFulfillmentOption {
@@ -1348,19 +1335,18 @@ export interface ContainerFulfillmentOption {
   releaseNotes?: string;
   usageInstructions?: string;
 }
-export const ContainerFulfillmentOption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fulfillmentOptionId: S.String,
-      fulfillmentOptionName: S.String,
-      fulfillmentOptionType: FulfillmentOptionType,
-      fulfillmentOptionDisplayName: S.String,
-      fulfillmentOptionVersion: S.optional(S.String),
-      operatingSystems: S.optional(ContainerOperatingSystemList),
-      awsSupportedServices: S.optional(AwsSupportedServiceList),
-      releaseNotes: S.optional(S.String),
-      usageInstructions: S.optional(S.String),
-    }),
+export const ContainerFulfillmentOption = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fulfillmentOptionId: S.String,
+    fulfillmentOptionName: S.String,
+    fulfillmentOptionType: FulfillmentOptionType,
+    fulfillmentOptionDisplayName: S.String,
+    fulfillmentOptionVersion: S.optional(S.String),
+    operatingSystems: S.optional(ContainerOperatingSystemList),
+    awsSupportedServices: S.optional(AwsSupportedServiceList),
+    releaseNotes: S.optional(S.String),
+    usageInstructions: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ContainerFulfillmentOption",
 }) as any as S.Schema<ContainerFulfillmentOption>;
@@ -1368,7 +1354,7 @@ export interface HelmOperatingSystem {
   operatingSystemFamilyName: string;
   operatingSystemName: string;
 }
-export const HelmOperatingSystem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HelmOperatingSystem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatingSystemFamilyName: S.String,
     operatingSystemName: S.String,
@@ -1378,7 +1364,7 @@ export const HelmOperatingSystem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HelmOperatingSystem>;
 export type HelmOperatingSystemList = HelmOperatingSystem[];
 export const HelmOperatingSystemList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(HelmOperatingSystem);
+  /*@__PURE__*/ S.Array(HelmOperatingSystem);
 export interface HelmFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionName: string;
@@ -1390,7 +1376,7 @@ export interface HelmFulfillmentOption {
   awsSupportedServices?: AwsSupportedService[];
   usageInstructions?: string;
 }
-export const HelmFulfillmentOption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const HelmFulfillmentOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fulfillmentOptionId: S.String,
     fulfillmentOptionName: S.String,
@@ -1409,17 +1395,16 @@ export interface EksAddOnOperatingSystem {
   operatingSystemFamilyName: string;
   operatingSystemName: string;
 }
-export const EksAddOnOperatingSystem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      operatingSystemFamilyName: S.String,
-      operatingSystemName: S.String,
-    }),
+export const EksAddOnOperatingSystem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operatingSystemFamilyName: S.String,
+    operatingSystemName: S.String,
+  }),
 ).annotate({
   identifier: "EksAddOnOperatingSystem",
 }) as any as S.Schema<EksAddOnOperatingSystem>;
 export type EksAddOnOperatingSystemList = EksAddOnOperatingSystem[];
-export const EksAddOnOperatingSystemList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const EksAddOnOperatingSystemList = /*@__PURE__*/ S.Array(
   EksAddOnOperatingSystem,
 );
 export interface EksAddOnFulfillmentOption {
@@ -1433,19 +1418,18 @@ export interface EksAddOnFulfillmentOption {
   usageInstructions?: string;
   awsSupportedServices?: AwsSupportedService[];
 }
-export const EksAddOnFulfillmentOption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fulfillmentOptionId: S.String,
-      fulfillmentOptionName: S.String,
-      fulfillmentOptionType: FulfillmentOptionType,
-      fulfillmentOptionDisplayName: S.String,
-      fulfillmentOptionVersion: S.optional(S.String),
-      operatingSystems: S.optional(EksAddOnOperatingSystemList),
-      releaseNotes: S.optional(S.String),
-      usageInstructions: S.optional(S.String),
-      awsSupportedServices: S.optional(AwsSupportedServiceList),
-    }),
+export const EksAddOnFulfillmentOption = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fulfillmentOptionId: S.String,
+    fulfillmentOptionName: S.String,
+    fulfillmentOptionType: FulfillmentOptionType,
+    fulfillmentOptionDisplayName: S.String,
+    fulfillmentOptionVersion: S.optional(S.String),
+    operatingSystems: S.optional(EksAddOnOperatingSystemList),
+    releaseNotes: S.optional(S.String),
+    usageInstructions: S.optional(S.String),
+    awsSupportedServices: S.optional(AwsSupportedServiceList),
+  }),
 ).annotate({
   identifier: "EksAddOnFulfillmentOption",
 }) as any as S.Schema<EksAddOnFulfillmentOption>;
@@ -1461,7 +1445,7 @@ export interface Ec2ImageBuilderComponentFulfillmentOption {
   usageInstructions?: string;
 }
 export const Ec2ImageBuilderComponentFulfillmentOption =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fulfillmentOptionId: S.String,
       fulfillmentOptionName: S.String,
@@ -1482,7 +1466,7 @@ export interface DataArtifact {
   resourceType: string;
   dataClassification: string;
 }
-export const DataArtifact = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     resourceArn: S.optional(S.String),
@@ -1491,8 +1475,7 @@ export const DataArtifact = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataArtifact" }) as any as S.Schema<DataArtifact>;
 export type DataArtifactList = DataArtifact[];
-export const DataArtifactList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DataArtifact);
+export const DataArtifactList = /*@__PURE__*/ S.Array(DataArtifact);
 export interface DataExchangeFulfillmentOption {
   fulfillmentOptionId: string;
   fulfillmentOptionType: FulfillmentOptionType;
@@ -1500,7 +1483,7 @@ export interface DataExchangeFulfillmentOption {
   dataArtifacts?: DataArtifact[];
 }
 export const DataExchangeFulfillmentOption =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fulfillmentOptionId: S.String,
       fulfillmentOptionType: FulfillmentOptionType,
@@ -1516,7 +1499,7 @@ export interface ProfessionalServicesFulfillmentOption {
   fulfillmentOptionDisplayName: string;
 }
 export const ProfessionalServicesFulfillmentOption =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fulfillmentOptionId: S.String,
       fulfillmentOptionType: FulfillmentOptionType,
@@ -1532,7 +1515,7 @@ export interface SaasFulfillmentOption {
   fulfillmentUrl?: string;
   usageInstructions?: string;
 }
-export const SaasFulfillmentOption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SaasFulfillmentOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fulfillmentOptionId: S.String,
     fulfillmentOptionType: FulfillmentOptionType,
@@ -1549,7 +1532,7 @@ export interface SageMakerAlgorithmRecommendation {
   recommendedTrainingInstanceType: string;
 }
 export const SageMakerAlgorithmRecommendation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       recommendedBatchTransformInstanceType: S.String,
       recommendedRealtimeInferenceInstanceType: S.optional(S.String),
@@ -1568,7 +1551,7 @@ export interface SageMakerAlgorithmFulfillmentOption {
   recommendation?: SageMakerAlgorithmRecommendation;
 }
 export const SageMakerAlgorithmFulfillmentOption =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fulfillmentOptionId: S.String,
       fulfillmentOptionType: FulfillmentOptionType,
@@ -1586,7 +1569,7 @@ export interface SageMakerModelRecommendation {
   recommendedRealtimeInferenceInstanceType?: string;
 }
 export const SageMakerModelRecommendation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       recommendedBatchTransformInstanceType: S.String,
       recommendedRealtimeInferenceInstanceType: S.optional(S.String),
@@ -1604,7 +1587,7 @@ export interface SageMakerModelFulfillmentOption {
   recommendation?: SageMakerModelRecommendation;
 }
 export const SageMakerModelFulfillmentOption =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fulfillmentOptionId: S.String,
       fulfillmentOptionType: FulfillmentOptionType,
@@ -1786,7 +1769,7 @@ export type FulfillmentOption =
       sageMakerAlgorithmFulfillmentOption?: never;
       sageMakerModelFulfillmentOption: SageMakerModelFulfillmentOption;
     };
-export const FulfillmentOption = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const FulfillmentOption = /*@__PURE__*/ S.Union([
   S.Struct({
     amazonMachineImageFulfillmentOption: AmazonMachineImageFulfillmentOption,
   }),
@@ -1815,14 +1798,13 @@ export const FulfillmentOption = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   }),
 ]);
 export type FulfillmentOptionsList = FulfillmentOption[];
-export const FulfillmentOptionsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FulfillmentOption);
+export const FulfillmentOptionsList = /*@__PURE__*/ S.Array(FulfillmentOption);
 export interface ListFulfillmentOptionsOutput {
   fulfillmentOptions: FulfillmentOption[];
   nextToken?: string;
 }
 export const ListFulfillmentOptionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fulfillmentOptions: FulfillmentOptionsList,
       nextToken: S.optional(S.String),
@@ -1837,15 +1819,14 @@ export type PurchaseOptionFilterType =
   | "VISIBILITY_SCOPE"
   | "AVAILABILITY_STATUS"
   | (string & {});
-export const PurchaseOptionFilterType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PurchaseOptionFilterType = /*@__PURE__*/ S.String;
 export type PurchaseOptionFilterValueList = string[];
-export const PurchaseOptionFilterValueList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const PurchaseOptionFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface PurchaseOptionFilter {
   filterType: PurchaseOptionFilterType;
   filterValues: string[];
 }
-export const PurchaseOptionFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PurchaseOptionFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterType: PurchaseOptionFilterType,
     filterValues: PurchaseOptionFilterValueList,
@@ -1855,40 +1836,39 @@ export const PurchaseOptionFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PurchaseOptionFilter>;
 export type PurchaseOptionFilterList = PurchaseOptionFilter[];
 export const PurchaseOptionFilterList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PurchaseOptionFilter);
+  /*@__PURE__*/ S.Array(PurchaseOptionFilter);
 export interface ListPurchaseOptionsInput {
   filters?: PurchaseOptionFilter[];
   maxResults?: number;
   nextToken?: string;
 }
-export const ListPurchaseOptionsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filters: S.optional(PurchaseOptionFilterList),
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/2026-02-05/listPurchaseOptions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPurchaseOptionsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filters: S.optional(PurchaseOptionFilterList),
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/2026-02-05/listPurchaseOptions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListPurchaseOptionsInput",
 }) as any as S.Schema<ListPurchaseOptionsInput>;
 export type PurchaseOptionType = "OFFER" | "OFFERSET" | (string & {});
-export const PurchaseOptionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PurchaseOptionType = /*@__PURE__*/ S.String;
 export interface PurchaseOptionAssociatedEntity {
   product: ProductInformation;
   offer: OfferInformation;
   offerSet?: OfferSetInformation;
 }
 export const PurchaseOptionAssociatedEntity =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       product: ProductInformation,
       offer: OfferInformation,
@@ -1900,7 +1880,7 @@ export const PurchaseOptionAssociatedEntity =
 export type PurchaseOptionAssociatedEntityList =
   PurchaseOptionAssociatedEntity[];
 export const PurchaseOptionAssociatedEntityList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PurchaseOptionAssociatedEntity);
+  /*@__PURE__*/ S.Array(PurchaseOptionAssociatedEntity);
 export interface PurchaseOptionSummary {
   purchaseOptionId: string;
   catalog: string;
@@ -1912,7 +1892,7 @@ export interface PurchaseOptionSummary {
   badges?: PurchaseOptionBadge[];
   associatedEntities: PurchaseOptionAssociatedEntity[];
 }
-export const PurchaseOptionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PurchaseOptionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purchaseOptionId: S.String,
     catalog: S.String,
@@ -1930,19 +1910,18 @@ export const PurchaseOptionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PurchaseOptionSummary",
 }) as any as S.Schema<PurchaseOptionSummary>;
 export type PurchaseOptionSummaryList = PurchaseOptionSummary[];
-export const PurchaseOptionSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const PurchaseOptionSummaryList = /*@__PURE__*/ S.Array(
   PurchaseOptionSummary,
 );
 export interface ListPurchaseOptionsOutput {
   purchaseOptions?: PurchaseOptionSummary[];
   nextToken?: string;
 }
-export const ListPurchaseOptionsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      purchaseOptions: S.optional(PurchaseOptionSummaryList),
-      nextToken: S.optional(S.String),
-    }),
+export const ListPurchaseOptionsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    purchaseOptions: S.optional(PurchaseOptionSummaryList),
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListPurchaseOptionsOutput",
 }) as any as S.Schema<ListPurchaseOptionsOutput>;
@@ -1957,24 +1936,21 @@ export type SearchFilterType =
   | "DEPLOYED_ON_AWS"
   | "NUMBER_OF_PRODUCTS"
   | (string & {});
-export const SearchFilterType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SearchFilterType = /*@__PURE__*/ S.String;
 export type SearchFilterValueList = string[];
-export const SearchFilterValueList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const SearchFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface SearchFilter {
   filterType: SearchFilterType;
   filterValues: string[];
 }
-export const SearchFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterType: SearchFilterType,
     filterValues: SearchFilterValueList,
   }),
 ).annotate({ identifier: "SearchFilter" }) as any as S.Schema<SearchFilter>;
 export type SearchFilterList = SearchFilter[];
-export const SearchFilterList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SearchFilter);
+export const SearchFilterList = /*@__PURE__*/ S.Array(SearchFilter);
 export type SearchFacetType =
   | "AVERAGE_CUSTOMER_RATING"
   | "CATEGORY"
@@ -1985,17 +1961,16 @@ export type SearchFacetType =
   | "DEPLOYED_ON_AWS"
   | "NUMBER_OF_PRODUCTS"
   | (string & {});
-export const SearchFacetType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SearchFacetType = /*@__PURE__*/ S.String;
 export type FacetTypeList = SearchFacetType[];
-export const FacetTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SearchFacetType);
+export const FacetTypeList = /*@__PURE__*/ S.Array(SearchFacetType);
 export interface SearchFacetsInput {
   searchText?: string;
   filters?: SearchFilter[];
   facetTypes?: SearchFacetType[];
   nextToken?: string;
 }
-export const SearchFacetsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchFacetsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     searchText: S.optional(S.String),
     filters: S.optional(SearchFilterList),
@@ -2020,7 +1995,7 @@ export interface ListingFacet {
   parent?: string;
   count: number;
 }
-export const ListingFacet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListingFacet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.String,
     displayName: S.String,
@@ -2029,10 +2004,9 @@ export const ListingFacet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListingFacet" }) as any as S.Schema<ListingFacet>;
 export type ListingFacetList = ListingFacet[];
-export const ListingFacetList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ListingFacet);
+export const ListingFacetList = /*@__PURE__*/ S.Array(ListingFacet);
 export type TypeToFacetMap = { [key in SearchFacetType]?: ListingFacet[] };
-export const TypeToFacetMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TypeToFacetMap = /*@__PURE__*/ S.Record(
   SearchFacetType,
   ListingFacetList.pipe(S.optional),
 );
@@ -2041,7 +2015,7 @@ export interface SearchFacetsOutput {
   listingFacets: { [key: string]: ListingFacet[] | undefined };
   nextToken?: string;
 }
-export const SearchFacetsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchFacetsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalResults: S.Number,
     listingFacets: TypeToFacetMap,
@@ -2054,12 +2028,12 @@ export type SearchListingsSortBy =
   | "RELEVANCE"
   | "AVERAGE_CUSTOMER_RATING"
   | (string & {});
-export const SearchListingsSortBy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SearchListingsSortBy = /*@__PURE__*/ S.String;
 export type SearchListingsSortOrder =
   | "DESCENDING"
   | "ASCENDING"
   | (string & {});
-export const SearchListingsSortOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SearchListingsSortOrder = /*@__PURE__*/ S.String;
 export interface SearchListingsInput {
   searchText?: string;
   filters?: SearchFilter[];
@@ -2068,7 +2042,7 @@ export interface SearchListingsInput {
   sortOrder?: SearchListingsSortOrder;
   nextToken?: string;
 }
-export const SearchListingsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchListingsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     searchText: S.optional(S.String),
     filters: S.optional(SearchFilterList),
@@ -2093,7 +2067,7 @@ export interface ListingSummaryAssociatedEntity {
   product?: ProductInformation;
 }
 export const ListingSummaryAssociatedEntity =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ product: S.optional(ProductInformation) }),
   ).annotate({
     identifier: "ListingSummaryAssociatedEntity",
@@ -2101,7 +2075,7 @@ export const ListingSummaryAssociatedEntity =
 export type ListingSummaryAssociatedEntityList =
   ListingSummaryAssociatedEntity[];
 export const ListingSummaryAssociatedEntityList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ListingSummaryAssociatedEntity);
+  /*@__PURE__*/ S.Array(ListingSummaryAssociatedEntity);
 export interface ListingSummary {
   listingId: string;
   listingName: string;
@@ -2117,7 +2091,7 @@ export interface ListingSummary {
   pricingUnits: PricingUnit[];
   associatedEntities: ListingSummaryAssociatedEntity[];
 }
-export const ListingSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListingSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listingId: S.String,
     listingName: S.String,
@@ -2135,14 +2109,13 @@ export const ListingSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListingSummary" }) as any as S.Schema<ListingSummary>;
 export type ListingSummaryList = ListingSummary[];
-export const ListingSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ListingSummary);
+export const ListingSummaryList = /*@__PURE__*/ S.Array(ListingSummary);
 export interface SearchListingsOutput {
   totalResults: number;
   listingSummaries: ListingSummary[];
   nextToken?: string;
 }
-export const SearchListingsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchListingsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalResults: S.Number,
     listingSummaries: ListingSummaryList,
@@ -2168,7 +2141,7 @@ export const getListing: API.OperationMethod<
   GetListingOutput,
   GetListingError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetListingInput,
   output: GetListingOutput,
   errors: [ResourceNotFoundException],
@@ -2183,7 +2156,7 @@ export const getOffer: API.OperationMethod<
   GetOfferOutput,
   GetOfferError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOfferInput,
   output: GetOfferOutput,
   errors: [ResourceNotFoundException],
@@ -2198,7 +2171,7 @@ export const getOfferSet: API.OperationMethod<
   GetOfferSetOutput,
   GetOfferSetError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOfferSetInput,
   output: GetOfferSetOutput,
   errors: [ResourceNotFoundException],
@@ -2228,7 +2201,7 @@ export const getOfferTerms: API.OperationMethod<
     GetOfferTermsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetOfferTermsInput,
   output: GetOfferTermsOutput,
   errors: [ResourceNotFoundException],
@@ -2248,7 +2221,7 @@ export const getProduct: API.OperationMethod<
   GetProductOutput,
   GetProductError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProductInput,
   output: GetProductOutput,
   errors: [ResourceNotFoundException],
@@ -2280,7 +2253,7 @@ export const listFulfillmentOptions: API.OperationMethod<
     ListFulfillmentOptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFulfillmentOptionsInput,
   output: ListFulfillmentOptionsOutput,
   errors: [ResourceNotFoundException],
@@ -2318,7 +2291,7 @@ export const listPurchaseOptions: API.OperationMethod<
     ListPurchaseOptionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPurchaseOptionsInput,
   output: ListPurchaseOptionsOutput,
   errors: [],
@@ -2353,7 +2326,7 @@ export const searchFacets: API.OperationMethod<
     SearchFacetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchFacetsInput,
   output: SearchFacetsOutput,
   errors: [],
@@ -2388,7 +2361,7 @@ export const searchListings: API.OperationMethod<
     SearchListingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchListingsInput,
   output: SearchListingsOutput,
   errors: [],

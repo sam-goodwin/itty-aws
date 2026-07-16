@@ -8,7 +8,7 @@ export interface OrganizationDomainsControllerDeleteInput {
   id: string;
 }
 export const OrganizationDomainsControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/organization_domains/{id}" }),
@@ -17,7 +17,7 @@ export const OrganizationDomainsControllerDeleteInput =
 // Output Schema
 export type OrganizationDomainsControllerDeleteOutput = void;
 export const OrganizationDomainsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationDomainsControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OrganizationDomainsControllerDeleteOutput>;
 
 // The operation
 /**
@@ -28,7 +28,7 @@ export const OrganizationDomainsControllerDeleteOutput =
  * @param id - Unique identifier of the organization domain.
  */
 export const OrganizationDomainsControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrganizationDomainsControllerDeleteInput,
     outputSchema: OrganizationDomainsControllerDeleteOutput,
     errors: [NotFound] as const,

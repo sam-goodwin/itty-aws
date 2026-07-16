@@ -62,7 +62,7 @@ export interface PostPaymentIntentsIntentCaptureInput {
   transfer_data?: { amount?: number };
 }
 export const PostPaymentIntentsIntentCaptureInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     intent: Schema.String.pipe(T.PathParam()),
     amount_details: Schema.optional(
       Schema.Struct({
@@ -463,7 +463,7 @@ export interface PostPaymentIntentsIntentCaptureOutput {
   transfer_group: string | null;
 }
 export const PostPaymentIntentsIntentCaptureOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -852,7 +852,7 @@ export const PostPaymentIntentsIntentCaptureOutput =
  * <p>Learn more about <a href="/docs/payments/capture-later">separate authorization and capture</a>.</p>
  */
 export const PostPaymentIntentsIntentCapture =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PostPaymentIntentsIntentCaptureInput,
     outputSchema: PostPaymentIntentsIntentCaptureOutput,
   }));

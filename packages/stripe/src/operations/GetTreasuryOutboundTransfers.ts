@@ -12,7 +12,7 @@ export interface GetTreasuryOutboundTransfersInput {
   status?: "canceled" | "failed" | "posted" | "processing" | "returned";
 }
 export const GetTreasuryOutboundTransfersInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     ending_before: Schema.optional(Schema.String),
     expand: Schema.optional(Schema.String),
     financial_account: Schema.String,
@@ -401,7 +401,7 @@ export interface GetTreasuryOutboundTransfersOutput {
   url: string;
 }
 export const GetTreasuryOutboundTransfersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     data: Schema.Array(
       Schema.Struct({
         amount: Schema.Number,
@@ -724,7 +724,7 @@ export const GetTreasuryOutboundTransfersOutput =
  * @param status - Only return OutboundTransfers that have the given status: `processing`, `canceled`, `failed`, `posted`, or `returned`.
  */
 export const GetTreasuryOutboundTransfers =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetTreasuryOutboundTransfersInput,
     outputSchema: GetTreasuryOutboundTransfersOutput,
   }));

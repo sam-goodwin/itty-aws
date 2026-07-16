@@ -10,7 +10,7 @@ export interface ValidateGroupClusterConfigurationsInput {
   pretty?: boolean;
 }
 export const ValidateGroupClusterConfigurationsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const ValidateGroupClusterConfigurationsInput =
 // Output Schema
 export type ValidateGroupClusterConfigurationsOutput = void;
 export const ValidateGroupClusterConfigurationsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ValidateGroupClusterConfigurationsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ValidateGroupClusterConfigurationsOutput>;
 
 // The operation
 /**
@@ -39,7 +39,7 @@ export const ValidateGroupClusterConfigurationsOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  */
 export const validateGroupClusterConfigurations =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ValidateGroupClusterConfigurationsInput,
     outputSchema: ValidateGroupClusterConfigurationsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

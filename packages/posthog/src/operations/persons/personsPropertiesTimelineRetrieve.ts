@@ -10,7 +10,7 @@ export interface PersonsPropertiesTimelineRetrieveInput {
   format?: "csv" | "json";
 }
 export const PersonsPropertiesTimelineRetrieveInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.Number.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     format: Schema.optional(Schema.Literals(["csv", "json"])),
@@ -24,7 +24,7 @@ export const PersonsPropertiesTimelineRetrieveInput =
 // Output Schema
 export type PersonsPropertiesTimelineRetrieveOutput = void;
 export const PersonsPropertiesTimelineRetrieveOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsPropertiesTimelineRetrieveOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PersonsPropertiesTimelineRetrieveOutput>;
 
 // The operation
 /**
@@ -34,7 +34,7 @@ export const PersonsPropertiesTimelineRetrieveOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const personsPropertiesTimelineRetrieve =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PersonsPropertiesTimelineRetrieveInput,
     outputSchema: PersonsPropertiesTimelineRetrieveOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

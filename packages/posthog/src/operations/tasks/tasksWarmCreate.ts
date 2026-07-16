@@ -12,7 +12,7 @@ export interface TasksWarmCreateInput {
   model?: string | null;
   reasoning_effort?: "low" | "medium" | "high" | "xhigh" | "max" | null;
 }
-export const TasksWarmCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksWarmCreateInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   repository: Schema.String,
   github_integration: Schema.Number,
@@ -33,7 +33,7 @@ export interface TasksWarmCreateOutput {
   task_id: string;
   run_id: string;
 }
-export const TasksWarmCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TasksWarmCreateOutput = /*@__PURE__*/ Schema.Struct({
   task_id: Schema.String,
   run_id: Schema.String,
 }) as unknown as Schema.Codec<TasksWarmCreateOutput>;
@@ -46,7 +46,7 @@ export const TasksWarmCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const tasksWarmCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const tasksWarmCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: TasksWarmCreateInput,
   outputSchema: TasksWarmCreateOutput,
 }));

@@ -29,7 +29,7 @@ export interface AddonsCreateOrUpdateInput {
   };
 }
 export const AddonsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -73,7 +73,7 @@ export interface AddonsCreateOrUpdateOutput {
   };
 }
 export const AddonsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -103,12 +103,10 @@ export const AddonsCreateOrUpdateOutput =
  * @param privateCloudName - Name of the private cloud
  * @param addonName - Name of the addon.
  */
-export const AddonsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AddonsCreateOrUpdateInput,
-    outputSchema: AddonsCreateOrUpdateOutput,
-  }),
-);
+export const AddonsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AddonsCreateOrUpdateInput,
+  outputSchema: AddonsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface AddonsDeleteInput {
   subscriptionId: string;
@@ -116,7 +114,7 @@ export interface AddonsDeleteInput {
   privateCloudName: string;
   addonName: string;
 }
-export const AddonsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddonsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -132,7 +130,7 @@ export const AddonsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AddonsDeleteOutput = void;
 export const AddonsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddonsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AddonsDeleteOutput>;
 
 // The operation
 /**
@@ -144,7 +142,7 @@ export const AddonsDeleteOutput =
  * @param privateCloudName - Name of the private cloud
  * @param addonName - Name of the addon.
  */
-export const AddonsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AddonsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddonsDeleteInput,
   outputSchema: AddonsDeleteOutput,
 }));
@@ -155,7 +153,7 @@ export interface AddonsGetInput {
   privateCloudName: string;
   addonName: string;
 }
-export const AddonsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddonsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -182,7 +180,7 @@ export interface AddonsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AddonsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddonsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -212,7 +210,7 @@ export const AddonsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param privateCloudName - Name of the private cloud
  * @param addonName - Name of the addon.
  */
-export const AddonsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AddonsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddonsGetInput,
   outputSchema: AddonsGetOutput,
 }));
@@ -222,7 +220,7 @@ export interface AddonsListInput {
   resourceGroupName: string;
   privateCloudName: string;
 }
-export const AddonsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddonsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -251,7 +249,7 @@ export interface AddonsListOutput {
   }[];
   nextLink?: string;
 }
-export const AddonsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddonsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -285,7 +283,7 @@ export const AddonsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const AddonsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AddonsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddonsListInput,
   outputSchema: AddonsListOutput,
 }));
@@ -303,7 +301,7 @@ export interface AuthorizationsCreateOrUpdateInput {
   };
 }
 export const AuthorizationsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -341,7 +339,7 @@ export interface AuthorizationsCreateOrUpdateOutput {
   };
 }
 export const AuthorizationsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -372,7 +370,7 @@ export const AuthorizationsCreateOrUpdateOutput =
  * @param authorizationName - Name of the ExpressRoute Circuit Authorization
  */
 export const AuthorizationsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationsCreateOrUpdateInput,
     outputSchema: AuthorizationsCreateOrUpdateOutput,
   }));
@@ -384,7 +382,7 @@ export interface AuthorizationsDeleteInput {
   authorizationName: string;
 }
 export const AuthorizationsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -400,7 +398,7 @@ export const AuthorizationsDeleteInput =
 // Output Schema
 export type AuthorizationsDeleteOutput = void;
 export const AuthorizationsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AuthorizationsDeleteOutput>;
 
 // The operation
 /**
@@ -412,12 +410,10 @@ export const AuthorizationsDeleteOutput =
  * @param privateCloudName - Name of the private cloud
  * @param authorizationName - Name of the ExpressRoute Circuit Authorization
  */
-export const AuthorizationsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AuthorizationsDeleteInput,
-    outputSchema: AuthorizationsDeleteOutput,
-  }),
-);
+export const AuthorizationsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AuthorizationsDeleteInput,
+  outputSchema: AuthorizationsDeleteOutput,
+}));
 // Input Schema
 export interface AuthorizationsGetInput {
   subscriptionId: string;
@@ -425,14 +421,12 @@ export interface AuthorizationsGetInput {
   privateCloudName: string;
   authorizationName: string;
 }
-export const AuthorizationsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    authorizationName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const AuthorizationsGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  authorizationName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}",
@@ -455,7 +449,7 @@ export interface AuthorizationsGetOutput {
   };
 }
 export const AuthorizationsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -485,7 +479,7 @@ export const AuthorizationsGetOutput =
  * @param privateCloudName - Name of the private cloud
  * @param authorizationName - Name of the ExpressRoute Circuit Authorization
  */
-export const AuthorizationsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizationsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AuthorizationsGetInput,
   outputSchema: AuthorizationsGetOutput,
 }));
@@ -496,7 +490,7 @@ export interface AuthorizationsListInput {
   privateCloudName: string;
 }
 export const AuthorizationsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -526,7 +520,7 @@ export interface AuthorizationsListOutput {
   nextLink?: string;
 }
 export const AuthorizationsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -570,7 +564,7 @@ export const AuthorizationsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const AuthorizationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AuthorizationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AuthorizationsListInput,
   outputSchema: AuthorizationsListOutput,
 }));
@@ -587,7 +581,7 @@ export interface CloudLinksCreateOrUpdateInput {
   };
 }
 export const CloudLinksCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -632,7 +626,7 @@ export interface CloudLinksCreateOrUpdateOutput {
   };
 }
 export const CloudLinksCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -662,12 +656,10 @@ export const CloudLinksCreateOrUpdateOutput =
  * @param privateCloudName - Name of the private cloud
  * @param cloudLinkName - Name of the cloud link.
  */
-export const CloudLinksCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CloudLinksCreateOrUpdateInput,
-    outputSchema: CloudLinksCreateOrUpdateOutput,
-  }),
-);
+export const CloudLinksCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CloudLinksCreateOrUpdateInput,
+  outputSchema: CloudLinksCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface CloudLinksDeleteInput {
   subscriptionId: string;
@@ -675,7 +667,7 @@ export interface CloudLinksDeleteInput {
   privateCloudName: string;
   cloudLinkName: string;
 }
-export const CloudLinksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudLinksDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -691,7 +683,7 @@ export const CloudLinksDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type CloudLinksDeleteOutput = void;
 export const CloudLinksDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CloudLinksDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CloudLinksDeleteOutput>;
 
 // The operation
 /**
@@ -703,7 +695,7 @@ export const CloudLinksDeleteOutput =
  * @param privateCloudName - Name of the private cloud
  * @param cloudLinkName - Name of the cloud link.
  */
-export const CloudLinksDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CloudLinksDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: CloudLinksDeleteInput,
   outputSchema: CloudLinksDeleteOutput,
 }));
@@ -714,7 +706,7 @@ export interface CloudLinksGetInput {
   privateCloudName: string;
   cloudLinkName: string;
 }
-export const CloudLinksGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudLinksGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -741,7 +733,7 @@ export interface CloudLinksGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const CloudLinksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudLinksGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -771,7 +763,7 @@ export const CloudLinksGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param privateCloudName - Name of the private cloud
  * @param cloudLinkName - Name of the cloud link.
  */
-export const CloudLinksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CloudLinksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: CloudLinksGetInput,
   outputSchema: CloudLinksGetOutput,
 }));
@@ -781,7 +773,7 @@ export interface CloudLinksListInput {
   resourceGroupName: string;
   privateCloudName: string;
 }
-export const CloudLinksListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudLinksListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -810,7 +802,7 @@ export interface CloudLinksListOutput {
   }[];
   nextLink?: string;
 }
-export const CloudLinksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CloudLinksListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -844,7 +836,7 @@ export const CloudLinksListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const CloudLinksList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const CloudLinksList = /*@__PURE__*/ API.make(() => ({
   inputSchema: CloudLinksListInput,
   outputSchema: CloudLinksListOutput,
 }));
@@ -876,7 +868,7 @@ export interface ClustersCreateOrUpdateInput {
   };
 }
 export const ClustersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -931,7 +923,7 @@ export interface ClustersCreateOrUpdateOutput {
   };
 }
 export const ClustersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -961,12 +953,10 @@ export const ClustersCreateOrUpdateOutput =
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const ClustersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ClustersCreateOrUpdateInput,
-    outputSchema: ClustersCreateOrUpdateOutput,
-  }),
-);
+export const ClustersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ClustersCreateOrUpdateInput,
+  outputSchema: ClustersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ClustersDeleteInput {
   subscriptionId: string;
@@ -974,7 +964,7 @@ export interface ClustersDeleteInput {
   privateCloudName: string;
   clusterName: string;
 }
-export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -990,7 +980,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ClustersDeleteOutput = void;
 export const ClustersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ClustersDeleteOutput>;
 
 // The operation
 /**
@@ -1002,7 +992,7 @@ export const ClustersDeleteOutput =
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const ClustersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersDeleteInput,
   outputSchema: ClustersDeleteOutput,
 }));
@@ -1013,7 +1003,7 @@ export interface ClustersGetInput {
   privateCloudName: string;
   clusterName: string;
 }
-export const ClustersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1040,7 +1030,7 @@ export interface ClustersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1070,7 +1060,7 @@ export const ClustersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const ClustersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersGetInput,
   outputSchema: ClustersGetOutput,
 }));
@@ -1080,7 +1070,7 @@ export interface ClustersListInput {
   resourceGroupName: string;
   privateCloudName: string;
 }
-export const ClustersListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1109,7 +1099,7 @@ export interface ClustersListOutput {
   }[];
   nextLink?: string;
 }
-export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1143,7 +1133,7 @@ export const ClustersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const ClustersList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersListInput,
   outputSchema: ClustersListOutput,
 }));
@@ -1154,14 +1144,12 @@ export interface ClustersListZonesInput {
   privateCloudName: string;
   clusterName: string;
 }
-export const ClustersListZonesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    clusterName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ClustersListZonesInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  clusterName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/listZones",
@@ -1174,7 +1162,7 @@ export interface ClustersListZonesOutput {
   zones?: { hosts?: string[]; zone?: string }[];
 }
 export const ClustersListZonesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     zones: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -1195,7 +1183,7 @@ export const ClustersListZonesOutput =
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const ClustersListZones = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersListZones = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersListZonesInput,
   outputSchema: ClustersListZonesOutput,
 }));
@@ -1214,7 +1202,7 @@ export interface ClustersUpdateInput {
   };
   properties?: { clusterSize?: number; hosts?: string[] };
 }
-export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1258,7 +1246,7 @@ export interface ClustersUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ClustersUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1288,7 +1276,7 @@ export const ClustersUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const ClustersUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ClustersUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: ClustersUpdateInput,
   outputSchema: ClustersUpdateOutput,
 }));
@@ -1329,7 +1317,7 @@ export interface DatastoresCreateOrUpdateInput {
   };
 }
 export const DatastoresCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1409,7 +1397,7 @@ export interface DatastoresCreateOrUpdateOutput {
   };
 }
 export const DatastoresCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1440,12 +1428,10 @@ export const DatastoresCreateOrUpdateOutput =
  * @param clusterName - Name of the cluster
  * @param datastoreName - Name of the datastore
  */
-export const DatastoresCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DatastoresCreateOrUpdateInput,
-    outputSchema: DatastoresCreateOrUpdateOutput,
-  }),
-);
+export const DatastoresCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DatastoresCreateOrUpdateInput,
+  outputSchema: DatastoresCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DatastoresDeleteInput {
   subscriptionId: string;
@@ -1454,7 +1440,7 @@ export interface DatastoresDeleteInput {
   clusterName: string;
   datastoreName: string;
 }
-export const DatastoresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1471,7 +1457,7 @@ export const DatastoresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DatastoresDeleteOutput = void;
 export const DatastoresDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DatastoresDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DatastoresDeleteOutput>;
 
 // The operation
 /**
@@ -1484,7 +1470,7 @@ export const DatastoresDeleteOutput =
  * @param clusterName - Name of the cluster
  * @param datastoreName - Name of the datastore
  */
-export const DatastoresDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatastoresDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatastoresDeleteInput,
   outputSchema: DatastoresDeleteOutput,
 }));
@@ -1496,7 +1482,7 @@ export interface DatastoresGetInput {
   clusterName: string;
   datastoreName: string;
 }
-export const DatastoresGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1524,7 +1510,7 @@ export interface DatastoresGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DatastoresGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1555,7 +1541,7 @@ export const DatastoresGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterName - Name of the cluster
  * @param datastoreName - Name of the datastore
  */
-export const DatastoresGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatastoresGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatastoresGetInput,
   outputSchema: DatastoresGetOutput,
 }));
@@ -1566,7 +1552,7 @@ export interface DatastoresListInput {
   privateCloudName: string;
   clusterName: string;
 }
-export const DatastoresListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1596,7 +1582,7 @@ export interface DatastoresListOutput {
   }[];
   nextLink?: string;
 }
-export const DatastoresListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DatastoresListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1631,7 +1617,7 @@ export const DatastoresListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const DatastoresList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DatastoresList = /*@__PURE__*/ API.make(() => ({
   inputSchema: DatastoresListInput,
   outputSchema: DatastoresListOutput,
 }));
@@ -1651,7 +1637,7 @@ export interface GlobalReachConnectionsCreateOrUpdateInput {
   };
 }
 export const GlobalReachConnectionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1693,7 +1679,7 @@ export interface GlobalReachConnectionsCreateOrUpdateOutput {
   };
 }
 export const GlobalReachConnectionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1724,7 +1710,7 @@ export const GlobalReachConnectionsCreateOrUpdateOutput =
  * @param globalReachConnectionName - Name of the global reach connection
  */
 export const GlobalReachConnectionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GlobalReachConnectionsCreateOrUpdateInput,
     outputSchema: GlobalReachConnectionsCreateOrUpdateOutput,
   }));
@@ -1736,7 +1722,7 @@ export interface GlobalReachConnectionsDeleteInput {
   globalReachConnectionName: string;
 }
 export const GlobalReachConnectionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1752,7 +1738,7 @@ export const GlobalReachConnectionsDeleteInput =
 // Output Schema
 export type GlobalReachConnectionsDeleteOutput = void;
 export const GlobalReachConnectionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GlobalReachConnectionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GlobalReachConnectionsDeleteOutput>;
 
 // The operation
 /**
@@ -1765,7 +1751,7 @@ export const GlobalReachConnectionsDeleteOutput =
  * @param globalReachConnectionName - Name of the global reach connection
  */
 export const GlobalReachConnectionsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GlobalReachConnectionsDeleteInput,
     outputSchema: GlobalReachConnectionsDeleteOutput,
   }));
@@ -1777,7 +1763,7 @@ export interface GlobalReachConnectionsGetInput {
   globalReachConnectionName: string;
 }
 export const GlobalReachConnectionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1805,7 +1791,7 @@ export interface GlobalReachConnectionsGetOutput {
   };
 }
 export const GlobalReachConnectionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1835,12 +1821,10 @@ export const GlobalReachConnectionsGetOutput =
  * @param privateCloudName - Name of the private cloud
  * @param globalReachConnectionName - Name of the global reach connection
  */
-export const GlobalReachConnectionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GlobalReachConnectionsGetInput,
-    outputSchema: GlobalReachConnectionsGetOutput,
-  }),
-);
+export const GlobalReachConnectionsGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GlobalReachConnectionsGetInput,
+  outputSchema: GlobalReachConnectionsGetOutput,
+}));
 // Input Schema
 export interface GlobalReachConnectionsListInput {
   subscriptionId: string;
@@ -1848,7 +1832,7 @@ export interface GlobalReachConnectionsListInput {
   privateCloudName: string;
 }
 export const GlobalReachConnectionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1878,7 +1862,7 @@ export interface GlobalReachConnectionsListOutput {
   nextLink?: string;
 }
 export const GlobalReachConnectionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1922,12 +1906,10 @@ export const GlobalReachConnectionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const GlobalReachConnectionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GlobalReachConnectionsListInput,
-    outputSchema: GlobalReachConnectionsListOutput,
-  }),
-);
+export const GlobalReachConnectionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GlobalReachConnectionsListInput,
+  outputSchema: GlobalReachConnectionsListOutput,
+}));
 // Input Schema
 export interface HcxEnterpriseSitesCreateOrUpdateInput {
   subscriptionId: string;
@@ -1941,7 +1923,7 @@ export interface HcxEnterpriseSitesCreateOrUpdateInput {
   };
 }
 export const HcxEnterpriseSitesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -1980,7 +1962,7 @@ export interface HcxEnterpriseSitesCreateOrUpdateOutput {
   };
 }
 export const HcxEnterpriseSitesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2011,7 +1993,7 @@ export const HcxEnterpriseSitesCreateOrUpdateOutput =
  * @param hcxEnterpriseSiteName - Name of the HCX Enterprise Site
  */
 export const HcxEnterpriseSitesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: HcxEnterpriseSitesCreateOrUpdateInput,
     outputSchema: HcxEnterpriseSitesCreateOrUpdateOutput,
   }));
@@ -2023,7 +2005,7 @@ export interface HcxEnterpriseSitesDeleteInput {
   hcxEnterpriseSiteName: string;
 }
 export const HcxEnterpriseSitesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2039,7 +2021,7 @@ export const HcxEnterpriseSitesDeleteInput =
 // Output Schema
 export type HcxEnterpriseSitesDeleteOutput = void;
 export const HcxEnterpriseSitesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<HcxEnterpriseSitesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<HcxEnterpriseSitesDeleteOutput>;
 
 // The operation
 /**
@@ -2051,12 +2033,10 @@ export const HcxEnterpriseSitesDeleteOutput =
  * @param privateCloudName - Name of the private cloud
  * @param hcxEnterpriseSiteName - Name of the HCX Enterprise Site
  */
-export const HcxEnterpriseSitesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HcxEnterpriseSitesDeleteInput,
-    outputSchema: HcxEnterpriseSitesDeleteOutput,
-  }),
-);
+export const HcxEnterpriseSitesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HcxEnterpriseSitesDeleteInput,
+  outputSchema: HcxEnterpriseSitesDeleteOutput,
+}));
 // Input Schema
 export interface HcxEnterpriseSitesGetInput {
   subscriptionId: string;
@@ -2065,7 +2045,7 @@ export interface HcxEnterpriseSitesGetInput {
   hcxEnterpriseSiteName: string;
 }
 export const HcxEnterpriseSitesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2093,7 +2073,7 @@ export interface HcxEnterpriseSitesGetOutput {
   };
 }
 export const HcxEnterpriseSitesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2123,12 +2103,10 @@ export const HcxEnterpriseSitesGetOutput =
  * @param privateCloudName - Name of the private cloud
  * @param hcxEnterpriseSiteName - Name of the HCX Enterprise Site
  */
-export const HcxEnterpriseSitesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HcxEnterpriseSitesGetInput,
-    outputSchema: HcxEnterpriseSitesGetOutput,
-  }),
-);
+export const HcxEnterpriseSitesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HcxEnterpriseSitesGetInput,
+  outputSchema: HcxEnterpriseSitesGetOutput,
+}));
 // Input Schema
 export interface HcxEnterpriseSitesListInput {
   subscriptionId: string;
@@ -2136,7 +2114,7 @@ export interface HcxEnterpriseSitesListInput {
   privateCloudName: string;
 }
 export const HcxEnterpriseSitesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2166,7 +2144,7 @@ export interface HcxEnterpriseSitesListOutput {
   nextLink?: string;
 }
 export const HcxEnterpriseSitesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2210,12 +2188,10 @@ export const HcxEnterpriseSitesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const HcxEnterpriseSitesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: HcxEnterpriseSitesListInput,
-    outputSchema: HcxEnterpriseSitesListOutput,
-  }),
-);
+export const HcxEnterpriseSitesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: HcxEnterpriseSitesListInput,
+  outputSchema: HcxEnterpriseSitesListOutput,
+}));
 // Input Schema
 export interface HostsGetInput {
   subscriptionId: string;
@@ -2224,7 +2200,7 @@ export interface HostsGetInput {
   clusterName: string;
   hostId: string;
 }
-export const HostsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2252,7 +2228,7 @@ export interface HostsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const HostsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2283,7 +2259,7 @@ export const HostsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param clusterName - Name of the cluster
  * @param hostId - The host identifier.
  */
-export const HostsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HostsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: HostsGetInput,
   outputSchema: HostsGetOutput,
 }));
@@ -2294,7 +2270,7 @@ export interface HostsListInput {
   privateCloudName: string;
   clusterName: string;
 }
-export const HostsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2324,7 +2300,7 @@ export interface HostsListOutput {
   }[];
   nextLink?: string;
 }
-export const HostsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HostsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2359,7 +2335,7 @@ export const HostsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const HostsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const HostsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: HostsListInput,
   outputSchema: HostsListOutput,
 }));
@@ -2381,7 +2357,7 @@ export interface IscsiPathsCreateOrUpdateInput {
   };
 }
 export const IscsiPathsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2424,7 +2400,7 @@ export interface IscsiPathsCreateOrUpdateOutput {
   };
 }
 export const IscsiPathsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2453,19 +2429,17 @@ export const IscsiPathsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const IscsiPathsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: IscsiPathsCreateOrUpdateInput,
-    outputSchema: IscsiPathsCreateOrUpdateOutput,
-  }),
-);
+export const IscsiPathsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: IscsiPathsCreateOrUpdateInput,
+  outputSchema: IscsiPathsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface IscsiPathsDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   privateCloudName: string;
 }
-export const IscsiPathsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IscsiPathsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2480,7 +2454,7 @@ export const IscsiPathsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type IscsiPathsDeleteOutput = void;
 export const IscsiPathsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<IscsiPathsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<IscsiPathsDeleteOutput>;
 
 // The operation
 /**
@@ -2491,7 +2465,7 @@ export const IscsiPathsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const IscsiPathsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IscsiPathsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: IscsiPathsDeleteInput,
   outputSchema: IscsiPathsDeleteOutput,
 }));
@@ -2501,7 +2475,7 @@ export interface IscsiPathsGetInput {
   resourceGroupName: string;
   privateCloudName: string;
 }
-export const IscsiPathsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IscsiPathsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2527,7 +2501,7 @@ export interface IscsiPathsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const IscsiPathsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const IscsiPathsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2556,7 +2530,7 @@ export const IscsiPathsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const IscsiPathsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const IscsiPathsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: IscsiPathsGetInput,
   outputSchema: IscsiPathsGetOutput,
 }));
@@ -2567,7 +2541,7 @@ export interface IscsiPathsListByPrivateCloudInput {
   privateCloudName: string;
 }
 export const IscsiPathsListByPrivateCloudInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2597,7 +2571,7 @@ export interface IscsiPathsListByPrivateCloudOutput {
   nextLink?: string;
 }
 export const IscsiPathsListByPrivateCloudOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2642,7 +2616,7 @@ export const IscsiPathsListByPrivateCloudOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const IscsiPathsListByPrivateCloud =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: IscsiPathsListByPrivateCloudInput,
     outputSchema: IscsiPathsListByPrivateCloudOutput,
   }));
@@ -2658,7 +2632,7 @@ export interface LicensesCreateOrUpdateInput {
   };
 }
 export const LicensesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2694,7 +2668,7 @@ export interface LicensesCreateOrUpdateOutput {
   };
 }
 export const LicensesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2724,12 +2698,10 @@ export const LicensesCreateOrUpdateOutput =
  * @param privateCloudName - Name of the private cloud
  * @param licenseName - Name of the license.
  */
-export const LicensesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LicensesCreateOrUpdateInput,
-    outputSchema: LicensesCreateOrUpdateOutput,
-  }),
-);
+export const LicensesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LicensesCreateOrUpdateInput,
+  outputSchema: LicensesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface LicensesDeleteInput {
   subscriptionId: string;
@@ -2737,7 +2709,7 @@ export interface LicensesDeleteInput {
   privateCloudName: string;
   licenseName: "VmwareFirewall";
 }
-export const LicensesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2753,7 +2725,7 @@ export const LicensesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type LicensesDeleteOutput = void;
 export const LicensesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<LicensesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<LicensesDeleteOutput>;
 
 // The operation
 /**
@@ -2765,7 +2737,7 @@ export const LicensesDeleteOutput =
  * @param privateCloudName - Name of the private cloud
  * @param licenseName - Name of the license.
  */
-export const LicensesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LicensesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: LicensesDeleteInput,
   outputSchema: LicensesDeleteOutput,
 }));
@@ -2776,7 +2748,7 @@ export interface LicensesGetInput {
   privateCloudName: string;
   licenseName: "VmwareFirewall";
 }
-export const LicensesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2803,7 +2775,7 @@ export interface LicensesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const LicensesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2833,7 +2805,7 @@ export const LicensesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param privateCloudName - Name of the private cloud
  * @param licenseName - Name of the license.
  */
-export const LicensesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LicensesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: LicensesGetInput,
   outputSchema: LicensesGetOutput,
 }));
@@ -2845,7 +2817,7 @@ export interface LicensesGetPropertiesInput {
   licenseName: "VmwareFirewall";
 }
 export const LicensesGetPropertiesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2864,7 +2836,7 @@ export interface LicensesGetPropertiesOutput {
   provisioningState?: "Succeeded" | "Failed" | "Canceled";
 }
 export const LicensesGetPropertiesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.Literals(["VmwareFirewall"]),
     provisioningState: Schema.optional(
       Schema.Literals(["Succeeded", "Failed", "Canceled"]),
@@ -2881,19 +2853,17 @@ export const LicensesGetPropertiesOutput =
  * @param privateCloudName - Name of the private cloud
  * @param licenseName - Name of the license.
  */
-export const LicensesGetProperties = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: LicensesGetPropertiesInput,
-    outputSchema: LicensesGetPropertiesOutput,
-  }),
-);
+export const LicensesGetProperties = /*@__PURE__*/ API.make(() => ({
+  inputSchema: LicensesGetPropertiesInput,
+  outputSchema: LicensesGetPropertiesOutput,
+}));
 // Input Schema
 export interface LicensesListInput {
   subscriptionId: string;
   resourceGroupName: string;
   privateCloudName: string;
 }
-export const LicensesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -2922,7 +2892,7 @@ export interface LicensesListOutput {
   }[];
   nextLink?: string;
 }
-export const LicensesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LicensesListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -2956,7 +2926,7 @@ export const LicensesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const LicensesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const LicensesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LicensesListInput,
   outputSchema: LicensesListOutput,
 }));
@@ -2966,7 +2936,7 @@ export interface LocationsCheckQuotaAvailabilityInput {
   location: string;
 }
 export const LocationsCheckQuotaAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -2983,7 +2953,7 @@ export interface LocationsCheckQuotaAvailabilityOutput {
   quotaEnabled?: "Enabled" | "Disabled";
 }
 export const LocationsCheckQuotaAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     hostsRemaining: Schema.optional(
       Schema.Record(Schema.String, Schema.Number),
     ),
@@ -2999,7 +2969,7 @@ export const LocationsCheckQuotaAvailabilityOutput =
  * @param location - The name of the Azure region.
  */
 export const LocationsCheckQuotaAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LocationsCheckQuotaAvailabilityInput,
     outputSchema: LocationsCheckQuotaAvailabilityOutput,
   }));
@@ -3014,7 +2984,7 @@ export interface LocationsCheckTrialAvailabilityInput {
   capacity?: number;
 }
 export const LocationsCheckTrialAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     name: Schema.String,
@@ -3038,7 +3008,7 @@ export interface LocationsCheckTrialAvailabilityOutput {
   availableHosts?: number;
 }
 export const LocationsCheckTrialAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     status: Schema.optional(
       Schema.Literals(["TrialAvailable", "TrialUsed", "TrialDisabled"]),
     ),
@@ -3058,7 +3028,7 @@ export const LocationsCheckTrialAvailabilityOutput =
  * @param capacity - If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
  */
 export const LocationsCheckTrialAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: LocationsCheckTrialAvailabilityInput,
     outputSchema: LocationsCheckTrialAvailabilityOutput,
   }));
@@ -3069,7 +3039,7 @@ export interface MaintenancesGetInput {
   privateCloudName: string;
   maintenanceName: string;
 }
-export const MaintenancesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MaintenancesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3096,7 +3066,7 @@ export interface MaintenancesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const MaintenancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MaintenancesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3126,7 +3096,7 @@ export const MaintenancesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param privateCloudName - Name of the private cloud
  * @param maintenanceName - Name of the maintenance
  */
-export const MaintenancesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MaintenancesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: MaintenancesGetInput,
   outputSchema: MaintenancesGetOutput,
 }));
@@ -3138,7 +3108,7 @@ export interface MaintenancesInitiateChecksInput {
   maintenanceName: string;
 }
 export const MaintenancesInitiateChecksInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3166,7 +3136,7 @@ export interface MaintenancesInitiateChecksOutput {
   };
 }
 export const MaintenancesInitiateChecksOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3196,12 +3166,10 @@ export const MaintenancesInitiateChecksOutput =
  * @param privateCloudName - Name of the private cloud
  * @param maintenanceName - Name of the maintenance
  */
-export const MaintenancesInitiateChecks = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MaintenancesInitiateChecksInput,
-    outputSchema: MaintenancesInitiateChecksOutput,
-  }),
-);
+export const MaintenancesInitiateChecks = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MaintenancesInitiateChecksInput,
+  outputSchema: MaintenancesInitiateChecksOutput,
+}));
 // Input Schema
 export interface MaintenancesListInput {
   subscriptionId: string;
@@ -3218,7 +3186,7 @@ export interface MaintenancesListInput {
   from?: string;
   to?: string;
 }
-export const MaintenancesListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MaintenancesListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3260,42 +3228,30 @@ export interface MaintenancesListOutput {
   }[];
   nextLink?: string;
 }
-export const MaintenancesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<MaintenancesListOutput>;
+export const MaintenancesListOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<MaintenancesListOutput>;
 
 // The operation
 /**
@@ -3310,7 +3266,7 @@ export const MaintenancesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param from - date from which result should be returned. ie. scheduledStartTime >= from
  * @param to - date till which result should be returned. i.e. scheduledStartTime <= to
  */
-export const MaintenancesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MaintenancesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: MaintenancesListInput,
   outputSchema: MaintenancesListOutput,
 }));
@@ -3324,7 +3280,7 @@ export interface MaintenancesRescheduleInput {
   message?: string;
 }
 export const MaintenancesRescheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3354,7 +3310,7 @@ export interface MaintenancesRescheduleOutput {
   };
 }
 export const MaintenancesRescheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3384,12 +3340,10 @@ export const MaintenancesRescheduleOutput =
  * @param privateCloudName - Name of the private cloud
  * @param maintenanceName - Name of the maintenance
  */
-export const MaintenancesReschedule = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MaintenancesRescheduleInput,
-    outputSchema: MaintenancesRescheduleOutput,
-  }),
-);
+export const MaintenancesReschedule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MaintenancesRescheduleInput,
+  outputSchema: MaintenancesRescheduleOutput,
+}));
 // Input Schema
 export interface MaintenancesScheduleInput {
   subscriptionId: string;
@@ -3400,7 +3354,7 @@ export interface MaintenancesScheduleInput {
   message?: string;
 }
 export const MaintenancesScheduleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3430,7 +3384,7 @@ export interface MaintenancesScheduleOutput {
   };
 }
 export const MaintenancesScheduleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3460,17 +3414,13 @@ export const MaintenancesScheduleOutput =
  * @param privateCloudName - Name of the private cloud
  * @param maintenanceName - Name of the maintenance
  */
-export const MaintenancesSchedule = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MaintenancesScheduleInput,
-    outputSchema: MaintenancesScheduleOutput,
-  }),
-);
+export const MaintenancesSchedule = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MaintenancesScheduleInput,
+  outputSchema: MaintenancesScheduleOutput,
+}));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.AVS/operations",
@@ -3494,7 +3444,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3524,7 +3474,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -3549,7 +3499,7 @@ export interface PlacementPoliciesCreateOrUpdateInput {
   };
 }
 export const PlacementPoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3595,7 +3545,7 @@ export interface PlacementPoliciesCreateOrUpdateOutput {
   };
 }
 export const PlacementPoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3627,7 +3577,7 @@ export const PlacementPoliciesCreateOrUpdateOutput =
  * @param placementPolicyName - Name of the placement policy.
  */
 export const PlacementPoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PlacementPoliciesCreateOrUpdateInput,
     outputSchema: PlacementPoliciesCreateOrUpdateOutput,
   }));
@@ -3640,7 +3590,7 @@ export interface PlacementPoliciesDeleteInput {
   placementPolicyName: string;
 }
 export const PlacementPoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3657,7 +3607,7 @@ export const PlacementPoliciesDeleteInput =
 // Output Schema
 export type PlacementPoliciesDeleteOutput = void;
 export const PlacementPoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PlacementPoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PlacementPoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -3670,12 +3620,10 @@ export const PlacementPoliciesDeleteOutput =
  * @param clusterName - Name of the cluster
  * @param placementPolicyName - Name of the placement policy.
  */
-export const PlacementPoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PlacementPoliciesDeleteInput,
-    outputSchema: PlacementPoliciesDeleteOutput,
-  }),
-);
+export const PlacementPoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PlacementPoliciesDeleteInput,
+  outputSchema: PlacementPoliciesDeleteOutput,
+}));
 // Input Schema
 export interface PlacementPoliciesGetInput {
   subscriptionId: string;
@@ -3685,7 +3633,7 @@ export interface PlacementPoliciesGetInput {
   placementPolicyName: string;
 }
 export const PlacementPoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3714,7 +3662,7 @@ export interface PlacementPoliciesGetOutput {
   };
 }
 export const PlacementPoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3745,12 +3693,10 @@ export const PlacementPoliciesGetOutput =
  * @param clusterName - Name of the cluster
  * @param placementPolicyName - Name of the placement policy.
  */
-export const PlacementPoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PlacementPoliciesGetInput,
-    outputSchema: PlacementPoliciesGetOutput,
-  }),
-);
+export const PlacementPoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PlacementPoliciesGetInput,
+  outputSchema: PlacementPoliciesGetOutput,
+}));
 // Input Schema
 export interface PlacementPoliciesListInput {
   subscriptionId: string;
@@ -3759,7 +3705,7 @@ export interface PlacementPoliciesListInput {
   clusterName: string;
 }
 export const PlacementPoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3790,7 +3736,7 @@ export interface PlacementPoliciesListOutput {
   nextLink?: string;
 }
 export const PlacementPoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3835,12 +3781,10 @@ export const PlacementPoliciesListOutput =
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const PlacementPoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PlacementPoliciesListInput,
-    outputSchema: PlacementPoliciesListOutput,
-  }),
-);
+export const PlacementPoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PlacementPoliciesListInput,
+  outputSchema: PlacementPoliciesListOutput,
+}));
 // Input Schema
 export interface PlacementPoliciesUpdateInput {
   subscriptionId: string;
@@ -3857,7 +3801,7 @@ export interface PlacementPoliciesUpdateInput {
   };
 }
 export const PlacementPoliciesUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -3897,7 +3841,7 @@ export interface PlacementPoliciesUpdateOutput {
   };
 }
 export const PlacementPoliciesUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3928,12 +3872,10 @@ export const PlacementPoliciesUpdateOutput =
  * @param clusterName - Name of the cluster
  * @param placementPolicyName - Name of the placement policy.
  */
-export const PlacementPoliciesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PlacementPoliciesUpdateInput,
-    outputSchema: PlacementPoliciesUpdateOutput,
-  }),
-);
+export const PlacementPoliciesUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PlacementPoliciesUpdateInput,
+  outputSchema: PlacementPoliciesUpdateOutput,
+}));
 // Input Schema
 export interface PrivateCloudsCreateOrUpdateInput {
   subscriptionId: string;
@@ -4046,7 +3988,7 @@ export interface PrivateCloudsCreateOrUpdateInput {
   location: string;
 }
 export const PrivateCloudsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -4218,7 +4160,7 @@ export interface PrivateCloudsCreateOrUpdateOutput {
   };
 }
 export const PrivateCloudsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4247,12 +4189,10 @@ export const PrivateCloudsCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PrivateCloudsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateCloudsCreateOrUpdateInput,
-    outputSchema: PrivateCloudsCreateOrUpdateOutput,
-  }),
-);
+export const PrivateCloudsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateCloudsCreateOrUpdateInput,
+  outputSchema: PrivateCloudsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface PrivateCloudsDeleteInput {
   subscriptionId: string;
@@ -4260,7 +4200,7 @@ export interface PrivateCloudsDeleteInput {
   privateCloudName: string;
 }
 export const PrivateCloudsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -4275,7 +4215,7 @@ export const PrivateCloudsDeleteInput =
 // Output Schema
 export type PrivateCloudsDeleteOutput = void;
 export const PrivateCloudsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateCloudsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateCloudsDeleteOutput>;
 
 // The operation
 /**
@@ -4286,7 +4226,7 @@ export const PrivateCloudsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PrivateCloudsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateCloudsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateCloudsDeleteInput,
   outputSchema: PrivateCloudsDeleteOutput,
 }));
@@ -4296,7 +4236,7 @@ export interface PrivateCloudsGetInput {
   resourceGroupName: string;
   privateCloudName: string;
 }
-export const PrivateCloudsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PrivateCloudsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -4322,27 +4262,25 @@ export interface PrivateCloudsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const PrivateCloudsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<PrivateCloudsGetOutput>;
+export const PrivateCloudsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<PrivateCloudsGetOutput>;
 
 // The operation
 /**
@@ -4353,7 +4291,7 @@ export const PrivateCloudsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PrivateCloudsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateCloudsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateCloudsGetInput,
   outputSchema: PrivateCloudsGetOutput,
 }));
@@ -4364,7 +4302,7 @@ export interface PrivateCloudsGetVcfLicenseInput {
   privateCloudName: string;
 }
 export const PrivateCloudsGetVcfLicenseInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -4382,7 +4320,7 @@ export interface PrivateCloudsGetVcfLicenseOutput {
   provisioningState?: "Succeeded" | "Failed" | "Canceled";
 }
 export const PrivateCloudsGetVcfLicenseOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     kind: Schema.Literals(["vcf5"]),
     provisioningState: Schema.optional(
       Schema.Literals(["Succeeded", "Failed", "Canceled"]),
@@ -4398,23 +4336,19 @@ export const PrivateCloudsGetVcfLicenseOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PrivateCloudsGetVcfLicense = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PrivateCloudsGetVcfLicenseInput,
-    outputSchema: PrivateCloudsGetVcfLicenseOutput,
-  }),
-);
+export const PrivateCloudsGetVcfLicense = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PrivateCloudsGetVcfLicenseInput,
+  outputSchema: PrivateCloudsGetVcfLicenseOutput,
+}));
 // Input Schema
 export interface PrivateCloudsListInput {
   subscriptionId: string;
   resourceGroupName: string;
 }
-export const PrivateCloudsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const PrivateCloudsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds",
@@ -4440,7 +4374,7 @@ export interface PrivateCloudsListOutput {
   nextLink?: string;
 }
 export const PrivateCloudsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4483,7 +4417,7 @@ export const PrivateCloudsListOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  */
-export const PrivateCloudsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateCloudsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateCloudsListInput,
   outputSchema: PrivateCloudsListOutput,
 }));
@@ -4494,7 +4428,7 @@ export interface PrivateCloudsListAdminCredentialsInput {
   privateCloudName: string;
 }
 export const PrivateCloudsListAdminCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -4514,7 +4448,7 @@ export interface PrivateCloudsListAdminCredentialsOutput {
   vcenterPassword?: Redacted.Redacted<string>;
 }
 export const PrivateCloudsListAdminCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     nsxtUsername: Schema.optional(Schema.String),
     nsxtPassword: Schema.optional(SensitiveOutputString),
     vcenterUsername: Schema.optional(Schema.String),
@@ -4531,7 +4465,7 @@ export const PrivateCloudsListAdminCredentialsOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const PrivateCloudsListAdminCredentials =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateCloudsListAdminCredentialsInput,
     outputSchema: PrivateCloudsListAdminCredentialsOutput,
   }));
@@ -4540,7 +4474,7 @@ export interface PrivateCloudsListInSubscriptionInput {
   subscriptionId: string;
 }
 export const PrivateCloudsListInSubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -4568,7 +4502,7 @@ export interface PrivateCloudsListInSubscriptionOutput {
   nextLink?: string;
 }
 export const PrivateCloudsListInSubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4611,7 +4545,7 @@ export const PrivateCloudsListInSubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
 export const PrivateCloudsListInSubscription =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateCloudsListInSubscriptionInput,
     outputSchema: PrivateCloudsListInSubscriptionOutput,
   }));
@@ -4622,7 +4556,7 @@ export interface PrivateCloudsRotateNsxtPasswordInput {
   privateCloudName: string;
 }
 export const PrivateCloudsRotateNsxtPasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -4637,7 +4571,7 @@ export const PrivateCloudsRotateNsxtPasswordInput =
 // Output Schema
 export type PrivateCloudsRotateNsxtPasswordOutput = void;
 export const PrivateCloudsRotateNsxtPasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateCloudsRotateNsxtPasswordOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateCloudsRotateNsxtPasswordOutput>;
 
 // The operation
 /**
@@ -4649,7 +4583,7 @@ export const PrivateCloudsRotateNsxtPasswordOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const PrivateCloudsRotateNsxtPassword =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateCloudsRotateNsxtPasswordInput,
     outputSchema: PrivateCloudsRotateNsxtPasswordOutput,
   }));
@@ -4660,7 +4594,7 @@ export interface PrivateCloudsRotateVcenterPasswordInput {
   privateCloudName: string;
 }
 export const PrivateCloudsRotateVcenterPasswordInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -4675,7 +4609,7 @@ export const PrivateCloudsRotateVcenterPasswordInput =
 // Output Schema
 export type PrivateCloudsRotateVcenterPasswordOutput = void;
 export const PrivateCloudsRotateVcenterPasswordOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateCloudsRotateVcenterPasswordOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PrivateCloudsRotateVcenterPasswordOutput>;
 
 // The operation
 /**
@@ -4687,7 +4621,7 @@ export const PrivateCloudsRotateVcenterPasswordOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const PrivateCloudsRotateVcenterPassword =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PrivateCloudsRotateVcenterPasswordInput,
     outputSchema: PrivateCloudsRotateVcenterPasswordOutput,
   }));
@@ -4757,7 +4691,7 @@ export interface PrivateCloudsUpdateInput {
   };
 }
 export const PrivateCloudsUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -4872,7 +4806,7 @@ export interface PrivateCloudsUpdateOutput {
   };
 }
 export const PrivateCloudsUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4901,7 +4835,7 @@ export const PrivateCloudsUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PrivateCloudsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PrivateCloudsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: PrivateCloudsUpdateInput,
   outputSchema: PrivateCloudsUpdateOutput,
 }));
@@ -4913,7 +4847,7 @@ export interface ProvisionedNetworksGetInput {
   provisionedNetworkName: string;
 }
 export const ProvisionedNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -4941,7 +4875,7 @@ export interface ProvisionedNetworksGetOutput {
   };
 }
 export const ProvisionedNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4971,12 +4905,10 @@ export const ProvisionedNetworksGetOutput =
  * @param privateCloudName - Name of the private cloud
  * @param provisionedNetworkName - Name of the cloud link.
  */
-export const ProvisionedNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProvisionedNetworksGetInput,
-    outputSchema: ProvisionedNetworksGetOutput,
-  }),
-);
+export const ProvisionedNetworksGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProvisionedNetworksGetInput,
+  outputSchema: ProvisionedNetworksGetOutput,
+}));
 // Input Schema
 export interface ProvisionedNetworksListInput {
   subscriptionId: string;
@@ -4984,7 +4916,7 @@ export interface ProvisionedNetworksListInput {
   privateCloudName: string;
 }
 export const ProvisionedNetworksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -5014,7 +4946,7 @@ export interface ProvisionedNetworksListOutput {
   nextLink?: string;
 }
 export const ProvisionedNetworksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5058,12 +4990,10 @@ export const ProvisionedNetworksListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const ProvisionedNetworksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ProvisionedNetworksListInput,
-    outputSchema: ProvisionedNetworksListOutput,
-  }),
-);
+export const ProvisionedNetworksList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ProvisionedNetworksListInput,
+  outputSchema: ProvisionedNetworksListOutput,
+}));
 // Input Schema
 export interface PureStoragePoliciesCreateOrUpdateInput {
   subscriptionId: string;
@@ -5082,7 +5012,7 @@ export interface PureStoragePoliciesCreateOrUpdateInput {
   };
 }
 export const PureStoragePoliciesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -5125,7 +5055,7 @@ export interface PureStoragePoliciesCreateOrUpdateOutput {
   };
 }
 export const PureStoragePoliciesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5156,7 +5086,7 @@ export const PureStoragePoliciesCreateOrUpdateOutput =
  * @param storagePolicyName - Name of the storage policy.
  */
 export const PureStoragePoliciesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: PureStoragePoliciesCreateOrUpdateInput,
     outputSchema: PureStoragePoliciesCreateOrUpdateOutput,
   }));
@@ -5168,7 +5098,7 @@ export interface PureStoragePoliciesDeleteInput {
   storagePolicyName: string;
 }
 export const PureStoragePoliciesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -5184,7 +5114,7 @@ export const PureStoragePoliciesDeleteInput =
 // Output Schema
 export type PureStoragePoliciesDeleteOutput = void;
 export const PureStoragePoliciesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<PureStoragePoliciesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<PureStoragePoliciesDeleteOutput>;
 
 // The operation
 /**
@@ -5196,12 +5126,10 @@ export const PureStoragePoliciesDeleteOutput =
  * @param privateCloudName - Name of the private cloud
  * @param storagePolicyName - Name of the storage policy.
  */
-export const PureStoragePoliciesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PureStoragePoliciesDeleteInput,
-    outputSchema: PureStoragePoliciesDeleteOutput,
-  }),
-);
+export const PureStoragePoliciesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PureStoragePoliciesDeleteInput,
+  outputSchema: PureStoragePoliciesDeleteOutput,
+}));
 // Input Schema
 export interface PureStoragePoliciesGetInput {
   subscriptionId: string;
@@ -5210,7 +5138,7 @@ export interface PureStoragePoliciesGetInput {
   storagePolicyName: string;
 }
 export const PureStoragePoliciesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -5238,7 +5166,7 @@ export interface PureStoragePoliciesGetOutput {
   };
 }
 export const PureStoragePoliciesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5268,12 +5196,10 @@ export const PureStoragePoliciesGetOutput =
  * @param privateCloudName - Name of the private cloud
  * @param storagePolicyName - Name of the storage policy.
  */
-export const PureStoragePoliciesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PureStoragePoliciesGetInput,
-    outputSchema: PureStoragePoliciesGetOutput,
-  }),
-);
+export const PureStoragePoliciesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PureStoragePoliciesGetInput,
+  outputSchema: PureStoragePoliciesGetOutput,
+}));
 // Input Schema
 export interface PureStoragePoliciesListInput {
   subscriptionId: string;
@@ -5281,7 +5207,7 @@ export interface PureStoragePoliciesListInput {
   privateCloudName: string;
 }
 export const PureStoragePoliciesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -5311,7 +5237,7 @@ export interface PureStoragePoliciesListOutput {
   nextLink?: string;
 }
 export const PureStoragePoliciesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5355,12 +5281,10 @@ export const PureStoragePoliciesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const PureStoragePoliciesList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: PureStoragePoliciesListInput,
-    outputSchema: PureStoragePoliciesListOutput,
-  }),
-);
+export const PureStoragePoliciesList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: PureStoragePoliciesListInput,
+  outputSchema: PureStoragePoliciesListOutput,
+}));
 // Input Schema
 export interface ScriptCmdletsGetInput {
   subscriptionId: string;
@@ -5369,7 +5293,7 @@ export interface ScriptCmdletsGetInput {
   scriptPackageName: string;
   scriptCmdletName: string;
 }
-export const ScriptCmdletsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ScriptCmdletsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -5397,27 +5321,25 @@ export interface ScriptCmdletsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ScriptCmdletsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    systemData: Schema.optional(
-      Schema.Struct({
-        createdBy: Schema.optional(Schema.String),
-        createdByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        createdAt: Schema.optional(Schema.String),
-        lastModifiedBy: Schema.optional(Schema.String),
-        lastModifiedByType: Schema.optional(
-          Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
-        ),
-        lastModifiedAt: Schema.optional(Schema.String),
-      }),
-    ),
-  },
-) as unknown as Schema.Codec<ScriptCmdletsGetOutput>;
+export const ScriptCmdletsGetOutput = /*@__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  systemData: Schema.optional(
+    Schema.Struct({
+      createdBy: Schema.optional(Schema.String),
+      createdByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      createdAt: Schema.optional(Schema.String),
+      lastModifiedBy: Schema.optional(Schema.String),
+      lastModifiedByType: Schema.optional(
+        Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+      ),
+      lastModifiedAt: Schema.optional(Schema.String),
+    }),
+  ),
+}) as unknown as Schema.Codec<ScriptCmdletsGetOutput>;
 
 // The operation
 /**
@@ -5430,7 +5352,7 @@ export const ScriptCmdletsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param scriptPackageName - Name of the script package.
  * @param scriptCmdletName - Name of the script cmdlet.
  */
-export const ScriptCmdletsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScriptCmdletsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScriptCmdletsGetInput,
   outputSchema: ScriptCmdletsGetOutput,
 }));
@@ -5441,14 +5363,12 @@ export interface ScriptCmdletsListInput {
   privateCloudName: string;
   scriptPackageName: string;
 }
-export const ScriptCmdletsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    scriptPackageName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ScriptCmdletsListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  scriptPackageName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets",
@@ -5474,7 +5394,7 @@ export interface ScriptCmdletsListOutput {
   nextLink?: string;
 }
 export const ScriptCmdletsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5519,7 +5439,7 @@ export const ScriptCmdletsListOutput =
  * @param privateCloudName - Name of the private cloud
  * @param scriptPackageName - Name of the script package.
  */
-export const ScriptCmdletsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScriptCmdletsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScriptCmdletsListInput,
   outputSchema: ScriptCmdletsListOutput,
 }));
@@ -5562,7 +5482,7 @@ export interface ScriptExecutionsCreateOrUpdateInput {
   };
 }
 export const ScriptExecutionsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -5636,7 +5556,7 @@ export interface ScriptExecutionsCreateOrUpdateOutput {
   };
 }
 export const ScriptExecutionsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5667,7 +5587,7 @@ export const ScriptExecutionsCreateOrUpdateOutput =
  * @param scriptExecutionName - Name of the script cmdlet.
  */
 export const ScriptExecutionsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScriptExecutionsCreateOrUpdateInput,
     outputSchema: ScriptExecutionsCreateOrUpdateOutput,
   }));
@@ -5679,7 +5599,7 @@ export interface ScriptExecutionsDeleteInput {
   scriptExecutionName: string;
 }
 export const ScriptExecutionsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -5695,7 +5615,7 @@ export const ScriptExecutionsDeleteInput =
 // Output Schema
 export type ScriptExecutionsDeleteOutput = void;
 export const ScriptExecutionsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ScriptExecutionsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ScriptExecutionsDeleteOutput>;
 
 // The operation
 /**
@@ -5707,12 +5627,10 @@ export const ScriptExecutionsDeleteOutput =
  * @param privateCloudName - Name of the private cloud
  * @param scriptExecutionName - Name of the script cmdlet.
  */
-export const ScriptExecutionsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScriptExecutionsDeleteInput,
-    outputSchema: ScriptExecutionsDeleteOutput,
-  }),
-);
+export const ScriptExecutionsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScriptExecutionsDeleteInput,
+  outputSchema: ScriptExecutionsDeleteOutput,
+}));
 // Input Schema
 export interface ScriptExecutionsGetInput {
   subscriptionId: string;
@@ -5721,7 +5639,7 @@ export interface ScriptExecutionsGetInput {
   scriptExecutionName: string;
 }
 export const ScriptExecutionsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -5749,7 +5667,7 @@ export interface ScriptExecutionsGetOutput {
   };
 }
 export const ScriptExecutionsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5779,7 +5697,7 @@ export const ScriptExecutionsGetOutput =
  * @param privateCloudName - Name of the private cloud
  * @param scriptExecutionName - Name of the script cmdlet.
  */
-export const ScriptExecutionsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScriptExecutionsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScriptExecutionsGetInput,
   outputSchema: ScriptExecutionsGetOutput,
 }));
@@ -5791,7 +5709,7 @@ export interface ScriptExecutionsGetExecutionLogsInput {
   scriptExecutionName: string;
 }
 export const ScriptExecutionsGetExecutionLogsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -5819,7 +5737,7 @@ export interface ScriptExecutionsGetExecutionLogsOutput {
   };
 }
 export const ScriptExecutionsGetExecutionLogsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5850,7 +5768,7 @@ export const ScriptExecutionsGetExecutionLogsOutput =
  * @param scriptExecutionName - Name of the script cmdlet.
  */
 export const ScriptExecutionsGetExecutionLogs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ScriptExecutionsGetExecutionLogsInput,
     outputSchema: ScriptExecutionsGetExecutionLogsOutput,
   }));
@@ -5861,7 +5779,7 @@ export interface ScriptExecutionsListInput {
   privateCloudName: string;
 }
 export const ScriptExecutionsListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -5891,7 +5809,7 @@ export interface ScriptExecutionsListOutput {
   nextLink?: string;
 }
 export const ScriptExecutionsListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5935,12 +5853,10 @@ export const ScriptExecutionsListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const ScriptExecutionsList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ScriptExecutionsListInput,
-    outputSchema: ScriptExecutionsListOutput,
-  }),
-);
+export const ScriptExecutionsList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ScriptExecutionsListInput,
+  outputSchema: ScriptExecutionsListOutput,
+}));
 // Input Schema
 export interface ScriptPackagesGetInput {
   subscriptionId: string;
@@ -5948,14 +5864,12 @@ export interface ScriptPackagesGetInput {
   privateCloudName: string;
   scriptPackageName: string;
 }
-export const ScriptPackagesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    privateCloudName: Schema.String.pipe(T.PathParam()),
-    scriptPackageName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ScriptPackagesGetInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  privateCloudName: Schema.String.pipe(T.PathParam()),
+  scriptPackageName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}",
@@ -5978,7 +5892,7 @@ export interface ScriptPackagesGetOutput {
   };
 }
 export const ScriptPackagesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6008,7 +5922,7 @@ export const ScriptPackagesGetOutput =
  * @param privateCloudName - Name of the private cloud
  * @param scriptPackageName - Name of the script package.
  */
-export const ScriptPackagesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScriptPackagesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScriptPackagesGetInput,
   outputSchema: ScriptPackagesGetOutput,
 }));
@@ -6019,7 +5933,7 @@ export interface ScriptPackagesListInput {
   privateCloudName: string;
 }
 export const ScriptPackagesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -6049,7 +5963,7 @@ export interface ScriptPackagesListOutput {
   nextLink?: string;
 }
 export const ScriptPackagesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6093,7 +6007,7 @@ export const ScriptPackagesListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const ScriptPackagesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ScriptPackagesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: ScriptPackagesListInput,
   outputSchema: ScriptPackagesListOutput,
 }));
@@ -6104,7 +6018,7 @@ export interface ServiceComponentsCheckAvailabilityInput {
   serviceComponentName: string;
 }
 export const ServiceComponentsCheckAvailabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     serviceComponentName: Schema.String.pipe(T.PathParam()),
@@ -6119,7 +6033,7 @@ export const ServiceComponentsCheckAvailabilityInput =
 // Output Schema
 export type ServiceComponentsCheckAvailabilityOutput = void;
 export const ServiceComponentsCheckAvailabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceComponentsCheckAvailabilityOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ServiceComponentsCheckAvailabilityOutput>;
 
 // The operation
 /**
@@ -6131,7 +6045,7 @@ export const ServiceComponentsCheckAvailabilityOutput =
  * @param serviceComponentName - A service component
  */
 export const ServiceComponentsCheckAvailability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceComponentsCheckAvailabilityInput,
     outputSchema: ServiceComponentsCheckAvailabilityOutput,
   }));
@@ -6139,7 +6053,7 @@ export const ServiceComponentsCheckAvailability =
 export interface SkusListInput {
   subscriptionId: string;
 }
-export const SkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
 }).pipe(
   T.Http({
@@ -6176,7 +6090,7 @@ export interface SkusListOutput {
   }[];
   nextLink?: string;
 }
-export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SkusListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       resourceType: Schema.Literals([
@@ -6238,7 +6152,7 @@ export const SkusListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription. The value must be an UUID.
  */
-export const SkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SkusListInput,
   outputSchema: SkusListOutput,
 }));
@@ -6251,7 +6165,7 @@ export interface VirtualMachinesGetInput {
   virtualMachineId: string;
 }
 export const VirtualMachinesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -6280,7 +6194,7 @@ export interface VirtualMachinesGetOutput {
   };
 }
 export const VirtualMachinesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6311,7 +6225,7 @@ export const VirtualMachinesGetOutput =
  * @param clusterName - Name of the cluster
  * @param virtualMachineId - ID of the virtual machine.
  */
-export const VirtualMachinesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachinesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesGetInput,
   outputSchema: VirtualMachinesGetOutput,
 }));
@@ -6323,7 +6237,7 @@ export interface VirtualMachinesListInput {
   clusterName: string;
 }
 export const VirtualMachinesListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -6354,7 +6268,7 @@ export interface VirtualMachinesListOutput {
   nextLink?: string;
 }
 export const VirtualMachinesListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6399,7 +6313,7 @@ export const VirtualMachinesListOutput =
  * @param privateCloudName - Name of the private cloud
  * @param clusterName - Name of the cluster
  */
-export const VirtualMachinesList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const VirtualMachinesList = /*@__PURE__*/ API.make(() => ({
   inputSchema: VirtualMachinesListInput,
   outputSchema: VirtualMachinesListOutput,
 }));
@@ -6413,7 +6327,7 @@ export interface VirtualMachinesRestrictMovementInput {
   restrictMovement?: "Enabled" | "Disabled";
 }
 export const VirtualMachinesRestrictMovementInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -6431,7 +6345,7 @@ export const VirtualMachinesRestrictMovementInput =
 // Output Schema
 export type VirtualMachinesRestrictMovementOutput = void;
 export const VirtualMachinesRestrictMovementOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesRestrictMovementOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<VirtualMachinesRestrictMovementOutput>;
 
 // The operation
 /**
@@ -6445,7 +6359,7 @@ export const VirtualMachinesRestrictMovementOutput =
  * @param virtualMachineId - ID of the virtual machine.
  */
 export const VirtualMachinesRestrictMovement =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: VirtualMachinesRestrictMovementInput,
     outputSchema: VirtualMachinesRestrictMovementOutput,
   }));
@@ -6470,7 +6384,7 @@ export interface WorkloadNetworksCreateDhcpInput {
   };
 }
 export const WorkloadNetworksCreateDhcpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -6516,7 +6430,7 @@ export interface WorkloadNetworksCreateDhcpOutput {
   };
 }
 export const WorkloadNetworksCreateDhcpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6546,12 +6460,10 @@ export const WorkloadNetworksCreateDhcpOutput =
  * @param privateCloudName - Name of the private cloud
  * @param dhcpId - The ID of the DHCP configuration
  */
-export const WorkloadNetworksCreateDhcp = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksCreateDhcpInput,
-    outputSchema: WorkloadNetworksCreateDhcpOutput,
-  }),
-);
+export const WorkloadNetworksCreateDhcp = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksCreateDhcpInput,
+  outputSchema: WorkloadNetworksCreateDhcpOutput,
+}));
 // Input Schema
 export interface WorkloadNetworksCreateDnsServiceInput {
   subscriptionId: string;
@@ -6576,7 +6488,7 @@ export interface WorkloadNetworksCreateDnsServiceInput {
   };
 }
 export const WorkloadNetworksCreateDnsServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -6627,7 +6539,7 @@ export interface WorkloadNetworksCreateDnsServiceOutput {
   };
 }
 export const WorkloadNetworksCreateDnsServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6658,7 +6570,7 @@ export const WorkloadNetworksCreateDnsServiceOutput =
  * @param dnsServiceId - ID of the DNS service.
  */
 export const WorkloadNetworksCreateDnsService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksCreateDnsServiceInput,
     outputSchema: WorkloadNetworksCreateDnsServiceOutput,
   }));
@@ -6685,7 +6597,7 @@ export interface WorkloadNetworksCreateDnsZoneInput {
   };
 }
 export const WorkloadNetworksCreateDnsZoneInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -6733,7 +6645,7 @@ export interface WorkloadNetworksCreateDnsZoneOutput {
   };
 }
 export const WorkloadNetworksCreateDnsZoneOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6764,7 +6676,7 @@ export const WorkloadNetworksCreateDnsZoneOutput =
  * @param dnsZoneId - ID of the DNS zone.
  */
 export const WorkloadNetworksCreateDnsZone =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksCreateDnsZoneInput,
     outputSchema: WorkloadNetworksCreateDnsZoneOutput,
   }));
@@ -6791,7 +6703,7 @@ export interface WorkloadNetworksCreatePortMirroringInput {
   };
 }
 export const WorkloadNetworksCreatePortMirroringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -6841,7 +6753,7 @@ export interface WorkloadNetworksCreatePortMirroringOutput {
   };
 }
 export const WorkloadNetworksCreatePortMirroringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6872,7 +6784,7 @@ export const WorkloadNetworksCreatePortMirroringOutput =
  * @param portMirroringId - ID of the NSX port mirroring profile.
  */
 export const WorkloadNetworksCreatePortMirroring =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksCreatePortMirroringInput,
     outputSchema: WorkloadNetworksCreatePortMirroringOutput,
   }));
@@ -6896,7 +6808,7 @@ export interface WorkloadNetworksCreatePublicIPInput {
   };
 }
 export const WorkloadNetworksCreatePublicIPInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -6941,7 +6853,7 @@ export interface WorkloadNetworksCreatePublicIPOutput {
   };
 }
 export const WorkloadNetworksCreatePublicIPOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -6972,7 +6884,7 @@ export const WorkloadNetworksCreatePublicIPOutput =
  * @param publicIPId - ID of the DNS zone.
  */
 export const WorkloadNetworksCreatePublicIP =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksCreatePublicIPInput,
     outputSchema: WorkloadNetworksCreatePublicIPOutput,
   }));
@@ -6999,7 +6911,7 @@ export interface WorkloadNetworksCreateSegmentsInput {
   };
 }
 export const WorkloadNetworksCreateSegmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -7058,7 +6970,7 @@ export interface WorkloadNetworksCreateSegmentsOutput {
   };
 }
 export const WorkloadNetworksCreateSegmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7089,7 +7001,7 @@ export const WorkloadNetworksCreateSegmentsOutput =
  * @param segmentId - The ID of the NSX Segment
  */
 export const WorkloadNetworksCreateSegments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksCreateSegmentsInput,
     outputSchema: WorkloadNetworksCreateSegmentsOutput,
   }));
@@ -7114,7 +7026,7 @@ export interface WorkloadNetworksCreateVMGroupInput {
   };
 }
 export const WorkloadNetworksCreateVMGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -7160,7 +7072,7 @@ export interface WorkloadNetworksCreateVMGroupOutput {
   };
 }
 export const WorkloadNetworksCreateVMGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7191,7 +7103,7 @@ export const WorkloadNetworksCreateVMGroupOutput =
  * @param vmGroupId - ID of the VM group.
  */
 export const WorkloadNetworksCreateVMGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksCreateVMGroupInput,
     outputSchema: WorkloadNetworksCreateVMGroupOutput,
   }));
@@ -7203,7 +7115,7 @@ export interface WorkloadNetworksDeleteDhcpInput {
   dhcpId: string;
 }
 export const WorkloadNetworksDeleteDhcpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -7219,7 +7131,7 @@ export const WorkloadNetworksDeleteDhcpInput =
 // Output Schema
 export type WorkloadNetworksDeleteDhcpOutput = void;
 export const WorkloadNetworksDeleteDhcpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkloadNetworksDeleteDhcpOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkloadNetworksDeleteDhcpOutput>;
 
 // The operation
 /**
@@ -7231,12 +7143,10 @@ export const WorkloadNetworksDeleteDhcpOutput =
  * @param privateCloudName - Name of the private cloud
  * @param dhcpId - The ID of the DHCP configuration
  */
-export const WorkloadNetworksDeleteDhcp = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksDeleteDhcpInput,
-    outputSchema: WorkloadNetworksDeleteDhcpOutput,
-  }),
-);
+export const WorkloadNetworksDeleteDhcp = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksDeleteDhcpInput,
+  outputSchema: WorkloadNetworksDeleteDhcpOutput,
+}));
 // Input Schema
 export interface WorkloadNetworksDeleteDnsServiceInput {
   subscriptionId: string;
@@ -7245,7 +7155,7 @@ export interface WorkloadNetworksDeleteDnsServiceInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksDeleteDnsServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsServiceId: Schema.String.pipe(T.PathParam()),
@@ -7261,7 +7171,7 @@ export const WorkloadNetworksDeleteDnsServiceInput =
 // Output Schema
 export type WorkloadNetworksDeleteDnsServiceOutput = void;
 export const WorkloadNetworksDeleteDnsServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkloadNetworksDeleteDnsServiceOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkloadNetworksDeleteDnsServiceOutput>;
 
 // The operation
 /**
@@ -7274,7 +7184,7 @@ export const WorkloadNetworksDeleteDnsServiceOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksDeleteDnsService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksDeleteDnsServiceInput,
     outputSchema: WorkloadNetworksDeleteDnsServiceOutput,
   }));
@@ -7286,7 +7196,7 @@ export interface WorkloadNetworksDeleteDnsZoneInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksDeleteDnsZoneInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dnsZoneId: Schema.String.pipe(T.PathParam()),
@@ -7302,7 +7212,7 @@ export const WorkloadNetworksDeleteDnsZoneInput =
 // Output Schema
 export type WorkloadNetworksDeleteDnsZoneOutput = void;
 export const WorkloadNetworksDeleteDnsZoneOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkloadNetworksDeleteDnsZoneOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkloadNetworksDeleteDnsZoneOutput>;
 
 // The operation
 /**
@@ -7315,7 +7225,7 @@ export const WorkloadNetworksDeleteDnsZoneOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksDeleteDnsZone =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksDeleteDnsZoneInput,
     outputSchema: WorkloadNetworksDeleteDnsZoneOutput,
   }));
@@ -7327,7 +7237,7 @@ export interface WorkloadNetworksDeletePortMirroringInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksDeletePortMirroringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     portMirroringId: Schema.String.pipe(T.PathParam()),
@@ -7343,7 +7253,7 @@ export const WorkloadNetworksDeletePortMirroringInput =
 // Output Schema
 export type WorkloadNetworksDeletePortMirroringOutput = void;
 export const WorkloadNetworksDeletePortMirroringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkloadNetworksDeletePortMirroringOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkloadNetworksDeletePortMirroringOutput>;
 
 // The operation
 /**
@@ -7356,7 +7266,7 @@ export const WorkloadNetworksDeletePortMirroringOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksDeletePortMirroring =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksDeletePortMirroringInput,
     outputSchema: WorkloadNetworksDeletePortMirroringOutput,
   }));
@@ -7368,7 +7278,7 @@ export interface WorkloadNetworksDeletePublicIPInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksDeletePublicIPInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     publicIPId: Schema.String.pipe(T.PathParam()),
@@ -7384,7 +7294,7 @@ export const WorkloadNetworksDeletePublicIPInput =
 // Output Schema
 export type WorkloadNetworksDeletePublicIPOutput = void;
 export const WorkloadNetworksDeletePublicIPOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkloadNetworksDeletePublicIPOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkloadNetworksDeletePublicIPOutput>;
 
 // The operation
 /**
@@ -7397,7 +7307,7 @@ export const WorkloadNetworksDeletePublicIPOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksDeletePublicIP =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksDeletePublicIPInput,
     outputSchema: WorkloadNetworksDeletePublicIPOutput,
   }));
@@ -7409,7 +7319,7 @@ export interface WorkloadNetworksDeleteSegmentInput {
   segmentId: string;
 }
 export const WorkloadNetworksDeleteSegmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -7425,7 +7335,7 @@ export const WorkloadNetworksDeleteSegmentInput =
 // Output Schema
 export type WorkloadNetworksDeleteSegmentOutput = void;
 export const WorkloadNetworksDeleteSegmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkloadNetworksDeleteSegmentOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkloadNetworksDeleteSegmentOutput>;
 
 // The operation
 /**
@@ -7438,7 +7348,7 @@ export const WorkloadNetworksDeleteSegmentOutput =
  * @param segmentId - The ID of the NSX Segment
  */
 export const WorkloadNetworksDeleteSegment =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksDeleteSegmentInput,
     outputSchema: WorkloadNetworksDeleteSegmentOutput,
   }));
@@ -7450,7 +7360,7 @@ export interface WorkloadNetworksDeleteVMGroupInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksDeleteVMGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     vmGroupId: Schema.String.pipe(T.PathParam()),
@@ -7466,7 +7376,7 @@ export const WorkloadNetworksDeleteVMGroupInput =
 // Output Schema
 export type WorkloadNetworksDeleteVMGroupOutput = void;
 export const WorkloadNetworksDeleteVMGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkloadNetworksDeleteVMGroupOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<WorkloadNetworksDeleteVMGroupOutput>;
 
 // The operation
 /**
@@ -7479,7 +7389,7 @@ export const WorkloadNetworksDeleteVMGroupOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksDeleteVMGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksDeleteVMGroupInput,
     outputSchema: WorkloadNetworksDeleteVMGroupOutput,
   }));
@@ -7490,7 +7400,7 @@ export interface WorkloadNetworksGetInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -7517,7 +7427,7 @@ export interface WorkloadNetworksGetOutput {
   };
 }
 export const WorkloadNetworksGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7546,7 +7456,7 @@ export const WorkloadNetworksGetOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const WorkloadNetworksGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: WorkloadNetworksGetInput,
   outputSchema: WorkloadNetworksGetOutput,
 }));
@@ -7558,7 +7468,7 @@ export interface WorkloadNetworksGetDhcpInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksGetDhcpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     dhcpId: Schema.String.pipe(T.PathParam()),
@@ -7586,7 +7496,7 @@ export interface WorkloadNetworksGetDhcpOutput {
   };
 }
 export const WorkloadNetworksGetDhcpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7616,12 +7526,10 @@ export const WorkloadNetworksGetDhcpOutput =
  * @param dhcpId - The ID of the DHCP configuration
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksGetDhcp = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksGetDhcpInput,
-    outputSchema: WorkloadNetworksGetDhcpOutput,
-  }),
-);
+export const WorkloadNetworksGetDhcp = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetDhcpInput,
+  outputSchema: WorkloadNetworksGetDhcpOutput,
+}));
 // Input Schema
 export interface WorkloadNetworksGetDnsServiceInput {
   subscriptionId: string;
@@ -7630,7 +7538,7 @@ export interface WorkloadNetworksGetDnsServiceInput {
   dnsServiceId: string;
 }
 export const WorkloadNetworksGetDnsServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -7658,7 +7566,7 @@ export interface WorkloadNetworksGetDnsServiceOutput {
   };
 }
 export const WorkloadNetworksGetDnsServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7689,7 +7597,7 @@ export const WorkloadNetworksGetDnsServiceOutput =
  * @param dnsServiceId - ID of the DNS service.
  */
 export const WorkloadNetworksGetDnsService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksGetDnsServiceInput,
     outputSchema: WorkloadNetworksGetDnsServiceOutput,
   }));
@@ -7701,7 +7609,7 @@ export interface WorkloadNetworksGetDnsZoneInput {
   dnsZoneId: string;
 }
 export const WorkloadNetworksGetDnsZoneInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -7729,7 +7637,7 @@ export interface WorkloadNetworksGetDnsZoneOutput {
   };
 }
 export const WorkloadNetworksGetDnsZoneOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7759,12 +7667,10 @@ export const WorkloadNetworksGetDnsZoneOutput =
  * @param privateCloudName - Name of the private cloud
  * @param dnsZoneId - ID of the DNS zone.
  */
-export const WorkloadNetworksGetDnsZone = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksGetDnsZoneInput,
-    outputSchema: WorkloadNetworksGetDnsZoneOutput,
-  }),
-);
+export const WorkloadNetworksGetDnsZone = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetDnsZoneInput,
+  outputSchema: WorkloadNetworksGetDnsZoneOutput,
+}));
 // Input Schema
 export interface WorkloadNetworksGetGatewayInput {
   subscriptionId: string;
@@ -7773,7 +7679,7 @@ export interface WorkloadNetworksGetGatewayInput {
   gatewayId: string;
 }
 export const WorkloadNetworksGetGatewayInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -7801,7 +7707,7 @@ export interface WorkloadNetworksGetGatewayOutput {
   };
 }
 export const WorkloadNetworksGetGatewayOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7831,12 +7737,10 @@ export const WorkloadNetworksGetGatewayOutput =
  * @param privateCloudName - Name of the private cloud
  * @param gatewayId - The ID of the NSX Gateway
  */
-export const WorkloadNetworksGetGateway = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksGetGatewayInput,
-    outputSchema: WorkloadNetworksGetGatewayOutput,
-  }),
-);
+export const WorkloadNetworksGetGateway = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetGatewayInput,
+  outputSchema: WorkloadNetworksGetGatewayOutput,
+}));
 // Input Schema
 export interface WorkloadNetworksGetPortMirroringInput {
   subscriptionId: string;
@@ -7845,7 +7749,7 @@ export interface WorkloadNetworksGetPortMirroringInput {
   portMirroringId: string;
 }
 export const WorkloadNetworksGetPortMirroringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -7873,7 +7777,7 @@ export interface WorkloadNetworksGetPortMirroringOutput {
   };
 }
 export const WorkloadNetworksGetPortMirroringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7904,7 +7808,7 @@ export const WorkloadNetworksGetPortMirroringOutput =
  * @param portMirroringId - ID of the NSX port mirroring profile.
  */
 export const WorkloadNetworksGetPortMirroring =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksGetPortMirroringInput,
     outputSchema: WorkloadNetworksGetPortMirroringOutput,
   }));
@@ -7916,7 +7820,7 @@ export interface WorkloadNetworksGetPublicIPInput {
   publicIPId: string;
 }
 export const WorkloadNetworksGetPublicIPInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -7944,7 +7848,7 @@ export interface WorkloadNetworksGetPublicIPOutput {
   };
 }
 export const WorkloadNetworksGetPublicIPOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -7974,12 +7878,10 @@ export const WorkloadNetworksGetPublicIPOutput =
  * @param privateCloudName - Name of the private cloud
  * @param publicIPId - ID of the DNS zone.
  */
-export const WorkloadNetworksGetPublicIP = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksGetPublicIPInput,
-    outputSchema: WorkloadNetworksGetPublicIPOutput,
-  }),
-);
+export const WorkloadNetworksGetPublicIP = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetPublicIPInput,
+  outputSchema: WorkloadNetworksGetPublicIPOutput,
+}));
 // Input Schema
 export interface WorkloadNetworksGetSegmentInput {
   subscriptionId: string;
@@ -7988,7 +7890,7 @@ export interface WorkloadNetworksGetSegmentInput {
   segmentId: string;
 }
 export const WorkloadNetworksGetSegmentInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -8016,7 +7918,7 @@ export interface WorkloadNetworksGetSegmentOutput {
   };
 }
 export const WorkloadNetworksGetSegmentOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8046,12 +7948,10 @@ export const WorkloadNetworksGetSegmentOutput =
  * @param privateCloudName - Name of the private cloud
  * @param segmentId - The ID of the NSX Segment
  */
-export const WorkloadNetworksGetSegment = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksGetSegmentInput,
-    outputSchema: WorkloadNetworksGetSegmentOutput,
-  }),
-);
+export const WorkloadNetworksGetSegment = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetSegmentInput,
+  outputSchema: WorkloadNetworksGetSegmentOutput,
+}));
 // Input Schema
 export interface WorkloadNetworksGetVirtualMachineInput {
   subscriptionId: string;
@@ -8060,7 +7960,7 @@ export interface WorkloadNetworksGetVirtualMachineInput {
   virtualMachineId: string;
 }
 export const WorkloadNetworksGetVirtualMachineInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -8088,7 +7988,7 @@ export interface WorkloadNetworksGetVirtualMachineOutput {
   };
 }
 export const WorkloadNetworksGetVirtualMachineOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8119,7 +8019,7 @@ export const WorkloadNetworksGetVirtualMachineOutput =
  * @param virtualMachineId - ID of the virtual machine.
  */
 export const WorkloadNetworksGetVirtualMachine =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksGetVirtualMachineInput,
     outputSchema: WorkloadNetworksGetVirtualMachineOutput,
   }));
@@ -8131,7 +8031,7 @@ export interface WorkloadNetworksGetVMGroupInput {
   vmGroupId: string;
 }
 export const WorkloadNetworksGetVMGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -8159,7 +8059,7 @@ export interface WorkloadNetworksGetVMGroupOutput {
   };
 }
 export const WorkloadNetworksGetVMGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -8189,12 +8089,10 @@ export const WorkloadNetworksGetVMGroupOutput =
  * @param privateCloudName - Name of the private cloud
  * @param vmGroupId - ID of the VM group.
  */
-export const WorkloadNetworksGetVMGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksGetVMGroupInput,
-    outputSchema: WorkloadNetworksGetVMGroupOutput,
-  }),
-);
+export const WorkloadNetworksGetVMGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksGetVMGroupInput,
+  outputSchema: WorkloadNetworksGetVMGroupOutput,
+}));
 // Input Schema
 export interface WorkloadNetworksListInput {
   subscriptionId: string;
@@ -8202,7 +8100,7 @@ export interface WorkloadNetworksListInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -8232,7 +8130,7 @@ export interface WorkloadNetworksListOutput {
   nextLink?: string;
 }
 export const WorkloadNetworksListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8276,12 +8174,10 @@ export const WorkloadNetworksListOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksListInput,
-    outputSchema: WorkloadNetworksListOutput,
-  }),
-);
+export const WorkloadNetworksList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksListInput,
+  outputSchema: WorkloadNetworksListOutput,
+}));
 // Input Schema
 export interface WorkloadNetworksListDhcpInput {
   subscriptionId: string;
@@ -8289,7 +8185,7 @@ export interface WorkloadNetworksListDhcpInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksListDhcpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -8319,7 +8215,7 @@ export interface WorkloadNetworksListDhcpOutput {
   nextLink?: string;
 }
 export const WorkloadNetworksListDhcpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8363,12 +8259,10 @@ export const WorkloadNetworksListDhcpOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param privateCloudName - Name of the private cloud
  */
-export const WorkloadNetworksListDhcp = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksListDhcpInput,
-    outputSchema: WorkloadNetworksListDhcpOutput,
-  }),
-);
+export const WorkloadNetworksListDhcp = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksListDhcpInput,
+  outputSchema: WorkloadNetworksListDhcpOutput,
+}));
 // Input Schema
 export interface WorkloadNetworksListDnsServicesInput {
   subscriptionId: string;
@@ -8376,7 +8270,7 @@ export interface WorkloadNetworksListDnsServicesInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksListDnsServicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -8406,7 +8300,7 @@ export interface WorkloadNetworksListDnsServicesOutput {
   nextLink?: string;
 }
 export const WorkloadNetworksListDnsServicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8451,7 +8345,7 @@ export const WorkloadNetworksListDnsServicesOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksListDnsServices =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksListDnsServicesInput,
     outputSchema: WorkloadNetworksListDnsServicesOutput,
   }));
@@ -8462,7 +8356,7 @@ export interface WorkloadNetworksListDnsZonesInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksListDnsZonesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -8492,7 +8386,7 @@ export interface WorkloadNetworksListDnsZonesOutput {
   nextLink?: string;
 }
 export const WorkloadNetworksListDnsZonesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8537,7 +8431,7 @@ export const WorkloadNetworksListDnsZonesOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksListDnsZones =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksListDnsZonesInput,
     outputSchema: WorkloadNetworksListDnsZonesOutput,
   }));
@@ -8548,7 +8442,7 @@ export interface WorkloadNetworksListGatewaysInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksListGatewaysInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -8578,7 +8472,7 @@ export interface WorkloadNetworksListGatewaysOutput {
   nextLink?: string;
 }
 export const WorkloadNetworksListGatewaysOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8623,7 +8517,7 @@ export const WorkloadNetworksListGatewaysOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksListGateways =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksListGatewaysInput,
     outputSchema: WorkloadNetworksListGatewaysOutput,
   }));
@@ -8634,7 +8528,7 @@ export interface WorkloadNetworksListPortMirroringInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksListPortMirroringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -8664,7 +8558,7 @@ export interface WorkloadNetworksListPortMirroringOutput {
   nextLink?: string;
 }
 export const WorkloadNetworksListPortMirroringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8709,7 +8603,7 @@ export const WorkloadNetworksListPortMirroringOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksListPortMirroring =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksListPortMirroringInput,
     outputSchema: WorkloadNetworksListPortMirroringOutput,
   }));
@@ -8720,7 +8614,7 @@ export interface WorkloadNetworksListPublicIPsInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksListPublicIPsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -8750,7 +8644,7 @@ export interface WorkloadNetworksListPublicIPsOutput {
   nextLink?: string;
 }
 export const WorkloadNetworksListPublicIPsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8795,7 +8689,7 @@ export const WorkloadNetworksListPublicIPsOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksListPublicIPs =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksListPublicIPsInput,
     outputSchema: WorkloadNetworksListPublicIPsOutput,
   }));
@@ -8806,7 +8700,7 @@ export interface WorkloadNetworksListSegmentsInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksListSegmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -8836,7 +8730,7 @@ export interface WorkloadNetworksListSegmentsOutput {
   nextLink?: string;
 }
 export const WorkloadNetworksListSegmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8881,7 +8775,7 @@ export const WorkloadNetworksListSegmentsOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksListSegments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksListSegmentsInput,
     outputSchema: WorkloadNetworksListSegmentsOutput,
   }));
@@ -8892,7 +8786,7 @@ export interface WorkloadNetworksListVirtualMachinesInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksListVirtualMachinesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -8922,7 +8816,7 @@ export interface WorkloadNetworksListVirtualMachinesOutput {
   nextLink?: string;
 }
 export const WorkloadNetworksListVirtualMachinesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -8967,7 +8861,7 @@ export const WorkloadNetworksListVirtualMachinesOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksListVirtualMachines =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksListVirtualMachinesInput,
     outputSchema: WorkloadNetworksListVirtualMachinesOutput,
   }));
@@ -8978,7 +8872,7 @@ export interface WorkloadNetworksListVMGroupsInput {
   privateCloudName: string;
 }
 export const WorkloadNetworksListVMGroupsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -9008,7 +8902,7 @@ export interface WorkloadNetworksListVMGroupsOutput {
   nextLink?: string;
 }
 export const WorkloadNetworksListVMGroupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -9053,7 +8947,7 @@ export const WorkloadNetworksListVMGroupsOutput =
  * @param privateCloudName - Name of the private cloud
  */
 export const WorkloadNetworksListVMGroups =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksListVMGroupsInput,
     outputSchema: WorkloadNetworksListVMGroupsOutput,
   }));
@@ -9078,7 +8972,7 @@ export interface WorkloadNetworksUpdateDhcpInput {
   };
 }
 export const WorkloadNetworksUpdateDhcpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -9124,7 +9018,7 @@ export interface WorkloadNetworksUpdateDhcpOutput {
   };
 }
 export const WorkloadNetworksUpdateDhcpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9154,12 +9048,10 @@ export const WorkloadNetworksUpdateDhcpOutput =
  * @param privateCloudName - Name of the private cloud
  * @param dhcpId - The ID of the DHCP configuration
  */
-export const WorkloadNetworksUpdateDhcp = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: WorkloadNetworksUpdateDhcpInput,
-    outputSchema: WorkloadNetworksUpdateDhcpOutput,
-  }),
-);
+export const WorkloadNetworksUpdateDhcp = /*@__PURE__*/ API.make(() => ({
+  inputSchema: WorkloadNetworksUpdateDhcpInput,
+  outputSchema: WorkloadNetworksUpdateDhcpOutput,
+}));
 // Input Schema
 export interface WorkloadNetworksUpdateDnsServiceInput {
   subscriptionId: string;
@@ -9184,7 +9076,7 @@ export interface WorkloadNetworksUpdateDnsServiceInput {
   };
 }
 export const WorkloadNetworksUpdateDnsServiceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -9235,7 +9127,7 @@ export interface WorkloadNetworksUpdateDnsServiceOutput {
   };
 }
 export const WorkloadNetworksUpdateDnsServiceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9266,7 +9158,7 @@ export const WorkloadNetworksUpdateDnsServiceOutput =
  * @param dnsServiceId - ID of the DNS service.
  */
 export const WorkloadNetworksUpdateDnsService =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksUpdateDnsServiceInput,
     outputSchema: WorkloadNetworksUpdateDnsServiceOutput,
   }));
@@ -9293,7 +9185,7 @@ export interface WorkloadNetworksUpdateDnsZoneInput {
   };
 }
 export const WorkloadNetworksUpdateDnsZoneInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -9341,7 +9233,7 @@ export interface WorkloadNetworksUpdateDnsZoneOutput {
   };
 }
 export const WorkloadNetworksUpdateDnsZoneOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9372,7 +9264,7 @@ export const WorkloadNetworksUpdateDnsZoneOutput =
  * @param dnsZoneId - ID of the DNS zone.
  */
 export const WorkloadNetworksUpdateDnsZone =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksUpdateDnsZoneInput,
     outputSchema: WorkloadNetworksUpdateDnsZoneOutput,
   }));
@@ -9399,7 +9291,7 @@ export interface WorkloadNetworksUpdatePortMirroringInput {
   };
 }
 export const WorkloadNetworksUpdatePortMirroringInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -9449,7 +9341,7 @@ export interface WorkloadNetworksUpdatePortMirroringOutput {
   };
 }
 export const WorkloadNetworksUpdatePortMirroringOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9480,7 +9372,7 @@ export const WorkloadNetworksUpdatePortMirroringOutput =
  * @param portMirroringId - ID of the NSX port mirroring profile.
  */
 export const WorkloadNetworksUpdatePortMirroring =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksUpdatePortMirroringInput,
     outputSchema: WorkloadNetworksUpdatePortMirroringOutput,
   }));
@@ -9507,7 +9399,7 @@ export interface WorkloadNetworksUpdateSegmentsInput {
   };
 }
 export const WorkloadNetworksUpdateSegmentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -9566,7 +9458,7 @@ export interface WorkloadNetworksUpdateSegmentsOutput {
   };
 }
 export const WorkloadNetworksUpdateSegmentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9597,7 +9489,7 @@ export const WorkloadNetworksUpdateSegmentsOutput =
  * @param segmentId - The ID of the NSX Segment
  */
 export const WorkloadNetworksUpdateSegments =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksUpdateSegmentsInput,
     outputSchema: WorkloadNetworksUpdateSegmentsOutput,
   }));
@@ -9622,7 +9514,7 @@ export interface WorkloadNetworksUpdateVMGroupInput {
   };
 }
 export const WorkloadNetworksUpdateVMGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     privateCloudName: Schema.String.pipe(T.PathParam()),
@@ -9668,7 +9560,7 @@ export interface WorkloadNetworksUpdateVMGroupOutput {
   };
 }
 export const WorkloadNetworksUpdateVMGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -9699,7 +9591,7 @@ export const WorkloadNetworksUpdateVMGroupOutput =
  * @param vmGroupId - ID of the VM group.
  */
 export const WorkloadNetworksUpdateVMGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: WorkloadNetworksUpdateVMGroupInput,
     outputSchema: WorkloadNetworksUpdateVMGroupOutput,
   }));

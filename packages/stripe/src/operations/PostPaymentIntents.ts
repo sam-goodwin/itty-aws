@@ -903,7 +903,7 @@ export interface PostPaymentIntentsInput {
   use_stripe_sdk?: boolean;
 }
 export const PostPaymentIntentsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_details: Schema.optional(
       Schema.Struct({
@@ -2794,7 +2794,7 @@ export interface PostPaymentIntentsOutput {
   transfer_group: string | null;
 }
 export const PostPaymentIntentsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
@@ -3187,7 +3187,7 @@ export const PostPaymentIntentsOutput =
  * available in the <a href="/docs/api/payment_intents/confirm">confirm API</a> when you supply
  * <code>confirm=true</code>.</p>
  */
-export const PostPaymentIntents = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostPaymentIntents = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostPaymentIntentsInput,
   outputSchema: PostPaymentIntentsOutput,
 }));

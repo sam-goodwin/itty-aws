@@ -9,7 +9,7 @@ export interface SecretsListInput {
   min_version?: string;
   show_secrets?: boolean;
 }
-export const SecretsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsListInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   min_version: Schema.optional(Schema.String),
   show_secrets: Schema.optional(Schema.Boolean),
@@ -27,7 +27,7 @@ export interface SecretsListOutput {
     value?: string;
   }[];
 }
-export const SecretsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsListOutput = /*@__PURE__*/ Schema.Struct({
   secrets: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -49,7 +49,7 @@ export const SecretsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param min_version - Minimum secrets version to return. Returned when setting a new secret
  * @param show_secrets - Show the secret values.
  */
-export const SecretsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretsListInput,
   outputSchema: SecretsListOutput,
   errors: [Forbidden, NotFound] as const,

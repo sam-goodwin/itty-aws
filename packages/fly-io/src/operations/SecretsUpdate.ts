@@ -8,7 +8,7 @@ export interface SecretsUpdateInput {
   app_name: string;
   values?: Record<string, string>;
 }
-export const SecretsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsUpdateInput = /*@__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   values: Schema.optional(Schema.Record(Schema.String, Schema.String)),
 }).pipe(
@@ -27,7 +27,7 @@ export interface SecretsUpdateOutput {
   }[];
   version?: number;
 }
-export const SecretsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SecretsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   Version: Schema.optional(Schema.Number),
   secrets: Schema.optional(
     Schema.Array(
@@ -49,7 +49,7 @@ export const SecretsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param app_name - Fly App Name
  */
-export const SecretsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SecretsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: SecretsUpdateInput,
   outputSchema: SecretsUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

@@ -9,7 +9,7 @@ export interface GetAccountsAccountPersonsPersonInput {
   expand?: string;
 }
 export const GetAccountsAccountPersonsPersonInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     person: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -369,7 +369,7 @@ export interface GetAccountsAccountPersonsPersonOutput {
   };
 }
 export const GetAccountsAccountPersonsPersonOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.optional(Schema.String),
     additional_tos_acceptances: Schema.optional(
       Schema.Struct({
@@ -823,7 +823,7 @@ export const GetAccountsAccountPersonsPersonOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetAccountsAccountPersonsPerson =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAccountsAccountPersonsPersonInput,
     outputSchema: GetAccountsAccountPersonsPersonOutput,
   }));

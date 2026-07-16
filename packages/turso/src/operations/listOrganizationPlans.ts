@@ -7,7 +7,7 @@ export interface ListOrganizationPlansInput {
   organizationSlug: string;
 }
 export const ListOrganizationPlansInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organizationSlug: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -34,7 +34,7 @@ export interface ListOrganizationPlansOutput {
   }[];
 }
 export const ListOrganizationPlansOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     plans: Schema.optional(
       Schema.Array(
         Schema.Struct({
@@ -72,9 +72,7 @@ export const ListOrganizationPlansOutput =
  *
  * @param organizationSlug - The slug of the organization or user account.
  */
-export const listOrganizationPlans = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ListOrganizationPlansInput,
-    outputSchema: ListOrganizationPlansOutput,
-  }),
-);
+export const listOrganizationPlans = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ListOrganizationPlansInput,
+  outputSchema: ListOrganizationPlansOutput,
+}));

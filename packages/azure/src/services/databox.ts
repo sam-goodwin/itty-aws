@@ -20,7 +20,7 @@ export interface JobsBookShipmentPickUpInput {
   shipmentLocation: string;
 }
 export const JobsBookShipmentPickUpInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -41,7 +41,7 @@ export interface JobsBookShipmentPickUpOutput {
   readyByTime?: string;
 }
 export const JobsBookShipmentPickUpOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     confirmationNumber: Schema.optional(Schema.String),
     readyByTime: Schema.optional(Schema.String),
   }) as unknown as Schema.Codec<JobsBookShipmentPickUpOutput>;
@@ -55,12 +55,10 @@ export const JobsBookShipmentPickUpOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
  */
-export const JobsBookShipmentPickUp = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: JobsBookShipmentPickUpInput,
-    outputSchema: JobsBookShipmentPickUpOutput,
-  }),
-);
+export const JobsBookShipmentPickUp = /*@__PURE__*/ API.make(() => ({
+  inputSchema: JobsBookShipmentPickUpInput,
+  outputSchema: JobsBookShipmentPickUpOutput,
+}));
 // Input Schema
 export interface JobsCancelInput {
   subscriptionId: string;
@@ -68,7 +66,7 @@ export interface JobsCancelInput {
   jobName: string;
   reason: string;
 }
-export const JobsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsCancelInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -84,7 +82,7 @@ export const JobsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type JobsCancelOutput = void;
 export const JobsCancelOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobsCancelOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<JobsCancelOutput>;
 
 // The operation
 /**
@@ -95,7 +93,7 @@ export const JobsCancelOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
  */
-export const JobsCancel = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobsCancel = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobsCancelInput,
   outputSchema: JobsCancelOutput,
 }));
@@ -508,7 +506,7 @@ export interface JobsCreateInput {
   tags?: Record<string, string>;
   location: string;
 }
-export const JobsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsCreateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1139,7 +1137,7 @@ export interface JobsCreateOutput {
     lastModifiedAt?: string;
   };
 }
-export const JobsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsCreateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1168,7 +1166,7 @@ export const JobsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
  */
-export const JobsCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobsCreate = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobsCreateInput,
   outputSchema: JobsCreateOutput,
 }));
@@ -1178,7 +1176,7 @@ export interface JobsDeleteInput {
   resourceGroupName: string;
   jobName: string;
 }
-export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1193,7 +1191,7 @@ export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type JobsDeleteOutput = void;
 export const JobsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<JobsDeleteOutput>;
 
 // The operation
 /**
@@ -1204,7 +1202,7 @@ export const JobsDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
  */
-export const JobsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobsDeleteInput,
   outputSchema: JobsDeleteOutput,
 }));
@@ -1215,7 +1213,7 @@ export interface JobsGetInput {
   jobName: string;
   $expand?: string;
 }
-export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1242,7 +1240,7 @@ export interface JobsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1272,7 +1270,7 @@ export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param jobName - The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
  * @param $expand - $expand is supported on details parameter for job, which provides details on the job stages.
  */
-export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobsGetInput,
   outputSchema: JobsGetOutput,
 }));
@@ -1281,7 +1279,7 @@ export interface JobsListInput {
   subscriptionId: string;
   $skipToken?: string;
 }
-export const JobsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsListInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   $skipToken: Schema.optional(Schema.String),
 }).pipe(
@@ -1309,7 +1307,7 @@ export interface JobsListOutput {
   }[];
   nextLink?: string;
 }
-export const JobsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       id: Schema.optional(Schema.String),
@@ -1342,7 +1340,7 @@ export const JobsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param subscriptionId - The ID of the target subscription.
  * @param $skipToken - $skipToken is supported on Get list of jobs, which provides the next page in the list of jobs.
  */
-export const JobsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobsListInput,
   outputSchema: JobsListOutput,
 }));
@@ -1353,7 +1351,7 @@ export interface JobsListByResourceGroupInput {
   $skipToken?: string;
 }
 export const JobsListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $skipToken: Schema.optional(Schema.String),
@@ -1383,7 +1381,7 @@ export interface JobsListByResourceGroupOutput {
   nextLink?: string;
 }
 export const JobsListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1427,12 +1425,10 @@ export const JobsListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param $skipToken - $skipToken is supported on Get list of jobs, which provides the next page in the list of jobs.
  */
-export const JobsListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: JobsListByResourceGroupInput,
-    outputSchema: JobsListByResourceGroupOutput,
-  }),
-);
+export const JobsListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: JobsListByResourceGroupInput,
+  outputSchema: JobsListByResourceGroupOutput,
+}));
 // Input Schema
 export interface JobsListCredentialsInput {
   subscriptionId: string;
@@ -1440,7 +1436,7 @@ export interface JobsListCredentialsInput {
   jobName: string;
 }
 export const JobsListCredentialsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -1478,7 +1474,7 @@ export interface JobsListCredentialsOutput {
   nextLink?: string;
 }
 export const JobsListCredentialsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         jobName: Schema.optional(Schema.String),
@@ -1530,7 +1526,7 @@ export const JobsListCredentialsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
  */
-export const JobsListCredentials = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobsListCredentials = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobsListCredentialsInput,
   outputSchema: JobsListCredentialsOutput,
 }));
@@ -1542,7 +1538,7 @@ export interface JobsMarkDevicesShippedInput {
   deliverToDcPackageDetails: { carrierName?: string; trackingId?: string };
 }
 export const JobsMarkDevicesShippedInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     jobName: Schema.String.pipe(T.PathParam()),
@@ -1561,7 +1557,7 @@ export const JobsMarkDevicesShippedInput =
 // Output Schema
 export type JobsMarkDevicesShippedOutput = void;
 export const JobsMarkDevicesShippedOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<JobsMarkDevicesShippedOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<JobsMarkDevicesShippedOutput>;
 
 // The operation
 /**
@@ -1572,12 +1568,10 @@ export const JobsMarkDevicesShippedOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
  */
-export const JobsMarkDevicesShipped = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: JobsMarkDevicesShippedInput,
-    outputSchema: JobsMarkDevicesShippedOutput,
-  }),
-);
+export const JobsMarkDevicesShipped = /*@__PURE__*/ API.make(() => ({
+  inputSchema: JobsMarkDevicesShippedInput,
+  outputSchema: JobsMarkDevicesShippedOutput,
+}));
 // Input Schema
 export interface JobsUpdateInput {
   subscriptionId: string;
@@ -1684,7 +1678,7 @@ export interface JobsUpdateInput {
     >;
   };
 }
-export const JobsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1872,7 +1866,7 @@ export interface JobsUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const JobsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1902,7 +1896,7 @@ export const JobsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param jobName - The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
  * @param If-Match - Defines the If-Match condition. The patch will be performed only if the ETag of the job on the server matches this value.
  */
-export const JobsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobsUpdateInput,
   outputSchema: JobsUpdateOutput,
 }));
@@ -1926,7 +1920,7 @@ export interface MitigateInput {
     | "ReachOutToOperation"
   >;
 }
-export const MitigateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const MitigateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   jobName: Schema.String.pipe(T.PathParam()),
@@ -1962,7 +1956,7 @@ export const MitigateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type MitigateOutput = void;
 export const MitigateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MitigateOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MitigateOutput>;
 
 // The operation
 /**
@@ -1973,15 +1967,13 @@ export const MitigateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param jobName - The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
  */
-export const Mitigate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const Mitigate = /*@__PURE__*/ API.make(() => ({
   inputSchema: MitigateInput,
   outputSchema: MitigateOutput,
 }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataBox/operations",
@@ -2005,7 +1997,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -2033,7 +2025,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -2052,7 +2044,7 @@ export interface ServiceListAvailableSkusByResourceGroupInput {
   )[];
 }
 export const ServiceListAvailableSkusByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -2119,7 +2111,7 @@ export interface ServiceListAvailableSkusByResourceGroupOutput {
   nextLink?: string;
 }
 export const ServiceListAvailableSkusByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         sku: Schema.optional(
@@ -2204,7 +2196,7 @@ export const ServiceListAvailableSkusByResourceGroupOutput =
  * @param location - The name of Azure region.
  */
 export const ServiceListAvailableSkusByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceListAvailableSkusByResourceGroupInput,
     outputSchema: ServiceListAvailableSkusByResourceGroupOutput,
   }));
@@ -2265,7 +2257,7 @@ export interface ServiceRegionConfigurationInput {
   };
 }
 export const ServiceRegionConfigurationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     scheduleAvailabilityRequest: Schema.optional(
@@ -2383,7 +2375,7 @@ export interface ServiceRegionConfigurationOutput {
   };
 }
 export const ServiceRegionConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scheduleAvailabilityResponse: Schema.optional(
       Schema.Struct({
         availableDates: Schema.optional(Schema.Array(Schema.String)),
@@ -2437,12 +2429,10 @@ export const ServiceRegionConfigurationOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const ServiceRegionConfiguration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceRegionConfigurationInput,
-    outputSchema: ServiceRegionConfigurationOutput,
-  }),
-);
+export const ServiceRegionConfiguration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceRegionConfigurationInput,
+  outputSchema: ServiceRegionConfigurationOutput,
+}));
 // Input Schema
 export interface ServiceRegionConfigurationByResourceGroupInput {
   subscriptionId: string;
@@ -2501,7 +2491,7 @@ export interface ServiceRegionConfigurationByResourceGroupInput {
   };
 }
 export const ServiceRegionConfigurationByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -2620,7 +2610,7 @@ export interface ServiceRegionConfigurationByResourceGroupOutput {
   };
 }
 export const ServiceRegionConfigurationByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     scheduleAvailabilityResponse: Schema.optional(
       Schema.Struct({
         availableDates: Schema.optional(Schema.Array(Schema.String)),
@@ -2676,7 +2666,7 @@ export const ServiceRegionConfigurationByResourceGroupOutput =
  * @param location - The name of Azure region.
  */
 export const ServiceRegionConfigurationByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceRegionConfigurationByResourceGroupInput,
     outputSchema: ServiceRegionConfigurationByResourceGroupOutput,
   }));
@@ -2696,7 +2686,7 @@ export interface ServiceValidateInputsInput {
   }[];
 }
 export const ServiceValidateInputsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
     validationCategory: Schema.Literals(["JobCreationValidation"]),
@@ -2746,7 +2736,7 @@ export interface ServiceValidateInputsOutput {
   };
 }
 export const ServiceValidateInputsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         status: Schema.optional(
@@ -2800,12 +2790,10 @@ export const ServiceValidateInputsOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param location - The name of Azure region.
  */
-export const ServiceValidateInputs = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ServiceValidateInputsInput,
-    outputSchema: ServiceValidateInputsOutput,
-  }),
-);
+export const ServiceValidateInputs = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ServiceValidateInputsInput,
+  outputSchema: ServiceValidateInputsOutput,
+}));
 // Input Schema
 export interface ServiceValidateInputsByResourceGroupInput {
   subscriptionId: string;
@@ -2823,7 +2811,7 @@ export interface ServiceValidateInputsByResourceGroupInput {
   }[];
 }
 export const ServiceValidateInputsByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     location: Schema.String.pipe(T.PathParam()),
@@ -2874,7 +2862,7 @@ export interface ServiceValidateInputsByResourceGroupOutput {
   };
 }
 export const ServiceValidateInputsByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         status: Schema.optional(
@@ -2930,7 +2918,7 @@ export const ServiceValidateInputsByResourceGroupOutput =
  * @param location - The name of Azure region.
  */
 export const ServiceValidateInputsByResourceGroup =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ServiceValidateInputsByResourceGroupInput,
     outputSchema: ServiceValidateInputsByResourceGroupOutput,
   }));

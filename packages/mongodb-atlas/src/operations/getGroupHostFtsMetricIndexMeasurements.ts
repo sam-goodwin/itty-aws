@@ -18,7 +18,7 @@ export interface GetGroupHostFtsMetricIndexMeasurementsInput {
   metrics: string;
 }
 export const GetGroupHostFtsMetricIndexMeasurementsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     processId: Schema.String.pipe(T.PathParam()),
     indexName: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
@@ -40,7 +40,7 @@ export const GetGroupHostFtsMetricIndexMeasurementsInput =
 // Output Schema
 export type GetGroupHostFtsMetricIndexMeasurementsOutput = void;
 export const GetGroupHostFtsMetricIndexMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupHostFtsMetricIndexMeasurementsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupHostFtsMetricIndexMeasurementsOutput>;
 
 // The operation
 /**
@@ -63,7 +63,7 @@ export const GetGroupHostFtsMetricIndexMeasurementsOutput =
  * @param metrics - List that contains the measurements that MongoDB Atlas reports for the associated data series.
  */
 export const getGroupHostFtsMetricIndexMeasurements =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupHostFtsMetricIndexMeasurementsInput,
     outputSchema: GetGroupHostFtsMetricIndexMeasurementsOutput,
     errors: [BadRequest, Forbidden, NotFound] as const,

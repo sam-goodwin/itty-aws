@@ -20,7 +20,7 @@ export interface HeatmapsListInput {
   viewport_width_max?: number;
   viewport_width_min?: number;
 }
-export const HeatmapsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const HeatmapsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   aggregation: Schema.optional(
     Schema.Literals(["unique_visitors", "total_count"]),
@@ -57,7 +57,7 @@ export type HeatmapsListOutput = {
   } | null;
   has_more?: boolean;
 }[];
-export const HeatmapsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+export const HeatmapsListOutput = /*@__PURE__*/ Schema.Array(
   Schema.Struct({
     results: Schema.optional(
       Schema.Array(
@@ -105,7 +105,7 @@ export const HeatmapsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
  * @param viewport_width_max - Only include interactions captured at a viewport at most this wide, in CSS pixels.
  * @param viewport_width_min - Only include interactions captured at a viewport at least this wide, in CSS pixels. Use with viewport_width_max to isolate a device class (e.g. 360-768 for mobile).
  */
-export const heatmapsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const heatmapsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: HeatmapsListInput,
   outputSchema: HeatmapsListOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

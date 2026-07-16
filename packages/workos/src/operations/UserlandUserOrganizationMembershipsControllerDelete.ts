@@ -8,7 +8,7 @@ export interface UserlandUserOrganizationMembershipsControllerDeleteInput {
   id: string;
 }
 export const UserlandUserOrganizationMembershipsControllerDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
   }).pipe(
     T.Http({
@@ -20,7 +20,7 @@ export const UserlandUserOrganizationMembershipsControllerDeleteInput =
 // Output Schema
 export type UserlandUserOrganizationMembershipsControllerDeleteOutput = void;
 export const UserlandUserOrganizationMembershipsControllerDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UserlandUserOrganizationMembershipsControllerDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UserlandUserOrganizationMembershipsControllerDeleteOutput>;
 
 // The operation
 /**
@@ -31,7 +31,7 @@ export const UserlandUserOrganizationMembershipsControllerDeleteOutput =
  * @param id - The unique ID of the organization membership.
  */
 export const UserlandUserOrganizationMembershipsControllerDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UserlandUserOrganizationMembershipsControllerDeleteInput,
     outputSchema: UserlandUserOrganizationMembershipsControllerDeleteOutput,
     errors: [NotFound] as const,

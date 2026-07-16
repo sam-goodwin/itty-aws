@@ -10,7 +10,7 @@ export interface CreateGroupCustomDbRoleRoleInput {
   pretty?: boolean;
 }
 export const CreateGroupCustomDbRoleRoleInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
     pretty: Schema.optional(Schema.Boolean),
@@ -24,7 +24,7 @@ export const CreateGroupCustomDbRoleRoleInput =
 // Output Schema
 export type CreateGroupCustomDbRoleRoleOutput = void;
 export const CreateGroupCustomDbRoleRoleOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupCustomDbRoleRoleOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<CreateGroupCustomDbRoleRoleOutput>;
 
 // The operation
 /**
@@ -38,10 +38,8 @@ export const CreateGroupCustomDbRoleRoleOutput =
 **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  */
-export const createGroupCustomDbRoleRole = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CreateGroupCustomDbRoleRoleInput,
-    outputSchema: CreateGroupCustomDbRoleRoleOutput,
-    errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
-  }),
-);
+export const createGroupCustomDbRoleRole = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CreateGroupCustomDbRoleRoleInput,
+  outputSchema: CreateGroupCustomDbRoleRoleOutput,
+  errors: [BadRequest, Forbidden, NotFound, Conflict] as const,
+}));

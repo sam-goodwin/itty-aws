@@ -10,7 +10,7 @@ export interface AgentRevisionsEnvKeysClearInput {
   project_id: string;
 }
 export const AgentRevisionsEnvKeysClearInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     application_id: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     key: Schema.String.pipe(T.PathParam()),
@@ -25,7 +25,7 @@ export const AgentRevisionsEnvKeysClearInput =
 // Output Schema
 export type AgentRevisionsEnvKeysClearOutput = void;
 export const AgentRevisionsEnvKeysClearOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentRevisionsEnvKeysClearOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AgentRevisionsEnvKeysClearOutput>;
 
 // The operation
 /**
@@ -41,9 +41,7 @@ export const AgentRevisionsEnvKeysClearOutput =
  * @param key - The env variable name. Conventionally UPPER_SNAKE_CASE; the API does not enforce a shape.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const agentRevisionsEnvKeysClear = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AgentRevisionsEnvKeysClearInput,
-    outputSchema: AgentRevisionsEnvKeysClearOutput,
-  }),
-);
+export const agentRevisionsEnvKeysClear = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AgentRevisionsEnvKeysClearInput,
+  outputSchema: AgentRevisionsEnvKeysClearOutput,
+}));

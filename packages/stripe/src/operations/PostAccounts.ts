@@ -344,7 +344,7 @@ export interface PostAccountsInput {
   };
   type?: "custom" | "express" | "standard";
 }
-export const PostAccountsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostAccountsInput = /*@__PURE__*/ Schema.Struct({
   account_token: Schema.optional(Schema.String),
   business_profile: Schema.optional(
     Schema.Struct({
@@ -2211,7 +2211,7 @@ export interface PostAccountsOutput {
   };
   type?: "custom" | "express" | "none" | "standard";
 }
-export const PostAccountsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const PostAccountsOutput = /*@__PURE__*/ Schema.Struct({
   business_profile: Schema.optional(
     Schema.NullOr(
       Schema.Struct({
@@ -3621,7 +3621,7 @@ export const PostAccountsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * creating the account. Connect Onboarding won’t ask for the prefilled information during account onboarding.
  * You can prefill any information on the account.</p>
  */
-export const PostAccounts = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const PostAccounts = /*@__PURE__*/ API.make(() => ({
   inputSchema: PostAccountsInput,
   outputSchema: PostAccountsOutput,
 }));

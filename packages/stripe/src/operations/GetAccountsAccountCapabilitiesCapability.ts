@@ -9,7 +9,7 @@ export interface GetAccountsAccountCapabilitiesCapabilityInput {
   expand?: string;
 }
 export const GetAccountsAccountCapabilitiesCapabilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.String.pipe(T.PathParam()),
     capability: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
@@ -279,7 +279,7 @@ export interface GetAccountsAccountCapabilitiesCapabilityOutput {
   status: "active" | "inactive" | "pending" | "unrequested";
 }
 export const GetAccountsAccountCapabilitiesCapabilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     account: Schema.Unknown,
     future_requirements: Schema.optional(
       Schema.Struct({
@@ -569,7 +569,7 @@ export const GetAccountsAccountCapabilitiesCapabilityOutput =
  * @param expand - Specifies which fields in the response should be expanded.
  */
 export const GetAccountsAccountCapabilitiesCapability =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetAccountsAccountCapabilitiesCapabilityInput,
     outputSchema: GetAccountsAccountCapabilitiesCapabilityOutput,
   }));

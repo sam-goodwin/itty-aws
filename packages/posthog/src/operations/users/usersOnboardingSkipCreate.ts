@@ -11,7 +11,7 @@ export interface UsersOnboardingSkipCreateInput {
   step_at_skip?: string;
 }
 export const UsersOnboardingSkipCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     reason: Schema.Literals(["later", "other"]),
     step_at_skip: Schema.optional(Schema.String),
@@ -737,7 +737,7 @@ export interface UsersOnboardingSkipCreateOutput {
   requires_credential_review?: boolean;
 }
 export const UsersOnboardingSkipCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     date_joined: Schema.optional(Schema.String),
     uuid: Schema.optional(Schema.String),
     distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -1542,9 +1542,7 @@ export const UsersOnboardingSkipCreateOutput =
  * invite and sets reason="delegated". This endpoint rejects that reason so state
  * can't be faked without a real invite.
  */
-export const usersOnboardingSkipCreate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UsersOnboardingSkipCreateInput,
-    outputSchema: UsersOnboardingSkipCreateOutput,
-  }),
-);
+export const usersOnboardingSkipCreate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UsersOnboardingSkipCreateInput,
+  outputSchema: UsersOnboardingSkipCreateOutput,
+}));

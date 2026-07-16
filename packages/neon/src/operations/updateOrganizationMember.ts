@@ -9,7 +9,7 @@ export interface UpdateOrganizationMemberInput {
   role: "admin" | "member" | "editor" | "viewer" | "collaborator";
 }
 export const UpdateOrganizationMemberInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     org_id: Schema.String.pipe(T.PathParam()),
     member_id: Schema.String.pipe(T.PathParam()),
     role: Schema.Literals([
@@ -35,7 +35,7 @@ export interface UpdateOrganizationMemberOutput {
   joined_at?: string;
 }
 export const UpdateOrganizationMemberOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     user_id: Schema.String,
     org_id: Schema.String,
@@ -60,9 +60,7 @@ export const UpdateOrganizationMemberOutput =
  * @param org_id - The Neon organization ID
  * @param member_id - The Neon organization member ID
  */
-export const updateOrganizationMember = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateOrganizationMemberInput,
-    outputSchema: UpdateOrganizationMemberOutput,
-  }),
-);
+export const updateOrganizationMember = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateOrganizationMemberInput,
+  outputSchema: UpdateOrganizationMemberOutput,
+}));

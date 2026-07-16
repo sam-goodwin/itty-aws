@@ -8,7 +8,7 @@ export interface GetTaxRegistrationsIdInput {
   expand?: string;
 }
 export const GetTaxRegistrationsIdInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     expand: Schema.optional(Schema.String),
   }).pipe(
@@ -315,7 +315,7 @@ export interface GetTaxRegistrationsIdOutput {
   status: "active" | "expired" | "scheduled";
 }
 export const GetTaxRegistrationsIdOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     active_from: Schema.Number,
     country: Schema.String,
     country_options: Schema.Struct({
@@ -1325,9 +1325,7 @@ export const GetTaxRegistrationsIdOutput =
  *
  * @param expand - Specifies which fields in the response should be expanded.
  */
-export const GetTaxRegistrationsId = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: GetTaxRegistrationsIdInput,
-    outputSchema: GetTaxRegistrationsIdOutput,
-  }),
-);
+export const GetTaxRegistrationsId = /*@__PURE__*/ API.make(() => ({
+  inputSchema: GetTaxRegistrationsIdInput,
+  outputSchema: GetTaxRegistrationsIdOutput,
+}));

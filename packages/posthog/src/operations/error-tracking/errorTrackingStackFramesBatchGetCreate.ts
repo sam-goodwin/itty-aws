@@ -9,7 +9,7 @@ export interface ErrorTrackingStackFramesBatchGetCreateInput {
   symbol_set?: string | null;
 }
 export const ErrorTrackingStackFramesBatchGetCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     raw_ids: Schema.Array(Schema.String),
     symbol_set: Schema.optional(Schema.NullOr(Schema.String)),
@@ -42,7 +42,7 @@ export interface ErrorTrackingStackFramesBatchGetCreateOutput {
   }[];
 }
 export const ErrorTrackingStackFramesBatchGetCreateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     results: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -79,7 +79,7 @@ export const ErrorTrackingStackFramesBatchGetCreateOutput =
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
 export const errorTrackingStackFramesBatchGetCreate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ErrorTrackingStackFramesBatchGetCreateInput,
     outputSchema: ErrorTrackingStackFramesBatchGetCreateOutput,
   }));

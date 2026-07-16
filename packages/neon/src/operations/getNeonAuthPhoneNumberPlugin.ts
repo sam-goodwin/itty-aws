@@ -8,7 +8,7 @@ export interface GetNeonAuthPhoneNumberPluginInput {
   branch_id: string;
 }
 export const GetNeonAuthPhoneNumberPluginInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
   }).pipe(
@@ -24,7 +24,7 @@ export interface GetNeonAuthPhoneNumberPluginOutput {
   otp_expires_in?: number;
 }
 export const GetNeonAuthPhoneNumberPluginOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     enabled: Schema.Boolean,
     otp_expires_in: Schema.optional(Schema.Number),
   }) as unknown as Schema.Codec<GetNeonAuthPhoneNumberPluginOutput>;
@@ -40,7 +40,7 @@ export const GetNeonAuthPhoneNumberPluginOutput =
  * @param branch_id - The Neon branch ID
  */
 export const getNeonAuthPhoneNumberPlugin =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetNeonAuthPhoneNumberPluginInput,
     outputSchema: GetNeonAuthPhoneNumberPluginOutput,
   }));

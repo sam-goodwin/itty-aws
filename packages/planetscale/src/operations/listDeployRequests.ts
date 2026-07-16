@@ -16,7 +16,7 @@ export interface ListDeployRequestsInput {
   per_page?: number;
 }
 export const ListDeployRequestsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     state: Schema.optional(Schema.String),
@@ -218,7 +218,7 @@ export interface ListDeployRequestsOutput {
   }>;
 }
 export const ListDeployRequestsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     type: Schema.String,
     current_page: Schema.Number,
     next_page: Schema.NullOr(Schema.Number),
@@ -482,16 +482,14 @@ export const ListDeployRequestsOutput =
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listDeployRequests = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
-  () => ({
-    inputSchema: ListDeployRequestsInput,
-    outputSchema: ListDeployRequestsOutput,
-    errors: [Forbidden, NotFound] as const,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "next_page",
-      items: "data",
-    },
-  }),
-);
+export const listDeployRequests = /*@__PURE__*/ API.makePaginated(() => ({
+  inputSchema: ListDeployRequestsInput,
+  outputSchema: ListDeployRequestsOutput,
+  errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
+}));

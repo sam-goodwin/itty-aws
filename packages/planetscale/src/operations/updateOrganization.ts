@@ -11,7 +11,7 @@ export interface UpdateOrganizationInput {
   invoice_budget_amount?: number;
 }
 export const UpdateOrganizationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     billing_email: Schema.optional(Schema.String),
     idp_managed_roles: Schema.optional(Schema.Boolean),
@@ -44,7 +44,7 @@ export interface UpdateOrganizationOutput {
   payment_info_required: boolean;
 }
 export const UpdateOrganizationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     name: Schema.String,
     billing_email: Schema.String,
@@ -76,7 +76,7 @@ export const UpdateOrganizationOutput =
  * @param idp_managed_roles - Whether or not the IdP provider is be responsible for managing roles in PlanetScale
  * @param invoice_budget_amount - The expected monthly budget for the organization
  */
-export const updateOrganization = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const updateOrganization = /*@__PURE__*/ API.make(() => ({
   inputSchema: UpdateOrganizationInput,
   outputSchema: UpdateOrganizationOutput,
   errors: [Forbidden, NotFound] as const,

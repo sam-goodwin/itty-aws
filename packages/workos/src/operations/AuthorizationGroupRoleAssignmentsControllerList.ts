@@ -12,7 +12,7 @@ export interface AuthorizationGroupRoleAssignmentsControllerListInput {
   order?: string;
 }
 export const AuthorizationGroupRoleAssignmentsControllerListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     group_id: Schema.String.pipe(T.PathParam()),
     before: Schema.optional(Schema.String),
     after: Schema.optional(Schema.String),
@@ -40,7 +40,7 @@ export interface AuthorizationGroupRoleAssignmentsControllerListOutput {
   list_metadata: { before: string | null; after: string | null };
 }
 export const AuthorizationGroupRoleAssignmentsControllerListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     object: Schema.String,
     data: Schema.Array(
       Schema.Struct({
@@ -78,7 +78,7 @@ export const AuthorizationGroupRoleAssignmentsControllerListOutput =
  * @param order - Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records).
  */
 export const AuthorizationGroupRoleAssignmentsControllerList =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AuthorizationGroupRoleAssignmentsControllerListInput,
     outputSchema: AuthorizationGroupRoleAssignmentsControllerListOutput,
     errors: [Forbidden, NotFound] as const,

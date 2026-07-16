@@ -11,7 +11,7 @@ export interface LlmPromptsListInput {
   offset?: number;
   search?: string;
 }
-export const LlmPromptsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LlmPromptsListInput = /*@__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   content: Schema.optional(Schema.Literals(["full", "preview", "none"])),
   created_by_id: Schema.optional(Schema.Number),
@@ -65,7 +65,7 @@ export interface LlmPromptsListOutput {
     prompt_size_bytes?: number;
   }[];
 }
-export const LlmPromptsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const LlmPromptsListOutput = /*@__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
@@ -145,7 +145,7 @@ export const LlmPromptsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  * @param search - Optional substring filter applied to prompt names and prompt content.
  */
-export const llmPromptsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const llmPromptsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: LlmPromptsListInput,
   outputSchema: LlmPromptsListOutput,
 }));

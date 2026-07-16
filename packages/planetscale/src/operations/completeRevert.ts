@@ -9,7 +9,7 @@ export interface CompleteRevertInput {
   database: string;
   number: number;
 }
-export const CompleteRevertInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CompleteRevertInput = /*@__PURE__*/ Schema.Struct({
   organization: Schema.String.pipe(T.PathParam()),
   database: Schema.String.pipe(T.PathParam()),
   number: Schema.Number.pipe(T.PathParam()),
@@ -196,7 +196,7 @@ export interface CompleteRevertOutput {
   closed_at: string | null;
   deployed_at: string | null;
 }
-export const CompleteRevertOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CompleteRevertOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String,
   number: Schema.Number,
   actor: Schema.Struct({
@@ -438,7 +438,7 @@ export const CompleteRevertOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param database - The name of the deploy request's database
  * @param number - The number of the deploy request
  */
-export const completeRevert = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const completeRevert = /*@__PURE__*/ API.make(() => ({
   inputSchema: CompleteRevertInput,
   outputSchema: CompleteRevertOutput,
   errors: [Forbidden, NotFound] as const,

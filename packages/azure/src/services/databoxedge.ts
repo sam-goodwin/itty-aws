@@ -20,7 +20,7 @@ export interface AddonsCreateOrUpdateInput {
   kind: "IotEdge" | "ArcForKubernetes";
 }
 export const AddonsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -50,7 +50,7 @@ export interface AddonsCreateOrUpdateOutput {
   };
 }
 export const AddonsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -81,12 +81,10 @@ export const AddonsCreateOrUpdateOutput =
  * @param roleName - The name of the role.
  * @param addonName - The name of the addon.
  */
-export const AddonsCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: AddonsCreateOrUpdateInput,
-    outputSchema: AddonsCreateOrUpdateOutput,
-  }),
-);
+export const AddonsCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: AddonsCreateOrUpdateInput,
+  outputSchema: AddonsCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface AddonsDeleteInput {
   subscriptionId: string;
@@ -95,7 +93,7 @@ export interface AddonsDeleteInput {
   roleName: string;
   addonName: string;
 }
-export const AddonsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddonsDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -112,7 +110,7 @@ export const AddonsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type AddonsDeleteOutput = void;
 export const AddonsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<AddonsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<AddonsDeleteOutput>;
 
 // The operation
 /**
@@ -125,7 +123,7 @@ export const AddonsDeleteOutput =
  * @param roleName - The name of the role.
  * @param addonName - The name of the addon.
  */
-export const AddonsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AddonsDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddonsDeleteInput,
   outputSchema: AddonsDeleteOutput,
 }));
@@ -137,7 +135,7 @@ export interface AddonsGetInput {
   roleName: string;
   addonName: string;
 }
-export const AddonsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddonsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -165,7 +163,7 @@ export interface AddonsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AddonsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddonsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -196,7 +194,7 @@ export const AddonsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param roleName - The name of the role.
  * @param addonName - The name of the addon.
  */
-export const AddonsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AddonsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddonsGetInput,
   outputSchema: AddonsGetOutput,
 }));
@@ -207,7 +205,7 @@ export interface AddonsListByRoleInput {
   deviceName: string;
   roleName: string;
 }
-export const AddonsListByRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AddonsListByRoleInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -237,42 +235,30 @@ export interface AddonsListByRoleOutput {
   }[];
   nextLink?: string;
 }
-export const AddonsListByRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    value: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-        systemData: Schema.optional(
-          Schema.Struct({
-            createdBy: Schema.optional(Schema.String),
-            createdByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            createdAt: Schema.optional(Schema.String),
-            lastModifiedBy: Schema.optional(Schema.String),
-            lastModifiedByType: Schema.optional(
-              Schema.Literals([
-                "User",
-                "Application",
-                "ManagedIdentity",
-                "Key",
-              ]),
-            ),
-            lastModifiedAt: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
-    nextLink: Schema.optional(Schema.String),
-  },
-) as unknown as Schema.Codec<AddonsListByRoleOutput>;
+export const AddonsListByRoleOutput = /*@__PURE__*/ Schema.Struct({
+  value: Schema.Array(
+    Schema.Struct({
+      id: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      systemData: Schema.optional(
+        Schema.Struct({
+          createdBy: Schema.optional(Schema.String),
+          createdByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          createdAt: Schema.optional(Schema.String),
+          lastModifiedBy: Schema.optional(Schema.String),
+          lastModifiedByType: Schema.optional(
+            Schema.Literals(["User", "Application", "ManagedIdentity", "Key"]),
+          ),
+          lastModifiedAt: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}) as unknown as Schema.Codec<AddonsListByRoleOutput>;
 
 // The operation
 /**
@@ -284,7 +270,7 @@ export const AddonsListByRoleOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
  * @param deviceName - The name of the device.
  * @param roleName - The name of the role.
  */
-export const AddonsListByRole = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AddonsListByRole = /*@__PURE__*/ API.make(() => ({
   inputSchema: AddonsListByRoleInput,
   outputSchema: AddonsListByRoleOutput,
 }));
@@ -295,7 +281,7 @@ export interface AlertsGetInput {
   deviceName: string;
   name: string;
 }
-export const AlertsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -322,7 +308,7 @@ export interface AlertsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const AlertsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const AlertsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -352,7 +338,7 @@ export const AlertsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param deviceName - The device name.
  * @param name - The alert name.
  */
-export const AlertsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AlertsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: AlertsGetInput,
   outputSchema: AlertsGetOutput,
 }));
@@ -363,7 +349,7 @@ export interface AlertsListByDataBoxEdgeDeviceInput {
   deviceName: string;
 }
 export const AlertsListByDataBoxEdgeDeviceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -393,7 +379,7 @@ export interface AlertsListByDataBoxEdgeDeviceOutput {
   nextLink?: string;
 }
 export const AlertsListByDataBoxEdgeDeviceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -438,7 +424,7 @@ export const AlertsListByDataBoxEdgeDeviceOutput =
  * @param deviceName - The device name.
  */
 export const AlertsListByDataBoxEdgeDevice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: AlertsListByDataBoxEdgeDeviceInput,
     outputSchema: AlertsListByDataBoxEdgeDeviceOutput,
   }));
@@ -446,11 +432,9 @@ export const AlertsListByDataBoxEdgeDevice =
 export interface AvailableSkusListInput {
   subscriptionId: string;
 }
-export const AvailableSkusListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const AvailableSkusListInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "GET",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBoxEdge/availableSkus",
@@ -509,7 +493,7 @@ export interface AvailableSkusListOutput {
   nextLink?: string;
 }
 export const AvailableSkusListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         resourceType: Schema.optional(Schema.String),
@@ -604,7 +588,7 @@ export const AvailableSkusListOutput =
  * @param api-version - The API version to use for this operation.
  * @param subscriptionId - The ID of the target subscription.
  */
-export const AvailableSkusList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const AvailableSkusList = /*@__PURE__*/ API.make(() => ({
   inputSchema: AvailableSkusListInput,
   outputSchema: AvailableSkusListOutput,
 }));
@@ -630,7 +614,7 @@ export interface BandwidthSchedulesCreateOrUpdateInput {
   };
 }
 export const BandwidthSchedulesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -674,7 +658,7 @@ export interface BandwidthSchedulesCreateOrUpdateOutput {
   };
 }
 export const BandwidthSchedulesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -705,7 +689,7 @@ export const BandwidthSchedulesCreateOrUpdateOutput =
  * @param name - The bandwidth schedule name.
  */
 export const BandwidthSchedulesCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BandwidthSchedulesCreateOrUpdateInput,
     outputSchema: BandwidthSchedulesCreateOrUpdateOutput,
   }));
@@ -717,7 +701,7 @@ export interface BandwidthSchedulesDeleteInput {
   name: string;
 }
 export const BandwidthSchedulesDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -733,7 +717,7 @@ export const BandwidthSchedulesDeleteInput =
 // Output Schema
 export type BandwidthSchedulesDeleteOutput = void;
 export const BandwidthSchedulesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<BandwidthSchedulesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<BandwidthSchedulesDeleteOutput>;
 
 // The operation
 /**
@@ -745,12 +729,10 @@ export const BandwidthSchedulesDeleteOutput =
  * @param deviceName - The device name.
  * @param name - The bandwidth schedule name.
  */
-export const BandwidthSchedulesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BandwidthSchedulesDeleteInput,
-    outputSchema: BandwidthSchedulesDeleteOutput,
-  }),
-);
+export const BandwidthSchedulesDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BandwidthSchedulesDeleteInput,
+  outputSchema: BandwidthSchedulesDeleteOutput,
+}));
 // Input Schema
 export interface BandwidthSchedulesGetInput {
   subscriptionId: string;
@@ -759,7 +741,7 @@ export interface BandwidthSchedulesGetInput {
   name: string;
 }
 export const BandwidthSchedulesGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -787,7 +769,7 @@ export interface BandwidthSchedulesGetOutput {
   };
 }
 export const BandwidthSchedulesGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -817,12 +799,10 @@ export const BandwidthSchedulesGetOutput =
  * @param deviceName - The device name.
  * @param name - The bandwidth schedule name.
  */
-export const BandwidthSchedulesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: BandwidthSchedulesGetInput,
-    outputSchema: BandwidthSchedulesGetOutput,
-  }),
-);
+export const BandwidthSchedulesGet = /*@__PURE__*/ API.make(() => ({
+  inputSchema: BandwidthSchedulesGetInput,
+  outputSchema: BandwidthSchedulesGetOutput,
+}));
 // Input Schema
 export interface BandwidthSchedulesListByDataBoxEdgeDeviceInput {
   subscriptionId: string;
@@ -830,7 +810,7 @@ export interface BandwidthSchedulesListByDataBoxEdgeDeviceInput {
   deviceName: string;
 }
 export const BandwidthSchedulesListByDataBoxEdgeDeviceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -860,7 +840,7 @@ export interface BandwidthSchedulesListByDataBoxEdgeDeviceOutput {
   nextLink?: string;
 }
 export const BandwidthSchedulesListByDataBoxEdgeDeviceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -905,7 +885,7 @@ export const BandwidthSchedulesListByDataBoxEdgeDeviceOutput =
  * @param deviceName - The device name.
  */
 export const BandwidthSchedulesListByDataBoxEdgeDevice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: BandwidthSchedulesListByDataBoxEdgeDeviceInput,
     outputSchema: BandwidthSchedulesListByDataBoxEdgeDeviceOutput,
   }));
@@ -934,7 +914,7 @@ export interface ContainersCreateOrUpdateInput {
   };
 }
 export const ContainersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -984,7 +964,7 @@ export interface ContainersCreateOrUpdateOutput {
   };
 }
 export const ContainersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1015,12 +995,10 @@ export const ContainersCreateOrUpdateOutput =
  * @param storageAccountName - The storage account name.
  * @param containerName - The container Name
  */
-export const ContainersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: ContainersCreateOrUpdateInput,
-    outputSchema: ContainersCreateOrUpdateOutput,
-  }),
-);
+export const ContainersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: ContainersCreateOrUpdateInput,
+  outputSchema: ContainersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface ContainersDeleteInput {
   subscriptionId: string;
@@ -1029,7 +1007,7 @@ export interface ContainersDeleteInput {
   storageAccountName: string;
   containerName: string;
 }
-export const ContainersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContainersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -1046,7 +1024,7 @@ export const ContainersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type ContainersDeleteOutput = void;
 export const ContainersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContainersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ContainersDeleteOutput>;
 
 // The operation
 /**
@@ -1059,7 +1037,7 @@ export const ContainersDeleteOutput =
  * @param storageAccountName - The storage account name.
  * @param containerName - The container Name
  */
-export const ContainersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContainersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContainersDeleteInput,
   outputSchema: ContainersDeleteOutput,
 }));
@@ -1071,7 +1049,7 @@ export interface ContainersGetInput {
   storageAccountName: string;
   containerName: string;
 }
-export const ContainersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContainersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -1099,7 +1077,7 @@ export interface ContainersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const ContainersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const ContainersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -1130,7 +1108,7 @@ export const ContainersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param storageAccountName - The storage account name.
  * @param containerName - The container Name
  */
-export const ContainersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContainersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContainersGetInput,
   outputSchema: ContainersGetOutput,
 }));
@@ -1142,7 +1120,7 @@ export interface ContainersListByStorageAccountInput {
   storageAccountName: string;
 }
 export const ContainersListByStorageAccountInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -1173,7 +1151,7 @@ export interface ContainersListByStorageAccountOutput {
   nextLink?: string;
 }
 export const ContainersListByStorageAccountOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -1219,7 +1197,7 @@ export const ContainersListByStorageAccountOutput =
  * @param storageAccountName - The storage account name.
  */
 export const ContainersListByStorageAccount =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: ContainersListByStorageAccountInput,
     outputSchema: ContainersListByStorageAccountOutput,
   }));
@@ -1231,15 +1209,13 @@ export interface ContainersRefreshInput {
   storageAccountName: string;
   containerName: string;
 }
-export const ContainersRefreshInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    subscriptionId: Schema.String.pipe(T.PathParam()),
-    resourceGroupName: Schema.String.pipe(T.PathParam()),
-    deviceName: Schema.String.pipe(T.PathParam()),
-    storageAccountName: Schema.String.pipe(T.PathParam()),
-    containerName: Schema.String.pipe(T.PathParam()),
-  },
-).pipe(
+export const ContainersRefreshInput = /*@__PURE__*/ Schema.Struct({
+  subscriptionId: Schema.String.pipe(T.PathParam()),
+  resourceGroupName: Schema.String.pipe(T.PathParam()),
+  deviceName: Schema.String.pipe(T.PathParam()),
+  storageAccountName: Schema.String.pipe(T.PathParam()),
+  containerName: Schema.String.pipe(T.PathParam()),
+}).pipe(
   T.Http({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}/refresh",
@@ -1250,7 +1226,7 @@ export const ContainersRefreshInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Output Schema
 export type ContainersRefreshOutput = void;
 export const ContainersRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<ContainersRefreshOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<ContainersRefreshOutput>;
 
 // The operation
 /**
@@ -1263,7 +1239,7 @@ export const ContainersRefreshOutput =
  * @param storageAccountName - The storage account name.
  * @param containerName - The container Name
  */
-export const ContainersRefresh = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ContainersRefresh = /*@__PURE__*/ API.make(() => ({
   inputSchema: ContainersRefreshInput,
   outputSchema: ContainersRefreshOutput,
 }));
@@ -1284,7 +1260,7 @@ export interface DeviceCapacityCheckCheckResourceCreationFeasibilityInput {
   };
 }
 export const DeviceCapacityCheckCheckResourceCreationFeasibilityInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -1313,7 +1289,7 @@ export const DeviceCapacityCheckCheckResourceCreationFeasibilityInput =
 // Output Schema
 export type DeviceCapacityCheckCheckResourceCreationFeasibilityOutput = void;
 export const DeviceCapacityCheckCheckResourceCreationFeasibilityOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DeviceCapacityCheckCheckResourceCreationFeasibilityOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DeviceCapacityCheckCheckResourceCreationFeasibilityOutput>;
 
 // The operation
 /**
@@ -1326,7 +1302,7 @@ export const DeviceCapacityCheckCheckResourceCreationFeasibilityOutput =
  * @param capacityName - The capacity name.
  */
 export const DeviceCapacityCheckCheckResourceCreationFeasibility =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeviceCapacityCheckCheckResourceCreationFeasibilityInput,
     outputSchema: DeviceCapacityCheckCheckResourceCreationFeasibilityOutput,
   }));
@@ -1337,7 +1313,7 @@ export interface DeviceCapacityInfoGetDeviceCapacityInfoInput {
   deviceName: string;
 }
 export const DeviceCapacityInfoGetDeviceCapacityInfoInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -1364,7 +1340,7 @@ export interface DeviceCapacityInfoGetDeviceCapacityInfoOutput {
   };
 }
 export const DeviceCapacityInfoGetDeviceCapacityInfoOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1394,7 +1370,7 @@ export const DeviceCapacityInfoGetDeviceCapacityInfoOutput =
  * @param deviceName - The device name.
  */
 export const DeviceCapacityInfoGetDeviceCapacityInfo =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DeviceCapacityInfoGetDeviceCapacityInfoInput,
     outputSchema: DeviceCapacityInfoGetDeviceCapacityInfoOutput,
   }));
@@ -1520,7 +1496,7 @@ export interface DevicesCreateOrUpdateInput {
   location: string;
 }
 export const DevicesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -1726,7 +1702,7 @@ export interface DevicesCreateOrUpdateOutput {
   };
 }
 export const DevicesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -1755,12 +1731,10 @@ export const DevicesCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const DevicesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DevicesCreateOrUpdateInput,
-    outputSchema: DevicesCreateOrUpdateOutput,
-  }),
-);
+export const DevicesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DevicesCreateOrUpdateInput,
+  outputSchema: DevicesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface DevicesCreateOrUpdateSecuritySettingsInput {
   subscriptionId: string;
@@ -1778,7 +1752,7 @@ export interface DevicesCreateOrUpdateSecuritySettingsInput {
   type?: string;
 }
 export const DevicesCreateOrUpdateSecuritySettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -1807,7 +1781,7 @@ export const DevicesCreateOrUpdateSecuritySettingsInput =
 // Output Schema
 export type DevicesCreateOrUpdateSecuritySettingsOutput = void;
 export const DevicesCreateOrUpdateSecuritySettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesCreateOrUpdateSecuritySettingsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesCreateOrUpdateSecuritySettingsOutput>;
 
 // The operation
 /**
@@ -1819,7 +1793,7 @@ export const DevicesCreateOrUpdateSecuritySettingsOutput =
  * @param deviceName - The device name.
  */
 export const DevicesCreateOrUpdateSecuritySettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DevicesCreateOrUpdateSecuritySettingsInput,
     outputSchema: DevicesCreateOrUpdateSecuritySettingsOutput,
   }));
@@ -1829,7 +1803,7 @@ export interface DevicesDeleteInput {
   resourceGroupName: string;
   deviceName: string;
 }
-export const DevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DevicesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -1844,7 +1818,7 @@ export const DevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type DevicesDeleteOutput = void;
 export const DevicesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesDeleteOutput>;
 
 // The operation
 /**
@@ -1855,7 +1829,7 @@ export const DevicesDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const DevicesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DevicesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: DevicesDeleteInput,
   outputSchema: DevicesDeleteOutput,
 }));
@@ -1866,7 +1840,7 @@ export interface DevicesDownloadUpdatesInput {
   deviceName: string;
 }
 export const DevicesDownloadUpdatesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -1881,7 +1855,7 @@ export const DevicesDownloadUpdatesInput =
 // Output Schema
 export type DevicesDownloadUpdatesOutput = void;
 export const DevicesDownloadUpdatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesDownloadUpdatesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesDownloadUpdatesOutput>;
 
 // The operation
 /**
@@ -1892,12 +1866,10 @@ export const DevicesDownloadUpdatesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const DevicesDownloadUpdates = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DevicesDownloadUpdatesInput,
-    outputSchema: DevicesDownloadUpdatesOutput,
-  }),
-);
+export const DevicesDownloadUpdates = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DevicesDownloadUpdatesInput,
+  outputSchema: DevicesDownloadUpdatesOutput,
+}));
 // Input Schema
 export interface DevicesGenerateCertificateInput {
   subscriptionId: string;
@@ -1905,7 +1877,7 @@ export interface DevicesGenerateCertificateInput {
   deviceName: string;
 }
 export const DevicesGenerateCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -1924,7 +1896,7 @@ export interface DevicesGenerateCertificateOutput {
   expiryTimeInUTC?: string;
 }
 export const DevicesGenerateCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     publicKey: Schema.optional(Schema.String),
     privateKey: Schema.optional(SensitiveOutputString),
     expiryTimeInUTC: Schema.optional(Schema.String),
@@ -1939,19 +1911,17 @@ export const DevicesGenerateCertificateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const DevicesGenerateCertificate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DevicesGenerateCertificateInput,
-    outputSchema: DevicesGenerateCertificateOutput,
-  }),
-);
+export const DevicesGenerateCertificate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DevicesGenerateCertificateInput,
+  outputSchema: DevicesGenerateCertificateOutput,
+}));
 // Input Schema
 export interface DevicesGetInput {
   subscriptionId: string;
   resourceGroupName: string;
   deviceName: string;
 }
-export const DevicesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DevicesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -1977,7 +1947,7 @@ export interface DevicesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const DevicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DevicesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2006,7 +1976,7 @@ export const DevicesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const DevicesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DevicesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: DevicesGetInput,
   outputSchema: DevicesGetOutput,
 }));
@@ -2017,7 +1987,7 @@ export interface DevicesGetExtendedInformationInput {
   deviceName: string;
 }
 export const DevicesGetExtendedInformationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -2036,7 +2006,7 @@ export interface DevicesGetExtendedInformationOutput {
   type?: string;
 }
 export const DevicesGetExtendedInformationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2052,7 +2022,7 @@ export const DevicesGetExtendedInformationOutput =
  * @param deviceName - The device name.
  */
 export const DevicesGetExtendedInformation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DevicesGetExtendedInformationInput,
     outputSchema: DevicesGetExtendedInformationOutput,
   }));
@@ -2063,7 +2033,7 @@ export interface DevicesGetNetworkSettingsInput {
   deviceName: string;
 }
 export const DevicesGetNetworkSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -2090,7 +2060,7 @@ export interface DevicesGetNetworkSettingsOutput {
   };
 }
 export const DevicesGetNetworkSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2119,12 +2089,10 @@ export const DevicesGetNetworkSettingsOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const DevicesGetNetworkSettings = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DevicesGetNetworkSettingsInput,
-    outputSchema: DevicesGetNetworkSettingsOutput,
-  }),
-);
+export const DevicesGetNetworkSettings = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DevicesGetNetworkSettingsInput,
+  outputSchema: DevicesGetNetworkSettingsOutput,
+}));
 // Input Schema
 export interface DevicesGetUpdateSummaryInput {
   subscriptionId: string;
@@ -2132,7 +2100,7 @@ export interface DevicesGetUpdateSummaryInput {
   deviceName: string;
 }
 export const DevicesGetUpdateSummaryInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -2159,7 +2127,7 @@ export interface DevicesGetUpdateSummaryOutput {
   };
 }
 export const DevicesGetUpdateSummaryOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2188,12 +2156,10 @@ export const DevicesGetUpdateSummaryOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const DevicesGetUpdateSummary = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DevicesGetUpdateSummaryInput,
-    outputSchema: DevicesGetUpdateSummaryOutput,
-  }),
-);
+export const DevicesGetUpdateSummary = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DevicesGetUpdateSummaryInput,
+  outputSchema: DevicesGetUpdateSummaryOutput,
+}));
 // Input Schema
 export interface DevicesInstallUpdatesInput {
   subscriptionId: string;
@@ -2201,7 +2167,7 @@ export interface DevicesInstallUpdatesInput {
   deviceName: string;
 }
 export const DevicesInstallUpdatesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -2216,7 +2182,7 @@ export const DevicesInstallUpdatesInput =
 // Output Schema
 export type DevicesInstallUpdatesOutput = void;
 export const DevicesInstallUpdatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesInstallUpdatesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesInstallUpdatesOutput>;
 
 // The operation
 /**
@@ -2227,12 +2193,10 @@ export const DevicesInstallUpdatesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const DevicesInstallUpdates = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DevicesInstallUpdatesInput,
-    outputSchema: DevicesInstallUpdatesOutput,
-  }),
-);
+export const DevicesInstallUpdates = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DevicesInstallUpdatesInput,
+  outputSchema: DevicesInstallUpdatesOutput,
+}));
 // Input Schema
 export interface DevicesListByResourceGroupInput {
   subscriptionId: string;
@@ -2240,7 +2204,7 @@ export interface DevicesListByResourceGroupInput {
   $expand?: string;
 }
 export const DevicesListByResourceGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
@@ -2270,7 +2234,7 @@ export interface DevicesListByResourceGroupOutput {
   nextLink?: string;
 }
 export const DevicesListByResourceGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2314,19 +2278,17 @@ export const DevicesListByResourceGroupOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param $expand - Specify $expand=details to populate additional fields related to the resource or Specify $skipToken=<token> to populate the next page in the list.
  */
-export const DevicesListByResourceGroup = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DevicesListByResourceGroupInput,
-    outputSchema: DevicesListByResourceGroupOutput,
-  }),
-);
+export const DevicesListByResourceGroup = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DevicesListByResourceGroupInput,
+  outputSchema: DevicesListByResourceGroupOutput,
+}));
 // Input Schema
 export interface DevicesListBySubscriptionInput {
   subscriptionId: string;
   $expand?: string;
 }
 export const DevicesListBySubscriptionInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     $expand: Schema.optional(Schema.String),
   }).pipe(
@@ -2355,7 +2317,7 @@ export interface DevicesListBySubscriptionOutput {
   nextLink?: string;
 }
 export const DevicesListBySubscriptionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -2398,12 +2360,10 @@ export const DevicesListBySubscriptionOutput =
  * @param subscriptionId - The ID of the target subscription.
  * @param $expand - Specify $expand=details to populate additional fields related to the resource or Specify $skipToken=<token> to populate the next page in the list.
  */
-export const DevicesListBySubscription = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DevicesListBySubscriptionInput,
-    outputSchema: DevicesListBySubscriptionOutput,
-  }),
-);
+export const DevicesListBySubscription = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DevicesListBySubscriptionInput,
+  outputSchema: DevicesListBySubscriptionOutput,
+}));
 // Input Schema
 export interface DevicesScanForUpdatesInput {
   subscriptionId: string;
@@ -2411,7 +2371,7 @@ export interface DevicesScanForUpdatesInput {
   deviceName: string;
 }
 export const DevicesScanForUpdatesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -2426,7 +2386,7 @@ export const DevicesScanForUpdatesInput =
 // Output Schema
 export type DevicesScanForUpdatesOutput = void;
 export const DevicesScanForUpdatesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesScanForUpdatesOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<DevicesScanForUpdatesOutput>;
 
 // The operation
 /**
@@ -2437,12 +2397,10 @@ export const DevicesScanForUpdatesOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const DevicesScanForUpdates = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DevicesScanForUpdatesInput,
-    outputSchema: DevicesScanForUpdatesOutput,
-  }),
-);
+export const DevicesScanForUpdates = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DevicesScanForUpdatesInput,
+  outputSchema: DevicesScanForUpdatesOutput,
+}));
 // Input Schema
 export interface DevicesUpdateInput {
   subscriptionId: string;
@@ -2456,7 +2414,7 @@ export interface DevicesUpdateInput {
   };
   properties?: { edgeProfile?: { subscription?: { id?: string } } };
 }
-export const DevicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DevicesUpdateInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -2505,7 +2463,7 @@ export interface DevicesUpdateOutput {
     lastModifiedAt?: string;
   };
 }
-export const DevicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const DevicesUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -2534,7 +2492,7 @@ export const DevicesUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const DevicesUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const DevicesUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: DevicesUpdateInput,
   outputSchema: DevicesUpdateOutput,
 }));
@@ -2556,7 +2514,7 @@ export interface DevicesUpdateExtendedInformationInput {
     | "KeyVaultNotSynced";
 }
 export const DevicesUpdateExtendedInformationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -2589,7 +2547,7 @@ export interface DevicesUpdateExtendedInformationOutput {
   type?: string;
 }
 export const DevicesUpdateExtendedInformationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2605,7 +2563,7 @@ export const DevicesUpdateExtendedInformationOutput =
  * @param deviceName - The device name.
  */
 export const DevicesUpdateExtendedInformation =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DevicesUpdateExtendedInformationInput,
     outputSchema: DevicesUpdateExtendedInformationOutput,
   }));
@@ -2620,7 +2578,7 @@ export interface DevicesUploadCertificateInput {
   };
 }
 export const DevicesUploadCertificateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -2650,7 +2608,7 @@ export interface DevicesUploadCertificateOutput {
   aadAudience?: string;
 }
 export const DevicesUploadCertificateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     authType: Schema.optional(
       Schema.Literals(["Invalid", "AzureActiveDirectory"]),
     ),
@@ -2672,12 +2630,10 @@ export const DevicesUploadCertificateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const DevicesUploadCertificate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: DevicesUploadCertificateInput,
-    outputSchema: DevicesUploadCertificateOutput,
-  }),
-);
+export const DevicesUploadCertificate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: DevicesUploadCertificateInput,
+  outputSchema: DevicesUploadCertificateOutput,
+}));
 // Input Schema
 export interface DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsInput {
   subscriptionId: string;
@@ -2685,7 +2641,7 @@ export interface DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsIn
   deviceName: string;
 }
 export const DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -2712,7 +2668,7 @@ export interface DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsOu
   };
 }
 export const DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2742,7 +2698,7 @@ export const DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsOutput
  * @param deviceName - The device name.
  */
 export const DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsInput,
     outputSchema:
@@ -2755,7 +2711,7 @@ export interface DiagnosticSettingsGetDiagnosticRemoteSupportSettingsInput {
   deviceName: string;
 }
 export const DiagnosticSettingsGetDiagnosticRemoteSupportSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -2782,7 +2738,7 @@ export interface DiagnosticSettingsGetDiagnosticRemoteSupportSettingsOutput {
   };
 }
 export const DiagnosticSettingsGetDiagnosticRemoteSupportSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2812,7 +2768,7 @@ export const DiagnosticSettingsGetDiagnosticRemoteSupportSettingsOutput =
  * @param deviceName - The device name.
  */
 export const DiagnosticSettingsGetDiagnosticRemoteSupportSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticSettingsGetDiagnosticRemoteSupportSettingsInput,
     outputSchema: DiagnosticSettingsGetDiagnosticRemoteSupportSettingsOutput,
   }));
@@ -2824,7 +2780,7 @@ export interface DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSetting
   properties: { userConsent: "Enabled" | "Disabled" };
 }
 export const DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -2854,7 +2810,7 @@ export interface DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSetting
   };
 }
 export const DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2884,7 +2840,7 @@ export const DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsOut
  * @param deviceName - The device name.
  */
 export const DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema:
       DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsInput,
     outputSchema:
@@ -2908,7 +2864,7 @@ export interface DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsInput {
   };
 }
 export const DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -2955,7 +2911,7 @@ export interface DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsOutput {
   };
 }
 export const DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -2985,7 +2941,7 @@ export const DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsOutput =
  * @param deviceName - The device name.
  */
 export const DiagnosticSettingsUpdateDiagnosticRemoteSupportSettings =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsInput,
     outputSchema: DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsOutput,
   }));
@@ -2996,7 +2952,7 @@ export interface JobsGetInput {
   deviceName: string;
   name: string;
 }
-export const JobsGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -3023,7 +2979,7 @@ export interface JobsGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const JobsGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -3053,7 +3009,7 @@ export const JobsGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param deviceName - The device name.
  * @param name - The job name.
  */
-export const JobsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const JobsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: JobsGetInput,
   outputSchema: JobsGetOutput,
 }));
@@ -3080,7 +3036,7 @@ export interface MonitoringConfigCreateOrUpdateInput {
   };
 }
 export const MonitoringConfigCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -3143,7 +3099,7 @@ export interface MonitoringConfigCreateOrUpdateOutput {
   };
 }
 export const MonitoringConfigCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3174,7 +3130,7 @@ export const MonitoringConfigCreateOrUpdateOutput =
  * @param roleName - The name of the role.
  */
 export const MonitoringConfigCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: MonitoringConfigCreateOrUpdateInput,
     outputSchema: MonitoringConfigCreateOrUpdateOutput,
   }));
@@ -3186,7 +3142,7 @@ export interface MonitoringConfigDeleteInput {
   roleName: string;
 }
 export const MonitoringConfigDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -3202,7 +3158,7 @@ export const MonitoringConfigDeleteInput =
 // Output Schema
 export type MonitoringConfigDeleteOutput = void;
 export const MonitoringConfigDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<MonitoringConfigDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<MonitoringConfigDeleteOutput>;
 
 // The operation
 /**
@@ -3214,12 +3170,10 @@ export const MonitoringConfigDeleteOutput =
  * @param deviceName - The name of the device.
  * @param roleName - The name of the role.
  */
-export const MonitoringConfigDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitoringConfigDeleteInput,
-    outputSchema: MonitoringConfigDeleteOutput,
-  }),
-);
+export const MonitoringConfigDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitoringConfigDeleteInput,
+  outputSchema: MonitoringConfigDeleteOutput,
+}));
 // Input Schema
 export interface MonitoringConfigGetInput {
   subscriptionId: string;
@@ -3228,7 +3182,7 @@ export interface MonitoringConfigGetInput {
   roleName: string;
 }
 export const MonitoringConfigGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -3256,7 +3210,7 @@ export interface MonitoringConfigGetOutput {
   };
 }
 export const MonitoringConfigGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3286,7 +3240,7 @@ export const MonitoringConfigGetOutput =
  * @param deviceName - The name of the device.
  * @param roleName - The name of the role.
  */
-export const MonitoringConfigGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const MonitoringConfigGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: MonitoringConfigGetInput,
   outputSchema: MonitoringConfigGetOutput,
 }));
@@ -3298,7 +3252,7 @@ export interface MonitoringConfigListInput {
   roleName: string;
 }
 export const MonitoringConfigListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -3329,7 +3283,7 @@ export interface MonitoringConfigListOutput {
   nextLink?: string;
 }
 export const MonitoringConfigListOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3374,12 +3328,10 @@ export const MonitoringConfigListOutput =
  * @param deviceName - The name of the device.
  * @param roleName - The name of the role.
  */
-export const MonitoringConfigList = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: MonitoringConfigListInput,
-    outputSchema: MonitoringConfigListOutput,
-  }),
-);
+export const MonitoringConfigList = /*@__PURE__*/ API.make(() => ({
+  inputSchema: MonitoringConfigListInput,
+  outputSchema: MonitoringConfigListOutput,
+}));
 // Input Schema
 export interface NodesListByDataBoxEdgeDeviceInput {
   subscriptionId: string;
@@ -3387,7 +3339,7 @@ export interface NodesListByDataBoxEdgeDeviceInput {
   deviceName: string;
 }
 export const NodesListByDataBoxEdgeDeviceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -3405,7 +3357,7 @@ export interface NodesListByDataBoxEdgeDeviceOutput {
   nextLink?: string;
 }
 export const NodesListByDataBoxEdgeDeviceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -3426,15 +3378,13 @@ export const NodesListByDataBoxEdgeDeviceOutput =
  * @param deviceName - The device name.
  */
 export const NodesListByDataBoxEdgeDevice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: NodesListByDataBoxEdgeDeviceInput,
     outputSchema: NodesListByDataBoxEdgeDeviceOutput,
   }));
 // Input Schema
 export interface OperationsListInput {}
-export const OperationsListInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+export const OperationsListInput = /*@__PURE__*/ Schema.Struct({}).pipe(
   T.Http({
     method: "GET",
     path: "/providers/Microsoft.DataBoxEdge/operations",
@@ -3510,7 +3460,7 @@ export interface OperationsListOutput {
   }[];
   nextLink?: string;
 }
-export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OperationsListOutput = /*@__PURE__*/ Schema.Struct({
   value: Schema.Array(
     Schema.Struct({
       name: Schema.optional(Schema.String),
@@ -3622,7 +3572,7 @@ export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  *
  * @param api-version - The API version to use for this operation.
  */
-export const OperationsList = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsList = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsListInput,
   outputSchema: OperationsListOutput,
 }));
@@ -3634,7 +3584,7 @@ export interface OperationsStatusGetInput {
   name: string;
 }
 export const OperationsStatusGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -3662,7 +3612,7 @@ export interface OperationsStatusGetOutput {
   };
 }
 export const OperationsStatusGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3692,7 +3642,7 @@ export const OperationsStatusGetOutput =
  * @param deviceName - The device name.
  * @param name - The job name.
  */
-export const OperationsStatusGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OperationsStatusGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OperationsStatusGetInput,
   outputSchema: OperationsStatusGetOutput,
 }));
@@ -3794,7 +3744,7 @@ export interface OrdersCreateOrUpdateInput {
   kind?: string;
 }
 export const OrdersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -3942,7 +3892,7 @@ export interface OrdersCreateOrUpdateOutput {
   };
 }
 export const OrdersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -3971,19 +3921,17 @@ export const OrdersCreateOrUpdateOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const OrdersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrdersCreateOrUpdateInput,
-    outputSchema: OrdersCreateOrUpdateOutput,
-  }),
-);
+export const OrdersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrdersCreateOrUpdateInput,
+  outputSchema: OrdersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface OrdersDeleteInput {
   subscriptionId: string;
   resourceGroupName: string;
   deviceName: string;
 }
-export const OrdersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OrdersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -3998,7 +3946,7 @@ export const OrdersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type OrdersDeleteOutput = void;
 export const OrdersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<OrdersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<OrdersDeleteOutput>;
 
 // The operation
 /**
@@ -4009,7 +3957,7 @@ export const OrdersDeleteOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const OrdersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrdersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: OrdersDeleteInput,
   outputSchema: OrdersDeleteOutput,
 }));
@@ -4019,7 +3967,7 @@ export interface OrdersGetInput {
   resourceGroupName: string;
   deviceName: string;
 }
-export const OrdersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OrdersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -4045,7 +3993,7 @@ export interface OrdersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const OrdersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const OrdersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4074,7 +4022,7 @@ export const OrdersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const OrdersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const OrdersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: OrdersGetInput,
   outputSchema: OrdersGetOutput,
 }));
@@ -4085,7 +4033,7 @@ export interface OrdersListByDataBoxEdgeDeviceInput {
   deviceName: string;
 }
 export const OrdersListByDataBoxEdgeDeviceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -4115,7 +4063,7 @@ export interface OrdersListByDataBoxEdgeDeviceOutput {
   nextLink?: string;
 }
 export const OrdersListByDataBoxEdgeDeviceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4160,7 +4108,7 @@ export const OrdersListByDataBoxEdgeDeviceOutput =
  * @param deviceName - The device name.
  */
 export const OrdersListByDataBoxEdgeDevice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: OrdersListByDataBoxEdgeDeviceInput,
     outputSchema: OrdersListByDataBoxEdgeDeviceOutput,
   }));
@@ -4171,7 +4119,7 @@ export interface OrdersListDCAccessCodeInput {
   deviceName: string;
 }
 export const OrdersListDCAccessCodeInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -4188,7 +4136,7 @@ export interface OrdersListDCAccessCodeOutput {
   properties?: { authCode?: string };
 }
 export const OrdersListDCAccessCodeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     properties: Schema.optional(
       Schema.Struct({
         authCode: Schema.optional(Schema.String),
@@ -4205,12 +4153,10 @@ export const OrdersListDCAccessCodeOutput =
  * @param resourceGroupName - The name of the resource group. The name is case insensitive.
  * @param deviceName - The device name.
  */
-export const OrdersListDCAccessCode = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: OrdersListDCAccessCodeInput,
-    outputSchema: OrdersListDCAccessCodeOutput,
-  }),
-);
+export const OrdersListDCAccessCode = /*@__PURE__*/ API.make(() => ({
+  inputSchema: OrdersListDCAccessCodeInput,
+  outputSchema: OrdersListDCAccessCodeOutput,
+}));
 // Input Schema
 export interface RolesCreateOrUpdateInput {
   subscriptionId: string;
@@ -4227,7 +4173,7 @@ export interface RolesCreateOrUpdateInput {
     | "Kubernetes";
 }
 export const RolesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -4264,7 +4210,7 @@ export interface RolesCreateOrUpdateOutput {
   };
 }
 export const RolesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4294,7 +4240,7 @@ export const RolesCreateOrUpdateOutput =
  * @param deviceName - The device name.
  * @param name - The role name.
  */
-export const RolesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RolesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: RolesCreateOrUpdateInput,
   outputSchema: RolesCreateOrUpdateOutput,
 }));
@@ -4305,7 +4251,7 @@ export interface RolesDeleteInput {
   deviceName: string;
   name: string;
 }
-export const RolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -4321,7 +4267,7 @@ export const RolesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type RolesDeleteOutput = void;
 export const RolesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<RolesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<RolesDeleteOutput>;
 
 // The operation
 /**
@@ -4333,7 +4279,7 @@ export const RolesDeleteOutput =
  * @param deviceName - The device name.
  * @param name - The role name.
  */
-export const RolesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RolesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: RolesDeleteInput,
   outputSchema: RolesDeleteOutput,
 }));
@@ -4344,7 +4290,7 @@ export interface RolesGetInput {
   deviceName: string;
   name: string;
 }
-export const RolesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -4371,7 +4317,7 @@ export interface RolesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const RolesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const RolesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4401,7 +4347,7 @@ export const RolesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param deviceName - The device name.
  * @param name - The role name.
  */
-export const RolesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const RolesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: RolesGetInput,
   outputSchema: RolesGetOutput,
 }));
@@ -4412,7 +4358,7 @@ export interface RolesListByDataBoxEdgeDeviceInput {
   deviceName: string;
 }
 export const RolesListByDataBoxEdgeDeviceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -4442,7 +4388,7 @@ export interface RolesListByDataBoxEdgeDeviceOutput {
   nextLink?: string;
 }
 export const RolesListByDataBoxEdgeDeviceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4487,7 +4433,7 @@ export const RolesListByDataBoxEdgeDeviceOutput =
  * @param deviceName - The device name.
  */
 export const RolesListByDataBoxEdgeDevice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: RolesListByDataBoxEdgeDeviceInput,
     outputSchema: RolesListByDataBoxEdgeDeviceOutput,
   }));
@@ -4539,7 +4485,7 @@ export interface SharesCreateOrUpdateInput {
   };
 }
 export const SharesCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -4636,7 +4582,7 @@ export interface SharesCreateOrUpdateOutput {
   };
 }
 export const SharesCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -4666,12 +4612,10 @@ export const SharesCreateOrUpdateOutput =
  * @param deviceName - The device name.
  * @param name - The share name.
  */
-export const SharesCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: SharesCreateOrUpdateInput,
-    outputSchema: SharesCreateOrUpdateOutput,
-  }),
-);
+export const SharesCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: SharesCreateOrUpdateInput,
+  outputSchema: SharesCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface SharesDeleteInput {
   subscriptionId: string;
@@ -4679,7 +4623,7 @@ export interface SharesDeleteInput {
   deviceName: string;
   name: string;
 }
-export const SharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -4695,7 +4639,7 @@ export const SharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SharesDeleteOutput = void;
 export const SharesDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SharesDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SharesDeleteOutput>;
 
 // The operation
 /**
@@ -4707,7 +4651,7 @@ export const SharesDeleteOutput =
  * @param deviceName - The device name.
  * @param name - The share name.
  */
-export const SharesDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharesDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: SharesDeleteInput,
   outputSchema: SharesDeleteOutput,
 }));
@@ -4718,7 +4662,7 @@ export interface SharesGetInput {
   deviceName: string;
   name: string;
 }
-export const SharesGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -4745,7 +4689,7 @@ export interface SharesGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const SharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -4775,7 +4719,7 @@ export const SharesGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param deviceName - The device name.
  * @param name - The share name.
  */
-export const SharesGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharesGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: SharesGetInput,
   outputSchema: SharesGetOutput,
 }));
@@ -4786,7 +4730,7 @@ export interface SharesListByDataBoxEdgeDeviceInput {
   deviceName: string;
 }
 export const SharesListByDataBoxEdgeDeviceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -4816,7 +4760,7 @@ export interface SharesListByDataBoxEdgeDeviceOutput {
   nextLink?: string;
 }
 export const SharesListByDataBoxEdgeDeviceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -4861,7 +4805,7 @@ export const SharesListByDataBoxEdgeDeviceOutput =
  * @param deviceName - The device name.
  */
 export const SharesListByDataBoxEdgeDevice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SharesListByDataBoxEdgeDeviceInput,
     outputSchema: SharesListByDataBoxEdgeDeviceOutput,
   }));
@@ -4872,7 +4816,7 @@ export interface SharesRefreshInput {
   deviceName: string;
   name: string;
 }
-export const SharesRefreshInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const SharesRefreshInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -4888,7 +4832,7 @@ export const SharesRefreshInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type SharesRefreshOutput = void;
 export const SharesRefreshOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SharesRefreshOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SharesRefreshOutput>;
 
 // The operation
 /**
@@ -4900,7 +4844,7 @@ export const SharesRefreshOutput =
  * @param deviceName - The device name.
  * @param name - The share name.
  */
-export const SharesRefresh = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const SharesRefresh = /*@__PURE__*/ API.make(() => ({
   inputSchema: SharesRefreshInput,
   outputSchema: SharesRefreshOutput,
 }));
@@ -4926,7 +4870,7 @@ export interface StorageAccountCredentialsCreateOrUpdateInput {
   };
 }
 export const StorageAccountCredentialsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -4974,7 +4918,7 @@ export interface StorageAccountCredentialsCreateOrUpdateOutput {
   };
 }
 export const StorageAccountCredentialsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5005,7 +4949,7 @@ export const StorageAccountCredentialsCreateOrUpdateOutput =
  * @param name - The storage account credential name.
  */
 export const StorageAccountCredentialsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountCredentialsCreateOrUpdateInput,
     outputSchema: StorageAccountCredentialsCreateOrUpdateOutput,
   }));
@@ -5017,7 +4961,7 @@ export interface StorageAccountCredentialsDeleteInput {
   name: string;
 }
 export const StorageAccountCredentialsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -5033,7 +4977,7 @@ export const StorageAccountCredentialsDeleteInput =
 // Output Schema
 export type StorageAccountCredentialsDeleteOutput = void;
 export const StorageAccountCredentialsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountCredentialsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountCredentialsDeleteOutput>;
 
 // The operation
 /**
@@ -5046,7 +4990,7 @@ export const StorageAccountCredentialsDeleteOutput =
  * @param name - The storage account credential name.
  */
 export const StorageAccountCredentialsDelete =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountCredentialsDeleteInput,
     outputSchema: StorageAccountCredentialsDeleteOutput,
   }));
@@ -5058,7 +5002,7 @@ export interface StorageAccountCredentialsGetInput {
   name: string;
 }
 export const StorageAccountCredentialsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -5086,7 +5030,7 @@ export interface StorageAccountCredentialsGetOutput {
   };
 }
 export const StorageAccountCredentialsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5117,7 +5061,7 @@ export const StorageAccountCredentialsGetOutput =
  * @param name - The storage account credential name.
  */
 export const StorageAccountCredentialsGet =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountCredentialsGetInput,
     outputSchema: StorageAccountCredentialsGetOutput,
   }));
@@ -5128,7 +5072,7 @@ export interface StorageAccountCredentialsListByDataBoxEdgeDeviceInput {
   deviceName: string;
 }
 export const StorageAccountCredentialsListByDataBoxEdgeDeviceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -5158,7 +5102,7 @@ export interface StorageAccountCredentialsListByDataBoxEdgeDeviceOutput {
   nextLink?: string;
 }
 export const StorageAccountCredentialsListByDataBoxEdgeDeviceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5203,7 +5147,7 @@ export const StorageAccountCredentialsListByDataBoxEdgeDeviceOutput =
  * @param deviceName - The device name.
  */
 export const StorageAccountCredentialsListByDataBoxEdgeDevice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountCredentialsListByDataBoxEdgeDeviceInput,
     outputSchema: StorageAccountCredentialsListByDataBoxEdgeDeviceOutput,
   }));
@@ -5228,7 +5172,7 @@ export interface StorageAccountsCreateOrUpdateInput {
   };
 }
 export const StorageAccountsCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -5272,7 +5216,7 @@ export interface StorageAccountsCreateOrUpdateOutput {
   };
 }
 export const StorageAccountsCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5303,7 +5247,7 @@ export const StorageAccountsCreateOrUpdateOutput =
  * @param storageAccountName - The storage account name.
  */
 export const StorageAccountsCreateOrUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsCreateOrUpdateInput,
     outputSchema: StorageAccountsCreateOrUpdateOutput,
   }));
@@ -5315,7 +5259,7 @@ export interface StorageAccountsDeleteInput {
   storageAccountName: string;
 }
 export const StorageAccountsDeleteInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -5331,7 +5275,7 @@ export const StorageAccountsDeleteInput =
 // Output Schema
 export type StorageAccountsDeleteOutput = void;
 export const StorageAccountsDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<StorageAccountsDeleteOutput>;
 
 // The operation
 /**
@@ -5343,12 +5287,10 @@ export const StorageAccountsDeleteOutput =
  * @param deviceName - The device name.
  * @param storageAccountName - The storage account name.
  */
-export const StorageAccountsDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: StorageAccountsDeleteInput,
-    outputSchema: StorageAccountsDeleteOutput,
-  }),
-);
+export const StorageAccountsDelete = /*@__PURE__*/ API.make(() => ({
+  inputSchema: StorageAccountsDeleteInput,
+  outputSchema: StorageAccountsDeleteOutput,
+}));
 // Input Schema
 export interface StorageAccountsGetInput {
   subscriptionId: string;
@@ -5357,7 +5299,7 @@ export interface StorageAccountsGetInput {
   storageAccountName: string;
 }
 export const StorageAccountsGetInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -5385,7 +5327,7 @@ export interface StorageAccountsGetOutput {
   };
 }
 export const StorageAccountsGetOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5415,7 +5357,7 @@ export const StorageAccountsGetOutput =
  * @param deviceName - The device name.
  * @param storageAccountName - The storage account name.
  */
-export const StorageAccountsGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const StorageAccountsGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: StorageAccountsGetInput,
   outputSchema: StorageAccountsGetOutput,
 }));
@@ -5426,7 +5368,7 @@ export interface StorageAccountsListByDataBoxEdgeDeviceInput {
   deviceName: string;
 }
 export const StorageAccountsListByDataBoxEdgeDeviceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -5456,7 +5398,7 @@ export interface StorageAccountsListByDataBoxEdgeDeviceOutput {
   nextLink?: string;
 }
 export const StorageAccountsListByDataBoxEdgeDeviceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5501,7 +5443,7 @@ export const StorageAccountsListByDataBoxEdgeDeviceOutput =
  * @param deviceName - The device name.
  */
 export const StorageAccountsListByDataBoxEdgeDevice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: StorageAccountsListByDataBoxEdgeDeviceInput,
     outputSchema: StorageAccountsListByDataBoxEdgeDeviceOutput,
   }));
@@ -5520,7 +5462,7 @@ export interface SupportPackagesTriggerSupportPackageInput {
   type?: string;
 }
 export const SupportPackagesTriggerSupportPackageInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -5543,7 +5485,7 @@ export const SupportPackagesTriggerSupportPackageInput =
 // Output Schema
 export type SupportPackagesTriggerSupportPackageOutput = void;
 export const SupportPackagesTriggerSupportPackageOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<SupportPackagesTriggerSupportPackageOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<SupportPackagesTriggerSupportPackageOutput>;
 
 // The operation
 /**
@@ -5555,7 +5497,7 @@ export const SupportPackagesTriggerSupportPackageOutput =
  * @param deviceName - The device name.
  */
 export const SupportPackagesTriggerSupportPackage =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: SupportPackagesTriggerSupportPackageInput,
     outputSchema: SupportPackagesTriggerSupportPackageOutput,
   }));
@@ -5568,7 +5510,7 @@ export interface TriggersCreateOrUpdateInput {
   kind: "FileEvent" | "PeriodicTimerEvent";
 }
 export const TriggersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -5597,7 +5539,7 @@ export interface TriggersCreateOrUpdateOutput {
   };
 }
 export const TriggersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5627,12 +5569,10 @@ export const TriggersCreateOrUpdateOutput =
  * @param deviceName - The device name.
  * @param name - The trigger name.
  */
-export const TriggersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: TriggersCreateOrUpdateInput,
-    outputSchema: TriggersCreateOrUpdateOutput,
-  }),
-);
+export const TriggersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
+  inputSchema: TriggersCreateOrUpdateInput,
+  outputSchema: TriggersCreateOrUpdateOutput,
+}));
 // Input Schema
 export interface TriggersDeleteInput {
   subscriptionId: string;
@@ -5640,7 +5580,7 @@ export interface TriggersDeleteInput {
   deviceName: string;
   name: string;
 }
-export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -5656,7 +5596,7 @@ export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type TriggersDeleteOutput = void;
 export const TriggersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<TriggersDeleteOutput>;
 
 // The operation
 /**
@@ -5668,7 +5608,7 @@ export const TriggersDeleteOutput =
  * @param deviceName - The device name.
  * @param name - The trigger name.
  */
-export const TriggersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersDeleteInput,
   outputSchema: TriggersDeleteOutput,
 }));
@@ -5679,7 +5619,7 @@ export interface TriggersGetInput {
   deviceName: string;
   name: string;
 }
-export const TriggersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -5706,7 +5646,7 @@ export interface TriggersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const TriggersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -5736,7 +5676,7 @@ export const TriggersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param deviceName - The device name.
  * @param name - The trigger name.
  */
-export const TriggersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const TriggersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: TriggersGetInput,
   outputSchema: TriggersGetOutput,
 }));
@@ -5748,7 +5688,7 @@ export interface TriggersListByDataBoxEdgeDeviceInput {
   $filter?: string;
 }
 export const TriggersListByDataBoxEdgeDeviceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -5779,7 +5719,7 @@ export interface TriggersListByDataBoxEdgeDeviceOutput {
   nextLink?: string;
 }
 export const TriggersListByDataBoxEdgeDeviceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -5825,7 +5765,7 @@ export const TriggersListByDataBoxEdgeDeviceOutput =
  * @param $filter - Specify $filter='CustomContextTag eq <tag>' to filter on custom context tag property
  */
 export const TriggersListByDataBoxEdgeDevice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: TriggersListByDataBoxEdgeDeviceInput,
     outputSchema: TriggersListByDataBoxEdgeDeviceOutput,
   }));
@@ -5849,7 +5789,7 @@ export interface UsersCreateOrUpdateInput {
   };
 }
 export const UsersCreateOrUpdateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -5899,7 +5839,7 @@ export interface UsersCreateOrUpdateOutput {
   };
 }
 export const UsersCreateOrUpdateOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     type: Schema.optional(Schema.String),
@@ -5929,7 +5869,7 @@ export const UsersCreateOrUpdateOutput =
  * @param deviceName - The device name.
  * @param name - The user name.
  */
-export const UsersCreateOrUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersCreateOrUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersCreateOrUpdateInput,
   outputSchema: UsersCreateOrUpdateOutput,
 }));
@@ -5940,7 +5880,7 @@ export interface UsersDeleteInput {
   deviceName: string;
   name: string;
 }
-export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersDeleteInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -5956,7 +5896,7 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export type UsersDeleteOutput = void;
 export const UsersDeleteOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersDeleteOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UsersDeleteOutput>;
 
 // The operation
 /**
@@ -5968,7 +5908,7 @@ export const UsersDeleteOutput =
  * @param deviceName - The device name.
  * @param name - The user name.
  */
-export const UsersDelete = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersDelete = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersDeleteInput,
   outputSchema: UsersDeleteOutput,
 }));
@@ -5979,7 +5919,7 @@ export interface UsersGetInput {
   deviceName: string;
   name: string;
 }
-export const UsersGetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersGetInput = /*@__PURE__*/ Schema.Struct({
   subscriptionId: Schema.String.pipe(T.PathParam()),
   resourceGroupName: Schema.String.pipe(T.PathParam()),
   deviceName: Schema.String.pipe(T.PathParam()),
@@ -6006,7 +5946,7 @@ export interface UsersGetOutput {
     lastModifiedAt?: string;
   };
 }
-export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const UsersGetOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   type: Schema.optional(Schema.String),
@@ -6036,7 +5976,7 @@ export const UsersGetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param deviceName - The device name.
  * @param name - The user name.
  */
-export const UsersGet = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const UsersGet = /*@__PURE__*/ API.make(() => ({
   inputSchema: UsersGetInput,
   outputSchema: UsersGetOutput,
 }));
@@ -6048,7 +5988,7 @@ export interface UsersListByDataBoxEdgeDeviceInput {
   $filter?: string;
 }
 export const UsersListByDataBoxEdgeDeviceInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     subscriptionId: Schema.String.pipe(T.PathParam()),
     resourceGroupName: Schema.String.pipe(T.PathParam()),
     deviceName: Schema.String.pipe(T.PathParam()),
@@ -6079,7 +6019,7 @@ export interface UsersListByDataBoxEdgeDeviceOutput {
   nextLink?: string;
 }
 export const UsersListByDataBoxEdgeDeviceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     value: Schema.Array(
       Schema.Struct({
         id: Schema.optional(Schema.String),
@@ -6125,7 +6065,7 @@ export const UsersListByDataBoxEdgeDeviceOutput =
  * @param $filter - Specify $filter='Type eq <type>' to filter on user type property
  */
 export const UsersListByDataBoxEdgeDevice =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: UsersListByDataBoxEdgeDeviceInput,
     outputSchema: UsersListByDataBoxEdgeDeviceOutput,
   }));

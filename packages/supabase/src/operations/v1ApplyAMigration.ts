@@ -10,21 +10,19 @@ export interface V1ApplyAMigrationInput {
   name?: string;
   rollback?: string;
 }
-export const V1ApplyAMigrationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ref: Schema.String.pipe(T.PathParam()),
-    query: Schema.String,
-    name: Schema.optional(Schema.String),
-    rollback: Schema.optional(Schema.String),
-  },
-).pipe(
+export const V1ApplyAMigrationInput = /*@__PURE__*/ Schema.Struct({
+  ref: Schema.String.pipe(T.PathParam()),
+  query: Schema.String,
+  name: Schema.optional(Schema.String),
+  rollback: Schema.optional(Schema.String),
+}).pipe(
   T.Http({ method: "POST", path: "/v1/projects/{ref}/database/migrations" }),
 ) as unknown as Schema.Codec<V1ApplyAMigrationInput>;
 
 // Output Schema
 export type V1ApplyAMigrationOutput = void;
 export const V1ApplyAMigrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<V1ApplyAMigrationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<V1ApplyAMigrationOutput>;
 
 // The operation
 /**
@@ -35,7 +33,7 @@ export const V1ApplyAMigrationOutput =
  * @param ref - Project ref
  * @param Idempotency-Key - A unique key to ensure the same migration is tracked only once.
  */
-export const v1ApplyAMigration = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const v1ApplyAMigration = /*@__PURE__*/ API.make(() => ({
   inputSchema: V1ApplyAMigrationInput,
   outputSchema: V1ApplyAMigrationOutput,
   errors: [BadRequest, Forbidden] as const,

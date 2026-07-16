@@ -10,7 +10,7 @@ export interface CompleteErroredDeployInput {
   number: number;
 }
 export const CompleteErroredDeployInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     organization: Schema.String.pipe(T.PathParam()),
     database: Schema.String.pipe(T.PathParam()),
     number: Schema.Number.pipe(T.PathParam()),
@@ -198,7 +198,7 @@ export interface CompleteErroredDeployOutput {
   deployed_at: string | null;
 }
 export const CompleteErroredDeployOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
     number: Schema.Number,
     actor: Schema.Struct({
@@ -440,10 +440,8 @@ export const CompleteErroredDeployOutput =
  * @param database - The name of the deploy request's database
  * @param number - The number of the deploy request
  */
-export const completeErroredDeploy = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: CompleteErroredDeployInput,
-    outputSchema: CompleteErroredDeployOutput,
-    errors: [Forbidden, NotFound] as const,
-  }),
-);
+export const completeErroredDeploy = /*@__PURE__*/ API.make(() => ({
+  inputSchema: CompleteErroredDeployInput,
+  outputSchema: CompleteErroredDeployOutput,
+  errors: [Forbidden, NotFound] as const,
+}));

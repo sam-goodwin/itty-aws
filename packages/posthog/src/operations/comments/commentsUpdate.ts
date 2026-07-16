@@ -63,7 +63,7 @@ export interface CommentsUpdateInput {
   completed_at?: string | null;
   source_comment?: string | null;
 }
-export const CommentsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CommentsUpdateInput = /*@__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
   project_id: Schema.String.pipe(T.PathParam()),
   created_by: Schema.optional(
@@ -208,7 +208,7 @@ export interface CommentsUpdateOutput {
   completed_at?: string | null;
   source_comment?: string | null;
 }
-export const CommentsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const CommentsUpdateOutput = /*@__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   created_by: Schema.optional(
     Schema.NullOr(
@@ -297,7 +297,7 @@ export const CommentsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
  * @param id - A UUID string identifying this comment.
  * @param project_id - Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/.
  */
-export const commentsUpdate = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const commentsUpdate = /*@__PURE__*/ API.make(() => ({
   inputSchema: CommentsUpdateInput,
   outputSchema: CommentsUpdateOutput,
   errors: [BadRequest, Forbidden, NotFound] as const,

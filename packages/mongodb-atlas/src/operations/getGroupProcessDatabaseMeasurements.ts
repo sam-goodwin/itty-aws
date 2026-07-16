@@ -17,7 +17,7 @@ export interface GetGroupProcessDatabaseMeasurementsInput {
   end?: string;
 }
 export const GetGroupProcessDatabaseMeasurementsInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     databaseName: Schema.String.pipe(T.PathParam()),
     processId: Schema.String.pipe(T.PathParam()),
@@ -38,7 +38,7 @@ export const GetGroupProcessDatabaseMeasurementsInput =
 // Output Schema
 export type GetGroupProcessDatabaseMeasurementsOutput = void;
 export const GetGroupProcessDatabaseMeasurementsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessDatabaseMeasurementsOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<GetGroupProcessDatabaseMeasurementsOutput>;
 
 // The operation
 /**
@@ -60,7 +60,7 @@ export const GetGroupProcessDatabaseMeasurementsOutput =
  * @param end - Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**.
  */
 export const getGroupProcessDatabaseMeasurements =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ API.make(() => ({
     inputSchema: GetGroupProcessDatabaseMeasurementsInput,
     outputSchema: GetGroupProcessDatabaseMeasurementsOutput,
     errors: [Forbidden, NotFound] as const,

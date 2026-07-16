@@ -11,7 +11,7 @@ export interface UpdateGroupLogIntegrationInput {
   pretty?: boolean;
 }
 export const UpdateGroupLogIntegrationInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  /*@__PURE__*/ Schema.Struct({
     groupId: Schema.String.pipe(T.PathParam()),
     id: Schema.String.pipe(T.PathParam()),
     envelope: Schema.optional(Schema.Boolean),
@@ -26,7 +26,7 @@ export const UpdateGroupLogIntegrationInput =
 // Output Schema
 export type UpdateGroupLogIntegrationOutput = void;
 export const UpdateGroupLogIntegrationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupLogIntegrationOutput>;
+  /*@__PURE__*/ Schema.Void as unknown as Schema.Codec<UpdateGroupLogIntegrationOutput>;
 
 // The operation
 /**
@@ -41,10 +41,8 @@ export const UpdateGroupLogIntegrationOutput =
  * @param pretty - Flag that indicates whether the response body should be in the prettyprint format.
  * @param id - Unique identifier of the log integration configuration.
  */
-export const updateGroupLogIntegration = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
-    inputSchema: UpdateGroupLogIntegrationInput,
-    outputSchema: UpdateGroupLogIntegrationOutput,
-    errors: [BadRequest, Forbidden, NotFound] as const,
-  }),
-);
+export const updateGroupLogIntegration = /*@__PURE__*/ API.make(() => ({
+  inputSchema: UpdateGroupLogIntegrationInput,
+  outputSchema: UpdateGroupLogIntegrationOutput,
+  errors: [BadRequest, Forbidden, NotFound] as const,
+}));
