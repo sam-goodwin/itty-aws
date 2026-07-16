@@ -2724,6 +2724,7 @@ export type SendWhatsAppMessageError =
   | InvalidParametersException
   | ResourceNotFoundException
   | ThrottledRequestException
+  | AccessDeniedByMetaException
   | CommonErrors;
 /**
  * Send a WhatsApp message. For examples of sending a message using the Amazon Web Services
@@ -2746,6 +2747,7 @@ export const sendWhatsAppMessage: API.OperationMethod<
     InvalidParametersException,
     ResourceNotFoundException,
     ThrottledRequestException,
+    AccessDeniedByMetaException,
   ],
   operationName: "SendWhatsAppMessage",
 }));
