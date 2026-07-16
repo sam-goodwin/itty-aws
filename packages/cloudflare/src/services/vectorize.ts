@@ -11,7 +11,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
-import { UploadableSchema } from "../schemas.ts";
+import { BinaryBodySchema } from "../schemas.ts";
 
 // =============================================================================
 // Errors
@@ -637,29 +637,30 @@ export const infoIndex: API.OperationMethod<
 }));
 
 export interface InsertIndexRequest {
-  indexName: string;
-  /** Path param: Identifier */
+  /** Identifier */
   accountId: string;
-  /** Query param: Behavior for ndjson parse failures. */
+  /** The name of the index. */
+  indexName: string;
+  /** Behavior for ndjson parse failures. */
   unparsableBehavior?: "error" | "discard" | (string & {});
-  /** Body param: ndjson file containing vectors to insert. */
-  body: File | Blob;
+  body: Blob | Uint8Array | ArrayBuffer | string;
 }
 
 export const InsertIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      indexName: Schema.String.pipe(T.HttpPath("indexName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      indexName: Schema.String.pipe(T.HttpPath("index_name")),
       unparsableBehavior: Schema.optional(
         Schema.Union([Schema.Literals(["error", "discard"]), Schema.String]),
       ).pipe(T.HttpQuery("unparsable-behavior")),
-      body: UploadableSchema.pipe(T.HttpFormDataFile()).pipe(T.HttpBody()),
+      body: BinaryBodySchema.pipe(T.HttpBody()),
     }).pipe(
       T.Http({
         method: "POST",
-        path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/insert",
-        contentType: "multipart",
+        path: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/insert",
+        contentType: "binary",
+        bodyMediaType: "application/x-ndjson",
       }),
     ),
 ) as unknown as Schema.Codec<InsertIndexRequest>;
@@ -767,29 +768,30 @@ export const queryIndex: API.OperationMethod<
 }));
 
 export interface UpsertIndexRequest {
-  indexName: string;
-  /** Path param: Identifier */
+  /** Identifier */
   accountId: string;
-  /** Query param: Behavior for ndjson parse failures. */
+  /** The name of the index. */
+  indexName: string;
+  /** Behavior for ndjson parse failures. */
   unparsableBehavior?: "error" | "discard" | (string & {});
-  /** Body param: ndjson file containing vectors to upsert. */
-  body: File | Blob;
+  body: Blob | Uint8Array | ArrayBuffer | string;
 }
 
 export const UpsertIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
     Schema.Struct({
-      indexName: Schema.String.pipe(T.HttpPath("indexName")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      indexName: Schema.String.pipe(T.HttpPath("index_name")),
       unparsableBehavior: Schema.optional(
         Schema.Union([Schema.Literals(["error", "discard"]), Schema.String]),
       ).pipe(T.HttpQuery("unparsable-behavior")),
-      body: UploadableSchema.pipe(T.HttpFormDataFile()).pipe(T.HttpBody()),
+      body: BinaryBodySchema.pipe(T.HttpBody()),
     }).pipe(
       T.Http({
         method: "POST",
-        path: "/accounts/{account_id}/vectorize/v2/indexes/{indexName}/upsert",
-        contentType: "multipart",
+        path: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/upsert",
+        contentType: "binary",
+        bodyMediaType: "application/x-ndjson",
       }),
     ),
 ) as unknown as Schema.Codec<UpsertIndexRequest>;

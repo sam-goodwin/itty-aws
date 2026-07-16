@@ -324,13 +324,23 @@ const Result2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
 interface Batch {
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
   sql: string;
-  params?: string[] | null;
+  params?: (string | number | null | number[])[] | null;
 }
 const Batch = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     sql: Schema.String,
     params: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      Schema.Union([
+        Schema.Array(
+          Schema.Union([
+            Schema.String,
+            Schema.Number,
+            Schema.Null,
+            Schema.Array(Schema.Number),
+          ]),
+        ),
+        Schema.Null,
+      ]),
     ),
   }),
 ) as unknown as Schema.Codec<Batch>;
@@ -1258,9 +1268,9 @@ export interface QueryDatabaseRequest {
   /** Body param: Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
   sql?: string;
   /** Body param */
-  params?: string[];
+  params?: (string | number | null | number[])[];
   /** Body param */
-  batch?: { sql: string; params?: string[] }[];
+  batch?: { sql: string; params?: (string | number | null | number[])[] }[];
 }
 
 export const QueryDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
@@ -1269,7 +1279,16 @@ export const QueryDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       sql: Schema.optional(Schema.String),
-      params: Schema.optional(Schema.Array(Schema.String)),
+      params: Schema.optional(
+        Schema.Array(
+          Schema.Union([
+            Schema.String,
+            Schema.Number,
+            Schema.Null,
+            Schema.Array(Schema.Number),
+          ]),
+        ),
+      ),
       batch: Schema.optional(Schema.Array(Batch)),
     }).pipe(
       T.Http({
@@ -1338,9 +1357,9 @@ export interface RawDatabaseRequest {
   /** Body param: Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
   sql?: string;
   /** Body param */
-  params?: string[];
+  params?: (string | number | null | number[])[];
   /** Body param */
-  batch?: { sql: string; params?: string[] }[];
+  batch?: { sql: string; params?: (string | number | null | number[])[] }[];
 }
 
 export const RawDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
@@ -1349,7 +1368,16 @@ export const RawDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       sql: Schema.optional(Schema.String),
-      params: Schema.optional(Schema.Array(Schema.String)),
+      params: Schema.optional(
+        Schema.Array(
+          Schema.Union([
+            Schema.String,
+            Schema.Number,
+            Schema.Null,
+            Schema.Array(Schema.Number),
+          ]),
+        ),
+      ),
       batch: Schema.optional(Schema.Array(Batch)),
     }).pipe(
       T.Http({
