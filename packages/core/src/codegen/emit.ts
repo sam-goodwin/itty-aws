@@ -63,6 +63,16 @@ export const suspendConst = (o: SuspendConstOptions): string => {
   return `export const ${o.name} = ${o.pure ?? ""}${suspend}${annotate} as any as ${cast};\n`;
 };
 
+/**
+ * Member-level lazy reference: `S.suspend(() => X).annotate({ identifier })`.
+ * The `typed` form adds an explicit `S.Schema<X>` thunk return type — used
+ * for references into dependency cycles to stop circular type inference.
+ */
+export const suspendRef = (name: string, typed = false): string =>
+  typed
+    ? `S.suspend((): S.Schema<${name}> => ${name}).annotate({ identifier: ${q(name)} })`
+    : `S.suspend(() => ${name}).annotate({ identifier: ${q(name)} })`;
+
 export interface EnumDeclOptions {
   readonly name: string;
   readonly values: readonly string[];

@@ -18,6 +18,14 @@ import * as ChildProcess from "effect/unstable/process/ChildProcess";
 import { loadServiceSpecPatch, type ServiceSpec } from "./spec-schema.ts";
 import type { RuleSetObject } from "./compile-rules.ts";
 import { generateRuleSetCode } from "./compile-rules.ts";
+import { cyclicShapeIds } from "@distilled.cloud/core/codegen/graph";
+import {
+  barrel,
+  enumDecl,
+  operationConst,
+  suspendConst,
+  suspendRef,
+} from "@distilled.cloud/core/codegen/emit";
 import {
   GenericShape,
   ServiceShape,
@@ -125,10 +133,12 @@ class UnableToTransformShapeToSchema extends Data.TaggedError(
   message: string;
 }> {}
 
+const PURE = "/*@__PURE__*/ /*#__PURE__*/ ";
+
 const annotatePureExportConst = (definition: string) =>
   definition.replace(
     /^export const ([^=]+?)\s*=\s*/m,
-    "export const $1 = /*@__PURE__*/ /*#__PURE__*/ ",
+    `export const $1 = ${PURE}`,
   );
 
 // =============================================================================
@@ -752,70 +762,13 @@ function findCyclicSchemasFromDeps(
   allUnionNames: Set<string>;
   allSchemaNames: Set<string>;
 } {
-  const cyclicSchemas = new Set<string>();
-
-  let index = 0;
-  const stack: string[] = [];
-  const onStack = new Set<string>();
-  const indices = new Map<string, number>();
-  const lowlinks = new Map<string, number>();
-
-  function strongConnect(name: string) {
-    indices.set(name, index);
-    lowlinks.set(name, index);
-    index++;
-    stack.push(name);
-    onStack.add(name);
-
-    const shapeInfo = shapeDeps.get(name);
-    if (shapeInfo) {
-      for (const dep of shapeInfo.deps) {
-        if (shapeDeps.has(dep)) {
-          if (!indices.has(dep)) {
-            strongConnect(dep);
-            lowlinks.set(
-              name,
-              Math.min(lowlinks.get(name)!, lowlinks.get(dep)!),
-            );
-          } else if (onStack.has(dep)) {
-            lowlinks.set(
-              name,
-              Math.min(lowlinks.get(name)!, indices.get(dep)!),
-            );
-          }
-        }
-      }
-    }
-
-    if (lowlinks.get(name) === indices.get(name)) {
-      const scc: string[] = [];
-      let w: string;
-      do {
-        w = stack.pop()!;
-        onStack.delete(w);
-        scc.push(w);
-      } while (w !== name);
-
-      // If SCC has more than one node, mark all as cyclic
-      if (scc.length > 1) {
-        for (const node of scc) {
-          cyclicSchemas.add(node);
-        }
-      } else {
-        // Check for self-loop
-        const info = shapeDeps.get(name);
-        if (info && info.deps.includes(name)) {
-          cyclicSchemas.add(name);
-        }
-      }
-    }
-  }
-
-  for (const name of shapeDeps.keys()) {
-    if (!indices.has(name)) {
-      strongConnect(name);
-    }
-  }
+  // Tarjan SCC (shared with the other SDK generators): components of size
+  // > 1 plus direct self-loops.
+  const cyclicSchemas = cyclicShapeIds(
+    Object.fromEntries(shapeDeps),
+    shapeDeps.keys(),
+    (rec) => rec?.deps ?? [],
+  );
 
   // Determine which cyclic schemas will become classes (structs only)
   const cyclicClasses = new Set<string>();
@@ -1546,16 +1499,20 @@ const convertShapeToSchema: (
                   enumValues = [...enumValues, ...enumOverride.add];
                 }
               }
-              // Generate open enum: S.String for parsing, union for intellisense
-              // The (string & {}) pattern preserves autocomplete while allowing any string
-              const literalUnion = enumValues
-                .map((v) => `"${v}"`)
-                .join("\n  | ");
-              const typeAlias = `export type ${schemaName} =\n  | ${literalUnion}\n  | (string & {});`;
-              const schemaDef = annotatePureExportConst(
-                `export const ${schemaName} = S.String;`,
+              // Open enum (shared emitter): S.String for parsing, literal
+              // union + (string & {}) for intellisense without closing the set.
+              return addAlias(
+                Effect.succeed(
+                  enumDecl({
+                    name: schemaName,
+                    values: enumValues,
+                    pure: PURE,
+                  })
+                    .join("\n")
+                    .trimEnd(),
+                ),
+                [],
               );
-              return addAlias(Effect.succeed(`${typeAlias}\n${schemaDef}`), []);
             },
           ),
           Match.when(
@@ -1612,14 +1569,14 @@ const convertShapeToSchema: (
                       // Add identifier annotation for JSONSchema generation
                       let innerType = type;
                       if (isMemberErrorShape) {
-                        innerType = `S.suspend(() => ${type}).annotate({ identifier: "${type}" })`;
+                        innerType = suspendRef(type);
                       }
                       // Wrap cyclic references in S.suspend with identifier for JSONSchema
                       else if (sdkFile.cyclicSchemas.has(memberName)) {
                         innerType = sdkFile.cyclicClasses.has(memberName)
                           ? // TODO(sam): I had to add the any here because encoded type was creting circular errors. hopefully OK since we don't really need it
-                            `S.suspend((): S.Schema<${type}> => ${type}).annotate({ identifier: "${type}" })`
-                          : `S.suspend(() => ${type}).annotate({ identifier: "${type}" })`;
+                            suspendRef(type, true)
+                          : suspendRef(type);
                       }
 
                       // Apply serialization traits (xmlName, timestampFormat, etc.) using unified function
@@ -1798,7 +1755,7 @@ const convertShapeToSchema: (
                     // Wrap error shape references in S.suspend (they're defined after schemas)
                     // Add identifier annotation for JSONSchema generation
                     if (isMemberErrorShape) {
-                      schema = `S.suspend(() => ${schema}).annotate({ identifier: "${schema}" })`;
+                      schema = suspendRef(schema);
                     }
                     // Wrap cyclic references in S.suspend with identifier for JSONSchema (only if current schema is also cyclic)
                     else if (
@@ -1807,9 +1764,9 @@ const convertShapeToSchema: (
                     ) {
                       if (sdkFile.cyclicClasses.has(memberTargetName)) {
                         // TODO(sam): I had to add the any here because encoded type was creting circular errors. hopefully OK since we don't really need it
-                        schema = `S.suspend((): S.Schema<${schema}> => ${schema}).annotate({ identifier: "${schema}" })`;
+                        schema = suspendRef(schema, true);
                       } else {
-                        schema = `S.suspend(() => ${schema}).annotate({ identifier: "${schema}" })`;
+                        schema = suspendRef(schema);
                       }
                     }
 
@@ -2012,15 +1969,16 @@ const convertShapeToSchema: (
                     } else if (classAnnotations.length > 1) {
                       innerPipe = `.pipe(T.all(${classAnnotations.join(", ")}))`;
                     }
-                    // identifier annotation must be on the suspend, not inside it, for JSONSchema.make() to work
-                    const outerAnnotation = `.annotate({ identifier: "${currentSchemaName}" })`;
-
-                    // Generate interface + suspend(struct) pattern
-                    // Trait annotations inside suspend, identifier outside
+                    // Generate interface + suspend(struct) pattern (shared
+                    // emitter). Trait annotations inside suspend, identifier
+                    // outside.
                     const interfaceDef = `export interface ${exportedName} { ${interfaceFields} }`;
-                    const schemaDef = annotatePureExportConst(
-                      `export const ${exportedName} = S.suspend(() => S.Struct({${schemaFields}})${encodeKeysPipe}${innerPipe})${outerAnnotation} as any as S.Schema<${exportedName}>;`,
-                    );
+                    const schemaDef = suspendConst({
+                      name: exportedName,
+                      expr: `S.Struct({${schemaFields}})${encodeKeysPipe}${innerPipe}`,
+                      pure: PURE,
+                      annotation: `{ identifier: "${currentSchemaName}" }`,
+                    }).trimEnd();
 
                     return `${interfaceDef}\n${schemaDef}`;
                   }),
@@ -2056,7 +2014,7 @@ const convertShapeToSchema: (
                         // Wrap error shape references in S.suspend (they're defined after schemas)
                         // Add identifier annotation for JSONSchema generation
                         if (isMemberErrorShape) {
-                          wrappedSchema = `S.suspend(() => ${schema}).annotate({ identifier: "${schema}" })`;
+                          wrappedSchema = suspendRef(schema);
                         }
                         // Wrap cyclic references in S.suspend with identifier for JSONSchema
                         else if (
@@ -2065,9 +2023,9 @@ const convertShapeToSchema: (
                         ) {
                           if (sdkFile.cyclicClasses.has(memberTargetName)) {
                             // TODO(sam): I had to add the any here because encoded type was creting circular errors. hopefully OK since we don't really need it
-                            wrappedSchema = `S.suspend((): S.Schema<${schema}> => ${schema}).annotate({ identifier: "${schema}" })`;
+                            wrappedSchema = suspendRef(schema, true);
                           } else {
-                            wrappedSchema = `S.suspend(() => ${schema}).annotate({ identifier: "${schema}" })`;
+                            wrappedSchema = suspendRef(schema);
                           }
                         }
 
@@ -2215,21 +2173,21 @@ const convertShapeToSchema: (
                       let wrappedValue = valueSchema;
 
                       if (isKeyErrorShape) {
-                        wrappedKey = `S.suspend(() => ${keySchema}).annotate({ identifier: "${keySchema}" })`;
+                        wrappedKey = suspendRef(keySchema);
                       } else if (sdkFile.cyclicSchemas.has(keyTargetName)) {
                         wrappedKey = sdkFile.cyclicClasses.has(keyTargetName)
-                          ? `S.suspend((): S.Schema<${keySchema}> => ${keySchema}).annotate({ identifier: "${keySchema}" })`
-                          : `S.suspend(() => ${keySchema}).annotate({ identifier: "${keySchema}" })`;
+                          ? suspendRef(keySchema, true)
+                          : suspendRef(keySchema);
                       }
 
                       if (isValueErrorShape) {
-                        wrappedValue = `S.suspend(() => ${valueSchema}).annotate({ identifier: "${valueSchema}" })`;
+                        wrappedValue = suspendRef(valueSchema);
                       } else if (sdkFile.cyclicSchemas.has(valueTargetName)) {
                         wrappedValue = sdkFile.cyclicClasses.has(
                           valueTargetName,
                         )
-                          ? `S.suspend((): S.Schema<${valueSchema}> => ${valueSchema}).annotate({ identifier: "${valueSchema}" })`
-                          : `S.suspend(() => ${valueSchema}).annotate({ identifier: "${valueSchema}" })`;
+                          ? suspendRef(valueSchema, true)
+                          : suspendRef(valueSchema);
                       }
 
                       // Apply serialization traits (xmlName, etc.) using unified function
@@ -2949,7 +2907,13 @@ const generateClient = Effect.fn(function* (
               c +
               errorTypeAlias +
               operationComment +
-              `export const ${exportedName}: ${typeAnnotation} = /*@__PURE__*/ /*#__PURE__*/ ${apiFn}(() => (${metaObject}));\n`,
+              operationConst({
+                exportName: exportedName,
+                typeAnnotation,
+                factory: apiFn,
+                config: metaObject,
+                pure: PURE,
+              }),
           ),
         );
       }),
@@ -3345,23 +3309,22 @@ BunRuntime.runMain(
       .filter((f) => f.endsWith(".ts") && f !== "index.ts")
       .sort();
 
-    const indexExports = serviceFiles
-      .map((file) => {
-        const baseName = file.replace(/\.ts$/, "");
-        // Convert file name to valid JS identifier (e.g., "amazon-s3" -> "S3", "api-gateway" -> "APIGateway")
-        const exportName = baseName
-          .replace(/^amazon-/, "") // Remove "amazon-" prefix
-          .replace(/^aws-/, "") // Remove "aws-" prefix
-          .split("-")
-          .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-          .join("");
-        return `export * as ${exportName} from "./${baseName}.ts";`;
-      })
-      .join("\n");
-
     yield* fs.writeFileString(
       path.join(RESULT_ROOT_PATH, "index.ts"),
-      indexExports + "\n",
+      barrel(
+        "",
+        serviceFiles.map((file) => {
+          const baseName = file.replace(/\.ts$/, "");
+          // Convert file name to valid JS identifier (e.g., "amazon-s3" -> "S3", "api-gateway" -> "APIGateway")
+          const exportName = baseName
+            .replace(/^amazon-/, "") // Remove "amazon-" prefix
+            .replace(/^aws-/, "") // Remove "aws-" prefix
+            .split("-")
+            .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+            .join("");
+          return { name: exportName, path: `./${baseName}.ts` };
+        }),
+      ),
     );
 
     yield* Console.log(`✅ index.ts`);
