@@ -7,7 +7,9 @@
     "createMonitor": { "errors": ["ConflictException"] },
     "updateFarm": { "errors": ["ConflictException"] },
     "updateStorageProfile": { "errors": ["ConflictException"] },
-    "updateBudget": { "errors": ["ConflictException"] },
+    "updateBudget": {
+      "errors": ["ConflictException", "InternalServerException"]
+    },
     "updateMonitor": { "errors": ["ConflictException"] },
     "deleteFarm": { "errors": ["ConflictException"] },
     "deleteBudget": { "errors": ["ConflictException"] },
@@ -15,5 +17,8 @@
       "errors": ["ConflictException", "ResourceNotFoundException"]
     },
     "deleteMonitor": { "errors": ["ConflictException"] }
+  },
+  "errorCategories": {
+    "InternalServerException": ["ServerError", "RetryableError"]
   }
 }

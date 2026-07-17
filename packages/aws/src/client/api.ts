@@ -318,12 +318,26 @@ export const make = <Op extends Operation<any, any, any>>(
     // payload-hash signatures too). AppConfig behaves the same way: its
     // CreateHostedConfigurationVersion route rejects UNSIGNED-PAYLOAD with
     // SignatureDoesNotMatch (the service's expected canonical request hashes
-    // the actual body), so it also stays on the hashed path.
+    // the actual body), so it also stays on the hashed path. API Gateway's
+    // management API likewise models PostToConnection.Data as streaming, but
+    // rejects UNSIGNED-PAYLOAD and reconstructs the signature with the frame's
+    // actual SHA-256. Bedrock Runtime's InvokeModel operations do the same for
+    // their model-native request bodies. IoT Data Plane's shadow and publish
+    // operations also reject UNSIGNED-PAYLOAD for buffered payloads (as a
+    // generic Forbidden response), so those bodies must be hashed as well.
+    // IoT Wireless likewise hashes buffered GeoJSON position payloads.
+    // Lambda Invoke models Payload as streaming, but buffered invocations
+    // must hash the actual body or Lambda rejects the signature.
     const hasStreamingInput =
       resolvedRequest.hasStreamingInput === true &&
       _serviceSdkId !== "Glacier" &&
       _serviceSdkId !== "SageMaker Runtime" &&
-      _serviceSdkId !== "AppConfig";
+      _serviceSdkId !== "AppConfig" &&
+      _serviceSdkId !== "ApiGatewayManagementApi" &&
+      _serviceSdkId !== "Bedrock Runtime" &&
+      _serviceSdkId !== "IoT Data Plane" &&
+      _serviceSdkId !== "IoT Wireless" &&
+      _serviceSdkId !== "Lambda";
     // Use unsigned payload for streaming bodies OR streaming-input
     // operations OR when service provides checksum with body
     const useUnsignedPayload =

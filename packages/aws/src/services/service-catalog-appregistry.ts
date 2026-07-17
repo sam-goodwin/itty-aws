@@ -116,40 +116,38 @@ export interface AssociateAttributeGroupRequest {
   application: string;
   attributeGroup: string;
 }
-export const AssociateAttributeGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      application: S.String.pipe(T.HttpLabel("application")),
-      attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/applications/{application}/attribute-groups/{attributeGroup}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AssociateAttributeGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    application: S.String.pipe(T.HttpLabel("application")),
+    attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/applications/{application}/attribute-groups/{attributeGroup}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AssociateAttributeGroupRequest",
-  }) as any as S.Schema<AssociateAttributeGroupRequest>;
+  ),
+).annotate({
+  identifier: "AssociateAttributeGroupRequest",
+}) as any as S.Schema<AssociateAttributeGroupRequest>;
 export interface AssociateAttributeGroupResponse {
   applicationArn?: string;
   attributeGroupArn?: string;
 }
-export const AssociateAttributeGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationArn: S.optional(S.String),
-      attributeGroupArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AssociateAttributeGroupResponse",
-  }) as any as S.Schema<AssociateAttributeGroupResponse>;
+export const AssociateAttributeGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationArn: S.optional(S.String),
+    attributeGroupArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AssociateAttributeGroupResponse",
+}) as any as S.Schema<AssociateAttributeGroupResponse>;
 export type ResourceType = "CFN_STACK" | "RESOURCE_TAG_VALUE" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
 export type AssociationOption =
@@ -274,27 +272,26 @@ export interface CreateAttributeGroupRequest {
   tags?: { [key: string]: string | undefined };
   clientToken: string;
 }
-export const CreateAttributeGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      description: S.optional(S.String),
-      attributes: S.String,
-      tags: S.optional(Tags),
-      clientToken: S.String.pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/attribute-groups" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateAttributeGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(S.String),
+    attributes: S.String,
+    tags: S.optional(Tags),
+    clientToken: S.String.pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/attribute-groups" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateAttributeGroupRequest",
-  }) as any as S.Schema<CreateAttributeGroupRequest>;
+  ),
+).annotate({
+  identifier: "CreateAttributeGroupRequest",
+}) as any as S.Schema<CreateAttributeGroupRequest>;
 export interface AttributeGroup {
   id?: string;
   arn?: string;
@@ -322,12 +319,11 @@ export const AttributeGroup = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAttributeGroupResponse {
   attributeGroup?: AttributeGroup;
 }
-export const CreateAttributeGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ attributeGroup: S.optional(AttributeGroup) }),
-  ).annotate({
-    identifier: "CreateAttributeGroupResponse",
-  }) as any as S.Schema<CreateAttributeGroupResponse>;
+export const CreateAttributeGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ attributeGroup: S.optional(AttributeGroup) }),
+).annotate({
+  identifier: "CreateAttributeGroupResponse",
+}) as any as S.Schema<CreateAttributeGroupResponse>;
 export interface DeleteApplicationRequest {
   application: string;
 }
@@ -380,23 +376,22 @@ export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAttributeGroupRequest {
   attributeGroup: string;
 }
-export const DeleteAttributeGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/attribute-groups/{attributeGroup}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteAttributeGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/attribute-groups/{attributeGroup}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteAttributeGroupRequest",
-  }) as any as S.Schema<DeleteAttributeGroupRequest>;
+  ),
+).annotate({
+  identifier: "DeleteAttributeGroupRequest",
+}) as any as S.Schema<DeleteAttributeGroupRequest>;
 export interface AttributeGroupSummary {
   id?: string;
   arn?: string;
@@ -426,90 +421,85 @@ export const AttributeGroupSummary = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAttributeGroupResponse {
   attributeGroup?: AttributeGroupSummary;
 }
-export const DeleteAttributeGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ attributeGroup: S.optional(AttributeGroupSummary) }),
-  ).annotate({
-    identifier: "DeleteAttributeGroupResponse",
-  }) as any as S.Schema<DeleteAttributeGroupResponse>;
+export const DeleteAttributeGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ attributeGroup: S.optional(AttributeGroupSummary) }),
+).annotate({
+  identifier: "DeleteAttributeGroupResponse",
+}) as any as S.Schema<DeleteAttributeGroupResponse>;
 export interface DisassociateAttributeGroupRequest {
   application: string;
   attributeGroup: string;
 }
-export const DisassociateAttributeGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      application: S.String.pipe(T.HttpLabel("application")),
-      attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/applications/{application}/attribute-groups/{attributeGroup}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisassociateAttributeGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    application: S.String.pipe(T.HttpLabel("application")),
+    attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/applications/{application}/attribute-groups/{attributeGroup}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisassociateAttributeGroupRequest",
-  }) as any as S.Schema<DisassociateAttributeGroupRequest>;
+  ),
+).annotate({
+  identifier: "DisassociateAttributeGroupRequest",
+}) as any as S.Schema<DisassociateAttributeGroupRequest>;
 export interface DisassociateAttributeGroupResponse {
   applicationArn?: string;
   attributeGroupArn?: string;
 }
-export const DisassociateAttributeGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationArn: S.optional(S.String),
-      attributeGroupArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DisassociateAttributeGroupResponse",
-  }) as any as S.Schema<DisassociateAttributeGroupResponse>;
+export const DisassociateAttributeGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationArn: S.optional(S.String),
+    attributeGroupArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DisassociateAttributeGroupResponse",
+}) as any as S.Schema<DisassociateAttributeGroupResponse>;
 export interface DisassociateResourceRequest {
   application: string;
   resourceType: ResourceType;
   resource: string;
 }
-export const DisassociateResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      application: S.String.pipe(T.HttpLabel("application")),
-      resourceType: ResourceType.pipe(T.HttpLabel("resourceType")),
-      resource: S.String.pipe(T.HttpLabel("resource")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/applications/{application}/resources/{resourceType}/{resource}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisassociateResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    application: S.String.pipe(T.HttpLabel("application")),
+    resourceType: ResourceType.pipe(T.HttpLabel("resourceType")),
+    resource: S.String.pipe(T.HttpLabel("resource")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/applications/{application}/resources/{resourceType}/{resource}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisassociateResourceRequest",
-  }) as any as S.Schema<DisassociateResourceRequest>;
+  ),
+).annotate({
+  identifier: "DisassociateResourceRequest",
+}) as any as S.Schema<DisassociateResourceRequest>;
 export interface DisassociateResourceResponse {
   applicationArn?: string;
   resourceArn?: string;
 }
-export const DisassociateResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationArn: S.optional(S.String),
-      resourceArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DisassociateResourceResponse",
-  }) as any as S.Schema<DisassociateResourceResponse>;
+export const DisassociateResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationArn: S.optional(S.String),
+    resourceArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DisassociateResourceResponse",
+}) as any as S.Schema<DisassociateResourceResponse>;
 export interface GetApplicationRequest {
   application: string;
 }
@@ -608,33 +598,32 @@ export interface GetAssociatedResourceRequest {
   resourceTagStatus?: ResourceItemStatus[];
   maxResults?: number;
 }
-export const GetAssociatedResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      application: S.String.pipe(T.HttpLabel("application")),
-      resourceType: ResourceType.pipe(T.HttpLabel("resourceType")),
-      resource: S.String.pipe(T.HttpLabel("resource")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      resourceTagStatus: S.optional(GetAssociatedResourceFilter).pipe(
-        T.HttpQuery("resourceTagStatus"),
-      ),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{application}/resources/{resourceType}/{resource}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetAssociatedResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    application: S.String.pipe(T.HttpLabel("application")),
+    resourceType: ResourceType.pipe(T.HttpLabel("resourceType")),
+    resource: S.String.pipe(T.HttpLabel("resource")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    resourceTagStatus: S.optional(GetAssociatedResourceFilter).pipe(
+      T.HttpQuery("resourceTagStatus"),
     ),
-  ).annotate({
-    identifier: "GetAssociatedResourceRequest",
-  }) as any as S.Schema<GetAssociatedResourceRequest>;
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{application}/resources/{resourceType}/{resource}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetAssociatedResourceRequest",
+}) as any as S.Schema<GetAssociatedResourceRequest>;
 export interface ResourceIntegrations {
   resourceGroup?: ResourceGroup;
 }
@@ -704,16 +693,15 @@ export interface GetAssociatedResourceResponse {
   options?: AssociationOption[];
   applicationTagResult?: ApplicationTagResult;
 }
-export const GetAssociatedResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.optional(Resource),
-      options: S.optional(Options),
-      applicationTagResult: S.optional(ApplicationTagResult),
-    }),
-  ).annotate({
-    identifier: "GetAssociatedResourceResponse",
-  }) as any as S.Schema<GetAssociatedResourceResponse>;
+export const GetAssociatedResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.optional(Resource),
+    options: S.optional(Options),
+    applicationTagResult: S.optional(ApplicationTagResult),
+  }),
+).annotate({
+  identifier: "GetAssociatedResourceResponse",
+}) as any as S.Schema<GetAssociatedResourceResponse>;
 export interface GetAttributeGroupRequest {
   attributeGroup: string;
 }
@@ -766,7 +754,14 @@ export const GetAttributeGroupResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetConfigurationRequest {}
 export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    T.all(
+      T.Http({ method: "GET", uri: "/configuration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
   ),
 ).annotate({
   identifier: "GetConfigurationRequest",
@@ -835,8 +830,8 @@ export interface ListAssociatedAttributeGroupsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListAssociatedAttributeGroupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListAssociatedAttributeGroupsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       application: S.String.pipe(T.HttpLabel("application")),
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -854,48 +849,47 @@ export const ListAssociatedAttributeGroupsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListAssociatedAttributeGroupsRequest",
-  }) as any as S.Schema<ListAssociatedAttributeGroupsRequest>;
+).annotate({
+  identifier: "ListAssociatedAttributeGroupsRequest",
+}) as any as S.Schema<ListAssociatedAttributeGroupsRequest>;
 export type AttributeGroupIds = string[];
 export const AttributeGroupIds = /*@__PURE__*/ S.Array(S.String);
 export interface ListAssociatedAttributeGroupsResponse {
   attributeGroups?: string[];
   nextToken?: string;
 }
-export const ListAssociatedAttributeGroupsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListAssociatedAttributeGroupsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       attributeGroups: S.optional(AttributeGroupIds),
       nextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListAssociatedAttributeGroupsResponse",
-  }) as any as S.Schema<ListAssociatedAttributeGroupsResponse>;
+).annotate({
+  identifier: "ListAssociatedAttributeGroupsResponse",
+}) as any as S.Schema<ListAssociatedAttributeGroupsResponse>;
 export interface ListAssociatedResourcesRequest {
   application: string;
   nextToken?: string;
   maxResults?: number;
 }
-export const ListAssociatedResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      application: S.String.pipe(T.HttpLabel("application")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/applications/{application}/resources" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListAssociatedResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    application: S.String.pipe(T.HttpLabel("application")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/applications/{application}/resources" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListAssociatedResourcesRequest",
-  }) as any as S.Schema<ListAssociatedResourcesRequest>;
+  ),
+).annotate({
+  identifier: "ListAssociatedResourcesRequest",
+}) as any as S.Schema<ListAssociatedResourcesRequest>;
 export interface ResourceDetails {
   tagValue?: string;
 }
@@ -926,15 +920,14 @@ export interface ListAssociatedResourcesResponse {
   resources?: ResourceInfo[];
   nextToken?: string;
 }
-export const ListAssociatedResourcesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resources: S.optional(Resources),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListAssociatedResourcesResponse",
-  }) as any as S.Schema<ListAssociatedResourcesResponse>;
+export const ListAssociatedResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resources: S.optional(Resources),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAssociatedResourcesResponse",
+}) as any as S.Schema<ListAssociatedResourcesResponse>;
 export interface ListAttributeGroupsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -964,22 +957,21 @@ export interface ListAttributeGroupsResponse {
   attributeGroups?: AttributeGroupSummary[];
   nextToken?: string;
 }
-export const ListAttributeGroupsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attributeGroups: S.optional(AttributeGroupSummaries),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListAttributeGroupsResponse",
-  }) as any as S.Schema<ListAttributeGroupsResponse>;
+export const ListAttributeGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    attributeGroups: S.optional(AttributeGroupSummaries),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAttributeGroupsResponse",
+}) as any as S.Schema<ListAttributeGroupsResponse>;
 export interface ListAttributeGroupsForApplicationRequest {
   application: string;
   nextToken?: string;
   maxResults?: number;
 }
-export const ListAttributeGroupsForApplicationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListAttributeGroupsForApplicationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       application: S.String.pipe(T.HttpLabel("application")),
       nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -997,9 +989,9 @@ export const ListAttributeGroupsForApplicationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListAttributeGroupsForApplicationRequest",
-  }) as any as S.Schema<ListAttributeGroupsForApplicationRequest>;
+).annotate({
+  identifier: "ListAttributeGroupsForApplicationRequest",
+}) as any as S.Schema<ListAttributeGroupsForApplicationRequest>;
 export interface AttributeGroupDetails {
   id?: string;
   arn?: string;
@@ -1053,10 +1045,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutConfigurationRequest {
   configuration: AppRegistryConfiguration;
 }
@@ -1210,61 +1203,64 @@ export interface UpdateAttributeGroupRequest {
   description?: string;
   attributes?: string;
 }
-export const UpdateAttributeGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      attributes: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/attribute-groups/{attributeGroup}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateAttributeGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    attributes: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/attribute-groups/{attributeGroup}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateAttributeGroupRequest",
-  }) as any as S.Schema<UpdateAttributeGroupRequest>;
+  ),
+).annotate({
+  identifier: "UpdateAttributeGroupRequest",
+}) as any as S.Schema<UpdateAttributeGroupRequest>;
 export interface UpdateAttributeGroupResponse {
   attributeGroup?: AttributeGroup;
 }
-export const UpdateAttributeGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ attributeGroup: S.optional(AttributeGroup) }),
-  ).annotate({
-    identifier: "UpdateAttributeGroupResponse",
-  }) as any as S.Schema<UpdateAttributeGroupResponse>;
+export const UpdateAttributeGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ attributeGroup: S.optional(AttributeGroup) }),
+).annotate({
+  identifier: "UpdateAttributeGroupResponse",
+}) as any as S.Schema<UpdateAttributeGroupResponse>;
 
 //# Errors
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
-  { message: S.String, serviceCode: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
+  { message: S.optional(S.String), serviceCode: S.optional(S.String) },
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 
 //# Operations
 export type AssociateAttributeGroupError =
@@ -1273,6 +1269,7 @@ export type AssociateAttributeGroupError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Associates an attribute group with an application to augment the application's metadata
@@ -1293,6 +1290,7 @@ export const associateAttributeGroup: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "AssociateAttributeGroup",
 }));
