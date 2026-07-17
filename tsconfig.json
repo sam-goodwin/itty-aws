@@ -2,7 +2,8 @@
   "files": [],
   "references": [
     { "path": "./packages/core/tsconfig.json" },
-    { "path": "./packages/cloudflare/tsconfig.json" }
+    { "path": "./packages/cloudflare/tsconfig.json" },
+    { "path": "./packages/aws/tsconfig.json" }
   ],
   "compilerOptions": {
     "plugins": [
