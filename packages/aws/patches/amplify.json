@@ -1,4 +1,48 @@
 {
+  "operations": {
+    "createApp": { "errors": ["TimeoutException"] },
+    "createBackendEnvironment": { "errors": ["TimeoutException"] },
+    "createBranch": { "errors": ["TimeoutException"] },
+    "createDeployment": { "errors": ["TimeoutException"] },
+    "createDomainAssociation": { "errors": ["TimeoutException"] },
+    "createWebhook": { "errors": ["TimeoutException"] },
+    "deleteApp": { "errors": ["TimeoutException"] },
+    "deleteBackendEnvironment": { "errors": ["TimeoutException"] },
+    "deleteBranch": { "errors": ["TimeoutException"] },
+    "deleteDomainAssociation": { "errors": ["TimeoutException"] },
+    "deleteJob": { "errors": ["TimeoutException"] },
+    "deleteWebhook": { "errors": ["TimeoutException"] },
+    "generateAccessLogs": { "errors": ["TimeoutException"] },
+    "getApp": { "errors": ["TimeoutException"] },
+    "getArtifactUrl": { "errors": ["TimeoutException"] },
+    "getBackendEnvironment": { "errors": ["TimeoutException"] },
+    "getBranch": { "errors": ["TimeoutException"] },
+    "getDomainAssociation": { "errors": ["TimeoutException"] },
+    "getJob": { "errors": ["TimeoutException"] },
+    "getWebhook": { "errors": ["TimeoutException"] },
+    "listApps": { "errors": ["TimeoutException"] },
+    "listArtifacts": { "errors": ["TimeoutException"] },
+    "listBackendEnvironments": { "errors": ["TimeoutException"] },
+    "listBranches": { "errors": ["TimeoutException"] },
+    "listDomainAssociations": { "errors": ["TimeoutException"] },
+    "listJobs": { "errors": ["TimeoutException"] },
+    "listTagsForResource": { "errors": ["TimeoutException"] },
+    "listWebhooks": { "errors": ["TimeoutException"] },
+    "startDeployment": { "errors": ["TimeoutException"] },
+    "startJob": { "errors": ["TimeoutException"] },
+    "stopJob": { "errors": ["TimeoutException"] },
+    "tagResource": { "errors": ["TimeoutException"] },
+    "untagResource": { "errors": ["TimeoutException"] },
+    "updateApp": { "errors": ["TimeoutException"] },
+    "updateBranch": { "errors": ["TimeoutException"] },
+    "updateDomainAssociation": { "errors": ["TimeoutException"] },
+    "updateWebhook": { "errors": ["TimeoutException"] }
+  },
+  "errors": {
+    "TimeoutException": {
+      "message": { "type": "string" }
+    }
+  },
   "structures": {
     "App": {
       "members": {

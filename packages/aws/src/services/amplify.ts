@@ -2098,6 +2098,10 @@ export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedExcept
   { message: S.optional(S.String) },
   T.HttpError(401),
 ).pipe(C.withAuthError) {}
+export class TimeoutException extends S.TaggedErrorClass<TimeoutException>()(
+  "TimeoutException",
+  { message: S.optional(S.String) },
+) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { message: S.optional(S.String) },
@@ -2116,6 +2120,7 @@ export type CreateAppError =
   | InternalFailureException
   | LimitExceededException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Creates a new Amplify app.
@@ -2134,6 +2139,7 @@ export const createApp: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "CreateApp",
 }));
@@ -2143,6 +2149,7 @@ export type CreateBackendEnvironmentError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Creates a new backend environment for an Amplify app.
@@ -2167,6 +2174,7 @@ export const createBackendEnvironment: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "CreateBackendEnvironment",
 }));
@@ -2177,6 +2185,7 @@ export type CreateBranchError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Creates a new branch for an Amplify app.
@@ -2196,6 +2205,7 @@ export const createBranch: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "CreateBranch",
 }));
@@ -2204,6 +2214,7 @@ export type CreateDeploymentError =
   | InternalFailureException
   | LimitExceededException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Creates a deployment for a manually deployed Amplify app. Manually deployed apps are
@@ -2227,6 +2238,7 @@ export const createDeployment: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "CreateDeployment",
 }));
@@ -2237,6 +2249,7 @@ export type CreateDomainAssociationError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Creates a new domain association for an Amplify app. This action associates a custom
@@ -2257,6 +2270,7 @@ export const createDomainAssociation: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "CreateDomainAssociation",
 }));
@@ -2267,6 +2281,7 @@ export type CreateWebhookError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Creates a new webhook on an Amplify app.
@@ -2286,6 +2301,7 @@ export const createWebhook: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "CreateWebhook",
 }));
@@ -2295,6 +2311,7 @@ export type DeleteAppError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Deletes an existing Amplify app specified by an app ID.
@@ -2313,6 +2330,7 @@ export const deleteApp: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "DeleteApp",
 }));
@@ -2322,6 +2340,7 @@ export type DeleteBackendEnvironmentError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Deletes a backend environment for an Amplify app.
@@ -2346,6 +2365,7 @@ export const deleteBackendEnvironment: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "DeleteBackendEnvironment",
 }));
@@ -2355,6 +2375,7 @@ export type DeleteBranchError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Deletes a branch for an Amplify app.
@@ -2373,6 +2394,7 @@ export const deleteBranch: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "DeleteBranch",
 }));
@@ -2382,6 +2404,7 @@ export type DeleteDomainAssociationError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Deletes a domain association for an Amplify app.
@@ -2400,6 +2423,7 @@ export const deleteDomainAssociation: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "DeleteDomainAssociation",
 }));
@@ -2409,6 +2433,7 @@ export type DeleteJobError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Deletes a job for a branch of an Amplify app.
@@ -2427,6 +2452,7 @@ export const deleteJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "DeleteJob",
 }));
@@ -2436,6 +2462,7 @@ export type DeleteWebhookError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Deletes a webhook.
@@ -2454,6 +2481,7 @@ export const deleteWebhook: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "DeleteWebhook",
 }));
@@ -2462,6 +2490,7 @@ export type GenerateAccessLogsError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns the website access logs for a specific time range using a presigned URL.
@@ -2479,6 +2508,7 @@ export const generateAccessLogs: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GenerateAccessLogs",
 }));
@@ -2487,6 +2517,7 @@ export type GetAppError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns an existing Amplify app specified by an app ID.
@@ -2504,6 +2535,7 @@ export const getApp: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GetApp",
 }));
@@ -2513,6 +2545,7 @@ export type GetArtifactUrlError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns the artifact info that corresponds to an artifact id.
@@ -2531,6 +2564,7 @@ export const getArtifactUrl: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GetArtifactUrl",
 }));
@@ -2539,6 +2573,7 @@ export type GetBackendEnvironmentError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns a backend environment for an Amplify app.
@@ -2562,6 +2597,7 @@ export const getBackendEnvironment: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GetBackendEnvironment",
 }));
@@ -2570,6 +2606,7 @@ export type GetBranchError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns a branch for an Amplify app.
@@ -2587,6 +2624,7 @@ export const getBranch: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GetBranch",
 }));
@@ -2595,6 +2633,7 @@ export type GetDomainAssociationError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns the domain information for an Amplify app.
@@ -2612,6 +2651,7 @@ export const getDomainAssociation: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GetDomainAssociation",
 }));
@@ -2621,6 +2661,7 @@ export type GetJobError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns a job for a branch of an Amplify app.
@@ -2639,6 +2680,7 @@ export const getJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GetJob",
 }));
@@ -2648,6 +2690,7 @@ export type GetWebhookError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns the webhook information that corresponds to a specified webhook ID.
@@ -2666,6 +2709,7 @@ export const getWebhook: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GetWebhook",
 }));
@@ -2673,6 +2717,7 @@ export type ListAppsError =
   | BadRequestException
   | InternalFailureException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns a list of the existing Amplify apps.
@@ -2704,6 +2749,7 @@ export const listApps: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "ListApps",
   pagination: {
@@ -2718,6 +2764,7 @@ export type ListArtifactsError =
   | InternalFailureException
   | LimitExceededException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns a list of end-to-end testing artifacts for a specified app, branch, and
@@ -2742,6 +2789,7 @@ export const listArtifacts: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "ListArtifacts",
 }));
@@ -2749,6 +2797,7 @@ export type ListBackendEnvironmentsError =
   | BadRequestException
   | InternalFailureException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Lists the backend environments for an Amplify app.
@@ -2771,6 +2820,7 @@ export const listBackendEnvironments: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "ListBackendEnvironments",
 }));
@@ -2778,6 +2828,7 @@ export type ListBranchesError =
   | BadRequestException
   | InternalFailureException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Lists the branches of an Amplify app.
@@ -2809,6 +2860,7 @@ export const listBranches: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "ListBranches",
   pagination: {
@@ -2822,6 +2874,7 @@ export type ListDomainAssociationsError =
   | BadRequestException
   | InternalFailureException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns the domain associations for an Amplify app.
@@ -2853,6 +2906,7 @@ export const listDomainAssociations: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "ListDomainAssociations",
   pagination: {
@@ -2867,6 +2921,7 @@ export type ListJobsError =
   | InternalFailureException
   | LimitExceededException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Lists the jobs for a branch of an Amplify app.
@@ -2899,6 +2954,7 @@ export const listJobs: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "ListJobs",
   pagination: {
@@ -2912,6 +2968,7 @@ export type ListTagsForResourceError =
   | BadRequestException
   | InternalFailureException
   | ResourceNotFoundException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns a list of tags for a specified Amazon Resource Name (ARN).
@@ -2928,6 +2985,7 @@ export const listTagsForResource: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
     ResourceNotFoundException,
+    TimeoutException,
   ],
   operationName: "ListTagsForResource",
 }));
@@ -2936,6 +2994,7 @@ export type ListWebhooksError =
   | InternalFailureException
   | LimitExceededException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns a list of webhooks for an Amplify app.
@@ -2953,6 +3012,7 @@ export const listWebhooks: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "ListWebhooks",
 }));
@@ -2962,6 +3022,7 @@ export type StartDeploymentError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Starts a deployment for a manually deployed app. Manually deployed apps are not
@@ -2986,6 +3047,7 @@ export const startDeployment: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "StartDeployment",
 }));
@@ -2995,6 +3057,7 @@ export type StartJobError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Starts a new job for a branch of an Amplify app.
@@ -3013,6 +3076,7 @@ export const startJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "StartJob",
 }));
@@ -3022,6 +3086,7 @@ export type StopJobError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Stops a job that is in progress for a branch of an Amplify app.
@@ -3040,6 +3105,7 @@ export const stopJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "StopJob",
 }));
@@ -3047,6 +3113,7 @@ export type TagResourceError =
   | BadRequestException
   | InternalFailureException
   | ResourceNotFoundException
+  | TimeoutException
   | CommonErrors;
 /**
  * Tags the resource with a tag key and value.
@@ -3063,6 +3130,7 @@ export const tagResource: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
     ResourceNotFoundException,
+    TimeoutException,
   ],
   operationName: "TagResource",
 }));
@@ -3070,6 +3138,7 @@ export type UntagResourceError =
   | BadRequestException
   | InternalFailureException
   | ResourceNotFoundException
+  | TimeoutException
   | CommonErrors;
 /**
  * Untags a resource with a specified Amazon Resource Name (ARN).
@@ -3086,6 +3155,7 @@ export const untagResource: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
     ResourceNotFoundException,
+    TimeoutException,
   ],
   operationName: "UntagResource",
 }));
@@ -3094,6 +3164,7 @@ export type UpdateAppError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Updates an existing Amplify app.
@@ -3111,6 +3182,7 @@ export const updateApp: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "UpdateApp",
 }));
@@ -3120,6 +3192,7 @@ export type UpdateBranchError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Updates a branch for an Amplify app.
@@ -3138,6 +3211,7 @@ export const updateBranch: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "UpdateBranch",
 }));
@@ -3147,6 +3221,7 @@ export type UpdateDomainAssociationError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Creates a new domain association for an Amplify app.
@@ -3165,6 +3240,7 @@ export const updateDomainAssociation: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "UpdateDomainAssociation",
 }));
@@ -3174,6 +3250,7 @@ export type UpdateWebhookError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Updates a webhook.
@@ -3192,6 +3269,7 @@ export const updateWebhook: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "UpdateWebhook",
 }));
