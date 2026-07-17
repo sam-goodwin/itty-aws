@@ -42,7 +42,7 @@
           "name": "ComputeEnvironmentNotValid",
           "from": "ClientException",
           "message": {
-            "includes": "must be created and valid before attaching"
+            "matches": "must be (created and )?valid before attaching"
           }
         },
         {

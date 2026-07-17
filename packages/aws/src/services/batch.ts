@@ -4927,7 +4927,7 @@ export class ComputeEnvironmentNotValid extends S.TaggedErrorClass<ComputeEnviro
   { message: S.optional(S.String) },
   T.SyntheticError({
     from: "ClientException",
-    message: { includes: "must be created and valid before attaching" },
+    message: { matches: "must be (created and )?valid before attaching" },
   }),
 ).pipe(C.withDependencyViolationError, C.withRetryableError) {}
 export class JobQueueAlreadyExists extends S.TaggedErrorClass<JobQueueAlreadyExists>()(
