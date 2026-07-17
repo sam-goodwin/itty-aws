@@ -5158,6 +5158,7 @@ export const createServiceEnvironment: API.OperationMethod<
 export type DeleteComputeEnvironmentError =
   | ClientException
   | ServerException
+  | ComputeEnvironmentNotFound
   | ComputeEnvironmentInUse
   | ComputeEnvironmentBeingModified
   | CommonErrors;
@@ -5182,6 +5183,7 @@ export const deleteComputeEnvironment: API.OperationMethod<
   errors: [
     ClientException,
     ServerException,
+    ComputeEnvironmentNotFound,
     ComputeEnvironmentInUse,
     ComputeEnvironmentBeingModified,
   ],
@@ -5208,6 +5210,7 @@ export const deleteConsumableResource: API.OperationMethod<
 export type DeleteJobQueueError =
   | ClientException
   | ServerException
+  | JobQueueNotFound
   | JobQueueBeingModified
   | CommonErrors;
 /**
@@ -5226,7 +5229,12 @@ export const deleteJobQueue: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteJobQueueRequest,
   output: DeleteJobQueueResponse,
-  errors: [ClientException, ServerException, JobQueueBeingModified],
+  errors: [
+    ClientException,
+    ServerException,
+    JobQueueNotFound,
+    JobQueueBeingModified,
+  ],
   operationName: "DeleteJobQueue",
 }));
 export type DeleteQuotaShareError =

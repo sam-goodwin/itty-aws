@@ -21,6 +21,13 @@
     "deleteComputeEnvironment": {
       "syntheticErrors": [
         {
+          "name": "ComputeEnvironmentNotFound",
+          "from": "ClientException",
+          "message": {
+            "matches": "compute-environment/.* does not exist"
+          }
+        },
+        {
           "name": "ComputeEnvironmentInUse",
           "from": "ClientException",
           "message": {
@@ -75,6 +82,13 @@
     "deleteJobQueue": {
       "syntheticErrors": [
         {
+          "name": "JobQueueNotFound",
+          "from": "ClientException",
+          "message": {
+            "matches": "job-queue/.* does not exist"
+          }
+        },
+        {
           "name": "JobQueueBeingModified",
           "from": "ClientException",
           "message": {
@@ -88,7 +102,10 @@
     "ComputeEnvironmentNotFound": ["NotFoundError"],
     "ComputeEnvironmentBeingModified": ["ConflictError", "RetryableError"],
     "ComputeEnvironmentInUse": ["DependencyViolationError", "RetryableError"],
-    "ComputeEnvironmentNotValid": ["DependencyViolationError", "RetryableError"],
+    "ComputeEnvironmentNotValid": [
+      "DependencyViolationError",
+      "RetryableError"
+    ],
     "JobQueueNotFound": ["NotFoundError"],
     "JobQueueAlreadyExists": ["AlreadyExistsError", "ConflictError"],
     "JobQueueBeingModified": ["ConflictError", "RetryableError"]
