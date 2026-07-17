@@ -138,6 +138,29 @@ export const operationConst = (o: OperationConstOptions): string =>
     o.extraArg ? `, ${o.extraArg}` : ""
   });\n`;
 
+import { tsKey } from "./naming.ts";
+
+export interface InterfaceFieldOptions {
+  readonly name: string;
+  readonly type: string;
+  readonly optional: boolean;
+  readonly doc?: string;
+}
+
+/** Interface field line(s): optional doc comment + `  name?: Type;`. */
+export const interfaceField = (o: InterfaceFieldOptions): string[] => [
+  ...(o.doc ? [`  /** ${o.doc} */`] : []),
+  `  ${tsKey(o.name)}${o.optional ? "?" : ""}: ${o.type};`,
+];
+
+/** `export type <Op>Error = A | B | <CommonErrors>;` */
+export const errorUnionAlias = (
+  opName: string,
+  errorNames: readonly string[],
+  commonRef: string,
+): string =>
+  `export type ${opName}Error = ${[...errorNames, commonRef].join(" | ")};`;
+
 /** Namespaced barrel: `export * as name from "./file.ts";` per entry. */
 export const barrel = (
   header: string,

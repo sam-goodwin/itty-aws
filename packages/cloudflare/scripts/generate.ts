@@ -53,7 +53,6 @@ import {
 } from "@distilled.cloud/core/json-patch";
 import {
   camel,
-  isPrelude,
   local,
   lowerFirst,
   oneLine,
@@ -62,7 +61,6 @@ import {
   upperFirst,
 } from "@distilled.cloud/core/codegen/naming";
 import {
-  isForwardRef,
   orderIndex,
   reachableFrom,
   shapeDeps,
@@ -72,46 +70,33 @@ import {
   barrel,
   enumDecl,
   errorClass,
+  errorUnionAlias,
   interfaceDecl,
+  interfaceField,
   operationConst,
   suspendConst,
 } from "@distilled.cloud/core/codegen/emit";
+import {
+  JSON_PRELUDE,
+  makeSchemaRef,
+  makeTsRef,
+  TS_JSON_PRELUDE,
+} from "@distilled.cloud/core/codegen/prelude";
+import {
+  collectOperations,
+  collectOpErrorIds,
+  ensureNamedIo,
+  modelNamespace,
+} from "@distilled.cloud/core/codegen/operations";
+import {
+  memberBases,
+  smithyWireName,
+} from "@distilled.cloud/core/codegen/members";
 import { validatePaginated } from "@distilled.cloud/core/codegen/pagination";
 
 const ENVELOPE_PAYLOAD_TRAIT = "com.cloudflare.protocols#envelopePayload";
 
 const PURE = "/*@__PURE__*/ ";
-
-const PRELUDE: Record<string, string> = {
-  String: "S.String",
-  Boolean: "S.Boolean",
-  Double: "S.Number",
-  Float: "S.Number",
-  Integer: "S.Number",
-  Long: "S.Number",
-  BigInteger: "S.Number",
-  BigDecimal: "S.Number",
-  Timestamp: "S.String",
-  Blob: "S.String",
-  Document: "S.Unknown",
-  Unit: "S.Struct({})",
-};
-
-/** TypeScript type for each prelude shape, mirroring PRELUDE's schemas. */
-const TS_PRELUDE: Record<string, string> = {
-  String: "string",
-  Boolean: "boolean",
-  Double: "number",
-  Float: "number",
-  Integer: "number",
-  Long: "number",
-  BigInteger: "number",
-  BigDecimal: "number",
-  Timestamp: "string",
-  Blob: "string",
-  Document: "unknown",
-  Unit: "{}",
-};
 
 const NULLABLE_TRAIT = "com.cloudflare.protocols#nullable";
 const ERROR_MATCHERS_TRAIT = "com.cloudflare.protocols#errorMatchers";
@@ -138,17 +123,9 @@ const generateModel = (
 
   // 1. Split operations out; synthesize empty Request/Response for Unit I/O so
   //    every operation has a named input shape to carry the Http() trait.
-  const operations: { id: string; def: any }[] = [];
+  const operations = collectOperations(shapes);
   const httpFor: Record<string, any> = {}; // input shape id → http trait
-
-  for (const [id, def] of Object.entries(shapes)) {
-    if (def.type === "operation") operations.push({ id, def });
-  }
-  operations.sort((a, b) => local(a.id).localeCompare(local(b.id)));
-
-  const ns = operations.length
-    ? operations[0].id.split("#")[0]
-    : (Object.keys(shapes)[0]?.split("#")[0] ?? "com.cloudflare.unknown");
+  const ns = modelNamespace(operations, shapes, "com.cloudflare.unknown");
 
   const selected: { id: string; def: any }[] = [];
   for (const op of operations) {
@@ -156,23 +133,12 @@ const generateModel = (
     limitRef.remaining--;
     selected.push(op);
 
-    const opName = local(op.id);
-    let inputTarget = op.def.input?.target ?? "smithy.api#Unit";
-    let outputTarget = op.def.output?.target ?? "smithy.api#Unit";
-
-    if (inputTarget === "smithy.api#Unit") {
-      inputTarget = `${ns}#${opName}Request`;
-      shapes[inputTarget] = { type: "structure", members: {} };
-    }
-    if (outputTarget === "smithy.api#Unit") {
-      outputTarget = `${ns}#${opName}Response`;
-      shapes[outputTarget] = { type: "structure", members: {} };
-    }
-    op.def.__input = inputTarget;
-    op.def.__output = outputTarget;
+    const { input, output } = ensureNamedIo(shapes, op, ns);
+    op.def.__input = input;
+    op.def.__output = output;
 
     const http = op.def.traits?.["smithy.api#http"];
-    if (http) httpFor[inputTarget] = http;
+    if (http) httpFor[input] = http;
   }
 
   if (selected.length === 0) return { code: "", operations: 0 };
@@ -184,22 +150,10 @@ const generateModel = (
   const order = topoOrder(shapes, reachable, shapeDeps);
   const indexOf = orderIndex(order);
 
-  // 3. Reference expression for a target from a shape at position `selfIdx`.
-  const ref = (target: string, selfIdx: number): string => {
-    if (isPrelude(target)) return PRELUDE[local(target)] ?? "S.Unknown";
-    const name = local(target);
-    if (isForwardRef(indexOf, target, selfIdx)) {
-      return `S.suspend(() => ${name})`;
-    }
-    return name;
-  };
-
-  // TypeScript type reference for a target. Named shapes all get an emitted
-  // interface / type alias, so forward references are always fine.
-  const tsRef = (target: string): string =>
-    isPrelude(target)
-      ? (TS_PRELUDE[local(target)] ?? "unknown")
-      : local(target);
+  // 3. Reference resolvers (shared): prelude scalars via the JSON baseline,
+  //    forward references wrapped in S.suspend.
+  const ref = makeSchemaRef(JSON_PRELUDE, indexOf);
+  const tsRef = makeTsRef(TS_JSON_PRELUDE);
 
   /**
    * Per-member emission metadata: the camelCase TS-facing name, the wire name
@@ -224,16 +178,9 @@ const generateModel = (
     keyDictionary: Record<string, string> | undefined;
   }
 
-  const memberInfos = (d: any): MemberInfo[] => {
-    const used = new Set<string>();
-    return Object.entries(d.members ?? {}).map(([mn, m]: [string, any]) => {
-      const traits = m.traits ?? {};
-      let tsName = camel(mn);
-      if (used.has(tsName)) tsName = mn;
-      let k = 2;
-      while (used.has(tsName)) tsName = `${camel(mn)}${k++}`;
-      used.add(tsName);
-
+  const memberInfos = (d: any): MemberInfo[] =>
+    memberBases(d, camel).map((base) => {
+      const traits = base.traits;
       const binding: MemberInfo["binding"] =
         "smithy.api#httpLabel" in traits
           ? "label"
@@ -248,33 +195,23 @@ const generateModel = (
                   : "smithy.api#httpPayload" in traits
                     ? "rawBody"
                     : "body";
-      const wire =
-        binding === "label"
-          ? mn // URI placeholders use the smithy member name
-          : binding === "query"
-            ? typeof traits["smithy.api#httpQuery"] === "string" &&
-              traits["smithy.api#httpQuery"]
-              ? traits["smithy.api#httpQuery"]
-              : mn
-            : binding === "header"
-              ? typeof traits["smithy.api#httpHeader"] === "string" &&
-                traits["smithy.api#httpHeader"]
-                ? traits["smithy.api#httpHeader"]
-                : mn
-              : (traits["smithy.api#jsonName"] ?? mn);
-
       return {
-        tsName,
-        wire,
-        target: m.target,
+        tsName: base.tsName,
+        wire: smithyWireName(
+          traits,
+          base.name,
+          binding === "label" || binding === "query" || binding === "header"
+            ? binding
+            : "other",
+        ),
+        target: base.target,
         binding,
-        required: "smithy.api#required" in traits,
+        required: base.required,
         nullable: NULLABLE_TRAIT in traits,
-        doc: oneLine(traits["smithy.api#documentation"]),
+        doc: base.doc,
         keyDictionary: traits[KEY_DICTIONARY_TRAIT],
       };
     });
-  };
 
   const emitMember = (info: MemberInfo, selfIdx: number): string => {
     let expr = ref(info.target, selfIdx);
@@ -362,17 +299,8 @@ const generateModel = (
   //    Emit typed error classes referenced by the operations' `errors` lists
   //    (added to the smithy models via patches/<service>/<operation>.json).
   const out: string[] = [];
-  const errorIds: string[] = [];
-  const errorIdSet = new Set<string>();
-  for (const op of selected) {
-    for (const e of op.def.errors ?? []) {
-      if (!errorIdSet.has(e.target) && shapes[e.target]) {
-        errorIdSet.add(e.target);
-        errorIds.push(e.target);
-      }
-    }
-  }
-  errorIds.sort((a, b) => local(a).localeCompare(local(b)));
+  const errorIds = collectOpErrorIds(selected, shapes);
+  const errorIdSet = new Set(errorIds);
   const errorNames = new Set(errorIds.map(local));
 
   for (const id of errorIds) {
@@ -389,7 +317,7 @@ const generateModel = (
           });
     const fields = memberEntries.map(
       ([mn, m]: [string, any]) =>
-        `  ${tsKey(mn)}: ${PRELUDE[local(m.target)] ?? "S.Unknown"},`,
+        `  ${tsKey(mn)}: ${JSON_PRELUDE[local(m.target)] ?? "S.Unknown"},`,
     );
     const matchers = d.traits?.[ERROR_MATCHERS_TRAIT];
     out.push(
@@ -448,17 +376,17 @@ const generateModel = (
       const infos = memberInfos(d).map((info) =>
         info.tsName === itemsRoot ? { ...info, required: true } : info,
       );
-      const fields = infos.flatMap((info) => {
-        const opt = info.required ? "" : "?";
-        const type =
-          info.binding === "file"
-            ? "(File | Blob)[]"
-            : `${tsRef(info.target)}${info.nullable ? " | null" : ""}`;
-        return [
-          ...(info.doc ? [`  /** ${info.doc} */`] : []),
-          `  ${tsKey(info.tsName)}${opt}: ${type};`,
-        ];
-      });
+      const fields = infos.flatMap((info) =>
+        interfaceField({
+          name: info.tsName,
+          optional: !info.required,
+          doc: info.doc,
+          type:
+            info.binding === "file"
+              ? "(File | Blob)[]"
+              : `${tsRef(info.target)}${info.nullable ? " | null" : ""}`,
+        }),
+      );
       const members = infos.map((info) => emitMember(info, i));
       // Paginated responses additionally carry the envelope's `result_info`
       // (see CloudflarePaginatedProtocol / the shared ResultInfo schema).
@@ -550,9 +478,7 @@ const generateModel = (
       .map((e) => local(e.target))
       .filter((n) => errorNames.has(n));
     const doc = oneLine(op.def.traits?.["smithy.api#documentation"]);
-    out.push(
-      `export type ${opName}Error = ${[...errNames, "CloudflareOpError"].join(" | ")};`,
-    );
+    out.push(errorUnionAlias(opName, errNames, "CloudflareOpError"));
     if (doc) out.push(`/** ${doc} */`);
     const pg = op.def.__pagination;
     const errList = [...errNames, "CloudflareRateLimited", "CloudflareError"];
