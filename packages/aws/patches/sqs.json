@@ -54,6 +54,11 @@
       ]
     }
   },
+  "errors": {
+    "InvalidParameterValueException": {
+      "message": { "type": "string" }
+    }
+  },
   "structures": {
     "SendMessageBatchResult": {
       "members": {

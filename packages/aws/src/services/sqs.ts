@@ -1114,7 +1114,7 @@ export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceede
 ).pipe(C.withThrottlingError) {}
 export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
   "InvalidParameterValueException",
-  {},
+  { message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
 export class MessageNotInflight extends S.TaggedErrorClass<MessageNotInflight>()(
   "MessageNotInflight",
